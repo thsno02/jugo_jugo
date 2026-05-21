@@ -1,0 +1,383 @@
+[
+  {
+    "id": "karpathy-gist-llm-wiki",
+    "type": "gist_raw",
+    "title": "Andrej Karpathy LLM Wiki / LLM Knowledge Bases idea file",
+    "url": "https://gist.githubusercontent.com/karpathy/442a6bf555914893e9891c11519de94f/raw",
+    "canonical_url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
+    "priority": "p0",
+    "tags": ["origin", "gist", "karpathy"]
+  },
+  {
+    "id": "karpathy-x-launch-post",
+    "type": "webpage",
+    "title": "Karpathy X launch post API mirror",
+    "url": "https://api.fxtwitter.com/karpathy/status/2040470801506541998",
+    "priority": "p0",
+    "tags": ["origin", "x", "karpathy"]
+  },
+  {
+    "id": "hacker-news-original-thread",
+    "type": "hacker_news",
+    "title": "HN: LLM Wiki - example of an idea file",
+    "url": "https://news.ycombinator.com/item?id=47640875",
+    "priority": "p0",
+    "tags": ["discussion", "hacker-news"]
+  },
+  {
+    "id": "hacker-news-lens-thread",
+    "type": "webpage",
+    "title": "HN mirror: LLM Wiki - example of an idea file",
+    "url": "https://nhn.yuu.is/item?id=47640875",
+    "priority": "p1",
+    "tags": ["discussion", "hacker-news", "mirror"]
+  },
+  {
+    "id": "cognitionus-llm-wiki-guide",
+    "type": "webpage",
+    "title": "Cognition Memory registry: llm-wiki",
+    "url": "https://www.cognitionus.com/memory/tools/llm-wiki",
+    "priority": "p0",
+    "tags": ["blog", "guide"]
+  },
+  {
+    "id": "aillm-wiki-directory",
+    "type": "webpage",
+    "title": "LLM Wiki Directory",
+    "url": "https://aillm.wiki/",
+    "priority": "p0",
+    "tags": ["directory", "tools"]
+  },
+  {
+    "id": "llm-wiki-net",
+    "type": "webpage",
+    "title": "LLM Wiki - LLM-compiled knowledge bases for AI agents",
+    "url": "https://llm-wiki.net/",
+    "priority": "p0",
+    "tags": ["tool", "codex", "plugin"]
+  },
+  {
+    "id": "robin-cartier-llm-knowledge-bases",
+    "type": "webpage",
+    "title": "LLM Knowledge Bases (Karpathy pattern)",
+    "url": "https://robincartier.com/wiki/wiki-concepts/llm-knowledge-bases/",
+    "priority": "p0",
+    "tags": ["wiki", "concept"]
+  },
+  {
+    "id": "marvin-hn-persistent-knowledge",
+    "type": "webpage",
+    "title": "Hacker News Picks Up Karpathy's LLM Wiki Pattern",
+    "url": "https://insights.marvin-42.com/articles/hacker-news-picks-up-karpathys-llm-wiki-pattern-for-persistent-knowledge-bases",
+    "priority": "p1",
+    "tags": ["blog", "discussion-summary"]
+  },
+  {
+    "id": "aicritique-enterprise-knowledge",
+    "type": "webpage",
+    "title": "Andrej Karpathy's latest concept LLM Wiki and the future of enterprise knowledge",
+    "url": "https://www.aicritique.org/us/2026/05/08/andrej-karpathys-latest-concept-llm-wiki-and-the-future-of-enterprise-knowledge/",
+    "priority": "p1",
+    "tags": ["blog", "enterprise"]
+  },
+  {
+    "id": "anthemcreation-fr-guide",
+    "type": "webpage",
+    "title": "LLM wiki Karpathy: base de connaissance avec Claude et Obsidian",
+    "url": "https://anthemcreation.com/intelligence-artificielle/llm-wiki-karpathy-base-connaissance-claude-obsidian/",
+    "priority": "p1",
+    "tags": ["blog", "guide", "french"]
+  },
+  {
+    "id": "anthemcreation-en-guide",
+    "type": "webpage",
+    "title": "LLM wiki Karpathy: knowledge base with Claude and Obsidian",
+    "url": "https://anthemcreation.com/en/artificial-intelligence/karpathy-llm-wiki-claude-obsidian/",
+    "priority": "p1",
+    "tags": ["blog", "guide"]
+  },
+  {
+    "id": "kunal-local-knowledge-base",
+    "type": "webpage",
+    "title": "LLM Wiki: Karpathy's Local Knowledge Base Setup",
+    "url": "https://www.kunalganglani.com/blog/llm-wiki-karpathy-local-knowledge-base",
+    "priority": "p1",
+    "tags": ["blog", "guide"]
+  },
+  {
+    "id": "developersio-jp-pattern",
+    "type": "webpage",
+    "title": "Karpathy 氏が言語化した LLM Knowledge Base というパターン",
+    "url": "https://dev.classmethod.jp/articles/karpathy-llm-knowledge-base/",
+    "priority": "p1",
+    "tags": ["blog", "japanese"]
+  },
+  {
+    "id": "falconer-enterprise-guide",
+    "type": "webpage",
+    "title": "The enterprise LLM wiki: scaling Karpathy's pattern to your org",
+    "url": "https://falconer.com/guides/enterprise-llm-wiki-karpathy",
+    "priority": "p1",
+    "tags": ["blog", "enterprise"]
+  },
+  {
+    "id": "complete-tech-live-frontier",
+    "type": "webpage",
+    "title": "Beyond the Token Bottleneck - Building Karpathy's LLM Wiki on a Live Frontier",
+    "url": "https://complete.tech/blog/beyond-the-token-bottleneck-llm-wiki-karpathy/",
+    "priority": "p1",
+    "tags": ["blog", "case-study"]
+  },
+  {
+    "id": "openaitoolshub-six-months",
+    "type": "webpage",
+    "title": "Karpathy's LLM Wiki, Six Months In",
+    "url": "https://www.openaitoolshub.org/en/blog/karpathy-llm-wiki",
+    "priority": "p1",
+    "tags": ["blog", "case-study"]
+  },
+  {
+    "id": "obsidian-community-plugin",
+    "type": "webpage",
+    "title": "Karpathy LLM Wiki - Obsidian Plugin",
+    "url": "https://community.obsidian.md/plugins/karpathywiki",
+    "priority": "p0",
+    "tags": ["obsidian", "plugin"]
+  },
+  {
+    "id": "clawhub-llm-wiki-karpathy",
+    "type": "webpage",
+    "title": "LLM Wiki Karpathy - OpenClaw plugin listing",
+    "url": "https://clawhub.ai/plugins/llm-wiki-karpathy-plugin",
+    "priority": "p1",
+    "tags": ["openclaw", "plugin"]
+  },
+  {
+    "id": "pypi-my-llm-wiki",
+    "type": "pypi",
+    "title": "my-llm-wiki PyPI package",
+    "url": "https://pypi.org/project/my-llm-wiki/",
+    "package": "my-llm-wiki",
+    "priority": "p0",
+    "tags": ["package", "python"]
+  },
+  {
+    "id": "pypi-llm-wiki-mcp",
+    "type": "pypi",
+    "title": "llm-wiki-mcp PyPI package",
+    "url": "https://pypi.org/project/llm-wiki-mcp/",
+    "package": "llm-wiki-mcp",
+    "priority": "p1",
+    "tags": ["package", "mcp", "python"]
+  },
+  {
+    "id": "arxiv-knowledge-compounding",
+    "type": "arxiv",
+    "title": "Knowledge Compounding: Self-Evolving Knowledge Wikis",
+    "url": "https://arxiv.org/abs/2604.11243",
+    "arxiv_id": "2604.11243",
+    "priority": "p1",
+    "tags": ["paper", "arxiv"]
+  },
+  {
+    "id": "arxiv-memory-as-metabolism",
+    "type": "arxiv",
+    "title": "Memory as Metabolism: Companion Knowledge Systems",
+    "url": "https://arxiv.org/abs/2604.12034",
+    "arxiv_id": "2604.12034",
+    "priority": "p1",
+    "tags": ["paper", "arxiv"]
+  },
+  {
+    "id": "arxiv-wicer",
+    "type": "arxiv",
+    "title": "WiCER: Wiki-memory Compile, Evaluate, Refine",
+    "url": "https://arxiv.org/abs/2605.07068",
+    "arxiv_id": "2605.07068",
+    "priority": "p1",
+    "tags": ["paper", "arxiv"]
+  },
+  {
+    "id": "reddit-claudecode-plugin",
+    "type": "reddit",
+    "title": "Turned Andrej Karpathy's LLM Wiki gist into a Claude Code plugin",
+    "url": "https://www.reddit.com/r/ClaudeCode/comments/1sm374u/turned_andrej_karpathys_llm_wiki_gist_into_a/",
+    "priority": "p1",
+    "tags": ["reddit", "discussion"]
+  },
+  {
+    "id": "reddit-openkb-long-pdf",
+    "type": "reddit",
+    "title": "OpenKB: Karpathy's idea of LLM wiki, but with the long-PDF problem solved",
+    "url": "https://www.reddit.com/r/LLMDevs/comments/1syz0b8/openkb_karpathys_idea_of_llm_wiki_but_with_the/",
+    "priority": "p1",
+    "tags": ["reddit", "discussion", "pdf"]
+  },
+  {
+    "id": "reddit-braindb",
+    "type": "reddit",
+    "title": "BrainDB: Karpathy's LLM wiki idea, but as a real DB",
+    "url": "https://www.reddit.com/r/LLMDevs/comments/1sv5cl1/braindb_karpathys_llm_wiki_idea_but_as_a_real_db/",
+    "priority": "p1",
+    "tags": ["reddit", "discussion", "database"]
+  },
+  {
+    "id": "reddit-openwebui-llm-wiki",
+    "type": "reddit",
+    "title": "LLM Wiki discussion in OpenWebUI",
+    "url": "https://www.reddit.com/r/OpenWebUI/comments/1sy0mf8/llm_wiki/",
+    "priority": "p2",
+    "tags": ["reddit", "discussion"]
+  },
+  {
+    "id": "reddit-obsidian-plugin",
+    "type": "reddit",
+    "title": "New plugin: LLM Wiki - turn your vault into a queryable knowledge base",
+    "url": "https://www.reddit.com/r/ObsidianMD/comments/1shntdn/new_plugin_llm_wiki_turn_your_vault_into_a/",
+    "priority": "p1",
+    "tags": ["reddit", "obsidian", "discussion"]
+  },
+  {
+    "id": "reddit-visuals-pdfs-question",
+    "type": "reddit",
+    "title": "Does the Karpathy-style LLM Wiki handle visuals/PDFs/PowerPoints?",
+    "url": "https://www.reddit.com/r/ClaudeCode/comments/1so9gbt/does_the_karpathystyle_llm_wiki_actually_handle/",
+    "priority": "p1",
+    "tags": ["reddit", "discussion", "multimodal"]
+  },
+  {
+    "id": "repo-nashsu-llm-wiki",
+    "type": "github_repo",
+    "title": "nashsu/llm_wiki",
+    "url": "https://github.com/nashsu/llm_wiki",
+    "repo": "nashsu/llm_wiki",
+    "priority": "p0",
+    "tags": ["repo", "desktop-app"]
+  },
+  {
+    "id": "repo-samuraigpt-llm-wiki-agent",
+    "type": "github_repo",
+    "title": "SamurAIGPT/llm-wiki-agent",
+    "url": "https://github.com/SamurAIGPT/llm-wiki-agent",
+    "repo": "SamurAIGPT/llm-wiki-agent",
+    "priority": "p0",
+    "tags": ["repo", "agent"]
+  },
+  {
+    "id": "repo-sdyckjq-llm-wiki-skill",
+    "type": "github_repo",
+    "title": "sdyckjq-lab/llm-wiki-skill",
+    "url": "https://github.com/sdyckjq-lab/llm-wiki-skill",
+    "repo": "sdyckjq-lab/llm-wiki-skill",
+    "priority": "p0",
+    "tags": ["repo", "skill"]
+  },
+  {
+    "id": "repo-atomicstrata-llm-wiki-compiler",
+    "type": "github_repo",
+    "title": "atomicstrata/llm-wiki-compiler",
+    "url": "https://github.com/atomicstrata/llm-wiki-compiler",
+    "repo": "atomicstrata/llm-wiki-compiler",
+    "priority": "p0",
+    "tags": ["repo", "compiler"]
+  },
+  {
+    "id": "repo-agricidaniel-claude-obsidian",
+    "type": "github_repo",
+    "title": "AgriciDaniel/claude-obsidian",
+    "url": "https://github.com/AgriciDaniel/claude-obsidian",
+    "repo": "AgriciDaniel/claude-obsidian",
+    "priority": "p0",
+    "tags": ["repo", "obsidian", "claude"]
+  },
+  {
+    "id": "repo-ar9av-obsidian-wiki",
+    "type": "github_repo",
+    "title": "Ar9av/obsidian-wiki",
+    "url": "https://github.com/Ar9av/obsidian-wiki",
+    "repo": "Ar9av/obsidian-wiki",
+    "priority": "p0",
+    "tags": ["repo", "obsidian"]
+  },
+  {
+    "id": "repo-astro-han-karpathy-llm-wiki",
+    "type": "github_repo",
+    "title": "Astro-Han/karpathy-llm-wiki",
+    "url": "https://github.com/Astro-Han/karpathy-llm-wiki",
+    "repo": "Astro-Han/karpathy-llm-wiki",
+    "priority": "p0",
+    "tags": ["repo", "codex", "skill"]
+  },
+  {
+    "id": "repo-lewislulu-llm-wiki-skill",
+    "type": "github_repo",
+    "title": "lewislulu/llm-wiki-skill",
+    "url": "https://github.com/lewislulu/llm-wiki-skill",
+    "repo": "lewislulu/llm-wiki-skill",
+    "priority": "p1",
+    "tags": ["repo", "skill"]
+  },
+  {
+    "id": "repo-nvk-llm-wiki",
+    "type": "github_repo",
+    "title": "nvk/llm-wiki",
+    "url": "https://github.com/nvk/llm-wiki",
+    "repo": "nvk/llm-wiki",
+    "priority": "p0",
+    "tags": ["repo", "codex", "plugin"]
+  },
+  {
+    "id": "repo-kytmanov-obsidian-local",
+    "type": "github_repo",
+    "title": "kytmanov/obsidian-llm-wiki-local",
+    "url": "https://github.com/kytmanov/obsidian-llm-wiki-local",
+    "repo": "kytmanov/obsidian-llm-wiki-local",
+    "priority": "p1",
+    "tags": ["repo", "obsidian", "local"]
+  },
+  {
+    "id": "repo-ndjordjevic-pin-llm-wiki",
+    "type": "github_repo",
+    "title": "ndjordjevic/pin-llm-wiki",
+    "url": "https://github.com/ndjordjevic/pin-llm-wiki",
+    "repo": "ndjordjevic/pin-llm-wiki",
+    "priority": "p1",
+    "tags": ["repo", "skill", "url-ingest"]
+  },
+  {
+    "id": "repo-ss1024ss-llm-wiki",
+    "type": "github_repo",
+    "title": "Ss1024sS/LLM-wiki",
+    "url": "https://github.com/Ss1024sS/LLM-wiki",
+    "repo": "Ss1024sS/LLM-wiki",
+    "priority": "p1",
+    "tags": ["repo", "codex-skill"]
+  },
+  {
+    "id": "repo-iamsashank-llm-wiki-kit",
+    "type": "github_repo",
+    "title": "iamsashank09/llm-wiki-kit",
+    "url": "https://github.com/iamsashank09/llm-wiki-kit",
+    "repo": "iamsashank09/llm-wiki-kit",
+    "priority": "p1",
+    "tags": ["repo", "mcp"]
+  },
+  {
+    "id": "repo-ngmeyer-librarian-mcp",
+    "type": "github_repo",
+    "title": "ngmeyer/librarian-mcp",
+    "url": "https://github.com/ngmeyer/librarian-mcp",
+    "repo": "ngmeyer/librarian-mcp",
+    "priority": "p1",
+    "tags": ["repo", "mcp", "obsidian"]
+  },
+  {
+    "id": "repo-vectifyai-openkb",
+    "type": "github_repo",
+    "title": "VectifyAI/OpenKB",
+    "url": "https://github.com/VectifyAI/OpenKB",
+    "repo": "VectifyAI/OpenKB",
+    "priority": "p1",
+    "tags": ["repo", "pdf", "multimodal"]
+  }
+]
