@@ -1,0 +1,13 @@
+{
+  "current_phase": "coverage_and_gap_review_v0",
+  "last_updated": "2026-05-21T11:25:00Z",
+  "status": "active",
+  "latest_manifest": "data/manifests/sources.jsonl",
+  "latest_report": "reports/source_gap_review.md",
+  "supporting_reports": [
+    "reports/coverage_framework.md",
+    "reports/initial_gap_checklist.md",
+    "reports/acquisition_status.md"
+  ],
+  "next_action": "Run the next acquisition pass against P0 gaps: blocked Reddit threads, AICritique or replacement enterprise evidence, deeper GitHub issue/release evidence, reproducibility artifacts for WiCER/Knowledge Compounding, and primary-source comparisons against RAG/agent-memory/PKM systems."
+}
