@@ -13,3 +13,4 @@ data/logs/*.tmp
 # Nested source snapshots may contain cloned repositories; keep content, not
 # their local Git databases.
 **/.git/
+data/raw/github_repo/*/repo/
