@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+.cache/
+*.log
+*.tmp
+data/logs/*.tmp
+
+# Nested source snapshots may contain cloned repositories; keep content, not
+# their local Git databases.
+**/.git/
