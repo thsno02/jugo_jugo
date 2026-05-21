@@ -1,0 +1,24 @@
+{
+  "bytes": 92799,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T10:01:10.315765+00:00",
+  "final_url": "https://www.openaitoolshub.org/en/blog/karpathy-llm-wiki",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://www.openaitoolshub.org/en/blog/karpathy-llm-wiki",
+  "sha256": "8fbef2731f55c71af136838458e941d8fb21b198b77f12e6dedb679b143acdb0",
+  "source": {
+    "id": "openaitoolshub-six-months",
+    "priority": "p1",
+    "tags": [
+      "blog",
+      "case-study"
+    ],
+    "title": "Karpathy's LLM Wiki, Six Months In",
+    "type": "webpage",
+    "url": "https://www.openaitoolshub.org/en/blog/karpathy-llm-wiki"
+  },
+  "text_sha256": "aaf2b380fe74cb1131ff6c61ca05ace29b76f8b676ed6568717b4755f90a9fd5",
+  "transport": "requests",
+  "transport_warning": null
+}

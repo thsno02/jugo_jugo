@@ -1,0 +1,24 @@
+{
+  "fetched_at": "2026-05-21T09:56:55.541140+00:00",
+  "git_action": "clone",
+  "git_exit_code": 0,
+  "git_output_tail": "Cloning into '/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/github_repo/repo-ss1024ss-llm-wiki/repo'...\n",
+  "github_api_sha256": "7158c1fc176b4171c50ac0b83e04db7df8275d822d093366e755aaef5493358e",
+  "github_api_status": 403,
+  "github_api_url": "https://api.github.com/repos/Ss1024sS/LLM-wiki",
+  "readme_api_status": 403,
+  "readme_sha256": "7158c1fc176b4171c50ac0b83e04db7df8275d822d093366e755aaef5493358e",
+  "repo": "Ss1024sS/LLM-wiki",
+  "source": {
+    "id": "repo-ss1024ss-llm-wiki",
+    "priority": "p1",
+    "repo": "Ss1024sS/LLM-wiki",
+    "tags": [
+      "repo",
+      "codex-skill"
+    ],
+    "title": "Ss1024sS/LLM-wiki",
+    "type": "github_repo",
+    "url": "https://github.com/Ss1024sS/LLM-wiki"
+  }
+}

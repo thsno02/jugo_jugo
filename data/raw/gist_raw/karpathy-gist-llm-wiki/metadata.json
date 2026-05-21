@@ -1,0 +1,24 @@
+{
+  "bytes": 11985,
+  "content_type": "text/plain; charset=utf-8",
+  "fetched_at": "2026-05-21T09:54:23.179191+00:00",
+  "final_url": "https://gist.githubusercontent.com/karpathy/442a6bf555914893e9891c11519de94f/raw",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://gist.githubusercontent.com/karpathy/442a6bf555914893e9891c11519de94f/raw",
+  "sha256": "dc3efe98ae62f23dd08acad13aba2e95287beb20b6bec2f4af0423557fe37401",
+  "source": {
+    "canonical_url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
+    "id": "karpathy-gist-llm-wiki",
+    "priority": "p0",
+    "tags": [
+      "origin",
+      "gist",
+      "karpathy"
+    ],
+    "title": "Andrej Karpathy LLM Wiki / LLM Knowledge Bases idea file",
+    "type": "gist_raw",
+    "url": "https://gist.githubusercontent.com/karpathy/442a6bf555914893e9891c11519de94f/raw"
+  },
+  "text_sha256": "dc3efe98ae62f23dd08acad13aba2e95287beb20b6bec2f4af0423557fe37401"
+}

@@ -1,0 +1,466 @@
+llm-wiki-mcp · PyPI Skip to main content Switch to mobile version
+
+Search PyPI Search
+
+Help
+
+Docs
+
+Sponsors
+
+Log in
+
+Register
+Menu
+Help
+
+Docs
+
+Sponsors
+
+Log in
+
+Register
+
+Search PyPI Search
+
+llm-wiki-mcp 0.1.1
+
+pip install llm-wiki-mcp Copy PIP instructions
+
+Latest version
+Released: Apr 8, 2026
+
+MCP server + Claude Code skills for Karpathy-style LLM wikis: persistent markdown knowledge bases your agent grows over time.
+
+Navigation
+
+Project description
+
+Release history
+
+Download files
+
+Verified details
+These details have been verified by PyPI Maintainers flsteven87
+
+Unverified details
+These details have not been verified by PyPI Project links
+Changelog
+
+Homepage
+
+Issues
+
+Repository
+
+Meta
+License: MIT License (MIT)
+
+Author: Steven Wu
+
+Tags karpathy , knowledge-base , llm , markdown , mcp , obsidian , wiki
+
+Requires: Python >=3.11
+
+Provides-Extra: dev
+
+Classifiers
+Development Status
+3 - Alpha
+
+Environment
+Console
+
+Intended Audience
+Developers
+
+License
+OSI Approved :: MIT License
+
+Operating System
+OS Independent
+
+Programming Language
+Python :: 3 :: Only
+
+Python :: 3.11
+
+Python :: 3.12
+
+Python :: 3.13
+
+Topic
+Software Development :: Libraries
+
+Software Development :: Libraries :: Python Modules
+
+Typing
+Typed
+
+Report project as malware
+
+Project description
+
+Project details
+
+Release history
+
+Download files
+
+Project description
+
+llm-wiki-mcp
+
+Persistent markdown wiki for your AI agent, built on Karpathy's LLM wiki gist . Four MCP tools ( wiki_read , wiki_write_page , wiki_log_append , wiki_inventory ) plus four Claude Code skills ( wiki-init , wiki-ingest , wiki-query , wiki-lint ). stdio transport, local filesystem.
+
+The server handles the boring layer LLMs keep getting wrong: atomic writes, etag conflict checks, append-only log integrity, path containment. The skills give the agent a workflow to follow. The wiki schema lives in your own wiki/CLAUDE.md and grows with your domain. There is no Layer 3 schema validation in the server.
+
+Status: alpha (v0.1.1). Local backend only. MIT licensed.
+
+Quick start
+
+Requires Python 3.11+ and uv .
+
+Pick an absolute path for the wiki folder. The server creates pages/ and log.md under it on first run if they don't exist:
+uvx llm-wiki-mcp --wiki-root /absolute/path/to/wiki
+Wire it into your MCP client.
+
+Claude Code:
+claude mcp add llm-wiki -- uvx llm-wiki-mcp --wiki-root /absolute/path/to/wiki
+Claude Desktop ( ~/Library/Application Support/Claude/claude_desktop_config.json on macOS) or Cursor ( ~/.cursor/mcp.json ):
+{ "mcpServers" : { "llm-wiki" : { "command" : "uvx" , "args" : [ "llm-wiki-mcp" , "--wiki-root" , "/absolute/path/to/wiki" ] } } }
+Restart the client. Four tools should appear: wiki_read , wiki_write_page , wiki_log_append , wiki_inventory .
+
+Claude Code skills
+
+Claude Code users can install the bundled workflow skills as a plugin:
+claude plugin marketplace add https://github.com/flsteven87/llm-wiki-mcp claude plugin install llm-wiki-skills@llm-wiki-mcp
+Each skill reads wiki/CLAUDE.md for the active schema on every run, so you can evolve the schema without re-installing anything. Ask the agent things like:
+
+Skill What to ask Needs MCP server?
+
+wiki-init "Create an LLM wiki for AI safety research at ~/wikis/ai-safety ." No
+
+wiki-ingest "Ingest https://arxiv.org/abs/2310.12345 into the wiki." Yes
+
+wiki-query "What does the wiki say about steering vectors?" Yes
+
+wiki-lint "Run a wiki health check." Yes
+
+wiki-init is a one-shot scaffolder; the other three are Karpathy's three operations.
+
+Other MCP clients (Claude Desktop, Cursor) get the four tools but not the skills. The agent has to derive the workflow from tool descriptions alone, which works for one-off reads and writes but tends to skip the bookkeeping (log entries, backlink audits) the skills make explicit.
+
+The four tools
+
+Tool Annotations Purpose
+
+wiki_read read-only, idempotent Read one page. Returns body, parsed frontmatter, outgoing links, etag.
+
+wiki_write_page destructive, idempotent Atomic create or update with etag CAS. Pass etag=null to create, the read etag to update.
+
+wiki_log_append not idempotent Append one entry to log.md in Karpathy's ## [YYYY-MM-DD] op | Title format.
+
+wiki_inventory read-only, idempotent Snapshot the whole graph: pages, frontmatter, link edges, log entries, plus an optional plain-text mention scan for backlink audits.
+
+index.md and raw/ are intentionally not exposed as tools. The index is LLM-curated content edited via the host's Read / Write . The raw layer is immutable from the server's perspective.
+
+Wiki layout
+
+wiki-init scaffolds a project that looks like this:
+your-project/ ├── raw/ Immutable source files (papers, articles, transcripts) │ └── ... └── wiki/ ← --wiki-root points here ├── pages/ Markdown pages, one per topic ├── log.md Append-only session log ├── index.md LLM-curated browse page └── CLAUDE.md Schema doc the LLM reads on every operation
+--wiki-root points at the curated wiki/ folder, not the parent project folder containing raw/ . Easy to get wrong on first install; the troubleshooting section below covers the error you'll see.
+
+Design boundary
+
+The server enforces mechanics, not content shape:
+
+Atomic writes. tmp-file + fsync + rename for pages. O_APPEND single-write for log entries.
+
+Optimistic concurrency. Every page has an etag ( sha256(body) || mtime_ns ). Updates supply the etag they read; a mismatch raises WikiConflictError , and the agent re-reads, merges, and retries.
+
+Path containment. Slugs are regex-validated. Resolved paths are checked against the realpath of the root, blocking the CVE-2025-53109 symlink-escape class.
+
+Format-locked log line. ## [YYYY-MM-DD] operation | Title . Operation names are free strings; only characters that would break the line shape are rejected.
+
+The server does not validate frontmatter shape, page categories, or link targets. That layer lives in your wiki/CLAUDE.md schema doc and grows with the LLM. Karpathy's gist is deliberately silent on content shape; baking a schema into the server would defeat the point.
+
+Python API
+
+If you want to wrap the MCP server with your own storage backend (SQLite, Notion, GDrive, a test fake), implement the WikiStorage Protocol and pass an instance to build_server :
+from llm_wiki_mcp import WikiStorage , PageRead , LogEntry from llm_wiki_mcp.server import build_server class MyStorage : # satisfies the WikiStorage Protocol async def read_page ( self , slug : str ) -> PageRead : ... async def write_page ( self , slug , body , expected_etag = None ) -> str : ... async def list_pages ( self ) -> list [ str ]: ... async def append_log ( self , entry : LogEntry ) -> None : ... async def read_log ( self ) -> str : ... async def write_raw_file ( self , name , data ) -> None : ... # usually raises server = build_server ( storage = MyStorage ()) server . run ()
+build_server is the composition root. The CLI main() is a thin caller that constructs LocalFilesystemStorage from --wiki-root and hands it in.
+
+The bundled Claude Code skills ship as package data under llm_wiki_mcp/skills/ and load via importlib.resources if you want to wire them into a non-Claude-Code agent. Typed domain errors ( WikiConflictError , WikiNotFoundError , WikiPermissionError , WikiPathError , WikiSchemaViolationError ) are importable from the package root for catching at your own boundary.
+
+Troubleshooting
+
+llm-wiki-mcp: command not found after uv tool install . uv puts the binary in ~/.local/bin (or %USERPROFILE%\.local\bin on Windows). Add it to PATH , or use uvx llm-wiki-mcp ... to invoke without a persistent shim.
+
+wiki_* tools don't appear after editing the client config. Restart the MCP client. Claude Desktop, Claude Code, and Cursor only re-read mcpServers at startup.
+
+WikiPathError: path escapes wiki root . You pointed --wiki-root at the project folder containing raw/ instead of the curated wiki/ folder inside it. /Users/me/wikis/ai-safety/wiki is correct; /Users/me/wikis/ai-safety is not.
+
+Skills not loading in Claude Code. Run claude plugin list . If llm-wiki-skills is missing, rerun the marketplace commands in the Claude Code skills section.
+
+Development
+git clone https://github.com/flsteven87/llm-wiki-mcp cd llm-wiki-mcp uv sync --extra dev uv run pytest uv run ruff check . uv run pyright src/llm_wiki_mcp
+License
+
+MIT. See LICENSE .
+
+Project details
+
+Verified details
+These details have been verified by PyPI Maintainers flsteven87
+
+Unverified details
+These details have not been verified by PyPI Project links
+Changelog
+
+Homepage
+
+Issues
+
+Repository
+
+Meta
+License: MIT License (MIT)
+
+Author: Steven Wu
+
+Tags karpathy , knowledge-base , llm , markdown , mcp , obsidian , wiki
+
+Requires: Python >=3.11
+
+Provides-Extra: dev
+
+Classifiers
+Development Status
+3 - Alpha
+
+Environment
+Console
+
+Intended Audience
+Developers
+
+License
+OSI Approved :: MIT License
+
+Operating System
+OS Independent
+
+Programming Language
+Python :: 3 :: Only
+
+Python :: 3.11
+
+Python :: 3.12
+
+Python :: 3.13
+
+Topic
+Software Development :: Libraries
+
+Software Development :: Libraries :: Python Modules
+
+Typing
+Typed
+
+Release history Release notifications | RSS feed
+
+This version
+
+0.1.1
+
+Apr 8, 2026
+
+0.1.0
+
+Apr 8, 2026
+
+Download files
+
+Download the file for your platform. If you're not sure which to choose, learn more about installing packages .
+
+Source Distribution
+
+llm_wiki_mcp-0.1.1.tar.gz (115.8 kB view details )
+Uploaded Apr 8, 2026 Source
+
+Built Distribution
+
+Filter files by name, interpreter, ABI, and platform.
+
+If you're not sure about the file name format, learn more about wheel file names .
+
+Copy a direct link to the current filters Copy
+
+File name
+
+Interpreter Interpreter py3
+
+ABI ABI none
+
+Platform Platform any
+
+llm_wiki_mcp-0.1.1-py3-none-any.whl (43.3 kB view details )
+Uploaded Apr 8, 2026 Python 3
+
+File details
+
+Details for the file llm_wiki_mcp-0.1.1.tar.gz .
+
+File metadata
+
+Download URL: llm_wiki_mcp-0.1.1.tar.gz
+
+Upload date: Apr 8, 2026
+
+Size: 115.8 kB
+
+Tags: Source
+
+Uploaded using Trusted Publishing? No
+
+Uploaded via: uv/0.7.13
+
+File hashes
+
+Hashes for llm_wiki_mcp-0.1.1.tar.gz
+Algorithm Hash digest
+
+SHA256 5cf32c36a0aaadfd591a51ef724cfae17b7a4df942485cd4c06fcf767822ea7e Copy
+
+MD5 006622941749d080d8d2c583ff4de935 Copy
+
+BLAKE2b-256 e534f6998989619ad2b3c5e18449d2f18af3931e7860303e500be33f5c8d76db Copy
+
+See more details on using hashes here.
+
+File details
+
+Details for the file llm_wiki_mcp-0.1.1-py3-none-any.whl .
+
+File metadata
+
+Download URL: llm_wiki_mcp-0.1.1-py3-none-any.whl
+
+Upload date: Apr 8, 2026
+
+Size: 43.3 kB
+
+Tags: Python 3
+
+Uploaded using Trusted Publishing? No
+
+Uploaded via: uv/0.7.13
+
+File hashes
+
+Hashes for llm_wiki_mcp-0.1.1-py3-none-any.whl
+Algorithm Hash digest
+
+SHA256 36be93c3cc187120b3814f640cc99053edbb51cbfa51f48ba561d9c361fb4ab4 Copy
+
+MD5 be72ece63a56011fe212292c288a6dbd Copy
+
+BLAKE2b-256 3f8c19383b1b73b1cc11415580260fe9dadbe2eaccf1ab16c0be53adc314f03a Copy
+
+See more details on using hashes here.
+
+Help
+
+Installing packages
+
+Uploading packages
+
+User guide
+
+Project name retention
+
+FAQs
+
+About PyPI
+
+PyPI Blog
+
+Infrastructure dashboard
+
+Statistics
+
+Logos & trademarks
+
+Our sponsors
+
+Contributing to PyPI
+
+Bugs and feedback
+
+Contribute on GitHub
+
+Translate PyPI
+
+Sponsor PyPI
+
+Development credits
+
+Using PyPI
+
+Terms of Service
+
+Report security issue
+
+Code of conduct
+
+Privacy Notice
+
+Acceptable Use Policy
+
+Status: all systems operational
+
+Developed and maintained by the Python community, for the Python community.
+Donate today!
+
+"PyPI", "Python Package Index", and the blocks logos are registered trademarks of the Python Software Foundation .
+
+© 2026 Python Software Foundation
+Site map
+
+Deployed from dec24d3
+
+Switch to desktop version
+
+English
+
+español
+
+français
+
+日本語
+
+português (Brasil)
+
+українська
+
+Ελληνικά
+
+Deutsch
+
+中文 (简体)
+
+中文 (繁體)
+
+русский
+
+עברית
+
+Esperanto
+
+한국어
+
+Supported by
+
+AWS Cloud computing and Security Sponsor Datadog Monitoring Depot Continuous Integration Fastly CDN Google Download Analytics Pingdom Monitoring Sentry Error logging StatusPage Status page

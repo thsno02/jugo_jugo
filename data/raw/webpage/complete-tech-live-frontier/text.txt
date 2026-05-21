@@ -1,0 +1,196 @@
+Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier – CompleteTech LLC
+Skip to content
+
+About Us
+
+Services
+AI-Driven Analytics
+
+API Development and Integrations
+
+Chatbots and Virtual Assistants
+
+IDEA to Solution
+
+ITSM Implementation & Support
+
+Prototyping and MVP Development
+
+Blog
+Field Notes
+
+Field Journal
+Buddy Thread
+
+Disclosure in Action
+
+Portfolio
+VapeTM Disclosure – May 1, 2026
+
+ClawExplorer.AI
+Apr 30, 2026
+
+Build AI Workflows in 5 Steps
+Apr 11, 2026
+
+International AI Contest Winner
+Apr 03, 2024
+
+ME User Conference Presentation
+Oct 03, 2023
+
+Credentials
+Introduction to AI in Azure
+Mar 19, 2026
+
+Copilot for Microsoft Power Platform
+Dec 10, 2025
+
+Multi AI Agent Systems with crewAI
+Jan 30, 2025
+
+Microsoft Learn AI Engineer Career Path
+Nov 06, 2024
+
+AI Leadership
+Jun 18, 2024
+
+Analyze Text with Azure AI Language
+May 30, 2024
+
+Microsoft Azure Fundamentals (AZ-900)
+Oct 18, 2023
+Prepare for Azure Fundamentals (AZ-900)
+Oct 27, 2023
+
+Microsoft Azure Fundamentals (AZ-900): Exam Tips
+Oct 27, 2023
+
+Microsoft Azure Fundamentals (AZ-900): Azure Architecture and Services
+Oct 26, 2023
+
+Microsoft Azure Fundamentals (AZ-900): Azure Management and Governance
+Oct 26, 2023
+
+CompTIA A+ (2009 Edition)
+Jul 27, 2015
+
+Microsoft Certified Professional
+Nov 17, 2006
+
+Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier
+
+Home >
+Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier
+
+Field Note · Blog Apr 06, 2026
+
+Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier
+
+A 120-page Obsidian research wiki on latent-space reasoning and inter-agent latent communication — built using Andrej Karpathy’s LLM Wiki pattern. 27 sources, 1400+ cross-references, schema-driven ingest. Apache + CC-BY.
+
+Andrej Karpathy published a gist describing what he calls the “LLM Wiki” pattern: instead of having a model retrieve documents at query time (the RAG default), give it a structured wiki it incrementally builds and maintains over time. The model isn’t a librarian. It’s a curator. The reading and thinking parts of knowledge work are already comfortable; what collapses every long-running knowledge base is the bookkeeping — the cross-references, the schema discipline, the link rot. As Karpathy put it: “the tedious part of maintaining a knowledge base is not the reading or the thinking — it’s the bookkeeping.” LLMs are good at exactly that.
+
+Beyond the Token Bottleneck — github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck , mirrored at ctech.llc/bttb — is a production implementation of Karpathy’s pattern, applied to a single live research domain. Full credit where it’s due: the methodology is his. This repo is what happens when you take that gist seriously, hand the LLM a schema, and point it at a frontier of the field where the literature is moving faster than any individual researcher can track.
+
+The frontier we pointed it at
+
+The domain is latent-space reasoning and inter-agent latent communication — what happens when LLMs stop talking and start thinking in vectors. The setup is a structural problem in current architectures: large language models are internally continuous (dense vectors at every layer), but they’re forced to interface with the world through a discrete token bottleneck. That bottleneck:
+
+Discards distributional uncertainty — a full probability distribution collapses to one sampled token.
+
+Prevents superposition of hypotheses — one token, one path; you can’t hold two reasoning branches in the same vector slot.
+
+Wastes compute on fluency — tokens that exist for grammar carry no reasoning content but cost just as much.
+
+The wiki tracks 27 sources (26 papers + 1 open-source project, Dec 2022 – Apr 2026) that collectively ask: what happens when you remove the bottleneck, both within a single model and between collaborating models? It splits that question into two threads.
+
+Thread 1: Latent Reasoning — intra-agent continuous thought
+
+Feed hidden states back as input embeddings instead of decoding to tokens. The model reasons silently in continuous vector space, holding multiple reasoning paths in superposition. Headline number from Hao et al.’s Coconut (ICLR 2025): 97.0% on planning tasks via emergent BFS, vs. 77.5% for chain-of-thought on the same tasks. Pause Tokens, iCoT, SoftCoT, Thinking States, and the Superposition Theory paper round out this thread.
+
+Thread 2: Latent Communication — inter-agent continuous channels
+
+Replace the natural-language pipe between agents with a continuous channel. The wiki organizes this as a 10-level depth spectrum ordered by how much information each level carries per position — from natural language at the shallow end (~15 bits/position) to full hidden-state sequences at the deep end (~40K bits/position). Embeddings, deltas, structured representations, vision-channel methods, KV-cache selection, KV exchange, activation communication, and full hidden-state plus latent come in between. Headline number: LatentMAS achieves 471× theoretical compression over text with zero training. Twelve papers in this thread — CIPHER, AC, KVComm, C2C, Interlat, SDE, ThoughtComm, Vision Wormhole, LatentMAS, others.
+
+The frontier, as the wiki frames it, is bending the depth-spectrum curve — reaching high information density without forcing tight architectural coupling between the agents on either end of the channel.
+
+How Karpathy’s pattern shows up in the build
+
+Karpathy’s gist describes a three-layer architecture: raw sources (immutable inputs), the wiki (LLM-generated, mutable, the actual product), and the schema (configuration that tells the LLM what good looks like). The repo is laid out almost exactly that way:
+
+raw/ — 26 source PDFs from arXiv, ACL, ICML, NeurIPS, plus a per-paper provenance index, an ingest checklist, and a bulk arXiv downloader. Read-only by convention. The LLM doesn’t edit this layer.
+
+wiki/ — 120+ pages: source summaries, concept pages, entity profiles for 13 research groups, 9 Maps of Content (guided reading paths), 9 analysis/synthesis pages, an overview, a change log. 1400+ internal links knit the whole thing together.
+
+AGENTS.md — the schema. Page types, linking conventions, depth standards, what counts as “done” for each page class. This is what makes the LLM’s output predictable and the wiki maintainable across many ingest passes.
+
+workflows/ — maintainer playbooks: create (ingest, batch-ingest, synthesize), enrich (enrich, expand), audit (gap-analysis, verification, lint, plugin-audit, schema-self-audit), query , meta . Decision tree at workflows/README.md .
+
+The ingest loop is the load-bearing one. A new paper drops into raw/pdf/ ; the LLM reads it and writes a source summary against the schema; entities and concepts get extracted and given their own pages or extended on existing ones; cross-references get threaded through every page that mentions the new work; Maps of Content get updated so the new piece sits in a guided reading path, not just an orphan node. One paper, ten to fifteen page touches, hundreds of new and updated links. That’s the bookkeeping Karpathy was talking about, automated.
+
+Why we built it, beyond “the pattern is good”
+
+Three reasons:
+
+The literature is moving faster than human curation can keep up with. Latent reasoning and latent communication aren’t two fields — they’re one frontier with two faces, and the connections between papers are where the real signal is. A handcrafted bibliography goes stale before it ships. An LLM-maintained, deeply cross-referenced wiki absorbs new work without losing structure.
+
+The depth spectrum needed somewhere to live. Frameworks like the 10-level communication-depth taxonomy make sense only if every method in the field gets placed on them and every method’s page links back. That’s 27 sources times one Map of Content with continuous re-threading. Hand-maintained, that’s a quarter on its own. Schema-driven, the LLM does it as a side effect of ingestion.
+
+Karpathy’s gist deserves a working production reference. The pattern is good. Showing what a 120-page, 1400-link, schema-disciplined implementation looks like — with audit workflows, plugin lists, license splits, and a real domain — is more useful than another think-piece about second brains. The vault opens directly in Obsidian; clone the repo and it’s yours.
+
+If you only do one thing
+
+If you’re here for the methodology, read Karpathy’s gist first — it’s short, and the framing carries. Then clone the repo, open it as an Obsidian vault, and start at wiki/overview-state-of-field.md . The graph view in assets/graph-color-groups.png shows what 1400 cross-references look like when colored by note type; it’s the clearest visual the project has of why the bookkeeping pays off.
+
+If you’re here for the research, the two entry points to bookmark are wiki/mocs/communication-depth-spectrum.md (the 10-level walkthrough) and wiki/analyses/method-comparison.md (side-by-side training, architecture, and result tables across all tracked methods).
+
+The repo is split-licensed: Apache 2.0 for code (workflows, scripts, schema), CC-BY 4.0 for content (the wiki itself). Cite freely; reuse the methodology; build your own LLM Wiki on a domain you care about.
+
+Repository: github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck
+Permalink: ctech.llc/bttb
+Methodology credit: Andrej Karpathy — LLM Wiki gist .
+
+AI research / Andrej Karpathy / latent communication / latent-space reasoning / LLM Wiki pattern / multi-agent systems / Obsidian / research wiki
+← Way Back Home: What Multi-Agent Orchestration Looks Like in Practice When Claude Read the Mythos System Card →
+
+Copyright © 2026 CompleteTech LLC
+
+About Us
+
+Privacy Policy
+
+Terms and Conditions
+
+Cookie Policy (EU)
+
+Manage Consent
+
+To provide the best experiences, we use technologies like cookies to store and/or access device information. Consenting to these technologies will allow us to process data such as browsing behavior or unique IDs on this site. Not consenting or withdrawing consent, may adversely affect certain features and functions.
+
+Functional Functional Always active
+The technical storage or access is strictly necessary for the legitimate purpose of enabling the use of a specific service explicitly requested by the subscriber or user, or for the sole purpose of carrying out the transmission of a communication over an electronic communications network.
+Preferences Preferences
+The technical storage or access is necessary for the legitimate purpose of storing preferences that are not requested by the subscriber or user.
+Statistics Statistics
+The technical storage or access that is used exclusively for statistical purposes. The technical storage or access that is used exclusively for anonymous statistical purposes. Without a subpoena, voluntary compliance on the part of your Internet Service Provider, or additional records from a third party, information stored or retrieved for this purpose alone cannot usually be used to identify you.
+Marketing Marketing
+The technical storage or access is required to create user profiles to send advertising, or to track the user on a website or across several websites for similar marketing purposes.
+
+Manage options
+
+Manage services
+
+Manage {vendor_count} vendors
+
+Read more about these purposes
+
+Accept Deny View preferences Save preferences View preferences
+
+{title}
+
+{title}
+
+{title}
+
+Manage consent

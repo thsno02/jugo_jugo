@@ -1,0 +1,32 @@
+{
+  "bytes": 48461,
+  "content_type": "text/html; charset=utf-8",
+  "eprint_bytes": 1218440,
+  "eprint_content_type": "application/pdf",
+  "eprint_sha256": "991dd942b6824224d3776c01e6f545270786a0634e314519b9b778f8bf93afc1",
+  "eprint_source_kind": "pdf_only",
+  "eprint_status": 200,
+  "eprint_url": "https://arxiv.org/e-print/2604.11243",
+  "fetched_at": "2026-05-21T11:06:07.349578+00:00",
+  "final_url": "https://arxiv.org/abs/2604.11243",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://arxiv.org/abs/2604.11243",
+  "sha256": "c50d81d62839b936359dc59de3a36ce31671d60f2c1782f923fafc4d45c12bbf",
+  "source": {
+    "arxiv_id": "2604.11243",
+    "id": "arxiv-knowledge-compounding",
+    "priority": "p1",
+    "tags": [
+      "paper",
+      "arxiv"
+    ],
+    "title": "Knowledge Compounding: Self-Evolving Knowledge Wikis",
+    "type": "arxiv",
+    "url": "https://arxiv.org/abs/2604.11243"
+  },
+  "source_note": "arXiv e-print returned a PDF; no TeX source was available from this endpoint.",
+  "text_sha256": "ac9312de5757fa28e86feb199938e6b67457a28d86f69e8fb5d5d15249276ef9",
+  "transport": "requests",
+  "transport_warning": null
+}

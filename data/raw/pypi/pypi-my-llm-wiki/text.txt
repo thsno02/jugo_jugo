@@ -1,0 +1,420 @@
+my-llm-wiki · PyPI Skip to main content Switch to mobile version
+
+Search PyPI Search
+
+Help
+
+Docs
+
+Sponsors
+
+Log in
+
+Register
+Menu
+Help
+
+Docs
+
+Sponsors
+
+Log in
+
+Register
+
+Search PyPI Search
+
+my-llm-wiki 0.9.0
+
+pip install my-llm-wiki Copy PIP instructions
+
+Latest version
+Released: Apr 28, 2026
+
+Turn any folder into a queryable knowledge graph. Inspired by Andrej Karpathy's LLM Wiki concept.
+
+Navigation
+
+Project description
+
+Release history
+
+Download files
+
+Verified details
+These details have been verified by PyPI Maintainers phuc-nt
+
+Unverified details
+These details have not been verified by PyPI Project links
+Homepage
+
+Issues
+
+Repository
+
+Meta
+License Expression: MIT
+SPDX License Expression
+
+Author: phuc-nt
+
+Tags knowledge-graph , wiki , ast , tree-sitter , llm-wiki , markdown
+
+Requires: Python >=3.10
+
+Provides-Extra: pdf , leiden , office , docling , all , dev
+
+Classifiers
+Development Status
+4 - Beta
+
+Intended Audience
+Developers
+
+Programming Language
+Python :: 3
+
+Topic
+Software Development :: Documentation
+
+Text Processing :: Markup :: Markdown
+
+Report project as malware
+
+Project description
+
+Project details
+
+Release history
+
+Download files
+
+Project description
+
+my-llm-wiki
+
+Drop any files into a folder. Get a living, queryable knowledge graph.
+
+Documentation · Issues
+
+In April 2026, Andrej Karpathy shared a concept he called LLM Wiki — a personal knowledge system with three layers: raw files (never modified), a compiled wiki with cross-references, and a schema that tells the LLM how to maintain it. The key insight: compile once, query forever , and let the wiki grow with every session as a "persistent, compounding artifact" rather than re-deriving knowledge on every query.
+
+my-llm-wiki implements all three layers.
+pip install my-llm-wiki cd your-project && llm-wiki .
+The output wiki-out/vault/ is a drop-in Obsidian vault — open it directly, or query from CLI. Re-run anytime; SHA256 cache skips unchanged files. llm-wiki note "<insight>" writes back from your Claude Code sessions so the graph compounds over time.
+
+Supported file types
+
+Code (19 languages) — Python, TypeScript/JavaScript, Go, Rust, Java, C/C++, Ruby, C#, and more ( full list ). Tree-sitter AST: classes, functions, typed extends / implements , function signatures, doc comments (Javadoc / JSDoc / GoDoc / /// ), call graph.
+
+Markdown / text — headings, definitions, [[wikilinks]] , cross-document references.
+
+PDF / DOCX / PPTX / HTML / EPUB — layout-aware extraction via Docling ( pip install 'my-llm-wiki[docling]' ). Headings + tables preserved. Scanned PDFs auto-OCR. EPUB unpacked via stdlib zipfile and routed through Docling's HTML pipeline. Bold-as-heading fallback for documents without Word Heading styles.
+
+Images (HEIC / PNG / JPG) — hub nodes from structural pass; vision OCR via Claude Code agent mode ( /wiki . ).
+
+Read the docs
+
+The full story lives at phuc-nt.github.io/my-llm-wiki :
+
+How It's Built — narrative: Karpathy's vision → three layers → the living wiki cycle
+
+Install & Quick Start — first graph in 30 seconds
+
+Core Features — two-pass extraction, typed inheritance, doc comments, communities, write-back
+
+How It Works — pipeline internals
+
+Use Cases — codebases, research notes, mixed knowledge
+
+License
+
+MIT
+
+Project details
+
+Verified details
+These details have been verified by PyPI Maintainers phuc-nt
+
+Unverified details
+These details have not been verified by PyPI Project links
+Homepage
+
+Issues
+
+Repository
+
+Meta
+License Expression: MIT
+SPDX License Expression
+
+Author: phuc-nt
+
+Tags knowledge-graph , wiki , ast , tree-sitter , llm-wiki , markdown
+
+Requires: Python >=3.10
+
+Provides-Extra: pdf , leiden , office , docling , all , dev
+
+Classifiers
+Development Status
+4 - Beta
+
+Intended Audience
+Developers
+
+Programming Language
+Python :: 3
+
+Topic
+Software Development :: Documentation
+
+Text Processing :: Markup :: Markdown
+
+Release history Release notifications | RSS feed
+
+This version
+
+0.9.0
+
+Apr 28, 2026
+
+0.8.0
+
+Apr 28, 2026
+
+0.7.0
+
+Apr 26, 2026
+
+0.6.0
+
+Apr 26, 2026
+
+0.5.1
+
+Apr 9, 2026
+
+0.5.0
+
+Apr 8, 2026
+
+0.4.0
+
+Apr 8, 2026
+
+0.3.2
+
+Apr 8, 2026
+
+0.3.1
+
+Apr 8, 2026
+
+0.3.0
+
+Apr 8, 2026
+
+0.2.2
+
+Apr 8, 2026
+
+0.2.1
+
+Apr 8, 2026
+
+0.2.0
+
+Apr 8, 2026
+
+0.1.1
+
+Apr 7, 2026
+
+0.1.0
+
+Apr 7, 2026
+
+Download files
+
+Download the file for your platform. If you're not sure which to choose, learn more about installing packages .
+
+Source Distribution
+
+my_llm_wiki-0.9.0.tar.gz (104.2 kB view details )
+Uploaded Apr 28, 2026 Source
+
+Built Distribution
+
+Filter files by name, interpreter, ABI, and platform.
+
+If you're not sure about the file name format, learn more about wheel file names .
+
+Copy a direct link to the current filters Copy
+
+File name
+
+Interpreter Interpreter py3
+
+ABI ABI none
+
+Platform Platform any
+
+my_llm_wiki-0.9.0-py3-none-any.whl (109.8 kB view details )
+Uploaded Apr 28, 2026 Python 3
+
+File details
+
+Details for the file my_llm_wiki-0.9.0.tar.gz .
+
+File metadata
+
+Download URL: my_llm_wiki-0.9.0.tar.gz
+
+Upload date: Apr 28, 2026
+
+Size: 104.2 kB
+
+Tags: Source
+
+Uploaded using Trusted Publishing? No
+
+Uploaded via: twine/6.2.0 CPython/3.14.3
+
+File hashes
+
+Hashes for my_llm_wiki-0.9.0.tar.gz
+Algorithm Hash digest
+
+SHA256 0ba28ee44e7df4ddf391fde0646e51eea2bd04aa4d56032d4b2de5bba3cb6924 Copy
+
+MD5 1073cf88dd68f118009600e703f1e1d8 Copy
+
+BLAKE2b-256 0ae3d861fe8cd9f5e103e808cbf0222f094b9893f5f42ab8cad8c6b63238fa9d Copy
+
+See more details on using hashes here.
+
+File details
+
+Details for the file my_llm_wiki-0.9.0-py3-none-any.whl .
+
+File metadata
+
+Download URL: my_llm_wiki-0.9.0-py3-none-any.whl
+
+Upload date: Apr 28, 2026
+
+Size: 109.8 kB
+
+Tags: Python 3
+
+Uploaded using Trusted Publishing? No
+
+Uploaded via: twine/6.2.0 CPython/3.14.3
+
+File hashes
+
+Hashes for my_llm_wiki-0.9.0-py3-none-any.whl
+Algorithm Hash digest
+
+SHA256 1f9c0e1639e2ace393e2543e41b9a96ed0cfa72b0da32e875e61d765afe5c598 Copy
+
+MD5 ebf75531fd97bdb9eb906742f9cb36d2 Copy
+
+BLAKE2b-256 ee362e9f7988db0435346dcab8ac0251e70aa6ea27629cbe44f3ba76aa70566d Copy
+
+See more details on using hashes here.
+
+Help
+
+Installing packages
+
+Uploading packages
+
+User guide
+
+Project name retention
+
+FAQs
+
+About PyPI
+
+PyPI Blog
+
+Infrastructure dashboard
+
+Statistics
+
+Logos & trademarks
+
+Our sponsors
+
+Contributing to PyPI
+
+Bugs and feedback
+
+Contribute on GitHub
+
+Translate PyPI
+
+Sponsor PyPI
+
+Development credits
+
+Using PyPI
+
+Terms of Service
+
+Report security issue
+
+Code of conduct
+
+Privacy Notice
+
+Acceptable Use Policy
+
+Status: all systems operational
+
+Developed and maintained by the Python community, for the Python community.
+Donate today!
+
+"PyPI", "Python Package Index", and the blocks logos are registered trademarks of the Python Software Foundation .
+
+© 2026 Python Software Foundation
+Site map
+
+Deployed from dec24d3
+
+Switch to desktop version
+
+English
+
+español
+
+français
+
+日本語
+
+português (Brasil)
+
+українська
+
+Ελληνικά
+
+Deutsch
+
+中文 (简体)
+
+中文 (繁體)
+
+русский
+
+עברית
+
+Esperanto
+
+한국어
+
+Supported by
+
+AWS Cloud computing and Security Sponsor Datadog Monitoring Depot Continuous Integration Fastly CDN Google Download Analytics Pingdom Monitoring Sentry Error logging StatusPage Status page

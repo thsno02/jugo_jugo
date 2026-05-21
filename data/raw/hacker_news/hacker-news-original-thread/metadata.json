@@ -1,0 +1,25 @@
+{
+  "bytes": 156858,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T09:54:25.269134+00:00",
+  "final_url": "https://news.ycombinator.com/item?id=47640875",
+  "hn_api_sha256": "4971b60e10fcaa78f5db8ea731053d78451b9e1e853af50128e108ea7a9fb8e7",
+  "hn_api_status": 200,
+  "hn_api_url": "https://hacker-news.firebaseio.com/v0/item/47640875.json",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://news.ycombinator.com/item?id=47640875",
+  "sha256": "90514469488663f967de33954f14a9cc7d144997a554d8f90cf2be9c56da21b8",
+  "source": {
+    "id": "hacker-news-original-thread",
+    "priority": "p0",
+    "tags": [
+      "discussion",
+      "hacker-news"
+    ],
+    "title": "HN: LLM Wiki - example of an idea file",
+    "type": "hacker_news",
+    "url": "https://news.ycombinator.com/item?id=47640875"
+  },
+  "text_sha256": "5c34773c5faa5d04384924d0c70369d0a84627120ab8c5c8e7b843a62b36c6e7"
+}

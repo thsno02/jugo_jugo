@@ -1,0 +1,22 @@
+{
+  "bytes": 309165,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T09:54:46.245181+00:00",
+  "final_url": "https://dev.classmethod.jp/articles/karpathy-llm-knowledge-base/",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://dev.classmethod.jp/articles/karpathy-llm-knowledge-base/",
+  "sha256": "cfe84b1d5e86ff82d9d5cea81ed13635e1f4158dfa0c5ea2e11e8a57ebc24e3f",
+  "source": {
+    "id": "developersio-jp-pattern",
+    "priority": "p1",
+    "tags": [
+      "blog",
+      "japanese"
+    ],
+    "title": "Karpathy 氏が言語化した LLM Knowledge Base というパターン",
+    "type": "webpage",
+    "url": "https://dev.classmethod.jp/articles/karpathy-llm-knowledge-base/"
+  },
+  "text_sha256": "aa471c37c06e97c8f9a92b1076c27dc0614d3b7f756f28a56e855c0ca225c29d"
+}

@@ -1,0 +1,22 @@
+{
+  "bytes": 279172,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T09:54:58.805653+00:00",
+  "final_url": "https://community.obsidian.md/plugins/karpathywiki",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://community.obsidian.md/plugins/karpathywiki",
+  "sha256": "3971b90b6ad8dc2e8e85c53cae97a4862d66fc77d0955042165806506ae0612c",
+  "source": {
+    "id": "obsidian-community-plugin",
+    "priority": "p0",
+    "tags": [
+      "obsidian",
+      "plugin"
+    ],
+    "title": "Karpathy LLM Wiki - Obsidian Plugin",
+    "type": "webpage",
+    "url": "https://community.obsidian.md/plugins/karpathywiki"
+  },
+  "text_sha256": "241ea7ab4c8075c1bc8b6830afe6f430d211bfb84543d21ea062de226f9e8a13"
+}

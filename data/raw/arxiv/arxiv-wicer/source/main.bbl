@@ -1,0 +1,230 @@
+\begin{thebibliography}{28}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Chan et~al.(2025)Chan, Chen, Cheng, and Tiong]{chan2024cag}
+Brian~J. Chan, Chao-Ting Chen, Jui-Hung Cheng, and Hen-Hsen Tiong.
+\newblock Don't do {RAG}: When cache-augmented generation is all you need for
+  knowledge tasks.
+\newblock In \emph{Proceedings of the ACM Web Conference (WWW)}, 2025.
+\newblock arXiv:2412.15605.
+
+\bibitem[Chang et~al.(2023)Chang, Xu, Wang, Lam, Cho, and
+  Iyyer]{chang2023booookscore}
+Yapei Chang, Kyle Xu, Bowen Wang, Windson Lam, Kyunghyun Cho, and Mohit Iyyer.
+\newblock {BooookScore}: A systematic exploration of book-length summarization
+  in the era of {LLMs}.
+\newblock \emph{arXiv preprint arXiv:2310.00785}, 2023.
+
+\bibitem[Chiang and Lee(2023)]{chiang2023can}
+Cheng-Han Chiang and Hung-yi Lee.
+\newblock Can large language models be an alternative to human evaluations?
+\newblock \emph{Proceedings of the 61st Annual Meeting of the Association for
+  Computational Linguistics}, pages 15607--15631, 2023.
+
+\bibitem[Clarke et~al.(2000)Clarke, Grumberg, Jha, Lu, and
+  Veith]{clarke2000cegar}
+Edmund Clarke, Orna Grumberg, Somesh Jha, Yuan Lu, and Helmut Veith.
+\newblock Counterexample-guided abstraction refinement.
+\newblock In \emph{Computer Aided Verification (CAV)}, volume 1855 of
+  \emph{LNCS}, pages 154--169. Springer, 2000.
+
+\bibitem[Dao(2023)]{dao2023flashattention2}
+Tri Dao.
+\newblock Flash{A}ttention-2: Faster attention with better parallelism and work
+  partitioning.
+\newblock \emph{arXiv preprint arXiv:2307.08691}, 2023.
+
+\bibitem[Dao et~al.(2022)Dao, Fu, Ermon, Rudra, and
+  R{\'e}]{dao2022flashattention}
+Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher R{\'e}.
+\newblock Flash{A}ttention: Fast and memory-efficient exact attention with
+  {IO}-awareness.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~35, pages 16344--16359, 2022.
+
+\bibitem[Dubey et~al.(2024)Dubey, Jauhri, Pandey, Kadian, Al-Dahle, Letman,
+  Mathur, Schelten, Yang, Fan, et~al.]{dubey2024llama3}
+Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad
+  Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Amy Yang, Angela Fan,
+  et~al.
+\newblock The {L}lama 3 herd of models.
+\newblock \emph{arXiv preprint arXiv:2407.21783}, 2024.
+
+\bibitem[Edge et~al.(2024)Edge, Trinh, Cheng, Bradley, Chao, Mody, Truitt, and
+  Larson]{edge2024graphrag}
+Darren Edge, Ha~Trinh, Newman Cheng, Joshua Bradley, Alex Chao, Apurva Mody,
+  Steven Truitt, and Jonathan Larson.
+\newblock From local to global: A graph {RAG} approach to query-focused
+  summarization.
+\newblock \emph{arXiv preprint arXiv:2404.16130}, 2024.
+
+\bibitem[Gao et~al.(2024)Gao, Xiong, Gao, Jia, Pan, Bi, Dai, Sun, and
+  Wang]{gao2024retrievalaugmented}
+Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi, Yi~Dai,
+  Jiawei Sun, and Haofen Wang.
+\newblock Retrieval-augmented generation for large language models: A survey.
+\newblock \emph{arXiv preprint arXiv:2312.10997}, 2024.
+
+\bibitem[{ggml-org}(2024)]{llamacpp2024}
+{ggml-org}.
+\newblock llama.cpp: {LLM} inference in {C/C++}.
+\newblock \url{https://github.com/ggml-org/llama.cpp}, 2024.
+\newblock Accessed: 2026-04-28.
+
+\bibitem[Gim et~al.(2024)Gim, Chen, Lee, Sarda, Khandelwal, and
+  Zhong]{gim2024promptcache}
+In~Gim, Guojun Chen, Seung-seob Lee, Nikhil Sarda, Anurag Khandelwal, and Lin
+  Zhong.
+\newblock Prompt cache: Modular attention reuse for low-latency inference.
+\newblock In \emph{Proceedings of Machine Learning and Systems 6 (MLSys)},
+  2024.
+
+\bibitem[Jiang et~al.(2024)Jiang, Li, Zhang, Wu, Luo, Ahn, Han, Abdi, Li, Lin,
+  Yang, and Qiu]{jiang2024minference}
+Huiqiang Jiang, Yucheng Li, Chengruidong Zhang, Qianhui Wu, Xufang Luo, Surin
+  Ahn, Zhenhua Han, Amir~H Abdi, Dongsheng Li, Chin-Yew Lin, Yuqing Yang, and
+  Lili Qiu.
+\newblock {MInference} 1.0: Accelerating pre-filling for long-context {LLMs}
+  via dynamic sparse attention.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2024.
+\newblock Spotlight.
+
+\bibitem[Karpathy(2026)]{karpathy2026llmwiki}
+Andrej Karpathy.
+\newblock The {LLM} {W}iki pattern.
+\newblock GitHub Gist,
+  \url{https://gist.github.com/karpathy/1dd0294ef9567971c1e4348a90d69285},
+  2026.
+\newblock April 2026.
+
+\bibitem[Karpukhin et~al.(2020)Karpukhin, O{\u{g}}uz, Min, Lewis, Wu, Edunov,
+  Chen, and Yih]{karpukhin2020dense}
+Vladimir Karpukhin, Barlas O{\u{g}}uz, Sewon Min, Patrick Lewis, Ledell Wu,
+  Sergey Edunov, Danqi Chen, and Wen-tau Yih.
+\newblock Dense passage retrieval for open-domain question answering.
+\newblock \emph{Proceedings of the 2020 Conference on Empirical Methods in
+  Natural Language Processing}, pages 6769--6781, 2020.
+
+\bibitem[Kwon et~al.(2023)Kwon, Li, Zhuang, Sheng, Zheng, Yu, Gonzalez, Zhang,
+  and Stoica]{kwon2023efficient}
+Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying Sheng, Lianmin Zheng, Cody~Hao Yu,
+  Joseph Gonzalez, Hao Zhang, and Ion Stoica.
+\newblock Efficient memory management for large language model serving with
+  {PagedAttention}.
+\newblock \emph{Proceedings of the 29th Symposium on Operating Systems
+  Principles}, pages 611--626, 2023.
+
+\bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal,
+  K{\"u}ttler, Lewis, Yih, Rockt{\"a}schel, et~al.]{lewis2020retrieval}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K{\"u}ttler, Mike Lewis, Wen-tau Yih, Tim
+  Rockt{\"a}schel, et~al.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  33:\penalty0 9459--9474, 2020.
+
+\bibitem[Liu et~al.(2024{\natexlab{a}})Liu, Lin, Hewitt, Paranjape, Bevilacqua,
+  Petroni, and Liang]{liu2024lost}
+Nelson~F. Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua,
+  Fabio Petroni, and Percy Liang.
+\newblock Lost in the middle: How language models use long contexts.
+\newblock In \emph{Transactions of the Association for Computational
+  Linguistics}, volume~12, pages 157--173, 2024{\natexlab{a}}.
+
+\bibitem[Liu et~al.(2024{\natexlab{b}})Liu, Li, Cheng, Ray, Huang, Zhang, Du,
+  Yao, Lu, Ananthanarayanan, Maire, Hoffmann, Holtzman, and
+  Jiang]{liu2024cachegen}
+Yuhan Liu, Hanchen Li, Yihua Cheng, Siddhant Ray, Yuyang Huang, Qizheng Zhang,
+  Kuntai Du, Jiayi Yao, Shan Lu, Ganesh Ananthanarayanan, Michael Maire, Henry
+  Hoffmann, Ari Holtzman, and Junchen Jiang.
+\newblock {CacheGen}: {KV} cache compression and streaming for fast large
+  language model serving.
+\newblock In \emph{ACM SIGCOMM 2024 Conference}, pages 38--56,
+  2024{\natexlab{b}}.
+
+\bibitem[Liu et~al.(2024{\natexlab{c}})Liu, Yuan, Jin, Zhong, Xu, Braverman,
+  Chen, and Hu]{liu2024kivi}
+Zirui Liu, Jiayi Yuan, Hongye Jin, Shaochen Zhong, Zhaozhuo Xu, Vladimir
+  Braverman, Beidi Chen, and Xia Hu.
+\newblock {KIVI}: A tuning-free asymmetric 2bit quantization for {KV} cache.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, 2024{\natexlab{c}}.
+
+\bibitem[Montero et~al.(2024)Montero, Moreira, Belem, Semedo, and
+  Magalhaes]{montero2024repliqa}
+Joao Montero, Lukas Moreira, Valmir Belem, David Semedo, and Joao Magalhaes.
+\newblock {RepLiQA}: A question-answering dataset for benchmarking {LLMs} on
+  unseen reference documents.
+\newblock In \emph{NeurIPS 2024 Datasets and Benchmarks Track}, 2024.
+
+\bibitem[Pope et~al.(2023)Pope, Douglas, Chowdhery, Devlin, Bradbury, Heek,
+  Xiao, Agrawal, and Dean]{pope2023efficiently}
+Reiner Pope, Sholto Douglas, Aakanksha Chowdhery, Jacob Devlin, James Bradbury,
+  Jonathan Heek, Kefan Xiao, Shivani Agrawal, and Jeff Dean.
+\newblock Efficiently scaling transformer inference.
+\newblock \emph{Proceedings of Machine Learning and Systems}, 5, 2023.
+
+\bibitem[Qin et~al.(2025)Qin, Li, He, Cui, Ren, Zhang, Wu, Zheng, and
+  Xu]{qin2025mooncake}
+Ruoyu Qin, Zheming Li, Weiran He, Jialei Cui, Feng Ren, Mingxing Zhang, Yongwei
+  Wu, Weimin Zheng, and Xinran Xu.
+\newblock Mooncake: Trading more storage for less computation --- a
+  {KVCache}-centric architecture for serving {LLM} chatbot.
+\newblock In \emph{23rd USENIX Conference on File and Storage Technologies
+  (FAST)}, pages 155--170, 2025.
+\newblock Best Paper Award.
+
+\bibitem[Reimers and Gurevych(2019)]{reimers2019sentencebert}
+Nils Reimers and Iryna Gurevych.
+\newblock Sentence-{BERT}: Sentence embeddings using siamese {BERT}-networks.
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing}, pages 3982--3992, 2019.
+
+\bibitem[Sarthi et~al.(2024)Sarthi, Abdullah, Tuli, Khanna, Goldie, and
+  Manning]{sarthi2024raptor}
+Parth Sarthi, Salman Abdullah, Aditi Tuli, Shubh Khanna, Anna Goldie, and
+  Christopher~D. Manning.
+\newblock {RAPTOR}: Recursive abstractive processing for tree-organized
+  retrieval.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+
+\bibitem[Yao et~al.(2025)Yao, Li, Liu, Ray, Cheng, Zhang, Du, Lu, and
+  Jiang]{yao2025cacheblend}
+Jiayi Yao, Hanchen Li, Yuhan Liu, Siddhant Ray, Yihua Cheng, Qizheng Zhang,
+  Kuntai Du, Shan Lu, and Junchen Jiang.
+\newblock {CacheBlend}: Fast large language model serving for {RAG} with cached
+  knowledge fusion.
+\newblock In \emph{Proceedings of the Twentieth European Conference on Computer
+  Systems (EuroSys)}, pages 94--109, 2025.
+\newblock Best Paper Award.
+
+\bibitem[Ye et~al.(2024)Ye, Tao, Huang, and Li]{ye2024chunkattention}
+Lu~Ye, Ze~Tao, Yong Huang, and Yang Li.
+\newblock {ChunkAttention}: Efficient self-attention with prefix-aware {KV}
+  cache and two-phase partition.
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the ACL}, pages
+  11608--11620, 2024.
+
+\bibitem[Zheng et~al.(2024{\natexlab{a}})Zheng, Chiang, Sheng, Zhuang, Wu,
+  Zhuang, Lin, Li, Li, Xing, et~al.]{zheng2024judging}
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao
+  Zhuang, Zi~Lin, Zhuohan Li, Dacheng Li, Eric Xing, et~al.
+\newblock Judging {LLM}-as-a-judge with {MT}-bench and chatbot arena.
+\newblock \emph{Advances in Neural Information Processing Systems}, 36,
+  2024{\natexlab{a}}.
+
+\bibitem[Zheng et~al.(2024{\natexlab{b}})Zheng, Yin, Xie, Sun, Huang, Yu, Cao,
+  Kozyrakis, Stoica, Gonzalez, Barrett, and Sheng]{zheng2024sglang}
+Lianmin Zheng, Liangsheng Yin, Zhiqiang Xie, Chuyue Sun, Jeff Huang, Cody~Hao
+  Yu, Shiyi Cao, Christos Kozyrakis, Ion Stoica, Joseph Gonzalez, Clark
+  Barrett, and Ying Sheng.
+\newblock {SGLang}: Efficient execution of structured language model programs.
+\newblock In \emph{Advances in Neural Information Processing Systems 37
+  (NeurIPS)}, pages 62557--62583, 2024{\natexlab{b}}.
+
+\end{thebibliography}

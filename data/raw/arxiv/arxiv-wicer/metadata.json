@@ -1,0 +1,41 @@
+{
+  "agent_readable_file_count": 5,
+  "agent_readable_files": [
+    "checklist.tex",
+    "main.tex",
+    "00README.json",
+    "main.bbl",
+    "neurips_2026.sty"
+  ],
+  "agent_source_bundle_sha256": "d5b22b9df56e55602173be2d0907989e348ffd2047ad2ff333cfc53c9c3b059d",
+  "bytes": 46485,
+  "content_type": "text/html; charset=utf-8",
+  "eprint_bytes": 37413,
+  "eprint_content_type": "application/gzip",
+  "eprint_sha256": "a85eddc3fe64e13341fba70570d298b3e3d63e1e2af7dddce0cb395eafb76e0b",
+  "eprint_source_kind": "tex_source_archive",
+  "eprint_status": 200,
+  "eprint_url": "https://arxiv.org/e-print/2605.07068",
+  "fetched_at": "2026-05-21T11:06:12.037515+00:00",
+  "final_url": "https://arxiv.org/abs/2605.07068",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://arxiv.org/abs/2605.07068",
+  "sha256": "b9e3e7518bc208698f746a421fba8e592648fb9da94126f5d3ad9e1f08ee98eb",
+  "source": {
+    "arxiv_id": "2605.07068",
+    "id": "arxiv-wicer",
+    "priority": "p1",
+    "tags": [
+      "paper",
+      "arxiv"
+    ],
+    "title": "WiCER: Wiki-memory Compile, Evaluate, Refine",
+    "type": "arxiv",
+    "url": "https://arxiv.org/abs/2605.07068"
+  },
+  "source_file_count": 5,
+  "text_sha256": "1aa994f0b0b59dc6ecbdbf8067b4e89e13c091a42c98340bb5a26251c1fb0cc8",
+  "transport": "requests",
+  "transport_warning": null
+}

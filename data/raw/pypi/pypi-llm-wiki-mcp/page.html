@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="defaultLanguage" content="en">
+    <meta name="availableLanguages"
+          content="en, es, fr, ja, pt_BR, uk, el, de, zh_Hans, zh_Hant, ru, he, eo, ko">
+    <title>llm-wiki-mcp · PyPI</title>
+    <meta name="description"
+          content="MCP server + Claude Code skills for Karpathy-style LLM wikis: persistent markdown knowledge bases your agent grows over time.">
+    <link rel="stylesheet"
+          href="/static/css/warehouse-ltr.0f58843e.css">
+    <link rel="stylesheet"
+          href="/static/css/fontawesome.379f9724.css">
+    <link rel="stylesheet"
+          href="/static/css/fonts.3b5d1a1c.css">
+    <noscript>
+      <link rel="stylesheet"
+            href="/static/css/noscript.0673c9ea.css">
+    </noscript>
+    <link rel="icon"
+          href="/static/images/favicon.35549fe8.ico"
+          type="image/x-icon">
+    <link rel="alternate"
+          type="application/rss+xml"
+          title="RSS: 40 latest updates"
+          href="/rss/updates.xml">
+    <link rel="alternate"
+          type="application/rss+xml"
+          title="RSS: 40 newest packages"
+          href="/rss/packages.xml">
+<link rel="alternate"
+        type="application/rss+xml"
+        title="RSS: latest releases for llm-wiki-mcp"
+        href="/rss/project/llm-wiki-mcp/releases.xml">      <link rel="canonical" href="https://pypi.org/project/llm-wiki-mcp/">
+    <meta property="og:url"
+          content="https://pypi.org/project/llm-wiki-mcp/">
+    <meta property="og:site_name" content="PyPI">
+    <meta property="og:type" content="website">
+    <meta property="og:image"
+          content="https://pypi.org/static/images/twitter.abaf4b19.webp">
+    <meta property="og:title"
+          content="llm-wiki-mcp">
+    <meta property="og:description" content="MCP server + Claude Code skills for Karpathy-style LLM wikis: persistent markdown knowledge bases your agent grows over time.">
+<meta name="source-commit" content="dec24d31e87c725ceab02a0ab3fdafae61845aee">    <link rel="search"
+          type="application/opensearchdescription+xml"
+          title="PyPI"
+          href="/opensearch.xml">
+    <script defer src="/static/js/warehouse.e9abdc3b.js">
+    </script>
+  <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+};
+  </script>
+  <script async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"
+          integrity="sha256-1CldwzdEg2k1wTmf7s5RWVd7NMXI/7nxxjJM2C4DqII="
+          crossorigin="anonymous"></script>
+      <script defer
+              data-domain="pypi.org"
+              src="https://analytics.python.org/js/script.js"></script>
+    <script async
+            src="https://media.ethicalads.io/media/client/v1.4.0/ethicalads.min.js"
+            integrity="sha256-U3hKDidudIaxBDEzwGJApJgPEf2mWk6cfMWghrAa6i0= sha384-UcmsCqcNRSLW/dV3Lo1oCi2/VaurXbib6p4HyUEOeIa/4OpsrnucrugAefzVZJfI sha512-q4t1L4xEjGV2R4hzqCa41P8jrgFUS8xTb8rdNv4FGvw7FpydVj/kkxBJHOiaoxHa8olCcx1Slk9K+3sNbsM4ug=="
+            crossorigin="anonymous"></script>
+  </head>
+  <body data-controller="viewport-toggle">
+      <!-- Accessibility: this link should always be the first piece of content inside the body-->
+      <a href="#content" class="skip-to-content">Skip to main content</a>
+      <button type="button"
+              class="button button--primary button--switch-to-mobile hidden"
+              data-viewport-toggle-target="switchToMobile"
+              data-action="viewport-toggle#switchToMobile">Switch to mobile version</button>
+      <div id="sticky-notifications" class="stick-to-top js-stick-to-top">
+        <!-- Add browser warning. Will show for ie9 and below -->
+        <!--[if IE]>
+      <div class="notification-bar notification-bar--warning" role="status">
+        <span class="notification-bar__icon">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <span class="sr-only">Warning</span>
+        </span>
+        <span class="notification-bar__message">You are using an unsupported browser, upgrade to a newer version.</span>
+      </div>
+      <![endif]-->
+        <noscript>
+          <div class="notification-bar notification-bar--warning" role="status">
+            <span class="notification-bar__icon">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+              <span class="sr-only">Warning</span>
+            </span>
+            <span class="notification-bar__message">Some features may not work without JavaScript. Please try enabling it if you encounter problems.</span>
+          </div>
+        </noscript>
+<div data-html-include="/_includes/unauthed/notification-banners/"></div>    </div>
+<div data-html-include="/_includes/unauthed/flash-messages/"></div><div data-html-include="/_includes/authed/session-notifications/"></div><header class="site-header ">
+  <div class="site-container">
+    <div class="split-layout">
+        <div class="split-layout">
+          <div>
+            <a class="site-header__logo" href="/">
+              <img alt="PyPI"
+                   src="/static/images/logo-small.8998e9d1.svg">
+            </a>
+          </div>
+          <form class="search-form search-form--primary"
+                action="/search/"
+                role="search">
+            <label for="search" class="sr-only">Search PyPI</label>
+            <input id="search"
+                   class="search-form__search"
+                   type="text"
+                   name="q"
+                   placeholder="Type '/' to search projects"
+                   value=""
+                   autocomplete="off"
+                   autocapitalize="off"
+                   spellcheck="false"
+                   data-controller="search-focus"
+                   data-action="keydown@window->search-focus#focusSearchField"
+                   data-search-focus-target="searchField">
+            <button type="submit" class="search-form__button">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              <span class="sr-only">Search</span>
+            </button>
+          </form>
+        </div>
+<div data-html-include="/_includes/authed/current-user-indicator/">        <div id="user-indicator"
+       class="horizontal-menu horizontal-menu--light horizontal-menu--tall">
+    <nav class="horizontal-menu horizontal-menu--light horizontal-menu--tall hide-on-tablet"
+         aria-label="Main navigation">
+      <ul>
+        <li class="horizontal-menu__item">
+          <a href="/help/" class="horizontal-menu__link">Help</a>
+        </li>
+        <li class="horizontal-menu__item">
+          <a href="https://docs.pypi.org/" class="horizontal-menu__link">Docs</a>
+        </li>
+        <li class="horizontal-menu__item">
+          <a href="/sponsors/"
+             class="horizontal-menu__link">Sponsors</a>
+        </li>
+        <li class="horizontal-menu__item">
+          <a href="/account/login/?next=https%3A%2F%2Fpypi.org%2Fproject%2Fllm-wiki-mcp%2F" class="horizontal-menu__link">Log in</a>
+        </li>
+        <li class="horizontal-menu__item">
+          <a href="/account/register/"
+             class="horizontal-menu__link">Register</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="dropdown dropdown--on-menu hidden show-on-tablet"
+         aria-label="Main navigation">
+      <button type="button"
+              class="horizontal-menu__link dropdown__trigger"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-label="View menu">
+Menu        <span class="dropdown__trigger-caret">
+          <i class="fa fa-caret-down" aria-hidden="true"></i>
+        </span>
+      </button>
+      <ul class="dropdown__content"
+          aria-hidden="true"
+          aria-label="Main menu">
+        <li>
+          <a class="dropdown__link" href="/help/">Help</a>
+        </li>
+        <li>
+          <a class="dropdown__link" href="https://docs.pypi.org/">Docs</a>
+        </li>
+        <li>
+          <a class="dropdown__link" href="/sponsors/">Sponsors</a>
+        </li>
+        <li>
+          <a class="dropdown__link" href="/account/login/?next=https%3A%2F%2Fpypi.org%2Fproject%2Fllm-wiki-mcp%2F">Log in</a>
+        </li>
+        <li>
+          <a class="dropdown__link"
+             href="/account/register/">Register</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>  </div>
+</div>
+</header>
+  <div class="mobile-search">
+    <form class="search-form search-form--fullwidth"
+          action="/search/"
+          role="search">
+      <label for="mobile-search" class="sr-only">Search PyPI</label>
+      <input id="mobile-search"
+             class="search-form__search"
+             type="text"
+             name="q"
+             placeholder="Search projects"
+             value=""
+             autocomplete="off"
+             autocapitalize="off"
+             spellcheck="false">
+      
+      <button type="submit" class="search-form__button">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <span class="sr-only">Search</span>
+      </button>
+    </form>
+  </div>
+<main id="content">
+  <div class="banner">
+    <div class="package-header">
+      <div class="package-header__left">
+        <h1 class="package-header__name">llm-wiki-mcp 0.1.1</h1>
+          <div data-controller="clipboard">
+            <p class="package-header__pip-instructions">
+              <span id="pip-command" data-clipboard-target="source">pip install llm-wiki-mcp</span>
+              <button type="button"
+                      class="copy-tooltip copy-tooltip-s"
+                      data-action="clipboard#copy"
+                      data-clipboard-target="tooltip"
+                      data-clipboard-tooltip-value="Copy to clipboard">
+                <i class="fa fa-copy" aria-hidden="true"></i>
+                <span class="sr-only">Copy PIP instructions</span>
+              </button>
+            </p>
+          </div>
+      </div>
+      <div class="package-header__right">
+            <a class="status-badge status-badge--good"
+               href="/project/llm-wiki-mcp/">
+              <span>Latest version</span>
+            </a>
+        <p class="package-header__date">
+Released: <time datetime="2026-04-08T10:36:27+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Apr 8, 2026
+  </time>        </p>
+      </div>
+    </div>
+  </div>
+  <div class="horizontal-section horizontal-section--grey horizontal-section--thin">
+    <div class="site-container">
+<div data-html-include="/_includes/authed/administer-project-include/llm-wiki-mcp"></div>    <div class="split-layout split-layout--middle package-description">
+        <p class="package-description__summary">MCP server + Claude Code skills for Karpathy-style LLM wikis: persistent markdown knowledge bases your agent grows over time.</p>
+<div data-html-include="/_includes/authed/edit-project-button/llm-wiki-mcp"></div>  </div>
+</div>
+</div>
+<div data-controller="project-tabs">
+  <div class="tabs-container">
+    <div class="vertical-tabs">
+      <div class="vertical-tabs__tabs">
+        <div class="sidebar-section">
+          <h3 class="sidebar-section__title">Navigation</h3>
+          <nav aria-label="Navigation for llm-wiki-mcp">
+            <ul class="vertical-tabs__list" role="tablist">
+              <li role="tab">
+                <a id="description-tab"
+                   href="#description"
+                   data-project-tabs-target="tab"
+                   data-action="project-tabs#onTabClick"
+                   class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--is-active"
+                   aria-selected="true"
+                   aria-label="Project description. Focus will be moved to the description.">
+                  <i class="fa fa-align-left" aria-hidden="true"></i>
+Project description                </a>
+              </li>
+              <li role="tab">
+                <a id="history-tab"
+                   href="#history"
+                   data-project-tabs-target="tab"
+                   data-action="project-tabs#onTabClick"
+                   class="vertical-tabs__tab vertical-tabs__tab--with-icon"
+                   aria-label="Release history. Focus will be moved to the history panel.">
+                  <i class="fa fa-history" aria-hidden="true"></i>
+Release history                </a>
+              </li>
+                <li role="tab">
+                  <a id="files-tab"
+                     href="#files"
+                     data-project-tabs-target="tab"
+                     data-action="project-tabs#onTabClick"
+                     class="vertical-tabs__tab vertical-tabs__tab--with-icon"
+                     aria-label="Download files. Focus will be moved to the project files.">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+Download files                  </a>
+                </li>
+            </ul>
+          </nav>
+        </div>
+<div class="sidebar-section verified">
+  <h3 class="sidebar-section__title">
+Verified details    <i class="fa fa-circle-check check"
+       title="Verified by PyPI on 2026-04-08"></i>
+  </h3>
+  <small><i>These details have been <a href="https://docs.pypi.org/project_metadata/#verified-details">verified by PyPI</a></i></small>
+    <h6>Maintainers</h6>
+      <span class="sidebar-section__maintainer">
+        <a href="/user/flsteven87/"
+           aria-label="">
+          <span class="sidebar-section__user-gravatar">
+            <img src="https://pypi-camo.freetls.fastly.net/b36f656ad1a75c2ae64545e6961b638f831eb012/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f34323334363061666333313465383137393332383231336131326661323839303f73697a653d3530"
+                 height="50"
+                 width="50"
+                 alt="Avatar for flsteven87 from gravatar.com"
+                 title="Avatar for flsteven87 from gravatar.com">
+          </span>
+          <span class="sidebar-section__user-gravatar-text">flsteven87</span>
+        </a>
+      </span>
+</div>
+<div class="sidebar-section unverified">
+  <h3 class="sidebar-section__title">Unverified details</h3>
+  <small><i>These details have <b>not</b> been verified by PyPI</i></small>
+    <h6>Project links</h6>
+    <ul class="vertical-tabs__list">
+          <li>
+            <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+               href="https://github.com/flsteven87/llm-wiki-mcp/blob/master/CHANGELOG.md"
+               rel="nofollow">  <i class="fas fa-scroll" aria-hidden="true"></i>Changelog</a>
+          </li>
+          <li>
+            <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+               href="https://github.com/flsteven87/llm-wiki-mcp"
+               rel="nofollow">  <i class="fas fa-home" aria-hidden="true"></i>Homepage</a>
+          </li>
+          <li>
+            <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+               href="https://github.com/flsteven87/llm-wiki-mcp/issues"
+               rel="nofollow">  <i class="fas fa-bug" aria-hidden="true"></i>Issues</a>
+          </li>
+          <li>
+            <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+               href="https://github.com/flsteven87/llm-wiki-mcp"
+               rel="nofollow">  <i class="fab fa-github" aria-hidden="true"></i>Repository</a>
+          </li>
+    </ul>
+    <div class="sidebar-section unverified">
+      <h6>Meta</h6>
+      <ul>
+          <li>
+            <span>
+              <strong>License:</strong> MIT License (MIT)
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Author:</strong> <a href="mailto:flsteven87@gmail.com">Steven Wu</a>
+            </span>
+          </li>
+          <li class="tags">
+            <span>
+              <i class="fa fa-tags" aria-hidden="true"></i>
+              <span class="sr-only">Tags</span>
+                <span class="package-keyword">
+                  karpathy
+,                </span>
+                <span class="package-keyword">
+                  knowledge-base
+,                </span>
+                <span class="package-keyword">
+                  llm
+,                </span>
+                <span class="package-keyword">
+                  markdown
+,                </span>
+                <span class="package-keyword">
+                  mcp
+,                </span>
+                <span class="package-keyword">
+                  obsidian
+,                </span>
+                <span class="package-keyword">
+                  wiki
+                </span>
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Requires:</strong> Python &gt;=3.11
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Provides-Extra:</strong>
+                <code>dev</code>
+            </span>
+          </li>
+      </ul>
+    </div>
+    <div class="sidebar-section unverified">
+      <h6 class="sidebar-section__title">Classifiers</h6>
+      <ul class="sidebar-section__classifiers">
+          <li>
+            <strong>Development Status</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Development+Status+%3A%3A+3+-+Alpha">
+                    3 - Alpha
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Environment</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Environment+%3A%3A+Console">
+                    Console
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Intended Audience</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Intended+Audience+%3A%3A+Developers">
+                    Developers
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>License</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=License+%3A%3A+OSI+Approved+%3A%3A+MIT+License">
+                    OSI Approved :: MIT License
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Operating System</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Operating+System+%3A%3A+OS+Independent">
+                    OS Independent
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Programming Language</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3+%3A%3A+Only">
+                    Python :: 3 :: Only
+                  </a>
+                </li>
+                <li>
+                  <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.11">
+                    Python :: 3.11
+                  </a>
+                </li>
+                <li>
+                  <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.12">
+                    Python :: 3.12
+                  </a>
+                </li>
+                <li>
+                  <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.13">
+                    Python :: 3.13
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Topic</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Topic+%3A%3A+Software+Development+%3A%3A+Libraries">
+                    Software Development :: Libraries
+                  </a>
+                </li>
+                <li>
+                  <a href="/search/?c=Topic+%3A%3A+Software+Development+%3A%3A+Libraries+%3A%3A+Python+Modules">
+                    Software Development :: Libraries :: Python Modules
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Typing</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Typing+%3A%3A+Typed">
+                    Typed
+                  </a>
+                </li>
+            </ul>
+          </li>
+      </ul>
+    </div>
+</div>  <div class="sidebar-section"
+       data-ea-publisher="psf"
+       data-ea-type="psf"
+       data-ea-keywords="pypi-sidebar"></div>
+        <div class="sidebar-section">
+          <a class="button button--full-width button--warning"
+             href="https://pypi.org/project/llm-wiki-mcp/submit-malware-report/"
+             rel="nofollow"
+             role="button">Report project as malware</a>
+        </div>
+      </div>
+      <div class="vertical-tabs__panel">
+        <!-- mobile menu -->
+        <nav aria-label="Navigation for llm-wiki-mcp">
+          <ul class="vertical-tabs__list" role="tablist">
+            <li role="tab">
+              <a id="mobile-description-tab"
+                 href="#description"
+                 data-project-tabs-target="mobileTab"
+                 data-action="project-tabs#onTabClick"
+                 class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile vertical-tabs__tab--no-top-border vertical-tabs__tab--is-active"
+                 aria-selected="true"
+                 aria-label="Project description. Focus will be moved to the description.">
+                <i class="fa fa-align-left" aria-hidden="true"></i>
+Project description              </a>
+            </li>
+            <li role="tab">
+              <a id="mobile-data-tab"
+                 href="#data"
+                 data-project-tabs-target="mobileTab"
+                 data-action="project-tabs#onTabClick"
+                 class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile"
+                 aria-label="Project details. Focus will be moved to the project details.">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+Project details              </a>
+            </li>
+            <li role="tab">
+              <a id="mobile-history-tab"
+                 href="#history"
+                 data-project-tabs-target="mobileTab"
+                 data-action="project-tabs#onTabClick"
+                 class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile"
+                 aria-label="Release history. Focus will be moved to the history panel.">
+                <i class="fa fa-history" aria-hidden="true"></i>
+Release history              </a>
+            </li>
+              <li role="tab">
+                <a id="mobile-files-tab"
+                   href="#files"
+                   data-project-tabs-target="mobileTab"
+                   data-action="project-tabs#onTabClick"
+                   class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile"
+                   aria-label="Download files. Focus will be moved to the project files.">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+Download files                </a>
+              </li>
+          </ul>
+        </nav>
+        <div id="description"
+             data-project-tabs-target="content"
+             class="vertical-tabs__content"
+             role="tabpanel"
+             aria-labelledby="description-tab mobile-description-tab"
+             tabindex="-1">
+<h2 class="page-title">Project description</h2>
+  <div class="project-description"><h1>llm-wiki-mcp</h1>
+<p>Persistent markdown wiki for your AI agent, built on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" rel=nofollow>Karpathy's LLM wiki gist</a>. Four MCP tools (<code>wiki_read</code>, <code>wiki_write_page</code>, <code>wiki_log_append</code>, <code>wiki_inventory</code>) plus four Claude Code skills (<code>wiki-init</code>, <code>wiki-ingest</code>, <code>wiki-query</code>, <code>wiki-lint</code>). stdio transport, local filesystem.</p>
+<p>The server handles the boring layer LLMs keep getting wrong: atomic writes, etag conflict checks, append-only log integrity, path containment. The skills give the agent a workflow to follow. The wiki schema lives in your own <code>wiki/CLAUDE.md</code> and grows with your domain. There is no Layer 3 schema validation in the server.</p>
+<blockquote>
+<p>Status: alpha (v0.1.1). Local backend only. MIT licensed.</p>
+</blockquote>
+<h2>Quick start</h2>
+<p>Requires Python 3.11+ and <a href="https://docs.astral.sh/uv/" rel=nofollow>uv</a>.</p>
+<p>Pick an absolute path for the wiki folder. The server creates <code>pages/</code> and <code>log.md</code> under it on first run if they don't exist:</p>
+<pre lang=bash>uvx<span class=w> </span>llm-wiki-mcp<span class=w> </span>--wiki-root<span class=w> </span>/absolute/path/to/wiki
+</pre>
+<p>Wire it into your MCP client.</p>
+<p><strong>Claude Code:</strong></p>
+<pre lang=bash>claude<span class=w> </span>mcp<span class=w> </span>add<span class=w> </span>llm-wiki<span class=w> </span>--<span class=w> </span>uvx<span class=w> </span>llm-wiki-mcp<span class=w> </span>--wiki-root<span class=w> </span>/absolute/path/to/wiki
+</pre>
+<p><strong>Claude Desktop</strong> (<code>~/Library/Application Support/Claude/claude_desktop_config.json</code> on macOS) or <strong>Cursor</strong> (<code>~/.cursor/mcp.json</code>):</p>
+<pre lang=json><span class=p>{</span>
+<span class=w>  </span><span class=nt>"mcpServers"</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<span class=w>    </span><span class=nt>"llm-wiki"</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<span class=w>      </span><span class=nt>"command"</span><span class=p>:</span><span class=w> </span><span class=s2>"uvx"</span><span class=p>,</span>
+<span class=w>      </span><span class=nt>"args"</span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=s2>"llm-wiki-mcp"</span><span class=p>,</span><span class=w> </span><span class=s2>"--wiki-root"</span><span class=p>,</span><span class=w> </span><span class=s2>"/absolute/path/to/wiki"</span><span class=p>]</span>
+<span class=w>    </span><span class=p>}</span>
+<span class=w>  </span><span class=p>}</span>
+<span class=p>}</span>
+</pre>
+<p>Restart the client. Four tools should appear: <code>wiki_read</code>, <code>wiki_write_page</code>, <code>wiki_log_append</code>, <code>wiki_inventory</code>.</p>
+<h2>Claude Code skills</h2>
+<p>Claude Code users can install the bundled workflow skills as a plugin:</p>
+<pre lang=bash>claude<span class=w> </span>plugin<span class=w> </span>marketplace<span class=w> </span>add<span class=w> </span>https://github.com/flsteven87/llm-wiki-mcp
+claude<span class=w> </span>plugin<span class=w> </span>install<span class=w> </span>llm-wiki-skills@llm-wiki-mcp
+</pre>
+<p>Each skill reads <code>wiki/CLAUDE.md</code> for the active schema on every run, so you can evolve the schema without re-installing anything. Ask the agent things like:</p>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>What to ask</th>
+<th>Needs MCP server?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wiki-init</code></td>
+<td>"Create an LLM wiki for AI safety research at <code>~/wikis/ai-safety</code>."</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>wiki-ingest</code></td>
+<td>"Ingest <a href="https://arxiv.org/abs/2310.12345" rel=nofollow>https://arxiv.org/abs/2310.12345</a> into the wiki."</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>wiki-query</code></td>
+<td>"What does the wiki say about steering vectors?"</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>wiki-lint</code></td>
+<td>"Run a wiki health check."</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><code>wiki-init</code> is a one-shot scaffolder; the other three are Karpathy's three operations.</p>
+<p>Other MCP clients (Claude Desktop, Cursor) get the four tools but not the skills. The agent has to derive the workflow from tool descriptions alone, which works for one-off reads and writes but tends to skip the bookkeeping (log entries, backlink audits) the skills make explicit.</p>
+<h2>The four tools</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Annotations</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wiki_read</code></td>
+<td>read-only, idempotent</td>
+<td>Read one page. Returns body, parsed frontmatter, outgoing links, etag.</td>
+</tr>
+<tr>
+<td><code>wiki_write_page</code></td>
+<td>destructive, idempotent</td>
+<td>Atomic create or update with etag CAS. Pass <code>etag=null</code> to create, the read etag to update.</td>
+</tr>
+<tr>
+<td><code>wiki_log_append</code></td>
+<td>not idempotent</td>
+<td>Append one entry to <code>log.md</code> in Karpathy's <code>## [YYYY-MM-DD] op | Title</code> format.</td>
+</tr>
+<tr>
+<td><code>wiki_inventory</code></td>
+<td>read-only, idempotent</td>
+<td>Snapshot the whole graph: pages, frontmatter, link edges, log entries, plus an optional plain-text mention scan for backlink audits.</td>
+</tr>
+</tbody>
+</table>
+<p><code>index.md</code> and <code>raw/</code> are intentionally not exposed as tools. The index is LLM-curated content edited via the host's <code>Read</code>/<code>Write</code>. The raw layer is immutable from the server's perspective.</p>
+<h2>Wiki layout</h2>
+<p><code>wiki-init</code> scaffolds a project that looks like this:</p>
+<pre><code>your-project/
+├── raw/                    Immutable source files (papers, articles, transcripts)
+│   └── ...
+└── wiki/                   ← --wiki-root points here
+    ├── pages/              Markdown pages, one per topic
+    ├── log.md              Append-only session log
+    ├── index.md            LLM-curated browse page
+    └── CLAUDE.md           Schema doc the LLM reads on every operation
+</code></pre>
+<p><code>--wiki-root</code> points at the curated <code>wiki/</code> folder, not the parent project folder containing <code>raw/</code>. Easy to get wrong on first install; the troubleshooting section below covers the error you'll see.</p>
+<h2>Design boundary</h2>
+<p>The server enforces mechanics, not content shape:</p>
+<ul>
+<li><strong>Atomic writes.</strong> <code>tmp-file + fsync + rename</code> for pages. <code>O_APPEND</code> single-write for log entries.</li>
+<li><strong>Optimistic concurrency.</strong> Every page has an etag (<code>sha256(body) || mtime_ns</code>). Updates supply the etag they read; a mismatch raises <code>WikiConflictError</code>, and the agent re-reads, merges, and retries.</li>
+<li><strong>Path containment.</strong> Slugs are regex-validated. Resolved paths are checked against the realpath of the root, blocking the CVE-2025-53109 symlink-escape class.</li>
+<li><strong>Format-locked log line.</strong> <code>## [YYYY-MM-DD] operation | Title</code>. Operation names are free strings; only characters that would break the line shape are rejected.</li>
+</ul>
+<p>The server does not validate frontmatter shape, page categories, or link targets. That layer lives in your <code>wiki/CLAUDE.md</code> schema doc and grows with the LLM. Karpathy's gist is deliberately silent on content shape; baking a schema into the server would defeat the point.</p>
+<h2>Python API</h2>
+<p>If you want to wrap the MCP server with your own storage backend (SQLite, Notion, GDrive, a test fake), implement the <code>WikiStorage</code> Protocol and pass an instance to <code>build_server</code>:</p>
+<pre lang=python3><span class=kn>from</span><span class=w> </span><span class=nn>llm_wiki_mcp</span><span class=w> </span><span class=kn>import</span> <span class=n>WikiStorage</span><span class=p>,</span> <span class=n>PageRead</span><span class=p>,</span> <span class=n>LogEntry</span>
+<span class=kn>from</span><span class=w> </span><span class=nn>llm_wiki_mcp.server</span><span class=w> </span><span class=kn>import</span> <span class=n>build_server</span>
+
+<span class=k>class</span><span class=w> </span><span class=nc>MyStorage</span><span class=p>:</span>  <span class=c1># satisfies the WikiStorage Protocol</span>
+    <span class=k>async</span> <span class=k>def</span><span class=w> </span><span class=nf>read_page</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>slug</span><span class=p>:</span> <span class=nb>str</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>PageRead</span><span class=p>:</span> <span class=o>...</span>
+    <span class=k>async</span> <span class=k>def</span><span class=w> </span><span class=nf>write_page</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>slug</span><span class=p>,</span> <span class=n>body</span><span class=p>,</span> <span class=n>expected_etag</span><span class=o>=</span><span class=kc>None</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span> <span class=o>...</span>
+    <span class=k>async</span> <span class=k>def</span><span class=w> </span><span class=nf>list_pages</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>list</span><span class=p>[</span><span class=nb>str</span><span class=p>]:</span> <span class=o>...</span>
+    <span class=k>async</span> <span class=k>def</span><span class=w> </span><span class=nf>append_log</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>entry</span><span class=p>:</span> <span class=n>LogEntry</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span> <span class=o>...</span>
+    <span class=k>async</span> <span class=k>def</span><span class=w> </span><span class=nf>read_log</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span> <span class=o>...</span>
+    <span class=k>async</span> <span class=k>def</span><span class=w> </span><span class=nf>write_raw_file</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>name</span><span class=p>,</span> <span class=n>data</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span> <span class=o>...</span>  <span class=c1># usually raises</span>
+
+<span class=n>server</span> <span class=o>=</span> <span class=n>build_server</span><span class=p>(</span><span class=n>storage</span><span class=o>=</span><span class=n>MyStorage</span><span class=p>())</span>
+<span class=n>server</span><span class=o>.</span><span class=n>run</span><span class=p>()</span>
+</pre>
+<p><code>build_server</code> is the composition root. The CLI <code>main()</code> is a thin caller that constructs <code>LocalFilesystemStorage</code> from <code>--wiki-root</code> and hands it in.</p>
+<p>The bundled Claude Code skills ship as package data under <code>llm_wiki_mcp/skills/</code> and load via <code>importlib.resources</code> if you want to wire them into a non-Claude-Code agent. Typed domain errors (<code>WikiConflictError</code>, <code>WikiNotFoundError</code>, <code>WikiPermissionError</code>, <code>WikiPathError</code>, <code>WikiSchemaViolationError</code>) are importable from the package root for catching at your own boundary.</p>
+<h2>Troubleshooting</h2>
+<p><strong><code>llm-wiki-mcp: command not found</code></strong> after <code>uv tool install</code>. <code>uv</code> puts the binary in <code>~/.local/bin</code> (or <code>%USERPROFILE%\.local\bin</code> on Windows). Add it to <code>PATH</code>, or use <code>uvx llm-wiki-mcp ...</code> to invoke without a persistent shim.</p>
+<p><strong><code>wiki_*</code> tools don't appear after editing the client config.</strong> Restart the MCP client. Claude Desktop, Claude Code, and Cursor only re-read <code>mcpServers</code> at startup.</p>
+<p><strong><code>WikiPathError: path escapes wiki root</code>.</strong> You pointed <code>--wiki-root</code> at the project folder containing <code>raw/</code> instead of the curated <code>wiki/</code> folder inside it. <code>/Users/me/wikis/ai-safety/wiki</code> is correct; <code>/Users/me/wikis/ai-safety</code> is not.</p>
+<p><strong>Skills not loading in Claude Code.</strong> Run <code>claude plugin list</code>. If <code>llm-wiki-skills</code> is missing, rerun the marketplace commands in the <a href=#claude-code-skills rel=nofollow>Claude Code skills</a> section.</p>
+<h2>Development</h2>
+<pre lang=bash>git<span class=w> </span>clone<span class=w> </span>https://github.com/flsteven87/llm-wiki-mcp
+<span class=nb>cd</span><span class=w> </span>llm-wiki-mcp
+uv<span class=w> </span>sync<span class=w> </span>--extra<span class=w> </span>dev
+uv<span class=w> </span>run<span class=w> </span>pytest
+uv<span class=w> </span>run<span class=w> </span>ruff<span class=w> </span>check<span class=w> </span>.
+uv<span class=w> </span>run<span class=w> </span>pyright<span class=w> </span>src/llm_wiki_mcp
+</pre>
+<h2>License</h2>
+<p>MIT. See <a href="https://github.com/flsteven87/llm-wiki-mcp/blob/master/LICENSE" rel=nofollow>LICENSE</a>.</p>
+
+</div>
+</div>
+<div id="data"
+     data-project-tabs-target="content"
+     class="vertical-tabs__content"
+     role="tabpanel"
+     aria-labelledby="mobile-data-tab"
+     tabindex="-1">
+  <h2 class="page-title">Project details</h2>
+<div class="sidebar-section verified">
+  <h3 class="sidebar-section__title">
+Verified details    <i class="fa fa-circle-check check"
+       title="Verified by PyPI on 2026-04-08"></i>
+  </h3>
+  <small><i>These details have been <a href="https://docs.pypi.org/project_metadata/#verified-details">verified by PyPI</a></i></small>
+    <h6>Maintainers</h6>
+      <span class="sidebar-section__maintainer">
+        <a href="/user/flsteven87/"
+           aria-label="">
+          <span class="sidebar-section__user-gravatar">
+            <img src="https://pypi-camo.freetls.fastly.net/b36f656ad1a75c2ae64545e6961b638f831eb012/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f34323334363061666333313465383137393332383231336131326661323839303f73697a653d3530"
+                 height="50"
+                 width="50"
+                 alt="Avatar for flsteven87 from gravatar.com"
+                 title="Avatar for flsteven87 from gravatar.com">
+          </span>
+          <span class="sidebar-section__user-gravatar-text">flsteven87</span>
+        </a>
+      </span>
+</div>
+<div class="sidebar-section unverified">
+  <h3 class="sidebar-section__title">Unverified details</h3>
+  <small><i>These details have <b>not</b> been verified by PyPI</i></small>
+    <h6>Project links</h6>
+    <ul class="vertical-tabs__list">
+          <li>
+            <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+               href="https://github.com/flsteven87/llm-wiki-mcp/blob/master/CHANGELOG.md"
+               rel="nofollow">  <i class="fas fa-scroll" aria-hidden="true"></i>Changelog</a>
+          </li>
+          <li>
+            <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+               href="https://github.com/flsteven87/llm-wiki-mcp"
+               rel="nofollow">  <i class="fas fa-home" aria-hidden="true"></i>Homepage</a>
+          </li>
+          <li>
+            <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+               href="https://github.com/flsteven87/llm-wiki-mcp/issues"
+               rel="nofollow">  <i class="fas fa-bug" aria-hidden="true"></i>Issues</a>
+          </li>
+          <li>
+            <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+               href="https://github.com/flsteven87/llm-wiki-mcp"
+               rel="nofollow">  <i class="fab fa-github" aria-hidden="true"></i>Repository</a>
+          </li>
+    </ul>
+    <div class="sidebar-section unverified">
+      <h6>Meta</h6>
+      <ul>
+          <li>
+            <span>
+              <strong>License:</strong> MIT License (MIT)
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Author:</strong> <a href="mailto:flsteven87@gmail.com">Steven Wu</a>
+            </span>
+          </li>
+          <li class="tags">
+            <span>
+              <i class="fa fa-tags" aria-hidden="true"></i>
+              <span class="sr-only">Tags</span>
+                <span class="package-keyword">
+                  karpathy
+,                </span>
+                <span class="package-keyword">
+                  knowledge-base
+,                </span>
+                <span class="package-keyword">
+                  llm
+,                </span>
+                <span class="package-keyword">
+                  markdown
+,                </span>
+                <span class="package-keyword">
+                  mcp
+,                </span>
+                <span class="package-keyword">
+                  obsidian
+,                </span>
+                <span class="package-keyword">
+                  wiki
+                </span>
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Requires:</strong> Python &gt;=3.11
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Provides-Extra:</strong>
+                <code>dev</code>
+            </span>
+          </li>
+      </ul>
+    </div>
+    <div class="sidebar-section unverified">
+      <h6 class="sidebar-section__title">Classifiers</h6>
+      <ul class="sidebar-section__classifiers">
+          <li>
+            <strong>Development Status</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Development+Status+%3A%3A+3+-+Alpha">
+                    3 - Alpha
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Environment</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Environment+%3A%3A+Console">
+                    Console
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Intended Audience</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Intended+Audience+%3A%3A+Developers">
+                    Developers
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>License</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=License+%3A%3A+OSI+Approved+%3A%3A+MIT+License">
+                    OSI Approved :: MIT License
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Operating System</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Operating+System+%3A%3A+OS+Independent">
+                    OS Independent
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Programming Language</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3+%3A%3A+Only">
+                    Python :: 3 :: Only
+                  </a>
+                </li>
+                <li>
+                  <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.11">
+                    Python :: 3.11
+                  </a>
+                </li>
+                <li>
+                  <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.12">
+                    Python :: 3.12
+                  </a>
+                </li>
+                <li>
+                  <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.13">
+                    Python :: 3.13
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Topic</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Topic+%3A%3A+Software+Development+%3A%3A+Libraries">
+                    Software Development :: Libraries
+                  </a>
+                </li>
+                <li>
+                  <a href="/search/?c=Topic+%3A%3A+Software+Development+%3A%3A+Libraries+%3A%3A+Python+Modules">
+                    Software Development :: Libraries :: Python Modules
+                  </a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Typing</strong>
+            <ul>
+                <li>
+                  <a href="/search/?c=Typing+%3A%3A+Typed">
+                    Typed
+                  </a>
+                </li>
+            </ul>
+          </li>
+      </ul>
+    </div>
+</div>  <br>
+</div>
+<div id="history"
+     data-project-tabs-target="content"
+     class="vertical-tabs__content"
+     role="tabpanel"
+     aria-labelledby="history-tab mobile-history-tab"
+     tabindex="-1">
+  <h2 class="page-title split-layout">
+    <span>Release history</span>
+    <span class="reset-text margin-top">
+      <a href="/help/#project-release-notifications">Release notifications</a> |
+      <a href="/rss/project/llm-wiki-mcp/releases.xml">RSS feed <i class="fa fa-rss" aria-hidden="true"></i></a>
+    </span>
+  </h2>
+  <div class="release-timeline">
+      <div class="release release--latest release--current">
+        <div class="release__meta">
+            <span class="badge">This version</span>
+        </div>
+        <div class="release__graphic">
+<div class="release__line"></div>            <img class="release__node" alt="" src="https://pypi.org/static/images/blue-cube.572a5bfb.svg">
+        </div>
+        <a class="card release__card"
+           href="/project/llm-wiki-mcp/0.1.1/">
+          <p class="release__version">
+            0.1.1
+          </p>
+          <p class="release__version-date"><time datetime="2026-04-08T10:36:27+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Apr 8, 2026
+  </time></p>
+        </a>
+      </div>
+      <div class="release release--oldest">
+        <div class="release__meta">
+        </div>
+        <div class="release__graphic">
+<div class="release__line"></div>            <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+        </div>
+        <a class="card release__card"
+           href="/project/llm-wiki-mcp/0.1.0/">
+          <p class="release__version">
+            0.1.0
+          </p>
+          <p class="release__version-date"><time datetime="2026-04-08T10:09:58+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Apr 8, 2026
+  </time></p>
+        </a>
+      </div>
+  </div>
+</div>
+  <div id="files"
+       data-project-tabs-target="content"
+       class="vertical-tabs__content"
+       role="tabpanel"
+       aria-labelledby="files-tab mobile-files-tab"
+       tabindex="-1"
+       data-controller="filter-list">
+    <h2 class="page-title">Download files</h2>
+    <p>
+Download the file for your platform. If you're not sure which to choose, learn more about <a href="https://packaging.python.org/tutorials/installing-packages/" title="External link" target="_blank" rel="noopener">installing packages</a>.    </p>
+    <h3>
+Source Distribution  </h3>
+        <div class="file"
+>
+      <div class="file__graphic">
+        <i class="far fa-file" aria-hidden="true"></i>
+      </div>
+      <div class="card file__card">
+        <a href="https://files.pythonhosted.org/packages/e5/34/f6998989619ad2b3c5e18449d2f18af3931e7860303e500be33f5c8d76db/llm_wiki_mcp-0.1.1.tar.gz">llm_wiki_mcp-0.1.1.tar.gz</a>
+        (115.8 kB
+        <a href="#llm_wiki_mcp-0.1.1.tar.gz"
+           data-project-tabs-target="tab mobileTab"
+           data-action="project-tabs#onTabClick">view details</a>)
+        <p class="file__meta">
+          Uploaded <time datetime="2026-04-08T10:36:28+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Apr 8, 2026
+  </time>
+<code>Source</code>        </p>
+      </div>
+    </div>
+
+    <h3>
+Built Distribution  </h3>
+  <p class="hidden initial-toggle-visibility">
+Filter files by name, interpreter, ABI, and platform.  </p>
+  <p>
+If you're not sure about the file name format, learn more about <a href="https://packaging.python.org/en/latest/specifications/binary-distribution-format/" title="External link" target="_blank" rel="noopener">wheel file names</a>.  </p>
+  <noscript>
+    <p class="initial-toggle-visibility">
+The dropdown lists show the available interpreters, ABIs, and platforms.    </p>
+    <p class="initial-toggle-visibility">
+Enable javascript to be able to filter the list of wheel files.    </p>
+  </noscript>
+  <p class="hidden initial-toggle-visibility" data-controller="clipboard">
+Copy a direct link to the current filters    <a class="hidden"
+       href="https://pypi.org/project/llm-wiki-mcp/#files"
+       data-clipboard-target="source"
+       data-filter-list-target="url"></a>
+    <button type="button"
+            class="button button--small copy-tooltip copy-tooltip-w"
+            data-action="clipboard#copy"
+            data-clipboard-target="tooltip"
+            data-clipboard-tooltip-value="Copy to clipboard">
+Copy    </button>
+  </p>
+  <p class="hidden initial-toggle-visibility">
+    <span data-filter-list-target="summary"></span>
+  </p>
+  <div>
+    <div class="form-group hidden initial-toggle-visibility">
+      <label class="form-group__label sr-only" for="bdist-filenames-filter">File name</label>
+      <input class="form-group__field"
+             type="text"
+             id="bdist-filenames-filter"
+             name="bdist-filenames-filter"
+             placeholder="File name"
+             autocapitalize="none"
+             autocomplete=""
+             spellcheck="false"
+             data-action="filter-list#filter"
+             data-filter-list-target="filter"
+             data-filtered-source="filename">
+    </div>
+    <div class="col-grid">
+      <div class="form-group col-third">  <label class="form-group__label sr-only" for="bdist-tags-interpreters">Interpreter</label>
+  <select class="form-group__field"
+          id="bdist-tags-interpreters"
+          name="bdist-tags-interpreters"
+          data-action="filter-list#filter"
+          data-filter-list-target="filter"
+          data-filtered-source="interpreters">
+    <option selected value="">Interpreter</option>
+      <option               value="py3">py3</option>
+  </select>
+</div>
+      <div class="form-group col-third">  <label class="form-group__label sr-only" for="bdist-tags-abis">ABI</label>
+  <select class="form-group__field"
+          id="bdist-tags-abis"
+          name="bdist-tags-abis"
+          data-action="filter-list#filter"
+          data-filter-list-target="filter"
+          data-filtered-source="abis">
+    <option selected value="">ABI</option>
+      <option               value="none">none</option>
+  </select>
+</div>
+      <div class="form-group col-third">  <label class="form-group__label sr-only" for="bdist-tags-platforms">Platform</label>
+  <select class="form-group__field"
+          id="bdist-tags-platforms"
+          name="bdist-tags-platforms"
+          data-action="filter-list#filter"
+          data-filter-list-target="filter"
+          data-filtered-source="platforms">
+    <option selected value="">Platform</option>
+      <option               value="any">any</option>
+  </select>
+</div>
+    </div>
+  </div>
+      <div class="file"
+ data-filter-list-target="item" data-filtered-target-filename='["llm_wiki_mcp-0.1.1-py3-none-any.whl"]'  data-filtered-target-interpreters='["py3"]'  data-filtered-target-abis='["none"]'  data-filtered-target-platforms='["any"]' >
+      <div class="file__graphic">
+        <i class="far fa-file" aria-hidden="true"></i>
+      </div>
+      <div class="card file__card">
+        <a href="https://files.pythonhosted.org/packages/3f/8c/19383b1b73b1cc11415580260fe9dadbe2eaccf1ab16c0be53adc314f03a/llm_wiki_mcp-0.1.1-py3-none-any.whl">llm_wiki_mcp-0.1.1-py3-none-any.whl</a>
+        (43.3 kB
+        <a href="#llm_wiki_mcp-0.1.1-py3-none-any.whl"
+           data-project-tabs-target="tab mobileTab"
+           data-action="project-tabs#onTabClick">view details</a>)
+        <p class="file__meta">
+          Uploaded <time datetime="2026-04-08T10:36:27+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Apr 8, 2026
+  </time>
+<code>Python 3</code>        </p>
+      </div>
+    </div>
+
+</div>
+<div id="llm_wiki_mcp-0.1.1.tar.gz"
+     data-project-tabs-target="content"
+     class="vertical-tabs__content"
+     role="tabpanel"
+     aria-labelledby="file-tab mobile-file-tab"
+     tabindex="-1">
+  <h2 class="page-title">File details</h2>
+  <p>
+    Details for the file <code>llm_wiki_mcp-0.1.1.tar.gz</code>.
+  </p>
+  <h3>File metadata</h3>
+  <div>
+    <ul>
+      <li>
+        Download URL: <a href="https://files.pythonhosted.org/packages/e5/34/f6998989619ad2b3c5e18449d2f18af3931e7860303e500be33f5c8d76db/llm_wiki_mcp-0.1.1.tar.gz">llm_wiki_mcp-0.1.1.tar.gz</a>
+      </li>
+      <li>Upload date: <time datetime="2026-04-08T10:36:28+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Apr 8, 2026
+  </time></li>
+      <li>
+Size: 115.8 kB      </li>
+      <li>Tags: Source</li>
+      <li>
+Uploaded using Trusted Publishing? No    </li>
+      <li>Uploaded via: uv/0.7.13</li>
+  </ul>
+</div>
+<h3>File hashes</h3>
+<div>
+  <table class="table table--hashes">
+    <caption class="sr-only">Hashes for llm_wiki_mcp-0.1.1.tar.gz</caption>
+    <thead>
+      <tr>
+        <th scope="col">Algorithm</th>
+        <th scope="col">Hash digest</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-controller="clipboard">
+        <th scope="row">SHA256</th>
+        <td>
+          <code data-clipboard-target="source">5cf32c36a0aaadfd591a51ef724cfae17b7a4df942485cd4c06fcf767822ea7e</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+      <tr data-controller="clipboard">
+        <th scope="row">MD5</th>
+        <td>
+          <code data-clipboard-target="source">006622941749d080d8d2c583ff4de935</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+      <tr data-controller="clipboard">
+        <th scope="row">BLAKE2b-256</th>
+        <td>
+          <code data-clipboard-target="source">e534f6998989619ad2b3c5e18449d2f18af3931e7860303e500be33f5c8d76db</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+<a href="https://pip.pypa.io/en/stable/topics/secure-installs/#hash-checking-mode" title="External link" target="_blank" rel="noopener">See more details on using hashes here.</a></p>
+</div>
+</div><div id="llm_wiki_mcp-0.1.1-py3-none-any.whl"
+     data-project-tabs-target="content"
+     class="vertical-tabs__content"
+     role="tabpanel"
+     aria-labelledby="file-tab mobile-file-tab"
+     tabindex="-1">
+  <h2 class="page-title">File details</h2>
+  <p>
+    Details for the file <code>llm_wiki_mcp-0.1.1-py3-none-any.whl</code>.
+  </p>
+  <h3>File metadata</h3>
+  <div>
+    <ul>
+      <li>
+        Download URL: <a href="https://files.pythonhosted.org/packages/3f/8c/19383b1b73b1cc11415580260fe9dadbe2eaccf1ab16c0be53adc314f03a/llm_wiki_mcp-0.1.1-py3-none-any.whl">llm_wiki_mcp-0.1.1-py3-none-any.whl</a>
+      </li>
+      <li>Upload date: <time datetime="2026-04-08T10:36:27+0000"
+        data-controller="localized-time"
+        data-localized-time-relative="true"
+        data-localized-time-show-time="false">
+    Apr 8, 2026
+  </time></li>
+      <li>
+Size: 43.3 kB      </li>
+      <li>Tags: Python 3</li>
+      <li>
+Uploaded using Trusted Publishing? No    </li>
+      <li>Uploaded via: uv/0.7.13</li>
+  </ul>
+</div>
+<h3>File hashes</h3>
+<div>
+  <table class="table table--hashes">
+    <caption class="sr-only">Hashes for llm_wiki_mcp-0.1.1-py3-none-any.whl</caption>
+    <thead>
+      <tr>
+        <th scope="col">Algorithm</th>
+        <th scope="col">Hash digest</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-controller="clipboard">
+        <th scope="row">SHA256</th>
+        <td>
+          <code data-clipboard-target="source">36be93c3cc187120b3814f640cc99053edbb51cbfa51f48ba561d9c361fb4ab4</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+      <tr data-controller="clipboard">
+        <th scope="row">MD5</th>
+        <td>
+          <code data-clipboard-target="source">be72ece63a56011fe212292c288a6dbd</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+      <tr data-controller="clipboard">
+        <th scope="row">BLAKE2b-256</th>
+        <td>
+          <code data-clipboard-target="source">3f8c19383b1b73b1cc11415580260fe9dadbe2eaccf1ab16c0be53adc314f03a</code>
+        </td>
+        <td class="table__align-right">
+          <button type="button"
+                  class="button button--small copy-tooltip copy-tooltip-w"
+                  data-action="clipboard#copy"
+                  data-clipboard-target="tooltip"
+                  data-clipboard-tooltip-value="Copy to clipboard">
+Copy          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+<a href="https://pip.pypa.io/en/stable/topics/secure-installs/#hash-checking-mode" title="External link" target="_blank" rel="noopener">See more details on using hashes here.</a></p>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+</main>
+<footer class="footer">
+  <div class="footer__logo">
+    <img src="/static/images/white-cube.2351a86c.svg"
+         alt=""
+         class="-js-white-cube">
+  </div>
+  <div class="footer__menus">
+    <div class="footer__menu">
+      <h2>Help</h2>
+      <nav aria-label="Help navigation">
+        <ul>
+          <li>
+            <a href="https://packaging.python.org/tutorials/installing-packages/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Installing packages</a>
+          </li>
+          <li>
+            <a href="https://packaging.python.org/tutorials/packaging-projects/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Uploading packages</a>
+          </li>
+          <li>
+            <a href="https://packaging.python.org/"
+               title="External link"
+               target="_blank"
+               rel="noopener">User guide</a>
+          </li>
+          <li>
+            <a href="https://www.python.org/dev/peps/pep-0541/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Project name retention</a>
+          </li>
+          <li>
+            <a href="/help/">FAQs</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__menu">
+      <h2>About PyPI</h2>
+      <nav aria-label="About PyPI navigation">
+        <ul>
+          <li>
+            <a href="https://blog.pypi.org"
+               title="External link"
+               target="_blank"
+               rel="noopener">PyPI Blog</a>
+          </li>
+          <li>
+            <a href="https://dtdg.co/pypi"
+               title="External link"
+               target="_blank"
+               rel="noopener">Infrastructure dashboard</a>
+          </li>
+          <li>
+            <a href="/stats/">Statistics</a>
+          </li>
+          <li>
+            <a href="/trademarks/">Logos & trademarks</a>
+          </li>
+          <li>
+            <a href="/sponsors/">Our sponsors</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__menu">
+      <h2>Contributing to PyPI</h2>
+      <nav aria-label="How to contribute navigation">
+        <ul>
+          <li>
+            <a href="/help/#feedback">Bugs and feedback</a>
+          </li>
+          <li>
+            <a href="https://github.com/pypi/warehouse"
+               title="External link"
+               target="_blank"
+               rel="noopener">Contribute on GitHub</a>
+          </li>
+          <li>
+            <a href="https://hosted.weblate.org/projects/pypa/warehouse/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Translate PyPI</a>
+          </li>
+          <li>
+            <a href="/sponsors/">Sponsor PyPI</a>
+          </li>
+          <li>
+            <a href="https://github.com/pypi/warehouse/graphs/contributors"
+               title="External link"
+               target="_blank"
+               rel="noopener">Development credits</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__menu">
+      <h2>Using PyPI</h2>
+      <nav aria-label="Using PyPI navigation">
+        <ul>
+          <li>
+            <a href="https://policies.python.org/pypi.org/Terms-of-Service/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Terms of Service</a>
+          </li>
+          <li>
+            <a href="/security/">Report security issue</a>
+          </li>
+          <li>
+            <a href="https://policies.python.org/python.org/code-of-conduct/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Code of conduct</a>
+          </li>
+          <li>
+            <a href="https://policies.python.org/pypi.org/Privacy-Notice/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Privacy Notice</a>
+          </li>
+          <li>
+            <a href="https://policies.python.org/pypi.org/Acceptable-Use-Policy/"
+               title="External link"
+               target="_blank"
+               rel="noopener">Acceptable Use Policy</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <hr class="footer__divider">
+  <div class="footer__text">
+      <p>
+Status:<a href="https://status.python.org/"
+   title="External link"
+   target="_blank"
+   rel="noopener">
+        <span data-statuspage-domain="https://2p66nmmycsj3.statuspage.io">all systems operational</span></a>
+    </p>
+  <p>
+Developed and maintained by the Python community, for the Python community.    <br>
+    <a href="https://donate.pypi.org">Donate today!</a>
+  </p>
+  <p>
+    "PyPI", "Python Package Index", and the blocks logos are registered <a href="/trademarks/">trademarks</a> of the <a href="https://www.python.org/psf-landing" target="_blank" rel="noopener">Python Software Foundation</a>.
+    <br>
+  </p>
+  <p>
+    © 2026 <a href="https://www.python.org/psf-landing/"
+    title="External link"
+    target="_blank"
+    rel="noopener">Python Software Foundation</a>
+    <br>
+    <a href="/sitemap/">Site map</a>
+  </p>
+    <p>
+Deployed from <a href="https://github.com/pypi/warehouse/commit/dec24d31e87c725ceab02a0ab3fdafae61845aee" title="External link" target="_blank" rel="noopener"><code>dec24d3</code></a>    </p>
+</div>
+<div class="centered hide-on-desktop">
+  <button type="button"
+          class="button button--switch-to-desktop hidden"
+          data-viewport-toggle-target="switchToDesktop"
+          data-action="viewport-toggle#switchToDesktop">Switch to desktop version</button>
+</div>
+</footer>
+<div class="language-switcher">
+  <form action="/locale/">
+    <ul>
+        <li>
+          <button class="language-switcher__selected"                  name="locale_id"
+                  value="en"
+                  type="submit">English</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="es"
+                  type="submit">español</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="fr"
+                  type="submit">français</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="ja"
+                  type="submit">日本語</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="pt_BR"
+                  type="submit">português (Brasil)</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="uk"
+                  type="submit">українська</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="el"
+                  type="submit">Ελληνικά</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="de"
+                  type="submit">Deutsch</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="zh_Hans"
+                  type="submit">中文 (简体)</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="zh_Hant"
+                  type="submit">中文 (繁體)</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="ru"
+                  type="submit">русский</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="he"
+                  type="submit">עברית</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="eo"
+                  type="submit">Esperanto</button>
+        </li>
+        <li>
+          <button                   name="locale_id"
+                  value="ko"
+                  type="submit">한국어</button>
+        </li>
+    </ul>
+  </form>
+</div>
+<div class="sponsors">
+  <p class="sponsors__title">Supported by</p>
+  <div class="sponsors__divider"></div>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://aws.amazon.com/">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/ed7074cadad1a06f56bc520ad9bd3e00d0704c5b/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f6177732d77686974652d6c6f676f2d7443615473387a432e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">AWS</span>
+          <span class="sponsors__service">
+              Cloud computing and Security Sponsor
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://www.datadoghq.com/">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/8855f7c063a3bdb5b0ce8d91bfc50cf851cc5c51/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f64617461646f672d77686974652d6c6f676f2d6668644c4e666c6f2e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Datadog</span>
+          <span class="sponsors__service">
+              Monitoring
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://depot.dev">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/60f709d24f3e4d469f9adc77c65e2f5291a3d165/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f6465706f742d77686974652d6c6f676f2d7038506f476831302e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Depot</span>
+          <span class="sponsors__service">
+              Continuous Integration
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://www.fastly.com/">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/df6fe8829cbff2d7f668d98571df1fd011f36192/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f666173746c792d77686974652d6c6f676f2d65684d3077735f6f2e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Fastly</span>
+          <span class="sponsors__service">
+              CDN
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://careers.google.com/">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/420cc8cf360bac879e24c923b2f50ba7d1314fb0/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f676f6f676c652d77686974652d6c6f676f2d616734424e3774332e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Google</span>
+          <span class="sponsors__service">
+              Download Analytics
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://www.pingdom.com/">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/d01053c02f3a626b73ffcb06b96367fdbbf9e230/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f70696e67646f6d2d77686974652d6c6f676f2d67355831547546362e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Pingdom</span>
+          <span class="sponsors__service">
+              Monitoring
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://sentry.io/for/python/?utm_source=pypi&amp;utm_medium=paid-community&amp;utm_campaign=python-na-evergreen&amp;utm_content=static-ad-pypi-sponsor-learnmore">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/67af7117035e2345bacb5a82e9aa8b5b3e70701d/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f73656e7472792d77686974652d6c6f676f2d4a2d6b64742d706e2e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">Sentry</span>
+          <span class="sponsors__service">
+              Error logging
+          </span>
+        </a>
+        <a class="sponsors__sponsor"
+           target="_blank"
+           rel="noopener"
+           href="https://statuspage.io">
+          <img class=sponsors__image src="https://pypi-camo.freetls.fastly.net/b611884ff90435a0575dbab7d9b0d3e60f136466/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f737461747573706167652d77686974652d6c6f676f2d5467476c6a4a2d502e706e67" alt="" loading=lazy>
+          <span class="sponsors__name">StatusPage</span>
+          <span class="sponsors__service">
+              Status page
+          </span>
+        </a>
+</div></body>
+</html>

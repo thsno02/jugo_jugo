@@ -1,0 +1,22 @@
+{
+  "bytes": 54857,
+  "content_type": "text/html",
+  "fetched_at": "2026-05-21T09:54:33.516091+00:00",
+  "final_url": "https://insights.marvin-42.com/articles/hacker-news-picks-up-karpathys-llm-wiki-pattern-for-persistent-knowledge-bases",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://insights.marvin-42.com/articles/hacker-news-picks-up-karpathys-llm-wiki-pattern-for-persistent-knowledge-bases",
+  "sha256": "a663ed9ca5c82b1daa9618b112be8511eb7cd3e295eb83d6c17a986560e68882",
+  "source": {
+    "id": "marvin-hn-persistent-knowledge",
+    "priority": "p1",
+    "tags": [
+      "blog",
+      "discussion-summary"
+    ],
+    "title": "Hacker News Picks Up Karpathy's LLM Wiki Pattern",
+    "type": "webpage",
+    "url": "https://insights.marvin-42.com/articles/hacker-news-picks-up-karpathys-llm-wiki-pattern-for-persistent-knowledge-bases"
+  },
+  "text_sha256": "5d98d249a979ed1e0e266911045939e86023f174954ba76c062afecff6ffc214"
+}

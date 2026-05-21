@@ -1,0 +1,22 @@
+{
+  "source": {
+    "id": "reddit-openwebui-llm-wiki",
+    "type": "reddit",
+    "title": "LLM Wiki discussion in OpenWebUI",
+    "url": "https://www.reddit.com/r/OpenWebUI/comments/1sy0mf8/llm_wiki/",
+    "priority": "p2",
+    "tags": [
+      "reddit",
+      "discussion"
+    ]
+  },
+  "fetched_at": "2026-05-21T10:01:40.141Z",
+  "browser_capture": true,
+  "final_url": "https://www.reddit.com/r/OpenWebUI/comments/1sy0mf8/llm_wiki/",
+  "title": "",
+  "bytes_html": 190428,
+  "bytes_text": 222,
+  "html_sha256": "f1915ba08c2fefd4c337bc3a59e04fe0228bae2308d0b03dc8bc30e33c1e5090",
+  "text_sha256": "0b013b021121361a08313786c525485540b0edcc1a7c5c0ef44ef8587239333b",
+  "blocked": true
+}

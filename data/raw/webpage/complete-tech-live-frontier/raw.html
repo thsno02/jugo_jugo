@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+				<link rel="pingback" href="https://complete.tech/xmlrpc.php">
+		
+		<script>(function(){try{
+var d=document.documentElement;
+var c=localStorage.getItem('ct-theme');
+if(c!=='light'&&c!=='dark'&&c!=='auto'){c='dark';}
+var resolved=c;
+if(c==='auto'){
+  resolved=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+}
+d.setAttribute('data-theme',resolved);
+d.setAttribute('data-theme-choice',c);
+}catch(e){}})();</script>
+	<title>Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier &#8211; CompleteTech LLC</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<!-- Google tag (gtag.js) consent mode dataLayer added by Site Kit -->
+<script id="google_gtagjs-js-consent-mode-data-layer">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {"ad_personalization":"denied","ad_storage":"denied","ad_user_data":"denied","analytics_storage":"denied","functionality_storage":"denied","security_storage":"denied","personalization_storage":"denied","region":["AT","BE","BG","CH","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HR","HU","IE","IS","IT","LI","LT","LU","LV","MT","NL","NO","PL","PT","RO","SE","SI","SK"],"wait_for_update":500});
+window._googlesitekitConsentCategoryMap = {"statistics":["analytics_storage"],"marketing":["ad_storage","ad_user_data","ad_personalization"],"functional":["functionality_storage","security_storage"],"preferences":["personalization_storage"]};
+window._googlesitekitConsents = {"ad_personalization":"denied","ad_storage":"denied","ad_user_data":"denied","analytics_storage":"denied","functionality_storage":"denied","security_storage":"denied","personalization_storage":"denied","region":["AT","BE","BG","CH","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HR","HU","IE","IS","IT","LI","LT","LU","LV","MT","NL","NO","PL","PT","RO","SE","SI","SK"],"wait_for_update":500};
+</script>
+<!-- End Google tag (gtag.js) consent mode dataLayer added by Site Kit -->
+<link rel='dns-prefetch' href='//news.google.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="CompleteTech LLC &raquo; Feed" href="https://complete.tech/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CompleteTech LLC &raquo; Comments Feed" href="https://complete.tech/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CompleteTech LLC &raquo; Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier Comments Feed" href="https://complete.tech/blog/beyond-the-token-bottleneck-llm-wiki-karpathy/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://complete.tech/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcomplete.tech%2Fblog%2Fbeyond-the-token-bottleneck-llm-wiki-karpathy%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://complete.tech/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcomplete.tech%2Fblog%2Fbeyond-the-token-bottleneck-llm-wiki-karpathy%2F&#038;format=xml" />
+
+<!-- ct: meta head -->
+<meta name="description" content="Production implementation of Andrej Karpathys LLM Wiki pattern — 27 sources on latent-space reasoning and inter-agent latent communication. 120 pages,…">
+<meta property="og:title" content="Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier">
+<meta property="og:description" content="Production implementation of Andrej Karpathys LLM Wiki pattern — 27 sources on latent-space reasoning and inter-agent latent communication. 120 pages,…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://complete.tech/blog/beyond-the-token-bottleneck-llm-wiki-karpathy/">
+<meta property="og:site_name" content="CompleteTech LLC">
+<meta property="og:image" content="https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822.png">
+<meta property="article:published_time" content="2026-04-06T14:21:10-05:00">
+<meta property="article:modified_time" content="2026-04-06T14:21:10-05:00">
+<meta property="article:author" content="Timothy Gregg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier">
+<meta name="twitter:description" content="Production implementation of Andrej Karpathys LLM Wiki pattern — 27 sources on latent-space reasoning and inter-agent latent communication. 120 pages,…">
+<meta name="twitter:image" content="https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822.png">
+<!-- /ct: meta head -->
+
+
+<!-- ct: jsonld -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://complete.tech/blog/beyond-the-token-bottleneck-llm-wiki-karpathy/"},"headline":"Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier","datePublished":"2026-04-06T14:21:10-05:00","dateModified":"2026-04-06T14:21:10-05:00","author":{"@type":"Person","name":"Timothy Gregg"},"publisher":{"@type":"Organization","name":"CompleteTech LLC","url":"https://complete.tech/","logo":{"@type":"ImageObject","url":"https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822.png"}},"description":"Production implementation of Andrej Karpathys LLM Wiki pattern — 27 sources on latent-space reasoning and inter-agent latent communication. 120 pages,…","image":"https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822.png"}</script>
+<!-- /ct: jsonld -->
+
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-color]){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="wp-block-heading-inline-css">
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://complete.tech/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id="wp-block-list-inline-css">
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://complete.tech/wp-includes/blocks/list/style.min.css */
+</style>
+<style id="wp-block-paragraph-inline-css">
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://complete.tech/wp-includes/blocks/paragraph/style.min.css */
+</style>
+
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='cmplz-general-css' href='https://complete.tech/wp-content/plugins/complianz-gdpr/assets/css/cookieblocker.min.css?ver=1777847545' media='all' />
+<link rel='stylesheet' id='bootstrap-min-css' href='https://complete.tech/wp-content/themes/spintech/assets/css/bootstrap.min.css?ver=7.0' media='all' />
+<link rel='stylesheet' id='owl-carousel-min-css' href='https://complete.tech/wp-content/themes/spintech/assets/css/owl.carousel.min.css?ver=7.0' media='all' />
+<link rel='stylesheet' id='font-awesome-css' href='https://complete.tech/wp-content/themes/spintech/assets/css/fonts/font-awesome/css/font-awesome.min.css?ver=7.0' media='all' />
+<link rel='stylesheet' id='animate-css' href='https://complete.tech/wp-content/themes/spintech/assets/css/animate.min.css?ver=7.0' media='all' />
+<link rel='stylesheet' id='spintech-editor-style-css' href='https://complete.tech/wp-content/themes/spintech/assets/css/editor-style.css?ver=7.0' media='all' />
+<link rel='stylesheet' id='spintech-menus-css' href='https://complete.tech/wp-content/themes/spintech/assets/css/classic-menu.css?ver=7.0' media='all' />
+<link rel='stylesheet' id='spintech-widgets-css' href='https://complete.tech/wp-content/themes/spintech/assets/css/widgets.css?ver=7.0' media='all' />
+<link rel='stylesheet' id='spintech-main-css' href='https://complete.tech/wp-content/themes/spintech/assets/css/main.css?ver=7.0' media='all' />
+<link rel='stylesheet' id='spintech-media-query-css' href='https://complete.tech/wp-content/themes/spintech/assets/css/responsive.css?ver=7.0' media='all' />
+<link rel='stylesheet' id='spintech-style-css' href='https://complete.tech/wp-content/themes/spintech-child/style.css?ver=7.0' media='all' />
+<style id="spintech-style-inline-css">
+.breadcrumb-area {
+					background-image: url(https://complete.tech/wp-content/themes/spintech/assets/images/bg/breadcrumbg.jpg);
+					background-attachment: scroll;
+				}
+
+/*# sourceURL=spintech-style-inline-css */
+</style>
+<link rel='stylesheet' id='spintech-fonts-css' href='//fonts.googleapis.com/css?family=Montserrat%3Aital%2Cwght%400%2C200%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C800%3B0%2C900%3B1%2C100%3B1%2C200%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700%3B1%2C800%3B1%2C900&#038;subset=latin%2Clatin-ext' media='all' />
+<link rel='stylesheet' id='spintech-child-fonts-css' href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&#038;family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&#038;family=JetBrains+Mono:wght@400;500;600&#038;display=swap' media='all' />
+<link rel='stylesheet' id='spintech-child-tokens-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/tokens.css?ver=0.1.3' media='all' />
+<link rel='stylesheet' id='spintech-child-base-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/base.css?ver=0.1.3' media='all' />
+<link rel='stylesheet' id='spintech-child-header-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/components/header.css?ver=0.1.3' media='all' />
+<link rel='stylesheet' id='spintech-child-footer-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/components/footer.css?ver=0.1.3' media='all' />
+<link rel='stylesheet' id='spintech-child-buttons-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/components/buttons.css?ver=0.1.3' media='all' />
+<link rel='stylesheet' id='spintech-child-post-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/components/post.css?ver=0.1.3' media='all' />
+<link rel='stylesheet' id='spintech-child-blog-index-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/components/blog-index.css?ver=0.1.3' media='all' />
+<link rel='stylesheet' id='spintech-child-home-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/components/home.css?ver=0.1.3' media='all' />
+<link rel='stylesheet' id='spintech-child-home-v2-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/components/home-v2.css?ver=0.1.3' media='all' />
+<link rel='stylesheet' id='spintech-child-service-brief-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/components/service-brief.css?ver=0.1.3' media='all' />
+<link rel='stylesheet' id='spintech-child-portfolio-css' href='https://complete.tech/wp-content/themes/spintech-child/assets/components/portfolio.css?ver=0.1.3' media='all' />
+<script id="jquery-core-js" src="https://complete.tech/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://complete.tech/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<script id="owl-carousel-js" src="https://complete.tech/wp-content/themes/spintech/assets/js/owl.carousel.min.js?ver=1"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+<!-- Google Analytics snippet added by Site Kit -->
+<script id="google_gtagjs-js" src="https://www.googletagmanager.com/gtag/js?id=GT-WR9RF4TX" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["complete.tech"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-WR9RF4TX");
+ window._googlesitekit = window._googlesitekit || {}; window._googlesitekit.throttledEvents = []; window._googlesitekit.gtagEvent = (name, data) => { var key = JSON.stringify( { name, data } ); if ( !! window._googlesitekit.throttledEvents[ key ] ) { return; } window._googlesitekit.throttledEvents[ key ] = true; setTimeout( () => { delete window._googlesitekit.throttledEvents[ key ]; }, 5 ); gtag( "event", name, { ...data, event_source: "site-kit" } ); }; 
+//# sourceURL=google_gtagjs-js-after
+</script>
+<link rel="https://api.w.org/" href="https://complete.tech/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://complete.tech/wp-json/wp/v2/posts/459" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://complete.tech/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="https://complete.tech/blog/beyond-the-token-bottleneck-llm-wiki-karpathy/" />
+<link rel='shortlink' href='https://complete.tech/?p=459' />
+<meta name="generator" content="Site Kit by Google 1.179.0" />			<style>.cmplz-hidden {
+					display: none !important;
+				}</style>
+<!-- Google AdSense meta tags added by Site Kit -->
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
+<!-- End Google AdSense meta tags added by Site Kit -->
+	<style type="text/css">
+			 h4.site-title,
+		 p.site-description {
+			color: ##ffffff;
+		}
+		</style>
+	
+<!-- Google Tag Manager snippet added by Site Kit -->
+<script>
+			( function( w, d, s, l, i ) {
+				w[l] = w[l] || [];
+				w[l].push( {'gtm.start': new Date().getTime(), event: 'gtm.js'} );
+				var f = d.getElementsByTagName( s )[0],
+					j = d.createElement( s ), dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore( j, f );
+			} )( window, document, 'script', 'dataLayer', 'GTM-KMHQM26F' );
+			
+</script>
+
+<!-- End Google Tag Manager snippet added by Site Kit -->
+<link rel="icon" href="https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-03-32x32.jpg" sizes="32x32" />
+<link rel="icon" href="https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-03-192x192.jpg" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-03-180x180.jpg" />
+<meta name="msapplication-TileImage" content="https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-03-270x270.jpg" />
+<style id="wp-custom-css">
+
+
+
+/* CompleteTech footer polish start */
+body.single-post #content.spintech-content .footer-section.main-footer .footer-copyright > .container,
+.footer-section.main-footer .footer-copyright > .container {
+  width: 100%;
+  max-width: 1288px !important;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+}
+
+.footer-section.main-footer .footer-copyright .row > .col-lg-4:first-child {
+  display: none;
+}
+
+.footer-section.main-footer .footer-copyright .row {
+  justify-content: space-between;
+}
+
+.footer-section.main-footer .footer-copyright .row > .col-lg-4:nth-child(2),
+.footer-section.main-footer .footer-copyright .row > .col-lg-4:nth-child(3) {
+  flex: 0 1 auto;
+  max-width: none;
+}
+
+.footer-section.main-footer .footer-copyright .row > .col-lg-4:nth-child(2) {
+  text-align: left !important;
+}
+
+.footer-section.main-footer .footer-copyright .row > .col-lg-4:nth-child(3) {
+  text-align: right !important;
+}
+
+.footer-section.main-footer .copyright-text {
+  white-space: nowrap;
+}
+
+@media (max-width: 991.98px) {
+  .footer-section.main-footer .footer-copyright .row {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .footer-section.main-footer .footer-copyright .row > .col-lg-4:nth-child(2),
+  .footer-section.main-footer .footer-copyright .row > .col-lg-4:nth-child(3) {
+    flex: 0 0 100%;
+    text-align: center !important;
+  }
+
+  .footer-section.main-footer .copyright-text {
+    white-space: normal;
+  }
+}
+/* CompleteTech footer polish end */
+
+/* CompleteTech dark-mode logo swap start */
+html[data-theme="dark"] .logo .custom-logo:not(.custom-logo-dark),
+html[data-theme="dark"] .mobile-logo .custom-logo:not(.custom-logo-dark) {
+  display: inline-block !important;
+}
+
+html[data-theme="dark"] .custom-logo {
+  content: url("https://complete.tech/wp-content/uploads/2026/05/complete-tech-dark-logo-used.png");
+}
+/* CompleteTech dark-mode logo swap end */
+
+/* CompleteTech dark document pages start */
+html[data-theme="dark"] body.page-id-3 .breadcrumb-area,
+html[data-theme="dark"] body.page-id-302 .breadcrumb-area,
+html[data-theme="dark"] body.page-id-149 .breadcrumb-area {
+  background-color: #07101f;
+  color: #eaf1fb;
+}
+
+html[data-theme="dark"] body.page-id-3 .breadcrumb-content,
+html[data-theme="dark"] body.page-id-302 .breadcrumb-content,
+html[data-theme="dark"] body.page-id-149 .breadcrumb-content {
+  background: #0c1728;
+  border: 1px solid rgba(245, 200, 75, 0.35);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="dark"] body.page-id-3 .breadcrumb-heading h2,
+html[data-theme="dark"] body.page-id-302 .breadcrumb-heading h2,
+html[data-theme="dark"] body.page-id-149 .breadcrumb-heading h2,
+html[data-theme="dark"] body.page-id-3 .breadcrumb-list,
+html[data-theme="dark"] body.page-id-302 .breadcrumb-list,
+html[data-theme="dark"] body.page-id-149 .breadcrumb-list,
+html[data-theme="dark"] body.page-id-3 .breadcrumb-list li,
+html[data-theme="dark"] body.page-id-302 .breadcrumb-list li,
+html[data-theme="dark"] body.page-id-149 .breadcrumb-list li {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] body.page-id-3 .breadcrumb-list a,
+html[data-theme="dark"] body.page-id-302 .breadcrumb-list a,
+html[data-theme="dark"] body.page-id-149 .breadcrumb-list a {
+  color: #f5c84b;
+}
+
+html[data-theme="dark"] body.page-id-3 #content.spintech-content,
+html[data-theme="dark"] body.page-id-302 #content.spintech-content,
+html[data-theme="dark"] body.page-id-149 #content.spintech-content {
+  background: #07101f;
+  color: #eaf1fb;
+}
+
+html[data-theme="dark"] body.page-id-3 #post-section,
+html[data-theme="dark"] body.page-id-302 #post-section,
+html[data-theme="dark"] body.page-id-149 #post-section {
+  background: #07101f;
+}
+
+html[data-theme="dark"] body.page-id-3 .post-items,
+html[data-theme="dark"] body.page-id-302 .post-items,
+html[data-theme="dark"] body.page-id-149 .post-items,
+html[data-theme="dark"] body.page-id-3 .post-content,
+html[data-theme="dark"] body.page-id-302 .post-content,
+html[data-theme="dark"] body.page-id-149 .post-content {
+  background: transparent;
+  color: #eaf1fb;
+}
+
+html[data-theme="dark"] body.page-id-3 .post-content :where(h1, h2, h3, h4, h5, h6),
+html[data-theme="dark"] body.page-id-302 .post-content :where(h1, h2, h3, h4, h5, h6),
+html[data-theme="dark"] body.page-id-149 .post-content :where(h1, h2, h3, h4, h5, h6) {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] body.page-id-3 .post-content :where(p, li, strong),
+html[data-theme="dark"] body.page-id-302 .post-content :where(p, li, strong),
+html[data-theme="dark"] body.page-id-149 .post-content :where(p, li, strong) {
+  color: #eaf1fb;
+}
+
+html[data-theme="dark"] body.page-id-3 .post-content a,
+html[data-theme="dark"] body.page-id-302 .post-content a,
+html[data-theme="dark"] body.page-id-149 .post-content a,
+html[data-theme="dark"] body.page-id-3 .post-content :where(p, li) a,
+html[data-theme="dark"] body.page-id-302 .post-content :where(p, li) a,
+html[data-theme="dark"] body.page-id-149 .post-content :where(p, li) a {
+  color: #f5c84b !important;
+}
+
+html[data-theme="dark"] body.page-id-3 .post-content a:hover,
+html[data-theme="dark"] body.page-id-302 .post-content a:hover,
+html[data-theme="dark"] body.page-id-149 .post-content a:hover,
+html[data-theme="dark"] body.page-id-3 .post-content :where(p, li) a:hover,
+html[data-theme="dark"] body.page-id-302 .post-content :where(p, li) a:hover,
+html[data-theme="dark"] body.page-id-149 .post-content :where(p, li) a:hover {
+  color: #ffe58a !important;
+}
+
+html[data-theme="dark"] body.page-id-3 .post-content hr,
+html[data-theme="dark"] body.page-id-302 .post-content hr,
+html[data-theme="dark"] body.page-id-149 .post-content hr {
+  border-color: rgba(148, 163, 184, 0.35);
+}
+
+html[data-theme="dark"] body.page-id-149 .wp-block-button__link {
+  background: #f5c84b;
+  border: 1px solid #f5c84b;
+  color: #07101f !important;
+}
+
+html[data-theme="dark"] body.page-id-149 .wp-block-button__link:hover {
+  background: #ffe58a;
+  border-color: #ffe58a;
+  color: #07101f !important;
+}
+/* CompleteTech dark document pages end */
+
+/* CompleteTech dark document cleanup start */
+html[data-theme="dark"] body.page-id-3 #page.site,
+html[data-theme="dark"] body.page-id-302 #page.site,
+html[data-theme="dark"] body.page-id-149 #page.site,
+html[data-theme="dark"] body.page-id-3 #main-header,
+html[data-theme="dark"] body.page-id-302 #main-header,
+html[data-theme="dark"] body.page-id-149 #main-header {
+  background: #07101f;
+}
+
+html[data-theme="dark"] body.page-id-149 .post-content a.wp-block-button__link {
+  color: #07101f !important;
+}
+/* CompleteTech dark document cleanup end */
+</style>
+	</head>
+<body data-cmplz=1 class="wp-singular post-template-default single single-post postid-459 single-format-standard wp-custom-logo wp-theme-spintech wp-child-theme-spintech-child header-default header-nav-white">
+		<!-- Google Tag Manager (noscript) snippet added by Site Kit -->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMHQM26F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) snippet added by Site Kit -->
+		
+	<div id="page" class="site">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	
+	 <header id="main-header" class="main-header">
+        <!--===// Start: Navigation Wrapper
+        =================================-->
+        <div class="navigation-wrapper">
+            <!--===// Start: Main Desktop Navigation
+            =================================-->
+            <div class="main-navigation-area d-none d-lg-block">
+                <div class="main-navigation is-sticky-on">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2 my-auto">
+                                <div class="logo">
+                                    <a href="https://complete.tech/" class="custom-logo-link" rel="home"><img width="2400" height="1198" src="https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822.png" class="custom-logo" alt="CompleteTech LLC" decoding="async" fetchpriority="high" srcset="https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822.png 2400w, https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822-300x150.png 300w, https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822-1024x511.png 1024w, https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822-768x383.png 768w, https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822-1536x767.png 1536w, https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822-2048x1022.png 2048w" sizes="(max-width: 2400px) 100vw, 2400px" /></a>									                                </div>
+                            </div>
+                            <div class="col-10 my-auto">
+                                <nav class="navbar-area">
+                                    <div class="main-navbar">
+                                        <ul id="menu-main-menu" class="main-menu"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-80 nav-item"><a title="About Us" href="https://complete.tech/about-us/" class="nav-link">About Us</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-72" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-72 nav-item"><a title="Services" href="https://complete.tech/services/" class="nav-link">Services</a>
+<span class='mobile-collapsed d-lg-none'><button type='button' class='fa fa-chevron-right' aria-label='Mobile Collapsed'></button></span><ul class="dropdown-menu"  role="menu">
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-129" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-129 nav-item"><a title="AI-Driven Analytics" href="https://complete.tech/services/ai-driven-analytics/" class="dropdown-item">AI-Driven Analytics</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-65" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65 nav-item"><a title="API Development and Integrations" href="https://complete.tech/services/api-dev/" class="dropdown-item">API Development and Integrations</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49 nav-item"><a title="Chatbots and Virtual Assistants" href="https://complete.tech/services/chatbot/" class="dropdown-item">Chatbots and Virtual Assistants</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-130" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-130 nav-item"><a title="IDEA to Solution" href="https://complete.tech/services/idea-to-solution/" class="dropdown-item">IDEA to Solution</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-131" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-131 nav-item"><a title="ITSM Implementation &amp; Support" href="https://complete.tech/services/itsm/" class="dropdown-item">ITSM Implementation &amp; Support</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-132" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-132 nav-item"><a title="Prototyping and MVP Development" href="https://complete.tech/services/prototype-mvp/" class="dropdown-item">Prototyping and MVP Development</a></li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-351" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-has-children dropdown menu-item-351 nav-item"><a title="Blog" href="https://complete.tech/blog/" class="nav-link">Blog</a>
+<span class='mobile-collapsed d-lg-none'><button type='button' class='fa fa-chevron-right' aria-label='Mobile Collapsed'></button></span><ul class="dropdown-menu" aria-labelledby="mobile-collapsed d-lg-none&#039;&gt;&lt;button type=&#039;button&#039; class=&#039;fa fa-chevron-right&#039; aria-label=&#039;Mobile Collapsed&#039;&gt;&lt;/button&gt;&lt;/span&gt;&lt;ul class=" role="menu">
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-436" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-436 nav-item"><a title="Field Notes" href="https://complete.tech/blog/#field-notes" class="dropdown-item">Field Notes</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-437 nav-item"><a title="Field Journal" href="https://complete.tech/blog/#field-journal" class="dropdown-item">Field Journal</a>
+	<span class='mobile-collapsed d-lg-none'><button type='button' class='fa fa-chevron-right' aria-label='Mobile Collapsed'></button></span><ul class="dropdown-menu" aria-labelledby="mobile-collapsed d-lg-none&#039;&gt;&lt;button type=&#039;button&#039; class=&#039;fa fa-chevron-right&#039; aria-label=&#039;Mobile Collapsed&#039;&gt;&lt;/button&gt;&lt;/span&gt;&lt;ul class=" role="menu">
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-495" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-495 nav-item"><a title="Buddy Thread" href="https://complete.tech/blog/#buddy-thread" class="dropdown-item">Buddy Thread</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-438" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-438 nav-item"><a title="Disclosure in Action" href="https://complete.tech/blog/#disclosure-in-action" class="dropdown-item">Disclosure in Action</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-184 nav-item"><a title="Portfolio" href="https://complete.tech/portfolio/" class="nav-link">Portfolio</a>
+<span class='mobile-collapsed d-lg-none'><button type='button' class='fa fa-chevron-right' aria-label='Mobile Collapsed'></button></span><ul class="dropdown-menu" aria-labelledby="mobile-collapsed d-lg-none&#039;&gt;&lt;button type=&#039;button&#039; class=&#039;fa fa-chevron-right&#039; aria-label=&#039;Mobile Collapsed&#039;&gt;&lt;/button&gt;&lt;/span&gt;&lt;ul class=" role="menu">
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-313" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-313 nav-item"><a title="VapeTM Disclosure - May 1, 2026" href="https://ctech.llc/vapetm" class="dropdown-item">VapeTM Disclosure &#8211; May 1, 2026</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-444" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-444 nav-item"><a title="ClawExplorer.AIApr 30, 2026" href="https://ctech.llc/clawexplorer" class="dropdown-item">ClawExplorer.AI<br>Apr 30, 2026</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-397" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-397 nav-item"><a title="Build AI Workflows in 5 StepsApr 11, 2026" href="https://ctech.llc/5step2workflow" class="dropdown-item">Build AI Workflows in 5 Steps<br>Apr 11, 2026</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-399" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-399 nav-item"><a title="International AI Contest WinnerApr 03, 2024" href="https://ctech.llc/aicontest2023" class="dropdown-item">International AI Contest Winner<br>Apr 03, 2024</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-139" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139 nav-item"><a title="ME User Conference PresentationOct 03, 2023" href="https://ctech.llc/meuserconf" class="dropdown-item">ME User Conference Presentation<br>Oct 03, 2023</a></li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-405 nav-item"><a title="Credentials" href="https://complete.tech/credentials/" class="nav-link">Credentials</a>
+<span class='mobile-collapsed d-lg-none'><button type='button' class='fa fa-chevron-right' aria-label='Mobile Collapsed'></button></span><ul class="dropdown-menu" aria-labelledby="mobile-collapsed d-lg-none&#039;&gt;&lt;button type=&#039;button&#039; class=&#039;fa fa-chevron-right&#039; aria-label=&#039;Mobile Collapsed&#039;&gt;&lt;/button&gt;&lt;/span&gt;&lt;ul class=" role="menu">
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-433" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-433 nav-item"><a title="Introduction to AI in AzureMar 19, 2026" href="https://ctech.llc/azureaifunda" class="dropdown-item">Introduction to AI in Azure<br>Mar 19, 2026</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-435" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-435 nav-item"><a title="Copilot for Microsoft Power PlatformDec 10, 2025" href="https://ctech.llc/copilotpp" class="dropdown-item">Copilot for Microsoft Power Platform<br>Dec 10, 2025</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-450" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-450 nav-item"><a title="Multi AI Agent Systems with crewAIJan 30, 2025" href="https://learn.deeplearning.ai/accomplishments/8714578b-7059-4276-87ad-956493a6f757?usp=sharing" class="dropdown-item">Multi AI Agent Systems with crewAI<br>Jan 30, 2025</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-418" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-418 nav-item"><a title="Microsoft Learn AI Engineer Career PathNov 06, 2024" href="https://ctech.llc/azureaiengineer" class="dropdown-item">Microsoft Learn AI Engineer Career Path<br>Nov 06, 2024</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-440" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-440 nav-item"><a title="AI LeadershipJun 18, 2024" href="https://ctech.llc/aileadership" class="dropdown-item">AI Leadership<br>Jun 18, 2024</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-431" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-431 nav-item"><a title="Analyze Text with Azure AI LanguageMay 30, 2024" href="https://ctech.llc/azureainlp" class="dropdown-item">Analyze Text with Azure AI Language<br>May 30, 2024</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-420" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-420 nav-item"><a title="Microsoft Azure Fundamentals (AZ-900)Oct 18, 2023" href="https://ctech.llc/az900" class="dropdown-item">Microsoft Azure Fundamentals (AZ-900)<br>Oct 18, 2023</a>
+	<span class='mobile-collapsed d-lg-none'><button type='button' class='fa fa-chevron-right' aria-label='Mobile Collapsed'></button></span><ul class="dropdown-menu" aria-labelledby="mobile-collapsed d-lg-none&#039;&gt;&lt;button type=&#039;button&#039; class=&#039;fa fa-chevron-right&#039; aria-label=&#039;Mobile Collapsed&#039;&gt;&lt;/button&gt;&lt;/span&gt;&lt;ul class=" role="menu">
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-429" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-429 nav-item"><a title="Prepare for Azure Fundamentals (AZ-900)Oct 27, 2023" href="https://ctech.llc/az900funda" class="dropdown-item">Prepare for Azure Fundamentals (AZ-900)<br>Oct 27, 2023</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-427" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-427 nav-item"><a title="Microsoft Azure Fundamentals (AZ-900): Exam TipsOct 27, 2023" href="https://ctech.llc/az900tips" class="dropdown-item">Microsoft Azure Fundamentals (AZ-900): Exam Tips<br>Oct 27, 2023</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-419" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-419 nav-item"><a title="Microsoft Azure Fundamentals (AZ-900): Azure Architecture and ServicesOct 26, 2023" href="https://ctech.llc/az9002" class="dropdown-item">Microsoft Azure Fundamentals (AZ-900): Azure Architecture and Services<br>Oct 26, 2023</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-425" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-425 nav-item"><a title="Microsoft Azure Fundamentals (AZ-900): Azure Management and GovernanceOct 26, 2023" href="https://ctech.llc/az9003" class="dropdown-item">Microsoft Azure Fundamentals (AZ-900): Azure Management and Governance<br>Oct 26, 2023</a></li>
+	</ul>
+</li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-421" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-421 nav-item"><a title="CompTIA A+ (2009 Edition)Jul 27, 2015" href="https://ctech.llc/aplus" class="dropdown-item">CompTIA A+ (2009 Edition)<br>Jul 27, 2015</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-422" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-422 nav-item"><a title="Microsoft Certified ProfessionalNov 17, 2006" href="https://ctech.llc/mcp" class="dropdown-item">Microsoft Certified Professional<br>Nov 17, 2006</a></li>
+</ul>
+</li>
+</ul>                         
+                                    </div>
+                                    <div class="main-menu-right">
+                                        <ul class="menu-right-list">
+												
+																							<li class="search-button">
+													<button type="button" id="header-search-toggle" class="header-search-toggle" aria-expanded="false" aria-label="Search Popup"><i class="fa fa-search"></i></button>
+												</li>
+																						                                        </ul>                            
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--===// End:  Main Desktop Navigation
+            =================================-->
+            <!--===// Start: Main Mobile Navigation
+            =================================-->
+            <div class="main-mobile-nav is-sticky-on"> 
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="main-mobile-menu">
+                                <div class="mobile-logo">
+                                    <div class="logo">
+                                       <a href="https://complete.tech/" class="custom-logo-link" rel="home"><img width="2400" height="1198" src="https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822.png" class="custom-logo" alt="CompleteTech LLC" decoding="async" srcset="https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822.png 2400w, https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822-300x150.png 300w, https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822-1024x511.png 1024w, https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822-768x383.png 768w, https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822-1536x767.png 1536w, https://complete.tech/wp-content/uploads/2023/09/cropped-newcomsp-01-e1695941699822-2048x1022.png 2048w" sizes="(max-width: 2400px) 100vw, 2400px" /></a>																			</div>
+                                </div>
+                                <div class="menu-collapse-wrap">
+                                    <div class="hamburger-menu">
+                                        <button type="button" class="menu-collapsed" aria-label="Menu Collaped">
+                                            <div class="top-bun"></div>
+                                            <div class="meat"></div>
+                                            <div class="bottom-bun"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="main-mobile-wrapper">
+                                    <div id="mobile-menu-build" class="main-mobile-build">
+                                        <button type="button" class="header-close-menu close-style" aria-label="Header Close Menu"></button>
+                                    </div>
+                                    <div class="main-mobile-overlay" tabindex="-1"></div>
+                                </div>
+                                                                <div class="header-above-btn">
+                                    <button type="button" class="header-above-collapse" aria-label="Header Above Collapse"><span></span></button>
+                                </div>
+                                <div class="header-above-wrapper">
+                                    <div id="header-above-bar" class="header-above-bar"></div>
+                                </div>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+            <!--===// End: Main Mobile Navigation
+            =================================-->
+        </div>
+        <!--===// End: Navigation Wrapper
+        =================================-->
+        <!--===// Start: Header Search PopUp
+        =================================-->
+        <div class="header-search-popup">
+            <div class="header-search-flex">
+                <form method="get" class="search-form" action="https://complete.tech/" aria-label="Site Search">
+                    <input type="search" class="form-control header-search-field" placeholder="Type To Search" name="s" id="search">
+                    <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+                </form>
+                <button type="button" id="header-search-close" class="close-style header-search-close" aria-label="Search Popup Close"></button>
+            </div>
+        </div>
+        <!--===// End: Header Search PopUp
+        =================================-->
+    </header>
+    <!-- End: Main Header
+    =================================-->	<section id="breadcrumb-section" class="breadcrumb-area breadcrumb-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <div class="breadcrumb-heading">
+								<h2>
+									Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier								</h2>
+                        </div>
+							<ol class="breadcrumb-list">
+								<li><a href="https://complete.tech">Home</a> &nbsp&gt;&nbsp<li class="active">Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier</li></li>							</ol>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </section>
+		
+	<div id="content" class="spintech-content">
+	
+<main class="editorial-post">
+	
+		<header class="editorial-head">
+			<div class="editorial-eyebrow">
+				<span class="eyebrow">
+					Field Note &middot; Blog				</span>
+				<time class="eyebrow" datetime="2026-04-06T14:21:10-05:00">
+					Apr 06, 2026				</time>
+			</div>
+
+			<h1 class="editorial-title">Beyond the Token Bottleneck — Building Karpathy’s LLM Wiki on a Live Frontier</h1>
+
+							<p class="editorial-dek">A 120-page Obsidian research wiki on latent-space reasoning and inter-agent latent communication — built using Andrej Karpathy’s LLM Wiki pattern. 27 sources, 1400+ cross-references, schema-driven ingest. Apache + CC-BY.</p>
+					</header>
+
+		<hr class="editorial-rule">
+
+		<article class="editorial-body post-459 post type-post status-publish format-standard hentry category-blog tag-ai-research tag-andrej-karpathy tag-latent-communication tag-latent-space-reasoning tag-llm-wiki-pattern tag-multi-agent-systems tag-obsidian tag-research-wiki">
+			
+<p class="wp-block-paragraph">Andrej Karpathy <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">published a gist</a> describing what he calls the &ldquo;LLM Wiki&rdquo; pattern: instead of having a model retrieve documents at query time (the RAG default), give it a structured wiki it <em>incrementally builds and maintains</em> over time. The model isn&rsquo;t a librarian. It&rsquo;s a curator. The reading and thinking parts of knowledge work are already comfortable; what collapses every long-running knowledge base is the bookkeeping &mdash; the cross-references, the schema discipline, the link rot. As Karpathy put it: <em>&ldquo;the tedious part of maintaining a knowledge base is not the reading or the thinking &mdash; it&rsquo;s the bookkeeping.&rdquo;</em> LLMs are good at exactly that.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Beyond the Token Bottleneck</strong> &mdash; <a href="https://github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck">github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck</a>, mirrored at <a href="https://ctech.llc/bttb">ctech.llc/bttb</a> &mdash; is a production implementation of Karpathy&rsquo;s pattern, applied to a single live research domain. Full credit where it&rsquo;s due: the methodology is his. This repo is what happens when you take that gist seriously, hand the LLM a schema, and point it at a frontier of the field where the literature is moving faster than any individual researcher can track.</p>
+
+
+
+<h3 class="wp-block-heading">The frontier we pointed it at</h3>
+
+
+
+<p class="wp-block-paragraph">The domain is <strong>latent-space reasoning and inter-agent latent communication</strong> &mdash; what happens when LLMs stop talking and start thinking in vectors. The setup is a structural problem in current architectures: large language models are internally continuous (dense vectors at every layer), but they&rsquo;re forced to interface with the world through a discrete token bottleneck. That bottleneck:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Discards distributional uncertainty</strong> &mdash; a full probability distribution collapses to one sampled token.</li>
+<li><strong>Prevents superposition of hypotheses</strong> &mdash; one token, one path; you can&rsquo;t hold two reasoning branches in the same vector slot.</li>
+<li><strong>Wastes compute on fluency</strong> &mdash; tokens that exist for grammar carry no reasoning content but cost just as much.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">The wiki tracks 27 sources (26 papers + 1 open-source project, Dec 2022 &ndash; Apr 2026) that collectively ask: what happens when you remove the bottleneck, both <em>within</em> a single model and <em>between</em> collaborating models? It splits that question into two threads.</p>
+
+
+
+<h4 class="wp-block-heading">Thread 1: Latent Reasoning &mdash; intra-agent continuous thought</h4>
+
+
+
+<p class="wp-block-paragraph">Feed hidden states back as input embeddings instead of decoding to tokens. The model reasons silently in continuous vector space, holding multiple reasoning paths in superposition. Headline number from Hao et al.&rsquo;s <strong>Coconut</strong> (ICLR 2025): 97.0% on planning tasks via emergent BFS, vs. 77.5% for chain-of-thought on the same tasks. Pause Tokens, iCoT, SoftCoT, Thinking States, and the Superposition Theory paper round out this thread.</p>
+
+
+
+<h4 class="wp-block-heading">Thread 2: Latent Communication &mdash; inter-agent continuous channels</h4>
+
+
+
+<p class="wp-block-paragraph">Replace the natural-language pipe between agents with a continuous channel. The wiki organizes this as a <strong>10-level depth spectrum</strong> ordered by how much information each level carries per position &mdash; from natural language at the shallow end (~15 bits/position) to full hidden-state sequences at the deep end (~40K bits/position). Embeddings, deltas, structured representations, vision-channel methods, KV-cache selection, KV exchange, activation communication, and full hidden-state plus latent come in between. Headline number: <strong>LatentMAS</strong> achieves 471&times; theoretical compression over text with zero training. Twelve papers in this thread &mdash; CIPHER, AC, KVComm, C2C, Interlat, SDE, ThoughtComm, Vision Wormhole, LatentMAS, others.</p>
+
+
+
+<p class="wp-block-paragraph">The frontier, as the wiki frames it, is bending the depth-spectrum curve &mdash; reaching high information density without forcing tight architectural coupling between the agents on either end of the channel.</p>
+
+
+
+<h3 class="wp-block-heading">How Karpathy&rsquo;s pattern shows up in the build</h3>
+
+
+
+<p class="wp-block-paragraph">Karpathy&rsquo;s gist describes a three-layer architecture: <strong>raw sources</strong> (immutable inputs), <strong>the wiki</strong> (LLM-generated, mutable, the actual product), and <strong>the schema</strong> (configuration that tells the LLM what good looks like). The repo is laid out almost exactly that way:</p>
+
+
+
+<ul class="wp-block-list">
+<li><code>raw/</code> &mdash; 26 source PDFs from arXiv, ACL, ICML, NeurIPS, plus a per-paper provenance index, an ingest checklist, and a bulk arXiv downloader. Read-only by convention. The LLM doesn&rsquo;t edit this layer.</li>
+<li><code>wiki/</code> &mdash; 120+ pages: source summaries, concept pages, entity profiles for 13 research groups, 9 Maps of Content (guided reading paths), 9 analysis/synthesis pages, an overview, a change log. 1400+ internal links knit the whole thing together.</li>
+<li><code>AGENTS.md</code> &mdash; the schema. Page types, linking conventions, depth standards, what counts as &ldquo;done&rdquo; for each page class. This is what makes the LLM&rsquo;s output predictable and the wiki maintainable across many ingest passes.</li>
+<li><code>workflows/</code> &mdash; maintainer playbooks: <code>create</code> (ingest, batch-ingest, synthesize), <code>enrich</code> (enrich, expand), <code>audit</code> (gap-analysis, verification, lint, plugin-audit, schema-self-audit), <code>query</code>, <code>meta</code>. Decision tree at <code>workflows/README.md</code>.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">The ingest loop is the load-bearing one. A new paper drops into <code>raw/pdf/</code>; the LLM reads it and writes a source summary against the schema; entities and concepts get extracted and given their own pages or extended on existing ones; cross-references get threaded through every page that mentions the new work; Maps of Content get updated so the new piece sits in a guided reading path, not just an orphan node. One paper, ten to fifteen page touches, hundreds of new and updated links. That&rsquo;s the bookkeeping Karpathy was talking about, automated.</p>
+
+
+
+<h3 class="wp-block-heading">Why we built it, beyond &ldquo;the pattern is good&rdquo;</h3>
+
+
+
+<p class="wp-block-paragraph">Three reasons:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>The literature is moving faster than human curation can keep up with.</strong> Latent reasoning and latent communication aren&rsquo;t two fields &mdash; they&rsquo;re one frontier with two faces, and the connections between papers are where the real signal is. A handcrafted bibliography goes stale before it ships. An LLM-maintained, deeply cross-referenced wiki absorbs new work without losing structure.</li>
+<li><strong>The depth spectrum needed somewhere to live.</strong> Frameworks like the 10-level communication-depth taxonomy make sense only if every method in the field gets placed on them <em>and</em> every method&rsquo;s page links back. That&rsquo;s 27 sources times one Map of Content with continuous re-threading. Hand-maintained, that&rsquo;s a quarter on its own. Schema-driven, the LLM does it as a side effect of ingestion.</li>
+<li><strong>Karpathy&rsquo;s gist deserves a working production reference.</strong> The pattern is good. Showing what a 120-page, 1400-link, schema-disciplined implementation looks like &mdash; with audit workflows, plugin lists, license splits, and a real domain &mdash; is more useful than another think-piece about second brains. The vault opens directly in Obsidian; clone the repo and it&rsquo;s yours.</li>
+</ol>
+
+
+
+<h3 class="wp-block-heading">If you only do one thing</h3>
+
+
+
+<p class="wp-block-paragraph">If you&rsquo;re here for the methodology, read <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Karpathy&rsquo;s gist</a> first &mdash; it&rsquo;s short, and the framing carries. Then clone the repo, open it as an Obsidian vault, and start at <code>wiki/overview-state-of-field.md</code>. The graph view in <code>assets/graph-color-groups.png</code> shows what 1400 cross-references look like when colored by note type; it&rsquo;s the clearest visual the project has of <em>why</em> the bookkeeping pays off.</p>
+
+
+
+<p class="wp-block-paragraph">If you&rsquo;re here for the research, the two entry points to bookmark are <code>wiki/mocs/communication-depth-spectrum.md</code> (the 10-level walkthrough) and <code>wiki/analyses/method-comparison.md</code> (side-by-side training, architecture, and result tables across all tracked methods).</p>
+
+
+
+<p class="wp-block-paragraph">The repo is split-licensed: <strong>Apache 2.0</strong> for code (workflows, scripts, schema), <strong>CC-BY 4.0</strong> for content (the wiki itself). Cite freely; reuse the methodology; build your own LLM Wiki on a domain you care about.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Repository:</strong> <a href="https://github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck">github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck</a><br><strong>Permalink:</strong> <a href="https://ctech.llc/bttb">ctech.llc/bttb</a><br><strong>Methodology credit:</strong> Andrej Karpathy &mdash; <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">LLM Wiki gist</a>.</p>
+
+		</article>
+
+		<hr class="editorial-rule">
+
+		<footer class="editorial-foot">
+			<div class="editorial-tags">
+				<span class="eyebrow"><a href="https://complete.tech/tag/ai-research/" rel="tag">AI research</a> &nbsp;/&nbsp; <a href="https://complete.tech/tag/andrej-karpathy/" rel="tag">Andrej Karpathy</a> &nbsp;/&nbsp; <a href="https://complete.tech/tag/latent-communication/" rel="tag">latent communication</a> &nbsp;/&nbsp; <a href="https://complete.tech/tag/latent-space-reasoning/" rel="tag">latent-space reasoning</a> &nbsp;/&nbsp; <a href="https://complete.tech/tag/llm-wiki-pattern/" rel="tag">LLM Wiki pattern</a> &nbsp;/&nbsp; <a href="https://complete.tech/tag/multi-agent-systems/" rel="tag">multi-agent systems</a> &nbsp;/&nbsp; <a href="https://complete.tech/tag/obsidian/" rel="tag">Obsidian</a> &nbsp;/&nbsp; <a href="https://complete.tech/tag/research-wiki/" rel="tag">research wiki</a></span>			</div>
+			<nav class="editorial-prevnext" aria-label="Post navigation">
+				<span class="editorial-prev"><a href="https://complete.tech/blog/way-back-home-multi-agent-orchestration-cloud-run/" rel="prev"><span class="eyebrow">&larr; Way Back Home: What Multi-Agent Orchestration Looks Like in Practice</span></a></span><span class="editorial-next"><a href="https://complete.tech/blog/when-claude-read-the-mythos-system-card/" rel="next"><span class="eyebrow">When Claude Read the Mythos System Card &rarr;</span></a></span>			</nav>
+		</footer>
+
+	</main>
+
+<!--===// Start: Footer
+    =================================-->
+    <footer id="footer-section" class="footer-section main-footer">
+					
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row align-items-center gy-lg-0 gy-4">
+                    <div class="col-lg-4 col-md-6 col-12 text-lg-left text-md-left text-center">
+								
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 text-lg-center text-md-right text-center"> 
+													                          
+							<div class="copyright-text">
+								Copyright &copy; 2026 CompleteTech LLC							</div>
+							
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-lg-right text-center">
+													<aside class="widget widget_nav_menu">
+								<div class="menu-pages-container">
+									<ul id="menu-footer-menu" class="menu"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-88" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88 nav-item"><a title="About Us" href="https://complete.tech/about-us/" class="nav-link">About Us</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-93" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-93 nav-item"><a title="Privacy Policy" href="https://complete.tech/privacy-policy/" class="nav-link">Privacy Policy</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-307" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307 nav-item"><a title="Terms and Conditions" href="https://complete.tech/terms-and-conditions/" class="nav-link">Terms and Conditions</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-501" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-501 nav-item"><a title="Cookie Policy (EU)" href="https://complete.tech/cookie-policy-eu/" class="nav-link">Cookie Policy (EU)</a></li>
+</ul>   
+								</div>
+							</aside>
+							
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End: Footer
+    =================================-->
+
+    <!-- Scrolling Up -->	
+	<button type="button" class="scrollingUp scrolling-btn" aria-label="scrollingUp"><i class="fa fa-angle-up"></i></button>
+</div>
+</div>	
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/spintech-child/*","/wp-content/themes/spintech/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+        <script id="independent-analytics-script"   >
+            // Do not change this comment line otherwise Speed Optimizer won't be able to detect this script
+
+            (function () {
+                function sendRequest(url, body) {
+                    if(!window.fetch) {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open("POST", url, true);
+                        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                        xhr.send(JSON.stringify(body))
+                        return
+                    }
+
+                    const request = fetch(url, {
+                        method: 'POST',
+                        body: JSON.stringify(body),
+                        keepalive: true,
+                        headers: {
+                            'Content-Type': 'application/json;charset=UTF-8'
+                        }
+                    });
+                }
+                const calculateParentDistance = (child, parent) => {
+                    let count = 0;
+                    let currentElement = child;
+
+                    // Traverse up the DOM tree until we reach parent or the top of the DOM
+                    while (currentElement && currentElement !== parent) {
+                        currentElement = currentElement.parentNode;
+                        count++;
+                    }
+
+                    // If parent was not found in the hierarchy, return -1
+                    if (!currentElement) {
+                        return -1; // Indicates parent is not an ancestor of element
+                    }
+
+                    return count; // Number of layers between element and parent
+                }
+                const isMatchingClass = (linkRule, href, classes, ids) => {
+                    return classes.includes(linkRule.value)
+                }
+                const isMatchingId = (linkRule, href, classes, ids) => {
+                    return ids.includes(linkRule.value)
+                }
+                const isMatchingDomain = (linkRule, href, classes, ids) => {
+                    if(!URL.canParse(href)) {
+                        return false
+                    }
+
+                    const url = new URL(href)
+                    const host = url.host
+                    const hostsToMatch = [host]
+
+                    if(host.startsWith('www.')) {
+                        hostsToMatch.push(host.substring(4))
+                    } else {
+                        hostsToMatch.push('www.' + host)
+                    }
+
+                    return hostsToMatch.includes(linkRule.value)
+                }
+                const isMatchingExtension = (linkRule, href, classes, ids) => {
+                    if(!URL.canParse(href)) {
+                        return false
+                    }
+
+                    const url = new URL(href)
+
+                    return url.pathname.endsWith('.' + linkRule.value)
+                }
+                const isMatchingSubdirectory = (linkRule, href, classes, ids) => {
+                    if(!URL.canParse(href)) {
+                        return false
+                    }
+
+                    const url = new URL(href)
+
+                    return url.pathname.startsWith('/' + linkRule.value + '/')
+                }
+                const isMatchingProtocol = (linkRule, href, classes, ids) => {
+                    if(!URL.canParse(href)) {
+                        return false
+                    }
+
+                    const url = new URL(href)
+
+                    return url.protocol === linkRule.value + ':'
+                }
+                const isMatchingExternal = (linkRule, href, classes, ids) => {
+                    if(!URL.canParse(href) || !URL.canParse(document.location.href)) {
+                        return false
+                    }
+
+                    const matchingProtocols = ['http:', 'https:']
+                    const siteUrl = new URL(document.location.href)
+                    const linkUrl = new URL(href)
+
+                    // Links to subdomains will appear to be external matches according to JavaScript,
+                    // but the PHP rules will filter those events out.
+                    return matchingProtocols.includes(linkUrl.protocol) && siteUrl.host !== linkUrl.host
+                }
+                const isMatch = (linkRule, href, classes, ids) => {
+                    switch (linkRule.type) {
+                        case 'class':
+                            return isMatchingClass(linkRule, href, classes, ids)
+                        case 'id':
+                            return isMatchingId(linkRule, href, classes, ids)
+                        case 'domain':
+                            return isMatchingDomain(linkRule, href, classes, ids)
+                        case 'extension':
+                            return isMatchingExtension(linkRule, href, classes, ids)
+                        case 'subdirectory':
+                            return isMatchingSubdirectory(linkRule, href, classes, ids)
+                        case 'protocol':
+                            return isMatchingProtocol(linkRule, href, classes, ids)
+                        case 'external':
+                            return isMatchingExternal(linkRule, href, classes, ids)
+                        default:
+                            return false;
+                    }
+                }
+                const track = (element) => {
+                    const href = element.href ?? null
+                    const classes = Array.from(element.classList)
+                    const ids = [element.id]
+                    const linkRules = [{"type":"extension","value":"pdf"},{"type":"extension","value":"zip"},{"type":"protocol","value":"mailto"},{"type":"protocol","value":"tel"}]
+                    if(linkRules.length === 0) {
+                        return
+                    }
+
+                    // For link rules that target an id, we need to allow that id to appear
+                    // in any ancestor up to the 7th ancestor. This loop looks for those matches
+                    // and counts them.
+                    linkRules.forEach((linkRule) => {
+                        if(linkRule.type !== 'id') {
+                            return;
+                        }
+
+                        const matchingAncestor = element.closest('#' + linkRule.value)
+
+                        if(!matchingAncestor || matchingAncestor.matches('html, body')) {
+                            return;
+                        }
+
+                        const depth = calculateParentDistance(element, matchingAncestor)
+
+                        if(depth < 7) {
+                            ids.push(linkRule.value)
+                        }
+                    });
+
+                    // For link rules that target a class, we need to allow that class to appear
+                    // in any ancestor up to the 7th ancestor. This loop looks for those matches
+                    // and counts them.
+                    linkRules.forEach((linkRule) => {
+                        if(linkRule.type !== 'class') {
+                            return;
+                        }
+
+                        const matchingAncestor = element.closest('.' + linkRule.value)
+
+                        if(!matchingAncestor || matchingAncestor.matches('html, body')) {
+                            return;
+                        }
+
+                        const depth = calculateParentDistance(element, matchingAncestor)
+
+                        if(depth < 7) {
+                            classes.push(linkRule.value)
+                        }
+                    });
+
+                    const hasMatch = linkRules.some((linkRule) => {
+                        return isMatch(linkRule, href, classes, ids)
+                    })
+
+                    if(!hasMatch) {
+                        return
+                    }
+
+                    const url = "https://complete.tech/wp-content/plugins/independent-analytics/iawp-click-endpoint.php";
+                    const body = {
+                        href: href,
+                        classes: classes.join(' '),
+                        ids: ids.join(' '),
+                        ...{"payload":{"resource":"singular","singular_id":459,"page":1},"signature":"358810e199de0be1a34f351a36b09b97"}                    };
+
+                    sendRequest(url, body)
+                }
+                let hasSearched = false;
+                function search() {
+                    if(hasSearched) {
+                        return;
+                    }
+                    hasSearched = true;
+
+                    if (document.hasOwnProperty("visibilityState") && document.visibilityState === "prerender") {
+                        return;
+                    }
+
+                                            if (navigator.webdriver || /bot|crawler|spider|crawling|semrushbot|chrome-lighthouse/i.test(navigator.userAgent)) {
+                            return;
+                        }
+                    
+                    let referrer_url = null;
+
+                    if (typeof document.referrer === 'string' && document.referrer.length > 0) {
+                        referrer_url = document.referrer;
+                    }
+
+                    const params = location.search.slice(1).split('&').reduce((acc, s) => {
+                        const [k, v] = s.split('=');
+                        return Object.assign(acc, {[k]: v});
+                    }, {});
+
+                    const url = "https://complete.tech/wp-json/iawp/search";
+                    const body = {
+                        referrer_url,
+                        utm_source: params.utm_source,
+                        utm_medium: params.utm_medium,
+                        utm_campaign: params.utm_campaign,
+                        utm_term: params.utm_term,
+                        utm_content: params.utm_content,
+                        gclid: params.gclid,
+                        ...{"payload":{"resource":"singular","singular_id":459,"page":1},"signature":"358810e199de0be1a34f351a36b09b97"}                    };
+
+                    sendRequest(url, body)
+                }
+                document.addEventListener('mousedown', function (event) {
+                                        if (navigator.webdriver || /bot|crawler|spider|crawling|semrushbot|chrome-lighthouse/i.test(navigator.userAgent)) {
+                        return;
+                    }
+                    
+                    const element = event.target.closest('a')
+
+                    if(!element) {
+                        return
+                    }
+
+                    const isPro = false
+                    if(!isPro) {
+                        return
+                    }
+
+                    // Don't track left clicks with this event. The click event is used for that.
+                    if(event.button === 0) {
+                        return
+                    }
+
+                    track(element)
+                })
+                document.addEventListener('click', function (event) {
+                                        if (navigator.webdriver || /bot|crawler|spider|crawling|semrushbot|chrome-lighthouse/i.test(navigator.userAgent)) {
+                        return;
+                    }
+                    
+                    const element = event.target.closest('a, button, input[type="submit"], input[type="button"]')
+
+                    if(!element) {
+                        return
+                    }
+
+                    const isPro = false
+                    if(!isPro) {
+                        return
+                    }
+
+                    track(element)
+                })
+                document.addEventListener('play', function (event) {
+                                        if (navigator.webdriver || /bot|crawler|spider|crawling|semrushbot|chrome-lighthouse/i.test(navigator.userAgent)) {
+                        return;
+                    }
+                    
+                    const element = event.target.closest('audio, video')
+
+                    if(!element) {
+                        return
+                    }
+
+                    const isPro = false
+                    if(!isPro) {
+                        return
+                    }
+
+                    track(element)
+                }, true)
+                document.addEventListener("DOMContentLoaded", function (e) {
+                    search();
+                });
+                document.addEventListener("iawpSearch", function (e) {
+                    search();
+                });
+            })();
+        </script>
+        
+<!-- Consent Management powered by Complianz | GDPR/CCPA Cookie Consent https://wordpress.org/plugins/complianz-gdpr -->
+<div id="cmplz-cookiebanner-container"><div class="cmplz-cookiebanner cmplz-hidden banner-1 cookie-preferences optin cmplz-bottom-right cmplz-categories-type-view-preferences" aria-modal="true" data-nosnippet="true" role="dialog" aria-live="polite" aria-labelledby="cmplz-header-1-optin" aria-describedby="cmplz-message-1-optin">
+	<div class="cmplz-header">
+		<div class="cmplz-logo"></div>
+		<div class="cmplz-title" id="cmplz-header-1-optin">Manage Consent</div>
+		<div class="cmplz-close" tabindex="0" role="button" aria-label="Close dialog">
+			<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+		</div>
+	</div>
+
+	<div class="cmplz-divider cmplz-divider-header"></div>
+	<div class="cmplz-body">
+		<div class="cmplz-message" id="cmplz-message-1-optin">To provide the best experiences, we use technologies like cookies to store and/or access device information. Consenting to these technologies will allow us to process data such as browsing behavior or unique IDs on this site. Not consenting or withdrawing consent, may adversely affect certain features and functions.</div>
+		<!-- categories start -->
+		<div class="cmplz-categories">
+			<details class="cmplz-category cmplz-functional" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Functional</span>
+							<span class='cmplz-always-active'>
+								<span class="cmplz-banner-checkbox">
+									<input type="checkbox"
+										   id="cmplz-functional-optin"
+										   data-category="cmplz_functional"
+										   class="cmplz-consent-checkbox cmplz-functional"
+										   size="40"
+										   value="1"/>
+									<label class="cmplz-label" for="cmplz-functional-optin"><span class="screen-reader-text">Functional</span></label>
+								</span>
+								Always active							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-functional">The technical storage or access is strictly necessary for the legitimate purpose of enabling the use of a specific service explicitly requested by the subscriber or user, or for the sole purpose of carrying out the transmission of a communication over an electronic communications network.</span>
+				</div>
+			</details>
+
+			<details class="cmplz-category cmplz-preferences" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Preferences</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-preferences-optin"
+									   data-category="cmplz_preferences"
+									   class="cmplz-consent-checkbox cmplz-preferences"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-preferences-optin"><span class="screen-reader-text">Preferences</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-preferences">The technical storage or access is necessary for the legitimate purpose of storing preferences that are not requested by the subscriber or user.</span>
+				</div>
+			</details>
+
+			<details class="cmplz-category cmplz-statistics" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Statistics</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-statistics-optin"
+									   data-category="cmplz_statistics"
+									   class="cmplz-consent-checkbox cmplz-statistics"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-statistics-optin"><span class="screen-reader-text">Statistics</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-statistics">The technical storage or access that is used exclusively for statistical purposes.</span>
+					<span class="cmplz-description-statistics-anonymous">The technical storage or access that is used exclusively for anonymous statistical purposes. Without a subpoena, voluntary compliance on the part of your Internet Service Provider, or additional records from a third party, information stored or retrieved for this purpose alone cannot usually be used to identify you.</span>
+				</div>
+			</details>
+			<details class="cmplz-category cmplz-marketing" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Marketing</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-marketing-optin"
+									   data-category="cmplz_marketing"
+									   class="cmplz-consent-checkbox cmplz-marketing"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-marketing-optin"><span class="screen-reader-text">Marketing</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-marketing">The technical storage or access is required to create user profiles to send advertising, or to track the user on a website or across several websites for similar marketing purposes.</span>
+				</div>
+			</details>
+		</div><!-- categories end -->
+			</div>
+
+	<div class="cmplz-links cmplz-information">
+		<ul>
+			<li><a class="cmplz-link cmplz-manage-options cookie-statement" href="#" data-relative_url="#cmplz-manage-consent-container">Manage options</a></li>
+			<li><a class="cmplz-link cmplz-manage-third-parties cookie-statement" href="#" data-relative_url="#cmplz-cookies-overview">Manage services</a></li>
+			<li><a class="cmplz-link cmplz-manage-vendors tcf cookie-statement" href="#" data-relative_url="#cmplz-tcf-wrapper">Manage {vendor_count} vendors</a></li>
+			<li><a class="cmplz-link cmplz-external cmplz-read-more-purposes tcf" target="_blank" rel="noopener noreferrer nofollow" href="https://cookiedatabase.org/tcf/purposes/" aria-label="Read more about TCF purposes on Cookie Database">Read more about these purposes</a></li>
+		</ul>
+			</div>
+
+	<div class="cmplz-divider cmplz-footer"></div>
+
+	<div class="cmplz-buttons">
+		<button class="cmplz-btn cmplz-accept">Accept</button>
+		<button class="cmplz-btn cmplz-deny">Deny</button>
+		<button class="cmplz-btn cmplz-view-preferences">View preferences</button>
+		<button class="cmplz-btn cmplz-save-preferences">Save preferences</button>
+		<a class="cmplz-btn cmplz-manage-options tcf cookie-statement" href="#" data-relative_url="#cmplz-manage-consent-container">View preferences</a>
+			</div>
+
+	
+	<div class="cmplz-documents cmplz-links">
+		<ul>
+			<li><a class="cmplz-link cookie-statement" href="#" data-relative_url="">{title}</a></li>
+			<li><a class="cmplz-link privacy-statement" href="#" data-relative_url="">{title}</a></li>
+			<li><a class="cmplz-link impressum" href="#" data-relative_url="">{title}</a></li>
+		</ul>
+			</div>
+</div>
+</div>
+					<div id="cmplz-manage-consent" data-nosnippet="true"><button class="cmplz-btn cmplz-hidden cmplz-manage-consent manage-consent-1">Manage consent</button>
+
+</div>
+<!-- Sign in with Google button added by Site Kit -->
+		<style>
+		.googlesitekit-sign-in-with-google__frontend-output-button{max-width:320px}
+		</style>
+		<script src="https://accounts.google.com/gsi/client"></script>
+<script>
+(()=>{async function handleCredentialResponse(response){try{const res=await fetch('https://complete.tech/magic/?action=googlesitekit_auth',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(response)});/* Preserve comment text in case of redirect after login on a page with a Sign in with Google button in the WordPress comments. */ const commentText=document.querySelector('#comment')?.value;const postId=document.querySelectorAll('.googlesitekit-sign-in-with-google__comments-form-button')?.[0]?.className?.match(/googlesitekit-sign-in-with-google__comments-form-button-postid-(\d+)/)?.[1];if(!! commentText?.length){sessionStorage.setItem(`siwg-comment-text-${postId}`,commentText);}location.reload();}catch(error){console.error(error);}}if(typeof google !=='undefined'){google.accounts.id.initialize({client_id:'987473057305-mrqv7jub09qop9a9hqukshbel82q4p5i.apps.googleusercontent.com',callback:handleCredentialResponse,library_name:'Site-Kit'});}const defaultButtonOptions={"theme":"outline","text":"signin_with","shape":"rectangular"};document.querySelectorAll('.googlesitekit-sign-in-with-google__frontend-output-button').forEach((siwgButtonDiv)=>{const buttonOptions={shape:siwgButtonDiv.getAttribute('data-googlesitekit-siwg-shape')|| defaultButtonOptions.shape,text:siwgButtonDiv.getAttribute('data-googlesitekit-siwg-text')|| defaultButtonOptions.text,theme:siwgButtonDiv.getAttribute('data-googlesitekit-siwg-theme')|| defaultButtonOptions.theme,};if(typeof google !=='undefined'){google.accounts.id.renderButton(siwgButtonDiv,buttonOptions);}});/* If there is a matching saved comment text in sessionStorage,restore it to the comment field and remove it from sessionStorage. */ const postId=document.body.className.match(/postid-(\d+)/)?.[1];const commentField=document.querySelector('#comment');const commentText=sessionStorage.getItem(`siwg-comment-text-${postId}`);if(commentText?.length && commentField && !! postId){commentField.value=commentText;sessionStorage.removeItem(`siwg-comment-text-${postId}`);}})();
+</script>
+
+<!-- End Sign in with Google button added by Site Kit -->
+<script id="bootstrap-js" src="https://complete.tech/wp-content/themes/spintech/assets/js/bootstrap.min.js?ver=1.0"></script>
+<script id="wow-min-js" src="https://complete.tech/wp-content/themes/spintech/assets/js/wow.min.js?ver=7.0"></script>
+<script id="spintech-custom-js-js" src="https://complete.tech/wp-content/themes/spintech/assets/js/custom.js?ver=7.0"></script>
+<script id="spintech-theme-js-js" src="https://complete.tech/wp-content/themes/spintech/assets/js/theme.min.js?ver=7.0"></script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="https://complete.tech/wp-includes/js/comment-reply.min.js?ver=7.0"></script>
+<script id="googlesitekit-consent-mode-js" src="https://complete.tech/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-consent-mode-da15714e8829855bb7ce.js"></script>
+
+<!-- Google Reader Revenue Manager snippet added by Site Kit -->
+<script id="google_swgjs-js-before">
+(self.SWG_BASIC=self.SWG_BASIC||[]).push(basicSubscriptions=>{basicSubscriptions.init({"type":"NewsArticle","isPartOfType":["Product"],"isPartOfProductId":"CAows5LgCw:openaccess","clientOptions":{"theme":"light","lang":"en"}});});
+//# sourceURL=google_swgjs-js-before
+</script>
+<script async data-wp-strategy="async" id="google_swgjs-js" src="https://news.google.com/swg/js/v1/swg-basic.js"></script>
+
+<!-- End Google Reader Revenue Manager snippet added by Site Kit -->
+<script data-wp-strategy="defer" defer id="spintech-child-theme-toggle-js" src="https://complete.tech/wp-content/themes/spintech-child/assets/theme-toggle.js?ver=0.1.3"></script>
+<script id="wp-consent-api-js-extra">
+var consent_api = {"consent_type":"optin","waitfor_consent_hook":"","cookie_expiration":"30","cookie_prefix":"wp_consent","services":[]};
+//# sourceURL=wp-consent-api-js-extra
+</script>
+<script id="wp-consent-api-js" src="https://complete.tech/wp-content/plugins/wp-consent-api/assets/js/wp-consent-api.min.js?ver=2.0.1"></script>
+<script id="cmplz-cookiebanner-js-extra">
+var complianz = {"prefix":"cmplz_","user_banner_id":"1","set_cookies":[],"block_ajax_content":"","banner_version":"20","version":"7.4.6","store_consent":"","do_not_track_enabled":"1","consenttype":"optin","region":"eu","geoip":"","dismiss_timeout":"","disable_cookiebanner":"","soft_cookiewall":"","dismiss_on_scroll":"","cookie_expiry":"365","url":"https://complete.tech/wp-json/complianz/v1/","locale":"lang=en&locale=en","set_cookies_on_root":"","cookie_domain":"","current_policy_id":"28","cookie_path":"/","categories":{"statistics":"statistics","marketing":"marketing"},"tcf_active":"","placeholdertext":"Click to accept {category} cookies and enable this content","css_file":"https://complete.tech/wp-content/uploads/complianz/css/banner-{banner_id}-{type}.css?v=20","page_links":{"eu":{"cookie-statement":{"title":"Cookie Policy ","url":"https://complete.tech/cookie-policy-eu/"},"privacy-statement":{"title":"Privacy Policy","url":"https://complete.tech/privacy-policy/"}}},"tm_categories":"1","forceEnableStats":"","preview":"","clean_cookies":"","aria_label":"Click to accept {category} cookies and enable this content"};
+//# sourceURL=cmplz-cookiebanner-js-extra
+</script>
+<script defer id="cmplz-cookiebanner-js" src="https://complete.tech/wp-content/plugins/complianz-gdpr/cookiebanner/js/complianz.min.js?ver=1777847545"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://complete.tech/wp-includes/js/wp-emoji-release.min.js?ver=7.0"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=https://complete.tech/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

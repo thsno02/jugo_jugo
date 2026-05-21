@@ -1,0 +1,26 @@
+{
+  "bytes": 69287,
+  "content_type": "text/html; charset=UTF-8",
+  "fetched_at": "2026-05-21T09:55:04.937848+00:00",
+  "final_url": "https://pypi.org/project/my-llm-wiki/",
+  "http_status": 200,
+  "ok": true,
+  "pypi_api_sha256": "6e19331c95fdf724fb9acf9170c4e9a3226bf8dfd0065ae0eb1f7ca7c97c9c14",
+  "pypi_api_status": 200,
+  "pypi_api_url": "https://pypi.org/pypi/my-llm-wiki/json",
+  "requested_url": "https://pypi.org/project/my-llm-wiki/",
+  "sha256": "a4e8afbcf02a8b9bb5b76c77e6a26fc3e2a9ebbaca10f7dcca0a584f5ff8d780",
+  "source": {
+    "id": "pypi-my-llm-wiki",
+    "package": "my-llm-wiki",
+    "priority": "p0",
+    "tags": [
+      "package",
+      "python"
+    ],
+    "title": "my-llm-wiki PyPI package",
+    "type": "pypi",
+    "url": "https://pypi.org/project/my-llm-wiki/"
+  },
+  "text_sha256": "7f877f9e001f5b8300ba0d75475576d8b5785ba6265a01b65c92d588b04d0639"
+}

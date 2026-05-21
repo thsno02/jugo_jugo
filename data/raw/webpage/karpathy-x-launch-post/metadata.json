@@ -1,0 +1,23 @@
+{
+  "bytes": 11825,
+  "content_type": "application/json",
+  "fetched_at": "2026-05-21T09:54:24.190216+00:00",
+  "final_url": "https://api.fxtwitter.com/karpathy/status/2040470801506541998",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://api.fxtwitter.com/karpathy/status/2040470801506541998",
+  "sha256": "9e90920c2651b3781bde871fba82ec9c7569fc35d847cc289d6074c1be5bb21f",
+  "source": {
+    "id": "karpathy-x-launch-post",
+    "priority": "p0",
+    "tags": [
+      "origin",
+      "x",
+      "karpathy"
+    ],
+    "title": "Karpathy X launch post API mirror",
+    "type": "webpage",
+    "url": "https://api.fxtwitter.com/karpathy/status/2040470801506541998"
+  },
+  "text_sha256": null
+}

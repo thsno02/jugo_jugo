@@ -1,0 +1,91 @@
+Hacker News Picks Up Karpathy's "LLM Wiki" Pattern for Persistent Knowledge Bases - Insights
+
+Skip to content
+
+Insights Home All Articles Series Daily Briefings
+Categories
+Bookmarks History
+
+EN KO JA
+
+Decaying
+
+Hacker News Picks Up Karpathy's "LLM Wiki" Pattern for Persistent Knowledge Bases
+
+Original: LLM Wiki – example of an "idea file" View original →
+
+Read in other languages: 한국어 日本語
+
+LLM Apr 6, 2026 By Insights AI (HN) 2 min read 45 views Source
+
+From query-time retrieval to a maintained knowledge layer
+
+Andrej Karpathy’s LLM Wiki , posted on April 4, 2026, starts from a simple complaint: most document workflows still look like RAG. You upload files, the model retrieves relevant chunks at query time, and then rebuilds the answer from scratch every time. At crawl time, the Hacker News thread around the gist had 274 points and 89 comments , with readers treating it less as a note-taking trick and more as an architectural pattern for agent workflows.
+
+The gist argues for a different intermediate layer. Instead of repeatedly retrieving from raw documents, an LLM should incrementally build and maintain a persistent wiki made of interlinked markdown pages. When a new source arrives, the agent should not merely index it. It should update topic summaries, revise entity pages, flag contradictions, add cross-links, and strengthen the running synthesis. In that model, the wiki becomes a compiled artifact that keeps getting better over time rather than a transient answer assembled on demand.
+
+The three layers and the operating loop
+
+Karpathy frames the system in three layers. The first is raw sources : immutable articles, papers, transcripts, images, or datasets that remain the ground truth. The second is the wiki , a directory of LLM-authored markdown pages containing summaries, concepts, entities, comparisons, and broader syntheses. The third is the schema , a rules document such as AGENTS.md or CLAUDE.md that tells the agent how the wiki should be structured and maintained.
+
+On top of that, he describes three core operations. Ingest means reading a new source, discussing it, writing a summary, updating the index, touching related pages, and appending to the log. Query means answering questions against the wiki itself, then optionally filing the resulting analysis back into the knowledge base as a new page. Lint means periodically checking for contradictions, stale claims, orphan pages, weak cross-references, or missing concepts. Two special files, index.md and log.md , help navigation by separating the content-oriented map of the wiki from the chronological record of how it evolved.
+
+Why the idea resonates
+
+The practical appeal is that it recasts the LLM as a maintenance engine rather than only a retrieval layer. Karpathy explicitly describes Obsidian as the IDE, the LLM as the programmer, and the wiki as the codebase. That analogy lands because the tedious part of knowledge management is not thinking. It is cross-linking pages, updating summaries, tracking contradictions, and keeping structure coherent across dozens or hundreds of files. Those are exactly the repetitive bookkeeping tasks that humans avoid and LLM agents can absorb.
+
+The gist stays intentionally abstract, which is part of why Hacker News responded to it. It is not pitching one fixed implementation. It is a pattern that can fit personal research, reading notes, due diligence, internal team wikis, or long-running hobby projects. The underlying bet is that once maintenance becomes cheap enough, a wiki can stop being a graveyard of abandoned notes and become a living interface between the user and their accumulated sources.
+
+Sources: Karpathy gist , Hacker News discussion
+
+👍 🔥 🤯 ❤️
+
+#llm-wiki #persistent-rag #knowledge-management #obsidian #agent-workflows
+
+Share: Long GN
+
+Related Articles
+
+LLM Hacker News Apr 28, 2026 2 min read
+
+HN likes EvanFlow for the parts it refuses to automate
+
+HN did not read EvanFlow as another shiny agent wrapper so much as a set of brakes for agentic coding. Checkpoints, integration contracts, and explicit no-auto-commit rules drew more attention than the TDD label itself.
+
+#claude-code #tdd #coding-agents
+22
+
+LLM Reddit 6d ago 1 min read
+
+TextGen Becomes a Native Desktop App: Open-Source LM Studio Alternative Evolves
+
+The popular text-generation-webui project, rebranded as TextGen, has relaunched as a no-install native desktop app for Windows, Linux, and macOS. Built on a minimal Electron integration, it positions itself as a fully open-source alternative to LM Studio.
+
+#textgen #local-llm #open-source
+8
+
+LLM 6d ago 1 min read
+
+Anthropic's Mythos AI Finds 17-Year-Old FreeBSD Exploit, Triggers U.S. Policy Reversal
+
+Anthropic's frontier model Mythos autonomously discovered a 17-year-old FreeBSD RCE vulnerability and ~300 Firefox bugs, prompting the Trump administration to reverse its anti-regulation stance and study mandatory pre-release AI evaluations.
+
+#anthropic #safety #cybersecurity
+8
+
+Comments (0)
+
+No comments yet. Be the first to comment!
+
+Leave a Comment
+
+Name *
+
+Email (optional)
+
+Comment *
+Post Comment
+
+© 2026 Insights. All rights reserved.
+
+About Newsletter Privacy Atom

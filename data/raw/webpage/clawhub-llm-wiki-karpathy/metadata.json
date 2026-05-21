@@ -1,0 +1,22 @@
+{
+  "bytes": 94326,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T09:55:04.217912+00:00",
+  "final_url": "https://clawhub.ai/plugins/llm-wiki-karpathy-plugin",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://clawhub.ai/plugins/llm-wiki-karpathy-plugin",
+  "sha256": "9dc07eb459e8308b851fab25495efdebccc9499c473e62d1acbdf804526c5ab1",
+  "source": {
+    "id": "clawhub-llm-wiki-karpathy",
+    "priority": "p1",
+    "tags": [
+      "openclaw",
+      "plugin"
+    ],
+    "title": "LLM Wiki Karpathy - OpenClaw plugin listing",
+    "type": "webpage",
+    "url": "https://clawhub.ai/plugins/llm-wiki-karpathy-plugin"
+  },
+  "text_sha256": "ebf14b32687034ef191479247eb4620890e3a53ca6c3c8794095f03a5c2c1d28"
+}

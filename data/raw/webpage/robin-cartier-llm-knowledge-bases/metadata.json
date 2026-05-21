@@ -1,0 +1,24 @@
+{
+  "bytes": 353214,
+  "content_type": "text/html; charset=UTF-8",
+  "fetched_at": "2026-05-21T10:01:07.159336+00:00",
+  "final_url": "https://robincartier.com/wiki/wiki-concepts/llm-knowledge-bases/",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://robincartier.com/wiki/wiki-concepts/llm-knowledge-bases/",
+  "sha256": "d589e897539f271ebd9b529a55e68c8d2fef6b3a8f69e77bf9cf619fe3d748a9",
+  "source": {
+    "id": "robin-cartier-llm-knowledge-bases",
+    "priority": "p0",
+    "tags": [
+      "wiki",
+      "concept"
+    ],
+    "title": "LLM Knowledge Bases (Karpathy pattern)",
+    "type": "webpage",
+    "url": "https://robincartier.com/wiki/wiki-concepts/llm-knowledge-bases/"
+  },
+  "text_sha256": "752d377d6ad0a3aa63e21f98cb39e9b8e21cf5db645fd449c590d39ce5ade4a4",
+  "transport": "requests",
+  "transport_warning": null
+}

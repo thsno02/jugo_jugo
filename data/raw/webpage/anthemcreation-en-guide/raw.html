@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- CSS Custom Properties for Tailwind -->
+    <style>
+        :root {
+            --color-primary: #c43a59;
+            --color-bg-dark: #000000;
+            --color-bg-card: #111111;
+            --color-text-mute: #a1a1aa;
+            --color-border-dark: #333333;
+        }
+    </style>
+
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="alternate" href="https://anthemcreation.com/en/artificial-intelligence/karpathy-llm-wiki-claude-obsidian/" hreflang="en" />
+<link rel="alternate" href="https://anthemcreation.com/intelligence-artificielle/llm-wiki-karpathy-base-connaissance-claude-obsidian/" hreflang="fr" />
+
+	<!-- This site is optimized with the Yoast SEO plugin v27.6 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>LLM wiki Karpathy: knowledge base with Claude and Obsidian</title>
+	<meta name="description" content="Discover Andrej Karpathy&#039;s LLM wiki: build a persistent knowledge base with Claude and Obsidian. Setup in 5 min, no vector DB." />
+	<link rel="canonical" href="https://anthemcreation.com/en/artificial-intelligence/karpathy-llm-wiki-claude-obsidian/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:locale:alternate" content="fr_FR" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="LLM wiki Karpathy: knowledge base with Claude and Obsidian" />
+	<meta property="og:description" content="Discover Andrej Karpathy&#039;s LLM wiki: build a persistent knowledge base with Claude and Obsidian. Setup in 5 min, no vector DB." />
+	<meta property="og:url" content="https://anthemcreation.com/en/artificial-intelligence/karpathy-llm-wiki-claude-obsidian/" />
+	<meta property="og:site_name" content="Anthem Création" />
+	<meta property="article:published_time" content="2026-04-12T07:30:04+00:00" />
+	<meta property="article:modified_time" content="2026-04-16T09:38:13+00:00" />
+	<meta property="og:image" content="https://anthemcreation.com/wp-content/uploads/2026/04/content-lab-6t1svj8qg5rmr0cxffkads77vg.webp" />
+	<meta property="og:image:width" content="1168" />
+	<meta property="og:image:height" content="880" />
+	<meta property="og:image:type" content="image/webp" />
+	<meta name="author" content="Nicolas" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@nicolas_langero" />
+	<meta name="twitter:site" content="@nicolas_langero" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Nicolas" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="9 minutes" />
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://anthemcreation.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fanthemcreation.com%2Fen%2Fartificial-intelligence%2Fkarpathy-llm-wiki-claude-obsidian%2F&#038;lang=en" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://anthemcreation.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fanthemcreation.com%2Fen%2Fartificial-intelligence%2Fkarpathy-llm-wiki-claude-obsidian%2F&#038;format=xml&#038;lang=en" />
+<style id='wp-img-auto-sizes-contain-inline-css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='wp-block-library-inline-css'>
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id='wp-block-heading-inline-css'>
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://anthemcreation.com/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id='wp-block-image-inline-css'>
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:#5a5a5a40;border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto #5a5a5a40;outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:#5a5a5a40;border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .close-button{align-items:center;cursor:pointer;display:flex;justify-content:center;min-height:40px;min-width:40px;padding:0;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .close-button:focus,.wp-lightbox-overlay .close-button:hover,.wp-lightbox-overlay .close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:9999999999}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=https://anthemcreation.com/wp-includes/blocks/image/style.min.css */
+</style>
+<style id='wp-block-list-inline-css'>
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://anthemcreation.com/wp-includes/blocks/list/style.min.css */
+</style>
+<style id='wp-block-paragraph-inline-css'>
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://anthemcreation.com/wp-includes/blocks/paragraph/style.min.css */
+</style>
+<style id='wp-block-quote-inline-css'>
+.wp-block-quote{box-sizing:border-box;overflow-wrap:break-word}.wp-block-quote.is-large:where(:not(.is-style-plain)),.wp-block-quote.is-style-large:where(:not(.is-style-plain)){margin-bottom:1em;padding:0 1em}.wp-block-quote.is-large:where(:not(.is-style-plain)) p,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) p{font-size:1.5em;font-style:italic;line-height:1.6}.wp-block-quote.is-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-large:where(:not(.is-style-plain)) footer,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) footer{font-size:1.125em;text-align:right}.wp-block-quote>cite{display:block}
+/*# sourceURL=https://anthemcreation.com/wp-includes/blocks/quote/style.min.css */
+</style>
+<style id='wp-block-table-inline-css'>
+.wp-block-table{overflow-x:auto}.wp-block-table table{border-collapse:collapse;width:100%}.wp-block-table thead{border-bottom:3px solid}.wp-block-table tfoot{border-top:3px solid}.wp-block-table td,.wp-block-table th{border:1px solid;padding:.5em}.wp-block-table .has-fixed-layout{table-layout:fixed;width:100%}.wp-block-table .has-fixed-layout td,.wp-block-table .has-fixed-layout th{word-break:break-word}.wp-block-table.aligncenter,.wp-block-table.alignleft,.wp-block-table.alignright{display:table;width:auto}.wp-block-table.aligncenter td,.wp-block-table.aligncenter th,.wp-block-table.alignleft td,.wp-block-table.alignleft th,.wp-block-table.alignright td,.wp-block-table.alignright th{word-break:break-word}.wp-block-table .has-subtle-light-gray-background-color{background-color:#f3f4f5}.wp-block-table .has-subtle-pale-green-background-color{background-color:#e9fbe5}.wp-block-table .has-subtle-pale-blue-background-color{background-color:#e7f5fe}.wp-block-table .has-subtle-pale-pink-background-color{background-color:#fcf0ef}.wp-block-table.is-style-stripes{background-color:initial;border-collapse:inherit;border-spacing:0}.wp-block-table.is-style-stripes tbody tr:nth-child(odd){background-color:#f0f0f0}.wp-block-table.is-style-stripes.has-subtle-light-gray-background-color tbody tr:nth-child(odd){background-color:#f3f4f5}.wp-block-table.is-style-stripes.has-subtle-pale-green-background-color tbody tr:nth-child(odd){background-color:#e9fbe5}.wp-block-table.is-style-stripes.has-subtle-pale-blue-background-color tbody tr:nth-child(odd){background-color:#e7f5fe}.wp-block-table.is-style-stripes.has-subtle-pale-pink-background-color tbody tr:nth-child(odd){background-color:#fcf0ef}.wp-block-table.is-style-stripes td,.wp-block-table.is-style-stripes th{border-color:#0000}.wp-block-table.is-style-stripes{border-bottom:1px solid #f0f0f0}.wp-block-table .has-border-color td,.wp-block-table .has-border-color th,.wp-block-table .has-border-color tr,.wp-block-table .has-border-color>*{border-color:inherit}.wp-block-table table[style*=border-top-color] tr:first-child,.wp-block-table table[style*=border-top-color] tr:first-child td,.wp-block-table table[style*=border-top-color] tr:first-child th,.wp-block-table table[style*=border-top-color]>*,.wp-block-table table[style*=border-top-color]>* td,.wp-block-table table[style*=border-top-color]>* th{border-top-color:inherit}.wp-block-table table[style*=border-top-color] tr:not(:first-child){border-top-color:initial}.wp-block-table table[style*=border-right-color] td:last-child,.wp-block-table table[style*=border-right-color] th,.wp-block-table table[style*=border-right-color] tr,.wp-block-table table[style*=border-right-color]>*{border-right-color:inherit}.wp-block-table table[style*=border-bottom-color] tr:last-child,.wp-block-table table[style*=border-bottom-color] tr:last-child td,.wp-block-table table[style*=border-bottom-color] tr:last-child th,.wp-block-table table[style*=border-bottom-color]>*,.wp-block-table table[style*=border-bottom-color]>* td,.wp-block-table table[style*=border-bottom-color]>* th{border-bottom-color:inherit}.wp-block-table table[style*=border-bottom-color] tr:not(:last-child){border-bottom-color:initial}.wp-block-table table[style*=border-left-color] td:first-child,.wp-block-table table[style*=border-left-color] th,.wp-block-table table[style*=border-left-color] tr,.wp-block-table table[style*=border-left-color]>*{border-left-color:inherit}.wp-block-table table[style*=border-style] td,.wp-block-table table[style*=border-style] th,.wp-block-table table[style*=border-style] tr,.wp-block-table table[style*=border-style]>*{border-style:inherit}.wp-block-table table[style*=border-width] td,.wp-block-table table[style*=border-width] th,.wp-block-table table[style*=border-width] tr,.wp-block-table table[style*=border-width]>*{border-style:inherit;border-width:inherit}
+/*# sourceURL=https://anthemcreation.com/wp-includes/blocks/table/style.min.css */
+</style>
+
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='cookie-notice-front-css' href='https://anthemcreation.com/wp-content/plugins/cookie-notice/css/front.min.css?ver=3.0.5' media='all' />
+<link rel='stylesheet' id='anthem-ai-chat-style-css' href='https://anthemcreation.com/wp-content/plugins/anthem-ai-chat/assets/css/chatbot-frontend.css?ver=1.5.0' media='all' />
+<style id='anthem-ai-chat-style-inline-css'>
+
+            :root {
+                --anthem-ai-primary-color: #c43959;
+                --anthem-ai-teaser-gradient-start: #c43959;
+                --anthem-ai-teaser-gradient-end: #c43959;
+            }
+        
+/*# sourceURL=anthem-ai-chat-style-inline-css */
+</style>
+<link rel='stylesheet' id='eztoc-css' href='https://anthemcreation.com/wp-content/plugins/easy-table-of-contents/assets/css/screen.min.css?ver=2.0.83' media='all' />
+<style id='eztoc-inline-css'>
+div#ez-toc-container .ez-toc-title {font-size: 100%;}div#ez-toc-container .ez-toc-title {font-weight: 300;}div#ez-toc-container ul li , div#ez-toc-container ul li a {font-size: 95%;}div#ez-toc-container ul li , div#ez-toc-container ul li a {font-weight: 300;}div#ez-toc-container nav ul ul li {font-size: 90%;}div#ez-toc-container {background: #111111;border: 1px solid #111111;width: 100%;}div#ez-toc-container p.ez-toc-title , #ez-toc-container .ez_toc_custom_title_icon , #ez-toc-container .ez_toc_custom_toc_icon {color: #ffffff;}div#ez-toc-container ul.ez-toc-list a {color: #fcfcfc;}div#ez-toc-container ul.ez-toc-list a:hover {color: #ffffff;}div#ez-toc-container ul.ez-toc-list a:visited {color: #ffffff;}.ez-toc-counter nav ul li a::before {color: ;}.ez-toc-box-title {font-weight: bold; margin-bottom: 10px; text-align: center; text-transform: uppercase; letter-spacing: 1px; color: #666; padding-bottom: 5px;position:absolute;top:-4%;left:5%;background-color: inherit;transition: top 0.3s ease;}.ez-toc-box-title.toc-closed {top:-25%;}ul.ez-toc-list a.ez-toc-link { padding: 0 0 5px 0; }
+.ez-toc-container-direction {direction: ltr;}.ez-toc-counter ul {direction: ltr;counter-reset: item ;}.ez-toc-counter nav ul li a::before {content: counter(item, square) '  ';margin-right: .2em; counter-increment: item;flex-grow: 0;flex-shrink: 0;float: left; }.ez-toc-widget-direction {direction: ltr;}.ez-toc-widget-container ul {direction: ltr;counter-reset: item ;}.ez-toc-widget-container nav ul li a::before {content: counter(item, square) '  ';margin-right: .2em; counter-increment: item;flex-grow: 0;flex-shrink: 0;float: left; }
+/*# sourceURL=eztoc-inline-css */
+</style>
+<link rel='stylesheet' id='tailwindcss-css' href='https://anthemcreation.com/wp-content/themes/anthem-theme/dist/tailwind.css?ver=1773866482' media='all' />
+<link rel='stylesheet' id='google-fonts-css' href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&#038;display=swap' media='all' />
+<link rel='stylesheet' id='anthem-style-css' href='https://anthemcreation.com/wp-content/themes/anthem-theme/style.css?ver=1773833361' media='all' />
+<link rel='stylesheet' id='swiper-css' href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?ver=11.0.0' media='all' />
+<link rel='stylesheet' id='lepopup-style-css' href='https://anthemcreation.com/wp-content/plugins/halfdata-green-popups/css/style.css?ver=7.56' media='all' />
+<link rel='stylesheet' id='airdatepicker-css' href='https://anthemcreation.com/wp-content/plugins/halfdata-green-popups/css/airdatepicker.css?ver=7.56' media='all' />
+<script id="cookie-notice-front-js-before">
+var cnArgs = {"ajaxUrl":"https:\/\/anthemcreation.com\/wp-admin\/admin-ajax.php","nonce":"3a1f038e81","hideEffect":"fade","position":"bottom","onScroll":true,"onScrollOffset":100,"onClick":true,"cookieName":"cookie_notice_accepted","cookieTime":2592000,"cookieTimeRejected":2592000,"globalCookie":false,"redirection":false,"cache":true,"revokeCookies":false,"revokeCookiesOpt":"automatic"};
+
+//# sourceURL=cookie-notice-front-js-before
+</script>
+<script src="https://anthemcreation.com/wp-content/plugins/cookie-notice/js/front.min.js?ver=3.0.5" id="cookie-notice-front-js"></script>
+<script src="https://anthemcreation.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script src="https://anthemcreation.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+<!-- Google Analytics snippet added by Site Kit -->
+<script src="https://www.googletagmanager.com/gtag/js?id=GT-WB5QQW9" id="google_gtagjs-js" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["anthemcreation.com"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-WB5QQW9");
+//# sourceURL=google_gtagjs-js-after
+</script>
+<link rel="https://api.w.org/" href="https://anthemcreation.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://anthemcreation.com/wp-json/wp/v2/posts/12941" />
+<!-- Schema & Structured Data For WP v1.60 - -->
+<script type="application/ld+json" class="saswp-schema-markup-output">
+[{"@context":"https:\/\/schema.org\/","@graph":[{"@type":"Organization","@id":"https:\/\/anthemcreation.com#Organization","name":"Anthem Cr\u00e9ation","url":"https:\/\/anthemcreation.com","sameAs":["https:\/\/www.linkedin.com\/in\/nicolaslangero\/","https:\/\/x.com\/nicolas_langero"],"legalName":"Nicolas Langero","logo":{"@type":"ImageObject","url":"https:\/\/anthemcreation.com\/wp-content\/uploads\/2017\/11\/logo-anthem-creation.png","width":"240","height":"49"},"contactPoint":{"@type":"ContactPoint","contactType":"general","telephone":"+33 777 058 658","url":"https:\/\/anthemcreation.com\/contact"}},{"@type":"WebSite","@id":"https:\/\/anthemcreation.com\/en\/home\/#website","headline":"Anthem Cr\u00e9ation","name":"Anthem Cr\u00e9ation","url":"https:\/\/anthemcreation.com\/en\/home\/","potentialAction":{"@type":"SearchAction","target":"https:\/\/anthemcreation.com\/en\/home\/?s={search_term_string}","query-input":"required name=search_term_string"},"publisher":{"@id":"https:\/\/anthemcreation.com#Organization"}},{"@context":"https:\/\/schema.org\/","@type":"WebPage","@id":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/#webpage","name":"LLM wiki Karpathy: knowledge base with Claude and Obsidian","url":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/","lastReviewed":"2026-04-16T10:38:13+01:00","dateCreated":"2026-04-12T08:30:04+01:00","inLanguage":"en-US","description":"Discover Andrej Karpathy's LLM wiki: build a persistent knowledge base with Claude and Obsidian. Setup in 5 min, no vector DB.","reviewedBy":{"@type":"Organization","name":"Anthem Cr\u00e9ation","url":"https:\/\/anthemcreation.com","logo":{"@type":"ImageObject","url":"https:\/\/anthemcreation.com\/wp-content\/uploads\/2017\/11\/logo-anthem-creation.png","width":240,"height":49}},"publisher":{"@type":"Organization","name":"Anthem Cr\u00e9ation","url":"https:\/\/anthemcreation.com","logo":{"@type":"ImageObject","url":"https:\/\/anthemcreation.com\/wp-content\/uploads\/2017\/11\/logo-anthem-creation.png","width":240,"height":49}},"primaryImageOfPage":{"@id":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/#primaryimage"},"mainContentOfPage":[[{"@context":"https:\/\/schema.org\/","@type":"SiteNavigationElement","@id":"https:\/\/anthemcreation.com\/#solutions","name":"Solutions","url":"https:\/\/anthemcreation.com\/solutions\/"},{"@context":"https:\/\/schema.org\/","@type":"SiteNavigationElement","@id":"https:\/\/anthemcreation.com\/#a-propos","name":"\u00c0 propos","url":"https:\/\/anthemcreation.com\/a-propos\/"},{"@context":"https:\/\/schema.org\/","@type":"SiteNavigationElement","@id":"https:\/\/anthemcreation.com\/#blog-ia","name":"Blog IA","url":"https:\/\/anthemcreation.com\/blog-2\/"},{"@context":"https:\/\/schema.org\/","@type":"SiteNavigationElement","@id":"https:\/\/anthemcreation.com\/en\/home\/#contact","name":"Contact","url":"https:\/\/anthemcreation.com\/contact\/"}]],"isPartOf":{"@id":"https:\/\/anthemcreation.com\/en\/home\/#website"},"breadcrumb":{"@id":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/anthemcreation.com","name":"Anthem Cr\u00e9ation"}},{"@type":"ListItem","position":2,"item":{"@id":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/","name":"Artificial Intelligence"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/","name":"LLM wiki Karpathy: knowledge base with Claude and Obsidian"}}]},{"@type":"Article","@id":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/#Article","url":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/","inLanguage":"en-US","mainEntityOfPage":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/#webpage","headline":"LLM wiki Karpathy: knowledge base with Claude and Obsidian","description":"Discover Andrej Karpathy's LLM wiki: build a persistent knowledge base with Claude and Obsidian. Setup in 5 min, no vector DB.","articleBody":"In April 2026, Andrej Karpathy published a GitHub Gist that quickly spread through AI communities: a blueprint for building an LLM wiki, a persistent knowledge base managed by a large language model. No vector database, no complex RAG. Just interconnected markdown files, an LLM like Claude, and a visualization tool like Obsidian. Karpathy himself uses this system for his personal AI research, with wikis of over 100 articles and 400,000 words. This guide explains how to replicate this workflow at home.Key takeaways:LLM wiki replaces traditional RAG with a persistent markdown base that grows with each added document.Karpathy personally manages wikis of over 100 articles without any vector database or heavy indexing.Initial setup takes 5 minutes: copy the Gist into Claude or Codex, open Obsidian, start ingesting your sources.The key difference with RAG: the wiki is a compiled artifact that compounds, not a re-derivation with each query.The cost is almost zero for personal use, with open-source LLMs for no recurring cost.What Karpathy's LLM wiki isAndrej Karpathy, co-founder of OpenAI and former AI director at Tesla, formalized the concept of LLM wiki in April 2026 via a GitHub Gist. The central idea is simple: instead of querying raw documents with each request, an LLM builds and maintains a structured wiki that serves as a permanent intermediary between your sources and your questions.A lire aussi : Claude Code ajoute les routines r\u00e9p\u00e9tables : productivit\u00e9 dev multipli\u00e9eA lire aussi : Comment j&#039;ai automatis\u00e9 mes revues de code quotidiennes avec les routines Claude CodeHe describes the following analogy: raw sources are like source code, and the LLM wiki is the compiled executable. You don't recompile every time you run a program. The wiki remains canonical, alive, and improves with each new source ingested.The system relies on three distinct layers:Immutable raw sources: scientific articles, papers, PDF files. These documents are never modified.LLM-managed wiki: a collection of markdown files created and updated automatically by the model, with entity pages, topic summaries, comparisons, and syntheses.Instruction file: a file like agents.md that defines the rules for structure, linking, and LLM behavior in the wiki.Unlike a standard RAG (Retrieval Augmented Generation) system that retrieves unstructured chunks with each request, the LLM wiki compiles knowledge in advance. The result: deeper answers, possible multi-hop reasoning, and a base that compounds with each addition. To understand how Karpathy extends this logic towards self-improving agents, read our analysis of Karpathy's Autoresearch and its business applications.How the workflow operates in practiceThe workflow is divided into two main operations: ingestion and query.Ingestion phaseWhen you add a new document, the LLM reads the source, extracts the key ideas, and then integrates them into the existing wiki. In practice, it can:Create a new entity page for a concept that didn't exist yet (e.g., a \"Phi-2\" page detailing its 2.7 billion parameters trained on 1.4 trillion tokens)Update an existing page with new informationIdentify and synthesize contradictions between sourcesCreate automatic backlinks between related pagesThe raw sources remain immutable. The LLM writes to the wiki, the user reads the wiki. The separation of roles is strict.Query phaseOnce the wiki is built, you query the canonical wiki directly instead of the raw sources. The model can reason on accumulated and structured knowledge, allowing for analyses that pure RAG on a massive corpus cannot achieve.Tip: Create an agents.md file from the start with precise rules: how to name pages, when to create a new entity vs. update an existing one, how to format contradictions. This instruction file is the main lever to keep a coherent wiki over time.Setting up your LLM wiki with Claude and ObsidianThe initial setup takes about 5 minutes and requires no advanced development skills. Here's how to proceed:Copy the original Gist from Andrej Karpathy on GitHub and paste it into your LLM agent (Claude, OpenAI Codex, or Grok all work).Create an empty directory on your machine. This folder will be your wiki.Open this folder in Obsidian as a new vault. Obsidian natively handles wiki-style links between markdown files and displays the connection graph.Add your first raw sources in a separate subfolder (e.g., \/sources\/). Don't mix them with the wiki files.Instruct the LLM to ingest the first source by creating the initial pages: a general index, entity pages for key concepts, interconnected summaries.Obsidian is not mandatory, but it is recommended by Karpathy for its graphical display of links. Viable alternatives exist: VS Code with a Markdown Preview Enhanced extension, or Logseq which also handles bidirectional backlinks. The essential thing is that your files are in flat markdown, compatible with any editor.Real costs of the systemConfigurationSetup costMaintenance costObsidian + open-source LLM (Llama 3)Free0 \u20ac\/monthObsidian + Claude APIFree~0.01 to 0.10 \u20ac per ingested docWiki of 100 documents (Claude)Less than 10 \u20acLow (incremental ingestions)LLM wiki vs. RAG: what the numbers don't sayRAG remains relevant for massive corpora and ad-hoc queries on unstructured bases. The LLM wiki, however, excels in a different realm: personal knowledge at an individual scale, from 10 to a few hundred documents.The fundamental difference is not speed, it's the depth of reasoning. A RAG system retrieves relevant passages and generates a response. An LLM wiki responds from already synthesized knowledge, with links between concepts, resolved contradictions, and pre-constructed syntheses. Multi-hop reasoning (linking three distinct concepts to answer a complex question) becomes natural.Karpathy explicitly positions the LLM wiki as a personal alternative to vector search. For wikis of 100 articles, structured markdown is more than sufficient. A vector database becomes useful only beyond a certain scale, where semantic search over thousands of chunks becomes necessary.This logic of compiling knowledge resonates with what Yann LeCun is doing in a different direction. Our article on AMI Labs and LeCun's world models explores why some researchers think of going even further than LLMs.Warning: The LLM wiki relies entirely on the model's quality to manage contradictions between sources. A weak model can propagate errors without flagging them. Plan for periodic human review of key pages, especially in the first weeks. The quality of your agents.md directly determines the base's reliability.Extensions and evolutions of the conceptKarpathy's original Gist is designed as a collaborative blueprint, not a finished product. Since its publication in April 2026, the community has already produced notable extensions.LLM Wiki v2, published on GitHub Gist by rohitg00, extends the concept with agentmemory patterns: a persistent memory engine designed for AI coding agents. This version incorporates lessons on scaling and long-term consistency, making the wiki more suitable for autonomous agents that continuously feed it.On Karpathy's side, the LLM wiki fits into a broader vision of AI as infrastructure. His Eureka Labs project, founded in July 2024, pushes AI education with the LLM101n course. The LLM wiki is the practical tool that complements this effort: learning about LLMs, then building your own knowledge base with them.The most likely evolution paths include:RAG-vector hybridization for team or enterprise-scale deploymentsNative integration into autonomous agents that maintain the wiki without human interventionOptimized local LLMs (like Llama) making the system zero-cost and fully privateCommunities influencing LLM responses also play a role in spreading these ideas. Our article on Reddit as an AI SEO weapon sheds light on how technical ideas like the LLM wiki propagate into model training corpora.ConclusionAndrej Karpathy's LLM wiki concept is one of the most practical ideas to come out of the AI community in 2026. It requires no advanced skills, no expensive infrastructure, and no lengthy setup. A Gist copied into Claude, a folder opened in Obsidian, and your first raw sources are enough to get started in minutes.What makes this system powerful is its composite nature: each added document enriches a base that grows with you. At 10 documents, it's useful. At 100 documents, like in Karpathy's personal wikis, it's a true augmented memory that enables reasoning that neither raw RAG nor human memory alone can achieve.Start small. Choose a topic you are actively studying, add your first 5 sources, and let the LLM build the initial pages. The system's value reveals itself in accumulation, not in the initial setup. To explore more of Karpathy's tools, check out the official Autoresearch presentation on Anthem Creation.FAQWhat exactly is an LLM wiki?An LLM wiki is a knowledge base composed of structured and interconnected markdown files, built and maintained by a large language model. Unlike RAG, which queries raw documents with each request, the LLM wiki pre-compiles sources into a persistent base with entity pages, summaries, and automatic backlinks. Andrej Karpathy formalized this concept in April 2026 in a GitHub Gist, based on his own research wikis exceeding 100 articles.Do you need development skills to create an LLM wiki?No. The basic setup only requires copying Karpathy's Gist into an LLM agent like Claude, creating a local folder, and opening this folder in Obsidian. No code to write, no server configuration. Tutorials available since April 2026 show how to start a functional wiki in under 5 minutes. The only real effort is writing a good agents.md file to structure the LLM's behavior.What is the difference between LLM wiki and RAG?RAG retrieves raw passages from documents with each request and generates a response in real-time. The LLM wiki first compiles sources into a structured base, then responds from this pre-built base. Reasoning becomes deeper because the knowledge is already synthesized, linked, and coherent. Karpathy uses the source code\/executable analogy: RAG recompiles each time, the LLM wiki runs the executable directly.Is Obsidian essential for using an LLM wiki?No. Obsidian is recommended by Karpathy for its graphical visualization of links between markdown pages, but the core system works with any flat file editor. VS Code with a Markdown extension, Logseq, or even a simple text editor are sufficient. What matters is that your files remain in standard markdown so the LLM can read and update them freely.What are the limitations of the LLM wiki?The system excels on a personal scale, typically from 10 to a few hundred documents. Beyond that, managing interlinks can become costly in tokens, and a vector search becomes more suitable. The quality directly depends on the LLM used for ingestions: a weak model can propagate errors. Finally, no official code implementation was published by Karpathy at launch, requiring an initial manual setup based on the Gist.","datePublished":"2026-04-12T08:30:04+01:00","dateModified":"2026-04-16T10:38:13+01:00","author":{"@type":"Person","name":"Nicolas","url":"https:\/\/anthemcreation.com\/en\/author\/nicolas\/","sameAs":["nicolas_langero"],"image":{"@type":"ImageObject","url":"https:\/\/secure.gravatar.com\/avatar\/dd90bda74c071e4cf8294e35ea6fac50688961c82f741f2285c4bcac57fc3b60?s=96&d=mm&r=g","height":96,"width":96}},"editor":{"@type":"Person","name":"Nicolas","url":"https:\/\/anthemcreation.com\/en\/author\/nicolas\/","sameAs":["nicolas_langero"],"image":{"@type":"ImageObject","url":"https:\/\/secure.gravatar.com\/avatar\/dd90bda74c071e4cf8294e35ea6fac50688961c82f741f2285c4bcac57fc3b60?s=96&d=mm&r=g","height":96,"width":96}},"publisher":{"@id":"https:\/\/anthemcreation.com#Organization"},"image":[{"@type":"ImageObject","@id":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/#primaryimage","url":"https:\/\/anthemcreation.com\/wp-content\/uploads\/2026\/04\/content-lab-6t1svj8qg5rmr0cxffkads77vg-1200x904.webp","width":"1200","height":"904","caption":"organized knowledge clusters, editorial concept art style, warm lamplight atmosphere, top-down perspective with dramatic\u2026"},{"@type":"ImageObject","url":"https:\/\/anthemcreation.com\/wp-content\/uploads\/2026\/04\/content-lab-6t1svj8qg5rmr0cxffkads77vg-1200x900.webp","width":"1200","height":"900","caption":"organized knowledge clusters, editorial concept art style, warm lamplight atmosphere, top-down perspective with dramatic\u2026"},{"@type":"ImageObject","url":"https:\/\/anthemcreation.com\/wp-content\/uploads\/2026\/04\/content-lab-6t1svj8qg5rmr0cxffkads77vg-1200x675.webp","width":"1200","height":"675","caption":"organized knowledge clusters, editorial concept art style, warm lamplight atmosphere, top-down perspective with dramatic\u2026"},{"@type":"ImageObject","url":"https:\/\/anthemcreation.com\/wp-content\/uploads\/2026\/04\/content-lab-6t1svj8qg5rmr0cxffkads77vg-904x904.webp","width":"904","height":"904","caption":"organized knowledge clusters, editorial concept art style, warm lamplight atmosphere, top-down perspective with dramatic\u2026"},{"@type":"ImageObject","url":"https:\/\/anthemcreation.com\/wp-content\/uploads\/2026\/04\/content-lab-trs18r7gj9rmt0cxfff8t6wd54-1024x796.webp","width":1024,"height":796,"caption":"Crystalline knowledge graph architecture rising in layered tiers, where abstract document nodes at the base feed upward \u2026"},{"@type":"ImageObject","url":"https:\/\/anthemcreation.com\/wp-content\/uploads\/2026\/04\/content-lab-862dstgmdhrmw0cxfffsca0tnr-1024x796.webp","width":1024,"height":796,"caption":"Luminous knowledge tree with crystalline branching pathways radiating outward from a dense central node cluster, each br\u2026"}],"isPartOf":{"@id":"https:\/\/anthemcreation.com\/en\/artificial-intelligence\/karpathy-llm-wiki-claude-obsidian\/#webpage"}}]}]
+</script>
+
+
+		<script>var lepopup_customjs_handlers={};var lepopup_cookie_value="1752227425";var lepopup_events_data={};var lepopup_content_id="12941";var lepopup_icl_language="en";</script><script>function lepopup_add_event(_event,_data){if(typeof _lepopup_add_event == typeof undefined){jQuery(document).ready(function(){_lepopup_add_event(_event,_data);});}else{_lepopup_add_event(_event,_data);}}</script><link rel="icon" href="https://anthemcreation.com/wp-content/uploads/2017/10/favico-1.png" sizes="32x32" />
+<link rel="icon" href="https://anthemcreation.com/wp-content/uploads/2017/10/favico-1.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://anthemcreation.com/wp-content/uploads/2017/10/favico-1.png" />
+<meta name="msapplication-TileImage" content="https://anthemcreation.com/wp-content/uploads/2017/10/favico-1.png" />
+		<style id="wp-custom-css">
+			.cl-takeaway{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-left: 4px solid var(--color-primary, #d4455f);
+    border-radius: 0 8px 8px 0;
+    padding: 24px 28px;
+    margin: 32px 0;
+    color: #b4b4bf;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}		</style>
+		<link rel='stylesheet' id='mailpoet_public-css' href='https://anthemcreation.com/wp-content/plugins/mailpoet/assets/dist/css/mailpoet-public.7a253304.css?ver=6.9.4' media='all' />
+<link rel='stylesheet' id='mailpoet_custom_fonts_0-css' href='https://fonts.googleapis.com/css?family=Abril+FatFace%3A400%2C400i%2C700%2C700i%7CAlegreya%3A400%2C400i%2C700%2C700i%7CAlegreya+Sans%3A400%2C400i%2C700%2C700i%7CAmatic+SC%3A400%2C400i%2C700%2C700i%7CAnonymous+Pro%3A400%2C400i%2C700%2C700i%7CArchitects+Daughter%3A400%2C400i%2C700%2C700i%7CArchivo%3A400%2C400i%2C700%2C700i%7CArchivo+Narrow%3A400%2C400i%2C700%2C700i%7CAsap%3A400%2C400i%2C700%2C700i%7CBarlow%3A400%2C400i%2C700%2C700i%7CBioRhyme%3A400%2C400i%2C700%2C700i%7CBonbon%3A400%2C400i%2C700%2C700i%7CCabin%3A400%2C400i%2C700%2C700i%7CCairo%3A400%2C400i%2C700%2C700i%7CCardo%3A400%2C400i%2C700%2C700i%7CChivo%3A400%2C400i%2C700%2C700i%7CConcert+One%3A400%2C400i%2C700%2C700i%7CCormorant%3A400%2C400i%2C700%2C700i%7CCrimson+Text%3A400%2C400i%2C700%2C700i%7CEczar%3A400%2C400i%2C700%2C700i%7CExo+2%3A400%2C400i%2C700%2C700i%7CFira+Sans%3A400%2C400i%2C700%2C700i%7CFjalla+One%3A400%2C400i%2C700%2C700i%7CFrank+Ruhl+Libre%3A400%2C400i%2C700%2C700i%7CGreat+Vibes%3A400%2C400i%2C700%2C700i&#038;ver=6.9.4' media='all' />
+<link rel='stylesheet' id='mailpoet_custom_fonts_1-css' href='https://fonts.googleapis.com/css?family=Heebo%3A400%2C400i%2C700%2C700i%7CIBM+Plex%3A400%2C400i%2C700%2C700i%7CInconsolata%3A400%2C400i%2C700%2C700i%7CIndie+Flower%3A400%2C400i%2C700%2C700i%7CInknut+Antiqua%3A400%2C400i%2C700%2C700i%7CInter%3A400%2C400i%2C700%2C700i%7CKarla%3A400%2C400i%2C700%2C700i%7CLibre+Baskerville%3A400%2C400i%2C700%2C700i%7CLibre+Franklin%3A400%2C400i%2C700%2C700i%7CMontserrat%3A400%2C400i%2C700%2C700i%7CNeuton%3A400%2C400i%2C700%2C700i%7CNotable%3A400%2C400i%2C700%2C700i%7CNothing+You+Could+Do%3A400%2C400i%2C700%2C700i%7CNoto+Sans%3A400%2C400i%2C700%2C700i%7CNunito%3A400%2C400i%2C700%2C700i%7COld+Standard+TT%3A400%2C400i%2C700%2C700i%7COxygen%3A400%2C400i%2C700%2C700i%7CPacifico%3A400%2C400i%2C700%2C700i%7CPoppins%3A400%2C400i%2C700%2C700i%7CProza+Libre%3A400%2C400i%2C700%2C700i%7CPT+Sans%3A400%2C400i%2C700%2C700i%7CPT+Serif%3A400%2C400i%2C700%2C700i%7CRakkas%3A400%2C400i%2C700%2C700i%7CReenie+Beanie%3A400%2C400i%2C700%2C700i%7CRoboto+Slab%3A400%2C400i%2C700%2C700i&#038;ver=6.9.4' media='all' />
+<link rel='stylesheet' id='mailpoet_custom_fonts_2-css' href='https://fonts.googleapis.com/css?family=Ropa+Sans%3A400%2C400i%2C700%2C700i%7CRubik%3A400%2C400i%2C700%2C700i%7CShadows+Into+Light%3A400%2C400i%2C700%2C700i%7CSpace+Mono%3A400%2C400i%2C700%2C700i%7CSpectral%3A400%2C400i%2C700%2C700i%7CSue+Ellen+Francisco%3A400%2C400i%2C700%2C700i%7CTitillium+Web%3A400%2C400i%2C700%2C700i%7CUbuntu%3A400%2C400i%2C700%2C700i%7CVarela%3A400%2C400i%2C700%2C700i%7CVollkorn%3A400%2C400i%2C700%2C700i%7CWork+Sans%3A400%2C400i%2C700%2C700i%7CYatra+One%3A400%2C400i%2C700%2C700i&#038;ver=6.9.4' media='all' />
+
+</head>
+
+<body class="wp-singular post-template-default single single-post postid-12941 single-format-standard wp-embed-responsive wp-theme-anthem-theme bg-black text-white min-h-screen cookies-not-set page-karpathy-llm-wiki-claude-obsidian">
+    
+    <a href="#main-content"
+       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-primary focus:text-white focus:px-6 focus:py-3 focus:rounded-full focus:font-bold focus:shadow-lg">
+        Aller au contenu principal
+    </a>
+
+    <header
+        class="fixed inset-x-0 top-0 z-50 transition-all duration-300 bg-black/70 md:bg-black/80 backdrop-blur-xl border-b border-white/10 md:border-white/[0.15]">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <!-- Logo -->
+            <div class="flex lg:flex-1">
+                <a href="https://anthemcreation.com/en/home/" class="-m-1.5 p-1.5 flex items-center gap-2">
+                                            <div class="relative h-12 w-auto">
+                            <img src="https://anthemcreation.com/wp-content/themes/anthem-theme/assets/images/logo.svg"
+                                alt="Anthem Création" class="h-full w-auto object-contain">
+                        </div>
+                                    </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex lg:hidden">
+                <button type="button"
+                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white hover:text-primary transition-colors"
+                    id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="sr-only">Ouvrir le menu</span>
+                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex lg:gap-x-12">
+                <a href="https://anthemcreation.com/en/solutions-2/" class="text-sm font-semibold leading-6 text-white hover:text-primary tracking-wide uppercase transition-colors">Solutions</a></li>
+<a href="https://anthemcreation.com/en/about/" class="text-sm font-semibold leading-6 text-white hover:text-primary tracking-wide uppercase transition-colors">About</a></li>
+<a href="https://anthemcreation.com/en/blog/" class="text-sm font-semibold leading-6 text-white hover:text-primary tracking-wide uppercase transition-colors">Blog IA</a></li>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                                <a href="https://anthemcreation.com/contact"
+                    class="rounded-full border-2 border-white/40 px-6 py-2.5 text-sm font-bold text-white hover:bg-primary hover:border-primary transition-all">
+                    Contact us                </a>
+
+                <!-- Language Switcher -->
+                                            <a href="https://anthemcreation.com/intelligence-artificielle/llm-wiki-karpathy-base-connaissance-claude-obsidian/"
+                                class="ml-4 flex h-11 w-11 items-center justify-center rounded-full border-2 border-white/40 text-white hover:bg-primary hover:border-primary transition-all"
+                                title="Français"
+                                aria-label="Français">
+                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg>                            </a>
+                                        </div>
+        </nav>
+
+        <!-- Mobile Menu (Full Screen Overlay) -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-[100] bg-black opacity-0 pointer-events-none transition-all duration-500 lg:hidden flex flex-col w-full overflow-hidden"
+            style="height: 100vh; height: 100dvh;">
+            <!-- Header inside Menu -->
+            <div class="relative flex items-center justify-between p-6 lg:px-8 shrink-0">
+                <div class="flex">
+                    <a href="https://anthemcreation.com/en/home/" class="flex items-center gap-2">
+                                                    <img src="https://anthemcreation.com/wp-content/themes/anthem-theme/assets/images/logo.svg"
+                                alt="Anthem Création" class="h-8 w-auto brightness-0 invert">
+                                            </a>
+                </div>
+                <button type="button" class="p-2 -mr-2 text-white hover:text-primary transition-colors"
+                    id="mobile-menu-close">
+                    <span class="sr-only">Fermer le menu</span>
+                    <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Links Container -->
+            <div class="relative flex-grow flex flex-col items-center justify-center px-6">
+                <nav class="w-full flex flex-col items-center">
+                    <a href="https://anthemcreation.com/en/solutions-2/" class="block text-4xl sm:text-5xl font-extrabold text-white hover:text-primary transition-all duration-300 text-center py-2">Solutions</a></li>
+<a href="https://anthemcreation.com/en/about/" class="block text-4xl sm:text-5xl font-extrabold text-white hover:text-primary transition-all duration-300 text-center py-2">About</a></li>
+<a href="https://anthemcreation.com/en/blog/" class="block text-4xl sm:text-5xl font-extrabold text-white hover:text-primary transition-all duration-300 text-center py-2">Blog IA</a></li>
+                </nav>
+            </div>
+
+            <!-- Footer Container -->
+            <div class="relative p-8 pb-12 flex flex-col items-center gap-8 shrink-0">
+                <!-- CTA -->
+                <a href="https://anthemcreation.com/contact"
+                    class="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-white transition-all duration-300">
+                    <span
+                        class="absolute inset-0 rounded-full bg-primary shadow-[0_0_20px_rgba(196,58,89,0.4)] transition-all group-hover:shadow-[0_0_35px_rgba(196,58,89,0.6)] group-hover:scale-105"></span>
+                    <span
+                        class="relative uppercase tracking-widest text-sm">Request an Audit</span>
+                </a>
+
+                <!-- Mobile Language Switcher -->
+                                            <a href="https://anthemcreation.com/intelligence-artificielle/llm-wiki-karpathy-base-connaissance-claude-obsidian/"
+                                class="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg>                                <span
+                                    class="text-sm font-medium">Version Française</span>
+                            </a>
+                                        </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="pt-20" id="main-content">
+    
+<!-- Page Header Hero -->
+<section class="relative py-24 md:py-32 overflow-hidden border-b border-white/5 bg-black">
+
+    <!-- Optional Background Image (Grayscale & Merged) -->
+            <div class="absolute inset-0 z-0">
+            <img src="https://anthemcreation.com/wp-content/uploads/2026/04/content-lab-6t1svj8qg5rmr0cxffkads77vg.webp"
+                 alt="organized knowledge clusters, editorial concept art style, warm lamplight atmosphere, top-down perspective with dramatic…"
+                 class="w-full h-full object-cover opacity-75">
+            <!-- Dark overlay for contrast -->
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+    
+    <!-- Gradient Overlay -->
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-primary/10 via-purple-500/10 to-transparent z-0 pointer-events-none mix-blend-overlay">
+    </div>
+
+    <!-- Background Patterns -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-5 z-0 pointer-events-none"></div>
+
+    <!-- Gradient orbs removed — gradient overlay above is sufficient -->
+
+    <div class="relative z-10 px-6 mx-auto max-w-7xl lg:px-8 text-center">
+        <!-- Badge Style Subtitle -->
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-8 leading-tight">
+            Karpathy&#8217;s LLM Wiki: Build Your Knowledge Base with Claude and Obsidian <br>
+                    </h1>
+
+    </div>
+</section>
+    <div class="min-h-screen bg-black py-24">
+        <div class="px-6 mx-auto max-w-7xl lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+
+                <!-- Main Content (2 cols) -->
+                <article class="lg:col-span-2">
+                    <!-- Back Button -->
+                    <a href="https://anthemcreation.com/en/blog/"
+                        class="inline-flex items-center gap-2 text-gray-400 hover:text-primary transition-colors mb-8 group">
+                        <svg class="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>                        <span>Back to blog</span>
+                    </a>
+
+                    <!-- Meta info (formerly in header) -->
+                    <div class="flex flex-wrap items-center gap-6 text-gray-400 mb-8">
+                                                    <a href="https://anthemcreation.com/en/artificial-intelligence/"
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold text-white rounded-full bg-white/10 text-gray-300 border border-white/10 hover:opacity-80 transition-opacity">
+                                Artificial Intelligence                            </a>
+                        
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>                            <span>Nicolas</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>                            <time datetime="2026-04-12T08:30:04+01:00">
+                                April 12, 2026                            </time>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>                            <span>9     min read</span>
+                        </div>
+                    </div>
+
+                    <!-- Featured Image -->
+                                        <div class="relative h-96 bg-zinc-900 rounded-xl overflow-hidden mb-12">
+                        <img width="1168" height="880" src="https://anthemcreation.com/wp-content/uploads/2026/04/content-lab-6t1svj8qg5rmr0cxffkads77vg.webp" class="absolute inset-0 w-full h-full object-cover wp-post-image" alt="organized knowledge clusters, editorial concept art style, warm lamplight atmosphere, top-down perspective with dramatic…" decoding="async" fetchpriority="high" srcset="https://anthemcreation.com/wp-content/uploads/2026/04/content-lab-6t1svj8qg5rmr0cxffkads77vg.webp 1168w, https://anthemcreation.com/wp-content/uploads/2026/04/content-lab-6t1svj8qg5rmr0cxffkads77vg-300x226.webp 300w, https://anthemcreation.com/wp-content/uploads/2026/04/content-lab-6t1svj8qg5rmr0cxffkads77vg-1024x772.webp 1024w, https://anthemcreation.com/wp-content/uploads/2026/04/content-lab-6t1svj8qg5rmr0cxffkads77vg-768x579.webp 768w" sizes="(max-width: 1168px) 100vw, 1168px" />                    </div>
+                    
+                    <!-- Content -->
+                    <div
+                        class="prose max-w-3xl prose-lg prose-invert prose-headings:text-white prose-headings:font-bold prose-p:text-gray-300 prose-a:text-primary hover:prose-a:underline">
+                        <p>In April 2026, Andrej Karpathy published a GitHub Gist that quickly spread through AI communities: a blueprint for building an <strong>LLM wiki</strong>, a persistent knowledge base managed by a large language model. No vector database, no complex RAG. Just interconnected markdown files, an LLM like Claude, and a visualization tool like Obsidian. Karpathy himself uses this system for his personal AI research, with wikis of <strong>over 100 articles and 400,000 words</strong>. This guide explains how to replicate this workflow at home.</p><div id="ez-toc-container" class="ez-toc-v2_0_83 ez-toc-wrap-left counter-hierarchy ez-toc-counter ez-toc-custom ez-toc-container-direction">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title ez-toc-toggle" style="cursor:pointer"></p>
+<span class="ez-toc-title-toggle"><a href="#" class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" aria-label="Toggle Table of Content"><span class="ez-toc-js-icon-con"><span class=""><span class="eztoc-hide" style="display:none;">Toggle</span><span class="ez-toc-icon-toggle-span"><svg style="fill: #ffffff;color:#ffffff" xmlns="http://www.w3.org/2000/svg" class="list-377408" width="20px" height="20px" viewBox="0 0 24 24" fill="none"><path d="M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z" fill="currentColor"></path></svg><svg style="fill: #ffffff;color:#ffffff" class="arrow-unsorted-368013" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 24 24" version="1.2" baseProfile="tiny"><path d="M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z"/></svg></span></span></span></a></span></div>
+<nav><ul class='ez-toc-list ez-toc-list-level-1 ' ><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-1" href="#What_Karpathys_LLM_wiki_is" >What Karpathy&#8217;s LLM wiki is</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-2" href="#How_the_workflow_operates_in_practice" >How the workflow operates in practice</a><ul class='ez-toc-list-level-3' ><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-3" href="#Ingestion_phase" >Ingestion phase</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-4" href="#Query_phase" >Query phase</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-5" href="#Setting_up_your_LLM_wiki_with_Claude_and_Obsidian" >Setting up your LLM wiki with Claude and Obsidian</a><ul class='ez-toc-list-level-3' ><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-6" href="#Real_costs_of_the_system" >Real costs of the system</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-7" href="#LLM_wiki_vs_RAG_what_the_numbers_dont_say" >LLM wiki vs. RAG: what the numbers don&#8217;t say</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-8" href="#Extensions_and_evolutions_of_the_concept" >Extensions and evolutions of the concept</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-9" href="#Conclusion" >Conclusion</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-10" href="#FAQ" >FAQ</a><ul class='ez-toc-list-level-3' ><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-11" href="#What_exactly_is_an_LLM_wiki" >What exactly is an LLM wiki?</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-12" href="#Do_you_need_development_skills_to_create_an_LLM_wiki" >Do you need development skills to create an LLM wiki?</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-13" href="#What_is_the_difference_between_LLM_wiki_and_RAG" >What is the difference between LLM wiki and RAG?</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-14" href="#Is_Obsidian_essential_for_using_an_LLM_wiki" >Is Obsidian essential for using an LLM wiki?</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-15" href="#What_are_the_limitations_of_the_LLM_wiki" >What are the limitations of the LLM wiki?</a></li></ul></li></ul></nav></div>
+<div class="cl-takeaway"><p><strong>Key takeaways:</strong></p><ul><li><strong>LLM wiki</strong> replaces traditional RAG with a persistent markdown base that grows with each added document.</li><li>Karpathy personally manages wikis of <strong>over 100 articles</strong> without any vector database or heavy indexing.</li><li>Initial setup takes <strong>5 minutes</strong>: copy the Gist into Claude or Codex, open Obsidian, start ingesting your sources.</li><li>The key difference with RAG: the wiki is a <strong>compiled artifact</strong> that compounds, not a re-derivation with each query.</li><li>The cost is <strong>almost zero</strong> for personal use, with open-source LLMs for no recurring cost.</li></ul></div><h2 class="wp-block-heading"><span class="ez-toc-section" id="What_Karpathys_LLM_wiki_is"></span>What Karpathy&#8217;s LLM wiki is<span class="ez-toc-section-end"></span></h2><p>Andrej Karpathy, co-founder of OpenAI and former AI director at Tesla, formalized the concept of <strong>LLM wiki</strong> in April 2026 via a GitHub Gist. The central idea is simple: instead of querying raw documents with each request, an LLM builds and maintains a structured wiki that serves as a permanent intermediary between your sources and your questions.</p><p>A lire aussi : <a href="https://anthemcreation.com/?p=12983">Claude Code ajoute les routines répétables : productivité dev multipliée</a></p><p>A lire aussi : <a href="https://anthemcreation.com/?p=12969">Comment j&#039;ai automatisé mes revues de code quotidiennes avec les routines Claude Code</a></p><p>He describes the following analogy: raw sources are like <strong>source code</strong>, and the LLM wiki is the <strong>compiled executable</strong>. You don&#8217;t recompile every time you run a program. The wiki remains canonical, alive, and improves with each new source ingested.</p><p>The system relies on three distinct layers:</p><ul class="wp-block-list"><li><strong>Immutable raw sources</strong>: scientific articles, papers, PDF files. These documents are never modified.</li><li><strong>LLM-managed wiki</strong>: a collection of markdown files created and updated automatically by the model, with entity pages, topic summaries, comparisons, and syntheses.</li><li><strong>Instruction file</strong>: a file like <code>agents.md</code> that defines the rules for structure, linking, and LLM behavior in the wiki.</li></ul><p>Unlike a standard <strong>RAG</strong> (Retrieval Augmented Generation) system that retrieves unstructured chunks with each request, the LLM wiki compiles knowledge in advance. The result: deeper answers, possible multi-hop reasoning, and a base that compounds with each addition. To understand how Karpathy extends this logic towards self-improving agents, read our analysis of <a href="https://anthemcreation.com/en/artificial-intelligence/autoresearch-karpathy-self-improving-ai-business-applications/" target="_self">Karpathy&#8217;s Autoresearch and its business applications</a>.</p><h2 class="wp-block-heading"><span class="ez-toc-section" id="How_the_workflow_operates_in_practice"></span>How the workflow operates in practice<span class="ez-toc-section-end"></span></h2><p>The workflow is divided into two main operations: <strong>ingestion</strong> and <strong>query</strong>.</p><h3 class="wp-block-heading"><span class="ez-toc-section" id="Ingestion_phase"></span>Ingestion phase<span class="ez-toc-section-end"></span></h3><p>When you add a new document, the LLM reads the source, extracts the key ideas, and then integrates them into the existing wiki. In practice, it can:</p><ul class="wp-block-list"><li>Create a new entity page for a concept that didn&#8217;t exist yet (e.g., a &#8220;Phi-2&#8221; page detailing its <strong>2.7 billion parameters</strong> trained on <strong>1.4 trillion tokens</strong>)</li><li>Update an existing page with new information</li><li>Identify and synthesize contradictions between sources</li><li>Create automatic backlinks between related pages</li></ul><p>The raw sources remain immutable. The LLM writes to the wiki, the user reads the wiki. The separation of roles is strict.</p><h3 class="wp-block-heading"><span class="ez-toc-section" id="Query_phase"></span>Query phase<span class="ez-toc-section-end"></span></h3><p>Once the wiki is built, you query the canonical wiki directly instead of the raw sources. The model can reason on accumulated and structured knowledge, allowing for analyses that pure RAG on a massive corpus cannot achieve.</p><blockquote class="wp-block-quote callout callout-tip is-layout-flow wp-block-quote-is-layout-flow"><p><strong>Tip:</strong> Create an <code>agents.md</code> file from the start with precise rules: how to name pages, when to create a new entity vs. update an existing one, how to format contradictions. This instruction file is the main lever to keep a coherent wiki over time.</p></blockquote><figure class="wp-block-image cl-section-image"><img decoding="async" src="https://anthemcreation.com/wp-content/uploads/2026/04/content-lab-trs18r7gj9rmt0cxfff8t6wd54-1024x796.webp" alt="Crystalline knowledge graph architecture rising in layered tiers, where abstract document nodes at the base feed upward …"></figure><h2 class="wp-block-heading"><span class="ez-toc-section" id="Setting_up_your_LLM_wiki_with_Claude_and_Obsidian"></span>Setting up your LLM wiki with Claude and Obsidian<span class="ez-toc-section-end"></span></h2><p>The initial setup takes about <strong>5 minutes</strong> and requires no advanced development skills. Here&#8217;s how to proceed:</p><ol class="wp-block-list"><li><strong>Copy the original Gist</strong> from Andrej Karpathy on GitHub and paste it into your LLM agent (Claude, OpenAI Codex, or Grok all work).</li><li><strong>Create an empty directory</strong> on your machine. This folder will be your wiki.</li><li><strong>Open this folder in Obsidian</strong> as a new vault. Obsidian natively handles wiki-style links between markdown files and displays the connection graph.</li><li><strong>Add your first raw sources</strong> in a separate subfolder (e.g., <code>/sources/</code>). Don&#8217;t mix them with the wiki files.</li><li><strong>Instruct the LLM</strong> to ingest the first source by creating the initial pages: a general index, entity pages for key concepts, interconnected summaries.</li></ol><p>Obsidian is not mandatory, but it is recommended by Karpathy for its graphical display of links. Viable alternatives exist: <strong>VS Code</strong> with a Markdown Preview Enhanced extension, or <strong>Logseq</strong> which also handles bidirectional backlinks. The essential thing is that your files are in flat markdown, compatible with any editor.</p><h3 class="wp-block-heading"><span class="ez-toc-section" id="Real_costs_of_the_system"></span>Real costs of the system<span class="ez-toc-section-end"></span></h3><figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Configuration</th><th>Setup cost</th><th>Maintenance cost</th></tr></thead><tbody><tr><td>Obsidian + open-source LLM (Llama 3)</td><td>Free</td><td>0 €/month</td></tr><tr><td>Obsidian + Claude API</td><td>Free</td><td>~0.01 to 0.10 € per ingested doc</td></tr><tr><td>Wiki of 100 documents (Claude)</td><td>Less than 10 €</td><td>Low (incremental ingestions)</td></tr></tbody></table></figure><h2 class="wp-block-heading"><span class="ez-toc-section" id="LLM_wiki_vs_RAG_what_the_numbers_dont_say"></span>LLM wiki vs. RAG: what the numbers don&#8217;t say<span class="ez-toc-section-end"></span></h2><p>RAG remains relevant for massive corpora and ad-hoc queries on unstructured bases. The LLM wiki, however, excels in a different realm: <strong>personal knowledge at an individual scale</strong>, from 10 to a few hundred documents.</p><p>The fundamental difference is not speed, it&#8217;s the <strong>depth of reasoning</strong>. A RAG system retrieves relevant passages and generates a response. An LLM wiki responds from already synthesized knowledge, with links between concepts, resolved contradictions, and pre-constructed syntheses. Multi-hop reasoning (linking three distinct concepts to answer a complex question) becomes natural.</p><p>Karpathy explicitly positions the LLM wiki as a <strong>personal alternative to vector search</strong>. For wikis of 100 articles, structured markdown is more than sufficient. A vector database becomes useful only beyond a certain scale, where semantic search over thousands of chunks becomes necessary.</p><p>This logic of compiling knowledge resonates with what Yann LeCun is doing in a different direction. Our article on <a href="https://anthemcreation.com/en/artificial-intelligence/ami-labs-world-models-lecun-billion-replace-llm/" target="_self">AMI Labs and LeCun&#8217;s world models</a> explores why some researchers think of going even further than LLMs.</p><blockquote class="wp-block-quote callout callout-warning is-layout-flow wp-block-quote-is-layout-flow"><p><strong>Warning:</strong> The LLM wiki relies entirely on the model&#8217;s quality to manage contradictions between sources. A weak model can propagate errors without flagging them. Plan for periodic human review of key pages, especially in the first weeks. The quality of your <code>agents.md</code> directly determines the base&#8217;s reliability.</p></blockquote><figure class="wp-block-image cl-section-image"><img decoding="async" src="https://anthemcreation.com/wp-content/uploads/2026/04/content-lab-862dstgmdhrmw0cxfffsca0tnr-1024x796.webp" alt="Luminous knowledge tree with crystalline branching pathways radiating outward from a dense central node cluster, each br…"></figure><h2 class="wp-block-heading"><span class="ez-toc-section" id="Extensions_and_evolutions_of_the_concept"></span>Extensions and evolutions of the concept<span class="ez-toc-section-end"></span></h2><p>Karpathy&#8217;s original Gist is designed as a <strong>collaborative blueprint</strong>, not a finished product. Since its publication in April 2026, the community has already produced notable extensions.</p><p><strong>LLM Wiki v2</strong>, published on GitHub Gist by rohitg00, extends the concept with <em>agentmemory</em> patterns: a persistent memory engine designed for AI coding agents. This version incorporates lessons on scaling and long-term consistency, making the wiki more suitable for autonomous agents that continuously feed it.</p><p>On Karpathy&#8217;s side, the LLM wiki fits into a broader vision of AI as infrastructure. His Eureka Labs project, founded in July 2024, pushes AI education with the <strong>LLM101n</strong> course. The LLM wiki is the practical tool that complements this effort: learning about LLMs, then building your own knowledge base with them.</p><p>The most likely evolution paths include:</p><ul class="wp-block-list"><li>RAG-vector hybridization for team or enterprise-scale deployments</li><li>Native integration into autonomous agents that maintain the wiki without human intervention</li><li>Optimized local LLMs (like Llama) making the system zero-cost and fully private</li></ul><p>Communities influencing LLM responses also play a role in spreading these ideas. Our article on <a href="https://anthemcreation.com/en/artificial-intelligence/reddit-ai-seo-llm-community-intelligence/" target="_self">Reddit as an AI SEO weapon</a> sheds light on how technical ideas like the LLM wiki propagate into model training corpora.</p><h2 class="wp-block-heading"><span class="ez-toc-section" id="Conclusion"></span>Conclusion<span class="ez-toc-section-end"></span></h2><p>Andrej Karpathy&#8217;s <strong>LLM wiki</strong> concept is one of the most practical ideas to come out of the AI community in 2026. It requires no advanced skills, no expensive infrastructure, and no lengthy setup. A Gist copied into Claude, a folder opened in Obsidian, and your first raw sources are enough to get started in minutes.</p><p>What makes this system powerful is its <strong>composite</strong> nature: each added document enriches a base that grows with you. At 10 documents, it&#8217;s useful. At 100 documents, like in Karpathy&#8217;s personal wikis, it&#8217;s a true augmented memory that enables reasoning that neither raw RAG nor human memory alone can achieve.</p><p>Start small. Choose a topic you are actively studying, add your first 5 sources, and let the LLM build the initial pages. The system&#8217;s value reveals itself in accumulation, not in the initial setup. To explore more of Karpathy&#8217;s tools, check out the <a href="https://anthemcreation.com/en/artificial-intelligence/autoresearch-karpathy-self-improving-ai-business-applications/" target="_blank" rel="noopener">official Autoresearch presentation on Anthem Creation</a>.</p><h2 class="wp-block-heading"><span class="ez-toc-section" id="FAQ"></span>FAQ<span class="ez-toc-section-end"></span></h2><h3 class="wp-block-heading"><span class="ez-toc-section" id="What_exactly_is_an_LLM_wiki"></span>What exactly is an LLM wiki?<span class="ez-toc-section-end"></span></h3><p>An LLM wiki is a knowledge base composed of structured and interconnected markdown files, built and maintained by a large language model. Unlike RAG, which queries raw documents with each request, the LLM wiki pre-compiles sources into a persistent base with entity pages, summaries, and automatic backlinks. Andrej Karpathy formalized this concept in April 2026 in a GitHub Gist, based on his own research wikis exceeding 100 articles.</p><h3 class="wp-block-heading"><span class="ez-toc-section" id="Do_you_need_development_skills_to_create_an_LLM_wiki"></span>Do you need development skills to create an LLM wiki?<span class="ez-toc-section-end"></span></h3><p>No. The basic setup only requires copying Karpathy&#8217;s Gist into an LLM agent like Claude, creating a local folder, and opening this folder in Obsidian. No code to write, no server configuration. Tutorials available since April 2026 show how to start a functional wiki in under 5 minutes. The only real effort is writing a good <code>agents.md</code> file to structure the LLM&#8217;s behavior.</p><h3 class="wp-block-heading"><span class="ez-toc-section" id="What_is_the_difference_between_LLM_wiki_and_RAG"></span>What is the difference between LLM wiki and RAG?<span class="ez-toc-section-end"></span></h3><p>RAG retrieves raw passages from documents with each request and generates a response in real-time. The LLM wiki first compiles sources into a structured base, then responds from this pre-built base. Reasoning becomes deeper because the knowledge is already synthesized, linked, and coherent. Karpathy uses the source code/executable analogy: RAG recompiles each time, the LLM wiki runs the executable directly.</p><h3 class="wp-block-heading"><span class="ez-toc-section" id="Is_Obsidian_essential_for_using_an_LLM_wiki"></span>Is Obsidian essential for using an LLM wiki?<span class="ez-toc-section-end"></span></h3><p>No. Obsidian is recommended by Karpathy for its graphical visualization of links between markdown pages, but the core system works with any flat file editor. VS Code with a Markdown extension, Logseq, or even a simple text editor are sufficient. What matters is that your files remain in standard markdown so the LLM can read and update them freely.</p><h3 class="wp-block-heading"><span class="ez-toc-section" id="What_are_the_limitations_of_the_LLM_wiki"></span>What are the limitations of the LLM wiki?<span class="ez-toc-section-end"></span></h3><p>The system excels on a personal scale, typically from 10 to a few hundred documents. Beyond that, managing interlinks can become costly in tokens, and a vector search becomes more suitable. The quality directly depends on the LLM used for ingestions: a weak model can propagate errors. Finally, no official code implementation was published by Karpathy at launch, requiring an initial manual setup based on the Gist.</p>                    </div>
+
+                    <!-- Tags -->
+                    
+                    <!-- Related Posts (Moved inside main col to stay with content) -->
+                                            <section class="mt-24 pt-12 border-t border-white/10">
+                            <h2 class="text-2xl font-bold text-white mb-8">Related Articles</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                                                    
+<article id="post-13269" class="group bg-[#111111] border border-white/10 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 flex flex-col h-full post-13269 post type-post status-publish format-standard has-post-thumbnail hentry category-artificial-intelligence">
+
+    <!-- Link Wrapper -->
+    <a href="https://anthemcreation.com/en/artificial-intelligence/chatgpt-breach-7m-users-hacked-llm-safeguards/" class="flex flex-col h-full group">
+
+        <!-- Featured Image -->
+        <div class="relative h-48 bg-zinc-900 overflow-hidden w-full">
+                            <img width="600" height="400" src="https://anthemcreation.com/wp-content/uploads/2026/05/piratage-chatgpt-kaikatsu-club-7m-1-600x400.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 wp-post-image" alt="ChatGPT breach: 7M users hacked &#8211; what the leak reveals about LLM safeguards" decoding="async" srcset="https://anthemcreation.com/wp-content/uploads/2026/05/piratage-chatgpt-kaikatsu-club-7m-1-600x400.png 600w, https://anthemcreation.com/wp-content/uploads/2026/05/piratage-chatgpt-kaikatsu-club-7m-1-300x201.png 300w" sizes="(max-width: 600px) 100vw, 600px" />            
+            <!-- Category Badge -->
+                            <div class="absolute top-4 left-4">
+                    <span
+                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium text-white shadow-lg bg-white/10 text-gray-300 border border-white/10">
+                        Artificial Intelligence                    </span>
+                </div>
+                    </div>
+
+        <!-- Content -->
+        <div class="p-6 flex flex-col flex-grow">
+
+            <!-- Meta -->
+            <div class="flex items-center gap-4 text-sm text-gray-400 mb-3">
+                <div class="flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>                    <time datetime="2026-05-15T22:24:32+01:00">
+                        May 15, 2026                    </time>
+                </div>
+                <div class="flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>                    <span>
+                        11 min
+                    </span>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors line-clamp-3">
+                ChatGPT breach: 7M users hacked &#8211; what the leak reveals about LLM safeguards            </h3>
+
+            <!-- Excerpt -->
+            <div class="text-gray-400 mb-4 line-clamp-4 text-sm flex-grow">
+                <p>Piratage ChatGPT Kaikatsu Club : 7,24M utilisateurs exfiltrés en janvier 2025, lecture juridique FR/EU et checklist CTO RSSI 2026.</p>
+            </div>
+
+            <!-- Read More -->
+            <div class="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all mt-auto">
+                <span>Lire l'article</span>
+                <span class="sr-only"> : ChatGPT breach: 7M users hacked &#8211; what the leak reveals about LLM safeguards</span>
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>            </div>
+        </div>
+    </a>
+</article>                                                                    
+<article id="post-13255" class="group bg-[#111111] border border-white/10 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 flex flex-col h-full post-13255 post type-post status-publish format-standard has-post-thumbnail hentry category-artificial-intelligence">
+
+    <!-- Link Wrapper -->
+    <a href="https://anthemcreation.com/en/artificial-intelligence/digital-omnibus-ai-act-7-changes-sme-2026/" class="flex flex-col h-full group">
+
+        <!-- Featured Image -->
+        <div class="relative h-48 bg-zinc-900 overflow-hidden w-full">
+                            <img width="600" height="400" src="https://anthemcreation.com/wp-content/uploads/2026/05/digital-omnibus-ai-act-7-changements-pme-2026-inline-2-1-600x400.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 wp-post-image" alt="Europe just rewrote the AI Act at 4am: we read the 7 changes for you" decoding="async" srcset="https://anthemcreation.com/wp-content/uploads/2026/05/digital-omnibus-ai-act-7-changements-pme-2026-inline-2-1-600x400.png 600w, https://anthemcreation.com/wp-content/uploads/2026/05/digital-omnibus-ai-act-7-changements-pme-2026-inline-2-1-300x201.png 300w" sizes="(max-width: 600px) 100vw, 600px" />            
+            <!-- Category Badge -->
+                            <div class="absolute top-4 left-4">
+                    <span
+                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium text-white shadow-lg bg-white/10 text-gray-300 border border-white/10">
+                        Artificial Intelligence                    </span>
+                </div>
+                    </div>
+
+        <!-- Content -->
+        <div class="p-6 flex flex-col flex-grow">
+
+            <!-- Meta -->
+            <div class="flex items-center gap-4 text-sm text-gray-400 mb-3">
+                <div class="flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>                    <time datetime="2026-05-12T15:33:14+01:00">
+                        May 12, 2026                    </time>
+                </div>
+                <div class="flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>                    <span>
+                        11 min
+                    </span>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors line-clamp-3">
+                Europe just rewrote the AI Act at 4am: we read the 7 changes for you            </h3>
+
+            <!-- Excerpt -->
+            <div class="text-gray-400 mb-4 line-clamp-4 text-sm flex-grow">
+                <p>The Digital Omnibus of the AI Act has just rewritten the European AI timeline. In the early hours of May 7, 2026, around 4:30 am, the EU Council and the&#8230;</p>
+            </div>
+
+            <!-- Read More -->
+            <div class="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all mt-auto">
+                <span>Lire l'article</span>
+                <span class="sr-only"> : Europe just rewrote the AI Act at 4am: we read the 7 changes for you</span>
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>            </div>
+        </div>
+    </a>
+</article>                                                            </div>
+                        </section>
+                                    </article>
+
+                <!-- Sticky Sidebar -->
+                
+<aside class="lg:col-span-1">
+    <div class="sticky top-24 space-y-8">
+
+        <!-- Search Widget -->
+        <div class="p-6 bg-zinc-900/50 border border-white/10 rounded-xl backdrop-blur-sm">
+                        <form role="search" method="get" class="relative" action="https://anthemcreation.com/en/">
+                <input type="search"
+                    aria-label="Search the blog"
+                    class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-primary transition-colors"
+                    placeholder="Search..." value="" name="s" />
+                <button type="submit" aria-label="Search"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="8" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-4.3-4.3" /></svg>                </button>
+            </form>
+        </div>
+
+
+
+        <!-- Newsletter Widget Custom Block -->
+        <div class="py-4 rounded-xl">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="h-px bg-white/10 flex-1"></div>
+                <h3 class="text-xl font-bold text-white uppercase tracking-widest text-center whitespace-nowrap">
+                    AI Newsletter</h3>
+                <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+
+            <p class="text-gray-300 mb-6 font-medium text-center">
+                Stay up to date on AI with our Newsletter
+            </p>
+
+            <p class="text-gray-400 mb-8 leading-relaxed text-sm text-center">
+                <strong class="text-white">Every month</strong>, the <strong class="text-white">latest AI news</strong>
+                and <strong class="text-white">our latest articles</strong>, directly in your inbox.
+            </p>
+
+            <!-- MailPoet Widget Area -->
+            <div class="mailpoet-widget-container sidebar-mailpoet">
+                                    <section id="block-3" class="widget widget_block p-6 bg-bg-card border border-white/10 rounded-xl mb-8">  
+  
+  <div class="
+    mailpoet_form_popup_overlay
+      "></div>
+  <div
+    id="mailpoet_form_3"
+    class="
+      mailpoet_form
+      mailpoet_form_html
+      mailpoet_form_position_
+      mailpoet_form_animation_
+    "
+      >
+
+    <style type="text/css">
+     #mailpoet_form_3 .mailpoet_form {  }
+#mailpoet_form_3 .mailpoet_column_with_background { padding: 10px; }
+#mailpoet_form_3 .mailpoet_form_column:not(:first-child) { margin-left: 20px; }
+#mailpoet_form_3 .mailpoet_paragraph { line-height: 20px; margin-bottom: 20px; }
+#mailpoet_form_3 .mailpoet_segment_label, #mailpoet_form_3 .mailpoet_text_label, #mailpoet_form_3 .mailpoet_textarea_label, #mailpoet_form_3 .mailpoet_select_label, #mailpoet_form_3 .mailpoet_radio_label, #mailpoet_form_3 .mailpoet_checkbox_label, #mailpoet_form_3 .mailpoet_list_label, #mailpoet_form_3 .mailpoet_date_label { display: block; font-weight: normal; }
+#mailpoet_form_3 .mailpoet_text, #mailpoet_form_3 .mailpoet_textarea, #mailpoet_form_3 .mailpoet_select, #mailpoet_form_3 .mailpoet_date_month, #mailpoet_form_3 .mailpoet_date_day, #mailpoet_form_3 .mailpoet_date_year, #mailpoet_form_3 .mailpoet_date { display: block; }
+#mailpoet_form_3 .mailpoet_text, #mailpoet_form_3 .mailpoet_textarea { width: 200px; }
+#mailpoet_form_3 .mailpoet_checkbox {  }
+#mailpoet_form_3 .mailpoet_submit { background: #c43a59; color: #fff; border: none; padding: 20px; font-weight: bold; }
+#mailpoet_form_3 .mailpoet_submit:hover { background: #343a40; color: #fff; }
+#mailpoet_form_3 .mailpoet_divider {  }
+#mailpoet_form_3 .mailpoet_message {  }
+#mailpoet_form_3 .mailpoet_form_loading { width: 30px; text-align: center; line-height: normal; }
+#mailpoet_form_3 .mailpoet_form_loading > span { width: 5px; height: 5px; background-color: #5b5b5b; }#mailpoet_form_3{border-radius: 0px;background: #f6f7f8;text-align: left;}#mailpoet_form_3 form.mailpoet_form {padding: 20px;}#mailpoet_form_3{width: 100%;}#mailpoet_form_3 .mailpoet_message {margin: 0; padding: 0 20px;}#mailpoet_form_3 .mailpoet_paragraph.last {margin-bottom: 0} @media (max-width: 500px) {#mailpoet_form_3 {background: #f6f7f8;}} @media (min-width: 500px) {#mailpoet_form_3 .last .mailpoet_paragraph:last-child {margin-bottom: 0}}  @media (max-width: 500px) {#mailpoet_form_3 .mailpoet_form_column:last-child .mailpoet_paragraph:last-child {margin-bottom: 0}} 
+    </style>
+
+    <form
+      target="_self"
+      method="post"
+      action="https://anthemcreation.com/wp-admin/admin-post.php?action=mailpoet_subscription_form"
+      class="mailpoet_form mailpoet_form_form mailpoet_form_html"
+      novalidate
+      data-delay=""
+      data-exit-intent-enabled=""
+      data-trigger-mode=""
+      data-click-trigger-selector=""
+      data-font-family=""
+      data-cookie-expiration-time=""
+    >
+      <input type="hidden" name="data[form_id]" value="3" />
+      <input type="hidden" name="token" value="ec7ec08b50" />
+      <input type="hidden" name="api_version" value="v1" />
+      <input type="hidden" name="endpoint" value="subscribers" />
+      <input type="hidden" name="mailpoet_method" value="subscribe" />
+
+      <label class="mailpoet_hp_email_label" style="display: none !important;">Please leave this field empty<input type="email" name="data[email]"/></label><div class="mailpoet_paragraph "><style>input[name="data[form_field_MzM5NjNhMjE0MWQ2X2ZpcnN0X25hbWU=]"]::placeholder{color:#333333;opacity: 1;}</style><input type="text" autocomplete="given-name" class="mailpoet_text" id="form_first_name_3" name="data[form_field_MzM5NjNhMjE0MWQ2X2ZpcnN0X25hbWU=]" title="Your name" value="" style="width:100%;box-sizing:border-box;background-color:#ffffff;border-style:solid;border-radius:0px !important;border-width:1px;border-color:#666666;padding:16px;margin: 0 auto 0 0;color:#333333;" data-automation-id="form_first_name"  placeholder="Your name *" aria-label="Your name *" data-parsley-errors-container=".mailpoet_error_1qou9" data-parsley-names='[&quot;Please specify a valid name.&quot;,&quot;Addresses in names are not permitted, please add your name instead.&quot;]' data-parsley-required="true" required aria-required="true" data-parsley-required-message="This field is required."/><span class="mailpoet_error_1qou9"></span></div>
+<div class="mailpoet_paragraph "><style>input[name="data[form_field_OGYyZDI1ZTdiZTMwX2VtYWls]"]::placeholder{color:#333333;opacity: 1;}</style><input type="email" autocomplete="email" class="mailpoet_text" id="form_email_3" name="data[form_field_OGYyZDI1ZTdiZTMwX2VtYWls]" title="Your Email address" value="" style="width:100%;box-sizing:border-box;background-color:#ffffff;border-style:solid;border-radius:0px !important;border-width:1px;border-color:#666666;padding:16px;margin: 0 auto 0 0;color:#333333;" data-automation-id="form_email"  placeholder="Your Email address *" aria-label="Your Email address *" data-parsley-errors-container=".mailpoet_error_1czto" data-parsley-required="true" required aria-required="true" data-parsley-minlength="6" data-parsley-maxlength="150" data-parsley-type-message="This value should be a valid email." data-parsley-required-message="This field is required."/><span class="mailpoet_error_1czto"></span></div>
+<div class="mailpoet_paragraph "><input type="submit" class="mailpoet_submit" value="Subscribe now :)" data-automation-id="subscribe-submit-button" style="width:100%;box-sizing:border-box;padding:16px;margin: 0 auto 0 0;border-color:transparent;" /><span class="mailpoet_form_loading"><span class="mailpoet_bounce1"></span><span class="mailpoet_bounce2"></span><span class="mailpoet_bounce3"></span></span></div>
+
+      <div class="mailpoet_message">
+        <p class="mailpoet_validate_success"
+                style="display:none;"
+                >Check your inbox or junk folder to confirm your subscription.
+        </p>
+        <p class="mailpoet_validate_error"
+                style="display:none;"
+                >        </p>
+      </div>
+    </form>
+
+      </div>
+
+  </section>                            </div>
+        </div>
+
+    </div>
+</aside>
+            </div>
+        </div>
+    </div>
+
+
+
+<section class="py-16 bg-gradient-to-br from-primary/10 via-purple-500/10 to-bg-dark relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+
+    <!-- Gradient Orb (reduced intensity) -->
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+
+    <div class="relative z-10 px-6 mx-auto max-w-7xl lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <!-- Headline -->
+            <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                Ready to scale your business?            </h2>
+
+            <!-- Description -->
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed font-medium">
+                Anthem Creation supports you in your AI transformation            </p>
+
+            <!-- CTA Button -->
+            <div class="mb-8 flex justify-center">
+                <div
+                    class="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-2 text-sm font-medium text-purple-200">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                    </span>
+                                        Disponibilité : 3 nouveaux projets pour Mai/Juin                </div>
+            </div>
+            <a href="#open-anthem-chat"
+                class="inline-flex items-center gap-3 rounded-full bg-primary px-10 py-5 text-lg font-bold text-white transition-all hover:bg-primary/90 hover:scale-105 shadow-[0_0_40px_rgba(212,69,95,0.5)]">
+                Book a discovery call                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#111111] border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            <!-- Brand Column -->
+            <div class="space-y-4">
+                <a href="https://anthemcreation.com/en/home/" class="inline-block">
+                                            <img src="https://anthemcreation.com/wp-content/themes/anthem-theme/assets/images/logo.svg"
+                            alt="Anthem Création" class="h-10 w-auto">
+                                    </a>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Agence IA & no-code. Anthem Creation vous accompagne dans votre transformation IA.
+                </p>
+            </div>
+
+            <!-- Navigation Column -->
+            <div>
+                <h3 class="text-white font-bold mb-6">Navigation</h3>
+                <ul id="menu-menu-blog" class="space-y-3"><li><a href="https://anthemcreation.com/en/solutions-2/" class="text-gray-400 hover:text-primary transition-colors text-sm">Solutions</a></li></li>
+<li><a href="https://anthemcreation.com/blog-2/" class="text-gray-400 hover:text-primary transition-colors text-sm">AI Blog</a></li></li>
+<li><a href="https://anthemcreation.com/en/contact-us/" class="text-gray-400 hover:text-primary transition-colors text-sm">Contact Us</a></li></li>
+</ul>            </div>
+
+            <!-- Contact Column -->
+            <div>
+                <h3 class="text-white font-bold mb-6">Contact</h3>
+                <ul class="space-y-4 text-gray-400">
+                    <li class="flex items-start gap-3">
+                        <div class="mt-1 shrink-0">
+                            <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg>                        </div>
+                        <span class="text-sm">
+                            Anthem Creation - rue Menon<br>
+                            38000 - Grenoble
+                        </span>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/nicolaslangero/" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center gap-3 text-sm text-gray-400 hover:text-primary group transition-colors">
+                            <svg class="h-4 w-4 text-white group-hover:text-primary transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>                            LinkedIn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://x.com/nicolas_langero" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center gap-3 text-sm text-gray-400 hover:text-primary group transition-colors">
+                            <svg class="h-3.5 w-3.5 text-white group-hover:text-primary transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.49h2.039L6.486 3.24H4.298l13.311 17.403z"/></svg>                            X (Twitter)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Column -->
+            <div class="footer-newsletter-column">
+                <h3 class="text-white font-bold mb-6">Newsletter IA</h3>
+                <div id="block-6" class="widget widget_block">  
+  
+  <div class="
+    mailpoet_form_popup_overlay
+      "></div>
+  <div
+    id="mailpoet_form_3"
+    class="
+      mailpoet_form
+      mailpoet_form_html
+      mailpoet_form_position_
+      mailpoet_form_animation_
+    "
+      >
+
+    <style type="text/css">
+     #mailpoet_form_3 .mailpoet_form {  }
+#mailpoet_form_3 .mailpoet_column_with_background { padding: 10px; }
+#mailpoet_form_3 .mailpoet_form_column:not(:first-child) { margin-left: 20px; }
+#mailpoet_form_3 .mailpoet_paragraph { line-height: 20px; margin-bottom: 20px; }
+#mailpoet_form_3 .mailpoet_segment_label, #mailpoet_form_3 .mailpoet_text_label, #mailpoet_form_3 .mailpoet_textarea_label, #mailpoet_form_3 .mailpoet_select_label, #mailpoet_form_3 .mailpoet_radio_label, #mailpoet_form_3 .mailpoet_checkbox_label, #mailpoet_form_3 .mailpoet_list_label, #mailpoet_form_3 .mailpoet_date_label { display: block; font-weight: normal; }
+#mailpoet_form_3 .mailpoet_text, #mailpoet_form_3 .mailpoet_textarea, #mailpoet_form_3 .mailpoet_select, #mailpoet_form_3 .mailpoet_date_month, #mailpoet_form_3 .mailpoet_date_day, #mailpoet_form_3 .mailpoet_date_year, #mailpoet_form_3 .mailpoet_date { display: block; }
+#mailpoet_form_3 .mailpoet_text, #mailpoet_form_3 .mailpoet_textarea { width: 200px; }
+#mailpoet_form_3 .mailpoet_checkbox {  }
+#mailpoet_form_3 .mailpoet_submit { background: #c43a59; color: #fff; border: none; padding: 20px; font-weight: bold; }
+#mailpoet_form_3 .mailpoet_submit:hover { background: #343a40; color: #fff; }
+#mailpoet_form_3 .mailpoet_divider {  }
+#mailpoet_form_3 .mailpoet_message {  }
+#mailpoet_form_3 .mailpoet_form_loading { width: 30px; text-align: center; line-height: normal; }
+#mailpoet_form_3 .mailpoet_form_loading > span { width: 5px; height: 5px; background-color: #5b5b5b; }#mailpoet_form_3{border-radius: 0px;background: #f6f7f8;text-align: left;}#mailpoet_form_3 form.mailpoet_form {padding: 20px;}#mailpoet_form_3{width: 100%;}#mailpoet_form_3 .mailpoet_message {margin: 0; padding: 0 20px;}#mailpoet_form_3 .mailpoet_paragraph.last {margin-bottom: 0} @media (max-width: 500px) {#mailpoet_form_3 {background: #f6f7f8;}} @media (min-width: 500px) {#mailpoet_form_3 .last .mailpoet_paragraph:last-child {margin-bottom: 0}}  @media (max-width: 500px) {#mailpoet_form_3 .mailpoet_form_column:last-child .mailpoet_paragraph:last-child {margin-bottom: 0}} 
+    </style>
+
+    <form
+      target="_self"
+      method="post"
+      action="https://anthemcreation.com/wp-admin/admin-post.php?action=mailpoet_subscription_form"
+      class="mailpoet_form mailpoet_form_form mailpoet_form_html"
+      novalidate
+      data-delay=""
+      data-exit-intent-enabled=""
+      data-trigger-mode=""
+      data-click-trigger-selector=""
+      data-font-family=""
+      data-cookie-expiration-time=""
+    >
+      <input type="hidden" name="data[form_id]" value="3" />
+      <input type="hidden" name="token" value="ec7ec08b50" />
+      <input type="hidden" name="api_version" value="v1" />
+      <input type="hidden" name="endpoint" value="subscribers" />
+      <input type="hidden" name="mailpoet_method" value="subscribe" />
+
+      <label class="mailpoet_hp_email_label" style="display: none !important;">Please leave this field empty<input type="email" name="data[email]"/></label><div class="mailpoet_paragraph "><style>input[name="data[form_field_MzM5NjNhMjE0MWQ2X2ZpcnN0X25hbWU=]"]::placeholder{color:#333333;opacity: 1;}</style><input type="text" autocomplete="given-name" class="mailpoet_text" id="form_first_name_3" name="data[form_field_MzM5NjNhMjE0MWQ2X2ZpcnN0X25hbWU=]" title="Your name" value="" style="width:100%;box-sizing:border-box;background-color:#ffffff;border-style:solid;border-radius:0px !important;border-width:1px;border-color:#666666;padding:16px;margin: 0 auto 0 0;color:#333333;" data-automation-id="form_first_name"  placeholder="Your name *" aria-label="Your name *" data-parsley-errors-container=".mailpoet_error_14ffi" data-parsley-names='[&quot;Please specify a valid name.&quot;,&quot;Addresses in names are not permitted, please add your name instead.&quot;]' data-parsley-required="true" required aria-required="true" data-parsley-required-message="This field is required."/><span class="mailpoet_error_14ffi"></span></div>
+<div class="mailpoet_paragraph "><style>input[name="data[form_field_OGYyZDI1ZTdiZTMwX2VtYWls]"]::placeholder{color:#333333;opacity: 1;}</style><input type="email" autocomplete="email" class="mailpoet_text" id="form_email_3" name="data[form_field_OGYyZDI1ZTdiZTMwX2VtYWls]" title="Your Email address" value="" style="width:100%;box-sizing:border-box;background-color:#ffffff;border-style:solid;border-radius:0px !important;border-width:1px;border-color:#666666;padding:16px;margin: 0 auto 0 0;color:#333333;" data-automation-id="form_email"  placeholder="Your Email address *" aria-label="Your Email address *" data-parsley-errors-container=".mailpoet_error_1u5g9" data-parsley-required="true" required aria-required="true" data-parsley-minlength="6" data-parsley-maxlength="150" data-parsley-type-message="This value should be a valid email." data-parsley-required-message="This field is required."/><span class="mailpoet_error_1u5g9"></span></div>
+<div class="mailpoet_paragraph "><input type="submit" class="mailpoet_submit" value="Subscribe now :)" data-automation-id="subscribe-submit-button" style="width:100%;box-sizing:border-box;padding:16px;margin: 0 auto 0 0;border-color:transparent;" /><span class="mailpoet_form_loading"><span class="mailpoet_bounce1"></span><span class="mailpoet_bounce2"></span><span class="mailpoet_bounce3"></span></span></div>
+
+      <div class="mailpoet_message">
+        <p class="mailpoet_validate_success"
+                style="display:none;"
+                >Check your inbox or junk folder to confirm your subscription.
+        </p>
+        <p class="mailpoet_validate_error"
+                style="display:none;"
+                >        </p>
+      </div>
+    </form>
+
+      </div>
+
+  </div>            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p class="text-gray-400 text-sm">
+                &copy;
+                2026                Anthem Création. All rights reserved.            </p>
+            <div class="flex gap-6">
+                <a href="https://anthemcreation.com/mentions-legales"
+                    class="text-gray-400 hover:text-primary text-sm transition-colors">
+                    Legal Notice                </a>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/anthem-theme/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<div id="anthem-ai-chat-widget" class="anthem-ai-closed">
+    <!-- Le bouton bulle pour ouvrir le chat (caché si global_display désactivé ou page exclue) -->
+    <div id="anthem-ai-chat-bubble" class="pulse-effect" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>            </div>
+
+    <!-- Mini-bulle de message avec typing indicator -->
+    <div id="anthem-ai-chat-teaser" >
+        <div class="anthem-ai-teaser-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>                    </div>
+        <div class="anthem-ai-teaser-text">Une question ?</div>
+        <div class="anthem-ai-typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- La fenêtre principale du chat -->
+    <div id="anthem-ai-chat-window">
+        <!-- Header -->
+        <div class="anthem-ai-chat-header">
+            <div class="anthem-ai-chat-bot-info">
+                <div class="anthem-ai-chat-avatar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>                                    </div>
+                <h3 id="anthem-ai-chat-title"></h3>
+            </div>
+            <div class="anthem-ai-chat-header-actions">
+                                    <a href="https://anthemcreation.com/contact/" target="_blank" id="anthem-ai-chat-human"
+                        title="Contacter un humain">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+                                <button id="anthem-ai-chat-close" aria-label="Fermer le chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Panneau de capture de lead (email) – affiché si option activée -->
+                    <div id="anthem-ai-lead-panel" aria-live="polite">
+                <div class="anthem-ai-lead-inner">
+                    <div class="anthem-ai-lead-icon">✉️</div>
+                    <h4 class="anthem-ai-lead-title">Encore quelques questions ?</h4>
+                    <p class="anthem-ai-lead-desc">Laissez-moi votre email pour qu'on puisse continuer cette conversation. Promis, je garde ça précieusement (et je ne vous bombarderai pas de newsletters).</p>
+                    <ul class="anthem-ai-lead-perks">
+                        <li>💬 Accès illimité au chatbot</li>
+                        <li>🚀 Des réponses plus poussées</li>
+                        <li>🔐 Vos données restent entre nous</li>
+                    </ul>
+                    <form id="anthem-ai-lead-form" autocomplete="on">
+                        <input type="email" id="anthem-ai-lead-email" name="email" placeholder="votre@email.com"
+                            autocomplete="email" required />
+                        <button type="submit" class="anthem-ai-lead-submit">Continuer →</button>
+                    </form>
+                    <p class="anthem-ai-lead-legal">🔐 Vos données sont protégées. Aucun spam, jamais.</p>
+                </div>
+            </div>
+        
+
+        <!-- Zone des messages -->
+        <div id="anthem-ai-chat-messages" class="anthem-ai-chat-scrollable">
+            <!-- Message de bienvenue injecté via JS -->
+        </div>
+
+        <!-- Loader ("typing indicator") -->
+        <div id="anthem-ai-chat-typing" style="display: none;">
+            <span></span><span></span><span></span>
+        </div>
+
+        <!-- Barre de feedback (👍 / 👎) — s'affiche après chaque réponse bot -->
+        <div id="anthem-ai-feedback-bar">
+            <span id="anthem-ai-feedback-label">Cette réponse vous a-t-elle aidé ?</span>
+            <button id="anthem-ai-feedback-up" aria-label="Utile" title="Utile">👍</button>
+            <button id="anthem-ai-feedback-down" aria-label="Pas utile" title="Pas utile">👎</button>
+            <span id="anthem-ai-feedback-thanks">Merci !</span>
+        </div>
+
+        <!-- Zone de saisie -->
+        <div class="anthem-ai-chat-input-area">
+            <textarea id="anthem-ai-chat-input" placeholder="Écrivez votre message..." rows="1"></textarea>
+            <button id="anthem-ai-chat-sendBtn" aria-label="Envoyer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mentions légales RGPD -->
+        <div class="anthem-ai-chat-footer">
+            Propulsé par IA. Ne partagez pas d'infos sensibles. 🔒
+        </div>
+    </div>
+</div>
+<!-- Sign in with Google button added by Site Kit -->
+		<style>
+		.googlesitekit-sign-in-with-google__frontend-output-button{max-width:320px}
+		</style>
+		<script src="https://accounts.google.com/gsi/client"></script>
+<script>
+(()=>{async function handleCredentialResponse(response){try{const res=await fetch('https://anthemcreation.com/wp-login.php?action=googlesitekit_auth',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(response)});/* Preserve comment text in case of redirect after login on a page with a Sign in with Google button in the WordPress comments. */ const commentText=document.querySelector('#comment')?.value;const postId=document.querySelectorAll('.googlesitekit-sign-in-with-google__comments-form-button')?.[0]?.className?.match(/googlesitekit-sign-in-with-google__comments-form-button-postid-(\d+)/)?.[1];if(!! commentText?.length){sessionStorage.setItem(`siwg-comment-text-${postId}`,commentText);}location.reload();}catch(error){console.error(error);}}if(typeof google !=='undefined'){google.accounts.id.initialize({client_id:'187577407833-olrjh5egnloaq717jq5pbas12u4q2989.apps.googleusercontent.com',callback:handleCredentialResponse,library_name:'Site-Kit'});}const defaultButtonOptions={"theme":"outline","text":"signin_with","shape":"rectangular"};document.querySelectorAll('.googlesitekit-sign-in-with-google__frontend-output-button').forEach((siwgButtonDiv)=>{const buttonOptions={shape:siwgButtonDiv.getAttribute('data-googlesitekit-siwg-shape')|| defaultButtonOptions.shape,text:siwgButtonDiv.getAttribute('data-googlesitekit-siwg-text')|| defaultButtonOptions.text,theme:siwgButtonDiv.getAttribute('data-googlesitekit-siwg-theme')|| defaultButtonOptions.theme,};if(typeof google !=='undefined'){google.accounts.id.renderButton(siwgButtonDiv,buttonOptions);}});/* If there is a matching saved comment text in sessionStorage,restore it to the comment field and remove it from sessionStorage. */ const postId=document.body.className.match(/postid-(\d+)/)?.[1];const commentField=document.querySelector('#comment');const commentText=sessionStorage.getItem(`siwg-comment-text-${postId}`);if(commentText?.length && commentField && !! postId){commentField.value=commentText;sessionStorage.removeItem(`siwg-comment-text-${postId}`);}})();
+</script>
+
+<!-- End Sign in with Google button added by Site Kit -->
+<script id="anthem-newsletter-cta-js-extra">
+var anthemNewsletterCTA = {"ajaxurl":"https://anthemcreation.com/wp-admin/admin-ajax.php","nonce":"22f360540d"};
+//# sourceURL=anthem-newsletter-cta-js-extra
+</script>
+<script src="https://anthemcreation.com/wp-content/mu-plugins/anthem-newsletter-cta/assets/newsletter-cta.js?ver=1.1.0" id="anthem-newsletter-cta-js"></script>
+<script id="pll_cookie_script-js-after">
+(function() {
+				var expirationDate = new Date();
+				expirationDate.setTime( expirationDate.getTime() + 31536000 * 1000 );
+				document.cookie = "pll_language=en; expires=" + expirationDate.toUTCString() + "; path=/; secure; SameSite=Lax";
+			}());
+
+//# sourceURL=pll_cookie_script-js-after
+</script>
+<script src="https://anthemcreation.com/wp-content/plugins/anthem-ai-chat/assets/js/vendor/marked.min.js?ver=4.3.0" id="marked-js-js"></script>
+<script id="anthem-ai-chat-script-js-extra">
+var anthemAiChat = {"ajax_url":"https://anthemcreation.com/wp-admin/admin-ajax.php","nonce":"e26cc29e0a","bot_name":"Assistant Anthem","welcome_msg":"Hey, chez Anthem Creation nous construisons des syst\u00e8mes IA.\r\n\r\nC'est quoi la t\u00e2che qui vous prend le plus de temps en ce moment ?","primary_color":"#c43959","color_theme":"dark","bot_avatar":"","auto_open":"0","auto_open_delay":"3","mobile_display":"1","lead_capture":"1","lead_capture_timing":"4","is_available":"1","offline_msg":"Nos \u00e9quipes sont actuellement absentes. L'IA reviendra demain d\u00e8s 9h pour vous aider !","escalation_url":"https://anthemcreation.com/contact/"};
+//# sourceURL=anthem-ai-chat-script-js-extra
+</script>
+<script src="https://anthemcreation.com/wp-content/plugins/anthem-ai-chat/assets/js/chatbot-frontend.js?ver=1.5.0" id="anthem-ai-chat-script-js"></script>
+<script id="eztoc-scroll-scriptjs-js-extra">
+var eztoc_smooth_local = {"scroll_offset":"30","add_request_uri":"","add_self_reference_link":""};
+//# sourceURL=eztoc-scroll-scriptjs-js-extra
+</script>
+<script src="https://anthemcreation.com/wp-content/plugins/easy-table-of-contents/assets/js/smooth_scroll.min.js?ver=2.0.83" id="eztoc-scroll-scriptjs-js"></script>
+<script src="https://anthemcreation.com/wp-content/plugins/easy-table-of-contents/vendor/js-cookie/js.cookie.min.js?ver=2.2.1" id="eztoc-js-cookie-js"></script>
+<script src="https://anthemcreation.com/wp-content/plugins/easy-table-of-contents/vendor/sticky-kit/jquery.sticky-kit.min.js?ver=1.9.2" id="eztoc-jquery-sticky-kit-js"></script>
+<script id="eztoc-js-js-extra">
+var ezTOC = {"smooth_scroll":"1","visibility_hide_by_default":"","scroll_offset":"30","fallbackIcon":"\u003Cspan class=\"\"\u003E\u003Cspan class=\"eztoc-hide\" style=\"display:none;\"\u003EToggle\u003C/span\u003E\u003Cspan class=\"ez-toc-icon-toggle-span\"\u003E\u003Csvg style=\"fill: #ffffff;color:#ffffff\" xmlns=\"http://www.w3.org/2000/svg\" class=\"list-377408\" width=\"20px\" height=\"20px\" viewBox=\"0 0 24 24\" fill=\"none\"\u003E\u003Cpath d=\"M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z\" fill=\"currentColor\"\u003E\u003C/path\u003E\u003C/svg\u003E\u003Csvg style=\"fill: #ffffff;color:#ffffff\" class=\"arrow-unsorted-368013\" xmlns=\"http://www.w3.org/2000/svg\" width=\"10px\" height=\"10px\" viewBox=\"0 0 24 24\" version=\"1.2\" baseProfile=\"tiny\"\u003E\u003Cpath d=\"M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z\"/\u003E\u003C/svg\u003E\u003C/span\u003E\u003C/span\u003E","chamomile_theme_is_on":""};
+//# sourceURL=eztoc-js-js-extra
+</script>
+<script src="https://anthemcreation.com/wp-content/plugins/easy-table-of-contents/assets/js/front.min.js?ver=2.0.83-1778305356" id="eztoc-js-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?ver=11.0.0" id="swiper-js"></script>
+<script src="https://anthemcreation.com/wp-content/themes/anthem-theme/assets/js/main.js?ver=2.0.0" id="anthem-main-js"></script>
+<script src="https://anthemcreation.com/wp-content/plugins/halfdata-green-popups/js/lepopup.js?ver=7.56" id="lepopup-js"></script>
+<script src="https://anthemcreation.com/wp-content/plugins/halfdata-green-popups/js/airdatepicker.js?ver=7.56" id="airdatepicker-js"></script>
+<script id="mailpoet_public-js-extra">
+var MailPoetForm = {"ajax_url":"https://anthemcreation.com/wp-admin/admin-ajax.php","is_rtl":"","ajax_common_error_message":"An error has happened while performing a request, please try again later.","captcha_input_label":"Type in the characters you see in the picture above:","captcha_reload_title":"Reload CAPTCHA","captcha_audio_title":"Play CAPTCHA","assets_url":"https://anthemcreation.com/wp-content/plugins/mailpoet/assets","collect_subscriber_timezones":"1"};
+var MailPoetForm = {"ajax_url":"https://anthemcreation.com/wp-admin/admin-ajax.php","is_rtl":"","ajax_common_error_message":"An error has happened while performing a request, please try again later.","captcha_input_label":"Type in the characters you see in the picture above:","captcha_reload_title":"Reload CAPTCHA","captcha_audio_title":"Play CAPTCHA","assets_url":"https://anthemcreation.com/wp-content/plugins/mailpoet/assets","collect_subscriber_timezones":"1"};
+//# sourceURL=mailpoet_public-js-extra
+</script>
+<script src="https://anthemcreation.com/wp-content/plugins/mailpoet/assets/dist/js/public.js?ver=5.26.1" id="mailpoet_public-js" defer data-wp-strategy="defer"></script>
+
+<script>
+	var lepopup_ajax_url = "https://anthemcreation.com/wp-admin/admin-ajax.php";
+	var lepopup_ga_tracking = "off";
+	var lepopup_abd_enabled = "off";
+	var lepopup_async_init = "on";
+	var lepopup_preload = "off";
+	var lepopup_overlays = {"c3QtdjkN3d9XkAES":["33","middle-center","on","rgba(91,91,91,0.8)","on","fadeIn","#FFFFFF","#FFFFFF","#FFFFFF","360"],"A1xtcUohRhU5Gc1h":["34","middle-center","on","rgba(91,91,91,0.8)","on","fadeIn","#FFFFFF","#FFFFFF","#FFFFFF","360"],"VFXu2ldHuqrY7LrP":["35","middle-center","on","rgba(51,51,51,0.9)","on","fadeIn","#FFFFFF","#FFFFFF","#FFFFFF","360"],"PYbcRD7umSrXTQG6":["36","middle-center","on","rgba(91, 91, 91, 0.8)","on","fadeIn","#ffffff","#ffffff","#ffffff","360"],"IQRl1YEHcir1JvUb":["37","middle-center","on","rgba(91, 91, 91, 0.8)","on","fadeIn","#ffffff","#ffffff","#ffffff","360"],"PYbcRD7umSrXTQG6-2":["38","middle-center","on","rgba(91, 91, 91, 0.8)","on","fadeIn","#ffffff","#ffffff","#ffffff","360"]};
+	var lepopup_campaigns = {};
+</script>
+		<!-- Compliance by Hu-manity.co plugin v3.0.5 https://hu-manity.co/ -->
+		<div id="cookie-notice" role="dialog" class="cookie-notice-hidden cookie-revoke-hidden cn-position-bottom" aria-label="Compliance by Hu-manity.co" style="background-color: rgba(0,0,0,0.72);"><div class="cookie-notice-container" style="color: #d8d8d8"><span id="cn-notice-text" class="cn-text-container">Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez leur utilisation.</span><span id="cn-notice-buttons" class="cn-buttons-container"><button id="cn-accept-cookie" data-cookie-set="accept" class="cn-set-cookie cn-button cn-button-custom button" aria-label="Ok">Ok</button></span><button type="button" id="cn-close-notice" data-cookie-set="accept" class="cn-close-icon" aria-label="Non"></button></div>
+			
+		</div>
+		<!-- / Compliance by Hu-manity.co plugin -->
+
+</body>
+
+</html>
+<!-- Dynamic page generated in 0.822 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2026-05-21 10:54:03 -->
+
+<!-- Compression = gzip -->

@@ -1,0 +1,23 @@
+{
+  "bytes": 5866,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T09:54:26.712848+00:00",
+  "final_url": "https://nhn.yuu.is/item?id=47640875",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://nhn.yuu.is/item?id=47640875",
+  "sha256": "ac787bdf8ddeebafc855449b06fb1ecc85ac8ccd21d43433f74e312541797a06",
+  "source": {
+    "id": "hacker-news-lens-thread",
+    "priority": "p1",
+    "tags": [
+      "discussion",
+      "hacker-news",
+      "mirror"
+    ],
+    "title": "HN mirror: LLM Wiki - example of an idea file",
+    "type": "webpage",
+    "url": "https://nhn.yuu.is/item?id=47640875"
+  },
+  "text_sha256": "3949897ba67948c8c35acda144d4a526ec4982792932a90046cf3d46c99ebb9e"
+}

@@ -1,0 +1,22 @@
+{
+  "bytes": 50931,
+  "content_type": "text/html",
+  "fetched_at": "2026-05-21T09:54:47.011383+00:00",
+  "final_url": "https://falconer.com/guides/enterprise-llm-wiki-karpathy",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://falconer.com/guides/enterprise-llm-wiki-karpathy",
+  "sha256": "84ede4b709c21fa93838205482c04edfa921a66e6c55eb4c8cd1e39011da70a7",
+  "source": {
+    "id": "falconer-enterprise-guide",
+    "priority": "p1",
+    "tags": [
+      "blog",
+      "enterprise"
+    ],
+    "title": "The enterprise LLM wiki: scaling Karpathy's pattern to your org",
+    "type": "webpage",
+    "url": "https://falconer.com/guides/enterprise-llm-wiki-karpathy"
+  },
+  "text_sha256": "a6ca9b9ae9dfcd75c5b415e9decc006d41833b947654f2bc5ffbcf6b3fa1108e"
+}

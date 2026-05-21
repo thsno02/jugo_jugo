@@ -1,0 +1,24 @@
+{
+  "fetched_at": "2026-05-21T09:56:38.546462+00:00",
+  "git_action": "clone",
+  "git_exit_code": 0,
+  "git_output_tail": "Cloning into '/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/github_repo/repo-lewislulu-llm-wiki-skill/repo'...\n",
+  "github_api_sha256": "7158c1fc176b4171c50ac0b83e04db7df8275d822d093366e755aaef5493358e",
+  "github_api_status": 403,
+  "github_api_url": "https://api.github.com/repos/lewislulu/llm-wiki-skill",
+  "readme_api_status": 403,
+  "readme_sha256": "7158c1fc176b4171c50ac0b83e04db7df8275d822d093366e755aaef5493358e",
+  "repo": "lewislulu/llm-wiki-skill",
+  "source": {
+    "id": "repo-lewislulu-llm-wiki-skill",
+    "priority": "p1",
+    "repo": "lewislulu/llm-wiki-skill",
+    "tags": [
+      "repo",
+      "skill"
+    ],
+    "title": "lewislulu/llm-wiki-skill",
+    "type": "github_repo",
+    "url": "https://github.com/lewislulu/llm-wiki-skill"
+  }
+}

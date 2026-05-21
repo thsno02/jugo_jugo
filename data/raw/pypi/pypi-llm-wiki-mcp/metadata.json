@@ -1,0 +1,27 @@
+{
+  "bytes": 72600,
+  "content_type": "text/html; charset=UTF-8",
+  "fetched_at": "2026-05-21T09:55:05.948667+00:00",
+  "final_url": "https://pypi.org/project/llm-wiki-mcp/",
+  "http_status": 200,
+  "ok": true,
+  "pypi_api_sha256": "840a524f24f12bbf9d3bddb705326525dabdd7ff377362858568b9d15a735665",
+  "pypi_api_status": 200,
+  "pypi_api_url": "https://pypi.org/pypi/llm-wiki-mcp/json",
+  "requested_url": "https://pypi.org/project/llm-wiki-mcp/",
+  "sha256": "1167a1622bfb094e7935df4c1f08800482440f643321f45984f3f6f13e3f4e78",
+  "source": {
+    "id": "pypi-llm-wiki-mcp",
+    "package": "llm-wiki-mcp",
+    "priority": "p1",
+    "tags": [
+      "package",
+      "mcp",
+      "python"
+    ],
+    "title": "llm-wiki-mcp PyPI package",
+    "type": "pypi",
+    "url": "https://pypi.org/project/llm-wiki-mcp/"
+  },
+  "text_sha256": "08c4381055b74693f12b1e3544b1bc68601d55910d898aacf936b3929946f57d"
+}

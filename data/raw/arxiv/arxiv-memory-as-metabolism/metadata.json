@@ -1,0 +1,38 @@
+{
+  "agent_readable_file_count": 2,
+  "agent_readable_files": [
+    "v3_642.tex",
+    "00README.json"
+  ],
+  "agent_source_bundle_sha256": "fda24612cfa6d09221d315cbe8efde0467c9a7c6b25fd2cb348bd9ce6c5fae48",
+  "bytes": 47757,
+  "content_type": "text/html; charset=utf-8",
+  "eprint_bytes": 54258,
+  "eprint_content_type": "application/gzip",
+  "eprint_sha256": "c1b9786a3fb7b842e5760dd2142782b5ae84b90935de3307c075ec24b28b39f9",
+  "eprint_source_kind": "tex_source_archive",
+  "eprint_status": 200,
+  "eprint_url": "https://arxiv.org/e-print/2604.12034",
+  "fetched_at": "2026-05-21T11:06:10.480302+00:00",
+  "final_url": "https://arxiv.org/abs/2604.12034",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://arxiv.org/abs/2604.12034",
+  "sha256": "7420dab73b922e79f7d25ced8b71230e3cb3287798a079c0379bc1e73721494a",
+  "source": {
+    "arxiv_id": "2604.12034",
+    "id": "arxiv-memory-as-metabolism",
+    "priority": "p1",
+    "tags": [
+      "paper",
+      "arxiv"
+    ],
+    "title": "Memory as Metabolism: Companion Knowledge Systems",
+    "type": "arxiv",
+    "url": "https://arxiv.org/abs/2604.12034"
+  },
+  "source_file_count": 2,
+  "text_sha256": "2ace634694658855ff797d9d8784a3f6ca7c1579ae684b0a2b578a9071508572",
+  "transport": "requests",
+  "transport_warning": null
+}

@@ -1,0 +1,532 @@
+LLM Wiki – example of an "idea file" | Hacker News
+
+Hacker News new | past | comments | ask | show | jobs | submit login
+
+LLM Wiki – example of an "idea file" ( gist.github.com )
+
+296 points by tamnd 45 days ago | hide | past | favorite | 95 comments
+
+https://x.com/karpathy/status/2040470801506541998
+https://xcancel.com/karpathy/status/2040470801506541998
+
+devnullbrain 45 days ago | next [–]
+
+I don't see why this wouldn't just lead to model collapse:
+https://www.nature.com/articles/s41586-024-07566-y
+If you've spent any time using LLMs to write documentation you'll see this for yourself: the compounding will just be rewriting valid information with less terse information.
+I find it concerning Karpathy doesn't see this. But I'm not surprised, because AI maximalists seem to find it really difficult to be... "normal"?
+Rule of thumb: if you find yourself needing to broadcast the special LLM sauce you came up with instead of what it helped you produce, ask yourself why.
+
+gojomo 45 days ago | parent | next [–]
+
+Here in 2026, many forms of training LLMs on (well-chosen) outputs of themselves, or other LLMs, have delivered gigantic wins. So 2024 & earlier fears of 'model collapse' will lead your intuition astray about what's productive.
+It is unlikely you are accurately perceiving some limitation that Karpathy does not.
+
+ChrisGreenHeur 45 days ago | parent | prev | next [–]
+
+The article is not on training LLMs. it is about using LLMs to write a wiki for personal use. The article assumes a fully trained LLM such as ChatGPT or Claude already exists to be used.
+
+khalic 45 days ago | root | parent | next [–]
+
+Don't even try, after vibe coding, people seem to be adopting vibe thinking. "Model Collapse sounds cool, I'm gonna use it without looking up"
+
+mikkupikku 45 days ago | root | parent | next [–]
+
+Vibe thinking... that's an interesting premise. I'll have to build up my new llm-wiki before I'll know what to think about "vibe thinking."
+
+mikkupikku 45 days ago | root | parent | next [–]
+
+I was joking but also not joking, this llm-wiki idea is fun. I fed into it it's own llm-wiki.md, Foucault's Pendulum, randomly collected published papers about the philosophy of GiTS, several CCRU essays, and Manufacturing Consent. It drew fun red yarn between all of them, about the topic of red yarn (e.g. schizos drawing connections out of nothing, particularly through the use of computers, and how this relates to itself doing literally this as it does it.)
+I'll spare you most of the slop but.. "The Case That I Am Abulafia: The parallel is uncomfortable and precise. [...]"
+Yeah... It's fun though.
+
+hombre_fatal 44 days ago | root | parent | prev | next [–]
+
+Also, TFA prescribes putting ground truth source files into a /raw directory.
+Everything is derived from them and backlinks into them. Which is necessary to be vigilant about staleness, correctness, drift, and more. Just like in a human-built knowledge base.
+
+sebmellen 45 days ago | parent | prev | next [–]
+
+Edit for context: the sibling comment from karpathy is gone after being flagged to oblivion. Not sure if he deleted it or if it was just removed based on the number of flags? He had copy-pasted a few snarky responses from Claude and essentially said “Claude has this to say to you:” followed by a super long run on paragraph of slop.
+————
+Wow, I respect karpathy so much and have learned a ton from him. But WTF is the sibling comment he wrote as a response to you? Just pasting a Claude-written slop retort… it’s sad.
+Maybe we need to update that old maxim about “if you don’t have something nice to say, don’t say it” to “if you don’t have something human to say, don’t say it.”
+So many really smart people I know have seen the ‘ghost in the machine’ and as a result have slowly lost their human faculties. Ezra Klein, of all people, had a great article about this recently titled “I Saw Something New in San Francisco” (gift link if you want to read it): https://www.nytimes.com/2026/03/29/opinion/ai-claude-chatgpt...
+
+prodigycorp 45 days ago | root | parent | next [–]
+
+It's not sad. He's a person like you and me. devnullbrain's comment is snarky. He invoked model collapse which has nothing to do with the topic of a wiki/kb, he wrote that karpathy is not normal, and then seemed to imply that the idea was useless. I'd be pretty in my feels and the fact that he wrote it and deleted it seems like a +1 normal guy thing.
+
+sebmellen 44 days ago | root | parent | next [–]
+
+Yeah. I know you didn’t see it, but it was truly a substance-free response. Glad to see he deleted it and I know I’ve been guilty of the same kind of knee-jerk response before.
+
+prodigycorp 44 days ago | root | parent | next [–]
+
+I saw it. It sucked, I agree. But like you said, we all get one (or a few) of those.
+
+moralestapia 45 days ago | root | parent | prev | next [–]
+
+Lol at that.
+It's weird how some people cover the whole range of putting out some really good stuff and other times the complete opposite.
+Feels as if they were two different people ... or three, or four.
+
+iamflimflam1 45 days ago | root | parent | next [–]
+
+Emotional state, tiredness, drunkenness, a goods nights sleep… the number of factors that drive our responses is ridiculous.
+
+girvo 45 days ago | root | parent | prev | next [–]
+
+Eh, he’s just a person. I’m not surprised he posted a rude comment haha, and it got rightfully flagged off the site for being AI slop.
+Appreciate the gift link, I’ll give it a read!
+
+devnullbrain 44 days ago | root | parent | prev | next [–]
+
+Aw, I missed it
+
+jahala 45 days ago | parent | prev | next [–]
+
+I did a proof of concept for self-updating html files (polyglot bash/html) some weeks ago. It actually works quite well, with simple prompting it seems to not just go in circles ( https://github.com/jahala/o-o )
+
+kwar13 45 days ago | parent | prev | next [–]
+
+also my experience. it can't even keep up with a simple claude.md let alone a whole wiki...
+
+Vetch 45 days ago | prev | next [–]
+
+This sounds very like Licklider's essay on Intelligence Amplification: Man Computer Symbiosis, from 1960:
+> Men will set the goals and supply the motivations, of course, at least in the early years. They will formulate hypotheses. They will ask questions. They will think of mechanisms, procedures, and models. They will remember that such-and-such a person did some possibly relevant work on a topic of interest back in 1947, or at any rate shortly after World War II, and they will have an idea in what journals it might have been published. In general, they will make approximate and fallible, but leading, contributions, and they will define criteria and serve as evaluators, judging the contributions of the equipment and guiding the general line of thought.
+> In addition, men will handle the very-low-probability situations when such situations do actually arise. (In current man-machine systems, that is one of the human operator's most important functions. The sum of the probabilities of very-low-probability alternatives is often much too large to neglect. ) Men will fill in the gaps, either in the problem solution or in the computer program, when the computer has no mode or routine that is applicable in a particular circumstance.
+> The information-processing equipment, for its part, will convert hypotheses into testable models and then test the models against data (which the human operator may designate roughly and identify as relevant when the computer presents them for his approval). The equipment will answer questions. It will simulate the mechanisms and models, carry out the procedures, and display the results to the operator. It will transform data, plot graphs ("cutting the cake" in whatever way the human operator specifies, or in several alternative ways if the human operator is not sure what he wants). The equipment will interpolate, extrapolate, and transform. It will convert static equations or logical statements into dynamic models so the human operator can examine their behavior. In general, it will carry out the routinizable, clerical operations that fill the intervals between decisions.
+https://www.organism.earth/library/document/man-computer-sym...
+
+ramoz 45 days ago | parent | next [–]
+
+Wow. fascinating insights he had.
+e.g. (amongst many others) Desk-Surface Display and Control: Certainly, for effective man-computer interaction, it will be necessary for the man and the computer to draw graphs and pictures and to write notes and equations to each other on the same display surface. The man should be able to present a function to the computer, in a rough but rapid fashion, by drawing a graph. The computer should read the man's writing, perhaps on the condition that it be in clear block capitals, and it should immediately post, at the location of each hand-drawn symbol, the corresponding character as interpreted and put into precise type-face.
+
+kenforthewin 45 days ago | prev | next [–]
+
+This is just RAG. Yes, it's not using a vector database - but it's building an index file of semantic connections, it's constructing hierarchical semantic structures in the filesystem to aid retrieval .. this is RAG.
+On a sidenote, I've been building an AI powered knowledge base (yes, it uses RAG) that has wiki synthesis and similar ideas, take a look at https://github.com/kenforthewin/atomic
+
+panarky 45 days ago | parent | next [–]
+
+There's nothing about RAG that requires embeddings.
+The retrieval part can be grep if you don't care about semantic search.
+
+alfiedotwtf 45 days ago | parent | prev | next [–]
+
+You should have started your comment with “ I have a few qualms with this app”.
+I’ve been thinking something along the lines of a LLM-WIKI for a while now which could truely act as a wingman-executive-assistant-second-brain, but OP has gone deeper than my ADHD thoughts could have possibly gone.
+Looking forward to seeing this turn into fruition
+
+Jet_Xu 45 days ago | parent | prev | next [–]
+
+I believe Multimodal KB+Agentic RAG is a suitable solution for personal KB. Imagine you have tons of office docs and want to dig some complex topics within it. You could try https://github.com/JetXu-LLM/DocMason
+Fully retrieve all diagram or charts info from ppt and excels, and then leverage Native AI agents(e.g. Codex) to conduct Agentic Rad
+
+locknitpicker 45 days ago | parent | prev | next [–]
+
+> This is just RAG.
+More to the point, this is how LLM assistants like GitHub Copilot use their custom instructions file, aka copilot-instructions.md
+https://docs.github.com/en/copilot/how-tos/configure-custom-...
+
+darkhanakh 45 days ago | parent | prev | next [–]
+
+eh i'd push back on "just RAG". like yes the retrieval-generation loop is RAG shaped, no ones arguing that. but the interesting bit here is the write loop - the LLM is authoring and maintaining the wiki itself, building backlinks, filing its own outputs back in. thats not retrieval thats knowledge synthesis. in vanilla RAG your corpus is static, here it isnt
+also the linting pass is doing something genuinely different - auditing inconsistencies, imputing missing data, suggesting connections. thats closer to assistant maintaining a zettelkasten than a search engine returning top-k chunks
+cool project btw will check it out
+
+devmor 45 days ago | root | parent | next [–]
+
+This is just persistent memory RAG. I have had a setup like this since about a day after I started using copilot, except it's an MCP server that uses sqlite-vec and has recall endpoints to contextually load the proper data instead of a bunch of extra files polluting context.
+OP's example isn't something new or incredibly thoughtful at all - in fact this pattern gets "discovered" every other day here, reddit or social media in general by people that don't have the foresight to just look around and see what other people are doing.
+
+kenforthewin 45 days ago | root | parent | prev | next [–]
+
+I agree with you, the linting pass seems valuable and it's something I'm thinking about adding - it's a great idea.
+What I'm pushing back on specifically is the insistence that the core loop - retrieving the most relevant pieces of knowledge for wiki synthesis - is not RAG. In order for the LLM to do a good job at this, it needs some way to retrieve the most relevant info. Whether that's via vector DB queries or a structured index/filesystem approach, that fundamental problem - retrieving the best data for the LLM's context - is RAG. It's a problem that has been studied and evaluated for years now.
+thanks for checking it out
+
+Covenant0028 45 days ago | root | parent | prev | next [–]
+
+I'm curious how this linting step scales with larger wikis. Looking for an inconstency across N files requires N*N comparisons, and that's assuming each file contains a single idea.
+
+ChrisGreenHeur 45 days ago | root | parent | next [–]
+
+Presumably, randomness and only looking at a limited subset will semi-ensure over time that most contradictions will surface. Alternatively, how large do you really expect this kind of thing to be, there is a limit to the amount of facts from Warhammer 40k worth saving in a wiki.
+
+Imanari 45 days ago | prev | next [–]
+
+Isn’t this just kicking the can down the road?
+> but the LLM is rediscovering knowledge from scratch on every question
+Unless the wiki stays fully in context now the LLM hast to re-read the wiki instead of re-reading the source files. Also this will introduce and accumulate subtle errors as we start to regurgitate 2nd-order information.
+I totally get the idea but I think next gen models with 10M context and/or 1000tps will make this obsolete.
+
+lelanthran 45 days ago | parent | next [–]
+
+> I totally get the idea but I think next gen models with 10M context and/or 1000tps will make this obsolete.
+We've already got 1m context, 800k context, and they still start "forgetting" things around the 200k - 300k mark.
+What use is 10M context if degradation starts at 200k - 300k?
+
+SOLAR_FIELDS 45 days ago | parent | prev | next [–]
+
+I use a home baked system based on obsidian that is essentially just “obsidian but with structured format on top with schemas” and I deploy this in multiple places with ranges of end users. It is more valuable than you think. The intermediary layer is great for capturing intent of design and determining when implementation diverges from that. There will always be a divergence from the intent of a system and how it actually behaves, and the code itself doesn’t capture that. The intermediate layer is lossy, it’s messy, it goes out of date, but it’s highly effective.
+It’s not what this person is describing though. A self referential layer like this that’s entirely autonomous does feel completely valueless - because what is it actually solving? Making itself more efficient? The frontier model providers will be here in 3 weeks doing it better than you on that front. The real value is having a system that supports a human coming in and saying “this is how the system should actually behave”, and having the system be reasonably responsive to that.
+I feel like a lot of the exercises like op are interesting but ultimately futile. You will not have the money these frontier providers do, and you do not have remotely the amount of information that they do on how to squeeze the most efficiency in how they work. Best bet is to just stick with the vanilla shit until the firehose of innovation slows down to something manageable, because otherwise the abstraction you build is gonna be completely irrelevant in two months
+
+ctxc 44 days ago | root | parent | next [–]
+
+Interesting, I'd love to know more. Are parts of it public?
+
+SOLAR_FIELDS 44 days ago | root | parent | next [–]
+
+Indeed, I have it open source, but want to preserve my anonymity here. The main gist of it is Quartz as a static site frontend bundle, backed by Decap as an editor, so that non technical users can edit documents. The validation is twofold - frontmatter is validated by a typical yaml validator library, and then I created markdown body validation using some popular markdown AST libraries, so there are two sets of schemas - one for the frontmatter, one for the body, and documents must conform via ci. I ship it with a basic cli that essentially does validation and has a few other utilities. Not really that much magic, maybe 500 lines of code or so in the CLI and another few hundred lines doing validation and the other utilties. It's all in typescript, so I use the same validation in Decap when people do edits.
+
+dennisy 45 days ago | parent | prev | next [–]
+
+The “next gen of models” argument is a valid one and one I think of often, but if you truly buy it, it would stop do creating anything - since the next gen of models could make it obsolete.
+
+khalic 45 days ago | parent | prev | next [–]
+
+The goal isn’t to keep the context every time, it’s to make the memory queryable. Like a data lake but for your ideas and decisions
+
+0123456789ABCDE 45 days ago | parent | prev | next [–]
+
+this solves for now, and this solves for the future.
+now you get to condense the findings that interest from a handful of papers
+in the future it solves for condensing your interests in a whole field to a handful of papers or less
+
+nidnogg 45 days ago | parent | prev | next [–]
+
+It is how I feel when I do it. And it certainly shows over time.
+
+nidnogg 45 days ago | prev | next [–]
+
+I've recently lazied out big time on a company project going down a similar rabbit hole. After having a burnout episode and dealing with sole caregiver woes in the family for the past year, I've had less and less energy to piece together intense, correct thought sequences at work.
+As such I've taken to delegating substantial parts architecture and discovery to multiagent workflows that always refer back to a wiki-like castle of markdown files that I've built over time with them, fronted by Obsidian so I can peep efficiently often enough.
+Now I'm certainly doing something wrong, but the gaps are just too many to count. If anything, this creates a weird new type of tech debt. Almost like a persistent brain gap. I miss thinking harder and I think it would get me out of this one for sure. But the wiki workflow is just too addictive to stop.
+
+stingraycharles 45 days ago | parent | next [–]
+
+> I miss thinking harder
+Me too, and I wonder where this will take us; I worry about losing the ability to think hard.
+
+AlecSchueler 44 days ago | root | parent | next [–]
+
+We can still think hard about other things? I like to do creative writing now, and I'm learning the concertina which is a real mental workout.
+
+jareklupinski 45 days ago | root | parent | prev | next [–]
+
+im hoping to re-use the newly garbage-collected memory available to me now to rediscover "play hard"
+
+kubb 45 days ago | parent | prev | next [–]
+
+You’re not doing anything wrong. This isn’t a bulletproof idea. It can work, and this is what a lot of people end up with to manage complexity, but there’s a critical point beyond which things collapse: the agent can’t keep the wiki up to date anymore, the developer can’t grok it anymore.
+
+kaashif 45 days ago | root | parent | next [–]
+
+Managing complexity, modularity, separation of concerns, were already critical for ensuring humans could still hold enough of the system in their brains to do something useful.
+People who do not understand that will continue to not understand that it also applies to AI right now. Maybe at some point in the future it won't, not sure. But my impression is that systems grow in complexity far past the point where the system is gummed up and no-one can do anything, unless it's actively managed.
+If a human can understand 10 units of complexity and their LLM can do 20, then they might just build a system that's 30 complex and not understand the failure modes until it's too late.
+
+stingraycharles 45 days ago | root | parent | next [–]
+
+> People who do not understand that will continue to not understand that it also applies to AI right now.
+I think this is mostly a matter of expectation management. AIs are being positioned as being able to develop software independently, and that’s certainly the end goal.
+So then people come in with the expectation that the AI is able to manage that, and it fails. Spectacularly.
+The LLM can certainly not manage any non-local complexity right now, and succeed in increasing the technical debt and complexity faster than ever before.
+
+mikkupikku 45 days ago | parent | prev | next [–]
+
+Just w.r.t having time to think harder, have you considered getting a hobby that forces you to go offline and do something repetitive so your mind can wander? I do this with walks (phone left at home) and sometimes swimming laps. Physical exercise may not seem appealing if you're in burnout territory, but I think it's worth trying because for me at least it's a different, mostly orthogonal, kind of fatigue.
+
+loveparade 45 days ago | parent | prev | next [–]
+
+That has been my experience as well. Most of the value of writing docs or a wiki is not in the final artifacts, it's that the process of writing docs updates your own mental models and knowledge so that you can make better decisions down the road.
+Even if you can get an LLM to output good artifacts that don't eventually evolve into slop, which is questionable, it's really not that useful, especially not for a personal wiki.
+
+kilroy123 45 days ago | root | parent | next [–]
+
+Makes me think of all these tools that use AI to make fancy flashcards for you to study.
+It seems rather silly to me, as _creating_ those flashcards is what helps you learn, with the studying after, cementing that knowledge in your brain.
+
+kaashif 45 days ago | root | parent | next [–]
+
+The ultimate connecting up of the dots would be brain implants that just give you knowledge with zero effort.
+I don't know if I'd ever be comfortable with that, hopefully I'll just be retired or dead when that takes off.
+
+nidnogg 45 days ago | root | parent | prev | next [–]
+
+And what happens when the bucket of knowledge gets too big and starts to overflow? I feel as if, by delegating that process of building knowledge too much, I end up accruing knowledge gaps of my own. Funnily enough it mirrors the LLM/agent's performance.
+Maybe my recent prompts reflects how badly up to speed I am at a given time? I don't know. A slightly related note - I recently heard the term AI de-skilling, this treads close to it imo.
+
+nidnogg 45 days ago | root | parent | prev | next [–]
+
+The worst part to me, by far, is having nothing more than a bunch of "smart" markdown files to show as my deliverables for the day. Sometimes this stacks for many days on end. Usually the bigger the knowledge gaps are, the more I procrastinate on real work.
+Talk about back to school feelings (!)
+
+voidhorse 45 days ago | prev | next [–]
+
+This makes me feel like karpathy is behind on the times a tad. Many agent users I know already do precisely this as part of "agentic" development. If you use a harness, the harness is already empowered to do much of this under the hood, no fancy instruction file required. Just ask the agent to update some knowledge directory at the end of each convo, done. If you really need to automate it, write some scheduling tool that tells the agent to read past convos and summarize. It really is that easy.
+
+nurettin 45 days ago | prev | next [–]
+
+He really wants to shine, but how is this different than claude memory or skills? When I encounter something it had difficulty doing, or consistently start off with incorrect assumptions, I solve for it and tell it to remember this. If it goes on a long trial and error loop to accomplish something, once it works I tell it to create a skill.
+
+locknitpicker 45 days ago | parent | next [–]
+
+> He really wants to shine, but how is this different than claude memory or skills?
+It isn't different. This just tries to reinvent the wheel that all mainstream coding assistants have been providing for over a year.
+Even ChatGPT rolled out chat memory in their free tier.
+
+TeMPOraL 45 days ago | root | parent | next [–]
+
+The difference obviously being, his way you own the memories; in what's currently deployed, it's the platform that owns them.
+
+locknitpicker 45 days ago | root | parent | next [–]
+
+> The difference obviously being, his way you own the memories; in what's currently deployed, it's the platform that owns them.
+I don't think you are very familiar with the state of LLM assistants. Prompt files were a thing since ever, and all mainstream coding assistants support storing your personal notes in your own files in multiple ways. Prompt files, instruction files, AGENTS.md, etc.
+
+nurettin 45 days ago | root | parent | prev | next [–]
+
+Skills and memory are .md files on your system.
+
+mpazik 45 days ago | prev | next [–]
+
+Happy to see it gets attention. The friction shows up once you mix docs with structured things like work items or ADRs. Flat markdown doesn't query well and gets inconsistent. You can read TASKS.md fine. The agent can't ask "show me open tasks blocking this epic" without scanning prose or maintaining a parallel index.
+The AGENTS.md approach papers over this by teaching the LLM the folder conventions. Works until the data gets complex but gets worse after many iterations.
+Both are needed: files that open in any editor, and a structured interface the agent can actually query. Been building toward that with Binder (github.com/mpazik/binder), a local knowledge platform. Data lives in a structured DB but renders to plain markdown with bi-directional sync. LSP gives editors autocomplete and validation. Agents and scripts get the same data through CLI or MCP.
+
+saberience 40 days ago | prev | next [–]
+
+Karpathy is at his best when working on teaching materials for ML beginners.
+When it comes to other stuff he seems to be in a X/Twitter induced AI Psychosis like Garry Tan where he thinks everything he does is amazing and novel because he gets glazed by 1000 X bots who just post "You're amazing" after anything he tweets.
+This is most definitely an (old) solution in search of a problem. Plenty of people have been trying variants of this for several years at this point but the issue isn't putting stuff into a wiki, or git, or markdown files. It's how you keep then up to date, how you deal with conflicts, how you deal with bloat, how you decide what to keep and delete over time, and also, when you've got this big mass of notes and markdown, when do you surface it?
+It sounds great on paper until you try and use it and realize that in reality it isn't that useful and doesn't become part of your daily life. That is, it's more fun to build than to actually use, and you don't end up using it outside of the initial novelty.
+
+cyanydeez 45 days ago | prev | next [–]
+
+Too much context pollution.
+Start with short text context, and flow through DAGs via choose your own adventure. We alreadybreached context limits. Nows the time to let LLMs build their contexts through decision trees and prune dead ends.
+
+j-pb 45 days ago | parent | next [–]
+
+In my experience a wiki can actually drastically reduce the amount of dead context.
+I've handed my local agents a bunch of integrated command line tools (kinda like an office suite for LLMs), including a wiki ( https://github.com/triblespace/playground/blob/main/facultie... ) and linkage really helps drastically reduce context bloat because they can pull in fragment by fragment incrementally.
+
+cyanydeez 45 days ago | root | parent | next [–]
+
+Was also thinking to disambiguate context where you wish to express a tokens function (eg, top) as different from one could use unique ASCII prefix (eg, ∆top) to avoid pollution between the english and the linux binary.
+Youd then alias these disambiguated terms and theyd still trigger the correct token autocomplete but would reduce overlap which cause misdirection.
+
+cookiengineer 45 days ago | prev | next [–]
+
+This is essentially the hack that Claude Code did with their dedicated sub-agent that summarizes a list of previous messages and maintains different types of memory (temporary, persistent, cross-agent). They also built tools so that agents can talk to each other and use that summary to propagate knowledge to other agents if needed.
+Setting aside that their codebase is absolute slopcrap, I think something like this might work nicely if it's built from the ground up.
+For my own test environment I'm relying on Golang and its conventions (go build, go test, go fmt, gopls etc) which saves a lot of prompts and tokens down the line. Additionally I think that spec driven development might be more successful but I haven't found out yet what the right amount of details for specifications is, so that semantic anchors can help summarize it better.
+Anyways if you're curious, it's made for short agent lifecycles and it kinda works every time most of the time: https://github.com/cookiengineer/exocomp
+Still need to implement the summarizing agent and memory parts, it's a little fiddlework to get that right so I'm currently experimenting a lot locally with both ollama and vllm as an inference engine.
+
+sornaensis 44 days ago | prev | next [–]
+
+I've been working on my own thing with more of a 'management' angle to it. It lets me connect memories to tasks and projects across all of my workspaces, and gives me a live SPA to view and edit everything, making controlling what the models are doing a lot easier in my experience https://github.com/Sornaensis/hmem in a way that suits how I think vs other project management or markdown systems.
+I would be interested in trying to make the models go into more of a research mode and organize their knowledge inside it, but I've found this turns into something like LLM soup.
+For coding projects, the best experience I have had is clear requirements and a lot of refinement followed through with well documented code and modules. And only a few big 'memories' to keep the overall vision in scope. Once I go beyond that, the impact goes down a lot, and the models seem to make more mistakes than I would expect.
+
+gchamonlive 45 days ago | prev | next [–]
+
+I don't think this is taking it as far as it can go.
+Everything should live in the repo. Code and docs yes. But also the planning files, epics, work items, architectural documentation and decisions. Here is a small example of my Linux system doc: https://github.com/gchamon/archie/tree/main/docs
+And you don't need to reinvent the wheel. Code docs can like either right next to it in the readme or in docs/ if it's too big for a single file or the context spams multiple modules. ADRs live in docs/architecture/decisions. Epics and Workitems can also live in the docs.
+Everything is for agents and everything is for humans, unless put in AGENTS.md and docs/agents or something similar, and even those are for human too.
+In a nutshell, put everything in the repo, reuse standards as much as possible, the idea being it's likely the structure is already embedded in the model, and always review documentation changes.
+
+locknitpicker 45 days ago | parent | next [–]
+
+> Everything should live in the repo. Code and docs yes. But also the planning files, epics, work items, architectural documentation and decisions.
+You just described spec-driven development.
+
+gchamonlive 45 days ago | root | parent | next [–]
+
+Yep, and don't reinvent the wheel
+
+zbyforgotpass 44 days ago | prev | next [–]
+
+A list of systems that implement this or related ideas: https://zby.github.io/commonplace/notes/related-systems/rela...
+This list is also part of my own contender in this race: https://zby.github.io/commonplace/ - my own LLM operated knowledge base (this is the html rendering of that KB - there is also the github repo linked there).
+The main feature is that I use it to build a theory about such systems - and the neat trick is that llms can read this theory and implement it so the very theory works as an LLM runtime too.
+It works for me - but it has some rough edges still - so I guess it is not for everyone.
+
+asakin 41 days ago | prev | next [–]
+
+I'd been working on a personal wiki system for a while and adapted it to implement this pattern. Ended up as a git template:
+https://github.com/asakin/llm-context-base
+Main additions on top of the pattern: a training period where the AI learns how you work over 30 days then gets quieter over time, a metadata standard so files are queryable by summary, and a lint pass for stale content and context loading optimization. Never have to design a taxonomy upfront.
+
+thoughtpeddler 44 days ago | prev | next [–]
+
+I’m surprised Karpathy thinks this is a viable solution for a quasi-continual learning system. Yes, it’s cool to experiment with these sort of ‘intermediate knowledge systems’, but the real goal within this current LLM paradigm remains clear: new information within a knowledge system should be manifest through updating the weights ! Many efforts are taking a crack at this, which this really helpful talk [0] by Jack Morris goes into. I’m in full agreement with the other comments here: this ‘LLM Wiki’ merely results in “2nd-order information” that will only muddy the picture.
+[0] “Stuffing Context is not Memory, Updating Weights Is": https://www.youtube.com/watch?v=Jty4s9-Jb78
+
+thoughtpeddler 44 days ago | parent | next [–]
+
+Furthermore, I’m left wondering why Karpathy jumped to a wiki-style approach versus something more akin to “version control but for LLM notebooks”.
+I have no doubt that using LLMs as a notebook, which many of us have been doing now (and the best end-user application of which is Google’s NotebookLM), are a viable path forward for knowledge management. I find myself going back to certain LLM conversations as a ‘running log’ of a given project (akin to notebook-style thinking/building).
+But what about merging concepts from the version control world (Git/SVN), rather than the wiki world? Karpathy should do more explanation about what took him down the wiki route vs that, in these early days of using LLMs as notebooks.
+
+npodbielski 44 days ago | parent | prev | next [–]
+
+> [0] “Stuffing Context is not Memory, Updating Weights Is":
+This guy is not a good speaker. Is there any article about it?
+
+gbro3n 45 days ago | prev | next [–]
+
+I built AS Notes for VS Code ( https://www.asnotes.io ) with the option for this usage pattern in mind. By augmenting VS Code so it has the tooling we use in personal knowledge management systems, it makes it easy to write, link and update markdown / wikilinked notes manually (with mermaid / LaTeX rendering capability also) - but by using VS Code we have easy access to an Agent harness that we can direct to work on, or use our notes as context. Others have pointed out that context bloat is an issue, but no more so than when you use the copilot harness (or any other) inside a large codebase. I find I get more value from my AI conversations when I persist the outputs in markdown like this.
+
+atbpaca 45 days ago | prev | next [–]
+
+An LLM that maintains a Confluence space. That looks like an interesting idea!
+
+tristanMatthias 44 days ago | prev | next [–]
+
+I built a tool[0] in a similar vein to this. It’s for the code base specifically, uses hashes to detect source file changes and distills everything down with an llm into a single asset that explains each file. All addressable via a cli.
+I find it helps a LOT with discovery. Llm spends a lot less time figuring out where things are. It’s essentially “cached discovery”
+[0] https://github.com/tristanmatthias/llmdoc
+
+ractive 45 days ago | prev | next [–]
+
+I built a tool to exactly help an LLM navigate and search a knowledgebase of md files. It helps a lot to build such a wiki by providing basic content search à la grep but also structured search for frontmatter properties. It also helps to move files around without breaking links and to fix links automatically. It is a CLI tool, mainly meant to be driven by AI tools.
+Check it out: https://github.com/ractive/hyalo
+
+foo42 45 days ago | prev | next [–]
+
+I built a very similar system into my own assistant type project. In all honesty though I've not used it enough to know how well it works out in practice.
+
+mbreese 45 days ago | prev | next [–]
+
+I’ve been doing something similar with a RAG system where in addition to storing the documents, we use an LLM to pull out “facts”. We’re using the LLM to look for relationships between different entities. This is then also returned when we query the database.
+But I like the idea of an LLM generated/maintained wiki. That might be a useful addition to allow for more interactive exploration of a document database.
+
+estetlinus 45 days ago | prev | next [–]
+
+Sounds like a solution in search for a problem.
+
+mememememememo 45 days ago | prev | next [–]
+
+This sounds like compaction for RAG.
+
+argee 45 days ago | prev | next [–]
+
+This is what Semiont is trying to do, to some extent [0].
+Doesn't really feel that useful in practice.
+[0] https://github.com/The-AI-Alliance/semiont
+
+jdthedisciple 45 days ago | prev | next [–]
+
+The challenge to me seems quality assurance:
+I'd rather have it source the original document everytime, then an LLM-generated wiki which I most likely wouldn't have the time to fact-check and review myself.
+
+thegeolab 43 days ago | prev | next [–]
+
+Built a versioned schema standard on top of this workflow: github.com/arturseo-geo/llm-knowledge-base
+
+Lockal 45 days ago | prev | next [–]
+
+This thing already exists for multiple years - see https://deepwiki.com/ (99% it is autonomous, but it can be manually structured - see https://docs.devin.ai/work-with-devin/deepwiki#steering-deep... ). There were also multiple attempts to replicate it with local LLMs.
+The problem is that it is still a slop: not only it adds a lot of noise ("architecture" diagrams based on some cherry-picked filenames, incomplete datatables, hyperfocusing on strange things), it also hallucinates, adding factually incorrect information (while direct questions to LLM shows correct information).
+
+serendipty01 45 days ago | prev | next [–]
+
+Similar: https://v-it.org/doctrine/
+
+0123456789ABCDE 45 days ago | prev | next [–]
+
+this is so validating•
+https://grimoire-pt5.sprites.app/
+
+john_minsk 45 days ago | parent | next [–]
+
+what is this?
+
+ansc 45 days ago | prev | next [–]
+
+The comments in the gist is depressing.
+
+qaadika 45 days ago | prev | next [–]
+
+> You never (or rarely) write the wiki yourself — the LLM writes and maintains all of it. You're in charge of sourcing, exploration, and asking the right questions. The LLM does all the grunt work — the summarizing, cross-referencing, filing, and bookkeeping that makes a knowledge base actually useful over time.
+I'm not sure how you can get any closer to "turning your thinking over to machines." These tasks may be "grunt work," but it's while doing these things that new ideas pop in, or you decide on a particular or novel way to organize or frame information. Many of my insights in my (analog? vanilla? my human-written) Obsidian vault (that I consider my "personal wiki") have been made or expanded on because I happened to see one note after another in doing the "grunt work", or just by opening one note and seeing its title right beside a previously forgotten one.
+There's nothing "personal" about a knowledge base you filled by asking AI questions. It's the AI's database, you just ask it to write stuff. Learn how to learn and answer your own damn questions.
+Soon pedagogy will be a piece of paper that says "Ask AI."
+I hate this idea that a result is all that matters, and the quicker you can get the result the better, at any cost (mental or financial, short-term or long-term).
+If we optimized showers to be 20 seconds, we'd stop having shower thoughts. I like my shower thoughts. And so too my grunt-work thoughts.
+---
+As an aside, I'm not totally against AI writing in a personal knowledgebase. I include it at times in my own. But since I started my current obsidian vault in 2023 (now 4100 self-written notes, including maybe up to 5% Web Clipper notes), I've had a Templater (Obsidian plugin) template I wrap around anything AI-written to 'quarantine' it from my own words:
+==BEGIN AI-GENERATED CONTENT==
+<% tp.file.cursor(1) %>
+==END AI-GENERATED CONTENT==
+I've used this consistently and it's helped me keep (and develop) my own writing voice apart from any of my AI usage. It actually motivates me to write more , because I know I could always take the easy route and chunk whatever I'm thinking into the AI, but I'm choosing not to by writing it myself, with my own vocabulary, in my own voice, with my own framing. I trick myself into writing because my pride tells me I can express my knowledge better than the AI can.
+I also manually copy and paste from wherever I'm using AI into my notes. Nothing automated. The friction keeps me from sliding into the happy path of turning my brain off.
+
+mold_aid 45 days ago | parent | next [–]
+
+Since you're a fellow Obsidian user, you likely remember the early days of back-linking note-taking software like Roam and such. I remember just seeing pictures of the graph being the primary visual symbol representing the depth of learning. I thought "ok well people just want to accumulate stuff." AI tools certainly help with creating a mass of notes.
+There's a comment above how this is reminiscent of Licklider's work, but it reminds of the early print culture era, where books were a consumer item, and people just purchased a lot of them to put on shelves built to display them.
+
+qaadika 45 days ago | root | parent | next [1 more]
+
+I actually never got into note-taking before I found Obsidian. I used Google Drive all throughout college and up to 2023, so any knowledge I had written down was sequestered by an ad-hoc folder structure that was mostly chronological by year, or in my physical notebooks by subject. It was also limited by what I felt was worth writing down enough that it merited a Doc, or what I could write in one session before getting distracted and never touching it again. And mentally I limited myself by always wanting to write something down "right", all spell-checked and grammatically correct and sensically organized, which led to often not writing anything down at all. Now I dump the words down and come back to it later when I want to "garden."
+My brother showed me stuff like Trilium circa 2017, but I hadn't the thinking process I do now to even know where to start racking my brain for stuff to write down.
+When I read Chernow's biography of Alexander Hamilton, I was in awe of his ability to write so damn much. I never thought I'd be able to do that. Turns out the secret is just three things: have stuff you're passionate about, be able to recall it, and write so damn much about it. When your thinking process is based around "how would I phrase/word/frame this to write it down," if you have the right process and organization to be able to access it later, it's even easier than talking. For some they can keep everything they know in their head. I'm not one of them. but I can write everything down, and in writing it down I end up remembering it better. My professors were right all along.
+And if one looks at the actual written letters people like Hamilton [1] and co. wrote, or even back to Isaaci Newtoni [2][3], They're riddled with spelling errors and strange latinesque grammar and informal formalities. Yet they're revered for their ability to write. Because it really is the thought that countts [4], not the words.
+(Very little of these comments is new thoughts I'm having now. Most of it is thoughts I had and documented when I was super into PKM in 2023 and since, and now comes back up as those neurons fire again and I consider the new idea of "should AI be my PKM?" after reading the post.)
+---
+Yeah, the graphs are cool for a little bit. But only post-facto, once one has an amount of data points where it might become useful. If the AI is doing the organization then any personal significance is lost. Or rather it was never there to begin with.
+Wikilinks is the feature I use most often, outside of my folder organization (PARA). Now when I have a thought, it goes down a chain of "do I have a note already this can go into," to "no, it should be a new note. are there any notes I should wikilink in this one, or link this one in?"
+I think I made a good decision early on when I was inspired by the Emacs documentation to add a basic "Related: " line before the first header (and after the YAML). There I dump any wikilink I think might possibly be something I want to reference, or find this note via a backlink, without having to think about where to put it in the body.
+E.g.
+{YAML header}
+Related: [[Artemis]], [[Artemis II]], [[NASA Engineering]], [[Space MOC]], [[NASA CAPCOM]],
+# Artemis II Mission Timeline and Notes
+{body and rest of note, my own record of things that happened as I watch the stream}
+---
+> AI tools certainly help with creating a mass of notes.
+Agreed. Presuming the implication is it creates a mass of notes, but of generic information stated generically. I'm really proud of my 4100 notes, because I know (aside from a few catagories like web clipping) even if they're a mess, they're my mess. I definitely could have gone the last three years without having found Obsidian, but I wouldn't have as clear a record of them as I do now. Or the rest of my life, as I slowly add stuff about my past, or migrate old writing into it. I also definitely repeat myself by saying the same information in different places, but in different ways. It's not 'efficient' information density-wise, but it is designed for a human to read and see the human behind the writing.
+I also believe I think clearer, as often when I'm recalling information I'm actually recalling my note in my head on that subject. I write so much that in conversation "I was thinking the other day" is analogous to "I wrote down in my notes".
+I might be crazy but I would put my vault in my will as something to be passed on, because there's so much me in them. My yearly journals in /02 Areas/Journals/ are the most obvious ones, but I have a /02 Areas/Writing/ folder that's just notes I consider "writing", whic is distincy from the contents of /03 Resources/ folder that's the "general knowledge" knowledgebase.
+---
+Anyway, I guess my tl;dr is that AI can never write about thinking as well as a human can, and in my opinion it's the thinking that important, not the writing. the writing or the words is merely a tool in thinking. Karpathy mistakes the words to be the goal, rather than the thinking that caused the words.
+---
+One last thing: I just re-read the HN guidelines out of curiosity, and I noticed they recently added "Don't post generated comments or AI-edited comments."
+I could copy and paste almost anything from my vault into an HN comment without violating this rule. Anybody creating a PKM with this sytem could not. They would have to rewrite it in their own words. So one might as well just right it themself in the first place if they ever think they might want to reuse it in a place like HN.
+---
+[1] https://outhistory.org/exhibits/show/rev/hamilton-laurens-le...
+[2] https://www.newtonproject.ox.ac.uk/view/texts/diplomatic/MIN...
+[3] A while back, while in a Newton phase, I decided arbitrarily to refer to him as "Isaaci Newtoni," as that's how he called himself. I reinforced that by using that name for him in my notes. Now I call him that instinctually, not consciously.
+[4] Intentional.
+
+claudiug 44 days ago | prev | next [–]
+
+i had the feeling that Karpathy is not a software developer at all, reading his tweets is like he is discovering half a century ago ideas. like specification...
+
+saberience 40 days ago | parent | next [–]
+
+He's not, he was an AI researcher and then led AI research teams.
+He's doing "engineering" now since he can use LLMs, but he never really spent years doing what we would call software engineering. I.e. building distributed systems, writing terraform/ansible, maintaining old databases or optimizing MySQL indexes, debugging Kafka or AzureMQ, etc.
+Don't get me wrong, he's knowledgeable about LLMs specifically, (although his knowledge is rapidly becoming out of date) but he's not a software engineer, which is why his ideas around engineering often seem totally deluded.
+
+vbarsoum 43 days ago | prev | next [–]
+
+I built an implementation of this and tested it on 3 Alex Hormozi books (~155K words, 68 source files). Some data for the skeptics: The naive version (each book as 1 file) produced exactly the slop people are describing here. But splitting into chapter-level files and recompiling changed the output categorically. Same model, same prompts — the only variable was source granularity. The compiler produced 210 concept pages with 4,597 cross-references (19.2 avg links per page). 20+ concepts synthesized across all 3 books unprompted — one pulled from 11 source files and found a genuine contradiction between two books that neither makes explicit. 173K words of output from 155K input. It's not compression — it's synthesis. The thing I think the "this is just RAG" comments are missing: a vector database is only useful to machines. You can't open a .faiss file and browse it. A wiki is useful to both. I open these files in Obsidian, browse the graph, follow links, read concept pages — no AI needed. But when I do ask the AI a question, it reads the same wiki pages I do, and the answers are better than RAG because the knowledge is already structured and cross-referenced instead of retrieved as raw chunks. That's the key insight in Karpathy's idea. The compiled wiki is the interface for humans AND the knowledge layer for AI. Same artifact, two audiences. ~Cost: 12M tokens, ~10-15 min. Repo: https://github.com/vbarsoum1/llm-wiki-compiler
+
+kmaitreys 45 days ago | prev | next [–]
+
+> You never (or rarely) write the wiki yourself — the LLM writes and maintains all of it.
+Then what is the point? Why be averse so to use your own brain so much? Why are tech bros like this?
+
+Guidelines | FAQ | Lists | API | Security | Legal | Apply to YC | Contact
+
+Search:

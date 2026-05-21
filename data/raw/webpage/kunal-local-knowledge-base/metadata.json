@@ -1,0 +1,22 @@
+{
+  "bytes": 111109,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T09:54:43.078141+00:00",
+  "final_url": "https://www.kunalganglani.com/blog/llm-wiki-karpathy-local-knowledge-base",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://www.kunalganglani.com/blog/llm-wiki-karpathy-local-knowledge-base",
+  "sha256": "da16f24ffe4a704b8135b528b78506c143bbf634b91531ba6bfb55f06448ea9f",
+  "source": {
+    "id": "kunal-local-knowledge-base",
+    "priority": "p1",
+    "tags": [
+      "blog",
+      "guide"
+    ],
+    "title": "LLM Wiki: Karpathy's Local Knowledge Base Setup",
+    "type": "webpage",
+    "url": "https://www.kunalganglani.com/blog/llm-wiki-karpathy-local-knowledge-base"
+  },
+  "text_sha256": "c11fdd07c8bb382fd9eef270e098fba26bbc3fc609c9d5b99d2612d06d5e753b"
+}

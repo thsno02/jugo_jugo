@@ -1,0 +1,23 @@
+{
+  "bytes": 157778,
+  "content_type": "text/html; charset=UTF-8",
+  "fetched_at": "2026-05-21T09:54:37.312100+00:00",
+  "final_url": "https://anthemcreation.com/intelligence-artificielle/llm-wiki-karpathy-base-connaissance-claude-obsidian/",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://anthemcreation.com/intelligence-artificielle/llm-wiki-karpathy-base-connaissance-claude-obsidian/",
+  "sha256": "ba8d0b6d08a00507b98c735ca76e21ef29cadacd5a77d1906d3293c1f6716e03",
+  "source": {
+    "id": "anthemcreation-fr-guide",
+    "priority": "p1",
+    "tags": [
+      "blog",
+      "guide",
+      "french"
+    ],
+    "title": "LLM wiki Karpathy: base de connaissance avec Claude et Obsidian",
+    "type": "webpage",
+    "url": "https://anthemcreation.com/intelligence-artificielle/llm-wiki-karpathy-base-connaissance-claude-obsidian/"
+  },
+  "text_sha256": "f87874da6a800b3c1a2e303f4cd6cf0c811561f7833bbb02ec8faae03db63829"
+}

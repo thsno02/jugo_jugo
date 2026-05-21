@@ -1,0 +1,23 @@
+{
+  "source": {
+    "id": "reddit-visuals-pdfs-question",
+    "type": "reddit",
+    "title": "Does the Karpathy-style LLM Wiki handle visuals/PDFs/PowerPoints?",
+    "url": "https://www.reddit.com/r/ClaudeCode/comments/1so9gbt/does_the_karpathystyle_llm_wiki_actually_handle/",
+    "priority": "p1",
+    "tags": [
+      "reddit",
+      "discussion",
+      "multimodal"
+    ]
+  },
+  "fetched_at": "2026-05-21T10:01:41.472Z",
+  "browser_capture": true,
+  "final_url": "https://www.reddit.com/r/ClaudeCode/comments/1so9gbt/does_the_karpathystyle_llm_wiki_actually_handle/",
+  "title": "",
+  "bytes_html": 190428,
+  "bytes_text": 222,
+  "html_sha256": "f1915ba08c2fefd4c337bc3a59e04fe0228bae2308d0b03dc8bc30e33c1e5090",
+  "text_sha256": "0b013b021121361a08313786c525485540b0edcc1a7c5c0ef44ef8587239333b",
+  "blocked": true
+}

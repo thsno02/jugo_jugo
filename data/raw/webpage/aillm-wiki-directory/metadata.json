@@ -1,0 +1,22 @@
+{
+  "bytes": 189810,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T09:54:28.731976+00:00",
+  "final_url": "https://aillm.wiki/",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://aillm.wiki/",
+  "sha256": "0aed0c28aad2974d29b14f8029af443253a6c3e286e3de5ed41a29905870a852",
+  "source": {
+    "id": "aillm-wiki-directory",
+    "priority": "p0",
+    "tags": [
+      "directory",
+      "tools"
+    ],
+    "title": "LLM Wiki Directory",
+    "type": "webpage",
+    "url": "https://aillm.wiki/"
+  },
+  "text_sha256": "e293f1d581b030631463ec1146645f9995e4306e9f784073566ae5559ce131c5"
+}
