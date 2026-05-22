@@ -1,17 +1,361 @@
 {
-  "project": "llm_wiki_raw_knowledge_database",
-  "goal": "Acquire raw public sources related to Andrej Karpathy's LLM Wiki / LLM Knowledge Bases pattern for later synthesis.",
-  "created_at": "2026-05-21T10:02:31Z",
-  "write_scope": [
-    "README.md",
-    "docs/",
-    "scripts/",
-    "data/",
-    "reports/",
-    "loop_state.json",
-    "loop_manifest.json"
+  "completion_policy": {
+    "inaccessible_source_policy": "must_be_logged_but_must_not_substitute_for_evidence",
+    "queue_policy": "all_empty",
+    "required_area_status": "supported",
+    "required_audit_status": "pass",
+    "required_gate": "research_paper",
+    "required_output_status": "supported",
+    "stop_command": "python3 scripts/run_loop.py satisfaction"
+  },
+  "coverage_areas": [
+    {
+      "acceptance_tests": [
+        "exact_origin_claim_has_primary_or_near_primary_source",
+        "date_and_context_are_recorded",
+        "early_discussion_is_preserved_or_blocked_with_reason",
+        "minimal_example_is_described_from_sources",
+        "all_claims_have_source_links",
+        "blocked_sources_logged",
+        "audit_passed_or_not_ready_with_reason"
+      ],
+      "framework_section": "Facts That Must Be Covered > Origin And Canon",
+      "id": "origin_and_canon",
+      "judgment_gate": "descriptive",
+      "minimum_evidence": {
+        "discussion_sources": 1,
+        "implementation_sources": 1,
+        "primary_sources": 1,
+        "source_diversity": 3
+      },
+      "preferred_source_types": [
+        "primary_post",
+        "gist",
+        "x_mirror",
+        "hacker_news_thread",
+        "reddit_thread",
+        "github_repo",
+        "blog_post"
+      ],
+      "required_outputs": [
+        "original_karpathy_statement_exact_text",
+        "original_date",
+        "original_context",
+        "examples_and_intended_workflow",
+        "stated_or_implied_non_goals",
+        "immediate_discussion_context",
+        "early_forks_or_implementations",
+        "minimal_example"
+      ],
+      "title": "Origin And Canon"
+    },
+    {
+      "acceptance_tests": [
+        "each_motivation_has_at_least_one_source",
+        "user_groups_are_not_invented",
+        "benefit_claims_are_marked_as_observed_or_hypothetical",
+        "all_claims_have_source_links",
+        "blocked_sources_logged",
+        "audit_passed_or_not_ready_with_reason"
+      ],
+      "framework_section": "Facts That Must Be Covered > Problem And Motivation",
+      "id": "problem_and_motivation",
+      "judgment_gate": "descriptive",
+      "minimum_evidence": {
+        "implementation_sources": 3,
+        "source_diversity": 4,
+        "user_reports_or_discussions": 3
+      },
+      "preferred_source_types": [
+        "discussion_thread",
+        "blog_post",
+        "repo_readme",
+        "case_study",
+        "issue_thread"
+      ],
+      "required_outputs": [
+        "workflow_failures_addressed",
+        "user_groups",
+        "definition_of_better",
+        "current_alternatives"
+      ],
+      "title": "Problem And Motivation"
+    },
+    {
+      "acceptance_tests": [
+        "at_least_ten_implementations_classified",
+        "each_architecture_dimension_has_evidence",
+        "source_preservation_and_query_models_are_distinguished",
+        "all_claims_have_source_links",
+        "blocked_sources_logged",
+        "audit_passed_or_not_ready_with_reason"
+      ],
+      "framework_section": "Facts That Must Be Covered > Architecture And Data Model",
+      "id": "architecture_and_data_model",
+      "judgment_gate": "technical",
+      "minimum_evidence": {
+        "code_or_docs_sources": 5,
+        "implementation_sources": 10,
+        "source_diversity": 5
+      },
+      "preferred_source_types": [
+        "github_repo",
+        "readme",
+        "documentation",
+        "demo",
+        "code"
+      ],
+      "required_outputs": [
+        "source_acquisition_model",
+        "compilation_model",
+        "storage_model",
+        "link_model",
+        "update_model",
+        "query_model"
+      ],
+      "title": "Architecture And Data Model"
+    },
+    {
+      "acceptance_tests": [
+        "agent_permissions_are_described",
+        "failure_handling_is_not_purely_speculative",
+        "blocked_sources_are_logged",
+        "all_claims_have_source_links",
+        "blocked_sources_logged",
+        "audit_passed_or_not_ready_with_reason"
+      ],
+      "framework_section": "Facts That Must Be Covered > Workflow And Operations",
+      "id": "workflow_and_operations",
+      "judgment_gate": "technical",
+      "minimum_evidence": {
+        "failure_examples": 3,
+        "source_diversity": 4,
+        "workflow_examples": 5
+      },
+      "preferred_source_types": [
+        "repo",
+        "docs",
+        "issue_thread",
+        "blog_post",
+        "demo"
+      ],
+      "required_outputs": [
+        "end_to_end_lifecycle",
+        "human_in_loop_boundaries",
+        "agent_interfaces",
+        "failure_handling"
+      ],
+      "title": "Workflow And Operations"
+    },
+    {
+      "acceptance_tests": [
+        "raw_rag_baseline_is_defined",
+        "chat_memory_baseline_is_defined",
+        "no_empirical_claim_without_method",
+        "all_claims_have_source_links",
+        "blocked_sources_logged",
+        "audit_passed_or_not_ready_with_reason"
+      ],
+      "framework_section": "Facts That Must Be Covered > Evaluation And Evidence",
+      "id": "evaluation_and_evidence",
+      "judgment_gate": "empirical",
+      "minimum_evidence": {
+        "baseline_comparisons": 3,
+        "benchmark_or_eval_sources": 3,
+        "case_studies": 2
+      },
+      "preferred_source_types": [
+        "paper",
+        "benchmark",
+        "case_study",
+        "issue_thread",
+        "evaluation_report"
+      ],
+      "required_outputs": [
+        "answer_quality_metrics",
+        "maintenance_quality_metrics",
+        "agent_usability_metrics",
+        "robustness_metrics",
+        "benchmark_or_case_study_inventory"
+      ],
+      "title": "Evaluation And Evidence"
+    },
+    {
+      "acceptance_tests": [
+        "implementations_are_not_all_same_family",
+        "adoption_signals_are_separated_from_quality_claims",
+        "repo_metadata_is_recorded",
+        "all_claims_have_source_links",
+        "blocked_sources_logged",
+        "audit_passed_or_not_ready_with_reason"
+      ],
+      "framework_section": "Facts That Must Be Covered > Ecosystem And Implementations",
+      "id": "ecosystem_and_implementations",
+      "judgment_gate": "technical",
+      "minimum_evidence": {
+        "adoption_signal_sources": 5,
+        "implementation_sources": 15,
+        "tool_families": 5
+      },
+      "preferred_source_types": [
+        "github_repo",
+        "plugin_listing",
+        "package_registry",
+        "docs",
+        "community_post"
+      ],
+      "required_outputs": [
+        "tool_family_inventory",
+        "implementation_taxonomy",
+        "adoption_signals",
+        "interoperability_notes"
+      ],
+      "title": "Ecosystem And Implementations"
+    },
+    {
+      "acceptance_tests": [
+        "each_adjacent_system_has_advantages_and_limitations",
+        "claims_about_difference_are_source_backed",
+        "simpler_alternatives_are_not_dismissed_without_evidence",
+        "all_claims_have_source_links",
+        "blocked_sources_logged",
+        "audit_passed_or_not_ready_with_reason"
+      ],
+      "framework_section": "Facts That Must Be Covered > Comparison Space",
+      "id": "comparison_space",
+      "judgment_gate": "strategic",
+      "minimum_evidence": {
+        "adjacent_system_categories": 5,
+        "comparison_sources": 10,
+        "source_diversity": 5
+      },
+      "preferred_source_types": [
+        "paper",
+        "docs",
+        "blog_post",
+        "tool_docs",
+        "benchmark"
+      ],
+      "required_outputs": [
+        "rag_comparison",
+        "pkm_comparison",
+        "knowledge_graph_comparison",
+        "agent_memory_comparison",
+        "documentation_systems_comparison"
+      ],
+      "title": "Comparison Space"
+    },
+    {
+      "acceptance_tests": [
+        "risk_claims_are_tied_to_failure_or_threat_model",
+        "privacy_and_license_risks_are_separated",
+        "governance_requirements_are_actionable",
+        "all_claims_have_source_links",
+        "blocked_sources_logged",
+        "audit_passed_or_not_ready_with_reason"
+      ],
+      "framework_section": "Facts That Must Be Covered > Risks, Governance, And Ethics",
+      "id": "risks_governance_ethics",
+      "judgment_gate": "strategic",
+      "minimum_evidence": {
+        "failure_or_issue_sources": 3,
+        "governance_sources": 3,
+        "risk_sources": 5
+      },
+      "preferred_source_types": [
+        "issue_thread",
+        "security_note",
+        "governance_doc",
+        "paper",
+        "case_study"
+      ],
+      "required_outputs": [
+        "provenance_risk",
+        "maintenance_risk",
+        "privacy_security_risk",
+        "governance_model",
+        "epistemic_risk"
+      ],
+      "title": "Risks Governance And Ethics"
+    }
   ],
-  "source_manifest": "data/manifests/seed_sources.json",
-  "access_log": "data/logs/source_access_log.jsonl",
-  "result_manifest": "data/manifests/sources.jsonl"
+  "default_loop_policy": {
+    "audit_required_before_completion": true,
+    "blocked_sources_do_not_count_as_evidence": true,
+    "claim_source_mapping_required": true,
+    "completion_requires_research_paper_gate": true,
+    "inaccessible_sources_xml_required": true,
+    "raw_preservation_required": true,
+    "satisfaction_command_required_to_stop": true,
+    "source_first": true,
+    "unsupported_claim_policy": "downgrade_to_hypothesis_or_remove",
+    "verify_is_structural_only": true
+  },
+  "generated_at": "2026-05-21T13:36:14.237385+00:00",
+  "global_invariants": [
+    "no_claim_without_source_id",
+    "no_source_without_manifest_record",
+    "no_source_counted_without_raw_path_or_logged_failure",
+    "no_coverage_area_completed_without_audit",
+    "no_empirical_claim_without_baseline_or_method",
+    "no_strategic_judgment_without_cost_risk_and_comparison",
+    "contradictions_must_be_preserved",
+    "blocked_sources_must_be_logged"
+  ],
+  "judgment_gates": {
+    "descriptive": {
+      "minimum_status": "audited",
+      "required_coverage_areas": [
+        "origin_and_canon",
+        "problem_and_motivation"
+      ]
+    },
+    "empirical": {
+      "minimum_status": "audited",
+      "required_coverage_areas": [
+        "evaluation_and_evidence"
+      ]
+    },
+    "research_paper": {
+      "minimum_status": "passed",
+      "required_gates": [
+        "descriptive",
+        "technical",
+        "empirical",
+        "strategic"
+      ]
+    },
+    "strategic": {
+      "minimum_status": "audited",
+      "required_coverage_areas": [
+        "comparison_space",
+        "risks_governance_ethics"
+      ]
+    },
+    "technical": {
+      "minimum_status": "audited",
+      "required_coverage_areas": [
+        "architecture_and_data_model",
+        "workflow_and_operations",
+        "ecosystem_and_implementations"
+      ]
+    }
+  },
+  "loop_plan": "loop_plan.md",
+  "loop_plan_hash": "sha256:a5119afb6e59707867dabb0b7d9cc8f96824899d07e39917e62bc4f0923ff3f1",
+  "objective_doc": "reports/coverage_framework.md",
+  "objective_hash": "sha256:0e3ea1447de3dff79b90b6be540f7893174332bb8da9b7d7e3a57efdbd64e3ac",
+  "objective_name": "LLM Wiki Coverage Framework",
+  "objective_version": "2026-05-21",
+  "required_files": [
+    "data/manifests/source_digests.jsonl",
+    "data/manifests/claims.jsonl",
+    "data/manifests/claim_source_links.jsonl",
+    "data/manifests/coverage_records.jsonl",
+    "data/logs/inaccessible_sources.xml",
+    "data/logs/audit_events.jsonl",
+    "reports/coverage_status.md",
+    "reports/evidence_matrix.md",
+    "reports/judgment_status.md"
+  ]
 }

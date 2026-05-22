@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<inaccessible_sources generated_at="2026-05-21T13:36:15.462078+00:00">
+  <source id="reddit-claudecode-plugin" coverage_area="ecosystem_and_implementations" priority="P0">
+    <url>https://www.reddit.com/r/ClaudeCode/comments/1sm374u/turned_andrej_karpathys_llm_wiki_gist_into_a/</url>
+    <title>Turned Andrej Karpathy's LLM Wiki gist into a Claude Code plugin</title>
+    <attempted_method>requests, Reddit JSON endpoint, old.reddit, browser capture</attempted_method>
+    <failure_type>blocked</failure_type>
+    <reason>browser_capture_looks_blocked</reason>
+    <impact>Missing practitioner discussion around Claude Code plugin reception.</impact>
+    <next_retry_path>Approved Reddit export/API, manual user export, or alternate network.</next_retry_path>
+    <last_attempted_at>2026-05-21T10:01:38.592Z</last_attempted_at>
+    <local_failure_path>data/raw/reddit/reddit-claudecode-plugin</local_failure_path>
+  </source>
+  <source id="reddit-openkb-long-pdf" coverage_area="evaluation_and_evidence" priority="P0">
+    <url>https://www.reddit.com/r/LLMDevs/comments/1syz0b8/openkb_karpathys_idea_of_llm_wiki_but_with_the/</url>
+    <title>OpenKB: Karpathy's idea of LLM wiki, but with the long-PDF problem solved</title>
+    <attempted_method>requests, Reddit JSON endpoint, old.reddit, browser capture</attempted_method>
+    <failure_type>blocked</failure_type>
+    <reason>browser_capture_looks_blocked</reason>
+    <impact>Missing evidence on long-PDF handling and OpenKB claims.</impact>
+    <next_retry_path>Approved Reddit export/API, manual user export, or alternate network.</next_retry_path>
+    <last_attempted_at>2026-05-21T10:01:39.379Z</last_attempted_at>
+    <local_failure_path>data/raw/reddit/reddit-openkb-long-pdf</local_failure_path>
+  </source>
+  <source id="reddit-braindb" coverage_area="comparison_space" priority="P0">
+    <url>https://www.reddit.com/r/LLMDevs/comments/1sv5cl1/braindb_karpathys_llm_wiki_idea_but_as_a_real_db/</url>
+    <title>BrainDB: Karpathy's LLM wiki idea, but as a real DB</title>
+    <attempted_method>requests, Reddit JSON endpoint, old.reddit, browser capture</attempted_method>
+    <failure_type>blocked</failure_type>
+    <reason>browser_capture_looks_blocked</reason>
+    <impact>Missing database-framing comparison evidence.</impact>
+    <next_retry_path>Approved Reddit export/API, manual user export, or alternate network.</next_retry_path>
+    <last_attempted_at>2026-05-21T10:01:40.140Z</last_attempted_at>
+    <local_failure_path>data/raw/reddit/reddit-braindb</local_failure_path>
+  </source>
+  <source id="reddit-openwebui-llm-wiki" coverage_area="workflow_and_operations" priority="P1">
+    <url>https://www.reddit.com/r/OpenWebUI/comments/1sy0mf8/llm_wiki/</url>
+    <title>LLM Wiki discussion in OpenWebUI</title>
+    <attempted_method>requests, Reddit JSON endpoint, old.reddit, browser capture</attempted_method>
+    <failure_type>blocked</failure_type>
+    <reason>browser_capture_looks_blocked</reason>
+    <impact>Missing OpenWebUI integration discussion.</impact>
+    <next_retry_path>Approved Reddit export/API, manual user export, or alternate network.</next_retry_path>
+    <last_attempted_at>2026-05-21T10:01:40.841Z</last_attempted_at>
+    <local_failure_path>data/raw/reddit/reddit-openwebui-llm-wiki</local_failure_path>
+  </source>
+  <source id="reddit-obsidian-plugin" coverage_area="ecosystem_and_implementations" priority="P1">
+    <url>https://www.reddit.com/r/ObsidianMD/comments/1shntdn/new_plugin_llm_wiki_turn_your_vault_into_a/</url>
+    <title>New plugin: LLM Wiki - turn your vault into a queryable knowledge base</title>
+    <attempted_method>requests, Reddit JSON endpoint, old.reddit, browser capture</attempted_method>
+    <failure_type>blocked</failure_type>
+    <reason>browser_capture_looks_blocked</reason>
+    <impact>Missing Obsidian community feedback.</impact>
+    <next_retry_path>Approved Reddit export/API, manual user export, or alternate network.</next_retry_path>
+    <last_attempted_at>2026-05-21T10:01:41.471Z</last_attempted_at>
+    <local_failure_path>data/raw/reddit/reddit-obsidian-plugin</local_failure_path>
+  </source>
+  <source id="reddit-visuals-pdfs-question" coverage_area="workflow_and_operations" priority="P1">
+    <url>https://www.reddit.com/r/ClaudeCode/comments/1so9gbt/does_the_karpathystyle_llm_wiki_actually_handle/</url>
+    <title>Does the Karpathy-style LLM Wiki handle visuals/PDFs/PowerPoints?</title>
+    <attempted_method>requests, Reddit JSON endpoint, old.reddit, browser capture</attempted_method>
+    <failure_type>blocked</failure_type>
+    <reason>browser_capture_looks_blocked</reason>
+    <impact>Missing multimodal/PDF/PPT handling discussion.</impact>
+    <next_retry_path>Approved Reddit export/API, manual user export, or alternate network.</next_retry_path>
+    <last_attempted_at>2026-05-21T10:01:42.026Z</last_attempted_at>
+    <local_failure_path>data/raw/reddit/reddit-visuals-pdfs-question</local_failure_path>
+  </source>
+  <source id="aicritique-enterprise-knowledge" coverage_area="risks_governance_ethics" priority="P1">
+    <url>https://www.aicritique.org/us/2026/05/08/andrej-karpathys-latest-concept-llm-wiki-and-the-future-of-enterprise-knowledge/</url>
+    <title>Andrej Karpathy's latest concept LLM Wiki and the future of enterprise knowledge</title>
+    <attempted_method>requests and curl fallback</attempted_method>
+    <failure_type>network_intercepted</failure_type>
+    <reason>Local network intercepted the URL with an office-sec block page.</reason>
+    <impact>Missing enterprise-knowledge article body.</impact>
+    <next_retry_path>Alternate network, web archive, or replacement enterprise primary source.</next_retry_path>
+    <last_attempted_at>2026-05-21T10:01:07.531825+00:00</last_attempted_at>
+    <local_failure_path>data/raw/webpage/aicritique-enterprise-knowledge</local_failure_path>
+  </source>
+</inaccessible_sources>

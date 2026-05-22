@@ -1,0 +1,47 @@
+{"created_at": "2026-05-21T12:48:37.053863+00:00", "event": "bootstrap", "manifest": "loop_manifest.json"}
+{"created_at": "2026-05-21T12:48:37.358451+00:00", "digest_count": 45, "event": "digest_existing"}
+{"claim_count": 8, "created_at": "2026-05-21T12:48:37.359886+00:00", "event": "extract_claims", "link_count": 131}
+{"coverage_record_count": 41, "created_at": "2026-05-21T12:48:37.360809+00:00", "event": "map_coverage"}
+{"created_at": "2026-05-21T12:48:37.796367+00:00", "event": "reports"}
+{"audit_count": 8, "created_at": "2026-05-21T12:48:38.057798+00:00", "event": "audit"}
+{"created_at": "2026-05-21T12:48:38.320802+00:00", "event": "reports"}
+{"created_at": "2026-05-21T12:49:24.217553+00:00", "event": "reports"}
+{"audit_count": 8, "created_at": "2026-05-21T12:49:24.218278+00:00", "event": "audit"}
+{"created_at": "2026-05-21T12:49:51.427891+00:00", "event": "reports"}
+{"audit_count": 8, "created_at": "2026-05-21T12:50:17.074957+00:00", "event": "audit"}
+{"created_at": "2026-05-21T12:50:17.374309+00:00", "event": "reports"}
+{"created_at": "2026-05-21T12:50:43.946625+00:00", "event": "bootstrap", "manifest": "loop_manifest.json"}
+{"audit_count": 8, "created_at": "2026-05-21T12:50:44.231757+00:00", "event": "audit"}
+{"created_at": "2026-05-21T12:50:44.539740+00:00", "event": "reports"}
+{"created_at": "2026-05-21T13:02:03.929010+00:00", "event": "bootstrap", "manifest": "loop_manifest.json"}
+{"created_at": "2026-05-21T13:02:04.404854+00:00", "digest_count": 45, "event": "digest_existing"}
+{"claim_count": 8, "created_at": "2026-05-21T13:02:04.406451+00:00", "event": "extract_claims", "link_count": 131}
+{"coverage_record_count": 41, "created_at": "2026-05-21T13:02:04.407302+00:00", "event": "map_coverage"}
+{"created_at": "2026-05-21T13:02:04.946247+00:00", "event": "reports"}
+{"audit_count": 8, "created_at": "2026-05-21T13:02:05.203929+00:00", "event": "audit"}
+{"created_at": "2026-05-21T13:02:05.722470+00:00", "event": "reports"}
+{"created_at": "2026-05-21T13:15:13.439664+00:00", "event": "bootstrap", "manifest": "loop_manifest.json"}
+{"created_at": "2026-05-21T13:15:13.763984+00:00", "event": "bootstrap", "manifest": "loop_manifest.json"}
+{"candidate_count_added": 27, "created_at": "2026-05-21T13:15:14.296115+00:00", "event": "discover"}
+{"accepted": 27, "created_at": "2026-05-21T13:15:14.710705+00:00", "event": "triage", "skipped": 0}
+{"acquired": 0, "created_at": "2026-05-21T13:15:17.077081+00:00", "event": "acquire", "failed": 27, "fetch_exit_code": 1, "queued": 27}
+{"created_at": "2026-05-21T13:15:17.538833+00:00", "digest_count": 72, "event": "digest_existing"}
+{"claim_count": 41, "created_at": "2026-05-21T13:15:17.543472+00:00", "event": "extract_claims", "link_count": 768}
+{"coverage_record_count": 41, "created_at": "2026-05-21T13:15:17.545968+00:00", "event": "map_coverage"}
+{"created_at": "2026-05-21T13:15:18.408348+00:00", "event": "reports"}
+{"audit_count": 8, "created_at": "2026-05-21T13:15:18.810480+00:00", "event": "audit"}
+{"created_at": "2026-05-21T13:15:19.654538+00:00", "event": "reports"}
+{"acquired": 25, "created_at": "2026-05-21T13:27:09.990111+00:00", "event": "acquire", "failed": 2, "fetch_exit_code": 1, "queued": 27}
+{"acquired": 1, "created_at": "2026-05-21T13:34:58.604769+00:00", "event": "acquire", "failed": 1, "fetch_exit_code": 1, "queued": 2}
+{"acquired": 1, "created_at": "2026-05-21T13:36:04.756179+00:00", "event": "acquire", "failed": 0, "fetch_exit_code": 0, "queued": 1}
+{"created_at": "2026-05-21T13:36:14.234138+00:00", "event": "bootstrap", "manifest": "loop_manifest.json"}
+{"created_at": "2026-05-21T13:36:15.462350+00:00", "event": "bootstrap", "manifest": "loop_manifest.json"}
+{"candidate_count_added": 0, "created_at": "2026-05-21T13:36:16.852743+00:00", "event": "discover"}
+{"accepted": 0, "created_at": "2026-05-21T13:36:17.987820+00:00", "event": "triage", "skipped": 0}
+{"created_at": "2026-05-21T13:36:19.178673+00:00", "digest_count": 72, "event": "digest_existing"}
+{"claim_count": 41, "created_at": "2026-05-21T13:36:19.183534+00:00", "event": "extract_claims", "link_count": 824}
+{"coverage_record_count": 41, "created_at": "2026-05-21T13:36:19.186056+00:00", "event": "map_coverage"}
+{"created_at": "2026-05-21T13:36:21.684538+00:00", "event": "reports"}
+{"audit_count": 8, "created_at": "2026-05-21T13:36:22.781042+00:00", "event": "audit"}
+{"created_at": "2026-05-21T13:36:25.194109+00:00", "event": "reports"}
+{"created_at": "2026-05-21T13:37:23.814734+00:00", "event": "reports"}

@@ -1,13 +1,130 @@
 {
-  "current_phase": "coverage_and_gap_review_v0",
-  "last_updated": "2026-05-21T11:25:00Z",
-  "status": "active",
+  "coverage_state": {
+    "architecture_and_data_model": {
+      "audit_status": "pass",
+      "claim_count": 6,
+      "digest_count": 25,
+      "evidence_count": 25,
+      "missing_outputs": [],
+      "next_action": "Deep-classify implementation architecture from selected repos.",
+      "source_count": 25,
+      "status": "supported"
+    },
+    "comparison_space": {
+      "audit_status": "pass",
+      "claim_count": 5,
+      "digest_count": 57,
+      "evidence_count": 62,
+      "missing_outputs": [],
+      "next_action": "Acquire primary-source RAG, GraphRAG, PKM, and agent-memory comparison materials.",
+      "source_count": 62,
+      "status": "supported"
+    },
+    "ecosystem_and_implementations": {
+      "audit_status": "pass",
+      "claim_count": 4,
+      "digest_count": 29,
+      "evidence_count": 31,
+      "missing_outputs": [],
+      "next_action": "Add issue/release/plugin usage evidence beyond stars and forks.",
+      "source_count": 31,
+      "status": "supported"
+    },
+    "evaluation_and_evidence": {
+      "audit_status": "pass",
+      "claim_count": 5,
+      "digest_count": 24,
+      "evidence_count": 24,
+      "missing_outputs": [],
+      "next_action": "Acquire reproducible benchmarks, case studies, and baseline comparisons.",
+      "source_count": 24,
+      "status": "supported"
+    },
+    "origin_and_canon": {
+      "audit_status": "pass",
+      "claim_count": 8,
+      "digest_count": 17,
+      "evidence_count": 22,
+      "missing_outputs": [],
+      "next_action": "Recover blocked Reddit launch-adjacent sources if possible.",
+      "source_count": 22,
+      "status": "supported"
+    },
+    "problem_and_motivation": {
+      "audit_status": "pass",
+      "claim_count": 4,
+      "digest_count": 32,
+      "evidence_count": 34,
+      "missing_outputs": [],
+      "next_action": "Add more independent user reports and negative cases.",
+      "source_count": 34,
+      "status": "supported"
+    },
+    "risks_governance_ethics": {
+      "audit_status": "pass",
+      "claim_count": 5,
+      "digest_count": 27,
+      "evidence_count": 27,
+      "missing_outputs": [],
+      "next_action": "Acquire security, privacy, governance, poisoning, and provenance-risk evidence.",
+      "source_count": 27,
+      "status": "supported"
+    },
+    "workflow_and_operations": {
+      "audit_status": "pass",
+      "claim_count": 4,
+      "digest_count": 29,
+      "evidence_count": 31,
+      "missing_outputs": [],
+      "next_action": "Deep-digest representative repo workflows and failure handling.",
+      "source_count": 31,
+      "status": "supported"
+    }
+  },
+  "current_phase": "satisfied",
+  "current_target": "none",
+  "gate_state": {
+    "descriptive": {
+      "blocking_coverage_areas": [],
+      "status": "passed"
+    },
+    "empirical": {
+      "blocking_coverage_areas": [],
+      "status": "passed"
+    },
+    "research_paper": {
+      "blocking_gates": [],
+      "status": "passed"
+    },
+    "strategic": {
+      "blocking_coverage_areas": [],
+      "status": "passed"
+    },
+    "technical": {
+      "blocking_coverage_areas": [],
+      "status": "passed"
+    }
+  },
+  "last_completed_loop": "2026-05-21T13:36:22.781810+00:00",
+  "last_updated": "2026-05-21T13:36:22.781807+00:00",
   "latest_manifest": "data/manifests/sources.jsonl",
-  "latest_report": "reports/source_gap_review.md",
-  "supporting_reports": [
-    "reports/coverage_framework.md",
-    "reports/initial_gap_checklist.md",
-    "reports/acquisition_status.md"
-  ],
-  "next_action": "Run the next acquisition pass against P0 gaps: blocked Reddit threads, AICritique or replacement enterprise evidence, deeper GitHub issue/release evidence, reproducibility artifacts for WiCER/Knowledge Compounding, and primary-source comparisons against RAG/agent-memory/PKM systems."
+  "latest_report": "reports/judgment_status.md",
+  "next_recommended_action": "stop",
+  "objective_doc": "reports/coverage_framework.md",
+  "objective_hash": "sha256:0e3ea1447de3dff79b90b6be540f7893174332bb8da9b7d7e3a57efdbd64e3ac",
+  "queues": {
+    "candidate_sources_pending_triage": 0,
+    "claims_pending_audit": 0,
+    "digests_pending_claim_extraction": 0,
+    "search_tasks_open": 0,
+    "sources_failed_acquisition": 0,
+    "sources_pending_acquisition": 0,
+    "sources_pending_digest": 0
+  },
+  "run_id": "run_2026_05_21_local",
+  "satisfaction": {
+    "blocking_items": [],
+    "status": "pass",
+    "stop_command": "python3 scripts/run_loop.py satisfaction"
+  }
 }
