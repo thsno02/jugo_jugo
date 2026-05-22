@@ -1,0 +1,34 @@
+
+\begin{table*}[]
+\small
+\centering
+\begin{tabular}{lllllll}
+\toprule
+                                                                                & \multicolumn{6}{c}{\textbf{ARES Ranking of Real RAG Systems}}                                                                                                   \\
+                                                                                \cmidrule(l{7pt}r{7pt}){2-7}
+                                                                                & \multicolumn{2}{c}{NQ}                              & \multicolumn{2}{c}{WoW}                             & \multicolumn{2}{c}{FEVER}                           \\
+                                                                                \cmidrule(l{7pt}r{7pt}){2-7}
+                                                                                
+\textbf{}                                                                       & \multicolumn{1}{c}{C.R.} & \multicolumn{1}{c}{A.R.} & \multicolumn{1}{c}{C.R.} & \multicolumn{1}{c}{A.R.} & \multicolumn{1}{c}{C.R.} & \multicolumn{1}{c}{A.R.} \\
+\midrule
+\begin{tabular}[c]{@{}l@{}}Kendall’s Tau for\\ Sampled Annotations\end{tabular} & 0.73                     & 0.78                     & 0.73                     & 0.73                     & 0.73                     & 0.82                     \\
+\begin{tabular}[c]{@{}l@{}}Kendall's Tau \\ for RAGAS\end{tabular}              & 0.82                     & 0.82                     & 0.73                     & 0.82                     & 0.73                     & 0.87                     \\
+\begin{tabular}[c]{@{}l@{}}Kendall's Tau\\ for GPT-3.5 Judge\end{tabular}       & 0.82                     & 0.87                     & 0.82                     & 0.82                     & 0.64                     & 0.87                     \\
+\begin{tabular}[c]{@{}l@{}}Kendall's Tau\\ for ARES LLM Judge\end{tabular}      & 0.91                     & \textbf{0.96}                     & \textbf{0.91}                     & \textbf{1.0}                      & 0.73                     & 0.87                     \\
+\begin{tabular}[c]{@{}l@{}}Kendall's Tau\\ for ARES\end{tabular}                & \textbf{1.0}                      & \textbf{0.96}                     & \textbf{0.91}                     & \textbf{1.0}                      & \textbf{0.82}                     & \textbf{1.0}                      \\
+\midrule
+RAGAS Accuracy                                                                  & 35.9\%                   & 68.2\%                   & 44.4\%                   & 80.1\%                   & 21.4\%                   & 75.9\%                   \\
+GPT-3.5 Accuracy                                                                & 80.5\%                   & 91.2\%                   & 81.2\%                   & 83.5\%                   & 61.3\%                   & 54.5\%                   \\
+ARES Accuracy                                                                   & 85.6\%                   & 93.3\%                   & 84.5\%                   & 88.2\%                   & 70.4\%                   & 84.0\%  \\ \bottomrule                
+\end{tabular}
+\caption{\textbf{ARES Ranking on Real-World RAG Systems}: 
+For scoring context relevance and answer relevance (C.R. and A.R. in the table, respectively), we compare ARES with our fine-tuned LLM judges against sampled annotations benchmark, RAGAS, and a few-shot GPT-3.5 judge.
+For our sampled annotations, we gather 150 annotated datapoints from each mock RAG system and use those labels to score the system.
+RAGAS also uses GPT-3.5 as its judge but it uses few-shot prompts that are not targeted for each evaluation domain.
+Overall, we found that ARES ranked RAG systems more accurately than RAGAS and GPT-3.5 across all the explored datasets.
+Additionally, we include the Kendall's taus for the ARES LLM Judge without PPI and found that PPI further boosted the ranking accuracy of the judge across the board.
+We selected GPT-3.5 instead of GPT-4 due to the lower financial costs required to run. %
+For PPI in both ARES and the GPT-3.5 judge, we used 300 human annotations for our human preference validation set.
+The prompts used for the GPT-3.5 judges are included in Sections \ref{sec:gpt_prompting_for_context_relevance_scoring}, \ref{sec:gpt_prompting_for_answer_faithfulness_scoring}, and \ref{sec:gpt_prompting_for_answer_relevance_scoring}.}
+\label{tab:ares_real_systems}
+\end{table*}

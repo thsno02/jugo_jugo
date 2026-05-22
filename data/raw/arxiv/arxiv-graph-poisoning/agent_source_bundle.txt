@@ -1,0 +1,2324 @@
+===== main.tex =====
+
+%File: anonymous-submission-latex-2026.tex
+\pdfoutput=1
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage{aaai2026}   % DO NOT CHANGE THIS
+\usepackage{times}  % DO NOT CHANGE THIS
+\usepackage{helvet}  % DO NOT CHANGE THIS
+\usepackage{courier}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+% \setlength{\pdfpagewidth}{8.5in} % DO NOT CHANGE THIS
+% \setlength{\pdfpageheight}{11in} % DO NOT CHANGE THIS
+%
+% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
+% ... other packages like graphicx, natbib, caption ...
+
+% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
+
+\usepackage{algorithm}
+\usepackage{multirow}
+
+\usepackage{algorithmicx} 
+\usepackage{algpseudocode}
+% ADD THESE THREE LINES TO FIX THE ERRORS
+\usepackage{amsmath}   % For \text{} in math mode and other math features
+\usepackage{booktabs}  % For professional-looking tables (\toprule, \midrule, etc.)
+\usepackage{placeins}  % For \FloatBarrier
+
+%
+% These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
+\usepackage{newfloat}
+% ... rest of your preamble ...
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{makecell}
+
+%
+% These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
+\usepackage{newfloat}
+\usepackage{listings}
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
+\lstset{%
+	basicstyle={\footnotesize\ttfamily},% footnotesize acceptable for monospace
+	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,% show line numbers, remove this entire line if you don't want the numbers.
+	aboveskip=0pt,belowskip=0pt,%
+	showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+%
+% Keep the \pdfinfo as shown here. There's no need
+% for you to add the /Title and /Author tags.
+\pdfinfo{
+/TemplateVersion (2026.1)
+}
+
+% DISALLOWED PACKAGES
+% \usepackage{authblk} -- This package is specifically forbidden
+% \usepackage{balance} -- This package is specifically forbidden
+% \usepackage{color (if used in text)
+% \usepackage{CJK} -- This package is specifically forbidden
+% \usepackage{float} -- This package is specifically forbidden
+% \usepackage{flushend} -- This package is specifically forbidden
+% \usepackage{fontenc} -- This package is specifically forbidden
+% \usepackage{fullpage} -- This package is specifically forbidden
+% \usepackage{geometry} -- This package is specifically forbidden
+% \usepackage{grffile} -- This package is specifically forbidden
+% \usepackage{hyperref} -- This package is specifically forbidden
+% \usepackage{navigator} -- This package is specifically forbidden
+% (or any other package that embeds links such as navigator or hyperref)
+% \indentfirst} -- This package is specifically forbidden
+% \layout} -- This package is specifically forbidden
+% \multicol} -- This package is specifically forbidden
+% \nameref} -- This package is specifically forbidden
+% \usepackage{savetrees} -- This package is specifically forbidden
+% \usepackage{setspace} -- This package is specifically forbidden
+% \usepackage{stfloats} -- This package is specifically forbidden
+% \usepackage{tabu} -- This package is specifically forbidden
+% \usepackage{titlesec} -- This package is specifically forbidden
+% \usepackage{tocbibind} -- This package is specifically forbidden
+% \usepackage{ulem} -- This package is specifically forbidden
+% \usepackage{wrapfig} -- This package is specifically forbidden
+% DISALLOWED COMMANDS
+% \nocopyright -- Your paper will not be published if you use this command
+% \addtolength -- This command may not be used
+% \balance -- This command may not be used
+% \baselinestretch -- Your paper will not be published if you use this command
+% \clearpage -- No page breaks of any kind may be used for the final version of your paper
+% \columnsep -- This command may not be used
+% \newpage -- No page breaks of any kind may be used for the final version of your paper
+% \pagebreak -- No page breaks of any kind may be used for the final version of your paperr
+% \pagestyle -- This command may not be used
+% \tiny -- This is not an acceptable font size.
+% \vspace{- -- No negative value may be used in proximity of a caption, figure, table, section, subsection, subsubsection, or reference
+% \vskip{- -- No negative value may be used to alter spacing above or below a caption, figure, table, section, subsection, subsubsection, or reference
+
+\setcounter{secnumdepth}{2} %May be changed to 1 or 2 if section numbers are desired.
+
+% The file aaai2026.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+
+% Title
+
+% Your title must be in mixed case, not sentence case.
+% That means all verbs (including short verbs like be, is, using,and go),
+% nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
+% articles, conjunctions, and prepositions are lower case unless they
+% directly follow a colon or long dash
+\title{A Few Words Can Distort Graphs: Knowledge Poisoning Attacks on Graph-based Retrieval-Augmented Generation of Large Language Models}
+
+% CORRECTED AUTHOR BLOCK
+% 1. Removed trailing \\ from the last line of each author's info.
+% 2. Escaped special characters like underscores (_) in email addresses.
+
+
+% --- START: ADD THIS BLOCK FOR AUTHOR INFORMATION ---
+
+% ... (之前的代码) ...
+
+% =================================================================
+% --- START: 最终版本（CAMERA-READY）时使用的作者信息模块 ---
+% =================================================================
+\author{
+    % Authors
+    Jiayi Wen\textsuperscript{\rm 1},
+    Tianxin Chen\textsuperscript{\rm 1},
+    Zhirun Zheng\textsuperscript{\rm 2},
+    Cheng Huang\textsuperscript{\rm 1}
+}
+\affiliations{
+    % Affiliations
+    \textsuperscript{\rm 1}College of Computer Science and Artificial Intelligence, Fudan University\\
+    \textsuperscript{\rm 2}Department of Artificial Intelligence, Ajou University\\
+}
+% =================================================================
+% --- END: 作者信息模块 ---
+% =================================================================
+
+
+% ... (论文的其余部分) ...
+
+
+\nocopyright
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Graph-based Retrieval-Augmented Generation (GraphRAG) has recently emerged as a promising paradigm for enhancing large language models (LLMs) by converting raw text into structured knowledge graphs, improving both accuracy and explainability.
+However, GraphRAG relies on LLMs to extract knowledge from raw text during graph construction, and this process can be maliciously manipulated to implant misleading information. 
+Targeting this attack surface, we propose two knowledge poisoning attacks (KPAs) and demonstrate that modifying only a few words in the source text can significantly change the constructed graph, poison the GraphRAG, and severely mislead downstream reasoning.
+The first attack, named Targeted KPA (TKPA), utilizes graph-theoretic analysis to locate vulnerable nodes in the generated graphs and rewrites the corresponding narratives with LLMs, achieving precise control over specific question-answering (QA) outcomes with a success rate of 93.1\%, while keeping the poisoned text fluent and natural.
+The second attack, named Universal KPA (UKPA), exploits linguistic cues such as pronouns and dependency relations to disrupt the structural integrity of the generated graph by altering globally influential words. With fewer than 0.05\% of full text modified, the QA accuracy collapses from 95\% to 50\%.
+Furthermore, experiments show that state-of-the-art defense methods fail to detect these attacks, highlighting that securing GraphRAG pipelines against knowledge poisoning remains largely unexplored.
+
+
+\end{abstract}
+
+\section{Introduction}
+%1: LLM 到 RAG
+Large language models (LLMs) have revolutionized the way we process and generate information.
+Despite their impressive abilities, they hallucinate facts and rely on outdated internal knowledge, which limits their use in tasks that require strict factual accuracy ~\cite{DBLP:journals/csur/JiLFYSXIBMF23, DBLP:journals/corr/abs-2303-08774,DBLP:conf/coling/BianH0L0HJD24}.
+Retrieval-Augmented Generation (RAG) mitigates these weaknesses by grounding model outputs in an external knowledge base ~\cite{DBLP:conf/icml/BorgeaudMHCRM0L22,DBLP:journals/corr/abs-2201-08239,DBLP:conf/nips/LewisPPPKGKLYR020}.
+Traditional RAG stores external knowledge as isolated text chunks, which restricts retrieval to shallow matching and limits multi-step reasoning ~\cite{DBLP:conf/iclr/AsaiWWSH24}.
+Graph-based RAG (GraphRAG)~\cite{DBLP:journals/corr/abs-2404-16130} addresses this limitation by organizing the corpus into a knowledge graph through LLM-driven extraction of entities and their relations.
+This structure explicitly links the extracted entities and relations and enables LLMs to reason over connected facts, achieving higher accuracy on complex queries ~\cite{DBLP:journals/corr/abs-2410-05779,DBLP:journals/corr/abs-2501-00309}.
+Because the reasoning process in GraphRAG depends entirely on this constructed graph, it underpins a range of knowledge-intensive tasks, including question answering (QA) ~\cite{DBLP:conf/naacl/YasunagaRBLL21,DBLP:conf/emnlp/KarpukhinOMLWEC20}and dialogue~\cite{DBLP:journals/sigkdd/ChenLYT17}.
+
+However, the reliance on external corpora has also made RAG systems attractive targets for security attacks~\cite{DBLP:journals/corr/abs-2412-17011,DBLP:conf/acl/ZengZHLX000WYT24}.
+Prior works have identified three main attack categories.
+First, malicious documents injected into the corpus can bias retrieval results and distort LLM's answers~\cite{DBLP:journals/corr/abs-2402-07867,DBLP:journals/corr/abs-2402-08416,DBLP:journals/corr/abs-2405-13401}.
+Second, adversarial instructions can be hidden in retrievable chunks so that the LLM executes them when the chunks are retrieved~\cite{DBLP:conf/camlis/HinesLHZZK24,DBLP:journals/corr/abs-2401-07612}.
+Third, the retriever itself can be attacked with crafted queries that cause it to miss relevant evidence~\cite{DBLP:conf/emnlp/WallaceFKGS19,DBLP:journals/corr/abs-2406-05870}. GraphRAG inherits these risks but also exposes a qualitatively different vulnerability.
+Unlike traditional RAG, GraphRAG does not answer questions directly from retrieved context.
+It first converts the entire corpus into a structured knowledge graph~\cite{DBLP:journals/eswa/ChenJX20,DBLP:journals/access/ChenWZCZD20}, and all subsequent tasks~\cite{DBLP:conf/coling/KimHKS20,DBLP:conf/www/WangZZLXG19} depend on this graph.
+
+\begin{figure*}[t] % 使用 [htbp] 让 LaTeX 灵活安排位置
+\centering
+\includegraphics[width=\textwidth]{attack.pdf} % <-- 替换为你的图片文件名
+\caption{Proposed two knowledge poisoning attacks. (a) Targeted knowledge poisoning: manipulated facts cause GraphRAG to select poisoned context for a query, leading to incorrect LLM output. (b) Universal knowledge poisoning: altered linguistic cues globally distort graph structure, causing GraphRAG to build a biased knowledge graph and mislead LLM reasoning across diverse queries.}
+\label{fig:attack_concept} % <-- 为新图设置一个唯一的标签
+\end{figure*}
+
+Recent work has taken the first step toward poisoning GraphRAG: GRAGPOISON~\cite{DBLP:journals/corr/abs-2501-14050} injects crafted chunks that create or amplify false relations, showing that such relation-level manipulation can mislead multiple queries once the graph is built.
+While GRAGPOISON demonstrates that GraphRAG can indeed be poisoned, its attack strategies all operate in an additive manner: it introduces malicious content into the corpus either by injecting new relations, 
+repeating existing relations to strengthen them, or adding narrative chunks that blend false and true information. 
+These attacks show that crafted additions to the corpus can distort the resulting graph and mislead multiple queries once the graph is built. 
+\emph{An unexplored question is whether GraphRAG is also vulnerable when the adversary cannot add new text, 
+but is only able to make small, subtle modifications to the existing corpus.} In this work, we reveal a manipulation-only attack surface for GraphRAG:
+even without introducing additional content, simply changing a few words in the existing corpus can distort the entities and relations extracted during graph construction, and the corrupted structure then persists and misleads a broad range of queries.
+This threat corresponds to subtle edits to trusted sources (e.g., minor changes in Wikipedia) rather than the injection of obviously malicious content.
+Such manipulations pose two key challenges: \emph{to what extent can a few edits change the behavior of a GraphRAG system, and do these changes appear in a targeted or a widespread form?}
+We address these questions by focusing on two complementary objectives:
+\emph{precision}, the ability to make specific queries return attacker-desired answers with only a few edits; and
+\emph{breadth}, the ability of small, subtle modifications to corrupt the graph broadly, degrading reasoning across many queries.
+Although stealthiness is not an explicit objective, it is implicitly achieved by restricting the attack to very small edits on trusted sources.
+
+
+To obtain the above goals, we propose two knowledge poisoning attacks (KPAs).
+\textbf{(1) Targeted Knowledge Poisoning Attack (TKPA).}
+As shown in Figure~\ref{fig:attack_concept}(a), TKPA exploits the topology of the knowledge graph itself to achieve fine-grained control over specific outputs.  
+The key difficulty is that the impact of a small text edit propagates through two coupled stages: graph construction and downstream reasoning, so the influence of a single modification is hard to predict directly from the raw text.  
+TKPA addresses this by first operating in the graph domain: it analyzes the connectivity and centrality structure of the graph to locate the subregions that have the greatest effect on a target query. 
+Only after this graph-theoretic localization does it map back to the corresponding text and rewrite a few highly relevant passages.~\cite{DBLP:journals/pr/PengZZ13,gross2018graph}  
+This graph-guided strategy allows a handful of carefully placed edits to reliably manipulate the outputs for selected queries, while remaining unobtrusive.
+\textbf{(2) Universal Knowledge Poisoning Attack (UKPA).}
+As shown in Figure~\ref{fig:attack_concept}(b), UKPA aims for maximum disruption with only a few edits.  
+The challenge is that, without any specific query as a starting point, it is unclear where a small perturbation will have a global effect on the graph.  
+Our key insight is that GraphRAG depends on linguistic signals, such as pronouns, coreference chains~\cite{peng2019text}, and other referring expressions, to decide when different mentions across chunks refer to the same entity; 
+these signals act like the glue that holds the graph together.  
+UKPA therefore targets these linguistic connections: by subtly rewriting references so that the chains break, 
+it prevents the system from recognizing that different mentions refer to the same entity.  
+These small edits propagate through the graph and produce widespread structural errors, severely degrading reasoning accuracy across tasks, even though the modified text remains fluent and very hard to detect.
+
+\textbf{Contributions.} Our contributions are as follows:
+\begin{itemize}
+\item We identify a realistic \emph{manipulation-only attack surface} in GraphRAG, demonstrating that modifying a small number of words in the trusted corpus is sufficient to corrupt the constructed knowledge graph and mislead downstream reasoning.
+\item We propose \emph{Targeted Knowledge Poisoning Attack (TKPA)}, which exploits graph-theoretic structure to locate vulnerable nodes and rewrite a small number of associated passages. This attack achieves \emph{precise manipulation of specific QAs} with a success rate of \emph{93.1\%}, while modifying less than 0.06\% of the corpus (\emph{48 words out of 94,496}) and preserving text fluency and stealth.
+\item We propose \emph{Universal Knowledge Poisoning Attack (UKPA)}, which exploits linguistic structures such as pronouns and coreference to \emph{disrupt global entity linking}, degrading the integrity of the knowledge graph and reducing QA accuracy from \emph{95\% to 50\%}, while modifying only \emph{60 words out of 134,072} and affecting less than \emph{0.05\%} of the corpus.
+\item We conduct extensive experiments on real-world datasets, demonstrating that both TKPA and UKPA \emph{achieve high attack effectiveness and circumvent state-of-the-art defenses}, revealing substantial security vulnerabilities in GraphRAG pipelines.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+% %2: RAG 从 传统RAG 进步到 GraphRAG
+% However, traditional RAG systems represent knowledge as text fragments, limiting the ability for deep reasoning \cite{asai2024self,izacard2021unsupervised}. 
+% To improve semantic understanding, Graph-based Retrieval Augmented Generation (GraphRAG) was developed by integrating the external document base into a Knowledge Graph (KG), enabling more accurate reasoning over relational knowledge~\cite{DBLP:journals/corr/abs-2404-16130, schlichtkrull2018modeling,guo2024lightrag,han2024graphrag}.
+% %associated entities .
+
+%3: RAG（不分传统和Graph）都有外部数据库，外部数据库会引入安全威胁（总），分1介绍几个传统RAG的威胁参考文献，分2，一开始讲有了图所以传统RAG的威胁不顶用了（为什么，引用参考文献），然后再点出我们的研究动机
+% Although RAG has been widely applied in real-world scenarios, it still faces serious security threats arising from the external knowledge base~\cite{shi2023benchmarking}.
+% %As RAG becomes increasingly utilized in real-world, its security has also attracted much attention \cite{shi2023benchmarking}. 
+% Threats to traditional RAG include corpus poisoning by malicious document injection \cite{Zou2024, Zhong2023, deng2024pandora, cheng2024trojanrag}, hint injection attacks that hide adversarial instructions in retrievable text \cite{Hines2024, liu2023prompt}, and adversarial strategies against retrievers that lead to retrieval failures \cite{wallace2019universal, shafran2024machine}. 
+%PoisonedRAG \cite{Zou2024} designs semantically coherent malicious passages and retrieves them against certain queries to subtly distort the output of the LLM. 
+
+% The structured knowledge of GraphRAG uses entities, relationships, and communities as organizational units. Although GraphRAG shows great potential in complex domains, the process of converting text into structured graphs also introduces a critical new attack surface.
+% A state-of-the-art work~\cite{liang2025graphrag} has revealed that the graph structure can be exploited as an efficient attack vector. However, this work has not considered whether the threat of text can silently contaminate an entire knowledge system during graph construction.
+
+
+% In order to systematically investigate the security vulnerabilities that malicious text introduces to GraphRAG, we have developed two specific knowledge poisoning attack methods. (1) Targeted knowledge poisoning attack combines graph-theoretic analysis to locate vulnerable nodes in the graph and then rewrite their associated narratives using LLMs, enabling precise semantic manipulation of specific Question answering (QA) results. (2) Universal knowledge poisoning attack extensively undermines the structural integrity of the constructed graph by adding subtle perturbations to the source text, thereby degrading GraphRAG's ability to reason about various queries.
+%leading to degradation of GraphRAG's ability to reason about various queries.
+
+
+
+
+\section{Attack Methodology}
+\subsection{Background}
+\textbf{GraphRAG Pipeline.} Figure~\ref{fig:graphrag_pipeline} illustrates the GraphRAG pipeline.  
+Given an unstructured document corpus $D = \{d_1, \dots, d_n\}$, GraphRAG first divides it into smaller text chunks $\{c_1, \dots, c_m\}$.  
+For each chunk $c_i$, a mini knowledge graph $G_i$ is extracted, consisting of entity-relation-entity triples via the extraction function $f_{\text{extract}}$, capturing local semantic structure:  
+$G_i = f_{\text{extract}}(c_i)$.
+These mini-graphs are then merged to form the overall corpus graph:  
+$G_{\text{merged}} = \bigcup_{i=1}^m G_i$.
+Next, a community detection function $f_{\text{community}}$ partitions $G_{\text{merged}}$ into communities $C = \{C_1, \dots, C_k\}$, each representing a coherent semantic subgraph:  
+$C = f_{\text{community}}(G_{\text{merged}})$.
+For each community $C_j$, a summary $S_j$ is generated to capture key information and relations within that community.  
+When a user submits a query $Q$, GraphRAG applies a retrieval function $g_{\text{retrieve}}$ to extract the relevant community summaries $S_{\text{rel}} \subseteq \{S_1, \dots, S_k\}$ as contextual information for the LLM:  
+$S_{\text{rel}} = g_{\text{retrieve}}(Q, \{S_1, \dots, S_k\})$.
+Finally, the LLM generates the answer conditioned on the query and retrieved context:  
+$\text{Answer} = \text{LLM}(Q, S_{\text{rel}})$.
+% This pipeline enables GraphRAG to leverage structured, semantically rich knowledge for improved reasoning and answer generation.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{graphrag.pdf} 
+\caption{The pipeline of GraphRAG.}
+\label{fig:graphrag_pipeline}
+\end{figure}
+
+\textbf{Attack Model.}
+We consider a gray-box adversary that poisons GraphRAG by editing the source corpus rather than injecting entirely new documents or accessing model parameters.  
+The adversary knows the overall pipeline: GraphRAG segments text into chunks, extracts entities and relations, builds a knowledge graph, and generates community-level summaries that are later used as context for reasoning.  
+The attacker can modify a small fraction of trusted sources (e.g., Wikipedia) but has no access to the constructed graph or model parameters.
+\begin{itemize}
+    \item \textbf{TKPA Model.} 
+    \emph{Attacker Knowledge:} Understands that GraphRAG organizes extracted knowledge into communities that drive downstream answers. 
+    \emph{Attacker Capability:} Can modify a small part of the corpus to influence the answers of specific queries.
+    \item \textbf{UKPA Model.} 
+    \emph{Attacker Knowledge:} Only knows that GraphRAG builds a knowledge graph from text, without details of its structure. 
+    \emph{Attacker Capability:} Can make small edits to the corpus aimed at broadly degrading reasoning across many queries rather than any single one.
+\end{itemize}
+
+
+
+
+% Existing works \cite{zhang2019data, bhardwaj2021poisoning, xi2023security} propose that KGs can be poisoned by manipulating or injecting malicious triples to interfere with their embedding representations or reasoning capabilities, thereby misleading the judgments and decisions of downstream tasks.
+% On the other hand, our work implements knowledge poisoning based on the poisoning text, which generates graphs with misleading structures to guide the LLMs in generating wrong answers by poisoning the KG.
+% To comprehensively evaluate the security boundaries of GraphRAG systems, we explore two knowledge poisoning attacks that are distinctly different in their knowledge premises and goals.
+
+
+
+% \begin{figure}[htbp] % 使用 [htbp] 让 LaTeX 灵活安排位置
+% \centering
+% \includegraphics[width=\columnwidth]{targetattack.pdf} % <-- 替换为你的图片文件名
+% \caption{Targeted knowledge poisoning: manipulated facts cause GraphRAG to select poisoned context for a query, leading to incorrect LLM output.}
+% \label{fig:attack_concept} % <-- 为新图设置一个唯一的标签
+% \end{figure}
+
+% \begin{figure*}[t]
+% \centering
+% \includegraphics[width=0.8\textwidth]{figure_targeted_attack.pdf} %<-- USE YOUR NEW FILENAME HERE
+% \caption{The Targeted Knowledge Poisoning framework.}
+% \label{fig:targeted_attack_framework} 
+% \end{figure*}
+
+
+\subsection{Targeted Knowledge Poisoning Attack}
+As shown in Figure~\ref{fig:targeted_attack_framework}, 
+the key insight behind Targeted Knowledge Poisoning Attack (TKPA) is to treat poisoning as a network intervention problem on the knowledge graph rather than a random text-editing task.
+Given a user query, the attacker first considers the entities that GraphRAG associates with the query and chooses one as the \emph{target entity} via LLM-based entity extraction.
+The attacker then leverages graph-theoretic principles: centrality to identify structurally influential nodes, community structure to restrict the affected region, 
+and ego-subgraphs~\cite{mitchell1969social,DBLP:journals/intr/WangW25} to localize edits. 
+These cues guide the selection of a small set of text chunks whose modification maximizes downstream impact.
+This structure-guided view leads to a four-module pipeline that progressively narrows the attack scope from the full graph to a few edits.
+
+\textbf{(1) Vulnerable Community Localization (VCL).}
+The first step is to determine where a small intervention will have the largest structural effect.
+From a network perspective, communities with a highly central target entity and limited size are the most susceptible: 
+a modification there can influence a larger fraction of the context while requiring fewer edits. 
+To formalize this intuition, we define a \emph{vulnerability score} for each community:
+\begin{equation}
+\mathcal{V}_\mathrm{score} = \frac{(1+D_e)(1+C_e)}{\log(1+\mathrm{TLen})},
+\end{equation}
+where \(D_e\) and \(C_e\) denote the degree and betweenness centrality of the target entity within that community,
+and \(\mathrm{TLen}\) measures the length of the community summary.
+The numerator captures the entity’s structural leverage, while the denominator penalizes communities that require editing long narratives.
+The attacker evaluates this score for all communities containing the target entity and chooses the one with the highest score as the entry point for manipulation.
+This choice reflects the classic principle of influence maximization in networks: 
+maximize downstream impact per unit of edit cost.
+
+\textbf{(2) Ego-subgraph Extraction.}
+After selecting the most vulnerable community, the attacker narrows the intervention to the local structure around the target entity. 
+Specifically, an \emph{ego-subgraph} \(G_{\mathrm{ego}}(v_t)\) is extracted, consisting of the target node \(v_t\), its one-hop neighbors, and the edges among them. 
+This ego-subgraph defines the local context that GraphRAG relies on when answering questions about \(v_t\); modifying this neighborhood directly alters how \(v_t\) and its relations are represented in the graph.
+Only the text chunks associated with nodes and edges in \(G_{\mathrm{ego}}(v_t)\) are kept as candidates, and the next module ranks these candidates to determine which ones to rewrite.
+This step follows a classic principle in network interventions: apply a small, localized perturbation to a structurally central region to produce broad downstream effects.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{attackpipeline.pdf} %<-- USE YOUR NEW FILENAME HERE
+\caption{The pipeline of TKPA and UKPA.}
+\label{fig:targeted_attack_framework} 
+\end{figure*}
+
+% \begin{figure}[t]
+% \centering
+% \includegraphics[width=\columnwidth]{pipeline_target.pdf} %<-- USE YOUR NEW FILENAME HERE
+% \caption{The pipeline of TKPA.}
+% \label{fig:targeted_attack_framework} 
+% \end{figure}
+
+\textbf{(3) Chunk Scoring and Selection.}
+With the candidate chunks constrained to those linked to \(G_{\mathrm{ego}}(v_t)\),
+the attacker next ranks them by their potential to alter downstream reasoning.
+Drawing on insights from network influence theory, we model the importance of a chunk as the weighted combination of three signals:
+(i) \emph{structural impact}: how central its corresponding entity is in the local subgraph,
+(ii) \emph{semantic relevance}: how closely the chunk's content aligns with the target query,
+and (iii) \emph{sentiment polarity}: how much the tone of the text can bias the generated narrative.
+We have
+\begin{equation}
+    \mathcal{C}_\mathrm{score} = w_1 S_{\mathrm{graph}} + w_2 S_{\mathrm{semantic}} + w_3 S_{\mathrm{attitude}},
+\end{equation}
+where \(S_{\mathrm{graph}}\) is computed from the PageRank centrality of the corresponding entity within \(G_{\mathrm{ego}}(v_t)\),
+\(S_{\mathrm{semantic}}\) is the cosine similarity between the embedding of the chunk and the target query,
+and \(S_{\mathrm{attitude}}\) quantifies the chunk's affective tone using a language model.
+Each term is normalized to \([0,1]\) across candidates before combining them.
+
+The weights \((w_1,w_2,w_3)\) act as tunable weights that balance structural leverage,
+contextual relevance, and linguistic framing.
+In practice, higher weight is assigned to structural impact so that edits are concentrated on influential regions of the graph,
+while the other two terms ensure that the selected edits remain relevant and subtle.
+By ranking chunks with the score, the attacker can focus a small number of edits on the locations that offer the highest
+\emph{influence-to-cost ratio}: maximum effect on the final answers per unit of editing effort.
+
+\textbf{(4) LLM-driven Manipulation.}
+The top-ranked chunks are rewritten by a LLM to subtly alter facts or tone while preserving fluency and style.
+These rewritten chunks replace the original text in the corpus, so that when GraphRAG rebuilds the knowledge graph,
+the poisoned narratives become embedded in the community summaries. As a result, a few carefully chosen modifications spread through the graph and strongly bias downstream tasks,
+while keeping the attack surface compact and difficult to detect.
+
+
+% As shown in Figure ~\ref{fig:targeted_attack_framework}, the attacker achieves poisoning of the KG by changing the narrative around the query-relevant entity (a.k.a. targeted entity), and its detailed procedure is provided in Algorithm~\ref{alg:whitebox_attack}.
+
+% We identify the most vulnerable community reports using a graph-theoretic approach.
+% In particular, a community is considered a major victim if the targeted entity occupies a central structural position and the corresponding report is succinct.
+% %If the targeted entity is at the structural center of the community and the corresponding report is textually concise, the community is considered a major target. 
+% To quantify which community is most susceptible to attack, we define the Community Vulnerability Score as follows:
+% \begin{align}
+% \text{VulnerabilityScore} = \frac{(1+D_e) \times (1+C_e)}{\log(1+\text{TotalTokens})},
+% \end{align}%
+% where $D_e$ and $C_e$ are the entity's degree and betweenness centrality within the community's subgraph, respectively. 
+% The intuition behind this vulnerability score is that an ideal target community should satisfy two conditions: the target entity must be structurally important, and its corresponding report must be textually concise and thus easier to modify. The entity's degree ($D_e$) and betweenness centrality ($C_e$) together measure its central role; a high-centrality entity is connected to many others, meaning that tampering with its narrative will have more widespread effects. The denominator, TotalTokens, represents the modification's cost and stealth. A more concise community report requires fewer alterations, making the attack less detectable. The logarithm is used to smooth the impact of text length, preventing excessively long reports from disproportionately lowering the score.
+% Then, we extract a local subgraph centered around the immediate neighbors of the targeted entity within the community subgraph, capturing the core narrative related to the query.
+% Finally, we collect text chunks associated with the extracted local subgraph, and select top-$k$ chunks (in Algorithm~\ref{alg:whitebox_attack}) by ranking based on chunks' selection scoring. 
+% To select the most valuable chunks for rewriting from the candidates, we designed a Chunk Selection Score
+% \begin{align}
+% \text{ ChunkScore} = w_1 S_{\text{graph}} + w_2 S_{\text{semantic}} + w_3 S_{\text{attitude}}
+% \end{align}%
+% where $S_{\text{graph}}$ is derived from graph metrics of entities within the Ego Graph. The Ego Graph \cite{wasserman1994social} is a standard construct in network analysis, defined as the subgraph containing our target entity (the "ego"), its immediate neighbors (the "alters"), and all the edges connecting these nodes. By focusing on this specific subgraph, we can precisely analyze the entity's local narrative structure. Within this focused graph, we specifically use PageRank \cite{page1999pagerank}, a well-established algorithm for measuring node influence, to quantify the structural importance of each entity. A high PageRank score indicates that an entity is central to the graph's narrative, making its associated text a high-impact target for manipulation. $S_{\text{semantic}}$ is the cosine similarity between chunk and query embeddings, and $S_{\text{attitude}}$ measures the chunk's initial sentiment.
+
+% Particularly, the weights $w_1, w_2, w_3$ are set to 0.5, 0.3, and 0.2, reflecting the relative importance of structural significance within the graph's narrative ($w_1=0.5$), semantic relevance to the query ($w_2=0.3$), and initial sentiment ($w_3=0.2$).
+
+% To generate a set of poisoned chunks, we rewrite top-$k$ chunks utilizing LLMs to align with the attacker's malicious intent.
+% These altered text chunks are injected back into the source document, resulting in a poisoned text.
+% By this way, we can manipulate the relationships and community reports associated with the query when the poisoned text is received, causing the LLM to generate biased output and achieve the attacker's goal.
+  
+% \begin{algorithm}[htbp]
+% \caption{Targeted Knowledge Poisoning Attack}
+% \label{alg:whitebox_attack}
+% \begin{algorithmic}[1]
+% \Require
+%     Document $D$, Target Entity $E_T$, Desired Attitude $A_D$,
+%     Query $Q$, integer $k$
+% \Ensure Poisoned Document $D'$
+
+% \Statex \textit{// Part 1: Initial Graph Construction}
+% \State $G_{full} \gets \text{BuildGraph}(D)$
+% \State $AllComms \gets \text{FindCommunities}(G_{full})$
+
+% \Statex \textit{// Part 2: Identify Most Vulnerable Community}
+% \State $C_{vuln} \gets \text{null}$
+% \State $max\_score \gets -1$
+% \ForAll{community $C_i \in AllComms$}
+%     \If{$E_T$ not in $C_i$} \textbf{continue} \EndIf
+%     \State $score \gets \text{CalcCommVulnScore}(C_i, E_T)$
+%     \If{$score > max\_score$}
+%         \State $max\_score \gets score$
+%         \State $C_{vuln} \gets C_i$
+%     \EndIf
+% \EndFor
+
+
+% \Statex \textit{// Part 3: Score and Select Top-k Chunks for Poisoning}
+% \State $G_{comm} \gets \text{GetSubgraph}(G_{full}, C_{vuln})$
+% \State $G_{ego} \gets \text{GetEgoGraph}(G_{comm}, E_T)$
+% \State $CandChunks \gets \text{GetChunksFromComm}(C_{vuln})$
+% \State $ScoredChunks \gets []$
+% \ForAll{chunk $c \in CandChunks$}
+%     \State $score \gets \text{CalcChunkSelectScore}(c, G_{ego}, Q)$
+%     \State Append $(c, score)$ to $ScoredChunks$
+% \EndFor
+
+% \State $SortedChunks \gets \text{SortByScore}(ScoredChunks, \text{desc})$
+% \State $TopKChunks \gets \text{GetFirstK}(SortedChunks, k)$
+
+% \Statex \textit{// Part 4: Rewrite Chunks and Inject into Document}
+% \State $D' \gets D$
+% \ForAll{chunk $c \in TopKChunks$}
+%     \State $prompt \gets \text{CreateRewritePrompt}(c, E_T, A_D, Q)$
+%     \State $p\_text \gets \text{LLM.Rewrite}(prompt)$
+%     \State $D' \gets \text{ReplaceText}(D', c.\text{text}, p\_text)$
+% \EndFor
+
+% \Statex
+% \State \textbf{return} $D'$
+% \end{algorithmic}
+% \end{algorithm}
+
+
+
+\subsection{Universal Knowledge Poisoning Attack}
+As shown in Figure~\ref{fig:targeted_attack_framework},
+the Universal Knowledge Poisoning Attack (UKPA) aims to degrade GraphRAG globally rather than biasing a single query.
+The central insight is that GraphRAG relies heavily on \emph{linguistic coherence cues}, particularly
+coreference chains and referring expressions, to decide when multiple mentions across chunks
+should be merged into a single entity node. These cues form the inductive bias that allows
+GraphRAG to consolidate scattered evidence into a coherent graph. 
+If these signals are weakened or disrupted, the resulting graph becomes fragmented:
+nodes proliferate, relations split across disconnected components, and reasoning paths are interrupted. The dependency exposes a unique vulnerability.
+By subtly perturbing these cues at the text level, an attacker can interfere with the graph construction
+before any reasoning occurs, systematically breaking the long-range links that enable multi-hop reasoning.
+The key challenge is to find and disrupt these high-leverage linguistic signals \emph{without access to the graph itself}:
+the attacker never observes the final structure, yet edits that look benign can still propagate
+through the construction process and cause large-scale structural distortions.
+
+To exploit this vulnerability, UKPA operates entirely in the language domain. 
+Its strategy is grounded in a key observation from linguistics ~\cite{hobbs1978resolving,DBLP:conf/emnlp/LeeHLZ17,DBLP:conf/naacl/LeeHZ18}: 
+entity linking across documents depends almost exclusively on \emph{coreference resolution signals}.  
+including pronouns, definite descriptions, and other referring expressions, that tie different mentions to the same entity. 
+These signals are inherently weak and context-dependent: even small changes in wording or surface form can prevent 
+the coreference model from clustering mentions together. UKPA deliberately introduces such perturbations into the raw corpus. 
+It scans the text and makes a small number of edits that weaken these cues—
+for example, altering pronouns, introducing slight ambiguity in referring expressions, 
+or modifying the form of an entity name—so that the linking mechanism fails to merge mentions correctly. 
+Although each edit appears innocuous at the sentence level, these disruptions systematically fragment the global graph: 
+mentions that once formed a single, well-connected node are now split into many disconnected nodes, 
+relations become scattered, and long reasoning chains collapse. 
+The cumulative effect is a broad degradation of GraphRAG’s reasoning capabilities. 
+The pipeline consists of four modules:
+
+
+\textbf{(1) Chunk Iteration and Linguistic Analysis.}
+UKPA begins at the text level. 
+For each chunk in the corpus, a LLM is used to perform
+linguistic analysis and extract \emph{coreference chains}, linking between textual
+mentions (pronouns, noun phrases, and other referring expressions) and the entities they denote.
+These mention-to-entity links form the latent backbone that GraphRAG later uses
+to merge mentions into coherent entity nodes across chunks.
+
+
+\textbf{(2) Perturbation Candidate Generation.}
+Given the extracted coreference chains, the LLM is for generating some alternative rewrites for the chunk that deliberately weaken these links.
+Each candidate rewrite must satisfy three constraints:
+(i) maintain grammatical fluency,
+(ii) preserve the local meaning of the text, and
+(iii) stay within a small edit distance from the original.
+Typical perturbations include substituting pronouns with vague noun phrases,
+introducing slight ambiguity in referring expressions, or reordering clauses in a way
+that makes cross-chunk linking less reliable.
+These edits are to prevent GraphRAG from clustering mentions into a single entity
+during graph construction.
+
+\textbf{(3) Structural Impact Scoring.}
+To estimate the effect of each candidate rewrite without direct access to the final graph,
+UKPA employs a surrogate scoring function that measures how much the local entity-relation
+structure extracted from a chunk would change after the edit:
+\begin{equation}
+    \mathcal{I}_\mathrm{score} = \alpha S_\mathrm{entity} + \beta S_\mathrm{relation} + \gamma \bigl(1 - S_\mathrm{vec}\bigr),
+\end{equation}
+where \(S_\mathrm{entity}\) denotes the symmetric difference between the sets of entities
+extracted from the original and modified chunks, 
+\(S_\mathrm{relation}\) is the symmetric difference between their relation sets,
+and \(S_\mathrm{vec}\) is the cosine similarity ~\cite{DBLP:conf/naacl/LeeHZ18,DBLP:journals/eswa/RahimAAAK25} between the embedding~\cite{DBLP:journals/jmlr/BengioDVJ03} of the original and modified chunk.
+The coefficients $(\alpha,\beta,\gamma)$ are tunable weights that balance the relative importance of entity fragmentation, relation distortion, and semantic closeness (SC).
+The score favors candidates that cause larger perturbations in the local entity-relation structure
+while keeping the modified text semantically close to the original,
+so that the attack remains subtle while still fragmenting the global graph once these changes accumulate.
+
+
+\textbf{(4) Selection and Corpus Update.}
+For each chunk, the candidate rewrite with the highest score is chosen,
+and the corresponding text in the corpus is updated accordingly.
+When GraphRAG subsequently constructs the knowledge graph on this modified corpus,
+the accumulated perturbations disrupt entity linking:
+mentions that were previously merged into a single node are split into multiple disconnected nodes,
+relations become scattered, and cross-chunk reasoning chains collapse.
+
+
+\section{Evaluation}
+
+\subsection{Experimental Setup}
+We evaluate TKPA and UKPA on a standard GraphRAG pipeline (Microsoft GraphRAG), focusing on:
+(1) \emph{Attack Effectiveness}: the ability to manipulate or degrade GraphRAG outputs, and 
+(2) \emph{Attack Stealthiness}: the few, subtle perturbations required and their ability to evade existing defenses.
+
+
+\textbf{Datasets \& Tasks.}
+We evaluate on long-form documents, which represent the primary application scenario of GraphRAG: synthesizing knowledge from large unstructured text rather than isolated paragraphs. Such documents provide rich context and interconnections for constructing meaningful knowledge graphs.
+For TKPA, we choose \textit{The Little Prince} (LP), the Wiki page on the \textit{Financial Crisis of 2007-2008} (FC08)~\cite{wiki:financial_crisis_2008}, and the Wiki page on the \textit{Japanese Asset Price Bubble} (JAPB)~\cite{wiki:jp_bubble}.
+For UKPA, we use the Wiki page on the \textit{Russo-Ukrainian War} (RUW)~\cite{wiki:rus_ukr_war} and LP.
+To evaluate downstream performance, we generate $20-30$ multi-hop question-answer pairs per document using GPT-4o~\cite{OpenAI2024}, prompted as a domain expert. 
+Each question requires synthesizing information from multiple sections, similar in style to HotpotQA~\cite{yang2018hotpotqa}.
+All pairs are manually reviewed for clarity and correctness. 
+Attack success is judged by whether the modified GraphRAG system produces poisoned answers as determined by an LLM-based evaluator.
+
+\textbf{Models \& Parameters.}
+We build the GraphRAG pipeline using state-of-the-art LLMs. 
+For graph construction, we adopt GPT-4o-mini due to its efficiency and strong reasoning capability, 
+and use BAAI's \texttt{bge-m3}~\cite{DBLP:journals/corr/abs-2402-03216} as the embedding model, which is a multilingual and open-source embedding model supporting multiple granularities.
+For TKPA, GPT-4o is employed to perform fine-grained rewriting of selected text chunks and to verify attack outcomes. 
+For UKPA, GPT-4o is used to identify linguistic cues (e.g., pronouns), generate poisoned variants of the text, 
+and extract entity-relation structures for scoring candidate perturbations. Unless otherwise stated, the weights in Eq.~(2) are set to $(w_1,w_2,w_3) = (0.5, 0.3, 0.2)$,
+and those in Eq.~(3) to $(\alpha,\beta,\gamma) = (0.25, 0.25, 0.5)$.
+
+\subsection{Baselines.}
+\emph{(i) Attack.} We compare with three attacks:
+\begin{itemize}
+    \item \textbf{PoisonedRAG (PRAG)}  \cite{DBLP:journals/corr/abs-2402-07867}, injects malicious text into the corpus to bias retrieval and force attacker-specified outputs (for TKPA).
+    \item \textbf{Naive Swap (NS)}, a simplified variant that directly injects emotionally charged keywords (e.g., \textit{excellent}) into the text without preserving coherence (for TKPA).
+    \item \textbf{TextFooler-style Perturbation (TP)}~\cite{DBLP:conf/aaai/JinJZS20}, replaces words with embedding-based synonyms and ignores coreference and global structure (for UKPA).
+\end{itemize}
+\emph{(ii) Defense.} We compare against three representative defense methods:
+\begin{itemize}
+    \item \textbf{Perplexity-based Filter (PF)}~\cite{Radford2019}: a classical and widely used baseline that flags chunks with unusually high perplexity as suspicious, implemented with GPT-2.
+    \item \textbf{LLM-based Contamination Detector (LLMDet)}~\cite{DBLP:journals/corr/abs-2309-00614}: a recent state-of-the-art approach that leverages powerful LLMs to classify each chunk as clean or poisoned through few-shot prompting.
+    \item \textbf{Semantic Closeness Checking (SCC)}~\cite{Honnibal2020}: a content-based defense that detects potential manipulations by measuring semantic similarity between the original and modified chunks, particularly suited to universal poisoning scenarios.
+\end{itemize}
+
+\subsection{Attack Effectiveness}
+
+\textbf{Metrics.}
+We evaluate the impact of the proposed attacks from two perspectives: targeted effectiveness and global degradation.
+For TKPA, we report \emph{Attack Success Rate (ASR)}, i.e., the percentage of targeted queries whose answers are manipulated as intended, and \emph{Question-Answer Semantic Deviation (QASD)}, which measures how far the generated answers deviate semantically from the correct responses.
+For UKPA, we assess global degradation through (i) the drop in overall QA accuracy on Microsoft GraphRAG and LightRAG to examine generalization across GraphRAG systems, and (ii) structural damage to the constructed knowledge graph.
+The latter is quantified using \emph{node retention rate}, \emph{edge retention rate}, and \emph{Jaccard similarity} between the clean and poisoned graphs.
+Retention rates $(0\to1)$ measure the fraction of nodes or edges that persist after poisoning, while Jaccard similarity evaluates the overlap between the node and edge sets.
+Lower values on these metrics indicate more severe fragmentation of the graph structure.
+
+\textbf{TKPA Performance.}
+Table~\ref{tab:whitebox_performance_revised} presents the performance of TKPA across multiple corpora.
+Across all datasets, TKPA achieves high ASR (over 90\% on average),
+showing that a handful of well-placed edits can consistently steer GraphRAG outputs
+toward attacker-specified answers.
+The QASD values further indicate that the poisoned answers diverge significantly
+from the ground truth, while remaining coherent and fluent.
+Compared with PoisonedRAG and Naive Swap baselines,
+TKPA achieves both higher ASR and larger semantic deviation with fewer edits,
+highlighting the advantage of structure-guided poisoning over naïve text-level interventions.
+\begin{table}[t]
+\centering
+\small % Note: The document allows font size down to 9pt for tables if necessary. 'small' is generally acceptable.
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Dataset} & \textbf{Metric} & \textbf{TKPA} & \textbf{PRAG} & \textbf{NS} \\
+\midrule
+\multirow{2}{*}{LP}   & ASR (\%) $\uparrow$ & \textbf{93.10} & 71.50 & 18.20 \\   
+& QASD $\uparrow$      & \textbf{0.85} & 0.68 & 0.15 \\
+\cmidrule(l){2-5}
+\multirow{2}{*}{FC08} 
+& ASR (\%) $\uparrow$ & \textbf{89.50} & 68.90 & 14.30 \\
+& QASD $\uparrow$      & \textbf{0.81} & 0.65 & 0.13 \\ 
+\cmidrule(l){2-5}
+\multirow{2}{*}{JAPB} 
+& ASR (\%) $\uparrow$ & \textbf{91.20} & 70.80 & 15.80 \\  
+& QASD $\uparrow$      & \textbf{0.83} & 0.67 & 0.12 \\  
+\midrule
+\multirow{2}{*}{Average}
+& ASR (\%) $\uparrow$ & \textbf{91.27} & 70.40 & 16.1 \\
+& QASD $\uparrow$      & \textbf{0.83} & 0.67 & 0.13 \\
+\bottomrule
+\end{tabular}
+\caption{Performance of TKPA across multiple corpora.}
+\label{tab:whitebox_performance_revised}
+\end{table}
+
+
+\begin{table}[t]
+\centering
+\setlength{\tabcolsep}{4pt}
+\small
+\begin{tabular}{ccccc}
+\toprule
+\multirow{2}{*}{\textbf{Metric}} & \multicolumn{2}{c}{\textbf{Microsoft GraphRAG}} & \multicolumn{2}{c}{\textbf{LightRAG}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+& RUW & LP & RUW & LP \\
+\midrule
+Nodes (Org/Atk) & 347/327 & 104/97 & 436/405 & 163/131 \\
+Edges (Org/Atk) & 379/390 & 119/121 & 388/378 & 175/167 \\
+\midrule
+\textbf{Node Ret. Rate} & \textbf{0.5648} & \textbf{0.5769} & \textbf{0.4335} & \textbf{0.3926} \\
+\textbf{Edge Ret. Rate} & \textbf{0.2770} & \textbf{0.3529} & \textbf{0.1443} & \textbf{0.2343} \\
+Node Jaccard & 0.4100 & 0.4255 & 0.2899 & 0.2783 \\
+Edge Jaccard & 0.1581 & 0.2121 & 0.0789 & 0.1362 \\
+\bottomrule
+\end{tabular}
+\caption{Structural degradation caused by UKPA. Clean (Org) vs. attacked (Atk) graphs for Microsoft GraphRAG and LightRAG on RUW and LP corpora.} 
+\label{tab:graybox_structure}
+\end{table}
+
+\textbf{UKPA Performance.}
+The UKPA aims to indirectly affect downstream tasks by disrupting the graph structure. As shown in Table~\ref{tab:graybox_structure}, the UKPA can severely damage the graph structure. Although the total number of nodes and edges shows some reduction, the more drastic change is reflected in the graph's topology, as evidenced by the extremely low Jaccard similarity scores (e.g., as low as 0.0789 for edges on LightRAG) reveal that the graph's topology has been almost completely rewritten. This experiment shows that our linguistic perturbations effectively corrupt the knowledge base from within, rather than simply deleting information. The structural damage to the knowledge graph directly propagates to downstream QA tasks. As shown in Table~\ref{tab:ukpa_qa_accuracy}, the QA accuracy on Microsoft GraphRAG dropped from 95\% to 50\% under our attack, while in lightRAG, the QA accuracy drops from 90\% to 45\%. These results demonstrate that our universal poisoning paradigm can effectively cripple the system's reasoning capabilities.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{ccc}
+\toprule
+\textbf{GrapRAG} & \textbf{Attack} & \textbf{Accuracy} \\
+\midrule
+\multirow{3}{*}{\makecell{Microsoft \\ GraphRAG}}
+& No Attack & 95\% \\
+& TP        & 85\% \\
+& \textbf{UKPA}      & \textbf{50\%} \\
+\midrule
+\multirow{3}{*}{LightRAG}
+& No Attack & 90\% \\
+& TP        & 85\% \\
+& \textbf{UKPA}      & \textbf{45\%} \\
+\bottomrule
+\end{tabular}
+\caption{Performance of UKPA on downstream QA task.}
+\label{tab:ukpa_qa_accuracy}
+\end{table}
+
+
+
+% % ===================================================================
+% % START: FINAL HIGH-COMPATIBILITY TABLE
+% % This version removes all `\multirow` and `\rowcolor` commands
+% % to ensure correct rendering in all LaTeX environments.
+% % ===================================================================
+% \begin{table}[htbp]
+% \setlength{\tabcolsep}{3pt}
+% \centering
+% \caption{Performance of TKPA. \textit{LP} represents the dataset of \textit{The Little Prince}. \textit{FC08} represents the dataset of \textit{FC 2008}. \textit{JAP} represents the dataset of \textit{Japan Bubble}.}
+% \label{tab:whitebox_performance_revised}
+% \small
+% \begin{tabular}{ccccc}
+% \toprule
+% \textbf{Dataset} & \textbf{Metric} & \textbf{TKPA} & \textbf{PoisonedRAG} & \textbf{Naive Swap} \\
+% \midrule
+% \multirow{3}{*}{\textit{LP}}   & ASR (\%) $\uparrow$ & \textbf{93.10} & 71.50 & 18.20 \\   & QASD $\uparrow$      & \textbf{0.85} & 0.68 & 0.15 \\  & PPL Ratio $\downarrow$      & \textbf{1.15} & 1.25 & 5.12 \\
+% \cmidrule(l){2-5}
+% \multirow{3}{*}{\textit{FC08}} 
+% & ASR (\%) $\uparrow$ & \textbf{89.50} & 68.90 & 14.30 \\
+% & QASD $\uparrow$      & \textbf{0.81} & 0.65 & 0.13 \\ 
+% & PPL Ratio $\downarrow$      & \textbf{1.21} & 1.28 & 5.34 \\
+% \cmidrule(l){2-5}
+% \multirow{3}{*}{\textit{JAP}} 
+% & ASR (\%) $\uparrow$ & \textbf{91.20} & 70.80 & 15.80 \\  
+% & QASD $\uparrow$      & \textbf{0.83} & 0.67 & 0.12 \\  
+% & PPL  Ratio$\downarrow$      & \textbf{1.18} & 1.22 & 5.21 \\
+% \midrule
+% \multirow{3}{*}{\textbf{Average}}
+% & ASR (\%) $\uparrow$ & \textbf{91.27} & 70.40 & 16.1 \\
+% & QASD $\uparrow$      & \textbf{0.83} & 0.67 & 0.13 \\
+% & PPL Ratio$\downarrow$      & \textbf{1.18} & 1.25 & 5.22 \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+% % ===================================================================
+% % END: FINAL HIGH-COMPATIBILITY TABLE
+% % ===================================================================
+
+
+\subsection{Attack Stealthiness}
+Table~\ref{tab:defense_evaluation} shows that existing defenses are largely ineffective against both TKPA and UKPA, with F1-scores close to 0.
+This result stems from the fact that both attacks operate in ways that evade surface-level detection.
+For TKPA, the manipulations are guided by graph structure: selected chunks are rewritten by advanced LLMs so that the style, fluency, and local semantics remain natural.
+This makes perplexity-based filters and LLM detectors ineffective, as the modified text is statistically and stylistically indistinguishable from clean text.
+For UKPA, the perturbations directly exploit the system's reliance on \emph{linguistic coherence cues}.
+Breaking these signals leaves the sentence-level meaning intact but causes long-range fragmentation in the knowledge graph.
+Because existing defenses analyze only local text, they cannot capture this deeper structural distortion.
+We also consider query-side defenses, such as query paraphrasing~\cite{DBLP:journals/corr/abs-2309-00614}.
+These techniques are inherently ineffective against our attacks: the poisoned corpus corrupts the knowledge graph itself, so any paraphrased query will ultimately retrieve compromised entities and poisoned context.
+Defenses operating at the query level cannot mitigate attacks that target the underlying data source.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Attack} & \textbf{Defense} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} \\
+\midrule
+\multirow{2}{*}{TKPA}
+& PF      & 0.08 & 0.06 & 0.07 \\
+& LLMDet     & 0.14 & 0.12 & 0.13 \\
+\midrule
+\multirow{3}{*}{UKPA}
+& SCC & 0.08 & 0.06 & 0.07 \\     
+& PF      & 0.05 & 0.04 & 0.04 \\
+& LLMDet     & 0.12 & 0.10 & 0.11 \\
+\bottomrule
+\end{tabular}
+\caption{Effectiveness of defense against TKPA and UKPA.}
+\label{tab:defense_evaluation}
+\end{table}
+
+In addition to bypassing detectors, both attacks require extremely small modifications to the corpus.
+As summarized in Table~\ref{tab:Words_modification}, TKPA achieves targeted control by changing on the order of a few dozen to a few hundred words for an entire document (e.g., 48 words out of 94,496 for LP, less than 0.06\%),
+while UKPA achieves global degradation by modifying only 32-60 words across very large corpora (0.03\%-0.05\%).
+The sharp contrast highlights the stealthiness of both strategies: TKPA introduces highly localized edits focused on a single query target, whereas UKPA spreads very small changes across the corpus to globally disrupt the graph.
+Such small-scale perturbations explain why existing text-level defenses fail to detect these attacks even when their downstream impact is catastrophic.
+
+\begin{table}[t]
+\setlength{\tabcolsep}{2pt}
+\centering
+\small
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Attack} & \textbf{Dataset} & \makecell{\textbf{Total}\\\textbf{Words}} & \makecell{\textbf{Modified}\\\textbf{Words (min/avg)}} & \makecell{\textbf{Modification}\\\textbf{Ratio (min/avg)}} \\
+\midrule
+\multirow{3}{*}{TKPA}
+&LP & 94496 & 48/155 & 0.055\% / 0.164\% \\
+&FC08   & 40223 & 76/325         & 0.18\% / 0.807\% \\
+&JAPB & 44445 & 113/334        & 0.254\% / 0.751\% \\
+\midrule
+\multirow{2}{*}{UKPA}
+&LP & 94496  & 32 & 0.033\% \\
+&RUW   & 134072 & 60 & 0.045\% \\
+\bottomrule
+\end{tabular}
+\caption{Statistics of word-level perturbations introduced by TKPA and UKPA across datasets. min and avg indicate the minimum and average number.}
+\label{tab:Words_modification}
+\end{table}
+
+
+
+\subsection{Ablation Study}
+\textbf{Ablation Study of TKPA's Parameters.}
+We evaluate the role of the three weights in the TKPA chunk‑scoring function (Eq.~(2)).
+While equal weighting of the three signals already achieves 89.8\% ASR, tuning the weights to emphasize graph structure $(w_1=0.5,w_2=0.3,w_3=0.2)$ further boosts ASR to 91.2\%.
+Setting any single weight to 1 while zeroing the others results in significantly lower performance: graph-only yields 65.3\% ASR, semantic-only yields 58.2\%, and attitude-only yields 51.7\%.
+This result demonstrates that assigning priority to graph structure is more effective than treating the signals equally. In addition to the weighting scheme, we analyze how the number of modified chunks ($K$) influences TKPA performance. Figure~\ref{fig:tkpa_topk_ablation} shows that the ASR increases sharply with just a few edits: modifying the top-ranked chunk alone ($k=1$) achieves 55.8\%, rises to 81.3\% with $k=2$, and reaches 91.2\% with only three chunks. Beyond $k=3$, the curve plateaus, indicating that the scoring mechanism effectively prioritizes high-impact segments. These results highlight that TKPA attains near-maximal impact with minimal, focused modifications, reinforcing both its stealth and efficiency.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\columnwidth]{modified_chunks.png} 
+\caption{Impact of the number of modified chunks (Top-K) on the ASR of TKPA.}
+\label{fig:tkpa_topk_ablation}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\columnwidth]{edit_distance_plot.png}
+\caption{Impact of edit distance on UKPA.}
+\label{fig:edit_distance_plot}
+\end{figure}
+\noindent \textbf{Ablation Study of UKPA's Parameters.}
+We evaluate the role of the three weights in the UKPA structural impact score (Eq.~(3)).
+Equal weighting of the three terms degrades QA accuracy to 0.55, while tuning the weights to prioritize semantic preservation $(\alpha=0.25,\beta=0.25,\gamma=0.5)$ further reduces it to $0.50$.
+Using a single component alone is much less effective, leaving QA accuracy at $0.70-0.75$.
+This result shows that balancing structural disruption with semantic consistency is more effective than either equal weighting or focusing on a single factor. To analyze the effect of edit distance, Figure~\ref{fig:edit_distance_plot} shows that
+while small edits (distance $\leq 3$) already cause a drastic drop in QA accuracy (from 0.95 to 0.50),
+larger edits increase perplexity significantly without further improving attack impact.
+This results justifies the constraint on small edit distances to ensure stealthiness.
+
+
+% \begin{table}[htbp]
+% \centering
+% \caption{Ablation study on scoring function weights for TKPA and UKPA. For TKPA, weights correspond to $(w_{\text{graph}}, w_{\text{semantic}}, w_{\text{attitude}})$. For UKPA, they correspond to $(\alpha_{\text{entity}}, \beta_{\text{relation}}, \gamma_{\text{cosine}})$.}
+% \label{tab:ablation_weights_combined}
+% \small
+% \begin{tabular}{ccc}
+% \toprule
+% \multirow{2}{*}{\textbf{Weight Configuration}} & \textbf{TKPA} & \textbf{UKPA} \\
+% & (ASR \% $\uparrow$) & (QA Acc $\downarrow$) \\
+% \cmidrule(r){1-1} \cmidrule(lr){2-2} \cmidrule(l){3-3}
+% \textbf{Default Setting} & \textbf{91.2} & \textbf{0.50} \\
+% \textbf{Uniform Setting} & 89.8 & 0.55 \\
+% \midrule
+% \textbf{Single Component Only} \\
+% \quad (1, 0, 0) -- Component 1 & 65.3 & 0.70 \\
+% \quad (0, 1, 0) -- Component 2 & 58.2 & 0.70 \\
+% \quad (0, 0, 1) -- Component 3 & 51.7 & 0.75 \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+
+
+
+
+
+% \textbf{Impact of Number of Modified Chunks (Top-K).}
+% In addition to the scoring function's composition, we analyze how the number of modified chunks ($k$) affects TKPA's performance. Figure~\ref{fig:tkpa_topk_ablation} illustrates the relationship between Top-K and the Attack Success Rate (ASR). The results demonstrate the remarkable efficiency of our method. Modifying just one top-ranked chunk (K=1) already achieves an ASR of 55.8\%. The success rate rises sharply to 81.3\% with two chunks and reaches 91.2\% with just three. Beyond K=3, the ASR plateaus, indicating that our scoring mechanism effectively identifies the most critical text segments. This finding confirms that TKPA can achieve near-maximum impact with minimal, highly-targeted modifications, reinforcing its stealth and potency.
+ 
+% Add this figure environment
+
+% \begin{table*}[htbp]
+% \centering
+% \caption{Ablation study of TKPA for different model configurations.}
+% \label{tab:ablation_targeted}
+% \small
+% \resizebox{\textwidth}{!}{
+% \begin{tabular}{lccccc}
+% \toprule
+% \textbf{Configuration} & \textbf{Full Model} & \textbf{w/o SSIM} & \textbf{w/o TI} & \textbf{SSOnly} & \textbf{w/o Rarity} \\
+% \midrule
+% \textbf{ASR (\%)} & \textbf{91.2} & 79.5 & 71.8 & 58.2 & 45.5 \\
+% \bottomrule
+% \end{tabular}
+% }
+% \end{table*}
+
+% \begin{table}[htbp]
+% \centering
+% \caption{Ablation study of TKPA for different model configurations.}
+% \label{tab:ablation_targeted}
+% \small
+% \begin{tabular}{cc}
+% \toprule
+% \textbf{Configuration} & \textbf{Attack Success Rate (ASR \%)} \\
+% \midrule
+% \textbf{Full Model}    & \textbf{91.2} \\
+
+% w/o SSIM               & 79.5 \\
+% w/o TI                 & 71.8 \\
+% SSOnly                 & 58.2 \\
+% w/o Rarity             & 45.5 \\
+% \bottomrule
+% \end{tabular}%
+% \end{table}
+
+
+
+
+% \begin{table}[htbp]
+% \setlength{\tabcolsep}{2pt}
+% \centering
+% \caption{The ablation study of UKPA in \textit{Russia-Ukraine Conflict News} Dataset.}
+% \label{tab:ablation_graybox}
+% \small
+% \begin{tabular}{cccc}
+% \toprule
+% \textbf{Configuration} & \textbf{System} & \textbf{Node Ret.} & \textbf{QA Acc.} \\
+% \midrule
+% \textbf{Default ($d_{\text{edit}} \le 3$)} & \textbf{MS-GraphRAG} & \textbf{0.5648} & \textbf{0.50} \\
+% \textbf{(GPT-4o)} & \textbf{LightRAG} & \textbf{0.4335} & \textbf{0.45} \\
+% \midrule\multirow{2}{*}{$d_{\text{edit}} \le 1$}
+% & MS-GraphRAG & 0.9795 & 0.85 \\
+% & LightRAG & 0.9748 & 0.80 \\
+% \midrule\multirow{2}{*}{$d_{\text{edit}} \le 5$}
+% & MS-GraphRAG & 0.5014 & 0.70 \\
+% & LightRAG & 0.4587 & 0.65 \\
+% \midrule\multirow{2}{*}{Rule-based Target ID}
+% & MS-GraphRAG & 0.9741 & 0.90 \\
+% & LightRAG & 0.9633 & 0.85 \\
+% \midrule\multirow{2}{*}{Random Synonym Sub}
+% & MS-GraphRAG & 0.9654 & 0.85 \\
+% & LightRAG & 0.9518 & 0.80 \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+
+
+
+\section{Conclusion and Future Work}
+We have revealed a fundamental vulnerability in GraphRAG systems: automatically constructed knowledge graphs open a critical attack surface, where manipulation of only a few words can cause significant distortion. We have proposed two knowledge poisoning attacks: TKPA, which leverages graph-theoretic structure to precisely control specific answers with over 93\% ASR, and UKPA, which exploits linguistic cues to fragment the global graph, cutting QA accuracy from 95\% to 50\% with less than 0.05\% of the corpus modified.
+Experiments demonstrate that such small and natural edits can evade state-of-the-art defenses.
+These results highlight the need to treat graph construction as a core security component rather than a passive preprocessing step.
+For the future, we plan to investigate lightweight, scalable attack and defense methods that work with more complex GraphRAG systems, and to examine how multimodal inputs (e.g., images or metadata) in future GraphRAG pipelines may introduce new vulnerabilities.
+
+
+
+% This study reveals deep-seated vulnerabilities in the text understanding and knowledge construction processes of GraphRAG systems. We introduce the first attack framework targeting the core text-to-graph conversion pipeline, demonstrating this process is a fundamental and previously overlooked attack surface. Our results are two-fold: a potent Targeted Knowledge Poisoning attack achieves precise semantic control with a 91.2\% success rate while remaining stealthy, and an effective knowledge poisoning attack halves downstream QA accuracy by disrupting the graph's structural integrity. Our findings underscore that current defense mechanisms are ill-equipped to handle such stealthy linguistic manipulations, posing significant challenges to the security of next-generation AI systems.
+
+% Our work also highlights several directions for future research. A primary limitation is the reliance on large, computationally expensive models, which hinders scalability. Investigating smaller, more efficient models to execute these attacks is a logical next step. Furthermore, as future GraphRAG systems will likely incorporate multimodal data (e.g., text and images), this opens a new research avenue for attacks that subtly modify non-textual data, such as images or their descriptions, a trend already emerging in specialized domains like medicine \cite{wu2024medical}. On the defensive side, a promising direction is to build adaptive defenses that can evolve with data changes, ideally with human-in-the-loop verification. Ultimately, our attack methods can serve as a powerful red-teaming tool to proactively identify and patch security weaknesses. The adversarial examples generated can be used to augment training data, making the system more resilient and fostering a continuous cycle of improvement between attack and defense that pushes the field toward more robust AI.
+
+\FloatBarrier % This command ensures all figures and tables are placed before the bibliography starts.
+
+\begin{thebibliography}{47}
+    \providecommand{\natexlab}[1]{#1}
+    
+    \bibitem[{Asai et~al.(2024)Asai, Wu, Wang, Sil, and Hajishirzi}]{DBLP:conf/iclr/AsaiWWSH24}
+    Asai, A.; Wu, Z.; Wang, Y.; Sil, A.; and Hajishirzi, H. 2024.
+    \newblock Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection.
+    \newblock In \emph{Proceedings of The Twelfth International Conference on Learning Representations, {ICLR} 2024, Vienna, Austria, May 7-11, 2024}. OpenReview.net.
+    
+    \bibitem[{Bengio et~al.(2003)Bengio, Ducharme, Vincent, and Janvin}]{DBLP:journals/jmlr/BengioDVJ03}
+    Bengio, Y.; Ducharme, R.; Vincent, P.; and Janvin, C. 2003.
+    \newblock A Neural Probabilistic Language Model.
+    \newblock \emph{J. Mach. Learn. Res.}, 3: 1137--1155.
+    
+    \bibitem[{Bian et~al.(2024)Bian, Han, Sun, Lin, Lu, He, Jiang, and Dong}]{DBLP:conf/coling/BianH0L0HJD24}
+    Bian, N.; Han, X.; Sun, L.; Lin, H.; Lu, Y.; He, B.; Jiang, S.; and Dong, B. 2024.
+    \newblock ChatGPT Is a Knowledgeable but Inexperienced Solver: An Investigation of Commonsense Problem in Large Language Models.
+    \newblock In \emph{Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation, {LREC/COLING} 2024, 20-25 May, 2024, Torino, Italy}, 3098--3110. Torino, Italy: {ELRA} and {ICCL}.
+    
+    \bibitem[{Borgeaud et~al.(2022)Borgeaud, Mensch, Hoffmann, Cai, Rutherford, Millican, van~den Driessche, Lespiau, Damoc, Clark, de~Las~Casas, Guy, Menick, Ring, Hennigan, Huang, Maggiore, Jones, Cassirer, Brock, Paganini, Irving, Vinyals, Osindero, Simonyan, Rae, Elsen, and Sifre}]{DBLP:conf/icml/BorgeaudMHCRM0L22}
+    Borgeaud, S.; Mensch, A.; Hoffmann, J.; Cai, T.; Rutherford, E.; Millican, K.; van~den Driessche, G.; Lespiau, J.; Damoc, B.; Clark, A.; de~Las~Casas, D.; Guy, A.; Menick, J.; Ring, R.; Hennigan, T.; Huang, S.; Maggiore, L.; Jones, C.; Cassirer, A.; Brock, A.; Paganini, M.; Irving, G.; Vinyals, O.; Osindero, S.; Simonyan, K.; Rae, J.~W.; Elsen, E.; and Sifre, L. 2022.
+    \newblock Improving Language Models by Retrieving from Trillions of Tokens.
+    \newblock In \emph{Proceedings of International Conference on Machine Learning, {ICML} 2022, 17-23 July 2022, Baltimore, Maryland, {USA}}, volume 162 of \emph{Proceedings of Machine Learning Research}, 2206--2240. {PMLR}.
+    
+    \bibitem[{Chen et~al.(2017)Chen, Liu, Yin, and Tang}]{DBLP:journals/sigkdd/ChenLYT17}
+    Chen, H.; Liu, X.; Yin, D.; and Tang, J. 2017.
+    \newblock A Survey on Dialogue Systems: Recent Advances and New Frontiers.
+    \newblock \emph{{SIGKDD} Explor.}, 19(2): 25--35.
+    
+    \bibitem[{Chen et~al.(2024)Chen, Xiao, Zhang, Luo, Lian, and Liu}]{DBLP:journals/corr/abs-2402-03216}
+    Chen, J.; Xiao, S.; Zhang, P.; Luo, K.; Lian, D.; and Liu, Z. 2024.
+    \newblock {BGE} M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation.
+    \newblock arXiv:2402.03216.
+    
+    \bibitem[{Chen, Jia, and Xiang(2020)}]{DBLP:journals/eswa/ChenJX20}
+    Chen, X.; Jia, S.; and Xiang, Y. 2020.
+    \newblock A review: Knowledge reasoning over knowledge graph.
+    \newblock \emph{Expert Syst. Appl.}, 141: 112948.
+    
+    \bibitem[{Chen et~al.(2020)Chen, Wang, Zhao, Cheng, Zhao, and Duan}]{DBLP:journals/access/ChenWZCZD20}
+    Chen, Z.; Wang, Y.; Zhao, B.; Cheng, J.; Zhao, X.; and Duan, Z. 2020.
+    \newblock Knowledge Graph Completion: {A} Review.
+    \newblock \emph{{IEEE} Access}, 8: 192435--192456.
+    
+    \bibitem[{Cheng et~al.(2024)Cheng, Ding, Ju, Wu, Du, Yi, Zhang, and Liu}]{DBLP:journals/corr/abs-2405-13401}
+    Cheng, P.; Ding, Y.; Ju, T.; Wu, Z.; Du, W.; Yi, P.; Zhang, Z.; and Liu, G. 2024.
+    \newblock TrojanRAG: Retrieval-Augmented Generation Can Be Backdoor Driver in Large Language Models.
+    \newblock arXiv:2405.13401.
+    
+    \bibitem[{Deng et~al.(2024)Deng, Liu, Wang, Li, Zhang, and Liu}]{DBLP:journals/corr/abs-2402-08416}
+    Deng, G.; Liu, Y.; Wang, K.; Li, Y.; Zhang, T.; and Liu, Y. 2024.
+    \newblock Pandora: Jailbreak GPTs by Retrieval Augmented Generation Poisoning.
+    \newblock arXiv:2402.08416.
+    
+    \bibitem[{Edge et~al.(2024)Edge, Trinh, Cheng, Bradley, Chao, Mody, Truitt, and Larson}]{DBLP:journals/corr/abs-2404-16130}
+    Edge, D.; Trinh, H.; Cheng, N.; Bradley, J.; Chao, A.; Mody, A.; Truitt, S.; and Larson, J. 2024.
+    \newblock From Local to Global: {A} Graph {RAG} Approach to Query-Focused Summarization.
+    \newblock arXiv:2404.16130.
+    
+    \bibitem[{Gross, Yellen, and Anderson(2018)}]{gross2018graph}
+    Gross, J.~L.; Yellen, J.; and Anderson, M. 2018.
+    \newblock \emph{Graph theory and its applications}.
+    \newblock Chapman and Hall/CRC.
+    
+    \bibitem[{Guo et~al.(2024)Guo, Xia, Yu, Ao, and Huang}]{DBLP:journals/corr/abs-2410-05779}
+    Guo, Z.; Xia, L.; Yu, Y.; Ao, T.; and Huang, C. 2024.
+    \newblock LightRAG: Simple and Fast Retrieval-Augmented Generation.
+    \newblock arXiv:2410.05779.
+    
+    \bibitem[{Han et~al.(2025)Han, Wang, Shomer, Guo, Ding, Lei, Halappanavar, Rossi, Mukherjee, Tang, He, Hua, Long, Zhao, Shah, Javari, Xia, and Tang}]{DBLP:journals/corr/abs-2501-00309}
+    Han, H.; Wang, Y.; Shomer, H.; Guo, K.; Ding, J.; Lei, Y.; Halappanavar, M.; Rossi, R.~A.; Mukherjee, S.; Tang, X.; He, Q.; Hua, Z.; Long, B.; Zhao, T.; Shah, N.; Javari, A.; Xia, Y.; and Tang, J. 2025.
+    \newblock Retrieval-Augmented Generation with Graphs (GraphRAG).
+    \newblock arXiv:2501.00309.
+    
+    \bibitem[{Hines et~al.(2024)Hines, Lopez, Hall, Zarfati, Zunger, and Kiciman}]{DBLP:conf/camlis/HinesLHZZK24}
+    Hines, K.; Lopez, G.; Hall, M.; Zarfati, F.; Zunger, Y.; and Kiciman, E. 2024.
+    \newblock Defending Against Indirect Prompt Injection Attacks With Spotlighting.
+    \newblock In \emph{Proceedings of the Conference on Applied Machine Learning in Information Security {(CAMLIS} 2024), Arlington, Virginia, USA, October 24-25, 2024}, volume 3920 of \emph{{CEUR} Workshop Proceedings}, 48--62. CEUR-WS.org.
+    
+    \bibitem[{Hobbs(1978)}]{hobbs1978resolving}
+    Hobbs, J.~R. 1978.
+    \newblock Resolving pronoun references.
+    \newblock \emph{Lingua}, 44(4): 311--338.
+    
+    \bibitem[{Honnibal et~al.(2020)Honnibal, Montani, Van~Landeghem, and Boyd}]{Honnibal2020}
+    Honnibal, M.; Montani, I.; Van~Landeghem, S.; and Boyd, A. 2020.
+    \newblock {spaCy}: Industrial-strength Natural Language Processing in {Python}.
+    \newblock \url{https://doi.org/10.5281/zenodo.1212303}.
+    \newblock Accessed: 2024-10-26.
+    
+    \bibitem[{Jain et~al.(2023)Jain, Schwarzschild, Wen, Somepalli, Kirchenbauer, Chiang, Goldblum, Saha, Geiping, and Goldstein}]{DBLP:journals/corr/abs-2309-00614}
+    Jain, N.; Schwarzschild, A.; Wen, Y.; Somepalli, G.; Kirchenbauer, J.; Chiang, P.; Goldblum, M.; Saha, A.; Geiping, J.; and Goldstein, T. 2023.
+    \newblock Baseline Defenses for Adversarial Attacks Against Aligned Language Models.
+    \newblock arXiv:2309.00614.
+    
+    \bibitem[{Ji et~al.(2023)Ji, Lee, Frieske, Yu, Su, Xu, Ishii, Bang, Madotto, and Fung}]{DBLP:journals/csur/JiLFYSXIBMF23}
+    Ji, Z.; Lee, N.; Frieske, R.; Yu, T.; Su, D.; Xu, Y.; Ishii, E.; Bang, Y.; Madotto, A.; and Fung, P. 2023.
+    \newblock Survey of Hallucination in Natural Language Generation.
+    \newblock \emph{{ACM} Comput. Surv.}, 55(12): 248:1--248:38.
+    
+    \bibitem[{Jin et~al.(2020)Jin, Jin, Zhou, and Szolovits}]{DBLP:conf/aaai/JinJZS20}
+    Jin, D.; Jin, Z.; Zhou, J.~T.; and Szolovits, P. 2020.
+    \newblock Is {BERT} Really Robust? {A} Strong Baseline for Natural Language Attack on Text Classification and Entailment.
+    \newblock In \emph{Proceedings of The Thirty-Fourth {AAAI} Conference on Artificial Intelligence, {AAAI} 2020, The Thirty-Second Innovative Applications of Artificial Intelligence Conference, {IAAI} 2020, The Tenth {AAAI} Symposium on Educational Advances in Artificial Intelligence, {EAAI} 2020, New York, NY, USA, February 7-12, 2020}, 8018--8025. {AAAI} Press.
+    
+    \bibitem[{Karpukhin et~al.(2020)Karpukhin, Oguz, Min, Lewis, Wu, Edunov, Chen, and Yih}]{DBLP:conf/emnlp/KarpukhinOMLWEC20}
+    Karpukhin, V.; Oguz, B.; Min, S.; Lewis, P.; Wu, L.; Edunov, S.; Chen, D.; and Yih, W. 2020.
+    \newblock Dense Passage Retrieval for Open-Domain Question Answering.
+    \newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing, {EMNLP} 2020, Online, November 16-20, 2020}, 6769--6781. Association for Computational Linguistics.
+    
+    \bibitem[{Kim et~al.(2020)Kim, Hong, Ko, and Seo}]{DBLP:conf/coling/KimHKS20}
+    Kim, B.; Hong, T.; Ko, Y.; and Seo, J. 2020.
+    \newblock Multi-Task Learning for Knowledge Graph Completion with Pre-trained Language Models.
+    \newblock In \emph{Proceedings of the 28th International Conference on Computational Linguistics, {COLING} 2020, Barcelona, Spain (Online), December 8-13, 2020}, 1737--1743. International Committee on Computational Linguistics.
+    
+    \bibitem[{Lee et~al.(2017)Lee, He, Lewis, and Zettlemoyer}]{DBLP:conf/emnlp/LeeHLZ17}
+    Lee, K.; He, L.; Lewis, M.; and Zettlemoyer, L. 2017.
+    \newblock End-to-end Neural Coreference Resolution.
+    \newblock In \emph{Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing, {EMNLP} 2017, Copenhagen, Denmark, September 9-11, 2017}, 188--197. Association for Computational Linguistics.
+    
+    \bibitem[{Lee, He, and Zettlemoyer(2018)}]{DBLP:conf/naacl/LeeHZ18}
+    Lee, K.; He, L.; and Zettlemoyer, L. 2018.
+    \newblock Higher-Order Coreference Resolution with Coarse-to-Fine Inference.
+    \newblock In \emph{Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, NAACL-HLT, New Orleans, Louisiana, USA, June 1-6, 2018, Volume 2 (Short Papers)}, 687--692. Association for Computational Linguistics.
+    
+    \bibitem[{Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal, K{\"{u}}ttler, Lewis, Yih, Rockt{\"{a}}schel, Riedel, and Kiela}]{DBLP:conf/nips/LewisPPPKGKLYR020}
+    Lewis, P.; Perez, E.; Piktus, A.; Petroni, F.; Karpukhin, V.; Goyal, N.; K{\"{u}}ttler, H.; Lewis, M.; Yih, W.; Rockt{\"{a}}schel, T.; Riedel, S.; and Kiela, D. 2020.
+    \newblock Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks.
+    \newblock In \emph{Proceedings of Advances in Neural Information Processing Systems 33: Annual Conference on Neural Information Processing Systems 2020, NeurIPS 2020, December 6-12, 2020, virtual}, 9459--9474. Curran Associates, Inc.
+    
+    \bibitem[{Liang et~al.(2025)Liang, Wang, Li, Zhu, Jiang, Gong, and Wang}]{DBLP:journals/corr/abs-2501-14050}
+    Liang, J.; Wang, Y.; Li, C.; Zhu, R.; Jiang, T.; Gong, N.; and Wang, T. 2025.
+    \newblock GraphRAG under Fire.
+    \newblock arXiv:2501.14050.
+    
+    \bibitem[{Mitchell(1969)}]{mitchell1969social}
+    Mitchell, J.~C. 1969.
+    \newblock \emph{Social networks in urban situations: analyses of personal relationships in Central African towns}.
+    \newblock Manchester University Press.
+    
+    \bibitem[{OpenAI(2023)}]{DBLP:journals/corr/abs-2303-08774}
+    OpenAI. 2023.
+    \newblock {GPT-4} Technical Report.
+    \newblock arXiv:2303.08774.
+    
+    \bibitem[{{OpenAI}(2024)}]{OpenAI2024}
+    {OpenAI}. 2024.
+    \newblock {GPT-4o}.
+    \newblock \url{https://openai.com/index/hello-gpt-4o/}.
+    \newblock Accessed: 2024-05-13.
+    
+    \bibitem[{Peng, Zhang, and Zhang(2013)}]{DBLP:journals/pr/PengZZ13}
+    Peng, B.; Zhang, L.; and Zhang, D. 2013.
+    \newblock A survey of graph theoretical approaches to image segmentation.
+    \newblock \emph{Pattern Recognit.}, 46(3): 1020--1038.
+    
+    \bibitem[{Peng et~al.(2019)Peng, Parikh, Faruqui, Dhingra, and Das}]{peng2019text}
+    Peng, H.; Parikh, A.~P.; Faruqui, M.; Dhingra, B.; and Das, D. 2019.
+    \newblock Text Generation with Exemplar-based Adaptive Decoding.
+    \newblock arXiv:1904.04428.
+    
+    \bibitem[{Radford et~al.(2019)Radford, Wu, Child, Luan, Amodei, and Sutskever}]{Radford2019}
+    Radford, A.; Wu, J.; Child, R.; Luan, D.; Amodei, D.; and Sutskever, I. 2019.
+    \newblock Language Models are Unsupervised Multitask Learners.
+    \newblock \url{https://openai.com/blog/language-models-are-unsupervised-multitask-learners/}.
+    \newblock Accessed: 2024-05-13.
+    
+    \bibitem[{Rahim et~al.(2025)Rahim, Amin, Alhabeeb, Alshehri, and Khalifa}]{DBLP:journals/eswa/RahimAAAK25}
+    Rahim, M.; Amin, F.; Alhabeeb, S.~A.; Alshehri, M.~H.; and Khalifa, H. A.~E. 2025.
+    \newblock Cosine similarity and information measures of p,q,r- spherical fuzzy sets: Application in selecting migration destination.
+    \newblock \emph{Expert Syst. Appl.}, 265: 125932.
+    
+    \bibitem[{Shafran, Schuster, and Shmatikov(2024)}]{DBLP:journals/corr/abs-2406-05870}
+    Shafran, A.; Schuster, R.; and Shmatikov, V. 2024.
+    \newblock Machine Against the {RAG:} Jamming Retrieval-Augmented Generation with Blocker Documents.
+    \newblock arXiv:2406.05870.
+    
+    \bibitem[{Suo(2024)}]{DBLP:journals/corr/abs-2401-07612}
+    Suo, X. 2024.
+    \newblock Signed-Prompt: {A} New Approach to Prevent Prompt Injection Attacks Against LLM-Integrated Applications.
+    \newblock arXiv:2401.07612.
+    
+    \bibitem[{Tao et~al.(2024)Tao, Shen, Zhang, Shen, Wang, Shi, and Du}]{DBLP:journals/corr/abs-2412-17011}
+    Tao, Y.; Shen, Y.; Zhang, H.; Shen, Y.; Wang, L.; Shi, C.; and Du, S. 2024.
+    \newblock Robustness of Large Language Models Against Adversarial Attacks.
+    \newblock arXiv:2412.17011.
+    
+    \bibitem[{Thoppilan et~al.(2022)Thoppilan, Freitas, Hall, Shazeer, Kulshreshtha, Cheng, Jin, Bos, Baker, Du, Li, Lee, Zheng, Ghafouri, Menegali, Huang, Krikun, Lepikhin, Qin, Chen, Xu, Chen, Roberts, Bosma, Zhou, Chang, Krivokon, Rusch, Pickett, Meier{-}Hellstern, Morris, Doshi, Santos, Duke, Soraker, Zevenbergen, Prabhakaran, Diaz, Hutchinson, Olson, Molina, Hoffman{-}John, Lee, Aroyo, Rajakumar, Butryna, Lamm, Kuzmina, Fenton, Cohen, Bernstein, Kurzweil, y~Arcas, Cui, Croak, Chi, and Le}]{DBLP:journals/corr/abs-2201-08239}
+    Thoppilan, R.; Freitas, D.~D.; Hall, J.; Shazeer, N.; Kulshreshtha, A.; Cheng, H.; Jin, A.; Bos, T.; Baker, L.; Du, Y.; Li, Y.; Lee, H.; Zheng, H.~S.; Ghafouri, A.; Menegali, M.; Huang, Y.; Krikun, M.; Lepikhin, D.; Qin, J.; Chen, D.; Xu, Y.; Chen, Z.; Roberts, A.; Bosma, M.; Zhou, Y.; Chang, C.; Krivokon, I.; Rusch, W.; Pickett, M.; Meier{-}Hellstern, K.~S.; Morris, M.~R.; Doshi, T.; Santos, R.~D.; Duke, T.; Soraker, J.; Zevenbergen, B.; Prabhakaran, V.; Diaz, M.; Hutchinson, B.; Olson, K.; Molina, A.; Hoffman{-}John, E.; Lee, J.; Aroyo, L.; Rajakumar, R.; Butryna, A.; Lamm, M.; Kuzmina, V.; Fenton, J.; Cohen, A.; Bernstein, R.; Kurzweil, R.; y~Arcas, B.~A.; Cui, C.; Croak, M.; Chi, E.~H.; and Le, Q. 2022.
+    \newblock LaMDA: Language Models for Dialog Applications.
+    \newblock arXiv:2201.08239.
+    
+    \bibitem[{Wallace et~al.(2019)Wallace, Feng, Kandpal, Gardner, and Singh}]{DBLP:conf/emnlp/WallaceFKGS19}
+    Wallace, E.; Feng, S.; Kandpal, N.; Gardner, M.; and Singh, S. 2019.
+    \newblock Universal Adversarial Triggers for Attacking and Analyzing {NLP}.
+    \newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing, {EMNLP-IJCNLP} 2019, Hong Kong, China, November 3-7, 2019}, 2153--2162. Association for Computational Linguistics.
+    
+    \bibitem[{Wang et~al.(2019)Wang, Zhang, Zhao, Li, Xie, and Guo}]{DBLP:conf/www/WangZZLXG19}
+    Wang, H.; Zhang, F.; Zhao, M.; Li, W.; Xie, X.; and Guo, M. 2019.
+    \newblock Multi-Task Feature Learning for Knowledge Graph Enhanced Recommendation.
+    \newblock In \emph{Proceedings of The World Wide Web Conference, {WWW} 2019, San Francisco, CA, USA, May 13-17, 2019}, 2000--2010. {ACM}.
+    
+    \bibitem[{Wang and Wang(2025)}]{DBLP:journals/intr/WangW25}
+    Wang, S.; and Wang, F. 2025.
+    \newblock Value implications of followers in social marketplaces: insights into ego network structures.
+    \newblock \emph{Internet Res.}, 35(1): 294--317.
+    
+    \bibitem[{{Wikipedia}(2024{\natexlab{a}})}]{wiki:financial_crisis_2008}
+    {Wikipedia}. 2024{\natexlab{a}}.
+    \newblock Financial crisis of 2007–2008 --- {Wikipedia}{,} The Free Encyclopedia.
+    \newblock \url{https://en.wikipedia.org/wiki/Financial_crisis_of_2007-2008}.
+    \newblock Accessed: 2024-10-26.
+    
+    \bibitem[{{Wikipedia}(2024{\natexlab{b}})}]{wiki:jp_bubble}
+    {Wikipedia}. 2024{\natexlab{b}}.
+    \newblock Japanese asset price bubble --- {Wikipedia}{,} The Free Encyclopedia.
+    \newblock \url{https://en.wikipedia.org/wiki/Japanese_asset_price_bubble}.
+    \newblock Accessed: 2024-10-26.
+    
+    \bibitem[{{Wikipedia}(2024{\natexlab{c}})}]{wiki:rus_ukr_war}
+    {Wikipedia}. 2024{\natexlab{c}}.
+    \newblock Russo-Ukrainian War --- {Wikipedia}{,} The Free Encyclopedia.
+    \newblock \url{https://en.wikipedia.org/wiki/Russo-Ukrainian_War}.
+    \newblock Accessed: 2024-10-26.
+    
+    \bibitem[{Yang et~al.(2018)Yang, Qi, Zhang, Bengio, Cohen, Salakhutdinov, and Manning}]{yang2018hotpotqa}
+    Yang, Z.; Qi, P.; Zhang, S.; Bengio, Y.; Cohen, W.~W.; Salakhutdinov, R.; and Manning, C.~D. 2018.
+    \newblock {HotpotQA}: A Dataset for Diverse, Explainable Multi-hop Question Answering.
+    \newblock In \emph{Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing}, 2369--2380. Association for Computational Linguistics.
+    
+    \bibitem[{Yasunaga et~al.(2021)Yasunaga, Ren, Bosselut, Liang, and Leskovec}]{DBLP:conf/naacl/YasunagaRBLL21}
+    Yasunaga, M.; Ren, H.; Bosselut, A.; Liang, P.; and Leskovec, J. 2021.
+    \newblock {QA-GNN:} Reasoning with Language Models and Knowledge Graphs for Question Answering.
+    \newblock In \emph{Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, {NAACL-HLT} 2021, Online, June 6-11, 2021}, 535--546. Association for Computational Linguistics.
+    
+    \bibitem[{Zeng et~al.(2024)Zeng, Zhang, He, Liu, Xing, Xu, Ren, Chang, Wang, Yin, and Tang}]{DBLP:conf/acl/ZengZHLX000WYT24}
+    Zeng, S.; Zhang, J.; He, P.; Liu, Y.; Xing, Y.; Xu, H.; Ren, J.; Chang, Y.; Wang, S.; Yin, D.; and Tang, J. 2024.
+    \newblock The Good and The Bad: Exploring Privacy Issues in Retrieval-Augmented Generation {(RAG)}.
+    \newblock In \emph{Proceedings of Findings of the Association for Computational Linguistics, {ACL} 2024, Bangkok, Thailand and virtual meeting, August 11-16, 2024}, 4505--4524. Association for Computational Linguistics.
+    
+    \bibitem[{Zou et~al.(2024)Zou, Geng, Wang, and Jia}]{DBLP:journals/corr/abs-2402-07867}
+    Zou, W.; Geng, R.; Wang, B.; and Jia, J. 2024.
+    \newblock PoisonedRAG: Knowledge Poisoning Attacks to Retrieval-Augmented Generation of Large Language Models.
+    \newblock arXiv:2402.07867.
+    
+    \end{thebibliography}
+    
+
+\end{document}
+
+
+
+===== 00README.json =====
+
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "main.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "aaai2026.bib"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "aaai2026.bst"
+      }
+   ],
+   "version" : 2,
+   "texlive_version" : 2023,
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}
+
+
+===== aaai2026.bib =====
+
+@misc{DBLP:journals/corr/AroraBS13,
+  author       = {Suket Arora and
+                  Kamaljeet Batra and
+                  Sarabjit Singh},
+  title        = {Dialogue System: {A} Brief Review},
+  year         = {2013},
+  url          = {http://arxiv.org/abs/1306.4134},
+  archiveprefix= {arXiv},
+  eprint       = {1306.4134},
+}
+@article{DBLP:journals/sigkdd/ChenLYT17,
+  author       = {Hongshen Chen and
+                  Xiaorui Liu and
+                  Dawei Yin and
+                  Jiliang Tang},
+  title        = {A Survey on Dialogue Systems: Recent Advances and New Frontiers},
+  journal      = {{SIGKDD} Explor.},
+  volume       = {19},
+  number       = {2},
+  pages        = {25--35},
+  year         = {2017},
+  url          = {https://doi.org/10.1145/3166054.3166058},
+  doi          = {10.1145/3166054.3166058},
+}
+
+@misc{DBLP:journals/corr/abs-2303-08774,
+  author       = {OpenAI},
+  title        = {{GPT-4} Technical Report},
+  year         = {2023},
+  url          = {https://doi.org/10.48550/arXiv.2303.08774},
+  doi          = {10.48550/ARXIV.2303.08774},
+  archiveprefix= {arXiv},
+  eprint       = {2303.08774},
+}
+
+@inproceedings{DBLP:conf/coling/BianH0L0HJD24,
+  author       = {Ning Bian and
+                  Xianpei Han and
+                  Le Sun and
+                  Hongyu Lin and
+                  Yaojie Lu and
+                  Ben He and
+                  Shanshan Jiang and
+                  Bin Dong},
+  title        = {ChatGPT Is a Knowledgeable but Inexperienced Solver: An Investigation
+                  of Commonsense Problem in Large Language Models},
+  booktitle    = {Proceedings of the 2024 Joint International Conference on Computational
+                  Linguistics, Language Resources and Evaluation, {LREC/COLING} 2024,
+                  20-25 May, 2024, Torino, Italy},
+  pages        = {3098--3110},
+  publisher    = {{ELRA} and {ICCL}},
+  year         = {2024},
+  address   = {Torino, Italy},
+  url          = {https://aclanthology.org/2024.lrec-main.276},
+}
+
+@inproceedings{DBLP:conf/nips/LewisPPPKGKLYR020,
+  author       = {Patrick Lewis and
+                  Ethan Perez and
+                  Aleksandra Piktus and
+                  Fabio Petroni and
+                  Vladimir Karpukhin and
+                  Naman Goyal and
+                  Heinrich K{\"{u}}ttler and
+                  Mike Lewis and
+                  Wen{-}tau Yih and
+                  Tim Rockt{\"{a}}schel and
+                  Sebastian Riedel and
+                  Douwe Kiela},
+  title        = {Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks},
+  booktitle    = {Proceedings of Advances in Neural Information Processing Systems 33: Annual Conference
+                  on Neural Information Processing Systems 2020, NeurIPS 2020, December
+                  6-12, 2020, virtual},
+  pages        = {9459--9474},
+  publisher    = {Curran Associates, Inc.},
+  year         = {2020},
+  url          = {https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html},
+}
+
+@inproceedings{DBLP:conf/icml/BorgeaudMHCRM0L22,
+  author       = {Sebastian Borgeaud and
+                  Arthur Mensch and
+                  Jordan Hoffmann and
+                  Trevor Cai and
+                  Eliza Rutherford and
+                  Katie Millican and
+                  George van den Driessche and
+                  Jean{-}Baptiste Lespiau and
+                  Bogdan Damoc and
+                  Aidan Clark and
+                  Diego de Las Casas and
+                  Aurelia Guy and
+                  Jacob Menick and
+                  Roman Ring and
+                  Tom Hennigan and
+                  Saffron Huang and
+                  Loren Maggiore and
+                  Chris Jones and
+                  Albin Cassirer and
+                  Andy Brock and
+                  Michela Paganini and
+                  Geoffrey Irving and
+                  Oriol Vinyals and
+                  Simon Osindero and
+                  Karen Simonyan and
+                  Jack W. Rae and
+                  Erich Elsen and
+                  Laurent Sifre},
+  title        = {Improving Language Models by Retrieving from Trillions of Tokens},
+  booktitle    = {Proceedings of International Conference on Machine Learning, {ICML} 2022, 17-23 July
+                  2022, Baltimore, Maryland, {USA}},
+  series       = {Proceedings of Machine Learning Research},
+  volume       = {162},
+  pages        = {2206--2240},
+  publisher    = {{PMLR}},
+  year         = {2022},
+  url          = {https://proceedings.mlr.press/v162/borgeaud22a.html},
+}
+
+@misc{DBLP:journals/corr/abs-2201-08239,
+  author       = {Romal Thoppilan and
+                  Daniel De Freitas and
+                  Jamie Hall and
+                  Noam Shazeer and
+                  Apoorv Kulshreshtha and
+                  Heng{-}Tze Cheng and
+                  Alicia Jin and
+                  Taylor Bos and
+                  Leslie Baker and
+                  Yu Du and
+                  YaGuang Li and
+                  Hongrae Lee and
+                  Huaixiu Steven Zheng and
+                  Amin Ghafouri and
+                  Marcelo Menegali and
+                  Yanping Huang and
+                  Maxim Krikun and
+                  Dmitry Lepikhin and
+                  James Qin and
+                  Dehao Chen and
+                  Yuanzhong Xu and
+                  Zhifeng Chen and
+                  Adam Roberts and
+                  Maarten Bosma and
+                  Yanqi Zhou and
+                  Chung{-}Ching Chang and
+                  Igor Krivokon and
+                  Will Rusch and
+                  Marc Pickett and
+                  Kathleen S. Meier{-}Hellstern and
+                  Meredith Ringel Morris and
+                  Tulsee Doshi and
+                  Renelito Delos Santos and
+                  Toju Duke and
+                  Johnny Soraker and
+                  Ben Zevenbergen and
+                  Vinodkumar Prabhakaran and
+                  Mark Diaz and
+                  Ben Hutchinson and
+                  Kristen Olson and
+                  Alejandra Molina and
+                  Erin Hoffman{-}John and
+                  Josh Lee and
+                  Lora Aroyo and
+                  Ravi Rajakumar and
+                  Alena Butryna and
+                  Matthew Lamm and
+                  Viktoriya Kuzmina and
+                  Joe Fenton and
+                  Aaron Cohen and
+                  Rachel Bernstein and
+                  Ray Kurzweil and
+                  Blaise Ag{\"{u}}era y Arcas and
+                  Claire Cui and
+                  Marian Croak and
+                  Ed H. Chi and
+                  Quoc Le},
+  title        = {LaMDA: Language Models for Dialog Applications},
+  year         = {2022},
+  url          = {https://arxiv.org/abs/2201.08239},
+  archiveprefix= {arXiv},
+  eprint       = {2201.08239},
+}
+
+@inproceedings{DBLP:conf/iclr/AsaiWWSH24,
+  author       = {Akari Asai and
+                  Zeqiu Wu and
+                  Yizhong Wang and
+                  Avirup Sil and
+                  Hannaneh Hajishirzi},
+  title        = {Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection},
+  booktitle    = {Proceedings of The Twelfth International Conference on Learning Representations,
+                  {ICLR} 2024, Vienna, Austria, May 7-11, 2024},
+  publisher    = {OpenReview.net},
+  year         = {2024},
+  url          = {https://openreview.net/forum?id=hSyW5go0v8},
+}
+
+@misc{DBLP:journals/corr/abs-2410-05779,
+  author       = {Zirui Guo and
+                  Lianghao Xia and
+                  Yanhua Yu and
+                  Tu Ao and
+                  Chao Huang},
+  title        = {LightRAG: Simple and Fast Retrieval-Augmented Generation},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2410.05779},
+  doi          = {10.48550/ARXIV.2410.05779},
+  archiveprefix= {arXiv},
+  eprint       = {2410.05779},
+}
+
+@misc{DBLP:journals/corr/abs-2501-00309,
+  author       = {Haoyu Han and
+                  Yu Wang and
+                  Harry Shomer and
+                  Kai Guo and
+                  Jiayuan Ding and
+                  Yongjia Lei and
+                  Mahantesh Halappanavar and
+                  Ryan A. Rossi and
+                  Subhabrata Mukherjee and
+                  Xianfeng Tang and
+                  Qi He and
+                  Zhigang Hua and
+                  Bo Long and
+                  Tong Zhao and
+                  Neil Shah and
+                  Amin Javari and
+                  Yinglong Xia and
+                  Jiliang Tang},
+  title        = {Retrieval-Augmented Generation with Graphs (GraphRAG)},
+  year         = {2025},
+  url          = {https://doi.org/10.48550/arXiv.2501.00309},
+  doi          = {10.48550/ARXIV.2501.00309},
+  archiveprefix= {arXiv},
+  eprint       = {2501.00309},
+}
+
+@inproceedings{DBLP:conf/naacl/YasunagaRBLL21,
+  author       = {Michihiro Yasunaga and
+                  Hongyu Ren and
+                  Antoine Bosselut and
+                  Percy Liang and
+                  Jure Leskovec},
+  title        = {{QA-GNN:} Reasoning with Language Models and Knowledge Graphs for
+                  Question Answering},
+  booktitle    = {Proceedings of the 2021 Conference of the North American Chapter of
+                  the Association for Computational Linguistics: Human Language Technologies,
+                  {NAACL-HLT} 2021, Online, June 6-11, 2021},
+  pages        = {535--546},
+  publisher    = {Association for Computational Linguistics},
+  year         = {2021},
+  url          = {https://doi.org/10.18653/v1/2021.naacl-main.45},
+  doi          = {10.18653/V1/2021.NAACL-MAIN.45},
+}
+
+@inproceedings{DBLP:conf/emnlp/KarpukhinOMLWEC20,
+  author       = {Vladimir Karpukhin and
+                  Barlas Oguz and
+                  Sewon Min and
+                  Patrick Lewis and
+                  Ledell Wu and
+                  Sergey Edunov and
+                  Danqi Chen and
+                  Wen{-}tau Yih},
+  title        = {Dense Passage Retrieval for Open-Domain Question Answering},
+  booktitle    = {Proceedings of the 2020 Conference on Empirical Methods in Natural
+                  Language Processing, {EMNLP} 2020, Online, November 16-20, 2020},
+  pages        = {6769--6781},
+  publisher    = {Association for Computational Linguistics},
+  year         = {2020},
+  url          = {https://doi.org/10.18653/v1/2020.emnlp-main.550},
+  doi          = {10.18653/V1/2020.EMNLP-MAIN.550},
+}
+
+@inproceedings{DBLP:conf/acl/ZengZHLX000WYT24,
+  author       = {Shenglai Zeng and
+                  Jiankun Zhang and
+                  Pengfei He and
+                  Yiding Liu and
+                  Yue Xing and
+                  Han Xu and
+                  Jie Ren and
+                  Yi Chang and
+                  Shuaiqiang Wang and
+                  Dawei Yin and
+                  Jiliang Tang},
+  title        = {The Good and The Bad: Exploring Privacy Issues in Retrieval-Augmented
+                  Generation {(RAG)}},
+  booktitle    = {Proceedings of Findings of the Association for Computational Linguistics, {ACL} 2024,
+                  Bangkok, Thailand and virtual meeting, August 11-16, 2024},
+  pages        = {4505--4524},
+  publisher    = {Association for Computational Linguistics},
+  year         = {2024},
+  url          = {https://doi.org/10.18653/v1/2024.findings-acl.267},
+  doi          = {10.18653/V1/2024.FINDINGS-ACL.267},
+}
+
+@misc{DBLP:journals/corr/abs-2412-17011,
+  author       = {Yiyi Tao and
+                  Yixian Shen and
+                  Hang Zhang and
+                  Yanxin Shen and
+                  Lun Wang and
+                  Chuanqi Shi and
+                  Shaoshuai Du},
+  title        = {Robustness of Large Language Models Against Adversarial Attacks},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2412.17011},
+  doi          = {10.48550/ARXIV.2412.17011},
+  archiveprefix= {arXiv},
+  eprint       = {2412.17011},
+}
+
+@misc{peng2019text,
+  title        = {Text Generation with Exemplar-based Adaptive Decoding},
+  author = {Hao Peng and Ankur P. Parikh and Manaal Faruqui and Bhuwan Dhingra and Dipanjan Das},
+  year         = {2019},
+  eprint       = {1904.04428},
+  archiveprefix= {arXiv},
+  url          = {https://arxiv.org/abs/1904.04428},
+}
+
+@article{DBLP:journals/access/ChenWZCZD20,
+  author       = {Zhe Chen and
+                  Yuehan Wang and
+                  Bin Zhao and
+                  Jing Cheng and
+                  Xin Zhao and
+                  Zongtao Duan},
+  title        = {Knowledge Graph Completion: {A} Review},
+  journal      = {{IEEE} Access},
+  volume       = {8},
+  pages        = {192435--192456},
+  year         = {2020},
+  url          = {https://doi.org/10.1109/ACCESS.2020.3030076},
+  doi          = {10.1109/ACCESS.2020.3030076},
+}
+@book{gross2018graph,
+  title        = {Graph theory and its applications},
+  author       = {Gross, Jonathan L and Yellen, Jay and Anderson, Mark},
+  year         = {2018},
+  publisher    = {Chapman and Hall/CRC},
+}
+
+@article{DBLP:journals/eswa/ChenJX20,
+  author       = {Xiaojun Chen and
+                  Shengbin Jia and
+                  Yang Xiang},
+  title        = {A review: Knowledge reasoning over knowledge graph},
+  journal      = {Expert Syst. Appl.},
+  volume       = {141},
+  pages        = {112948},
+  year         = {2020},
+  url          = {https://doi.org/10.1016/j.eswa.2019.112948},
+  doi          = {10.1016/J.ESWA.2019.112948},
+}
+@misc{DBLP:journals/corr/abs-2501-14050,
+  author       = {Jiacheng Liang and
+                  Yuhui Wang and
+                  Changjiang Li and
+                  Rongyi Zhu and
+                  Tanqiu Jiang and
+                  Neil Gong and
+                  Ting Wang},
+  title        = {GraphRAG under Fire},
+  year         = {2025},
+  url          = {https://doi.org/10.48550/arXiv.2501.14050},
+  doi          = {10.48550/ARXIV.2501.14050},
+  archiveprefix= {arXiv},
+  eprint       = {2501.14050},
+}
+@article{DBLP:journals/csur/JiLFYSXIBMF23,
+  author       = {Ziwei Ji and
+                  Nayeon Lee and
+                  Rita Frieske and
+                  Tiezheng Yu and
+                  Dan Su and
+                  Yan Xu and
+                  Etsuko Ishii and
+                  Yejin Bang and
+                  Andrea Madotto and
+                  Pascale Fung},
+  title        = {Survey of Hallucination in Natural Language Generation},
+  journal      = {{ACM} Comput. Surv.},
+  volume       = {55},
+  number       = {12},
+  pages        = {248:1--248:38},
+  year         = {2023},
+  url          = {https://doi.org/10.1145/3571730},
+  doi          = {10.1145/3571730},
+}
+@misc{DBLP:journals/corr/abs-2404-16130,
+  author       = {Darren Edge and
+                  Ha Trinh and
+                  Newman Cheng and
+                  Joshua Bradley and
+                  Alex Chao and
+                  Apurva Mody and
+                  Steven Truitt and
+                  Jonathan Larson},
+  title        = {From Local to Global: {A} Graph {RAG} Approach to Query-Focused Summarization},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2404.16130},
+  doi          = {10.48550/ARXIV.2404.16130},
+  archiveprefix= {arXiv},
+  eprint       = {2404.16130},
+}
+
+@inproceedings{DBLP:conf/emnlp/ZhongHWC23,
+  author       = {Zexuan Zhong and
+                  Ziqing Huang and
+                  Alexander Wettig and
+                  Danqi Chen},
+  title        = {Poisoning Retrieval Corpora by Injecting Adversarial Passages},
+  booktitle    = {Proceedings of the 2023 Conference on Empirical Methods in Natural
+                  Language Processing, {EMNLP} 2023, Singapore, December 6-10, 2023},
+  pages        = {13764--13775},
+  publisher    = {Association for Computational Linguistics},
+  year         = {2023},
+  url          = {https://doi.org/10.18653/v1/2023.emnlp-main.849},
+  doi          = {10.18653/V1/2023.EMNLP-MAIN.849},
+}
+@misc{DBLP:journals/corr/abs-2402-08416,
+  author       = {Gelei Deng and
+                  Yi Liu and
+                  Kailong Wang and
+                  Yuekang Li and
+                  Tianwei Zhang and
+                  Yang Liu},
+  title        = {Pandora: Jailbreak GPTs by Retrieval Augmented Generation Poisoning},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2402.08416},
+  doi          = {10.48550/ARXIV.2402.08416},
+  archiveprefix= {arXiv},
+  eprint       = {2402.08416},
+}
+@misc{DBLP:journals/corr/abs-2405-13401,
+  author       = {Pengzhou Cheng and
+                  Yidong Ding and
+                  Tianjie Ju and
+                  Zongru Wu and
+                  Wei Du and
+                  Ping Yi and
+                  Zhuosheng Zhang and
+                  Gongshen Liu},
+  title        = {TrojanRAG: Retrieval-Augmented Generation Can Be Backdoor Driver in
+                  Large Language Models},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2405.13401},
+  doi          = {10.48550/ARXIV.2405.13401},
+  archiveprefix= {arXiv},
+  eprint       = {2405.13401},
+}
+
+@inproceedings{DBLP:conf/camlis/HinesLHZZK24,
+  author       = {Keegan Hines and
+                  Gary Lopez and
+                  Matthew Hall and
+                  Federico Zarfati and
+                  Yonatan Zunger and
+                  Emre Kiciman},
+  title        = {Defending Against Indirect Prompt Injection Attacks With Spotlighting},
+  booktitle    = {Proceedings of the Conference on Applied Machine Learning in Information
+                  Security {(CAMLIS} 2024), Arlington, Virginia, USA, October 24-25,
+                  2024},
+  series       = {{CEUR} Workshop Proceedings},
+  volume       = {3920},
+  pages        = {48--62},
+  publisher    = {CEUR-WS.org},
+  year         = {2024},
+  url          = {https://ceur-ws.org/Vol-3920/paper03.pdf},
+}
+
+@misc{DBLP:journals/corr/abs-2401-07612,
+  author       = {Xuchen Suo},
+  title        = {Signed-Prompt: {A} New Approach to Prevent Prompt Injection Attacks
+                  Against LLM-Integrated Applications},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2401.07612},
+  doi          = {10.48550/ARXIV.2401.07612},
+  archiveprefix= {arXiv},
+  eprint       = {2401.07612},
+}
+
+@inproceedings{DBLP:conf/emnlp/WallaceFKGS19,
+  author       = {Eric Wallace and
+                  Shi Feng and
+                  Nikhil Kandpal and
+                  Matt Gardner and
+                  Sameer Singh},
+  title        = {Universal Adversarial Triggers for Attacking and Analyzing {NLP}},
+  booktitle    = {Proceedings of the 2019 Conference on Empirical Methods in Natural
+                  Language Processing and the 9th International Joint Conference on
+                  Natural Language Processing, {EMNLP-IJCNLP} 2019, Hong Kong, China,
+                  November 3-7, 2019},
+  pages        = {2153--2162},
+  publisher    = {Association for Computational Linguistics},
+  year         = {2019},
+  url          = {https://doi.org/10.18653/v1/D19-1221},
+  doi          = {10.18653/V1/D19-1221},
+}
+
+@misc{DBLP:journals/corr/abs-2406-05870,
+  author       = {Avital Shafran and
+                  Roei Schuster and
+                  Vitaly Shmatikov},
+  title        = {Machine Against the {RAG:} Jamming Retrieval-Augmented Generation
+                  with Blocker Documents},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2406.05870},
+  doi          = {10.48550/ARXIV.2406.05870},
+  archiveprefix= {arXiv},
+  eprint       = {2406.05870},
+}
+
+
+
+@article{DBLP:journals/pr/PengZZ13,
+  author       = {Bo Peng and
+                  Lei Zhang and
+                  David Zhang},
+  title        = {A survey of graph theoretical approaches to image segmentation},
+  journal      = {Pattern Recognit.},
+  volume       = {46},
+  number       = {3},
+  pages        = {1020--1038},
+  year         = {2013},
+  url          = {https://doi.org/10.1016/j.patcog.2012.09.015},
+  doi          = {10.1016/J.PATCOG.2012.09.015},
+}
+
+@book{mitchell1969social,
+  title        = {Social networks in urban situations: analyses of personal relationships in Central African towns},
+  author       = {Mitchell, James Clyde},
+  year         = {1969},
+  publisher    = {Manchester University Press},
+}
+
+@article{DBLP:journals/intr/WangW25,
+  author       = {Shan Wang and
+                  Fang Wang},
+  title        = {Value implications of followers in social marketplaces: insights into
+                  ego network structures},
+  journal      = {Internet Res.},
+  volume       = {35},
+  number       = {1},
+  pages        = {294--317},
+  year         = {2025},
+  url          = {https://doi.org/10.1108/INTR-07-2023-0601},
+  doi          = {10.1108/INTR-07-2023-0601},
+}
+
+@article{hobbs1978resolving,
+  title        = {Resolving pronoun references},
+  author       = {Hobbs, Jerry R},
+  journal      = {Lingua},
+  volume       = {44},
+  number       = {4},
+  pages        = {311--338},
+  year         = {1978},
+}
+@inproceedings{DBLP:conf/emnlp/LeeHLZ17,
+  author       = {Kenton Lee and
+                  Luheng He and
+                  Mike Lewis and
+                  Luke Zettlemoyer},
+  title        = {End-to-end Neural Coreference Resolution},
+  booktitle    = {Proceedings of the 2017 Conference on Empirical Methods in Natural
+                  Language Processing, {EMNLP} 2017, Copenhagen, Denmark, September
+                  9-11, 2017},
+  pages        = {188--197},
+  publisher    = {Association for Computational Linguistics},
+  year         = {2017},
+  url          = {https://doi.org/10.18653/v1/d17-1018},
+  doi          = {10.18653/V1/D17-1018},
+}
+
+@inproceedings{DBLP:conf/www/WangZZLXG19,
+  author       = {Hongwei Wang and
+                  Fuzheng Zhang and
+                  Miao Zhao and
+                  Wenjie Li and
+                  Xing Xie and
+                  Minyi Guo},
+  title        = {Multi-Task Feature Learning for Knowledge Graph Enhanced Recommendation},
+  booktitle    = {Proceedings of The World Wide Web Conference, {WWW} 2019, San Francisco, CA, USA,
+                  May 13-17, 2019},
+  pages        = {2000--2010},
+  publisher    = {{ACM}},
+  year         = {2019},
+  url          = {https://doi.org/10.1145/3308558.3313411},
+  doi          = {10.1145/3308558.3313411},
+}
+@inproceedings{DBLP:conf/coling/KimHKS20,
+  author       = {Bosung Kim and
+                  Taesuk Hong and
+                  Youngjoong Ko and
+                  Jungyun Seo},
+  title        = {Multi-Task Learning for Knowledge Graph Completion with Pre-trained
+                  Language Models},
+  booktitle    = {Proceedings of the 28th International Conference on Computational
+                  Linguistics, {COLING} 2020, Barcelona, Spain (Online), December 8-13,
+                  2020},
+  pages        = {1737--1743},
+  publisher    = {International Committee on Computational Linguistics},
+  year         = {2020},
+  url          = {https://doi.org/10.18653/v1/2020.coling-main.153},
+  doi          = {10.18653/V1/2020.COLING-MAIN.153},
+}
+
+@inproceedings{DBLP:conf/naacl/LeeHZ18,
+  author       = {Kenton Lee and
+                  Luheng He and
+                  Luke Zettlemoyer},
+  title        = {Higher-Order Coreference Resolution with Coarse-to-Fine Inference},
+  booktitle    = {Proceedings of the 2018 Conference of the North American Chapter of
+                  the Association for Computational Linguistics: Human Language Technologies,
+                  NAACL-HLT, New Orleans, Louisiana, USA, June 1-6, 2018, Volume 2 (Short
+                  Papers)},
+  pages        = {687--692},
+  publisher    = {Association for Computational Linguistics},
+  year         = {2018},
+  url          = {https://doi.org/10.18653/v1/n18-2108},
+  doi          = {10.18653/V1/N18-2108},
+}
+@article{DBLP:journals/isci/XiaZL15,
+  author       = {Peipei Xia and
+                  Li Zhang and
+                  Fanzhang Li},
+  title        = {Learning similarity with cosine similarity ensemble},
+  journal      = {Inf. Sci.},
+  volume       = {307},
+  pages        = {39--52},
+  year         = {2015},
+  url          = {https://doi.org/10.1016/j.ins.2015.02.024},
+  doi          = {10.1016/J.INS.2015.02.024},
+}
+
+@article{DBLP:journals/eswa/RahimAAAK25,
+  author       = {Muhammad Rahim and
+                  Fazli Amin and
+                  Somayah Abdualziz Alhabeeb and
+                  Mansoor H. Alshehri and
+                  Hamiden Abd El{-}Wahed Khalifa},
+  title        = {Cosine similarity and information measures of p,q,r- spherical fuzzy
+                  sets: Application in selecting migration destination},
+  journal      = {Expert Syst. Appl.},
+  volume       = {265},
+  pages        = {125932},
+  year         = {2025},
+  url          = {https://doi.org/10.1016/j.eswa.2024.125932},
+  doi          = {10.1016/J.ESWA.2024.125932},
+}
+
+@article{DBLP:journals/jmlr/BengioDVJ03,
+  author       = {Yoshua Bengio and
+                  R{\'{e}}jean Ducharme and
+                  Pascal Vincent and
+                  Christian Janvin},
+  title        = {A Neural Probabilistic Language Model},
+  journal      = {J. Mach. Learn. Res.},
+  volume       = {3},
+  pages        = {1137--1155},
+  year         = {2003},
+  url          = {https://jmlr.org/papers/v3/bengio03a.html},
+}
+
+@misc{wiki:financial_crisis_2008,
+  author         = {{Wikipedia}},
+  title          = {Financial crisis of 2007–2008 --- {Wikipedia}{,} The Free Encyclopedia},
+  year           = {2024},
+  howpublished   = {\url{https://en.wikipedia.org/wiki/Financial_crisis_of_2007-2008}},
+  note           = {Accessed: 2024-10-26},
+}
+@misc{wiki:rus_ukr_war,
+  author         = {{Wikipedia}},
+  title          = {Russo-Ukrainian War --- {Wikipedia}{,} The Free Encyclopedia},
+  year           = {2024},
+  howpublished   = {\url{https://en.wikipedia.org/wiki/Russo-Ukrainian_War}},
+  note           = {Accessed: 2024-10-26},
+}
+@misc{wiki:jp_bubble,
+  author         = {{Wikipedia}},
+  title          = {Japanese asset price bubble --- {Wikipedia}{,} The Free Encyclopedia},
+  year           = {2024},
+  howpublished   = {\url{https://en.wikipedia.org/wiki/Japanese_asset_price_bubble}},
+  note           = {Accessed: 2024-10-26},
+}
+
+@misc{OpenAI2024,
+  author         = {{OpenAI}},
+  title          = {{GPT-4o}},
+  year           = {2024},
+  howpublished   = {\url{https://openai.com/index/hello-gpt-4o/}},
+  note           = {Accessed: 2024-05-13},
+}
+
+@inproceedings{yang2018hotpotqa,
+  title        = {{HotpotQA}: A Dataset for Diverse, Explainable Multi-hop Question Answering},
+  author = {Yang, Zhilin and Qi, Peng and Zhang, Saizheng and Bengio, Yoshua and Cohen, William W. and Salakhutdinov, Ruslan and Manning, Christopher D.},
+  booktitle    = {Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing},
+  pages        = {2369--2380},
+  publisher    = {Association for Computational Linguistics},
+  year         = {2018},
+  url          = {https://aclanthology.org/D18-1259/},
+}
+
+@misc{DBLP:journals/corr/abs-2402-03216,
+  author       = {Jianlv Chen and
+                  Shitao Xiao and
+                  Peitian Zhang and
+                  Kun Luo and
+                  Defu Lian and
+                  Zheng Liu},
+  title        = {{BGE} M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity
+                  Text Embeddings Through Self-Knowledge Distillation},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2402.03216},
+  doi          = {10.48550/ARXIV.2402.03216},
+  archiveprefix= {arXiv},
+  eprint       = {2402.03216},
+}
+
+@misc{DBLP:journals/corr/abs-2402-07867,
+  author       = {Wei Zou and Runpeng Geng and Binghui Wang and Jinyuan Jia},
+  title        = {PoisonedRAG: Knowledge Poisoning Attacks to Retrieval-Augmented Generation of Large Language Models},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2402.07867},
+  eprint       = {2402.07867},
+  archiveprefix= {arXiv},
+  doi          = {10.48550/ARXIV.2402.07867},
+}
+
+@inproceedings{DBLP:conf/aaai/JinJZS20,
+  author       = {Di Jin and
+                  Zhijing Jin and
+                  Joey Tianyi Zhou and
+                  Peter Szolovits},
+  title        = {Is {BERT} Really Robust? {A} Strong Baseline for Natural Language
+                  Attack on Text Classification and Entailment},
+  booktitle    = {Proceedings of The Thirty-Fourth {AAAI} Conference on Artificial Intelligence, {AAAI}
+                  2020, The Thirty-Second Innovative Applications of Artificial Intelligence
+                  Conference, {IAAI} 2020, The Tenth {AAAI} Symposium on Educational
+                  Advances in Artificial Intelligence, {EAAI} 2020, New York, NY, USA,
+                  February 7-12, 2020},
+  pages        = {8018--8025},
+  publisher    = {{AAAI} Press},
+  year         = {2020},
+  url          = {https://doi.org/10.1609/aaai.v34i05.6311},
+  doi          = {10.1609/AAAI.V34I05.6311},
+}
+
+@misc{Radford2019,
+  author       = {Radford, Alec and Wu, Jeffrey and Child, Rewon and Luan, David and Amodei, Dario and Sutskever, Ilya},
+  title        = {Language Models are Unsupervised Multitask Learners},
+  year         = {2019},
+  howpublished = {\url{https://openai.com/blog/language-models-are-unsupervised-multitask-learners/}},
+  note         = {Accessed: 2024-05-13},
+}
+
+@misc{DBLP:journals/corr/abs-2309-00614,
+  author       = {Neel Jain and
+                  Avi Schwarzschild and
+                  Yuxin Wen and
+                  Gowthami Somepalli and
+                  John Kirchenbauer and
+                  Ping{-}yeh Chiang and
+                  Micah Goldblum and
+                  Aniruddha Saha and
+                  Jonas Geiping and
+                  Tom Goldstein},
+  title        = {Baseline Defenses for Adversarial Attacks Against Aligned Language
+                  Models},
+  year         = {2023},
+  url          = {https://doi.org/10.48550/arXiv.2309.00614},
+  doi          = {10.48550/ARXIV.2309.00614},
+  eprint       = {2309.00614},
+  archiveprefix= {arXiv},
+}
+
+@misc{Honnibal2020,
+  author         = {Honnibal, Matthew and Montani, Ines and Van Landeghem, Sofie and Boyd, Adriane},
+  title          = {{spaCy}: Industrial-strength Natural Language Processing in {Python}},
+  year           = {2020},
+  publisher      = {Zenodo},
+  doi            = {10.5281/zenodo.1212303},
+  howpublished   = {\url{https://doi.org/10.5281/zenodo.1212303}},
+  note           = {Accessed: 2024-10-26},
+}
+
+===== aaai2026.sty =====
+
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{aaai2026}[2026/06/17 AAAI 2026 Submission format]%
+\def\year{2026}%
+\typeout{Conference Style for AAAI for LaTeX 2e -- version for submission}%
+%
+\def\copyright@on{T}
+\def\showauthors@on{T}
+\def\nocopyright{\gdef\copyright@on{}} % Copyright notice is required for camera-ready only.
+\DeclareOption{submission}{%
+  \gdef\copyright@on{}%
+  \gdef\showauthors@on{}%
+  \long\gdef\pdfinfo #1{\relax}%
+}%
+\DeclareOption{draft}{%
+  \gdef\copyright@on{}%
+}%
+\ProcessOptions\relax%
+% WARNING: IF YOU ARE USING THIS STYLE SHEET FOR AN AAAI PUBLICATION, YOU
+% MAY NOT MODIFY IT FOR ANY REASON. MODIFICATIONS (IN YOUR SOURCE
+% OR IN THIS STYLE SHEET WILL RESULT IN REJECTION OF YOUR PAPER).
+%
+% WARNING: This style is NOT guaranteed to work. It is provided in the
+% hope that it might make the preparation of papers easier, but this style
+% file is provided "as is" without warranty of any kind, either express or
+% implied, including but not limited to the implied warranties of
+% merchantability, fitness for a particular purpose, or noninfringement.
+% You use this style file at your own risk. Standard disclaimers apply.
+% There are undoubtably bugs in this style. If you would like to submit
+% bug fixes, improvements, etc. please let us know. Please use the contact form
+% at www.aaai.org.
+%
+% Do not use this file unless you are an experienced LaTeX user.
+%
+% PHYSICAL PAGE LAYOUT
+\setlength\topmargin{-0.25in} \setlength\oddsidemargin{-0.25in}
+\setlength\textheight{9.0in} \setlength\textwidth{7.0in}
+\setlength\columnsep{0.375in} \newlength\titlebox \setlength\titlebox{2.25in}
+\setlength\headheight{0pt}  \setlength\headsep{0pt}
+%\setlength\footheight{0pt}  \setlength\footskip{0pt}
+\thispagestyle{empty} \pagestyle{empty}
+\flushbottom \twocolumn \sloppy
+% We're never going to need a table of contents, so just flush it to
+% save space --- suggested by drstrip@sandia-2
+\def\addcontentsline#1#2#3{}
+% gf: PRINT COPYRIGHT NOTICE
+\def\copyright@year{\number\year}
+\def\copyright@text{Copyright \copyright\space \copyright@year,
+Association for the Advancement of Artificial Intelligence (www.aaai.org).
+All rights reserved.}
+\def\copyrighttext#1{\gdef\copyright@on{T}\gdef\copyright@text{#1}}
+\def\copyrightyear#1{\gdef\copyright@on{T}\gdef\copyright@year{#1}}
+% gf: End changes for copyright notice (used in \maketitle, below)
+% Title stuff, taken from deproc.
+%
+\def\maketitle{%
+  \par%
+  \begingroup % to make the footnote style local to the title
+    \def\thefootnote{\fnsymbol{footnote}}
+    \twocolumn[\@maketitle] \@thanks%
+  \endgroup%
+  % Insert copyright slug unless turned off
+  \if T\copyright@on\insert\footins{\noindent\footnotesize\copyright@text}\fi%
+  %
+  \setcounter{footnote}{0}%
+  \let\maketitle\relax%
+  \let\@maketitle\relax%
+  \gdef\@thanks{}%
+  \gdef\@author{}%
+  \gdef\@title{}%
+  \let\thanks\relax%
+}%
+\long\gdef\affiliations #1{ \def \affiliations_{\if T\showauthors@on#1\fi}}%
+%
+\def\@maketitle{%
+  \def\theauthors{\if T\showauthors@on\@author\else Anonymous submission\fi}
+  \newcounter{eqfn}\setcounter{eqfn}{0}%
+  \newsavebox{\titlearea}
+  \sbox{\titlearea}{
+    \let\footnote\relax\let\thanks\relax%
+    \setcounter{footnote}{0}%
+    \def\equalcontrib{%
+      \ifnum\value{eqfn}=0%
+        \footnote{These authors contributed equally.}%
+        \setcounter{eqfn}{\value{footnote}}%
+      \else%
+        \footnotemark[\value{eqfn}]%
+      \fi%
+    }%
+    \vbox{%
+      \hsize\textwidth%
+      \linewidth\hsize%
+      \vskip 0.625in minus 0.125in%
+      \centering%
+      {\LARGE\bf \@title \par}%
+      \vskip 0.1in plus 0.5fil minus 0.05in%
+      {\Large{\textbf{\theauthors\ifhmode\\\fi}}}%
+      \vskip .2em plus 0.25fil%
+      {\normalsize \affiliations_\ifhmode\\\fi}%
+      \vskip 1em plus 2fil%
+    }%
+  }%
+%
+  \newlength\actualheight%
+  \settoheight{\actualheight}{\usebox{\titlearea}}%
+  \ifdim\actualheight>\titlebox%
+    \setlength{\titlebox}{\actualheight}%
+  \fi%
+%
+  \vbox to \titlebox {%
+    \let\footnote\thanks\relax%
+    \setcounter{footnote}{0}%
+    \def\equalcontrib{%
+      \ifnum\value{eqfn}=0%
+        \footnote{These authors contributed equally.}%
+        \setcounter{eqfn}{\value{footnote}}%
+      \else%
+        \footnotemark[\value{eqfn}]%
+      \fi%
+    }%
+    \hsize\textwidth%
+    \linewidth\hsize%
+    \vskip 0.625in minus 0.125in%
+    \centering%
+    {\LARGE\bf \@title \par}%
+    \vskip 0.1in plus 0.5fil minus 0.05in%
+    {\Large{\textbf{\theauthors\ifhmode\\\fi}}}%
+    \vskip .2em plus 0.25fil%
+    {\normalsize \affiliations_\ifhmode\\\fi}%
+    \vskip 1em plus 2fil%
+  }%
+}%
+%
+\renewenvironment{abstract}{%
+  \centerline{\bf Abstract}%
+  \vspace{0.5ex}%
+  \setlength{\leftmargini}{10pt}%
+  \begin{quote}%
+    \small%
+}{%
+  \par%
+  \end{quote}%
+  \vskip 1ex%
+}%
+\newenvironment{links}{%
+  \newcommand{\link}[2]{\par\textbf{##1} --- \url{##2}}%
+  \setlength{\hangindent}{10pt}%
+  \setlength{\parskip}{2pt}%
+  \begin{flushleft}%
+}{%
+  \end{flushleft}%
+  \vskip 1ex%
+}%
+% jsp added:
+\def\pubnote#1{
+  \thispagestyle{myheadings}%
+  \pagestyle{myheadings}%
+  \markboth{#1}{#1}%
+  \setlength\headheight{10pt}%
+  \setlength\headsep{10pt}%
+}%
+%
+% SECTIONS with less space
+\def\section{\@startsection {section}{1}{\z@}{-2.0ex plus
+-0.5ex minus -.2ex}{3pt plus 2pt minus 1pt}{\Large\bf\centering}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{-2.0ex plus
+-0.5ex minus -.2ex}{3pt plus 2pt minus 1pt}{\large\bf\raggedright}}
+\def\subsubsection{\@startsection{subparagraph}{3}{\z@}{-6pt plus
+%%% DIEGO changed: 29/11/2009
+%% 2pt minus 1pt}{-1em}{\normalsize\bf}}
+-2pt minus -1pt}{-1em}{\normalsize\bf}}
+%%% END changed
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}{-6pt plus -2pt minus -1pt}{-1em}{\normalsize\bf}}%
+\setcounter{secnumdepth}{0}
+% add period to section (but not subsection) numbers, reduce space after
+%\renewcommand{\thesection}
+%   {\arabic{section}.\hskip-0.6em}
+%\renewcommand{\thesubsection}
+%   {\arabic{section}.\arabic{subsection}\hskip-0.6em}
+% FOOTNOTES
+\footnotesep 6.65pt %
+\skip\footins 9pt plus 4pt minus 2pt
+\def\footnoterule{\kern-3pt \hrule width 5pc \kern 2.6pt }
+\setcounter{footnote}{0}
+% LISTS AND PARAGRAPHS
+\parindent 10pt
+\topsep 4pt plus 1pt minus 2pt
+\partopsep 1pt plus 0.5pt minus 0.5pt
+\itemsep 0.5pt plus 1pt minus 0.5pt
+\parsep 2pt plus 1pt minus 0.5pt
+\leftmargin 10pt \leftmargini 13pt \leftmarginii 10pt \leftmarginiii 5pt \leftmarginiv 5pt \leftmarginv 5pt \leftmarginvi 5pt
+\labelwidth\leftmargini\advance\labelwidth-\labelsep \labelsep 5pt
+\def\@listi{\leftmargin\leftmargini}
+\def\@listii{\leftmargin\leftmarginii
+\labelwidth\leftmarginii\advance\labelwidth-\labelsep
+\topsep 2pt plus 1pt minus 0.5pt
+\parsep 1pt plus 0.5pt minus 0.5pt
+\itemsep \parsep}
+\def\@listiii{\leftmargin\leftmarginiii
+\labelwidth\leftmarginiii\advance\labelwidth-\labelsep
+\topsep 1pt plus 0.5pt minus 0.5pt
+\parsep \z@
+\partopsep 0.5pt plus 0pt minus 0.5pt
+\itemsep \topsep}
+\def\@listiv{\leftmargin\leftmarginiv
+\labelwidth\leftmarginiv\advance\labelwidth-\labelsep}
+\def\@listv{\leftmargin\leftmarginv
+\labelwidth\leftmarginv\advance\labelwidth-\labelsep}
+\def\@listvi{\leftmargin\leftmarginvi
+\labelwidth\leftmarginvi\advance\labelwidth-\labelsep}
+\abovedisplayskip 7pt plus2pt minus5pt%
+\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip 0pt plus3pt%
+\belowdisplayshortskip 4pt plus3pt minus3pt%
+% Less leading in most fonts (due to the narrow columns)
+% The choices were between 1-pt and 1.5-pt leading
+\def\normalsize{\@setfontsize\normalsize\@xpt{11}}   % 10 point on 11
+\def\small{\@setfontsize\small\@ixpt{10}}    % 9 point on 10
+\def\footnotesize{\@setfontsize\footnotesize\@ixpt{10}}  % 9 point on 10
+\def\scriptsize{\@setfontsize\scriptsize\@viipt{10}}  % 7 point on 8
+\def\tiny{\@setfontsize\tiny\@vipt{7}}    % 6 point on 7
+\def\large{\@setfontsize\large\@xipt{12}}    % 11 point on 12
+\def\Large{\@setfontsize\Large\@xiipt{14}}    % 12 point on 14
+\def\LARGE{\@setfontsize\LARGE\@xivpt{16}}    % 14 point on 16
+\def\huge{\@setfontsize\huge\@xviipt{20}}    % 17 point on 20
+\def\Huge{\@setfontsize\Huge\@xxpt{23}}    % 20 point on 23
+
+\RequirePackage{xcolor} % Needed for the reproducibility checklist
+\def\isChecklistMainFile{} % Signal the checklist that it's included from the main file
+
+\AtBeginDocument{%
+  \@ifpackageloaded{natbib}%
+    {%
+      % When natbib is in use, set the proper style and fix a few things
+      \let\cite\citep
+      \let\shortcite\citeyearpar
+      \setcitestyle{aysep={}}
+      \setlength\bibhang{0pt}
+      \bibliographystyle{aaai2026}
+    }{}%
+  \@ifpackageloaded{hyperref}%
+    {%
+      \PackageError{aaai}{You must not use hyperref in AAAI papers.}{You (or one of the packages you imported) are importing the hyperref package, which is forbidden in AAAI papers. You must remove it from the paper to proceed.}
+    }{}%
+  \@ifpackageloaded{bbm}%
+    {%
+      \PackageError{aaai}{You must not use bbm package in AAAI papers because it introduces Type 3 fonts which are forbidden.}{See https://tex.stackexchange.com/questions/479160/a-replacement-to-mathbbm1-with-type-1-fonts for possible alternatives.}
+    }{}%
+    \@ifpackageloaded{authblk}%
+    {%
+      \PackageError{aaai}{Package authblk is forbbidden.}{Package authblk is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{balance}%
+    {%
+      \PackageError{aaai}{Package balance is forbbidden.}{Package balance is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{CJK}%
+    {%
+      \PackageError{aaai}{Package CJK is forbbidden.}{Package CJK is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{flushend}%
+    {%
+      \PackageError{aaai}{Package flushend is forbbidden.}{Package flushend is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{fontenc}%
+    {%
+      \PackageError{aaai}{Package fontenc is forbbidden.}{Package fontenc is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{fullpage}%
+    {%
+      \PackageError{aaai}{Package fullpage is forbbidden.}{Package fullpage is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{geometry}%
+    {%
+      \PackageError{aaai}{Package geometry is forbbidden.}{Package geometry is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{grffile}%
+    {%
+      \PackageError{aaai}{Package grffile is forbbidden.}{Package grffile is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{navigator}%
+    {%
+      \PackageError{aaai}{Package navigator is forbbidden.}{Package navigator is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{savetrees}%
+    {%
+      \PackageError{aaai}{Package savetrees is forbbidden.}{Package savetrees is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{setspace}%
+    {%
+      \PackageError{aaai}{Package setspace is forbbidden.}{Package setspace is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{stfloats}%
+    {%
+      \PackageError{aaai}{Package stfloats is forbbidden.}{Package stfloats is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{tabu}%
+    {%
+      \PackageError{aaai}{Package tabu is forbbidden.}{Package tabu is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{titlesec}%
+    {%
+      \PackageError{aaai}{Package titlesec is forbbidden.}{Package titlesec is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{tocbibind}%
+    {%
+      \PackageError{aaai}{Package tocbibind is forbbidden.}{Package tocbibind is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{ulem}%
+    {%
+      \PackageError{aaai}{Package ulem is forbbidden.}{Package ulem is forbbiden. You must find an alternative.}
+    }{}%
+  \@ifpackageloaded{wrapfig}%
+    {%
+      \PackageError{aaai}{Package wrapfig is forbbidden.}{Package wrapfig is forbbiden. You must find an alternative.}
+    }{}%
+}
+
+\let\endthebibliography=\endlist

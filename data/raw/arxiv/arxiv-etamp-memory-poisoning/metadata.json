@@ -1,0 +1,48 @@
+{
+  "agent_readable_file_count": 7,
+  "agent_readable_files": [
+    "colm2026_conference.tex",
+    "math_commands.tex",
+    "00README.json",
+    "colm2026_conference.bib",
+    "colm2026_conference.sty",
+    "fancyhdr.sty",
+    "natbib.sty"
+  ],
+  "agent_source_bundle_sha256": "90fa4cbb6fb1ac8024942523850bb78542432f2ee5520a579e708285100a5b35",
+  "bytes": 48503,
+  "content_type": "text/html; charset=utf-8",
+  "eprint_bytes": 486157,
+  "eprint_content_type": "application/gzip",
+  "eprint_sha256": "401756f2843eeea09374445adba6898f05925787341a02fa7067445d52b0b56a",
+  "eprint_source_kind": "tex_source_archive",
+  "eprint_status": 200,
+  "eprint_url": "https://arxiv.org/e-print/2604.02623",
+  "fetched_at": "2026-05-21T13:21:59.656573+00:00",
+  "final_url": "https://arxiv.org/abs/2604.02623",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://arxiv.org/abs/2604.02623",
+  "sha256": "a609e18ecf86ec2baaf8690e43e5c702ed1672427826d16cc29ca3d1a3fa0746",
+  "source": {
+    "arxiv_id": "2604.02623",
+    "id": "arxiv-etamp-memory-poisoning",
+    "priority": "p0",
+    "tags": [
+      "paper",
+      "security",
+      "memory_poisoning",
+      "agent_memory",
+      "output:privacy_security_risk",
+      "output:maintenance_risk",
+      "output:epistemic_risk"
+    ],
+    "title": "Poison Once, Exploit Forever: Environment-Injected Memory Poisoning Attacks on Web Agents",
+    "type": "arxiv",
+    "url": "https://arxiv.org/abs/2604.02623"
+  },
+  "source_file_count": 9,
+  "text_sha256": "cd479ae2c8d7c6ea97cdd47234b1322489b7c33a31948d11cf1d2e149422b0b5",
+  "transport": "requests",
+  "transport_warning": null
+}

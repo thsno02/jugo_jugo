@@ -1,0 +1,32 @@
+
+
+
+\begin{table}[t]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.94\linewidth}<{}}
+        \toprule
+            Instruction: ... \\
+            \\
+            \vspace{-1em}
+            \noindent {\color{brown}<Retrieve for question ``...''>}\\
+            Question: When did  US break away from England? \\
+        \noindent {\color{blue} Search: Declaration of Independence} \\
+        \noindent {\color{brown}<Search the query among the top-100 passages>}\\
+        Document [1](Title: ...) ... \\
+        \noindent {\color{blue} Output: The United States ... \tf{\underline{[1]}}.} \\
+        \noindent {\color{brown}<Remove Document [1] from context>}\\
+        \noindent {\color{blue} Search: Treaty of Paris} \\
+        \noindent {\color{brown}<Search the query among the top-100 passages>}\\
+        Document [3](Title: ...) ... \\
+        \noindent {\color{blue} Output: The Treaty of Paris ... \tf{\underline{[3]}}.} \\
+        \noindent {\color{brown}<Remove Document [3] from context>}\\
+        \noindent {\color{blue}End.}\\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        An example of \search{}. 
+    }
+    \vspace{-15pt}
+    \label{tab:prompt_search}
+\end{table}

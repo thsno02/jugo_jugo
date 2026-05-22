@@ -1,0 +1,14 @@
+
+\section{Limitations}
+
+ARES relies on a small set of annotations in the human preference validation set (roughly 150-300 datapoints but more is better). 
+These annotations often require an annotator familiar with the RAG system's domain application.
+While these annotations can be easy to generate for general-domain applications, more specialized domains, such as law, medicine, and finance, may require annotators with specialized expertise.
+
+The LLMs used in ARES benefit substantially from GPU-based hardware with substantial storage. 
+In ARES, DeBERTa-v3-Large (304M) and FLAN-T5-XXL (11.3B) required GPUs with about 32GB of memory to run, taking several hours for fine-tuning and generation, respectively.
+While commercial GPUs are widely available, they are not easily accessible to all NLP researchers and practitioners due to their costs.
+
+Additionally, all of the datasets used in our evaluation of ARES are in English, a well-resourced language with abundant annotations.
+Future work should explore how ARES can be employed in other languages by utilizing different LLMs for the ARES judge and the synthetic data generation.
+This can help us better understand the strengths and weaknesses of the current ARES framework.

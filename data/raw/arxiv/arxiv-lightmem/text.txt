@@ -1,0 +1,214 @@
+[2510.18866] LightMem: Lightweight and Efficient Memory-Augmented Generation
+Skip to main content
+
+Learn about arXiv becoming an independent nonprofit.
+
+We gratefully acknowledge support from the Simons Foundation, member institutions , and all contributors. Donate
+
+> cs > arXiv:2510.18866
+
+Help | Advanced Search
+
+All fields Title Author Abstract Comments Journal reference ACM classification MSC classification Report number arXiv identifier DOI ORCID arXiv author ID Help pages Full text
+
+Search
+
+GO
+
+quick links
+
+Login
+
+Help Pages
+
+About
+
+Computer Science > Computation and Language
+
+arXiv:2510.18866 (cs)
+
+[Submitted on 21 Oct 2025 ( v1 ), last revised 28 Feb 2026 (this version, v4)]
+
+Title: LightMem: Lightweight and Efficient Memory-Augmented Generation
+
+Authors: Jizhan Fang , Xinle Deng , Haoming Xu , Ziyan Jiang , Yuqi Tang , Ziwen Xu , Shumin Deng , Yunzhi Yao , Mengru Wang , Shuofei Qiao , Huajun Chen , Ningyu Zhang
+
+View a PDF of the paper titled LightMem: Lightweight and Efficient Memory-Augmented Generation, by Jizhan Fang and 11 other authors
+View PDF HTML (experimental) Abstract: Despite their remarkable capabilities, Large Language Models (LLMs) struggle to effectively leverage historical interaction information in dynamic and complex environments. Memory systems enable LLMs to move beyond stateless interactions by introducing persistent information storage, retrieval, and utilization mechanisms. However, existing memory systems often introduce substantial time and computational overhead. To this end, we introduce a new memory system called LightMem, which strikes a balance between the performance and efficiency of memory systems. Inspired by the Atkinson-Shiffrin model of human memory, LightMem organizes memory into three complementary stages. First, cognition-inspired sensory memory rapidly filters irrelevant information through lightweight compression and groups information according to their topics. Next, topic-aware short-term memory consolidates these topic-based groups, organizing and summarizing content for more structured access. Finally, long-term memory with sleep-time update employs an offline procedure that decouples consolidation from online inference. On LongMemEval and LoCoMo, using GPT and Qwen backbones, LightMem consistently surpasses strong baselines, improving QA accuracy by up to 7.7% / 29.3%, reducing total token usage by up to 38x / 20.9x and API calls by up to 30x / 55.5x, while purely online test-time costs are even lower, achieving up to 106x / 117x token reduction and 159x / 310x fewer API calls. The code is available at this https URL .
+
+Comments: ICLR 2026
+
+Subjects: Computation and Language (cs.CL) ; Artificial Intelligence (cs.AI); Computer Vision and Pattern Recognition (cs.CV); Machine Learning (cs.LG); Multiagent Systems (cs.MA)
+
+Cite as: arXiv:2510.18866 [cs.CL]
+
+(or arXiv:2510.18866v4 [cs.CL] for this version)
+
+https://doi.org/10.48550/arXiv.2510.18866
+Focus to learn more
+arXiv-issued DOI via DataCite
+
+Submission history
+From: Ningyu Zhang [ view email ]
+[v1] Tue, 21 Oct 2025 17:58:17 UTC (5,064 KB)
+[v2] Tue, 25 Nov 2025 15:07:32 UTC (5,069 KB)
+[v3] Wed, 26 Nov 2025 09:32:08 UTC (5,069 KB)
+[v4] Sat, 28 Feb 2026 11:55:50 UTC (5,107 KB)
+
+Full-text links:
+Access Paper:
+
+View a PDF of the paper titled LightMem: Lightweight and Efficient Memory-Augmented Generation, by Jizhan Fang and 11 other authors
+
+View PDF
+
+HTML (experimental)
+
+TeX Source
+
+view license
+
+Current browse context:
+cs.CL
+
+< prev | next >
+
+new | recent | 2025-10
+
+Change to browse by:
+cs
+cs.AI
+cs.CV
+cs.LG
+cs.MA
+
+References & Citations
+
+NASA ADS
+
+Google Scholar
+
+Semantic Scholar
+
+export BibTeX citation Loading...
+
+BibTeX formatted citation
+×
+
+loading...
+
+Data provided by:
+
+Bookmark
+
+Bibliographic Tools
+
+Bibliographic and Citation Tools
+
+Bibliographic Explorer Toggle
+
+Bibliographic Explorer ( What is the Explorer? )
+
+Connected Papers Toggle
+
+Connected Papers ( What is Connected Papers? )
+
+Litmaps Toggle
+
+Litmaps ( What is Litmaps? )
+
+scite.ai Toggle
+
+scite Smart Citations ( What are Smart Citations? )
+
+Code, Data, Media
+
+Code, Data and Media Associated with this Article
+
+alphaXiv Toggle
+
+alphaXiv ( What is alphaXiv? )
+
+Links to Code Toggle
+
+CatalyzeX Code Finder for Papers ( What is CatalyzeX? )
+
+DagsHub Toggle
+
+DagsHub ( What is DagsHub? )
+
+GotitPub Toggle
+
+Gotit.pub ( What is GotitPub? )
+
+Huggingface Toggle
+
+Hugging Face ( What is Huggingface? )
+
+ScienceCast Toggle
+
+ScienceCast ( What is ScienceCast? )
+
+Demos
+
+Demos
+
+Replicate Toggle
+
+Replicate ( What is Replicate? )
+
+Spaces Toggle
+
+Hugging Face Spaces ( What is Spaces? )
+
+Spaces Toggle
+
+TXYZ.AI ( What is TXYZ.AI? )
+
+Related Papers
+
+Recommenders and Search Tools
+
+Link to Influence Flower
+
+Influence Flower ( What are Influence Flowers? )
+
+Core recommender toggle
+
+CORE Recommender ( What is CORE? )
+
+Author
+
+Venue
+
+Institution
+
+Topic
+
+About arXivLabs
+
+arXivLabs: experimental projects with community collaborators
+
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs .
+
+Which authors of this paper are endorsers? | Disable MathJax ( What is MathJax? )
+
+About
+
+Help
+
+Contact
+
+Subscribe
+
+Copyright
+
+Privacy Policy
+
+Web Accessibility Assistance
+
+arXiv Operational Status

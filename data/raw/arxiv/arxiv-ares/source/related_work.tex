@@ -1,0 +1,28 @@
+
+\section{Related Work}
+
+
+RAG~\citep{guu2020retrieval,lewis2020retrieval,khattab2021relevance,izacard2022few}) is now a common strategy for bolstering LLMs by combining them with retrieval systems. Through retrieval, RAG helps LM systems gather domain-specific knowledge, ground generations in factual information~\cite{shuster2021retrieval, huo2023retrieving}, and offer a degree of transparency or interpretability via citing sources~\cite{mialon2023augmented}.
+
+
+
+Multiple LLM-based evaluation techniques have emerged for gauging LLM systems. This is essential for rapid deployment in new settings, where it is difficult to build a traditional benchmark dataset from scratch.
+Early attempts at this use LLMs out of the box, as in MT-Bench and Chatbot Arena~\cite{zheng2023judging}.
+AutoCalibrate~\cite{liu2023calibrating} seeks to align an LLM-judge with human preferences, leveraging a self-refinement prompt to iteratively improve the LLM judge. 
+However, AutoCalibrate does not offer any statistical guarantees for the accuracy of its predictions.
+Other work has used LLM prompting to evaluate system quality across natural language generation tasks, such as translation, summarization, and dialogue  \cite{kocmi2023large,fu2023gptscore, liu2303g, wang2023chatgpt}.
+
+In the context of knowledge-intensive NLP tasks, LLMs have been explored for assessing attribution and factuality in LLMs \cite{min2023factscore, gekhman2023trueteacher, yue2023automatic}.
+New guidelines like LongEval \cite{krishna-etal-2023-longeval} and datasets like Hagrid and ALCE \cite{kamalloo2023hagrid, gao2023enabling} provide resources for analyzing knowledge-intensive LLM pipelines.
+
+
+The two most-closely related projects to ARES are EXAM~\cite{sander2021exam} and RAGAS~\cite{ragas2023}. To evaluate RAG systems, the EXAM metric estimates how many exam questions a reader (simulated as a QA system) can answer correctly based on the generated response. This requires a set of queries with several associated sub-questions each, which adds a burden that ARES does not bring. RAGAS is based on a handful of heuristic hand-written prompts. These offer little adaptability to new RAG evaluation settings (e.g., new corpora) and, as we show in our evaluation, substantially underperform ARES.
+
+
+
+
+
+
+
+
+

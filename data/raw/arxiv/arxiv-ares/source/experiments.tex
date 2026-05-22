@@ -1,0 +1,74 @@
+
+\section{Experiments}
+
+\subsection{Models}
+\label{sec:models}
+
+For our fine-tuned judges,
+ARES relies on generating cheap but quality synthetic queries and answers using LLMs.
+For generating our synthetic datasets, we use FLAN-T5 XXL \cite{chung2022scaling}.
+We selected DeBERTa-v3-Large \cite{he2021debertav3} for our fine-tuned LLM judge.
+Our fine-tuned LLM judges allow us to rank RAG systems without relying on external APIs, solely using few-shot prompts and deployable LLMs on commercial GPUs.
+
+For our in-context learning baseline, we use OpenAI's \textit{gpt-3.5-turbo-16k}, version 10/23, \cite{brown2020language} in a zero/few-shot setting.
+For similarity search over in-domain passages, we use FAISS IndexFlatL2 for indexing \cite{johnson2019billion} and OpenAI's \textit{text-embedding-ada-002} for generating embeddings.
+We use simlarity search over in-domain passages to filter our synthetic queries that cannot retrieve the passage from which they were generated.
+We use version 0.0.18 of RAGAS in our experiments \cite{ragas2023}.
+
+
+
+\subsection{Datasets}
+\label{sec:datasets}
+
+Our core experimental goal is to provide a rich picture of where ARES can be applied effectively.
+To test across multiple types of queries, documents, and answers, 
+we selected all the datasets from the widely-used KILT and SuperGLUE benchmarks for which RAG is appropriate.
+
+From KILT \cite{petroni-etal-2021-kilt}, we use Natural Questions (NQ), HotpotQA, FEVER, and Wizards of Wikipedia (WoW) \cite{kwiatkowski2019natural, yang2018hotpotqa, fever-2023-fact, dinan2018wizard}. 
+Each dataset uses Wikipedia passages but the queries and answers offer a range of applications.
+Both NQ and HotpotQA feature direct questions and expect short answers, but NQ uses single passages for reasoning while HotpotQA requires multiple passages for reasoning.
+Furthermore, FEVER focuses on fact-verification, determining if a passage supports or refutes a given statement, and expects an output of ``SUPPORTS'' or ``REFUTES''.
+WoW seeks to evaluate dialogue agents by mapping user dialogue to relevant Wikipedia passages before a chatbot generates a paragraph-length chat response incorporating passage knowledge.
+
+From SuperGLUE \cite{wang2019superglue}, we use  MultiRC and ReCoRD \cite{khashabi2018looking, zhang2018record}.
+MultiRC focuses on direct questions for seven different domains (News, Wikipedia articles, articles on society/law/justice, articles on history/anthropology, elementary school science textbooks, 9/11 reports, and fiction).
+ReCoRD focuses on determining the placeholder entity in a statement, focusing on news articles from CNN and the Daily Mail.
+For MultiRC and ReCoRD, we create open-domain versions of their tasks. 
+For MultiRC, we perform retrieval over its seven sets of domain passages. For ReCoRD, we perform retrieval over its news article passages.
+
+The efficacy of ARES relies on its ability to rank different RAG systems while only using a human preference validation set and domain-targeted LLM judges.
+To test the limits of ARES, we need to simulate the existence of many RAG systems that are separated by small accuracy margins on our evaluation metrics.
+For this, we create systems using artificial query-passage-answer triples, in which we empirically know the positive and negative examples of the mock RAG system.
+We generate these mock splits of the given datasets by selecting
+(1) The positive and negative query-passage matches for context relevance, and
+(2) the positive and negative query-passage-answer matches for answer relevance.
+We include positive and negative examples from our evaluation sets in \autoref{tab:positive_negative_examples}.
+
+For our positive triples, we can simply use the KILT and SuperGLUE examples without any alteration.
+For gathering negative query-passage pairs and query-passage-answer triples, we randomly sample passages and answers from either: the same Wikipedia document or an entirely random Wikipedia document.
+This sampling allows us to artificially create mock RAG systems for testing ARES.
+By sampling both related and unrelated documents/answers, we hope to better gauge the efficacy of ARES in judging RAG outputs.
+
+We do not evaluate answer faithfulness for KILT and SuperGLUE datasets since we do not have human-annotated hallucinated answers to use for evaluation. 
+However, we do test the ARES framework on real attribution datasets in Section \ref{sec:ais}. 
+
+Using the validation subsets for each KILT and SuperGLUE dataset, we create nine different dataset splits, ranging from 70\% success rate to 90\% success rate for each of the evaluated RAG criteria; each dataset is separated by 2.5\% accuracy points (e.g. 70.0\%, 72.5\%, 75.0\%, \ldots, 90.0\%).
+Each split also represents a different mock RAG system.
+Since we know the success percentages of each dataset split, we know the appropriate ranking of each mock RAG system.
+This allows us to test ARES success at both scoring and ranking the mock RAG systems appropriately across the three evaluation criteria.
+
+\subsection{Metrics}
+
+To calculate the correlation between the correct ranking and the ARES ranking, we use the Kendall rank correlation coefficient or Kendall's $\tau$:
+\begin{equation*} 
+\small
+{\tau = \frac{(\# \, \text{of concordant pairs}) \\ - (\# \, \text{of discordant pairs})}{\# \, \text{ of pairs total}}}
+\end{equation*}
+Concordant pairs are defined as two ordinal values in the ranking where the earlier value in the sequence is lower than the later value in the sequence. Discordant pairs are defined as two ordinal values in the ranking where the earlier value in the sequence is greater than or equal to the later value in the sequence.
+A Kendall's $\tau$ greater than 0.9 is considered successful but it ranges from 0.0 to 1.0.
+
+In development, researchers and engineers will be comparing different RAG configurations through individual pairwise comparisons of model choices, retriever selection, and document preprocessing.
+We want to make sure that ARES has satisfactory accuracy in pairwise comparisons across a variety of performance gaps between RAG systems. 
+Kendall's $\tau$ is explicitly designed for measuring the accuracy of such pairwise comparisons, calculating the correlation between a perfectly accurate pairwise ranking and an experimental pairwise ranking.
+Thus, it is a popular and widespread metric used in information retrieval, allowing developers to evaluate ranking systems empirically.
+Therefore, we believe Kendall's tau and  prediction accuracy provide meaningful metrics for testing the efficacy of ARES as a RAG evaluation system.

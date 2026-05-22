@@ -1,0 +1,209 @@
+[2402.07867] PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models
+Skip to main content
+
+Learn about arXiv becoming an independent nonprofit.
+
+We gratefully acknowledge support from the Simons Foundation, member institutions , and all contributors. Donate
+
+> cs > arXiv:2402.07867
+
+Help | Advanced Search
+
+All fields Title Author Abstract Comments Journal reference ACM classification MSC classification Report number arXiv identifier DOI ORCID arXiv author ID Help pages Full text
+
+Search
+
+GO
+
+quick links
+
+Login
+
+Help Pages
+
+About
+
+Computer Science > Cryptography and Security
+
+arXiv:2402.07867 (cs)
+
+[Submitted on 12 Feb 2024 ( v1 ), last revised 13 Aug 2024 (this version, v3)]
+
+Title: PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models
+
+Authors: Wei Zou , Runpeng Geng , Binghui Wang , Jinyuan Jia
+
+View a PDF of the paper titled PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models, by Wei Zou and 3 other authors
+View PDF Abstract: Large language models (LLMs) have achieved remarkable success due to their exceptional generative capabilities. Despite their success, they also have inherent limitations such as a lack of up-to-date knowledge and hallucination. Retrieval-Augmented Generation (RAG) is a state-of-the-art technique to mitigate these limitations. The key idea of RAG is to ground the answer generation of an LLM on external knowledge retrieved from a knowledge database. Existing studies mainly focus on improving the accuracy or efficiency of RAG, leaving its security largely unexplored. We aim to bridge the gap in this work. We find that the knowledge database in a RAG system introduces a new and practical attack surface. Based on this attack surface, we propose PoisonedRAG, the first knowledge corruption attack to RAG, where an attacker could inject a few malicious texts into the knowledge database of a RAG system to induce an LLM to generate an attacker-chosen target answer for an attacker-chosen target question. We formulate knowledge corruption attacks as an optimization problem, whose solution is a set of malicious texts. Depending on the background knowledge (e.g., black-box and white-box settings) of an attacker on a RAG system, we propose two solutions to solve the optimization problem, respectively. Our results show PoisonedRAG could achieve a 90% attack success rate when injecting five malicious texts for each target question into a knowledge database with millions of texts. We also evaluate several defenses and our results show they are insufficient to defend against PoisonedRAG, highlighting the need for new defenses.
+
+Comments: To appear in USENIX Security Symposium 2025. The code is available at this https URL
+
+Subjects: Cryptography and Security (cs.CR) ; Machine Learning (cs.LG)
+
+Cite as: arXiv:2402.07867 [cs.CR]
+
+(or arXiv:2402.07867v3 [cs.CR] for this version)
+
+https://doi.org/10.48550/arXiv.2402.07867
+Focus to learn more
+arXiv-issued DOI via DataCite
+
+Submission history
+From: Wei Zou [ view email ]
+[v1] Mon, 12 Feb 2024 18:28:36 UTC (481 KB)
+[v2] Sun, 11 Aug 2024 21:46:29 UTC (483 KB)
+[v3] Tue, 13 Aug 2024 01:55:06 UTC (483 KB)
+
+Full-text links:
+Access Paper:
+
+View a PDF of the paper titled PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models, by Wei Zou and 3 other authors
+
+View PDF
+
+TeX Source
+
+view license
+
+Current browse context:
+
+cs.CR
+
+< prev | next >
+
+new | recent | 2024-02
+
+Change to browse by:
+cs
+cs.LG
+
+References & Citations
+
+NASA ADS
+
+Google Scholar
+
+Semantic Scholar
+
+export BibTeX citation Loading...
+
+BibTeX formatted citation
+×
+
+loading...
+
+Data provided by:
+
+Bookmark
+
+Bibliographic Tools
+
+Bibliographic and Citation Tools
+
+Bibliographic Explorer Toggle
+
+Bibliographic Explorer ( What is the Explorer? )
+
+Connected Papers Toggle
+
+Connected Papers ( What is Connected Papers? )
+
+Litmaps Toggle
+
+Litmaps ( What is Litmaps? )
+
+scite.ai Toggle
+
+scite Smart Citations ( What are Smart Citations? )
+
+Code, Data, Media
+
+Code, Data and Media Associated with this Article
+
+alphaXiv Toggle
+
+alphaXiv ( What is alphaXiv? )
+
+Links to Code Toggle
+
+CatalyzeX Code Finder for Papers ( What is CatalyzeX? )
+
+DagsHub Toggle
+
+DagsHub ( What is DagsHub? )
+
+GotitPub Toggle
+
+Gotit.pub ( What is GotitPub? )
+
+Huggingface Toggle
+
+Hugging Face ( What is Huggingface? )
+
+ScienceCast Toggle
+
+ScienceCast ( What is ScienceCast? )
+
+Demos
+
+Demos
+
+Replicate Toggle
+
+Replicate ( What is Replicate? )
+
+Spaces Toggle
+
+Hugging Face Spaces ( What is Spaces? )
+
+Spaces Toggle
+
+TXYZ.AI ( What is TXYZ.AI? )
+
+Related Papers
+
+Recommenders and Search Tools
+
+Link to Influence Flower
+
+Influence Flower ( What are Influence Flowers? )
+
+Core recommender toggle
+
+CORE Recommender ( What is CORE? )
+
+Author
+
+Venue
+
+Institution
+
+Topic
+
+About arXivLabs
+
+arXivLabs: experimental projects with community collaborators
+
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs .
+
+Which authors of this paper are endorsers? | Disable MathJax ( What is MathJax? )
+
+About
+
+Help
+
+Contact
+
+Subscribe
+
+Copyright
+
+Privacy Policy
+
+Web Accessibility Assistance
+
+arXiv Operational Status

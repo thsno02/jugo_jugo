@@ -1,0 +1,21 @@
+
+\begin{table}[ht]
+    \centering
+    \resizebox{0.98\linewidth}{!}{
+        \begin{tabular}{lcccc}
+            \toprule
+            & \tf{Fluency} & \tf{Correct.} & \multicolumn{2}{c}{\tf{Citation} }\\
+            \cmidrule(lr){2-2} \cmidrule(lr){3-3} \cmidrule(lr){4-5}
+            & (MAUVE) & (EM Rec.) & Rec. & Prec. \\
+            \midrule
+            ChatGPT & 66.6 & {40.4}  & {73.6}  & 72.5 \\
+            FiD + \posthoc{} & 75.8 & 28.4 & 58.1 & 58.0 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \caption{
+        Comparison of Fusion-in-Decoder with ChatGPT on ASQA. 
+        Both models use top-5 GTR passages. 
+    }
+    \label{tab:fid-asqa}
+\end{table}

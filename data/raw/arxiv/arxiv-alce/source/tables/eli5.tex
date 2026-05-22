@@ -1,0 +1,46 @@
+
+\begin{table}[h]
+    \centering
+    \resizebox{0.98\linewidth}{!}{
+        \begin{tabular}{lcccc}
+            \toprule
+            & \tf{Fluency} & \tf{Correct.} & \multicolumn{2}{c}{\tf{Citation} }\\
+            \cmidrule(lr){2-2} \cmidrule(lr){3-3} \cmidrule(lr){4-5}
+            & (MAUVE) & (Claim) & Rec. & Prec. \\
+            \midrule
+            \headercolor
+            \multicolumn{5}{c}{\textbf{ChatGPT}} \\
+            \tableskip
+            \vani{} (5-psg) &57.2&	12.0 &	51.1&	{50.0} \\
+            ~~w/ \rerank{} & 56.1 & 11.4 & \tf{69.3} & \textbf{67.8}\\ %
+            \summ{} (10-psg) & 40.3 & 12.5 & 51.5 & 48.2 \\
+            \snippet{} (10-psg) & 62.9 &	{14.3} & 50.4 & 45.0 \\ %
+            ~~w/ \interact{} & 68.0 &	13.3&	47.8& 45.0\\	%
+            \search{} & 49.7&	13.4&	45.6&  43.7\\	%
+            \close{} & 32.6 &\tf{18.6}	&15.5	&15.5\\
+            \tableskip
+            \headercolor
+             \multicolumn{5}{c}{\textbf{GPT-4} (\vani{} prompting)}  \\
+            \tableskip
+            GPT-4 (5-psg) & 38.4 & 14.2 & 44.0 & 50.1 \\
+            GPT-4 (20-psg) & 41.5 & 18.3 & 48.5 & 53.4 \\
+
+            \tableskip
+            \headercolor
+            \multicolumn{5}{c}{\textbf{LLaMA} (\vani{} prompting)} \\
+            \tableskip
+            LLaMA-13B (3-psg) & 50.0 & 3.9 & 3.1 & 5.3 \\%2.0 \\
+            Vicuna-13B (3-psg)& 58.2 &  {10.0} & 15.6 & 19.6 \\% 12.6 \\
+            
+            Chat-13B (5-psg) & 34.7 & 13.4 &17.3 & 15.8 \\
+            Chat-70B (5-psg) & 38.6 & 12.8 & 38.3 & 37.9 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \caption{
+        Experiments on ELI5. We use \textit{claim recall} for the correctness evaluation.
+        Chat-13B and Chat-70B refer to LLaMA-2-Chat.
+    }
+    \label{tab:eli5_result}
+    \vspace{-10pt}
+\end{table}

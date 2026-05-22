@@ -1,0 +1,42 @@
+\begin{table*}[ht]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.98\textwidth}<{}}
+        \toprule
+            Read the original question and passage, and generate 3 additional claims that are supported by the passage and answer the question.
+            \\\\
+            \noindent {Original question: What's the difference between Shia vs. Sunni Islam?}\\
+            Passage: The main difference between Shia and Sunni Muslim is related to ideological heritage and issues of leadership. This difference is first formed after the death of the Prophet Muhammad in 632 A.D. The ideological practice of the Sunni branch strictly follows Prophet Muhammad and his teachings, while the Shia branch follows Prophet Muhammad's son-in-law Ali. Nowadays, Sunni and Shia are the major branches of Islam. \\
+            Claim 1: The major branches of Islam are Sunni and Shia. \\
+            Claim 2: Prophet Muhammad died in 632 A.D. \\
+            Claim 3: The ideological practice of the Sunni branch strictly follows Prophet Muhammad and his teachings. \\\\
+            Original question: What causes Bi-polar disorder? \\
+            Passage: Bipolar disorder is an emotional disorder that causes extreme mood swings between excitement and depression. The spectrum of mood swing may span from days to months. We are still not certain of the exact factors that cause such disorder, but genetics is considered a major factor. \\
+            Claim 1: One symptom of Bi-polar disorder is extreme mood swings between excitement and depression.\\
+            Claim 2: Genetics could be one of the major factors that causes Bi-polar disorder.\\
+            Claim 3: The mood swing from Bi-polar disorder can last days to months.\\\\
+            Original question: How do we hear differences in sound besides volume and pitch?\\
+            Passage: Pitch refers to the frequency of soundwave, and volumn refers to the amplitude of the soundwave. Besides volumn and pitch, we can also tell the difference between sounds based on the tone of sound. For example, we can differentiate the sound of different instruments based on the tone of the sounds.\\
+            Claim 1: Volume of sound is the amplitude of the soundwave.\\
+            Claim 2: Pitch is the frequency of soundwave.\\
+            Claim 3: We can use the tone of the sounds to differentiate the sound of different instruments. \\\\
+            \vspace{-0.7em}
+            {\color{brown}Original question: How are we able to discern whether a sound is coming from in front of us or behind us?} \\
+            \vspace{-0.7em}
+            {\color{brown}Passage: There are multiple explanations for why we can localize sounds. One explanation is that sounds travelling to the corresponding side of one's ear will be slightly louder. Another explanation is that there is a slight difference in the hitting time to one's left and right ear based on the sound's direction. However, these explanation means that when a sound is exactly in front of someone or exactly behind someone, he or she can not tell the difference.} \\
+            \vspace{-0.7em}
+            {\color{brown}Claim 1:} {\color{blue} We can localize sounds by recognizing that the sound travelling to the corresponding side of one's ear will be slightly louder.} \\
+            \vspace{-0.7em}
+            {\color{blue}Claim 2: We can also localize sounds by recognizing the difference in hitting time to one's left and right ear based on the sound's direction.}\\
+            \vspace{-0.7em}
+            {\color{blue}Claim 3: We cannot tell the difference between a sound that is exactly in front of us or exactly behind us.} \\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        Prompt used to generate the sub-claims for ELI5 questions.
+        {\color{blue} Blue text is model generation.}
+        {\color{brown} Brown text is the ELI5 example that we want to generate sub-claims for.}
+        We construct the prompt by manually writing the sub-claims for three questions from the training set. 
+    }
+    \label{tab:eli5-claims-prompt}
+\end{table*}

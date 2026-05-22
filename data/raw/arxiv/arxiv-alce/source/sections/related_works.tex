@@ -1,0 +1,47 @@
+\section{Related Work}
+\label{sec:related_work}
+\vspace{-5pt}
+
+\paragraph{Evaluating citations.}
+Generating text with citations is closely related to attribution.
+\citet{rashkin2021measuring} define the ``attributable to identified sources''~(AIS) score to measure how faithful a generated text is to its sources.
+\citet{bohnet2022attributed} apply AIS scores on a single-document short-answer QA dataset.
+\citet{honovich-etal-2022-true-evaluating,yue2023automatic} study  automatic evaluations for the AIS score.
+A concurrent work~\citep{liu2023evaluating} 
+conduct human evaluation on commercial generative search engines  to
+examine their citation qualities.
+
+Scientific citation text generation~\citep{funkquist2022citebench} is a related task to \citeeval{} where the model is provided the  papers-to-cite and  context and is required to recover the citing text. 
+It is different from \citeeval{} 
+as all citations are provided
+and the model only needs to perform the summarization.
+
+
+
+
+
+
+
+\paragraph{Retrieval-augmented LMs.}
+Many studies have explored augmenting LMs with 
+externally retrieved information.
+\citet{guu2020realm,borgeaud2022retro,izacard2022atlas}
+pre-train language models with retrieved passages, 
+while \citet{Khandelwal2020Generalization,zhong-etal-2022-training} augment
+LLMs' output by interpolating it with a $k$NN module;
+though none of them explicitly provide citations to the retrieved sources.
+Other works prompt or fine-tune LLMs to 
+``retrieve on-the-fly'' \citep{parisi2022talm,schick2023toolformer,shuster-etal-2022-language,jiang2023active,yao2023react,press2022measuring},
+which offers flexibility of when and what to search.
+\citet{gao2022rarr,he2022rethinking} propose to first generate text without accessing external documents and then
+retrieve relevant documents and revise the generation to be consistent. %
+
+Among previous explorations, \citet{nakano2021webgpt,menick2022teaching} 
+are the closest to our setting, where
+LLMs are trained to answer questions while providing citations. 
+However, they do not explore retrieval strategies and simply use commercial search engines, which are not reproducible, and their models and training data are closed-source.
+To the best of our knowledge, 
+we are the first to implement end-to-end systems that retrieve, synthesize, and cite documents with LLMs.
+
+
+

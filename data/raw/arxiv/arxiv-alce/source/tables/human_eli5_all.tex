@@ -1,0 +1,21 @@
+\begin{table}[t]
+    \centering
+    \resizebox{0.98\linewidth}{!}{
+    \begin{tabular}{lcccc}
+        \toprule
+            & \multicolumn{2}{c}{\tf{Human scores}} & \multicolumn{2}{c}{\tf{\citeeval{} scores}} \\
+             \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+             & Rec. & Prec. & Rec. & Prec. \\
+            \midrule
+            ChatGPT \vani & 50.8 & 52.4 & 52.8 & 50.4 \\
+            ~~w/ \rerank & \textbf{59.7} & \textbf{60.6} & \textbf{63.0} & \textbf{60.6} \\
+            Vicuna-13B \vani & 13.4 & 19.2 & 13.6 & 18.1 \\
+            \bottomrule
+            \end{tabular}
+    }
+    \caption{
+        Human citation quality evaluation vs. \citeeval{} citation quality evaluation on ELI5. 
+    }
+    \vspace{-10pt}
+    \label{tab:human-eli5-all}
+\end{table}

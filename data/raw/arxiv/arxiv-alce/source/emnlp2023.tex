@@ -1,0 +1,143 @@
+\pdfoutput=1
+
+\documentclass[11pt]{article}
+
+\usepackage{EMNLP2023}
+
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+
+\usepackage[T1]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{microtype}
+
+\usepackage{inconsolata}
+
+\usepackage{array}
+\usepackage{pifont}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{xspace}
+\usepackage{tcolorbox}
+\usepackage{booktabs,amsfonts,dcolumn}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,bm,stmaryrd,bbm}
+\usepackage[noorphans,vskip=0.75ex,leftmargin=2ex]{quoting}
+\usepackage{footmisc}\interfootnotelinepenalty=10000
+\usepackage{colortbl}
+
+
+
+
+\input{header}
+
+
+
+\title{\citeeval{}: An Automatic Benchmark for\\ Large Language Model Generations with \ti{Citations}}
+\title{Can Large Language Models Cite Precisely?\\ A Benchmark for Automatic Evaluation and Modeling}
+
+\title{Enabling Large Language Models to Generate Text with Citations} %
+
+
+
+
+
+
+
+\author{Tianyu Gao\quad Howard Yen\quad Jiatong Yu\quad Danqi Chen  \\
+Department of Computer Science
+\& Princeton Language and Intelligence\\
+Princeton University \\
+\ttt{\{tianyug,hyen,jiatongy,danqic\}@cs.princeton.edu}\quad
+}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+
+
+
+
+Large language models (LLMs) have emerged as a widely-used tool for information seeking, %
+but their generated outputs are prone to hallucination. %
+In this work, our aim is to allow LLMs to generate text with \ti{citations},
+improving their factual correctness and verifiability.
+Existing work mainly relies on commercial search engines and human evaluation, making it challenging to reproduce and compare different modeling approaches.
+We propose \tf{\citeeval{}}, %
+the first benchmark for \tf{A}utomatic \tf{L}LMs' \tf{C}itation \tf{E}valuation. 
+\citeeval{} collects a diverse set of questions and retrieval corpora
+and requires building end-to-end systems to retrieve supporting evidence and generate answers with citations. 
+We develop automatic metrics along three dimensions---fluency, correctness, and citation quality---and 
+demonstrate their strong correlation with human judgements.
+Our experiments with state-of-the-art LLMs and novel prompting strategies show that current systems have considerable room for improvement---For example, on the ELI5 dataset, 
+even the best models lack complete citation support 50\% of the time.
+Our analyses further highlight promising future directions, including
+developing better retrievers,
+advancing long-context LLMs,
+and improving the ability to synthesize information from multiple sources.\footnote{Our code and data are available at \url{https://github.com/princeton-nlp/ALCE}.}
+
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/benchmark}
+\input{sections/evaluation}
+\input{sections/model.tex}
+\input{sections/results}
+\input{sections/human_eval}
+% \input{sections/discussion}
+\input{sections/related_works}
+\input{sections/conclusion}
+
+\section*{Limitations}
+
+ 
+
+Our evaluation still has room for improvement:
+(1) MAUVE is found to be sensitive to output length and may provide unstable results;
+(2) for the ELI5's correctness evaluation, the automatically generated claims may not cover all possible answers due to the open-ended nature of the questions;
+(3) our citation quality evaluation is limited by the accuracy of the NLI model; for citation precision, the NLI model cannot detect the case of ``partially support'' and thus
+leads to a lower citation precision score than the human evaluation.
+
+Although we believe our curated datasets closely resemble the distribution of real-world user questions,
+we acknowledge that they do not cover more challenging scenarios, such as
+multi-hop reasoning, math reasoning, and code completion.
+
+
+In our experiments, we focus on prompting LLMs without updating their model weights.
+Training a model directly to incorporate citations remains challenging due to the lack of supervised data.
+However, we observe that certain human-instruction datasets
+contain examples similar to our task setup.
+We leave the exploration of training LLMs to generate citations for future work.
+
+
+
+\section*{Acknowledgments}
+
+We appreciate the helpful feedback from the members of the Princeton NLP group. %
+We thank Alexander Wettig, Nelson Liu, Tianyi Zhang, Yu Meng, Sadhika Malladi, Yangsibo Huang, Zhiyuan Zeng, and Dan  Friedman for the valuable discussion.
+We thank Surge AI (especially Anna Folinsky and Edwin Chen)
+for their support with the human evaluation.
+Tianyu Gao is supported by an IBM PhD Fellowship. 
+This research is supported by an NSF CAREER award (IIS-2239290), a Sloan Research Fellowship, 
+and Microsoft Azure credits through the ``Accelerate Foundation Models Academic Research'' Initiative. 
+
+
+
+\bibliography{anthology,custom}
+\bibliographystyle{acl_natbib}
+
+\clearpage
+\appendix
+
+\input{sections/appendix}
+
+\end{document}

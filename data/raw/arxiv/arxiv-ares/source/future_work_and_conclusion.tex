@@ -1,0 +1,14 @@
+
+
+
+
+\section{Conclusion}
+
+In this work, we present ARES, a novel automated evaluation framework for retrieval-augmented generation (RAG).
+ARES offers a novel training pipeline for fine-tuning lightweight LLM judges on synthetically generated queries and answers.
+ARES can evaluate each component of a RAG system separately to help improve system understanding and create targeted solutions, and it requires only minimal human annotations.
+For the eight different datasets in KILT, SuperGLUE, and AIS requiring RAG-based solutions, we found that ARES can accurately score and rank RAG systems based on context relevance, answer faithfulness, and answer relevance scores, beating the existing RAGAS automated evaluation framework. 
+
+ARES is a flexible framework, and there may be variants of it that are even more powerful than the ones we explored here. Avenues to explore include GPT-4 as a replacement for human labeling (\autoref{tab:gpt4_labels}), more robust techniques for the synthetic datasets used in fine-tuning LLM judges, 
+utilizing logits in LLM judge prediction to improve PPI confidence intervals, and testing more sophisticated LLMs as fine-tuned judges for ARES.
+    

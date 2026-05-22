@@ -1,0 +1,46 @@
+{
+  "agent_readable_file_count": 4,
+  "agent_readable_files": [
+    "main.tex",
+    "PRIMEarxiv.sty",
+    "main.bbl",
+    "references.bib"
+  ],
+  "agent_source_bundle_sha256": "99c4627da648d8f52a29e9115c18f513eea82a74e7c88f3a237a3e18390f2884",
+  "bytes": 47564,
+  "content_type": "text/html; charset=utf-8",
+  "eprint_bytes": 22911,
+  "eprint_content_type": "application/gzip",
+  "eprint_sha256": "d98c3a619caf66173e92e9a21829b32312db83156e30ede9e6bb45c1c6016d51",
+  "eprint_source_kind": "tex_source_archive",
+  "eprint_status": 200,
+  "eprint_url": "https://arxiv.org/e-print/2501.13956",
+  "fetched_at": "2026-05-21T13:20:55.675184+00:00",
+  "final_url": "https://arxiv.org/abs/2501.13956",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://arxiv.org/abs/2501.13956",
+  "sha256": "77297089a58daf69bb3e1ea4181cd73723c6e57910fb81ac1424165e2889ee10",
+  "source": {
+    "arxiv_id": "2501.13956",
+    "id": "arxiv-zep",
+    "priority": "p0",
+    "tags": [
+      "paper",
+      "agent_memory",
+      "knowledge_graph",
+      "benchmark",
+      "output:agent_usability_metrics",
+      "output:benchmark_or_case_study_inventory",
+      "output:agent_memory_comparison",
+      "output:knowledge_graph_comparison"
+    ],
+    "title": "Zep: A Temporal Knowledge Graph Architecture for Agent Memory",
+    "type": "arxiv",
+    "url": "https://arxiv.org/abs/2501.13956"
+  },
+  "source_file_count": 4,
+  "text_sha256": "689f383e27c97e8970e32e1a7369272d3ab3c32c5e8e29463dc22582e315c1d9",
+  "transport": "requests",
+  "transport_warning": null
+}

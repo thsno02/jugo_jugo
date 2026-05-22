@@ -1,0 +1,40 @@
+\section{Problem Formulation}
+\subsection{Threat Model}
+We characterize the threat model with respect to the attacker's goals, background knowledge, and capabilities.
+
+
+\myparatight{Attacker's goals} Suppose an attacker selects an arbitrary set of $M$ questions (called \emph{target questions}), denoted as $Q_1, Q_2, \cdots, Q_M$. 
+For every target question $Q_i$, the attacker selects an arbitrary attacker-desired answer $R_i$ (called \emph{target answer}) for it.  
+For instance, the target question $Q_i$ could be ``Who is the CEO of OpenAI?'' and the target answer $R_i$ could be ``Tim Cook''.
+Given the $M$ selected target questions and the corresponding $M$ target answers, we consider that an attacker aims to corrupt the knowledge database $\mathcal{D}$ such that the LLM in a RAG system generates the target answer $R_i$ for the target question $Q_i$, where $i=1,2,\cdots, M$. 
+
+
+We note that such an attack could cause severe concerns in the real world. For instance, an attacker could disseminate disinformation, mislead an LLM to generate biased answers on consumer products, and propagate harmful health/financial misinformation. These threats bring serious safety and ethical concerns for the deployment of RAG systems for real-world applications in healthcare, finance, legal consulting, etc.
+
+\myparatight{Attacker's background knowledge and capabilities}There are three components in a RAG system: database, retriever, and LLM. We consider that an attacker cannot access texts in a knowledge database, and cannot access the parameters nor query the LLM. Depending on whether the attacker knows the retriever, we consider two settings: \emph{black-box setting} and \emph{white-box setting}. In particular, in the black-box setting, \emph{we consider that the attacker cannot access the parameters nor query the retriever}. Our black-box setting is considered a very strong threat model.
+For the white-box setting, we consider the attacker can access the parameters of the retriever. We consider the white-box setting for the following reasons. First, this assumption holds when a publicly available retriever is adopted. For instance, ChatRTX~\cite{chat-with-rtx} is a real-world RAG framework released by NVIDIA. By default, it uses WhereIsAI/UAE-Large-V1 retriever~\cite{li2023angle}, which is publicly available on Hugging Face~\cite{chat-with-rtx-retriever}. Second, it enables us to systematically evaluate the security of RAG under an attacker with strong background knowledge, which is well aligned with Kerckhoffs’ principle\footnote{Kerckhoffs' Principle states that the security of a cryptographic system shouldn't rely on the secrecy of the algorithm.}~\cite{kerckhoffs1883cryptographie} in the security field.
+
+
+We assume an attacker can inject $N$ malicious texts for each target question $Q_i$  into a knowledge database $\mathcal{D}$.
+We use $P_i^j$ to denote the $j$th malicious text for the question $Q_i$, where $i=1,2,\cdots, M$ and $j=1,2,\cdots, N$.
+For instance, when the knowledge database is collected from Wikipedia, an attacker could maliciously edit Wikipedia pages to inject attacker-chosen texts. A recent study~\cite{carlini2023poisoning} showed that it is possible to maliciously edit 6.5\% (conservative analysis) of Wikipedia documents. Our attack can achieve a high ASR with a few texts (hundreds of tokens in total). So, maliciously editing a few Wikipedia documents would be sufficient. 
+
+
+
+\subsection{Knowledge Corruption Attack to RAG}
+Under our threat model, we formulate knowledge corruption attacks to RAG as a constrained optimization problem. In particular, our goal is to construct a set of malicious texts $\Gamma=\{P_i^j|i=1,2,\cdots, M, j=1,2,\cdots, N\}$ such that the LLM in a RAG system produces the target answer $R_i$ for the target question $Q_i$ when utilizing the $k$ texts retrieved from the corrupted knowledge database $\mathcal{D} \cup \Gamma$ as the context. 
+Formally, we have the following optimization problem:
+\begin{align}
+\label{optimization-problem:0}
+   &\max_{\Gamma} \frac{1}{M}\cdot \sum_{i=1}^{M}\mathbb{I}(LLM(Q_i; \mathcal{E}(Q_i; \mathcal{D}\cup \Gamma))=R_i), \\
+   \label{optimization-problem:1}
+   \text{s.t., }& \mathcal{E}(Q_i; \mathcal{D}\cup \Gamma)= \textsc{Retrieve}(Q_i, f_Q, f_T, \mathcal{D}\cup \Gamma),  
+   \\
+   \label{optimization-problem:2}
+   &i=1,2,\cdots, M, 
+\end{align}
+where $\mathbb{I}(\cdot)$ is the indicator function whose output is 1 if the condition is satisfied and 0 otherwise, and $\mathcal{E}(Q_i; \mathcal{D}\cup \Gamma)$ is a set of $k$ texts retrieved from the corrupted knowledge database $\mathcal{D}\cup \Gamma$ for the target question $Q_i$. The objective function is large when the answer produced by the LLM based on the $k$ retrieved texts for the target question is the target answer. 
+
+
+
+

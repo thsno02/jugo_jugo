@@ -1,0 +1,21 @@
+
+\begin{table}[h]
+    \centering
+    \resizebox{0.98\linewidth}{!}{
+        \begin{tabular}{lcccc}
+            \toprule
+            & \tf{Fluency} & \tf{Correct.} & \multicolumn{2}{c}{\tf{Citation} }\\
+            \cmidrule(lr){2-2} \cmidrule(lr){3-3} \cmidrule(lr){4-5}
+            & (MAUVE) & (Claim) & Rec. & Prec. \\
+            \midrule
+            ChatGPT & 57.2 &	12.0 &	51.1&	{50.0} \\
+            FiD + \posthoc{} & 25.2 & 4.4 & 39.3 & 39.3 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \caption{
+        Comparison of Fusion-in-Decoder with ChatGPT on ELI5. 
+        Both models use top-5 GTR passages.
+    }
+    \label{tab:fid-eli5}
+\end{table}

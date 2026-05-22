@@ -1,0 +1,46 @@
+{
+  "agent_readable_file_count": 4,
+  "agent_readable_files": [
+    "main.tex",
+    "00README.json",
+    "aaai2026.bib",
+    "aaai2026.sty"
+  ],
+  "agent_source_bundle_sha256": "86b000222a20362ff394ec7c2bd971806031ab5ede78cb4465fa44b37b432a5c",
+  "bytes": 47678,
+  "content_type": "text/html; charset=utf-8",
+  "eprint_bytes": 3615139,
+  "eprint_content_type": "application/gzip",
+  "eprint_sha256": "4824d1e05a7f98193140f7732bc132fd5a59cb390fd457e9f3ef5cb44f903aa5",
+  "eprint_source_kind": "tex_source_archive",
+  "eprint_status": 200,
+  "eprint_url": "https://arxiv.org/e-print/2508.04276",
+  "fetched_at": "2026-05-21T13:21:50.294633+00:00",
+  "final_url": "https://arxiv.org/abs/2508.04276",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://arxiv.org/abs/2508.04276",
+  "sha256": "c76fa09e56c107159400c368d79e05476535a3e7e383690af1ba2e91cb16c74e",
+  "source": {
+    "arxiv_id": "2508.04276",
+    "id": "arxiv-graph-poisoning",
+    "priority": "p0",
+    "tags": [
+      "paper",
+      "security",
+      "poisoning",
+      "graphrag",
+      "knowledge_graph",
+      "output:privacy_security_risk",
+      "output:provenance_risk",
+      "output:knowledge_graph_comparison"
+    ],
+    "title": "A Few Words Can Distort Graphs: Knowledge Poisoning Attacks on Graph-based RAG",
+    "type": "arxiv",
+    "url": "https://arxiv.org/abs/2508.04276"
+  },
+  "source_file_count": 10,
+  "text_sha256": "78ed72622a700380d2c195b700deb06c6832efe1c396d616b0bbed0822734ae0",
+  "transport": "requests",
+  "transport_warning": null
+}

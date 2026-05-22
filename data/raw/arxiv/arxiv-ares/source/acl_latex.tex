@@ -1,0 +1,64 @@
+\pdfoutput=1
+
+\documentclass[11pt]{article}
+
+\usepackage[]{acl}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{booktabs}
+\usepackage{comment}
+
+\usepackage[T1]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{microtype}
+
+\usepackage{inconsolata}
+\usepackage{graphicx}               %
+\usepackage{amsmath,amssymb}
+
+\newcommand{\jon}[1]{\textcolor{red}{~\textbf{Jon}:~#1}}
+
+
+\title{ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems}
+
+
+\author{Jon Saad-Falcon \\
+  Stanford University \thanks{Project started during research internship at Databricks} \\
+  \texttt{jonsaadfalcon@stanford.edu} \\\And
+  Omar Khattab \\
+  Stanford University \\
+  \texttt{okhattab@stanford.edu} \AND 
+  Christopher Potts \\
+  Stanford University \\
+  \texttt{cgpotts@stanford.edu} \\\And 
+  Matei Zaharia \\
+  Databricks and UC Berkeley\\
+  \texttt{matei@databricks.com}}
+
+\begin{document}
+\maketitle
+
+\input{abstract}
+
+\input{introduction}
+
+\input{related_work}
+
+\input{methods}
+
+\input{experiments}
+
+\input{results}
+
+\input{future_work_and_conclusion}
+
+\input{limitations}
+
+\bibliography{anthology,custom}
+
+\input{appendix}
+
+\end{document}

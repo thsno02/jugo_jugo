@@ -1,0 +1,24 @@
+
+\begin{table*}[htp!]
+\small
+\centering
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{crrrrrr}
+\toprule
+\multicolumn{1}{l}{}                                                 & \multicolumn{6}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Kendall's Tau by Dataset\end{tabular}}}                                                                                                                                                                                                                  \\
+\cmidrule(l{7pt}r{7pt}){2-7}
+\textbf{}                                                            & \multicolumn{2}{c}{NQ}                                                                                                                                            & \multicolumn{2}{c}{MultiRC} & \multicolumn{2}{c}{ReCoRD}                                                                                                                                        \\
+\midrule
+\textbf{\begin{tabular}[c]{@{}c@{}}PPI Labeled\\ Count\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}C.R.\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}A.R.\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}C.R.\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}A.R.\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}C.R.\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}A.R.\end{tabular}} \\
+\midrule
+400                                                                  & 1.0                                                                              & 1.0                                                                            & 0.89                                                                             & 0.94  & 0.89 & 0.94                                                                          \\
+300                                                                  & 0.89                                                                             & 1.0                                                                            & 0.94                                                                             & 0.89   & 0.83 & 0.89                                                                         \\
+200                                                                  & 0.83                                                                             & 1.0                                                                            & 0.83                                                                             & 0.94  & 0.83 &  0.83                                                                         \\
+150                                                                  & 0.72                                                                             & 1.0                                                                            & 0.83                                                                             & 0.89    & 0.72 &  0.83                                                                      \\
+100                                                                  & 0.44                                                                             & 1.0                                                                            & 0.67                                                                             & 0.67  & 0.67 & 0.83                                                                          \\
+50                                                                   & 0.44                                                                             & 0.94                                                                           & 0.61                                                                             & 0.44   & 0.56 & 0.67                                                                         \\
+25                                                                   & 0.44                                                                             & 0.89                                                                           & 0.56                                                                             & 0.44 & 0.44 & 0.56   \\ \bottomrule                                                                        
+\end{tabular}
+\caption{\textbf{Analysis of PPI Labeled Count vs. ARES Efficacy by Kendall's Tau}: The Kendall's tau values represent the correlation between the correct ranking and the ARES ranking of the pseudo RAG systems. We use the same experimental set-up as described in \autoref{sec:datasets}. We find that below about 100-150 datapoints in the human preference validation set, ARES cannot meaningfully distinguish between the alternate RAG systems based on their accuracies in context relevance and answer relevance (C.R. and A.R., respectively).}
+\label{tab:ppi_count}
+\end{table*}

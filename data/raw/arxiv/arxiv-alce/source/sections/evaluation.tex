@@ -1,0 +1,191 @@
+
+
+
+
+\section{Automatic Evaluation}
+
+
+
+
+\vspace{-3pt}
+Our benchmark measures the following three dimensions of system responses:
+\vspace{-3pt}
+\begin{itemize}[leftmargin=1em,itemsep=0pt]
+    \item \tf{Fluency}: whether the model's generated text is fluent and coherent.
+    \item \tf{Correctness}: whether the answer is accurate and covers all aspects of interest.
+    \item \tf{Citation quality}: whether the answer is well supported by the cited passages and no irrelevant passages are cited.
+\end{itemize}
+\vspace{-3pt}
+In the following, we present automatic metrics for each dimension 
+and discuss why the combination of the three metrics provides a robust evaluation. %
+
+
+
+\subsection{Fluency} 
+We use MAUVE \cite{pillutla2021mauve} to evaluate the fluency of the output (\S\ref{app_sec:imp_details}).
+We deploy MAUVE for ASQA and ELI5
+and omit it for QAMPARI,
+as QAMPARI 
+only requires a list of short answers as the response
+and LLMs consistently adhere to the format  in our experiments.
+As MAUVE is sensitive to output length and text style, and most LLMs are capable of producing fluent text,
+we mainly employ it as a sanity check as long as the MAUVE scores are high enough.
+
+
+
+\subsection{Correctness}
+\label{sec:correctness}
+
+
+
+
+
+Our objective is to measure the informativeness and utility of the generation  to the question. 
+\citet{liu2023evaluating} propose to directly evaluate \textit{perceived utility}
+by humans, a process difficult to automate. 
+Therefore, we use correctness---whether the response is accurate compared to a ground truth answer---as a proxy.
+Evaluating the correctness of long-form generation is a challenging task~\citep{krishna-etal-2021-hurdles},
+and we describe our strategy for each dataset below.
+Figure~\ref{fig:correctness} illustrates the metrics and we include additional implementation details in \S\ref{app_sec:imp_details}.
+
+
+For \tf{ASQA}, we follow \citet{stelmakh2022asqa} and 
+calculate the recall of correct short answers
+by checking whether the short answers (provided by the dataset) are exact substrings of the generation (\textit{exact match recall}; EM recall).
+
+
+For \tf{QAMPARI}, we follow \citet{rubin2022qampari} and calculate the \textit{precision} and \textit{recall} of 
+the model prediction, 
+by checking the exact match to the gold answer list.
+We add one additional adjustment:
+considering that users often  want to know only a few example answers of 
+the question, %
+our evaluation considers recall to be 100\% if the prediction includes at least 5 correct answers (\textit{recall-5}).
+
+Unlike ASQA and QAMPARI, the \tf{ELI5} dataset does not provide short entity answers.
+\citet{fan-etal-2019-eli5} use ROUGE for evaluation, which does not reflect the correctness  well (\citealp{krishna-etal-2021-hurdles}; \S\ref{app_sec:claim_eli5}).
+Inspired by works in summarization evaluation~\cite{zhang-bansal-2021-finding,kamoi2023wice,wang-etal-2020-asking}, 
+we use InstructGPT~(\ttt{text-davinci-003}; \citealp{ouyang2022training}) to generate three ``sub-claims''. 
+Then we use TRUE\footnote{\url{https://huggingface.co/google/t5_xxl_true_nli_mixture}. Details in \S\ref{app_sec:imp_details}.}~\cite{honovich-etal-2022-true-evaluating}, a T5-11B~\citep{raffel2020exploring} model fine-tuned on a collection of natural language inference (NLI)  datasets, to check whether the model output entails the sub-claims (\textit{claim recall}). TRUE targets factual correctness and has been used by previous works in similar context~\citep{bohnet2022attributed,gao2022rarr}.
+We demonstrate that claim recall provides a more accurate measure of correctness than existing metrics (more details in \S\ref{app_sec:claim_eli5}).
+
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.94\linewidth]{figs/correctness.pdf}
+    \caption{Evaluation of correctness (details in \S\ref{sec:correctness}).}
+    \vspace{-13pt}
+    \label{fig:correctness}
+\end{figure}
+
+
+\subsection{Citation Quality}
+\label{sec:citation}
+
+
+
+
+
+We evaluate citation qualities using two metrics:  
+(1) \textit{citation recall}, which determines if the output is entirely supported by cited passages, and
+(2) \textit{citation precision}, which identifies any irrelevant citations. %
+Although we prioritize citation recall as it entails a well-supported and truthful answer, 
+enhancing precision is crucial for better user satisfaction,
+reducing the need for human review of extraneous passages.
+Figure~\ref{fig:citation} provides an illustrated example. %
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.98\linewidth]{figs/citation.pdf}
+    \caption{Evaluation of citation quality (details in \S\ref{sec:citation}). We use 
+   an NLI model to verify whether a statement is supported by its citations. %
+    }
+    \vspace{-15pt}
+    \label{fig:citation}
+\end{figure}
+
+
+We use the NLI model TRUE~\citep{honovich-etal-2022-true-evaluating} again
+to automatically examine whether the cited passages entail the model generation.
+We conduct human evaluation (\S\ref{sec:human}) to demonstrate strong human correlation of our metric.
+
+
+
+
+
+\paragraph{Citation recall.} 
+We calculate the citation recall of \textit{each statement} (0 or 1) and average
+over all {statements} in the model response. %
+For each statement $s_i$, %
+its citation recall is $1$ if and only if there is at least one citation ($\mathcal{C}_i\neq \emptyset$) and 
+$\phi(\text{concat}(\mathcal{C}_i), s_i)=1$,
+where 
+$\phi(\text{premise},\text{hypothesis})$
+is the NLI model that outputs $1$ if the premise  entails the hypothesis, and $0$ otherwise; 
+$\text{concat}(\mathcal{C}_i)$ concatenates all passages in $\mathcal{C}_i$ together (details in \S\ref{app_sec:imp_details}).
+The NLI evaluation is in accordance with the \textit{attributable to identified sources} (AIS) framework~\cite{rashkin2021measuring}: 
+$\phi(\text{concat}(\mathcal{C}_i), s_i)=1$ implies that 
+$s_i$ is true based solely on $\text{concat}(\mathcal{C}_i)$.
+
+
+
+ 
+
+
+
+\paragraph{Citation precision.} 
+Our citation precision evaluation detects citations that are irrelevant,
+but it does not require citing a minimal set.
+We follow this design  because human writing often cites  redundant sources to enhance  credibility;
+human readers may also appreciate multiple citations, especially when it pertains to critical claims such as medical advice.
+
+
+We calculate the citation precision for \textit{each citation} (0 or 1) and
+average over all {citations} in the response. %
+We first define if a citation is ``irrelevant''.
+Intuitively, a citation $c_{i,j}$ is ``irrelevant'' if (a) $c_{i,j}$ itself cannot support $s_i$ and (b) removing $c_{i,j}$ does not affect the rest of the citations to support $s_i$. Formally, $c_{i,j}$ is ``irrelevant'' if and only if
+\begin{enumerate}[itemsep=0pt,leftmargin=2em,label=(\alph*)]
+        \item  $\phi(c_{i,j},s_i)=0$, AND
+        \item  $\phi(\text{concat}(\mathcal{C}_i \setminus \{c_{i,j}\}), s_i)=1$.  
+\end{enumerate}
+$c_{i,j}$ has a precision  of 1 if $s_i$ has recall$=$$1$ and $c_{i,j}$ is not irrelevant.
+For example (Figure~\ref{fig:citation}), when $s_3$ cites three references \ttt{[2][4][5]} and recall$=$$1$,
+\ttt{[2]} is ``irrelevant'' if $\phi(\texttt{[2]}, s_3)=0$ and $\phi(\texttt{[4][5]}, s_3)=1$.
+For condition (b) to work, we set recall$=$$1$ as a prerequisite for precision$=1$. Note that this algorithm overlooks the scenario when one citation partially supports the statement. 
+We discuss the details in \S\ref{app_sec:citation_recall}.
+
+
+
+
+
+
+
+
+
+\subsection{\citeeval{} is Robust to Shortcut Cases}
+We showcase how the \citeeval{} evaluation is robust to two possible shortcuts in \S\ref{app_sec:short_cut}:
+(1) using the top-1 retrieved passage as the response and citing itself, 
+and (2) using the first two sentences of the top-1 passage.
+Both cases have almost-perfect citation scores, but (1) has low fluency due to its unnaturally long length compared to human answers, and (2) has low correctness due to low coverage.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

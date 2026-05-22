@@ -1,0 +1,48 @@
+
+\begin{table}[t]
+    \centering
+    \small
+    \resizebox{0.98\linewidth}{!}{
+        \begin{tabular}{lcccc}
+            \toprule
+             & \multicolumn{2}{c}{\tf{Correctness}} & \multicolumn{2}{c}{\tf{Citation} }\\
+             \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+            &  Rec.-5 & Prec. & Rec. & Prec. \\
+            \midrule
+            \headercolor
+            \multicolumn{5}{c}{\textbf{ChatGPT}} \\
+            \tableskip
+            \vani{} (5-psg) & 20.8 &  20.8 & 20.5&	20.9 \\
+            ~~w/ \rerank{} & 22.8 & 21.4 & 21.2 & 21.4 \\ %
+            \summ{} (10-psg) & 23.6& 21.2&   \tf{23.6}&	\tf{25.7} \\
+            \snippet{} (10-psg)&24.5 &  21.5&  {22.9} &  {24.9} \\
+            ~~w/ \interact{} & 21.9 &  \tf{23.0} & 21.9&23.4\\
+            \search{} & 17.2& 20.4 & 14.9&	14.9 \\
+            \close{} &  \tf{32.9} & 19.8 &  10.0 &   10.0\\
+            \tableskip
+            \headercolor
+             \multicolumn{5}{c}{\textbf{GPT-4} (\vani{} prompting)}  \\
+            \tableskip
+            GPT-4 (5-psg) & 22.2 & 25.0 & 25.9 & 27.0 \\
+            GPT-4 (20-psg) & 29.6 & 26.2 & 27.4 & 28.5 \\ 
+
+            \tableskip
+            \headercolor
+            \multicolumn{5}{c}{\textbf{LLaMA} (\vani{} prompting)} \\
+            \tableskip
+            LLaMA-13B (3-psg) & 9.7 & 9.1 & 6.7 & 7.1 \\% 6.8 \\
+            Vicuna-13B (5-psg) & 14.0 & 15.9 & 12.5 & 13.4 \\ %
+            
+            
+            Chat-13B (5-psg) & 21.1 & 18.2 & 9.6 & 9.7 \\
+            Chat-70B (5-psg) & 21.8 &18.4 & 15.1 &15.6 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \caption{
+        Experiments  on QAMPARI.
+        ``Rec.-5'': we set the recall to be 100\% if the prediction includes at least 5 correct answers.
+    }
+    \label{tab:qampari_result}
+    \vspace{-10pt}
+\end{table}

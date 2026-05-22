@@ -1,0 +1,23 @@
+
+\begin{table}[ht]
+    \centering
+    \resizebox{0.98\linewidth}{!}{
+        \begin{tabular}{lcccc}
+            \toprule
+            & \tf{Fluency} & \tf{Correct.} & \multicolumn{2}{c}{\tf{Citation} }\\
+            \cmidrule(lr){2-2} \cmidrule(lr){3-3} \cmidrule(lr){4-5}
+            & (MAUVE) & (EM) & Rec. & Prec. \\
+            \midrule
+            \headercolor
+            \multicolumn{5}{c}{\textbf{ChatGPT} (\vani{})} \\
+            \#demo = 0& 74.5 & 41.9 & 69.3	& 73.4  \\
+            \#demo = 1& 68.9 & 39.8 & 74.6	& 73.2 \\
+            \#demo = 2& 66.6 & 40.4  & 73.6  & 72.5 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \caption{
+        Different demonstrations on ASQA. 
+    }
+    \label{tab:numdemo}
+\end{table}

@@ -1,0 +1,26 @@
+\vspace{-3mm}
+\section{Discussion and Limitation}
+\label{sec:discussion-limitation}
+
+
+\vspace{-2mm}
+\myparatight{Broad NLP tasks}In our experiment, we mainly focus on question-answering as RAG is mainly designed for knowledge-intensive tasks~\cite{lewis2020retrieval}. However, our design principles (retrieval \& generation conditions) can be extended to more general NLP tasks such as fact verification. 
+We conduct experiments on the FEVER dataset~\cite{thorne2018fever}, which is used for fact verification. Given a claim, the task is to verify whether the $k$ retrieved texts \emph{support}, \emph{refute}, or \emph{do not provide enough information}. We also select 10 claims as target claims and repeat experiments 10 times, resulting in 100 target claims in total. We craft an incorrect verification result as the target verification result for each target claim. We defer the used prompts to Appendix~\ref{fever-details}.
+We conduct the experiment under the default setting. {\name} can achieve a 0.98 and 0.99 F1-Score in black-box and white-box settings, which means almost all malicious texts are retrieved for the corresponding target claims. Moreover, our {\name} could achieve a 0.97 and 0.88 ASR in the black-box and white-box settings. Our results demonstrate {\name} can be broadly applied to general NLP tasks. 
+
+
+
+
+
+\myparatight{Jointly considering multiple target questions}We craft malicious texts independently for each target question, which could be sub-optimal. 
+It could be more effective when an attacker crafts malicious texts by considering multiple target questions simultaneously. We leave this as a future work.
+
+
+\myparatight{Impact of malicious texts on non-target questions}\RV{{\name} injects a few malicious texts into a clean database with millions of texts. We evaluate whether malicious texts are retrieved for those non-target questions and how they affect the generated answers by the LLM in RAG for those questions. 
+We conduct experiments under the default setting on the NQ dataset. In particular, we randomly select 100 non-target questions from a dataset. Moreover, we repeated the experiment 10 times, resulting in 1000 non-target questions in total. The fractions of non-target questions influenced by malicious texts are 0.3\% and 0.9\% in black-box and white-box settings, respectively. Additionally, the fractions of non-target answers whose generated answers by the LLM in RAG are affected by malicious texts is 0\% and 0.4\% in the black-box and white-box settings. Our experimental results demonstrate that those malicious texts have a small influence on non-target questions. }
+We show an example of an influenced non-target question in Appendix~\ref{appendix-sec-example-nontarget-question}.
+
+
+\myparatight{Failure case analysis}Despite being effective, {\name} does not reach a 100\% ASR. We use examples to illustrate why {\name} fails in certain cases in Appendix~\ref{failure-case-analysis}.
+
+

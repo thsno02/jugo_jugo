@@ -1,0 +1,275 @@
+\begin{thebibliography}{55}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Bohnet et~al.(2022)Bohnet, Tran, Verga, Aharoni, Andor, Soares, Eisenstein, Ganchev, Herzig, Hui et~al.}]{bohnet2022attributed}
+Bernd Bohnet, Vinh~Q Tran, Pat Verga, Roee Aharoni, Daniel Andor, Livio~Baldini Soares, Jacob Eisenstein, Kuzman Ganchev, Jonathan Herzig, Kai Hui, et~al. 2022.
+\newblock \href {https://arxiv.org/pdf/2212.08037.pdf} {Attributed question answering: Evaluation and modeling for attributed large language models}.
+\newblock \emph{arXiv preprint arXiv:2212.08037}.
+
+\bibitem[{Borgeaud et~al.(2022)Borgeaud, Mensch, Hoffmann, Cai, Rutherford, Millican, Van Den~Driessche, Lespiau, Damoc, Clark, De~Las~Casas, Guy, Menick, Ring, Hennigan, Huang, Maggiore, Jones, Cassirer, Brock, Paganini, Irving, Vinyals, Osindero, Simonyan, Rae, Elsen, and Sifre}]{borgeaud2022retro}
+Sebastian Borgeaud, Arthur Mensch, Jordan Hoffmann, Trevor Cai, Eliza Rutherford, Katie Millican, George~Bm Van Den~Driessche, Jean-Baptiste Lespiau, Bogdan Damoc, Aidan Clark, Diego De~Las~Casas, Aurelia Guy, Jacob Menick, Roman Ring, Tom Hennigan, Saffron Huang, Loren Maggiore, Chris Jones, Albin Cassirer, Andy Brock, Michela Paganini, Geoffrey Irving, Oriol Vinyals, Simon Osindero, Karen Simonyan, Jack Rae, Erich Elsen, and Laurent Sifre. 2022.
+\newblock \href {https://proceedings.mlr.press/v162/borgeaud22a.html} {Improving language models by retrieving from trillions of tokens}.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, volume 162, pages 2206--2240.
+
+\bibitem[{Bowman et~al.(2015)Bowman, Angeli, Potts, and Manning}]{bowman2015large_snli}
+Samuel Bowman, Gabor Angeli, Christopher Potts, and Christopher~D Manning. 2015.
+\newblock \href {https://aclanthology.org/D15-1075.pdf} {A large annotated corpus for learning natural language inference}.
+\newblock In \emph{Empirical Methods in Natural Language Processing (EMNLP)}.
+
+\bibitem[{Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan, Dhariwal, Neelakantan, Shyam, Sastry, Askell et~al.}]{brown2020language}
+Tom~B Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, et~al. 2020.
+\newblock \href {https://papers.nips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html} {Language models are few-shot learners}.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}.
+
+\bibitem[{Chiang et~al.(2023)Chiang, Li, Lin, Sheng, Wu, Zhang, Zheng, Zhuang, Zhuang, Gonzalez, Stoica, and Xing}]{vicuna2023}
+Wei-Lin Chiang, Zhuohan Li, Zi~Lin, Ying Sheng, Zhanghao Wu, Hao Zhang, Lianmin Zheng, Siyuan Zhuang, Yonghao Zhuang, Joseph~E. Gonzalez, Ion Stoica, and Eric~P. Xing. 2023.
+\newblock \href {https://lmsys.org/blog/2023-03-30-vicuna/} {Vicuna: An open-source chatbot impressing gpt-4 with 90\%* chatgpt quality}.
+
+\bibitem[{Fan et~al.(2019)Fan, Jernite, Perez, Grangier, Weston, and Auli}]{fan-etal-2019-eli5}
+Angela Fan, Yacine Jernite, Ethan Perez, David Grangier, Jason Weston, and Michael Auli. 2019.
+\newblock \href {https://doi.org/10.18653/v1/P19-1346} {{ELI}5: Long form question answering}.
+\newblock In \emph{Association for Computational Linguistics (ACL)}, pages 3558--3567.
+
+\bibitem[{Funkquist et~al.(2022)Funkquist, Kuznetsov, Hou, and Gurevych}]{funkquist2022citebench}
+Martin Funkquist, Ilia Kuznetsov, Yufang Hou, and Iryna Gurevych. 2022.
+\newblock \href {https://arxiv.org/pdf/2212.09577} {{CiteBench: A benchmark for Scientific Citation Text Generation}}.
+\newblock \emph{arXiv preprint arXiv:2212.09577}.
+
+\bibitem[{Gao et~al.(2023)Gao, Dai, Pasupat, Chen, Chaganty, Fan, Zhao, Lao, Lee, Juan et~al.}]{gao2022rarr}
+Luyu Gao, Zhuyun Dai, Panupong Pasupat, Anthony Chen, Arun~Tejasvi Chaganty, Yicheng Fan, Vincent~Y Zhao, Ni~Lao, Hongrae Lee, Da-Cheng Juan, et~al. 2023.
+\newblock \href {https://arxiv.org/pdf/2210.08726.pdf} {{RARR}: Researching and revising what language models say, using language models}.
+\newblock In \emph{Association for Computational Linguistics (ACL)}.
+
+\bibitem[{Guu et~al.(2020)Guu, Lee, Tung, Pasupat, and Chang}]{guu2020realm}
+Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, and Ming-Wei Chang. 2020.
+\newblock \href {https://arxiv.org/pdf/2002.08909.pdf} {{REALM}: Retrieval-augmented language model pre-training}.
+\newblock In \emph{International Conference on Machine Learning (ICML)}.
+
+\bibitem[{He et~al.(2022)He, Zhang, and Roth}]{he2022rethinking}
+Hangfeng He, Hongming Zhang, and Dan Roth. 2022.
+\newblock \href {https://arxiv.org/pdf/2301.00303.pdf} {Rethinking with retrieval: Faithful large language model inference}.
+\newblock \emph{arXiv preprint arXiv:2301.00303}.
+
+\bibitem[{Holtzman et~al.(2020)Holtzman, Buys, Du, Forbes, and Choi}]{Holtzman2020The}
+Ari Holtzman, Jan Buys, Li~Du, Maxwell Forbes, and Yejin Choi. 2020.
+\newblock \href {https://openreview.net/forum?id=rygGQyrFvH} {The curious case of neural text degeneration}.
+\newblock In \emph{International Conference on Learning Representations (ICLR)}.
+
+\bibitem[{Honovich et~al.(2022)Honovich, Aharoni, Herzig, Taitelbaum, Kukliansy, Cohen, Scialom, Szpektor, Hassidim, and Matias}]{honovich-etal-2022-true-evaluating}
+Or~Honovich, Roee Aharoni, Jonathan Herzig, Hagai Taitelbaum, Doron Kukliansy, Vered Cohen, Thomas Scialom, Idan Szpektor, Avinatan Hassidim, and Yossi Matias. 2022.
+\newblock \href {https://doi.org/10.18653/v1/2022.naacl-main.287} {{TRUE}: Re-evaluating factual consistency evaluation}.
+\newblock In \emph{North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)}, pages 3905--3920.
+
+\bibitem[{Izacard and Grave(2021)}]{izacard-grave-2021-leveraging}
+Gautier Izacard and Edouard Grave. 2021.
+\newblock \href {https://doi.org/10.18653/v1/2021.eacl-main.74} {Leveraging passage retrieval with generative models for open domain question answering}.
+\newblock In \emph{Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics: Main Volume}, pages 874--880, Online. Association for Computational Linguistics.
+
+\bibitem[{Izacard et~al.(2022)Izacard, Lewis, Lomeli, Hosseini, Petroni, Schick, Dwivedi-Yu, Joulin, Riedel, and Grave}]{izacard2022atlas}
+Gautier Izacard, Patrick Lewis, Maria Lomeli, Lucas Hosseini, Fabio Petroni, Timo Schick, Jane Dwivedi-Yu, Armand Joulin, Sebastian Riedel, and Edouard Grave. 2022.
+\newblock \href {https://arxiv.org/pdf/2208.03299.pdf} {Atlas: Few-shot learning with retrieval augmented language models}.
+\newblock \emph{arXiv preprint arXiv:2208.03299}.
+
+\bibitem[{Ji et~al.(2023)Ji, Lee, Frieske, Yu, Su, Xu, Ishii, Bang, Madotto, and Fung}]{ji2023survey}
+Ziwei Ji, Nayeon Lee, Rita Frieske, Tiezheng Yu, Dan Su, Yan Xu, Etsuko Ishii, Ye~Jin Bang, Andrea Madotto, and Pascale Fung. 2023.
+\newblock \href {https://dl.acm.org/doi/pdf/10.1145/3571730} {Survey of hallucination in natural language generation}.
+\newblock \emph{ACM Computing Surveys}, 55(12):1--38.
+
+\bibitem[{Jiang et~al.(2023)Jiang, Xu, Gao, Sun, Liu, Dwivedi-Yu, Yang, Callan, and Neubig}]{jiang2023active}
+Zhengbao Jiang, Frank~F Xu, Luyu Gao, Zhiqing Sun, Qian Liu, Jane Dwivedi-Yu, Yiming Yang, Jamie Callan, and Graham Neubig. 2023.
+\newblock \href {https://arxiv.org/pdf/2305.06983} {Active retrieval augmented generation}.
+\newblock \emph{arXiv preprint arXiv:2305.06983}.
+
+\bibitem[{Kamoi et~al.(2023)Kamoi, Goyal, Rodriguez, and Durrett}]{kamoi2023wice}
+Ryo Kamoi, Tanya Goyal, Juan~Diego Rodriguez, and Greg Durrett. 2023.
+\newblock \href {https://arxiv.org/abs/2303.01432} {{WiCE: Real-World Entailment for Claims in Wikipedia}}.
+\newblock \emph{arXiv preprint arXiv:2303.01432}.
+
+\bibitem[{Karpukhin et~al.(2020)Karpukhin, Oguz, Min, Lewis, Wu, Edunov, Chen, and Yih}]{karpukhin-etal-2020-dense}
+Vladimir Karpukhin, Barlas Oguz, Sewon Min, Patrick Lewis, Ledell Wu, Sergey Edunov, Danqi Chen, and Wen-tau Yih. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.emnlp-main.550} {Dense passage retrieval for open-domain question answering}.
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, pages 6769--6781, Online. Association for Computational Linguistics.
+
+\bibitem[{Khandelwal et~al.(2020)Khandelwal, Levy, Jurafsky, Zettlemoyer, and Lewis}]{Khandelwal2020Generalization}
+Urvashi Khandelwal, Omer Levy, Dan Jurafsky, Luke Zettlemoyer, and Mike Lewis. 2020.
+\newblock \href {https://openreview.net/forum?id=HklBjCEKvH} {Generalization through memorization: Nearest neighbor language models}.
+\newblock In \emph{International Conference on Learning Representations (ICLR)}.
+
+\bibitem[{Khot et~al.(2018)Khot, Sabharwal, and Clark}]{khot2018scitail}
+Tushar Khot, Ashish Sabharwal, and Peter Clark. 2018.
+\newblock \href {https://ojs.aaai.org/index.php/AAAI/article/download/12022/11881} {Scitail: A textual entailment dataset from science question answering}.
+\newblock In \emph{Conference on Artificial Intelligence (AAAI)}, volume~32.
+
+\bibitem[{Krishna et~al.(2021)Krishna, Roy, and Iyyer}]{krishna-etal-2021-hurdles}
+Kalpesh Krishna, Aurko Roy, and Mohit Iyyer. 2021.
+\newblock \href {https://doi.org/10.18653/v1/2021.naacl-main.393} {Hurdles to progress in long-form question answering}.
+\newblock In \emph{Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies}, pages 4940--4957, Online. Association for Computational Linguistics.
+
+\bibitem[{Köpf et~al.(2023)Köpf, Kilcher, von Rütte, Anagnostidis, Tam, Stevens, Barhoum, Duc, Stanley, Nagyfi, ES, Suri, Glushkov, Dantuluri, Maguire, Schuhmann, Nguyen, and Mattick}]{kopf2023openassistant}
+Andreas Köpf, Yannic Kilcher, Dimitri von Rütte, Sotiris Anagnostidis, Zhi-Rui Tam, Keith Stevens, Abdullah Barhoum, Nguyen~Minh Duc, Oliver Stanley, Richárd Nagyfi, Shahul ES, Sameer Suri, David Glushkov, Arnav Dantuluri, Andrew Maguire, Christoph Schuhmann, Huu Nguyen, and Alexander Mattick. 2023.
+\newblock \href {https://arxiv.org/abs/2304.07327} {Openassistant conversations -- democratizing large language model alignment}.
+\newblock \emph{arXiv preprint arXiv:2304.07327}.
+
+\bibitem[{Lee et~al.(2019)Lee, Chang, and Toutanova}]{lee-etal-2019-latent}
+Kenton Lee, Ming-Wei Chang, and Kristina Toutanova. 2019.
+\newblock \href {https://doi.org/10.18653/v1/P19-1612} {Latent retrieval for weakly supervised open domain question answering}.
+\newblock In \emph{Association for Computational Linguistics (ACL)}, pages 6086--6096.
+
+\bibitem[{Liu et~al.(2023)Liu, Zhang, and Liang}]{liu2023evaluating}
+Nelson~F Liu, Tianyi Zhang, and Percy Liang. 2023.
+\newblock \href {https://arxiv.org/pdf/2304.09848.pdf} {Evaluating verifiability in generative search engines}.
+\newblock \emph{arXiv preprint arXiv:2304.09848}.
+
+\bibitem[{Menick et~al.(2022)Menick, Trebacz, Mikulik, Aslanides, Song, Chadwick, Glaese, Young, Campbell-Gillingham, Irving et~al.}]{menick2022teaching}
+Jacob Menick, Maja Trebacz, Vladimir Mikulik, John Aslanides, Francis Song, Martin Chadwick, Mia Glaese, Susannah Young, Lucy Campbell-Gillingham, Geoffrey Irving, et~al. 2022.
+\newblock \href {https://arxiv.org/pdf/2203.11147.pdf} {Teaching language models to support answers with verified quotes}.
+\newblock \emph{arXiv preprint arXiv:2203.11147}.
+
+\bibitem[{Min et~al.(2020)Min, Michael, Hajishirzi, and Zettlemoyer}]{min-etal-2020-ambigqa}
+Sewon Min, Julian Michael, Hannaneh Hajishirzi, and Luke Zettlemoyer. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.emnlp-main.466} {{A}mbig{QA}: Answering ambiguous open-domain questions}.
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, pages 5783--5797, Online. Association for Computational Linguistics.
+
+\bibitem[{Nakano et~al.(2021)Nakano, Hilton, Balaji, Wu, Ouyang, Kim, Hesse, Jain, Kosaraju, Saunders et~al.}]{nakano2021webgpt}
+Reiichiro Nakano, Jacob Hilton, Suchir Balaji, Jeff Wu, Long Ouyang, Christina Kim, Christopher Hesse, Shantanu Jain, Vineet Kosaraju, William Saunders, et~al. 2021.
+\newblock \href {https://arxiv.org/pdf/2112.09332.pdf} {{WebGPT: Browser-assisted question-answering with human feedback}}.
+\newblock \emph{arXiv preprint arXiv:2112.09332}.
+
+\bibitem[{Ni et~al.(2022)Ni, Qu, Lu, Dai, Hernandez~Abrego, Ma, Zhao, Luan, Hall, Chang, and Yang}]{ni-etal-2022-large}
+Jianmo Ni, Chen Qu, Jing Lu, Zhuyun Dai, Gustavo Hernandez~Abrego, Ji~Ma, Vincent Zhao, Yi~Luan, Keith Hall, Ming-Wei Chang, and Yinfei Yang. 2022.
+\newblock \href {https://aclanthology.org/2022.emnlp-main.669} {Large dual encoders are generalizable retrievers}.
+\newblock In \emph{Empirical Methods in Natural Language Processing (EMNLP)}, pages 9844--9855.
+
+\bibitem[{OpenAI(2023)}]{openai2023gpt4}
+OpenAI. 2023.
+\newblock \href {http://arxiv.org/abs/2303.08774} {{GPT-4 Technical Report}}.
+
+\bibitem[{Ouyang et~al.(2022)Ouyang, Wu, Jiang, Almeida, Wainwright, Mishkin, Zhang, Agarwal, Slama, Ray et~al.}]{ouyang2022training}
+Long Ouyang, Jeffrey Wu, Xu~Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et~al. 2022.
+\newblock \href {https://proceedings.neurips.cc/paper_files/paper/2022/file/b1efde53be364a73914f58805a001731-Paper-Conference.pdf} {Training language models to follow instructions with human feedback}.
+\newblock \emph{Advances in Neural Information Processing Systems (NeurIPS)}, 35:27730--27744.
+
+\bibitem[{Parisi et~al.(2022)Parisi, Zhao, and Fiedel}]{parisi2022talm}
+Aaron Parisi, Yao Zhao, and Noah Fiedel. 2022.
+\newblock \href {https://arxiv.org/pdf/2205.12255.pdf} {{TALM: Tool augmented language models}}.
+\newblock \emph{arXiv preprint arXiv:2205.12255}.
+
+\bibitem[{Petroni et~al.(2021)Petroni, Piktus, Fan, Lewis, Yazdani, De~Cao, Thorne, Jernite, Karpukhin, Maillard, Plachouras, Rockt{\"a}schel, and Riedel}]{petroni-etal-2021-kilt}
+Fabio Petroni, Aleksandra Piktus, Angela Fan, Patrick Lewis, Majid Yazdani, Nicola De~Cao, James Thorne, Yacine Jernite, Vladimir Karpukhin, Jean Maillard, Vassilis Plachouras, Tim Rockt{\"a}schel, and Sebastian Riedel. 2021.
+\newblock \href {https://doi.org/10.18653/v1/2021.naacl-main.200} {{KILT}: a benchmark for knowledge intensive language tasks}.
+\newblock In \emph{Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies}, pages 2523--2544, Online. Association for Computational Linguistics.
+
+\bibitem[{Piktus et~al.(2021)Piktus, Petroni, Karpukhin, Okhonko, Broscheit, Izacard, Lewis, O{\u{g}}uz, Grave, Yih et~al.}]{piktus2021web}
+Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Dmytro Okhonko, Samuel Broscheit, Gautier Izacard, Patrick Lewis, Barlas O{\u{g}}uz, Edouard Grave, Wen-tau Yih, et~al. 2021.
+\newblock \href {https://arxiv.org/pdf/2112.09924.pdf} {{The Web Is Your Oyster--Knowledge-Intensive NLP against a Very Large Web Corpus}}.
+\newblock \emph{arXiv preprint arXiv:2112.09924}.
+
+\bibitem[{Pillutla et~al.(2021)Pillutla, Swayamdipta, Zellers, Thickstun, Welleck, Choi, and Harchaoui}]{pillutla2021mauve}
+Krishna Pillutla, Swabha Swayamdipta, Rowan Zellers, John Thickstun, Sean Welleck, Yejin Choi, and Zaid Harchaoui. 2021.
+\newblock \href {https://openreview.net/forum?id=Tqx7nJp7PR} {{MAUVE}: Measuring the gap between neural text and human text using divergence frontiers}.
+\newblock In \emph{Advances in Neural Information Processing Systems}.
+
+\bibitem[{Press et~al.(2022)Press, Zhang, Min, Schmidt, Smith, and Lewis}]{press2022measuring}
+Ofir Press, Muru Zhang, Sewon Min, Ludwig Schmidt, Noah~A Smith, and Mike Lewis. 2022.
+\newblock \href {https://arxiv.org/pdf/2210.03350.pdf} {Measuring and narrowing the compositionality gap in language models}.
+\newblock \emph{arXiv preprint arXiv:2210.03350}.
+
+\bibitem[{Raffel et~al.(2020)Raffel, Shazeer, Roberts, Lee, Narang, Matena, Zhou, Li, and Liu}]{raffel2020exploring}
+Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, and Peter~J Liu. 2020.
+\newblock \href {https://jmlr.org/papers/v21/20-074.html} {Exploring the limits of transfer learning with a unified text-to-text {Transformer}}.
+\newblock \emph{The Journal of Machine Learning Research (JMLR)}, 21(140).
+
+\bibitem[{Rajpurkar et~al.(2016)Rajpurkar, Zhang, Lopyrev, and Liang}]{rajpurkar-etal-2016-squad}
+Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. 2016.
+\newblock \href {https://doi.org/10.18653/v1/D16-1264} {{SQ}u{AD}: 100,000+ questions for machine comprehension of text}.
+\newblock In \emph{Empirical Methods in Natural Language Processing (EMNLP)}, pages 2383--2392.
+
+\bibitem[{Rashkin et~al.(2023)Rashkin, Nikolaev, Lamm, Aroyo, Collins, Das, Petrov, Tomar, Turc, and Reitter}]{rashkin2021measuring}
+Hannah Rashkin, Vitaly Nikolaev, Matthew Lamm, Lora Aroyo, Michael Collins, Dipanjan Das, Slav Petrov, Gaurav~Singh Tomar, Iulia Turc, and David Reitter. 2023.
+\newblock \href {https://doi.org/10.1162/coli_a_00486} {{Measuring Attribution in Natural Language Generation Models}}.
+\newblock \emph{Computational Linguistics}, pages 1--64.
+
+\bibitem[{Rubin et~al.(2022)Rubin, Yoran, Wolfson, Herzig, and Berant}]{rubin2022qampari}
+Samuel Joseph Amouyal~Ohad Rubin, Ori Yoran, Tomer Wolfson, Jonathan Herzig, and Jonathan Berant. 2022.
+\newblock \href {https://arxiv.org/abs/2205.12665} {{QAMPARI: An Open-domain Question Answering Benchmark for Questions with Many Answers from Multiple Paragraphs}}.
+\newblock \emph{arXiv preprint arXiv:2205.12665}.
+
+\bibitem[{Schick et~al.(2023)Schick, Dwivedi-Yu, Dess{\`\i}, Raileanu, Lomeli, Zettlemoyer, Cancedda, and Scialom}]{schick2023toolformer}
+Timo Schick, Jane Dwivedi-Yu, Roberto Dess{\`\i}, Roberta Raileanu, Maria Lomeli, Luke Zettlemoyer, Nicola Cancedda, and Thomas Scialom. 2023.
+\newblock \href {https://arxiv.org/pdf/2302.04761.pdf} {Toolformer: Language models can teach themselves to use tools}.
+\newblock \emph{arXiv preprint arXiv:2302.04761}.
+
+\bibitem[{Schuster et~al.(2021)Schuster, Fisch, and Barzilay}]{schuster-etal-2021-get}
+Tal Schuster, Adam Fisch, and Regina Barzilay. 2021.
+\newblock \href {https://doi.org/10.18653/v1/2021.naacl-main.52} {Get your vitamin {C}! robust fact verification with contrastive evidence}.
+\newblock In \emph{North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)}, pages 624--643.
+
+\bibitem[{Shi et~al.(2023)Shi, Chen, Misra, Scales, Dohan, Chi, Sch{\"a}rli, and Zhou}]{shi2023large}
+Freda Shi, Xinyun Chen, Kanishka Misra, Nathan Scales, David Dohan, Ed~Chi, Nathanael Sch{\"a}rli, and Denny Zhou. 2023.
+\newblock \href {https://arxiv.org/pdf/2302.00093.pdf?trk=public_post_comment-text} {Large language models can be easily distracted by irrelevant context}.
+\newblock In \emph{International Conference on Machine Learning (ICML)}.
+
+\bibitem[{Shuster et~al.(2022)Shuster, Komeili, Adolphs, Roller, Szlam, and Weston}]{shuster-etal-2022-language}
+Kurt Shuster, Mojtaba Komeili, Leonard Adolphs, Stephen Roller, Arthur Szlam, and Jason Weston. 2022.
+\newblock \href {https://aclanthology.org/2022.findings-emnlp.27} {Language models that seek for knowledge: Modular search {\&} generation for dialogue and prompt completion}.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2022}, pages 373--393.
+
+\bibitem[{Stelmakh et~al.(2022)Stelmakh, Luan, Dhingra, and Chang}]{stelmakh2022asqa}
+Ivan Stelmakh, Yi~Luan, Bhuwan Dhingra, and Ming-Wei Chang. 2022.
+\newblock \href {https://doi.org/10.18653/v1/2022.emnlp-main.566} {{ASQA}: Factoid questions meet long-form answers}.
+\newblock In \emph{Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing}, pages 8273--8288, Abu Dhabi, United Arab Emirates. Association for Computational Linguistics.
+
+\bibitem[{Taori et~al.(2023)Taori, Gulrajani, Zhang, Dubois, Li, Guestrin, Liang, and Hashimoto}]{alpaca}
+Rohan Taori, Ishaan Gulrajani, Tianyi Zhang, Yann Dubois, Xuechen Li, Carlos Guestrin, Percy Liang, and Tatsunori~B. Hashimoto. 2023.
+\newblock \href {https://github.com/tatsu-lab/stanford_alpaca} {{Stanford Alpaca: An Instruction-following LLaMA model}}.
+
+\bibitem[{Thorne et~al.(2018)Thorne, Vlachos, Christodoulopoulos, and Mittal}]{thorne-etal-2018-fever}
+James Thorne, Andreas Vlachos, Christos Christodoulopoulos, and Arpit Mittal. 2018.
+\newblock \href {https://doi.org/10.18653/v1/N18-1074} {{FEVER}: a large-scale dataset for fact extraction and {VER}ification}.
+\newblock In \emph{North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)}, pages 809--819.
+
+\bibitem[{Touvron et~al.(2023{\natexlab{a}})Touvron, Lavril, Izacard, Martinet, Lachaux, Lacroix, Rozi{\`e}re, Goyal, Hambro, Azhar et~al.}]{touvron2023llama}
+Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timoth{\'e}e Lacroix, Baptiste Rozi{\`e}re, Naman Goyal, Eric Hambro, Faisal Azhar, et~al. 2023{\natexlab{a}}.
+\newblock \href {https://arxiv.org/pdf/2302.13971.pdf} {{LLaMA: Open and Efficient Foundation Language Models}}.
+\newblock \emph{arXiv preprint arXiv:2302.13971}.
+
+\bibitem[{Touvron et~al.(2023{\natexlab{b}})Touvron, Martin, Stone, Albert, Almahairi, Babaei, Bashlykov, Batra, Bhargava, Bhosale, Bikel, Blecher, Ferrer, Chen, Cucurull, Esiobu, Fernandes, Fu, Fu, Fuller, Gao, Goswami, Goyal, Hartshorn, Hosseini, Hou, Inan, Kardas, Kerkez, Khabsa, Kloumann, Korenev, Koura, Lachaux, Lavril, Lee, Liskovich, Lu, Mao, Martinet, Mihaylov, Mishra, Molybog, Nie, Poulton, Reizenstein, Rungta, Saladi, Schelten, Silva, Smith, Subramanian, Tan, Tang, Taylor, Williams, Kuan, Xu, Yan, Zarov, Zhang, Fan, Kambadur, Narang, Rodriguez, Stojnic, Edunov, and Scialom}]{touvron2023llama2}
+Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, Dan Bikel, Lukas Blecher, Cristian~Canton Ferrer, Moya Chen, Guillem Cucurull, David Esiobu, Jude Fernandes, Jeremy Fu, Wenyin Fu, Brian Fuller, Cynthia Gao, Vedanuj Goswami, Naman Goyal, Anthony Hartshorn, Saghar Hosseini, Rui Hou, Hakan Inan, Marcin Kardas, Viktor Kerkez, Madian Khabsa, Isabel Kloumann, Artem Korenev, Punit~Singh Koura, Marie-Anne Lachaux, Thibaut Lavril, Jenya Lee, Diana Liskovich, Yinghai Lu, Yuning Mao, Xavier Martinet, Todor Mihaylov, Pushkar Mishra, Igor Molybog, Yixin Nie, Andrew Poulton, Jeremy Reizenstein, Rashi Rungta, Kalyan Saladi, Alan Schelten, Ruan Silva, Eric~Michael Smith, Ranjan Subramanian, Xiaoqing~Ellen Tan, Binh Tang, Ross Taylor, Adina Williams, Jian~Xiang Kuan, Puxin Xu, Zheng Yan, Iliyan Zarov, Yuchen Zhang, Angela Fan, Melanie Kambadur, Sharan Narang, Aurelien Rodriguez, Robert Stojnic, Sergey Edunov, and Thomas Scialom. 2023{\natexlab{b}}.
+\newblock \href {http://arxiv.org/abs/2307.09288} {Llama 2: Open foundation and fine-tuned chat models}.
+
+\bibitem[{Wang et~al.(2020)Wang, Cho, and Lewis}]{wang-etal-2020-asking}
+Alex Wang, Kyunghyun Cho, and Mike Lewis. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.acl-main.450} {Asking and answering questions to evaluate the factual consistency of summaries}.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics}, pages 5008--5020, Online. Association for Computational Linguistics.
+
+\bibitem[{Williams et~al.(2018)Williams, Nangia, and Bowman}]{williams2018broad_mnli}
+Adina Williams, Nikita Nangia, and Samuel Bowman. 2018.
+\newblock \href {https://aclanthology.org/N18-1101.pdf} {A broad-coverage challenge corpus for sentence understanding through inference}.
+\newblock In \emph{North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)}.
+
+\bibitem[{Yao et~al.(2023)Yao, Zhao, Yu, Du, Shafran, Narasimhan, and Cao}]{yao2023react}
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik~R Narasimhan, and Yuan Cao. 2023.
+\newblock \href {https://openreview.net/forum?id=WE_vluYUL-X} {React: Synergizing reasoning and acting in language models}.
+\newblock In \emph{International Conference on Learning Representations (ICLR)}.
+
+\bibitem[{Yue et~al.(2023)Yue, Wang, Zhang, Chen, Su, and Sun}]{yue2023automatic}
+Xiang Yue, Boshi Wang, Kai Zhang, Ziru Chen, Yu~Su, and Huan Sun. 2023.
+\newblock \href {https://arxiv.org/pdf/2305.06311} {Automatic evaluation of attribution by large language models}.
+\newblock \emph{arXiv preprint arXiv:2305.06311}.
+
+\bibitem[{Zhang and Bansal(2021)}]{zhang-bansal-2021-finding}
+Shiyue Zhang and Mohit Bansal. 2021.
+\newblock \href {https://doi.org/10.18653/v1/2021.emnlp-main.531} {Finding a balanced degree of automation for summary evaluation}.
+\newblock In \emph{Empirical Methods in Natural Language Processing (EMNLP)}, pages 6617--6632.
+
+\bibitem[{Zhang et~al.(2019)Zhang, Baldridge, and He}]{zhang-etal-2019-paws}
+Yuan Zhang, Jason Baldridge, and Luheng He. 2019.
+\newblock \href {https://doi.org/10.18653/v1/N19-1131} {{PAWS}: Paraphrase adversaries from word scrambling}.
+\newblock In \emph{North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)}, pages 1298--1308.
+
+\bibitem[{Zhong et~al.(2022)Zhong, Lei, and Chen}]{zhong-etal-2022-training}
+Zexuan Zhong, Tao Lei, and Danqi Chen. 2022.
+\newblock \href {https://aclanthology.org/2022.emnlp-main.382} {Training language models with memory augmentation}.
+\newblock In \emph{Empirical Methods in Natural Language Processing (EMNLP)}, pages 5657--5673.
+
+\end{thebibliography}

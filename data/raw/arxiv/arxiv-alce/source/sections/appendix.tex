@@ -1,0 +1,472 @@
+
+\section{Generating Claims for ELI5}
+\label{app_sec:claim_eli5}
+
+
+
+We elect not to use ROUGE-L as our main correctness metrics since it does not account for the different ways of expressing the same answer and it can be easily gamed \cite{krishna-etal-2021-hurdles}.
+We further illustrate this issue in Table \ref{tab:eli5-rouge}.
+A system can easily achieve high ROUGE-L score by retrieving and returning the top passage from a BM25 index.
+However, the claims evaluation metric does not reward this approach since the output often lacks different aspects of the answers.
+\input{tables/eli5_rouge}
+
+Instead, we leverage the original answers 
+to generate sub-claims
+and use them to serve as an estimate of the different aspects of the answers that we expect the model to cover.
+This approach is inspired by works in summarization evaluation and claim verification \cite{zhang-bansal-2021-finding,kamoi2023wice,wang-etal-2020-asking}.
+
+
+Specifically, we use \ttt{text-davinci-003}  to generate the sub-claims.
+We first manually annotate three question and answer pairs from the original ELI5 training set with 3 sub-claims each.
+Then, we prompt \ttt{text-davinci-003} with these pairs as demonstrations.
+The full prompt with an example is shown in Table \ref{tab:eli5-claims-prompt}.
+
+\paragraph{InstructGPT generates coherent and faithful sub-claims.}
+To ensure that the generated sub-claims are of good quality, we manually inspect a random sample of 40 answers and their generated sub-claims (totaling to 120 sub-claims).
+For each sub-claim, we assign a score of $1$ if it is relevant to the question and faithful to the facts presented in the ground truth, and $0$ otherwise.
+We found that $112$ out of the $120$ ($93.33\%$) sub-claims received a score of $1$, meaning that our generated sub-claims are of high quality and faithful to the ground truth.
+Furthermore, the average number of words in the generated sub-claims is $14$ words, and they are typically just one sentence long.
+This is aligned with  the intent behind the metric---to capture short factual claims made by the original answer.
+
+\paragraph{NLI model accurately predicts the entailment of sub-claims.}
+We further analyze our sub-claim evaluation metrics by checking the error rate of the final prediction of the NLI model.
+To this end, we first manually annotate the entailment scores between 40 outputs and their sub-claims (in total of 120 pairs; these are the same questions from the previous analysis). 
+We then use the NLI model to obtain the entailment scores for the output and sub-claims. 
+Using the human annotations as the ground truth label, we found that the NLI model achieved an accuracy of $80.0\%$. 
+
+
+\section{Dataset Statistics}
+
+\label{app_sec:dataset_stats}
+
+For ASQA, human answers have an average length of 65 words.
+For QAMPARI, each question has on average 13 answers. 
+For ELI5, human answers have an average length of 131 words.
+
+\section{Implementation Details}
+\label{app_sec:imp_details}
+
+\paragraph{NLI model.} 
+We use the version of TRUE model from \url{https://huggingface.co/google/t5_xxl_true_nli_mixture}, which is trained on 
+SNLI~\citep{bowman2015large_snli},
+MNLI~\citep{williams2018broad_mnli},
+Fever~\citep{thorne-etal-2018-fever},
+Scitail~\citep{khot2018scitail},
+PAWS~\citep{zhang-etal-2019-paws},
+and VitaminC~\citep{schuster-etal-2021-get}.
+This model uses the following prompt: ``\ttt{premise: \{PREMISE\} hypothesis: \{\}}''
+and outputs ``\texttt{1}'' if the premise entails the hypothesis.
+We format each passage (when used as premise) 
+by the format of ``\ttt{Title: \{TITLE\}\textbackslash{}n\{TEXT\}}'' and concatenate all passages with ``\ttt{\textbackslash{}n}'' as a separator. 
+
+
+
+
+\paragraph{MAUVE.} 
+When running MAUVE, we concatenate the question and the model output (or human answer) by space. 
+We truncate both the references and the model generations to 100 words, 
+as we found MAUVE results are unstable beyond this length for ELI5 (this is due to that ELI5 has a lot of extremely long human answers).
+
+\paragraph{Exact match for ASQA and QAMPARI.}
+Both ASQA and QAMPARI provide aliases for their short answers. 
+We normalize the response and the short answers similarly to \citet{rajpurkar-etal-2016-squad}
+and report the score with the best-matching aliases. 
+For ASQA, \citet{stelmakh2022asqa} also propose a QA-based evaluation which we found to be not as stable, and thus we do not report it in our paper.
+
+
+
+\paragraph{Output truncation.} 
+Before evaluation,
+we truncate model output by new lines, 
+as non-instruction-tuned models may generate more content after new lines that are irrelevant. 
+
+
+
+\paragraph{\textbf{\textsc{\pinteract{}}}.} 
+Empirically, we found that models tend to execute too many consecutive ``\ttt{check}'' actions, so we force the model to always ``\ttt{output}'' after each ``\ttt{check}''. 
+We limit the maximum number of passages to check as 3 to avoid exceeding the length limit.
+The full passages are removed from the context after one action to save context space.
+Table~\ref{tab:inst_inter} provides an example for \interact{}.
+
+\paragraph{Main experiments.} 
+For all experiments except ChatGPT \rerank{},
+we run each model three times with different seeds and each time we sample two demonstrations from a pool of four.
+We report the averaged scores for all experiments in the main paper 
+and we report the standard deviations in Appendix \ref{app_sec:more_main}.
+
+\paragraph{Decoding methods.}
+Based on preliminary experiments we choose the following decoding methods: For ChatGPT and GPT-4, we use sampling with temperature $0.5$; for all open-source models, we use Nucleus sampling~\citep{Holtzman2020The} and set $\text{top\_p}=0.95$. 
+
+
+\section{\citeeval{} Catches Shortcut Cases}
+\label{app_sec:short_cut}
+
+\input{tables/cheat_asqa.tex}
+
+Table~\ref{tab:cheat} demonstrates the experiments to show that \citeeval{}
+is robust to shortcut cases.
+Using the top-1 passages or first two sentences of the top-1 passages
+induces almost perfect citation quality, 
+but fluency and correctness  are dramatically lower.
+
+\section{Citation Recall Discussion}
+\label{app_sec:citation_recall}
+
+Our citation precision evaluation cannot detect a citation that partially supports the statement and hence will falsely penalize it. 
+Consider a statement $s_3$ and its citations \ttt{[2][4][5]}:
+if \ttt{[2]} entails partial information of $s_3$ that \ttt{[4][5]} also entails, 
+\ttt{[2]} will be counted as ``irrelevant'' while it should not be penalized.
+\citet{liu2023evaluating} conduct human evaluation on citation precision in a different way:
+For each citation,
+they ask annotators to judge whether the citation (1) fully support, (2) partially support, or (3) does not support $s_i$. 
+One citation $c_{i,j}$ is precise if
+(a) $c_{i,j}$ fully supports $s_i$ or 
+(b) $\mathcal{C}_i$ fully supports $s_i$, $c_{i,j}$ partially supports $s_i$, and no $c\in \mathcal{C}_i$ alone fully supports $s_i$.
+This evaluation solved the corner case we mentioned in the main paper (one citation partially supports the claim but is identified as ``irrelevant'').
+However, it is challenging to conduct such evaluation automatically,
+as there is no existing model that can judge whether a citation ``partially'' supports a claim.
+We also explore prompting ChatGPT to conduct such a task, which yields poor results.
+We defer it to future work to collect  supervised data to train a better $\phi$ that can detect ``partial support''.
+
+\section{Human Evaluation}
+\label{app_sec:human}
+
+We employ Surge AI (\url{https://www.surgehq.ai/}) for our human evaluation.
+The average pay to workers is 20 USD per hour.
+We randomly sample 100 examples from ASQA and ELI5 and annotate outputs of selected models: ChatGPT \vani, ChatGPT \rerank, and Vicuna-13B \vani.
+
+
+\subsection{Utility}
+To check if the model output is useful to downstream users, we measure the utility of the response $\mathcal{S}$.
+We first show the query $q$ and model response $\mathcal{S}$ to the worker and ask them to rate their agreement with  
+the statement "The response is a helpful and informative answer to the query" on a Likert scale of 1-5, 
+corresponding to \textit{Strongly Disagree}, \textit{Disagree}, \textit{Neutral}, \textit{Agree}, and \textit{Strongly Agree}.
+
+
+\subsection{Citation Recall}
+The annotators are shown the question $q$, the statement $s_i$, and all of its citations $\mathcal{C}_i$, and they rate if the joint set of citations fully support the statement (recall=1) or if they do not support all the claims (recall=0).
+We  calculate the overall recall score
+for the generation by taking an average of all the statements' recall scores.
+
+\subsection{Citation Precision}
+We show the question $q$ and a pair of a statement $s_i$ and one of its citation $c_{i,j} \in \mathcal{C}_i$
+to the annotator.
+We ask the annotator if the citation  \textit{fully supports}, \textit{partially supports}, or \textit{does not support} the factual claims in $s_i$.
+Citation $c_{i,j}$ has a citation precision of $1$ if $s_i$ has a recall of $1$, and
+$c_{i,j}$ fully or partially supports $s_i$.
+Finally, we take an average of  precision scores of all citations in the statement $\mathcal{S}$ to obtain the citation  precision score.
+
+
+
+\input{tables/retrieval_asqa}
+\input{tables/retrieval_qampari}
+\input{tables/retrieval_eli5}
+
+
+
+\section{More Experiments}
+\label{app_sec:more_exp}
+
+
+\input{tables/inst.tex}
+
+\input{tables/numdemo}
+\input{tables/fid_asqa}
+\input{tables/fid_eli5}
+
+
+\subsection{Retrieval Analysis}
+\label{app_sec:retrieval}
+
+
+\paragraph{Oracle.}
+Since the original datasets do not contain gold passages
+at the same granularity level as our setting (100-word passages), 
+we approximate gold passages by running the following algorithm on the top-100 retrieved passages.
+We first calculate the recall score for each passage. %
+Then, we sort the passages using their recall score and take the top 5 passages as our initial oracle set.
+Finally, we iterate through all passages that were not initially in the oracle set and try to replace the passages in the oracle set in a greedy fashion: we calculate the change in the recall score of the oracle set for every possible replacement and proceed with the replacement that results in the largest recall improvement. %
+The set of 5 oracle passages were able to match the recall scores of the top-100 retrieved passages.
+
+
+\paragraph{Detailed retrieval results.}
+We show detailed retrieval results in Tables~\ref{tab:retrieval-asqa}, \ref{tab:retrieval-qampari}, and \ref{tab:retrieval-eli5}.
+
+
+
+
+
+
+\subsection{Effect of Instructions}
+\label{sec:inst}
+
+Table~\ref{tab:inst} shows results of using a full instruction (Table~\ref{tab:inst_vanilla}) and a short version of the instruction (Table~\ref{tab:inst_vanilla_light}).
+We see that the full version induces stronger correctness and citation recall, while the two instructions lead to similar citation precision.
+
+\subsection{Effect of Demonstrations}
+
+\label{sec:demo}
+
+
+
+Table~\ref{tab:numdemo}
+shows results on effect of different numbers of demonstrations.
+We see that 
+numbers of demonstrations do not affect ChatGPT's correctness but
+using at least one demonstration
+ensures high citation recall.
+For the original LLaMA model, Table~\ref{tab:numdemo} shows the trend that more demonstrations lead to better performance.
+
+\subsection{Fine-tuned Models}
+\label{sec:fid}
+
+\revise{
+To better understand the differences between fine-tuned models and prompted large language models, we train state-of-the-art question answering model, Fusion-in-Decoder (FiD; \citet{izacard-grave-2021-leveraging}), and evaluate it in conjunction with \posthoc{}.
+Due to the lack of training data with citation annotation, we first train a T5-base FiD model for 5 epochs on the ASQA training set with a batch size of 64 and a learning rate of 1e-4.
+During evaluation, we use \posthoc{} to add citations to the output. 
+We also use $k=5$ passages during both training and evaluation of the FiD model. 
+
+Then, we evaluate this model on both ASQA (in-domain) and ELI5 (out-of-domain), and the results can be found in Tables \ref{tab:fid-asqa} and \ref{tab:fid-eli5}.
+Note that this is not a direct comparison, as ALCE assumes only evaluation data available and uses only few-shot data for prompting. 
+As the results show, the FiD baseline still significantly lags behind prompting ChatGPT in both correctness and citation quality (even though it is trained on 4000+ examples). 
+When tested on another dataset (ELI5), FiD performs even worse, showing that it is challenging to solve the problem by fine-tuning a small pre-trained model. 
+}
+ 
+\subsection{More Human Evaluation}
+\label{sec_more_human}
+
+
+
+We evaluate the accuracy of our automatic metrics by treating the human annotations as gold labels.
+For citation recall, \citeeval{} achieves an accuracy of $85.1\%$; for citation precision, \citeeval{} has an accuracy of $77.6\%$.
+Regarding detecting insufficient citations, \citeeval{} has a recall of $82.3\%$ and a precision of $84.2\%$; 
+regarding detecting ``irrelevant'' citations, \citeeval{} has a recall of $75.6\%$ and a precision of $66.1\%$---\citeeval{} is effective in detecting ``irrelevant'' citations, but 
+due to the limitation of the NLI model (cannot detect ``partial support''), it has a relatively high false positive rate.
+
+\subsection{Main Results}
+\label{app_sec:more_main}
+We show full results of our experiments along with the standard deviation 
+in Tables \ref{tab:asqa_full}, \ref{tab:qampari_full}, and \ref{tab:eli5_full}.
+We repeat all experiments with three different random seeds. 
+However, for ChatGPT \rerank, we use only one seeded run since each run repeats the generation step four times, and more experiments would incur significant costs. Similarly, due to the cost of running ChatGPT-16K and GPT-4, we only use one seeded run for each model. 
+
+\subsection{Open-source Models}
+\label{app_sec:open-source-models}
+In addition to the open-source models discussed in the main text, we also show the results of LLaMA-7B, Alpaca-7B, Vicuna-7B, LLaMA-33B, Oasst-33B, and Stable Beluga 2 in the Tables \ref{tab:asqa_full}, \ref{tab:qampari_full}, and \ref{tab:eli5_full}.
+For selected models, we also tested them using approaches beyond \vani{}. 
+
+Although open-source models generally lag behind the state-of-the-art models (i.e. GPT-4) in both correctness and citation quality, the largest instruction-following models (i.e. LLaMA-2-70B-Chat and Stable Beluga 2) can sometimes achieve competitive correctness to the SoTA. 
+
+Furthermore, we found that the open-source models follow a similar trend between different approaches as ChatGPT. Specifically, using \summ{} and \snippet{} improves correctness and \rerank{} boosts citation quality. 
+
+\input{tables/asqa_full.tex}
+\input{tables/qampari_full.tex}
+\input{tables/eli5_full.tex}
+
+
+
+\input{tables/eli5_claims_prompt}
+\section{Prompts}
+\label{app_sec:propmt}
+
+We show detailed prompts used in our paper in Tables~\ref{tab:inst_vanilla}, \ref{tab:inst_vanilla_light}, \ref{tab:prompt_summary}, \ref{tab:prompt_snippet}, \ref{tab:inst_inter}, \ref{tab:inst_search}, and \ref{tab:prompt_close}.
+
+\begin{table*}[h]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.95\textwidth}<{}}
+        \toprule
+            Instruction: Write an accurate, engaging, and concise answer for the given question using only the provided search results (some of which might be irrelevant) and cite them properly. Use an unbiased and journalistic tone. Always cite for any factual claim. When citing several search results, use [1][2][3]. Cite at least one document and at most three documents in each sentence. If multiple documents support the sentence, only cite a minimum sufficient subset of the documents. \\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        Instruction for \vani{}.
+    }
+    \label{tab:inst_vanilla}
+\end{table*}
+
+\begin{table*}[h]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.95\textwidth}<{}}
+        \toprule
+            Instruction: Write a high-quality answer for the given question using only the provided search results and cite them properly using [1][2][3].\\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        Short instruction for \vani{}.
+    }
+    \label{tab:inst_vanilla_light}
+\end{table*}
+
+\begin{table*}[h]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.95\textwidth}<{}}
+        \toprule
+            Summarize the following document within 50 words with the question of interest "\{QUESTION\}" Return "irrelevant" if the document is irrelevant to the question. Try to keep all the important dates, numbers, and names.\\
+            ~\\
+            Title: \{TITLE\}\\
+            Text: \{TEXT\}\\
+            Summary:\\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        Prompts for \summ{}.
+    }
+    \label{tab:prompt_summary}
+\end{table*}
+
+\begin{table*}[h]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.95\textwidth}<{}}
+        \toprule
+Given the follow passage and the question "\{QUESTION\}", extract a useful span from the passage that can answer the question. Resolve all the coreference issues to make the extracted span understandable standalone. If the passage is not helpful for answering the question, return "irrelevant".\\
+\\
+Title: \{TITLE\}\\
+Text: \{TEXT\}\\
+Extracted span:\\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        Prompts for \snippet{}.
+    }
+    \label{tab:prompt_snippet}
+\end{table*}
+
+
+
+
+\begin{table*}[h]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.95\textwidth}<{}}
+        \toprule
+            Instruction: Write an accurate, engaging, and concise answer for the given question using only the provided search results and cite them properly. Use an unbiased and journalistic tone. Always cite for any factual claim.\\
+            You are provided summaries/snippets of the search results. You can use "Check: Document [1][2]" to check the corresponding full documents (you should only check relevant documents and you can at most check 3 documents at a time) and use "Output:" to output a sentence in the answer. In the answer, cite properly by using [1][2][3]. Cite at least one document and at most three documents in each sentence. If multiple documents support the sentence, only cite a minimum sufficient subset of the documents. Use "End" to end the generation.\\
+            \\
+            \vspace{-1em}
+            \noindent {\color{brown}<Retrieve for question ``...''>}\\
+            \noindent {\color{brown}<Get summaries/snippets for the passages and delete those that are ``irrelevant''>}\\
+            Document {[1]}(Title: ...) \{SUMMARY OR SNIPPET\}\\
+            ... \\
+            \\
+            \vspace{-1em}
+            Question: When did  US break away from England? \\
+        \noindent {\color{blue} Check: Document [1][2]} \\
+        Document [1] \{FULL TEXT\} \\
+        Document [2] \{FULL TEXT\} \\
+        \noindent {\color{blue} Output: The United States ... \tf{\underline{[1]}} ... \tf{\underline{[2]}}.} \\
+        \noindent {\color{brown}<Remove the full text of [1][2] from context>}\\
+        \noindent {\color{blue} Check: Document [3]} \\
+        Document [3] \{FULL TEXT\} \\
+        \noindent {\color{blue} Output: The Treaty of Paris ... \tf{\underline{[3]}}.} \\
+        \noindent {\color{brown}<Remove the full text of [3] from context>}\\
+        \noindent {\color{blue}End.}\\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        An example for \interact{}.
+    }
+    \label{tab:inst_inter}
+\end{table*}
+
+\begin{table*}[h]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.95\textwidth}<{}}
+        \toprule
+            Instruction: Write an accurate, engaging, and concise answer for the given question using only the provided search results and cite them properly. Use an unbiased and journalistic tone. Always cite for any factual claim.\\
+           You can use "Search: key words" to check the most relevant document's full text and use "Output:" to output a sentence in the answer. In the answer, cite properly by using [1][2][3]. Cite at least one document and at most three documents in each sentence. If multiple documents support the sentence, only cite a minimum sufficient subset of the documents. Use "End" to end the generation.\\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        Instruction for \search{}.
+    }
+    \label{tab:inst_search}
+\end{table*}
+
+\begin{table*}[h]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.95\textwidth}<{}}
+        \toprule
+            Instruction: Write an accurate, engaging, and concise answer for the given question. Use an unbiased and journalistic tone. \\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        Instruction for \close{}.
+    }
+    \label{tab:prompt_close}
+\end{table*}
+
+
+\section{Examples}
+
+In Tables~\ref{tab:exp_eli5} and \ref{tab:exp_eli52} we show some examples of questions and model generated outputs. 
+
+\begin{table*}[h]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.95\textwidth}<{}}
+        \toprule
+            Instruction: Write an accurate, engaging, and concise answer for ... \\
+            \\
+            \vspace{-1em}
+            Document {[1]}(Title: How to Treat and Prevent Food Poisoning - MsPrepper) just a typical gastro upset. Salmonella is most commonly caused by eating undercooked or raw foods like eggs or meat. You know how your mom always warned you not to eat raw cookie dough? This is why. Most people do eat cookie dough and they are fine, but salmonella is a risk. If you do contract salmonella, you could start to feel bad within in a couple of hours after eating contaminated food, and sometimes it could take a day or two. Common symptoms are nausea and vomiting, loose stools (sometimes bloody), flu like symptoms, and stomach cramps. To treat \\
+            Document {[2]}(Title: FDA Issues Warning About Eating Raw Cookie Dough, But Not For Salmonella Risks) FDA Issues Warning About Eating Raw Cookie Dough, But Not For Salmonella Risks Used to licking the spoon or placating yourself with full-on chunks of raw cookie dough? The Food and Drug Administration issued a warning on Tuesday that strongly advises against continuing the habit. The agency asserted that consuming raw batter of any kind, whether for bread, cookies or pizza, could make a person sick. While you may have been warned in the past against eating raw dough due to the risk of contracting salmonella from raw eggs, the FDA is citing raw flour as the culprit for a \\
+            Document {[3]}(Title: It's Probably OK to Eat Raw Cookie Dough — As Long As You're Smart About It - The Crux - Very Top Secret Information) First, when most people think about health risks and cookie dough, they think about raw egg. Eggs can be contaminated with salmonella bacteria, and food safety recommendations encourage people to cook eggs until the white and yolk are firm in order to kill any bacteria. However, anyone making cookies can do things to reduce this risk by using pasteurized egg products. When my kids and I make cookie dough, we never use regular eggs. Instead, we use shell eggs that have been pasteurized to kill any harmful bacteria without actually cooking the egg itself. (A great public health innovation, if \\
+            Document {[4]}(Title: How Dangerous Is It to Eat Raw Cookie Dough? | Men's Health) Can Eating Raw Cookie Dough Really Make You Sick? Scientists reveal the truth about this supposedly dangerous delicacy By Katherine Dempsey There are few things more tempting in life than eyeing a bowl of cookie dough and deciding whether or not to stick your finger in for a scoop. It’s a bit like playing Russian roulette. You could get lucky and enjoy the delicious dough without conseqence, but there’s always the risk of getting serously sick with a food-borne illness. That’s because multiple ingredients within the dough could be contaminated by pathogens such as Salmonella and E. coli, says Soohyoun \\
+            Document {[5]}(Title: How Dangerous Is It to Eat Raw Cookie Dough? | Men's Health) is usually pasteurized, so it’s not likely that the egg would make you sick. However, other ingredients in the dough could potentially harbor pathogens. Experts say that a prime suspect in a 2009 E. coli outbreak linked to prepackaged cookie dough was actually the flour. Nuts and chocolate have also been linked to Salmonella outbreaks. Bottom line: You’re better off skipping raw cookie dough. At least you’ll have killer cookies as a consolation. The article How Bad Is It To Eat Raw Cookie Dough? originally ran on Prevention.com The 9 Foods Most Likely to Make You Sick Mmm, Just Don't \\
+
+            ... \\
+            \\
+            \vspace{-1em}
+            Question: Why is it bad to eat cookie dough for risk of salmonella but things like Cookie Dough Bites are ok? \\
+            Answer: {\color{blue} Raw cookie dough is not recommended to be eaten due to the risk of salmonella \tf{\underline{[1][2]}}. Eating raw flour is also a risk for food poisoning \tf{\underline{[2]}}. The egg in cookie dough is usually pasteurized, so it's not likely that the egg would make you sick, but other ingredients in the dough could potentially harbor pathogens \tf{\underline{[4][5]}}. However, prepackaged cookie dough like Cookie Dough Bites is safe to eat because the dough is made with pasteurized egg products and heat-treated flour \tf{\underline{[2][3]}}.}.\\
+            \\
+            \noindent {\color{orange} Ground truth claims:}\\
+            \noindent {\color{orange} 1. Cookie Dough Bites are safe to eat since they do not contain eggs.}\\
+            \noindent {\color{orange} 2. Salmonella is a bacteria found in eggs.}\\
+            \noindent {\color{orange} 3. Eating raw cookie dough carries the risk of salmonella infection.}\\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        ELI5 example 1.
+    }
+    \label{tab:exp_eli5}
+\end{table*}
+
+
+\begin{table*}[h]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.98\textwidth}<{}}
+        \toprule
+            Instruction: Write an accurate, engaging, and concise answer for ... \\
+            \\
+            \vspace{-1em}
+            Document [1](Title: Is Snapchat really worth \$19 billion? - CSMonitor.com) reporting that the Los Angeles-based company is aiming to raise \$500 million at a valuation of \$16 billion to \$19 billion, making it the third most highly valued tech start-up backed by venture capitalists. The Chinese handset maker Xiaomi is valued at \$45 billion, while Uber is estimated to be valued at about \$40 billion, according to data from CB Insights. Read MoreVC investment hits \$86B thanks to Uber, Xiaomi Snapchat was valued at \$10 billion in August, according to a Dow Jones report. Some of its investors from previous rounds include Benchmark, Lightspeed Venture Partners and Kleiner Perkins Caufield \\
+            Document [2](Title: What Are Venture Capital Investments? – DollarsAndSense.my) Ever wondered how highly valued technology giants like Google and Facebook were able to grow so fast and pay their employees so well in such a short amount of time, or how still growing start-ups like Uber are able to lose 1.2 billion US dollars in just the first half of this year alone and still command a valuation upwards of 50 billion US dollars? The answer lies with a special category of investment activity known as venture capital. Venture capitalists are professional investors who invest in a number of highly scalable high-risk technology ventures hoping to make a multi-fold \\
+            Document [3](Title: Opinion | What Dara Khosrowshahi Must Do to Save Uber - The New York Times) at a discount. These are troubling signs. Every start-up must one day fulfill the market’s demand that it turn a profit, but Uber has never figured out how to do that. While ride sharing in some form will probably survive, it’s more likely that without some drastic changes, Uber won’t be around in three to five years. Mr. Khosrowshahi must avoid the mistakes of his predecessor by accepting that “pivots” (Silicon Valley-speak for the desperate changes troubled companies make to reassure their venture capitalist funders) are not the answer. None of the pivots Mr. Kalanick tried — like on-demand delivery \\
+            Document [4](Title: Snapchat raising funding round at \$19 billion valuation: Report) Snapchat raising funding round at \$19 billion valuation: Report The mobile messaging app Snapchat is said to be seeking funding at a \$19 billion valuation, according to a report, citing a person with knowledge of the matter. Bloomberg is reporting that the Los Angeles-based company is aiming to raise \$500 million at a valuation of \$16 billion to \$19 billion, making it the third most highly valued tech start-up backed by venture capitalists. The Chinese handset maker Xiaomi is valued at \$45 billion, while Uber is estimated to be valued at about \$40 billion, according to data from CB Insights. \\
+            Document [5](Title: Unicorns And Wall Street | MoneyTips) not start showing profits soon. Even Uber, with its massive \$62-billion-plus valuation, will test investor's patience if it does not start showing signs of a profit in the next few years. Cracks are starting to show in terms of pre-IPO devaluations. Dropbox and Snapchat have seen a nearly one-quarter drop in their pre-IPO valuations, while Square's pre-IPO value has dropped by approximately one-third. Larger investors and venture capitalists are sending a message to the unicorns: Outline a solid path to profits and start producing them soon, or expect your valuation to be slashed. Diving ahead with an IPO is not \\
+            ... \\
+            \\
+            \vspace{-1em}
+            Question: How are firms like snapchat, uber etc valued so highly while still not making a profit? Do venture capitalists not expect some form of repayment within a number of years? \\
+            Answer: {\color{blue} Venture capitalists invest in a number of highly scalable high-risk technology ventures hoping to make a multi-fold return on their investment in a short amount of time \tf{\underline{[2]}}. Highly valued companies like Snapchat, Uber, and Xiaomi are able to grow so fast and command high valuations because they have the potential to generate significant revenue in the future \tf{\underline{[2][4]}}. Venture capitalists expect a return on their investment within a number of years, but they also invest in the long-term potential of the company \tf{\underline{[2]}}. It is important to note that every start-up must eventually turn a profit, but some start-ups like Uber have not yet figured out how to do that \tf{\underline{[3][5]}}.}\\
+            \\
+            \noindent {\color{orange} Ground truth claims:}\\
+            \noindent {\color{orange} 1. Firms like Snapchat and Uber need to establish their brand and amass users before introducing ads.}\\
+            \noindent {\color{orange} 2. Introducing ads too early can deter potential users.}\\
+            \noindent {\color{orange} 3. Uber is reinvesting a lot of money to make their service better.}\\
+        
+        \bottomrule
+    \end{tabular}
+    \caption{
+        ELI5 example 2.
+    }
+    \label{tab:exp_eli52}
+\end{table*}

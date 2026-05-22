@@ -1,0 +1,121 @@
+\section{Introduction}
+
+
+
+Large language models (LLMs; \citealp{brown2020language,openai2023gpt4}) have gained increasing popularity as a tool for information seeking.
+While they generate engaging and coherent responses,
+their outputs are prone to hallucination and often contain factually incorrect information~\cite{ji2023survey}.
+This makes it harder for users to trust and verify LLM-generated outputs without any supporting evidence.
+
+\begin{figure}[t]
+    \includegraphics[width=0.98\linewidth]{figs/main.pdf}
+    \caption{The task setup of \citeeval{}. Given a question, 
+    the system generates text while providing \ti{citing passages} from a large retrieval corpus. Each statement may contain multiple citations (e.g., \ttt{[1][2]}). %
+    }
+    \vspace{-5pt}
+    \label{fig:main}
+\end{figure}
+
+In this work, we study a new generation paradigm for LLMs, in which
+we require LLMs to provide \textit{citations} to one or a few text passages for any statement they generate (Figure~\ref{fig:main}).
+Incorporating citations brings several benefits:
+(1) users can easily verify LLMs' claims with the provided citations;
+(2) LLMs can generate text that faithfully follows cited passages, which has the promise to improve correctness and alleviate hallucination.
+
+
+
+\begin{table*}[t]
+    \centering
+    \small
+        \begin{tabular}{lllp{0.5\textwidth}}
+            \toprule
+            \tf{Dataset} & \tf{Corpus (\#passages)} & \tf{Question type} & \tf{Example} \\
+            \midrule
+            ASQA & Wikipedia (21M) & Factoid (ambiguous) & \tf{Q}: When did the US break away from England? \\
+             &&& \tf{A}: The US declared independence on July 2, 1776 \citedb{[1][2]} ... The Treaty of Paris was later signed on September 3, 1783 \citedb{[3]}. \\ %
+            QAMPARI & Wikipedia (21M) & Factoid (list) & \tf{Q}: Which films have Gong Li as a member of their cast? \\
+            &&& \tf{A}: The Story of Qiu Ju \citedb{[1]}, Farewell My Concubine \citedb{[2]}, The Monkey King 2 \citedb{[3]}, Mulan \citedb{[3]}, Saturday Fiction \citedb{[3]} ...\\
+            ELI5 & Sphere (899M) & Why/How/What & \tf{Q}: How do student loans affect getting a mortgage? \\
+            &&& \tf{A}: Student loans can affect the debt to income ratio \citedb{[1]}, which is a key factor in determining the amount that ... \citedb{[2][3]} \\
+            \bottomrule
+        \end{tabular}
+    \caption{The three datasets used in our \citeeval{} benchmark. %
+    These datasets cover a wide range of question types
+    and the corresponding corpora span from Wikipedia to 
+    Web-scale document collection. %
+    }
+    \vspace{-10pt}
+    \label{tab:datasets}
+\end{table*}
+
+Multiple commercial systems have adopted this paradigm: %
+Bing Chat\footnote{\url{https://www.bing.com/new}} and perplexity.ai\footnote{\url{https://www.perplexity.ai}}
+respond to user questions in natural language with references to Web pages.
+\citet{nakano2021webgpt,menick2022teaching} share a similar motivation, but they mainly experiment with commercial search engines and closed-source models, making their results difficult to evaluate.
+Retrieval-augmented LMs~\citep{borgeaud2022retro,izacard2022atlas}
+incorporate retrieved passages during both training and inference,
+but do not guarantee faithfulness to retrieved passages or explicitly provide citations.
+Additionally,
+previous studies mostly rely on human evaluation~\cite{nakano2021webgpt,menick2022teaching,liu2023evaluating}, which is expensive and difficult to reproduce.
+We argue that the absence of automated evaluation
+hinders the advances of such systems.
+
+We present \tf{\citeeval{}}, the first {reproducible} benchmark for \textit{automatically} evaluating LLMs'  generations with citations.
+\citeeval{} assumes a natural-language question and a retrieval corpus, and requires building end-to-end systems to retrieve relevant passages from the corpus, generate a response to the question, and cite corresponding supporting passages.
+We compile three datasets that cover different types of questions and corpora---ASQA~\cite{stelmakh2022asqa}, QAMPARI~\cite{rubin2022qampari}, and ELI5~\cite{fan-etal-2019-eli5}---as shown in Table~\ref{tab:datasets}.
+Different from previous benchmarks~\citep{lee-etal-2019-latent,bohnet2022attributed},
+\citeeval{} evaluates long-text generation, 
+focusing on automatically evaluating citation quality,
+and allows citing \textit{multiple} passages for individual statements.
+
+We design automatic evaluation methods in three dimensions:
+\tf{fluency}, \tf{correctness}, and \tf{citation quality}.
+Specifically,
+we use MAUVE~\citep{pillutla2021mauve} to measure fluency, 
+propose tailored correctness metrics for each dataset, %
+and
+adopt a natural language inference (NLI) model~\citep{honovich-etal-2022-true-evaluating} to measure citation quality.
+We showcase how the three dimensions together contribute to a robust evaluation, 
+preventing systems from exploiting shortcuts. %
+Additionally, we conduct human evaluation and demonstrate a strong correlation with our automatic metrics.
+
+We experiment on multiple systems with state-of-the-art LLMs and retrievers and also propose novel prompting strategies to synthesize retrieved text into text generation. 
+Although all systems are capable of providing fluent and coherent responses, 
+there remains substantial room for improvement in terms of correctness and citation quality: For example, on the ELI5 dataset, 
+around 50\% generations of our ChatGPT and GPT-4 baselines are not fully supported by the cited passages. 
+Additionally, we find that
+(1) a closed-book model (generating answers without accessing any retrieved documents) with post-hoc citing achieves good correctness but much worse citation quality;
+(2) although interactive retrieval approaches~\citep{yao2023react,schick2023toolformer} offer more flexibility in when/what to retrieve, they do not improve the performance on this challenging benchmark;
+(3) summarizing the retrieved passages in a shorter text improves correctness but not citation quality;
+(4) reranking multiple generations boosts citation quality measured by human evaluation;
+(5) incorporating more retrieved passages in context does not help ChatGPT but improves GPT-4 performance.
+
+
+Our extensive analyses  
+highlight three major challenges of building LLMs to generate text with citations: 
+(1) 
+the retrieval quality is crucial to the final performance and  has substantial room for improvement;
+(2) 
+LLMs' limited context window
+restricts the number of passages they can incorporate;
+(3) 
+\revise{current LLMs struggle to synthesize multiple documents in context
+without being distracted by irrelevant ones, although better instruction tuning brings significant improvement.}
+These challenges pose promising research directions for 
+developing better systems integrating retrieval and LLMs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

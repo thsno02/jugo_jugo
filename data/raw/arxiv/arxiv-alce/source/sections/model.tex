@@ -1,0 +1,109 @@
+
+
+
+\section{Modeling}
+\label{sec:modeling}
+
+
+
+In this section,
+we discuss three major modeling components for an \citeeval{} system---retrieval, synthesis, and post-editing.
+
+
+\input{tables/prompt_short.tex}
+
+\subsection{Retrieval}
+\label{sec:retrieval}
+
+We explore simple, off-the-shelf retrievers.
+We use dense retrievers  for Wikipedia, including GTR~\cite{ni-etal-2022-large} and DPR~\cite{karpukhin-etal-2020-dense}; 
+we use 
+BM25 for Sphere. %
+For each question,
+we 
+retrieve the top-100 passages. %
+
+
+
+\subsection{Synthesis}
+\label{sec:synthesis}
+
+
+
+
+
+We  focus on %
+how to
+prompt an LLM to 
+interact with the retriever, and 
+synthesize and cite the evidence (without fine-tuning internal parameters).
+One noteworthy challenge is that existing %
+LLMs all have limited context window and thus
+can only fit a handful of passages.
+
+
+
+
+
+\paragraph{\textsc{\pvani{}}.}
+We simply provide the model with the top-$k$\footnote{We can fit at most $k=3$ for models with 2K window and at most $k=5$ for models with 4K context window.} passages and instruct the model to cite accordingly (Table~\ref{tab:prompt_short}).
+We also use in-context learning~\cite{brown2020language} and prepend two demonstrations.
+The complete instruction is in Table~\ref{tab:inst_vanilla}.
+
+
+\paragraph{\textsc{\psumm}/\textsc{\psnippet{}}.}
+With a 4K context window, we can at most safely fit $k=5$ passages. As shown in Figure~\ref{fig:ret}, top-5 retrieved passages can only cover 56.8\% percent of the answers in ASQA. 
+
+To tackle this limitation, we propose to provide \textit{summaries} or \textit{snippets} of passages instead of the full text (summaries are abstractive but snippets are spans from passages). 
+We acquire summaries and snippets by prompting ChatGPT with instructions (prompts in Table~\ref{tab:prompt_summary} and \ref{tab:prompt_snippet}).\footnote{We also query ChatGPT whether the passage is relevant to the question, and
+filter out passages that are ``irrelevant''.}
+Then we replace all passages with  summaries/snippets.
+Summaries or snippets significantly reduce the passage length, allowing for more passages to fit in:
+for ASQA, they reduce passage length by 6$\times$ on average.
+
+
+Though \summ{}/\snippet{} allows for more retrieved passages, 
+they are lossy compressions. 
+To alleviate this problem,
+we propose \interact{}, an interactive prompting scheme 
+to allow the model to check the full text of certain passages. %
+At each step, the model can execute one of  three actions: 
+(1) ``\ttt{Check: Document [1][2]}'' to check the full text of the corresponding documents;
+(2) ``\ttt{Output:}'' to output a statement of the answer;
+(3) ``\ttt{End.}'' to end the generation.
+\S\ref{app_sec:imp_details} provides more details.
+
+
+
+\input{tables/prompt_search.tex}
+
+\paragraph{\textsc{\psearch{}}.}
+The above methods all display retrieval results at the beginning.
+In \search{},
+we allow LLMs to call ``search'' during the generation process~\citep{yao2023react,press2022measuring,jiang2023active}.
+At each step, the model can execute one of  three actions: 
+``\ttt{Search: \{query\}}'' to search among the top-100 passages\footnote{We do not search over the entire corpus because  \ttt{\{query\}} may leave out certain context in the question and searching among the already-retrieved passages gives better results.} by using GTR; the ``\ttt{Output}'' and ``\ttt{End}'' actions are the same as \interact{}.
+For each ``\ttt{Search}'' action, we display the best retrieved passage in the context.
+The passage is removed after one action to save context space.
+Table~\ref{tab:prompt_search} shows an example. %
+
+
+
+\paragraph{\textsc{\pclose{}}.}
+We also add a simple closed-book baseline, where the model is only prompted with the instruction and the question,
+without any retrieved passages provided.
+Consequently, this variant does not cite any evidences.
+
+\subsection{Post-editing}
+\label{sec:refinement}
+
+In this section we discuss two strategies for refining the  output to further improve its quality.
+
+\paragraph{\textsc{\prerank{}}.}
+We randomly sample $n_{\text{sample}}=4$ %
+responses for each question, and select the best response using the automatic \textit{citation recall} score. 
+we expect \textsc{\prerank{}} to improve the citation quality.
+
+\paragraph{\textsc{\pposthoc{}}.}
+For each statement, we find the best matching passage among the top-100 retrieved passages using GTR and cite it.
+We combine this with \close{} in our experiments.

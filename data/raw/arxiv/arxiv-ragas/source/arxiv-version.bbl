@@ -1,0 +1,143 @@
+\begin{thebibliography}{28}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Azaria and Mitchell(2023)}]{DBLP:journals/corr/abs-2304-13734}
+Amos Azaria and Tom~M. Mitchell. 2023.
+\newblock \href {https://doi.org/10.48550/arXiv.2304.13734} {The internal state of an {LLM} knows when its lying}.
+\newblock \emph{CoRR}, abs/2304.13734.
+
+\bibitem[{Borgeaud et~al.(2022)Borgeaud, Mensch, Hoffmann, Cai, Rutherford, Millican, van~den Driessche, Lespiau, Damoc, Clark, de~Las~Casas, Guy, Menick, Ring, Hennigan, Huang, Maggiore, Jones, Cassirer, Brock, Paganini, Irving, Vinyals, Osindero, Simonyan, Rae, Elsen, and Sifre}]{DBLP:conf/icml/BorgeaudMHCRM0L22}
+Sebastian Borgeaud, Arthur Mensch, Jordan Hoffmann, Trevor Cai, Eliza Rutherford, Katie Millican, George van~den Driessche, Jean{-}Baptiste Lespiau, Bogdan Damoc, Aidan Clark, Diego de~Las~Casas, Aurelia Guy, Jacob Menick, Roman Ring, Tom Hennigan, Saffron Huang, Loren Maggiore, Chris Jones, Albin Cassirer, Andy Brock, Michela Paganini, Geoffrey Irving, Oriol Vinyals, Simon Osindero, Karen Simonyan, Jack~W. Rae, Erich Elsen, and Laurent Sifre. 2022.
+\newblock \href {https://proceedings.mlr.press/v162/borgeaud22a.html} {Improving language models by retrieving from trillions of tokens}.
+\newblock In \emph{International Conference on Machine Learning, {ICML} 2022, 17-23 July 2022, Baltimore, Maryland, {USA}}, volume 162 of \emph{Proceedings of Machine Learning Research}, pages 2206--2240. {PMLR}.
+
+\bibitem[{Bubeck et~al.(2023)Bubeck, Chandrasekaran, Eldan, Gehrke, Horvitz, Kamar, Lee, Lee, Li, Lundberg et~al.}]{bubeck2023sparks}
+S{\'e}bastien Bubeck, Varun Chandrasekaran, Ronen Eldan, Johannes Gehrke, Eric Horvitz, Ece Kamar, Peter Lee, Yin~Tat Lee, Yuanzhi Li, Scott Lundberg, et~al. 2023.
+\newblock Sparks of artificial general intelligence: Early experiments with gpt-4.
+\newblock \emph{arXiv preprint arXiv:2303.12712}.
+
+\bibitem[{Devlin et~al.(2019)Devlin, Chang, Lee, and Toutanova}]{devlin-etal-2019-bert}
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2019.
+\newblock \href {https://doi.org/10.18653/v1/N19-1423} {{BERT}: Pre-training of deep bidirectional transformers for language understanding}.
+\newblock In \emph{Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)}, pages 4171--4186, Minneapolis, Minnesota. Association for Computational Linguistics.
+
+\bibitem[{Fu et~al.(2023)Fu, Ng, Jiang, and Liu}]{DBLP:journals/corr/abs-2302-04166}
+Jinlan Fu, See{-}Kiong Ng, Zhengbao Jiang, and Pengfei Liu. 2023.
+\newblock \href {https://doi.org/10.48550/arXiv.2302.04166} {Gptscore: Evaluate as you desire}.
+\newblock \emph{CoRR}, abs/2302.04166.
+
+\bibitem[{Guu et~al.(2020)Guu, Lee, Tung, Pasupat, and Chang}]{guu2020retrieval}
+Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, and Mingwei Chang. 2020.
+\newblock Retrieval augmented language model pre-training.
+\newblock In \emph{International conference on machine learning}, pages 3929--3938. PMLR.
+
+\bibitem[{Ji et~al.(2023)Ji, Lee, Frieske, Yu, Su, Xu, Ishii, Bang, Madotto, and Fung}]{ji2023survey}
+Ziwei Ji, Nayeon Lee, Rita Frieske, Tiezheng Yu, Dan Su, Yan Xu, Etsuko Ishii, Ye~Jin Bang, Andrea Madotto, and Pascale Fung. 2023.
+\newblock Survey of hallucination in natural language generation.
+\newblock \emph{ACM Computing Surveys}, 55(12):1--38.
+
+\bibitem[{Kadavath et~al.(2022)Kadavath, Conerly, Askell, Henighan, Drain, Perez, Schiefer, Hatfield{-}Dodds, DasSarma, Tran{-}Johnson, Johnston, Showk, Jones, Elhage, Hume, Chen, Bai, Bowman, Fort, Ganguli, Hernandez, Jacobson, Kernion, Kravec, Lovitt, Ndousse, Olsson, Ringer, Amodei, Brown, Clark, Joseph, Mann, McCandlish, Olah, and Kaplan}]{DBLP:journals/corr/abs-2207-05221}
+Saurav Kadavath, Tom Conerly, Amanda Askell, Tom Henighan, Dawn Drain, Ethan Perez, Nicholas Schiefer, Zac Hatfield{-}Dodds, Nova DasSarma, Eli Tran{-}Johnson, Scott Johnston, Sheer~El Showk, Andy Jones, Nelson Elhage, Tristan Hume, Anna Chen, Yuntao Bai, Sam Bowman, Stanislav Fort, Deep Ganguli, Danny Hernandez, Josh Jacobson, Jackson Kernion, Shauna Kravec, Liane Lovitt, Kamal Ndousse, Catherine Olsson, Sam Ringer, Dario Amodei, Tom Brown, Jack Clark, Nicholas Joseph, Ben Mann, Sam McCandlish, Chris Olah, and Jared Kaplan. 2022.
+\newblock \href {https://doi.org/10.48550/arXiv.2207.05221} {Language models (mostly) know what they know}.
+\newblock \emph{CoRR}, abs/2207.05221.
+
+\bibitem[{Kandpal et~al.(2022)Kandpal, Deng, Roberts, Wallace, and Raffel}]{DBLP:journals/corr/abs-2211-08411}
+Nikhil Kandpal, Haikang Deng, Adam Roberts, Eric Wallace, and Colin Raffel. 2022.
+\newblock \href {https://doi.org/10.48550/arXiv.2211.08411} {Large language models struggle to learn long-tail knowledge}.
+\newblock \emph{CoRR}, abs/2211.08411.
+
+\bibitem[{Khandelwal et~al.(2020)Khandelwal, Levy, Jurafsky, Zettlemoyer, and Lewis}]{DBLP:conf/iclr/KhandelwalLJZL20}
+Urvashi Khandelwal, Omer Levy, Dan Jurafsky, Luke Zettlemoyer, and Mike Lewis. 2020.
+\newblock \href {https://openreview.net/forum?id=HklBjCEKvH} {Generalization through memorization: Nearest neighbor language models}.
+\newblock In \emph{8th International Conference on Learning Representations, {ICLR} 2020, Addis Ababa, Ethiopia, April 26-30, 2020}. OpenReview.net.
+
+\bibitem[{Khattab et~al.(2022)Khattab, Santhanam, Li, Hall, Liang, Potts, and Zaharia}]{DBLP:journals/corr/abs-2212-14024}
+Omar Khattab, Keshav Santhanam, Xiang~Lisa Li, David Hall, Percy Liang, Christopher Potts, and Matei Zaharia. 2022.
+\newblock \href {https://doi.org/10.48550/arXiv.2212.14024} {Demonstrate-search-predict: Composing retrieval and language models for knowledge-intensive {NLP}}.
+\newblock \emph{CoRR}, abs/2212.14024.
+
+\bibitem[{Lee et~al.(2019)Lee, Chang, and Toutanova}]{lee2019latent}
+Kenton Lee, Ming-Wei Chang, and Kristina Toutanova. 2019.
+\newblock Latent retrieval for weakly supervised open domain question answering.
+\newblock In \emph{Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics}, pages 6086--6096.
+
+\bibitem[{Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal, K{\"{u}}ttler, Lewis, Yih, Rockt{\"{a}}schel, Riedel, and Kiela}]{DBLP:conf/nips/LewisPPPKGKLYR020}
+Patrick S.~H. Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich K{\"{u}}ttler, Mike Lewis, Wen{-}tau Yih, Tim Rockt{\"{a}}schel, Sebastian Riedel, and Douwe Kiela. 2020.
+\newblock \href {https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html} {Retrieval-augmented generation for knowledge-intensive {NLP} tasks}.
+\newblock In \emph{Advances in Neural Information Processing Systems 33: Annual Conference on Neural Information Processing Systems 2020, NeurIPS 2020, December 6-12, 2020, virtual}.
+
+\bibitem[{Li et~al.(2023)Li, Cheng, Zhao, Nie, and Wen}]{DBLP:journals/corr/abs-2305-11747}
+Junyi Li, Xiaoxue Cheng, Wayne~Xin Zhao, Jian{-}Yun Nie, and Ji{-}Rong Wen. 2023.
+\newblock \href {https://doi.org/10.48550/arXiv.2305.11747} {Halueval: {A} large-scale hallucination evaluation benchmark for large language models}.
+\newblock \emph{CoRR}, abs/2305.11747.
+
+\bibitem[{Liu et~al.(2023)Liu, Lin, Hewitt, Paranjape, Bevilacqua, Petroni, and Liang}]{liu2023lost}
+Nelson~F. Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua, Fabio Petroni, and Percy Liang. 2023.
+\newblock \href {http://arxiv.org/abs/2307.03172} {Lost in the middle: How language models use long contexts}.
+
+\bibitem[{Mallen et~al.(2023)Mallen, Asai, Zhong, Das, Khashabi, and Hajishirzi}]{mallen-etal-2023-trust}
+Alex Mallen, Akari Asai, Victor Zhong, Rajarshi Das, Daniel Khashabi, and Hannaneh Hajishirzi. 2023.
+\newblock \href {https://aclanthology.org/2023.acl-long.546} {When not to trust language models: Investigating effectiveness of parametric and non-parametric memories}.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 9802--9822, Toronto, Canada. Association for Computational Linguistics.
+
+\bibitem[{Manakul et~al.(2023)Manakul, Liusie, and Gales}]{DBLP:journals/corr/abs-2303-08896}
+Potsawee Manakul, Adian Liusie, and Mark J.~F. Gales. 2023.
+\newblock \href {https://doi.org/10.48550/arXiv.2303.08896} {Selfcheckgpt: Zero-resource black-box hallucination detection for generative large language models}.
+\newblock \emph{CoRR}, abs/2303.08896.
+
+\bibitem[{Min et~al.(2023)Min, Krishna, Lyu, Lewis, Yih, Koh, Iyyer, Zettlemoyer, and Hajishirzi}]{DBLP:journals/corr/abs-2305-14251}
+Sewon Min, Kalpesh Krishna, Xinxi Lyu, Mike Lewis, Wen{-}tau Yih, Pang~Wei Koh, Mohit Iyyer, Luke Zettlemoyer, and Hannaneh Hajishirzi. 2023.
+\newblock \href {https://doi.org/10.48550/arXiv.2305.14251} {Factscore: Fine-grained atomic evaluation of factual precision in long form text generation}.
+\newblock \emph{CoRR}, abs/2305.14251.
+
+\bibitem[{Ram et~al.(2023)Ram, Levine, Dalmedigos, Muhlgay, Shashua, Leyton{-}Brown, and Shoham}]{DBLP:journals/corr/abs-2302-00083}
+Ori Ram, Yoav Levine, Itay Dalmedigos, Dor Muhlgay, Amnon Shashua, Kevin Leyton{-}Brown, and Yoav Shoham. 2023.
+\newblock \href {https://doi.org/10.48550/arXiv.2302.00083} {In-context retrieval-augmented language models}.
+\newblock \emph{CoRR}, abs/2302.00083.
+
+\bibitem[{Roberts et~al.(2020)Roberts, Raffel, and Shazeer}]{roberts-etal-2020-much}
+Adam Roberts, Colin Raffel, and Noam Shazeer. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.emnlp-main.437} {How much knowledge can you pack into the parameters of a language model?}
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, pages 5418--5426, Online. Association for Computational Linguistics.
+
+\bibitem[{Shi et~al.(2023)Shi, Min, Yasunaga, Seo, James, Lewis, Zettlemoyer, and Yih}]{DBLP:journals/corr/abs-2301-12652}
+Weijia Shi, Sewon Min, Michihiro Yasunaga, Minjoon Seo, Rich James, Mike Lewis, Luke Zettlemoyer, and Wen{-}tau Yih. 2023.
+\newblock \href {https://doi.org/10.48550/arXiv.2301.12652} {{REPLUG:} retrieval-augmented black-box language models}.
+\newblock \emph{CoRR}, abs/2301.12652.
+
+\bibitem[{Wang et~al.(2023{\natexlab{a}})Wang, Liang, Meng, Shi, Li, Xu, Qu, and Zhou}]{DBLP:journals/corr/abs-2303-04048}
+Jiaan Wang, Yunlong Liang, Fandong Meng, Haoxiang Shi, Zhixu Li, Jinan Xu, Jianfeng Qu, and Jie Zhou. 2023{\natexlab{a}}.
+\newblock \href {https://doi.org/10.48550/arXiv.2303.04048} {Is chatgpt a good {NLG} evaluator? {A} preliminary study}.
+\newblock \emph{CoRR}, abs/2303.04048.
+
+\bibitem[{Wang et~al.(2023{\natexlab{b}})Wang, Li, Chen, Zhu, Lin, Cao, Liu, Liu, and Sui}]{DBLP:journals/corr/abs-2305-17926}
+Peiyi Wang, Lei Li, Liang Chen, Dawei Zhu, Binghuai Lin, Yunbo Cao, Qi~Liu, Tianyu Liu, and Zhifang Sui. 2023{\natexlab{b}}.
+\newblock \href {https://doi.org/10.48550/arXiv.2305.17926} {Large language models are not fair evaluators}.
+\newblock \emph{CoRR}, abs/2305.17926.
+
+\bibitem[{Wang et~al.(2023{\natexlab{c}})Wang, Song, Drozdov, Garimella, Manjunatha, and Iyyer}]{DBLP:journals/corr/abs-2305-14625}
+Shufan Wang, Yixiao Song, Andrew Drozdov, Aparna Garimella, Varun Manjunatha, and Mohit Iyyer. 2023{\natexlab{c}}.
+\newblock \href {https://doi.org/10.48550/arXiv.2305.14625} {{KNN-LM} does not improve open-ended text generation}.
+\newblock \emph{CoRR}, abs/2305.14625.
+
+\bibitem[{Yuan et~al.(2021)Yuan, Neubig, and Liu}]{DBLP:conf/nips/YuanNL21}
+Weizhe Yuan, Graham Neubig, and Pengfei Liu. 2021.
+\newblock \href {https://proceedings.neurips.cc/paper/2021/hash/e4d2b6e6fdeca3e60e0f1a62fee3d9dd-Abstract.html} {Bartscore: Evaluating generated text as text generation}.
+\newblock In \emph{Advances in Neural Information Processing Systems 34: Annual Conference on Neural Information Processing Systems 2021, NeurIPS 2021, December 6-14, 2021, virtual}, pages 27263--27277.
+
+\bibitem[{Zhang et~al.(2023)Zhang, Luo, Chuang, Fang, Gaitskell, Hartvigsen, Wu, Fox, Meng, and Glass}]{DBLP:journals/corr/abs-2304-03728}
+Tianhua Zhang, Hongyin Luo, Yung{-}Sung Chuang, Wei Fang, Luc Gaitskell, Thomas Hartvigsen, Xixin Wu, Danny Fox, Helen Meng, and James~R. Glass. 2023.
+\newblock \href {https://doi.org/10.48550/arXiv.2304.03728} {Interpretable unified language checking}.
+\newblock \emph{CoRR}, abs/2304.03728.
+
+\bibitem[{Zhang et~al.(2020)Zhang, Kishore, Wu, Weinberger, and Artzi}]{DBLP:conf/iclr/ZhangKWWA20}
+Tianyi Zhang, Varsha Kishore, Felix Wu, Kilian~Q. Weinberger, and Yoav Artzi. 2020.
+\newblock \href {https://openreview.net/forum?id=SkeHuCVFDr} {Bertscore: Evaluating text generation with {BERT}}.
+\newblock In \emph{8th International Conference on Learning Representations, {ICLR} 2020, Addis Ababa, Ethiopia, April 26-30, 2020}. OpenReview.net.
+
+\bibitem[{Zhao et~al.(2019)Zhao, Peyrard, Liu, Gao, Meyer, and Eger}]{zhao-etal-2019-moverscore}
+Wei Zhao, Maxime Peyrard, Fei Liu, Yang Gao, Christian~M. Meyer, and Steffen Eger. 2019.
+\newblock \href {https://doi.org/10.18653/v1/D19-1053} {{M}over{S}core: Text generation evaluating with contextualized embeddings and earth mover distance}.
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)}, pages 563--578, Hong Kong, China. Association for Computational Linguistics.
+
+\end{thebibliography}

@@ -1,0 +1,42 @@
+\section{Background and Related Work}
+\vspace{-1mm}
+\subsection{Background on RAG}
+\vspace{-1mm}
+\myparatight{RAG systems}There are three components for a RAG system: 
+\emph{knowledge database}, \emph{retriever}, and \emph{LLM}. 
+The database contains a set of texts 
+collected from various sources such as Wikipedia~\cite{thakur2021beir}, news articles~\cite{soboroff2019trec}, and financial documents~\cite{loukas2023making}.
+For simplicity, we use $\mathcal{D}$ to denote the database that contains a set of $d$ texts, i.e., $\mathcal{D}=\{T_1, T_2, \cdots, T_d\}$, where $T_i$ is the $i$th text.
+Given a question $Q$, there are two steps for the LLM in a RAG system to generate an answer for it. 
+
+\emph{Step I--Knowledge Retrieval:}
+Suppose we have two encoders in a retriever, e.g., jointly trained question encoder $f_{Q}$ and text encoder $f_T$. The $f_{Q}$ produces an embedding vector for an arbitrary question, while $f_{T}$ produces an embedding vector for each text in the knowledge database. Depending on the retriever, $f_{Q}$ and $f_{T}$ could be the same or different. 
+Suppose we have a question $Q$, RAG first finds $k$ texts (called \emph{retrieved texts}) from the knowledge database $\mathcal{D}$ that are most relevant with $Q$. In particular, the similarity score of each $T_i \in \mathcal{D}$ with the question $Q$ is calculated as $\mathcal{S}(Q, T_i)=Sim(f_{Q}(Q), f_{T}(T_i))$, where $Sim$ measures the similarity (e.g., cosine similarity, dot product) of two embedding vectors. 
+For simplicity, we use $\mathcal{E}(Q; \mathcal{D})$ to denote the set of $k$ retrieved texts in the database $\mathcal{D}$ that have the largest similarity scores with the question $Q$. Formally, we denote:
+{\small
+\begin{align}
+    \mathcal{E}(Q; \mathcal{D})=\textsc{Retrieve}(Q, f_Q, f_T, \mathcal{D}),
+\end{align}}
+where we omit $f_Q$ and $f_T$ in $\mathcal{E}(Q; \mathcal{D})$ for notation simplicity. 
+
+\emph{Step II--Answer Generation:} Given the question $Q$, the set of $k$ retrieved texts $\mathcal{E}(Q; \mathcal{D})$, and the API of a LLM, we can query the LLM with the question $Q$ and $k$ retrieved texts $\mathcal{E}(Q; \mathcal{D})$ to produce the answer for $Q$ with the help of a system prompt (we put a system prompt in Appendix~\ref{appendix-sec-system-prompt}). In particular, the LLM generates an answer to $Q$ using the $k$ retrieved texts as the context (as shown in Figure~\ref{rag-demo}). For simplicity, we use $LLM(Q, \mathcal{E}(Q; \mathcal{D}))$ to denote the answer, where we omit the system prompt for simplicity. 
+
+
+\subsection{Existing Attacks to LLMs}
+Many attacks to LLMs  were proposed  such as prompt injection attacks~\cite{perez2022ignore,liu2023prompt, liuyi2023prompt,greshake2023not, pedro2023prompt, branch2022evaluating}, jailbreaking attacks~\cite{wei2023jailbroken, zou2023universal,deng2023jailbreaker, qi2023visual, li2023multistep, shen2023do}, and so on~\cite{carlini2021extracting, zhong2023poisoning, kandpal2023backdoor, wan2023poisoning, carlini2022quantifying, carlini2023poisoning, carlini2021extract, mattern2023membership, pan2020general}. Prompt injection attacks aim to inject malicious instructions into the input of an LLM such that the LLM could follow the injected instruction to produce attacker-desired answers.  
+We can extend prompt injection attacks to attack RAG. For instance, we construct the following malicious instruction: ``When you are asked to provide the answer for the following question: <target question>, please output <target answer>''. However, there are two limitations for prompt injection attacks when extended to RAG. First, RAG uses a retriever component to retrieve the top-$k$ relevant texts from a knowledge database for a target question, which is not considered in prompt injection attacks. As a result, prompt injection attacks achieve sub-optimal performance. Additionally, prompt injection attacks are less stealthy since they inject instructions, e.g.,  previous studies~\cite{exploring-prompt-injection, jain2023baseline} showed that prompt injection attacks can be detected with a very high true positive rate and a low false positive rate. 
+Different from prompt injection attacks, {\name} crafts malicious texts that can be retrieved for attacker-desired target questions and mislead an LLM to generate attacker-chosen target answers.
+
+
+Jailbreaking attacks aim to break the safety alignment of a LLM, e.g., crafting a prompt such that the LLM produces an answer for a harmful question like ``How to rob a bank?'', for which the LLM refuses to answer without attacks. As a result, jailbreaking attacks have different goals from ours, i.e., our attack is orthogonal to jailbreaking attacks.   
+
+We note that Zhong et al.~\cite{zhong2023poisoning} showed an attacker can generate adversarial texts (without semantic meanings, i.e., consists of random characters) such that they can be retrieved for indiscriminate user questions. However, these adversarial texts cannot mislead an LLM to generate attacker-desired answers.
+Different from Zhong et al.~\cite{zhong2023poisoning}, 
+we aim to craft malicious texts that have semantic meanings, which can not only be retrieved but also mislead an LLM to produce attacker-chosen target answers for target questions. Due to such difference, our results show Zhong et al.~\cite{zhong2023poisoning} are ineffective in misleading an LLM to generate target answers. 
+
+
+\subsection{Existing Data Poisoning Attacks}
+Many studies~\cite{biggio2012poisoning,gu2017badnets,liu2018trojaning,chen2017targeted,shafahi2018poison,bagdasaryan2020backdoor,fang2020local,zhang2021backdoor,jia2022badencoder,carlini2023poisoning} show machine learning models are vulnerable to data poisoning and backdoor attacks. In particular, they showed that a machine learning model has attacker-desired behaviors when trained on the poisoned training dataset. 
+When extended to RAG systems, they compromise an LLM or a retriever, which can be challenging when a RAG system adopts an LLM or a retriever released by big tech companies such as Meta and Google.
+Different from existing studies~\cite{biggio2012poisoning,gu2017badnets, shafahi2018poison,carlini2023poisoning}, our attacks do not poison the training dataset of a LLM or a retriever. 
+Instead, our attacks exploit the new and practical attack surface introduced by knowledge databases of RAG systems.

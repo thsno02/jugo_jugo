@@ -1,0 +1,49 @@
+
+\begin{table}[t]
+    \centering
+    \resizebox{0.98\linewidth}{!}{
+        \begin{tabular}{lcccc}
+            \toprule
+            & \tf{Fluency} & \tf{Correct.} & \multicolumn{2}{c}{\tf{Citation} }\\
+            \cmidrule(lr){2-2} \cmidrule(lr){3-3} \cmidrule(lr){4-5}
+            & (MAUVE) & (EM Rec.) & Rec. & Prec. \\
+            \midrule
+            \headercolor
+            \multicolumn{5}{c}{\textbf{ChatGPT}} \\
+            \tableskip
+            \vani{} (5-psg) & 66.6 & 40.4  & {73.6}  & 72.5\\% {63.0} \\
+            ~~w/ \rerank{} &  77.0 & 40.2 & \tf{84.8} & \textbf{81.6} \\% \tf{73.3} \\
+            \summ{} (10-psg) & 70.0  & \tf{43.3}  &68.9	& 61.8\\ %
+            ~~w/ \interact{}  & 69.0 &	39.1 & 73.4& 66.5\\ %
+            \snippet{} (10-psg) & 69.8&	41.4& 65.3&	57.4\\ %
+            \search{} & 58.7 & 32.4 & 58.3 & 58.2	\\ %
+            \close{} & 52.7 &	38.3 & 26.7& 26.7 \\
+
+            \tableskip
+            \headercolor
+             \multicolumn{5}{c}{\textbf{GPT-4} (\vani{} prompting)}  \\
+            \tableskip
+            GPT-4 (5-psg) & 67.1 & 41.3 & 68.5 & 75.6 \\
+            GPT-4 (20-psg) & 64.9 & 44.4 & 73.0 & 76.5 \\
+
+            \tableskip
+            \headercolor
+            \multicolumn{5}{c}{\textbf{LLaMA} (\vani{} prompting)} \\
+            \tableskip
+            LLaMA-13B (3-psg) & 68.4 & 26.9 & 10.6 & 15.4 \\
+            Vicuna-13B (3-psg) & 82.6 & 31.9 & 51.1 & 50.1 \\ 
+ 
+            Chat-13B (5-psg) & 72.4 & 35.2 & 38.4 & 39.4 \\
+            Chat-70B (5-psg) & 88.3 & 41.5 & 62.9 & 61.3 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \caption{
+        Experiments on ASQA.
+        For \close{}, we use \posthoc{} to get citations.
+        $k$-psg: putting top-$k$ passages from the retrieval results into the context.
+        Chat-13B and Chat-70B refer to LLaMA-2-Chat.
+    }
+    \label{tab:asqa_result}
+    \vspace{-10pt}
+\end{table}

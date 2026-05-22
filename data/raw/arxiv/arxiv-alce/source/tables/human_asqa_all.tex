@@ -1,0 +1,21 @@
+\begin{table}[t]
+    \centering
+    \resizebox{0.98\linewidth}{!}{
+    \begin{tabular}{lcccc}
+        \toprule
+            & \multicolumn{2}{c}{\tf{Human scores}} & \multicolumn{2}{c}{\tf{\citeeval{} scores}} \\
+             \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+            & Rec.& Prec. & Rec. & Prec. \\
+            \midrule
+            ChatGPT \vani & 74.7 & 76.6 & 75.3 & 74.4 \\
+            ~~w/ \rerank & \textbf{79.3} & \textbf{81.9} & \textbf{83.9} & \textbf{80.8} \\
+            Vicuna-13B \vani & 51.6 & 51.5 & 50.3 & 50.1 \\
+            \bottomrule
+            \end{tabular}
+    }
+    \caption{
+        Human citation quality evaluation vs. \citeeval{} citation quality evaluation on ASQA. 
+    }
+    \vspace{-5pt}
+    \label{tab:human-asqa-all}
+\end{table}

@@ -1,0 +1,45 @@
+\section{Human Evaluation}
+\label{sec:human}
+
+
+To verify that our automatic evaluation correlates with human judgement, 
+we conduct human evaluation on selected models %
+and request workers 
+to judge model generations on three dimensions similar to \citet{liu2023evaluating}---(1) utility: a 1-to-5 score indicating whether the generation helps answer the question; %
+(2) citation recall: the annotator is given a sentence and all passages that the sentence cited, and is asked to judge whether the passages fully support the sentence; %
+(3) citation precision: given a sentence and one of its citations, the annotator is  asked to judge whether the citation ``fully supports'', ``partially supports'', or ``does not support'' the sentence. 
+Each citation gets a precision score 1 if the output sentence has a citation recall of 1 and this citation at least ``partially supports'' it.
+See Appendix~\ref{app_sec:human} for more details.
+
+
+\input{tables/human_asqa_all}
+\input{tables/human_eli5_all}
+
+\paragraph{Model outputs score high utility.} 
+The utility scores do not differ significantly between models, ranging $3.7$-$3.9$ for ASQA and $3.5$-$3.6$  for ELI5. 
+Upon inspection, all tested models are mostly able to output fluent answers that are related to the question, %
+despite  differences in factual correctness. 
+
+
+
+
+
+\paragraph{Our automatic evaluation of citation quality strongly correlates with human judgements.}
+As shown in Table~\ref{tab:human-asqa-all} (ASQA) and Table~\ref{tab:human-eli5-all} (ELI5),
+the relative rankings induced by human and our automatic metrics are consistent.
+The absolute citation scores from human and \citeeval{} are very close except for \rerank{} (which uses the automated citation recall for reranking).
+This suggests that an improvement on \citeeval{} citation metrics translates to improvement on human preferences. %
+Furthermore, the Cohen's kappa coefficient between 
+human and \citeeval{} suggests substantial agreement for citation recall ($0.698$) and moderate agreement for citation precision ($0.525$).
+We also show in \S\ref{sec_more_human} that our automatic evaluation achieves high accuracy when treating human annotations as gold labels
+($85.1\%$ for citation recall and $77.6\%$ for citation precision).
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,211 @@
+
+\section{Experiments}
+\label{sec:experiments}
+
+\input{tables/asqa.tex}
+\input{tables/qampari.tex}
+
+\input{tables/eli5.tex}
+
+We describe experiment details in \S\ref{app_sec:imp_details}. 
+We use ChatGPT (\ttt{gpt-3.5-turbo-0301}) with a 4K context window for most main experiments and ablations. 
+\revise{We also report results with ChatGPT-16K (\ttt{gpt- 3.5-turbo-16k-0613}) and GPT-4 (\ttt{gpt-4-0613}; 8K context window).}
+For open-source models, we test LLaMA~\citep{touvron2023llama} and 
+its instruction-tuned versions, including 
+Alpaca~\citep{alpaca}, Vicuna~\citep{vicuna2023}, and Oasst~\citep{kopf2023openassistant}.
+They all have a 2K context window.
+We use short instructions for LLaMA (Table~\ref{tab:inst_vanilla_light}) to save  context budget.
+\revise{Additionally, we test LLaMA-2-Chat, which were also trained to follow instructions \cite{touvron2023llama2}. These models have a context window of 4K tokens, which allows for 5 passages per question.}
+
+
+
+\subsection{Main Results}
+We present the main results on three datasets in 
+Table~\ref{tab:asqa_result},~\ref{tab:qampari_result}, and~\ref{tab:eli5_result} respectively (full results in \S\ref{app_sec:more_main}). %
+We first note that all models achieve good fluency scores (except some models on ELI5 mainly due to their longer generations).
+We summarize the main takeaways from the experiments below.
+
+\paragraph{\tf{\textsc{\pvani{}}} achieves strong performance.}
+Despite its simplicity,
+\vani{} (putting retrieved passages in context)
+achieves close-to-the-best performance among all prompting strategies. %
+
+
+
+\paragraph{Using summaries or snippets improves correctness.}
+We see a universal trend that 
+\summ{} or \snippet{} 
+improves  correctness,
+though
+on ASQA and ELI5, such an improvement comes at a cost of citation quality
+due to the lossy compression. %
+Combining \interact{} with \summ{}/\snippet{} does not bring improvement,
+and we hypothesize that 
+checking the full passages offers limited benefit and 
+ current LLMs are not proficient in an interactive usage.
+
+
+
+
+
+
+\paragraph{Retrieving text on the fly does not improve performance.}
+All datasets show that 
+\vani{} 
+ outperforms
+\search{} on citation quality (and on correctness for ASQA and ELI5).
+By manually examining the examples,
+we find that 
+it is challenging to ask detailed questions without seeing any passages.
+To improve \search{},
+one may need to provide more context about the questions in advance or
+encourage the model to call retrievers with more detailed and diverse queries.
+
+\paragraph{{\textsc{\prerank{}}} boosts citation quality.}
+We observe that \rerank{} 
+leads to consistent improvement in citation quality (on ASQA and ELI5).
+As the automatic scores may be biased in \rerank{},
+we also conduct human evaluation~(\S\ref{sec:human})
+and verify its effectiveness. %
+
+\paragraph{\textsc{\pclose{}}+\textsc{\pposthoc{}} delivers strong correctness but poor citation quality.}
+\close{} outperforms \vani{} in correctness on ELI5 and QAMPARI, and has only a 2\% gap on ASQA.
+However, 
+\close{} cannot provide any citation;
+when combined with \posthoc{},
+the citation quality remains inadequate. For instance, 
+citation recall of \close{}+\posthoc{} is lower than \vani{} by 47\% on ASQA. 
+
+To understand why \close{} achieves better correctness and why \posthoc{} cannot deliver satisfying citation quality,
+we manually examine model outputs and find that:
+(1) open-book models are easily distracted by irrelevant passages and generate responses with lower correctness, 
+a phenomenon also observed by~\citet{shi2023large};
+(2) \close{} often generates texts that are correct but not similar to any retrieved passages, 
+making it difficult to match a citation post-hoc.
+
+\revise{
+\paragraph{GPT-4 brings limited improvement but is better at using long context.}
+We evaluate GPT-4 with \vani{} and different numbers of passages (more results in \S\ref{app_sec:more_main}).
+GPT-4 brings consistent (but limited) improvement on correctness, but often at a cost of citation quality. 
+GPT-4 can also incorporate more passages due to its longer context window,
+which boosts both correctness and citation quality. 
+On the contrary, 
+including more passages with ChatGPT-16K does not improve the results (Table \ref{tab:asqa_llm}), 
+suggesting that processing more passages is non-trivial and GPT-4 is better at synthesizing information from its long context than ChatGPT.
+}
+
+\subsection{Comparison of Different LLMs}
+\label{sec:different_llms}
+
+
+\begin{figure*}[t]
+    \centering
+    \begin{minipage}[b]{0.66\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{figs/ret.pdf}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.33\textwidth}
+    \centering
+
+    \resizebox{1.0\textwidth}{!}{
+        \begin{tabular}{lcccc}
+            \toprule
+            & \tf{Fluency} & \tf{Correct.} & \multicolumn{2}{c}{\tf{Citation} }\\
+            \cmidrule(lr){2-2} \cmidrule(lr){3-3} \cmidrule(lr){4-5}
+            & (MAUVE) & (EM) & Rec. & Prec. \\
+            \midrule
+            \headercolor
+            \multicolumn{5}{c}{\textbf{ChatGPT} (\vani{})} \\
+            \tableskip
+            DPR (5-psg) &  61.8 &	36.1 & 65.0 &	65.6\\%56.7 \\
+            GTR (1-psg) & 69.5&	38.4 & 56.0	&       64.0\\%56.0\\
+            GTR (3-psg) & 66.6 & 39.6 & 72.8	&   \tf{73.9}\\%64.0 \\
+            GTR (5-psg) & 66.6 & \tf{40.4}  & \tf{73.6} &     72.5\\%63.0 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \vspace{17pt}
+    \end{minipage}
+    \vspace{-25pt}
+    \caption{
+Retrieval recall@$k$ on ASQA (\textit{EM recall}), QAMPARI (\textit{recall-5}), and ELI5 (\textit{claim recall}).
+Retrieval recall serves as an upper bound for model performance,
+and we compare them with two models' correctness results in the figure (dashed lines):
+``Vanilla (5-psg)'' is ChatGPT \vani{} with top-5 passages in context;
+``Oracle'' is the same model  except that it uses 5 gold passages (\S\ref{app_sec:retrieval}), whose recall matches Recall@100 on all three datasets. %
+    }
+    \vspace{-10pt}
+    \label{fig:ret}
+\end{figure*}
+
+
+Table~\ref{tab:asqa_llm} compares 
+different LLMs on ASQA using \vani{} (more results  in \S\ref{app_sec:more_main}).
+Notably, instruction-tuned models (Vicuna-13B and LLaMA-2-Chat)
+outperform the original LLaMA models in correctness and 
+considerably enhance the citation quality.
+We observe that 
+while the original LLaMA models are able to %
+copy facts from the context,
+they struggle with accurately citing the sources or simply do not cite. 
+\revise{Notably, the best open-source model, LLaMA-2-70B-Chat, achieves comparable correctness score as the OpenAI models, but still lags behind in citation quality. }
+
+
+
+
+
+\subsection{Retrieval Analysis}
+
+\input{tables/asqa_different_llms.tex}
+
+The retrieval results play a crucial role to the correctness and the citation quality.
+Figure~\ref{fig:ret} presents 
+the retrieval recall@$k$ %
+with different datasets and retrievers.
+As the number of passages increases, retrieval recall steadily improves.
+Additionally, Figure~\ref{fig:ret} shows
+the correctness performance of two models:
+(1) ChatGPT \vani{} with top-5 passages (our primary baseline);
+(2) an oracle version of the same model employing
+5 gold passages (\S\ref{app_sec:retrieval}; the 5 gold passages match the retrieval recall@100).
+Notably,
+both models' correctness lags behind the corresponding retrieval recall (except for ELI5 top-5).
+The discrepancy suggests that 
+despite the presence of accurate answers in context,
+LLMs struggle to utilize  them in their outputs.
+
+
+
+We compare the impact of different retrievers and different numbers of passages to LLMs.
+Figure~\ref{fig:ret} (right)
+shows that
+GTR outperforms DPR in both correctness and citation quality,
+emphasizing  the importance of deploying better retrievers.
+Contrary to the  retrieval recall trend  in Figure~\ref{fig:ret},
+more passages in context do not yield substantial improvement for ChatGPT.
+Specifically, correctness plateaus at top-1 passage and citation quality plateaus at top-3. 
+\revise{GPT-4 (Table~\ref{tab:asqa_llm}) exhibits an increasing trend with more passages, 
+but the improvement is not proportional to the retrieval performance.}
+This  indicates the limited ability of LLMs in  utilizing multiple passages within context.
+
+\subsection{Other Ablations}
+\label{sec:other_ablation}
+
+We provide additional ablations in \S\ref{app_sec:more_exp}. 
+In summary, we find that 
+(1) 
+using comprehensive instructions
+ enhances the citation quality of instruction-tuned models (\S\ref{sec:inst});
+(2) 
+including at least one demonstration improves the performance %
+(\S\ref{sec:demo}); 
+\revise{(3) fine-tuned models (FiD; \citealp{izacard-grave-2021-leveraging}) with \posthoc{} lag behind LLMs in both correctness and citation quality and fail to generalize %
+(\S\ref{sec:fid}).}
+
+
+
+
+
+
+

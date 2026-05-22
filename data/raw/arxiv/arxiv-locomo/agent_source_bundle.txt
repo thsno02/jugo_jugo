@@ -1,0 +1,2744 @@
+===== acl_latex.tex =====
+
+% This must be in the first 5 lines to tell arXiv to use pdfLaTeX, which is strongly recommended.
+\pdfoutput=1
+% In particular, the hyperref package requires pdfLaTeX in order to break URLs across lines.
+
+\documentclass[11pt]{article}
+
+% Remove the "review" option to generate the final version.
+\usepackage{acl}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{booktabs}
+\usepackage{color,colortbl}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
+\usepackage{amsmath}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\centered}[1]{\begin{tabular}{l} #1 \end{tabular}}
+
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+%\setlength\titlebox{<dim>}
+%
+% and set <dim> to something 5cm or larger.
+
+
+\newcommand{\dataset}[1]{\textsc{LoCoMo}}
+
+
+\newcommand{\eg}{\textit{e.g., }}
+\newcommand{\ie}{\textit{i.e., }}
+\newcommand{\versus}{\textit{vs. }}
+
+\newcommand{\Sref}[1]{\S\ref{#1}}
+\newcommand{\fref}[1]{figure~\ref{#1}}
+\newcommand{\Fref}[1]{Figure~\ref{#1}}
+\newcommand{\tref}[1]{table~\ref{#1}}
+\newcommand{\Tref}[1]{Table~\ref{#1}}
+\newcommand{\Aref}[1]{Appendix~\ref{#1}}
+
+
+
+\title{Evaluating Very Long-Term Conversational Memory of LLM Agents}
+
+
+
+\author{Adyasha Maharana\textsuperscript{1} \;\;\;\;\;\; Dong-Ho Lee\textsuperscript{2} \;\;\;\; Sergey Tulyakov\textsuperscript{3} \\ \bf{Mohit Bansal\textsuperscript{1$\dagger$} \;\;\;\;\;\; Francesco Barbieri\textsuperscript{$\dagger$} \;\;\;\; Yuwei Fang\textsuperscript{3$\dagger$}}\vspace{10pt} \\
+University of North Carolina, Chapel Hill\textsuperscript{1}\quad University of Southern California\textsuperscript{2}\quad Snap Inc.\textsuperscript{3}}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/0_abstract}
+
+\makeatletter{\renewcommand*{\@makefnmark}{}
+\footnotetext{$^\dagger$Equal advising.}
+\makeatother}
+
+\input{sections/1_introduction}
+\input{sections/2_related}
+\input{sections/3_dataset}
+\input{sections/4_benchmark}
+\input{sections/5_experiments}
+\input{sections/6_results}
+\input{sections/7_conclusion}
+\input{sections/8_limitation}
+\input{sections/9_ethics}
+%\input{sections/98_acknowledgement}
+
+\bibliography{custom}
+
+%\clearpage
+\input{sections/99_appendix}
+
+\end{document}
+
+
+===== sections/0_abstract.tex =====
+
+\begin{abstract}
+
+
+Existing works on long-term open-domain dialogues focus on evaluating model responses within contexts spanning no more than five chat sessions. Despite advancements in long-context large language models (LLMs) and retrieval augmented generation (RAG) techniques, their efficacy in \textit{very} long-term dialogues remains unexplored.
+To address this research gap, we introduce a machine-human pipeline to generate high-quality, \textit{very} long-term dialogues by leveraging LLM-based agent architectures and grounding their dialogues on personas and temporal event graphs. Moreover, we equip each agent with the capability of sharing and reacting to images. The generated conversations are verified and edited by human annotators for long-range consistency and grounding to the event graphs. Using this pipeline, we collect \dataset{}, a dataset of \textit{very} long-term conversations, each encompassing 300 turns and 9K tokens on avg., over up to 35 sessions. Based on \dataset{}, we present a comprehensive evaluation benchmark to measure long-term memory in models, encompassing question answering, event summarization, and multi-modal dialogue generation tasks. Our experimental results indicate that LLMs exhibit challenges in understanding lengthy conversations and comprehending long-range temporal and causal dynamics within dialogues. Employing strategies like long-context LLMs or RAG can offer improvements but these models still substantially lag behind human performance.\footnote{Code and data to be available at \\ \url{https://snap-research.github.io/locomo}}
+\end{abstract}
+
+
+===== sections/1_introduction.tex =====
+
+\section{Introduction}
+\label{sec:intro}
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.48\textwidth]{figures/intro_figure_conv_only_v2.pdf}
+    \caption{\textbf{An example in \dataset{}.} Dialogs are steered by the speakers' personas and corresponding events e.g., Joanna's responses are consistent with her pet allergies. For Nate, the event \textit{got a new dog} is followed by a \textit{playdate with neighbor's dog}, showcasing long-term memory. Multimodal dialog is enabled with image-sharing and image-response behaviors.
+    }
+    \label{fig:intro}
+    \vspace{-15pt}
+\end{figure}
+
+
+\begin{table*}[t!]
+\addtolength{\tabcolsep}{-4pt}
+	\centering
+	% \small
+	\resizebox{0.99\textwidth}{!}{
+		\begin{tabular}{p{2.7in}P{0.7in}P{0.9in}P{0.9in}P{1.2in}P{0.7in}P{2.0in}}
+            \toprule
+            \textbf{Dataset} & \textbf{Avg. turns per conv.} & \textbf{Avg. sessions per conv.} & \textbf{Avg. tokens per conv.} & \textbf{Time Interval} & \textbf{Multimodal} &  \textbf{Collection} \\
+            \midrule
+            MPChat \cite{ahn2023mpchat} & 2.8 & 1 & 53.3 & - & \ding{51} & Reddit \\
+            MMDialog \cite{feng2023mmdialog} & 4.6 & 1 & 72.5 & - & \ding{51} & Social media\\
+            Daily Dialog \cite{li2017dailydialog} & 7.9 & 1 & 114.7 & - & \ding{55} & Crowdsourcing \\
+            SODA \cite{kim-etal-2023-soda} & 7.6 & 1 & 122.4 & - & \ding{55} & LLM-generated \\
+            MSC \cite{xu2022beyond} (train; 1-4 sessions) & 53.3 & 4 & 1,225.9 & few days & \ding{55} & Crowdsourcing \\
+            Conversation Chronicles \cite{jang2023conversation} & 58.5 & 5 & 1,054.7 & few hours - years & \ding{55} & LLM-generated \\
+            \textbf{\dataset{} (ours)} & 304.9 & 19.3 & 9,209.2 & few months & \ding{51} & LLM-gen. + crowdsourc. \\           
+            \bottomrule
+        \end{tabular}
+	}
+        \vspace{-5pt}
+        \caption{\textbf{Statistics of \dataset{}} compared to existing dialog datasets. The average length of a conversation in \dataset{} is 9x that of MSC \cite{xu2022beyond}, distributed over 6x more turns and 4x more sessions (on average).}
+	\label{tab:compare_datasets}
+\end{table*}
+
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/evaluation_framework.pdf}
+    \vspace{-20pt}
+    \caption{\textbf{Overview of our evaluation framework}. We propose three tasks: question answering, event summarization and multimodal dialog generation to evaluate models' comprehension in very long-term dialogues.}
+    \label{fig:eval-framework}
+    \vspace{-1pt}
+\end{figure*}
+
+
+Despite recent advancements in dialogue models based on LLMs for extended contexts~\cite{bertsch2024unlimiformer, xiao2023efficient}, as well as the integration of retrieval augmented generation (RAG) techniques~\cite{shuster2021retrieval, ram2023context, shi2023replug}, there is still a need for thorough evaluation of their efficacy in handling very long conversations. Indeed, studies in long-term open-domain dialogues have concentrated on assessing model responses within limited contexts e.g., $\sim$1K tokens over five chat sessions~\cite{xu2022beyond, jang2023conversation, zhang2023mind}. This long term evaluation is crucial for refining engaging chatbots capable of remembering key information from past interactions, to generate empathetic, consistent, and useful responses.
+
+
+
+To this end, we present the first study of very long-term open-domain multi-modal dialogues, closely mirroring real-world online interactions, collected via a human-machine pipeline where we first use LLM-based generative agents to generate conversations and then ask human annotators to fix any long-term inconsistencies in the conversations.
+Specifically, drawing on the understanding that real-world conversations are a complex blend of collective memories~\cite{assmann1995collective, hirst2008towards}, individual viewpoints~\cite{hirst2018collective}, external influences~\cite{hirst2012remembering}, and the unique persona of the speakers~\cite{pruitt2003personas, cooper1999inmates, zhou2020design, shum2019sketch}, we create \textit{very long-term} dialogues based on LLM agent with the following features:
+(1) a unique persona (\Sref{ssec:dataset-persona});
+(2) a timeline of causally interlinked events in their lives (\Sref{ssec:temporal-event}); and (3) \textit{reflect \& response} mechanism to respond based on dialogue history (like in ~\citet{park2023generative}) and \textit{image sharing \& image reaction} behavior which sends or reacts to images (\Sref{ssec:llm-agent}). Finally, human annotators fix long-range inconsistencies in dialogues, remove irrelevant images, and verify the grounding of dialogs to events (\Sref{ssec:manual-filter}). With this pipeline, we create \dataset{}, a dataset of 50 \textit{very long-term} dialogues, each consisting of 300 turns and 9K tokens on avg., over up to 35 sessions (see Figure~\ref{fig:intro} and  Table~\ref{tab:compare_datasets}).  
+
+
+Conventional approaches for evaluating conversational agents in open-domain dialogues involves directly evaluating the agent response based on past dialogue history.
+It often employs lexical overlap~\cite{papineni-etal-2002-bleu} and semantic overlap~\cite{zhang2019bertscore} between ground truth and the agent response, or consistency~\cite{ghazarian2022deam}, contradiction~\cite{nie2021like, welleck2019dialogue}, and empathy~\cite{zhang2021dynaeval, zhang2022fined} of the agent response. However, these evaluation metrics are not well-suited for directly assessing the agent's comprehension of long-term contexts.
+
+In this study, we present a holistic evaluation framework to assess an agent's proficiency in managing and responding within long-term contexts (see Figure~\ref{fig:eval-framework}). First, agents need to ``recall'' past context correctly to integrate relevant information into future responses. We present a direct examination of their \textit{memory} via a \textit{question answering} (QA) task (\Sref{ssec:benchmark-qa}). We classify questions into five distinct reasoning types to evaluate memory from multiple perspectives: single-hop, multi-hop, temporal, commonsense or world knowledge, and adversarial. Second, agents also need to recognize long-range causal and temporal connections in the dialogues to generate empathetic and relevant responses.
+We propose a measurement of their causal and temporal understanding with an \textit{event graph summarization} task (\Sref{ssec:benchmark-event}). In this task, the event graphs linked to each LLM speaker serve as the correct answers, and models are tasked with extracting this information from the conversation history. Third, conversational agents need to utilize relevant context recalled from past conversations to generate responses that are consistent with the ongoing narrative. We assess this ability via the \textit{multi-modal dialog generation} task (\Sref{ssec:benchmark-mm}). 
+
+
+
+We present extensive experimental results on the \dataset{} benchmark using instruction-based LLMs, long-context LLMs, and RAG techniques (\Sref{sec:baselines}). 
+Our findings include:
+
+
+(1) Long-context LLMs and RAG demonstrate effectiveness in QA tasks, improving `memory' capabilities of LLMs (with improvements ranging from 22-66\%), but still significantly lag behind human levels (by 56\%), especially in temporal reasoning, (by 73\%); 
+
+(2) long-context LLMs demonstrate significant difficulty with adversarial questions in the QA task, showing a performance that is 83\% lower than the base model. They are especially prone to misassigning dialogs or events to the wrong speaker. 
+Moreover, they show poor performance on \textit{event graph summarization}, lagging behind the base model by 14\%, indicating that they may grasp the factual elements within the entire conversation but do not accurately comprehend the context; and 
+
+(3) RAG offers a balanced compromise, combining the accuracy of short-context LLMs with the extensive comprehension of wide-context LLMs, and does particularly well when dialogues are transformed into a database of assertions (\textit{observations}) about each speaker's life and persona.
+
+
+===== sections/2_related.tex =====
+
+\section{Related Work}
+
+\paragraph{Long-term Dialogue.} 
+Recent approaches involve retrieving historical context from a range of previous dialogues and reasoning over retrieved segments in a temporal order~\cite{lee2023prompted, lu2023memochat, zhong2023memorybank, liang2023unleashing} and/or using events to scaffold the dialogues \cite{jang2023conversation, zhang2023mind} to enable consistency in long-term conversations. Some limitations of such frameworks are:
+(1) The accuracy of retrieval can be compromised, as the retrieval model is generally trained on tasks focusing on semantic similarity rather than specifically on such dialogues.
+Additionally, real-world dialogues often feature co-references and missing content (\textit{i.e.,} anaphora)~\cite{anantha2021open}, which further complicate the retrieval process~\cite{mallen-etal-2023-trust, gao2023enabling, liu2023evaluating};
+(2) Challenges arise in reasoning over retrieved documents, especially when the model struggles to identify the correct context among the retrieved data~\cite{liu2023lost};
+(3) Reasoning over time intervals presents challenges. For example, the way a system responds about past events can vary depending on the amount of time that has passed since the last conversation~\cite{zhang2023mind, jang2023conversation}.
+Therefore, it is essential to have conversations of considerable length, as well as a systematic evaluation framework, to accurately assess the effectiveness of approaches to long-term dialogue generation. We design a long-term conversation generation pipeline based on retrieval augmentation and events graphs and propose a framework for evaluating long-term dialog agents.
+
+\paragraph{Multi-modal Dialogue.}
+Multi-modal dialogue primarily consists of two types of tasks: image-grounded dialogue and image-sharing dialogue. 
+The image-grounded dialogue task is centered around responding to questions~\cite{antol2015vqa, das2017visual, kottur2019clevr} or creating natural conversations related to specific images~\cite{mostafazadeh2017image, shuster2020image, meng2020openvidial, zheng2021mmchat}. 
+Conversely, the image-sharing dialogue task focuses on selecting images that semantically align with the provided dialogue context~\cite{zang2021photochat, feng2023mmdialog, lee2023dialogcc}. We use a method from the image-sharing dialogue task to create multimodal dialogs which are then evaluated as an image-grounded dialogue task. 
+
+
+\paragraph{Synthetic Evaluation Benchmark.}
+Faced with a shortage of human-generated data and observing that LLMs are approaching the quality of human-level annotations~\cite{he2023annollm, lee-etal-2023-making}, there has been a surge in research drawing inspiration from this development. 
+Consequently, numerous studies have started utilizing LLMs to augment or synthesize large-scale dialogue benchmarks for assessing responses in everyday social interactions~\cite{kim-etal-2023-soda}, examining responses in multi-modal environment~\cite{feng2023mmdialog}, and evaluating responses that align with specific persona~\cite{jandaghi2023faithful}. We leverage LLMs to create data but ensure its high quality with human verification and editing.
+
+
+===== sections/3_dataset.tex =====
+
+\section{Generative Pipeline for \dataset{}}
+\label{sec:dataset}
+
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/main_v4.pdf}
+    \vspace{-1pt}
+    \caption{\textbf{Overview of the generative pipeline for \dataset{}.} Each LLM agent is assigned a distinct persona and a timeline of causally connected events in their file. The agent is equipped with a memory and reflection module to retrieve relevant history for dialog generation and is also enabled for image-sharing and image-reaction behaviors (left). The generated conversations are edited by human annotators to maintain long-range consistency (right).}
+    \label{fig:main}
+    \vspace{-1pt}
+\end{figure*}
+
+
+An overview of our generative pipeline for \dataset{} is shown in Figure~\ref{fig:main}.
+We create two virtual agents, 
+named $\mathcal{L}_1$ and $\mathcal{L}_2$, each initialized with a LLM $\mathcal{M}$ (\textit{i.e.,} \texttt{gpt-3.5-turbo}).
+To start, unique persona statements $p$ are assigned to each agent $\mathcal{L}_i$, ensuring the integration of distinct personalities into their dialogues (\Sref{ssec:dataset-persona}).
+To mirror real-life experiences, we create a temporal event graph $\mathcal{G}$ for each agent, which illustrates a realistic sequence of life events (\Sref{ssec:temporal-event}).
+The LLM agent architecture~\cite{park2023generative} is utilized for each agent $\mathcal{L}_i$, enabling them to effectively memorize and reflect conversation history into ongoing dialogues (\Sref{ssec:llm-agent}).
+Further, each agent $\mathcal{L}_i$ can share coherent images, thereby enhancing the multi-modal dialogue aspect.
+Finally, human annotators are tasked with manually filtering and refining the generated data (\Sref{ssec:manual-filter}).
+%See an overview in Figure~\ref{fig:main}.
+
+\subsection{Persona} 
+\label{ssec:dataset-persona}
+We select an initial persona statement $p_c$ from the MSC dataset~\cite{xu2022beyond}, encompassing 4 to 5 sentences, 
+and employ \texttt{gpt-3.5-turbo} as $\mathcal{M}$ to expand these into full persona statement $p$ (See examples and prompt details in Appendix~\ref{ssec:persona_appendix}). The generated statements typically include details about one or more of the following elements~\cite{gao2023peacok}: objectives, past experiences, daily habits, and interpersonal relationships, as well as name, age, and gender of the individual.
+
+
+\subsection{Temporal Event Graph} 
+\label{ssec:temporal-event}
+To utilize the real-life experiences of each agent in the conversation, we construct a temporal event graph, labeled as $\mathcal{G}$, for each agent. 
+This graph $\mathcal{G}$, consisting of events $e_{i}$, is produced by applying the condition of $\mathcal{M}$ (i.e., \texttt{text-davinci-003}) on a designated persona $p$. Each event $e_{i}$ is associated with a date of occurrence $t_{i}$.
+$\mathcal{G}$ includes causal connections $l = (e_i, e_j)$ that illustrate the causal relationships among events $e_i \in \mathcal{G}$ and reflect a natural succession of events in an individual's life. For each $\mathcal{G}$, we create up to 25 events, spread across a time frame of 6 to 12 months, in an iterative process that balances between inference time and the coherence of temporal and causal connections in the timeline. Initially, a small batch of $k=3$ events is generated, which is then used iteratively as input prompt to create the subsequent batch of $k$ events. See details in Appendix~\ref{ssec:event_appendix}.
+
+
+
+
+\subsection{Virtual Agent Architecture}
+\label{ssec:llm-agent}
+Every agent $\mathcal{L}_i$  incorporates modules from generative agent architecture~\cite{park2023generative}.
+The agent has two functions: (1) \textit{reflect \& respond}; and (2) \textit{image sharing \& image reaction}.
+The agent is asked to primarily use the \textit{reflect \& respond} function while employing \textit{image sharing \& image reaction} function judiciously and appropriately within the context of the conversation.
+
+
+\paragraph{Reflect \& Respond.}
+The fundamental process for each agent to \textit{reflect and respond} involves the concept of short-term and long-term memory.
+During inference, agent $\mathcal{L}_i$ conditions its responses on both short and long-term memories, paralleling how humans remember recent conversations while also recalling distilled important experiences from long-term memory. Following each session $k$, each agent is asked to produce a summary $w_k$ that is then stored in the short-term $\mathcal{H}_s$. This summary $w_k$ is generated by conditioning $\mathcal{M}$ on both the most recent session conversation history $h_{k}$ and the preceding summary $w_{k-1} \in \mathcal{H}_l$. For each turn $j$ within session $k$, a single turn of the conversation $h_{k_j}$ is transformed into an observation $o_{k_j}$ and then stored in the long-term memory $\mathcal{H}_l$. Then, agent $\mathcal{L}_i$ generates a response in session $k+1$ on the date $t_{k+1}^s$ by basing it on the latest summary $w_k$, reflections based on the retrieved relevant observations $o \in \mathcal{H}_s$, the ongoing conversation history in the current session $h_{k+1}$ and persona statement $p$. Long-term temporal narratives are induced in the conversation by additionally conditioning the agent's response on the subset of events in $\mathcal{G}$ that occur between the last and current session i.e. $\{e\in\mathcal{G}\,|\,t_{k}^s\,<\,t_{i}^e\,<\,t_{k+1}^s\,\}$. See details in Appendix~\ref{sssec:agent_appendix}.
+
+ 
+\paragraph{Image Sharing \& Image Reaction.}
+The \textit{image sharing \& image reaction} functions are integrated to add a multi-modal dimension to the long-term dialogues.\footnote{Image captions are also saved to long-term memory.}
+The \textit{image sharing} function is called when the agent decides to send an image. This process includes:
+(1) Generate a caption $c$ for the intended image using $\mathcal{M}$;
+(2) Convert the caption $c$ into relevant keywords $w$ using $\mathcal{M}$;
+(3) Use the keywords $k$ to find an image through web search $WEB(k)$\footnote{\url{https://pypi.org/project/icrawler/}};
+(4) Share the chosen $image$.
+Conversely, the \textit{image reaction} function is triggered upon receiving an image from another agent and entails:
+(1) Generate caption $c$ for the received image\footnote{We use BLIP-2 \cite{li2023blip} as the captioning model.};
+(2) Generate a reaction for the received image in response using $\mathcal{M}$ (See Appendix~\ref{sssec:agent_appendix}).
+
+
+
+\subsection{Human Verification \& Editing}
+\label{ssec:manual-filter}
+In the concluding phase, human annotators are tasked with (1) editing the dialogue to eliminate long-term inconsistencies, (2) removing or substituting irrelevant images, and (3) verifying and editing for alignment between event graphs and the content of the conversations. Overall, we observed that annotators edited nearly 15\% of the dialog turns and removed or substituted approx. 19\% images present in the LLM-generated dataset. See examples of some edits in Appendix~\ref{ssec:edits_appendix}.
+
+
+===== sections/4_benchmark.tex =====
+
+\section{\dataset{} Evaluation Benchmark}
+Based on the dialogues generated in section~\ref{sec:dataset}, we introduce an evaluation benchmark (see Figure~\ref{fig:eval-framework}) composed of three tasks to assess the accuracy of \textit{long-term memory}. See statistics of the dataset and evaluation benchmark in Table~\ref{tab:dataset_statistics} in the Appendix.
+
+
+\subsection{Question Answering Task}
+\label{ssec:benchmark-qa}
+A conversational agent is expected to possess a \textit{memory} to remember previous dialogues, reflecting it to create more engaging responses in future conversations.
+For a comprehensive assessment of this \textit{memory}, we introduce a question-answering task divided into five distinct reasoning categories:
+(1) \textbf{Single-hop} questions require answers based on a single session;
+(2) \textbf{Multi-hop} questions require synthesizing information from multiple different sessions;
+(3) \textbf{Temporal reasoning} questions can be answered through temporal reasoning and capturing time-related data cues within the conversation;
+(4) \textbf{Open-domain knowledge} questions can be answered by integrating a speaker's provided information with external knowledge such as commonsense or world facts;
+(5) \textbf{Adversarial} questions are designed to trick the agent into providing wrong answers, with the expectation that the agent will correctly identify them as unanswerable. 
+
+For each category, we calculate the F1 score for exact matches, following the normalization of both the predicted and the actual ground truth answers.
+However, evaluating long-form answers with automated metrics often presents challenges~\cite{xu2023critical}. LLMs tend to produce paraphrased responses in varied formats, complicating exact match evaluation. To simplify evaluation in our task, we ensure that answers in our QA annotations are directly taken from the conversations as much as possible. We instruct the LLMs to replicate the exact wording in the conversation when feasible and employ the F1 partial match metric for evaluating the predictions. Each QA sample is also annotated with the turn IDs in the conversation logs that contain the answer. We report the accuracy of retrieving the correct context for RAG models.
+
+\subsection{Event Summarization Task}
+\label{ssec:benchmark-event}
+The conversation is generated based on a temporal event graph $\mathcal{G}$ which is constructed by conditioning an LLM on a persona statement $p$, reflecting the chronological sequence of events in an individual's life.
+A conversational agent is expected to not only comprehend the causal connections and the sequence of events in $\mathcal{G}$ but also to recount these events as required.
+To evaluate the agent's grasp of event dynamics, we introduce the event summarization task which challenges the agent to summarize the events within a designated timeframe and compares the agent's summary with events in $\mathcal{G}$. The events in \dataset{} are densely annotated lists of life events that are hard to summarize due to temporal and causal coreferences present in the dialogues, in contrast to existing summarization benchmarks of research papers \cite{li2023loogle}, movie scripts \cite{chen2022summscreen}, books \cite{kryscinski2022booksum}, emails \cite{zhang2021emailsum} etc.
+
+
+Traditional metrics like BLEU~\cite{papineni-etal-2002-bleu} and ROGUE~\cite{lin-2004-rouge} focus on lexical similarity between the reference and generated summaries, not meeting our needs as we emphasize factual accuracy in summarization.
+In this context, we employ FactScore~\cite{min2023factscore}, a method that evaluates the factuality of generated text by decomposing both the reference and hypothesis into atomic facts.
+We adapt the metric to measure
+(1) \textit{precision} of the summarized content by counting the number of atomic facts within the content that correspond with those in $\mathcal{G}$;
+(2) \textit{recall} of the summarized content by determining how comprehensively the atomic facts of $\mathcal{G}$ are represented within the content.
+We present the F1 score, derived from the calculated precision and recall.
+
+
+\subsection{Multi-Modal Dialogue Generation Task}
+\label{ssec:benchmark-mm}
+The conversations in our dataset are anchored to specific personas $p$ and corresponding events $\mathcal{G}$ tailored to $p$.
+The topics in conversations evolve from events that were introduced in earlier dialogues, spanning weeks or months.
+This structure allows for an assessment of whether conversational agents can sustain a coherent persona and a continuous narrative over time.
+For example, if a speaker recently had an injury, the next conversations would likely focus on them recuperating, rather than engaging in adventurous activities.
+We assess such consistency by measuring how closely the predicted multi-modal dialogues align with the ground truth multi-modal dialogues in our dataset, quantifying this alignment through MMRelevance~\cite{feng2023mmdialog}, in addition to other NLG metrics.
+
+===== sections/5_experiments.tex =====
+
+\section{Experimental Setup}
+\label{sec:baselines}
+
+For the question-answering and event summarization tasks, we replace images in \dataset{} with their captions \cite{li2023blip}, and use state-of-art LLMs to reason over text-only dialogues interleaved with image captions. We use images directly for the multimodal dialog generation task only. See additional details in Appendix~\ref{sec:experiments_appendix}.
+
+\paragraph{Question Answering.}
+We evaluate three types of models:
+(1) \textbf{Base} LLMs operating with constrained context lengths where earlier dialogues are omitted i.e., Mistral-7B~\cite{jiang2023mistral}, LLama-70B-chat~\cite{touvron2023llama}, \texttt{gpt-3.5-turbo}~\footnote{https://platform.openai.com/docs/models/gpt-3-5}, and \texttt{gpt-4-turbo}~\footnote{https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo}; 
+(2) \textbf{Long-context} LLMs with an extended context window i.e., \texttt{gpt-3.5-turbo-16k}; 
+(3) \textbf{Retrieval-augmented Generation (RAG)} involves retrieving relevant context from a database of dialog history, observations (assertions about speakers; see \Sref{ssec:llm-agent}, Figure~\ref{fig:observation_prompt}), or session-level summaries (see \Sref{ssec:llm-agent}, Figure~\ref{fig:summary_prompt}). We employ DRAGON~\cite{lin-etal-2023-train} as retriever and \texttt{gpt-3.5-turbo-16k} as reader.
+
+
+\paragraph{Event Summarization.}
+We present experiments using \textbf{Base} and \textbf{Long-context} setups from the question-answering task, but refrain from including RAG since summarization requires a comprehensive understanding of the entire dialogue, rather than just retrieving a specific portion. We implement incremental summarization i.e., iteratively create a summary of a preceding sessions and then use that summary as a basis to summarize the subsequent sessions \cite{chang2023booookscore}.
+
+\paragraph{Multi-modal Dialogue Generation.}
+We generate 50 conversations using our automated pipeline (without human filtering; \Sref{sec:dataset}) for training data and train three versions of MiniGPT-5~\cite{zheng2023minigpt}:
+(1) \textbf{Base} trains on prior dialogue turns only;
+(2) \textbf{+ summary} trains on prior dialogue turns and a global summary of the ongoing conversation;
+(3) \textbf{+ observation} trains on prior dialogue turns and observations retrieved from conversation history.
+Each run is initialized with a MiniGPT-5 checkpoint finetuned on MMDialog \cite{feng2023mmdialog}.
+
+
+
+
+
+===== sections/6_results.tex =====
+
+
+\begin{table*}[t!]
+	\centering
+	\small
+	\resizebox{0.99\textwidth}{!}{
+		\begin{tabular}{ccccccccc}
+            \toprule
+            \multirow{2}{*}{\textbf{Category}} & \multirow{2}{*}{\textbf{Model}} & \multirow{2}{*}{\textbf{Context Length}} & \multicolumn{6}{c}{\textbf{Answer Prediction (F1)}} \\
+            \cmidrule(lr){4-9} & & & Single Hop & Multi Hop & Temporal & Open Domain &  Adversarial & \textbf{Overall}\\
+            \midrule
+                \rowcolor{blue!20} Human & Human & -  & 95.1 & 85.8 & 92.6 & 75.4 & 89.4 & 87.9  \\
+            \midrule
+                \multirow{4}{*}{Base} & \texttt{Mistral-Instruct-7B} & 8K  & 10.2 & 12.8 & 16.1 & 19.5 & 17.0 & 13.9 \\
+                & \texttt{Llama-2-Chat-70B} & 4,096  & 19.7 & 14.4 & 13.3 & 15.9 & 22.1 & 17.9 \\
+                & \texttt{GPT-3.5-turbo} & 4,096  & \textbf{29.9} & 23.3 & \textbf{17.5} & \textbf{29.5} & 12.8 & 22.4 \\
+                & \texttt{GPT-4-turbo} & 4,096  & 23.4 & \textbf{23.4} & 10.4 & 24.6 & \textbf{70.2} & \textbf{32.1} \\
+
+            \midrule
+                \multirow{4}{*}{Long context} & \multirow{4}{*}{\texttt{GPT-3.5-turbo-16K}} & \cellcolor{gray!25} 4K  & 31.7 & 25.4 & 16.8 & 27.6 & \textbf{13.1} & 24.1  \\
+                 & & \cellcolor{gray!40} 8K  & 38.8 & 31.2 & 21.0 & 35.0 & 8.4 & 25.2  \\
+                 & & \cellcolor{gray!60} 12K  & 51.1 & 40.4 & \textbf{25.0} & 36.5 & 6.4 & 33.5  \\
+                 & & \cellcolor{gray!75} 16K  & \textbf{56.4} & \textbf{42.0} & 20.3 & \textbf{37.2} & 2.1 & \textbf{37.8}  \\
+            \bottomrule
+        \end{tabular}
+	}
+ \vspace{-5pt}
+        \caption{\textbf{Question answering performance} of \texttt{Base} and \texttt{Long-context} models. Optimal performance is in \textbf{bold}. Results are based on F1-score for answer prediction; higher is better.}
+	\label{tab:qa_results}
+\end{table*}
+
+
+
+\begin{table*}[t!]
+	\centering
+	\small
+	\resizebox{0.99\textwidth}{!}{
+		\begin{tabular}{P{0.7in}P{0.2in}P{0.4in}P{0.4in}P{0.4in}P{0.5in}P{0.4in}P{0.5in}P{0.5in}P{0.5in}P{0.5in}P{0.5in}P{0.5in}P{0.5in}}
+            \toprule
+              &  &  \multicolumn{6}{c}{\textbf{Answer Prediction (F1 score)}} &
+             & \multicolumn{5}{c}{\textbf{Recall Accuracy (R@$k$)}} \\
+            \cmidrule(lr){3-8} \cmidrule(lr){9-14} \multirow{2}{*}{\textbf{Retrieval Unit}} & \multirow{2}{*}{\textbf{top-$k$}} & Single Hop & Multi Hop & Temporal & Open \newline Domain &  Adver-\newline -sarial & \textbf{Overall} & Single Hop & Multi Hop & Temporal & Open \newline Domain &  Adver- \newline -sarial & \textbf{Overall} \\
+            \midrule
+            \texttt{None} & -  & 29.9 & 23.3 & 17.5 & 29.5 & 12.8 & 22.4 & - & - & - & - & - & -  \\
+            \midrule
+                 \multirow{4}{*}{\texttt{Dialog}} & \cellcolor{gray!30} 5 & 42.9  & 19.4  & 21.3  & 35.8  & 31.9  & 31.7  & 
+                 66.2  & 34.4 &  89.2 & 38.5 & 45.7 & 58.8  \\
+                 & \cellcolor{gray!45} 10 & 46.3  & 26.8  & 24.8  & 37.5  & \textbf{29.8} & 34.6  & 72.8 & 247.4 &  97.3 & 53.8 &  54.3 & 67.5 \\
+                 & \cellcolor{gray!60} 25 & 48.1 & 36.1 & \textbf{26.2} & \textbf{43.4} & 23.4 & \textbf{35.8} & 87.5 & 64.1 & \textbf{97.3} &  \textbf{67.9} & 69.1 & 79.9 \\
+                 & \cellcolor{gray!75} 50 & \textbf{50.9} & \textbf{37.2} & 24.6 & 38.3 & 17.0 & 34.8 &  \textbf{90.4} &  \textbf{75.5} &  97.3 &  67.9 &  \textbf{77.7} &  \textbf{84.8} \\
+            \midrule
+                \multirow{4}{*}{\texttt{Observation}} & \cellcolor{gray!30} 5 &  44.3  & 30.6  & 41.9  & 40.2  & \textbf{44.7}  & \textbf{41.4}  &   52.9 &  40.1 &  81.1 &  38.5 &  29.8 & 49.6 \\
+                & \cellcolor{gray!45} 10 & 42.2  & 30.5  & \textbf{42.1}  & 41.9  & 36.2  & 38.8  &  57.4 &  53.1 &  \textbf{83.8} & 46.2 &  41.5 &  57.1\\
+                & \cellcolor{gray!60} 25 & \textbf{44.6}  & 33.2  & 41.8  & 41.9  & 27.7  & 38.0  & \textbf{71.3} &  63.8 &  83.8 &  66.7 &  45.7 & 66.0 \\
+                & \cellcolor{gray!75} 50 & 44.0  & \textbf{34.5}  & 41.1  & \textbf{41.9}  & 27.7  & 37.8  &  72.8 &  \textbf{73.2} &  83.8 &  \textbf{74.4} &  \textbf{56.4} &  \textbf{71.1}\\
+            \midrule
+                \multirow{4}{*}{\texttt{Summary}} & \cellcolor{gray!30} 2 &  34.6  & 15.7  & 26.9  & 26.5  & 36.2  & 29.9  &   68.4 &  39.6 &  56.8 & 50.0 & 73.4 &  61.5 \\
+                & \cellcolor{gray!50} 5 & \textbf{36.6}  & \textbf{16.6} & \textbf{31.0} & \textbf{34.7}  & 38.3  & \textbf{32.5} &   81.6 &  57.0 &  70.3 &  60.3 &  86.2 &  75.1 \\
+                & \cellcolor{gray!70} 10 & 34.5 & 14.7  & 29.3  & 31.6  & \textbf{40.4}  & 31.5  &  \textbf{93.4} &  \textbf{82.3} &  \textbf{91.9} &  \textbf{80.8} &  \textbf{94.7} &  \textbf{90.7} \\
+            \bottomrule
+        \end{tabular}
+	}
+ \vspace{-5pt}
+        \caption{\textbf{Question answering performance} of RAG-based \texttt{GPT-3.5-turbo-16k}.  Optimal performance is in \textbf{bold}. Results are based on F1-score metric for answer prediction and recall@$k$ for recall accuracy; higher is better.}
+	\label{tab:qa_rag_results}
+ \vspace{-10pt}
+\end{table*}
+
+\section{Experimental Results}
+
+
+
+We evaluate and analyze the comprehensive performance of all baseline methods for question answering (\Sref{ssec:qa-results}), event graph summarization (\Sref{ssec:event-results}), and multi-modal dialogue generation (\Sref{ssec:dialog-results}).
+
+\subsection{Question Answering Task}
+\label{ssec:qa-results}
+
+
+Tables~\ref{tab:qa_results} and~\ref{tab:qa_rag_results} present the performance results for the question answering task. We find that:
+\textbf{(1) LLMs with limited context length face challenges in understanding extremely long conversations} due to truncated context windows. Despite \texttt{gpt-4-turbo} emerging as the top-performing model with an overall score of 32.4, it notably lags behind the human benchmark of 87.9;
+\textbf{(2) long-context LLMs can comprehend longer narratives, yet they are prone to generating hallucinations}. \texttt{gpt-3.5-turbo-16k} outperforms other approaches, but its performance on adversarial questions drops to a mere 2.1\%, as compared to 22.1\% using \texttt{Llama-2-Chat} and 70.2\% using \texttt{GPT-4-turbo} with 4K context windows. This indicates that LLMs can be easily misled into generating hallucinations when they are subjected to long contexts;
+\textbf{(3) RAG is effective when conversations are stored as observations}. There is a noticeable 5\% improvement with \texttt{gpt-3.5-turbo} when the input is top 5 relevant observations instead of pure conversation logs. This improvement falters with an increase in the number of retrieved observations, suggesting that it is important to reduce the signal-to-noise (SNR) ratio in retrieved contexts for models to utilize the context accurately. Conversely, using session summaries as context does not significantly improve the performance despite high recall accuracies\footnote{For summary-based RAG models, the recall accuracy is based on retrieving the summary of the relevant session(s).}, likely due to loss of information during the conversion of dialogs to summaries.
+
+The interesting finding is that \textbf{time reasoning and open-domain knowledge questions are the most challenging scenarios}.
+
+(1) LLMs face challenges in understanding time concepts within dialogues, which is consistent with findings from other single-turn-based benchmarks focused on temporal reasoning capabilities for LLMs~\cite{wang2023tram}.
+
+(2) LLMs struggle with open-domain knowledge and degrade in the RAG setting. This suggests that while certain open-domain knowledge may be embedded within the model's parameters, introducing improper context from inaccurate retrieval can lead to a decline in performance~\cite{mallen-etal-2023-trust}.
+
+
+\begin{table*}[t!]
+	\centering
+	\small
+	\resizebox{0.99\textwidth}{!}{
+		\begin{tabular}{cccccccccc}
+            \toprule
+            \multirow{2}{*}{\textbf{Category}} & \multirow{2}{*}{\textbf{Model}} & \multirow{2}{*}{\textbf{Context Length}} & \multicolumn{3}{c}{\textbf{ROGUE}} & \multicolumn{3}{c}{\textbf{FactScore}} \\
+            \cmidrule(lr){4-6} \cmidrule(lr){7-9} & & & \textbf{ROGUE-1} & \textbf{ROGUE-2} & \textbf{ROGUE-L} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+            \midrule
+                \multirow{4}{*}{Base} & \texttt{Mistral-Instruct-7B} & 8K & 29.4 & 7.2 & 14.1 & 27.1 & 19.8 & 23.0 \\
+                & \texttt{Llama-2-Chat-70B} & 4,096 & 28.1 & 9.3 & 14.8 & 36.3 & 22.7 & 28.3 \\
+                & \texttt{GPT-4-turbo} & 4,096 & 38.8 & 11.4 & 20.6 & \textbf{51.6} & 41.8 & 45.1 \\
+                & \texttt{GPT-3.5-turbo} & 4,096 & \textbf{41.1} & \textbf{13.5} & \textbf{20.9} & 45.3 & \textbf{46.5} & \textbf{45.9} \\
+            \midrule
+                Long context & \texttt{GPT-3.5-turbo-16K} & 16K & 36.2 & 8.5 & 16.4 & 42.3 & 37.8 & 39.9  \\
+            \bottomrule
+        \end{tabular}
+	}
+ \vspace{-1pt}
+        \caption{\textbf{Event summarization performance} of \texttt{Base} and \texttt{Long-context} models. The optimal performance is shown in \textbf{bold}. Results are based on ROUGE and FactScore \cite{min2023factscore} metrics; higher is better.}
+	\label{tab:summ_results}
+\end{table*}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/minigpt5_results.pdf}
+    \vspace{-1pt}
+    \caption{\textbf{Multimodal dialog generation performance of MiniGPT-5}. (A) an example of multimodal dialog predicted using MiniGPT5 with and without observation as retrieved context, (B) Variation of MM-Relevance score with length of dialog history, and (C) comparison of RAG-based MiniGPT-5 methods.\label{fig:minigpt5}}
+    \vspace{-1pt}
+\end{figure*}
+
+
+
+
+\subsection{Event Summarization Task}
+\label{ssec:event-results}
+
+Table~\ref{tab:summ_results} presents results for the event summarization task. The use of incremental summarization with \textbf{\texttt{gpt-3.5-turbo} leads to the highest performance} in both recall and F1 score. While \texttt{gpt-4-turbo} records a 5.3\% improvement in precision over with \texttt{gpt-3.5-turbo}, it does not fare as well in terms of recall. The event summarization task requires long-range dependency to understand the temporal and causal connections between the events discussed by the speaker in multiple sessions (see Figure~\ref{fig:temporal-event}). Contrary to expectations, the \textbf{long-context model does not surpass the base model}, despite its capability for extended-range reasoning facilitated by a larger context window. \texttt{gpt-3.5-turbo-16k} exhibits a decline in both precision (by 3.0\%) and recall (by 8.7\%) compared to \texttt{gpt-3.5-turbo} which has a 4K context window. This suggests that \textbf{long-context models may not be proficient at utilizing their context appropriately}, which also aligns with similar findings in \citet{li2023loogle} as well as the QA task in \dataset{}. In terms of both the ROUGE and FactScore metrics, commercial models (\texttt{gpt-4-turbo}, \texttt{gpt-3.5-turbo}) significantly outshine their open-source counterparts. Nonetheless, there remains considerable scope for improving performance on this task.
+
+From a manual analysis of predicted summaries, we identify five broad categories of event summarization errors made by LLMs: (1) \textbf{missing information} in events because the model fails to make temporal and/or causal connections over a lengthy conversation; (2) \textbf{hallucinations} i.e., models pad extra details that are either not present in the conversation or are part of a different event in the same session; (3) errors from \textbf{misunderstanding of dialog cues} such as humor or sarcasm is a distinctive issue with comprehension of dialogs; (4) inaccurate \textbf{speaker attributions}; and (5) insignificant dialogs that are wrongly considered as \textbf{salient} events. See examples in Table~\ref{tab:summary_errors} in the Appendix.
+
+
+
+\subsection{Multi-Modal Dialog Generation Task}
+\label{ssec:dialog-results}
+
+Figure~\ref{fig:minigpt5} illustrates the effectiveness of various MiniGPT-5 training variants in multi-modal dialogue generation. Incorporating context into training enhances performance, with the inclusion of observation as context yielding significantly improved results. For instance, in Figure~\ref{fig:minigpt5}A, the retrieved observations contain information about the speaker's experience in video game tournaments, which leads to the prediction of dialog and images that are more faithful to the speaker's persona.
+This observation is consistent with earlier findings from the QA task as well (see Table~\ref{tab:qa_rag_results}). Also, we observe that the MM-Relevance score drops with an increase in the length of dialog history (see Figure~\ref{fig:minigpt5}B). Retrieval-augmented generation alleviates the drop in MM-Relevance to some extent. 
+
+
+===== sections/7_conclusion.tex =====
+
+\section{Conclusion}
+ We develop a human-machine pipeline to collect \dataset{}, a datset of 50 high-quality very long conversations, each encompassing 300 turns and 9K tokens on avg., over up to 35 sessions, and propose an evaluation framework consisting of three tasks that evaluate models' proficiency in long conversations. Our experiments show that LLMs struggle to comprehend long-term narratives within the dialog and fail to draw temporal and causal connections between events discussed by speakers.
+
+===== sections/8_limitation.tex =====
+
+\section{Limitations}
+
+\paragraph{Hybrid human-machine generated data.} Our dataset is sourced primarily from text generated by LLMs. We pursued this method, which has quickly emerged as a popular alternative to time-intensive manual data collection \cite{kim-etal-2023-soda, jang2023conversation}, to avoid the logistical and legal complexities of collecting very long-term real-world conversations at scale. We ensure that the dataset mirrors real-world interactions as much as possible by having human annotators verify and edit the generated conversations. However, we acknowledge that this dataset may not fully reflect the nuances of real-world online conversations. 
+
+\paragraph{Limited exploration of multimodal behavior.} Since the images in our dataset are sourced from the web, they do not demonstrate the visual long-term consistencies that are usually exhibited in personal photos (e.g., appearance, home environment, people and pets, etc.). Consequently, we find that the images in our dataset can be replaced with their captions without much loss of information, except for cases where OCR is required. Nevertheless, our work is a first step toward research into the multimodal aspect of very long-term conversations.
+
+\paragraph{Language.} Our LLM-based pipeline for generating long-term conversations has been developed for the English language only. However, our pipeline can be made to work with any other language using an LLM that is proficient at that language and appropriate translations of our prompts.
+
+\paragraph{Closed-source LLMs.} We use state-of-the-art LLMs in our dialog generation pipeline to create a dialog dataset that is as realistic as possible. Unfortunately, this meant employing the strongest commercial LLMs available through a paid API, similar to many concurrent works that generate synthetic conversations \cite{zhong2023memorybank, lu2023memochat}. We will make the code for our generative pipeline publicly available in the hope that it can be made to work effectively with state-of-the-art open-source LLMs in the future.
+
+\paragraph{Evaluation of long-form NLG.} LLMs are prone to generating verbose answers even when prompted to answer in short phrases. This creates challenges in evaluating the correctness of answers provided by LLMs and has been widely documented in NLP literature \cite{chang2023booookscore, xu2023critical, krishna2023longeval}. Our evaluation framework suffers from the same challenges when used for experimenting with LLMs.
+
+
+===== sections/98_acknowledgement.tex =====
+
+\section*{Acknowledgements}
+
+===== sections/99_appendix.tex =====
+
+
+
+
+
+\appendix
+\section*{Appendix Overview}
+\noindent The appendix is organized as follows:\\
+\textbf{Section A}: Details of generative pipeline for the \dataset{} dataset.\\
+\textbf{Section B}: Statistics of \dataset{} dataset, license for data release and annotator details.\\
+\textbf{Section C}: Experimental setup and implementation details.\\
+\textbf{Section D}: Additional results from evaluation on the \dataset{} benchmark.\\
+
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/persona_appendix.pdf}
+    \vspace{-10pt}
+    \caption{\textbf{Prompt for persona statement ($p$) generation and examples of personas in \dataset{}.} The prompt used to generate expanded persona statements ($p$) from initial personas ($p_c$) for the virtual agents in our conversation generation pipeline (top) and select examples of persona statements present in the \dataset{} dataset.\label{fig:persona}}
+\end{figure*}
+
+\section{Generative Pipeline for \dataset{}}
+\label{sec:generative-pipeline-appendix}
+
+\subsection{Persona}
+\label{ssec:persona_appendix}
+We assign unique persona statement $p$ to each agent $\mathcal{L}_i$. For this, we select a range of initial persona statements $p_c$ from the MSC dataset~\cite{xu2022beyond}, each encompassing 4 to 5 sentences. We employ \texttt{gpt-3.5-turbo} as $\mathcal{M}$ to expand these into full persona statement $p$, conditioning $\mathcal{M}$ on the chosen statements $p_c$. The prompt used for converting a short list of speaker attributes from the MSC dataset \cite{xu2022beyond} into a complete persona summary is presented in Fig.~\ref{fig:persona}. We also use a single example of speaker attribute $\rightarrow$ persona summary as an in-context demonstration along with the prompt. A small selection of personas showcasing the diversity of speakers in the \dataset{} dataset is demonstrated in Fig.~\ref{fig:persona}.
+
+
+\subsection{Temporal Event Graph}
+\label{ssec:event_appendix}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/event_prompts_appendix.pdf}
+    \caption{\textbf{Prompts for temporal event graph generation.} The prompt used to generate complete personas for the LLMs in our conversation generation pipeline (top) and examples of personas present in the \dataset{} dataset.\label{fig:event_prompt}}
+\end{figure*}
+
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/events.pdf}
+    \vspace{-0.5cm}
+    \caption{\textbf{Temporal Event Graph $\mathcal{G}$ Creation.} Each event is generated in accordance with the specified persona $p$ and causal connections $l$ between events are depicted to illustrate the casual relationships among them.}
+    \label{fig:temporal-event}
+\end{figure*}
+
+As outlined in Sec.~\ref{ssec:temporal-event}, we use an iterative process for generating event graphs consisting of causally connected events based on a given persona summary. The base prompt for describing the constitution of the event graph, the nature of events and causal connections between events is shown in Fig.~\ref{fig:event_prompt}. First, the base prompt is used along with the prompt for event graph initialization to generate three independent events relevant to a given personality. Then, the base prompt is combined with the prompt for the iterative generation of events to continue generating events that are caused by one or more of the events that are already present in the graph. See an example of a persona and the corresponding temporal event graph in Fig.~\ref{fig:temporal-event}. In the example, Jack aspires to be a hotel manager. Consequently, he enrolls in a hotel management course in July, and after three months, he expresses his excitement about the course on social media. In a similar vein, his passion for gaming results in an invitation from a well-known gaming company.
+
+\subsubsection{Virtual Agent Architecture}
+\label{sssec:agent_appendix}
+
+As outlined in Section~\ref{ssec:llm-agent}, the virtual agents in our generative pipelines are composed of two mechanisms, \textit{Reflect \& respond} \cite{park2023generative} and \textit{Image sharing \& response}.
+
+\paragraph{Reflect \& respond.} This mechanism operates over a combination of short-term and long-term memory. The short-term memory is a summary of a session that is conditioned on the summary from a previous session. See the prompt given to LLMs in our pipeline for generating summaries, and an example of a generated summary, in Fig.~\ref{fig:summary_prompt}. The long-term memory is a database of \textit{observations} about each speaker, that are essentially assertive statements about the speaker's persona and life. See the prompt given to LLMs in our pipeline for generating observations, and an example of observations extracted from a conversation, in Fig.~\ref{fig:observation_prompt}. In practice, the conversation is annotated with turn IDs for each turn, and the model is also instructed to indicate the turn IDs that directly contribute to each observation. This allows us to keep track of the evidence when using observations as the context for RAG-based models used in our experiments (see Section~\ref{sec:baselines}).
+
+\paragraph{Image sharing \& response.} See prompts for implementing image-sharing and image-response behaviors in Figure~\ref{fig:image_prompt}. 
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/summary_prompt_arxiv.pdf}
+    \caption{\textbf{Prompt for generating conversation summaries.} The prompt used to iteratively generate a summary for the current session by conditioning on summary from preceding sessions and the raw conversation logs of the current session (top); and an example of inputs for the prompt and corresponding output summary of a session from the \dataset{} dataset. \label{fig:summary_prompt}}
+\end{figure*}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/observation_prompt_arxiv.pdf}
+    \caption{\textbf{Prompts for generating observations from conversations.} The prompt used to generate observations from a conversation (top); and an example of inputs for the prompt and corresponding output observations for a session from the \dataset{} dataset.\label{fig:observation_prompt}}
+\end{figure*}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/image_prompts.pdf}
+    \vspace{-30pt}
+    \caption{\textbf{Prompts for image-sharing and image-response behavior.} The prompt used to convert a caption generated by the virtual agent into an image query for the web-based image crawler in our pipeline (top), and the prompt used to generate a response grounded in the image shared by a virtual agent during a conversation as well as the personas of the respective speakers (bottom).\label{fig:image_prompt}}
+\end{figure*}
+
+
+\subsection{Human Filtering}
+\label{ssec:edits_appendix}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/conv_edits.pdf}
+    \caption{\textbf{Example of edits made by annotators.} Human annotators are instructed to make edits in the LLM-generated conversations to remove irrelevant The prompt used to generate complete personas for the LLMs in our conversation generation pipeline (top) and examples of personas present in the \dataset{} dataset.\label{fig:conv_edits}}
+\end{figure*}
+
+
+Human annotators are instructed to edit the LLM-generated conversations in the following scenarios:
+\begin{itemize}
+    \item Remove an image if it is not relevant to the current dialog or the conversation.
+    \item Add context about an image to the current speaker's dialog if it is not discussed by them but the subsequent speaker has reacted to the image.
+    \item Replace an image if it does not match the caption that was used to query for images.
+    \item Edit the dialog when the information present in the dialog is inconsistent with something said (or shared through an image) in earlier or later turns.
+    \item Edit the dialog to ensure that the details in the conversation are consistent with those given in the event for the session.
+    \item Remove any events from the event graph if they do not appear in the conversation.
+\end{itemize}
+
+See an example of some edits in Fig.~\ref{fig:conv_edits}.
+
+\section{Dataset}
+
+\subsection{Dataset Statistics}
+See a breakdown of the statistics of the conversations in the \dataset{} dataset in the top panel of Table~\ref{tab:dataset_statistics}. Also, see a breakdown of the statistics of the annotations in the evaluation benchmark in the bottom panel of Table~\ref{tab:dataset_statistics}.
+
+\begin{table}[t]
+	\centering
+	\small
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{lc}
+            \toprule
+            \rowcolor{gray!20} Conversation Statistics & \# Counts \\
+            \midrule
+             Total. \# conversations $h$. & 50 \\
+             Avg. \# sessions $k$. in conversation $h$ & 19.3 \\
+             Avg. \# turns $j$. in session $k$ & 15.8 \\
+            \midrule
+             Avg. \# tokens. conversation $h$ & 9,209.2 \\
+             Avg. \# tokens. dialogue $h_{k_j}$ of turn $j$ in session $k$ &  30.2 \\
+             Avg. \# tokens. observation $o_{k_j}$ of turn $j$ in session $k$ & 18.2 \\
+             Avg. \# tokens. summary $w_k$ of session $k$ & 127.4 \\
+             \midrule
+             \rowcolor{gray!20} QA Benchmark Statistics & \\
+             \midrule
+             \# questions. single-hop retrieval & 2,705 (36\%)\\
+             \# questions. multi-hop retrieval & 1,104 (14.6\%)\\
+             \# questions. temporal reasoning &  1,547 (20.6\%)\\
+             \# questions. open domain knowledge & 285 (3.9\%)\\
+             \# questions. adversarial & 1,871 (24.9\%)\\
+             \textbf{Total. \# questions.} & \textbf{7,512} \\
+             \midrule
+             \rowcolor{gray!20} Event Summarization Statistics & \\
+             \midrule
+             Avg. \# ground truth events. in conversation $h$ & 24.2 \\
+             Avg. \# tokens. event summary & 896.5 \\
+             \midrule
+             \rowcolor{gray!20} Multi-modal Dialogue Generation Statistics & \\
+             \midrule
+             Avg. \# images. in conversation $h$ & 32.3 \\
+            \bottomrule
+        \end{tabular}
+	}
+        \caption{\textbf{Dataset Statistics} of conversation and corresponding benchmark}
+	\label{tab:dataset_statistics}
+\end{table}
+
+\subsection{Dataset License}
+The \dataset{} dataset will be released under the CC BY-NC 4.0 DEED license.\footnote{\url{https://creativecommons.org/licenses/by-nc/4.0/}}
+
+\subsection{Annotator Details}
+The annotators who worked on the \dataset{} dataset were in-house annotators and we were unable to obtain their demographics due to the confidential nature of such information.
+
+\section{Experimental Setup}
+\label{sec:experiments_appendix}
+
+\subsection{Baselines}
+\label{ssec:baselines-appendix}
+The conversations in the \dataset{} dataset are composed of natural language dialogs and images that require higher-order reasoning and multimodal coreference resolution, respectively. From initial studies, we observed that multimodal coreference resolution can be performed effectively by replacing images in \dataset{} with their captions generated using BLIP-2 \cite{li2023blip}, and using state-of-art LLMs to reason over natural language text interleaved with image captions. Hence, our experiments for the question answering and event summarization tasks are conducted using LLMs. We use the images directly only for experiments on the multimodal dialog generation task.
+
+\paragraph{Question Answering.}
+We carry out experiments using three distinct methodologies:
+(1) \textbf{Base} involves utilizing LLMs to directly conduct the task within a constrained context.
+The task description comes after the dialogue history. 
+To accommodate the restricted context window size, earlier dialogues are omitted; 
+(2) \textbf{Long-context} employs LLMs with an extended context window to expose the models to as much dialogue context as possible;
+(3) \textbf{Retrieval-augmented Generation (RAG)} involves retrieving relevant context from a database of dialog history, observations, or session-level summaries. \textit{Observations} are assertions about each speaker extracted from the dialog history as described in \Sref{ssec:llm-agent}, see an example in Figure~\ref{fig:observation_prompt}. Session-level \textit{summaries} are concise summaries of the conversation that takes place in each session, see an example in Figure~\ref{fig:summary_prompt}.
+
+For the retrieval model, we employ DRAGON~\cite{lin-etal-2023-train}.
+In the \textit{Base}, we utilize Mistral-7B~\cite{jiang2023mistral}, LLama-70B-chat~\cite{touvron2023llama}, \texttt{gpt-3.5-turbo}~\footnote{https://platform.openai.com/docs/models/gpt-3-5}, and \texttt{gpt-4-turbo}~\footnote{https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo}. 
+To assess the effectiveness in practical scenarios for \textit{Long-context} and \textit{RAG}, we draw comparisons using variants of \texttt{gpt-3.5-turbo}.
+We do not report the performance of long-context fine-tuned open-source models~\cite{chen2023longlora} or those utilizing sliding window~\cite{bertsch2024unlimiformer, dao2022flashattention} due to the variability inherent across different open-source models and the potential reduction in their capability on shorter context.
+
+\paragraph{Event Summarization.}
+We present experiments conducted in two distinct configurations.
+We use both the \textbf{Base} and \textbf{Long-context} setups from the question answering task, but we refrained from including RAG since summarization requires a comprehensive understanding of the entire dialogue, rather than just retrieving a specific portion. A notable distinction in our approach, compared to the question-answering task, lies in our handling of the context. 
+Specifically, we employ an iterative process of creating a summary of a preceding session and then use that summary as a basis to generate the summary for the subsequent session \cite{chang2023booookscore}. Further, we use a single in-context demonstration of input and output to guide the model toward selecting only significant life events for the summary.
+
+\paragraph{Multi-modal Dialogue Generation.}
+For evaluating multi-modal dialogue generation, we train MiniGPT-5~\cite{zheng2023minigpt} on 50 conversations generated using our automated pipeline (without human filtering) as detailed in \Sref{sec:dataset}.
+Three distinct versions of the model were developed, each with varying training data:
+(1) \textbf{Base} trains on preceding dialogue turns;
+(2) \textbf{+ summary} trains on both prior dialogue turns and a global summary of the ongoing conversation;
+(3) \textbf{+ observation} trains on both preceding dialogue turns and relevant observations retrieved from the conversation history.
+For each of these models, we started with a MiniGPT-5 checkpoint pretrained on the MMDialog dataset \cite{feng2023mmdialog}.
+
+\subsection{Implementation Details}
+We use OpenAI API and Huggingface~\cite{wolf-etal-2020-transformers}, as of January 2024, with specific settings of $temperature$ set to 0 and $top_p$ set to 1 for evaluation of the \dataset{} benchmark. All experiments, including those for RAG-based models, MiniGPT-5 training, and inference, are conducted on an Nvidia A6000 server with FP32. We report results from a single inference run for each model in our experiments. For MiniGPT-5, we used the hyperparameters recommended in the original codebase and trained our models for 10 epochs, which took approximately 30 hours on a single A6000 GPU.
+
+We use the default implementations of BLEU\footnote{\url{https://www.nltk.org/_modules/nltk/translate/bleu_score.html}}, ROUGE\footnote{\url{https://pypi.org/project/rouge/}}, BertScore\footnote{\url{https://pypi.org/project/bert-score/}}, FactScore\footnote{\url{https://github.com/shmsw25/FActScore}} metrics in their respective Python packages in our evaluation protocol.
+
+\section{Results}
+
+\begin{table}[t!]
+	\centering
+	\small
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{ccccc}
+            \toprule
+             \textbf{Category} & \textbf{top-$k$} & \textbf{BLEU-1/2} & \textbf{Rouge-L} & \textbf{MM-R} \\
+            \midrule
+                \texttt{Base}  &  - & 57.1 / 34.2 & 12.4 & 56.1 \\
+            \midrule
+                \texttt{+ summary} & \cellcolor{gray!30} 1 & 58.2 / 34.1 & 12.8 & 56.9 \\
+                \texttt{+ summary} & \cellcolor{gray!45} 2 & 56.5 / 32.8 & 12.1 & 55.1 \\
+                \texttt{+ summary} & \cellcolor{gray!60} 5 & 56.1 / 32.5 & 12.0 & 55.2 \\
+            \midrule
+                \texttt{+ observation} & \cellcolor{gray!30} 5 & \textbf{59.7} / \textbf{35.1} & \textbf{13.6} & \textbf{57.8} \\
+                \texttt{+ observation} & \cellcolor{gray!45} 10 & 59.1 / 34.9 & 12.8 & 57.1 \\
+                \texttt{+ observation} & \cellcolor{gray!60} 25 & 58.5 / 34.2 & 12.0 & 56.5 \\
+            \bottomrule
+        \end{tabular}
+	}
+        \caption{\textbf{Multi-modal dialogue generation performance} comparison between different training variants of MiniGPT-5.
+        The optimal performance is shown in \textbf{bold}.}
+	\label{tab:dialog_results}
+\end{table}
+
+
+
+\subsection{Event Summarization Task}
+\label{ssec:appendix-event-summ}
+
+See an example of the five broad categories of event summarization errors made by LLMs, outlined in Section~\ref{ssec:event-results}, in Table~\ref{tab:summary_errors}.
+
+\begin{table*}[t!]
+	\centering
+	\small
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{P{0.7in}>{\columncolor{blue!10}}P{2.2in}>{\raggedright}P{2.8in}P{1.8in}}
+            \toprule
+             \textbf{Error Type} & \textbf{Explanation} & \textbf{Ground truth event \textit{or} relevant dialogs} & \textbf{Predicted event} \\
+            \midrule
+            Missing information & Key details about event are omitted because the model fails to make causal and temporal connections over a long conversation. & Joanna submits her third screenplay on loss, identity, and connection to a film contest & Joanna submits her recent screenplay to a film contest. \\
+            \midrule
+            Hallucination & Non-existent details or details from a different event are padded onto an event & \textit{N}: `The gaming party was a great success!' \newline \textit{N}: `... said they'd want to do it again next month!' \newline \textit{N}: `On another note, I made vegan ice cream ...' & Nate's vegan ice cream is a huge success and people want to do it again next month. \\
+            \midrule
+            Misunder- -standing of dialog cues & e.g., model confuses a light-hearted statement from a speaker as a serious statement & \textit{J}: `.. these trails that made me feel like writing a drama.' \newline \textit{N}: `.. go together .. Maybe I'll start to think of a drama myself and write a screenplay ...' \newline \textit{J}: `Haha, now that would be something! ...' & Nate considers writing his own drama screenplay. \\
+            \midrule
+            Speaker attribution & Event is attributed to the wrong speaker & Nate invites Joanna to try his homemade lactose-free ice cream. & Joanna invites Nate to her home to try her dairy-free ice cream recipe. \\
+            \midrule
+            Saliency & Unimportant interactions in the conversation are considered significant by model & \textit{N}: Hey Joanna, what's been up since we last chatted? How's it going? & Nate asks Joanna how she has been she they last talked.\\
+            \bottomrule
+        \end{tabular}
+	}
+        \caption{\textbf{Taxonomy of errors in LLM-generated event summaries.} Five types of errors predominantly occur in the event summaries generated by LLMs. Examples are based on predictions from \texttt{gpt-3.5-turbo}.}
+	\label{tab:summary_errors}
+\end{table*}
+
+\subsection{Multimodal Dialog Generation Task}
+
+
+Results from evaluation of various version of MiniGPT-5 model on the multimodal dialog generation task in the \dataset{} benchmark is in Table~\ref{tab:dialog_results}.
+
+
+
+
+===== sections/9_ethics.tex =====
+
+\section{Broader Impacts}
+We adopt and improve a framework of generative agents introduced in \citet{park2023generative} for the generation of long-term conversations. Consequently, the ethical concerns of generative agents outlined by \citet{park2023generative} apply to our work as well, especially since the goal of our framework is to make the conversations as realistic as possible. 
+
+
+Specifically, conversational agents that can pose as human beings with a realistic life, as enabled by the temporal event graphs in our framework, pose the risk that users may form parasocial relationships with such agents that may affect their lives adversely. We recommend that any practical deployment of the generative frameworks mentioned in our work be always prefaced with a disclaimer about the source of the dialogs.
+
+
+Second, the use of multimodal LLMs \cite{zheng2023minigpt} to generate images conditioned on dialog can lead to the propagation of misinformation and social biases, especially if the conversational agent can be coerced into parroting false information or dangerous opinions.
+
+Third, it is tempting to use generative agents to substitute real humans for a process, especially when there are significant challenges in working with humans for a particular goal e.g., collecting real-world interactions between humans over a year or more. Care must be taken to ensure that such substitutes are not made in studies whose outcomes may be used to make real-world decisions with tangible impacts on humans. Our work is merely a study of model comprehension in very long-term conversations. We do not make any recommendations for real-world policies based on this study and advise potential users of our framework to avoid making such recommendations as well.
+
+
+===== acl.sty =====
+
+% This is the LaTex style file for *ACL.
+% The official sources can be found at
+%
+%     https://github.com/acl-org/acl-style-files/
+%
+% This package is activated by adding
+%
+%    \usepackage{acl}
+%
+% to your LaTeX file. When submitting your paper for review, add the "review" option:
+%
+%    \usepackage[review]{acl}
+
+\newif\ifacl@finalcopy
+\DeclareOption{final}{\acl@finalcopytrue}
+\DeclareOption{review}{\acl@finalcopyfalse}
+\ExecuteOptions{final} % final copy is the default
+
+% include hyperref, unless user specifies nohyperref option like this:
+% \usepackage[nohyperref]{acl}
+\newif\ifacl@hyperref
+\DeclareOption{hyperref}{\acl@hyperreftrue}
+\DeclareOption{nohyperref}{\acl@hyperreffalse}
+\ExecuteOptions{hyperref} % default is to use hyperref
+\ProcessOptions\relax
+
+\typeout{Conference Style for ACL}
+
+\usepackage{xcolor}	
+
+\ifacl@finalcopy
+  % Hack to ignore these commands, which review mode puts into the .aux file.
+  \newcommand{\@LN@col}[1]{}
+  \newcommand{\@LN}[2]{}
+\else
+  % Add draft line numbering via the lineno package
+  % https://texblog.org/2012/02/08/adding-line-numbers-to-documents/
+  \usepackage[switch,mathlines]{lineno}
+
+  % Line numbers in gray Helvetica 8pt
+  \font\aclhv = phvb at 8pt
+  \renewcommand\linenumberfont{\aclhv\color{lightgray}}
+
+  % Zero-fill line numbers
+  % NUMBER with left flushed zeros  \fillzeros[<WIDTH>]<NUMBER>
+  \newcount\cv@tmpc@ \newcount\cv@tmpc
+  \def\fillzeros[#1]#2{\cv@tmpc@=#2\relax\ifnum\cv@tmpc@<0\cv@tmpc@=-\cv@tmpc@\fi
+    \cv@tmpc=1 %
+    \loop\ifnum\cv@tmpc@<10 \else \divide\cv@tmpc@ by 10 \advance\cv@tmpc by 1 \fi
+       \ifnum\cv@tmpc@=10\relax\cv@tmpc@=11\relax\fi \ifnum\cv@tmpc@>10 \repeat
+    \ifnum#2<0\advance\cv@tmpc1\relax-\fi
+    \loop\ifnum\cv@tmpc<#1\relax0\advance\cv@tmpc1\relax\fi \ifnum\cv@tmpc<#1 \repeat
+    \cv@tmpc@=#2\relax\ifnum\cv@tmpc@<0\cv@tmpc@=-\cv@tmpc@\fi \relax\the\cv@tmpc@}%
+  \renewcommand\thelinenumber{\fillzeros[3]{\arabic{linenumber}}}
+  \linenumbers
+
+  \setlength{\linenumbersep}{1.6cm}
+
+  % Bug: An equation with $$ ... $$ isn't numbered, nor is the previous line.
+
+  % Patch amsmath commands so that the previous line and the equation itself
+  % are numbered. Bug: multline has an extra line number.
+  % https://tex.stackexchange.com/questions/461186/how-to-use-lineno-with-amsmath-align
+  \usepackage{etoolbox} %% <- for \pretocmd, \apptocmd and \patchcmd
+  
+  \newcommand*\linenomathpatch[1]{%
+    \expandafter\pretocmd\csname #1\endcsname {\linenomath}{}{}%
+    \expandafter\pretocmd\csname #1*\endcsname {\linenomath}{}{}%
+    \expandafter\apptocmd\csname end#1\endcsname {\endlinenomath}{}{}%
+    \expandafter\apptocmd\csname end#1*\endcsname {\endlinenomath}{}{}%
+  }
+  \newcommand*\linenomathpatchAMS[1]{%
+    \expandafter\pretocmd\csname #1\endcsname {\linenomathAMS}{}{}%
+    \expandafter\pretocmd\csname #1*\endcsname {\linenomathAMS}{}{}%
+    \expandafter\apptocmd\csname end#1\endcsname {\endlinenomath}{}{}%
+    \expandafter\apptocmd\csname end#1*\endcsname {\endlinenomath}{}{}%
+  }
+  
+  %% Definition of \linenomathAMS depends on whether the mathlines option is provided
+  \expandafter\ifx\linenomath\linenomathWithnumbers
+    \let\linenomathAMS\linenomathWithnumbers
+    %% The following line gets rid of an extra line numbers at the bottom:
+    \patchcmd\linenomathAMS{\advance\postdisplaypenalty\linenopenalty}{}{}{}
+  \else
+    \let\linenomathAMS\linenomathNonumbers
+  \fi
+
+  \AtBeginDocument{%
+    \linenomathpatch{equation}%
+    \linenomathpatchAMS{gather}%
+    \linenomathpatchAMS{multline}%
+    \linenomathpatchAMS{align}%
+    \linenomathpatchAMS{alignat}%
+    \linenomathpatchAMS{flalign}%
+  }
+\fi
+
+\iffalse
+\PassOptionsToPackage{
+  a4paper,
+  top=2.21573cm,left=2.54cm,
+  textheight=704.60031pt, % 51 * \baselineskip + \topskip
+  textwidth=16.0cm,
+  headheight=0.17573cm,headsep=0cm
+}{geometry}
+\fi
+\PassOptionsToPackage{a4paper,margin=2.5cm,heightrounded=true}{geometry}
+\RequirePackage{geometry}
+
+\setlength\columnsep{0.6cm}  
+\newlength\titlebox 
+\setlength\titlebox{11\baselineskip}
+% \titlebox should be a multiple of \baselineskip so that
+% column height remaining fits an exact number of lines of text
+
+\flushbottom \twocolumn \sloppy
+
+% We're never going to need a table of contents, so just flush it to
+% save space --- suggested by drstrip@sandia-2
+\def\addcontentsline#1#2#3{}
+
+\ifacl@finalcopy
+    \thispagestyle{empty}        
+    \pagestyle{empty}
+\else
+    \pagenumbering{arabic}
+\fi
+
+%% Title and Authors %%
+
+\newcommand{\Thanks}[1]{\thanks{\ #1}}
+
+\newcommand\outauthor{
+    \begin{tabular}[t]{c}
+    \ifacl@finalcopy
+	     \bf\@author
+	\else 
+		% Avoiding common accidental de-anonymization issue. --MM
+        \bf Anonymous ACL submission
+	\fi
+    \end{tabular}}
+
+% Mostly taken from deproc.
+\AtBeginDocument{
+\def\maketitle{\par
+ \begingroup
+   \def\thefootnote{\fnsymbol{footnote}}
+   \def\@makefnmark{\hbox to 0pt{$^{\@thefnmark}$\hss}}
+   \twocolumn[\@maketitle] \@thanks
+ \endgroup
+ \setcounter{footnote}{0}
+ \let\maketitle\relax \let\@maketitle\relax
+ \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+\def\@maketitle{\vbox to \titlebox{\hsize\textwidth
+ \linewidth\hsize \vskip 0.125in minus 0.125in \centering
+ {\Large\bf \@title \par} \vskip 0.2in plus 1fil minus 0.1in
+ {\def\and{\unskip\enspace{\rm and}\enspace}%
+  \def\And{\end{tabular}\hss \egroup \hskip 1in plus 2fil 
+           \hbox to 0pt\bgroup\hss \begin{tabular}[t]{c}\bf}%
+  \def\AND{\end{tabular}\hss\egroup \hfil\hfil\egroup
+          \vskip 0.25in plus 1fil minus 0.125in
+           \hbox to \linewidth\bgroup\large \hfil\hfil
+             \hbox to 0pt\bgroup\hss \begin{tabular}[t]{c}\bf}
+  \hbox to \linewidth\bgroup\large \hfil\hfil
+    \hbox to 0pt\bgroup\hss 
+	\outauthor
+   \hss\egroup
+    \hfil\hfil\egroup}
+  \vskip 0.3in plus 2fil minus 0.1in
+}}
+}
+
+% margins and font size for abstract
+\renewenvironment{abstract}%
+		 {\centerline{\large\bf Abstract}%
+		  \begin{list}{}%
+		     {\setlength{\rightmargin}{0.6cm}%
+		      \setlength{\leftmargin}{0.6cm}}%
+		   \item[]\ignorespaces%
+		   \@setsize\normalsize{12pt}\xpt\@xpt
+		   }%
+		 {\unskip\end{list}}
+  
+%\renewenvironment{abstract}{\centerline{\large\bf  
+% Abstract}\vspace{0.5ex}\begin{quote}}{\par\end{quote}\vskip 1ex}
+
+% Resizing figure and table captions - SL
+% Support for interacting with the caption, subfigure, and subcaption packages - SL
+\RequirePackage{caption}
+\DeclareCaptionFont{10pt}{\fontsize{10pt}{12pt}\selectfont}
+\captionsetup{font=10pt}
+
+\RequirePackage{natbib}
+% for citation commands in the .tex, authors can use:
+% \citep, \citet, and \citeyearpar for compatibility with natbib, or
+% \cite, \newcite, and \shortcite for compatibility with older ACL .sty files
+\renewcommand\cite{\citep}	% to get "(Author Year)" with natbib    
+\newcommand\shortcite{\citeyearpar}% to get "(Year)" with natbib    
+\newcommand\newcite{\citet}	% to get "Author (Year)" with natbib
+\newcommand{\citeposs}[1]{\citeauthor{#1}'s (\citeyear{#1})} % to get "Author's (Year)"
+
+\bibliographystyle{acl_natbib}
+
+% Bibliography
+
+% Don't put a label in the bibliography at all.  Just use the unlabeled format
+% instead.
+\def\thebibliography#1{\vskip\parskip%
+\vskip\baselineskip%
+\def\baselinestretch{1}%
+\ifx\@currsize\normalsize\@normalsize\else\@currsize\fi%
+\vskip-\parskip%
+\vskip-\baselineskip%
+\section*{References\@mkboth
+ {References}{References}}\list
+ {}{\setlength{\labelwidth}{0pt}\setlength{\leftmargin}{\parindent}
+ \setlength{\itemindent}{-\parindent}}
+ \def\newblock{\hskip .11em plus .33em minus -.07em}
+ \sloppy\clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+
+
+% Allow for a bibliography of sources of attested examples
+\def\thesourcebibliography#1{\vskip\parskip%
+\vskip\baselineskip%
+\def\baselinestretch{1}%
+\ifx\@currsize\normalsize\@normalsize\else\@currsize\fi%
+\vskip-\parskip%
+\vskip-\baselineskip%
+\section*{Sources of Attested Examples\@mkboth
+ {Sources of Attested Examples}{Sources of Attested Examples}}\list
+ {}{\setlength{\labelwidth}{0pt}\setlength{\leftmargin}{\parindent}
+ \setlength{\itemindent}{-\parindent}}
+ \def\newblock{\hskip .11em plus .33em minus -.07em}
+ \sloppy\clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax}
+\let\endthesourcebibliography=\endlist
+
+% sections with less space
+\def\section{\@startsection {section}{1}{\z@}{-2.0ex plus
+    -0.5ex minus -.2ex}{1.5ex plus 0.3ex minus .2ex}{\large\bf\raggedright}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{-1.8ex plus
+    -0.5ex minus -.2ex}{0.8ex plus .2ex}{\normalsize\bf\raggedright}}
+%% changed by KO to - values to get the initial parindent right
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{-1.5ex plus
+   -0.5ex minus -.2ex}{0.5ex plus .2ex}{\normalsize\bf\raggedright}}
+\def\paragraph{\@startsection{paragraph}{4}{\z@}{1.5ex plus
+   0.5ex minus .2ex}{-1em}{\normalsize\bf}}
+\def\subparagraph{\@startsection{subparagraph}{5}{\parindent}{1.5ex plus
+   0.5ex minus .2ex}{-1em}{\normalsize\bf}}
+
+% Footnotes
+\footnotesep 6.65pt %
+\skip\footins 9pt plus 4pt minus 2pt
+\def\footnoterule{\kern-3pt \hrule width 5pc \kern 2.6pt }
+\setcounter{footnote}{0}
+
+% Lists and paragraphs
+\parindent 1em
+\topsep 4pt plus 1pt minus 2pt
+\partopsep 1pt plus 0.5pt minus 0.5pt
+\itemsep 2pt plus 1pt minus 0.5pt
+\parsep 2pt plus 1pt minus 0.5pt
+
+\leftmargin 2em \leftmargini\leftmargin \leftmarginii 2em
+\leftmarginiii 1.5em \leftmarginiv 1.0em \leftmarginv .5em \leftmarginvi .5em
+\labelwidth\leftmargini\advance\labelwidth-\labelsep \labelsep 5pt
+
+\def\@listi{\leftmargin\leftmargini}
+\def\@listii{\leftmargin\leftmarginii
+   \labelwidth\leftmarginii\advance\labelwidth-\labelsep
+   \topsep 2pt plus 1pt minus 0.5pt
+   \parsep 1pt plus 0.5pt minus 0.5pt
+   \itemsep \parsep}
+\def\@listiii{\leftmargin\leftmarginiii
+    \labelwidth\leftmarginiii\advance\labelwidth-\labelsep
+    \topsep 1pt plus 0.5pt minus 0.5pt 
+    \parsep \z@ \partopsep 0.5pt plus 0pt minus 0.5pt
+    \itemsep \topsep}
+\def\@listiv{\leftmargin\leftmarginiv
+     \labelwidth\leftmarginiv\advance\labelwidth-\labelsep}
+\def\@listv{\leftmargin\leftmarginv
+     \labelwidth\leftmarginv\advance\labelwidth-\labelsep}
+\def\@listvi{\leftmargin\leftmarginvi
+     \labelwidth\leftmarginvi\advance\labelwidth-\labelsep}
+
+\abovedisplayskip 7pt plus2pt minus5pt%
+\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip  0pt plus3pt%   
+\belowdisplayshortskip  4pt plus3pt minus3pt%
+
+% Less leading in most fonts (due to the narrow columns)
+% The choices were between 1-pt and 1.5-pt leading
+\def\@normalsize{\@setsize\normalsize{11pt}\xpt\@xpt}
+\def\small{\@setsize\small{10pt}\ixpt\@ixpt}
+\def\footnotesize{\@setsize\footnotesize{10pt}\ixpt\@ixpt}
+\def\scriptsize{\@setsize\scriptsize{8pt}\viipt\@viipt}
+\def\tiny{\@setsize\tiny{7pt}\vipt\@vipt}
+\def\large{\@setsize\large{14pt}\xiipt\@xiipt}
+\def\Large{\@setsize\Large{16pt}\xivpt\@xivpt}
+\def\LARGE{\@setsize\LARGE{20pt}\xviipt\@xviipt}
+\def\huge{\@setsize\huge{23pt}\xxpt\@xxpt}
+\def\Huge{\@setsize\Huge{28pt}\xxvpt\@xxvpt}
+
+% The hyperref manual (section 9) says hyperref should be loaded after natbib
+\ifacl@hyperref
+  \PassOptionsToPackage{breaklinks}{hyperref}
+  \RequirePackage{hyperref}
+  % make links dark blue
+  \definecolor{darkblue}{rgb}{0, 0, 0.5}
+  \hypersetup{colorlinks=true, citecolor=darkblue, linkcolor=darkblue, urlcolor=darkblue}
+\else
+  % This definition is used if the hyperref package is not loaded.
+  % It provides a backup, no-op definiton of \href.
+  % This is necessary because \href command is used in the acl_natbib.bst file.
+  \def\href#1#2{{#2}}
+  \usepackage{url}
+\fi
+
+
+===== acl_latex.bbl =====
+
+\begin{thebibliography}{68}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Ahn et~al.(2023)Ahn, Song, Yun, and Kim}]{ahn2023mpchat}
+Jaewoo Ahn, Yeda Song, Sangdoo Yun, and Gunhee Kim. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.acl-long.189} {{MPCHAT}: Towards multimodal persona-grounded conversation}.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 3354--3377, Toronto, Canada. Association for Computational Linguistics.
+
+\bibitem[{Anantha et~al.(2021)Anantha, Vakulenko, Tu, Longpre, Pulman, and Chappidi}]{anantha2021open}
+Raviteja Anantha, Svitlana Vakulenko, Zhucheng Tu, Shayne Longpre, Stephen Pulman, and Srinivas Chappidi. 2021.
+\newblock Open-domain question answering goes conversational via question rewriting.
+\newblock In \emph{Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies}, pages 520--534.
+
+\bibitem[{Antol et~al.(2015)Antol, Agrawal, Lu, Mitchell, Batra, Zitnick, and Parikh}]{antol2015vqa}
+Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C~Lawrence Zitnick, and Devi Parikh. 2015.
+\newblock Vqa: Visual question answering.
+\newblock In \emph{Proceedings of the IEEE international conference on computer vision}, pages 2425--2433.
+
+\bibitem[{Assmann and Czaplicka(1995)}]{assmann1995collective}
+Jan Assmann and John Czaplicka. 1995.
+\newblock Collective memory and cultural identity.
+\newblock \emph{New german critique}, (65):125--133.
+
+\bibitem[{Bertsch et~al.(2024)Bertsch, Alon, Neubig, and Gormley}]{bertsch2024unlimiformer}
+Amanda Bertsch, Uri Alon, Graham Neubig, and Matthew Gormley. 2024.
+\newblock Unlimiformer: Long-range transformers with unlimited length input.
+\newblock \emph{Advances in Neural Information Processing Systems}, 36.
+
+\bibitem[{Chang et~al.(2023)Chang, Lo, Goyal, and Iyyer}]{chang2023booookscore}
+Yapei Chang, Kyle Lo, Tanya Goyal, and Mohit Iyyer. 2023.
+\newblock Booookscore: A systematic exploration of book-length summarization in the era of llms.
+\newblock In \emph{The Twelfth International Conference on Learning Representations}.
+
+\bibitem[{Chen et~al.(2022)Chen, Chu, Wiseman, and Gimpel}]{chen2022summscreen}
+Mingda Chen, Zewei Chu, Sam Wiseman, and Kevin Gimpel. 2022.
+\newblock Summscreen: A dataset for abstractive screenplay summarization.
+\newblock In \emph{Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 8602--8615.
+
+\bibitem[{Chen et~al.(2023)Chen, Qian, Tang, Lai, Liu, Han, and Jia}]{chen2023longlora}
+Yukang Chen, Shengju Qian, Haotian Tang, Xin Lai, Zhijian Liu, Song Han, and Jiaya Jia. 2023.
+\newblock Longlora: Efficient fine-tuning of long-context large language models.
+\newblock In \emph{The Twelfth International Conference on Learning Representations}.
+
+\bibitem[{Cooper(1999)}]{cooper1999inmates}
+Alan Cooper. 1999.
+\newblock \emph{The inmates are running the asylum}.
+\newblock Springer.
+
+\bibitem[{Dao et~al.(2022)Dao, Fu, Ermon, Rudra, and R{\'e}}]{dao2022flashattention}
+Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher R{\'e}. 2022.
+\newblock Flashattention: Fast and memory-efficient exact attention with io-awareness.
+\newblock \emph{Advances in Neural Information Processing Systems}, 35:16344--16359.
+
+\bibitem[{Das et~al.(2017)Das, Kottur, Gupta, Singh, Yadav, Moura, Parikh, and Batra}]{das2017visual}
+Abhishek Das, Satwik Kottur, Khushi Gupta, Avi Singh, Deshraj Yadav, Jos{\'e}~MF Moura, Devi Parikh, and Dhruv Batra. 2017.
+\newblock Visual dialog.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and pattern recognition}, pages 326--335.
+
+\bibitem[{Feng et~al.(2023)Feng, Sun, Xu, Zhao, Yang, Tao, Zhao, and Lin}]{feng2023mmdialog}
+Jiazhan Feng, Qingfeng Sun, Can Xu, Pu~Zhao, Yaming Yang, Chongyang Tao, Dongyan Zhao, and Qingwei Lin. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.acl-long.405} {{MMD}ialog: A large-scale multi-turn dialogue dataset towards multi-modal open-domain conversation}.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 7348--7363, Toronto, Canada. Association for Computational Linguistics.
+
+\bibitem[{Gao et~al.(2023{\natexlab{a}})Gao, Borges, Oh, Bayazit, Kanno, Wakaki, Mitsufuji, and Bosselut}]{gao2023peacok}
+Silin Gao, Beatriz Borges, Soyoung Oh, Deniz Bayazit, Saya Kanno, Hiromi Wakaki, Yuki Mitsufuji, and Antoine Bosselut. 2023{\natexlab{a}}.
+\newblock \href {https://doi.org/10.18653/v1/2023.acl-long.362} {{P}ea{C}o{K}: Persona commonsense knowledge for consistent and engaging narratives}.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 6569--6591, Toronto, Canada. Association for Computational Linguistics.
+
+\bibitem[{Gao et~al.(2023{\natexlab{b}})Gao, Yen, Yu, and Chen}]{gao2023enabling}
+Tianyu Gao, Howard Yen, Jiatong Yu, and Danqi Chen. 2023{\natexlab{b}}.
+\newblock \href {https://doi.org/10.18653/v1/2023.emnlp-main.398} {Enabling large language models to generate text with citations}.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pages 6465--6488, Singapore. Association for Computational Linguistics.
+
+\bibitem[{Ghazarian et~al.(2022)Ghazarian, Wen, Galstyan, and Peng}]{ghazarian2022deam}
+Sarik Ghazarian, Nuan Wen, Aram Galstyan, and Nanyun Peng. 2022.
+\newblock Deam: Dialogue coherence evaluation using amr-based semantic manipulations.
+\newblock In \emph{Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 771--785.
+
+\bibitem[{He et~al.(2023)He, Lin, Gong, Jin, Zhang, Lin, Jiao, Yiu, Duan, Chen et~al.}]{he2023annollm}
+Xingwei He, Zhenghao Lin, Yeyun Gong, Alex Jin, Hang Zhang, Chen Lin, Jian Jiao, Siu~Ming Yiu, Nan Duan, Weizhu Chen, et~al. 2023.
+\newblock Annollm: Making large language models to be better crowdsourced annotators.
+\newblock \emph{arXiv preprint arXiv:2303.16854}.
+
+\bibitem[{Hirst and Echterhoff(2012)}]{hirst2012remembering}
+William Hirst and Gerald Echterhoff. 2012.
+\newblock Remembering in conversations: The social sharing and reshaping of memories.
+\newblock \emph{Annual review of psychology}, 63:55--79.
+
+\bibitem[{Hirst and Manier(2008)}]{hirst2008towards}
+William Hirst and David Manier. 2008.
+\newblock Towards a psychology of collective memory.
+\newblock \emph{Memory}, 16(3):183--200.
+
+\bibitem[{Hirst et~al.(2018)Hirst, Yamashiro, and Coman}]{hirst2018collective}
+William Hirst, Jeremy~K Yamashiro, and Alin Coman. 2018.
+\newblock Collective memory from a psychological perspective.
+\newblock \emph{Trends in cognitive sciences}, 22(5):438--451.
+
+\bibitem[{Jandaghi et~al.(2023)Jandaghi, Sheng, Bai, Pujara, and Sidahmed}]{jandaghi2023faithful}
+Pegah Jandaghi, XiangHai Sheng, Xinyi Bai, Jay Pujara, and Hakim Sidahmed. 2023.
+\newblock Faithful persona-based conversational dataset generation with large language models.
+\newblock \emph{arXiv preprint arXiv:2312.10007}.
+
+\bibitem[{Jang et~al.(2023)Jang, Boo, and Kim}]{jang2023conversation}
+Jihyoung Jang, Minseong Boo, and Hyounghun Kim. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.emnlp-main.838} {Conversation chronicles: Towards diverse temporal and relational dynamics in multi-session conversations}.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pages 13584--13606, Singapore. Association for Computational Linguistics.
+
+\bibitem[{Jiang et~al.(2023)Jiang, Sablayrolles, Mensch, Bamford, Chaplot, Casas, Bressand, Lengyel, Lample, Saulnier et~al.}]{jiang2023mistral}
+Albert~Q Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford, Devendra~Singh Chaplot, Diego de~las Casas, Florian Bressand, Gianna Lengyel, Guillaume Lample, Lucile Saulnier, et~al. 2023.
+\newblock Mistral 7b.
+\newblock \emph{arXiv preprint arXiv:2310.06825}.
+
+\bibitem[{Kim et~al.(2023)Kim, Hessel, Jiang, West, Lu, Yu, Zhou, Bras, Alikhani, Kim, Sap, and Choi}]{kim-etal-2023-soda}
+Hyunwoo Kim, Jack Hessel, Liwei Jiang, Peter West, Ximing Lu, Youngjae Yu, Pei Zhou, Ronan Bras, Malihe Alikhani, Gunhee Kim, Maarten Sap, and Yejin Choi. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.emnlp-main.799} {{SODA}: Million-scale dialogue distillation with social commonsense contextualization}.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pages 12930--12949, Singapore. Association for Computational Linguistics.
+
+\bibitem[{Kottur et~al.(2019)Kottur, Moura, Parikh, Batra, and Rohrbach}]{kottur2019clevr}
+Satwik Kottur, Jos{\'e} M.~F. Moura, Devi Parikh, Dhruv Batra, and Marcus Rohrbach. 2019.
+\newblock \href {https://doi.org/10.18653/v1/N19-1058} {{CLEVR}-dialog: A diagnostic dataset for multi-round reasoning in visual dialog}.
+\newblock In \emph{Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)}, pages 582--595, Minneapolis, Minnesota. Association for Computational Linguistics.
+
+\bibitem[{Krishna et~al.(2023)Krishna, Bransom, Kuehl, Iyyer, Dasigi, Cohan, and Lo}]{krishna2023longeval}
+Kalpesh Krishna, Erin Bransom, Bailey Kuehl, Mohit Iyyer, Pradeep Dasigi, Arman Cohan, and Kyle Lo. 2023.
+\newblock Longeval: Guidelines for human evaluation of faithfulness in long-form summarization.
+\newblock In \emph{Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics}, pages 1642--1661.
+
+\bibitem[{Kry{\'s}ci{\'n}ski et~al.(2022)Kry{\'s}ci{\'n}ski, Rajani, Agarwal, Xiong, and Radev}]{kryscinski2022booksum}
+Wojciech Kry{\'s}ci{\'n}ski, Nazneen Rajani, Divyansh Agarwal, Caiming Xiong, and Dragomir Radev. 2022.
+\newblock Booksum: A collection of datasets for long-form narrative summarization.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2022}, pages 6536--6558.
+
+\bibitem[{Lee et~al.(2023{\natexlab{a}})Lee, Pujara, Sewak, White, and Jauhar}]{lee-etal-2023-making}
+Dong-Ho Lee, Jay Pujara, Mohit Sewak, Ryen White, and Sujay Jauhar. 2023{\natexlab{a}}.
+\newblock \href {https://doi.org/10.18653/v1/2023.emnlp-main.948} {Making large language models better data creators}.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pages 15349--15360, Singapore. Association for Computational Linguistics.
+
+\bibitem[{Lee et~al.(2023{\natexlab{b}})Lee, Hartmann, Park, Papailiopoulos, and Lee}]{lee2023prompted}
+Gibbeum Lee, Volker Hartmann, Jongho Park, Dimitris Papailiopoulos, and Kangwook Lee. 2023{\natexlab{b}}.
+\newblock \href {https://doi.org/10.18653/v1/2023.findings-acl.277} {Prompted {LLM}s as chatbot modules for long open-domain conversation}.
+\newblock In \emph{Findings of the Association for Computational Linguistics: ACL 2023}, pages 4536--4554, Toronto, Canada. Association for Computational Linguistics.
+
+\bibitem[{Lee et~al.(2023{\natexlab{c}})Lee, Ko, Kim, Hyeon, and Choi}]{lee2023dialogcc}
+Young-Jun Lee, Byungsoo Ko, Han-Gyu Kim, Jonghwan Hyeon, and Ho-Jin Choi. 2023{\natexlab{c}}.
+\newblock Dialogcc: An automated pipeline for creating high-quality multi-modal dialogue datasets.
+\newblock In \emph{NeurIPS 2023 Workshop on Instruction Tuning and Instruction Following}.
+
+\bibitem[{Li et~al.(2023{\natexlab{a}})Li, Wang, Zheng, and Zhang}]{li2023loogle}
+Jiaqi Li, Mengmeng Wang, Zilong Zheng, and Muhan Zhang. 2023{\natexlab{a}}.
+\newblock Loogle: Can long-context language models understand long contexts?
+\newblock \emph{arXiv preprint arXiv:2311.04939}.
+
+\bibitem[{Li et~al.(2023{\natexlab{b}})Li, Li, Savarese, and Hoi}]{li2023blip}
+Junnan Li, Dongxu Li, Silvio Savarese, and Steven Hoi. 2023{\natexlab{b}}.
+\newblock Blip-2: Bootstrapping language-image pre-training with frozen image encoders and large language models.
+\newblock In \emph{International Conference on Machine Learning}.
+
+\bibitem[{Li et~al.(2017)Li, Su, Shen, Li, Cao, and Niu}]{li2017dailydialog}
+Yanran Li, Hui Su, Xiaoyu Shen, Wenjie Li, Ziqiang Cao, and Shuzi Niu. 2017.
+\newblock Dailydialog: A manually labelled multi-turn dialogue dataset.
+\newblock In \emph{Proceedings of the Eighth International Joint Conference on Natural Language Processing (Volume 1: Long Papers)}, pages 986--995.
+
+\bibitem[{Liang et~al.(2023)Liang, Wang, Huang, Wu, Wu, Lu, Ma, and Li}]{liang2023unleashing}
+Xinnian Liang, Bing Wang, Hui Huang, Shuangzhi Wu, Peihao Wu, Lu~Lu, Zejun Ma, and Zhoujun Li. 2023.
+\newblock Unleashing infinite-length input capacity for large-scale language models with self-controlled memory system.
+\newblock \emph{arXiv preprint arXiv:2304.13343}.
+
+\bibitem[{Lin(2004)}]{lin-2004-rouge}
+Chin-Yew Lin. 2004.
+\newblock \href {https://aclanthology.org/W04-1013} {{ROUGE}: A package for automatic evaluation of summaries}.
+\newblock In \emph{Text Summarization Branches Out}, pages 74--81, Barcelona, Spain. Association for Computational Linguistics.
+
+\bibitem[{Lin et~al.(2023)Lin, Asai, Li, Oguz, Lin, Mehdad, Yih, and Chen}]{lin-etal-2023-train}
+Sheng-Chieh Lin, Akari Asai, Minghan Li, Barlas Oguz, Jimmy Lin, Yashar Mehdad, Wen-tau Yih, and Xilun Chen. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.findings-emnlp.423} {How to train your dragon: Diverse augmentation towards generalizable dense retrieval}.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2023}, pages 6385--6400, Singapore. Association for Computational Linguistics.
+
+\bibitem[{Liu et~al.(2023)Liu, Zhang, and Liang}]{liu2023evaluating}
+Nelson Liu, Tianyi Zhang, and Percy Liang. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.findings-emnlp.467} {Evaluating verifiability in generative search engines}.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2023}, pages 7001--7025, Singapore. Association for Computational Linguistics.
+
+\bibitem[{Liu et~al.(2024)Liu, Lin, Hewitt, Paranjape, Bevilacqua, Petroni, and Liang}]{liu2023lost}
+Nelson~F. Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua, Fabio Petroni, and Percy Liang. 2024.
+\newblock \href {https://doi.org/10.1162/tacl_a_00638} {{Lost in the Middle: How Language Models Use Long Contexts}}.
+\newblock \emph{Transactions of the Association for Computational Linguistics}, 12:157--173.
+
+\bibitem[{Lu et~al.(2023)Lu, An, Lin, Pergola, He, Yin, Sun, and Wu}]{lu2023memochat}
+Junru Lu, Siyu An, Mingbao Lin, Gabriele Pergola, Yulan He, Di~Yin, Xing Sun, and Yunsheng Wu. 2023.
+\newblock Memochat: Tuning llms to use memos for consistent long-range open-domain conversation.
+\newblock \emph{arXiv preprint arXiv:2308.08239}.
+
+\bibitem[{Mallen et~al.(2023)Mallen, Asai, Zhong, Das, Khashabi, and Hajishirzi}]{mallen-etal-2023-trust}
+Alex Mallen, Akari Asai, Victor Zhong, Rajarshi Das, Daniel Khashabi, and Hannaneh Hajishirzi. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.acl-long.546} {When not to trust language models: Investigating effectiveness of parametric and non-parametric memories}.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 9802--9822, Toronto, Canada. Association for Computational Linguistics.
+
+\bibitem[{Meng et~al.(2020)Meng, Wang, Han, Sun, Wu, Yan, and Li}]{meng2020openvidial}
+Yuxian Meng, Shuhe Wang, Qinghong Han, Xiaofei Sun, Fei Wu, Rui Yan, and Jiwei Li. 2020.
+\newblock Openvidial: A large-scale, open-domain dialogue dataset with visual contexts.
+\newblock \emph{arXiv preprint arXiv:2012.15015}.
+
+\bibitem[{Min et~al.(2023)Min, Krishna, Lyu, Lewis, Yih, Koh, Iyyer, Zettlemoyer, and Hajishirzi}]{min2023factscore}
+Sewon Min, Kalpesh Krishna, Xinxi Lyu, Mike Lewis, Wen-tau Yih, Pang Koh, Mohit Iyyer, Luke Zettlemoyer, and Hannaneh Hajishirzi. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.emnlp-main.741} {{FA}ct{S}core: Fine-grained atomic evaluation of factual precision in long form text generation}.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pages 12076--12100, Singapore. Association for Computational Linguistics.
+
+\bibitem[{Mostafazadeh et~al.(2017)Mostafazadeh, Brockett, Dolan, Galley, Gao, Spithourakis, and Vanderwende}]{mostafazadeh2017image}
+Nasrin Mostafazadeh, Chris Brockett, Bill Dolan, Michel Galley, Jianfeng Gao, Georgios Spithourakis, and Lucy Vanderwende. 2017.
+\newblock \href {https://aclanthology.org/I17-1047} {Image-grounded conversations: Multimodal context for natural question and response generation}.
+\newblock In \emph{Proceedings of the Eighth International Joint Conference on Natural Language Processing (Volume 1: Long Papers)}, pages 462--472, Taipei, Taiwan. Asian Federation of Natural Language Processing.
+
+\bibitem[{Nie et~al.(2021)Nie, Williamson, Bansal, Kiela, and Weston}]{nie2021like}
+Yixin Nie, Mary Williamson, Mohit Bansal, Douwe Kiela, and Jason Weston. 2021.
+\newblock I like fish, especially dolphins: Addressing contradictions in dialogue modeling.
+\newblock In \emph{Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)}, pages 1699--1713.
+
+\bibitem[{Papineni et~al.(2002)Papineni, Roukos, Ward, and Zhu}]{papineni-etal-2002-bleu}
+Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing Zhu. 2002.
+\newblock \href {https://doi.org/10.3115/1073083.1073135} {{B}leu: a method for automatic evaluation of machine translation}.
+\newblock In \emph{Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics}, pages 311--318, Philadelphia, Pennsylvania, USA. Association for Computational Linguistics.
+
+\bibitem[{Park et~al.(2023)Park, O'Brien, Cai, Morris, Liang, and Bernstein}]{park2023generative}
+Joon~Sung Park, Joseph O'Brien, Carrie~Jun Cai, Meredith~Ringel Morris, Percy Liang, and Michael~S. Bernstein. 2023.
+\newblock \href {https://doi.org/10.1145/3586183.3606763} {Generative agents: Interactive simulacra of human behavior}.
+\newblock In \emph{Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology}, UIST '23, New York, NY, USA. Association for Computing Machinery.
+
+\bibitem[{Pruitt and Grudin(2003)}]{pruitt2003personas}
+John Pruitt and Jonathan Grudin. 2003.
+\newblock Personas: practice and theory.
+\newblock In \emph{Proceedings of the 2003 conference on Designing for user experiences}, pages 1--15.
+
+\bibitem[{Ram et~al.(2023)Ram, Levine, Dalmedigos, Muhlgay, Shashua, Leyton-Brown, and Shoham}]{ram2023context}
+Ori Ram, Yoav Levine, Itay Dalmedigos, Dor Muhlgay, Amnon Shashua, Kevin Leyton-Brown, and Yoav Shoham. 2023.
+\newblock \href {https://doi.org/10.1162/tacl_a_00605} {In-context retrieval-augmented language models}.
+\newblock \emph{Transactions of the Association for Computational Linguistics}, 11:1316--1331.
+
+\bibitem[{Shi et~al.(2023)Shi, Min, Yasunaga, Seo, James, Lewis, Zettlemoyer, and Yih}]{shi2023replug}
+Weijia Shi, Sewon Min, Michihiro Yasunaga, Minjoon Seo, Rich James, Mike Lewis, Luke Zettlemoyer, and Wen-tau Yih. 2023.
+\newblock Replug: Retrieval-augmented black-box language models.
+\newblock \emph{arXiv preprint arXiv:2301.12652}.
+
+\bibitem[{Shum et~al.(2020)Shum, Zheng, Kryscinski, Xiong, and Socher}]{shum2019sketch}
+Michael Shum, Stephan Zheng, Wojciech Kryscinski, Caiming Xiong, and Richard Socher. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.nlp4convai-1.14} {Sketch-fill-a-{R}: A persona-grounded chit-chat generation framework}.
+\newblock In \emph{Proceedings of the 2nd Workshop on Natural Language Processing for Conversational AI}, pages 118--131, Online. Association for Computational Linguistics.
+
+\bibitem[{Shuster et~al.(2020)Shuster, Humeau, Bordes, and Weston}]{shuster2020image}
+Kurt Shuster, Samuel Humeau, Antoine Bordes, and Jason Weston. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.acl-main.219} {Image-chat: Engaging grounded conversations}.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics}, pages 2414--2429, Online. Association for Computational Linguistics.
+
+\bibitem[{Shuster et~al.(2021)Shuster, Poff, Chen, Kiela, and Weston}]{shuster2021retrieval}
+Kurt Shuster, Spencer Poff, Moya Chen, Douwe Kiela, and Jason Weston. 2021.
+\newblock Retrieval augmentation reduces hallucination in conversation.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2021}, pages 3784--3803.
+
+\bibitem[{Touvron et~al.(2023)Touvron, Martin, Stone, Albert, Almahairi, Babaei, Bashlykov, Batra, Bhargava, Bhosale et~al.}]{touvron2023llama}
+Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, et~al. 2023.
+\newblock Llama 2: Open foundation and fine-tuned chat models.
+\newblock \emph{arXiv preprint arXiv:2307.09288}.
+
+\bibitem[{Wang and Zhao(2023)}]{wang2023tram}
+Yuqing Wang and Yun Zhao. 2023.
+\newblock Tram: Benchmarking temporal reasoning for large language models.
+\newblock \emph{arXiv preprint arXiv:2310.00835}.
+
+\bibitem[{Welleck et~al.(2019)Welleck, Weston, Szlam, and Cho}]{welleck2019dialogue}
+Sean Welleck, Jason Weston, Arthur Szlam, and Kyunghyun Cho. 2019.
+\newblock \href {https://doi.org/10.18653/v1/P19-1363} {Dialogue natural language inference}.
+\newblock In \emph{Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics}, pages 3731--3741, Florence, Italy. Association for Computational Linguistics.
+
+\bibitem[{Wolf et~al.(2020)Wolf, Debut, Sanh, Chaumond, Delangue, Moi, Cistac, Rault, Louf, Funtowicz, Davison, Shleifer, von Platen, Ma, Jernite, Plu, Xu, Le~Scao, Gugger, Drame, Lhoest, and Rush}]{wolf-etal-2020-transformers}
+Thomas Wolf, Lysandre Debut, Victor Sanh, Julien Chaumond, Clement Delangue, Anthony Moi, Pierric Cistac, Tim Rault, Remi Louf, Morgan Funtowicz, Joe Davison, Sam Shleifer, Patrick von Platen, Clara Ma, Yacine Jernite, Julien Plu, Canwen Xu, Teven Le~Scao, Sylvain Gugger, Mariama Drame, Quentin Lhoest, and Alexander Rush. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.emnlp-demos.6} {Transformers: State-of-the-art natural language processing}.
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations}, pages 38--45, Online. Association for Computational Linguistics.
+
+\bibitem[{Xiao et~al.(2023)Xiao, Tian, Chen, Han, and Lewis}]{xiao2023efficient}
+Guangxuan Xiao, Yuandong Tian, Beidi Chen, Song Han, and Mike Lewis. 2023.
+\newblock Efficient streaming language models with attention sinks.
+\newblock \emph{arXiv preprint arXiv:2309.17453}.
+
+\bibitem[{Xu et~al.(2023)Xu, Song, Iyyer, and Choi}]{xu2023critical}
+Fangyuan Xu, Yixiao Song, Mohit Iyyer, and Eunsol Choi. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.acl-long.181} {A critical evaluation of evaluations for long-form question answering}.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 3225--3245, Toronto, Canada. Association for Computational Linguistics.
+
+\bibitem[{Xu et~al.(2022)Xu, Szlam, and Weston}]{xu2022beyond}
+Jing Xu, Arthur Szlam, and Jason Weston. 2022.
+\newblock Beyond goldfish memory: Long-term open-domain conversation.
+\newblock In \emph{Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 5180--5197.
+
+\bibitem[{Zang et~al.(2021)Zang, Liu, Wang, Song, Zhang, and Chen}]{zang2021photochat}
+Xiaoxue Zang, Lijuan Liu, Maria Wang, Yang Song, Hao Zhang, and Jindong Chen. 2021.
+\newblock \href {https://doi.org/10.18653/v1/2021.acl-long.479} {{P}hoto{C}hat: A human-human dialogue dataset with photo sharing behavior for joint image-text modeling}.
+\newblock In \emph{Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)}, pages 6142--6152, Online. Association for Computational Linguistics.
+
+\bibitem[{Zhang et~al.(2021{\natexlab{a}})Zhang, Chen, D’Haro, Zhang, Friedrichs, Lee, and Li}]{zhang2021dynaeval}
+Chen Zhang, Yiming Chen, Luis~Fernando D’Haro, Yan Zhang, Thomas Friedrichs, Grandee Lee, and Haizhou Li. 2021{\natexlab{a}}.
+\newblock Dynaeval: Unifying turn and dialogue level evaluation.
+\newblock In \emph{Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)}, pages 5676--5689.
+
+\bibitem[{Zhang et~al.(2022)Zhang, D’Haro, Zhang, Friedrichs, and Li}]{zhang2022fined}
+Chen Zhang, Luis~Fernando D’Haro, Qiquan Zhang, Thomas Friedrichs, and Haizhou Li. 2022.
+\newblock Fined-eval: Fine-grained automatic dialogue-level evaluation.
+\newblock In \emph{Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing}, pages 3336--3355.
+
+\bibitem[{Zhang et~al.(2023)Zhang, Naradowsky, and Miyao}]{zhang2023mind}
+Qiang Zhang, Jason Naradowsky, and Yusuke Miyao. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.findings-emnlp.720} {Mind the gap between conversations for improved long-term dialogue generation}.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2023}, pages 10735--10762, Singapore. Association for Computational Linguistics.
+
+\bibitem[{Zhang et~al.(2021{\natexlab{b}})Zhang, Celikyilmaz, Gao, and Bansal}]{zhang2021emailsum}
+Shiyue Zhang, Asli Celikyilmaz, Jianfeng Gao, and Mohit Bansal. 2021{\natexlab{b}}.
+\newblock Emailsum: Abstractive email thread summarization.
+\newblock In \emph{Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)}, pages 6895--6909.
+
+\bibitem[{Zhang et~al.(2019)Zhang, Kishore, Wu, Weinberger, and Artzi}]{zhang2019bertscore}
+Tianyi Zhang, Varsha Kishore, Felix Wu, Kilian~Q Weinberger, and Yoav Artzi. 2019.
+\newblock Bertscore: Evaluating text generation with bert.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Zheng et~al.(2023)Zheng, He, and Wang}]{zheng2023minigpt}
+Kaizhi Zheng, Xuehai He, and Xin~Eric Wang. 2023.
+\newblock Minigpt-5: Interleaved vision-and-language generation via generative vokens.
+\newblock \emph{arXiv preprint arXiv:2310.02239}.
+
+\bibitem[{Zheng et~al.(2022)Zheng, Chen, Liu, and Sun}]{zheng2021mmchat}
+Yinhe Zheng, Guanyi Chen, Xin Liu, and Jian Sun. 2022.
+\newblock \href {https://aclanthology.org/2022.lrec-1.621} {{MMC}hat: Multi-modal chat dataset on social media}.
+\newblock In \emph{Proceedings of the Thirteenth Language Resources and Evaluation Conference}, pages 5778--5786, Marseille, France. European Language Resources Association.
+
+\bibitem[{Zhong et~al.(2023)Zhong, Guo, Gao, and Wang}]{zhong2023memorybank}
+Wanjun Zhong, Lianghong Guo, Qiqi Gao, and Yanlin Wang. 2023.
+\newblock Memorybank: Enhancing large language models with long-term memory.
+\newblock \emph{arXiv preprint arXiv:2305.10250}.
+
+\bibitem[{Zhou et~al.(2020)Zhou, Gao, Li, and Shum}]{zhou2020design}
+Li~Zhou, Jianfeng Gao, Di~Li, and Heung-Yeung Shum. 2020.
+\newblock The design and implementation of xiaoice, an empathetic social chatbot.
+\newblock \emph{Computational Linguistics}, 46(1):53--93.
+
+\end{thebibliography}
+
+
+===== custom.bib =====
+
+% Use this file for citations not found in the ACL Anthology (contained in "anthology.bib").
+
+@book{Aho:72,
+    author  = {Alfred V. Aho and Jeffrey D. Ullman},
+    title   = {The Theory of Parsing, Translation and Compiling},
+    year    = "1972",
+    volume  = "1",
+    publisher = {Prentice-Hall},
+    address = {Englewood Cliffs, NJ}
+}
+
+@book{APA:83,
+    author  = {{American Psychological Association}},
+    title   = {Publications Manual},
+    year    = "1983",
+    publisher = {American Psychological Association},
+    address = {Washington, DC}
+}
+
+@article{Chandra:81,
+	author = {Ashok K. Chandra and Dexter C. Kozen and Larry J. Stockmeyer},
+	year = "1981",
+	title = {Alternation},
+	journal = {Journal of the Association for Computing Machinery},
+	volume = "28",
+	number = "1",
+	pages = "114--133",
+	doi = "10.1145/322234.322243",
+}
+
+@inproceedings{andrew2007scalable,
+  title={Scalable training of {L1}-regularized log-linear models},
+  author={Andrew, Galen and Gao, Jianfeng},
+  booktitle={Proceedings of the 24th International Conference on Machine Learning},
+  pages={33--40},
+  year={2007},
+}
+
+@book{Gusfield:97,
+    author  = {Dan Gusfield},
+    title   = {Algorithms on Strings, Trees and Sequences},
+    year    = "1997",
+    publisher = {Cambridge University Press},
+    address = {Cambridge, UK}
+}
+
+@article{rasooli-tetrault-2015,
+    author    = {Mohammad Sadegh Rasooli and Joel R. Tetreault},
+    title     = {Yara Parser: {A} Fast and Accurate Dependency Parser},
+    journal   = {Computing Research Repository},
+    volume    = {arXiv:1503.06733},
+    year      = {2015},
+    url       = {http://arxiv.org/abs/1503.06733},
+    note    = {version 2}
+}
+
+@article{Ando2005,
+	Acmid = {1194905},
+	Author = {Ando, Rie Kubota and Zhang, Tong},
+	Issn = {1532-4435},
+	Issue_Date = {12/1/2005},
+	Journal = {Journal of Machine Learning Research},
+	Month = dec,
+	Numpages = {37},
+	Pages = {1817--1853},
+	Publisher = {JMLR.org},
+	Title = {A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data},
+	Volume = {6},
+	Year = {2005}
+}
+
+@inproceedings{alberti2019synthetic,
+  title={Synthetic QA Corpora Generation with Roundtrip Consistency},
+  author={Alberti, Chris and Andor, Daniel and Pitler, Emily and Devlin, Jacob and Collins, Michael},
+  booktitle={Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics},
+  pages={6168--6173},
+  year={2019}
+}
+
+@article{lewis2021paq,
+  title={PAQ: 65 Million Probably-Asked Questions and What You Can Do With Them},
+  author={Lewis, Patrick and Wu, Yuxiang and Liu, Linqing and Minervini, Pasquale and K{\"u}ttler, Heinrich and Piktus, Aleksandra and Stenetorp, Pontus and Riedel, Sebastian},
+  journal={Transactions of the Association for Computational Linguistics},
+  volume={9},
+  pages={1098--1115},
+  year={2021}
+}
+
+@inproceedings{zhang2020dialogpt,
+  title={DIALOGPT: Large-Scale Generative Pre-training for Conversational Response Generation},
+  author={Zhang, Yizhe and Sun, Siqi and Galley, Michel and Chen, Yen-Chun and Brockett, Chris and Gao, Xiang and Gao, Jianfeng and Liu, Jingjing and Dolan, William B},
+  booktitle={Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations},
+  pages={270--278},
+  year={2020}
+}
+
+@inproceedings{xu2022beyond,
+  title={Beyond Goldfish Memory: Long-Term Open-Domain Conversation},
+  author={Xu, Jing and Szlam, Arthur and Weston, Jason},
+  booktitle={Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={5180--5197},
+  year={2022}
+}
+
+@article{adiwardana2020towards,
+  title={Towards a human-like open-domain chatbot},
+  author={Adiwardana, Daniel and Luong, Minh-Thang and So, David R and Hall, Jamie and Fiedel, Noah and Thoppilan, Romal and Yang, Zi and Kulshreshtha, Apoorv and Nemade, Gaurav and Lu, Yifeng and others},
+  journal={arXiv preprint arXiv:2001.09977},
+  year={2020}
+}
+
+@inproceedings{li2016persona,
+  title={A Persona-Based Neural Conversation Model},
+  author={Li, Jiwei and Galley, Michel and Brockett, Chris and Spithourakis, Georgios and Gao, Jianfeng and Dolan, William B},
+  booktitle={Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={994--1003},
+  year={2016}
+}
+
+@inproceedings{ritter2011data,
+  title={Data-driven response generation in social media},
+  author={Ritter, Alan and Cherry, Colin and Dolan, William B},
+  booktitle={Proceedings of the Conference on Empirical Methods in Natural Language Processing},
+  pages={583--593},
+  year={2011}
+}
+
+@article{levin2000stochastic,
+  title={A stochastic model of human-machine interaction for learning dialog strategies},
+  journal={IEEE Transactions on speech and audio processing},
+  volume={8},
+  number={1},
+  pages={11--23},
+  year={2000},
+  publisher={IEEE}
+}
+
+@article{ratnaparkhi2002trainable,
+  title={Trainable approaches to surface natural language generation and their application to conversational dialog systems},
+  author={Ratnaparkhi, Adwait},
+  journal={Computer Speech \& Language},
+  volume={16},
+  number={3-4},
+  pages={435--455},
+  year={2002},
+  publisher={Elsevier}
+}
+
+@article{touvron2023llama,
+  title={Llama 2: Open foundation and fine-tuned chat models},
+  author={Touvron, Hugo and Martin, Louis and Stone, Kevin and Albert, Peter and Almahairi, Amjad and Babaei, Yasmine and Bashlykov, Nikolay and Batra, Soumya and Bhargava, Prajjwal and Bhosale, Shruti and others},
+  journal={arXiv preprint arXiv:2307.09288},
+  year={2023}
+}
+
+@inproceedings{dinan2018wizard,
+  title={Wizard of Wikipedia: Knowledge-Powered Conversational Agents},
+  author={Dinan, Emily and Roller, Stephen and Shuster, Kurt and Fan, Angela and Auli, Michael and Weston, Jason},
+  booktitle={International Conference on Learning Representations},
+  year={2018}
+}
+
+
+@inproceedings{zhang2023mind,
+    title = "Mind the Gap Between Conversations for Improved Long-Term Dialogue Generation",
+    author = "Zhang, Qiang  and
+      Naradowsky, Jason  and
+      Miyao, Yusuke",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-emnlp.720",
+    doi = "10.18653/v1/2023.findings-emnlp.720",
+    pages = "10735--10762",
+    abstract = "Knowing how to end and resume conversations over time is a natural part of communication, allowing for discussions to span weeks, months, or years. The duration of gaps between conversations dictates which topics are relevant and which questions to ask, and dialogue systems which do not explicitly model time may generate responses that are unnatural. In this work we explore the idea of making dialogue models aware of time, and present GapChat, a multi-session dialogue dataset in which the time between each session varies. While the dataset is constructed in real-time, progress on events in speakers{'} lives is simulated in order to create realistic dialogues occurring across a long timespan. We expose time information to the model and compare different representations of time and event progress. In human evaluation we show that time-aware models perform better in metrics that judge the relevance of the chosen topics and the information gained from the conversation.",
+}
+
+
+@inproceedings{feng2023mmdialog,
+    title = "{MMD}ialog: A Large-scale Multi-turn Dialogue Dataset Towards Multi-modal Open-domain Conversation",
+    author = "Feng, Jiazhan  and
+      Sun, Qingfeng  and
+      Xu, Can  and
+      Zhao, Pu  and
+      Yang, Yaming  and
+      Tao, Chongyang  and
+      Zhao, Dongyan  and
+      Lin, Qingwei",
+    editor = "Rogers, Anna  and
+      Boyd-Graber, Jordan  and
+      Okazaki, Naoaki",
+    booktitle = "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.acl-long.405",
+    doi = "10.18653/v1/2023.acl-long.405",
+    pages = "7348--7363",
+    abstract = "Responding with multi-modal content has been recognized as an essential capability for an intelligent conversational agent. In this paper, we introduce the MMDialog dataset to facilitate multi-modal conversation better. MMDialog is composed of a curated set of 1.08 million real-world dialogues with 1.53 million unique images across 4,184 topics. MMDialog has two main and unique advantages. First, it is the largest multi-modal conversation dataset by the number of dialogues by 88x. Second, it contains massive topics to generalize the open domain. To build an engaging dialogue system with this dataset, we propose and normalize two response prediction tasks based on retrieval and generative scenarios. In addition, we build two baselines for the above tasks with state-of-the-art techniques and report their experimental performance. We also propose a novel evaluation metric MM-Relevance to measure the multi-modal responses. Our dataset is available in \url{https://github.com/victorsungo/MMDialog}.",
+}
+
+
+@inproceedings{lin2023tiktalk,
+  title={TikTalk: A Video-Based Dialogue Dataset for Multi-Modal Chitchat in Real World},
+  author={Lin, Hongpeng and Ruan, Ludan and Xia, Wenke and Liu, Peiyu and Wen, Jingyuan and Xu, Yixin and Hu, Di and Song, Ruihua and Zhao, Wayne Xin and Jin, Qin and others},
+  booktitle={Proceedings of the 31st ACM International Conference on Multimedia},
+  pages={1303--1313},
+  year={2023}
+}
+
+@inproceedings{ahn2023mpchat,
+    title = "{MPCHAT}: Towards Multimodal Persona-Grounded Conversation",
+    author = "Ahn, Jaewoo  and
+      Song, Yeda  and
+      Yun, Sangdoo  and
+      Kim, Gunhee",
+    editor = "Rogers, Anna  and
+      Boyd-Graber, Jordan  and
+      Okazaki, Naoaki",
+    booktitle = "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.acl-long.189",
+    doi = "10.18653/v1/2023.acl-long.189",
+    pages = "3354--3377",
+    abstract = "In order to build self-consistent personalized dialogue agents, previous research has mostly focused on textual persona that delivers personal facts or personalities. However, to fully describe the multi-faceted nature of persona, image modality can help better reveal the speaker{'}s personal characteristics and experiences in episodic memory (Rubin et al., 2003; Conway, 2009). In this work, we extend persona-based dialogue to the multimodal domain and make two main contributions. First, we present the first multimodal persona-based dialogue dataset named MPCHAT, which extends persona with both text and images to contain episodic memories. Second, we empirically show that incorporating multimodal persona, as measured by three proposed multimodal persona-grounded dialogue tasks (i.e., next response prediction, grounding persona prediction, and speaker identification), leads to statistically significant performance improvements across all tasks. Thus, our work highlights that multimodal persona is crucial for improving multimodal dialogue comprehension, and our MPCHAT serves as a high-quality resource for this research.",
+}
+
+
+@inproceedings{faghihi2021time,
+  title={Time-Stamped Language Model: Teaching Language Models to Understand The Flow of Events},
+  author={Faghihi, Hossein Rajaby and Kordjamshidi, Parisa},
+  booktitle={Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies},
+  pages={4560--4570},
+  year={2021}
+}
+
+@inproceedings{park2023generative,
+author = {Park, Joon Sung and O'Brien, Joseph and Cai, Carrie Jun and Morris, Meredith Ringel and Liang, Percy and Bernstein, Michael S.},
+title = {Generative Agents: Interactive Simulacra of Human Behavior},
+year = {2023},
+isbn = {9798400701320},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3586183.3606763},
+doi = {10.1145/3586183.3606763},
+abstract = {Believable proxies of human behavior can empower interactive applications ranging from immersive environments to rehearsal spaces for interpersonal communication to prototyping tools. In this paper, we introduce generative agents: computational software agents that simulate believable human behavior. Generative agents wake up, cook breakfast, and head to work; artists paint, while authors write; they form opinions, notice each other, and initiate conversations; they remember and reflect on days past as they plan the next day. To enable generative agents, we describe an architecture that extends a large language model to store a complete record of the agent’s experiences using natural language, synthesize those memories over time into higher-level reflections, and retrieve them dynamically to plan behavior. We instantiate generative agents to populate an interactive sandbox environment inspired by The Sims, where end users can interact with a small town of twenty-five agents using natural language. In an evaluation, these generative agents produce believable individual and emergent social behaviors. For example, starting with only a single user-specified notion that one agent wants to throw a Valentine’s Day party, the agents autonomously spread invitations to the party over the next two days, make new acquaintances, ask each other out on dates to the party, and coordinate to show up for the party together at the right time. We demonstrate through ablation that the components of our agent architecture—observation, planning, and reflection—each contribute critically to the believability of agent behavior. By fusing large language models with computational interactive agents, this work introduces architectural and interaction patterns for enabling believable simulations of human behavior.},
+booktitle = {Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology},
+articleno = {2},
+numpages = {22},
+keywords = {Human-AI interaction, agents, generative AI, large language models},
+location = {, San Francisco, CA, USA, },
+series = {UIST '23}
+}
+
+
+@article{wei2022chain,
+  title={Chain-of-thought prompting elicits reasoning in large language models},
+  author={Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and Xia, Fei and Chi, Ed and Le, Quoc V and Zhou, Denny and others},
+  journal={Advances in Neural Information Processing Systems},
+  volume={35},
+  pages={24824--24837},
+  year={2022}
+}
+
+
+@article{lee2023large,
+  title={Large Language Models can Share Images, Too!},
+  author={Lee, Young-Jun and Hyeon, Jonghwan and Choi, Ho-Jin},
+  journal={arXiv preprint arXiv:2310.14804},
+  year={2023}
+}
+
+@article{zhong2023memorybank,
+  title={MemoryBank: Enhancing Large Language Models with Long-Term Memory},
+  author={Zhong, Wanjun and Guo, Lianghong and Gao, Qiqi and Wang, Yanlin},
+  journal={arXiv preprint arXiv:2305.10250},
+  year={2023}
+}
+
+
+@inproceedings{chang2023booookscore,
+  title={BooookScore: A systematic exploration of book-length summarization in the era of LLMs},
+  author={Chang, Yapei and Lo, Kyle and Goyal, Tanya and Iyyer, Mohit},
+  booktitle={The Twelfth International Conference on Learning Representations},
+  year={2023}
+}
+
+
+@inproceedings{jang2023conversation,
+    title = "Conversation Chronicles: Towards Diverse Temporal and Relational Dynamics in Multi-Session Conversations",
+    author = "Jang, Jihyoung  and
+      Boo, Minseong  and
+      Kim, Hyounghun",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.emnlp-main.838",
+    doi = "10.18653/v1/2023.emnlp-main.838",
+    pages = "13584--13606",
+    abstract = "In the field of natural language processing, open-domain chatbots have emerged as an important research topic. However, a major limitation of existing open-domain chatbot research is its singular focus on short single-session dialogue, neglecting the potential need for understanding contextual information in multiple consecutive sessions that precede an ongoing dialogue. Among the elements that compose the context in multi-session conversation settings, the time intervals between sessions and the relationships between speakers would be particularly important. Despite their importance, current research efforts have not sufficiently addressed these dialogical components. In this paper, we introduce a new 1M multi-session dialogue dataset, called Conversation Chronicles, for implementing a long-term conversation setup in which time intervals and fine-grained speaker relationships are incorporated. Following recent works, we exploit a large language model to produce the data. The extensive human evaluation shows that dialogue episodes in Conversation Chronicles reflect those properties while maintaining coherent and consistent interactions across all the sessions. We also propose a dialogue model, called ReBot, which consists of chronological summarization and dialogue generation modules using only around 630M parameters. When trained on Conversation Chronicles, ReBot demonstrates long-term context understanding with a high human engagement score.",
+}
+
+@article{dhingra2022time,
+  title={Time-aware language models as temporal knowledge bases},
+  author={Dhingra, Bhuwan and Cole, Jeremy R and Eisenschlos, Julian Martin and Gillick, Daniel and Eisenstein, Jacob and Cohen, William W},
+  journal={Transactions of the Association for Computational Linguistics},
+  volume={10},
+  pages={257--273},
+  year={2022},
+  publisher={MIT Press One Broadway, 12th Floor, Cambridge, Massachusetts 02142, USA~…}
+}
+
+@inproceedings{anantha2021open,
+  title={Open-Domain Question Answering Goes Conversational via Question Rewriting},
+  author={Anantha, Raviteja and Vakulenko, Svitlana and Tu, Zhucheng and Longpre, Shayne and Pulman, Stephen and Chappidi, Srinivas},
+  booktitle={Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies},
+  pages={520--534},
+  year={2021}
+}
+
+
+@article{liu2023lost,
+    author = {Liu, Nelson F. and Lin, Kevin and Hewitt, John and Paranjape, Ashwin and Bevilacqua, Michele and Petroni, Fabio and Liang, Percy},
+    title = "{Lost in the Middle: How Language Models Use Long Contexts}",
+    journal = {Transactions of the Association for Computational Linguistics},
+    volume = {12},
+    pages = {157-173},
+    year = {2024},
+    month = {02},
+    abstract = "{While recent language models have the ability to take long contexts as input, relatively little is known about how well they use longer context. We analyze the performance of language models on two tasks that require identifying relevant information in their input contexts: multi-document question answering and key-value retrieval. We find that performance can degrade significantly when changing the position of relevant information, indicating that current language models do not robustly make use of information in long input contexts. In particular, we observe that performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models. Our analysis provides a better understanding of how language models use their input context and provides new evaluation protocols for future long-context language models.}",
+    issn = {2307-387X},
+    doi = {10.1162/tacl_a_00638},
+    url = {https://doi.org/10.1162/tacl\_a\_00638},
+    eprint = {https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl\_a\_00638/2336043/tacl\_a\_00638.pdf},
+}
+
+
+
+@inproceedings{gao2023enabling,
+    title = "Enabling Large Language Models to Generate Text with Citations",
+    author = "Gao, Tianyu  and
+      Yen, Howard  and
+      Yu, Jiatong  and
+      Chen, Danqi",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.emnlp-main.398",
+    doi = "10.18653/v1/2023.emnlp-main.398",
+    pages = "6465--6488",
+    abstract = "Large language models (LLMs) have emerged as a widely-used tool for information seeking, but their generated outputs are prone to hallucination. In this work, our aim is to allow LLMs to generate text with citations, improving their factual correctness and verifiability. Existing work mainly relies on commercial search engines and human evaluation, making it challenging to reproduce and compare different modeling approaches. We propose ALCE, the first benchmark for Automatic LLMs{'} Citation Evaluation. ALCE collects a diverse set of questions and retrieval corpora and requires building end-to-end systems to retrieve supporting evidence and generate answers with citations. We develop automatic metrics along three dimensions{---}fluency, correctness, and citation quality{---}and demonstrate their strong correlation with human judgements. Our experiments with state-of-the-art LLMs and novel prompting strategies show that current systems have considerable room for improvement{---}For example, on the ELI5 dataset, even the best models lack complete citation support 50{\%} of the time. Our analyses further highlight promising future directions, including developing better retrievers, advancing long-context LLMs, and improving the ability to synthesize information from multiple sources.",
+}
+
+
+@inproceedings{liu2023evaluating,
+    title = "Evaluating Verifiability in Generative Search Engines",
+    author = "Liu, Nelson  and
+      Zhang, Tianyi  and
+      Liang, Percy",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-emnlp.467",
+    doi = "10.18653/v1/2023.findings-emnlp.467",
+    pages = "7001--7025",
+    abstract = "Generative search engines directly generate responses to user queries, along with in-line citations. A prerequisite trait of a trustworthy generative search engine is verifiability, i.e., systems should cite comprehensively (high citation recall; all statements are fully supported by citations) and accurately (high citation precision; every cite supports its associated statement). We conduct human evaluation to audit four popular generative search engines{---}Bing Chat, NeevaAI, perplexity.ai, and YouChat{---}across a diverse set of queries from a variety of sources (e.g., historical Google user queries, dynamically-collected open-ended questions on Reddit, etc.). We find that responses from existing generative search engines are fluent and appear informative, but frequently contain unsupported statements and inaccurate citations: on average, a mere 51.5{\%} of generated sentences are fully supported by citations and only 74.5{\%} of citations support their associated sentence. We believe that these results are concerningly low for systems that may serve as a primary tool for information-seeking users, especially given their facade of trustworthiness. We hope that our results further motivate the development of trustworthy generative search engines and help researchers and users better understand the shortcomings of existing commercial systems.",
+}
+
+
+@inproceedings{gao2023peacok,
+    title = "{P}ea{C}o{K}: Persona Commonsense Knowledge for Consistent and Engaging Narratives",
+    author = "Gao, Silin  and
+      Borges, Beatriz  and
+      Oh, Soyoung  and
+      Bayazit, Deniz  and
+      Kanno, Saya  and
+      Wakaki, Hiromi  and
+      Mitsufuji, Yuki  and
+      Bosselut, Antoine",
+    editor = "Rogers, Anna  and
+      Boyd-Graber, Jordan  and
+      Okazaki, Naoaki",
+    booktitle = "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.acl-long.362",
+    doi = "10.18653/v1/2023.acl-long.362",
+    pages = "6569--6591",
+    abstract = "Sustaining coherent and engaging narratives requires dialogue or storytelling agents to understandhow the personas of speakers or listeners ground the narrative. Specifically, these agents must infer personas of their listeners to produce statements that cater to their interests. They must also learn to maintain consistent speaker personas for themselves throughout the narrative, so that their counterparts feel involved in a realistic conversation or story. However, personas are diverse and complex: they entail large quantities of rich interconnected world knowledge that is challenging to robustly represent in general narrative systems (e.g., a singer is good at singing, and may have attended conservatoire). In this work, we construct a new large-scale persona commonsense knowledge graph, PeaCoK, containing {\textasciitilde}100K human-validated persona facts. Our knowledge graph schematizes five dimensions of persona knowledge identified in previous studies of human interactive behaviours, and distils facts in this schema from both existing commonsense knowledge graphs and large-scale pretrained language models. Our analysis indicates that PeaCoK contains rich and precise world persona inferences that help downstream systems generate more consistent and engaging narratives.",
+}
+
+
+@inproceedings{lee2023prompted,
+    title = "Prompted {LLM}s as Chatbot Modules for Long Open-domain Conversation",
+    author = "Lee, Gibbeum  and
+      Hartmann, Volker  and
+      Park, Jongho  and
+      Papailiopoulos, Dimitris  and
+      Lee, Kangwook",
+    editor = "Rogers, Anna  and
+      Boyd-Graber, Jordan  and
+      Okazaki, Naoaki",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL 2023",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-acl.277",
+    doi = "10.18653/v1/2023.findings-acl.277",
+    pages = "4536--4554",
+    abstract = "In this paper, we propose MPC (Modular Prompted Chatbot), a new approach for creating high-quality conversational agents without the need for fine-tuning. Our method utilizes pre-trained large language models (LLMs) as individual modules for long-term consistency and flexibility, by using techniques such as few-shot prompting, chain-of-thought (CoT), and external memory. Our human evaluation results show that MPC is on par with fine-tuned chatbot models in open-domain conversations, making it an effective solution for creating consistent and engaging chatbots.",
+}
+
+
+@article{lu2023memochat,
+  title={MemoChat: Tuning LLMs to Use Memos for Consistent Long-Range Open-Domain Conversation},
+  author={Lu, Junru and An, Siyu and Lin, Mingbao and Pergola, Gabriele and He, Yulan and Yin, Di and Sun, Xing and Wu, Yunsheng},
+  journal={arXiv preprint arXiv:2308.08239},
+  year={2023}
+}
+
+@inproceedings{nawrot2022hierarchical,
+  title={Hierarchical Transformers Are More Efficient Language Models},
+  author={Nawrot, Piotr and Tworkowski, Szymon and Tyrolski, Micha{\l} and Kaiser, {\L}ukasz and Wu, Yuhuai and Szegedy, Christian and Michalewski, Henryk},
+  booktitle={Findings of the Association for Computational Linguistics: NAACL 2022},
+  pages={1559--1571},
+  year={2022}
+}
+
+@article{bertsch2024unlimiformer,
+  title={Unlimiformer: Long-range transformers with unlimited length input},
+  author={Bertsch, Amanda and Alon, Uri and Neubig, Graham and Gormley, Matthew},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  year={2024}
+}
+
+@article{chen2023walking,
+  title={Walking down the memory maze: Beyond context limit through interactive reading},
+  author={Chen, Howard and Pasunuru, Ramakanth and Weston, Jason and Celikyilmaz, Asli},
+  journal={arXiv preprint arXiv:2310.05029},
+  year={2023}
+}
+
+
+@article{shumailov2023model,
+  title={Model Dementia: Generated Data Makes Models Forget},
+  author={Shumailov, Ilia and Shumaylov, Zakhar and Zhao, Yiren and Gal, Yarin and Papernot, Nicolas and Anderson, Ross},
+  journal={arXiv preprint arXiv:2305.17493},
+  year={2023}
+}
+
+@inproceedings{min2023factscore,
+    title = "{FA}ct{S}core: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation",
+    author = "Min, Sewon  and
+      Krishna, Kalpesh  and
+      Lyu, Xinxi  and
+      Lewis, Mike  and
+      Yih, Wen-tau  and
+      Koh, Pang  and
+      Iyyer, Mohit  and
+      Zettlemoyer, Luke  and
+      Hajishirzi, Hannaneh",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.emnlp-main.741",
+    doi = "10.18653/v1/2023.emnlp-main.741",
+    pages = "12076--12100",
+    abstract = "Evaluating the factuality of long-form text generated by large language models (LMs) is non-trivial because (1) generations often contain a mixture of supported and unsupported pieces of information, making binary judgments of quality inadequate, and (2) human evaluation is time-consuming and costly. In this paper, we introduce FACTSCORE, a new evaluation that breaks a generation into a series of atomic facts and computes the percentage of atomic facts supported by a reliable knowledge source. We conduct an extensive human evaluation to obtain FACTSCOREs of people biographies generated by several state-of-the-art commercial LMs{---}InstructGPT, ChatGPT, and the retrieval-augmented PerplexityAI{---}and report new analysis demonstrating the need for such a fine-grained score (e.g., ChatGPT only achieves 58{\%}). Since human evaluation is costly, we also introduce an automated model that estimates FACTSCORE using retrieval and a strong language model, with less than a 2{\%} error rate. Finally, we use this automated metric to evaluate 6,500 generations from a new set of 13 recent LMs that would have cost {\$}26K if evaluated by humans, with various findings: GPT-4 and ChatGPT are more factual than public models, and Vicuna and Alpaca are some of the best public models. FACTSCORE is available for public use via {`}pip install factscore{`}.",
+}
+
+
+@inproceedings{xu2023critical,
+    title = "A Critical Evaluation of Evaluations for Long-form Question Answering",
+    author = "Xu, Fangyuan  and
+      Song, Yixiao  and
+      Iyyer, Mohit  and
+      Choi, Eunsol",
+    editor = "Rogers, Anna  and
+      Boyd-Graber, Jordan  and
+      Okazaki, Naoaki",
+    booktitle = "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.acl-long.181",
+    doi = "10.18653/v1/2023.acl-long.181",
+    pages = "3225--3245",
+    abstract = "Long-form question answering (LFQA) enables answering a wide range of questions, but its flexibility poses enormous challenges for evaluation. We perform the first targeted study of the evaluation of long-form answers, covering both human and automatic evaluation practices. We hire domain experts in seven areas to provide preference judgments over pairs of answers, along with free-form justifications for their choices. We present a careful analysis of experts{'} evaluation, which focuses on new aspects such as the comprehensiveness of the answer. Next, we examine automatic text generation metrics, finding that no existing metrics are predictive of human preference judgments. However, some metrics correlate with fine-grained aspects of answers (e.g., coherence). We encourage future work to move away from a single {``}overall score{''} of the answer and adopt a multi-faceted evaluation, targeting aspects such as factuality and completeness. We publicly release all of our annotations and code to spur future work into LFQA evaluation.",
+}
+
+
+@inproceedings{mallen-etal-2023-trust,
+    title = "When Not to Trust Language Models: Investigating Effectiveness of Parametric and Non-Parametric Memories",
+    author = "Mallen, Alex  and
+      Asai, Akari  and
+      Zhong, Victor  and
+      Das, Rajarshi  and
+      Khashabi, Daniel  and
+      Hajishirzi, Hannaneh",
+    booktitle = "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.acl-long.546",
+    doi = "10.18653/v1/2023.acl-long.546",
+    pages = "9802--9822",
+    abstract = "Despite their impressive performance on diverse tasks, large language models (LMs) still struggle with tasks requiring rich world knowledge, implying the difficulty of encoding a wealth of world knowledge in their parameters. This paper aims to understand LMs{'} strengths and limitations in memorizing factual knowledge, by conducting large-scale knowledge probing experiments on two open-domain entity-centric QA datasets: PopQA, our new dataset with 14k questions about long-tail entities, and EntityQuestions, a widely used open-domain QA dataset. We find that LMs struggle with less popular factual knowledge, and that retrieval augmentation helps significantly in these cases. Scaling, on the other hand, mainly improves memorization of popular knowledge, and fails to appreciably improve memorization of factual knowledge in the tail. Based on those findings, we devise a new method for retrieval-augmentation that improves performance and reduces inference costs by only retrieving non-parametric memories when necessary.",
+}
+
+@article{assmann1995collective,
+  title={Collective memory and cultural identity},
+  author={Assmann, Jan and Czaplicka, John},
+  journal={New german critique},
+  number={65},
+  pages={125--133},
+  year={1995},
+  publisher={JSTOR}
+}
+
+@article{hirst2008towards,
+  title={Towards a psychology of collective memory},
+  author={Hirst, William and Manier, David},
+  journal={Memory},
+  volume={16},
+  number={3},
+  pages={183--200},
+  year={2008},
+  publisher={Taylor \& Francis}
+}
+
+@article{hirst2018collective,
+  title={Collective memory from a psychological perspective},
+  author={Hirst, William and Yamashiro, Jeremy K and Coman, Alin},
+  journal={Trends in cognitive sciences},
+  volume={22},
+  number={5},
+  pages={438--451},
+  year={2018},
+  publisher={Elsevier}
+}
+
+@article{shuster2022blenderbot,
+  title={Blenderbot 3: a deployed conversational agent that continually learns to responsibly engage},
+  author={Shuster, Kurt and Xu, Jing and Komeili, Mojtaba and Ju, Da and Smith, Eric Michael and Roller, Stephen and Ung, Megan and Chen, Moya and Arora, Kushal and Lane, Joshua and others},
+  journal={arXiv preprint arXiv:2208.03188},
+  year={2022}
+}
+
+
+@inproceedings{kim-etal-2023-soda,
+    title = "{SODA}: Million-scale Dialogue Distillation with Social Commonsense Contextualization",
+    author = "Kim, Hyunwoo  and
+      Hessel, Jack  and
+      Jiang, Liwei  and
+      West, Peter  and
+      Lu, Ximing  and
+      Yu, Youngjae  and
+      Zhou, Pei  and
+      Bras, Ronan  and
+      Alikhani, Malihe  and
+      Kim, Gunhee  and
+      Sap, Maarten  and
+      Choi, Yejin",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.emnlp-main.799",
+    doi = "10.18653/v1/2023.emnlp-main.799",
+    pages = "12930--12949",
+    abstract = "Data scarcity has been a long standing issue in the field of open-domain social dialogue. To quench this thirst, we present SODA: the first publicly available, million-scale high-quality social dialogue dataset. By contextualizing social commonsense knowledge from a knowledge graph, we are able to distill an exceptionally broad spectrum of social interactions from a large language model. Human evaluation shows that conversations in SODA are more consistent, specific, and (surprisingly) natural than those in prior human-authored datasets. Using SODA, we train COSMO: a generalizable conversation model that is significantly more natural and consistent on unseen datasets than best-performing conversation models (e.g., GODEL, BlenderBot-1, Koala, Vicuna). Experiments reveal COSMO is sometimes even preferred to the original human-written gold responses. Additionally, our results shed light on the distinction between knowledge-enriched conversations and natural social chitchats. We plan to make our data, model, and code public.",
+}
+
+@inproceedings{lee-etal-2023-making,
+    title = "Making Large Language Models Better Data Creators",
+    author = "Lee, Dong-Ho  and
+      Pujara, Jay  and
+      Sewak, Mohit  and
+      White, Ryen  and
+      Jauhar, Sujay",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.emnlp-main.948",
+    doi = "10.18653/v1/2023.emnlp-main.948",
+    pages = "15349--15360",
+    abstract = "Although large language models (LLMs) have advanced the state-of-the-art in NLP significantly, deploying them for downstream applications is still challenging due to cost, responsiveness, control, or concerns around privacy and security. As such, trainable models are still the preferred option in some cases. However, these models still require human-labeled data for optimal performance, which is expensive and time-consuming to obtain. In order to address this issue, several techniques to reduce human effort involve labeling or generating data using LLMs. Although these methods are effective for certain applications, in practice they encounter difficulties in real-world scenarios. Labeling data requires careful data selection, while generating data necessitates task-specific prompt engineering. In this paper, we propose a unified data creation pipeline that requires only a single formatting example, and which is applicable to a broad range of tasks, including traditionally problematic ones with semantically devoid label spaces. In our experiments we demonstrate that instruction-following LLMs are highly cost-effective data creators, and that models trained with these data exhibit performance better than those trained with human-labeled data (by up to 17.5{\%}) on out-of-distribution evaluation, while maintaining comparable performance on in-distribution tasks. These results have important implications for the robustness of NLP systems deployed in the real-world.",
+}
+
+@article{he2023annollm,
+  title={Annollm: Making large language models to be better crowdsourced annotators},
+  author={He, Xingwei and Lin, Zhenghao and Gong, Yeyun and Jin, Alex and Zhang, Hang and Lin, Chen and Jiao, Jian and Yiu, Siu Ming and Duan, Nan and Chen, Weizhu and others},
+  journal={arXiv preprint arXiv:2303.16854},
+  year={2023}
+}
+
+@inproceedings{pruitt2003personas,
+  title={Personas: practice and theory},
+  author={Pruitt, John and Grudin, Jonathan},
+  booktitle={Proceedings of the 2003 conference on Designing for user experiences},
+  pages={1--15},
+  year={2003}
+}
+
+@book{cooper1999inmates,
+  title={The inmates are running the asylum},
+  author={Cooper, Alan},
+  year={1999},
+  publisher={Springer}
+}
+
+
+@inproceedings{shum2019sketch,
+    title = "Sketch-Fill-A-{R}: A Persona-Grounded Chit-Chat Generation Framework",
+    author = "Shum, Michael  and
+      Zheng, Stephan  and
+      Kryscinski, Wojciech  and
+      Xiong, Caiming  and
+      Socher, Richard",
+    editor = "Wen, Tsung-Hsien  and
+      Celikyilmaz, Asli  and
+      Yu, Zhou  and
+      Papangelis, Alexandros  and
+      Eric, Mihail  and
+      Kumar, Anuj  and
+      Casanueva, I{\~n}igo  and
+      Shah, Rushin",
+    booktitle = "Proceedings of the 2nd Workshop on Natural Language Processing for Conversational AI",
+    month = jul,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2020.nlp4convai-1.14",
+    doi = "10.18653/v1/2020.nlp4convai-1.14",
+    pages = "118--131",
+    abstract = "Human-like chit-chat conversation requires agents to generate responses that are fluent, engaging and consistent. We propose Sketch- Fill-A-R, a framework that uses a persona-memory to generate chit-chat responses in three phases. First, it generates dynamic sketch responses with open slots. Second, it generates candidate responses by filling slots with parts of its stored persona traits. Lastly, it ranks and selects the final response via a language model score. Sketch-Fill-A-R outperforms a state-of-the-art baseline both quantitatively (10-point lower perplexity) and qualitatively (preferred by 55{\%} in head-to-head single-turn studies and 20{\%} higher in consistency in multi-turn user studies) on the Persona-Chat dataset. Finally, we extensively analyze Sketch-Fill-A-R{'}s responses and human feedback, and show it is more consistent and engaging by using more relevant responses and questions.",
+}
+
+
+@article{zhou2020design,
+  title={The design and implementation of xiaoice, an empathetic social chatbot},
+  author={Zhou, Li and Gao, Jianfeng and Li, Di and Shum, Heung-Yeung},
+  journal={Computational Linguistics},
+  volume={46},
+  number={1},
+  pages={53--93},
+  year={2020},
+  publisher={MIT Press One Rogers Street, Cambridge, MA 02142-1209, USA journals-info~…}
+}
+
+@article{jandaghi2023faithful,
+  title={Faithful Persona-based Conversational Dataset Generation with Large Language Models},
+  author={Jandaghi, Pegah and Sheng, XiangHai and Bai, Xinyi and Pujara, Jay and Sidahmed, Hakim},
+  journal={arXiv preprint arXiv:2312.10007},
+  year={2023}
+}
+
+@inproceedings{lee2023dialogcc,
+  title={DialogCC: An Automated Pipeline for Creating High-Quality Multi-modal Dialogue Datasets},
+  author={Lee, Young-Jun and Ko, Byungsoo and Kim, Han-Gyu and Hyeon, Jonghwan and Choi, Ho-Jin},
+  booktitle={NeurIPS 2023 Workshop on Instruction Tuning and Instruction Following},
+  year={2023}
+}
+
+@inproceedings{antol2015vqa,
+  title={Vqa: Visual question answering},
+  author={Antol, Stanislaw and Agrawal, Aishwarya and Lu, Jiasen and Mitchell, Margaret and Batra, Dhruv and Zitnick, C Lawrence and Parikh, Devi},
+  booktitle={Proceedings of the IEEE international conference on computer vision},
+  pages={2425--2433},
+  year={2015}
+}
+
+@inproceedings{das2017visual,
+  title={Visual dialog},
+  author={Das, Abhishek and Kottur, Satwik and Gupta, Khushi and Singh, Avi and Yadav, Deshraj and Moura, Jos{\'e} MF and Parikh, Devi and Batra, Dhruv},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={326--335},
+  year={2017}
+}
+
+
+@inproceedings{kottur2019clevr,
+    title = "{CLEVR}-Dialog: A Diagnostic Dataset for Multi-Round Reasoning in Visual Dialog",
+    author = "Kottur, Satwik  and
+      Moura, Jos{\'e} M. F.  and
+      Parikh, Devi  and
+      Batra, Dhruv  and
+      Rohrbach, Marcus",
+    editor = "Burstein, Jill  and
+      Doran, Christy  and
+      Solorio, Thamar",
+    booktitle = "Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
+    month = jun,
+    year = "2019",
+    address = "Minneapolis, Minnesota",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/N19-1058",
+    doi = "10.18653/v1/N19-1058",
+    pages = "582--595",
+    abstract = "Visual Dialog is a multimodal task of answering a sequence of questions grounded in an image (using the conversation history as context). It entails challenges in vision, language, reasoning, and grounding. However, studying these subtasks in isolation on large, real datasets is infeasible as it requires prohibitively-expensive complete annotation of the {`}state{'} of all images and dialogs. We develop CLEVR-Dialog, a large diagnostic dataset for studying multi-round reasoning in visual dialog. Specifically, we construct a dialog grammar that is grounded in the scene graphs of the images from the CLEVR dataset. This combination results in a dataset where all aspects of the visual dialog are fully annotated. In total, CLEVR-Dialog contains 5 instances of 10-round dialogs for about 85k CLEVR images, totaling to 4.25M question-answer pairs. We use CLEVR-Dialog to benchmark performance of standard visual dialog models; in particular, on visual coreference resolution (as a function of the coreference distance). This is the first analysis of its kind for visual dialog models that was not possible without this dataset. We hope the findings from CLEVR-Dialog will help inform the development of future models for visual dialog. Our code and dataset are publicly available.",
+}
+
+
+@inproceedings{mostafazadeh2017image,
+    title = "Image-Grounded Conversations: Multimodal Context for Natural Question and Response Generation",
+    author = "Mostafazadeh, Nasrin  and
+      Brockett, Chris  and
+      Dolan, Bill  and
+      Galley, Michel  and
+      Gao, Jianfeng  and
+      Spithourakis, Georgios  and
+      Vanderwende, Lucy",
+    editor = "Kondrak, Greg  and
+      Watanabe, Taro",
+    booktitle = "Proceedings of the Eighth International Joint Conference on Natural Language Processing (Volume 1: Long Papers)",
+    month = nov,
+    year = "2017",
+    address = "Taipei, Taiwan",
+    publisher = "Asian Federation of Natural Language Processing",
+    url = "https://aclanthology.org/I17-1047",
+    pages = "462--472",
+    abstract = "The popularity of image sharing on social media and the engagement it creates between users reflect the important role that visual context plays in everyday conversations. We present a novel task, Image Grounded Conversations (IGC), in which natural-sounding conversations are generated about a shared image. To benchmark progress, we introduce a new multiple reference dataset of crowd-sourced, event-centric conversations on images. IGC falls on the continuum between chit-chat and goal-directed conversation models, where visual grounding constrains the topic of conversation to event-driven utterances. Experiments with models trained on social media data show that the combination of visual and textual context enhances the quality of generated conversational turns. In human evaluation, the gap between human performance and that of both neural and retrieval architectures suggests that multi-modal IGC presents an interesting challenge for dialog research.",
+}
+
+
+@inproceedings{shuster2020image,
+    title = "Image-Chat: Engaging Grounded Conversations",
+    author = "Shuster, Kurt  and
+      Humeau, Samuel  and
+      Bordes, Antoine  and
+      Weston, Jason",
+    editor = "Jurafsky, Dan  and
+      Chai, Joyce  and
+      Schluter, Natalie  and
+      Tetreault, Joel",
+    booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2020.acl-main.219",
+    doi = "10.18653/v1/2020.acl-main.219",
+    pages = "2414--2429",
+    abstract = "To achieve the long-term goal of machines being able to engage humans in conversation, our models should captivate the interest of their speaking partners. Communication grounded in images, whereby a dialogue is conducted based on a given photo, is a setup naturally appealing to humans (Hu et al., 2014). In this work we study large-scale architectures and datasets for this goal. We test a set of neural architectures using state-of-the-art image and text representations, considering various ways to fuse the components. To test such models, we collect a dataset of grounded human-human conversations, where speakers are asked to play roles given a provided emotional mood or style, as the use of such traits is also a key factor in engagingness (Guo et al., 2019). Our dataset, Image-Chat, consists of 202k dialogues over 202k images using 215 possible style traits. Automatic metrics and human evaluations of engagingness show the efficacy of our approach; in particular, we obtain state-of-the-art performance on the existing IGC task, and our best performing model is almost on par with humans on the Image-Chat test set (preferred 47.7{\%} of the time).",
+}
+
+
+@article{meng2020openvidial,
+  title={Openvidial: A large-scale, open-domain dialogue dataset with visual contexts},
+  author={Meng, Yuxian and Wang, Shuhe and Han, Qinghong and Sun, Xiaofei and Wu, Fei and Yan, Rui and Li, Jiwei},
+  journal={arXiv preprint arXiv:2012.15015},
+  year={2020}
+}
+
+
+@inproceedings{zheng2021mmchat,
+    title = "{MMC}hat: Multi-Modal Chat Dataset on Social Media",
+    author = "Zheng, Yinhe  and
+      Chen, Guanyi  and
+      Liu, Xin  and
+      Sun, Jian",
+    editor = "Calzolari, Nicoletta  and
+      B{\'e}chet, Fr{\'e}d{\'e}ric  and
+      Blache, Philippe  and
+      Choukri, Khalid  and
+      Cieri, Christopher  and
+      Declerck, Thierry  and
+      Goggi, Sara  and
+      Isahara, Hitoshi  and
+      Maegaard, Bente  and
+      Mariani, Joseph  and
+      Mazo, H{\'e}l{\`e}ne  and
+      Odijk, Jan  and
+      Piperidis, Stelios",
+    booktitle = "Proceedings of the Thirteenth Language Resources and Evaluation Conference",
+    month = jun,
+    year = "2022",
+    address = "Marseille, France",
+    publisher = "European Language Resources Association",
+    url = "https://aclanthology.org/2022.lrec-1.621",
+    pages = "5778--5786",
+    abstract = "Incorporating multi-modal contexts in conversation is an important step for developing more engaging dialogue systems. In this work, we explore this direction by introducing MMChat: a large scale Chinese multi-modal dialogue corpus (32.4M raw dialogues and 120.84K filtered dialogues). Unlike previous corpora that are crowd-sourced or collected from fictitious movies, MMChat contains image-grounded dialogues collected from real conversations on social media, in which the sparsity issue is observed. Specifically, image-initiated dialogues in common communications may deviate to some non-image-grounded topics as the conversation proceeds. To better investigate this issue, we manually annotate 100K dialogues from MMChat and further filter the corpus accordingly, which yields MMChat-hf. We develop a benchmark model to address the sparsity issue in dialogue generation tasks by adapting the attention routing mechanism on image features. Experiments demonstrate the usefulness of incorporating image features and the effectiveness in handling the sparsity of image features.",
+}
+
+
+
+@inproceedings{zang2021photochat,
+    title = "{P}hoto{C}hat: A Human-Human Dialogue Dataset With Photo Sharing Behavior For Joint Image-Text Modeling",
+    author = "Zang, Xiaoxue  and
+      Liu, Lijuan  and
+      Wang, Maria  and
+      Song, Yang  and
+      Zhang, Hao  and
+      Chen, Jindong",
+    editor = "Zong, Chengqing  and
+      Xia, Fei  and
+      Li, Wenjie  and
+      Navigli, Roberto",
+    booktitle = "Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)",
+    month = aug,
+    year = "2021",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.acl-long.479",
+    doi = "10.18653/v1/2021.acl-long.479",
+    pages = "6142--6152",
+    abstract = "We present a new human-human dialogue dataset - PhotoChat, the first dataset that casts light on the photo sharing behavior in online messaging. PhotoChat contains 12k dialogues, each of which is paired with a user photo that is shared during the conversation. Based on this dataset, we propose two tasks to facilitate research on image-text modeling: a photo-sharing intent prediction task that predicts whether one intends to share a photo in the next conversation turn, and a photo retrieval task that retrieves the most relevant photo according to the dialogue context. In addition, for both tasks, we provide baseline models using the state-of-the-art models and report their benchmark performances. The best image retrieval model achieves 10.4{\%} recall@1 (out of 1000 candidates) and the best photo intent prediction model achieves 58.1{\%} F1 score, indicating that the dataset presents interesting yet challenging real-world problems. We are releasing PhotoChat to facilitate future research work among the community.",
+}
+
+
+@inproceedings{zheng-etal-2023-augesc,
+    title = "{A}ug{ESC}: Dialogue Augmentation with Large Language Models for Emotional Support Conversation",
+    author = "Zheng, Chujie  and
+      Sabour, Sahand  and
+      Wen, Jiaxin  and
+      Zhang, Zheng  and
+      Huang, Minlie",
+    editor = "Rogers, Anna  and
+      Boyd-Graber, Jordan  and
+      Okazaki, Naoaki",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL 2023",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-acl.99",
+    doi = "10.18653/v1/2023.findings-acl.99",
+    pages = "1552--1568",
+    abstract = "Crowdsourced dialogue corpora are usually limited in scale and topic coverage due to the expensive cost of data curation. This would hinder the generalization of downstream dialogue models to open-domain topics. In this work, we leverage large language models for dialogue augmentation in the task of emotional support conversation (ESC). By treating dialogue augmentation as a dialogue completion task, we prompt a fine-tuned language model to complete full dialogues from available dialogue posts of various topics, which are then postprocessed based on heuristics. Applying this approach, we construct AugESC, an augmented dataset for the ESC task, which largely extends the scale and topic coverage of the crowdsourced ESConv corpus. Through comprehensive human evaluation, we demonstrate that our approach is superior to strong baselines of dialogue augmentation and that AugESC has comparable dialogue quality to the crowdsourced corpus. We also conduct human interactive evaluation and prove that post-training on AugESC improves downstream dialogue models{'} generalization ability to open-domain topics. These results suggest the utility of AugESC and highlight the potential of large language models in improving data-scarce dialogue generation tasks.",
+}
+
+@article{zheng2023minigpt,
+  title={Minigpt-5: Interleaved vision-and-language generation via generative vokens},
+  author={Zheng, Kaizhi and He, Xuehai and Wang, Xin Eric},
+  journal={arXiv preprint arXiv:2310.02239},
+  year={2023}
+}
+
+@inproceedings{papineni-etal-2002-bleu,
+    title = "{B}leu: a Method for Automatic Evaluation of Machine Translation",
+    author = "Papineni, Kishore  and
+      Roukos, Salim  and
+      Ward, Todd  and
+      Zhu, Wei-Jing",
+    editor = "Isabelle, Pierre  and
+      Charniak, Eugene  and
+      Lin, Dekang",
+    booktitle = "Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2002",
+    address = "Philadelphia, Pennsylvania, USA",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/P02-1040",
+    doi = "10.3115/1073083.1073135",
+    pages = "311--318",
+}
+
+@inproceedings{lin-2004-rouge,
+    title = "{ROUGE}: A Package for Automatic Evaluation of Summaries",
+    author = "Lin, Chin-Yew",
+    booktitle = "Text Summarization Branches Out",
+    month = jul,
+    year = "2004",
+    address = "Barcelona, Spain",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/W04-1013",
+    pages = "74--81",
+}
+
+@inproceedings{nie2021like,
+  title={I like fish, especially dolphins: Addressing Contradictions in Dialogue Modeling},
+  author={Nie, Yixin and Williamson, Mary and Bansal, Mohit and Kiela, Douwe and Weston, Jason},
+  booktitle={Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)},
+  pages={1699--1713},
+  year={2021}
+}
+
+@article{nye2021improving,
+  title={Improving coherence and consistency in neural sequence models with dual-system, neuro-symbolic reasoning},
+  author={Nye, Maxwell and Tessler, Michael and Tenenbaum, Josh and Lake, Brenden M},
+  journal={Advances in Neural Information Processing Systems},
+  volume={34},
+  pages={25192--25204},
+  year={2021}
+}
+
+@article{hosseini2020simple,
+  title={A simple language model for task-oriented dialogue},
+  author={Hosseini-Asl, Ehsan and McCann, Bryan and Wu, Chien-Sheng and Yavuz, Semih and Socher, Richard},
+  journal={Advances in Neural Information Processing Systems},
+  volume={33},
+  pages={20179--20191},
+  year={2020}
+}
+
+
+@inproceedings{welleck2019dialogue,
+    title = "Dialogue Natural Language Inference",
+    author = "Welleck, Sean  and
+      Weston, Jason  and
+      Szlam, Arthur  and
+      Cho, Kyunghyun",
+    editor = "Korhonen, Anna  and
+      Traum, David  and
+      M{\`a}rquez, Llu{\'\i}s",
+    booktitle = "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/P19-1363",
+    doi = "10.18653/v1/P19-1363",
+    pages = "3731--3741",
+    abstract = "Consistency is a long standing issue faced by dialogue models. In this paper, we frame the consistency of dialogue agents as natural language inference (NLI) and create a new natural language inference dataset called Dialogue NLI. We propose a method which demonstrates that a model trained on Dialogue NLI can be used to improve the consistency of a dialogue model, and evaluate the method with human evaluation and with automatic metrics on a suite of evaluation sets designed to measure a dialogue model{'}s consistency.",
+}
+
+
+@inproceedings{zhang2021dynaeval,
+  title={DynaEval: Unifying Turn and Dialogue Level Evaluation},
+  author={Zhang, Chen and Chen, Yiming and D’Haro, Luis Fernando and Zhang, Yan and Friedrichs, Thomas and Lee, Grandee and Li, Haizhou},
+  booktitle={Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)},
+  pages={5676--5689},
+  year={2021}
+}
+
+@inproceedings{finch2023leveraging,
+  title={Leveraging Large Language Models for Automated Dialogue Analysis},
+  author={Finch, Sarah E and Paek, Ellie S and Choi, Jinho D},
+  booktitle={Proceedings of the 24th Meeting of the Special Interest Group on Discourse and Dialogue},
+  pages={202--215},
+  year={2023}
+}
+
+@inproceedings{zhang2019bertscore,
+  title={BERTScore: Evaluating Text Generation with BERT},
+  author={Zhang, Tianyi and Kishore, Varsha and Wu, Felix and Weinberger, Kilian Q and Artzi, Yoav},
+  booktitle={International Conference on Learning Representations},
+  year={2019}
+}
+
+@inproceedings{ghazarian2022deam,
+  title={DEAM: Dialogue Coherence Evaluation using AMR-based Semantic Manipulations},
+  author={Ghazarian, Sarik and Wen, Nuan and Galstyan, Aram and Peng, Nanyun},
+  booktitle={Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={771--785},
+  year={2022}
+}
+
+@inproceedings{zhang2022fined,
+  title={FineD-Eval: Fine-grained Automatic Dialogue-Level Evaluation},
+  author={Zhang, Chen and D’Haro, Luis Fernando and Zhang, Qiquan and Friedrichs, Thomas and Li, Haizhou},
+  booktitle={Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing},
+  pages={3336--3355},
+  year={2022}
+}
+
+@inproceedings{wolf-etal-2020-transformers,
+    title = "Transformers: State-of-the-Art Natural Language Processing",
+    author = "Wolf, Thomas  and
+      Debut, Lysandre  and
+      Sanh, Victor  and
+      Chaumond, Julien  and
+      Delangue, Clement  and
+      Moi, Anthony  and
+      Cistac, Pierric  and
+      Rault, Tim  and
+      Louf, Remi  and
+      Funtowicz, Morgan  and
+      Davison, Joe  and
+      Shleifer, Sam  and
+      von Platen, Patrick  and
+      Ma, Clara  and
+      Jernite, Yacine  and
+      Plu, Julien  and
+      Xu, Canwen  and
+      Le Scao, Teven  and
+      Gugger, Sylvain  and
+      Drame, Mariama  and
+      Lhoest, Quentin  and
+      Rush, Alexander",
+    editor = "Liu, Qun  and
+      Schlangen, David",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations",
+    month = oct,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2020.emnlp-demos.6",
+    doi = "10.18653/v1/2020.emnlp-demos.6",
+    pages = "38--45",
+    abstract = "Recent progress in natural language processing has been driven by advances in both model architecture and model pretraining. Transformer architectures have facilitated building higher-capacity models and pretraining has made it possible to effectively utilize this capacity for a wide variety of tasks. Transformers is an open-source library with the goal of opening up these advances to the wider machine learning community. The library consists of carefully engineered state-of-the art Transformer architectures under a unified API. Backing this library is a curated collection of pretrained models made by and available for the community. Transformers is designed to be extensible by researchers, simple for practitioners, and fast and robust in industrial deployments. The library is available at \url{https://github.com/huggingface/transformers}.",
+}
+
+@inproceedings{lin-etal-2023-train,
+    title = "How to Train Your Dragon: Diverse Augmentation Towards Generalizable Dense Retrieval",
+    author = "Lin, Sheng-Chieh  and
+      Asai, Akari  and
+      Li, Minghan  and
+      Oguz, Barlas  and
+      Lin, Jimmy  and
+      Mehdad, Yashar  and
+      Yih, Wen-tau  and
+      Chen, Xilun",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-emnlp.423",
+    doi = "10.18653/v1/2023.findings-emnlp.423",
+    pages = "6385--6400",
+    abstract = "Various techniques have been developed in recent years to improve dense retrieval (DR), such as unsupervised contrastive learning and pseudo-query generation. Existing DRs, however, often suffer from effectiveness tradeoffs between supervised and zero-shot retrieval, which some argue was due to the limited model capacity. We contradict this hypothesis and show that a generalizable DR can be trained to achieve high accuracy in both supervised and zero-shot retrieval without increasing model size. In particular, we systematically examine the contrastive learning of DRs, under the framework of Data Augmentation (DA). Our study shows that common DA practices such as query augmentation with generative models and pseudo-relevance label creation using a cross-encoder, are often inefficient and sub-optimal. We hence propose a new DA approach with diverse queries and sources of supervision to progressively train a generalizable DR. As a result, DRAGON, our Dense Retriever trained with diverse AuGmentatiON, is the first BERT-base-sized DR to achieve state-of-the-art effectiveness in both supervised and zero-shot evaluations and even competes with models using more complex late interaction.",
+}
+
+@article{jiang2023mistral,
+  title={Mistral 7B},
+  author={Jiang, Albert Q and Sablayrolles, Alexandre and Mensch, Arthur and Bamford, Chris and Chaplot, Devendra Singh and Casas, Diego de las and Bressand, Florian and Lengyel, Gianna and Lample, Guillaume and Saulnier, Lucile and others},
+  journal={arXiv preprint arXiv:2310.06825},
+  year={2023}
+}
+
+
+
+@article{wang2023tram,
+  title={TRAM: Benchmarking Temporal Reasoning for Large Language Models},
+  author={Wang, Yuqing and Zhao, Yun},
+  journal={arXiv preprint arXiv:2310.00835},
+  year={2023}
+}
+
+@inproceedings{shuster2022me,
+  title={Am I Me or You? State-of-the-Art Dialogue Models Cannot Maintain an Identity},
+  author={Shuster, Kurt and Urbanek, Jack and Szlam, Arthur and Weston, Jason},
+  booktitle={Findings of the Association for Computational Linguistics: NAACL 2022},
+  pages={2367--2387},
+  year={2022}
+}
+
+@inproceedings{li2023blip,
+  title={BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models},
+  author={Li, Junnan and Li, Dongxu and Savarese, Silvio and Hoi, Steven},
+  year={2023},
+  booktitle={International Conference on Machine Learning},
+}
+
+@article{tu2024towards,
+  title={Towards Conversational Diagnostic AI},
+  author={Tu, Tao and Palepu, Anil and Schaekermann, Mike and Saab, Khaled and Freyberg, Jan and Tanno, Ryutaro and Wang, Amy and Li, Brenna and Amin, Mohamed and Tomasev, Nenad and others},
+  journal={arXiv preprint arXiv:2401.05654},
+  year={2024}
+}
+
+@inproceedings{liu2022persona,
+  title={Persona-Based Conversational AI: State of the Art and Challenges},
+  author={Liu, Junfeng and Symons, Christopher and Vatsavai, Ranga Raju},
+  booktitle={2022 IEEE International Conference on Data Mining Workshops (ICDMW)},
+  pages={993--1001},
+  year={2022},
+  organization={IEEE}
+}
+
+@inproceedings{bae-etal-2022-keep,
+    title = "Keep Me Updated! Memory Management in Long-term Conversations",
+    author = "Bae, Sanghwan  and
+      Kwak, Donghyun  and
+      Kang, Soyoung  and
+      Lee, Min Young  and
+      Kim, Sungdong  and
+      Jeong, Yuin  and
+      Kim, Hyeri  and
+      Lee, Sang-Woo  and
+      Park, Woomyoung  and
+      Sung, Nako",
+    editor = "Goldberg, Yoav  and
+      Kozareva, Zornitsa  and
+      Zhang, Yue",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2022",
+    month = dec,
+    year = "2022",
+    address = "Abu Dhabi, United Arab Emirates",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.findings-emnlp.276",
+    doi = "10.18653/v1/2022.findings-emnlp.276",
+    pages = "3769--3787",
+    abstract = "Remembering important information from the past and continuing to talk about it in the present are crucial in long-term conversations. However, previous literature does not deal with cases where the memorized information is outdated, which may cause confusion in later conversations. To address this issue, we present a novel task and a corresponding dataset of memory management in long-term conversations, in which bots keep track of and bring up the latest information about users while conversing through multiple sessions. In order to support more precise and interpretable memory, we represent memory as unstructured text descriptions of key information and propose a new mechanism of memory management that selectively eliminates invalidated or redundant information. Experimental results show that our approach outperforms the baselines that leave the stored memory unchanged in terms of engagingness and humanness, with larger performance gap especially in the later sessions.",
+}
+
+@article{wang2023recursively,
+  title={Recursively summarizing enables long-term dialogue memory in large language models},
+  author={Wang, Qingyue and Ding, Liang and Cao, Yanan and Tian, Zhiliang and Wang, Shi and Tao, Dacheng and Guo, Li},
+  journal={arXiv preprint arXiv:2308.15022},
+  year={2023}
+}
+
+@inproceedings{huang2023memory,
+  title={Memory sandbox: Transparent and interactive memory management for conversational agents},
+  author={Huang, Ziheng and Gutierrez, Sebastian and Kamana, Hemanth and MacNeil, Stephen},
+  booktitle={Adjunct Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology},
+  pages={1--3},
+  year={2023}
+}
+
+@inproceedings{li2017dailydialog,
+  title={DailyDialog: A Manually Labelled Multi-turn Dialogue Dataset},
+  author={Li, Yanran and Su, Hui and Shen, Xiaoyu and Li, Wenjie and Cao, Ziqiang and Niu, Shuzi},
+  booktitle={Proceedings of the Eighth International Joint Conference on Natural Language Processing (Volume 1: Long Papers)},
+  pages={986--995},
+  year={2017}
+}
+
+@article{li2023loogle,
+  title={LooGLE: Can Long-Context Language Models Understand Long Contexts?},
+  author={Li, Jiaqi and Wang, Mengmeng and Zheng, Zilong and Zhang, Muhan},
+  journal={arXiv preprint arXiv:2311.04939},
+  year={2023}
+}
+
+@article{xiao2023efficient,
+  title={Efficient streaming language models with attention sinks},
+  author={Xiao, Guangxuan and Tian, Yuandong and Chen, Beidi and Han, Song and Lewis, Mike},
+  journal={arXiv preprint arXiv:2309.17453},
+  year={2023}
+}
+
+@article{shi2023replug,
+  title={Replug: Retrieval-augmented black-box language models},
+  author={Shi, Weijia and Min, Sewon and Yasunaga, Michihiro and Seo, Minjoon and James, Rich and Lewis, Mike and Zettlemoyer, Luke and Yih, Wen-tau},
+  journal={arXiv preprint arXiv:2301.12652},
+  year={2023}
+}
+
+
+@article{ram2023context,
+    title = "In-Context Retrieval-Augmented Language Models",
+    author = "Ram, Ori  and
+      Levine, Yoav  and
+      Dalmedigos, Itay  and
+      Muhlgay, Dor  and
+      Shashua, Amnon  and
+      Leyton-Brown, Kevin  and
+      Shoham, Yoav",
+    journal = "Transactions of the Association for Computational Linguistics",
+    volume = "11",
+    year = "2023",
+    address = "Cambridge, MA",
+    publisher = "MIT Press",
+    url = "https://aclanthology.org/2023.tacl-1.75",
+    doi = "10.1162/tacl_a_00605",
+    pages = "1316--1331",
+    abstract = "Retrieval-Augmented Language Modeling (RALM) methods, which condition a language model (LM) on relevant documents from a grounding corpus during generation, were shown to significantly improve language modeling performance. In addition, they can mitigate the problem of factually inaccurate text generation and provide natural source attribution mechanism. Existing RALM approaches focus on modifying the LM architecture in order to facilitate the incorporation of external information, significantly complicating deployment. This paper considers a simple alternative, which we dub In-Context RALM: leaving the LM architecture unchanged and prepending grounding documents to the input, without any further training of the LM. We show that In-Context RALM that builds on off-the-shelf general purpose retrievers provides surprisingly large LM gains across model sizes and diverse corpora. We also demonstrate that the document retrieval and ranking mechanism can be specialized to the RALM setting to further boost performance. We conclude that In-Context RALM has considerable potential to increase the prevalence of LM grounding, particularly in settings where a pretrained LM must be used without modification or even via API access.1",
+}
+
+
+@inproceedings{shuster2021retrieval,
+  title={Retrieval Augmentation Reduces Hallucination in Conversation},
+  author={Shuster, Kurt and Poff, Spencer and Chen, Moya and Kiela, Douwe and Weston, Jason},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2021},
+  pages={3784--3803},
+  year={2021}
+}
+
+@article{liang2023unleashing,
+  title={Unleashing Infinite-Length Input Capacity for Large-scale Language Models with Self-Controlled Memory System},
+  author={Liang, Xinnian and Wang, Bing and Huang, Hui and Wu, Shuangzhi and Wu, Peihao and Lu, Lu and Ma, Zejun and Li, Zhoujun},
+  journal={arXiv preprint arXiv:2304.13343},
+  year={2023}
+}
+
+@article{hirst2012remembering,
+  title={Remembering in conversations: The social sharing and reshaping of memories},
+  author={Hirst, William and Echterhoff, Gerald},
+  journal={Annual review of psychology},
+  volume={63},
+  pages={55--79},
+  year={2012},
+  publisher={Annual Reviews}
+}
+
+@article{dao2022flashattention,
+  title={Flashattention: Fast and memory-efficient exact attention with io-awareness},
+  author={Dao, Tri and Fu, Dan and Ermon, Stefano and Rudra, Atri and R{\'e}, Christopher},
+  journal={Advances in Neural Information Processing Systems},
+  volume={35},
+  pages={16344--16359},
+  year={2022}
+}
+
+@inproceedings{chen2023longlora,
+  title={LongLoRA: Efficient Fine-tuning of Long-Context Large Language Models},
+  author={Chen, Yukang and Qian, Shengju and Tang, Haotian and Lai, Xin and Liu, Zhijian and Han, Song and Jia, Jiaya},
+  booktitle={The Twelfth International Conference on Learning Representations},
+  year={2023}
+}
+
+
+@inproceedings{kryscinski2022booksum,
+  title={BOOKSUM: A Collection of Datasets for Long-form Narrative Summarization},
+  author={Kry{\'s}ci{\'n}ski, Wojciech and Rajani, Nazneen and Agarwal, Divyansh and Xiong, Caiming and Radev, Dragomir},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2022},
+  pages={6536--6558},
+  year={2022}
+}
+
+@inproceedings{zhang2021emailsum,
+  title={EmailSum: Abstractive Email Thread Summarization},
+  author={Zhang, Shiyue and Celikyilmaz, Asli and Gao, Jianfeng and Bansal, Mohit},
+  booktitle={Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)},
+  pages={6895--6909},
+  year={2021}
+}
+
+@inproceedings{chen2022summscreen,
+  title={SummScreen: A Dataset for Abstractive Screenplay Summarization},
+  author={Chen, Mingda and Chu, Zewei and Wiseman, Sam and Gimpel, Kevin},
+  booktitle={Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={8602--8615},
+  year={2022}
+}
+
+@inproceedings{krishna2023longeval,
+  title={LongEval: Guidelines for Human Evaluation of Faithfulness in Long-form Summarization},
+  author={Krishna, Kalpesh and Bransom, Erin and Kuehl, Bailey and Iyyer, Mohit and Dasigi, Pradeep and Cohan, Arman and Lo, Kyle},
+  booktitle={Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics},
+  pages={1642--1661},
+  year={2023}
+}

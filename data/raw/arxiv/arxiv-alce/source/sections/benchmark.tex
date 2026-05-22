@@ -1,0 +1,66 @@
+
+\section{Task Setup and Datasets} %
+
+
+
+
+\label{sec:task_def}
+
+Our task is formalized as follows:
+Given a query $q$ and a corpus of text passages $\mathcal{D}$,
+the system %
+is required to return an output $\mathcal{S}$%
+, which consists of $n$ statements $s_1$, ..., $s_n$, 
+and each statement $s_i$ cites a list of passages $\mathcal{C}_i = \{c_{i,1}, c_{i, 2}, \ldots\}$\footnote{In practice, we allow at most 3 citations for each statement as more citations usually do not help.}, where $c_{i,j}\in \mathcal{D}$. 
+In this work,
+we segment LLMs' output into statements by sentence boundaries.\footnote{
+    QAMPARI requires a list as the answer, and we choose each entity in the generated list as a statement.} 
+While LLMs may include sentences that do not require a citation, such as ``\ti{I'm happy to help}'', 
+we observe that almost all sentences that LLMs output  provide valuable information and  require citations, similar to findings in
+\citet{liu2023evaluating}. 
+In this work, citations are enclosed by box brackets such as \texttt{[1][2]}.
+
+We divide the corpus $\mathcal{D}$ into 100-word passages following previous works on open-domain question answering~\cite{karpukhin-etal-2020-dense,petroni-etal-2021-kilt,piktus2021web},
+in contrast to
+commercial systems like Bing Chat, which cite entire Web pages. %
+We take  100-word passages because
+it is easier for humans to verify, and %
+allows for more retrieved passages to fit in LLMs' limited context.  %
+
+
+We choose QA datasets so that 
+(1) they contain factual questions, in which references are important; 
+(2) questions require long-text answers that cover multiple aspects; %
+(3) answering the questions  requires synthesizing multiple sources.
+We select three datasets %
+(Table~\ref{tab:datasets}) and introduce them below. %
+See \S\ref{app_sec:dataset_stats} for additional statistics. 
+
+ 
+\textbf{ASQA}~\cite{stelmakh2022asqa} is a long-form factoid dataset.
+As shown in Figure~\ref{fig:main}, 
+each question is an ambiguous question from AmbigQA~\cite{min-etal-2020-ambigqa} that requires multiple short answers to cover different aspects, 
+and the dataset provides a long-form answer that covers all short answers.
+Since most questions can be answered by Wikipedia, we use the 2018-12-20 Wikipedia snapshot as $\mathcal{D}$.  
+
+
+\textbf{QAMPARI} \cite{rubin2022qampari}  
+is a factoid QA dataset constructed from Wikipedia,
+where the answer is a list of entities that are  drawn from different passages.
+Same as ASQA, we use the 2018-12-20 Wikipedia as the corpus.%
+
+
+\textbf{ELI5} \cite{fan-etal-2019-eli5} 
+is a long-form QA dataset built on the Reddit forum ``Explain Like I'm Five''.\footnote{\url{https://www.reddit.com/r/explainlikeimfive/}} %
+Most ELI5 questions are how/why/what questions that require long answers and multiple passages as evidence.
+Due to the diverse topics discussed in the questions, we use
+Sphere~\cite{piktus2021web}---a filtered version of Common Crawl\footnote{\url{https://commoncrawl.org}. We also filter out any Web pages from Reddit. }---as the corpus. %
+The ELI5 dataset is widely used in related work due to its challenging nature~\cite{nakano2021webgpt,menick2022teaching,liu2023evaluating}.
+
+
+
+We randomly select 1,000 examples from the development set of each dataset for \citeeval{}.
+Our benchmark primarily assesses the citation capabilities of existing LLMs and does not provide training data,
+as
+there are no available examples that provide supervision for citations
+in these datasets.

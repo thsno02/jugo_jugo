@@ -1,0 +1,22 @@
+
+\begin{table}[ht]
+    \centering
+    \resizebox{0.98\linewidth}{!}{
+        \begin{tabular}{lcccc}
+            \toprule
+            & \tf{Fluency} & \tf{Correct.} & \multicolumn{2}{c}{\tf{Citation} }\\
+            \cmidrule(lr){2-2} \cmidrule(lr){3-3} \cmidrule(lr){4-5}
+            & (MAUVE) & (EM Rec.) & Rec. & Prec. \\
+            \midrule
+            \headercolor
+            \multicolumn{5}{c}{\textbf{ChatGPT} (\vani{}, 5-doc)} \\
+            Short instruction & 64.1&	39.5&69.6&	73.2 \\
+            Full instruction & 66.6 & {40.4}  & {73.6}  & 72.5 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \caption{
+        Effect of different instructions on ASQA.
+    }
+    \label{tab:inst}
+\end{table}

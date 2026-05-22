@@ -1,0 +1,109 @@
+
+\section{Results \& Analysis}
+\label{sec:results_and_analysis}
+
+\subsection{ARES Ranking}
+
+\input{Tables/ARES_Ranking_vs_GPT3.5}
+
+\autoref{tab:ares_vs_gpt3.5} summarizes our main evaluation of ARES (with DeBERTa-v3-Large as the pretrained basis for the judges). We compare against RAGAS (version 0.0.18) and a baseline few-shot prompted GPT-3.5 judge (\textit{gpt-3.5-turbo-16k}).
+For the few-shot GPT-3.5 judge, we provide few-shot examples for guiding predictions; the prompts are included in Appendices \ref{sec:gpt_prompting_for_context_relevance_scoring}, \ref{sec:gpt_prompting_for_answer_faithfulness_scoring}, and \ref{sec:gpt_prompting_for_answer_relevance_scoring}.
+For both ARES and the GPT-3.5 judge baseline, we augment the LLM with PPI, using a 300-datapoint human preference validation set to rectify the ML predictions and produce confidence intervals.
+
+Across almost all settings across the datasets from KILT and SuperGLUE,
+ARES provides a more accurate ranking of RAG systems than RAGAS. ARES averages a Kendall's $\tau$ \textit{0.065 higher for context relevance} and \textit{0.132 higher for answer relevance than RAGAS}.
+Additionally, the LLM-judge is substantially more accurate than RAGAS at predicting context relevance and answer relevance of a query-passage-answer triple.
+For context relevance, ARES with a fine-tuned LLM-judge is \textit{59.9 percentage points higher than RAGAS} while for answer relevance, our system is \textit{14.4 percentage points higher than RAGAS}. 
+Overall, ARES provides a more accurate system for automatically evaluating RAG configurations than RAGAS by leveraging domain-adaptive techniques for prompting and training as well as utilizing PPI to bolster model predictions.
+
+As an additional comparison, we also include the Kendall's $\tau$ for RAG ranking with the ARES LLM judge without PPI; for all datasets tested, PPI improved the ranking prediction accuracy of the fine-tuned LLM judge.
+Furthermore, we included a sampled annotations configuration, in which we sampled 150-datapoints from each mock RAG system, totalling 1,350 annotations.
+Even with all these annotations, the Kendall's $\tau$ for ARES is 0.08 higher on average, across both context and answer relevance, compared to sampled annotations, despite using 78\% less annotations.
+In sum, ARES proves significantly more data-efficient with human annotations while being more accurate at scoring than standard sampled annotation methods.
+
+Compared to the GPT-3.5 judge, ARES provides a more accurate ranking of the RAG systems than the GPT-3.5 judge, averaging a Kendall's tau 0.06 higher over both context relevance and answer relevance.
+Between the judge configurations,
+the fine-tuned LLM judge of ARES can more precisely distinguish between RAG systems and guide configuration decisions surrounding document splitting, retriever selection, and generative LLM choice.
+However, while the fine-tuned LLM judge had a higher Kendall's tau on average, the GPT-3.5 judge is more readily deployable and does not require any additional fine-tuning.
+The GPT-3.5 judge does come with its own querying costs, which can vary based on the date of querying as well as the total tokens used in evaluation.
+
+We also wanted to better understand the importance of human annotations for ARES. To this end, we conducted two sets of experiments. First, we used ARES with human annotation sets ranging in size from 25 to 400 and found that 150 is the minimum number required (\autoref{tab:ppi_count}). Second, we explored whether GPT-4 generations could replace human annotations entirely, finding that GPT-4 is less good than humans in this role, though the idea arguably has promise (\autoref{tab:gpt4_labels}).
+
+
+
+\subsection{ARES Performance on AIS}
+\label{sec:ais}
+
+\begin{table}[htp!]
+\centering
+\small
+\begin{tabular}{lcc}
+\toprule
+                                                                               & \multicolumn{1}{l}{\textbf{WoW}} & \multicolumn{1}{l}{\textbf{CNN / DM}} \\
+                                                                               \midrule
+ARES Split Prediction                                                                & 0.478                           & 0.835                                \\
+Correct Positive/Negative Split                                                                  & 0.458                           & 0.859                                \\
+ARES Judge Accuracy                 & 62.5\%                           & 84.0\%                                \\
+Evaluation Set Size                & 707                              & 510                                   \\
+Human Preference Data Size & 200 & 200  \\       
+\bottomrule
+\end{tabular}
+\caption{ARES Results on the AIS benchmark}
+\label{tab:ais_results}
+\end{table}
+
+To evaluate whether ARES can effectively gauge answer faithfulness in real RAG systems, we tested ARES on the AIS attribution benchmark \cite{rashkin2022measuring}. 
+In AIS, we selected the Wizards of Wikipedia (WoW) and CNN/DM datasets; the other benchmark datasets involve either table reasoning (ToTTo) or focus on passage summarization (QRECC) so we excluded them.
+In WoW and CNN/DM, each evaluation example includes a query, a retrieved passage, and a generated answer (which is either faithful or non-attributed to the retrieved passage).
+
+\autoref{tab:ais_results} summarizes our AIS results. We found that ARES can effectively score the AIS datasets, getting within 2.5 accuracy points of the correct scores. Furthermore, for scoring each system, we only use 200 annotated datapoints for our human preference validation set.
+Our results on AIS demonstrate the ability of ARES to reliably distinguish faithful and hallucinated answers in real-world RAG systems.
+
+\subsection{ARES Ranking of Existing RAG Systems}
+
+
+
+We also wanted to evaluate whether ARES can score and rank existing RAG systems across both context relevance and answer relevance. 
+For evaluation, we selected the NQ, WoW, and FEVER datasets from KILT.
+We consider the answer generations to be correct if they contained the KILT answer in their output.
+For our RAG systems, we selected three different retrievers (BM25, OpenAI Ada embeddings with cosine similarity search, and ColBERTv2 \cite{santhanam-etal-2022-colbertv2}) and three different generative LLMs (MPT-7b-Instruct \cite{MosaicML2023Introducing}, GPT-3.5-Turbo, and GPT-4).
+Additionally, we include the Facebook RAG model \cite{lewis2020retrieval}, which uses a DPR retriever \cite{karpukhin2020dense} and BART sequence-to-sequence model \cite{lewis2019bart}. 
+During retrieval, each RAG system only retrieves one passage to assist generation.
+
+In \autoref{tab:ares_real_systems}, we found that ARES can reliably score and rank RAG systems in real-world applications, averaging a Kendall's tau of 0.91 for context relevance and 0.97 for answer relevance.
+Compared to RAGAS, ARES is 0.16 higher for context relevance and 0.15 higher for answer relevance, on average.
+ARES also provided accurate confidence bounds for its predictions, capturing the ground truth average outcomes for context relevance and answer relevance more than 95\% of the time; on average, the PPI confidence intervals were 7.4 points wide for context relevance and 6.1 points wide for answer relevance (see \autoref{fig:nq_context_relevance_real_rag} and \autoref{fig:nq_answer_relevance_real_rag} for ARES vs. RAGAS).
+Among the models tested, the best performing retriever was ColBERTv2 while the best performing generative LLM was GPT-4.
+
+
+
+
+
+
+
+\subsection{Strengths and Limits of Cross-Domain Applications}
+
+The generalizability of the LLM judge used in ARES is critical for deploying our framework in specialized domains, particularly domains where in-domain queries, documents, and answers are difficult to gather.
+Therefore, we wanted to test how the LLM judges used in ARES would be affected by three domain shifts: change in \textit{query type} from training to test (e.g. NQ to FEVER), change in \textit{document type} from training to test (e.g. NQ to MultiRC), and change in both \textit{query and document type} (e.g. NQ to ReCoRD).
+
+
+
+
+
+In \autoref{tab:cross_domain}, we found that the fine-tuned LLM judges used in ARES proved successful in cross-domain applications. 
+Across all settings, we found that LLM judges in ARES had strong generalizability, even when only using 300 datapoints in our human preference validation set for PPI.
+Furthermore, we found that even when the LLM judge's accuracy suffered in cross-domain applications, PPI helped mitigate the loss in accuracy and still allow ARES to be successful.
+Additional examples for PPI also continued to boost cross-domain ARES performance in subsequent tests.
+
+While LLM judges in ARES were successful in cross-domain applications for KILT and SuperGLUE, LLM judges are unable to generalize when making more drastic shifts in domain, such as: switching languages (e.g. English to Spanish, German, and other languages), switching from text to code (e.g. questions + passages to coding functions + documentation), and switching from retrieving text to extraction of entities, webpages, or citations.
+
+
+To test cross-lingual transfer, we used the XGLUE datasets \cite{Liang2020XGLUEAN}; a LLM judge fine-tuned on NQ achieved a Kendall's tau of 0.33 over both context relevance and answer relevance scoring for XGLUE.
+To test text-to-code, we used CodeSearchNet \cite{husain2019codesearchnet}; an LLM judge fine-tuned on NQ achieved a Kendall's tau of 0.28 over both context relevance and answer relevance scoring for CodeSearchNet.
+To test extraction task generalizability, we used T-Rex from KILT \cite{elsahar2018t, petroni-etal-2021-kilt}; an LLM judge fine-tuned on NQ achieved a Kendall's tau of 0.38 over both context relevance and answer relevance scoring for T-Rex.
+Each cross-domain shift requires in-domain passages and few-shot query examples for reconfiguring ARES judges. 
+
+
+
+
+

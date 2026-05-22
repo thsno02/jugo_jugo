@@ -1,0 +1,23 @@
+
+\begin{table}[h]
+    \centering
+    \resizebox{0.98\linewidth}{!}{
+        \begin{tabular}{lcccc}
+            \toprule
+            & \tf{Fluency} & \tf{Correct.} & \multicolumn{2}{c}{\tf{Citation} }\\
+            \cmidrule(lr){2-2} \cmidrule(lr){3-3} \cmidrule(lr){4-5}
+            & (MAUVE) & (EM Rec.) & Rec. & Prec. \\
+            \midrule
+            ChatGPT &  66.6 & 40.4  & {73.6}  & {63.0} \\
+            Top-1 passage & {\color{red}20.8} & 35.1 & 99.4 & 99.4\\
+            First 2 sents & 67.2 & {\color{red}18.9} & 98.7 & 98.7 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \caption{
+        ASQA cheating cases. ``ChatGPT'': the ChatGPT \vani{} model with GTR-retrieved top-5 passages. 
+        ``Top-1 passage'': use the top-1 retrieved passage as the response. 
+        ``First 2 sents'': use the first 2 sentences of the top-1 retrieved passage.
+    }
+    \label{tab:cheat}
+\end{table}

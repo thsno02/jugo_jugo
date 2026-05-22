@@ -1,0 +1,46 @@
+{
+  "agent_readable_file_count": 5,
+  "agent_readable_files": [
+    "arxiv-version.tex",
+    "anthology.bib",
+    "arxiv-version.bbl",
+    "custom.bib",
+    "emnlp2023.sty"
+  ],
+  "agent_source_bundle_sha256": "cfbb7d367597ed0c8fbd06d05613708816ae0957dbbcc0558a5c6ec9f16f4b70",
+  "bytes": 46091,
+  "content_type": "text/html; charset=utf-8",
+  "eprint_bytes": 7435458,
+  "eprint_content_type": "application/gzip",
+  "eprint_sha256": "95ddf77ae4605bed0830ae22e91006dc328dc4897c947283d94147c65611816a",
+  "eprint_source_kind": "tex_source_archive",
+  "eprint_status": 200,
+  "eprint_url": "https://arxiv.org/e-print/2309.15217",
+  "fetched_at": "2026-05-21T13:19:25.916583+00:00",
+  "final_url": "https://arxiv.org/abs/2309.15217",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://arxiv.org/abs/2309.15217",
+  "sha256": "0e310da15b8ce27643c12240d4522a151a40932fc46ff073531eb1542357f176",
+  "source": {
+    "arxiv_id": "2309.15217",
+    "id": "arxiv-ragas",
+    "priority": "p0",
+    "tags": [
+      "paper",
+      "rag",
+      "evaluation",
+      "metrics",
+      "output:answer_quality_metrics",
+      "output:robustness_metrics",
+      "output:benchmark_or_case_study_inventory"
+    ],
+    "title": "RAGAS: Automated Evaluation of Retrieval Augmented Generation",
+    "type": "arxiv",
+    "url": "https://arxiv.org/abs/2309.15217"
+  },
+  "source_file_count": 6,
+  "text_sha256": "fcde3f280b8a55391728bb6e62b12d7737204729d2781a675663d32beb65034f",
+  "transport": "curl",
+  "transport_warning": null
+}

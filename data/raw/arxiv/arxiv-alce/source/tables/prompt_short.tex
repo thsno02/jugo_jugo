@@ -1,0 +1,30 @@
+
+
+
+\begin{table}[t]
+    \centering
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash\tt}p{0.94\linewidth}<{}}
+        \toprule
+            Instruction: Write an accurate, engaging, and concise answer for ... \\
+            \\
+            \vspace{-1em}
+            \noindent {\color{brown}<Retrieve for the question>}\\
+            Document {[1]}(Title: American Decolonization) ... \\
+            Document {[2]}(Title: Decolonization) ... \\
+            Document {[3]}(Title: American Revolution) ... \\
+            ... \\
+            \\
+            \vspace{-1em}
+            Question: When did  US break away from England? \\
+            Answer: {\color{blue} The United States took the first step towards gaining independence ... \tf{\underline{[1][2]}}. The Treaty of Paris was later signed ... \tf{\underline{[3]}}}.\\
+
+        \bottomrule
+    \end{tabular}
+    \caption{
+        An example of our \vani{} method. Different colors represent \ttt{prompt}, \ttt{\color{blue} model generation}, and \ttt{\color{brown} <actions>}. 
+        We also provide two in-context demonstrations before the test example. 
+    }
+    \vspace{-10pt}
+    \label{tab:prompt_short}
+\end{table}
