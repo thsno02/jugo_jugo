@@ -1,0 +1,27 @@
+{
+  "bytes": 165311,
+  "content_type": "text/html; charset=UTF-8",
+  "fetched_at": "2026-05-21T13:21:49.436402+00:00",
+  "final_url": "https://www.mediawiki.org/wiki/Wikibase/DataModel",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://www.mediawiki.org/wiki/Wikibase/DataModel",
+  "sha256": "8b291f815269b9838284711bae60cdb3a8167adfc3eac8be9109216589c01d62",
+  "source": {
+    "id": "wikibase-data-model",
+    "priority": "p0",
+    "tags": [
+      "documentation",
+      "knowledge_graph",
+      "provenance",
+      "output:knowledge_graph_comparison",
+      "output:provenance_risk"
+    ],
+    "title": "Wikibase DataModel",
+    "type": "webpage",
+    "url": "https://www.mediawiki.org/wiki/Wikibase/DataModel"
+  },
+  "text_sha256": "7751c624521353b07cb4780ee9ef72aa442ecce94caa15a78e3944f84ca84fec",
+  "transport": "requests",
+  "transport_warning": null
+}

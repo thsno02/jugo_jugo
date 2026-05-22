@@ -1,0 +1,26 @@
+{
+  "bytes": 19358,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T13:21:42.949692+00:00",
+  "final_url": "https://www.writethedocs.org/guide/docs-as-code/",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://www.writethedocs.org/guide/docs-as-code.html",
+  "sha256": "9469acd0bdbb4fa5a81537bb897f0f2aa08c8df6d7dda15267fcc521d8257f69",
+  "source": {
+    "id": "writethedocs-docs-as-code",
+    "priority": "p0",
+    "tags": [
+      "documentation",
+      "docs_as_code",
+      "workflow",
+      "output:documentation_systems_comparison"
+    ],
+    "title": "Docs as Code - Write the Docs",
+    "type": "webpage",
+    "url": "https://www.writethedocs.org/guide/docs-as-code.html"
+  },
+  "text_sha256": "a35891b0aaea32c02581ac63a69c4042c66286118c21c1bc65242c9bf1b85717",
+  "transport": "requests",
+  "transport_warning": null
+}

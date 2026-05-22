@@ -1,0 +1,29 @@
+{
+  "bytes": 58231,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T13:26:43.542907+00:00",
+  "final_url": "https://microsoft.github.io/agent-governance-toolkit/",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://microsoft.github.io/agent-governance-toolkit/",
+  "sha256": "d12ed14da72763b488e7426e39705d28a2e8f6b756826e921aa69ae547e8951f",
+  "source": {
+    "id": "microsoft-agent-governance-toolkit-docs",
+    "priority": "p0",
+    "tags": [
+      "governance",
+      "security",
+      "agent",
+      "audit_log",
+      "output:governance_model",
+      "output:maintenance_risk",
+      "output:privacy_security_risk"
+    ],
+    "title": "Microsoft Agent Governance Toolkit documentation",
+    "type": "webpage",
+    "url": "https://microsoft.github.io/agent-governance-toolkit/"
+  },
+  "text_sha256": "1b9a83e6a963735a9bafe118be77cb0f497d363f0991aace217c331967422e81",
+  "transport": "requests",
+  "transport_warning": null
+}

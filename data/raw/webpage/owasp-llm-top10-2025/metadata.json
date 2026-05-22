@@ -1,0 +1,30 @@
+{
+  "bytes": 297946,
+  "content_type": "text/html; charset=UTF-8",
+  "fetched_at": "2026-05-21T13:36:02.434518+00:00",
+  "final_url": "https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/",
+  "sha256": "7e84df29fa07407e5ba76d1a630d29787e8781f5009dbb211ea7e5b033fef9c0",
+  "source": {
+    "id": "owasp-llm-top10-2025",
+    "priority": "p0",
+    "tags": [
+      "governance",
+      "security",
+      "owasp",
+      "prompt_injection",
+      "data_poisoning",
+      "output:privacy_security_risk",
+      "output:governance_model",
+      "output:epistemic_risk"
+    ],
+    "title": "OWASP Top 10 for LLM Applications 2025",
+    "type": "webpage",
+    "url": "https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/"
+  },
+  "text_sha256": "5481ddc882194ec366c7d1dd5750309cb47b4a7bc0a754b81b564828398733e3",
+  "transport": "requests",
+  "transport_warning": null
+}

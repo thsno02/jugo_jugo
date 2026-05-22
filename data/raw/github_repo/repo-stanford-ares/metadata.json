@@ -1,0 +1,28 @@
+{
+  "fetched_at": "2026-05-21T13:27:39.159450+00:00",
+  "git_action": "clone",
+  "git_exit_code": 0,
+  "git_output_tail": "Cloning into '/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/github_repo/repo-stanford-ares/repo'...\nUpdating files:  23% (47/204)\nUpdating files:  24% (49/204)\nUpdating files:  25% (51/204)\nUpdating files:  26% (54/204)\nUpdating files:  27% (56/204)\nUpdating files:  28% (58/204)\nUpdating files:  29% (60/204)\nUpdating files:  30% (62/204)\nUpdating files:  31% (64/204)\nUpdating files:  32% (66/204)\nUpdating files:  33% (68/204)\nUpdating files:  34% (70/204)\nUpdating files:  35% (72/204)\nUpdating files:  36% (74/204)\nUpdating files:  36% (75/204)\nUpdating files:  37% (76/204)\nUpdating files:  38% (78/204)\nUpdating files:  39% (80/204)\nUpdating files:  40% (82/204)\nUpdating files:  41% (84/204)\nUpdating files:  42% (86/204)\nUpdating files:  43% (88/204)\nUpdating files:  44% (90/204)\nUpdating files:  45% (92/204)\nUpdating files:  46% (94/204)\nUpdating files:  47% (96/204)\nUpdating files:  48% (98/204)\nUpdating files:  49% (100/204)\nUpdating files:  50% (102/204)\nUpdating files:  51% (105/204)\nUpdating files:  52% (107/204)\nUpdating files:  53% (109/204)\nUpdating files:  54% (111/204)\nUpdating files:  55% (113/204)\nUpdating files:  56% (115/204)\nUpdating files:  57% (117/204)\nUpdating files:  58% (119/204)\nUpdating files:  59% (121/204)\nUpdating files:  60% (123/204)\nUpdating files:  61% (125/204)\nUpdating files:  62% (127/204)\nUpdating files:  63% (129/204)\nUpdating files:  64% (131/204)\nUpdating files:  65% (133/204)\nUpdating files:  66% (135/204)\nUpdating files:  67% (137/204)\nUpdating files:  68% (139/204)\nUpdating files:  69% (141/204)\nUpdating files:  70% (143/204)\nUpdating files:  71% (145/204)\nUpdating files:  72% (147/204)\nUpdating files:  73% (149/204)\nUpdating files:  74% (151/204)\nUpdating files:  75% (153/204)\nUpdating files:  76% (156/204)\nUpdating files:  77% (158/204)\nUpdating files:  78% (160/204)\nUpdating files:  79% (162/204)\nUpdating files:  80% (164/204)\nUpdating files:  81% (166/204)\nUpdating files:  82% (168/204)\nUpdating files:  83% (170/204)\nUpdating files:  84% (172/204)\nUpdating files:  85% (174/204)\nUpdating files:  86% (176/204)\nUpdating files:  87% (178/204)\nUpdating files:  88% (180/204)\nUpdating files:  89% (182/204)\nUpdating files:  90% (184/204)\nUpdating files:  91% (186/204)\nUpdating files:  92% (188/204)\nUpdating files:  93% (190/204)\nUpdating files:  94% (192/204)\nUpdating files:  95% (194/204)\nUpdating files:  96% (196/204)\nUpdating files:  97% (198/204)\nUpdating files:  98% (200/204)\nUpdating files:  99% (202/204)\nUpdating files: 100% (204/204)\nUpdating files: 100% (204/204), done.\n",
+  "github_api_sha256": "7158c1fc176b4171c50ac0b83e04db7df8275d822d093366e755aaef5493358e",
+  "github_api_status": 403,
+  "github_api_url": "https://api.github.com/repos/stanford-futuredata/ARES",
+  "readme_api_status": 403,
+  "readme_sha256": "7158c1fc176b4171c50ac0b83e04db7df8275d822d093366e755aaef5493358e",
+  "repo": "stanford-futuredata/ARES",
+  "source": {
+    "id": "repo-stanford-ares",
+    "priority": "p0",
+    "repo": "stanford-futuredata/ARES",
+    "tags": [
+      "github_repo",
+      "evaluation",
+      "benchmark",
+      "reproducibility",
+      "output:benchmark_or_case_study_inventory",
+      "output:robustness_metrics"
+    ],
+    "title": "ARES replication code and datasets",
+    "type": "github_repo",
+    "url": "https://github.com/stanford-futuredata/ARES"
+  }
+}

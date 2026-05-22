@@ -1,0 +1,29 @@
+{
+  "bytes": 80983,
+  "content_type": "text/html; charset=UTF-8",
+  "fetched_at": "2026-05-21T13:26:42.652289+00:00",
+  "final_url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+  "sha256": "b2f610392f7a7bd4f4d8d5f2b1396221da23a9fed176b336b8a068920a4ba5e9",
+  "source": {
+    "id": "nist-gai-profile",
+    "priority": "p0",
+    "tags": [
+      "governance",
+      "risk_management",
+      "nist",
+      "provenance",
+      "output:governance_model",
+      "output:provenance_risk",
+      "output:privacy_security_risk"
+    ],
+    "title": "NIST AI RMF Generative AI Profile",
+    "type": "webpage",
+    "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence"
+  },
+  "text_sha256": "20b1e69730c2719766a9bd3dead29e8b02cab4f7ee52d134bb2085bd46704d1e",
+  "transport": "requests",
+  "transport_warning": null
+}

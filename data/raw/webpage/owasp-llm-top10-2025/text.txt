@@ -1,0 +1,160 @@
+OWASP Top 10 for LLM Applications 2025 Skip to content
+
+Join us in London, 6/2 – 6/4 InfoSecurity Europe – OWASP GenAI and Agentic Security Summit
+
+|
+
+Register Now!
+
+GETTING STARTED
+Introduction
+
+MEETINGS
+
+CONTRIBUTING
+
+EVENTS
+
+GLOSSARY
+
+RESOURCES
+All
+
+LLM TOP 10
+LLM TOP 10 FOR 2025
+
+LLM TOP 10 FOR 2023/24
+
+CHEAT SHEETS
+
+WHITEPAPERS
+
+TOOLS
+
+LEARNING VIDEOS
+
+SOLUTIONS DIRECTORY
+
+ROADMAP
+
+NEWSLETTER
+
+PROJECT INITIATIVES
+AI Security Landscape
+
+AIBOM Generator
+
+GOVERNANCE CHECKLIST
+
+Threat Intelligence
+
+AGENTIC APP SECURITY
+
+Secure AI Adoption
+
+AI Red Teaming
+
+Data Security
+
+BLOG
+
+ABOUT
+Mission and Charter
+
+Governance
+
+LEADERSHIP
+
+INDUSTRY RECOGNITION
+
+CONTRIBUTORS
+
+SPONSORS
+
+SUPPORTERS
+
+SPONSORSHIP
+
+NEWSROOM
+
+CONTACT
+
+BRANDING
+
+GEN AI SECURITY
+
+resources
+
+Whitepapers/Guides
+
+OWASP Top 10 for LLM Applications 2025
+
+November 17, 2024
+
+About
+
+The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+
+Download
+
+Additional Resources
+
+April 9, 2026
+
+Resources
+
+AI Security Solutions Landscape For AI and Agentic Red Teaming Q2 2026
+
+March 17, 2026
+
+Resources
+
+AI Security Solutions Landscape for Agentic AI Q2 2026
+
+March 17, 2026
+
+Resources
+
+Al Security Solutions Landscape For LLM and Gen Al Apps Q2 2026
+
+PRIVACY
+
+NEWSLETTER
+
+CONTACT
+
+Overview
+
+LLM Top 10
+
+Initiatives
+
+Landscape
+
+Glossary
+
+Roadmaps
+
+Resources
+
+Sponsors
+
+Sponsorship
+
+Contribute
+
+Newsroom
+
+Events
+
+Meetings
+
+Leadership
+
+Volunteer Jobs
+
+OWASP and the OWASP logo are trademarks of the OWASP Foundation, Inc. Unless otherwise specified, all content on the site is Creative Commons Attribution-ShareAlike v4.0 and provided without
+
+warranty of service or accuracy. For more information, please refer to our General Disclaimer . – Copyright © 2025 OWASP Foundation, Inc.
+
+Scroll to Top

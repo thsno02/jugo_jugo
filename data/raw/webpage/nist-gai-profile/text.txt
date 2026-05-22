@@ -1,0 +1,302 @@
+Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile | NIST Skip to main content
+
+An official website of the United States government
+
+Here’s how you know
+
+Here’s how you know
+
+Official websites use .gov
+A .gov website belongs to an official government organization in the United States.
+
+Secure .gov websites use HTTPS
+A lock ( ) or https:// means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
+
+https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence
+
+Search NIST
+
+Menu
+
+Close
+Publications
+
+What We Do
+
+All Topics
+
+Advanced communications
+
+Artificial intelligence
+
+Bioscience
+
+Buildings and construction
+
+Chemistry
+
+Cybersecurity and Privacy
+
+Electronics
+
+Energy
+
+Environment
+
+Fire
+
+Forensic science
+
+Health
+
+Information technology
+
+Infrastructure
+
+Manufacturing
+
+Materials
+
+Mathematics and statistics
+
+Metrology
+
+Nanotechnology
+
+Neutron research
+
+Performance excellence
+
+Physics
+
+Public safety
+
+Quantum information science
+
+Resilience
+
+Standards
+
+Transportation
+
+Labs & Major Programs
+
+Assoc Director of Laboratory Programs
+
+Laboratories
+Communications Technology Laboratory
+
+Engineering Laboratory
+
+Information Technology Laboratory
+
+Material Measurement Laboratory
+
+Physical Measurement Laboratory
+
+User Facilities
+NIST Center for Neutron Research
+
+CNST NanoFab
+
+Research Test Beds
+
+Research Projects
+
+Tools & Instruments
+
+Major Programs
+Baldrige Performance Excellence Program
+
+CHIPS for America Initiative
+
+Manufacturing Extension Partnership (MEP)
+
+Office of Advanced Manufacturing
+
+Special Programs Office
+
+Technology Partnerships Office
+
+Services & Resources
+
+Measurements and Standards
+Calibration Services
+
+Laboratory Accreditation (NVLAP)
+
+Quality System
+
+Standard Reference Materials (SRMs)
+
+Standard Reference Instruments (SRIs)
+
+Standards.gov
+
+Time Services
+
+Office of Weights and Measures
+
+Software
+
+Data
+Chemistry WebBook
+
+National Vulnerability Database
+
+Physical Reference Data
+
+Standard Reference Data (SRD)
+
+Storefront
+
+License & Patents
+
+Computer Security Resource Center (CSRC)
+
+NIST Research Library
+
+News & Events
+
+News
+
+Events
+
+Blogs
+
+NIST In Focus
+
+Feature Stories
+
+Awards
+
+Video Gallery
+
+Image Gallery
+
+Media Contacts
+
+About NIST
+
+About Us
+Leadership
+
+Organization Structure
+
+Budget & Planning
+
+Contact Us
+
+Visit
+
+Careers
+Student programs
+
+Work with NIST
+
+History
+NIST Digital Archives
+
+NIST Museum
+
+NIST and the Nobel
+
+Educational Resources
+
+PUBLICATIONS
+
+Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile
+
+Published
+
+July 26, 2024
+
+Author(s)
+
+Chloe Autio , Reva Schwartz , Jesse Dunietz , Shomik Jain , Martin Stanley , Elham Tabassi , Patrick Hall, Kamie Roberts
+
+Abstract
+This document is a cross-sectoral profile of and companion resource for the AI Risk Management Framework (AI RMF 1.0) for Generative AI, pursuant to President Biden's Executive Order (EO) 14110 on Safe, Secure, and Trustworthy Artificial Intelligence. The AI RMF was released in January 2023, and is intended for voluntary use and to improve the ability of organizations to incorporate trustworthiness considerations into the design, development, use, and evaluation of AI products, services, and systems.
+
+Citation
+
+NIST Trustworthy and Responsible AI - 600-1
+
+Report Number
+
+600-1
+
+Pub Type
+
+NIST Pubs
+
+Download Paper
+
+https://doi.org/10.6028/NIST.AI.600-1
+
+Local Download
+
+Keywords
+
+Artificial Intelligence, AI, Risk Management Framework, Generative AI, Cross-sectoral profile, AI Lifecycle, AI Actor, GAI, GAI Risk
+
+Trustworthy and responsible AI , Artificial intelligence , Applied AI and AI measurement and evaluation
+
+Citation
+
+Autio, C. , Schwartz, R. , Dunietz, J. , Jain, S. , Stanley, M. , Tabassi, E. , Hall, P. and Roberts, K. (2024), Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile, NIST Trustworthy and Responsible AI, National Institute of Standards and Technology, Gaithersburg, MD, [online], https://doi.org/10.6028/NIST.AI.600-1, https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=958388 (Accessed May 21, 2026)
+Additional citation formats
+
+DOI
+
+Google Scholar
+
+BibTeX
+
+RIS
+
+Issues
+
+If you have any questions about this publication or are having problems accessing it, please contact [email protected] .
+
+Created July 26, 2024, Updated April 8, 2026
+
+Was this page helpful?
+
+HEADQUARTERS
+100 Bureau Drive
+Gaithersburg, MD 20899
+301-975-2000
+Webmaster | Contact Us | Our Other Offices
+
+X.com Facebook LinkedIn Instagram YouTube Giphy RSS Feed Mailing List
+
+How are we doing? Feedback
+
+Site Privacy
+
+Accessibility
+
+Privacy Program
+
+Copyright & Disclaimers
+
+Vulnerability Disclosure
+
+No Fear Act Policy
+
+FOIA
+
+Environmental Policy
+
+Scientific Integrity
+
+Information Quality Standards
+
+Commerce.gov
+
+Science.gov
+
+USA.gov
+
+Vote.gov

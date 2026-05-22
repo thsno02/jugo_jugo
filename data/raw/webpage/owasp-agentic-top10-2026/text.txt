@@ -1,0 +1,160 @@
+OWASP Top 10 for Agentic Applications for 2026 - OWASP Gen AI Security Project Skip to content
+
+Join us in London, 6/2 – 6/4 InfoSecurity Europe – OWASP GenAI and Agentic Security Summit
+
+|
+
+Register Now!
+
+GETTING STARTED
+Introduction
+
+MEETINGS
+
+CONTRIBUTING
+
+EVENTS
+
+GLOSSARY
+
+RESOURCES
+All
+
+LLM TOP 10
+LLM TOP 10 FOR 2025
+
+LLM TOP 10 FOR 2023/24
+
+CHEAT SHEETS
+
+WHITEPAPERS
+
+TOOLS
+
+LEARNING VIDEOS
+
+SOLUTIONS DIRECTORY
+
+ROADMAP
+
+NEWSLETTER
+
+PROJECT INITIATIVES
+AI Security Landscape
+
+AIBOM Generator
+
+GOVERNANCE CHECKLIST
+
+Threat Intelligence
+
+AGENTIC APP SECURITY
+
+Secure AI Adoption
+
+AI Red Teaming
+
+Data Security
+
+BLOG
+
+ABOUT
+Mission and Charter
+
+Governance
+
+LEADERSHIP
+
+INDUSTRY RECOGNITION
+
+CONTRIBUTORS
+
+SPONSORS
+
+SUPPORTERS
+
+SPONSORSHIP
+
+NEWSROOM
+
+CONTACT
+
+BRANDING
+
+GEN AI SECURITY
+
+resources
+
+Whitepapers/Guides
+
+OWASP Top 10 for Agentic Applications for 2026
+
+December 9, 2025
+
+About
+
+The OWASP Top 10 for Agentic Applications 2026 is a globally peer-reviewed framework that identifies the most critical security risks facing autonomous and agentic AI systems. Developed through extensive collaboration with more than 100 industry experts, researchers, and practitioners, the list provides practical, actionable guidance to help organizations secure AI agents that plan, act, and make decisions across complex workflows. By distilling a broad ecosystem of OWASP GenAI Security guidance into an accessible, operational format, the Top 10 equips builders, defenders, and decision-makers with a clear starting point for reducing agentic AI risks and supporting safe, trustworthy deployments.
+
+Download
+
+Additional Resources
+
+April 9, 2026
+
+Resources
+
+AI Security Solutions Landscape For AI and Agentic Red Teaming Q2 2026
+
+March 17, 2026
+
+Resources
+
+AI Security Solutions Landscape for Agentic AI Q2 2026
+
+March 17, 2026
+
+Resources
+
+Al Security Solutions Landscape For LLM and Gen Al Apps Q2 2026
+
+PRIVACY
+
+NEWSLETTER
+
+CONTACT
+
+Overview
+
+LLM Top 10
+
+Initiatives
+
+Landscape
+
+Glossary
+
+Roadmaps
+
+Resources
+
+Sponsors
+
+Sponsorship
+
+Contribute
+
+Newsroom
+
+Events
+
+Meetings
+
+Leadership
+
+Volunteer Jobs
+
+OWASP and the OWASP logo are trademarks of the OWASP Foundation, Inc. Unless otherwise specified, all content on the site is Creative Commons Attribution-ShareAlike v4.0 and provided without
+
+warranty of service or accuracy. For more information, please refer to our General Disclaimer . – Copyright © 2025 OWASP Foundation, Inc.
+
+Scroll to Top

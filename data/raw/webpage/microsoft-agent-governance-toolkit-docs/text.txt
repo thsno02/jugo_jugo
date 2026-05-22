@@ -1,0 +1,439 @@
+Agent Governance Toolkit
+Skip to content
+
+Agent Governance Toolkit
+
+Home
+
+Initializing search
+
+microsoft/agent-governance-toolkit
+
+Home
+
+Getting Started
+
+Packages
+
+Tutorials
+
+Deployment
+
+Security
+
+Specifications
+
+Architecture Decisions
+
+Reference
+
+🌍 Languages
+
+Agent Governance Toolkit
+
+microsoft/agent-governance-toolkit
+
+Home Home Table of contents
+Packages
+
+Language SDKs
+
+Framework Integrations
+
+Examples
+
+Specifications
+
+Standards Compliance
+
+Getting Started Getting Started
+Quick Start
+
+Architecture
+
+Glossary
+
+Packages Packages
+Overview
+
+Agent OS
+
+Agent Mesh
+
+Agent Runtime
+
+Agent SRE
+
+Agent Compliance
+
+Agent Marketplace
+
+Agent Lightning
+
+Agent Hypervisor
+
+Copilot CLI governance package
+
+.NET package
+
+VS Code Extension
+
+Tutorials Tutorials
+Overview
+
+Getting Started Getting Started
+2-Line Quickstart
+
+Policy Engine Basics
+
+Framework Integrations
+
+Progressive Governance
+
+End-to-End Scenarios End-to-End Scenarios
+Govern an AI Agent (Python)
+
+Govern MCP Tool Servers
+
+.NET MAF Integration
+
+.NET MAF Hook
+
+Multi-Agent Fleet Policies
+
+Multi-Stage Pipeline
+
+Retrofit Existing Agents
+
+Shift-Left CI/CD Gates
+
+A2A Conversation Policy
+
+Copilot CLI Governance
+
+Security Security
+Execution Sandboxing
+
+Prompt Injection Detection
+
+Security Hardening
+
+DLP & Attribute Ratchets
+
+Defense-in-Depth
+
+SBOM & Signing
+
+MCP Scan CLI
+
+E2E Encrypted Messaging
+
+Red-Team Testing
+
+Policy & Authorization Policy & Authorization
+OPA / Rego / Cedar
+
+Policy Composition
+
+Approval Workflows
+
+Intent-Based Authorization
+
+Delegation Chains
+
+Cost & Token Budgets
+
+Cost Governance
+
+Policy-as-Code Series Policy-as-Code Series
+Your First Policy
+
+Capability Scoping
+
+Rate Limiting
+
+Conditional Policies
+
+Approval Workflows
+
+Policy Testing
+
+Policy Versioning
+
+MCP Governance
+
+Observability & Operations Observability & Operations
+Observability & Tracing
+
+OpenTelemetry Integration
+
+Kill Switch & Rate Limiting
+
+Agent Discovery
+
+Agent Lifecycle
+
+Chaos Testing
+
+Agent Reliability
+
+Advanced Topics Advanced Topics
+Trust & Identity Deep Dive
+
+Advanced Trust & Behavior
+
+Compliance Verification
+
+Saga Orchestration
+
+Liability & Attribution
+
+Protocol Bridges
+
+Plugin Marketplace
+
+RL Training Governance
+
+Decision BOM
+
+Offline Verifiable Receipts
+
+Entra Agent ID Bridge
+
+Contributor Governance
+
+Language & Platform Guides Language & Platform Guides
+.NET SDK
+
+C# MCP Extension
+
+TypeScript SDK
+
+Rust Crate
+
+Go Module
+
+Build Custom Integration
+
+Deployment Deployment
+Overview
+
+Azure Container Apps
+
+Azure Foundry Agent Service
+
+AWS ECS / Fargate
+
+Google Cloud GKE
+
+OpenClaw Sidecar
+
+Private Endpoints
+
+Security Security
+Threat Model
+
+OWASP Compliance
+
+Security Scanning
+
+Tenant Isolation
+
+Specifications Specifications
+Agent OS Policy Engine
+
+AgentMesh Identity & Trust
+
+Agent Hypervisor Execution Control
+
+AgentMesh Trust & Coordination
+
+AgentMesh Wire Protocol
+
+Agent SRE Governance
+
+MCP Security Gateway
+
+Agent Lightning Fast-Path
+
+Framework Adapter Contract
+
+Audit & Compliance
+
+Architecture Decisions Architecture Decisions
+Overview
+
+ADR-0001: Ed25519 for Identity
+
+ADR-0002: Four Execution Rings
+
+ADR-0003: IATP Handshake 200ms
+
+ADR-0004: Deterministic Policy
+
+ADR-0005: Liveness Attestation
+
+ADR-0006: Constitutional Constraints
+
+ADR-0007: JWKS Federation
+
+ADR-0008: Cross-Org Policy Federation
+
+ADR-0009: RFC 9334 RATS Alignment
+
+ADR-0010: TEE Keystore SEV-SNP
+
+ADR-0011: Additive Policy Contract
+
+ADR-0012: Cost Governance
+
+ADR-0013: Fail Closed on Errors
+
+ADR-0014: Parent Deny Immutable
+
+ADR-0015: Pluggable Policy Backends
+
+ADR-0016: Trust Ceiling Propagation
+
+ADR-0017: Merkle Audit Chain
+
+ADR-0018: Reconstructible Decision BOM
+
+ADR-0019: OTel Event Sink Pattern
+
+ADR-0020: Circuit Breaker for Sinks
+
+ADR-0021: CloudEvents Envelope
+
+ADR-0022: Compliance Auto-Mapping
+
+ADR-0023: Hypervisor Delta Engine
+
+ADR-0024: RL Training Governance
+
+ADR-0025: Structural Typing Protocols
+
+Reference Reference
+Benchmarks
+
+Comparison
+
+NIST RFI Mapping
+
+Changelog
+
+Contributing
+
+🌍 Languages 🌍 Languages
+日本語 README
+
+日本語 クイックスタート
+
+简体中文 README
+
+简体中文 快速入门
+
+Table of contents
+Packages
+
+Language SDKs
+
+Framework Integrations
+
+Examples
+
+Specifications
+
+Standards Compliance
+
+Agent Governance Toolkit ¶
+
+Runtime governance for AI agents: deterministic policy enforcement, zero-trust identity, execution sandboxing, and SRE for autonomous agents.
+
+🚀 Quick Start 📦 PyPI 💻 GitHub 📚 Tutorials
+
+13,000+ Tests
+
+10 Formal Specs
+
+5 Languages
+
+20+ Integrations
+
+Packages ¶
+
+⚙️ Agent OS Policy engine, agent lifecycle, governance gate 🔗 Agent Mesh Agent discovery, routing, and trust mesh 🛡️ Agent Runtime Execution sandboxing with four privilege rings 📊 Agent SRE Kill switch, SLO monitoring, chaos testing ✅ Agent Compliance OWASP verification, policy linting, integrity checks 🏪 Agent Marketplace Plugin governance and trust scoring ⚡ Agent Lightning RL training governance with violation penalties 🔒 Agent Hypervisor Execution audit, delta engine, commitment anchoring
+
+Language SDKs ¶
+
+SDK Install
+
+🐍 Python pip install agent-governance-toolkit
+
+📘 TypeScript npm install @microsoft/agent-governance-sdk
+
+🔷 .NET dotnet add package Microsoft.AgentGovernance
+
+🦀 Rust cargo add agent-governance
+
+🐹 Go go get github.com/microsoft/agent-governance-toolkit/agent-governance-golang
+
+Framework Integrations ¶
+
+Works with any agent framework: LangChain, CrewAI, AutoGen, Google ADK, OpenAI Agents, LlamaIndex, Haystack, Mastra, MCP, A2A, and more. See the full list .
+
+Examples ¶
+
+Example Framework What it demonstrates
+
+openai-agents-governed OpenAI Agents SDK Policy-gated tool calls with trust tiers
+
+crewai-governed CrewAI Multi-agent governance with role-based policies
+
+smolagents-governed HuggingFace smolagents Lightweight agent governance
+
+maf-integration MAF Microsoft Agent Framework integration
+
+mcp-trust-verified-server MCP Trust-verified MCP server implementation
+
+Specifications ¶
+
+Every major component has a formal RFC 2119 specification with conformance tests.
+
+Specification Tests
+
+Agent OS Policy Engine 68
+
+AgentMesh Identity and Trust 135
+
+Agent Hypervisor Execution Control 80
+
+AgentMesh Trust and Coordination 62
+
+Agent SRE Governance 111
+
+MCP Security Gateway 127
+
+Agent Lightning Fast-Path 100
+
+Framework Adapter Contract 152
+
+Audit and Compliance 157
+
+AgentMesh Wire Protocol --
+
+25 Architecture Decision Records document the reasoning behind key design choices.
+
+Standards Compliance ¶
+
+Standard Coverage
+
+OWASP Agentic AI Top 10 All 10 risks covered with deterministic controls
+
+NIST AI RMF 1.0 Full GOVERN, MAP, MEASURE, MANAGE alignment
+
+EU AI Act Compliance mapping with automated evidence
+
+SOC 2 Control mapping with audit trail export
+
+Back to top

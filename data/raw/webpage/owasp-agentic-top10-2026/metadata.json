@@ -1,0 +1,30 @@
+{
+  "bytes": 306899,
+  "content_type": "text/html; charset=UTF-8",
+  "fetched_at": "2026-05-21T13:26:41.468443+00:00",
+  "final_url": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+  "sha256": "d990686876a7857059e177204a695706236f7d0147204b02c368e5128866ff4e",
+  "source": {
+    "id": "owasp-agentic-top10-2026",
+    "priority": "p0",
+    "tags": [
+      "governance",
+      "security",
+      "owasp",
+      "agentic",
+      "memory_poisoning",
+      "output:privacy_security_risk",
+      "output:governance_model",
+      "output:maintenance_risk"
+    ],
+    "title": "OWASP Top 10 for Agentic Applications 2026",
+    "type": "webpage",
+    "url": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/"
+  },
+  "text_sha256": "f3eff3b4df678c3ae8ad171713488555585447c957db957ca478175abde34f78",
+  "transport": "curl",
+  "transport_warning": null
+}

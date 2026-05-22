@@ -1,0 +1,27 @@
+{
+  "bytes": 2787,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T13:21:48.088253+00:00",
+  "final_url": "https://obsidian.md/help/link-notes",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://help.obsidian.md/link-notes",
+  "sha256": "6be81cc204ab4a65420726888688283cade077fa16af7a1bef697f3f8fe8a0a7",
+  "source": {
+    "id": "obsidian-help-link-notes",
+    "priority": "p0",
+    "tags": [
+      "documentation",
+      "pkm",
+      "obsidian",
+      "backlinks",
+      "output:pkm_comparison"
+    ],
+    "title": "Obsidian Help: Link notes",
+    "type": "webpage",
+    "url": "https://help.obsidian.md/link-notes"
+  },
+  "text_sha256": "d84bd2d7690a9a45beff12e8b84243138dab4b8950218d37f9318c5ac8c6dc90",
+  "transport": "requests",
+  "transport_warning": null
+}

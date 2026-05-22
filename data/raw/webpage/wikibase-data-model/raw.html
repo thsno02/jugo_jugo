@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html class="client-nojs vector-feature-language-in-header-disabled vector-feature-language-in-main-menu-disabled vector-feature-language-in-main-page-header-disabled vector-feature-page-tools-pinned-disabled vector-feature-toc-pinned-clientpref-1 vector-feature-main-menu-pinned-disabled vector-feature-limited-width-clientpref-1 vector-feature-limited-width-content-enabled vector-feature-custom-font-size-clientpref-1 vector-feature-appearance-pinned-clientpref-1 skin-theme-clientpref-day vector-sticky-header-enabled vector-toc-available skin-thumbsize-clientpref-standard" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Wikibase/DataModel - MediaWiki</title>
+<script>(function(){var className="client-js vector-feature-language-in-header-disabled vector-feature-language-in-main-menu-disabled vector-feature-language-in-main-page-header-disabled vector-feature-page-tools-pinned-disabled vector-feature-toc-pinned-clientpref-1 vector-feature-main-menu-pinned-disabled vector-feature-limited-width-clientpref-1 vector-feature-limited-width-content-enabled vector-feature-custom-font-size-clientpref-1 vector-feature-appearance-pinned-clientpref-1 skin-theme-clientpref-day vector-sticky-header-enabled vector-toc-available skin-thumbsize-clientpref-standard";var cookie=document.cookie.match(/(?:^|; )mediawikiwikimwclientpreferences=([^;]+)/);if(cookie){cookie[1].split('%2C').forEach(function(pref){className=className.replace(new RegExp('(^| )'+pref.replace(/-clientpref-\w+$|[^\w-]+/g,'')+'-clientpref-\\w+( |$)'),'$1'+pref+'$2');});}document.documentElement.className=className;}());RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"2a888a1d-8ff9-4d61-b3bb-0785de00d51b","wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Wikibase/DataModel","wgTitle":"Wikibase/DataModel","wgCurRevisionId":8332249,"wgRevisionId":8332249,"wgArticleId":210425,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Wikibase"],"wgPageViewLanguage":"en","wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Wikibase/DataModel","wgRelevantArticleId":210425,"wgTempUserName":null,"wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgNoticeProject":"mediawiki","wgConfirmEditCaptchaNeededForGenericEdit":"hcaptcha","wgConfirmEditForceShowCaptcha":false,"wgConfirmEditHCaptchaVisualEditorOnLoadIntegrationEnabled":true,"wgConfirmEditHCaptchaSiteKey":"5d0c670e-a5f4-4258-ad16-1f42792c9c62","wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":true,"watchlist":true,"tagline":false,"nearby":true},"wgWMESchemaEditAttemptStepOversample":false,"wgWMEPageLength":60000,"wgTranslatePageTranslation":"source","wgTranslatePageTranslationGroup":"page-Wikibase/DataModel","wgTranslatePriorityLanguages":[],"wgTestKitchenUserExperiments":{"overrides":[],"enrolled":[],"assigned":[],"subject_ids":[]},"wgEditSubmitButtonLabelPublish":true,"wgVisualEditorPageIsDisambiguation":false,"wgDiscussionToolsFeaturesEnabled":{"replytool":true,"newtopictool":true,"sourcemodetoolbar":true,"topicsubscription":false,"autotopicsub":false,"visualenhancements":false},"wgDiscussionToolsFallbackEditMode":"visual","wgULSPosition":"personal","wgULSisCompactLinksEnabled":true,"wgVector2022LanguageInHeader":false,"wgULSisLanguageSelectorEmpty":false,"wgULSLanguageSelectorV2Enabled":false,"wgWikibaseItemId":"Q115341973","wgCheckUserClientHintsHeadersJsApi":["brands","architecture","bitness","fullVersionList","mobile","model","platform","platformVersion"]};
+RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.translate.tag.languages":"ready","ext.cite.styles":"ready","ext.pygments":"ready","ext.discussionTools.init.styles":"ready","ext.wikimediamessages.styles":"ready","oojs-ui-core.styles":"ready","oojs-ui.styles.indicators":"ready","mediawiki.widgets.styles":"ready","oojs-ui-core.icons":"ready","skins.vector.search.codex.styles":"ready","skins.vector.styles":"ready","skins.vector.icons":"ready","ext.translate.edit.documentation.styles":"ready","ext.translate":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.pt":"ready","wikibase.client.init":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","ext.pygments.view","ext.parsermigration.survey","site","mediawiki.page.ready","mediawiki.toc","skins.vector.js","ext.centralNotice.geoIP","ext.centralNotice.startUp","ext.translate.pagetranslation.uls","ext.urlShortener.toolbar","ext.centralauth.centralautologin","ext.testKitchen","mmv.bootstrap","ext.visualEditor.desktopArticleTarget.init","ext.echo.centralauth","ext.discussionTools.init","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.uls.compactlinks","ext.uls.interface","wikibase.client.vector-2022","wikibase.databox.fromWikidata","ext.checkUser.clientHints","ext.quicksurveys.init"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.impl(function(){return["user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+}];});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.cite.styles%7Cext.discussionTools.init.styles%7Cext.pygments%2Ctranslate%7Cext.translate.edit.documentation.styles%7Cext.translate.tag.languages%7Cext.uls.pt%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediamessages.styles%7Cmediawiki.widgets.styles%7Coojs-ui-core.icons%2Cstyles%7Coojs-ui.styles.indicators%7Cskins.vector.icons%2Cstyles%7Cskins.vector.search.codex.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector-2022">
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector-2022"></script>
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector-2022">
+<meta name="generator" content="MediaWiki 1.47.0-wmf.3">
+<meta name="referrer" content="origin">
+<meta name="referrer" content="origin-when-cross-origin">
+<meta name="robots" content="max-image-preview:standard">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/3/39/Wikidata_model_Elements_UML.png?utm_source=www.mediawiki.org&amp;utm_campaign=index&amp;utm_content=thumbnail_unscaled">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="749">
+<meta name="viewport" content="width=1120">
+<meta property="og:site_name" content="MediaWiki">
+<meta property="og:title" content="Wikibase/DataModel - MediaWiki">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="//upload.wikimedia.org">
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/w/index.php?title=Wikibase/DataModel&amp;action=edit">
+<link rel="apple-touch-icon" href="/static/apple-touch/mediawiki.png">
+<link rel="icon" href="/static/favicon/mediawiki.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="/w/rest.php/v1/search" title="MediaWiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="//www.mediawiki.org/w/api.php?action=rsd">
+<link rel="canonical" href="https://www.mediawiki.org/wiki/Wikibase/DataModel">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="alternate" type="application/atom+xml" title="MediaWiki Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<link rel="dns-prefetch" href="auth.wikimedia.org">
+</head>
+<body class="ext-discussiontools-replytool-enabled ext-discussiontools-newtopictool-enabled ext-discussiontools-sourcemodetoolbar-enabled skin--responsive skin-vector skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Wikibase_DataModel rootpage-Wikibase skin-vector-2022 action-view">
+<div id="mw-aria-live-region" class="mw-aria-live-region" aria-live="polite"></div><a class="mw-jump-link" href="#bodyContent">Jump to content</a>
+<div class="vector-header-container">
+	<header class="vector-header mw-header no-font-mode-scale">
+		<div class="vector-header-start">
+			<nav class="vector-main-menu-landmark" aria-label="Site">
+				
+<div id="vector-main-menu-dropdown" class="vector-dropdown vector-main-menu-dropdown vector-button-flush-left vector-button-flush-right"  title="Main menu" >
+	<input type="checkbox" id="vector-main-menu-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-main-menu-dropdown" class="vector-dropdown-checkbox "  aria-label="Main menu"  >
+	<label id="vector-main-menu-dropdown-label" for="vector-main-menu-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-menu mw-ui-icon-wikimedia-menu"></span>
+
+<span class="vector-dropdown-label-text">Main menu</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+				<div id="vector-main-menu-unpinned-container" class="vector-unpinned-container">
+		
+<div id="vector-main-menu" class="vector-main-menu vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-main-menu-pinnable-header vector-pinnable-header-unpinned"
+	data-feature-name="main-menu-pinned"
+	data-pinnable-element-id="vector-main-menu"
+	data-pinned-container-id="vector-main-menu-pinned-container"
+	data-unpinned-container-id="vector-main-menu-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Main menu</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-main-menu.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-main-menu.unpin">hide</button>
+</div>
+
+	
+<div id="p-navigation" class="vector-menu mw-portlet mw-portlet-navigation"  >
+	<div class="vector-menu-heading">
+		Navigation
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="n-mainpage-description" class="mw-list-item"><a href="/wiki/MediaWiki" title="Visit the main page [z]" accesskey="z"><span>Main page</span></a></li><li id="n-mw-download" class="mw-list-item"><a href="/wiki/Download"><span>Get MediaWiki</span></a></li><li id="n-mw-extensions" class="mw-list-item"><a href="/wiki/Special:MyLanguage/Category:Extensions"><span>Get extensions</span></a></li><li id="n-blog-text" class="mw-list-item"><a href="https://techblog.wikimedia.org/"><span>Tech blog</span></a></li><li id="n-mw-contribute" class="mw-list-item"><a href="/wiki/Special:MyLanguage/How_to_contribute"><span>Contribute</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-support" class="vector-menu mw-portlet mw-portlet-support"  >
+	<div class="vector-menu-heading">
+		Support
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="n-help" class="mw-list-item"><a href="/wiki/Special:MyLanguage/Help:Contents" title="The place to find out"><span>User help</span></a></li><li id="n-mw-faq" class="mw-list-item"><a href="/wiki/Special:MyLanguage/Manual:FAQ"><span>FAQ</span></a></li><li id="n-mw-manual" class="mw-list-item"><a href="/wiki/Special:MyLanguage/Manual:Contents"><span>Technical manual</span></a></li><li id="n-mw-supportdesk" class="mw-list-item"><a href="/wiki/Project:Support_desk"><span>Support desk</span></a></li><li id="n-mw-communication" class="mw-list-item"><a href="/wiki/Special:MyLanguage/Communication"><span>Communication</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-development" class="vector-menu mw-portlet mw-portlet-development"  >
+	<div class="vector-menu-heading">
+		Development
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="n-mw-developerportal" class="mw-list-item"><a href="https://developer.wikimedia.org/"><span>Developer portal</span></a></li><li id="n-svn_statistics" class="mw-list-item"><a href="/wiki/Special:MyLanguage/Development_statistics"><span>Code statistics</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-mediawiki.org" class="vector-menu mw-portlet mw-portlet-mediawiki_org"  >
+	<div class="vector-menu-heading">
+		mediawiki.org
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="n-portal" class="mw-list-item"><a href="/wiki/Project:Help" title="About the project, what you can do, where to find things"><span>Community portal</span></a></li><li id="n-recentchanges" class="mw-list-item"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r"><span>Recent changes</span></a></li><li id="n-mw-translate" class="mw-list-item"><a href="/wiki/Special:LanguageStats"><span>Translate content</span></a></li><li id="n-specialpages" class="mw-list-item"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q"><span>Special pages</span></a></li><li id="n-randompage" class="mw-list-item"><a href="/wiki/Special:Random" title="Load a random page [x]" accesskey="x"><span>Random page</span></a></li><li id="n-mw-discussion" class="mw-list-item"><a href="/wiki/Project:Village_Pump"><span>Village pump</span></a></li><li id="n-sandboxlink-portlet-label" class="mw-list-item"><a href="/wiki/Project:Sandbox"><span>Sandbox</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-lang" class="vector-menu mw-portlet mw-portlet-lang"  >
+	<div class="vector-menu-heading">
+		In other languages
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-add wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q115341973#sitelinks-wikipedia" title="Add interlanguage links" class="wbc-editpage">Add links</a></span></div>
+	</div>
+</div>
+
+</div>
+
+				</div>
+
+	</div>
+</div>
+
+		</nav>
+			
+<a href="/wiki/MediaWiki" class="mw-logo">
+	<img class="mw-logo-icon" src="/static/images/icons/mediawikiwiki.svg" alt="" aria-hidden="true" height="50" width="50">
+	<span class="mw-logo-container skin-invert">
+		<img class="mw-logo-wordmark" alt="MediaWiki" src="/static/images/mobile/copyright/mediawikiwiki-wordmark.svg" style="width: 7.5em; height: 1.125em;">
+	</span>
+</a>
+
+		</div>
+		<div class="vector-header-end">
+			
+<div id="p-search" role="search" class="vector-search-box-vue  vector-search-box-collapses vector-search-box-show-thumbnail vector-search-box-auto-expand-width vector-search-box">
+	<a href="/wiki/Special:Search" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only search-toggle" title="Search MediaWiki [f]" accesskey="f"><span class="vector-icon mw-ui-icon-search mw-ui-icon-wikimedia-search"></span>
+
+<span>Search</span>
+	</a>
+	<div class="vector-typeahead-search-container">
+		<div class="cdx-typeahead-search cdx-typeahead-search--show-thumbnail cdx-typeahead-search--auto-expand-width">
+			<form action="/w/index.php" id="searchform" class="cdx-search-input cdx-search-input--has-end-button">
+				<div id="simpleSearch" class="cdx-search-input__input-wrapper"  data-search-loc="header-moved">
+					<div class="cdx-text-input cdx-text-input--has-start-icon">
+						<input
+							class="cdx-text-input__input mw-searchInput" autocomplete="off"
+							 type="search" name="search" placeholder="Search mediawiki.org" aria-label="Search mediawiki.org" autocapitalize="none" spellcheck="false" title="Search MediaWiki [f]" accesskey="f" id="searchInput"
+							>
+						<span class="cdx-text-input__icon cdx-text-input__start-icon"></span>
+					</div>
+					<input type="hidden" name="title" value="Special:Search">
+				</div>
+				<button class="cdx-button cdx-search-input__end-button">Search</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+			<nav class="vector-user-links vector-user-links-wide" aria-label="Personal tools">
+	<div class="vector-user-links-main">
+	
+<div id="p-vector-user-menu-preferences" class="vector-menu mw-portlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			<li id="ca-uls" class="mw-list-item active user-links-collapsible-item"><a data-mw-interface  href="#" class="uls-trigger cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet"><span class="vector-icon mw-ui-icon-wikimedia-language mw-ui-icon-wikimedia-wikimedia-language"></span>
+
+<span>English</span></a>
+</li>
+
+			
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-vector-user-menu-userpage" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	<nav class="vector-appearance-landmark" aria-label="Appearance">
+		
+<div id="vector-appearance-dropdown" class="vector-dropdown "  title="Change the appearance of the page&#039;s font size, width, and color" >
+	<input type="checkbox" id="vector-appearance-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-appearance-dropdown" class="vector-dropdown-checkbox "  aria-label="Appearance"  >
+	<label id="vector-appearance-dropdown-label" for="vector-appearance-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-appearance mw-ui-icon-wikimedia-appearance"></span>
+
+<span class="vector-dropdown-label-text">Appearance</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+			<div id="vector-appearance-unpinned-container" class="vector-unpinned-container">
+				
+			</div>
+		
+	</div>
+</div>
+
+	</nav>
+	
+<div id="p-vector-user-menu-notifications" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-vector-user-menu-overflow" class="vector-menu mw-portlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			<li id="pt-sitesupport-2" class="mw-list-item user-links-collapsible-item"><a data-mw-interface  href="https://donate.wikimedia.org/?wmf_source=donate&amp;wmf_medium=sidebar&amp;wmf_campaign=www.mediawiki.org&amp;uselang=en" class=""><span>Donate</span></a>
+</li>
+<li id="pt-createaccount-2" class="mw-list-item user-links-collapsible-item"><a data-mw-interface  href="/w/index.php?title=Special:CreateAccount&amp;returnto=Wikibase%2FDataModel" title="You are encouraged to create an account and log in; however, it is not mandatory" class=""><span>Create account</span></a>
+</li>
+<li id="pt-login-2" class="mw-list-item user-links-collapsible-item"><a data-mw-interface  href="/w/index.php?title=Special:UserLogin&amp;returnto=Wikibase%2FDataModel" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o" class=""><span>Log in</span></a>
+</li>
+
+			
+		</ul>
+		
+	</div>
+</div>
+
+	</div>
+	
+<div id="vector-user-links-dropdown" class="vector-dropdown vector-user-menu vector-button-flush-right vector-user-menu-logged-out user-links-collapsible-item"  title="More options" >
+	<input type="checkbox" id="vector-user-links-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-user-links-dropdown" class="vector-dropdown-checkbox "  aria-label="Personal tools"  >
+	<label id="vector-user-links-dropdown-label" for="vector-user-links-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-ellipsis mw-ui-icon-wikimedia-ellipsis"></span>
+
+<span class="vector-dropdown-label-text">Personal tools</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+		
+<div id="p-personal" class="vector-menu mw-portlet mw-portlet-personal user-links-collapsible-item"  title="User menu" >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			<li id="pt-sitesupport" class="mw-list-item user-links-collapsible-item"><a data-mw-interface  href="https://donate.wikimedia.org/?wmf_source=donate&amp;wmf_medium=sidebar&amp;wmf_campaign=www.mediawiki.org&amp;uselang=en" class=""><span class="vector-icon mw-ui-icon-heart mw-ui-icon-wikimedia-heart"></span>
+
+<span>Donate</span></a>
+</li>
+<li id="pt-createaccount" class="mw-list-item user-links-collapsible-item"><a data-mw-interface  href="/w/index.php?title=Special:CreateAccount&amp;returnto=Wikibase%2FDataModel" title="You are encouraged to create an account and log in; however, it is not mandatory" class=""><span class="vector-icon mw-ui-icon-userAdd mw-ui-icon-wikimedia-userAdd"></span>
+
+<span>Create account</span></a>
+</li>
+<li id="pt-login" class="mw-list-item user-links-collapsible-item"><a data-mw-interface  href="/w/index.php?title=Special:UserLogin&amp;returnto=Wikibase%2FDataModel" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o" class=""><span class="vector-icon mw-ui-icon-logIn mw-ui-icon-wikimedia-logIn"></span>
+
+<span>Log in</span></a>
+</li>
+
+			
+		</ul>
+		
+	</div>
+</div>
+
+	
+	</div>
+</div>
+
+</nav>
+
+		</div>
+	</header>
+</div>
+<div class="mw-page-container">
+	<div class="mw-page-container-inner">
+		<div class="vector-sitenotice-container">
+			<div id="siteNotice"><!-- CentralNotice --></div>
+		</div>
+		<div class="vector-column-start">
+			<div class="vector-main-menu-container">
+		<div id="mw-navigation">
+			<nav id="mw-panel" class="vector-main-menu-landmark" aria-label="Site">
+				<div id="vector-main-menu-pinned-container" class="vector-pinned-container">
+				
+				</div>
+		</nav>
+		</div>
+	</div>
+	<div class="vector-sticky-pinned-container">
+				<nav id="mw-panel-toc" aria-label="Contents" data-event-name="ui.sidebar-toc" class="mw-table-of-contents-container vector-toc-landmark">
+					<div id="vector-toc-pinned-container" class="vector-pinned-container">
+					<div id="vector-toc" class="vector-toc vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-toc-pinnable-header vector-pinnable-header-pinned"
+	data-feature-name="toc-pinned"
+	data-pinnable-element-id="vector-toc"
+	data-pinned-container-id="vector-toc-pinned-container"
+	data-unpinned-container-id="vector-toc-unpinned-container"
+>
+	<h2 class="vector-pinnable-header-label">Contents</h2>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-toc.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-toc.unpin">hide</button>
+</div>
+
+
+	<ul class="vector-toc-contents" id="mw-panel-toc-list">
+		<li id="toc-mw-content-text"
+			class="vector-toc-list-item vector-toc-level-1">
+			<a href="#" class="vector-toc-link">
+				<div class="vector-toc-text">Beginning</div>
+			</a>
+		</li>
+		<li id="toc-History"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#History">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">1</span>
+				<span>History</span>
+			</div>
+		</a>
+		
+		<ul id="toc-History-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-Goals_and_requirements"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#Goals_and_requirements">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">2</span>
+				<span>Goals and requirements</span>
+			</div>
+		</a>
+		
+		<ul id="toc-Goals_and_requirements-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-Overview_of_the_data_model"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#Overview_of_the_data_model">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">3</span>
+				<span>Overview of the data model</span>
+			</div>
+		</a>
+		
+		<ul id="toc-Overview_of_the_data_model-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-How_to_read_this_document"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#How_to_read_this_document">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">4</span>
+				<span>How to read this document</span>
+			</div>
+		</a>
+		
+			<button aria-controls="toc-How_to_read_this_document-sublist" class="cdx-button cdx-button--weight-quiet cdx-button--icon-only vector-toc-toggle">
+				<span class="vector-icon mw-ui-icon-wikimedia-expand"></span>
+				<span>Toggle How to read this document subsection</span>
+			</button>
+		
+		<ul id="toc-How_to_read_this_document-sublist" class="vector-toc-list">
+			<li id="toc-Defining_data_structures_in_UML"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Defining_data_structures_in_UML">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">4.1</span>
+					<span>Defining data structures in UML</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Defining_data_structures_in_UML-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Wikidata_Object_Notation"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Wikidata_Object_Notation">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">4.2</span>
+					<span>Wikidata Object Notation</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Wikidata_Object_Notation-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+	</ul>
+	</li>
+	<li id="toc-Values"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#Values">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">5</span>
+				<span>Values</span>
+			</div>
+		</a>
+		
+			<button aria-controls="toc-Values-sublist" class="cdx-button cdx-button--weight-quiet cdx-button--icon-only vector-toc-toggle">
+				<span class="vector-icon mw-ui-icon-wikimedia-expand"></span>
+				<span>Toggle Values subsection</span>
+			</button>
+		
+		<ul id="toc-Values-sublist" class="vector-toc-list">
+			<li id="toc-Items"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Items">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">5.1</span>
+					<span>Items</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Items-sublist" class="vector-toc-list">
+				<li id="toc-Sitelinks"
+			class="vector-toc-list-item vector-toc-level-3">
+			<a class="vector-toc-link" href="#Sitelinks">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">5.1.1</span>
+					<span>Sitelinks</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Sitelinks-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+	</ul>
+		</li>
+		<li id="toc-Properties"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Properties">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">5.2</span>
+					<span>Properties</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Properties-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Datatypes"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Datatypes">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">5.3</span>
+					<span>Datatypes</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Datatypes-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-DataValues"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#DataValues">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">5.4</span>
+					<span>DataValues</span>
+				</div>
+			</a>
+			
+			<ul id="toc-DataValues-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+	</ul>
+	</li>
+	<li id="toc-Snaks"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#Snaks">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">6</span>
+				<span>Snaks</span>
+			</div>
+		</a>
+		
+			<button aria-controls="toc-Snaks-sublist" class="cdx-button cdx-button--weight-quiet cdx-button--icon-only vector-toc-toggle">
+				<span class="vector-icon mw-ui-icon-wikimedia-expand"></span>
+				<span>Toggle Snaks subsection</span>
+			</button>
+		
+		<ul id="toc-Snaks-sublist" class="vector-toc-list">
+			<li id="toc-PropertyValueSnak"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#PropertyValueSnak">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">6.1</span>
+					<span>PropertyValueSnak</span>
+				</div>
+			</a>
+			
+			<ul id="toc-PropertyValueSnak-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-PropertyNoValueSnak"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#PropertyNoValueSnak">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">6.2</span>
+					<span>PropertyNoValueSnak</span>
+				</div>
+			</a>
+			
+			<ul id="toc-PropertyNoValueSnak-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-PropertySomeValueSnak"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#PropertySomeValueSnak">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">6.3</span>
+					<span>PropertySomeValueSnak</span>
+				</div>
+			</a>
+			
+			<ul id="toc-PropertySomeValueSnak-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+	</ul>
+	</li>
+	<li id="toc-Statements"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#Statements">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">7</span>
+				<span>Statements</span>
+			</div>
+		</a>
+		
+			<button aria-controls="toc-Statements-sublist" class="cdx-button cdx-button--weight-quiet cdx-button--icon-only vector-toc-toggle">
+				<span class="vector-icon mw-ui-icon-wikimedia-expand"></span>
+				<span>Toggle Statements subsection</span>
+			</button>
+		
+		<ul id="toc-Statements-sublist" class="vector-toc-list">
+			<li id="toc-Ranks_of_Statements"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Ranks_of_Statements">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">7.1</span>
+					<span>Ranks of Statements</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Ranks_of_Statements-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-ReferenceRecords"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#ReferenceRecords">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">7.2</span>
+					<span>ReferenceRecords</span>
+				</div>
+			</a>
+			
+			<ul id="toc-ReferenceRecords-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+	</ul>
+	</li>
+	<li id="toc-EntityDescriptions_of_Items_and_Properties"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#EntityDescriptions_of_Items_and_Properties">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">8</span>
+				<span>EntityDescriptions of Items and Properties</span>
+			</div>
+		</a>
+		
+		<ul id="toc-EntityDescriptions_of_Items_and_Properties-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-Datatypes_and_their_Values"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#Datatypes_and_their_Values">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">9</span>
+				<span>Datatypes and their Values</span>
+			</div>
+		</a>
+		
+			<button aria-controls="toc-Datatypes_and_their_Values-sublist" class="cdx-button cdx-button--weight-quiet cdx-button--icon-only vector-toc-toggle">
+				<span class="vector-icon mw-ui-icon-wikimedia-expand"></span>
+				<span>Toggle Datatypes and their Values subsection</span>
+			</button>
+		
+		<ul id="toc-Datatypes_and_their_Values-sublist" class="vector-toc-list">
+			<li id="toc-Quantities"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Quantities">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.1</span>
+					<span>Quantities</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Quantities-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Dates_and_times"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Dates_and_times">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.2</span>
+					<span>Dates and times</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Dates_and_times-sublist" class="vector-toc-list">
+				<li id="toc-Examples"
+			class="vector-toc-list-item vector-toc-level-3">
+			<a class="vector-toc-link" href="#Examples">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.2.1</span>
+					<span>Examples</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Examples-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+	</ul>
+		</li>
+		<li id="toc-Web_resources_and_other_IRIs"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Web_resources_and_other_IRIs">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.3</span>
+					<span>Web resources and other IRIs</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Web_resources_and_other_IRIs-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Geographic_locations"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Geographic_locations">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.4</span>
+					<span>Geographic locations</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Geographic_locations-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Geographic_shapes"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Geographic_shapes">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.5</span>
+					<span>Geographic shapes</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Geographic_shapes-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Wikidata_items"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Wikidata_items">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.6</span>
+					<span>Wikidata items</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Wikidata_items-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Wikidata_properties"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Wikidata_properties">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.7</span>
+					<span>Wikidata properties</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Wikidata_properties-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Media"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Media">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.8</span>
+					<span>Media</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Media-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Strings_that_are_not_translated"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Strings_that_are_not_translated">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.9</span>
+					<span>Strings that are not translated</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Strings_that_are_not_translated-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Monolingual_texts"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Monolingual_texts">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.10</span>
+					<span>Monolingual texts</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Monolingual_texts-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Multilingual_texts"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Multilingual_texts">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.11</span>
+					<span>Multilingual texts</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Multilingual_texts-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Multilingual_multi-texts"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Multilingual_multi-texts">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">9.12</span>
+					<span>Multilingual multi-texts</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Multilingual_multi-texts-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+	</ul>
+	</li>
+	<li id="toc-Serializations"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#Serializations">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">10</span>
+				<span>Serializations</span>
+			</div>
+		</a>
+		
+		<ul id="toc-Serializations-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-Notes"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#Notes">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">11</span>
+				<span>Notes</span>
+			</div>
+		</a>
+		
+		<ul id="toc-Notes-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-See_also"
+		class="vector-toc-list-item vector-toc-level-1">
+		<a class="vector-toc-link" href="#See_also">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">12</span>
+				<span>See also</span>
+			</div>
+		</a>
+		
+		<ul id="toc-See_also-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+</ul>
+</div>
+
+					</div>
+		</nav>
+			</div>
+		</div>
+		<div class="mw-content-container">
+			<main id="content" class="mw-body">
+				<header class="mw-body-header vector-page-titlebar no-font-mode-scale">
+					<nav aria-label="Contents" class="vector-toc-landmark">
+						
+<div id="vector-page-titlebar-toc" class="vector-dropdown vector-page-titlebar-toc vector-button-flush-left"  title="Table of Contents" >
+	<input type="checkbox" id="vector-page-titlebar-toc-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-page-titlebar-toc" class="vector-dropdown-checkbox "  aria-label="Toggle the table of contents"  >
+	<label id="vector-page-titlebar-toc-label" for="vector-page-titlebar-toc-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-listBullet mw-ui-icon-wikimedia-listBullet"></span>
+
+<span class="vector-dropdown-label-text">Toggle the table of contents</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+							<div id="vector-page-titlebar-toc-unpinned-container" class="vector-unpinned-container">
+			</div>
+		
+	</div>
+</div>
+
+					</nav>
+					<h1 id="firstHeading" class="firstHeading mw-first-heading"><span lang="en" dir="ltr"><span class="mw-page-title-main">Wikibase/DataModel</span></span></h1>
+						<div class="mw-indicators">
+		</div>
+</header>
+				<div class="vector-page-toolbar vector-feature-custom-font-size-clientpref--excluded">
+					<div class="vector-page-toolbar-container">
+						<div id="left-navigation">
+							<nav aria-label="Namespaces">
+								
+<div id="p-associated-pages" class="vector-menu vector-menu-tabs mw-portlet mw-portlet-associated-pages"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="ca-nstab-main" class="selected vector-tab-noicon mw-list-item"><a href="/wiki/Wikibase/DataModel" title="View the content page [c]" accesskey="c"><span>Page</span></a></li><li id="ca-talk" class="vector-tab-noicon mw-list-item"><a href="/wiki/Talk:Wikibase/DataModel" rel="discussion" title="Discussion about the content page [t]" accesskey="t"><span>Discussion</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+								
+<div id="vector-variants-dropdown" class="vector-dropdown emptyPortlet"  >
+	<input type="checkbox" id="vector-variants-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-variants-dropdown" class="vector-dropdown-checkbox " aria-label="Change language variant"   >
+	<label id="vector-variants-dropdown-label" for="vector-variants-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet" aria-hidden="true"  ><span class="vector-dropdown-label-text">English</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+					
+<div id="p-variants" class="vector-menu mw-portlet mw-portlet-variants emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+				
+	</div>
+</div>
+
+							</nav>
+						</div>
+						<div id="right-navigation" class="vector-collapsible">
+							<nav aria-label="Views">
+								
+<div id="p-views" class="vector-menu vector-menu-tabs mw-portlet mw-portlet-views"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="ca-view" class="selected vector-tab-noicon mw-list-item"><a href="/wiki/Wikibase/DataModel"><span>Read</span></a></li><li id="ca-edit" class="vector-tab-noicon mw-list-item"><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit" title="Edit the source code of this page [e]" accesskey="e"><span>Edit</span></a></li><li id="ca-history" class="vector-tab-noicon mw-list-item"><a href="/w/index.php?title=Wikibase/DataModel&amp;action=history" title="Past revisions of this page [h]" accesskey="h"><span>View history</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+							</nav>
+				
+							<nav class="vector-page-tools-landmark" aria-label="Page tools">
+								
+<div id="vector-page-tools-dropdown" class="vector-dropdown vector-page-tools-dropdown"  >
+	<input type="checkbox" id="vector-page-tools-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-page-tools-dropdown" class="vector-dropdown-checkbox "  aria-label="Tools"  >
+	<label id="vector-page-tools-dropdown-label" for="vector-page-tools-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet" aria-hidden="true"  ><span class="vector-dropdown-label-text">Tools</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+									<div id="vector-page-tools-unpinned-container" class="vector-unpinned-container">
+						
+<div id="vector-page-tools" class="vector-page-tools vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-page-tools-pinnable-header vector-pinnable-header-unpinned"
+	data-feature-name="page-tools-pinned"
+	data-pinnable-element-id="vector-page-tools"
+	data-pinned-container-id="vector-page-tools-pinned-container"
+	data-unpinned-container-id="vector-page-tools-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Tools</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-page-tools.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-page-tools.unpin">hide</button>
+</div>
+
+	
+<div id="p-cactions" class="vector-menu mw-portlet mw-portlet-cactions emptyPortlet vector-has-collapsible-items"  >
+	<div class="vector-menu-heading">
+		Actions
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			<li id="ca-more-view" class="selected vector-more-collapsible-item mw-list-item"><a data-mw-interface  href="/wiki/Wikibase/DataModel" class=""><span>Read</span></a>
+</li>
+<li id="ca-more-edit" class="vector-more-collapsible-item mw-list-item"><a data-mw-interface  href="/w/index.php?title=Wikibase/DataModel&amp;action=edit" title="Edit the source code of this page [e]" accesskey="e" class=""><span>Edit</span></a>
+</li>
+<li id="ca-more-history" class="vector-more-collapsible-item mw-list-item"><a data-mw-interface  href="/w/index.php?title=Wikibase/DataModel&amp;action=history" class=""><span>View history</span></a>
+</li>
+
+			
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-tb" class="vector-menu mw-portlet mw-portlet-tb"  >
+	<div class="vector-menu-heading">
+		General
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="t-whatlinkshere" class="mw-list-item"><a href="/wiki/Special:WhatLinksHere/Wikibase/DataModel" title="A list of all wiki pages that link here [j]" accesskey="j"><span>What links here</span></a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/wiki/Special:RecentChangesLinked/Wikibase/DataModel" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k"><span>Related changes</span></a></li><li id="t-upload" class="mw-list-item"><a href="//commons.wikimedia.org/wiki/Special:UploadWizard" title="Upload files [u]" accesskey="u"><span>Upload file</span></a></li><li id="t-permalink" class="mw-list-item"><a href="/w/index.php?title=Wikibase/DataModel&amp;oldid=8332249" title="Permanent link to this revision of this page"><span>Permanent link</span></a></li><li id="t-info" class="mw-list-item"><a href="/w/index.php?title=Wikibase/DataModel&amp;action=info" title="More information about this page"><span>Page information</span></a></li><li id="t-cite" class="mw-list-item"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=Wikibase%2FDataModel&amp;id=8332249&amp;wpFormIdentifier=titleform" title="Information on how to cite this page"><span>Cite this page</span></a></li><li id="t-urlshortener" class="mw-list-item"><a href="/w/index.php?title=Special:UrlShortener&amp;url=https%3A%2F%2Fwww.mediawiki.org%2Fwiki%2FWikibase%2FDataModel"><span>Get shortened URL</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-coll-print_export" class="vector-menu mw-portlet mw-portlet-coll-print_export"  >
+	<div class="vector-menu-heading">
+		Print/export
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="coll-create_a_book" class="mw-list-item"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Wikibase%2FDataModel"><span>Create a book</span></a></li><li id="coll-download-as-rl" class="mw-list-item"><a href="/w/index.php?title=Special:DownloadAsPdf&amp;page=Wikibase%2FDataModel&amp;action=show-download-screen"><span>Download as PDF</span></a></li><li id="t-print" class="mw-list-item"><a href="/w/index.php?title=Wikibase/DataModel&amp;printable=yes" title="Printable version of this page [p]" accesskey="p"><span>Printable version</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-wikibase-otherprojects" class="vector-menu mw-portlet mw-portlet-wikibase-otherprojects"  >
+	<div class="vector-menu-heading">
+		In other projects
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="t-wikibase" class="wb-otherproject-link wb-otherproject-wikibase-dataitem mw-list-item"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q115341973" title="Link to connected data repository item [g]" accesskey="g"><span>Wikidata item</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+</div>
+
+									</div>
+				
+	</div>
+</div>
+
+							</nav>
+						</div>
+					</div>
+				</div>
+				<div class="vector-column-end no-font-mode-scale">
+					<div class="vector-sticky-pinned-container">
+						<div class="wp25eastereggs-vector-sitenotice-landmark"></div>
+						<nav class="vector-page-tools-landmark" aria-label="Page tools">
+							<div id="vector-page-tools-pinned-container" class="vector-pinned-container">
+				
+							</div>
+		</nav>
+						<nav class="vector-appearance-landmark" aria-label="Appearance">
+							<div id="vector-appearance-pinned-container" class="vector-pinned-container">
+				<div id="vector-appearance" class="vector-appearance vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-appearance-pinnable-header vector-pinnable-header-pinned"
+	data-feature-name="appearance-pinned"
+	data-pinnable-element-id="vector-appearance"
+	data-pinned-container-id="vector-appearance-pinned-container"
+	data-unpinned-container-id="vector-appearance-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Appearance</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-appearance.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-appearance.unpin">hide</button>
+</div>
+
+
+</div>
+
+							</div>
+		</nav>
+					</div>
+				</div>
+				<div id="bodyContent" class="vector-body" aria-labelledby="firstHeading" data-mw-ve-target-container>
+					<div class="vector-body-before-content">
+					
+						<div id="siteSub" class="noprint">From mediawiki.org</div>
+					</div>
+					<div id="contentSub"><div id="mw-content-subtitle"><div class="subpages">&lt; <bdi dir="ltr"><a href="/wiki/Special:MyLanguage/Wikibase" title="Special:MyLanguage/Wikibase">Wikibase</a></bdi></div></div></div>
+					
+					
+					<div id="mw-content-text" class="mw-body-content"><div class="mw-pt-translate-header noprint nomobile" dir="ltr" lang="en"><a href="/w/index.php?title=Special:Translate&amp;group=page-Wikibase%2FDataModel&amp;action=page&amp;filter=&amp;action_source=translate_page" title="Special:Translate">Translate this page</a></div><div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><div class="mw-pt-languages noprint navigation-not-searchable" lang="en" dir="ltr"><div class="mw-pt-languages-label">Languages:</div><ul class="mw-pt-languages-list"><li><span class="mw-pt-languages-ui mw-pt-languages-selected mw-pt-progress mw-pt-progress--complete" lang="en" dir="ltr">English</span></li>
+<li><a href="/wiki/Wikibase/DataModel/es" class="mw-pt-progress mw-pt-progress--low" title="Wikibase/DataModel/es (6% translated)" lang="es" dir="ltr">español</a></li>
+<li><a href="/wiki/Wikibase/DataModel/fr" class="mw-pt-progress mw-pt-progress--complete" title="Wikibase/Modèle de données (100% translated)" lang="fr" dir="ltr">français</a></li>
+<li><a href="/wiki/Wikibase/DataModel/zh" class="mw-pt-progress mw-pt-progress--complete" title="Wikibase/数据模型 (100% translated)" lang="zh" dir="ltr">中文</a></li>
+<li><a href="/wiki/Wikibase/DataModel/ja" class="mw-pt-progress mw-pt-progress--low" title="ウィキベース/データモデル (12% translated)" lang="ja" dir="ltr">日本語</a></li></ul></div>
+<div style="background: #FFC; padding: 1ex; border: #B00 solid 1px;">
+<p>This is a living document, describing the <a href="https://en.wikipedia.org/wiki/Conceptual_schema" class="extiw" title="w:Conceptual schema">conceptual data model</a> behind <a href="/wiki/Special:MyLanguage/Wikibase" title="Special:MyLanguage/Wikibase">Wikibase</a>.
+It is not a <a href="https://en.wikipedia.org/wiki/Specification_(technical_standard)" class="extiw" title="w:Specification (technical standard)">specification</a> of any concrete <a href="https://en.wikipedia.org/wiki/Data_binding" class="extiw" title="w:Data binding">binding</a>, <a href="https://en.wikipedia.org/wiki/Implementation" class="extiw" title="w:Implementation">implementation</a>, <a href="https://en.wikipedia.org/wiki/data_mapping" class="extiw" title="w:data mapping">mapping</a>, or <a href="https://en.wikipedia.org/wiki/serialization" class="extiw" title="w:serialization">serialization</a>.
+</p>
+</div>
+<p>The <b>data model of <a href="/wiki/Special:MyLanguage/Wikibase" title="Special:MyLanguage/Wikibase">Wikibase</a></b> describes the structure of the data that is handled in Wikibase.
+In particular, it specifies which kind of information users can contribute to the system.
+On a more abstract level, the Wikibase data model provides a <a href="https://en.wikipedia.org/wiki/Metamodeling" class="extiw" title="w:Metamodeling">metamodel</a> or <a href="https://en.wikipedia.org/wiki/Ontology_(information_science)" class="extiw" title="w:Ontology (information science)">ontology</a> for describing real world entities.
+Such descriptions are concrete models for real world entities.
+</p><p>This document describes a conceptual model ("Which information do we have to support?") and does not specify how this data should be represented technically ("Which data structures should the software use?") or syntactically ("How should the data be expressed in a file?").
+Separate documents describe the serialization of the Wikibase <a href="https://en.wikipedia.org/wiki/data_model" class="extiw" title="w:data model">data model</a> in <a href="/wiki/Wikibase/DataModel/JSON" title="Wikibase/DataModel/JSON">JSON</a> and in <a href="/wiki/Special:MyLanguage/Wikibase/Indexing/RDF_Dump_Format" title="Special:MyLanguage/Wikibase/Indexing/RDF Dump Format">RDF</a> (<a href="https://en.wikipedia.org/wiki/Resource_Description_Framework" class="extiw" title="w:Resource Description Framework">Resource Description Framework</a>).
+</p><p>This specification is technical.
+A <a href="/wiki/Special:MyLanguage/Wikibase/DataModel/Primer" title="Special:MyLanguage/Wikibase/DataModel/Primer">primer to the data model</a> is also available that is more accessible (however, it is more ambiguous and less complete).
+</p><p>This document is extended by other documents to describe the data model of Wikibase extensions.
+The current extensions are:
+</p>
+<ul><li><a href="/wiki/Special:MyLanguage/Extension:WikibaseLexeme" title="Special:MyLanguage/Extension:WikibaseLexeme">WikibaseLexeme</a><span style="display:none"><a href="/wiki/Extension:WikibaseLexeme" title="Extension:WikibaseLexeme"> </a></span> - <a href="/wiki/Special:MyLanguage/Extension:WikibaseLexeme/Data_Model" title="Special:MyLanguage/Extension:WikibaseLexeme/Data Model">Lexeme Data Model</a>.</li></ul>
+<meta property="mw:PageProp/toc">
+<div style="font-size: 90%; color: var(--color-base, #202122); background: var(--background-color-warning-subtle, #fdf2d5); padding: 1ex; border: #940 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Editorial Note:</b> This document contains a number of "Editorial Notes". These are remarks that have been left by the editor to record some open issue or known problem. Eventually, all such notes will be addressed and removed.
+</p>
+</div>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="History" data-mw-thread-id="h-History"><span data-mw-comment-start="" id="h-History"></span>History<span data-mw-comment-end="h-History"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=1" title="Edit section: History"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a class="external text" href="https://www.mediawiki.org/w/index.php?title=Wikibase/DataModel">Latest Version</a></li>
+<li><a class="external text" href="https://www.mediawiki.org/w/index.php?title=Wikibase/DataModel&amp;oldid=1422051">Version 15-2-23</a></li>
+<li><a class="external text" href="https://www.mediawiki.org/w/index.php?title=Wikibase/DataModel&amp;oldid=1341417">Version 15-1</a></li>
+<li><a class="external text" href="https://www.mediawiki.org/w/index.php?title=Wikibase/DataModel&amp;oldid=1014962">Version 14-5</a></li>
+<li><a class="external text" href="https://www.mediawiki.org/w/index.php?title=Wikibase/DataModel&amp;oldid=955856">Version 14-4</a></li></ul>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="Goals_and_requirements" data-mw-thread-id="h-Goals_and_requirements"><span data-mw-comment-start="" id="h-Goals_and_requirements"></span>Goals and requirements<span data-mw-comment-end="h-Goals_and_requirements"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=2" title="Edit section: Goals and requirements"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The data model has the goal to clarify which information is stored in Wikibase. The model is extensible, but at any point in time it should document all things that are possibly stored in the system. It has two main goals:
+</p><p><span class="anchor" id="Conceptual_clarity"></span><b>Conceptual clarity</b>: It should be clear <i>what</i> Wikibase can (and what it cannot) capture. It is not possible to capture all statements that one could make about the world (not even all that are important or reasonable). A balance must be found between expressive power and complexity/usability.
+</p><p><b>Technical documentation:</b> Almost every component of Wikibase has to work with the data. To develop the software, it is therefore essential to have a common understanding of what the data is. Internally, the data can be represented quite differently (in objects, in a syntactic format, in a user interface, etc.): it is only important that each representation has a unique and unambiguous reading in terms of the data model.
+</p><p>There are a number of (sometimes conflicting) requirements that the data model should address in a balanced fashion:
+</p>
+<ul><li>Coverage: the data model should be able to capture important data that occurs in Wikipedia in a natural way</li>
+<li>Simplicity: the data model should not be overly complex</li>
+<li>Extensibility: the data model should allow future extensions</li>
+<li>Flexibility: accessing and re-purposing data should be supported; the utility of the data should not be limited to one context</li>
+<li>Exchange: (parts of) the data should be exchangeable and have a clear meaning even outside the concrete system context of Wikidata</li>
+<li>Technical support: the data model should allow for adequate representations in existing data formats, e.g., JSON or RDF/OWL</li></ul>
+<p>The data model covers information that is expected to be relevant in the cause of the Wikidata project. Initially, only a part of it needs to be implemented, but it is important to ensure that the data model can also support later requirements (at least to the extent that they are in scope of the Wikidata project). Therefore, the below data model is not separated into phases.
+</p><p>There are also a number of things that the data model <b>is not supposed to do</b> (or that are at least beyond this document), in particular:
+</p>
+<ul><li>Internal data structures: The data model is specified using <a href="https://en.wikipedia.org/wiki/Unified_Modeling_Language" class="extiw" title="en:Unified Modeling Language">Unified Modeling Language</a> (UML), but this does not mean that it mandates the actual class structures to be used in implementation (in Wikidata or elsewhere). In many concrete situations, data can be stored in a more optimized way.</li>
+<li>Export formats: Data could be exported in many syntactic forms. Other documents will specify how this is done in each case.</li>
+<li>Formal semantics: This document explains what the data is intended to express, and gives concrete examples. However, it is not a completely precise specification of how to interpret this data formally: this will be given in a separate document.</li></ul>
+<div style="font-size: 90%; color: var(--color-base, #202122); background: var(--background-color-warning-subtle, #fdf2d5); padding: 1ex; border: #940 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Editorial Note:</b> Provide documentation for (at least) the following bindings used by Wikibase: PHP, JavaScript, JSON, RDF. Additional bindings that may be particularly useful are Java and Python
+</p>
+</div>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="Overview_of_the_data_model" data-mw-thread-id="h-Overview_of_the_data_model"><span data-mw-comment-start="" id="h-Overview_of_the_data_model"></span>Overview of the data model<span data-mw-comment-end="h-Overview_of_the_data_model"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=3" title="Edit section: Overview of the data model"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The main purpose of Wikidata is to store data about things that are described by pages in Wikipedia (in any language). For example, one might want to store that the population of Berlin is 3,499,879. In this case, <i>Berlin</i> is the thing that is described, for example, by <a href="https://en.wikipedia.org/wiki/Berlin" class="extiw" title="en:Berlin">the article Berlin in English Wikipedia</a>. In Wikidata, such a "thing" is represented as an <span class="anchor" id="Item"></span><b>Item</b>. The Wikidata <a href="#Item">Item</a> for Berlin would represent the thing that the Wikipedia article is about, not the Wikipedia article itself. Wikidata is concerned with recording facts about the subject of Wikipedia articles.
+</p><p>For every <a href="#Item">Item</a>, various pieces of information are stored in Wikidata. First, there is some basic information that clarifies what the <a href="#Item">Item</a> is about, such as the <a href="#Sitelinks">sitelink</a> to a Wikipedia page in some language. There are also human readable labels and short descriptions that are used to help Wikidata users find the right <a href="#Item">Item</a>. Second, there is a list of <span class="anchor" id="Statement"></span><b>Statements</b> that users have entered about the <a href="#Item">Item</a>. Together, the information that is stored about one <a href="#Item">Item</a> is called an <span class="anchor" id="ItemDescription"></span><b>ItemDescription</b>.
+</p><p><a href="#Statement">Statements</a> are the main approach of representing factual data, such as the population number in the above example. A Statement consists of two parts: a <i>claim</i> that something is the case (e.g., the claim "Berlin has a population of 3,499,879") and a list of <i>references</i> for that claim (e.g., a publication by the statistical office for Berlin-Brandenburg). The reference is given by a <span class="anchor" id="ReferenceRecord"></span><b>ReferenceRecord</b>, and the list of references is allowed to be empty (like in Wikipedia, editors can add <a href="#Statement">Statements</a> without a reference, which might later be improved by others who know about a suitable reference).
+</p><p>The claim that is made in a Statement can have various forms. The most common form is a single assignment of a <span class="anchor" id="Value"></span><b>Value</b> to a <span class="anchor" id="Property"></span><b>Property</b>. For example, <i>population</i> is a <a href="#Property">Property</a> and the number <i>3,499,879</i> is a <a href="#Value">Value</a>. <a href="#Property">Property</a>-<a href="#Value">Value</a> pairs can express many different claims, and Values can be numbers, dates and times, geographic coordinates, and many more. An important special case are values that are Items. For example, one could state that Berlin is the capital of Germany, where Germany has its own <a href="#Item">Item</a> in Wikidata, that the <a href="#Property">Property</a> <i>capital of</i> refers to. Properties are defined by users, so any <a href="#Property">Property</a> can be created. As opposed to Items, Properties do not refer to Wikipedia pages, but they do specify a <span class="anchor" id="Datatype"></span><b>Datatype</b> for the data that they (usually) store. The data stored about Properties forms a <span class="anchor" id="PropertyDescription"></span><b>PropertyDescription</b>.
+</p><p>The individual things that Wikidata talks about, including Items and Properties, are called <span class="anchor" id="Entities"></span><b>Entities</b>. All <a href="#Entities">Entities</a> are Values, but many kinds of Values are not <a href="#Entities">Entities</a> (examples of the latter kind include Values for numbers, strings, and geographic coordinates). This is so since Wikidata does not intend to store Statements about individual data values, such as strings or numbers (but it could store <a href="#Statement">Statements</a> about a number as a concept that is discussed on a Wikipage, in which case the number is represented by a Wikidata <a href="#Item">Item</a>).
+</p><p><a href="#Property">Property</a>-<a href="#Value">Value</a> pairs are not the only kind of claims that can be given in a Statement. It is also possible to say, for example, that a <a href="#Property">Property</a> has <i>no</i> <a href="#Value">Values</a> for the given <a href="#Item">Item</a>. For example, one can say that a circle has <i>no</i> angles. Stating this can be relevant to distinguish it from the (common) case that the property has simply not been entered into Wikidata yet. Other things that one can say are related to classification, for example to state that Berlin is a city (i.e., "an instance of the class of all cities"). This is treated in a specific way since classification is important in many areas, e.g., in biologic taxonomies. For lack of a better name, any such basic assertion that one can make in Wikidata is called a <span class="anchor" id="Snak"></span><b>Snak</b> (which is small, but more than a byte). This term will not be relevant for using Wikidata (editors will not encounter it), but it is relevant for developers to avoid confusion with <a href="#Statement">Statements</a> or other claims.
+</p><p>For advanced usage, it is possible to make claims that consist of more than one <a href="#Snak">Snak</a>. For example, one might need to say that "the population of Berlin is 3,499,879, considering only the territory of the city, as estimated on 30 November 2011." Here, we have two additional Snaks that specify the territory the number refers to and the time when the measure was taken. It will be described below how exactly a claim can use additional Snaks.
+</p>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="How_to_read_this_document" data-mw-thread-id="h-How_to_read_this_document"><span data-mw-comment-start="" id="h-How_to_read_this_document"></span>How to read this document<span data-mw-comment-end="h-How_to_read_this_document"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=4" title="Edit section: How to read this document"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>This section explains our notation and general concepts that are used throughout this document.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Defining_data_structures_in_UML" data-mw-thread-id="h-Defining_data_structures_in_UML-How_to_read_this_document"><span data-mw-comment-start="" id="h-Defining_data_structures_in_UML-How_to_read_this_document"></span>Defining data structures in UML<span data-mw-comment-end="h-Defining_data_structures_in_UML-How_to_read_this_document"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=5" title="Edit section: Defining data structures in UML"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The data structures that are specified in this document are usually described using UML class diagrams (see <a href="https://en.wikipedia.org/wiki/Unified_Modeling_Language" class="extiw" title="en:Unified Modeling Language">the Wikipedia page on UML</a> for an introduction). We use only the following basic UML features:
+</p>
+<ul><li>classes, represented as boxes</li>
+<li>abstract classes (conceptual classes that are not directly instantiated in data), represented as classes with names in <i>italics</i></li>
+<li>class inheritance, represented by arrows with empty triangles as heads, pointing to the superclass</li>
+<li>class attributes ("member fields"), represented by "name: type" entries in classes</li>
+<li>associations/compositions, represented by blue lines with empty/filled diamonds on the side of the class that aggregates/composes many objects of the other class</li></ul>
+<p>The types of class members are either classes that are defined below, or one of the following basic datatypes:
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Datatype
+</th>
+<th>Explanation
+</th></tr>
+<tr>
+<td><span class="anchor" id="String"></span><b>String</b>
+</td>
+<td>a sequence of characters, possibly empty, where each character represents a <a rel="nofollow" class="external text" href="http://www.unicode.org/unicode/standard/">Unicode</a> <a href="https://en.wikipedia.org/wiki/code_point" class="extiw" title="w:code point">code point</a>
+</td></tr>
+<tr>
+<td><span class="anchor" id="integer"></span><b>integer</b>
+</td>
+<td>an integer number of arbitrarily large or small value
+</td></tr>
+<tr>
+<td><span class="anchor" id="nonNegativeInteger"></span><b>nonNegativeInteger</b>
+</td>
+<td>an integer number of arbitrarily large value greater than or equal to 0
+</td></tr>
+<tr>
+<td><span class="anchor" id="decimal"></span><b>decimal</b>
+</td>
+<td>a decimal number of arbitrarily large or small value, and arbitrary precision
+</td></tr>
+<tr>
+<td><span class="anchor" id="IRI"></span><b>IRI</b>
+</td>
+<td>an <i>absolute</i> <a href="https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier" class="extiw" title="w:Internationalized Resource Identifier">Internationalized Resource Identifier</a> according to <a href="https://datatracker.ietf.org/doc/html/rfc3987" class="extiw" title="rfc:3987">RFC<style data-mw-deduplicate="TemplateStyles:r7217505">'"`UNIQ--templatestyles-00000002-QINU`"'</style><span class="nowrap">&nbsp;</span>3987</a>; we do not consider relative IRIs
+</td></tr>
+<tr>
+<td><span class="anchor" id="GlobalSiteIdentifier"></span><b>GlobalSiteIdentifier</b>
+</td>
+<td>a short string for identifying external sites, e.g., the language-related identification scheme of Wikipedia sites. (Note that this is different from <a rel="nofollow" class="external text" href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a>, e.g., there is no "en-US" in Wikipedia, just "en")
+</td></tr>
+<tr>
+<td><span class="anchor" id="UserLanguageCode"></span><b>UserLanguageCode</b>
+</td>
+<td>a short string for identifying languages, based on the language preference setting of logged in Wikipedia users. (This might be more similar to <a rel="nofollow" class="external text" href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a> but is not necessarily the same either; it is more fine-grained than a GlobalSiteIdentifier)
+</td></tr></tbody></table>
+<p>Numbers of arbitrarily large absolute value or precision can be represented as Strings, e.g., as described in the next section. For purposes of data access (e.g., retrieving values in numeric order), it will often be possible to approximate the value, e.g., by using a <i>double</i> value. However, technical formats such as float or double are not appropriate to represent user input accurately.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Wikidata_Object_Notation" data-mw-thread-id="h-Wikidata_Object_Notation-How_to_read_this_document"><span data-mw-comment-start="" id="h-Wikidata_Object_Notation-How_to_read_this_document"></span>Wikidata Object Notation<span data-mw-comment-end="h-Wikidata_Object_Notation-How_to_read_this_document"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=6" title="Edit section: Wikidata Object Notation"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>UML describes data structures in a rather abstract way. To talk about concrete instances of these data structures, it is useful to have a simple serialization syntax for objects, which we call <i>Wikidata Object Notation</i> (WON). The WON is not intended to be used in implementations, but it is useful to give examples and to describe how the data model maps to other syntaxes, such as JSON or RDF.
+</p><p>The WON is described in this text along with the data model, and it will use exactly the same format. We give its simple grammar in <a href="https://en.wikipedia.org/wiki/Backus_Naur_Form" class="extiw" title="en:Backus Naur Form">BNF</a> notation, using the following standard notation:
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Construct
+</th>
+<th>Syntax
+</th>
+<th>Example
+</th></tr>
+<tr>
+<td>terminal symbols
+</td>
+<td>strings in single quotes
+</td>
+<td><code>'PropertyDescription'</code>
+</td></tr>
+<tr>
+<td>a set of terminal symbols described in English
+</td>
+<td>italic
+</td>
+<td><code><i>a nonempty finite sequence of digits between 0 and 9</i></code>
+</td></tr>
+<tr>
+<td>nonterminal symbols
+</td>
+<td>boldface
+</td>
+<td><code><b>Statement</b></code>
+</td></tr>
+<tr>
+<td>zero or more
+</td>
+<td>curly braces
+</td>
+<td><code>{ <b>Statement</b> }</code>
+</td></tr>
+<tr>
+<td>zero or one
+</td>
+<td>square brackets
+</td>
+<td><code>[ <b>Statement</b> ]</code>
+</td></tr>
+<tr>
+<td>alternative
+</td>
+<td>vertical bar
+</td>
+<td><code><b>Item</b> | <b>Property</b></code>
+</td></tr></tbody></table>
+<p>The basic datatypes that were described above can be serialized in WON as follows:
+</p>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>quotedString</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><i>a finite sequence of characters in which " and \ occur only in pairs of the form \" and \\, enclosed in a pair of " characters</i>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>integer</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>[ '-' ] <b>nonNegativeInteger</b>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>nonNegativeInteger</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><i>a nonempty finite sequence of digits between 0 and 9</i>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>decimal</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><b>integer</b> [ '.' <b>nonNegativeInteger</b> ]
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>IRI</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><i>an IRI as defined in <a href="https://datatracker.ietf.org/doc/html/rfc3987" class="extiw" title="rfc:3987">RFC<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r7217505"><span class="nowrap">&nbsp;</span>3987</a>, enclosed in a pair of &lt; and &gt; characters</i>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>GlobalSiteIdentifier</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><i>a nonempty finite sequence of Latin characters between a and z, and -</i>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>UserLanguageCode</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><i>a nonempty finite sequence of Latin characters between a and z, and -</i>
+</td></tr></tbody></table>
+</div>
+<p>We follow common conventions for escaping "-quoted strings, and of enclosing IRIs with &lt; &gt;.
+</p>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="Values" data-mw-thread-id="h-Values"><span data-mw-comment-start="" id="h-Values"></span>Values<span data-mw-comment-end="h-Values"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=7" title="Edit section: Values"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Values are basic objects of Wikidata, that only represent one particular thing. Items represent topics of Wikipedia pages, Properties represent the properties that Items (or other <a href="#Entities">Entities</a>) can have, DataValues represent individual values of a particular <a href="#Datatype">Datatype</a> (a number, a geographic coordinate, etc.). The kinds of Values and their structure is shown in the following figure: 
+</p>
+<figure class="mw-halign-center" typeof="mw:File"><a href="/wiki/File:Wikidata_model_Elements_UML.png" class="mw-file-description"><img src="//upload.wikimedia.org/wikipedia/commons/3/39/Wikidata_model_Elements_UML.png?utm_source=www.mediawiki.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled" decoding="async" width="370" height="231" class="mw-file-element" data-file-width="415" data-file-height="259"></a><figcaption></figcaption></figure>
+<p>Various kinds of Values can be the subject of basic statements (Snaks): they are called <a href="#Entities">Entities</a>. Entities are identified in a uniform way using Uniform Resource Identifiers (URIs), or rather Internationalized Resource Identifiers (<a href="#IRI">IRIs</a>) that also allow Unicode symbols. Since an IRI is a global identifier, no two different Entities may have the same IRI. Hence, all entities can be represented by their IRI alone, without noting what kind of Entity they are. (Items have IRIs of the form <code>https://www.wikidata.org/entity/Qnnn</code> and Properties have IRIs of the form <code>https://www.wikidata.org/entity/Pnnn</code>)
+</p>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>Value</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><b>DataValue</b> | <b>Entity</b>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>Entity</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><b>Datatype</b> | <b>Item</b> | <b>Property</b>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>Datatype</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><b>IRI</b>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>Item</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><b>IRI</b>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>Property</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><b>IRI</b>
+</td></tr></tbody></table>
+</div>
+<p>In contrast to Entities, DataValues are not identified by an <a href="#IRI">IRI</a> but can simply be viewed as compound values that are identified by their content. Values without an <a href="#IRI">IRI</a> can still be named internally or in exports, but the identifiers that are used in this case will usually consist in the actual content (or a hash thereof).
+</p><p>Note that we distinguish single <a href="#Entities">Entities</a> (e.g., an <a href="#Item">Item</a> about Berlin) from Descriptions of <a href="#Entities">Entities</a> (e.g., the collection of information that is stored about that <a href="#Item">Item</a> about Berlin).
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Items" data-mw-thread-id="h-Items-Values"><span data-mw-comment-start="" id="h-Items-Values"></span>Items<span data-mw-comment-end="h-Items-Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=8" title="Edit section: Items"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Items are Entities that are typically represented by a Wikipage (at least in some Wikipedia languages). They can be viewed as "the thing that a Wikipage is about," which could be an individual thing (the person <a href="https://en.wikipedia.org/wiki/Albert_Einstein" class="extiw" title="en:Albert Einstein">Albert Einstein</a>), a general class of things (the class of all <a href="https://en.wikipedia.org/wiki/Physicist" class="extiw" title="en:Physicist">Physicists</a>), and any other concept that is the subject of some Wikipedia page (including things like <a href="https://en.wikipedia.org/wiki/History_of_Berlin" class="extiw" title="en:History of Berlin">History of Berlin</a>).
+</p><p>The <a href="#IRI">IRI</a> of an <a href="#Item">Item</a> will typically be closely related to the URL of its page on Wikidata. It is expected that Items store a shorter ID string (for example, as a title string in MediaWiki) that is used in both cases. ID strings might have a standardized technical format such as "Q1234567890" and will usually not be seen by users. The ID of an <a href="#Item">Item</a> should be stable and not change after it has been created.
+</p><p>The exact meaning of an <a href="#Item">Item</a> cannot be captured in Wikidata (or any technical system), but is discussed and decided on by the community of editors, just as it is done with the subject of Wikipedia articles now. It is possible that an <a href="#Item">Item</a> has multiple "aspects" to its meaning. For example, the page <a href="https://en.wikipedia.org/wiki/Orca" class="extiw" title="en:Orca">Orca</a> describes a species of whales. It can be viewed as a <i>class</i> of all Orca whales, and an individual whale such as <a href="https://en.wikipedia.org/wiki/Keiko_(orca)" class="extiw" title="en:Keiko (orca)">Keiko</a> would be an element of this class. On the other hand, the species Orca is also a concept about which we can make individual statements. For example, one could say that the binomial name (a <a href="#Property">Property</a>) of the Orca species has the <a href="#Value">Value</a> "Orcinus orca (Linnaeus, 1758)."
+</p><p>However, it is intended that the information stored in Wikidata is generally <i>about</i> the topic of the <a href="#Item">Item</a>. For example, the <a href="#Item">Item</a> for <a href="https://en.wikipedia.org/wiki/History_of_Berlin" class="extiw" title="en:History of Berlin">History of Berlin</a> should store data about this history (if there is any such data), not about Berlin (the city). It is not intended that data about one subject is distributed across multiple Wikidata Items: each <a href="#Item">Item</a> fully represents one thing. This also helps for data integration across languages: many languages have no separate article about Berlin's history, but most have an article about Berlin.
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Sitelinks" data-mw-thread-id="h-Sitelinks-Items"><span data-mw-comment-start="" id="h-Sitelinks-Items"></span>Sitelinks<span data-mw-comment-end="h-Sitelinks-Items"></span></h4><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=9" title="Edit section: Sitelinks"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>An Item can be linked to pages on other wikis via sitelinks. This is used by Wikipedia to link other language versions of an article (since the different language-specific instances of Wikipedia are technically separate wikis). Note that while an Item can have multiple sitelinks to different wikis, it cannot have multiple sitelinks to the same wiki. Sitelinks can additionally have a set of "badges" associated with the page (such as "featured article"). Badges are also represented as Items.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Properties" data-mw-thread-id="h-Properties-Values"><span data-mw-comment-start="" id="h-Properties-Values"></span>Properties<span data-mw-comment-end="h-Properties-Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=10" title="Edit section: Properties"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Properties are Entities that describe a relationship between Items (or other Entities) and Values of the property. Typical properties are <i>population</i> (using numbers as values), <i>binomial name</i> (using strings as values), but also <i>has father</i> and <i>author of</i> (both using Items as values).
+</p><p>Like Items, Properties are identified by an <a href="#IRI">IRI</a> that will probably be closely related to their URL on Wikidata. However, the IDs will be based on a different naming scheme so that no confusion with Items is possible. For example, a typical identifier string used in a <a href="#Property">Property</a> ID could be "P123456789".
+The ID of a <a href="#Property">Property</a> should be stable and not change after it has been created.
+</p><p>Properties are treated differently to Items because they do not usually have a page in Wikipedia. While there is a page <a href="https://en.wikipedia.org/wiki/population" class="extiw" title="en:population">en:population</a>, it does not describe the relationship between a region and its number of (human) inhabitants, but rather the noun <i>population</i>. This can be close to the property, but it can also lack important information. For example, the page <a href="https://en.wikipedia.org/wiki/parent" class="extiw" title="en:parent">en:parent</a> describes what a parent is, but there are multiple related properties, especially <i>parent of</i> and <i>has parent</i> (which have a very different meaning). Wikipedias do not usually contain specific articles about such properties, only about the concepts that they relate to.
+</p><p>As another difference from Items, Properties can have a <a href="#Datatype">Datatype</a> that specifies what kind of values users will normally enter for them. Note, however, that the data model does not require strict typing for Properties in Snaks (see below).
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Datatypes" data-mw-thread-id="h-Datatypes-Values"><span data-mw-comment-start="" id="h-Datatypes-Values"></span>Datatypes<span data-mw-comment-end="h-Datatypes-Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=11" title="Edit section: Datatypes"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A <a href="#Datatype">Datatype</a> is an Entity that determines the type and shape of the values that can be assigned to a <a href="#Property">Property</a>. There are various common Datatypes, and each must be handled specifically by the software (for example, the user interface will be different depending on the type of data that is edited). Therefore, the Datatypes that are supported by Wikidata can only be extended by software developers, not by editors on the site. However, it might be possible to customize some Datatypes when using them for a <a href="#Property">Property</a> (e.g., one might be able to say that a <a href="#Property">Property</a> should only accept numbers without <a href="#decimal">decimal</a> digits, i.e., integers).
+</p><p>Most Datatypes are not <i>primitive</i> in the sense that their values consist of only one single value of a type that is commonly found in programming languages. For example, geographic coordinates are an important type of data in Wikidata, but they have an internal structure (e.g., specifying a latitude, longitude, and possibly a height).
+</p><p>More information about the Datatypes available in Wikidata is given in the respective section below.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="DataValues" data-mw-thread-id="h-DataValues-Values"><span data-mw-comment-start="" id="h-DataValues-Values"></span>DataValues<span data-mw-comment-end="h-DataValues-Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=12" title="Edit section: DataValues"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>DataValues are Values that are not <a href="#Entities">Entities</a>. They represent values of a particular <a href="#Datatype">Datatype</a>, such as a particular number or point in time. Details on the available DataValues and their according types is given in the respective section below.
+</p>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="Snaks" data-mw-thread-id="h-Snaks"><span data-mw-comment-start="" id="h-Snaks"></span>Snaks<span data-mw-comment-end="h-Snaks"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=13" title="Edit section: Snaks"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Snaks are the basic information structures used to describe Entities in Wikidata. They are an integral part of each Statement (which can be viewed as collection of Snaks about an Entity, together with a list of references).
+</p><p>Many of the Snaks are based on similar pieces of information, yet we distinguish Snaks that are intended to have a different meaning. This is useful in many places. Typically, Snaks of different meaning will be represented differently in the user interface.
+</p>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>Snak</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><b>PropertySnak</b>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>PropertySnak</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><b>PropertyValueSnak</b> | <b>PropertySomeValueSnak</b> | <b>PropertyNoValueSnak</b>
+</td></tr></tbody></table>
+</div>
+<p>Note that currently, all Snaks are PropertySnak. Other types of Snaks that are not PropertySnak may be defined in the future.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="PropertyValueSnak" data-mw-thread-id="h-PropertyValueSnak-Snaks"><span data-mw-comment-start="" id="h-PropertyValueSnak-Snaks"></span>PropertyValueSnak<span data-mw-comment-end="h-PropertyValueSnak-Snaks"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=14" title="Edit section: PropertyValueSnak"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A PropertyValueSnak describes that an Entity has a certain <a href="#Property">Property</a> with a given <a href="#Value">Value</a>. Note that it is not required that <a href="#Value">Value</a> belongs to the <a href="#Datatype">Datatype</a> that is currently given to the <a href="#Property">Property</a> in the system. In general, the UI and API of Wikidata will only allow Values that match the given <a href="#Datatype">Datatype</a>, but if the <a href="#Datatype">Datatype</a> is changed, then it will not be possible to update all stored data immediately. Moreover, if the <a href="#Datatype">Datatype</a> is changed back to its earlier value, it might be possible to continue using existing data that was not changed. This is the main reason for not limiting the data model to strictly typed Properties.
+</p><p>Please also note that the data model does not actually define a unique <a href="#Datatype">Datatype</a> for each <a href="#Property">Property</a>: it just specifies how <a href="#Datatype">Datatype</a> assignments would be represented; a unique <a href="#Datatype">Datatype</a> is only obtained in a closed system where every <a href="#Property">Property</a> has a globally unique <a href="#Datatype">Datatype</a> assignment.
+</p><p>The Wikidata Object Notation for PropertyValueSnaks is as follows:
+</p>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>PropertyValueSnak</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'PropertyValueSnak(' <b>Property</b> <b>Value</b> ')'
+</td></tr></tbody></table>
+</div>
+<p>Here and below, we omit the names of attributes (e.g., "subject") in WON, and simply encode their values positionally. We do not specify any delimiters between the arguments in this notation. It is silently assumed that whitespace is introduced to avoid ambiguities.
+</p>
+<div style="font-size: 90%; color: var(--color-base, #202122); background-color: var(--background-color-progressive-subtle, #f1f4fd); padding: 1ex; border: #049 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Example:</b> Many basic kinds of data are naturally expressed by assigning Values to Properties. Some examples:
+</p>
+<ul><li>Berlin (subject) has a population (property) of <i>3499879</i> (value).</li>
+<li>Georgia (subject) has the capital (property) Tbilisi (value).</li>
+<li>Gandhi (subject) was born on (property) 2 October 1869 (value).</li></ul>
+<p>Obviously, each <a href="#Value">Value</a> in these statements would refer to one clearly identified object (e.g., our label "Georgia" above is surely not precise enough). We omit such details for simplicity here. Also note that Snaks do not mention the subject to which they refer (Berlin, Georgia, Gandhi); this is given by the context in which a Snak is used (typically as part of a Statement).
+</p>
+</div>
+<div class="mw-heading mw-heading3"><h3 id="PropertyNoValueSnak" data-mw-thread-id="h-PropertyNoValueSnak-Snaks"><span data-mw-comment-start="" id="h-PropertyNoValueSnak-Snaks"></span>PropertyNoValueSnak<span data-mw-comment-end="h-PropertyNoValueSnak-Snaks"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=15" title="Edit section: PropertyNoValueSnak"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A PropertyNoValueSnak describes that an Entity has no values for a certain <a href="#Property">Property</a>.
+</p>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>PropertyNoValueSnak</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'PropertyNoValueSnak(' <b>Property</b> ')'
+</td></tr></tbody></table>
+</div>
+<div style="font-size: 90%; color: var(--color-base, #202122); background-color: var(--background-color-progressive-subtle, #f1f4fd); padding: 1ex; border: #049 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Example:</b> In some cases, we want to emphasize that a property value has not just been left out (or not entered yet) but that it really does not exist. Some examples:
+</p>
+<ul><li>Circle (subject) has no angle (property).</li>
+<li>Mount Everest (subject) has no <a href="https://en.wikipedia.org/wiki/parent_peak" class="extiw" title="en:parent peak">parent peak</a> (property).</li></ul>
+<p>Such statements should only be made in cases where one could otherwise expect an incompleteness. It is not intended that Wikidata stores all things that are not the case (e.g., "The Pacific Ocean has no angle").
+</p>
+</div>
+<div class="mw-heading mw-heading3"><h3 id="PropertySomeValueSnak" data-mw-thread-id="h-PropertySomeValueSnak-Snaks"><span data-mw-comment-start="" id="h-PropertySomeValueSnak-Snaks"></span>PropertySomeValueSnak<span data-mw-comment-end="h-PropertySomeValueSnak-Snaks"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=16" title="Edit section: PropertySomeValueSnak"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A PropertySomeValueSnak describes that an Entity has some value for a certain <a href="#Property">Property</a>, without saying anything about this value. This can be used if the value of a property is unknown.
+</p>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>PropertySomeValueSnak</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'PropertySomeValueSnak(' <b>Property</b> ')'
+</td></tr></tbody></table>
+</div>
+<div style="font-size: 90%; color: var(--color-base, #202122); background-color: var(--background-color-progressive-subtle, #f1f4fd); padding: 1ex; border: #049 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Example:</b> The information that a property has some value can be important and useful, even if the value is not known. For example:
+</p>
+<ul><li>Ambrose Bierce (subject) has an unknown date of death (property), yet we can be certain that he is not among the living persons.</li></ul>
+<p>Such statements should only be made if no concrete date is known. Wikidata does not support constraints on unknown values ("William of Ockham died in 1347 or 1348") but it does support precision on some types of data values ("William of Ockham died in the 1340s") and it does support different (possibly conflicting) values from multiple sources.
+</p>
+</div>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="Statements" data-mw-thread-id="h-Statements"><span data-mw-comment-start="" id="h-Statements"></span>Statements<span data-mw-comment-end="h-Statements"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=17" title="Edit section: Statements"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Statements describe the claim of a statement and list references for this claim. Every Statement refers to one particular Entity, called the <i>subject</i> of the Statement. There is always one <i>main</i> <a href="#Snak">Snak</a> that forms the most important part of the statement. Moreover, there can be zero or more additional PropertySnaks that describe the Statement in more detail. These qualifier Snaks (or "qualifiers" for short) store additional information that does not directly refer to the subject (e.g., the time at which the main part of the statement was valid). References are provided as a list (the order is significant in some contexts, especially for displaying a main reference). The complete structure is described as follows:
+</p>
+<figure class="mw-halign-center" typeof="mw:File"><a href="/wiki/File:Wikidata_model_StatementDescription_UML.png" class="mw-file-description"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Wikidata_model_StatementDescription_UML.png/500px-Wikidata_model_StatementDescription_UML.png?utm_source=www.mediawiki.org&amp;utm_campaign=parser&amp;utm_content=thumbnail" decoding="async" width="500" height="112" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/commons/d/d0/Wikidata_model_StatementDescription_UML.png?utm_source=www.mediawiki.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled 2x" data-file-width="602" data-file-height="135"></a><figcaption></figcaption></figure>
+<p>The individual components have the following meaning:
+</p>
+<ul><li>subject: the Entity that the statement is about</li>
+<li>mainSnak: the main <a href="#Snak">Snak</a> of the statement</li>
+<li>rank: a StatementRank that will be used for simplifying the selection of <a href="#Statement">Statements</a>; see for more detail below</li>
+<li>referenceRecords: the list of references, see below for details</li>
+<li>qualifierSnaks: optional list of additional PropertySnaks that qualify the statement</li></ul>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>Statement</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'Statement(' <b>Entity</b> <b>Snak</b> {<b>PropertySnak</b>} {<b>ReferenceRecord</b>} <b>Rank</b> ')'
+</td></tr></tbody></table>
+</div>
+<div style="font-size: 90%; color: var(--color-base, #202122); background-color: var(--background-color-progressive-subtle, #f1f4fd); padding: 1ex; border: #049 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Example:</b> A simple statement could just contain any of the Snaks in the above examples. The use of qualifier Snaks is illustrated in the following examples:
+</p>
+<ul><li>"Obama was US Senator from Illinois from January 3, 2005 to November 16, 2008":
+<ul><li>subject "Obama"</li>
+<li>mainSnak of type PropertyValueSnak with property "US Senator from" and value "Illinois"</li>
+<li>qualifier <a href="#Snak">Snak</a> of type PropertyIntervalSnak with property "in office" and interval "January 3, 2005 to November 16, 2008".</li></ul></li>
+<li>"Harry Potter and the Philosopher's Stone was starring Emma Watson in the role of Hermione Granger":
+<ul><li>subject "Harry Potter and the Philosopher's Stone"</li>
+<li>mainSnak of type PropertyValueSnak with property "starring" and value "Emma Watson"</li>
+<li>qualifier <a href="#Snak">Snak</a> of type PropertyValueSnak with property "played character", and value "Hermione Granger"</li></ul></li>
+<li>"1.6% of people living in Austria are Turks":
+<ul><li>subject "Austria"</li>
+<li>mainSnak of type PropertyValueSnak with property "ethnic group", and value "Turks"</li>
+<li>qualifier <a href="#Snak">Snak</a> of type PropertyValueSnak with property "percentage", and value "1.6%" (here "%" could be represented like the unit of measurement of quantities).</li></ul></li></ul>
+<p>In each case, there are other ways to capture the respective information. Like in Wikipedia, it is left to the community to agree on uniform ways of expressing such things. Often, there are good reasons to prefer one representation over the other. For example, there are cases where a country is known to have inhabitants of some ethnic group, while the percentage of that group is not known; then the qualifier <a href="#Snak">Snak</a> could simply be omitted.
+</p>
+</div>
+<div class="mw-heading mw-heading3"><h3 id="Ranks_of_Statements" data-mw-thread-id="h-Ranks_of_Statements-Statements"><span data-mw-comment-start="" id="h-Ranks_of_Statements-Statements"></span>Ranks of Statements<span data-mw-comment-end="h-Ranks_of_Statements-Statements"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=18" title="Edit section: Ranks of Statements"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The ranks provide a simple selection/filtering criterion in cases where there are many <a href="#Statement">Statements</a> for some property. There are three possible ranks, which have roughly the following meaning:
+</p>
+<ol><li><b>Preferred</b> statements refer to the most important and most up-to-date information that should be used per default in most contexts (example: only most recent population figures for Berlin would be shown in the Wikipedia infobox for Berlin). Note that there may be multiple preferred statements. This may imply a multi-valued property (e.g. a person's children), or a disagreement (diverging population figures given by different sources).</li>
+<li><b>Normal</b> statements contain relevant information that is believed to be correct but that may be too extensive for showing it by default (example: historic population figures for Berlin for many years).</li>
+<li><b>Deprecated</b> statements that may not be considered reliable or that are even known to contain errors (example: a statement that documents a wrong population figure that was published in some historic document; in this case the statement is not wrong – the historic document that is given as a reference really made the erroneous claim – yet the statement should not be used in most cases).</li></ol>
+<p>This model is intentionally left coarse and simple. The three levels translate to different treatments in data access, UI (e.g., what is displayed by default), and export (one could, e.g., have an export with only the preferred and normal <a href="#Statement">Statements</a>). The ranks may also be useful for protecting <a href="#Statement">Statements</a> from editing (e.g., by protecting only preferred and normal statements). More fine-grained rankings do not seem to have such a clear interpretation and would thus increase the UI complexity unnecessarily. Having only two ranks (or no ranks at all), on the other hand, would make it harder to cope with <a href="#Statement">Statements</a> that are not trusted, known to contain wrong claims, or simply unpatrolled (if ranks are used for protection).
+</p><p>Another useful concept can be constructed based on the ranks defined above: the "best rank" for the Statements about a given Property with respect to a given Item. If there is at least one Statement
+with <i>preferred</i> rank about the property (in the context of a given Item), the best rank for that property is <i>preferred</i>. Otherwise, the best rank is <i>normal</i>. Correspondingly, the "best Statements" about a given Property in the context of a given Item are the ones that have the best rank for that Property.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="ReferenceRecords" data-mw-thread-id="h-ReferenceRecords-Statements"><span data-mw-comment-start="" id="h-ReferenceRecords-Statements"></span>ReferenceRecords<span data-mw-comment-end="h-ReferenceRecords-Statements"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=19" title="Edit section: ReferenceRecords"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>ReferenceRecords are intended to store information about some source, represented as a set of Snaks. In the simplest case, the source can be represented by a single Snak, e.g. providing a URL. But SourceRecords can also be more complex or, e.g. consisting of Snaks representing the title, author, and publisher of a book, along with chapter and page of the cited information.
+</p>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>ReferenceRecord</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'ReferenceRecord(' <b>Snak</b> {<b>Snak</b>} ')'
+</td></tr></tbody></table>
+</div>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="EntityDescriptions_of_Items_and_Properties" data-mw-thread-id="h-EntityDescriptions_of_Items_and_Properties"><span data-mw-comment-start="" id="h-EntityDescriptions_of_Items_and_Properties"></span>EntityDescriptions of Items and Properties<span data-mw-comment-end="h-EntityDescriptions_of_Items_and_Properties"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=20" title="Edit section: EntityDescriptions of Items and Properties"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>EntityDescriptions are collections of information about an entity, and they mainly serve as data containers that can be interpreted as sets of Snaks with some further attributes (that could also be represented as Snaks, if desired). In addition, EntityDescriptions may support lexical information that can be used for displaying, searching, or referencing the respective entity. 
+</p><p>We define <b>PropertyDescription</b> and <b>ItemDescription</b> subtypes of EntityDescription that correspond to entities of the respective type, <a href="#Item">Item</a> and <a href="#Property">Property</a>. In particular, all <a href="#Statement">Statements</a> of an <a href="#ItemDescription">ItemDescription</a> must use the expected <a href="#Item">Item</a> as the subject of their main <a href="#Snak">Snak</a>, and all <a href="#Statement">Statements</a> of a <a href="#PropertyDescription">PropertyDescription</a> must use the expected <a href="#Property">Property</a> as the subject of their main <a href="#Snak">Snak</a>.
+</p><p>EntityDescriptions can contain basic lexical information. Each ItemDescriptions and PropertyDescriptions supports internationalized labels, descriptions, and aliases. The overall structure of ItemDescription and PropertyDescription can be defined as follows:
+</p>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>EntityDescription</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><b>ItemDescription</b> | <b>PropertyDescription</b>
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>ItemDescription</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'ItemDescription(' <b>Item</b> [<b>MultilingualTextValue</b>] [<b>MultilingualTextValue</b>] [<b>MultilingualMultiTextValue</b>] {<b>Statement</b>} ')'
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>PropertyDescription</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'PropertyDescription(' <b>Property</b> [<b>MultilingualTextValue</b>] [<b>MultilingualTextValue</b>] [<b>MultilingualMultiTextValue</b>] {<b>Statement</b>} ')'
+</td></tr></tbody></table>
+</div>
+<p>The three types of lexical information supported by ItemDescription and PropertyDescription are labels, descriptions, and aliases. Labels and descriptions are <span id="MultilingualTextValues">MultilingualTextValues</span>, aliases are <span id="MultilingualMultiTextValues">MultilingualMultiTextValues</span>: for any given language, an EntityDescription may have at most one label and at most one description, but any number of aliases. Their respective purposes are:
+</p>
+<ul><li><b>label:</b> the main label to be used for representing the described Entity in Wikidata in various languages, e.g., <i>Georgia</i> could be an English label.</li>
+<li><b>description:</b> a brief description to clarify the meaning of the label (which may be ambiguous), e.g., <i>a country in the Caucasus</i> could be an English description. The intended use is mainly disambiguation when displaying multiple entities with the same label, for selection.</li>
+<li><b>alias:</b> alternative labels in various languages, used mainly for searching for items by their name.</li></ul>
+<p>The lexical information in EntityDescriptions may be used as unique <i>keys</i> as follows:
+</p>
+<ul><li>For ItemDescriptions, the combination of label and description is a key for one particular language, if both label and description are defined.</li>
+<li>For PropertyDescriptions, the label is a key for one particular language. Since properties can be identified by their label (given a language), the label is also called the property's "name".</li></ul>
+<div style="background: var(--background-color-neutral, #eaecf0); color:var(--color-base, #202122); padding: 1ex; border: #666 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Planned Feature:</b><br>
+</p>
+<ul><li>For PropertyDescriptions, any alias is a key for one particular language.</li></ul>
+</div>
+<div style="background: var(--background-color-neutral, #eaecf0); color:var(--color-base, #202122); padding: 1ex; border: #666 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Planned Feature:</b><br>
+</p><p>The structure of PropertyDescriptions may be expanded in the future, to cover the following:
+</p>
+<ul><li>A long description that provides more details on the meaning of the property and its proper usage. Internationalized.</li>
+<li>A flag to indicate that statements do not usually need a reference to be credible ("self-evident"), at least if used without qualifier Snaks. For example, it would be tedious to enter a reference for the fact that an IMDB URL is about a particular movie, yet maintenance interfaces that warn about unsourced statements should not show all statements of this kind.</li>
+<li>A flag to indicate that a Property of datatype MonolingualTextValue provides a label that should be used as an alias in that language, e.g., in search.</li>
+<li>An IRI prefix that allows values associated with the Property to be mapped to external vocabularies.</li>
+<li>Mappings to other vocabularies, indicating (rough or exact) equivalence of the Property with a predicate from a standard vocabulary like Dublin Core of FOAF.</li>
+<li>Hints on the qualifier Snaks that are typically required/given for some property. Users should generally not have to manually add qualifier Snaks but rather see empty fields for suggested Snaks if they usually belong to the property.</li></ul>
+<p>Note that this information could be expressed using Statements on the PropertyDescriptions, without extending the structure of PropertyDescriptions. In order to make use of such Statements, the processing software would have to have knowledge of the meaning of the properties used to make such statements.
+</p>
+</div>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="Datatypes_and_their_Values" data-mw-thread-id="h-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Datatypes_and_their_Values"></span>Datatypes and their Values<span data-mw-comment-end="h-Datatypes_and_their_Values"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=21" title="Edit section: Datatypes and their Values"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Datatypes<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">[</span>1<span class="cite-bracket">]</span></a></sup> are Entities that specify the format of <a href="#Property">Property</a> Values. The set of Datatypes in Wikibase is system-defined (it can be extended, but only by developers). Every <a href="#Datatype">Datatype</a> has a fixed <a href="#IRI">IRI</a>, that is also system-defined.
+</p><p>For every <a href="#Datatype">Datatype</a>, there is one particular form of Value that is used to represent Values of that type. Wikibase distinguishes between Values that can be the subject of Snaks, called <a href="#Entities">Entities</a>, and Values that are not the subject of Snaks, called DataValues. The following is an overview of all DataValues:
+</p>
+<figure class="mw-halign-center" typeof="mw:File"><a href="/wiki/File:Wikidata_model_DataValues_UML.png" class="mw-file-description"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Wikidata_model_DataValues_UML.png/960px-Wikidata_model_DataValues_UML.png?utm_source=www.mediawiki.org&amp;utm_campaign=parser&amp;utm_content=thumbnail" decoding="async" width="850" height="425" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/commons/a/a5/Wikidata_model_DataValues_UML.png?utm_source=www.mediawiki.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled 2x" data-file-width="1077" data-file-height="538"></a><figcaption></figcaption></figure>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>DataValue</b>&nbsp;:=&nbsp;</code>
+</td>
+<td><b>QuantityValue</b> | <b>StringValue</b> | <b>TimeValue</b> | <b>GeoCoordinateValue</b> | <b>GeoShapeValue</b> | <b>MediaValue</b> | <b>IriValue</b> | <b>MonolingualTextValue</b> | <b>MultilingualTextValue</b>
+</td></tr></tbody></table>
+</div>
+<div class="mw-heading mw-heading3"><h3 id="Quantities" data-mw-thread-id="h-Quantities-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Quantities-Datatypes_and_their_Values"></span>Quantities<span data-mw-comment-end="h-Quantities-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=22" title="Edit section: Quantities"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/quantity</li>
+<li><a href="#Value">Value</a>: QuantityValue</li></ul>
+<p>A QuantityValue represents a <a href="#decimal">decimal</a> number, together with information about the uncertainty interval of this number, and a unit of measurement. The <a href="#decimal">decimal</a> number is represented as a string using the lexical form of XML Schema <i>decimal</i>. The attributes are:
+</p>
+<ul><li>amount: <a href="#decimal">decimal</a> the quantity's main value</li>
+<li>lowerBound: <a href="#decimal">decimal</a> the quantity's lower bound (optional)</li>
+<li>upperBound: <a href="#decimal">decimal</a> the quantity's upper bound (optional)</li>
+<li>unit: <a href="#IRI">IRI</a> or "1" to indicate the unit "unit".</li></ul>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>QuantityValue</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'QuantityValue(' <b>decimal</b> [<b>decimal</b>] [<b>decimal</b>] <b>IRI</b> ')'
+</td></tr></tbody></table>
+</div>
+<p>The given <i>amount</i> is interpreted as the main value of the QuantityValue. The optional <i>lowerBound</i> and <i>upperBound</i> specify how far the true value of the represented quantity could deviate from the <i>number</i> in positive or negative direction. This allows to capture expressions such as <i>12300 +/- 50</i>. For many practical purposes, only the number might be used (e.g., for sorting and query answering), but the variance can provide valuable information for presentation (e.g., for selecting reasonable precision in unit conversions). If the lower and upper bound are not present, the uncertainty is unspecified.
+</p><p>The exact interpretation of the uncertainty interval provided with <i>lowerBound</i> and <i>upperBound</i> is unspecified. Depending on context, it may represent hard limits on the value, or the interval may just describe the 66 or 95 percentile interval of a normal distribution. 
+</p><p>
+In the Wikibase UI, quantities and their bounds are input together as a string: for instance, "4~" will give an amount of 4, a lower bound of 3.5 and an upper bound of 4.5. Strings must currently match the following regular expression to be parsed in this way: </p><div class="mw-highlight mw-highlight-lang-text mw-content-ltr" dir="ltr"><pre><span></span>^\s*((?:[-+]\s*)?(?:[\d,]+\.\d*|\.?\d+)(?:[eE][-+]?\d+)?)\s*(?:([~!])|(?:\+/?-|±)\s*((?:[-+]\s*)?(?:[\d,]+\.\d*|\.?\d+)(?:[eE][-+]?\d+)?)|)\s*$
+</pre></div> 
+<p>The <i>unit</i> specifies a physical quantity that the number refers to. It is represented as a <a href="#IRI">IRI</a> rather than as a <a href="#String">String</a>, since a string like "m" might represent different units in different contexts. The value should be meaningful independently of the declaration information for its <a href="#Property">Property</a> (from which more details about units could possibly be obtained), hence the unit is a full <a href="#IRI">IRI</a>. In practice, this <a href="#IRI">IRI</a> might be the IRI refering to an <i>ItemDescription</i> representing the desired unit, or be taken from a standard vocabulary for units, like QUDT<a rel="nofollow" class="external autonumber" href="http://qudt.org/1.1/vocab/unit">[1]</a>.
+</p>
+<div style="font-size: 90%; color: var(--color-base, #202122); background: var(--background-color-warning-subtle, #fdf2d5); padding: 1ex; border: #940 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Editorial Note:</b> It is not clear yet how exactly the variance information is to be used to ensure "reasonable" unit conversion and display. There are special cases such as English body sizes that may need special treatment ("5 feet, 3 inches") but this should not affect the data model. Describe plans for unit conversion
+</p>
+</div>
+<div class="mw-heading mw-heading3"><h3 id="Dates_and_times" data-mw-thread-id="h-Dates_and_times-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Dates_and_times-Datatypes_and_their_Values"></span>Dates and times<span data-mw-comment-end="h-Dates_and_times-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=23" title="Edit section: Dates and times"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/datatype_time</li>
+<li><a href="#Value">Value</a>: TimeValue</li></ul>
+<p><s>The calendar model used for <i>saving</i> the data is always the proleptic Gregorian calendar according to ISO 8601, but the Calendar model used for <i>displaying</i> the data is given by the saved Calendar model.</s><sup id="cite_ref-T88437_2-0" class="reference"><a href="#cite_note-T88437-2"><span class="cite-bracket">[</span>2<span class="cite-bracket">]</span></a></sup>
+</p><p>A TimeValue represents a point in time that might be imprecise (e.g., if only a year is given). For practical purposes (e.g., sorting values), the value will often be interpreted to be exact by filling the missing positions with more details. The structure of values of this type is as follows:
+</p>
+<ul><li>time: timestamp in a format resembling ISO 8601, the year always being signed and having between 1 and 16 digits, e.g. +2013-01-01T00:00:00Z. The month, day and time will be set to zero if they are unknown; the <i>precision</i> field should be relied on to determine which time digits are meaningful. The Z is meaningless and the time zone should be determined from the <i>timezone</i> field. For the purposes of this description, the timestamp uses historical numbering where the year 0 is undefined and the year 1 BCE is represented as -0001; note, however, that this is not the case in all serializations (see <a href="/wiki/Wikibase/DataModel/JSON#time" title="Wikibase/DataModel/JSON">JSON</a> and <a href="/wiki/Wikibase/Indexing/RDF_Dump_Format#Time" title="Wikibase/Indexing/RDF Dump Format">RDF</a> for details).</li>
+<li>precision: shortint. The numbers have the following meaning: 0 - billion years, 1 - hundred million years, ..., 6 - millennium, 7 - century, 8 - decade, 9 - year, 10 - month, 11 - day, <s>12 - hour, 13 - minute, 14 - second</s><sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span class="cite-bracket">[</span>3<span class="cite-bracket">]</span></a></sup>. Note that centuries and millennia do not strictly align with the most significant digits of the timestamp: for positive timestamps, centuries and millennia begin on years 1 modulo 100/1000 and end on years 0 modulo 100/1000, and vice versa for negative timestamps. For example, the 18th century begins in the year 1701 and ends in the year 1800, and the 2nd millennium BCE begins in the year -2000 (2000 BCE) and ends in the year -1001 (1001 BCE). (On the other hand, decades align with the most significant digits: the 1980s begin in 1980 and end in 1989.)</li>
+<li>after: integer. If the date is uncertain, how many units before the given time could it be? the unit is given by the precision.</li>
+<li>before: integer. If the date is uncertain, how many units after the given time could it be? the unit is given by the precision.</li>
+<li>timezone: signed integer. Timezone information as an offset from UTC in minutes. For dates before the modern implementation of UTC in 1972, this is the offset of the time zone from <a href="https://en.wikipedia.org/wiki/Universal_time" class="extiw" title="w:Universal time">universal time</a>. Before the implementation of time zones, this is the longitude of the place of the event, expressed in the range −180° to 180° (positive is east of Greenwich), multiplied by 4 to convert to minutes.</li>
+<li>calendarmodel: URI identifying the calendar model <s>that should be used to <i>display</i> this time value. Note that time is always <i>saved</i> in proleptic Gregorian, this URI states how the value should be displayed</s><sup id="cite_ref-T88437_2-1" class="reference"><a href="#cite_note-T88437-2"><span class="cite-bracket">[</span>2<span class="cite-bracket">]</span></a></sup>.</li></ul>
+<p><s>Interpretation of dates follow ISO 8601:</s><sup id="cite_ref-4" class="reference"><a href="#cite_note-4"><span class="cite-bracket">[</span>4<span class="cite-bracket">]</span></a></sup>
+</p>
+<ul><li>Presently dates refer to the (possibly proleptic) Gregorian or Julian calendar, as specified by the <i>calendarmodel</i> field.<sup id="cite_ref-proleptic_5-0" class="reference"><a href="#cite_note-proleptic-5"><span class="cite-bracket">[</span>5<span class="cite-bracket">]</span></a></sup> Any future extension to other calendars is likely to require a drastically different format for the <i>time</i> field when used with such other calendars.</li>
+<li><s>There is a year number 0 that refers to the year that is commonly called 1 BC(E).</s></li></ul>
+<div class="mw-heading mw-heading4"><h4 id="Examples" data-mw-thread-id="h-Examples-Dates_and_times"><span data-mw-comment-start="" id="h-Examples-Dates_and_times"></span>Examples<span data-mw-comment-end="h-Examples-Dates_and_times"></span></h4><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=24" title="Edit section: Examples"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>If you have something like "between 1846 and 1855", you can use the "before" and
+"after" fields of the time value:
+</p>
+<pre>  time: "+00000001850-00-00T00:00:00Z",
+  precision: 9,
+  before: 4,
+  after: 5
+</pre>
+<p>This means the "main" value is 1850, given as a year, with a lower bound four
+years before and an upper bound 5 years after the "main" value (before and after
+are given in the unit specified by the precision value). The "main" value is
+what is going to be displayed per default; it will also be used for sorting
+query results (once we have queries).
+</p><p>This is a bit complicated, but should allow you to actually represent uncertain
+dates. We made it so you can be precise about the uncertainty.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Web_resources_and_other_IRIs" data-mw-thread-id="h-Web_resources_and_other_IRIs-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Web_resources_and_other_IRIs-Datatypes_and_their_Values"></span>Web resources and other IRIs<span data-mw-comment-end="h-Web_resources_and_other_IRIs-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=25" title="Edit section: Web resources and other IRIs"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/datatype_iri</li>
+<li><a href="#Value">Value</a>: IriValue</li></ul>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>IriValue</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'IriValue(' <b>IRI</b> ')'
+</td></tr></tbody></table>
+</div>
+<p>An IriValue represents an arbitrary <a href="#IRI">IRI</a> that follows <a href="https://datatracker.ietf.org/doc/html/rfc3987" class="extiw" title="rfc:3987">RFC<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r7217505"><span class="nowrap">&nbsp;</span>3987</a>. If the protocol part is supported by MediaWiki, a hyperlink might be displayed, but the <a href="#Datatype">Datatype</a> as such does not require such protocols, and generally it is not required that all IRIs work as URLs. For example, the "tel:" protocol (<a href="https://datatracker.ietf.org/doc/html/rfc3966" class="extiw" title="rfc:3966">RFC<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r7217505"><span class="nowrap">&nbsp;</span>3966</a>) might also be allowed.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Geographic_locations" data-mw-thread-id="h-Geographic_locations-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Geographic_locations-Datatypes_and_their_Values"></span>Geographic locations<span data-mw-comment-end="h-Geographic_locations-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=26" title="Edit section: Geographic locations"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/datatype_geocoords</li>
+<li><a href="#Value">Value</a>: GlobeCoordinateValue</li></ul>
+<p>A coordinate is represented as:
+</p>
+<ul><li>a latitude (<a href="#decimal">decimal</a>, no default, 9 digits after the dot and two before, signed)</li>
+<li>a longitude (<a href="#decimal">decimal</a>, no default, 9 digits after the dot and three before, signed)</li>
+<li>a precision (<a href="#decimal">decimal</a>, representing degrees of distance, defaults in the formatter to 1/3600 if the value is not a finite value greater 0 and defaults in the UI to a guessed value, 9 digits after the dot and three before, unsigned, used to save the precision of the representation)</li>
+<li>a coordinate system or globe (identified by an URI, defaults to <a class="external free" data-mw-original-href="http://wikidata.org/entity/Q2" href="https://wikidata.org/entity/Q2">http://wikidata.org/entity/Q2</a>, i.e. <a href="https://www.wikidata.org/wiki/Q2" class="extiw" title="d:Q2">Q2</a>, the Earth, which means WGS84). Any such geodesic system must imply the globe for which it is used (and should be displayed as simply the globe in most cases).</li></ul>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>GlobeCoordinateValue</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'GlobeCoordinateValue(' <b>decimal</b> <b>decimal</b> <b>decimal</b> <b>URI</b> ')'
+</td></tr></tbody></table>
+</div>
+<div class="mw-heading mw-heading3"><h3 id="Geographic_shapes" data-mw-thread-id="h-Geographic_shapes-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Geographic_shapes-Datatypes_and_their_Values"></span>Geographic shapes<span data-mw-comment-end="h-Geographic_shapes-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=27" title="Edit section: Geographic shapes"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/datatype_geoshapes</li>
+<li><a href="#Value">Value</a>: GeoShapeValue</li></ul>
+<div style="font-size: 90%; color: var(--color-base, #202122); background: var(--background-color-warning-subtle, #fdf2d5); padding: 1ex; border: #940 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Editorial Note:</b> This needs to be specified. It is likely that Wikibase will simply refer to an existing standard for representing geographic shapes here, e.g., <a href="https://en.wikipedia.org/wiki/Well-known_text" class="extiw" title="en:Well-known text">WKT</a> or GeoJSON.
+</p>
+</div>
+<div class="mw-heading mw-heading3"><h3 id="Wikidata_items" data-mw-thread-id="h-Wikidata_items-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Wikidata_items-Datatypes_and_their_Values"></span>Wikidata items<span data-mw-comment-end="h-Wikidata_items-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=28" title="Edit section: Wikidata items"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/datatype_items</li>
+<li><a href="#Value">Value</a>: <a href="#Item">Item</a></li></ul>
+<p>Items in Wikibase are represented by <a href="#Item">Item</a> as explained in the <a href="#Values">section on Values above</a>. While not subtypes of DataValue, we list them here to define the IRI for the respective datatype. It is not planned to have user-defined properties for other types of Entities for now.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Wikidata_properties" data-mw-thread-id="h-Wikidata_properties-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Wikidata_properties-Datatypes_and_their_Values"></span>Wikidata properties<span data-mw-comment-end="h-Wikidata_properties-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=29" title="Edit section: Wikidata properties"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/datatype_properties</li>
+<li><a href="#Value">Value</a>: <a href="#Item">Property</a></li></ul>
+<p><a href="#Item">Item</a> attributes in Wikibase are represented by <a href="#Property">Properties</a> as explained in the <a href="#Values">section on Values above</a>. While not subtypes of DataValue, we list them here to define the IRI for the respective datatype. It is not planned to have user-defined properties for other types of Entities for now.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Media" data-mw-thread-id="h-Media-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Media-Datatypes_and_their_Values"></span>Media<span data-mw-comment-end="h-Media-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=30" title="Edit section: Media"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/datatype_media</li>
+<li><a href="#Value">Value</a>: MediaValue</li></ul>
+<div style="font-size: 90%; color: var(--color-base, #202122); background: var(--background-color-warning-subtle, #fdf2d5); padding: 1ex; border: #940 dotted; margin-top: 1ex; margin-bottom: 1ex;">
+<p><b>Editorial Note:</b> Media is represented by a dedicated <a href="#Datatype">Datatype</a> since Media items should be handled in a specific way. Moreover, it might be useful to have additional metadata for Media objects. To be defined.
+</p>
+</div>
+<div class="mw-heading mw-heading3"><h3 id="Strings_that_are_not_translated" data-mw-thread-id="h-Strings_that_are_not_translated-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Strings_that_are_not_translated-Datatypes_and_their_Values"></span>Strings that are not translated<span data-mw-comment-end="h-Strings_that_are_not_translated-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=31" title="Edit section: Strings that are not translated"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: <a rel="nofollow" class="external free" href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></li>
+<li><a href="#Value">Value</a>: StringValue</li></ul>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>StringValue</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'StringValue(' <b>String</b> ')'
+</td></tr></tbody></table>
+</div>
+<p>Strings are represented by StringValues. All strings are considered as sequences of Unicode glyphs. As opposed to multilingual and monolingual texts, strings do not contain any language information, and are typically used directly only for strings that do not belong to a language, e.g., the post code of a UK city.
+</p><p>Note: Wikibase enforces that strings are at least one character long and disallows strings that match the regular expression <code>^\s|[\v\t]|\s$</code> (disallowing any strings that start or end with whitespace or contain vertical whitespace such as newlines).
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Monolingual_texts" data-mw-thread-id="h-Monolingual_texts-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Monolingual_texts-Datatypes_and_their_Values"></span>Monolingual texts<span data-mw-comment-end="h-Monolingual_texts-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=32" title="Edit section: Monolingual texts"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/datatype_monotext</li>
+<li><a href="#Value">Value</a>: MonolingualTextValue</li></ul>
+<p>MonolingualTextValues are Values that represent a phrase in some language. In particular, their content could also be pronounced (and be associated with pronunciation information or audio versions). The attributes of MonolingualTextValues are:
+</p>
+<ul><li>language: <a href="#UserLanguageCode">UserLanguageCode</a></li>
+<li>value: <a href="#String">String</a></li></ul>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>MonolingualTextValue</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'MonolingualTextValue(' <b>UserLanguageCode</b> <b>String</b> ')'
+</td></tr></tbody></table>
+</div>
+<div class="mw-heading mw-heading3"><h3 id="Multilingual_texts" data-mw-thread-id="h-Multilingual_texts-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Multilingual_texts-Datatypes_and_their_Values"></span>Multilingual texts<span data-mw-comment-end="h-Multilingual_texts-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=33" title="Edit section: Multilingual texts"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/datatype_multitext</li>
+<li><a href="#Value">Value</a>: MultilingualTextValue</li></ul>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>MultilingualTextValue</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'MultilingualTextValue(' {<b>MonolingualTextValue</b>} ')'
+</td></tr></tbody></table>
+</div>
+<p>MultilingualTextValues are Values that represent a phrase in many languages. This is different from representing individual Values for each language, since it also captures the information that all of the Values are direct translations (otherwise, if a <a href="#Property">Property</a> has multiple MonolingualTextValues in each language, it would not be clear which values belong together). MultilingualTextValues store a list of MonolingualTextValues, but at most one for each <a href="#UserLanguageCode">UserLanguageCode</a>.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Multilingual_multi-texts" data-mw-thread-id="h-Multilingual_multi-texts-Datatypes_and_their_Values"><span data-mw-comment-start="" id="h-Multilingual_multi-texts-Datatypes_and_their_Values"></span>Multilingual multi-texts<span data-mw-comment-end="h-Multilingual_multi-texts-Datatypes_and_their_Values"></span></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=34" title="Edit section: Multilingual multi-texts"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="#Datatype">Datatype</a> <a href="#IRI">IRI</a>: http://wikidata.org/vocabulary/datatype_multimultuitext</li>
+<li><a href="#Value">Value</a>: MultilingualMultiTextValue</li></ul>
+<div style="font-size: 90%; background: #EFE; padding: 1ex; border: #094 dotted; margin-top: 1ex; margin-bottom: 1ex; padding: 1em 2em;">
+<table>
+
+
+<tbody><tr>
+<td style="text-align: right; vertical-align: top;"><code><b>MonolingualMultiTextValue</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'MonolingualTextValue('  UserLanguageCode {String} ')'
+</td></tr>
+<tr>
+<td style="text-align: right; vertical-align: top;"><code><b>MultilingualMultiTextValue</b>&nbsp;:=&nbsp;</code>
+</td>
+<td>'MultilingualMultiTextValue(' {<b>MonolingualMultiTextValue</b>} ')'
+</td></tr></tbody></table>
+</div>
+<p>MultilingualMultiTextValue are Values that represent a list of phrases in several languages. There is <i>no</i> implied relationship between the list of phrases in the different languages. MultilingualMultiTextValue store a list of MonolingualMultiTextValues.
+</p>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="Serializations" data-mw-thread-id="h-Serializations"><span data-mw-comment-start="" id="h-Serializations"></span>Serializations<span data-mw-comment-end="h-Serializations"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=35" title="Edit section: Serializations"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="/wiki/Wikibase/DataModel/JSON" title="Wikibase/DataModel/JSON">Wikibase/DataModel/JSON</a></li>
+<li><a href="/wiki/Wikibase/Indexing/RDF_Dump_Format" title="Wikibase/Indexing/RDF Dump Format">Wikibase/Indexing/RDF Dump Format</a></li></ul>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="Notes" data-mw-thread-id="h-Notes"><span data-mw-comment-start="" id="h-Notes"></span>Notes<span data-mw-comment-end="h-Notes"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=36" title="Edit section: Notes"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text"><a class="external free" href="https://www.wikidata.org/wiki/Special:ListDatatypes">https://www.wikidata.org/wiki/Special:ListDatatypes</a></span>
+</li>
+<li id="cite_note-T88437-2"><span class="mw-cite-backlink">↑ <sup><a href="#cite_ref-T88437_2-0">2.0</a></sup> <sup><a href="#cite_ref-T88437_2-1">2.1</a></sup></span> <span class="reference-text"><a href="https://phabricator.wikimedia.org/T88437" class="extiw" title="phabricator:T88437">phabricator:T88437</a></span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><a href="#cite_ref-3">↑</a></span> <span class="reference-text">Wikidata only accepts precisions up to 11. <a href="https://phabricator.wikimedia.org/T57755" class="extiw" title="phabricator:T57755">phabricator:T57755</a></span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><a href="#cite_ref-4">↑</a></span> <span class="reference-text"><a href="https://phabricator.wikimedia.org/T99674" class="extiw" title="phabricator:T99674">T99674</a></span>
+</li>
+<li id="cite_note-proleptic-5"><span class="mw-cite-backlink"><a href="#cite_ref-proleptic_5-0">↑</a></span> <span class="reference-text">A proleptic calendar is a a calendar used for dates before the introduction of the calendar by applying the rules of the calendar in reverse from dates that are known with certainty. In the case of the Julian calendar, it was introduced in 45 BCE but was implemented incorrectly until 1 March 4 CE, and not enough records survive to convert dates in this range exactly. Dates in this range should be stated in the proleptic Julian calendar with appropriate precision rather than the Julian calendar as observed in Rome at that time. Gregorian dates earlier than 15 October 1582 and Julian dates earlier than 1 March 4 CE are proleptic. </span>
+</li>
+</ol></div>
+<div class="mw-heading mw-heading2 ext-discussiontools-init-section"><h2 id="See_also" data-mw-thread-id="h-See_also"><span data-mw-comment-start="" id="h-See_also"></span>See also<span data-mw-comment-end="h-See_also"></span></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Wikibase/DataModel&amp;action=edit&amp;section=37" title="Edit section: See also"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="https://www.wikidata.org/wiki/Wikidata:Glossary" class="extiw" title="d:Wikidata:Glossary">Wikidata Glossary</a></li>
+<li><a href="/wiki/Wikibase/DataModel/Primer" title="Wikibase/DataModel/Primer">Wikibase/DataModel/Primer</a></li>
+<li><a href="/wiki/Wikibase/DataModel/DomainConceptsMapping" title="Wikibase/DataModel/DomainConceptsMapping">[WIP] Mapping of functional traits to Wikibase Domain concepts</a></li></ul>
+<!-- 
+NewPP limit report
+Parsed by mw‐web.codfw.main‐dcc779647‐7h5jl
+Cached time: 20260520084559
+Cache expiry: 2592000
+Reduced expiry: false
+Complications: [prevent‐selective‐update, show‐toc]
+CPU time usage: 0.180 seconds
+Real time usage: 0.229 seconds
+Preprocessor visited node count: 1236/1000000
+Revision size: 57084/2097152 bytes
+Post‐expand include size: 25566/2097152 bytes
+Template argument size: 14135/2097152 bytes
+Highest expansion depth: 11/100
+Expensive parser function count: 1/500
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 5137/5000000 bytes
+Lua time usage: 0.016/10.000 seconds
+Lua memory usage: 1277385/52428800 bytes
+Number of Wikibase entities loaded: 0/500
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   79.421      1 -total
+ 26.67%   21.180      1 Template:Ll
+ 22.59%   17.938      2 Template:Translatable
+ 22.36%   17.759     18 Template:Anchor
+ 16.43%   13.047      4 Template:IETF_RFC
+ 15.58%   12.373      1 Template:Pagelang
+ 14.47%   11.491      4 Template:Nbsp
+ 12.48%    9.912     17 Wikibase/DataModel/BNFtable
+  6.35%    5.039     31 Wikibase/DataModel/BNFdef
+  3.72%    2.958      4 Wikibase/DataModel/Example
+-->
+
+<!-- Render ID 52d04721-5428-11f1-9239-5ffb10919ad3 -->
+
+<!-- Saved in parser cache with key mediawikiwiki:pcache:210425:|#|:idhash:canonical and timestamp 20260520084559 and revision id 8332249. Rendering was triggered because: page_view
+ -->
+</div><!--
+Post‐processing cache key mediawikiwiki:postproc‐pcache:210425:|#|:idhash:injectTOC=0!postproc=1!skin=vector‐2022, generated at 20260520084559
+--><noscript><img src="https://www.mediawiki.org/wiki/Special:CentralAutoLogin/start?useformat=desktop&amp;type=1x1&amp;usesul3=1" alt="" width="1" height="1" style="border: none; position: absolute;"></noscript>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://www.mediawiki.org/w/index.php?title=Wikibase/DataModel&amp;oldid=8332249">https://www.mediawiki.org/w/index.php?title=Wikibase/DataModel&amp;oldid=8332249</a>"</div></div>
+					<div id="catlinks" class="catlinks" data-mw-interface=""><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="/wiki/Category:Wikibase" title="Category:Wikibase">Wikibase</a></li></ul></div></div>
+				</div>
+			</main>
+			
+		</div>
+		<div class="mw-footer-container">
+			
+<footer id="footer" class="mw-footer" >
+	<ul id="footer-info">
+	<li id="footer-info-lastmod"> This page was last edited on 8 April 2026, at 20:03.</li>
+	<li id="footer-info-copyright">Text is available under the <a rel="nofollow" class="external text" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike License</a>; additional terms may apply. Text in <a class="external text" href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents">the Help: namespace</a> is available under the <a rel="nofollow" class="external text" href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0 License</a>.
+By using this site, you agree to the <a class="external text" data-mw-original-href="//foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use" href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use">Terms of Use</a> and <a class="external text" data-mw-original-href="//foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy" href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">Privacy Policy</a>.</li>
+</ul>
+
+	<ul id="footer-places">
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Project:About">About mediawiki.org</a></li>
+	<li id="footer-places-disclaimers"><a href="/wiki/Project:General_disclaimer">Disclaimers</a></li>
+	<li id="footer-places-wm-codeofconduct"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Code_of_Conduct">Code of Conduct</a></li>
+	<li id="footer-places-developers"><a href="https://developer.wikimedia.org">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/www.mediawiki.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement">Cookie statement</a></li>
+	<li id="footer-places-mobileview"><a href="//www.mediawiki.org/w/index.php?title=Wikibase/DataModel&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+</ul>
+
+	<ul id="footer-icons" class="noprint">
+	<li id="footer-copyrightico"><a href="https://www.wikimedia.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/static/images/footer/wikimedia-button.svg" width="84" height="29"><img src="/static/images/footer/wikimedia.svg" width="25" height="25" alt="Wikimedia Foundation" lang="en" loading="lazy"></picture></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/w/resources/assets/poweredby_mediawiki.svg" width="88" height="31"><img src="/w/resources/assets/mediawiki_compact.svg" alt="Powered by MediaWiki" lang="en" width="25" height="25" loading="lazy"></picture></a></li>
+</ul>
+
+</footer>
+
+		</div>
+	</div> 
+</div> 
+<div class="vector-header-container vector-sticky-header-container no-font-mode-scale">
+	<div id="vector-sticky-header" class="vector-sticky-header">
+		<div class="vector-sticky-header-start">
+			<div class="vector-sticky-header-icon-start vector-button-flush-left" aria-hidden="true">
+				<button class="cdx-button cdx-button--weight-quiet cdx-button--icon-only vector-sticky-header-search-toggle" tabindex="-1" data-event-name="ui.vector-sticky-search-form.icon"><span class="vector-icon mw-ui-icon-search mw-ui-icon-wikimedia-search"></span>
+
+<span>Search</span>
+			</button>
+		</div>
+			
+		<div role="search" class="vector-search-box-vue  vector-search-box-show-thumbnail vector-search-box">
+			<div class="vector-typeahead-search-container">
+				<div class="cdx-typeahead-search cdx-typeahead-search--show-thumbnail">
+					<form action="/w/index.php" id="vector-sticky-search-form" class="cdx-search-input cdx-search-input--has-end-button">
+						<div  class="cdx-search-input__input-wrapper"  data-search-loc="header-moved">
+							<div class="cdx-text-input cdx-text-input--has-start-icon">
+								<input
+									class="cdx-text-input__input mw-searchInput" autocomplete="off"
+									
+									type="search" name="search" placeholder="Search mediawiki.org">
+								<span class="cdx-text-input__icon cdx-text-input__start-icon"></span>
+							</div>
+							<input type="hidden" name="title" value="Special:Search">
+						</div>
+						<button class="cdx-button cdx-search-input__end-button">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="vector-sticky-header-context-bar">
+				<nav aria-label="Contents" class="vector-toc-landmark">
+						
+					<div id="vector-sticky-header-toc" class="vector-dropdown mw-portlet mw-portlet-sticky-header-toc vector-sticky-header-toc vector-button-flush-left"  >
+						<input type="checkbox" id="vector-sticky-header-toc-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-sticky-header-toc" class="vector-dropdown-checkbox "  aria-label="Toggle the table of contents"  >
+						<label id="vector-sticky-header-toc-label" for="vector-sticky-header-toc-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-listBullet mw-ui-icon-wikimedia-listBullet"></span>
+
+<span class="vector-dropdown-label-text">Toggle the table of contents</span>
+						</label>
+						<div class="vector-dropdown-content">
+					
+						<div id="vector-sticky-header-toc-unpinned-container" class="vector-unpinned-container">
+						</div>
+					
+						</div>
+					</div>
+			</nav>
+				<div class="vector-sticky-header-context-bar-primary" aria-hidden="true" ><span lang="en" dir="ltr"><span class="mw-page-title-main">Wikibase/DataModel</span></span></div>
+			</div>
+		</div>
+		<div class="vector-sticky-header-end" aria-hidden="true">
+			<div class="vector-sticky-header-icons">
+				<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-talk-sticky-header" tabindex="-1" data-event-name="talk-sticky-header"><span class="vector-icon mw-ui-icon-speechBubbles mw-ui-icon-wikimedia-speechBubbles"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-subject-sticky-header" tabindex="-1" data-event-name="subject-sticky-header"><span class="vector-icon mw-ui-icon-article mw-ui-icon-wikimedia-article"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-history-sticky-header" tabindex="-1" data-event-name="history-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-history mw-ui-icon-wikimedia-wikimedia-history"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only mw-watchlink" id="ca-watchstar-sticky-header" tabindex="-1" data-event-name="watch-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-star mw-ui-icon-wikimedia-wikimedia-star"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-edit-sticky-header" tabindex="-1" data-event-name="wikitext-edit-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-wikiText mw-ui-icon-wikimedia-wikimedia-wikiText"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-ve-edit-sticky-header" tabindex="-1" data-event-name="ve-edit-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-edit mw-ui-icon-wikimedia-wikimedia-edit"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-viewsource-sticky-header" tabindex="-1" data-event-name="ve-edit-protected-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-editLock mw-ui-icon-wikimedia-wikimedia-editLock"></span>
+
+<span></span>
+			</a>
+		</div>
+			<div class="vector-sticky-header-buttons">
+				<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--action-progressive" id="ca-addsection-sticky-header" tabindex="-1" data-event-name="addsection-sticky-header"><span class="vector-icon mw-ui-icon-speechBubbleAdd-progressive mw-ui-icon-wikimedia-speechBubbleAdd-progressive"></span>
+
+<span>Add topic</span>
+			</a>
+		</div>
+			<div class="vector-sticky-header-icon-end">
+				<div class="vector-user-links">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="mw-portlet mw-portlet-dock-bottom emptyPortlet" id="p-dock-bottom">
+	<ul>
+		
+	</ul>
+</div>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgHostname":"mw-web.codfw.main-5474646477-gbljr","wgBackendResponseTime":136,"wgDiscussionToolsPageThreads":[{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-History","replies":[]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-Goals_and_requirements","replies":[]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-Overview_of_the_data_model","replies":[]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-How_to_read_this_document","replies":[{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Defining_data_structures_in_UML-How_to_read_this_document","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Wikidata_Object_Notation-How_to_read_this_document","replies":[]}]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-Values","replies":[{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Items-Values","replies":[{"headingLevel":4,"name":"h-","type":"heading","level":0,"id":"h-Sitelinks-Items","replies":[]}]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Properties-Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Datatypes-Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-DataValues-Values","replies":[]}]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-Snaks","replies":[{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-PropertyValueSnak-Snaks","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-PropertyNoValueSnak-Snaks","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-PropertySomeValueSnak-Snaks","replies":[]}]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-Statements","replies":[{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Ranks_of_Statements-Statements","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-ReferenceRecords-Statements","replies":[]}]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-EntityDescriptions_of_Items_and_Properties","replies":[]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-Datatypes_and_their_Values","replies":[{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Quantities-Datatypes_and_their_Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Dates_and_times-Datatypes_and_their_Values","replies":[{"headingLevel":4,"name":"h-","type":"heading","level":0,"id":"h-Examples-Dates_and_times","replies":[]}]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Web_resources_and_other_IRIs-Datatypes_and_their_Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Geographic_locations-Datatypes_and_their_Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Geographic_shapes-Datatypes_and_their_Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Wikidata_items-Datatypes_and_their_Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Wikidata_properties-Datatypes_and_their_Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Media-Datatypes_and_their_Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Strings_that_are_not_translated-Datatypes_and_their_Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Monolingual_texts-Datatypes_and_their_Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Multilingual_texts-Datatypes_and_their_Values","replies":[]},{"headingLevel":3,"name":"h-","type":"heading","level":0,"id":"h-Multilingual_multi-texts-Datatypes_and_their_Values","replies":[]}]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-Serializations","replies":[]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-Notes","replies":[]},{"headingLevel":2,"name":"h-","type":"heading","level":0,"id":"h-See_also","replies":[]}],"wgPageParseReport":{"limitreport":{"cputime":"0.180","walltime":"0.229","ppvisitednodes":{"value":1236,"limit":1000000},"revisionsize":{"value":57084,"limit":2097152},"postexpandincludesize":{"value":25566,"limit":2097152},"templateargumentsize":{"value":14135,"limit":2097152},"expansiondepth":{"value":11,"limit":100},"expensivefunctioncount":{"value":1,"limit":500},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":5137,"limit":5000000},"entityaccesscount":{"value":0,"limit":500},"timingprofile":["100.00%   79.421      1 -total"," 26.67%   21.180      1 Template:Ll"," 22.59%   17.938      2 Template:Translatable"," 22.36%   17.759     18 Template:Anchor"," 16.43%   13.047      4 Template:IETF_RFC"," 15.58%   12.373      1 Template:Pagelang"," 14.47%   11.491      4 Template:Nbsp"," 12.48%    9.912     17 Wikibase/DataModel/BNFtable","  6.35%    5.039     31 Wikibase/DataModel/BNFdef","  3.72%    2.958      4 Wikibase/DataModel/Example"]},"scribunto":{"limitreport-timeusage":{"value":"0.016","limit":"10.000"},"limitreport-memusage":{"value":1277385,"limit":52428800}},"cachereport":{"origin":"mw-web.codfw.main-dcc779647-7h5jl","timestamp":"20260520084559","ttl":2592000,"transientcontent":false},"discussiontools":{"limitreport-timeusage":"0.040"}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"Wikibase\/DataModel","url":"https:\/\/www.mediawiki.org\/wiki\/Wikibase\/DataModel","sameAs":"http:\/\/www.wikidata.org\/entity\/Q115341973","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q115341973","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2014-04-11T15:27:04Z","dateModified":"2026-04-08T20:03:19Z","image":"https:\/\/upload.wikimedia.org\/wikipedia\/commons\/3\/39\/Wikidata_model_Elements_UML.png?utm_source=www.mediawiki.org&utm_campaign=index&utm_content=original","headline":"data model of the Wikibase software"}</script>
+</body>
+</html>

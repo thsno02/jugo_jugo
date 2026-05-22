@@ -1,0 +1,26 @@
+{
+  "bytes": 2648385,
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-05-21T13:21:37.674485+00:00",
+  "final_url": "https://docs.langchain.com/oss/python/langchain/long-term-memory",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://docs.langchain.com/oss/python/langchain/long-term-memory",
+  "sha256": "02c5b36cfc8ee6857baba5dc407bcc8dd887b5f0aebc0ac0131f4a65623d7565",
+  "source": {
+    "id": "langchain-long-term-memory-docs",
+    "priority": "p0",
+    "tags": [
+      "documentation",
+      "agent_memory",
+      "langgraph",
+      "output:agent_memory_comparison"
+    ],
+    "title": "LangChain long-term memory documentation",
+    "type": "webpage",
+    "url": "https://docs.langchain.com/oss/python/langchain/long-term-memory"
+  },
+  "text_sha256": "8912fa0445f789ed50ccf7eb1aef8c59bc947ba93729679f3ae80d3611959f0a",
+  "transport": "requests",
+  "transport_warning": null
+}
