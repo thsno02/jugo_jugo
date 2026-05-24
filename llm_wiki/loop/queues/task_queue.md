@@ -11,7 +11,15 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0045_card_drafting_candidate_6`
+
+- `role`: `card_drafting_worker`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases`
+- `candidate`: `候选 6`
+- `source_evidence`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23`
+- `dispatch`: `llm_wiki/loop/iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/dispatch_request.json`
+- `lifecycle`: one-shot worker；完成后关闭，不保留 alive 上下文。
+- `status`: ready_to_dispatch
 
 ## 待办（pending）
 

@@ -10,7 +10,7 @@
 
 当前状态：已有 11 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1、5 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 5 知识卡 `人提问，LLM 维护` 已采纳为 `llm-wiki-human-llm-role-division`。第一轮 source mining 只剩候选 6 未进入 drafting；候选 6 是应用场景清单，原子性较弱，下一步要判断是作为清单型原子事实推进，还是记录 defer 并回到 source mining 选择新本地来源。当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 5 知识卡 `人提问，LLM 维护` 已采纳为 `llm-wiki-human-llm-role-division`。第一轮 source mining 只剩候选 6，已决定作为清单型原子事实推进，任务包明确禁止扩写成场景报告、用例体系、hub、cluster 或 topic coverage；候选 6 drafting 任务包已通过新版 scope 校验并渲染 dispatch。当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -107,6 +107,7 @@
 - 2026-05-25：候选 5 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。`read_log.md` 记录一次 skill 文件读取，仅用于流程约束，不作为事实证据。
 - 2026-05-25：创建 `iteration_20260525_0043_card_adoption_human_llm_roles`，指定 `card_id` 为 `llm-wiki-human-llm-role-division`，目标 KB 路径不存在，任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 5 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第十一张 KB 卡采纳完成。`read_log.md` 明确未读取任务包允许输入之外的文件。
+- 2026-05-25：选择候选 6 进入 drafting，原因是它可被收窄为“该来源列举了一组可能适用场景”这一清单型原子事实，且是第一轮 source mining 中最后一个未处理候选；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0044_card_drafting_llm_wiki_use_cases`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23`，任务包通过新版 `validate_scope.py`。
 - 2026-05-25：创建 `iteration_20260525_0043_card_adoption_human_llm_roles`，指定 `card_id` 为 `llm-wiki-human-llm-role-division`，目标 KB 路径不存在，任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 
 ## 关键指标（key_metrics）
@@ -351,6 +352,9 @@
 - [候选 5 采纳决策](../decisions/20260525-0725-card-adoption-accepted-candidate-5.md)
 - [已采纳知识卡：人提问，LLM 维护](../../kb/cards/llm-wiki-human-llm-role-division.md)
 - [已采纳 provenance：人提问，LLM 维护](../../kb/provenance/llm-wiki-human-llm-role-division.md)
+- [候选 6 选择决策](../decisions/20260525-0727-select-candidate-6-for-drafting.md)
+- [候选 6 drafting 任务包](../iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/task.md)
+- [候选 6 drafting dispatch](../iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
