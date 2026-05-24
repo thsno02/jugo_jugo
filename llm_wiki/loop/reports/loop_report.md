@@ -10,7 +10,7 @@
 
 当前状态：已有 10 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的知识卡 `LLM Wiki 作为模式文件` 已采纳为 `llm-wiki-pattern-file`。候选 5 drafting 已完成，草稿卡 `人提问，LLM 维护` 和 provenance 通过交付验收，下一步进入独立 audit。候选 5 的 read_log 出现相邻候选标题读取和 skill 文件读取两类非阻塞边界噪声，已写入 out-of-loop reflection；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的知识卡 `LLM Wiki 作为模式文件` 已采纳为 `llm-wiki-pattern-file`。候选 5 drafting 已完成，草稿卡 `人提问，LLM 维护` 和 provenance 通过交付验收；候选 5 audit 任务包已创建、通过新版 scope 校验并渲染 dispatch。候选 5 的 read_log 边界噪声已写入 out-of-loop reflection；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -103,6 +103,7 @@
 - 2026-05-25：候选 1 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第十张 KB 卡采纳完成。
 - 2026-05-25：从剩余事实候选中选择候选 5，原因是其聚焦人机分工、事实边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0041_card_drafting_human_llm_roles`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16,68-69`，任务包通过新版 `validate_scope.py`。
 - 2026-05-25：候选 5 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。`read_log.md` 记录 `rg` 曾显示下一候选标题但未用于卡片或 provenance，也记录按运行环境读取 `agent-loop-runner` skill 仅用于流程约束；已写入读取边界噪声反思，下一步继续生产。
+- 2026-05-25：创建 `iteration_20260525_0042_card_audit_human_llm_roles`，审计输入限定为候选 5 草稿卡、provenance、候选 5 字段和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16,68-69`；任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 
 ## 关键指标（key_metrics）
 
@@ -336,6 +337,8 @@
 - [候选 5 provenance](../iterations/iteration_20260525_0041_card_drafting_human_llm_roles/artifacts/provenance.md)
 - [候选 5 drafting 可审计决策](../decisions/20260525-0710-card-drafting-candidate-5-ready-for-audit.md)
 - [读取边界噪声反思](../reflections/20260525-read-boundary-noise-reflection.md)
+- [候选 5 audit 任务包](../iterations/iteration_20260525_0042_card_audit_human_llm_roles/task.md)
+- [候选 5 audit dispatch](../iterations/iteration_20260525_0042_card_audit_human_llm_roles/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
