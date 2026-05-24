@@ -10,7 +10,7 @@
 
 当前状态：已有 11 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1、5 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 5 知识卡 `人提问，LLM 维护` 已采纳为 `llm-wiki-human-llm-role-division`。第一轮 source mining 只剩候选 6，已决定作为清单型原子事实推进，任务包明确禁止扩写成场景报告、用例体系、hub、cluster 或 topic coverage；候选 6 drafting 任务包已通过新版 scope 校验并渲染 dispatch。当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 5 知识卡 `人提问，LLM 维护` 已采纳为 `llm-wiki-human-llm-role-division`。候选 6 drafting 已完成，草稿卡保持为“该来源列举了一组可能应用场景”这一清单型事实，没有扩写成场景报告。但 `read_log.md` 再次记录 `fact_candidates.md` 相邻候选字段被检索上下文带出，触发此前 reflection 的复开条件；下一步先做最小 prompt/template repair，再恢复候选 6 audit。当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -108,19 +108,20 @@
 - 2026-05-25：创建 `iteration_20260525_0043_card_adoption_human_llm_roles`，指定 `card_id` 为 `llm-wiki-human-llm-role-division`，目标 KB 路径不存在，任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 5 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第十一张 KB 卡采纳完成。`read_log.md` 明确未读取任务包允许输入之外的文件。
 - 2026-05-25：选择候选 6 进入 drafting，原因是它可被收窄为“该来源列举了一组可能适用场景”这一清单型原子事实，且是第一轮 source mining 中最后一个未处理候选；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0044_card_drafting_llm_wiki_use_cases`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23`，任务包通过新版 `validate_scope.py`。
+- 2026-05-25：候选 6 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡没有扩写成场景页。`read_log.md` 再次记录 `fact_candidates.md` 检索上下文带出相邻候选字段，触发读取边界噪声反思的复开条件；进入最小 prompt/template repair，暂缓候选 6 audit。
 - 2026-05-25：创建 `iteration_20260525_0043_card_adoption_human_llm_roles`，指定 `card_id` 为 `llm-wiki-human-llm-role-division`，目标 KB 路径不存在，任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
-- 草稿知识卡数量：11 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
+- 草稿知识卡数量：12 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：11。
 - 已采纳知识卡数量：11。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
 - adoption 模板修复后新增边界噪声：0。
 - 输出文件存在性检查导致的轻微任务外读取观察：1。
-- `fact_candidates.md` 相邻行或关键词定位导致的轻微边界观察：3。
+- `fact_candidates.md` 相邻行或关键词定位导致的轻微边界观察：4，其中 1 次已复开为 prompt/template repair。
 - 本轮 iteration 目录文件名检查导致的轻微边界观察：1。
 - 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
 - 因 `validate_scope.py` 未发现允许输入路径不存在导致的控制面修复次数：1。
@@ -355,6 +356,9 @@
 - [候选 6 选择决策](../decisions/20260525-0727-select-candidate-6-for-drafting.md)
 - [候选 6 drafting 任务包](../iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/task.md)
 - [候选 6 drafting dispatch](../iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/dispatch_request.json)
+- [候选 6 草稿卡](../iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/artifacts/draft_card.md)
+- [候选 6 provenance](../iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/artifacts/provenance.md)
+- [候选 6 drafting 与读取边界修复决策](../decisions/20260525-0733-card-drafting-candidate-6-requires-boundary-repair.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

@@ -42,3 +42,13 @@
 - independent evaluator 因读取边界不清给出 `concern` 或 `fail`。
 
 当前不使用 alive sub-agent 解决该问题；证据量小，且问题不来自重复大规模 I/O，而来自候选定位命令的边界习惯。
+
+## 复开记录
+
+- `timestamp`: `2026-05-25T07:33:28+08:00`
+- `iteration`: `iteration_20260525_0044_card_drafting_llm_wiki_use_cases`
+- `evidence`: `read_log.md` 记录候选 6 drafting 时检索 `fact_candidates.md` 返回了前一候选的尾部几行，且未用于卡片事实、表述或出处论证。
+
+该证据触发上文复开条件：相邻候选内容不再只是标题，而包含其它候选字段片段。当前候选 6 草稿卡本身仍通过交付验收，事实支撑限定在 `raw.txt:17-23`，因此不需要重写产物；但在继续 audit 前应先做最小 prompt/template repair，要求后续 drafting worker 读取 `fact_candidates.md` 时使用精确候选块读取，避免带上下文检索暴露相邻候选。
+
+新的 `next_action`: `prompt_evolution`。

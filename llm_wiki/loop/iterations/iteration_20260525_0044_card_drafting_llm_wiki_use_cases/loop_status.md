@@ -1,0 +1,7 @@
+status: done
+task_id: task_20260525_0045_card_drafting_candidate_6
+iteration_id: iteration_20260525_0044_card_drafting_llm_wiki_use_cases
+role: card_drafting_worker
+candidate_id: 候选 6
+current_step: completed
+result: 已生成一张 draft 知识卡和一份出处论证

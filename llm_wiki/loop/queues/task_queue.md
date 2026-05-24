@@ -11,25 +11,31 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0045_card_drafting_candidate_6`
-
-- `role`: `card_drafting_worker`
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases`
-- `candidate`: `候选 6`
-- `source_evidence`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23`
-- `dispatch`: `llm_wiki/loop/iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/dispatch_request.json`
-- `lifecycle`: one-shot worker；完成后关闭，不保留 alive 上下文。
-- `status`: ready_to_dispatch
+暂无。
 
 ## 待办（pending）
 
-暂无。
+### `task_20260525_0046_drafting_candidate_boundary_repair`
+
+- `role`: `prompt_template_repair`
+- `action`: 根据候选 6 drafting `read_log.md` 中相邻候选尾部字段被检索上下文带出的失败证据，最小修复 drafting worker / task template 的候选块读取规则。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0045_drafting_candidate_boundary_repair/artifacts/prompt_repair_report.md`
+- `note`: 修复后需 independent evaluator 审计通过，再恢复候选 6 audit。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0045_card_drafting_candidate_6`
+
+- `role`: `card_drafting_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases`
+- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0733-card-drafting-candidate-6-requires-boundary-repair.md`
+- `reflection`: `llm_wiki/loop/reflections/20260525-read-boundary-noise-reflection.md`
 
 ### `task_20260525_0044_card_adoption_candidate_5`
 
