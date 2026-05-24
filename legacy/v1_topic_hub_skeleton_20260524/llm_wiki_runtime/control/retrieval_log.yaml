@@ -1,0 +1,8 @@
+schema: kb.retrieval_log.v1
+updated_at: "2026-05-24T05:30:00+08:00"
+main_language: zh-CN
+active_topic: llm_wiki
+network_context: company_computer_limited_retrieval
+policy: 优先使用本地 data/；公司电脑只做有限普通检索，失败后记录并延期到个人设备重试。
+archived_previous_log: archive/demo_0_meta_kb_initialization_20260524/.llmwiki_snapshot/control/retrieval_log.yaml
+requests: []

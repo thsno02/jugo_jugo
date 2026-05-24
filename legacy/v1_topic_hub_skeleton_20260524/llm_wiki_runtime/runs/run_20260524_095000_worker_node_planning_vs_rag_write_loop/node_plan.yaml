@@ -1,0 +1,120 @@
+schema: kb.node_plan.v1
+run_id: run_20260524_095000_worker_node_planning_vs_rag_write_loop
+executor_role: cand_010_vs_rag_write_loop node-planning worker
+candidate_id: cand_010_vs_rag_write_loop
+node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+title: "LLM Wiki vs RAG: write-loop artifact boundary"
+purpose: "Define the minimum source-backed boundary between LLM Wiki as a durable maintained wiki/node artifact and RAG/GraphRAG/agent-memory mechanisms for retrieval, indexing, synthesis, and memory."
+version_target: "1.0"
+source_mining_run: .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop
+frontier_state:
+  candidate_status: ready_to_build
+  evidence_state: enough_for_first_version
+  retrieval_required_before_build: false
+non_goals:
+  - "Do not frame the node as retrieval versus no retrieval."
+  - "Do not claim LLM Wiki is better than RAG."
+  - "Do not claim RAG lacks indexes, summaries, citations, memory, durable artifacts, or write paths."
+  - "Do not produce a broad product, ecosystem, vendor, PKM, documentation-system, data-catalog, knowledge-graph, or enterprise comparison."
+  - "Do not make empirical performance, token-efficiency, scale-threshold, adoption, access-control, concurrency, or enterprise-readiness claims."
+  - "Do not use prior KB anchors as primary evidence for new RAG, GraphRAG, citation, or agent-memory facts."
+claim_outline:
+  - claim_id: c010_01_llm_wiki_artifact_boundary
+    claim: "LLM Wiki's source-backed distinction is a persistent wiki/node artifact maintained between raw sources and users, not the absence of retrieval."
+    required_citations:
+      - karpathy-gist-llm-wiki
+      - repo-atomicstrata-llm-wiki-compiler
+  - claim_id: c010_02_writeback_lint_update_loop
+    claim: "The LLM Wiki side includes writeback/file-back behavior and maintenance checks such as linting contradictions, stale claims, orphan pages, missing cross-references, and gaps."
+    required_citations:
+      - karpathy-gist-llm-wiki
+      - repo-atomicstrata-llm-wiki-compiler
+  - claim_id: c010_03_retrieval_coexists
+    claim: "A concrete LLM Wiki implementation can include retrieval/search/embeddings while still centering saved wiki artifacts, provenance, index rebuild, and lint/review workflows."
+    required_citations:
+      - repo-atomicstrata-llm-wiki-compiler
+  - claim_id: c010_04_rag_graphrag_baseline
+    claim: "RAG and GraphRAG should be described as retrieval/index/summarization and answer-synthesis mechanisms; GraphRAG in particular has graph indexes and pregenerated community summaries."
+    required_citations:
+      - arxiv-graphrag
+      - arxiv-ragas
+  - claim_id: c010_05_citation_overlap_not_equivalence
+    claim: "Retrieval-grounded answer generation can include citation-quality evaluation, which overlaps with LLM Wiki's provenance concerns but does not by itself define a maintained wiki artifact."
+    required_citations:
+      - arxiv-alce
+      - repo-atomicstrata-llm-wiki-compiler
+  - claim_id: c010_06_agent_memory_adjacency
+    claim: "Agent-memory systems provide adjacent persistent read/write and traceability mechanisms, but the available evidence only supports contrast with temporal KG or JSON memory stores, not equivalence to LLM Wiki."
+    required_citations:
+      - arxiv-zep
+      - langchain-long-term-memory-docs
+  - claim_id: c010_07_early_discourse
+    claim: "Early discourse included 'just RAG' and write-loop interpretations; use this only to frame why the boundary matters."
+    required_citations:
+      - hacker-news-original-thread
+required_citations:
+  primary_local_sources:
+    - source_id: karpathy-gist-llm-wiki
+      path: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      use: "Primary LLM Wiki pattern, RAG contrast, durable wiki, operations, query file-back, lint, index/log."
+    - source_id: hacker-news-original-thread
+      path: data/raw/hacker_news/hacker-news-original-thread/text.txt
+      use: "Early discourse framing and boundary/risk language only."
+    - source_id: repo-atomicstrata-llm-wiki-compiler
+      path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      use: "Implementation evidence for persistent artifact, query --save, index rebuild, provenance, lint, review, retrieval/search coexistence."
+  technical_adjacent_sources:
+    - source_id: arxiv-graphrag
+      path: data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+      use: "RAG/GraphRAG technical baseline and GraphRAG graph-index/community-summary workflow."
+    - source_id: arxiv-ragas
+      path: data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+      use: "RAG retrieval-generation modules and evaluation axes."
+    - source_id: arxiv-alce
+      path: data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+      use: "Citation/evidence-generation overlap and limits."
+    - source_id: arxiv-zep
+      path: data/raw/arxiv/arxiv-zep/source/main.tex
+      use: "Adjacent agent-memory temporal KG, dynamic updates, and traceability."
+    - source_id: langchain-long-term-memory-docs
+      path: data/raw/webpage/langchain-long-term-memory-docs/text.txt
+      use: "Adjacent long-term memory JSON document store with read/write/search."
+  secondary_process_notes:
+    - source_id: atlan-llm-wiki-vs-rag-dynamic-20260524
+      path: data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt
+      use: "Optional secondary vocabulary only; not primary technical or enterprise authority."
+prior_kb_links:
+  - node_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    use: "Prior-KB anchor for canonical source boundary and overclaim limits."
+  - node_id: 20260524_072000_llm_wiki_working_definition
+    version: "1.0"
+    path: kb/20260524_072000_llm_wiki_working_definition.md
+    use: "Prior-KB anchor for source-preserving maintained artifact definition."
+  - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    version: "1.0"
+    path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    use: "Prior-KB anchor for raw/wiki/schema architecture boundary."
+  - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    version: "1.0"
+    path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    use: "Prior-KB anchor for ingest, compile, query, lint, update/file-back, index/log workflow."
+risk_controls:
+  - "Every RAG, GraphRAG, ALCE, Zep, and LangChain factual statement must cite its direct source; do not rely on external general knowledge."
+  - "Use Atlan only as explicitly labeled secondary/product framing if at all."
+  - "Keep comparison terms descriptive, not evaluative; no superiority/adoption/enterprise claims."
+  - "State that retrieval can coexist with LLM Wiki."
+  - "State that GraphRAG includes graph indexes and pregenerated summaries."
+  - "State that agent memory write/read systems are adjacent rather than equivalent."
+  - "Root node metadata must not be written before adoption audit passes."
+adoption_gate:
+  generation_entry_decision: pass
+  audit_required_before_adoption: true
+  root_node_yaml_forbidden_before_adoption: true
+  first_version_output_paths:
+    - nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/node.yaml
+    - nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+    - nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/provenance.md
+    - nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/change.md
+

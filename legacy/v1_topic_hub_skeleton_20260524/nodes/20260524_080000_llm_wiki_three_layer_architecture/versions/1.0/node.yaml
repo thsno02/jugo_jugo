@@ -1,0 +1,96 @@
+schema: kb.node_version.v1
+id: 20260524_080000_llm_wiki_three_layer_architecture
+node_id: 20260524_080000_llm_wiki_three_layer_architecture
+version: "1.0"
+title: "LLM Wiki 的三层架构"
+slug: llm_wiki_three_layer_architecture
+status: active
+version_status: adopted
+adoption_status: adopted
+adopted: true
+adoption_gate: citation_and_adoption_audit_passed
+version_adopted_at: "2026-05-24T08:25:00+08:00"
+created_at: "2026-05-24T08:15:00+08:00"
+created_by:
+  executor_role: worker_executor
+  run_id: run_20260524_081500_worker_generation_architecture
+  task_packet: .llmwiki/runs/run_20260524_081000_worker_node_planning_architecture/next_task_packet.md
+candidate_id: cand_003_architecture
+candidate_source: .llmwiki/control/knowledge_frontier.yaml
+version_dir: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0
+paths:
+  card: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+  provenance: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/provenance.md
+  change: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/change.md
+  kb_view: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+prior_kb_anchors:
+  - node_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    adopted_kb_path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    pinned_version_path: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  - node_id: 20260524_072000_llm_wiki_working_definition
+    version: "1.0"
+    adopted_kb_path: kb/20260524_072000_llm_wiki_working_definition.md
+    pinned_version_path: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+evidence_state: enough_for_first_version
+retrieval_required_before_audit: false
+audit:
+  state: passed
+  run: .llmwiki/runs/run_20260524_082000_worker_audit_architecture/audit_report.md
+  decision: adopt_recommended
+  adoption_run: .llmwiki/runs/run_20260524_082500_worker_adoption_view_architecture
+  required_before_adoption: true
+  required_gates:
+    - object_topic_gate
+    - source_scope_gate
+    - citation_gate
+    - provenance_gate
+    - overclaim_gate
+    - retrieval_gate
+    - language_gate
+    - root_metadata_adoption_gate
+  known_limits:
+    - "The primary architecture source is the Karpathy gist; implementation sources are secondary and cannot make implementation-specific tools mandatory."
+    - "The node is limited to raw source layer, compiled wiki layer, schema/instruction layer, and supporting infrastructure."
+    - "Enterprise readiness, broad adoption, empirical performance, ecosystem maturity, and detailed workflow claims are out of scope."
+stability:
+  level: first_version_candidate
+  support_eligibility: bounded_architecture_only
+tags:
+  - llm_wiki
+  - architecture
+  - raw_sources
+  - compiled_wiki
+  - schema_layer
+  - source_preservation
+claim_scope:
+  includes:
+    - raw source layer as immutable source-of-truth material
+    - compiled markdown/wiki layer as persistent LLM-generated knowledge artifact
+    - schema or instruction layer as structure convention and workflow governance
+    - index and log as navigation and history supports
+    - provenance citation review lint search CLI MCP viewer and representation storage as implementation supports or variants
+  excludes:
+    - detailed ingest compile query lint workflow as the main topic
+    - implementation ecosystem survey
+    - enterprise readiness or governance conclusions
+    - adoption maturity or social metrics
+    - empirical performance or scale conclusions
+    - broad comparison with RAG GraphRAG PKM knowledge graphs or agent memory
+dependencies:
+  raw_source_paths:
+    - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+    - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  prior_kb_paths:
+    - kb/20260524_062000_llm_wiki_origin_and_canon.md
+    - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    - kb/20260524_072000_llm_wiki_working_definition.md
+    - nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  process_paths:
+    - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/source_mining.md
+    - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/candidate_frontier_delta.yaml
+    - .llmwiki/runs/run_20260524_081000_worker_node_planning_architecture/evidence_scope.yaml
+    - reports/source_gap_review.md
+    - reports/coverage_framework.md

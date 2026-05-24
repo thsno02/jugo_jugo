@@ -1,0 +1,220 @@
+schema: kb.node_plan.v1
+run_id: run_20260524_105000_worker_node_planning_risks_governance_provenance
+executor_role: worker_executor
+candidate_id: cand_008_risks_governance_provenance
+node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+version: "1.0"
+title: "LLM Wiki Risks, Governance, And Provenance"
+purpose: >
+  Plan a bounded first-version node explaining LLM Wiki-specific provenance,
+  maintenance, citation-audit, and governance risks at the raw-source,
+  compile/wiki, and writeback layers, while separating direct LLM Wiki evidence
+  from adjacent security/governance evidence and deferred retrieval gaps.
+non_goals:
+  - "Do not write a generic AI governance, compliance, or enterprise security guide."
+  - "Do not claim enterprise readiness, legal sufficiency, compliance sufficiency, incident rates, or measured mitigation effectiveness."
+  - "Do not claim source preservation, citations, or human review solve hallucination, drift, poisoning, or governance risk."
+  - "Do not transfer attack rates from PoisonedRAG, eTAMP, or GraphRAG poisoning to LLM Wiki."
+  - "Do not use prior KB nodes as primary evidence for security, governance, or provenance facts."
+  - "Do not use blocked Reddit/community discourse or deferred OWASP detail pages as evidence."
+claim_outline:
+  - id: claim_000037_risks_governance_ethics_provenance_risk
+    section: "Provenance and citation risk"
+    planned_claim: >
+      LLM Wiki provenance risk includes malformed, missing, broad, stale, partial,
+      or post-hoc citations and the possibility that generated wiki pages launder
+      weak source support into canonical-seeming text.
+    evidence:
+      primary:
+        - repo-atomicstrata-llm-wiki-compiler
+        - repo-kytmanov-obsidian-local
+      adjacent:
+        - arxiv-alce
+    boundaries:
+      - "ALCE supports adjacent citation-evaluation difficulty, not an LLM Wiki benchmark."
+      - "Citation presence must not be treated as citation faithfulness."
+  - id: claim_000038_risks_governance_ethics_maintenance_risk
+    section: "Compilation, maintenance, and drift risk"
+    planned_claim: >
+      Persistent wiki artifacts can drop facts during compilation, become stale,
+      accumulate contradictions, or drift through repeated updates; evaluate/refine,
+      lint, stale checks, and contradiction/confidence metadata are bounded controls.
+    evidence:
+      primary:
+        - arxiv-wicer
+        - repo-atomicstrata-llm-wiki-compiler
+        - repo-kytmanov-obsidian-local
+      adjacent:
+        - arxiv-memory-as-metabolism
+    boundaries:
+      - "WiCER supports reported compilation-loss results and evaluate/refine method, not universal production reliability."
+      - "Memory as Metabolism is governance/drift framing, not incident-rate evidence."
+  - id: claim_000039_risks_governance_ethics_privacy_security_risk
+    section: "Untrusted source and durable-memory threat models"
+    planned_claim: >
+      Source ingestion, persistent wiki memory, and compiled structures create
+      plausible attack surfaces by analogy to persistent-memory, RAG database,
+      and GraphRAG construction poisoning research.
+    evidence:
+      adjacent:
+        - arxiv-etamp-memory-poisoning
+        - arxiv-poisonedrag
+        - arxiv-graph-poisoning
+      process:
+        - owasp-llm-top10-2025
+        - owasp-agentic-top10-2026
+    boundaries:
+      - "No direct LLM Wiki poisoning incident evidence is available."
+      - "OWASP local pages only support broad framework existence, not detailed category claims."
+  - id: claim_000040_risks_governance_ethics_governance_model
+    section: "Governance controls and state-change boundaries"
+    planned_claim: >
+      Evidence-supported governance boundaries include source preservation,
+      source hashes, claim-level citation, review/approve/reject gates,
+      lint/audit, weak-evidence labels, contradiction labels, hand-edit protection,
+      rollback/deletion policy, and audit records for state transitions.
+    evidence:
+      primary:
+        - repo-atomicstrata-llm-wiki-compiler
+        - repo-kytmanov-obsidian-local
+        - arxiv-wicer
+      adjacent:
+        - arxiv-memory-as-metabolism
+      process:
+        - microsoft-agent-governance-toolkit-docs
+        - nist-gai-profile
+    boundaries:
+      - "Implementation README features are project-specific controls, not proof of pattern-wide effectiveness."
+      - "NIST/Microsoft sources provide vocabulary and examples, not LLM Wiki-specific obligations."
+  - id: claim_000041_risks_governance_ethics_epistemic_risk
+    section: "Epistemic risk and early discourse"
+    planned_claim: >
+      Early discourse and source-mined gaps point to epistemic risks: weak sources
+      becoming canonical, second-order information accumulating, contradiction
+      linting scaling poorly, and review being bypassed.
+    evidence:
+      discourse:
+        - hacker-news-original-thread
+      process:
+        - reports_coverage_framework
+        - reports_source_gap_review
+    boundaries:
+      - "HN is early-discourse evidence only, not technical authority."
+      - "Process reports define KB scope and gaps, not external facts."
+required_citations:
+  primary_llm_wiki_specific:
+    - source_id: repo-atomicstrata-llm-wiki-compiler
+      path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      use_for:
+        - "source attribution, paragraph markers, claim-level line-range citations"
+        - "lint validation and review queue"
+        - "confidence/provenance/contradiction metadata"
+        - "roadmap gaps for rollback, audit, stale checks, freshness, operation logs"
+    - source_id: repo-kytmanov-obsidian-local
+      path: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+      use_for:
+        - "source hashes and selected-source traceability"
+        - "manual edit overwrite protection"
+        - "draft review, rejection feedback, low-confidence/single-source annotations"
+        - "stale linting and source-supported item ledger"
+    - source_id: arxiv-wicer
+      paths:
+        - data/raw/arxiv/arxiv-wicer/text.txt
+        - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+      use_for:
+        - "LLM Wiki compilation gap and dropped-fact risk"
+        - "evaluate/refine loop and limitations"
+  adjacent_sources:
+    - source_id: arxiv-memory-as-metabolism
+      paths:
+        - data/raw/arxiv/arxiv-memory-as-metabolism/text.txt
+        - data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+      use_for:
+        - "drift, entrenchment, source-preservation and audit-record governance framing"
+    - source_id: arxiv-alce
+      paths:
+        - data/raw/arxiv/arxiv-alce/text.txt
+        - data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+      use_for:
+        - "adjacent citation-quality and citation-audit difficulty"
+    - source_id: arxiv-etamp-memory-poisoning
+      path: data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+      use_for:
+        - "adjacent persistent-memory poisoning threat model"
+    - source_id: arxiv-poisonedrag
+      path: data/raw/arxiv/arxiv-poisonedrag/text.txt
+      use_for:
+        - "adjacent RAG knowledge-database poisoning threat model"
+    - source_id: arxiv-graph-poisoning
+      path: data/raw/arxiv/arxiv-graph-poisoning/text.txt
+      use_for:
+        - "adjacent GraphRAG construction-poisoning threat model"
+  process_and_discourse_sources:
+    - source_id: hacker-news-original-thread
+      path: data/raw/hacker_news/hacker-news-original-thread/text.txt
+      use_for:
+        - "early discourse around staleness, correctness, drift, contradiction scaling, second-order information, and review"
+    - source_id: owasp-llm-top10-2025
+      path: data/raw/webpage/owasp-llm-top10-2025/text.txt
+      use_for:
+        - "broad LLM application security framework existence only"
+    - source_id: owasp-agentic-top10-2026
+      path: data/raw/webpage/owasp-agentic-top10-2026/text.txt
+      use_for:
+        - "broad agentic security framework existence only"
+    - source_id: nist-gai-profile
+      path: data/raw/webpage/nist-gai-profile/text.txt
+      use_for:
+        - "general voluntary GAI governance vocabulary only"
+    - source_id: microsoft-agent-governance-toolkit-docs
+      path: data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+      use_for:
+        - "vendor control vocabulary only"
+prior_kb_links:
+  - node_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_072000_llm_wiki_working_definition
+    version: "1.0"
+    path: kb/20260524_072000_llm_wiki_working_definition.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    version: "1.0"
+    path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    version: "1.0"
+    path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+    version: "1.0"
+    path: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+    allowed_use: boundary_continuity_only
+risk_controls:
+  source_typing:
+    - "Mark every substantive claim as primary LLM Wiki-specific, adjacent, process/framework, discourse, or prior-KB continuity."
+  overclaim_control:
+    - "Use 'supports a bounded analogy' for adjacent security papers."
+    - "Use 'documents in this implementation' for project README controls."
+    - "Use 'control vocabulary' for OWASP/NIST/Microsoft unless detailed preserved text supports more."
+  citation_control:
+    - "Every risk/control claim must cite at least one allowed source and indicate source type."
+    - "Do not cite prior KB as primary evidence for risks or controls."
+  provenance_control:
+    - "Keep source paths and source ids explicit in provenance.md."
+    - "State deferred retrieval gaps rather than filling them with assumptions."
+  generation_file_control:
+    - "Generation may only write version-bundle files under nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/."
+    - "Generation must not write adopted root nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/node.yaml."
+adoption_gate:
+  required_before_adoption:
+    - "citation audit verifies all substantive claims against allowed source types"
+    - "audit confirms adjacent threat models are not presented as LLM Wiki incidents"
+    - "audit confirms no enterprise/compliance/measured-effectiveness claims slipped in"
+    - "audit confirms root node.yaml is absent before adoption"
+  first_version_outputs:
+    - nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/node.yaml
+    - nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/card.md
+    - nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/provenance.md
+    - nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/change.md

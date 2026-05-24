@@ -1,0 +1,227 @@
+schema: kb.index.v1
+generated_at: '2026-05-24T21:45:17+08:00'
+node_count: 8
+nodes:
+- id: 20260524_062000_llm_wiki_origin_and_canon
+  title: LLM Wiki 的 bounded origin/canon
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: initial
+  usable_as_support: true
+  node_created_at: '2026-05-24T06:40:00+08:00'
+  version_adopted_at: '2026-05-24T06:47:33+08:00'
+  tags:
+  - llm_wiki
+  - origin
+  - canon
+  - idea_file
+  - evidence_bounded
+  paths:
+    version_dir: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/
+    card: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    provenance: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/provenance.md
+    change: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/change.md
+    kb_view: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_065500_worker_reaudit_origin_canon/audit_report.md
+    decision: adopt_recommended
+    adoption_run: .llmwiki/runs/run_20260524_070000_worker_adoption_view_origin_canon
+- id: 20260524_072000_llm_wiki_working_definition
+  title: LLM Wiki 的工作定义
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: initial
+  usable_as_support: true
+  node_created_at: '2026-05-24T07:35:00+08:00'
+  version_adopted_at: '2026-05-24T07:07:58+08:00'
+  tags:
+  - llm_wiki
+  - working_definition
+  - source_preservation
+  - agent_maintained_wiki
+  - provenance
+  paths:
+    version_dir: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/
+    card: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+    provenance: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/provenance.md
+    change: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/change.md
+    kb_view: kb/20260524_072000_llm_wiki_working_definition.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_074000_worker_audit_working_definition/audit_report.md
+    decision: adopt_recommended
+    adoption_run: .llmwiki/runs/run_20260524_074500_worker_adoption_view_working_definition
+- id: 20260524_080000_llm_wiki_three_layer_architecture
+  title: LLM Wiki 的三层架构
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: initial
+  usable_as_support: true
+  node_created_at: '2026-05-24T08:15:00+08:00'
+  version_adopted_at: '2026-05-24T08:25:00+08:00'
+  tags:
+  - llm_wiki
+  - architecture
+  - raw_sources
+  - compiled_wiki
+  - schema_layer
+  - source_preservation
+  paths:
+    version_dir: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/
+    card: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+    provenance: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/provenance.md
+    change: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/change.md
+    kb_view: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_082000_worker_audit_architecture/audit_report.md
+    decision: adopt_recommended
+    adoption_run: .llmwiki/runs/run_20260524_082500_worker_adoption_view_architecture
+- id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  title: LLM Wiki 的 ingest/compile/query/lint 维护工作流
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: initial
+  usable_as_support: true
+  node_created_at: '2026-05-24T08:55:00+08:00'
+  version_adopted_at: '2026-05-24T17:04:30+08:00'
+  tags:
+  - llm_wiki
+  - workflow
+  - ingest
+  - compile
+  - query
+  - lint
+  - writeback
+  - index_log
+  paths:
+    version_dir: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/
+    card: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+    provenance: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/provenance.md
+    change: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/change.md
+    kb_view: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_090000_worker_audit_workflow/audit_report.md
+    decision: adopt_recommended
+    adoption_run: .llmwiki/runs/run_20260524_091000_worker_adoption_view_workflow
+- id: 20260524_094000_llm_wiki_vs_rag_write_loop
+  title: LLM Wiki 与 RAG/write-loop 系统的 artifact/workflow 边界
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: initial
+  usable_as_support: true
+  node_created_at: '2026-05-24T10:00:00+08:00'
+  version_adopted_at: '2026-05-24T17:54:00+08:00'
+  tags:
+  - llm_wiki
+  - rag
+  - graphrag
+  - agent_memory
+  - write_loop
+  - provenance
+  - citation
+  - artifact_boundary
+  paths:
+    version_dir: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/
+    card: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+    provenance: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/provenance.md
+    change: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/change.md
+    kb_view: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_101000_worker_audit_vs_rag_write_loop/audit_report.md
+    decision: adopt_recommended
+    adoption_run: .llmwiki/runs/run_20260524_102000_worker_adoption_view_vs_rag_write_loop
+- id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  title: LLM Wiki 的风险、治理与 provenance 边界
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: initial
+  usable_as_support: true
+  node_created_at: '2026-05-24T10:40:00+08:00'
+  version_adopted_at: '2026-05-24T18:54:17+08:00'
+  tags:
+  - llm_wiki
+  - provenance
+  - citation_audit
+  - governance
+  - risk
+  - source_traceability
+  - maintenance
+  - security_boundary
+  paths:
+    version_dir: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/
+    card: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/card.md
+    provenance: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/provenance.md
+    change: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/change.md
+    kb_view: kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_111000_worker_audit_risks_governance_provenance/audit_report.md
+    decision: adopt_recommended
+    adoption_run: .llmwiki/runs/run_20260524_114000_worker_adoption_view_risks_governance_provenance_after_footnote_repair
+- id: 20260524_122000_llm_wiki_implementation_ecosystem
+  title: LLM Wiki Implementation Ecosystem
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: initial
+  usable_as_support: true
+  node_created_at: '2026-05-24T12:40:00+08:00'
+  version_adopted_at: '2026-05-24T20:40:11+08:00'
+  tags:
+  - llm_wiki
+  - implementation_ecosystem
+  - tooling
+  - mcp
+  - obsidian
+  - cli
+  - package_metadata
+  - source_boundaries
+  paths:
+    version_dir: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/
+    card: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/card.md
+    provenance: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/provenance.md
+    change: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/change.md
+    kb_view: kb/20260524_122000_llm_wiki_implementation_ecosystem.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_125500_worker_audit_implementation_ecosystem_replacement/audit_report.md
+    decision: adopt_recommended
+    adoption_run: .llmwiki/runs/run_20260524_130000_worker_adoption_view_implementation_ecosystem
+- id: 20260524_132000_llm_wiki_evaluation_evidence
+  title: 'LLM Wiki Evaluation Evidence: Dimensions, Evidence Levels, and Boundaries'
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: initial
+  usable_as_support: true
+  node_created_at: '2026-05-24T13:40:00+08:00'
+  version_adopted_at: '2026-05-24T21:29:27+08:00'
+  tags:
+  - llm_wiki
+  - evaluation
+  - evidence
+  - citation_auditability
+  - provenance
+  - evidence_grades
+  - source_boundaries
+  paths:
+    version_dir: nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/
+    card: nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/card.md
+    provenance: nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/provenance.md
+    change: nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/change.md
+    kb_view: kb/20260524_132000_llm_wiki_evaluation_evidence.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_135000_worker_audit_evaluation_evidence/audit_report.md
+    decision: adopt_recommended
+    adoption_run: .llmwiki/runs/run_20260524_140000_worker_adoption_view_evaluation_evidence

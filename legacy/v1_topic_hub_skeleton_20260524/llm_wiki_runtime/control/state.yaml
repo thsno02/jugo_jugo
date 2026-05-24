@@ -1,0 +1,385 @@
+schema: kb.control_state.v1
+current_phase: v1_delivered
+active_topic: llm_wiki
+main_language: zh-CN
+latest_archived_demo: archive/demo_0_meta_kb_initialization_20260524
+latest_run: .llmwiki/runs/run_20260524_142000_worker_v1_final_qa_delivery
+last_updated: "2026-05-24T22:55:00+08:00"
+next_action: goal_complete_ready_for_controller
+planner_run: .llmwiki/runs/run_20260524_054000_topic_planner
+pre_loop_run: .llmwiki/runs/run_20260524_060000_preloop_planning
+controller_drift_sample: .llmwiki/runs/run_20260524_061000_source_mining_origin_canon
+orchestration_gate: .llmwiki/control/orchestration_gates.yaml
+frontier: .llmwiki/control/knowledge_frontier.yaml
+last_adopted_node:
+  id: 20260524_132000_llm_wiki_evaluation_evidence
+  version: "1.0"
+  adoption_run: .llmwiki/runs/run_20260524_140000_worker_adoption_view_evaluation_evidence
+  adopted_nodes_total: 8
+last_skill_eval:
+  run: .llmwiki/runs/run_20260524_141000_worker_skill_eval_evaluation_evidence
+  status: LOOP_DONE
+  target_candidate: cand_007_evaluation_evidence
+  decision: v1_final_audit_recommended
+  remaining_blockers: none
+  skill_changes: none
+final_v1_delivery:
+  run: .llmwiki/runs/run_20260524_142000_worker_v1_final_qa_delivery
+  status: LOOP_DONE
+  decision: v1_delivered
+  adopted_nodes_total: 8
+  citation_edges: 185
+  impact_queue_open: 0
+  node_validator_all: pass
+  card_validator_all: pass
+  footnote_layout_gate: pass
+  frontier_lifecycle_sync: pass
+  action_queue_state: final_delivered_no_next_v1_content_candidate
+  deferred_retrieval: non_blocking_future_work
+  next_action: goal_complete_ready_for_controller
+previous_skill_eval:
+  run: .llmwiki/runs/run_20260524_131000_worker_skill_eval_implementation_ecosystem
+  status: LOOP_DONE
+  target_candidate: cand_006_implementation_ecosystem
+  decision: revise_skills_then_continue
+  remaining_blockers: none
+  skill_changes:
+    - .llmwiki/skills/llmwiki-loop-orchestration/SKILL.md
+    - .llmwiki/skills/llmwiki-citation-audit/SKILL.md
+    - .llmwiki/skills/llmwiki-adoption-audit/SKILL.md
+last_source_mining:
+  run: .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance
+  status: LOOP_DONE
+  target_candidate: cand_008_risks_governance_provenance
+  decision: ready_to_plan
+  evidence_state: enough_for_first_version
+  retrieval_required_before_build: false
+  recommended_next_action: node_planning
+  merged_related_seed: cand_011_initial_risk_discourse
+last_metadata_repair:
+  run: .llmwiki/runs/run_20260524_093000_worker_adoption_metadata_repair_workflow
+  status: LOOP_DONE
+  decision: repair_validated
+  repaired_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  repaired_version: "1.0"
+previous_source_mining:
+  run: .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop
+  status: LOOP_DONE
+  target_candidate: cand_010_vs_rag_write_loop
+  decision: ready_to_plan
+  evidence_state: enough_for_first_version
+  retrieval_required_before_build: false
+  recommended_next_action: completed_by_run_20260524_104000_worker_source_mining_risks_governance_provenance
+last_node_planning:
+  run: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence
+  status: LOOP_DONE
+  target_candidate: cand_007_evaluation_evidence
+  target_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+  decision: generation_entry_pass
+  generation_entry_gate: pass
+  evidence_state: enough_for_first_version
+  retrieval_required_before_generation: false
+  recommended_next_action: dispatch_worker_task_packet_for_cand_007_evaluation_evidence_generation
+previous_node_planning:
+  run: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem
+  status: LOOP_DONE
+  target_candidate: cand_006_implementation_ecosystem
+  target_node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+  decision: generation_entry_pass
+  generation_entry_gate: pass
+  evidence_state: enough_for_first_version
+  retrieval_required_before_generation: false
+  recommended_next_action: completed_by_run_20260524_133000_worker_node_planning_evaluation_evidence
+last_generation:
+  run: .llmwiki/runs/run_20260524_110000_worker_generation_risks_governance_provenance
+  status: LOOP_DONE
+  target_candidate: cand_008_risks_governance_provenance
+  target_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  version: "1.0"
+  decision: candidate_bundle_generated
+  recommended_next_action: audit
+previous_generation:
+  run: .llmwiki/runs/run_20260524_100000_worker_generation_vs_rag_write_loop
+  status: LOOP_DONE
+  target_candidate: cand_010_vs_rag_write_loop
+  target_node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+  version: "1.0"
+  decision: candidate_bundle_generated
+  recommended_next_action: completed_by_run_20260524_110000_worker_generation_risks_governance_provenance
+last_audit:
+  run: .llmwiki/runs/run_20260524_111000_worker_audit_risks_governance_provenance
+  status: LOOP_DONE
+  target_candidate: cand_008_risks_governance_provenance
+  target_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  version: "1.0"
+  decision: adopt_recommended
+  recommended_next_action: adoption_view
+previous_audit:
+  run: .llmwiki/runs/run_20260524_101000_worker_audit_vs_rag_write_loop
+  status: LOOP_DONE
+  target_candidate: cand_010_vs_rag_write_loop
+  target_node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+  version: "1.0"
+  decision: adopt_recommended
+  recommended_next_action: completed_by_run_20260524_102000_worker_adoption_view_vs_rag_write_loop
+last_adoption_view:
+  run: .llmwiki/runs/run_20260524_114000_worker_adoption_view_risks_governance_provenance_after_footnote_repair
+  status: LOOP_DONE
+  target_candidate: cand_008_risks_governance_provenance
+  target_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  version: "1.0"
+  decision: adopted
+  footnote_layout_gate: pass
+  adopted_nodes_total: 6
+  citation_edges: 110
+  impact_queue_open: 0
+  recommended_next_action: dispatch_worker_task_packet_for_legacy_footnote_layout_migration_then_cand_008_skill_eval
+last_legacy_footnote_layout_migration:
+  run: .llmwiki/runs/run_20260524_115000_worker_legacy_footnote_layout_migration
+  status: LOOP_DONE
+  decision: migration_validated
+  checked: 12
+  fixed: 10
+  remaining_failures: 0
+  footnote_layout_gate: pass
+  adopted_nodes_total: 6
+  citation_edges: 110
+  impact_queue_open: 0
+  changed_card_views:
+    - kb/20260524_062000_llm_wiki_origin_and_canon.md
+    - kb/20260524_072000_llm_wiki_working_definition.md
+    - kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    - kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    - kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+    - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    - nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+    - nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+    - nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+    - nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+  validators:
+    card_all: pass
+    node_all: pass
+    view_refresh: pass
+    citation_graph_refresh: pass
+    impact_refresh: pass
+    status_refresh: pass
+  recommended_next_action: dispatch_worker_task_packet_for_cand_008_risks_governance_provenance_skill_eval
+last_frontier_status_sync:
+  run: .llmwiki/runs/run_20260524_121000_worker_frontier_status_sync_cand008
+  status: LOOP_DONE
+  target_candidate: cand_008_risks_governance_provenance
+  decision: sync_validated
+  frontier_status: built_adopted
+  frontier_next_action: completed
+  adopted_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  adopted_version: "1.0"
+  adopted_nodes_total: 6
+  citation_edges: 110
+  impact_queue_open: 0
+  recommended_next_action: dispatch_worker_task_packet_for_cand_006_implementation_ecosystem_source_mining_frontier
+last_implementation_ecosystem_source_mining:
+  run: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem
+  status: LOOP_DONE
+  target_candidate: cand_006_implementation_ecosystem
+  decision: ready_to_plan
+  frontier_status: ready_to_build
+  evidence_state: enough_for_first_version
+  retrieval_required_before_build: false
+  retrieval_attempts: none
+  recommended_next_action: dispatch_worker_task_packet_for_cand_006_implementation_ecosystem_node_planning
+last_implementation_ecosystem_node_planning:
+  run: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem
+  status: LOOP_DONE
+  target_candidate: cand_006_implementation_ecosystem
+  target_node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+  decision: generation_entry_pass
+  generation_entry_gate: pass
+  evidence_state: enough_for_first_version
+  retrieval_required_before_generation: false
+  recommended_next_action: dispatch_worker_task_packet_for_cand_006_implementation_ecosystem_generation
+last_implementation_ecosystem_generation:
+  run: .llmwiki/runs/run_20260524_124000_worker_generation_implementation_ecosystem
+  status: LOOP_DONE
+  target_candidate: cand_006_implementation_ecosystem
+  target_node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+  version: "1.0"
+  decision: candidate_bundle_generated
+  recommended_next_action: audit
+last_implementation_ecosystem_audit:
+  run: .llmwiki/runs/run_20260524_125500_worker_audit_implementation_ecosystem_replacement
+  status: LOOP_DONE
+  target_candidate: cand_006_implementation_ecosystem
+  target_node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+  version: "1.0"
+  decision: adopt_recommended
+  overreach_observed:
+    generated_outputs_written_by_audit_worker:
+      - generated/backlinks.yaml
+      - generated/citation_graph.yaml
+    recovery: adoption_worker_refreshed_generated_outputs_as_authoritative_post_adoption_state
+  recommended_next_action: adoption_view
+last_implementation_ecosystem_adoption_view:
+  run: .llmwiki/runs/run_20260524_130000_worker_adoption_view_implementation_ecosystem
+  status: LOOP_DONE
+  target_candidate: cand_006_implementation_ecosystem
+  target_node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+  version: "1.0"
+  decision: adopted
+  footnote_layout_gate: pass
+  adopted_nodes_total: 7
+  citation_edges: 148
+  impact_queue_open: 0
+  recommended_next_action: dispatch_worker_task_packet_for_cand_006_implementation_ecosystem_skill_eval
+last_evaluation_evidence_source_mining:
+  run: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence
+  status: LOOP_DONE
+  target_candidate: cand_007_evaluation_evidence
+  decision: ready_to_plan
+  frontier_status: ready_to_build
+  evidence_state: enough_for_first_version
+  retrieval_required_before_build: false
+  retrieval_attempts: none
+  recommended_next_action: dispatch_worker_task_packet_for_cand_007_evaluation_evidence_node_planning
+last_evaluation_evidence_node_planning:
+  run: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence
+  status: LOOP_DONE
+  target_candidate: cand_007_evaluation_evidence
+  target_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+  decision: generation_entry_pass
+  generation_entry_gate: pass
+  evidence_state: enough_for_first_version
+  retrieval_required_before_generation: false
+  recommended_next_action: dispatch_worker_task_packet_for_cand_007_evaluation_evidence_generation
+last_evaluation_evidence_generation:
+  run: .llmwiki/runs/run_20260524_134000_worker_generation_evaluation_evidence
+  status: LOOP_DONE
+  target_candidate: cand_007_evaluation_evidence
+  target_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+  version: "1.0"
+  decision: candidate_bundle_generated
+  recommended_next_action: dispatch_audit_worker_for_cand_007_evaluation_evidence
+last_evaluation_evidence_audit:
+  run: .llmwiki/runs/run_20260524_135000_worker_audit_evaluation_evidence
+  status: LOOP_DONE
+  target_candidate: cand_007_evaluation_evidence
+  target_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+  version: "1.0"
+  decision: adopt_recommended
+  recommended_next_action: adoption_view
+last_evaluation_evidence_adoption_view:
+  run: .llmwiki/runs/run_20260524_140000_worker_adoption_view_evaluation_evidence
+  status: LOOP_DONE
+  target_candidate: cand_007_evaluation_evidence
+  target_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+  version: "1.0"
+  decision: adopted
+  footnote_layout_gate: pass
+  adopted_nodes_total: 8
+  citation_edges: 185
+  impact_queue_open: 0
+  recommended_next_action: completed_by_run_20260524_141000_worker_skill_eval_evaluation_evidence
+last_evaluation_evidence_skill_eval:
+  run: .llmwiki/runs/run_20260524_141000_worker_skill_eval_evaluation_evidence
+  status: LOOP_DONE
+  target_candidate: cand_007_evaluation_evidence
+  target_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+  version: "1.0"
+  decision: v1_final_audit_recommended
+  skill_changes: none
+  remaining_blockers: none
+  adopted_nodes_total: 8
+  citation_edges: 185
+  impact_queue_open: 0
+  recommended_next_action: dispatch_v1_final_qa_delivery_worker
+  footnote_layout_gate: pass
+  adopted_nodes_total: 8
+  citation_edges: 185
+  impact_queue_open: 0
+  recommended_next_action: dispatch_worker_task_packet_for_cand_007_evaluation_evidence_skill_eval
+previous_adoption_view_blocked:
+  run: .llmwiki/runs/run_20260524_112000_worker_adoption_view_risks_governance_provenance
+  status: LOOP_BLOCKED
+  target_candidate: cand_008_risks_governance_provenance
+  target_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  version: "1.0"
+  decision: adoption_blocked
+  blocker: footnote_layout_gate_failed
+  footnote_layout_gate: fail
+  adopted_nodes_total: 5
+  citation_edges: 73
+  impact_queue_open: 0
+  recommended_next_action: completed_by_run_20260524_113000_worker_repair_footnote_layout_contract
+last_footnote_layout_repair:
+  run: .llmwiki/runs/run_20260524_113000_worker_repair_footnote_layout_contract
+  status: LOOP_DONE
+  target_candidate: cand_008_risks_governance_provenance
+  target_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  version: "1.0"
+  decision: repair_validated
+  repaired_file: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/card.md
+  footnote_layout_gate: pass
+  target_card_validator: pass
+  all_cards_validator: pass
+  legacy_layout_audit:
+    checked: 11
+    pass: 1
+    fail: 10
+    note: existing adopted legacy cards and kb views retain old layout; recorded only, not repaired in this scope
+  skill_changes:
+    - .llmwiki/skills/llmwiki-card-generation/SKILL.md
+    - .llmwiki/skills/llmwiki-citation-formatting/SKILL.md
+    - .llmwiki/skills/llmwiki-view-building/SKILL.md
+    - .llmwiki/skills/llmwiki-adoption-audit/SKILL.md
+  recommended_next_action: dispatch_adoption_view_worker_for_cand_008_risks_governance_provenance_after_footnote_repair
+previous_adoption_view:
+  run: .llmwiki/runs/run_20260524_102000_worker_adoption_view_vs_rag_write_loop
+  status: LOOP_DONE
+  target_candidate: cand_010_vs_rag_write_loop
+  target_node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+  version: "1.0"
+  decision: adopted
+  adopted_nodes_total: 5
+  citation_edges: 73
+  impact_queue_open: 0
+  recommended_next_action: completed_by_run_20260524_103000_worker_skill_eval_vs_rag_write_loop
+last_next_task_packet:
+  run: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence
+  task_packet: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence/next_task_packet.md
+  task_name: cand_007_evaluation_evidence_generation
+  target_candidate: cand_007_evaluation_evidence
+  target_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+  recommended_run: .llmwiki/runs/run_20260524_134000_worker_generation_evaluation_evidence
+primary_evidence_layer:
+  - data/raw/
+  - data/manifests/sources.jsonl
+  - data/manifests/source_digests.jsonl
+  - data/manifests/claims.jsonl
+  - data/manifests/claim_source_links.jsonl
+  - data/manifests/coverage_records.jsonl
+  - reports/coverage_framework.md
+  - reports/source_gap_review.md
+autonomy:
+  human_absent_assumption: true
+  company_network_retrieval_policy: limited_attempts_then_defer
+  main_agent_role: controller_decision_maker
+  worker_executor_required_for:
+    - source_mining
+    - frontier_update
+    - node_planning
+    - generation
+    - audit
+    - view_build
+    - skill_eval
+  main_may_continue_without_checkpoint:
+    - create_worker_task_packet
+    - review_worker_summary_status_gate_delivery
+    - decide_adoption_repair_retrieval_defer_next_action
+    - update_control_state_queue_summary_status
+  must_stop_or_record_blocker:
+    - destructive_git_operation
+    - broad_network_retrieval_without_request
+    - adopting_node_without_raw_or_manifest_evidence
+    - schema_change_that_invalidates_archived_demo_or_active_topic_contract
+    - generator_task_packet_without_ready_frontier_candidate
+    - card_generation_without_source_mining_artifacts
+    - main_agent_directly_writing_concrete_artifacts

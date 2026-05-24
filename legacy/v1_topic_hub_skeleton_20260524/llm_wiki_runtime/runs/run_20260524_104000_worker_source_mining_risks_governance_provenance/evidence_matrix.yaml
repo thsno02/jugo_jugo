@@ -1,0 +1,188 @@
+schema: kb.evidence_matrix.v1
+run_id: run_20260524_104000_worker_source_mining_risks_governance_provenance
+target_candidate: cand_008_risks_governance_provenance
+decision: ready_to_plan
+evidence_state: enough_for_first_version
+retrieval_required_before_build: false
+items:
+  - source_id: repo-atomicstrata-llm-wiki-compiler
+    path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    source_type: primary_implementation
+    claim_or_observation: "Documents paragraph-level source attribution, claim-level line-range citations, lint validation, review queue, confidence/provenance/contradiction metadata, and roadmap gaps around rollback/audit/stale claims."
+    candidate_use: "Direct evidence for provenance controls and current implementation boundaries."
+    confidence: high
+    citation_target:
+      path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      suggested_locator: "source attribution / claim-level provenance / review queue / roadmap sections"
+    retrieval_state: local_preserved_readable
+  - source_id: repo-kytmanov-obsidian-local
+    path: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+    source_type: primary_implementation
+    claim_or_observation: "Documents source hashes, refusal to overwrite manually edited synthesis, draft review, rejection feedback, low-confidence/single-source annotations, stale linting, and source-supported item ledger."
+    candidate_use: "Direct evidence for review, hand-edit protection, weak-evidence warnings, and conservative source support."
+    confidence: high
+    citation_target:
+      path: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+      suggested_locator: "query/synthesize, review, low-confidence annotation, item ledger, lint sections"
+    retrieval_state: local_preserved_readable
+  - source_id: arxiv-wicer
+    path: data/raw/arxiv/arxiv-wicer/text.txt
+    source_type: primary_research_llm_wiki
+    claim_or_observation: "Reports LLM Wiki compilation gap, blind compilation catastrophic failure, evaluate/refine loop, and limitations."
+    candidate_use: "Direct evidence for compilation-loss and maintenance-risk boundaries."
+    confidence: high_for_reported_result_medium_for_generalization
+    citation_target:
+      path: data/raw/arxiv/arxiv-wicer/text.txt
+      suggested_locator: "abstract"
+    retrieval_state: local_preserved_readable
+  - source_id: arxiv-wicer
+    path: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+    source_type: primary_research_llm_wiki
+    claim_or_observation: "Detailed method describes evaluating compiled wikis against probes, diagnosing dropped facts, preserving them in subsequent compilations, and limitations including model/hardware/RAG baseline/LLM-as-judge constraints."
+    candidate_use: "Evidence for evaluate/refine governance controls and generation risks."
+    confidence: high
+    citation_target:
+      path: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+      suggested_locator: "WiCER algorithm and limitations sections"
+    retrieval_state: local_preserved_readable
+  - source_id: arxiv-memory-as-metabolism
+    path: data/raw/arxiv/arxiv-memory-as-metabolism/text.txt
+    source_type: adjacent_research_governance
+    claim_or_observation: "Frames LLM Wiki-like personal wiki memory as subject to entrenchment under user-coupled drift and proposes governance profile operations."
+    candidate_use: "Governance/drift framing for maintenance and audit boundaries."
+    confidence: medium_high
+    citation_target:
+      path: data/raw/arxiv/arxiv-memory-as-metabolism/text.txt
+      suggested_locator: "abstract"
+    retrieval_state: local_preserved_readable
+  - source_id: arxiv-memory-as-metabolism
+    path: data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+    source_type: adjacent_research_governance
+    claim_or_observation: "States external sources should be preserved after compression, audit records should precede state transitions, and audit sensitivity remains an open problem."
+    candidate_use: "Supports source-preservation/audit-record requirements and limits."
+    confidence: medium_high
+    citation_target:
+      path: data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+      suggested_locator: "governance obligations / conformance invariants / limitations"
+    retrieval_state: local_preserved_readable
+  - source_id: arxiv-alce
+    path: data/raw/arxiv/arxiv-alce/text.txt
+    source_type: adjacent_research_citation_evaluation
+    claim_or_observation: "Citation generation requires retrieval of supporting evidence and separate citation-quality evaluation; even best models can lack complete citation support."
+    candidate_use: "Adjacent support for citation faithfulness risk and need for citation audit."
+    confidence: high_for_alce_medium_for_llm_wiki_analogy
+    citation_target:
+      path: data/raw/arxiv/arxiv-alce/text.txt
+      suggested_locator: "abstract"
+    retrieval_state: local_preserved_readable
+  - source_id: arxiv-alce
+    path: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+    source_type: adjacent_research_citation_evaluation
+    claim_or_observation: "Discusses citation recall/precision evaluation, partial support cases, and NLI-model limits."
+    candidate_use: "Nuanced citation audit boundaries."
+    confidence: high
+    citation_target:
+      path: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+      suggested_locator: "citation recall discussion / human evaluation"
+    retrieval_state: local_preserved_readable
+  - source_id: arxiv-etamp-memory-poisoning
+    path: data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+    source_type: adjacent_security_research
+    claim_or_observation: "Persistent web-agent memory can be poisoned by environmental observations and activate across future sessions/sites."
+    candidate_use: "Adjacent threat model for persistent agent-readable knowledge and untrusted source ingestion."
+    confidence: medium
+    citation_target:
+      path: data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+      suggested_locator: "abstract"
+    retrieval_state: local_preserved_readable
+  - source_id: arxiv-poisonedrag
+    path: data/raw/arxiv/arxiv-poisonedrag/text.txt
+    source_type: adjacent_security_research
+    claim_or_observation: "RAG knowledge databases introduce attack surfaces where injected malicious texts can steer target answers."
+    candidate_use: "Adjacent source/database poisoning risk for durable knowledge stores."
+    confidence: medium
+    citation_target:
+      path: data/raw/arxiv/arxiv-poisonedrag/text.txt
+      suggested_locator: "abstract"
+    retrieval_state: local_preserved_readable
+  - source_id: arxiv-graph-poisoning
+    path: data/raw/arxiv/arxiv-graph-poisoning/text.txt
+    source_type: adjacent_security_research
+    claim_or_observation: "GraphRAG graph construction from raw text can be manipulated by small source-text changes, misleading downstream reasoning."
+    candidate_use: "Adjacent compiled-structure poisoning analogy."
+    confidence: medium
+    citation_target:
+      path: data/raw/arxiv/arxiv-graph-poisoning/text.txt
+      suggested_locator: "abstract"
+    retrieval_state: local_preserved_readable
+  - source_id: hacker-news-original-thread
+    path: data/raw/hacker_news/hacker-news-original-thread/text.txt
+    source_type: secondary_discourse
+    claim_or_observation: "Early comments discuss staleness/correctness/drift, contradiction-lint scaling, second-order information accumulation, and review of documentation changes."
+    candidate_use: "Early-discourse seed merged from cand_011."
+    confidence: medium_low
+    citation_target:
+      path: data/raw/hacker_news/hacker-news-original-thread/text.txt
+      suggested_locator: "comments around raw sources/backlinks, lint scaling, second-order information, review"
+    retrieval_state: local_preserved_readable
+  - source_id: owasp-llm-top10-2025
+    path: data/raw/webpage/owasp-llm-top10-2025/text.txt
+    source_type: process_security_framework
+    claim_or_observation: "Captured page identifies OWASP Top 10 for LLM Applications 2025 as a community-driven effort for AI application risks."
+    candidate_use: "Broad security framing only."
+    confidence: medium
+    citation_target:
+      path: data/raw/webpage/owasp-llm-top10-2025/text.txt
+      suggested_locator: "About section"
+    retrieval_state: local_preserved_readable
+  - source_id: owasp-agentic-top10-2026
+    path: data/raw/webpage/owasp-agentic-top10-2026/text.txt
+    source_type: process_security_framework
+    claim_or_observation: "Captured page identifies OWASP Top 10 for Agentic Applications 2026 as a peer-reviewed framework for autonomous/agentic AI security risks."
+    candidate_use: "Broad agentic security framing only."
+    confidence: medium
+    citation_target:
+      path: data/raw/webpage/owasp-agentic-top10-2026/text.txt
+      suggested_locator: "About section"
+    retrieval_state: local_preserved_readable
+  - source_id: nist-gai-profile
+    path: data/raw/webpage/nist-gai-profile/text.txt
+    source_type: process_governance_framework
+    claim_or_observation: "Captured page describes NIST AI RMF GAI Profile as a voluntary cross-sectoral companion resource for GAI risk management."
+    candidate_use: "General governance vocabulary; not LLM Wiki-specific."
+    confidence: medium
+    citation_target:
+      path: data/raw/webpage/nist-gai-profile/text.txt
+      suggested_locator: "Abstract section"
+    retrieval_state: local_preserved_readable
+  - source_id: microsoft-agent-governance-toolkit-docs
+    path: data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+    source_type: vendor_docs_process
+    claim_or_observation: "Docs list policy/authorization, approval workflows, prompt injection detection, DLP, sandboxing, observability/tracing, kill switch, lifecycle, compliance, and attribution controls."
+    candidate_use: "Control vocabulary; not independent proof of effectiveness."
+    confidence: medium
+    citation_target:
+      path: data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+      suggested_locator: "navigation/control sections"
+    retrieval_state: local_preserved_readable
+  - source_id: reports_coverage_framework
+    path: reports/coverage_framework.md
+    source_type: process_note
+    claim_or_observation: "Defines provenance, maintenance, privacy/security, legal/licensing, epistemic risk, governance layer, and evidence standards for the KB."
+    candidate_use: "Scope and non-goal boundary; not external authority."
+    confidence: high_as_process
+    citation_target:
+      path: reports/coverage_framework.md
+      suggested_locator: "Risks, Governance, And Ethics / Evidence Standards"
+    retrieval_state: local_preserved_readable
+  - source_id: reports_source_gap_review
+    path: reports/source_gap_review.md
+    source_type: process_note
+    claim_or_observation: "Marks risks/governance coverage as medium and lists missing privacy/security, access control, legal/compliance, poisoning, prompt injection, licensing, and institutional review evidence."
+    candidate_use: "Gap boundary and retrieval deferral."
+    confidence: high_as_process
+    citation_target:
+      path: reports/source_gap_review.md
+      suggested_locator: "risks/governance section"
+    retrieval_state: local_preserved_readable
+

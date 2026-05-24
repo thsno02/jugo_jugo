@@ -1,0 +1,140 @@
+schema: kb.node_version.v1
+id: 20260524_094000_llm_wiki_vs_rag_write_loop
+node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+version: "1.0"
+title: "LLM Wiki 与 RAG/write-loop 系统的 artifact/workflow 边界"
+slug: llm_wiki_vs_rag_write_loop
+status: active
+version_status: adopted
+adoption_status: adopted
+adopted: true
+selected: true
+adoption_gate: citation_and_adoption_audit_passed
+version_adopted_at: "2026-05-24T17:54:00+08:00"
+created_at: "2026-05-24T10:00:00+08:00"
+created_by:
+  executor_role: worker_executor
+  worker_role: cand_010_vs_rag_write_loop generation worker
+  run_id: run_20260524_100000_worker_generation_vs_rag_write_loop
+  task_packet: .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/next_task_packet.md
+candidate_id: cand_010_vs_rag_write_loop
+candidate_source: .llmwiki/control/knowledge_frontier.yaml
+source_mining_run: .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop
+planning_run: .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop
+generation_run: .llmwiki/runs/run_20260524_100000_worker_generation_vs_rag_write_loop
+version_dir: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0
+paths:
+  card: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+  provenance: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/provenance.md
+  change: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/change.md
+  kb_view: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+prior_kb_anchors:
+  - node_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    adopted_kb_path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    pinned_version_path: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  - node_id: 20260524_072000_llm_wiki_working_definition
+    version: "1.0"
+    adopted_kb_path: kb/20260524_072000_llm_wiki_working_definition.md
+    pinned_version_path: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    version: "1.0"
+    adopted_kb_path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    pinned_version_path: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+  - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    version: "1.0"
+    adopted_kb_path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    pinned_version_path: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+evidence_state: enough_for_first_version
+retrieval_required_before_audit: false
+audit:
+  state: passed
+  run: .llmwiki/runs/run_20260524_101000_worker_audit_vs_rag_write_loop/audit_report.md
+  decision: adopt_recommended
+  adoption_run: .llmwiki/runs/run_20260524_102000_worker_adoption_view_vs_rag_write_loop
+  required_before_adoption: true
+  required_gates:
+    - object_topic_gate
+    - source_scope_gate
+    - citation_gate
+    - provenance_gate
+    - overclaim_gate
+    - retrieval_gate
+    - language_gate
+    - root_metadata_adoption_gate
+  known_limits:
+    - "This candidate is bounded to the artifact/workflow boundary between LLM Wiki and RAG/write-loop adjacent systems."
+    - "It does not make superiority, adoption, enterprise-readiness, empirical quality, scale, access-control, or broad benchmark claims."
+    - "Prior KB anchors are used only for continuity and boundary control, not as primary evidence for RAG, GraphRAG, ALCE, Zep, or LangChain facts."
+stability:
+  level: first_version_candidate
+  support_eligibility: bounded_artifact_workflow_boundary_only
+tags:
+  - llm_wiki
+  - rag
+  - graphrag
+  - agent_memory
+  - write_loop
+  - provenance
+  - citation
+  - artifact_boundary
+claim_scope:
+  includes:
+    - LLM Wiki as persistent wiki/node/card artifact maintained between raw sources and users
+    - writeback or file-back of valuable query outputs into the wiki artifact
+    - lint update index log provenance and citation workflow as maintenance mechanisms
+    - retrieval search embeddings and RAG-like mechanisms coexisting with LLM Wiki implementations
+    - RAG and GraphRAG as retrieval index summarization and answer-synthesis mechanisms
+    - ALCE-style citation evaluation as overlap with provenance concerns but not artifact equivalence
+    - Zep and LangChain long-term memory as adjacent persistent memory/write-read mechanisms
+    - early discourse around just-RAG and write-loop interpretations
+  excludes:
+    - broad competitive comparison or product comparison
+    - claims that LLM Wiki is better than RAG
+    - claims that RAG lacks indexes summaries citations memory durable artifacts or write paths
+    - claims that GraphRAG is simple raw chunk retrieval
+    - claims that agent memory is equivalent to LLM Wiki
+    - empirical performance scale token-efficiency adoption access-control concurrency or enterprise-readiness claims
+citation_summary:
+  primary_local_sources:
+    - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    - data/raw/hacker_news/hacker-news-original-thread/text.txt
+  technical_adjacent_sources:
+    - data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+    - data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+    - data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+    - data/raw/arxiv/arxiv-zep/source/main.tex
+    - data/raw/webpage/langchain-long-term-memory-docs/text.txt
+  secondary_sources_used: []
+  prior_kb_anchor_count: 4
+  citation_blocks_expected: 22
+dependencies:
+  raw_source_paths:
+    - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+    - data/raw/hacker_news/hacker-news-original-thread/text.txt
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    - data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+    - data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+    - data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+    - data/raw/arxiv/arxiv-zep/source/main.tex
+    - data/raw/webpage/langchain-long-term-memory-docs/text.txt
+  prior_kb_paths:
+    - kb/20260524_062000_llm_wiki_origin_and_canon.md
+    - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    - kb/20260524_072000_llm_wiki_working_definition.md
+    - nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+    - kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    - nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+    - kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    - nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+  process_paths:
+    - .llmwiki/control/orchestration_gates.yaml
+    - .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/next_task_packet.md
+    - .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/node_plan.yaml
+    - .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/evidence_scope.md
+    - .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/evidence_scope.yaml
+    - .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/generation_entry_gate.md
+    - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/evidence_matrix.yaml
+    - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/source_inventory.md
+    - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/source_notes.md

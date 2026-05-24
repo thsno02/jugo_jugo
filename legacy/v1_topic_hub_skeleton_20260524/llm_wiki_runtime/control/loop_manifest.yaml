@@ -1,0 +1,47 @@
+schema: kb.autonomous_loop_manifest.v1
+updated_at: "2026-05-24T06:08:00+08:00"
+active_topic: llm_wiki
+main_language: zh-CN
+current_phase: pre_loop_planning_gate_added
+initial_deliverables:
+  - reusable_skill_set
+  - complete_llm_wiki_v1_kb
+canonical_protocol: KB_INIT_KNOWLEDGE_MINING_PROTOCOL.md
+primary_state_files:
+  - .llmwiki/control/autonomous_loop_plan.md
+  - .llmwiki/control/skill_registry.yaml
+  - .llmwiki/control/knowledge_frontier.yaml
+  - .llmwiki/control/orchestration_gates.yaml
+  - .llmwiki/control/state.yaml
+  - .llmwiki/control/summary_state.md
+  - .llmwiki/control/standing_status.md
+pre_loop_run: .llmwiki/runs/run_20260524_060000_preloop_planning
+next_run_type: source_mining
+generation_entry_gate_required: true
+next_source_batch:
+  - karpathy-gist-llm-wiki
+  - karpathy-x-launch-post
+  - hacker-news-original-thread
+next_expected_artifacts:
+  - .llmwiki/runs/<next_run>/source_scope.md
+  - .llmwiki/runs/<next_run>/source_mining.md
+  - .llmwiki/runs/<next_run>/candidate_frontier_delta.yaml
+  - .llmwiki/runs/<next_run>/evidence_gaps.md
+  - .llmwiki/runs/<next_run>/retrieval_requests.md
+  - .llmwiki/runs/<next_run>/mining_trace.md
+autonomy:
+  human_absent_assumption: true
+  continue_without_human_for:
+    - source_mining
+    - frontier_update
+    - node_planning
+    - candidate_bundle_generation
+    - audit
+    - view_building
+    - skill_evaluation
+  stop_or_record_blocker_for:
+    - destructive_git_operation
+    - broad_or_bypass_network_retrieval
+    - adoption_without_evidence
+    - schema_change_breaking_archive_or_contract
+    - unresolved_validator_instrumentation_gap

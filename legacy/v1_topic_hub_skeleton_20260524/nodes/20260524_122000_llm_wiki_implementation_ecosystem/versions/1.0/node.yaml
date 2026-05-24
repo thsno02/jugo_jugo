@@ -1,0 +1,174 @@
+schema: kb.node_version.v1
+id: 20260524_122000_llm_wiki_implementation_ecosystem
+node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+version: "1.0"
+title: "LLM Wiki Implementation Ecosystem"
+slug: llm_wiki_implementation_ecosystem
+status: active
+version_status: adopted
+adoption_status: adopted
+adopted: true
+selected: true
+adoption_gate: citation_and_adoption_audit_passed
+version_adopted_at: "2026-05-24T20:40:11+08:00"
+created_at: "2026-05-24T12:40:00+08:00"
+created_by:
+  executor_role: worker_executor
+  worker_role: cand_006_implementation_ecosystem generation worker
+  run_id: run_20260524_124000_worker_generation_implementation_ecosystem
+  task_packet: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem/next_task_packet.md
+candidate_id: cand_006_implementation_ecosystem
+candidate_source: .llmwiki/control/knowledge_frontier.yaml
+source_mining_run: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem
+planning_run: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem
+generation_run: .llmwiki/runs/run_20260524_124000_worker_generation_implementation_ecosystem
+version_dir: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0
+paths:
+  card: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/card.md
+  provenance: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/provenance.md
+  change: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/change.md
+  kb_view: kb/20260524_122000_llm_wiki_implementation_ecosystem.md
+prior_kb_anchors:
+  - node_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    adopted_kb_path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    pinned_version_path: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_072000_llm_wiki_working_definition
+    version: "1.0"
+    adopted_kb_path: kb/20260524_072000_llm_wiki_working_definition.md
+    pinned_version_path: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    version: "1.0"
+    adopted_kb_path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    pinned_version_path: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    version: "1.0"
+    adopted_kb_path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    pinned_version_path: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+    version: "1.0"
+    adopted_kb_path: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+    pinned_version_path: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    version: "1.0"
+    adopted_kb_path: kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+    pinned_version_path: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+evidence_state: enough_for_first_version
+retrieval_required_before_audit: false
+audit:
+  state: passed
+  run: .llmwiki/runs/run_20260524_125500_worker_audit_implementation_ecosystem_replacement/audit_report.md
+  decision: adopt_recommended
+  adoption_run: .llmwiki/runs/run_20260524_130000_worker_adoption_view_implementation_ecosystem
+  required_before_adoption: true
+  required_gates:
+    - object_topic_gate
+    - source_scope_gate
+    - citation_gate
+    - provenance_gate
+    - implementation_self_description_boundary_gate
+    - adjacent_system_boundary_gate
+    - adoption_overclaim_gate
+    - footnote_layout_gate
+  known_limits:
+    - "Implementation claims are mostly README, package, plugin-directory, and project-page self-descriptions."
+    - "GitHub metadata is limited to snapshot fields and is not used as adoption, quality, ranking, or maturity evidence."
+    - "OpenKB, Obsidian, MCP, graph-vault, and long-document sources are marked as adjacent or source-specific where needed."
+    - "No package downloads, plugin installs, active-user counts, deployment reports, issue/PR outcome analysis, or independent quality evaluation are present."
+stability:
+  level: first_version_candidate
+  support_eligibility: bounded_implementation_landscape_only
+tags:
+  - llm_wiki
+  - implementation_ecosystem
+  - tooling
+  - mcp
+  - obsidian
+  - cli
+  - package_metadata
+  - source_boundaries
+claim_scope:
+  includes:
+    - implementation families visible in the local corpus
+    - implementation surfaces such as raw/wiki/schema or vault storage, ingest, compile, query, lint, watch, review, citations, provenance, graph and plugin interfaces
+    - package, plugin, project-page, and GitHub metadata as distribution-surface or snapshot metadata only
+    - adjacent OpenKB, graph-vault, Obsidian, and long-document systems with explicit boundary language
+    - evidence gaps for adoption, usage, quality, maturity, and deployment claims
+  excludes:
+    - market map ranking or winner selection
+    - adoption scale package downloads plugin installs active-user counts or production deployment
+    - quality maturity enterprise readiness or reliability judgments
+    - general community trend claims from blocked or missing sources
+    - universalizing source-specific features across all implementations
+citation_summary:
+  primary_implementation_sources:
+    - data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+    - data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+    - data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+    - data/raw/pypi/pypi-my-llm-wiki/text.txt
+    - data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+    - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    - data/raw/webpage/llm-wiki-net/text.txt
+  adjacent_or_source_specific_sources:
+    - data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+    - data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+  process_gap_sources:
+    - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/evidence_matrix.yaml
+    - reports/source_gap_review.md
+    - reports/coverage_framework.md
+  prior_kb_anchor_count: 6
+  citation_blocks_expected: 31
+dependencies:
+  raw_source_paths:
+    - data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+    - data/raw/github_repo/repo-nashsu-llm-wiki/github_repo.json
+    - data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+    - data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/github_repo.json
+    - data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+    - data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/github_repo.json
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/github_repo.json
+    - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+    - data/raw/github_repo/repo-kytmanov-obsidian-local/github_repo.json
+    - data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+    - data/raw/github_repo/repo-vectifyai-openkb/github_repo.json
+    - data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+    - data/raw/github_repo/repo-ngmeyer-librarian-mcp/github_repo.json
+    - data/raw/pypi/pypi-my-llm-wiki/text.txt
+    - data/raw/pypi/pypi-my-llm-wiki/pypi.json
+    - data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+    - data/raw/pypi/pypi-llm-wiki-mcp/pypi.json
+    - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    - data/raw/webpage/llm-wiki-net/text.txt
+    - reports/source_gap_review.md
+    - reports/coverage_framework.md
+  prior_kb_paths:
+    - kb/20260524_062000_llm_wiki_origin_and_canon.md
+    - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    - kb/20260524_072000_llm_wiki_working_definition.md
+    - nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+    - kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    - nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+    - kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    - nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+    - kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+    - nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+    - kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+    - nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/card.md
+  process_paths:
+    - .llmwiki/control/orchestration_gates.yaml
+    - .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem/next_task_packet.md
+    - .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem/node_plan.yaml
+    - .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem/evidence_scope.md
+    - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/evidence_matrix.yaml
+    - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/source_inventory.md
+    - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/source_notes.md
+    - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/source_mining.md

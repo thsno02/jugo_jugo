@@ -1,0 +1,267 @@
+schema: kb.action_queue.v1
+updated_at: "2026-05-24T22:55:00+08:00"
+main_language: zh-CN
+active_topic: llm_wiki
+items:
+  - id: act_001
+    status: done
+    action: 存档 demo-0 meta KB
+    artifact: archive/demo_0_meta_kb_initialization_20260524/
+  - id: act_002
+    status: done
+    action: 重置 active nodes/kb/generated 为 LLM Wiki topic KB
+  - id: act_003
+    status: done
+    action: 建立 LLM Wiki topic plan 与 topic node backlog
+    artifact: .llmwiki/control/topic_node_backlog.yaml
+  - id: act_003b
+    status: done
+    action: 写入 topic replan run artifacts
+    artifact: .llmwiki/runs/run_20260524_053000_topic_replan/
+  - id: act_004
+    status: done
+    action: 由 planner sub-agent 从 data/ 生成第一个 evidence handoff
+    artifact: .llmwiki/runs/run_20260524_054000_topic_planner/
+  - id: act_005
+    status: done
+    action: 结合 KB_INIT_KNOWLEDGE_MINING_PROTOCOL.md 初始化 protocol-aligned skills 和 pre-loop plan
+    artifact: .llmwiki/runs/run_20260524_060000_preloop_planning/
+  - id: act_006
+    status: done
+    action: 根据 sub-agent audit 补充 orchestration/frontier/generation-entry hard gate
+    artifact: .llmwiki/control/orchestration_gates.yaml
+  - id: act_007
+    status: done
+    action: 启动第一轮 source mining：origin/canon source batch
+    artifact: .llmwiki/runs/run_20260524_061000_source_mining_origin_canon/
+    note: "原 main-authored run 保留为 controller drift sample；已由 worker source-mining run_20260524_062000 复核/重跑并作为权威来源。"
+  - id: act_008
+    status: done
+    action: source mining 和 frontier gate 通过后，再生成第一个真正 topic node
+    artifact: nodes/20260524_062000_llm_wiki_origin_and_canon/
+    note: "origin/canon 0-1 node 已通过 generation、audit、repair、re-audit、adoption/view build，当前 adopted_nodes=1。"
+  - id: act_009
+    status: done
+    action: main 创建或派发 worker task packet，要求 worker 复核/重跑 origin/canon source mining，并产出 executor-attributed delivery
+    artifact: .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon/
+    owner_role: main_controller_for_packet_only
+  - id: act_010
+    status: done
+    action: 完成 origin/canon 0-1 node run 的 skill evaluation 与 frontier/status 收口
+    artifact: .llmwiki/runs/run_20260524_071000_worker_skill_eval_origin_canon/
+    owner_role: skill_eval_worker
+  - id: act_011
+    status: done
+    action: main controller 派发 worker task packet：围绕 cand_002_working_definition 做 source mining 与 frontier update，不由 main 直接执行
+    artifact: .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/
+    owner_role: main_controller_for_packet_only
+    note: "cand_002_working_definition 已完成 source mining、node planning、generation、audit、adoption/view build 与 skill evaluation；当前 adopted_nodes=2。"
+  - id: act_012
+    status: done
+    action: 完成 working-definition 0-1 node run 的 skill evaluation 与 frontier/status 收口
+    artifact: .llmwiki/runs/run_20260524_075000_worker_skill_eval_working_definition/
+    owner_role: skill_eval_worker
+  - id: act_013
+    status: done
+    action: main controller 派发 worker task packet：围绕 cand_003_architecture 做 source mining 与 frontier update，不由 main 直接执行
+    artifact: .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/
+    owner_role: main_controller_for_packet_only
+    note: "cand_003_architecture 已完成 source mining、node planning、generation、audit、adoption/view build 与 skill evaluation；当前 adopted_nodes=3。"
+  - id: act_014
+    status: done
+    action: main controller 派发 worker task packet：围绕 cand_004_workflow 做 source mining 与 frontier update，不由 main 直接执行
+    artifact: .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/
+    owner_role: main_controller_for_packet_only
+    note: "cand_004_workflow 已完成 source mining、node planning、generation、audit、adoption/view build；当前 adopted_nodes=4。"
+  - id: act_015
+    status: done
+    action: main controller 派发 worker task packet：围绕 cand_004_workflow 做 adoption/view build 后 skill evaluation
+    artifact: .llmwiki/runs/run_20260524_092000_worker_skill_eval_workflow/
+    owner_role: main_controller_for_packet_only
+    note: "skill eval 判定为 revise_skills_then_continue；已最小修订 view-building 与 node-metadata skills，下一步先做 cand_004 metadata repair/revalidation。"
+  - id: act_016
+    status: done
+    action: worker 修复 cand_004_workflow adoption metadata consistency 并重跑 node/card/status validators
+    artifact: .llmwiki/runs/run_20260524_093000_worker_adoption_metadata_repair_workflow/
+    owner_role: worker_executor
+    note: "已仅同步 selected versions/1.0/node.yaml 的 adoption metadata fields；未重写 card/provenance/change 或 evidence；node/card/view/status 验证通过。"
+  - id: act_017
+    status: done
+    action: main controller 派发 worker task packet：围绕 cand_010_vs_rag_write_loop 做 source mining
+    artifact: .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/
+    owner_role: worker_executor
+    note: "cand_010_vs_rag_write_loop source mining/frontier update 完成；decision=ready_to_plan，frontier status=ready_to_build，retrieval_required_before_build=false。"
+  - id: act_018
+    status: done
+    action: main controller 派发 worker task packet：围绕 cand_010_vs_rag_write_loop 做 node planning
+    artifact: .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/
+    owner_role: worker_executor
+    note: "cand_010_vs_rag_write_loop node planning 和 generation-entry gate 完成；decision=generation_entry_pass，target_node_id=20260524_094000_llm_wiki_vs_rag_write_loop。"
+  - id: act_019
+    status: done
+    action: 派发 generation worker：为 cand_010_vs_rag_write_loop 生成 first-version node bundle
+    artifact: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/
+    owner_role: worker_executor
+    note: "run_20260524_100000_worker_generation_vs_rag_write_loop 已完成 version bundle；root node.yaml、kb/ 和 generated/ 未在 generation 阶段写入。"
+  - id: act_020
+    status: done
+    action: worker audit：复核 cand_010_vs_rag_write_loop citation/adoption gate
+    artifact: .llmwiki/runs/run_20260524_101000_worker_audit_vs_rag_write_loop/
+    owner_role: worker_executor
+    note: "decision=adopt_recommended；card validator 已通过，root node validator adoption 前不适用已记录。"
+  - id: act_021
+    status: done
+    action: worker adoption/view build：采纳 cand_010_vs_rag_write_loop version 1.0 并刷新 KB 视图
+    artifact: .llmwiki/runs/run_20260524_102000_worker_adoption_view_vs_rag_write_loop/
+    owner_role: worker_executor
+    note: "decision=adopted；adopted_nodes=5，citation_edges=73，impact_queue_open=0；node/card target 与 --all validation 均通过。"
+  - id: act_022
+    status: done
+    action: 派发 skill evaluation worker：评估 cand_010_vs_rag_write_loop adoption/view 后链路
+    artifact: .llmwiki/runs/run_20260524_103000_worker_skill_eval_vs_rag_write_loop/
+    owner_role: skill_eval_worker
+    note: "decision=revise_skills_then_continue；已最小修订 card-generation 与 adoption-audit 的 comparison/adjacent-system guardrails；无 blocker。"
+  - id: act_023
+    status: done
+    action: 派发 source-mining/frontier worker：围绕 cand_008_risks_governance_provenance 做风险、治理、provenance source mining
+    artifact: .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/
+    owner_role: worker_executor
+    note: "decision=ready_to_plan；frontier status=ready_to_build；evidence_state=enough_for_first_version；retrieval_required_before_build=false；cand_011_initial_risk_discourse 已作为 HN early-discourse seed 合并并 deferred。"
+  - id: act_024
+    status: done
+    action: 派发 node-planning worker：围绕 cand_008_risks_governance_provenance 规划首版风险、治理、provenance 节点
+    artifact: .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/
+    owner_role: worker_executor
+    note: "decision=generation_entry_pass；target_node_id=20260524_104000_llm_wiki_risks_governance_and_provenance；retrieval_required_before_generation=false。"
+  - id: act_025
+    status: done
+    action: 派发 generation worker：为 cand_008_risks_governance_provenance 生成 first-version node bundle
+    artifact: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/
+    owner_role: worker_executor
+    note: "run_20260524_110000_worker_generation_risks_governance_provenance 已完成 candidate version bundle；root node.yaml、kb/ 和 generated/ 未在 generation 阶段写入。"
+  - id: act_026
+    status: done
+    action: worker audit：复核 cand_008_risks_governance_provenance citation/adoption gate
+    artifact: .llmwiki/runs/run_20260524_111000_worker_audit_risks_governance_provenance/
+    owner_role: worker_executor
+    note: "decision=adopt_recommended；card validator 已通过，root metadata gate adoption 前关闭且符合预期。"
+  - id: act_027
+    status: blocked
+    action: worker adoption/view build：采纳 cand_008_risks_governance_provenance version 1.0 并刷新 KB 视图
+    artifact: .llmwiki/runs/run_20260524_112000_worker_adoption_view_risks_governance_provenance/
+    owner_role: worker_executor
+    note: "decision=adoption_blocked；footnote_layout_gate=fail。目标 card 的 Footnotes 在 References 前，违反新增契约：References 必须位于 final Footnotes 前。未写 root node、selected version metadata、kb/ 或 generated/。"
+  - id: act_028
+    status: done
+    action: repair worker：调整 cand_008 card section order 并同步 footnote layout skill contract
+    artifact: .llmwiki/runs/run_20260524_113000_worker_repair_footnote_layout_contract/
+    owner_role: worker_executor
+    note: "decision=repair_validated；目标 card 仅移动整个 Footnotes section 到文件最后；同步 card-generation、citation-formatting、view-building、adoption-audit skills；target card validator、all cards validator、target footnote_layout_gate 均通过；legacy layout audit 记录 10 个既有旧布局问题但未批量修复。"
+  - id: act_029
+    status: done
+    action: worker adoption/view build：在 footnote repair 后采纳 cand_008_risks_governance_provenance version 1.0 并刷新 KB 视图
+    artifact: .llmwiki/runs/run_20260524_114000_worker_adoption_view_risks_governance_provenance_after_footnote_repair/
+    owner_role: worker_executor
+    note: "decision=adopted；root node 与 selected version adoption/status/selected/adopted-at/audit metadata 已同步；kb view、index、citation graph、backlinks、impact queue、status 已刷新；target/all node/card validators 通过；target version card 与 KB view footnote_layout_gate 均通过；adopted_nodes=6，citation_edges=110，impact_queue_open=0。"
+  - id: act_030
+    status: done
+    action: worker task packet：legacy footnote layout migration，修复既有 adopted legacy cards/kb views 的旧 Footnotes/References 顺序
+    artifact: .llmwiki/runs/run_20260524_115000_worker_legacy_footnote_layout_migration/
+    owner_role: worker_executor
+    note: "decision=migration_validated；检查 12 个 kb/card Markdown，修复 10 个 legacy adopted card/view 的 Footnotes/References 顺序，剩余失败 0；card/node validators、view/index/citation/backlinks/impact/status refresh 与 full footnote_layout_gate 均通过；adopted_nodes=6，citation_edges=110，impact_queue_open=0。"
+  - id: act_031
+    status: done
+    action: worker task packet：cand_008_risks_governance_provenance adoption/view 后 skill evaluation
+    artifact: .llmwiki/runs/run_20260524_120000_worker_skill_eval_risks_governance_provenance/
+    owner_role: skill_eval_worker
+    note: "decision=continue_loop；cand_008 evidence chain 闭合，deferred retrieval 记录正确，footnote layout contract 与 legacy migration 均通过；本轮无 skill 修改、无 blocker。"
+  - id: act_031b
+    status: done
+    action: worker control sync：同步 cand_008_risks_governance_provenance frontier/status 为 built/adopted/closed
+    artifact: .llmwiki/runs/run_20260524_121000_worker_frontier_status_sync_cand008/
+    owner_role: worker_executor
+    note: "decision=sync_validated；knowledge_frontier cand_008 status=built_adopted、build/audit/adoption/skill_eval/adopted fields 已补齐、next_action=completed；generated/status.yaml 仍为 adopted_nodes=6、citation_edges=110、impact_queue_open=0；下一步仍为 cand_006 source-mining/frontier worker。"
+  - id: act_032
+    status: done
+    action: 派发 source-mining/frontier worker：围绕 cand_006_implementation_ecosystem 做 implementation ecosystem source profiler batch
+    artifact: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/
+    owner_role: worker_executor
+    note: "decision=ready_to_plan；frontier status=ready_to_build；evidence_state=enough_for_first_version；retrieval_required_before_build=false。原 packet 推荐 121000 run dir，但当前用户允许写入为 122000 run dir，已按更严格边界执行。"
+  - id: act_033
+    status: done
+    action: 派发 node-planning worker：围绕 cand_006_implementation_ecosystem 规划 implementation ecosystem first-version node
+    artifact: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem/
+    owner_role: worker_executor
+    note: "decision=generation_entry_pass；target_node_id=20260524_122000_llm_wiki_implementation_ecosystem；retrieval_required_before_generation=false；generation packet 已包含 References before final Footnotes contract。"
+  - id: act_034
+    status: done
+    action: 派发 generation worker：为 cand_006_implementation_ecosystem 生成 first-version implementation ecosystem node bundle
+    artifact: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/
+    owner_role: worker_executor
+    note: "run_20260524_124000_worker_generation_implementation_ecosystem 已完成 candidate version bundle；root node.yaml、kb/ 和 generated/ 未在 generation 阶段写入。"
+  - id: act_035
+    status: done
+    action: replacement audit worker：复核 cand_006_implementation_ecosystem citation/adoption gate
+    artifact: .llmwiki/runs/run_20260524_125500_worker_audit_implementation_ecosystem_replacement/
+    owner_role: worker_executor
+    note: "decision=adopt_recommended；card validator 与 footnote_layout_gate 通过；root metadata gate adoption 前关闭且符合预期。审计 worker 自报越权运行 kb_parse_citations.py 写入 generated/backlinks.yaml 与 generated/citation_graph.yaml，后续 adoption/view worker 已合法全量刷新 generated/ 作为权威状态。"
+  - id: act_036
+    status: done
+    action: worker adoption/view build：采纳 cand_006_implementation_ecosystem version 1.0 并刷新 KB 视图
+    artifact: .llmwiki/runs/run_20260524_130000_worker_adoption_view_implementation_ecosystem/
+    owner_role: worker_executor
+    note: "decision=adopted；root node 与 selected version adoption/status/selected/adopted-at/audit metadata 已同步；kb view、index、citation graph、backlinks、impact queue、status 已刷新；target/all node/card validators 通过；target version card 与 KB view footnote_layout_gate 均通过；adopted_nodes=7，citation_edges=148，impact_queue_open=0。"
+  - id: act_037
+    status: done
+    action: 派发 skill evaluation worker：评估 cand_006_implementation_ecosystem adoption/view 后链路
+    artifact: .llmwiki/runs/run_20260524_131000_worker_skill_eval_implementation_ecosystem/
+    owner_role: skill_eval_worker
+    note: "decision=revise_skills_then_continue；cand_006 adopted_nodes=7、citation_edges=148、impact_queue_open=0；audit overreach recovered by adoption/view refresh；已最小修订 loop-orchestration、citation-audit、adoption-audit，沉淀 worker startup LOOP_BLOCKED 与 audit generated-write guardrails；无 blocker。"
+  - id: act_038
+    status: done
+    action: 派发 source-mining/frontier worker：围绕 cand_007_evaluation_evidence 做 evaluation evidence source mining 与 frontier update
+    artifact: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/
+    owner_role: worker_executor
+    note: "decision=ready_to_plan；frontier status=ready_to_build；evidence_state=enough_for_first_version；retrieval_required_before_build=false；local corpus sufficient, no external retrieval attempts。"
+  - id: act_039
+    status: done
+    action: 派发 node-planning worker：围绕 cand_007_evaluation_evidence 规划 evaluation/evidence first-version node
+    artifact: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence/
+    owner_role: worker_executor
+    note: "decision=generation_entry_pass；target_node_id=20260524_132000_llm_wiki_evaluation_evidence；retrieval_required_before_generation=false；generation packet 已包含 References before final Footnotes contract。"
+  - id: act_040
+    status: done
+    action: 派发 generation worker：为 cand_007_evaluation_evidence 生成 first-version evaluation/evidence node bundle
+    artifact: .llmwiki/runs/run_20260524_134000_worker_generation_evaluation_evidence/
+    owner_role: worker_executor
+    note: "decision=candidate_bundle_generated；target_node_id=20260524_132000_llm_wiki_evaluation_evidence；version=1.0；root node.yaml、kb/、generated/ 未在 generation 阶段写入。"
+  - id: act_041
+    status: done
+    action: worker audit：复核 cand_007_evaluation_evidence citation/adoption gate
+    artifact: .llmwiki/runs/run_20260524_135000_worker_audit_evaluation_evidence/
+    owner_role: worker_executor
+    note: "decision=adopt_recommended；card validator 与 footnote_layout_gate 通过；root metadata gate adoption 前关闭且符合预期。"
+  - id: act_042
+    status: done
+    action: worker adoption/view build：采纳 cand_007_evaluation_evidence version 1.0 并刷新 KB 视图
+    artifact: .llmwiki/runs/run_20260524_140000_worker_adoption_view_evaluation_evidence/
+    owner_role: worker_executor
+    note: "decision=adopted；root node 与 selected version adoption/status/selected/adopted-at/audit metadata 已同步；kb view、index、citation graph、backlinks、impact queue、status 已刷新；target/all node/card validators 通过；target version card 与 KB view footnote_layout_gate 均通过；adopted_nodes=8，citation_edges=185，impact_queue_open=0。"
+  - id: act_043
+    status: done
+    action: 派发 skill evaluation worker：评估 cand_007_evaluation_evidence adoption/view 后链路
+    artifact: .llmwiki/runs/run_20260524_141000_worker_skill_eval_evaluation_evidence/
+    owner_role: skill_eval_worker
+    note: "decision=v1_final_audit_recommended；cand_007 evidence chain 闭合，未发现 unsupported empirical/superiority/benchmark/adoption/scale claims；startup、audit-read-only、footnote-layout、selected-version-metadata guardrails 均通过；无 skill 修改、无 blocker。"
+  - id: act_044
+    status: done
+    action: final QA/delivery worker：执行 LLM Wiki v1 全量验证、frontier/action_queue 一致性收口、deferred retrieval 摘要、skills inventory、KB index summary 与最终交付报告
+    artifact: .llmwiki/runs/run_20260524_142000_worker_v1_final_qa_delivery/
+    owner_role: worker_executor
+    note: "decision=v1_delivered；8 adopted nodes validated；node/card validators, view/index/citation/backlinks/impact/status refresh, all-card footnote layout gate, and frontier lifecycle sync passed。"
+  - id: act_045
+    status: deferred
+    action: future retrieval/backlog：v1 delivered 后仅保留非阻塞检索项目，如企业/规模证据、社区反馈、详细安全分类、真实使用与长期评估
+    artifact: .llmwiki/runs/run_20260524_142000_worker_v1_final_qa_delivery/retrieval_deferred_summary.md
+    owner_role: future_controller_decision
+    note: "No next v1 content candidate. Future retrieval can resume on personal/unrestricted network or with preserved alternative primary sources; it is non-blocking for v1 delivery."

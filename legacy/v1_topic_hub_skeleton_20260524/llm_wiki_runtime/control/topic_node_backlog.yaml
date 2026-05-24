@@ -1,0 +1,82 @@
+schema: kb.topic_node_backlog.v1
+updated_at: "2026-05-24T05:30:00+08:00"
+main_language: zh-CN
+active_topic: llm_wiki
+items:
+  - id: llm_wiki_origin_and_canon
+    status: next
+    purpose: 解释 LLM Wiki 的起源、Karpathy gist、发布时间线和早期讨论语境。
+    primary_inputs:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.txt
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - reports/source_gap_review.md
+      - data/manifests/claims.jsonl
+      - data/manifests/claim_source_links.jsonl
+  - id: llm_wiki_working_definition
+    status: queued
+    purpose: 给出 LLM Wiki 的 working definition，并区分 raw source、compiled wiki 和 schema/control layer。
+    primary_inputs:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - reports/coverage_framework.md
+      - reports/source_gap_review.md
+  - id: llm_wiki_three_layer_architecture
+    status: queued
+    purpose: 描述 raw/wiki/schema 三层架构和 local implementation variants。
+    primary_inputs:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+      - data/manifests/source_digests.jsonl
+  - id: llm_wiki_ingest_compile_query_lint_workflow
+    status: queued
+    purpose: 描述 ingest、compile、query、lint、review、writeback 的运行流程。
+    primary_inputs:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  - id: llm_wiki_vs_rag_and_adjacent_systems
+    status: queued
+    purpose: 比较 LLM Wiki 与 RAG、PKM、knowledge graph、agent memory、documentation systems。
+    primary_inputs:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt
+      - data/raw/arxiv/arxiv-ragas/text.txt
+      - data/raw/arxiv/arxiv-memgpt/text.txt
+      - data/raw/arxiv/arxiv-mem0/text.txt
+  - id: llm_wiki_implementation_ecosystem
+    status: queued
+    purpose: 总结 GitHub repos、PyPI packages、Obsidian/Claude/Codex/MCP implementations 和 adoption signals。
+    primary_inputs:
+      - data/manifests/sources.jsonl
+      - data/manifests/source_digests.jsonl
+      - data/raw/github_repo/
+      - data/raw/pypi/
+      - reports/source_gap_review.md
+  - id: llm_wiki_evaluation_evidence
+    status: queued
+    purpose: 梳理 WiCER、knowledge compounding、RAG evaluation/citation evaluation 等 empirical evidence 与局限。
+    primary_inputs:
+      - data/raw/arxiv/arxiv-wicer/text.txt
+      - data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+      - data/raw/arxiv/arxiv-alce/text.txt
+      - data/raw/arxiv/arxiv-ragas/text.txt
+      - reports/source_gap_review.md
+  - id: llm_wiki_risks_governance_and_provenance
+    status: queued
+    purpose: 讨论 provenance drift、stale claims、privacy/security、poisoning、citation faithfulness 和 governance risks。
+    primary_inputs:
+      - data/raw/arxiv/arxiv-memory-as-metabolism/text.txt
+      - data/raw/webpage/owasp-llm-top10-2025/text.txt
+      - data/raw/webpage/nist-gai-profile/text.txt
+      - data/raw/arxiv/arxiv-alce/text.txt
+      - reports/source_gap_review.md
+  - id: llm_wiki_scale_boundaries_and_enterprise_limits
+    status: queued
+    purpose: 总结 context window、token budget、index size、multi-user governance、enterprise access control 等 scale limits。
+    primary_inputs:
+      - data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt
+      - data/raw/webpage/robin-cartier-llm-knowledge-bases/text.txt
+      - data/raw/webpage/openaitoolshub-six-months/text.txt
+      - reports/source_gap_review.md

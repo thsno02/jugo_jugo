@@ -1,0 +1,173 @@
+schema: kb.node_plan.v1
+run_id: run_20260524_133000_worker_node_planning_evaluation_evidence
+executor_role: worker_executor
+candidate_id: cand_007_evaluation_evidence
+node_id: 20260524_132000_llm_wiki_evaluation_evidence
+title: "LLM Wiki evaluation evidence: dimensions, evidence levels, and boundaries"
+purpose: >
+  Plan a first-version LLM Wiki node that explains how evaluation and evidence
+  should be framed for LLM Wiki claims: direct evaluation evidence, citation
+  auditability, implementation-described controls, adjacent evaluation vocabulary,
+  process/gap context, and explicit boundaries for unsupported claims.
+non_goals:
+  - "Do not claim LLM Wiki has been comprehensively empirically validated."
+  - "Do not claim superiority over RAG, GraphRAG, PKM, agent memory, documentation systems, or other adjacent systems."
+  - "Do not write generic LLM evaluation, benchmark ranking, model-quality evaluation, product review, adoption/scale, enterprise-readiness, production ROI, or benchmark-leadership claims."
+  - "Do not treat implementation README controls as measured reliability."
+  - "Do not treat adjacent RAG/citation metrics as direct proof of LLM Wiki reliability."
+  - "Do not treat prior KB anchors as new primary evidence."
+claim_outline:
+  - id: direct_eval_evidence
+    claim_type: bounded_primary_evidence
+    planned_claim: >
+      WiCER is the strongest direct local evaluation evidence for a wiki-memory /
+      LLM Wiki compile-evaluate-refine loop, supporting evaluation dimensions such
+      as compilation loss, diagnostic probes, refinement iteration, baselines,
+      scale limits, and reproducibility constraints.
+    allowed_sources:
+      - arxiv-wicer
+    required_boundary: "Single recent direct source; not general superiority, production reliability, or universal scale proof."
+  - id: economic_eval_framing
+    claim_type: cautious_primary_framing
+    planned_claim: >
+      Knowledge Compounding can be used only to show that economic or token-cost
+      claims require explicit query sequence, baseline, method, reproducibility,
+      and projection boundaries.
+    allowed_sources:
+      - arxiv-knowledge-compounding
+    required_boundary: "Local mining used abstract/PDF metadata; do not use detailed experiment/log claims without later extraction."
+  - id: citation_auditability
+    claim_type: direct_implementation_self_description
+    planned_claim: >
+      Atomicstrata and Kytmanov READMEs describe auditability mechanisms such as
+      source ranges, source hashes, lint validation, confidence/contradiction
+      labels, review queues, compare previews, rejection feedback, and
+      low-confidence/single-source warnings.
+    allowed_sources:
+      - repo-atomicstrata-llm-wiki-compiler
+      - repo-kytmanov-obsidian-local
+    required_boundary: "Implementation self-description only; not independent proof controls are correct or effective."
+  - id: adjacent_eval_vocabulary
+    claim_type: adjacent_method_vocabulary
+    planned_claim: >
+      ALCE, Ragas, ARES, and RAGChecker provide reusable vocabulary for citation
+      support, citation recall/precision, faithfulness, answer relevance, context
+      relevance, claim recall, hallucination, noise sensitivity, human validation,
+      and domain-shift limits.
+    allowed_sources:
+      - arxiv-alce
+      - arxiv-ragas
+      - arxiv-ares
+      - arxiv-ragchecker
+    required_boundary: "Adjacent RAG/citation evaluation only; not direct LLM Wiki benchmark evidence."
+  - id: kb_evidence_grade_boundary
+    claim_type: process_boundary
+    planned_claim: >
+      This KB should express evaluation claims with evidence grades, claim records,
+      citation discipline, method/baseline disclosure, missing evidence, and
+      deferred retrieval.
+    allowed_sources:
+      - reports/coverage_framework.md
+      - reports/source_gap_review.md
+    required_boundary: "Local process/gap sources; not primary empirical evidence."
+  - id: unresolved_gaps
+    claim_type: limitation
+    planned_claim: >
+      Non-blocking gaps include independent replication, direct audits of adopted
+      KB pages, long-term drift and stale-claim rates, provider/model/corpus
+      comparisons, Knowledge Compounding full extraction, and human/expert studies.
+    allowed_sources:
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/retrieval_requests.md
+    required_boundary: "Must be presented as deferred retrieval or missing evidence, not as fulfilled evaluation."
+required_citations:
+  primary_direct:
+    - source_id: arxiv-wicer
+      paths:
+        - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+        - data/raw/arxiv/arxiv-wicer/text.txt
+      use: "Direct LLM Wiki evaluation source and metadata."
+    - source_id: arxiv-knowledge-compounding
+      paths:
+        - data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+      use: "Cautious economic/token-cost framing only."
+  primary_implementation:
+    - source_id: repo-atomicstrata-llm-wiki-compiler
+      paths:
+        - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      use: "Project self-described provenance, lint, confidence, contradiction, review, and future evaluation harness."
+    - source_id: repo-kytmanov-obsidian-local
+      paths:
+        - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+      use: "Project self-described compare previews, source hashes, audit/rejection loop, and confidence warnings."
+  adjacent:
+    - source_id: arxiv-alce
+      paths:
+        - data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+      use: "Adjacent citation-quality and support-evaluation vocabulary."
+    - source_id: arxiv-ragas
+      paths:
+        - data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+      use: "Adjacent faithfulness, answer relevance, and context relevance vocabulary."
+    - source_id: arxiv-ares
+      paths:
+        - data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+      use: "Adjacent evaluator calibration, confidence, human-validation, and domain-shift vocabulary."
+    - source_id: arxiv-ragchecker
+      paths:
+        - data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+      use: "Adjacent claim-level diagnostic vocabulary."
+  secondary_process:
+    - source_id: reports/coverage_framework.md
+      paths:
+        - reports/coverage_framework.md
+      use: "Evidence grades, claim records, citation discipline, and judgment gates."
+    - source_id: reports/source_gap_review.md
+      paths:
+        - reports/source_gap_review.md
+      use: "Coverage status and missing evidence."
+prior_kb_links:
+  use_policy: "Continuity and boundaries only; not new primary evidence."
+  anchors:
+    - node_id: 20260524_062000_llm_wiki_origin_and_canon
+      path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    - node_id: 20260524_072000_llm_wiki_working_definition
+      path: kb/20260524_072000_llm_wiki_working_definition.md
+    - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+      path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+      path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    - node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+      path: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+    - node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+      path: kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+    - node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+      path: kb/20260524_122000_llm_wiki_implementation_ecosystem.md
+risk_controls:
+  - "Label every source tier: direct, implementation self-description, adjacent, process/gap, or prior-KB continuity."
+  - "Tie empirical or benchmark-style claims to source, method/baseline scope, and limitation."
+  - "Forbid unsupported claims of superiority, ROI, enterprise readiness, production reliability, adoption, or benchmark leadership."
+  - "Do not imply citation presence equals citation support."
+  - "Keep Knowledge Compounding claims abstract-level unless later full-text/log mining is authorized."
+  - "Record deferred retrieval explicitly inside card/provenance/change."
+  - "Require `## References` before final `## Footnotes`; `## Footnotes` must be the last top-level card section."
+adoption_gate:
+  generation_entry_decision: pass
+  version_target: "1.0"
+  generation_output_paths:
+    - nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/node.yaml
+    - nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/card.md
+    - nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/provenance.md
+    - nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/change.md
+  must_not_write_before_audit:
+    - nodes/20260524_132000_llm_wiki_evaluation_evidence/node.yaml
+    - kb/20260524_132000_llm_wiki_evaluation_evidence.md
+    - generated/
+  audit_concerns:
+    - source_scope
+    - citation_support
+    - provenance_tier_labels
+    - overclaim_boundary
+    - deferred_retrieval
+    - footnote_layout
+    - language_consistency

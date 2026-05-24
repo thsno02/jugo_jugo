@@ -1,0 +1,201 @@
+schema: kb.node_plan.v1
+run_id: run_20260524_123000_worker_node_planning_implementation_ecosystem
+executor_role: worker_executor
+candidate_id: cand_006_implementation_ecosystem
+node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+title: "LLM Wiki Implementation Ecosystem"
+version_target: "1.0"
+source_mining_run: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem
+purpose: >-
+  Describe, with local-source evidence only, the implementation ecosystem that has
+  formed around the LLM Wiki pattern: project families, toolchain surfaces, file
+  and data-model motifs, registry/plugin distribution signals, and evidence
+  boundaries for activity versus adoption.
+non_goals:
+  - "Do not rank implementations or pick a winner."
+  - "Do not claim market share, adoption scale, active usage, package downloads, production deployment, quality, reliability, maturity, or enterprise readiness."
+  - "Do not treat stars/forks/open issues as usage, quality, or community consensus."
+  - "Do not generalize long-document, multimodal, Obsidian, MCP, or graph capabilities beyond sources that explicitly claim them."
+  - "Do not use blocked Reddit/community pages, directories, or prior KB nodes to support new implementation facts."
+claim_outline:
+  - claim_id: implementation_families_in_local_corpus
+    planned_claim: >-
+      The local corpus supports a descriptive landscape of several implementation
+      families: UI/desktop/web app, coding-agent skill/template, CLI/MCP compiler,
+      Obsidian/local-first workflow, graph/MCP vault tool, Python package/library,
+      plugin/runtime distribution, multi-runtime command/plugin, and adjacent
+      long-document/OpenKB-like systems.
+    required_citations:
+      - repo-nashsu-llm-wiki
+      - repo-samuraigpt-llm-wiki-agent
+      - repo-atomicstrata-llm-wiki-compiler
+      - repo-kytmanov-obsidian-local
+      - repo-ngmeyer-librarian-mcp
+      - pypi-my-llm-wiki
+      - pypi-llm-wiki-mcp
+      - clawhub-llm-wiki-karpathy
+      - llm-wiki-net
+      - repo-vectifyai-openkb
+    citation_note: "Use one or more direct implementation citations per family; do not cite process reports for implementation facts."
+  - claim_id: common_implementation_surfaces
+    planned_claim: >-
+      Across direct implementation sources, recurring surfaces include raw/wiki/schema
+      or vault-like storage, ingest/compile/query/lint/watch operations, generated
+      indexes/logs/graphs, review workflows, citations/provenance controls, and MCP,
+      plugin, API, or local-provider integration.
+    required_citations:
+      - repo-samuraigpt-llm-wiki-agent
+      - repo-atomicstrata-llm-wiki-compiler
+      - repo-kytmanov-obsidian-local
+      - clawhub-llm-wiki-karpathy
+      - llm-wiki-net
+      - pypi-llm-wiki-mcp
+    citation_note: "Phrase as recurring in cited examples, not universal across all implementations."
+  - claim_id: registry_plugin_project_metadata
+    planned_claim: >-
+      PyPI captures, plugin pages, project pages, and GitHub metadata snapshots can
+      document package version/classifier/runtime details and repository snapshot
+      fields, but only as metadata and distribution-surface signals.
+    required_citations:
+      - pypi-my-llm-wiki
+      - pypi-llm-wiki-mcp
+      - clawhub-llm-wiki-karpathy
+      - llm-wiki-net
+      - github_repo_metadata_batch
+    citation_note: "For github_repo.json, cite only stars/forks/open issues/language/license/timestamps; never infer adoption."
+  - claim_id: adjacent_system_boundary
+    planned_claim: >-
+      OpenKB-like, Obsidian vault, graph/MCP, and long-document implementations are
+      useful adjacent evidence for implementation breadth, but must be marked as
+      adjacent or source-specific rather than collapsed into the LLM Wiki core.
+    required_citations:
+      - repo-vectifyai-openkb
+      - repo-ngmeyer-librarian-mcp
+      - repo-kytmanov-obsidian-local
+      - reports/source_gap_review.md
+    citation_note: "Use reports only for gap/boundary framing, not for implementation facts."
+  - claim_id: evidence_quality_and_missing_adoption_evidence
+    planned_claim: >-
+      The corpus is strong enough for a bounded implementation landscape but lacks
+      package downloads, plugin installs, active-user counts, deployment reports,
+      issue/PR outcome analysis, and independent quality evaluations.
+    required_citations:
+      - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/evidence_matrix.yaml
+      - reports/source_gap_review.md
+      - reports/coverage_framework.md
+    citation_note: "Frame this as process/gap context and source-quality warning."
+required_citations:
+  primary_implementation_sources:
+    - source_id: repo-nashsu-llm-wiki
+      paths:
+        - data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+        - data/raw/github_repo/repo-nashsu-llm-wiki/github_repo.json
+      use: "UI/desktop/web-app implementation facts; github metadata snapshot only."
+    - source_id: repo-samuraigpt-llm-wiki-agent
+      paths:
+        - data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+        - data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/github_repo.json
+      use: "Coding-agent skill/template family and raw/wiki/index/log/graph file structure."
+    - source_id: repo-sdyckjq-llm-wiki-skill
+      paths:
+        - data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+        - data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/github_repo.json
+      use: "Skill/plugin UX and reporting motifs; self-description only."
+    - source_id: repo-atomicstrata-llm-wiki-compiler
+      paths:
+        - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+        - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/github_repo.json
+      use: "CLI/MCP compiler family, ingest/compile/query/view/lint/watch, review, citations/provenance."
+    - source_id: repo-kytmanov-obsidian-local
+      paths:
+        - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+        - data/raw/github_repo/repo-kytmanov-obsidian-local/github_repo.json
+      use: "Obsidian/local-first implementation facts and human-review/provenance controls."
+    - source_id: repo-vectifyai-openkb
+      paths:
+        - data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+        - data/raw/github_repo/repo-vectifyai-openkb/github_repo.json
+      use: "Adjacent long-document/OpenKB-like implementation; source-specific claims only."
+    - source_id: repo-ngmeyer-librarian-mcp
+      paths:
+        - data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+        - data/raw/github_repo/repo-ngmeyer-librarian-mcp/github_repo.json
+      use: "Adjacent MCP/graph-vault implementation facts."
+    - source_id: pypi-my-llm-wiki
+      paths:
+        - data/raw/pypi/pypi-my-llm-wiki/text.txt
+        - data/raw/pypi/pypi-my-llm-wiki/pypi.json
+      use: "Python package metadata and package self-description."
+    - source_id: pypi-llm-wiki-mcp
+      paths:
+        - data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+        - data/raw/pypi/pypi-llm-wiki-mcp/pypi.json
+      use: "MCP package metadata, tools/skills, and local storage safety claims."
+    - source_id: clawhub-llm-wiki-karpathy
+      paths:
+        - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+      use: "Plugin/runtime distribution evidence; directory self-description only."
+    - source_id: llm-wiki-net
+      paths:
+        - data/raw/webpage/llm-wiki-net/text.txt
+      use: "Multi-runtime project-page implementation evidence; self-description only."
+  secondary_process_notes:
+    - source_id: source_gap_review
+      paths:
+        - reports/source_gap_review.md
+      use: "Readiness, evidence gaps, and adoption/community limitation framing only."
+    - source_id: coverage_framework
+      paths:
+        - reports/coverage_framework.md
+      use: "Planning discipline and representative-implementation requirement only."
+prior_kb_links:
+  - node_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    use: "Boundary-only continuity anchor; not primary evidence for new implementation facts."
+  - node_id: 20260524_072000_llm_wiki_working_definition
+    version: "1.0"
+    path: kb/20260524_072000_llm_wiki_working_definition.md
+    use: "Boundary-only continuity anchor for what counts as LLM Wiki."
+  - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    version: "1.0"
+    path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    use: "Boundary-only continuity anchor for raw/wiki/schema and layer language."
+  - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    version: "1.0"
+    path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    use: "Boundary-only continuity anchor for workflow vocabulary."
+  - node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+    version: "1.0"
+    path: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+    use: "Boundary-only continuity anchor for adjacent-system distinctions."
+  - node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    version: "1.0"
+    path: kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+    use: "Boundary-only continuity anchor for provenance and risk language."
+risk_controls:
+  - "Every implementation-family claim must cite direct README/package/plugin/project-page evidence."
+  - "Separate primary implementation facts, package/registry metadata, plugin/project-page self-description, process notes, and prior-KB anchors."
+  - "Use `github_repo.json` only for snapshot metadata fields, not for adoption, quality, ranking, or usage claims."
+  - "Mark README and directory claims as self-described unless independently corroborated."
+  - "Phrase common surfaces as observed across cited examples, not universal ecosystem properties."
+  - "Use adjacent OpenKB, Obsidian, and graph/MCP sources with explicit boundary language."
+  - "Require `## References` before final `## Footnotes`, and `## Footnotes` as the last top-level card section."
+adoption_gate:
+  generation_entry_decision: pass
+  retrieval_required_before_generation: false
+  required_generation_paths:
+    - nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/node.yaml
+    - nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/card.md
+    - nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/provenance.md
+    - nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/change.md
+  forbidden_generation_paths:
+    - nodes/20260524_122000_llm_wiki_implementation_ecosystem/node.yaml
+    - kb/
+    - generated/
+  audit_concerns:
+    - "Overclaim from stars/forks to adoption or quality."
+    - "Uncited generalization from one implementation to the whole ecosystem."
+    - "Prior-KB anchor used as source for new implementation fact."
+    - "Directory or README self-description presented as independent validation."
+    - "Footnote layout contract violation."

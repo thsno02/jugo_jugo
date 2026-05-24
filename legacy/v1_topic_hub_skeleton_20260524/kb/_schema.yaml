@@ -1,0 +1,22 @@
+schema: kb.schema.v1
+generated_at: "2026-05-24T05:30:00+08:00"
+main_language: zh-CN
+active_topic: llm_wiki
+contracts:
+  node_database: nodes/ 是 LLM Wiki topic KB 的 node version bundle source of truth。
+  kb_view: kb/ 只渲染 adopted topic nodes。
+  generated: generated/ 保存从 topic cards citation 解析出的 graph、backlinks、impact queue 和 status。
+  version_bundle:
+    - node.yaml
+    - card.md
+    - provenance.md
+    - change.md
+  primary_evidence_layer:
+    - data/raw/
+    - data/manifests/
+    - reports/source_gap_review.md
+    - reports/coverage_framework.md
+  required_card_sections:
+    - "# Title"
+    - "## Footnotes"
+    - "## References"

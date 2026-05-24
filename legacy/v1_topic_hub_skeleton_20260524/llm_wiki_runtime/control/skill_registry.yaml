@@ -1,0 +1,106 @@
+schema: kb.skill_registry.v1
+updated_at: "2026-05-24T06:08:00+08:00"
+main_language: zh-CN
+active_topic: llm_wiki
+status: draft_initialized_with_orchestration_gate
+global_patch_rule:
+  patch_only_if:
+    - repeated_failure
+    - high_risk_failure
+    - hard_contract_break
+    - specific_and_testable_patch
+skills:
+  - name: llmwiki-loop-orchestration
+    path: .llmwiki/skills/llmwiki-loop-orchestration/SKILL.md
+    role: Enforce autonomous loop stage order, artifact gates, frontier authority, and generation-entry blocking.
+    primary_outputs:
+      - .llmwiki/control/orchestration_gates.yaml
+      - generation_entry_gate.md
+      - LOOP_DONE_or_LOOP_BLOCKED_transition_decision
+  - name: llmwiki-source-mining
+    path: .llmwiki/skills/llmwiki-source-mining/SKILL.md
+    role: Convert preserved sources into source-backed observations, candidates, gaps, and retrieval requests.
+    primary_outputs:
+      - source_scope.md
+      - source_mining.md
+      - candidate_frontier_delta.yaml
+      - evidence_gaps.md
+      - retrieval_requests.md
+  - name: llmwiki-frontier-management
+    path: .llmwiki/skills/llmwiki-frontier-management/SKILL.md
+    role: Maintain .llmwiki/control/knowledge_frontier.yaml.
+    primary_outputs:
+      - .llmwiki/control/knowledge_frontier.yaml
+      - frontier_trace.md
+  - name: llmwiki-node-planning
+    path: .llmwiki/skills/llmwiki-node-planning/SKILL.md
+    role: Choose one ready candidate and write generator handoff.
+    primary_outputs:
+      - planner_report.md
+      - evidence_scope.yaml
+      - next_task_packet.md
+  - name: llmwiki-card-generation
+    path: .llmwiki/skills/llmwiki-card-generation/SKILL.md
+    role: Write card.md for one planned version.
+    primary_outputs:
+      - card.md
+  - name: llmwiki-citation-formatting
+    path: .llmwiki/skills/llmwiki-citation-formatting/SKILL.md
+    role: Ensure parseable footnotes and references.
+    primary_outputs:
+      - Footnotes and References blocks
+  - name: llmwiki-provenance-generation
+    path: .llmwiki/skills/llmwiki-provenance-generation/SKILL.md
+    role: Write provenance.md with inputs, synthesis, audit trail, limits, and revision triggers.
+    primary_outputs:
+      - provenance.md
+  - name: llmwiki-change-generation
+    path: .llmwiki/skills/llmwiki-change-generation/SKILL.md
+    role: Write genesis or version transition rationale.
+    primary_outputs:
+      - change.md
+  - name: llmwiki-node-metadata
+    path: .llmwiki/skills/llmwiki-node-metadata/SKILL.md
+    role: Write node.yaml metadata for version bundle and adopted root.
+    primary_outputs:
+      - node.yaml
+  - name: llmwiki-citation-audit
+    path: .llmwiki/skills/llmwiki-citation-audit/SKILL.md
+    role: Audit parseability, source support, and overclaim risk.
+    primary_outputs:
+      - citation_audit.md
+  - name: llmwiki-adoption-audit
+    path: .llmwiki/skills/llmwiki-adoption-audit/SKILL.md
+    role: Decide adopt, repair, retrieval, impact, reject, or defer.
+    primary_outputs:
+      - audit_report.md
+      - adoption_decision
+  - name: llmwiki-dynamic-retrieval
+    path: .llmwiki/skills/llmwiki-dynamic-retrieval/SKILL.md
+    role: Convert evidence gaps into retrieval requests and preserved source assets.
+    primary_outputs:
+      - retrieval_requests.md
+      - retrieval_log.md
+      - data/raw/<source_id>/
+      - data/manifests/sources.jsonl
+  - name: llmwiki-view-building
+    path: .llmwiki/skills/llmwiki-view-building/SKILL.md
+    role: Render adopted versions and generated graph/status artifacts.
+    primary_outputs:
+      - kb/
+      - kb/_index.yaml
+      - generated/citation_graph.yaml
+      - generated/backlinks.yaml
+      - generated/impact_queue.yaml
+      - generated/status.yaml
+  - name: llmwiki-impact-analysis
+    path: .llmwiki/skills/llmwiki-impact-analysis/SKILL.md
+    role: Analyze downstream effects of major version changes.
+    primary_outputs:
+      - generated/impact_queue.yaml
+  - name: llmwiki-skill-evolution
+    path: .llmwiki/skills/llmwiki-skill-evolution/SKILL.md
+    role: Evaluate run failures and decide whether to patch skills.
+    primary_outputs:
+      - .llmwiki/runs/<run_id>/skill_eval.md
+      - .llmwiki/control/skill_eval_log.yaml

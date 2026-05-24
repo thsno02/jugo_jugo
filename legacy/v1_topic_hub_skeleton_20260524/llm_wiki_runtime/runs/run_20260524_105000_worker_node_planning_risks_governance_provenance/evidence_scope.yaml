@@ -1,0 +1,58 @@
+schema: kb.evidence_scope.v1
+run_id: run_20260524_105000_worker_node_planning_risks_governance_provenance
+target_candidate: cand_008_risks_governance_provenance
+target_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+source_mining_run: .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance
+primary_llm_wiki_evidence:
+  - source_id: repo-atomicstrata-llm-wiki-compiler
+    path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    allowed_use: implementation-specific provenance, citation, lint, review, metadata, and roadmap-boundary claims
+  - source_id: repo-kytmanov-obsidian-local
+    path: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+    allowed_use: implementation-specific hash, review, hand-edit protection, low-confidence annotation, stale-lint, and source-ledger claims
+  - source_id: arxiv-wicer
+    paths:
+      - data/raw/arxiv/arxiv-wicer/text.txt
+      - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+    allowed_use: LLM Wiki compilation-loss, evaluate/refine, and limitation claims
+adjacent_evidence:
+  - source_id: arxiv-memory-as-metabolism
+    allowed_use: governance, drift, source-preservation, and audit-record framing
+  - source_id: arxiv-alce
+    allowed_use: adjacent citation-quality and citation-audit difficulty
+  - source_id: arxiv-etamp-memory-poisoning
+    allowed_use: adjacent persistent-memory poisoning threat model only
+  - source_id: arxiv-poisonedrag
+    allowed_use: adjacent RAG knowledge-database poisoning threat model only
+  - source_id: arxiv-graph-poisoning
+    allowed_use: adjacent GraphRAG construction-poisoning analogy only
+process_vocabulary_and_discourse:
+  - source_id: hacker-news-original-thread
+    allowed_use: early discourse only
+  - source_id: owasp-llm-top10-2025
+    allowed_use: broad framework existence only
+  - source_id: owasp-agentic-top10-2026
+    allowed_use: broad framework existence only
+  - source_id: nist-gai-profile
+    allowed_use: voluntary GAI governance vocabulary only
+  - source_id: microsoft-agent-governance-toolkit-docs
+    allowed_use: vendor control vocabulary only
+  - source_id: reports_coverage_framework
+    allowed_use: KB process scope only
+  - source_id: reports_source_gap_review
+    allowed_use: KB process gap boundary only
+prior_kb_anchors:
+  allowed_use: boundary_continuity_only
+  nodes:
+    - 20260524_062000_llm_wiki_origin_and_canon
+    - 20260524_072000_llm_wiki_working_definition
+    - 20260524_080000_llm_wiki_three_layer_architecture
+    - 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    - 20260524_094000_llm_wiki_vs_rag_write_loop
+forbidden_evidence_uses:
+  - detailed OWASP category claims from landing pages
+  - enterprise compliance or access-control sufficiency
+  - blocked Reddit/community discourse as substantive evidence
+  - direct LLM Wiki incident or attack-rate claims
+  - measured governance-control effectiveness
+retrieval_required_before_generation: false

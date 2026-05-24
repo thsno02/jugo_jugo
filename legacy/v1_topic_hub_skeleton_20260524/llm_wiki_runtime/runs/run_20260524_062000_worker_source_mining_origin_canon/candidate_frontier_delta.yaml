@@ -1,0 +1,104 @@
+schema: kb.candidate_frontier_delta.v1
+run_id: run_20260524_062000_worker_source_mining_origin_canon
+executor_role: worker_executor
+created_at: "2026-05-24T06:20:00+08:00"
+main_language: zh-CN
+source_batch:
+  - karpathy-gist-llm-wiki
+  - karpathy-x-launch-post
+  - hacker-news-original-thread
+updates:
+  - candidate_id: cand_001_origin_and_canon
+    proposed_node_slug: llm_wiki_origin_and_canon
+    previous_status: needs_more_mining
+    new_status: ready_to_build
+    candidate_statement: "LLM Wiki 的 local canonical origin 可以由 Karpathy 的 idea file 和 immediate HN discussion 锚定；首版节点应描述 idea-file pattern、三层架构、ingest/query/lint 操作与早期争议，并明确 X launch raw 文件当前为空、X-specific wording/metrics 需要后续复核。"
+    why_it_matters: "它是后续 working definition、architecture、workflow、comparison 与 risk nodes 的前置锚点；先建立 bounded origin/canon 可避免从 planner hunch 直接生成节点。"
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - hacker-news-original-thread
+      - karpathy-x-launch-post
+    raw_paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - data/raw/hacker_news/hacker-news-original-thread/item.json
+      - data/raw/webpage/karpathy-x-launch-post/text.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.json
+    direct_evidence:
+      - source_id: karpathy-gist-llm-wiki
+        supports:
+          - canonical idea-file framing
+          - raw/wiki/schema architecture
+          - ingest/query/lint operations
+          - index/log navigation files
+          - optional tooling and implementation flexibility
+      - source_id: hacker-news-original-thread
+        supports:
+          - early public discussion metadata visible in text
+          - immediate RAG comparison debate
+          - early support, skepticism, risk, scale, and maintenance concerns
+      - source_id: karpathy-x-launch-post
+        supports:
+          - source inventory/provenance only in this worker run
+        limitation: "Allowed raw files are empty; do not cite X wording or metrics until recaptured."
+    claim_ids:
+      - claim_000001_origin_and_canon_original_karpathy_statement_exact_text
+      - claim_000002_origin_and_canon_original_date
+      - claim_000003_origin_and_canon_original_context
+      - claim_000004_origin_and_canon_examples_and_intended_workflow
+      - claim_000005_origin_and_canon_stated_or_implied_non_goals
+      - claim_000006_origin_and_canon_immediate_discussion_context
+      - claim_000007_origin_and_canon_early_forks_or_implementations
+      - claim_000008_origin_and_canon_minimal_example
+    coverage_records:
+      - covrec_origin_and_canon_original_karpathy_statement_exact_text
+      - covrec_origin_and_canon_original_date
+      - covrec_origin_and_canon_original_context
+      - covrec_origin_and_canon_examples_and_intended_workflow
+      - covrec_origin_and_canon_stated_or_implied_non_goals
+      - covrec_origin_and_canon_immediate_discussion_context
+      - covrec_origin_and_canon_early_forks_or_implementations
+      - covrec_origin_and_canon_minimal_example
+    evidence_state: enough_for_first_version_with_boundaries
+    citation_feasibility: strong_for_bounded_origin_node
+    missing_evidence:
+      - "X launch post raw files are empty in the allowed evidence; exact X text, timestamps, and social metrics need recapture before use as direct citation."
+      - "Pre-Karpathy historical lineage remains out of scope and must be listed as a limitation."
+      - "Reddit/community reception is blocked or outside this batch and must not support this node."
+      - "Enterprise-scale, empirical effectiveness, and ecosystem/adoption claims require separate mining."
+    unresolved_retrieval_blocker: false
+    retrieval_required_before_build: false
+    build_constraints:
+      - "Use gist as primary canonical source."
+      - "Use HN text only for immediate discourse and visible story metadata."
+      - "Do not assert exact X launch wording/metrics from empty raw files."
+      - "Do not claim full historical origin or broad adoption."
+    suggested_first_version: "1.0"
+  - candidate_id: cand_010_vs_rag_write_loop
+    proposed_node_slug: llm_wiki_vs_rag_write_loop
+    new_status: needs_more_mining
+    candidate_statement: "LLM Wiki 与 RAG 的关键差异候选点是 durable write/maintenance loop、filed-back outputs 与 maintained intermediate artifacts，而不是是否存在 retrieval。"
+    why_it_matters: "该候选可避免后续 comparison node 过度简化为 just-RAG 或 anti-RAG。"
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - hacker-news-original-thread
+    evidence_state: needs_comparison_source_mining
+    citation_feasibility: partial
+    missing_evidence:
+      - "需要 RAG、GraphRAG、agent memory、long-context comparison 等 primary/technical sources。"
+    retrieval_required_before_build: false
+  - candidate_id: cand_011_initial_risk_discourse
+    proposed_node_slug: llm_wiki_initial_risk_discourse
+    new_status: needs_more_mining
+    candidate_statement: "早期 HN 讨论已经出现 model collapse、second-order information、stale claims、quality assurance、context bloat 与 human thinking/offloading 等风险语汇。"
+    why_it_matters: "可作为后续 risks/governance/provenance node 的 early-discourse seed。"
+    discovered_from:
+      - hacker-news-original-thread
+    evidence_state: discourse_seed_needs_risk_sources
+    citation_feasibility: partial
+    missing_evidence:
+      - "需要 governance、provenance、citation accuracy、maintenance drift 与 empirical failure sources。"
+    retrieval_required_before_build: false
+

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "aicritique-enterprise-knowledge-dynamic-20260524",
+    "type": "webpage",
+    "title": "Andrej Karpathy's latest concept LLM Wiki and the future of enterprise knowledge",
+    "url": "https://www.aicritique.org/us/2026/05/08/andrej-karpathys-latest-concept-llm-wiki-and-the-future-of-enterprise-knowledge/",
+    "priority": "p1",
+    "tags": ["dynamic_retrieval", "enterprise", "llm-wiki", "evidence-gap:aicritique_intercept_failure"]
+  },
+  {
+    "id": "atlan-llm-wiki-vs-rag-dynamic-20260524",
+    "type": "webpage",
+    "title": "LLM Wiki vs RAG: The Karpathy Concept and Enterprise Reality",
+    "url": "https://atlan.com/know/llm-wiki-vs-rag-knowledge-base/",
+    "priority": "p1",
+    "tags": ["dynamic_retrieval", "enterprise", "rag", "llm-wiki", "evidence-gap:enterprise_framing"]
+  }
+]

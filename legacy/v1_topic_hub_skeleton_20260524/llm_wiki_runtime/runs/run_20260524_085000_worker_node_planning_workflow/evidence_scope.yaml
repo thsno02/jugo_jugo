@@ -1,0 +1,117 @@
+schema: kb.evidence_scope.v1
+run_id: run_20260524_085000_worker_node_planning_workflow
+executor_role: worker_executor
+candidate_id: cand_004_workflow
+target_node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+version_target: "1.0"
+source_mining_run: .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow
+frontier_candidate_status: ready_to_build
+retrieval_required_before_build: false
+file_state_checked:
+  checked_at: "2026-05-24T08:50:00+08:00"
+  all_selected_paths_present_and_non_empty: true
+prior_kb_anchors:
+  - node_id: 20260524_062000_llm_wiki_origin_and_canon
+    title: "LLM Wiki 的 bounded origin/canon"
+    version: "1.0"
+    usable_as_support: true
+    role: adopted_origin_and_canon_anchor
+    paths:
+      kb_view: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      card: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+      provenance: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/provenance.md
+      change: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/change.md
+    allowed_use:
+      - bounded canon for the Karpathy gist
+      - overclaim prohibitions and adopted evidence boundaries
+  - node_id: 20260524_072000_llm_wiki_working_definition
+    title: "LLM Wiki 的工作定义"
+    version: "1.0"
+    usable_as_support: true
+    role: adopted_working_definition_anchor
+    paths:
+      kb_view: kb/20260524_072000_llm_wiki_working_definition.md
+      card: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+      provenance: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/provenance.md
+      change: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/change.md
+    allowed_use:
+      - source-preserving, agent-maintained working definition
+      - ingest/query/lint/update loop boundary
+  - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    title: "LLM Wiki 的三层架构"
+    version: "1.0"
+    usable_as_support: true
+    role: adopted_architecture_anchor
+    paths:
+      kb_view: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+      card: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+      provenance: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/provenance.md
+      change: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/change.md
+    allowed_use:
+      - raw/wiki/schema architecture
+      - boundary that detailed ingest/compile/query/lint workflow belongs in cand_004
+primary_sources:
+  - source_id: karpathy-gist-llm-wiki
+    source_type: gist_primary_workflow_source
+    paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+    allowed_use:
+      - abstract workflow authority
+      - ingest flow from raw source to summary page, index update, relevant page updates, and log entry
+      - query flow over wiki pages with citations and file-back of valuable answers
+      - lint/health-check for contradictions, stale claims, orphan pages, missing concepts, missing cross-references, and data gaps
+      - index.md and log.md as navigation/history files
+      - optional/modular tooling boundary
+implementation_sources:
+  - source_id: repo-atomicstrata-llm-wiki-compiler
+    source_type: repo_implementation_process_detail
+    paths:
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    allowed_use:
+      - source-to-wiki compile pipeline details where directly mined
+      - hash check, concept extraction, page generation, wikilink resolution, and index generation
+      - incremental compile, two-phase compile/review, approval/rejection, deferred bookkeeping
+      - query --save writeback, index rebuild, saved query context
+      - source markers, line-range citations, lint validation, viewer health, watch mode, and MCP tools
+    limitation: implementation/process evidence only; not primary abstract workflow authority
+  - source_id: clawhub-llm-wiki-karpathy
+    source_type: clawhub_implementation_runtime_detail
+    paths:
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    allowed_use:
+      - raw/wiki/schema runtime details where directly mined
+      - representation-first ingest and compile-readiness tracking
+      - stored representations, source-note validation, gap mapping/promotion
+      - generated index/log, deterministic lint, CLI/MCP tools
+      - runtime-vs-agent responsibility split
+    limitation: implementation/runtime evidence only; not ecosystem/adoption or empirical evidence
+secondary_sources:
+  - source_id: reports/source_gap_review.md
+    source_type: secondary_report
+    allowed_use:
+      - coverage status that workflow architecture coverage is strong
+      - non-blocking gaps around measurement, scale, governance, comparison, and neutral taxonomy
+    limitation: secondary gap report only
+  - source_id: reports/coverage_framework.md
+    source_type: secondary_framework
+    allowed_use:
+      - evidence-label and boundary vocabulary
+      - source preservation, compilation, persistent representation, provenance/auditability, and maintenance as boundary tests
+    limitation: secondary framework only
+allowed_claim_scope:
+  - ingest/source intake
+  - compile/wiki update
+  - query/synthesis
+  - lint/health-check
+  - update/file-back
+  - log/index maintenance loop
+  - human curation, emphasis guidance, review, and runtime/agent responsibility boundaries where directly supported
+forbidden_claim_scope:
+  - implementation ecosystem survey
+  - enterprise suitability
+  - empirical effectiveness or benchmark claims
+  - adoption, social-metric, maturity, scale, or reliability claims
+  - broad comparison with RAG, PKM, knowledge graphs, documentation systems, or agent memory
+  - universal requirement for CLI, MCP, Obsidian, vector search, representation storage, review queue, or any single repository layout
+

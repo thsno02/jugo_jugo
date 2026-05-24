@@ -1,0 +1,69 @@
+schema: kb.node_version.v1
+id: 20260524_062000_llm_wiki_origin_and_canon
+node_id: 20260524_062000_llm_wiki_origin_and_canon
+version: "1.0"
+version_status: adopted
+adoption_status: adopted
+adoption_gate: citation_and_adoption_audit_passed
+version_adopted_at: "2026-05-24T06:47:33+08:00"
+created_at: "2026-05-24T06:40:00+08:00"
+created_by: worker_executor
+generation_run: .llmwiki/runs/run_20260524_064000_worker_generation_origin_canon
+task_packet: .llmwiki/runs/run_20260524_063500_worker_node_planning_repair_origin_canon/next_task_packet.md
+candidate_id: cand_001_origin_and_canon
+candidate_source: .llmwiki/control/knowledge_frontier.yaml
+title: "LLM Wiki 的 bounded origin/canon"
+language: zh-CN
+summary: "以 Karpathy 的 LLM Wiki idea file 为主要规范证据，并以 Hacker News 原始讨论串作为早期讨论证据，限定描述 LLM Wiki 的本地 canon：idea-file framing、raw/wiki/schema 三层结构、ingest/query/lint 操作、index/log 导航，以及 X/HN 本地捕获存在但不可支持采用率、生态或效果外推的证据边界。"
+version_dir: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0
+card: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+provenance: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/provenance.md
+change: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/change.md
+kb_view: kb/20260524_062000_llm_wiki_origin_and_canon.md
+tags:
+  - llm_wiki
+  - origin
+  - canon
+  - idea_file
+  - evidence_bounded
+stability: initial_candidate
+support_level: bounded_primary_source_plus_discourse
+audit:
+  required_before_adoption: true
+  status: pending
+  gates_pending:
+    - citation_and_adoption_audit
+    - adopted_view_build
+  known_limits:
+    - "X launch raw files are present in the current checkout and may support bounded launch-context inventory, but this version does not use them to claim adoption, ecosystem maturity, enterprise readiness, or empirical effectiveness."
+    - "HN item.json is present in the current checkout and may support structured story metadata; HN comments remain discourse evidence, not technical proof."
+    - "Pre-Karpathy historical lineage, broad adoption, empirical effectiveness, enterprise readiness, and full risk/governance claims are out of scope."
+evidence:
+  primary:
+    - source_id: karpathy-gist-llm-wiki
+      paths:
+        - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+        - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+  secondary:
+    - source_id: hacker-news-original-thread
+      paths:
+        - data/raw/hacker_news/hacker-news-original-thread/text.txt
+  inventory_only:
+    - source_id: karpathy-x-launch-post
+      paths:
+        - data/raw/webpage/karpathy-x-launch-post/text.txt
+        - data/raw/webpage/karpathy-x-launch-post/raw.txt
+        - data/raw/webpage/karpathy-x-launch-post/raw.json
+      limitation: bounded_launch_context_only
+dependencies:
+  source_paths:
+    - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+    - data/raw/hacker_news/hacker-news-original-thread/text.txt
+    - data/raw/hacker_news/hacker-news-original-thread/item.json
+    - data/raw/webpage/karpathy-x-launch-post/text.txt
+    - data/raw/webpage/karpathy-x-launch-post/raw.txt
+    - data/raw/webpage/karpathy-x-launch-post/raw.json
+  process_paths:
+    - .llmwiki/runs/run_20260524_063000_worker_node_planning_origin_canon/evidence_scope.yaml
+    - .llmwiki/runs/run_20260524_063500_worker_node_planning_repair_origin_canon/next_task_packet.md
+    - .llmwiki/runs/run_20260524_065000_worker_repair_origin_canon/repair_report.md

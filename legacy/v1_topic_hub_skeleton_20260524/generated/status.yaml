@@ -1,0 +1,38 @@
+schema: kb.status.v1
+language: zh-CN
+generated_at: '2026-05-24T21:45:41+08:00'
+nodes_total: 8
+adopted_nodes: 8
+kb_view_cards: 8
+citation_edges: 185
+major_candidates: 0
+dynamic_retrieval:
+  requests: 0
+  ok_attempts: 0
+  failed_attempts: 0
+impact_queue_open: 0
+stability_counts:
+  initial: 8
+top_tags:
+  llm_wiki: 8
+  provenance: 4
+  source_preservation: 2
+  source_boundaries: 2
+  origin: 1
+  canon: 1
+  idea_file: 1
+  evidence_bounded: 1
+  working_definition: 1
+  agent_maintained_wiki: 1
+  architecture: 1
+  raw_sources: 1
+  compiled_wiki: 1
+  schema_layer: 1
+  workflow: 1
+  ingest: 1
+  compile: 1
+  query: 1
+  lint: 1
+  writeback: 1
+next_recommended_action: run_dynamic_retrieval_test
+next_recommended_action_zh: 执行动态检索测试

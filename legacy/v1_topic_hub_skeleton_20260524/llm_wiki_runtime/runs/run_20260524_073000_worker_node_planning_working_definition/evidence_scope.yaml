@@ -1,0 +1,143 @@
+schema: kb.evidence_scope.v1
+run_id: run_20260524_073000_worker_node_planning_working_definition
+executor_role: worker_executor
+candidate_id: cand_002_working_definition
+target_node_id: 20260524_072000_llm_wiki_working_definition
+version_target: "1.0"
+source_mining_run: .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition
+frontier_candidate_status: ready_to_build
+evidence_state: enough_for_first_version
+retrieval_required_before_build: false
+primary_sources:
+  - source_id: karpathy-gist-llm-wiki
+    role: primary_definitional_source
+    paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+    allowed_support:
+      - abstract idea-file framing rather than fixed implementation
+      - immutable raw sources as source of truth
+      - persistent LLM-generated markdown/wiki layer
+      - schema or instruction file controlling structure, conventions, and workflows
+      - ingest, query, lint, and update/writeback loop
+      - index and log navigation support
+      - human source curation, question steering, emphasis, and review
+      - optional or modular tooling boundary
+prior_kb_anchors:
+  - source_id: 20260524_062000_llm_wiki_origin_and_canon
+    role: adopted_origin_and_canon_anchor
+    node_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    usable_as_support: true
+    paths:
+      - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+      - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/provenance.md
+      - kb/20260524_062000_llm_wiki_origin_and_canon.md
+    allowed_support:
+      - adopted bounded origin/canon anchor
+      - evidence boundaries for avoiding adoption, enterprise, ecosystem, and empirical claims
+      - prior KB context only, not replacement for primary gist evidence
+discourse_boundary_sources:
+  - source_id: hacker-news-original-thread
+    role: bounded_early_discourse_only
+    paths:
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - data/raw/hacker_news/hacker-news-original-thread/item.json
+    allowed_support:
+      - immediate public discussion context visible in local raw files
+      - bounded comparison or skepticism context only if clearly framed as discourse
+    forbidden_support:
+      - technical proof
+      - adoption proof
+      - empirical proof
+      - enterprise readiness
+      - ecosystem maturity
+  - source_id: karpathy-x-launch-post
+    role: bounded_launch_context_and_source_inventory_only
+    paths:
+      - data/raw/webpage/karpathy-x-launch-post/text.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.json
+    allowed_support:
+      - bounded launch context
+      - source inventory presence
+    forbidden_support:
+      - adoption metrics
+      - social-metric interpretation
+      - technical proof
+      - ecosystem claims
+      - enterprise claims
+      - empirical claims
+secondary_framing_sources:
+  - source_id: reports/source_gap_review.md
+    role: secondary_coverage_and_gap_framing
+    paths:
+      - reports/source_gap_review.md
+    allowed_support:
+      - coverage-status confirmation
+      - non-blocking source gaps
+      - planning boundaries
+    limitation: Not primary definitional authority.
+  - source_id: reports/coverage_framework.md
+    role: secondary_framework_and_boundary_framing
+    paths:
+      - reports/coverage_framework.md
+    allowed_support:
+      - boundary tests for distinguishing LLM Wiki from adjacent systems
+      - future coverage needs
+    limitation: Do not present framework criteria as Karpathy's exact original definition unless directly supported by the gist.
+file_state_checks:
+  checked_at: "2026-05-24T07:30:00+08:00"
+  method: local_wc_c_no_network
+  files:
+    - path: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      bytes: 11985
+      state: present_non_empty
+    - path: data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+      bytes: 11985
+      state: present_non_empty
+    - path: data/raw/hacker_news/hacker-news-original-thread/text.txt
+      bytes: 50430
+      state: present_non_empty
+    - path: data/raw/hacker_news/hacker-news-original-thread/item.json
+      bytes: 1018
+      state: present_non_empty
+    - path: data/raw/webpage/karpathy-x-launch-post/text.txt
+      bytes: 11825
+      state: present_non_empty
+    - path: data/raw/webpage/karpathy-x-launch-post/raw.txt
+      bytes: 11825
+      state: present_non_empty
+    - path: data/raw/webpage/karpathy-x-launch-post/raw.json
+      bytes: 11825
+      state: present_non_empty
+    - path: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+      bytes: 10146
+      state: present_non_empty
+    - path: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/provenance.md
+      bytes: 7434
+      state: present_non_empty
+    - path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      bytes: 10146
+      state: present_non_empty
+    - path: reports/coverage_framework.md
+      bytes: 34686
+      state: present_non_empty
+    - path: reports/source_gap_review.md
+      bytes: 24527
+      state: present_non_empty
+forbidden_claims:
+  - enterprise readiness
+  - empirical proof or measured superiority
+  - broad adoption
+  - full implementation ecosystem completeness
+  - complete historical lineage
+  - rigorous comparison with RAG, graph RAG, PKM, knowledge graphs, documentation systems, or agent memory
+  - social-metric conclusions from X
+  - treating HN comments as authoritative technical proof
+generation_notes:
+  distinguish_source_backed_observations_from_worker_synthesis: true
+  use_main_language: zh-CN
+  cite_primary_definition_to_gist: true
+  cite_prior_kb_anchor_only_for_context_and_boundaries: true
+

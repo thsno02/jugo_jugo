@@ -1,0 +1,16 @@
+schema: kb.decision_log.v1
+updated_at: "2026-05-24T05:30:00+08:00"
+main_language: zh-CN
+active_topic: llm_wiki
+decisions:
+  - id: dec_001
+    decision: 将上一轮产物作为 demo-0 存档
+    reason: 上一轮误把 KB 生产协议当成内容主题，生成了 meta KB；该产物仍可审计机制，但不应污染 LLM Wiki topic KB。
+    artifact: archive/demo_0_meta_kb_initialization_20260524/
+  - id: dec_002
+    decision: active topic 改为 llm_wiki
+    reason: 用户核心目标是生成 LLM Wiki topic KB，而不是生成 KB 初始化机制自身的 KB。
+    next_action: build_first_topic_node_origin_and_canon
+  - id: dec_003
+    decision: data/ 是 primary evidence layer
+    reason: 本 repo 已有 raw sources、manifests、claim/source links、coverage records 和 source gap reports；topic KB 必须从这些证据生成。

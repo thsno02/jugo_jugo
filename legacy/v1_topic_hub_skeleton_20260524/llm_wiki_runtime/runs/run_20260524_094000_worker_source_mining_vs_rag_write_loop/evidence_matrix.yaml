@@ -1,0 +1,128 @@
+schema: kb.evidence_matrix.v1
+run_id: run_20260524_094000_worker_source_mining_vs_rag_write_loop
+target_candidate: cand_010_vs_rag_write_loop
+decision: ready_to_plan
+evidence_state: enough_for_first_version
+retrieval_required_before_build: false
+entries:
+  - source_id: karpathy-gist-llm-wiki
+    path: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+    source_type: primary_idea_file
+    claim_or_observation: "LLM Wiki is framed against RAG: instead of only retrieving raw documents at query time, the LLM incrementally builds and maintains a persistent wiki between user and raw sources."
+    candidate_use: "Primary support for the core LLM Wiki side of the boundary."
+    confidence: high
+    citation_target:
+      path: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      locator: "Core idea; Architecture; Operations"
+    retrieval_state: local_readable
+  - source_id: karpathy-gist-llm-wiki
+    path: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+    source_type: primary_idea_file
+    claim_or_observation: "Query answers may be filed back into the wiki as new pages; lint checks contradictions, stale claims, orphan pages, missing cross-references, and data gaps."
+    candidate_use: "Primary support for durable write/maintenance loop and filed-back outputs."
+    confidence: high
+    citation_target:
+      path: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      locator: "Operations / Query and Lint"
+    retrieval_state: local_readable
+  - source_id: hacker-news-original-thread
+    path: data/raw/hacker_news/hacker-news-original-thread/text.txt
+    source_type: primary_discussion_thread
+    claim_or_observation: "Early discussion includes both 'just RAG' claims and rebuttals that the distinctive element is the write loop, backlinks, filed-back outputs, and linting."
+    candidate_use: "Early discourse framing; supports why the comparison must not be anti-RAG or broad."
+    confidence: medium
+    citation_target:
+      path: data/raw/hacker_news/hacker-news-original-thread/text.txt
+      locator: "comments around RAG/write-loop debate"
+    retrieval_state: local_readable
+  - source_id: repo-atomicstrata-llm-wiki-compiler
+    path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    source_type: implementation_evidence
+    claim_or_observation: "The compiler README explicitly contrasts RAG's query-time chunk retrieval with compiling sources into a persistent artifact; `query --save` writes answers back into wiki pages and rebuilds the index."
+    candidate_use: "Concrete implementation support for writeback, compounding query pages, index rebuild, and complement-not-replacement boundary."
+    confidence: high
+    citation_target:
+      path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      locator: "Why not just RAG?; How it works; CLI and wiki model"
+    retrieval_state: local_readable
+  - source_id: repo-atomicstrata-llm-wiki-compiler
+    path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    source_type: implementation_evidence
+    claim_or_observation: "The implementation includes source attribution, paragraph/claim-level provenance, lint validation, candidate review, MCP tools, and retrieval/search/embeddings."
+    candidate_use: "Shows LLM Wiki can use retrieval while still differentiating on durable wiki/provenance/lint workflow."
+    confidence: high
+    citation_target:
+      path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      locator: "Claim-level provenance; CLI and wiki model; MCP server"
+    retrieval_state: local_readable
+  - source_id: arxiv-graphrag
+    path: data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+    source_type: primary_technical_paper
+    claim_or_observation: "Canonical RAG retrieves records relevant to a query and fits them in the context window; GraphRAG builds a graph index and pregenerated community summaries, then uses map-reduce over summaries to answer global questions."
+    candidate_use: "Primary RAG/GraphRAG boundary source; prevents straw-manning RAG as only raw chunk lookup."
+    confidence: high
+    citation_target:
+      path: data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+      locator: "Introduction; RAG Approaches and Systems; GraphRAG Workflow"
+    retrieval_state: local_readable
+  - source_id: arxiv-ragas
+    path: data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+    source_type: primary_technical_paper
+    claim_or_observation: "RAG systems are composed of retrieval and LLM generation modules; evaluation checks relevant/focused context, faithful use of passages, answer relevance, and context relevance."
+    candidate_use: "Technical support for RAG as retrieval-generation pipeline and for citation/evaluation constraints."
+    confidence: high
+    citation_target:
+      path: data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+      locator: "Abstract; Evaluation Strategies"
+    retrieval_state: local_readable
+  - source_id: arxiv-alce
+    path: data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+    source_type: primary_technical_paper
+    claim_or_observation: "ALCE requires end-to-end systems to retrieve supporting evidence and generate answers with citations, with metrics for fluency, correctness, and citation quality."
+    candidate_use: "Support for citation/verifiability overlap and limits in retrieval-grounded answer generation."
+    confidence: high
+    citation_target:
+      path: data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+      locator: "Abstract"
+    retrieval_state: local_readable
+  - source_id: arxiv-zep
+    path: data/raw/arxiv/arxiv-zep/source/main.tex
+    source_type: primary_technical_paper
+    claim_or_observation: "Zep/Graphiti addresses agent memory with a dynamic temporal knowledge graph that synthesizes conversations/business data, maintains historical relationships, and traces semantic artifacts to source episodes."
+    candidate_use: "Adjacent write-loop/memory comparison; distinguishes temporal KG memory from markdown/wiki artifact maintenance."
+    confidence: high
+    citation_target:
+      path: data/raw/arxiv/arxiv-zep/source/main.tex
+      locator: "Abstract; Knowledge Graph Construction; Memory Retrieval"
+    retrieval_state: local_readable
+  - source_id: langchain-long-term-memory-docs
+    path: data/raw/webpage/langchain-long-term-memory-docs/text.txt
+    source_type: technical_documentation
+    claim_or_observation: "Long-term memory persists across conversations/sessions as JSON documents organized by namespace/key, with tool read/write and search."
+    candidate_use: "Adjacent agent-memory write/read loop evidence; useful non-goal boundary against equating all memory stores with LLM Wiki."
+    confidence: medium
+    citation_target:
+      path: data/raw/webpage/langchain-long-term-memory-docs/text.txt
+      locator: "Long-term memory; Memory storage; Read/Write long-term memory"
+    retrieval_state: local_readable
+  - source_id: atlan-llm-wiki-vs-rag-dynamic-20260524
+    path: data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt
+    source_type: secondary_product_explainer
+    claim_or_observation: "The explainer frames the comparison as compile-time vs query-time knowledge assembly and emphasizes scale/governance caveats."
+    candidate_use: "Optional secondary framing only; not primary authority for definitions or technical RAG claims."
+    confidence: medium
+    citation_target:
+      path: data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt
+      locator: "Head-to-head comparison; bottom line"
+    retrieval_state: local_readable_secondary
+  - source_id: kb_prior_anchor_workflow
+    path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    source_type: prior_kb_anchor
+    claim_or_observation: "Adopted KB already bounds LLM Wiki workflow around ingest, compile, query, lint, update/file-back, and index/log maintenance."
+    candidate_use: "Planning anchor and boundary constraint; not a new fact source."
+    confidence: high
+    citation_target:
+      path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+      locator: "adopted node anchor"
+    retrieval_state: local_prior_kb_anchor
+

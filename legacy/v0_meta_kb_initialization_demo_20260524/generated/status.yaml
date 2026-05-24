@@ -1,0 +1,33 @@
+schema: kb.status.v1
+language: zh-CN
+generated_at: '2026-05-24T05:24:55+08:00'
+nodes_total: 7
+adopted_nodes: 7
+kb_view_cards: 7
+citation_edges: 35
+major_candidates: 1
+dynamic_retrieval:
+  requests: 1
+  ok_attempts: 1
+  failed_attempts: 1
+impact_queue_open: 4
+stability_counts:
+  solid: 2
+  working: 5
+top_tags:
+  llm-wiki: 7
+  provenance: 2
+  dynamic-retrieval: 2
+  definition: 1
+  source-backed: 1
+  kb-initialization: 1
+  agent-loop: 1
+  source-preservation: 1
+  audit: 1
+  citations: 1
+  impact-analysis: 1
+  evidence-gap: 1
+  enterprise: 1
+  governance: 1
+next_recommended_action: review_impact_queue_or_prepare_demo_report
+next_recommended_action_zh: 审查 impact queue，或准备 demo report

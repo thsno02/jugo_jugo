@@ -1,0 +1,56 @@
+schema: kb.evidence_scope.v1
+run_id: run_20260524_095000_worker_node_planning_vs_rag_write_loop
+candidate_id: cand_010_vs_rag_write_loop
+target_node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+source_mining_run: .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop
+decision: sufficient_for_bounded_first_version
+retrieval_required_before_generation: false
+primary_local_sources:
+  - source_id: karpathy-gist-llm-wiki
+    path: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+    allowed_use: "LLM Wiki canonical idea, RAG contrast, persistent wiki, raw/wiki/schema, ingest/query/lint, file-back, index/log."
+  - source_id: hacker-news-original-thread
+    path: data/raw/hacker_news/hacker-news-original-thread/text.txt
+    allowed_use: "Early discourse around just-RAG debate and write-loop/risk framing only."
+  - source_id: repo-atomicstrata-llm-wiki-compiler
+    path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    allowed_use: "Implementation evidence for persistent artifact, query --save, index rebuild, provenance, lint/review, retrieval/search coexistence."
+  - source_id: clawhub-llm-wiki-karpathy
+    path: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    allowed_use: "Optional implementation/runtime support only."
+technical_adjacent_sources:
+  - source_id: arxiv-graphrag
+    path: data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+    allowed_use: "RAG/GraphRAG technical baseline, graph index, community summaries, map-reduce answer synthesis."
+  - source_id: arxiv-ragas
+    path: data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+    allowed_use: "RAG retrieval-generation modules and evaluation axes."
+  - source_id: arxiv-alce
+    path: data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+    allowed_use: "Citation/evidence-generation overlap."
+  - source_id: arxiv-zep
+    path: data/raw/arxiv/arxiv-zep/source/main.tex
+    allowed_use: "Adjacent temporal KG agent memory and traceability."
+  - source_id: langchain-long-term-memory-docs
+    path: data/raw/webpage/langchain-long-term-memory-docs/text.txt
+    allowed_use: "Adjacent long-term memory JSON document store, read/write/search."
+secondary_process_notes:
+  - source_id: atlan-llm-wiki-vs-rag-dynamic-20260524
+    path: data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt
+    allowed_use: "Optional secondary/product framing only; not primary authority."
+prior_kb_anchors:
+  - path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    allowed_use: "Continuity and overclaim boundary."
+  - path: kb/20260524_072000_llm_wiki_working_definition.md
+    allowed_use: "Continuity and working-definition boundary."
+  - path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    allowed_use: "Continuity and architecture boundary."
+  - path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    allowed_use: "Continuity and workflow boundary."
+forbidden_claims:
+  - "LLM Wiki is better than RAG."
+  - "RAG is always stateless, raw-chunk-only, lacks indexes, lacks summaries, lacks citations, or lacks durable internal artifacts."
+  - "Agent memory writeback is identical to LLM Wiki."
+  - "Empirical performance, token-efficiency, scale-threshold, adoption, access-control, concurrency, or enterprise-readiness claims."
+  - "Broad PKM, documentation-system, data-catalog, knowledge-graph, vendor, or product comparison."
+

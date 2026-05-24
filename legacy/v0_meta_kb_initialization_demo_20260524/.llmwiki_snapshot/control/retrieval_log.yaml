@@ -1,0 +1,23 @@
+schema: kb.retrieval_log.v1
+updated_at: '2026-05-24T05:10:00+08:00'
+requests:
+- id: ret_001
+  run: .llmwiki/runs/run_20260524_050031_kb_initialization_bootstrap
+  request: .llmwiki/runs/run_20260524_050031_kb_initialization_bootstrap/retrieval_request.md
+  status: completed_with_partial_failure
+  reason: source_gap_review 记录了 blocked Reddit 和 intercepted enterprise source gaps。
+  network_context: company_computer_limited_retrieval
+  policy: 在公司电脑上只做有限正常 retrieval；不要绕过网络控制。Blocked sources 未来在个人设备重新 retrieve。
+  attempts:
+  - source_id: aicritique-enterprise-knowledge-dynamic-20260524
+    status: failed_intercepted
+    raw_path: data/raw/webpage/aicritique-enterprise-knowledge-dynamic-20260524
+    source_url: https://www.aicritique.org/us/2026/05/08/andrej-karpathys-latest-concept-llm-wiki-and-the-future-of-enterprise-knowledge/
+    result: Preserved an intercepted response; not usable as evidence.
+  - source_id: atlan-llm-wiki-vs-rag-dynamic-20260524
+    status: ok
+    raw_path: data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524
+    source_url: https://atlan.com/know/llm-wiki-vs-rag-knowledge-base/
+    result: Preserved an enterprise/RAG comparison source for the evidence gap.
+language: zh-CN
+

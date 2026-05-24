@@ -1,0 +1,35 @@
+schema: kb.source_candidates.v1
+updated_at: "2026-05-24T05:30:00+08:00"
+main_language: zh-CN
+active_topic: llm_wiki
+note: 本文件现在用于 LLM Wiki topic KB，不再用于 meta-production KB。
+candidates:
+  - candidate_id: llm_wiki_origin_and_canon
+    status: next
+    evidence:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.txt
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - reports/source_gap_review.md
+      - data/manifests/claims.jsonl
+      - data/manifests/claim_source_links.jsonl
+  - candidate_id: llm_wiki_working_definition
+    status: queued
+    evidence:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - reports/coverage_framework.md
+      - reports/source_gap_review.md
+  - candidate_id: llm_wiki_three_layer_architecture
+    status: queued
+    evidence:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  - candidate_id: llm_wiki_implementation_ecosystem
+    status: queued
+    evidence:
+      - data/manifests/sources.jsonl
+      - data/manifests/source_digests.jsonl
+      - data/raw/github_repo/
+      - data/raw/pypi/
+      - reports/source_gap_review.md

@@ -1,0 +1,602 @@
+schema: kb.citation_graph.v1
+generated_at: '2026-05-24T05:23:54+08:00'
+edge_count: 35
+edges:
+- citing_node: 20260524_050031_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: primary_source
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: 支持 LLM Wiki 工作定义：在 immutable raw sources 与用户查询之间维护一个 agent 生成的持久 wiki。
+  evidence_summary: Karpathy gist 描述了 raw sources、wiki、schema 三层，以及 ingest、query、lint 等操作。
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_050031_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: evidence_inventory
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: 该报告总结了本地 raw corpus、覆盖状态和硬性 evidence gap。
+  evidence_summary: 报告记录了 origin/workflow/implementation 证据，也记录了 Reddit 与 AICritique 等受阻来源。
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: null
+- citing_node: 20260524_050031_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: implementation_source
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: 支持把 LLM Wiki 理解为 compile-and-maintain 工作流，而不只是查询时检索。
+  evidence_summary: README 描述了把 raw sources 编译成 interlinked markdown wiki，并提供 ingest、compile、query、view
+    等命令。
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_050031_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: process_contract
+  target: loop_plan_init_kb.md
+  target_exists: true
+  target_version: plan_snapshot_2026-05-24
+  pinned_version: loop_plan_init_kb.md
+  pinned_version_exists: true
+  why_cited: 该文件定义了本 demo 的初始化 loop、version bundle、provenance、citation、adoption 与 impact 规则。
+  evidence_summary: 计划明确要求 nodes 是版本化知识对象库，kb/ 是 adopted view，citation 驱动 impact，动态检索必须受控并沉淀为 data asset。
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: plan_snapshot_2026-05-24
+  cited_source: null
+- citing_node: 20260524_050031_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: claim_manifest
+  target: data/manifests/claims.jsonl
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: data/manifests/claims.jsonl
+  pinned_version_exists: true
+  why_cited: 该 manifest 提供采集阶段生成的 source-linked claim records。
+  evidence_summary: 记录包含 claim、coverage area、confidence 和 supporting sources，是从 raw data 进入 KB 的中间证据层。
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: null
+- citing_node: 20260524_050032_current_kb_initialization_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: process_contract
+  target: loop_plan_init_kb.md
+  target_exists: true
+  target_version: plan_snapshot_2026-05-24
+  pinned_version: loop_plan_init_kb.md
+  pinned_version_exists: true
+  why_cited: 该文件定义了本 demo 的初始化 loop、version bundle、provenance、citation、adoption 与 impact 规则。
+  evidence_summary: 计划明确要求 nodes 是版本化知识对象库，kb/ 是 adopted view，citation 驱动 impact，动态检索必须受控并沉淀为 data asset。
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: plan_snapshot_2026-05-24
+  cited_source: null
+- citing_node: 20260524_050032_current_kb_initialization_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: background_definition
+  target: kb/20260524_050031_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050031_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 提供本 loop 正在操作化的 adopted working definition。
+  evidence_summary: 被引 node 定义了由来源支撑、由 agent 维护的持久 wiki artifact。
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_050031_llm_wiki_working_definition
+  cited_version: '1.0'
+  cited_source: null
+- citing_node: 20260524_050032_current_kb_initialization_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: evidence_inventory
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: 该报告总结了本地 raw corpus、覆盖状态和硬性 evidence gap。
+  evidence_summary: 报告记录了 origin/workflow/implementation 证据，也记录了 Reddit 与 AICritique 等受阻来源。
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: null
+- citing_node: 20260524_050032_current_kb_initialization_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: source_manifest
+  target: data/manifests/sources.jsonl
+  target_exists: true
+  target_version: source_snapshot_2026-05-24
+  pinned_version: data/manifests/sources.jsonl
+  pinned_version_exists: true
+  why_cited: 该 manifest 记录 source id、采集状态、本地路径、标签和来源类型。
+  evidence_summary: 它是本地 source provenance 的入口，也记录了动态检索新增的成功与失败来源。
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-24
+  cited_source: null
+- citing_node: 20260524_050032_current_kb_initialization_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: implementation_source
+  target: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  pinned_version_exists: true
+  why_cited: 支持 LLM Wiki runtime 可以暴露 raw/wiki/schema workflow、lint、gap mapping 与 MCP/CLI 接口。
+  evidence_summary: 页面描述了 runtime、raw asset、wiki output、manifest、compile readiness、lint 和 gap mapping。
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: webpage/clawhub-llm-wiki-karpathy
+- citing_node: 20260524_050033_source_preservation_precondition_trust
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: source_manifest
+  target: data/manifests/sources.jsonl
+  target_exists: true
+  target_version: source_snapshot_2026-05-24
+  pinned_version: data/manifests/sources.jsonl
+  pinned_version_exists: true
+  why_cited: 该 manifest 记录 source id、采集状态、本地路径、标签和来源类型。
+  evidence_summary: 它是本地 source provenance 的入口，也记录了动态检索新增的成功与失败来源。
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-24
+  cited_source: null
+- citing_node: 20260524_050033_source_preservation_precondition_trust
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: background_definition
+  target: kb/20260524_050031_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050031_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 定义 raw-source 与 maintained-wiki 的分工。
+  evidence_summary: 被引 node 说明 preserved raw sources 和 maintained wiki artifacts 具有不同职责。
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_050031_llm_wiki_working_definition
+  cited_version: '1.0'
+  cited_source: null
+- citing_node: 20260524_050033_source_preservation_precondition_trust
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: evidence_inventory
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: 该报告总结了本地 raw corpus、覆盖状态和硬性 evidence gap。
+  evidence_summary: 报告记录了 origin/workflow/implementation 证据，也记录了 Reddit 与 AICritique 等受阻来源。
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: null
+- citing_node: 20260524_050033_source_preservation_precondition_trust
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: claim_manifest
+  target: data/manifests/claims.jsonl
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: data/manifests/claims.jsonl
+  pinned_version_exists: true
+  why_cited: 该 manifest 提供采集阶段生成的 source-linked claim records。
+  evidence_summary: 记录包含 claim、coverage area、confidence 和 supporting sources，是从 raw data 进入 KB 的中间证据层。
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: null
+- citing_node: 20260524_050033_source_preservation_precondition_trust
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: implementation_source
+  target: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  pinned_version_exists: true
+  why_cited: 支持 LLM Wiki runtime 可以暴露 raw/wiki/schema workflow、lint、gap mapping 与 MCP/CLI 接口。
+  evidence_summary: 页面描述了 runtime、raw asset、wiki output、manifest、compile readiness、lint 和 gap mapping。
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: webpage/clawhub-llm-wiki-karpathy
+- citing_node: 20260524_050034_provenance_as_core_knowledge_asset
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: process_contract
+  target: loop_plan_init_kb.md
+  target_exists: true
+  target_version: plan_snapshot_2026-05-24
+  pinned_version: loop_plan_init_kb.md
+  pinned_version_exists: true
+  why_cited: 该文件定义了本 demo 的初始化 loop、version bundle、provenance、citation、adoption 与 impact 规则。
+  evidence_summary: 计划明确要求 nodes 是版本化知识对象库，kb/ 是 adopted view，citation 驱动 impact，动态检索必须受控并沉淀为 data asset。
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: plan_snapshot_2026-05-24
+  cited_source: null
+- citing_node: 20260524_050034_provenance_as_core_knowledge_asset
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: claim_support
+  target: kb/20260524_050033_source_preservation_precondition_trust.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050033_source_preservation_precondition_trust/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 支持 audit 依赖可检查 source paths 和 source records 的主张。
+  evidence_summary: 被引 node 说明 preserved evidence 为什么是后续信任检查的前提。
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_050033_source_preservation_precondition_trust
+  cited_version: '1.0'
+  cited_source: null
+- citing_node: 20260524_050034_provenance_as_core_knowledge_asset
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: research_context
+  target: data/raw/arxiv/arxiv-alce/text.txt
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: data/raw/arxiv/arxiv-alce/text.txt
+  pinned_version_exists: true
+  why_cited: 支持 citation 不能只看形式存在，还需要评价 citation quality 与 verifiability。
+  evidence_summary: ALCE 摘要把 citation 作为提升事实正确性和可验证性的机制，并提出自动评价 citation quality。
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: arxiv/arxiv-alce
+- citing_node: 20260524_050034_provenance_as_core_knowledge_asset
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: background_definition
+  target: kb/20260524_050031_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050031_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 提供 provenance 所处的 source-backed maintained-wiki 语境。
+  evidence_summary: 被引 node 把 KB 定义为 grounded in preserved sources 的 maintained artifact。
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_050031_llm_wiki_working_definition
+  cited_version: '1.0'
+  cited_source: null
+- citing_node: 20260524_050034_provenance_as_core_knowledge_asset
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: evidence_inventory
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: 该报告总结了本地 raw corpus、覆盖状态和硬性 evidence gap。
+  evidence_summary: 报告记录了 origin/workflow/implementation 证据，也记录了 Reddit 与 AICritique 等受阻来源。
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: null
+- citing_node: 20260524_050035_citation_driven_impact_propagation
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: process_contract
+  target: loop_plan_init_kb.md
+  target_exists: true
+  target_version: plan_snapshot_2026-05-24
+  pinned_version: loop_plan_init_kb.md
+  pinned_version_exists: true
+  why_cited: 该文件定义了本 demo 的初始化 loop、version bundle、provenance、citation、adoption 与 impact 规则。
+  evidence_summary: 计划明确要求 nodes 是版本化知识对象库，kb/ 是 adopted view，citation 驱动 impact，动态检索必须受控并沉淀为 data asset。
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: plan_snapshot_2026-05-24
+  cited_source: null
+- citing_node: 20260524_050035_citation_driven_impact_propagation
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: claim_support
+  target: kb/20260524_050034_provenance_as_core_knowledge_asset.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050034_provenance_as_core_knowledge_asset/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 解释 citations 与 provenance 为什么必须保留 support boundary。
+  evidence_summary: 被引 node 把 provenance 和 citation rationale 视为可复用 audit surface。
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_050034_provenance_as_core_knowledge_asset
+  cited_version: '1.0'
+  cited_source: null
+- citing_node: 20260524_050035_citation_driven_impact_propagation
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: research_context
+  target: data/raw/arxiv/arxiv-alce/text.txt
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: data/raw/arxiv/arxiv-alce/text.txt
+  pinned_version_exists: true
+  why_cited: 支持 citation 不能只看形式存在，还需要评价 citation quality 与 verifiability。
+  evidence_summary: ALCE 摘要把 citation 作为提升事实正确性和可验证性的机制，并提出自动评价 citation quality。
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: arxiv/arxiv-alce
+- citing_node: 20260524_050035_citation_driven_impact_propagation
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: background_support
+  target: kb/20260524_050033_source_preservation_precondition_trust.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050033_source_preservation_precondition_trust/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 提供 citation audit 可行所需的 source-preservation 前提。
+  evidence_summary: 被引 node 说明 support 必须可追溯到 preserved source records。
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_050033_source_preservation_precondition_trust
+  cited_version: '1.0'
+  cited_source: null
+- citing_node: 20260524_050035_citation_driven_impact_propagation
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: claim_manifest
+  target: data/manifests/claims.jsonl
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: data/manifests/claims.jsonl
+  pinned_version_exists: true
+  why_cited: 该 manifest 提供采集阶段生成的 source-linked claim records。
+  evidence_summary: 记录包含 claim、coverage area、confidence 和 supporting sources，是从 raw data 进入 KB 的中间证据层。
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: null
+- citing_node: 20260524_050036_dynamic_retrieval_as_controlled_fallback
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: process_contract
+  target: loop_plan_init_kb.md
+  target_exists: true
+  target_version: plan_snapshot_2026-05-24
+  pinned_version: loop_plan_init_kb.md
+  pinned_version_exists: true
+  why_cited: 该文件定义了本 demo 的初始化 loop、version bundle、provenance、citation、adoption 与 impact 规则。
+  evidence_summary: 计划明确要求 nodes 是版本化知识对象库，kb/ 是 adopted view，citation 驱动 impact，动态检索必须受控并沉淀为 data asset。
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: plan_snapshot_2026-05-24
+  cited_source: null
+- citing_node: 20260524_050036_dynamic_retrieval_as_controlled_fallback
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: evidence_inventory
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: source_snapshot_2026-05-21
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: 该报告总结了本地 raw corpus、覆盖状态和硬性 evidence gap。
+  evidence_summary: 报告记录了 origin/workflow/implementation 证据，也记录了 Reddit 与 AICritique 等受阻来源。
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-21
+  cited_source: null
+- citing_node: 20260524_050036_dynamic_retrieval_as_controlled_fallback
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: claim_support
+  target: kb/20260524_050033_source_preservation_precondition_trust.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050033_source_preservation_precondition_trust/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 支持新 evidence 必须先保存才能支撑可信 synthesis 的要求。
+  evidence_summary: 被引 node 说明 source preservation 是后续 audit 的前提。
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_050033_source_preservation_precondition_trust
+  cited_version: '1.0'
+  cited_source: null
+- citing_node: 20260524_050036_dynamic_retrieval_as_controlled_fallback
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: process_context
+  target: kb/20260524_050032_current_kb_initialization_loop.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050032_current_kb_initialization_loop/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 把受控 retrieval 放回整个 initialization loop。
+  evidence_summary: 被引 node 描述了 0-1 node loop、audit、adoption 和 generated artifacts。
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_050032_current_kb_initialization_loop
+  cited_version: '1.0'
+  cited_source: null
+- citing_node: 20260524_050036_dynamic_retrieval_as_controlled_fallback
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: source_manifest
+  target: data/manifests/sources.jsonl
+  target_exists: true
+  target_version: source_snapshot_2026-05-24
+  pinned_version: data/manifests/sources.jsonl
+  pinned_version_exists: true
+  why_cited: 该 manifest 记录 source id、采集状态、本地路径、标签和来源类型。
+  evidence_summary: 它是本地 source provenance 的入口，也记录了动态检索新增的成功与失败来源。
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_snapshot_2026-05-24
+  cited_source: null
+- citing_node: 20260524_050318_enterprise_scale_requires_governed_context_layer
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: dynamic_retrieval_support
+  target: data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt
+  target_exists: true
+  target_version: source_snapshot_2026-05-24_dynamic
+  pinned_version: data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt
+  pinned_version_exists: true
+  why_cited: 该动态检索来源直接讨论 enterprise 场景下 LLM Wiki 与 RAG 的 scale、governance、access control 和 freshness 问题。
+  evidence_summary: 来源认为 LLM Wiki 适合 bounded personal-scale corpus，而 enterprise 使用需要治理、访问控制、freshness
+    与并发控制。
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: source_snapshot_2026-05-24_dynamic
+  cited_source: webpage/atlan-llm-wiki-vs-rag-dynamic-20260524
+- citing_node: 20260524_050318_enterprise_scale_requires_governed_context_layer
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: background_definition
+  target: kb/20260524_050031_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050031_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 提供 LLM Wiki 作为 source-backed maintained wiki artifact 的 adopted definition。
+  evidence_summary: 被引 node 区分 preserved raw sources、maintained wiki artifacts 和 control rules。
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_050031_llm_wiki_working_definition
+  cited_version: '1.0'
+  cited_source: null
+- citing_node: 20260524_050318_enterprise_scale_requires_governed_context_layer
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: process_support
+  target: kb/20260524_050036_dynamic_retrieval_as_controlled_fallback.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050036_dynamic_retrieval_as_controlled_fallback/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 说明动态检索为什么必须 request、preserve、enter manifest 并写入 provenance。
+  evidence_summary: 被引 node 说明 retrieval 不能作为没有 audit trail 的临时补料。
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_050036_dynamic_retrieval_as_controlled_fallback
+  cited_version: '1.0'
+  cited_source: null
+- citing_node: 20260524_050318_enterprise_scale_requires_governed_context_layer
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: process_artifact
+  target: .llmwiki/control/retrieval_log.yaml
+  target_exists: true
+  target_version: retrieval_log_2026-05-24
+  pinned_version: .llmwiki/control/retrieval_log.yaml
+  pinned_version_exists: true
+  why_cited: 记录 AICritique 失败尝试和 Atlan 成功检索。
+  evidence_summary: log 显示同一个 enterprise evidence-gap request 下有一个 intercepted source 和一个 preserved ok
+    source。
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: retrieval_log_2026-05-24
+  cited_source: null
+- citing_node: 20260524_050318_enterprise_scale_requires_governed_context_layer
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: audit_background
+  target: kb/20260524_050033_source_preservation_precondition_trust.md
+  target_exists: true
+  target_version: '1.0'
+  pinned_version: nodes/20260524_050033_source_preservation_precondition_trust/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 解释为什么 synthesized claim 必须能回到保存的本地 source material。
+  evidence_summary: 被引 node 把 source preservation 视为后续 inspection 与 trust 的前提。
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_050033_source_preservation_precondition_trust
+  cited_version: '1.0'
+  cited_source: null

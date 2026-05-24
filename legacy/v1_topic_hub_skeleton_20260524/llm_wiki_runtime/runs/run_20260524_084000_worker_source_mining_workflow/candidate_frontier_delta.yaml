@@ -1,0 +1,118 @@
+schema: kb.candidate_frontier_delta.v1
+run_id: run_20260524_084000_worker_source_mining_workflow
+executor_role: worker_executor
+created_at: "2026-05-24T08:40:00+08:00"
+candidate_updates:
+  - candidate_id: cand_004_workflow
+    proposed_node_slug: llm_wiki_ingest_compile_query_lint_workflow
+    proposed_node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    status: ready_to_build
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - repo-atomicstrata-llm-wiki-compiler
+      - clawhub-llm-wiki-karpathy
+      - 20260524_062000_llm_wiki_origin_and_canon
+      - 20260524_072000_llm_wiki_working_definition
+      - 20260524_080000_llm_wiki_three_layer_architecture
+      - reports/source_gap_review.md
+      - reports/coverage_framework.md
+    source_mining_run: .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow
+    source_mining_artifacts:
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/source_scope.md
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/source_mining.md
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/retrieval_requests.md
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/mining_trace.md
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/frontier_trace.md
+    raw_paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    prior_kb_anchors:
+      - node_id: 20260524_062000_llm_wiki_origin_and_canon
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - node_id: 20260524_072000_llm_wiki_working_definition
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_072000_llm_wiki_working_definition.md
+      - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    direct_evidence:
+      - source_id: karpathy-gist-llm-wiki
+        supports:
+          - ingest flow from raw source to summary page, index update, relevant page updates, and log entry
+          - query flow over wiki pages with citations and file-back of valuable answers
+          - lint/health-check for contradictions, stale claims, orphan pages, missing concepts, missing cross-references, and data gaps
+          - index.md and log.md as navigation/history files for ingest, query, and lint passes
+          - human source curation, emphasis guidance, and review
+          - optional/modular tooling and implementation-specific directory/schema choices
+      - source_id: repo-atomicstrata-llm-wiki-compiler
+        supports:
+          - source-to-wiki compile pipeline with hash check, concept extraction, wiki page generation, wikilink resolution, and index.md
+          - incremental compile, two-phase pipeline, review candidates, approval/rejection, and deferred source/deletion bookkeeping
+          - query --save writeback, index rebuild, saved query context, source markers, line-range citations, lint validation, viewer health, watch mode, and MCP tools
+        limitation: "Implementation/process evidence only; not primary abstract workflow authority."
+      - source_id: clawhub-llm-wiki-karpathy
+        supports:
+          - raw/wiki/schema runtime, representation-first ingest, compile-readiness tracking, stored representations, source note validation, gap mapping/promotion, generated index/log, deterministic lint, CLI/MCP tools, and runtime-vs-agent responsibility split
+        limitation: "Implementation/runtime evidence only; not ecosystem/adoption or empirical evidence."
+      - source_id: 20260524_062000_llm_wiki_origin_and_canon
+        supports:
+          - adopted bounded canon and overclaim prohibitions
+      - source_id: 20260524_072000_llm_wiki_working_definition
+        supports:
+          - adopted source-preserving, agent-maintained working definition with ingest/query/lint/update loop
+      - source_id: 20260524_080000_llm_wiki_three_layer_architecture
+        supports:
+          - adopted raw/wiki/schema architecture and boundary that detailed workflow belongs in cand_004
+      - source_id: reports/source_gap_review.md
+        supports:
+          - coverage note that workflow architecture coverage is strong
+          - non-blocking gaps around measurement, scale, governance, comparison, and neutral taxonomy
+        limitation: "Secondary gap report only."
+      - source_id: reports/coverage_framework.md
+        supports:
+          - evidence-label and boundary vocabulary for source preservation, compilation, persistent representation, provenance/auditability, and maintenance
+        limitation: "Secondary framework only."
+    claim_ids:
+      - claim_000019_workflow_and_operations_end_to_end_lifecycle
+      - claim_000020_workflow_and_operations_human_in_loop_boundaries
+      - claim_000021_workflow_and_operations_agent_interfaces
+      - claim_000022_workflow_and_operations_failure_handling
+      - claim_000004_origin_and_canon_examples_and_intended_workflow
+      - claim_000013_architecture_and_data_model_source_acquisition_model
+      - claim_000014_architecture_and_data_model_compilation_model
+      - claim_000017_architecture_and_data_model_update_model
+      - claim_000018_architecture_and_data_model_query_model
+    coverage_records:
+      - covrec_workflow_and_operations_end_to_end_lifecycle
+      - covrec_workflow_and_operations_human_in_loop_boundaries
+      - covrec_workflow_and_operations_agent_interfaces
+      - covrec_workflow_and_operations_failure_handling
+    candidate_statement: "LLM Wiki 的核心 workflow 可被首版界定为一个 bounded maintenance loop：人类策展 raw sources 并指导重点，LLM/agent 在 schema/instruction 约束下执行 ingest/source intake、compile/wiki update、query/synthesis、lint/health-check、update/file-back 与 index/log maintenance；实现可通过 CLI/MCP、review queue、hash/incremental compile、representation readiness、source/citation validation、gap mapping 和 deterministic runtime writes 支撑这些阶段，但这些工具是实现变体而非抽象必要条件。"
+    why_it_matters: "该节点把已采用的 origin/canon、working definition 与三层 architecture 转成可执行维护流程，为后续 node_planning/generation 提供边界清晰的 workflow candidate，并避免把 workflow 误扩成生态、企业、经验效果或 broad comparison 节点。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "No blocker for bounded first version."
+      - "Neutral cross-implementation workflow taxonomy remains a later research task; this version should treat repo and ClawHub as implementation examples only."
+      - "Ingestion quality, compile reliability, citation accuracy, scale behavior, long-term drift, enterprise governance, and empirical effectiveness require separate source mining/evaluation."
+      - "Broad RAG/PKM/agent-memory comparisons should remain outside this workflow node."
+      - "Multimodal details should be limited to directly present representation-readiness and tool-surface observations, not quality or benchmark claims."
+    build_constraints:
+      - "Use Karpathy gist as primary workflow evidence."
+      - "Use adopted origin/canon, working definition, and architecture nodes only as prior KB anchors and boundary support."
+      - "Use atomicstrata README and ClawHub listing only for directly present implementation/process details."
+      - "Center the node on ingest, compile, query, lint/health-check, update/file-back, index/log maintenance, and review/runtime boundaries."
+      - "Do not write an implementation ecosystem survey, enterprise suitability node, empirical results node, scale/reliability claim, or broad comparison."
+      - "Distinguish source-backed observations from worker synthesis."
+      - "Do not require CLI, MCP, Obsidian, vector search, representation storage, or review queues as universal LLM Wiki requirements."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_workflow_node
+    next_action: node_planning

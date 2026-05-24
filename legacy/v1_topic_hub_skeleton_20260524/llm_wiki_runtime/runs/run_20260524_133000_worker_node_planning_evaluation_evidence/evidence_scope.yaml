@@ -1,0 +1,93 @@
+schema: kb.evidence_scope.v1
+run_id: run_20260524_133000_worker_node_planning_evaluation_evidence
+target_candidate: cand_007_evaluation_evidence
+target_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+source_mining_run: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence
+decision: local_evidence_sufficient_for_bounded_v1
+retrieval_required_before_generation: false
+source_tiers:
+  primary_direct:
+    - source_id: arxiv-wicer
+      paths:
+        - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+        - data/raw/arxiv/arxiv-wicer/text.txt
+      allowed_use:
+        - compile/evaluate/refine
+        - compilation gap
+        - diagnostic probes
+        - refinement loop
+        - baseline comparison
+        - scale and reproducibility limitations
+      boundary: "Single direct recent source; no broad superiority or production-reliability claims."
+    - source_id: arxiv-knowledge-compounding
+      paths:
+        - data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+      allowed_use:
+        - cautious economic/token-cost framing
+        - baseline/method/query-sequence/reproducibility requirements
+      boundary: "Abstract/PDF metadata only in local mining; no detailed method/log claims."
+  primary_implementation:
+    - source_id: repo-atomicstrata-llm-wiki-compiler
+      paths:
+        - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      boundary: "Project self-description only."
+    - source_id: repo-kytmanov-obsidian-local
+      paths:
+        - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+      boundary: "Project self-description only."
+  adjacent:
+    - source_id: arxiv-alce
+      paths:
+        - data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+      boundary: "Citation-evaluation source, not direct LLM Wiki benchmark."
+    - source_id: arxiv-ragas
+      paths:
+        - data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+      boundary: "RAG evaluation source, not persistent wiki maintenance evidence."
+    - source_id: arxiv-ares
+      paths:
+        - data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+      boundary: "RAG triple evaluation source, not LLM Wiki compiled-artifact evidence."
+    - source_id: arxiv-ragchecker
+      paths:
+        - data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+      boundary: "RAG diagnostic source; reusable vocabulary only."
+  secondary_process:
+    - source_id: reports/coverage_framework.md
+      path: reports/coverage_framework.md
+      boundary: "Process framework, not primary empirical evidence."
+    - source_id: reports/source_gap_review.md
+      path: reports/source_gap_review.md
+      boundary: "Gap review, not primary empirical evidence."
+  prior_kb_anchors:
+    use_policy: continuity_only_not_new_evidence
+    paths:
+      - kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - kb/20260524_072000_llm_wiki_working_definition.md
+      - kb/20260524_080000_llm_wiki_three_layer_architecture.md
+      - kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+      - kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+      - kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+      - kb/20260524_122000_llm_wiki_implementation_ecosystem.md
+supported_sections:
+  - evaluation_problem
+  - evidence_levels
+  - citation_auditability
+  - evaluation_dimensions
+  - boundaries_and_deferred_retrieval
+unsupported_claims:
+  - empirical_superiority
+  - production_reliability
+  - enterprise_readiness
+  - adoption_or_scale
+  - general_roi
+  - benchmark_leadership
+  - generic_llm_eval
+  - model_quality_ranking
+  - direct_transfer_of_adjacent_rag_results
+deferred_retrieval:
+  - wicer_code_and_logs
+  - knowledge_compounding_full_extraction
+  - local_adopted_kb_citation_audit
+  - long_term_drift_and_stale_claim_rates
+  - independent_replications_user_studies_failure_cases

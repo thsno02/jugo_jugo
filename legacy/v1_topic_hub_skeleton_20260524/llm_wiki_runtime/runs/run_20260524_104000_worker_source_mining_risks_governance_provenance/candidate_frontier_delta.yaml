@@ -1,0 +1,149 @@
+schema: kb.candidate_frontier_delta.v1
+run_id: run_20260524_104000_worker_source_mining_risks_governance_provenance
+executor_role: worker_executor
+target_candidate: cand_008_risks_governance_provenance
+decision: ready_to_plan
+candidates:
+  - candidate_id: cand_008_risks_governance_provenance
+    proposed_node_slug: llm_wiki_risks_governance_and_provenance
+    proposed_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    status: ready_to_build
+    evidence_state: enough_for_first_version
+    retrieval_required_before_build: false
+    source_mining_run: .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance
+    discovered_from:
+      - repo-atomicstrata-llm-wiki-compiler
+      - repo-kytmanov-obsidian-local
+      - arxiv-wicer
+      - arxiv-memory-as-metabolism
+      - arxiv-alce
+      - arxiv-etamp-memory-poisoning
+      - arxiv-poisonedrag
+      - arxiv-graph-poisoning
+      - hacker-news-original-thread
+      - owasp-llm-top10-2025
+      - owasp-agentic-top10-2026
+      - nist-gai-profile
+      - microsoft-agent-governance-toolkit-docs
+      - reports/source_gap_review.md
+      - reports/coverage_framework.md
+    raw_paths:
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+      - data/raw/arxiv/arxiv-wicer/text.txt
+      - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-memory-as-metabolism/text.txt
+      - data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-alce/text.txt
+      - data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+      - data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-poisonedrag/text.txt
+      - data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-graph-poisoning/text.txt
+      - data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - data/raw/webpage/owasp-llm-top10-2025/text.txt
+      - data/raw/webpage/owasp-agentic-top10-2026/text.txt
+      - data/raw/webpage/nist-gai-profile/text.txt
+      - data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+    claim_ids:
+      - claim_000037_risks_governance_ethics_provenance_risk
+      - claim_000038_risks_governance_ethics_maintenance_risk
+      - claim_000039_risks_governance_ethics_privacy_security_risk
+      - claim_000040_risks_governance_ethics_governance_model
+      - claim_000041_risks_governance_ethics_epistemic_risk
+    candidate_statement: "LLM Wiki 的首版 risks/governance/provenance 节点应把风险界定为 source-preserving wiki 维护循环中的 traceability 和 state-change 问题：LLM/agent 将 raw sources 编译成持久 wiki 后，可能出现 citation/claim provenance 漂移、编译丢事实、stale/contradictory pages、弱证据被 canonical 化、未审阅写回、敏感来源暴露，以及来自相邻 RAG/GraphRAG/agent-memory 系统的 source/memory poisoning 类比威胁；可证的治理边界是 source preservation、claim-level citation、review/approve/reject gates、lint/audit、confidence/contradiction labels、hash/change detection、rollback/deletion policy 和 human approval，而不是企业合规充分性或已实证的风险降低。"
+    why_it_matters: "该节点为后续 generation/audit 提供风险和治理边界，防止 LLM Wiki 被写成天然可信、自动自治或企业安全方案，也防止把相邻安全论文的攻击率直接外推到 LLM Wiki。"
+    direct_evidence:
+      - source_id: repo-atomicstrata-llm-wiki-compiler
+        supports:
+          - source attribution and paragraph source markers
+          - claim-level line-range citations and lint validation
+          - candidate review queue with approve/reject/archive
+          - confidence, provenanceState, contradictedBy metadata
+          - low-confidence, contradicted-page, and uncited-paragraph linting
+          - roadmap gaps for rollback, audit, stale-claim checks, freshness reports, and operation logs
+        limitation: "Implementation evidence only; not proof all LLM Wikis provide these controls or that controls are effective."
+      - source_id: repo-kytmanov-obsidian-local
+        supports:
+          - source hashes for synthesis pages
+          - refusal to overwrite manually edited synthesis
+          - draft review, rejection feedback, low-confidence/single-source annotations
+          - stale article linting and inline source citations
+          - conservative item ledger for named references without sufficient source support
+        limitation: "Implementation evidence only; local-first single project."
+      - source_id: arxiv-wicer
+        supports:
+          - LLM Wiki-specific compilation gap and dropped-fact risk
+          - evaluate/refine loop for diagnostic probes and preservation of dropped facts
+          - limitations around hardware, model, baseline, partial validation, and LLM-as-judge
+      - source_id: arxiv-memory-as-metabolism
+        supports:
+          - user-coupled drift and entrenchment framing
+          - TRIAGE, DECAY, CONTEXTUALIZE, CONSOLIDATE, AUDIT governance vocabulary
+          - source preservation and audit-record obligations
+        limitation: "Normative/theoretical governance source; not incident-rate evidence."
+      - source_id: arxiv-alce
+        supports:
+          - citation generation/evaluation difficulty
+          - need to evaluate correctness separately from citation quality
+          - partial support and NLI-evaluation limitations
+        limitation: "Adjacent citation-evaluation source, not an LLM Wiki benchmark."
+      - source_id: arxiv-etamp-memory-poisoning
+        supports:
+          - persistent memory as attack surface across sessions/sites
+        limitation: "Adjacent agent-memory threat model; not direct LLM Wiki incident evidence."
+      - source_id: arxiv-poisonedrag
+        supports:
+          - external knowledge database poisoning as attack surface
+        limitation: "Adjacent RAG threat model; do not transfer attack rates."
+      - source_id: arxiv-graph-poisoning
+        supports:
+          - source-text manipulation can poison constructed graph structures
+        limitation: "Adjacent GraphRAG threat model; not direct LLM Wiki evidence."
+      - source_id: hacker-news-original-thread
+        supports:
+          - early discourse around staleness, correctness, drift, contradiction-lint scaling, second-order information, and review
+        limitation: "Discourse only; not technical authority."
+      - source_id: owasp-llm-top10-2025
+        supports:
+          - broad LLM application security framework existence
+        limitation: "Captured text is high-level only; not detailed category evidence."
+      - source_id: owasp-agentic-top10-2026
+        supports:
+          - broad agentic application security framework existence
+        limitation: "Captured text is high-level only."
+      - source_id: nist-gai-profile
+        supports:
+          - voluntary GAI risk-management profile framing
+        limitation: "General GAI governance, not LLM Wiki-specific."
+      - source_id: microsoft-agent-governance-toolkit-docs
+        supports:
+          - policy, authorization, approval, prompt-injection detection, DLP, sandboxing, tracing, kill switch, lifecycle, compliance, and attribution control vocabulary
+        limitation: "Vendor/toolkit docs; not independent proof of effectiveness."
+    missing_evidence:
+      - "No direct evidence of real-world LLM Wiki security incidents or incident rates."
+      - "No source-supported claim that LLM Wiki controls reduce risk by a measured amount."
+      - "Enterprise access control, multi-user governance, compliance/legal sufficiency, source licensing, and institutional review require later retrieval/mining."
+      - "Blocked Reddit community discourse remains unavailable and should not be used substantively."
+      - "Captured OWASP pages are high-level landing pages; detailed category claims require preserved whitepaper/category text before use."
+    build_constraints:
+      - "Frame the node as risk taxonomy and governance boundary, not as compliance advice."
+      - "Use implementation repos and WiCER as strongest LLM Wiki-specific evidence."
+      - "Use ALCE only for adjacent citation-faithfulness/audit evidence."
+      - "Use eTAMP, PoisonedRAG, and GraphRAG poisoning only as adjacent threat models; never transfer attack rates to LLM Wiki."
+      - "Use OWASP/NIST/Microsoft only as broad framework/control vocabulary unless exact detailed pages are later preserved."
+      - "Use HN as early discourse only."
+      - "Do not claim enterprise readiness, compliance sufficiency, measured risk reduction, or production security maturity."
+      - "Distinguish primary sources, process notes, adjacent evidence, and prior KB anchors."
+    suggested_first_version: "1.0"
+    citation_feasibility: strong_for_bounded_risk_governance_provenance_node
+    next_action: node_planning
+  - candidate_id: cand_011_initial_risk_discourse
+    status: deferred
+    merge_target: cand_008_risks_governance_provenance
+    evidence_state: merged_as_early_discourse_seed
+    reason: "HN early risk discourse is useful inside cand_008 but insufficient and too narrow for a standalone first-version node."
+    retrieval_required_before_build: false
+

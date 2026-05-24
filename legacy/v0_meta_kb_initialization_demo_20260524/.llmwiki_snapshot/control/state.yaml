@@ -1,0 +1,23 @@
+schema: kb.control_state.v1
+current_phase: demo_complete_for_review
+loop_owner: main_owned_with_autonomous_reflection
+latest_run: .llmwiki/runs/run_20260524_050634_major_impact_simulation
+last_updated: '2026-05-24T05:10:00+08:00'
+next_action: review_impact_queue_or_prepare_next_iteration
+autonomy:
+  human_absent_assumption: true
+  may_continue_without_checkpoint:
+  - structural_validation
+  - view_generation
+  - citation_graph_generation
+  - status_generation
+  - skill_eval_logging
+  - next_run_planning
+  - major_change_simulation
+  must_stop_or_record_blocker:
+  - destructive_git_operation
+  - large_network_retrieval_without_request
+  - schema_change_that_invalidates_existing_nodes
+  - semantic_adoption_after_failed_audit
+  company_network_retrieval_policy: limited_attempts_then_defer
+

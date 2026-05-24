@@ -1,0 +1,106 @@
+schema: kb.evidence_scope.v1
+run_id: run_20260524_081000_worker_node_planning_architecture
+executor_role: worker_executor
+candidate_id: cand_003_architecture
+target_node_id: 20260524_080000_llm_wiki_three_layer_architecture
+version_target: "1.0"
+source_mining_run: .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture
+frontier_state:
+  candidate_status: ready_to_build
+  evidence_state: enough_for_first_version
+  retrieval_required_before_build: false
+primary_sources:
+  - source_id: karpathy-gist-llm-wiki
+    paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+    use_for:
+      - direct three-layer architecture: raw sources, wiki, schema
+      - raw sources as immutable source of truth
+      - wiki as LLM-generated markdown directory with summaries, entity pages, concept pages, comparisons, overview, and synthesis
+      - schema or instruction document governing structure, conventions, ingest, answering/query, and maintenance workflows
+      - index.md and log.md as navigation/history support
+      - optional/modular tooling and implementation-specific choices
+      - ingest, query, and lint only as operations that connect the layers
+    limitations:
+      - Primary abstract architecture authority, not evidence for adoption, enterprise readiness, measured performance, or ecosystem maturity.
+prior_kb_anchors:
+  - source_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    adopted: true
+    usable_as_support: true
+    paths:
+      - kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+      - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/provenance.md
+      - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/change.md
+    use_for:
+      - adopted bounded origin/canon anchor for the Karpathy gist
+      - boundary against broad adoption, ecosystem, enterprise, empirical, social-metric, or historical-lineage claims
+  - source_id: 20260524_072000_llm_wiki_working_definition
+    version: "1.0"
+    adopted: true
+    usable_as_support: true
+    paths:
+      - kb/20260524_072000_llm_wiki_working_definition.md
+      - nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+      - nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/provenance.md
+      - nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/change.md
+    use_for:
+      - adopted source-preserving and agent-maintained working definition
+      - prior boundary for raw-source preservation, compiled wiki layer, schema/instruction governance, and maintenance loop
+implementation_flavored_sources:
+  - source_id: repo-atomicstrata-llm-wiki-compiler
+    paths:
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    use_for:
+      - directly mined implementation mapping from sources to hash check, concept extraction, wiki generation, wikilink resolution, and index
+      - directly mined output model with concepts, queries, index, schema, candidate review, citations, lint, view, query, watch, and MCP
+    limitations:
+      - Implementation evidence only; not primary abstract architecture authority.
+      - Do not generalize into ecosystem convergence or maturity.
+  - source_id: clawhub-llm-wiki-karpathy
+    paths:
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    use_for:
+      - directly mined runtime evidence for raw/wiki/schema operating model
+      - representation storage, generated index/log, deterministic lint, CLI, MCP, and OpenClaw host entry where directly present
+    limitations:
+      - Plugin listing/runtime evidence only; not adoption, enterprise, social-metric, or empirical evidence.
+secondary_sources:
+  - source_id: source_mining_architecture
+    paths:
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/source_mining.md
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/loop_delivery.md
+    use_for:
+      - worker-mined observations and candidate boundaries
+      - readiness and frontier trace
+    limitations:
+      - Process artifacts are not primary content authority.
+  - source_id: reports
+    paths:
+      - reports/source_gap_review.md
+      - reports/coverage_framework.md
+    use_for:
+      - secondary coverage/gap/status framing
+      - boundary reminders for later workflow, taxonomy, comparison, enterprise, and empirical work
+    limitations:
+      - Reports and manifests are secondary only; do not cite them as direct proof of Karpathy's architecture.
+forbidden_inputs:
+  - network retrieval
+  - unmined web pages or social sources
+  - controller drift sample artifacts as authority
+  - unrelated frontier candidates except as explicit non-goals
+  - any source outside this evidence scope unless a later controller packet authorizes repair
+required_citation_behavior:
+  - Cite the gist for the three-layer architecture and core layer descriptions.
+  - Cite prior KB anchors only for inherited boundary and adopted definition/canon support.
+  - Cite repo and ClawHub only for directly mined implementation-flavored details.
+  - Cite reports/manifests only as secondary process/gap framing.
+  - Distinguish source-backed observations from worker synthesis.
+overclaim_boundaries:
+  - Do not claim enterprise readiness, measured superiority, scale proof, adoption, or ecosystem maturity.
+  - Do not turn supporting tooling into a fourth core layer.
+  - Do not collapse this architecture node into detailed workflow.
+  - Do not present implementation-specific directories or CLIs as required by the abstract pattern.

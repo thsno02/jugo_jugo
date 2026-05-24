@@ -1,0 +1,125 @@
+schema: kb.evidence_matrix.v1
+run_id: run_20260524_132000_worker_source_mining_evaluation_evidence
+target_candidate: cand_007_evaluation_evidence
+decision: ready_to_plan
+entries:
+  - source_id: arxiv-wicer
+    path: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+    source_type: primary_direct_paper
+    claim_or_observation: "WiCER directly evaluates an LLM Wiki/wiki-memory compile-evaluate-refine loop, identifies a compilation gap, evaluates compiled wikis against diagnostic probes, and reports benchmark-style results and limitations."
+    candidate_use: "Primary support for evaluation dimensions: compilation loss, diagnostic probes, refinement iterations, baseline comparison, scale/attention-dilution boundary, reproducibility constraints."
+    confidence: high_for_bounded_eval_criteria
+    citation_target:
+      path: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+      locator: "abstract/introduction/limitations/reproducibility checklist sections"
+    retrieval_state: local_ok
+  - source_id: arxiv-wicer
+    path: data/raw/arxiv/arxiv-wicer/text.txt
+    source_type: primary_direct_metadata
+    claim_or_observation: "arXiv abstract page records title, authorship, submission date, abstract summary, and source availability for WiCER."
+    candidate_use: "Citation metadata and abstract-level support."
+    confidence: high_for_metadata
+    citation_target:
+      path: data/raw/arxiv/arxiv-wicer/text.txt
+      locator: "arXiv abstract page"
+    retrieval_state: local_ok
+  - source_id: arxiv-knowledge-compounding
+    path: data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+    source_type: primary_direct_paper_abstract
+    claim_or_observation: "Knowledge Compounding describes a controlled four-query experiment and token-cost comparison between compounding knowledge wiki and matched RAG baseline."
+    candidate_use: "Cautious support that economic/ROI claims require explicit baselines, methods, query sequences, and reproducibility; not broad proof."
+    confidence: medium_due_pdf_only_local_fulltext
+    citation_target:
+      path: data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+      locator: "arXiv abstract page"
+    retrieval_state: local_ok_pdf_only
+  - source_id: repo-atomicstrata-llm-wiki-compiler
+    path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    source_type: primary_implementation_readme
+    claim_or_observation: "README documents source attribution, claim-level line-range citations, lint validation for citation ranges, confidence/contradiction metadata, review queue, and a future evaluation harness."
+    candidate_use: "Implementation support for auditability and explicit gaps in evaluation harness maturity."
+    confidence: high_for_project_self_description
+    citation_target:
+      path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      locator: "Claim-level provenance, lint, roadmap sections"
+    retrieval_state: local_ok
+  - source_id: repo-kytmanov-obsidian-local
+    path: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+    source_type: primary_implementation_readme
+    claim_or_observation: "README documents compare preview vaults, source hashes, refusal to overwrite manually edited synthesis, item audit, rejection feedback, and low-confidence/single-source draft annotations."
+    candidate_use: "Implementation support for reviewable evaluation state, comparison boundaries, and confidence warnings."
+    confidence: high_for_project_self_description
+    citation_target:
+      path: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+      locator: "compare, item audit, rejection feedback, draft annotation sections"
+    retrieval_state: local_ok
+  - source_id: arxiv-alce
+    path: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+    source_type: adjacent_primary_paper
+    claim_or_observation: "ALCE evaluates citation-generation systems using fluency, correctness, and citation quality, including citation recall/precision and human evaluation; limitations include partial-support detection and task coverage."
+    candidate_use: "Adjacent support for claim/citation audit categories and caution around partial support."
+    confidence: high_for_adjacent_citation_eval
+    citation_target:
+      path: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+      locator: "abstract, limitations, citation evaluation, human evaluation sections"
+    retrieval_state: local_ok
+  - source_id: arxiv-ragas
+    path: data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+    source_type: adjacent_primary_paper
+    claim_or_observation: "Ragas defines reference-free RAG evaluation dimensions: faithfulness, answer relevance, and context relevance."
+    candidate_use: "Adjacent vocabulary for LLM Wiki query/synthesis grounding and retrieved-context evaluation."
+    confidence: high_for_adjacent_rag_eval
+    citation_target:
+      path: data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+      locator: "abstract and Evaluation Strategies section"
+    retrieval_state: local_ok
+  - source_id: arxiv-ares
+    path: data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+    source_type: adjacent_primary_paper
+    claim_or_observation: "ARES evaluates context relevance, answer faithfulness, and answer relevance with synthetic data, lightweight judges, PPI, human validation, and domain-shift caveats."
+    candidate_use: "Adjacent support for in-domain evaluator calibration and confidence intervals."
+    confidence: high_for_adjacent_rag_eval
+    citation_target:
+      path: data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+      locator: "abstract/method/domain-shift sections"
+    retrieval_state: local_ok
+  - source_id: arxiv-ragchecker
+    path: data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+    source_type: adjacent_primary_paper
+    claim_or_observation: "RAGChecker uses claim extraction and entailment to diagnose retrieval and generation with metrics such as claim recall, context precision, faithfulness, hallucination, context utilization, and noise sensitivity."
+    candidate_use: "Adjacent support for claim-level and module-specific diagnostics."
+    confidence: high_for_adjacent_diagnostic_eval
+    citation_target:
+      path: data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+      locator: "abstract/framework/metrics sections"
+    retrieval_state: local_ok
+  - source_id: reports/coverage_framework.md
+    path: reports/coverage_framework.md
+    source_type: secondary_process_framework
+    claim_or_observation: "Defines evaluation dimensions, evidence grades, claim records, citation discipline, and judgment gates for this KB."
+    candidate_use: "Process source for evidence-grade and confidence-expression requirements."
+    confidence: high_for_local_process_contract
+    citation_target:
+      path: reports/coverage_framework.md
+      locator: "sections 4.8, 5.2-5.4, 6.3, 7, 10, 11"
+    retrieval_state: local_ok
+  - source_id: reports/source_gap_review.md
+    path: reports/source_gap_review.md
+    source_type: secondary_gap_review
+    claim_or_observation: "Evaluation/quality coverage is medium; WiCER is strongest benchmark-style evidence; independent replication, broader provider tests, long-term drift, citation audits, and human expert evaluation are missing."
+    candidate_use: "Gap framing and deferred retrieval boundaries."
+    confidence: high_for_local_gap_status
+    citation_target:
+      path: reports/source_gap_review.md
+      locator: "evaluation/quality and missing evidence sections"
+    retrieval_state: local_ok
+  - source_id: adopted_kb_anchors
+    path: kb/
+    source_type: prior_kb_anchor
+    claim_or_observation: "Existing adopted nodes define LLM Wiki boundaries and prior comparison/risk/implementation context."
+    candidate_use: "Continuity only; not primary evidence for new evaluation claims."
+    confidence: medium_for_continuity_only
+    citation_target:
+      path: kb/
+      locator: "selected adopted nodes"
+    retrieval_state: local_ok_not_new_evidence

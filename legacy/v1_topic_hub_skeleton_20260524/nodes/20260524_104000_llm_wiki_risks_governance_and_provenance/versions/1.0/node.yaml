@@ -1,0 +1,169 @@
+schema: kb.node_version.v1
+id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+version: "1.0"
+title: "LLM Wiki 的风险、治理与 provenance 边界"
+slug: llm_wiki_risks_governance_and_provenance
+status: active
+version_status: adopted
+adoption_status: adopted
+adopted: true
+selected: true
+adoption_gate: citation_and_adoption_audit_passed
+version_adopted_at: "2026-05-24T18:54:17+08:00"
+created_at: "2026-05-24T18:24:39+08:00"
+created_by:
+  executor_role: worker_executor
+  worker_role: cand_008_risks_governance_provenance generation worker
+  run_id: run_20260524_110000_worker_generation_risks_governance_provenance
+  task_packet: .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/next_task_packet.md
+candidate_id: cand_008_risks_governance_provenance
+candidate_source: .llmwiki/control/knowledge_frontier.yaml
+source_mining_run: .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance
+planning_run: .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance
+generation_run: .llmwiki/runs/run_20260524_110000_worker_generation_risks_governance_provenance
+version_dir: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0
+paths:
+  card: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/card.md
+  provenance: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/provenance.md
+  change: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/change.md
+  kb_view: kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+prior_kb_anchors:
+  - node_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    adopted_kb_path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    pinned_version_path: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_072000_llm_wiki_working_definition
+    version: "1.0"
+    adopted_kb_path: kb/20260524_072000_llm_wiki_working_definition.md
+    pinned_version_path: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    version: "1.0"
+    adopted_kb_path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    pinned_version_path: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    version: "1.0"
+    adopted_kb_path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    pinned_version_path: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+    version: "1.0"
+    adopted_kb_path: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+    pinned_version_path: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+evidence_state: enough_for_first_version
+retrieval_required_before_audit: false
+audit:
+  state: passed
+  run: .llmwiki/runs/run_20260524_111000_worker_audit_risks_governance_provenance/audit_report.md
+  decision: adopt_recommended
+  adoption_run: .llmwiki/runs/run_20260524_114000_worker_adoption_view_risks_governance_provenance_after_footnote_repair
+  required_before_adoption: true
+  required_gates:
+    - object_topic_gate
+    - source_scope_gate
+    - citation_gate
+    - provenance_gate
+    - adjacent_source_boundary_gate
+    - overclaim_gate
+    - retrieval_gap_gate
+    - root_metadata_adoption_gate
+  known_limits:
+    - "Direct LLM Wiki evidence is limited to implementation READMEs and WiCER; adjacent security papers do not document LLM Wiki incidents."
+    - "OWASP, NIST, and Microsoft sources are used only as broad framework or control vocabulary."
+    - "HN is used only as early discourse, not technical authority."
+    - "No enterprise compliance, legal sufficiency, measured effectiveness, adoption, scale, or incident-rate claim is made."
+stability:
+  level: first_version_candidate
+  support_eligibility: bounded_risk_governance_provenance_boundary_only
+tags:
+  - llm_wiki
+  - provenance
+  - citation_audit
+  - governance
+  - risk
+  - source_traceability
+  - maintenance
+  - security_boundary
+claim_scope:
+  includes:
+    - provenance risks from malformed missing broad stale partial or post-hoc citations
+    - compilation and maintenance risks from dropped facts stale claims contradictions and drift
+    - bounded controls visible in implementation READMEs and WiCER
+    - adjacent threat models for persistent memory RAG database and GraphRAG construction poisoning
+    - framework vocabulary for governance audit approval tracing and risk management
+    - discourse seeds around staleness review second-order information and lint scaling
+  excludes:
+    - generic AI governance or enterprise compliance guide
+    - legal advice privacy guarantees access-control sufficiency or licensing policy
+    - measured mitigation effectiveness adoption incident rates or scale claims
+    - direct transfer of adjacent attack rates to LLM Wiki
+    - claims that citation presence equals citation faithfulness
+    - claims that source preservation alone makes generated wiki content safe authoritative or current
+citation_summary:
+  primary_llm_wiki_sources:
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+    - data/raw/arxiv/arxiv-wicer/text.txt
+    - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+  adjacent_sources:
+    - data/raw/arxiv/arxiv-memory-as-metabolism/text.txt
+    - data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-alce/text.txt
+    - data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+    - data/raw/arxiv/arxiv-poisonedrag/text.txt
+    - data/raw/arxiv/arxiv-graph-poisoning/text.txt
+  framework_discourse_process_sources:
+    - data/raw/hacker_news/hacker-news-original-thread/text.txt
+    - data/raw/webpage/owasp-llm-top10-2025/text.txt
+    - data/raw/webpage/owasp-agentic-top10-2026/text.txt
+    - data/raw/webpage/nist-gai-profile/text.txt
+    - data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+    - reports/coverage_framework.md
+    - reports/source_gap_review.md
+  prior_kb_anchor_count: 5
+  citation_blocks_expected: 37
+dependencies:
+  raw_source_paths:
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+    - data/raw/arxiv/arxiv-wicer/text.txt
+    - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-memory-as-metabolism/text.txt
+    - data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-alce/text.txt
+    - data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+    - data/raw/arxiv/arxiv-poisonedrag/text.txt
+    - data/raw/arxiv/arxiv-graph-poisoning/text.txt
+    - data/raw/hacker_news/hacker-news-original-thread/text.txt
+    - data/raw/webpage/owasp-llm-top10-2025/text.txt
+    - data/raw/webpage/owasp-agentic-top10-2026/text.txt
+    - data/raw/webpage/nist-gai-profile/text.txt
+    - data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+    - reports/coverage_framework.md
+    - reports/source_gap_review.md
+  prior_kb_paths:
+    - kb/20260524_062000_llm_wiki_origin_and_canon.md
+    - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    - kb/20260524_072000_llm_wiki_working_definition.md
+    - nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+    - kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    - nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+    - kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    - nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+    - kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+    - nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+  process_paths:
+    - .llmwiki/control/orchestration_gates.yaml
+    - .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/next_task_packet.md
+    - .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/node_plan.yaml
+    - .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/evidence_scope.md
+    - .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/evidence_scope.yaml
+    - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/evidence_matrix.yaml
+    - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/source_inventory.md
+    - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/source_notes.md

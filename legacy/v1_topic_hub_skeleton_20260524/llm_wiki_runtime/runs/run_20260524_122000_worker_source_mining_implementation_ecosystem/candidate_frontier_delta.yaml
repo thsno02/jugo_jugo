@@ -1,0 +1,124 @@
+schema: kb.candidate_frontier_delta.v1
+run_id: run_20260524_122000_worker_source_mining_implementation_ecosystem
+executor_role: worker_executor
+target_candidate: cand_006_implementation_ecosystem
+decision: ready_to_plan
+candidates:
+  - candidate_id: cand_006_implementation_ecosystem
+    proposed_node_slug: llm_wiki_implementation_ecosystem
+    proposed_node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+    status: ready_to_build
+    discovered_from:
+      - repo-nashsu-llm-wiki
+      - repo-samuraigpt-llm-wiki-agent
+      - repo-sdyckjq-llm-wiki-skill
+      - repo-atomicstrata-llm-wiki-compiler
+      - repo-kytmanov-obsidian-local
+      - repo-vectifyai-openkb
+      - repo-ngmeyer-librarian-mcp
+      - pypi-my-llm-wiki
+      - pypi-llm-wiki-mcp
+      - clawhub-llm-wiki-karpathy
+      - obsidian-community-plugin
+      - aillm-wiki-directory
+      - llm-wiki-net
+      - reports/source_gap_review.md
+      - reports/coverage_framework.md
+    source_mining_run: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem
+    raw_paths:
+      - data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+      - data/raw/github_repo/repo-nashsu-llm-wiki/github_repo.json
+      - data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+      - data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/github_repo.json
+      - data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+      - data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/github_repo.json
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/github_repo.json
+      - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+      - data/raw/github_repo/repo-kytmanov-obsidian-local/github_repo.json
+      - data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+      - data/raw/github_repo/repo-vectifyai-openkb/github_repo.json
+      - data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+      - data/raw/github_repo/repo-ngmeyer-librarian-mcp/github_repo.json
+      - data/raw/pypi/pypi-my-llm-wiki/text.txt
+      - data/raw/pypi/pypi-my-llm-wiki/pypi.json
+      - data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+      - data/raw/pypi/pypi-llm-wiki-mcp/pypi.json
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+      - data/raw/webpage/obsidian-community-plugin/text.txt
+      - data/raw/webpage/aillm-wiki-directory/text.txt
+      - data/raw/webpage/llm-wiki-net/text.txt
+    prior_kb_anchors:
+      - node_id: 20260524_062000_llm_wiki_origin_and_canon
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - node_id: 20260524_072000_llm_wiki_working_definition
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_072000_llm_wiki_working_definition.md
+      - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+      - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    direct_evidence:
+      - source_id: repo-nashsu-llm-wiki
+        supports:
+          - UI/desktop/web-app implementation family
+          - multimodal ingest, graph/vector/search/API workflow claims
+          - high local repository metadata activity signal
+      - source_id: repo-samuraigpt-llm-wiki-agent
+        supports:
+          - coding-agent skill/template family
+          - raw/wiki/index/log/syntheses/graph file-structure motif
+          - ingest/query/lint/graph workflows and multi-format conversion
+      - source_id: repo-atomicstrata-llm-wiki-compiler
+        supports:
+          - CLI/MCP compiler family
+          - review candidates, lint, watch, view, citations/provenance, confidence/contradiction metadata
+      - source_id: repo-kytmanov-obsidian-local
+        supports:
+          - Obsidian/local-first runtime family
+          - provider switching, source hashes, rejection feedback, draft annotations, hand-edit protection, no-vector query
+      - source_id: pypi-my-llm-wiki
+        supports:
+          - Python package/library registry evidence
+          - beta package metadata and supported input claims
+      - source_id: pypi-llm-wiki-mcp
+        supports:
+          - MCP package registry evidence
+          - alpha package metadata, MCP tools, Claude Code skills, storage safety mechanics
+      - source_id: clawhub-llm-wiki-karpathy
+        supports:
+          - plugin/runtime distribution family
+          - standalone CLI, MCP, OpenClaw host, raw/wiki/schema runtime, deterministic lint
+      - source_id: llm-wiki-net
+        supports:
+          - multi-runtime command/plugin implementation family
+          - topic hubs, immutable raw, compiled articles, audit, output, archive/inventory/dataset manifests
+    candidate_statement: "本地语料足以支持一个 bounded v1 implementation ecosystem 节点：LLM Wiki 已在本地捕获材料中表现为多种实现形态，包括 UI/desktop app、coding-agent skill/template、CLI/MCP compiler、Obsidian/local-first workflow、graph/MCP vault tool、Python package/library、plugin directory runtime、多运行时命令插件，以及 long-document/OpenKB-like adjacent systems；这些材料能描述实现类型、功能表面和 metadata activity signals，但不能证明真实使用规模、质量、成熟度、企业 readiness 或市场排名。"
+    why_it_matters: "它把前序 origin/definition/architecture/workflow 节点连接到实际工具链和文件结构，帮助后续 generation 区分 source-backed implementation facts、registry metadata、directory self-description 与 weak adoption/community evidence。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "Package downloads, plugin installs, active-user counts, traffic/clones, contributor histories, issue/PR outcome analysis, release history, dependency/security posture, and real deployment reports are not present locally."
+      - "Blocked Reddit/community captures remain unusable for practical reception, plugin feedback, OpenKB long-PDF discussion, Obsidian reception, and multimodal/PDF/PPT questions."
+      - "README/package/plugin claims are mostly author or directory self-description; they do not independently validate quality, reliability, adoption, or sustained maintenance."
+      - "Long-document and multimodal handling should be scoped to implementations that explicitly claim it; do not generalize across the ecosystem."
+      - "Enterprise readiness, compliance, governance maturity, and security posture require separate retrieval/mining."
+    build_constraints:
+      - "Use repo README and package/plugin captures for implementation facts."
+      - "Use `github_repo.json` only for snapshot metadata: stars, forks, open issues, language, license, timestamps."
+      - "Use reports as process/gap context, not as primary implementation evidence."
+      - "Use adopted KB nodes only as continuity/boundary anchors, not as new source evidence."
+      - "Do not rank tools, infer quality, infer active usage, or claim market adoption from stars/forks."
+      - "Keep the node descriptive: implementation families, feature surfaces, evidence grades, and missing evidence."
+      - "References must appear before the final Footnotes section in any card-oriented planning note or generation packet."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_implementation_landscape
+    next_action: node_planning
+

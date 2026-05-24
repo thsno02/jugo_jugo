@@ -1,0 +1,33 @@
+schema: kb.source_candidates.v1
+generated_at: '2026-05-24T05:05:58+08:00'
+candidates:
+- candidate_id: current_kb_initialization_loop
+  status: used_in_bootstrap_batch
+  evidence:
+  - loop_plan_init_kb.md
+  - reports/coverage_framework.md
+- candidate_id: llm_wiki_working_definition
+  status: used_in_bootstrap_batch
+  evidence:
+  - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  - reports/source_gap_review.md
+- candidate_id: source_preservation_precondition_trust
+  status: used_in_bootstrap_batch
+  evidence:
+  - data/manifests/sources.jsonl
+  - reports/source_gap_review.md
+- candidate_id: provenance_as_core_knowledge_asset
+  status: used_in_bootstrap_batch
+  evidence:
+  - loop_plan_init_kb.md
+  - data/raw/arxiv/arxiv-alce/text.txt
+- candidate_id: citation_driven_impact_propagation
+  status: used_in_bootstrap_batch
+  evidence:
+  - loop_plan_init_kb.md
+  - data/raw/arxiv/arxiv-alce/text.txt
+- candidate_id: dynamic_retrieval_as_controlled_fallback
+  status: used_in_bootstrap_batch
+  evidence:
+  - loop_plan_init_kb.md
+  - reports/source_gap_review.md

@@ -1,0 +1,20 @@
+schema: kb.action_queue.v1
+updated_at: '2026-05-24T05:10:00+08:00'
+items:
+- id: act_001
+  status: done
+  action: bootstrap contracts、scripts 和 skill seeds
+- id: act_002
+  status: done
+  action: 生成并审计第一批 0-1 nodes
+- id: act_003
+  status: done
+  action: 针对已记录 evidence gap 执行动态检索测试
+- id: act_004
+  status: done
+  action: 模拟 major change 并生成 impact queue
+- id: act_005
+  status: open
+  action: review impact queue 或准备下一轮 iteration
+language: zh-CN
+

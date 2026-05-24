@@ -1,0 +1,29 @@
+schema: kb.node_metadata.v1
+id: 20260524_050033_source_preservation_precondition_trust
+title: Source preservation 需要 provenance 才能支撑 KB 信任
+version: '2.0'
+version_status: candidate
+node_created_at: '2026-05-24T05:00:33+08:00'
+node_archived_at: null
+version_created_at: '2026-05-24T05:06:34+08:00'
+version_adopted_at: null
+version_superseded_at: null
+version_archived_at: null
+status: active
+stability: candidate
+usable_as_support: false
+paths:
+  version_dir: nodes/20260524_050033_source_preservation_precondition_trust/versions/2.0/
+  card: nodes/20260524_050033_source_preservation_precondition_trust/versions/2.0/card.md
+  provenance: nodes/20260524_050033_source_preservation_precondition_trust/versions/2.0/provenance.md
+  change: nodes/20260524_050033_source_preservation_precondition_trust/versions/2.0/change.md
+  kb_view: null
+tags:
+- llm-wiki
+- provenance
+- source-preservation
+- impact-test
+audit:
+  state: held_for_impact_review
+  run: .llmwiki/runs/run_20260524_050634_major_impact_simulation/audit_report.md
+

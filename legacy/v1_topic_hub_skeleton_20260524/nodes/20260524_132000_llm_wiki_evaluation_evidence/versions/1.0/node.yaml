@@ -1,0 +1,164 @@
+schema: kb.node_version.v1
+id: 20260524_132000_llm_wiki_evaluation_evidence
+node_id: 20260524_132000_llm_wiki_evaluation_evidence
+version: "1.0"
+title: "LLM Wiki Evaluation Evidence: Dimensions, Evidence Levels, and Boundaries"
+slug: llm_wiki_evaluation_evidence
+status: active
+version_status: adopted
+adoption_status: adopted
+adopted: true
+selected: true
+adoption_gate: citation_and_adoption_audit_passed
+version_adopted_at: "2026-05-24T21:29:27+08:00"
+created_at: "2026-05-24T13:40:00+08:00"
+created_by:
+  executor_role: worker_executor
+  worker_role: cand_007_evaluation_evidence generation worker
+  run_id: run_20260524_134000_worker_generation_evaluation_evidence
+  task_packet: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence/next_task_packet.md
+candidate_id: cand_007_evaluation_evidence
+candidate_source: .llmwiki/control/knowledge_frontier.yaml
+source_mining_run: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence
+planning_run: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence
+generation_run: .llmwiki/runs/run_20260524_134000_worker_generation_evaluation_evidence
+version_dir: nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0
+paths:
+  card: nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/card.md
+  provenance: nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/provenance.md
+  change: nodes/20260524_132000_llm_wiki_evaluation_evidence/versions/1.0/change.md
+  kb_view: kb/20260524_132000_llm_wiki_evaluation_evidence.md
+prior_kb_anchors:
+  - node_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    adopted_kb_path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    pinned_version_path: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_072000_llm_wiki_working_definition
+    version: "1.0"
+    adopted_kb_path: kb/20260524_072000_llm_wiki_working_definition.md
+    pinned_version_path: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    version: "1.0"
+    adopted_kb_path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    pinned_version_path: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    version: "1.0"
+    adopted_kb_path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    pinned_version_path: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+    allowed_use: boundary_continuity_only
+  - node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+    version: "1.0"
+    adopted_kb_path: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+    pinned_version_path: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+    allowed_use: adjacent_boundary_continuity_only
+  - node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    version: "1.0"
+    adopted_kb_path: kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+    pinned_version_path: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/card.md
+    allowed_use: provenance_boundary_continuity_only
+  - node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+    version: "1.0"
+    adopted_kb_path: kb/20260524_122000_llm_wiki_implementation_ecosystem.md
+    pinned_version_path: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/card.md
+    allowed_use: implementation_boundary_continuity_only
+evidence_state: enough_for_bounded_first_version
+retrieval_required_before_audit: false
+audit:
+  state: passed
+  run: .llmwiki/runs/run_20260524_135000_worker_audit_evaluation_evidence/audit_report.md
+  decision: adopt_recommended
+  adoption_run: .llmwiki/runs/run_20260524_140000_worker_adoption_view_evaluation_evidence
+  required_before_adoption: true
+  required_gates:
+    - source_scope_gate
+    - citation_gate
+    - provenance_gate
+    - direct_evidence_boundary_gate
+    - economic_claim_boundary_gate
+    - implementation_self_description_boundary_gate
+    - adjacent_eval_transfer_gate
+    - deferred_retrieval_gate
+    - footnote_layout_gate
+  known_limits:
+    - "WiCER is the strongest direct evaluation evidence but remains one recent source with model, hardware, baseline, validation, judge, and scope limits."
+    - "Knowledge Compounding is used only as abstract-level economic/token-cost framing."
+    - "Atomicstrata and Kytmanov READMEs are implementation self-descriptions, not independent reliability measurements."
+    - "ALCE, Ragas, ARES, and RAGChecker provide adjacent vocabulary only and are not direct LLM Wiki benchmarks."
+    - "No direct audit of this KB's adopted pages, long-term drift data, independent replications, broad provider/corpus comparisons, or human expert studies are present."
+stability:
+  level: first_version_candidate
+  support_eligibility: evaluation_dimensions_and_evidence_boundaries_only
+tags:
+  - llm_wiki
+  - evaluation
+  - evidence
+  - citation_auditability
+  - provenance
+  - evidence_grades
+  - source_boundaries
+claim_scope:
+  includes:
+    - direct WiCER evaluation dimensions and limits
+    - cautious economic and token-cost framing requirements
+    - implementation-described citation and review controls
+    - adjacent RAG/citation evaluation vocabulary
+    - process evidence grades and source-gap boundaries
+    - prior KB continuity anchors
+  excludes:
+    - broad superiority over RAG GraphRAG PKM agent memory or documentation systems
+    - generic LLM evaluation or benchmark ranking
+    - model quality ranking product evaluation adoption scale or enterprise readiness
+    - production reliability ROI market or usage claims
+    - treating implementation controls as measured effectiveness
+    - treating adjacent RAG/citation metrics as direct LLM Wiki evidence
+citation_summary:
+  primary_direct_sources:
+    - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-wicer/text.txt
+    - data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+  primary_implementation_sources:
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  adjacent_sources:
+    - data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+  process_gap_sources:
+    - reports/coverage_framework.md
+    - reports/source_gap_review.md
+    - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_matrix.yaml
+    - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_gaps.md
+    - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/retrieval_requests.md
+    - .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence/evidence_scope.yaml
+  prior_kb_anchor_count: 7
+  citation_blocks_expected: 22
+dependencies:
+  raw_source_paths:
+    - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-wicer/text.txt
+    - data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+    - data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+    - data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+    - reports/coverage_framework.md
+    - reports/source_gap_review.md
+  process_paths:
+    - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_matrix.yaml
+    - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_gaps.md
+    - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/retrieval_requests.md
+    - .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence/evidence_scope.yaml
+  prior_kb_paths:
+    - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    - nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+    - nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+    - nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+    - nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+    - nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/card.md
+    - nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/card.md

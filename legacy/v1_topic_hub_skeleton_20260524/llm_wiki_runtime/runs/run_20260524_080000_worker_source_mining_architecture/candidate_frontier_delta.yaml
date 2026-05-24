@@ -1,0 +1,96 @@
+schema: kb.candidate_frontier_delta.v1
+run_id: run_20260524_080000_worker_source_mining_architecture
+executor_role: worker_executor
+created_at: "2026-05-24T08:00:00+08:00"
+candidate_updates:
+  - candidate_id: cand_003_architecture
+    proposed_node_slug: llm_wiki_three_layer_architecture
+    proposed_node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    status: ready_to_build
+    evidence_state: enough_for_first_version
+    source_mining_run: .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - 20260524_062000_llm_wiki_origin_and_canon
+      - 20260524_072000_llm_wiki_working_definition
+      - repo-atomicstrata-llm-wiki-compiler
+      - clawhub-llm-wiki-karpathy
+      - reports/source_gap_review.md
+      - reports/coverage_framework.md
+    raw_paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    prior_kb_anchors:
+      - node_id: 20260524_062000_llm_wiki_origin_and_canon
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - node_id: 20260524_072000_llm_wiki_working_definition
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_072000_llm_wiki_working_definition.md
+    direct_evidence:
+      - source_id: karpathy-gist-llm-wiki
+        supports:
+          - "direct three-layer architecture: raw sources, wiki, schema"
+          - raw sources as immutable source of truth
+          - wiki as LLM-generated markdown directory with summaries, entity pages, concept pages, comparisons, overview, and synthesis
+          - schema/instruction document governing structure, conventions, ingest, answering/query, and maintenance workflows
+          - index.md and log.md as navigation/history infrastructure
+          - optional/modular tooling and implementation-specific directory/schema choices
+          - ingest, query, and lint as operations that connect the layers
+      - source_id: 20260524_062000_llm_wiki_origin_and_canon
+        supports:
+          - adopted bounded canon for the gist
+          - boundary against adoption, ecosystem, enterprise, empirical, or broad historical claims
+      - source_id: 20260524_072000_llm_wiki_working_definition
+        supports:
+          - adopted source-preserving and agent-maintained working definition
+          - prior boundary for raw-source preservation, compiled wiki layer, schema/instruction governance, and maintenance loop
+      - source_id: repo-atomicstrata-llm-wiki-compiler
+        supports:
+          - implementation mapping from sources to hash check, concept extraction, wiki generation, wikilink resolution, and index
+          - wiki output model with concepts, queries, index, schema, candidate review, citations, lint, view, query, watch, and MCP
+        limitation: implementation evidence only; not primary abstract architecture authority
+      - source_id: clawhub-llm-wiki-karpathy
+        supports:
+          - implementation/runtime evidence for raw/wiki/schema operating model, representation storage, generated index/log, deterministic lint, CLI, MCP, and OpenClaw host entry
+        limitation: plugin listing/runtime evidence only; not adoption or empirical evidence
+      - source_id: reports/source_gap_review.md
+        supports:
+          - coverage status that workflow architecture coverage is strong
+          - warning that neutral architecture taxonomy remains a gap
+        limitation: secondary gap report only
+    claim_ids:
+      - claim_000001_origin_and_canon_original_karpathy_statement_exact_text
+      - claim_000004_origin_and_canon_examples_and_intended_workflow
+      - claim_000005_origin_and_canon_stated_or_implied_non_goals
+      - claim_000013_architecture_and_data_model_source_acquisition_model
+      - claim_000014_architecture_and_data_model_compilation_model
+      - claim_000015_architecture_and_data_model_storage_model
+      - claim_000016_architecture_and_data_model_query_model
+      - claim_000017_architecture_and_data_model_update_model
+      - claim_000018_architecture_and_data_model_link_model
+      - claim_000019_architecture_and_data_model_agent_interfaces
+    coverage_records: []
+    candidate_statement: "LLM Wiki 的首版 architecture 节点可以被界定为三层：不可变 raw source layer 作为来源真值，LLM/agent 编译并维护的 markdown/wiki layer 作为持久知识 artifact，schema/instruction layer 作为结构、约定与 ingest/query/maintenance 流程的约束；index/log、provenance/citation、review、lint、search、CLI/MCP/viewer 等应写作支持基础设施或实现变体，而不是第四个核心层。"
+    why_it_matters: "该架构节点为后续 workflow、implementation ecosystem、comparison、risk/governance nodes 提供结构支架，同时继承 origin/canon 与 working definition 的证据边界，避免把抽象模式误写成单一产品、普通 RAG、企业成熟方案或经验效果结论。"
+    missing_evidence:
+      - "No blocker for bounded first version."
+      - "Neutral cross-implementation architecture taxonomy remains a later research task; this first version should state that repo and ClawHub are implementation-flavored support, not comprehensive ecosystem evidence."
+      - "Scale, enterprise readiness, adoption, empirical effectiveness, and broad implementation convergence require separate source mining."
+      - "Detailed ingest/compile/query/lint workflow should be handled by cand_004_workflow rather than overexpanded inside the architecture node."
+    build_constraints:
+      - "Use Karpathy gist as primary architecture evidence."
+      - "Use adopted origin/canon and working definition nodes only as prior KB anchors and boundary support."
+      - "Use repo README and ClawHub only for directly present implementation-flavored details."
+      - "Keep the node centered on raw source layer, compiled wiki layer, schema/instruction layer, and supporting index/log/tooling infrastructure."
+      - "Do not write ecosystem survey, enterprise, adoption, social-metric, empirical performance, or broad comparison claims."
+      - "Distinguish source-backed three-layer facts from worker synthesis about supporting infrastructure."
+      - "Do not collapse the architecture node into the later workflow node."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_architecture_node
+    next_action: node_planning

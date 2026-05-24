@@ -1,0 +1,167 @@
+schema: llmwiki.topic_planner.evidence_scope.v1
+run_id: run_20260524_054000_topic_planner
+created_at: "2026-05-24T05:40:00+08:00"
+main_language: zh-CN
+planner_role: planner_sub_agent
+object_level_topic: llm_wiki
+not_topic:
+  - kb_production_mechanism
+  - loop_plan_init_kb
+  - planner_or_control_layer_design
+target_node:
+  id: llm_wiki_origin_and_canon
+  version_target: "0.1.0"
+  decision: confirmed
+  status_for_generator: candidate_pending_generation
+  rationale:
+    - "origin/canon 是 definition、architecture、workflow、comparison nodes 的前置锚点。"
+    - "本地 Karpathy gist、X mirror、HN 原帖与 manifests 已形成强证据闭环。"
+    - "该 node scope 较小，无需 web retrieval，适合第一个 executable generator packet。"
+retrieval_policy:
+  web_retrieval_allowed: false
+  reason: "公司电脑网络受限；本 node 本地证据已足够。"
+  allowed_action_if_gap_found: "只写 retrieval request 或 gap note，不尝试突破网络限制。"
+primary_evidence:
+  raw_sources:
+    - source_id: karpathy-gist-llm-wiki
+      source_type: gist_raw
+      status: ok
+      role: canonical_origin_idea_file
+      paths:
+        - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      supports:
+        - original_karpathy_statement_exact_text
+        - original_context
+        - examples_and_intended_workflow
+        - stated_or_implied_non_goals
+        - minimal_example
+    - source_id: karpathy-x-launch-post
+      source_type: webpage
+      status: ok
+      role: launch_and_viral_context
+      paths:
+        - data/raw/webpage/karpathy-x-launch-post/text.txt
+        - data/raw/webpage/karpathy-x-launch-post/raw.txt
+        - data/raw/webpage/karpathy-x-launch-post/raw.json
+        - data/raw/webpage/karpathy-x-launch-post/metadata.json
+      supports:
+        - original_date
+        - original_context
+        - immediate_discussion_context
+        - social_spread_signals
+    - source_id: hacker-news-original-thread
+      source_type: hacker_news
+      status: ok
+      role: early_public_discussion_and_skepticism
+      paths:
+        - data/raw/hacker_news/hacker-news-original-thread/item.json
+        - data/raw/hacker_news/hacker-news-original-thread/text.txt
+        - data/raw/hacker_news/hacker-news-original-thread/page.html
+        - data/raw/hacker_news/hacker-news-original-thread/metadata.json
+      supports:
+        - immediate_discussion_context
+        - early_support_and_skepticism
+        - rag_comparison_discourse
+        - maintenance_and_scale_concerns
+secondary_navigation_evidence:
+  manifests:
+    - path: data/manifests/sources.jsonl
+      role: "source ids、local dirs、status、priority、tags 的权威索引。"
+    - path: data/manifests/source_digests.jsonl
+      role: "source coverage digest；用于确认 readable text 和 coverage areas。"
+    - path: data/manifests/claims.jsonl
+      role: "claim ids、claim type、confidence、limitations。"
+    - path: data/manifests/claim_source_links.jsonl
+      role: "claim 到 source 的链接；generator 应按 target claim ids 过滤。"
+    - path: data/manifests/coverage_records.jsonl
+      role: "origin_and_canon required outputs 的支持状态。"
+    - path: data/manifests/acquired_sources_index.md
+      role: "人类可读 acquisition inventory。"
+    - path: data/manifests/source_digests_index.md
+      role: "人类可读 digest inventory。"
+  reports:
+    - path: reports/source_gap_review.md
+      role: "覆盖强弱与 missing evidence 审计；只能作为 secondary synthesis。"
+    - path: reports/coverage_framework.md
+      role: "topic 边界与 claim/evidence 类型框架；不是事件原文。"
+  control_guidelines:
+    - path: .llmwiki/control/topic_plan.md
+      role: "planner/generator 协议约束；不是 object-level content evidence。"
+    - path: .llmwiki/control/topic_node_backlog.yaml
+      role: "候选节点列表；不是可直接执行计划。"
+optional_secondary_raw_evidence:
+  read_only_if_needed:
+    - source_id: hacker-news-lens-thread
+      source_type: webpage
+      status: ok
+      role: "HN mirror/summary；只用于校验 HN event navigation，不替代 HN 原帖。"
+      paths:
+        - data/raw/webpage/hacker-news-lens-thread/text.txt
+    - source_id: marvin-hn-persistent-knowledge
+      source_type: webpage
+      status: ok
+      role: "HN event secondary commentary；只用于二级传播语境。"
+      paths:
+        - data/raw/webpage/marvin-hn-persistent-knowledge/text.txt
+claim_scope:
+  required_claim_ids:
+    - claim_000001_origin_and_canon_original_karpathy_statement_exact_text
+    - claim_000002_origin_and_canon_original_date
+    - claim_000003_origin_and_canon_original_context
+    - claim_000004_origin_and_canon_examples_and_intended_workflow
+    - claim_000005_origin_and_canon_stated_or_implied_non_goals
+    - claim_000006_origin_and_canon_immediate_discussion_context
+    - claim_000007_origin_and_canon_early_forks_or_implementations
+    - claim_000008_origin_and_canon_minimal_example
+  coverage_records:
+    - covrec_origin_and_canon_original_karpathy_statement_exact_text
+    - covrec_origin_and_canon_original_date
+    - covrec_origin_and_canon_original_context
+    - covrec_origin_and_canon_examples_and_intended_workflow
+    - covrec_origin_and_canon_stated_or_implied_non_goals
+    - covrec_origin_and_canon_immediate_discussion_context
+    - covrec_origin_and_canon_early_forks_or_implementations
+    - covrec_origin_and_canon_minimal_example
+  adjacent_claim_ids_allowed_for_crosslinks_only:
+    - claim_000032_comparison_space_rag_comparison
+    - claim_000033_comparison_space_pkm_comparison
+    - claim_000034_comparison_space_knowledge_graph_comparison
+    - claim_000035_comparison_space_agent_memory_comparison
+    - claim_000036_comparison_space_documentation_systems_comparison
+source_ids_allowed:
+  primary:
+    - karpathy-gist-llm-wiki
+    - karpathy-x-launch-post
+    - hacker-news-original-thread
+  optional_secondary:
+    - hacker-news-lens-thread
+    - marvin-hn-persistent-knowledge
+  navigation_only:
+    - acquired_sources_index
+    - source_digests_index
+excluded_or_deferred_sources:
+  - source_id: reddit-claudecode-plugin
+    reason: "blocked；不能作为 substantive evidence。"
+  - source_id: reddit-openkb-long-pdf
+    reason: "blocked；未来个人设备或人工导出后再用。"
+  - source_id: reddit-braindb
+    reason: "blocked；未来个人设备或人工导出后再用。"
+  - source_id: reddit-openwebui-llm-wiki
+    reason: "blocked；未来个人设备或人工导出后再用。"
+  - source_id: reddit-obsidian-plugin
+    reason: "blocked；未来个人设备或人工导出后再用。"
+  - source_id: reddit-visuals-pdfs-question
+    reason: "blocked；未来个人设备或人工导出后再用。"
+  - source_id: aicritique-enterprise-knowledge
+    reason: "intercept/http failure；不用于本 node。"
+  - source_id: aicritique-enterprise-knowledge-dynamic-20260524
+    reason: "dynamic retrieval attempt 仍标为 http_error；不用于本 node。"
+audit_gates:
+  object_topic_gate: "必须证明 node 内容是 LLM Wiki topic，不是 KB 生产机制。"
+  evidence_scope_gate: "所有内容必须来自 allowed scope；额外读取需记录。"
+  citation_gate: "关键事实必须绑定 source id、raw path、claim id 或 coverage record。"
+  source_sufficiency_gate: "起源事实必须至少由 Karpathy gist/X mirror/HN 原帖之一支持。"
+  distinction_gate: "区分 observed fact、interpretation、early discourse、known gap。"
+  overclaim_gate: "不得输出本地证据不支持的 empirical/enterprise/adoption 强结论。"
+  language_gate: "中文为主，英文术语可保留。"
+  retrieval_gate: "不得执行 web retrieval；证据不足时只记录 request。"

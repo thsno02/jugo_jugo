@@ -1,0 +1,23 @@
+schema: kb.decision_log.v1
+updated_at: '2026-05-24T05:10:00+08:00'
+decisions:
+- id: dec_001
+  run: .llmwiki/runs/run_20260524_050031_kb_initialization_bootstrap
+  decision: bootstrap 后继续自治执行
+  reason: 人类可能长时间离开；loop 已有边界明确的 validation、build、retrieval-request 和 impact-test action，可依据磁盘状态继续。
+  next_action: validate_build_parse_status
+  human_checkpoint_needed: false
+- id: dec_002
+  run: .llmwiki/runs/run_20260524_050318_dynamic_retrieval_enterprise_scale
+  decision: adopt 动态检索 node
+  reason: retrieval request 已存在，失败来源已保存并拒绝，成功来源已保存并进入 manifest，node 只采纳窄范围可支持 claim。
+  next_action: simulate_major_impact_test
+  human_checkpoint_needed: false
+- id: dec_003
+  run: .llmwiki/runs/run_20260524_050634_major_impact_simulation
+  decision: hold major candidate 并接受 impact queue
+  reason: 2.0 candidate 有意不 adopted，impact queue 从 parsed citation edges 生成 4 个 downstream review tasks。
+  next_action: review_impact_queue_or_prepare_next_iteration
+  human_checkpoint_needed: false
+language: zh-CN
+

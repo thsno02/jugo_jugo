@@ -1,0 +1,159 @@
+schema: kb.index.v1
+generated_at: '2026-05-24T05:23:53+08:00'
+node_count: 7
+nodes:
+- id: 20260524_050031_llm_wiki_working_definition
+  title: LLM Wiki 是由来源支撑、由 agent 维护的持久 wiki artifact
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: solid
+  usable_as_support: true
+  node_created_at: '2026-05-24T05:00:31+08:00'
+  version_adopted_at: '2026-05-24T05:00:31+08:00'
+  tags:
+  - llm-wiki
+  - definition
+  - source-backed
+  paths:
+    version_dir: nodes/20260524_050031_llm_wiki_working_definition/versions/1.0/
+    card: nodes/20260524_050031_llm_wiki_working_definition/versions/1.0/card.md
+    provenance: nodes/20260524_050031_llm_wiki_working_definition/versions/1.0/provenance.md
+    change: nodes/20260524_050031_llm_wiki_working_definition/versions/1.0/change.md
+    kb_view: kb/20260524_050031_llm_wiki_working_definition.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_050031_kb_initialization_bootstrap/audit_report.md
+- id: 20260524_050032_current_kb_initialization_loop
+  title: 当前 KB 初始化 loop 把 raw data 转化为可审计 adopted nodes
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: working
+  usable_as_support: true
+  node_created_at: '2026-05-24T05:00:32+08:00'
+  version_adopted_at: '2026-05-24T05:00:32+08:00'
+  tags:
+  - llm-wiki
+  - kb-initialization
+  - agent-loop
+  paths:
+    version_dir: nodes/20260524_050032_current_kb_initialization_loop/versions/1.0/
+    card: nodes/20260524_050032_current_kb_initialization_loop/versions/1.0/card.md
+    provenance: nodes/20260524_050032_current_kb_initialization_loop/versions/1.0/provenance.md
+    change: nodes/20260524_050032_current_kb_initialization_loop/versions/1.0/change.md
+    kb_view: kb/20260524_050032_current_kb_initialization_loop.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_050031_kb_initialization_bootstrap/audit_report.md
+- id: 20260524_050033_source_preservation_precondition_trust
+  title: Source preservation 是 KB 信任的前提
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: solid
+  usable_as_support: true
+  node_created_at: '2026-05-24T05:00:33+08:00'
+  version_adopted_at: '2026-05-24T05:00:33+08:00'
+  tags:
+  - llm-wiki
+  - provenance
+  - source-preservation
+  paths:
+    version_dir: nodes/20260524_050033_source_preservation_precondition_trust/versions/1.0/
+    card: nodes/20260524_050033_source_preservation_precondition_trust/versions/1.0/card.md
+    provenance: nodes/20260524_050033_source_preservation_precondition_trust/versions/1.0/provenance.md
+    change: nodes/20260524_050033_source_preservation_precondition_trust/versions/1.0/change.md
+    kb_view: kb/20260524_050033_source_preservation_precondition_trust.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_050031_kb_initialization_bootstrap/audit_report.md
+- id: 20260524_050034_provenance_as_core_knowledge_asset
+  title: Provenance 是核心知识资产，不是附录
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: working
+  usable_as_support: true
+  node_created_at: '2026-05-24T05:00:34+08:00'
+  version_adopted_at: '2026-05-24T05:00:34+08:00'
+  tags:
+  - llm-wiki
+  - provenance
+  - audit
+  paths:
+    version_dir: nodes/20260524_050034_provenance_as_core_knowledge_asset/versions/1.0/
+    card: nodes/20260524_050034_provenance_as_core_knowledge_asset/versions/1.0/card.md
+    provenance: nodes/20260524_050034_provenance_as_core_knowledge_asset/versions/1.0/provenance.md
+    change: nodes/20260524_050034_provenance_as_core_knowledge_asset/versions/1.0/change.md
+    kb_view: kb/20260524_050034_provenance_as_core_knowledge_asset.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_050031_kb_initialization_bootstrap/audit_report.md
+- id: 20260524_050035_citation_driven_impact_propagation
+  title: Citation edges 在 major change 后驱动 impact review
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: working
+  usable_as_support: true
+  node_created_at: '2026-05-24T05:00:35+08:00'
+  version_adopted_at: '2026-05-24T05:00:35+08:00'
+  tags:
+  - llm-wiki
+  - citations
+  - impact-analysis
+  paths:
+    version_dir: nodes/20260524_050035_citation_driven_impact_propagation/versions/1.0/
+    card: nodes/20260524_050035_citation_driven_impact_propagation/versions/1.0/card.md
+    provenance: nodes/20260524_050035_citation_driven_impact_propagation/versions/1.0/provenance.md
+    change: nodes/20260524_050035_citation_driven_impact_propagation/versions/1.0/change.md
+    kb_view: kb/20260524_050035_citation_driven_impact_propagation.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_050031_kb_initialization_bootstrap/audit_report.md
+- id: 20260524_050036_dynamic_retrieval_as_controlled_fallback
+  title: 动态检索是受控 fallback，不是临时补料
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: working
+  usable_as_support: true
+  node_created_at: '2026-05-24T05:00:36+08:00'
+  version_adopted_at: '2026-05-24T05:00:36+08:00'
+  tags:
+  - llm-wiki
+  - dynamic-retrieval
+  - evidence-gap
+  paths:
+    version_dir: nodes/20260524_050036_dynamic_retrieval_as_controlled_fallback/versions/1.0/
+    card: nodes/20260524_050036_dynamic_retrieval_as_controlled_fallback/versions/1.0/card.md
+    provenance: nodes/20260524_050036_dynamic_retrieval_as_controlled_fallback/versions/1.0/provenance.md
+    change: nodes/20260524_050036_dynamic_retrieval_as_controlled_fallback/versions/1.0/change.md
+    kb_view: kb/20260524_050036_dynamic_retrieval_as_controlled_fallback.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_050031_kb_initialization_bootstrap/audit_report.md
+- id: 20260524_050318_enterprise_scale_requires_governed_context_layer
+  title: Enterprise-scale LLM Wiki 需要 governed context layer
+  version: '1.0'
+  version_status: adopted
+  status: active
+  stability: working
+  usable_as_support: true
+  node_created_at: '2026-05-24T05:03:18+08:00'
+  version_adopted_at: '2026-05-24T05:03:18+08:00'
+  tags:
+  - llm-wiki
+  - dynamic-retrieval
+  - enterprise
+  - governance
+  paths:
+    version_dir: nodes/20260524_050318_enterprise_scale_requires_governed_context_layer/versions/1.0/
+    card: nodes/20260524_050318_enterprise_scale_requires_governed_context_layer/versions/1.0/card.md
+    provenance: nodes/20260524_050318_enterprise_scale_requires_governed_context_layer/versions/1.0/provenance.md
+    change: nodes/20260524_050318_enterprise_scale_requires_governed_context_layer/versions/1.0/change.md
+    kb_view: kb/20260524_050318_enterprise_scale_requires_governed_context_layer.md
+  audit:
+    state: passed
+    run: .llmwiki/runs/run_20260524_050318_dynamic_retrieval_enterprise_scale/audit_report.md

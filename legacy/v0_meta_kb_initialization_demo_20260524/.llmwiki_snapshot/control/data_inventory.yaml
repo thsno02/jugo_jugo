@@ -1,0 +1,1980 @@
+schema: kb.data_inventory.v1
+generated_at: '2026-05-24T05:05:58+08:00'
+summary:
+  sources_total: 74
+  source_statuses:
+    http_error: 2
+    ok: 66
+    blocked: 6
+  source_types:
+    webpage: 27
+    github_repo: 20
+    arxiv: 17
+    gist_raw: 1
+    hacker_news: 1
+    pypi: 2
+    reddit: 6
+  claims_total: 41
+  coverage_area_source_counts:
+    architecture_and_data_model: 25
+    comparison_space: 62
+    ecosystem_and_implementations: 31
+    evaluation_and_evidence: 24
+    origin_and_canon: 22
+    problem_and_motivation: 34
+    risks_governance_ethics: 27
+    workflow_and_operations: 31
+hard_gaps:
+- id: blocked_reddit_discourse
+  reason: Several Reddit captures are blocked and cannot support community-reception claims beyond block
+    metadata.
+  source: reports/source_gap_review.md
+- id: aicritique_intercept_failure
+  reason: The AICritique enterprise article capture contains only an intercept message.
+  source: reports/source_gap_review.md
+sources:
+- source_id: aicritique-enterprise-knowledge
+  status: http_error
+  source_type: webpage
+  source_url: https://www.aicritique.org/us/2026/05/08/andrej-karpathys-latest-concept-llm-wiki-and-the-future-of-enterprise-knowledge/
+  local_dir: data/raw/webpage/aicritique-enterprise-knowledge
+  readable_text_path: data/raw/webpage/aicritique-enterprise-knowledge/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - 'Acquisition status is http_error: HTTP 200'
+- source_id: aicritique-enterprise-knowledge-dynamic-20260524
+  status: http_error
+  source_type: webpage
+  source_url: https://www.aicritique.org/us/2026/05/08/andrej-karpathys-latest-concept-llm-wiki-and-the-future-of-enterprise-knowledge/
+  local_dir: data/raw/webpage/aicritique-enterprise-knowledge-dynamic-20260524
+  readable_text_path: null
+  coverage_areas: []
+  supported_outputs: []
+  limitations: []
+- source_id: aillm-wiki-directory
+  status: ok
+  source_type: webpage
+  source_url: https://aillm.wiki/
+  local_dir: data/raw/webpage/aillm-wiki-directory
+  readable_text_path: data/raw/webpage/aillm-wiki-directory/text.txt
+  coverage_areas:
+  - problem_and_motivation
+  - ecosystem_and_implementations
+  supported_outputs:
+  - adoption_signals
+  - current_alternatives
+  - definition_of_better
+  - implementation_taxonomy
+  - interoperability_notes
+  - tool_family_inventory
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: anthemcreation-en-guide
+  status: ok
+  source_type: webpage
+  source_url: https://anthemcreation.com/en/artificial-intelligence/karpathy-llm-wiki-claude-obsidian/
+  local_dir: data/raw/webpage/anthemcreation-en-guide
+  readable_text_path: data/raw/webpage/anthemcreation-en-guide/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - end_to_end_lifecycle
+  - examples_and_intended_workflow
+  - failure_handling
+  - human_in_loop_boundaries
+  - immediate_discussion_context
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - tool_family_inventory
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: anthemcreation-fr-guide
+  status: ok
+  source_type: webpage
+  source_url: https://anthemcreation.com/intelligence-artificielle/llm-wiki-karpathy-base-connaissance-claude-obsidian/
+  local_dir: data/raw/webpage/anthemcreation-fr-guide
+  readable_text_path: data/raw/webpage/anthemcreation-fr-guide/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - end_to_end_lifecycle
+  - examples_and_intended_workflow
+  - failure_handling
+  - human_in_loop_boundaries
+  - immediate_discussion_context
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - tool_family_inventory
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-alce
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2305.14627
+  local_dir: data/raw/arxiv/arxiv-alce
+  readable_text_path: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - answer_quality_metrics
+  - epistemic_risk
+  - provenance_risk
+  - robustness_metrics
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-ares
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2311.09476
+  local_dir: data/raw/arxiv/arxiv-ares
+  readable_text_path: data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - answer_quality_metrics
+  - benchmark_or_case_study_inventory
+  - robustness_metrics
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-etamp-memory-poisoning
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2604.02623
+  local_dir: data/raw/arxiv/arxiv-etamp-memory-poisoning
+  readable_text_path: data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - epistemic_risk
+  - maintenance_risk
+  - privacy_security_risk
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-graph-poisoning
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2508.04276
+  local_dir: data/raw/arxiv/arxiv-graph-poisoning
+  readable_text_path: data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - knowledge_graph_comparison
+  - privacy_security_risk
+  - provenance_risk
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-graphrag
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2404.16130
+  local_dir: data/raw/arxiv/arxiv-graphrag
+  readable_text_path: data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - knowledge_graph_comparison
+  - rag_comparison
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-knowledge-compounding
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2604.11243
+  local_dir: data/raw/arxiv/arxiv-knowledge-compounding
+  readable_text_path: data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - answer_quality_metrics
+  - benchmark_or_case_study_inventory
+  - documentation_systems_comparison
+  - epistemic_risk
+  - governance_model
+  - knowledge_graph_comparison
+  - maintenance_quality_metrics
+  - maintenance_risk
+  - pkm_comparison
+  - privacy_security_risk
+  - provenance_risk
+  - rag_comparison
+  - robustness_metrics
+  limitations:
+  - arXiv e-print returned PDF-only source; TeX bundle unavailable locally.
+- source_id: arxiv-lightmem
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2510.18866
+  local_dir: data/raw/arxiv/arxiv-lightmem
+  readable_text_path: data/raw/arxiv/arxiv-lightmem/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - benchmark_or_case_study_inventory
+  - maintenance_quality_metrics
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-locomo
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2402.17753
+  local_dir: data/raw/arxiv/arxiv-locomo
+  readable_text_path: data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - benchmark_or_case_study_inventory
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-longmemeval
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2410.10813
+  local_dir: data/raw/arxiv/arxiv-longmemeval
+  readable_text_path: data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - benchmark_or_case_study_inventory
+  - maintenance_quality_metrics
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-mem0
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2504.19413
+  local_dir: data/raw/arxiv/arxiv-mem0
+  readable_text_path: data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - benchmark_or_case_study_inventory
+  - maintenance_quality_metrics
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-memgpt
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2310.08560
+  local_dir: data/raw/arxiv/arxiv-memgpt
+  readable_text_path: data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - rag_comparison
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-memory-as-metabolism
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2604.12034
+  local_dir: data/raw/arxiv/arxiv-memory-as-metabolism
+  readable_text_path: data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - answer_quality_metrics
+  - benchmark_or_case_study_inventory
+  - documentation_systems_comparison
+  - epistemic_risk
+  - governance_model
+  - knowledge_graph_comparison
+  - maintenance_quality_metrics
+  - maintenance_risk
+  - pkm_comparison
+  - privacy_security_risk
+  - provenance_risk
+  - rag_comparison
+  - robustness_metrics
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-poisonedrag
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2402.07867
+  local_dir: data/raw/arxiv/arxiv-poisonedrag
+  readable_text_path: data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - epistemic_risk
+  - privacy_security_risk
+  - provenance_risk
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-ragas
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2309.15217
+  local_dir: data/raw/arxiv/arxiv-ragas
+  readable_text_path: data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - answer_quality_metrics
+  - benchmark_or_case_study_inventory
+  - robustness_metrics
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-ragchecker
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2408.08067
+  local_dir: data/raw/arxiv/arxiv-ragchecker
+  readable_text_path: data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - answer_quality_metrics
+  - benchmark_or_case_study_inventory
+  - robustness_metrics
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-wicer
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2605.07068
+  local_dir: data/raw/arxiv/arxiv-wicer
+  readable_text_path: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+  coverage_areas:
+  - architecture_and_data_model
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - answer_quality_metrics
+  - benchmark_or_case_study_inventory
+  - compilation_model
+  - documentation_systems_comparison
+  - epistemic_risk
+  - governance_model
+  - knowledge_graph_comparison
+  - link_model
+  - maintenance_quality_metrics
+  - maintenance_risk
+  - pkm_comparison
+  - privacy_security_risk
+  - provenance_risk
+  - query_model
+  - rag_comparison
+  - robustness_metrics
+  - source_acquisition_model
+  - storage_model
+  - update_model
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: arxiv-zep
+  status: ok
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2501.13956
+  local_dir: data/raw/arxiv/arxiv-zep
+  readable_text_path: data/raw/arxiv/arxiv-zep/agent_source_bundle.txt
+  coverage_areas:
+  - evaluation_and_evidence
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - benchmark_or_case_study_inventory
+  - knowledge_graph_comparison
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: atlan-llm-wiki-vs-rag-dynamic-20260524
+  status: ok
+  source_type: webpage
+  source_url: https://atlan.com/know/llm-wiki-vs-rag-knowledge-base/
+  local_dir: data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524
+  readable_text_path: null
+  coverage_areas: []
+  supported_outputs: []
+  limitations: []
+- source_id: clawhub-llm-wiki-karpathy
+  status: ok
+  source_type: webpage
+  source_url: https://clawhub.ai/plugins/llm-wiki-karpathy-plugin
+  local_dir: data/raw/webpage/clawhub-llm-wiki-karpathy
+  readable_text_path: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - end_to_end_lifecycle
+  - examples_and_intended_workflow
+  - failure_handling
+  - human_in_loop_boundaries
+  - immediate_discussion_context
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - stated_or_implied_non_goals
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: cognitionus-llm-wiki-guide
+  status: ok
+  source_type: webpage
+  source_url: https://www.cognitionus.com/memory/tools/llm-wiki
+  local_dir: data/raw/webpage/cognitionus-llm-wiki-guide
+  readable_text_path: data/raw/webpage/cognitionus-llm-wiki-guide/text.txt
+  coverage_areas:
+  - problem_and_motivation
+  - workflow_and_operations
+  - comparison_space
+  supported_outputs:
+  - agent_interfaces
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - knowledge_graph_comparison
+  - pkm_comparison
+  - rag_comparison
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: complete-tech-live-frontier
+  status: ok
+  source_type: webpage
+  source_url: https://complete.tech/blog/beyond-the-token-bottleneck-llm-wiki-karpathy/
+  local_dir: data/raw/webpage/complete-tech-live-frontier
+  readable_text_path: data/raw/webpage/complete-tech-live-frontier/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: developersio-jp-pattern
+  status: ok
+  source_type: webpage
+  source_url: https://dev.classmethod.jp/articles/karpathy-llm-knowledge-base/
+  local_dir: data/raw/webpage/developersio-jp-pattern
+  readable_text_path: data/raw/webpage/developersio-jp-pattern/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: falconer-enterprise-guide
+  status: ok
+  source_type: webpage
+  source_url: https://falconer.com/guides/enterprise-llm-wiki-karpathy
+  local_dir: data/raw/webpage/falconer-enterprise-guide
+  readable_text_path: data/raw/webpage/falconer-enterprise-guide/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - workflow_and_operations
+  - comparison_space
+  supported_outputs:
+  - agent_interfaces
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - end_to_end_lifecycle
+  - examples_and_intended_workflow
+  - failure_handling
+  - human_in_loop_boundaries
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: hacker-news-lens-thread
+  status: ok
+  source_type: webpage
+  source_url: https://nhn.yuu.is/item?id=47640875
+  local_dir: data/raw/webpage/hacker-news-lens-thread
+  readable_text_path: data/raw/webpage/hacker-news-lens-thread/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - epistemic_risk
+  - examples_and_intended_workflow
+  - governance_model
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - maintenance_risk
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - privacy_security_risk
+  - provenance_risk
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: hacker-news-original-thread
+  status: ok
+  source_type: hacker_news
+  source_url: https://news.ycombinator.com/item?id=47640875
+  local_dir: data/raw/hacker_news/hacker-news-original-thread
+  readable_text_path: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - epistemic_risk
+  - examples_and_intended_workflow
+  - governance_model
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - maintenance_risk
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - privacy_security_risk
+  - provenance_risk
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: karpathy-gist-llm-wiki
+  status: ok
+  source_type: gist_raw
+  source_url: https://gist.githubusercontent.com/karpathy/442a6bf555914893e9891c11519de94f/raw
+  local_dir: data/raw/gist_raw/karpathy-gist-llm-wiki
+  readable_text_path: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: karpathy-x-launch-post
+  status: ok
+  source_type: webpage
+  source_url: https://api.fxtwitter.com/karpathy/status/2040470801506541998
+  local_dir: data/raw/webpage/karpathy-x-launch-post
+  readable_text_path: data/raw/webpage/karpathy-x-launch-post/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: kunal-local-knowledge-base
+  status: ok
+  source_type: webpage
+  source_url: https://www.kunalganglani.com/blog/llm-wiki-karpathy-local-knowledge-base
+  local_dir: data/raw/webpage/kunal-local-knowledge-base
+  readable_text_path: data/raw/webpage/kunal-local-knowledge-base/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - workflow_and_operations
+  - comparison_space
+  supported_outputs:
+  - agent_interfaces
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - end_to_end_lifecycle
+  - examples_and_intended_workflow
+  - failure_handling
+  - human_in_loop_boundaries
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: langchain-long-term-memory-docs
+  status: ok
+  source_type: webpage
+  source_url: https://docs.langchain.com/oss/python/langchain/long-term-memory
+  local_dir: data/raw/webpage/langchain-long-term-memory-docs
+  readable_text_path: data/raw/webpage/langchain-long-term-memory-docs/text.txt
+  coverage_areas:
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: llm-wiki-net
+  status: ok
+  source_type: webpage
+  source_url: https://llm-wiki.net/
+  local_dir: data/raw/webpage/llm-wiki-net
+  readable_text_path: data/raw/webpage/llm-wiki-net/text.txt
+  coverage_areas:
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - compilation_model
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - link_model
+  - query_model
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: marvin-hn-persistent-knowledge
+  status: ok
+  source_type: webpage
+  source_url: https://insights.marvin-42.com/articles/hacker-news-picks-up-karpathys-llm-wiki-pattern-for-persistent-knowledge-bases
+  local_dir: data/raw/webpage/marvin-hn-persistent-knowledge
+  readable_text_path: data/raw/webpage/marvin-hn-persistent-knowledge/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: microsoft-agent-governance-toolkit-docs
+  status: ok
+  source_type: webpage
+  source_url: https://microsoft.github.io/agent-governance-toolkit/
+  local_dir: data/raw/webpage/microsoft-agent-governance-toolkit-docs
+  readable_text_path: data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+  coverage_areas:
+  - risks_governance_ethics
+  supported_outputs:
+  - governance_model
+  - maintenance_risk
+  - privacy_security_risk
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: nist-gai-profile
+  status: ok
+  source_type: webpage
+  source_url: https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence
+  local_dir: data/raw/webpage/nist-gai-profile
+  readable_text_path: data/raw/webpage/nist-gai-profile/text.txt
+  coverage_areas:
+  - risks_governance_ethics
+  supported_outputs:
+  - governance_model
+  - privacy_security_risk
+  - provenance_risk
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: obsidian-community-plugin
+  status: ok
+  source_type: webpage
+  source_url: https://community.obsidian.md/plugins/karpathywiki
+  local_dir: data/raw/webpage/obsidian-community-plugin
+  readable_text_path: data/raw/webpage/obsidian-community-plugin/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - end_to_end_lifecycle
+  - examples_and_intended_workflow
+  - failure_handling
+  - human_in_loop_boundaries
+  - immediate_discussion_context
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - tool_family_inventory
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: obsidian-help-link-notes
+  status: ok
+  source_type: webpage
+  source_url: https://help.obsidian.md/link-notes
+  local_dir: data/raw/webpage/obsidian-help-link-notes
+  readable_text_path: data/raw/webpage/obsidian-help-link-notes/text.txt
+  coverage_areas:
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - pkm_comparison
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: openaitoolshub-six-months
+  status: ok
+  source_type: webpage
+  source_url: https://www.openaitoolshub.org/en/blog/karpathy-llm-wiki
+  local_dir: data/raw/webpage/openaitoolshub-six-months
+  readable_text_path: data/raw/webpage/openaitoolshub-six-months/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - evaluation_and_evidence
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - answer_quality_metrics
+  - benchmark_or_case_study_inventory
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - maintenance_quality_metrics
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - robustness_metrics
+  - stated_or_implied_non_goals
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: owasp-agentic-top10-2026
+  status: ok
+  source_type: webpage
+  source_url: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
+  local_dir: data/raw/webpage/owasp-agentic-top10-2026
+  readable_text_path: data/raw/webpage/owasp-agentic-top10-2026/text.txt
+  coverage_areas:
+  - risks_governance_ethics
+  supported_outputs:
+  - governance_model
+  - maintenance_risk
+  - privacy_security_risk
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: owasp-llm-top10-2025
+  status: ok
+  source_type: webpage
+  source_url: https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/
+  local_dir: data/raw/webpage/owasp-llm-top10-2025
+  readable_text_path: data/raw/webpage/owasp-llm-top10-2025/text.txt
+  coverage_areas:
+  - risks_governance_ethics
+  supported_outputs:
+  - epistemic_risk
+  - governance_model
+  - privacy_security_risk
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: pypi-llm-wiki-mcp
+  status: ok
+  source_type: pypi
+  source_url: https://pypi.org/project/llm-wiki-mcp/
+  local_dir: data/raw/pypi/pypi-llm-wiki-mcp
+  readable_text_path: data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+  coverage_areas:
+  - architecture_and_data_model
+  - ecosystem_and_implementations
+  supported_outputs:
+  - adoption_signals
+  - compilation_model
+  - implementation_taxonomy
+  - interoperability_notes
+  - link_model
+  - query_model
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: pypi-my-llm-wiki
+  status: ok
+  source_type: pypi
+  source_url: https://pypi.org/project/my-llm-wiki/
+  local_dir: data/raw/pypi/pypi-my-llm-wiki
+  readable_text_path: data/raw/pypi/pypi-my-llm-wiki/text.txt
+  coverage_areas:
+  - architecture_and_data_model
+  - ecosystem_and_implementations
+  supported_outputs:
+  - adoption_signals
+  - compilation_model
+  - implementation_taxonomy
+  - interoperability_notes
+  - link_model
+  - query_model
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: reddit-braindb
+  status: blocked
+  source_type: reddit
+  source_url: https://www.reddit.com/r/LLMDevs/comments/1sv5cl1/braindb_karpathys_llm_wiki_idea_but_as_a_real_db/
+  local_dir: data/raw/reddit/reddit-braindb
+  readable_text_path: data/raw/reddit/reddit-braindb/browser_text.txt
+  coverage_areas:
+  - origin_and_canon
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  limitations:
+  - 'Acquisition status is blocked: browser_capture_looks_blocked'
+- source_id: reddit-claudecode-plugin
+  status: blocked
+  source_type: reddit
+  source_url: https://www.reddit.com/r/ClaudeCode/comments/1sm374u/turned_andrej_karpathys_llm_wiki_gist_into_a/
+  local_dir: data/raw/reddit/reddit-claudecode-plugin
+  readable_text_path: data/raw/reddit/reddit-claudecode-plugin/browser_text.txt
+  coverage_areas:
+  - origin_and_canon
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - end_to_end_lifecycle
+  - examples_and_intended_workflow
+  - failure_handling
+  - human_in_loop_boundaries
+  - immediate_discussion_context
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  - tool_family_inventory
+  limitations:
+  - 'Acquisition status is blocked: browser_capture_looks_blocked'
+- source_id: reddit-obsidian-plugin
+  status: blocked
+  source_type: reddit
+  source_url: https://www.reddit.com/r/ObsidianMD/comments/1shntdn/new_plugin_llm_wiki_turn_your_vault_into_a/
+  local_dir: data/raw/reddit/reddit-obsidian-plugin
+  readable_text_path: data/raw/reddit/reddit-obsidian-plugin/browser_text.txt
+  coverage_areas:
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - tool_family_inventory
+  limitations:
+  - 'Acquisition status is blocked: browser_capture_looks_blocked'
+- source_id: reddit-openkb-long-pdf
+  status: blocked
+  source_type: reddit
+  source_url: https://www.reddit.com/r/LLMDevs/comments/1syz0b8/openkb_karpathys_idea_of_llm_wiki_but_with_the/
+  local_dir: data/raw/reddit/reddit-openkb-long-pdf
+  readable_text_path: data/raw/reddit/reddit-openkb-long-pdf/browser_text.txt
+  coverage_areas:
+  - origin_and_canon
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  limitations:
+  - 'Acquisition status is blocked: browser_capture_looks_blocked'
+- source_id: reddit-openwebui-llm-wiki
+  status: blocked
+  source_type: reddit
+  source_url: https://www.reddit.com/r/OpenWebUI/comments/1sy0mf8/llm_wiki/
+  local_dir: data/raw/reddit/reddit-openwebui-llm-wiki
+  readable_text_path: data/raw/reddit/reddit-openwebui-llm-wiki/browser_text.txt
+  coverage_areas:
+  - problem_and_motivation
+  supported_outputs:
+  - current_alternatives
+  - definition_of_better
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - 'Acquisition status is blocked: browser_capture_looks_blocked'
+- source_id: reddit-visuals-pdfs-question
+  status: blocked
+  source_type: reddit
+  source_url: https://www.reddit.com/r/ClaudeCode/comments/1so9gbt/does_the_karpathystyle_llm_wiki_actually_handle/
+  local_dir: data/raw/reddit/reddit-visuals-pdfs-question
+  readable_text_path: data/raw/reddit/reddit-visuals-pdfs-question/browser_text.txt
+  coverage_areas:
+  - origin_and_canon
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  limitations:
+  - 'Acquisition status is blocked: browser_capture_looks_blocked'
+- source_id: repo-agricidaniel-claude-obsidian
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/AgriciDaniel/claude-obsidian
+  local_dir: data/raw/github_repo/repo-agricidaniel-claude-obsidian
+  readable_text_path: data/raw/github_repo/repo-agricidaniel-claude-obsidian/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-amazon-ragchecker
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/amazon-science/RAGChecker
+  local_dir: data/raw/github_repo/repo-amazon-ragchecker
+  readable_text_path: data/raw/github_repo/repo-amazon-ragchecker/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - evaluation_and_evidence
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - benchmark_or_case_study_inventory
+  - robustness_metrics
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-ar9av-obsidian-wiki
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/Ar9av/obsidian-wiki
+  local_dir: data/raw/github_repo/repo-ar9av-obsidian-wiki
+  readable_text_path: data/raw/github_repo/repo-ar9av-obsidian-wiki/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-astro-han-karpathy-llm-wiki
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/Astro-Han/karpathy-llm-wiki
+  local_dir: data/raw/github_repo/repo-astro-han-karpathy-llm-wiki
+  readable_text_path: data/raw/github_repo/repo-astro-han-karpathy-llm-wiki/README.remote
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - evaluation_and_evidence
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - answer_quality_metrics
+  - benchmark_or_case_study_inventory
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - end_to_end_lifecycle
+  - examples_and_intended_workflow
+  - failure_handling
+  - human_in_loop_boundaries
+  - immediate_discussion_context
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - maintenance_quality_metrics
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - robustness_metrics
+  - source_acquisition_model
+  - stated_or_implied_non_goals
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-atomicstrata-llm-wiki-compiler
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/atomicstrata/llm-wiki-compiler
+  local_dir: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler
+  readable_text_path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - evaluation_and_evidence
+  - ecosystem_and_implementations
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - answer_quality_metrics
+  - benchmark_or_case_study_inventory
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - epistemic_risk
+  - failure_handling
+  - governance_model
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - maintenance_quality_metrics
+  - maintenance_risk
+  - pkm_comparison
+  - privacy_security_risk
+  - provenance_risk
+  - query_model
+  - rag_comparison
+  - robustness_metrics
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-iamsashank-llm-wiki-kit
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/iamsashank09/llm-wiki-kit
+  local_dir: data/raw/github_repo/repo-iamsashank-llm-wiki-kit
+  readable_text_path: data/raw/github_repo/repo-iamsashank-llm-wiki-kit/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-kytmanov-obsidian-local
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/kytmanov/obsidian-llm-wiki-local
+  local_dir: data/raw/github_repo/repo-kytmanov-obsidian-local
+  readable_text_path: data/raw/github_repo/repo-kytmanov-obsidian-local/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - epistemic_risk
+  - failure_handling
+  - governance_model
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - maintenance_risk
+  - pkm_comparison
+  - privacy_security_risk
+  - provenance_risk
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-lewislulu-llm-wiki-skill
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/lewislulu/llm-wiki-skill
+  local_dir: data/raw/github_repo/repo-lewislulu-llm-wiki-skill
+  readable_text_path: data/raw/github_repo/repo-lewislulu-llm-wiki-skill/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-longmemeval
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/xiaowu0162/LongMemEval
+  local_dir: data/raw/github_repo/repo-longmemeval
+  readable_text_path: data/raw/github_repo/repo-longmemeval/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - evaluation_and_evidence
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - benchmark_or_case_study_inventory
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-microsoft-agent-governance-toolkit
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/microsoft/agent-governance-toolkit
+  local_dir: data/raw/github_repo/repo-microsoft-agent-governance-toolkit
+  readable_text_path: data/raw/github_repo/repo-microsoft-agent-governance-toolkit/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - governance_model
+  - maintenance_risk
+  - privacy_security_risk
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-microsoft-graphrag
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/microsoft/graphrag
+  local_dir: data/raw/github_repo/repo-microsoft-graphrag
+  readable_text_path: data/raw/github_repo/repo-microsoft-graphrag/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - knowledge_graph_comparison
+  - rag_comparison
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-nashsu-llm-wiki
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/nashsu/llm_wiki
+  local_dir: data/raw/github_repo/repo-nashsu-llm-wiki
+  readable_text_path: data/raw/github_repo/repo-nashsu-llm-wiki/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-ndjordjevic-pin-llm-wiki
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/ndjordjevic/pin-llm-wiki
+  local_dir: data/raw/github_repo/repo-ndjordjevic-pin-llm-wiki
+  readable_text_path: data/raw/github_repo/repo-ndjordjevic-pin-llm-wiki/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-ngmeyer-librarian-mcp
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/ngmeyer/librarian-mcp
+  local_dir: data/raw/github_repo/repo-ngmeyer-librarian-mcp
+  readable_text_path: data/raw/github_repo/repo-ngmeyer-librarian-mcp/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-nvk-llm-wiki
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/nvk/llm-wiki
+  local_dir: data/raw/github_repo/repo-nvk-llm-wiki
+  readable_text_path: data/raw/github_repo/repo-nvk-llm-wiki/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-samuraigpt-llm-wiki-agent
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/SamurAIGPT/llm-wiki-agent
+  local_dir: data/raw/github_repo/repo-samuraigpt-llm-wiki-agent
+  readable_text_path: data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-sdyckjq-llm-wiki-skill
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/sdyckjq-lab/llm-wiki-skill
+  local_dir: data/raw/github_repo/repo-sdyckjq-llm-wiki-skill
+  readable_text_path: data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-ss1024ss-llm-wiki
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/Ss1024sS/LLM-wiki
+  local_dir: data/raw/github_repo/repo-ss1024ss-llm-wiki
+  readable_text_path: data/raw/github_repo/repo-ss1024ss-llm-wiki/README.remote
+  coverage_areas:
+  - origin_and_canon
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - end_to_end_lifecycle
+  - examples_and_intended_workflow
+  - failure_handling
+  - human_in_loop_boundaries
+  - immediate_discussion_context
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - source_acquisition_model
+  - stated_or_implied_non_goals
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-stanford-ares
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/stanford-futuredata/ARES
+  local_dir: data/raw/github_repo/repo-stanford-ares
+  readable_text_path: data/raw/github_repo/repo-stanford-ares/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - evaluation_and_evidence
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - benchmark_or_case_study_inventory
+  - robustness_metrics
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: repo-vectifyai-openkb
+  status: ok
+  source_type: github_repo
+  source_url: https://github.com/VectifyAI/OpenKB
+  local_dir: data/raw/github_repo/repo-vectifyai-openkb
+  readable_text_path: data/raw/github_repo/repo-vectifyai-openkb/README.remote
+  coverage_areas:
+  - problem_and_motivation
+  - architecture_and_data_model
+  - workflow_and_operations
+  - evaluation_and_evidence
+  - ecosystem_and_implementations
+  - comparison_space
+  supported_outputs:
+  - adoption_signals
+  - agent_interfaces
+  - agent_memory_comparison
+  - agent_usability_metrics
+  - answer_quality_metrics
+  - benchmark_or_case_study_inventory
+  - compilation_model
+  - current_alternatives
+  - definition_of_better
+  - documentation_systems_comparison
+  - end_to_end_lifecycle
+  - failure_handling
+  - human_in_loop_boundaries
+  - implementation_taxonomy
+  - interoperability_notes
+  - knowledge_graph_comparison
+  - link_model
+  - maintenance_quality_metrics
+  - pkm_comparison
+  - query_model
+  - rag_comparison
+  - robustness_metrics
+  - source_acquisition_model
+  - storage_model
+  - tool_family_inventory
+  - update_model
+  - user_groups
+  - workflow_failures_addressed
+  limitations:
+  - Digest uses README/metadata-level evidence; full source-code audit remains pending.
+- source_id: robin-cartier-llm-knowledge-bases
+  status: ok
+  source_type: webpage
+  source_url: https://robincartier.com/wiki/wiki-concepts/llm-knowledge-bases/
+  local_dir: data/raw/webpage/robin-cartier-llm-knowledge-bases
+  readable_text_path: data/raw/webpage/robin-cartier-llm-knowledge-bases/text.txt
+  coverage_areas:
+  - origin_and_canon
+  - comparison_space
+  supported_outputs:
+  - agent_memory_comparison
+  - documentation_systems_comparison
+  - early_forks_or_implementations
+  - examples_and_intended_workflow
+  - immediate_discussion_context
+  - knowledge_graph_comparison
+  - minimal_example
+  - original_context
+  - original_date
+  - original_karpathy_statement_exact_text
+  - pkm_comparison
+  - rag_comparison
+  - stated_or_implied_non_goals
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: wikibase-data-model
+  status: ok
+  source_type: webpage
+  source_url: https://www.mediawiki.org/wiki/Wikibase/DataModel
+  local_dir: data/raw/webpage/wikibase-data-model
+  readable_text_path: data/raw/webpage/wikibase-data-model/text.txt
+  coverage_areas:
+  - comparison_space
+  - risks_governance_ethics
+  supported_outputs:
+  - knowledge_graph_comparison
+  - provenance_risk
+  limitations:
+  - No major limitation recorded at digest granularity.
+- source_id: writethedocs-docs-as-code
+  status: ok
+  source_type: webpage
+  source_url: https://www.writethedocs.org/guide/docs-as-code.html
+  local_dir: data/raw/webpage/writethedocs-docs-as-code
+  readable_text_path: data/raw/webpage/writethedocs-docs-as-code/text.txt
+  coverage_areas:
+  - comparison_space
+  supported_outputs:
+  - documentation_systems_comparison
+  limitations:
+  - No major limitation recorded at digest granularity.

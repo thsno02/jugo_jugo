@@ -1,0 +1,115 @@
+# Standing Status / 低噪状态
+
+state:: v1_delivered
+active_topic:: llm_wiki
+last_updated:: 2026-05-24T22:55:00+08:00
+latest_run:: .llmwiki/runs/run_20260524_142000_worker_v1_final_qa_delivery
+next_action:: goal_complete_ready_for_controller
+blocker:: none
+human_needed:: no
+primary_input:: data/
+planner_run:: .llmwiki/runs/run_20260524_054000_topic_planner
+frontier:: .llmwiki/control/knowledge_frontier.yaml
+orchestration_gate:: .llmwiki/control/orchestration_gates.yaml
+network_retrieval_policy:: limited_company_network_attempts_then_defer
+main_role:: controller_decision_maker
+worker_required_for:: source_mining, frontier_update, node_planning, generation, audit, view_build, skill_eval
+controller_drift_sample:: .llmwiki/runs/run_20260524_061000_source_mining_origin_canon
+adopted_nodes:: 8
+last_adopted_node:: 20260524_132000_llm_wiki_evaluation_evidence@1.0
+last_skill_eval:: .llmwiki/runs/run_20260524_141000_worker_skill_eval_evaluation_evidence
+last_skill_eval_decision:: v1_final_audit_recommended
+last_skill_changes:: none
+last_metadata_repair:: .llmwiki/runs/run_20260524_093000_worker_adoption_metadata_repair_workflow
+post_adoption_validation_note:: cand_004 workflow root and selected version adoption metadata are consistent; node/card/view/status validators passed
+last_source_mining:: .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance
+last_source_mining_decision:: ready_to_plan
+last_source_mining_evidence_state:: enough_for_first_version
+last_source_mining_retrieval_required_before_build:: false
+last_source_mining_target:: cand_008_risks_governance_provenance
+last_source_mining_note:: cand_011_initial_risk_discourse merged as HN early-discourse seed and deferred as standalone
+previous_node_planning:: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem
+previous_node_planning_decision:: generation_entry_pass
+previous_node_planning_target_node_id:: 20260524_122000_llm_wiki_implementation_ecosystem
+last_node_planning:: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence
+last_node_planning_decision:: generation_entry_pass
+last_node_planning_target_node_id:: 20260524_132000_llm_wiki_evaluation_evidence
+recommended_generation_candidate:: cand_007_evaluation_evidence
+last_generation:: .llmwiki/runs/run_20260524_110000_worker_generation_risks_governance_provenance
+last_generation_decision:: candidate_bundle_generated
+last_audit:: .llmwiki/runs/run_20260524_111000_worker_audit_risks_governance_provenance
+last_audit_decision:: adopt_recommended
+last_adoption_view:: .llmwiki/runs/run_20260524_114000_worker_adoption_view_risks_governance_provenance_after_footnote_repair
+last_adoption_view_decision:: adopted
+last_adoption_view_blocker:: none
+last_footnote_layout_repair:: .llmwiki/runs/run_20260524_113000_worker_repair_footnote_layout_contract
+last_footnote_layout_repair_decision:: repair_validated
+footnote_layout_gate:: pass
+legacy_footnote_layout_audit:: 11 checked, 1 pass, 10 legacy fail recorded
+last_legacy_footnote_layout_migration:: .llmwiki/runs/run_20260524_115000_worker_legacy_footnote_layout_migration
+last_legacy_footnote_layout_migration_decision:: migration_validated
+legacy_footnote_layout_migration_result:: 12 checked, 10 fixed, 0 remaining failures
+post_adoption_validation_note:: cand_010 root and selected version adoption metadata are consistent; node/card/view/status validators passed
+citation_edges:: 185
+impact_queue_open:: 0
+last_cand_008_skill_eval:: .llmwiki/runs/run_20260524_120000_worker_skill_eval_risks_governance_provenance
+last_cand_008_skill_eval_decision:: continue_loop
+last_cand_008_skill_eval_note:: evidence chain closed for bounded v1; deferred retrieval recorded; footnote layout contract pass; selected-version metadata stable
+last_frontier_status_sync:: .llmwiki/runs/run_20260524_121000_worker_frontier_status_sync_cand008
+last_frontier_status_sync_decision:: sync_validated
+cand_008_frontier_status:: built_adopted
+cand_008_frontier_next_action:: completed
+last_cand_006_source_mining:: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem
+last_cand_006_source_mining_decision:: ready_to_plan
+last_cand_006_evidence_state:: enough_for_first_version
+last_cand_006_retrieval_required_before_build:: false
+cand_006_frontier_status:: stale_ready_to_build_in_frontier_but_adopted_in_status_and_action_queue
+last_cand_006_node_planning:: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem
+last_cand_006_node_planning_decision:: generation_entry_pass
+last_cand_006_target_node_id:: 20260524_122000_llm_wiki_implementation_ecosystem
+last_cand_006_retrieval_required_before_generation:: false
+last_cand_006_generation:: .llmwiki/runs/run_20260524_124000_worker_generation_implementation_ecosystem
+last_cand_006_generation_decision:: candidate_bundle_generated
+last_cand_006_audit:: .llmwiki/runs/run_20260524_125500_worker_audit_implementation_ecosystem_replacement
+last_cand_006_audit_decision:: adopt_recommended
+last_cand_006_adoption_view:: .llmwiki/runs/run_20260524_130000_worker_adoption_view_implementation_ecosystem
+last_cand_006_adoption_view_decision:: adopted
+last_cand_006_footnote_layout_gate:: pass
+audit_overreach_recovery:: audit overreach observed on generated/backlinks.yaml and generated/citation_graph.yaml; adoption worker refreshed generated outputs as authoritative post-adoption state
+last_cand_006_skill_eval:: .llmwiki/runs/run_20260524_131000_worker_skill_eval_implementation_ecosystem
+last_cand_006_skill_eval_decision:: revise_skills_then_continue
+last_cand_006_skill_eval_note:: audit startup and audit generated-overreach guardrails patched; evidence chain closed; footnote layout and selected-version metadata stable
+last_cand_007_source_mining:: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence
+last_cand_007_source_mining_decision:: ready_to_plan
+last_cand_007_evidence_state:: enough_for_first_version
+last_cand_007_retrieval_required_before_build:: false
+last_cand_007_retrieval_attempts:: none
+cand_007_frontier_status:: ready_to_build_stale_but_adopted_in_status_and_action_queue
+next_candidate:: none_v1_delivered
+last_cand_007_node_planning:: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence
+last_cand_007_node_planning_decision:: generation_entry_pass
+last_cand_007_target_node_id:: 20260524_132000_llm_wiki_evaluation_evidence
+last_cand_007_retrieval_required_before_generation:: false
+last_cand_007_generation_task:: cand_007_evaluation_evidence_generation
+last_cand_007_generation_task_packet:: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence/next_task_packet.md
+
+last_cand_007_generation:: .llmwiki/runs/run_20260524_134000_worker_generation_evaluation_evidence
+last_cand_007_generation_decision:: candidate_bundle_generated
+last_cand_007_audit:: .llmwiki/runs/run_20260524_135000_worker_audit_evaluation_evidence
+last_cand_007_audit_decision:: adopt_recommended
+last_cand_007_adoption_view:: .llmwiki/runs/run_20260524_140000_worker_adoption_view_evaluation_evidence
+last_cand_007_adoption_view_decision:: adopted
+last_cand_007_footnote_layout_gate:: pass
+last_cand_007_validation_note:: root and selected version adoption metadata are consistent; node/card/view/status validators passed
+last_cand_007_skill_eval:: .llmwiki/runs/run_20260524_141000_worker_skill_eval_evaluation_evidence
+last_cand_007_skill_eval_decision:: v1_final_audit_recommended
+last_cand_007_skill_eval_note:: evidence chain closed; unsupported empirical/superiority/benchmark/adoption/scale claims avoided; startup, audit-read-only, footnote-layout, and selected-version-metadata guardrails passed; no skill changes
+v1_coverage_recommendation:: v1_final_audit_recommended
+next_task:: v1_final_qa_delivery_worker
+next_task_packet:: .llmwiki/runs/run_20260524_141000_worker_skill_eval_evaluation_evidence/next_task_packet.md
+final_v1_delivery:: .llmwiki/runs/run_20260524_142000_worker_v1_final_qa_delivery
+final_v1_delivery_decision:: v1_delivered
+final_v1_delivery_status:: LOOP_DONE
+final_v1_delivery_validation:: node_all pass; card_all pass; view/index/citation/backlinks/impact/status refresh pass; footnote_layout_gate 16/16 pass; yaml_parse 27/27 pass
+final_v1_delivery_control_sync:: cand_004, cand_006, cand_007, cand_010 lifecycle statuses synchronized to built_adopted/completed; act_044 done; act_045 deferred future retrieval only
+final_v1_delivery_remaining_gaps:: non_blocking_future_retrieval_for_enterprise_scale_community_security_detail_adoption_and_long_term_evaluation

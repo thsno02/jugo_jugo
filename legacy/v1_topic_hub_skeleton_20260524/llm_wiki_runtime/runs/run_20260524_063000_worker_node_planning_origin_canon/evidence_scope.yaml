@@ -1,0 +1,68 @@
+schema: kb.evidence_scope.v1
+run_id: run_20260524_063000_worker_node_planning_origin_canon
+executor_role: worker_executor
+phase: node_planning
+candidate_id: cand_001_origin_and_canon
+candidate_status_at_planning: ready_to_build
+selection_source: .llmwiki/control/knowledge_frontier.yaml
+source_mining_run: .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon
+frontier_update_run: .llmwiki/runs/run_20260524_062500_worker_frontier_update_origin_canon
+target:
+  node_slug: llm_wiki_origin_and_canon
+  node_id: 20260524_062000_llm_wiki_origin_and_canon
+  node_id_basis: frontier_current_proposed_node_id
+  version_target: "1.0"
+allowed_primary_evidence:
+  - source_id: karpathy-gist-llm-wiki
+    paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+    may_support:
+      - canonical idea-file framing
+      - raw/wiki/schema architecture
+      - ingest/query/lint operations
+      - index/log navigation files
+      - optional tooling and implementation flexibility
+allowed_secondary_evidence:
+  - source_id: hacker-news-original-thread
+    paths:
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - data/raw/hacker_news/hacker-news-original-thread/item.json
+    may_support:
+      - early public discussion metadata visible in text
+      - immediate RAG comparison debate
+      - early support, skepticism, risk, scale, and maintenance concerns
+    limitations:
+      - HN text is for early discourse only.
+      - item.json is reported empty by worker mining; do not infer unavailable metadata from it.
+source_inventory_only:
+  - source_id: karpathy-x-launch-post
+    paths:
+      - data/raw/webpage/karpathy-x-launch-post/text.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.json
+    may_support:
+      - source inventory
+      - provenance note that attempted X capture exists in the local corpus
+    limitations:
+      - X raw files are empty in the allowed evidence.
+      - Do not cite X wording, exact timestamps, quoted-post text, or metrics until recaptured.
+forbidden_evidence:
+  - topic_plan or backlog entries not represented as ready_to_build in knowledge_frontier.yaml
+  - controller-authored drift artifacts as authority
+  - network retrieval or newly fetched web pages
+  - Reddit/community reception for this node
+  - broad implementation, enterprise, evaluation, adoption, or governance sources outside the allowed worker-mined batch
+claim_boundaries:
+  must_include:
+    - LLM Wiki origin/canon is bounded to Karpathy gist plus immediate HN discussion.
+    - Gist is primary canonical evidence.
+    - HN text is secondary early-discourse evidence.
+    - X launch raw files are empty and cannot support exact X-specific claims.
+  must_not_claim:
+    - full historical origin of LLM Wiki before the bounded source batch
+    - exact X launch wording, timestamps, quoted-post text, or metrics
+    - broad adoption or mature ecosystem state
+    - empirical effectiveness or enterprise readiness
+retrieval_required_before_build: false
+completion_marker: LOOP_DONE

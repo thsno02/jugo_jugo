@@ -1,0 +1,61 @@
+schema: kb.impact_queue.v1
+generated_at: '2026-05-24T05:24:55+08:00'
+change_count: 1
+impact_count: 4
+impacts:
+- impact_id: imp_0001
+  changed_node: 20260524_050033_source_preservation_precondition_trust
+  changed_from_version: '1.0'
+  changed_to_version: '2.0'
+  change_path: nodes/20260524_050033_source_preservation_precondition_trust/versions/2.0/change.md
+  impacted_node: 20260524_050034_provenance_as_core_knowledge_asset
+  impacted_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  impact_level: high
+  status: open
+  suggested_action: review_and_revise
+  suggested_action_zh: 审查并按需修订
+  reason: 受影响 node 通过已解析的 KB citation edge 引用了发生 major change 的 node。
+- impact_id: imp_0002
+  changed_node: 20260524_050033_source_preservation_precondition_trust
+  changed_from_version: '1.0'
+  changed_to_version: '2.0'
+  change_path: nodes/20260524_050033_source_preservation_precondition_trust/versions/2.0/change.md
+  impacted_node: 20260524_050035_citation_driven_impact_propagation
+  impacted_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  impact_level: medium
+  status: open
+  suggested_action: review_and_revise
+  suggested_action_zh: 审查并按需修订
+  reason: 受影响 node 通过已解析的 KB citation edge 引用了发生 major change 的 node。
+- impact_id: imp_0003
+  changed_node: 20260524_050033_source_preservation_precondition_trust
+  changed_from_version: '1.0'
+  changed_to_version: '2.0'
+  change_path: nodes/20260524_050033_source_preservation_precondition_trust/versions/2.0/change.md
+  impacted_node: 20260524_050036_dynamic_retrieval_as_controlled_fallback
+  impacted_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  impact_level: high
+  status: open
+  suggested_action: review_and_revise
+  suggested_action_zh: 审查并按需修订
+  reason: 受影响 node 通过已解析的 KB citation edge 引用了发生 major change 的 node。
+- impact_id: imp_0004
+  changed_node: 20260524_050033_source_preservation_precondition_trust
+  changed_from_version: '1.0'
+  changed_to_version: '2.0'
+  change_path: nodes/20260524_050033_source_preservation_precondition_trust/versions/2.0/change.md
+  impacted_node: 20260524_050318_enterprise_scale_requires_governed_context_layer
+  impacted_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  impact_level: medium
+  status: open
+  suggested_action: review_and_revise
+  suggested_action_zh: 审查并按需修订
+  reason: 受影响 node 通过已解析的 KB citation edge 引用了发生 major change 的 node。

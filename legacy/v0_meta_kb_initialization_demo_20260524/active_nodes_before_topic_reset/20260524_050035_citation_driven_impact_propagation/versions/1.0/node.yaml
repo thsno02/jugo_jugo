@@ -1,0 +1,28 @@
+schema: kb.node_metadata.v1
+id: 20260524_050035_citation_driven_impact_propagation
+title: Citation edges 在 major change 后驱动 impact review
+version: '1.0'
+version_status: adopted
+node_created_at: '2026-05-24T05:00:35+08:00'
+node_archived_at: null
+version_created_at: '2026-05-24T05:00:35+08:00'
+version_adopted_at: '2026-05-24T05:00:35+08:00'
+version_superseded_at: null
+version_archived_at: null
+status: active
+stability: working
+usable_as_support: true
+paths:
+  version_dir: nodes/20260524_050035_citation_driven_impact_propagation/versions/1.0/
+  card: nodes/20260524_050035_citation_driven_impact_propagation/versions/1.0/card.md
+  provenance: nodes/20260524_050035_citation_driven_impact_propagation/versions/1.0/provenance.md
+  change: nodes/20260524_050035_citation_driven_impact_propagation/versions/1.0/change.md
+  kb_view: kb/20260524_050035_citation_driven_impact_propagation.md
+tags:
+- llm-wiki
+- citations
+- impact-analysis
+audit:
+  state: passed
+  run: .llmwiki/runs/run_20260524_050031_kb_initialization_bootstrap/audit_report.md
+

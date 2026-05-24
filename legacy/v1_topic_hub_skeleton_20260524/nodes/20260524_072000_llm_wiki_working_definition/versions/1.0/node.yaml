@@ -1,0 +1,70 @@
+schema: kb.node_version.v1
+id: 20260524_072000_llm_wiki_working_definition
+node_id: 20260524_072000_llm_wiki_working_definition
+version: "1.0"
+title: "LLM Wiki 的工作定义"
+slug: llm_wiki_working_definition
+status: active
+version_status: adopted
+adoption_status: adopted
+adopted: true
+adoption_gate: citation_and_adoption_audit_passed
+version_adopted_at: "2026-05-24T07:07:58+08:00"
+created_at: "2026-05-24T07:35:00+08:00"
+created_by:
+  executor_role: worker_executor
+  run_id: run_20260524_073500_worker_generation_working_definition
+  task_packet: .llmwiki/runs/run_20260524_073000_worker_node_planning_working_definition/next_task_packet.md
+version_dir: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0
+paths:
+  card: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  provenance: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/provenance.md
+  change: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/change.md
+  kb_view: kb/20260524_072000_llm_wiki_working_definition.md
+prior_kb_anchor:
+  node_id: 20260524_062000_llm_wiki_origin_and_canon
+  version: "1.0"
+  adopted_kb_path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  pinned_version_path: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+evidence_state: enough_for_first_version
+retrieval_required_before_audit: false
+audit:
+  state: passed
+  run: .llmwiki/runs/run_20260524_074000_worker_audit_working_definition/audit_report.md
+  decision: adopt_recommended
+  adoption_run: .llmwiki/runs/run_20260524_074500_worker_adoption_view_working_definition
+  required_gates:
+    - object_topic_gate
+    - source_scope_gate
+    - citation_gate
+    - provenance_gate
+    - overclaim_gate
+    - retrieval_gate
+    - language_gate
+    - root_metadata_adoption_gate
+stability:
+  level: first_version_candidate
+  support_eligibility: bounded_working_definition_only
+tags:
+  - llm_wiki
+  - working_definition
+  - source_preservation
+  - agent_maintained_wiki
+  - provenance
+claim_scope:
+  includes:
+    - source-preserving LLM/agent-maintained knowledge pattern
+    - immutable raw sources as source of truth
+    - persistent inspectable interlinked markdown/wiki artifact
+    - schema or instruction governed workflows
+    - ingest query lint and update/writeback loops
+    - human source selection question direction emphasis and review
+  excludes:
+    - enterprise readiness
+    - empirical proof or measured superiority
+    - broad adoption
+    - full implementation ecosystem completeness
+    - complete historical lineage
+    - rigorous comparison against adjacent systems
+    - social metrics as adoption evidence
+    - HN comments as authoritative technical proof

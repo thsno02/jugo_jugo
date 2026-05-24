@@ -1,0 +1,43 @@
+schema: kb.candidate_frontier_delta.v1
+run_id: run_20260524_132000_worker_source_mining_evaluation_evidence
+executor_role: worker_executor
+target_candidate: cand_007_evaluation_evidence
+decision: ready_to_plan
+candidates:
+  - candidate_id: cand_007_evaluation_evidence
+    proposed_node_slug: llm_wiki_evaluation_evidence
+    proposed_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+    status: ready_to_build
+    source_mining_run: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence
+    discovered_from:
+      - arxiv-wicer
+      - arxiv-knowledge-compounding
+      - repo-atomicstrata-llm-wiki-compiler
+      - repo-kytmanov-obsidian-local
+      - arxiv-alce
+      - arxiv-ragas
+      - arxiv-ares
+      - arxiv-ragchecker
+      - reports/coverage_framework.md
+      - reports/source_gap_review.md
+    candidate_statement: "LLM Wiki 的 evaluation/evidence 首版应写成证据分层和评估边界，而不是效果胜利宣言：直接 WiCER/knowledge-wiki 证据支持 compile/evaluate/refine、compilation gap、诊断 probes、baseline/scale/reproducibility 边界；相邻 RAG/citation 评估支持 answer grounding、citation support、context relevance、claim recall、faithfulness、hallucination/noise diagnostics 等指标词汇；实现 README 支持 source ranges、lint、confidence/contradiction labels、review queues 和 safe compare previews 等可审计机制；process reports 要求每个经验或战略 claim 说明证据等级、baseline/method、source gaps 和 deferred retrieval。"
+    why_it_matters: "它给后续 KB 节点一个可信度表达和评估边界，防止把 anecdotal utility、repo README、相邻 RAG 结果或单篇 WiCER 结果写成 LLM Wiki 已被全面实证验证。"
+    evidence_state: enough_for_first_version
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_evaluation_evidence_node
+    missing_evidence:
+      - "No broad independent replication of WiCER or Knowledge Compounding results in the local corpus."
+      - "No direct long-term drift curves, stale-claim rates, citation precision/recall audit of adopted LLM Wiki pages, or human expert evaluation for this KB."
+      - "No broad provider/model/corpus/source-type comparison covering multilingual, code, multimodal, enterprise, team, and high-scale settings."
+      - "Knowledge Compounding is locally available as arXiv abstract/PDF-only source and should not be used for detailed method/log claims without further extraction or retrieval."
+      - "Adjacent RAG/citation metrics are method vocabulary, not direct proof that LLM Wiki nodes are faithful or useful."
+    build_constraints:
+      - "Center the node on evaluation dimensions, evidence grades, and boundaries."
+      - "Use WiCER as strongest direct LLM Wiki evaluation source, but state its limitations."
+      - "Use Knowledge Compounding only for cautious economic-evaluation framing unless full experiment details are later mined."
+      - "Use ALCE/Ragas/ARES/RAGChecker as adjacent evaluation frameworks; label them as adjacent."
+      - "Use implementation READMEs only for described auditability mechanisms, not measured reliability."
+      - "Use reports as process/gap context; do not treat prior KB anchors as new fact sources."
+      - "Do not claim empirical superiority, production effectiveness, enterprise readiness, adoption, ROI, or benchmark leadership."
+    suggested_first_version: "1.0"
+    next_action: node_planning

@@ -1,0 +1,261 @@
+schema: kb.skill_eval_log.v1
+updated_at: "2026-05-24T22:50:00+08:00"
+main_language: zh-CN
+active_topic: llm_wiki
+entries:
+  - run_id: run_20260524_060000_preloop_planning
+    status: planning_entry
+    observation: "KB_INIT_KNOWLEDGE_MINING_PROTOCOL.md requires source mining and frontier management before node generation."
+    skills_touched:
+      - llmwiki-source-mining
+      - llmwiki-frontier-management
+      - llmwiki-node-planning
+      - llmwiki-skill-evolution
+    decision: "Initialized protocol-aligned skills and pre-loop plan. Do not start card generation until source mining artifacts exist."
+    patch_required: false
+  - run_id: run_20260524_060000_preloop_planning
+    status: audit_integrated
+    observation: "Independent audit found missing hard orchestration/planner gate."
+    skills_touched:
+      - llmwiki-loop-orchestration
+      - llmwiki-node-planning
+      - llmwiki-frontier-management
+    decision: "Added loop orchestration skill and orchestration_gates.yaml; patched planner protocol to require frontier-backed ready_to_build candidate before generator packet."
+    patch_required: true
+  - run_id: run_20260524_061000_source_mining_origin_canon
+    status: controller_drift_sample
+    observation: "Main agent directly wrote concrete source-mining artifacts under the run directory. This violated the intended controller/decision-maker boundary."
+    skills_touched:
+      - llmwiki-loop-orchestration
+      - llmwiki-source-mining
+      - llmwiki-frontier-management
+      - llmwiki-node-planning
+    decision: "Preserve artifacts as a drift sample; do not delete them or directly adopt them. Patch orchestration and task boundaries so concrete source_mining/frontier_update/node_planning/generation/audit/view/skill_eval execution must be worker-attributed."
+    patch_required: true
+    next_action: "Main creates or dispatches worker task packet for origin/canon source-mining review or rerun."
+  - run_id: run_20260524_071000_worker_skill_eval_origin_canon
+    status: loop_done
+    evaluated_run_chain:
+      - .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon
+      - .llmwiki/runs/run_20260524_062500_worker_frontier_update_origin_canon
+      - .llmwiki/runs/run_20260524_063500_worker_node_planning_repair_origin_canon
+      - .llmwiki/runs/run_20260524_064000_worker_generation_origin_canon
+      - .llmwiki/runs/run_20260524_064500_worker_audit_origin_canon
+      - .llmwiki/runs/run_20260524_065000_worker_repair_origin_canon
+      - .llmwiki/runs/run_20260524_065500_worker_reaudit_origin_canon
+      - .llmwiki/runs/run_20260524_070000_worker_adoption_view_origin_canon
+    adopted_nodes: 1
+    adopted_node_id: 20260524_062000_llm_wiki_origin_and_canon
+    adopted_version: "1.0"
+    passed:
+      - worker-attributed source mining and frontier update
+      - repaired node-planning generation-entry gate
+      - version-bundle generation under nodes/<node_id>/versions/1.0/
+      - independent re-audit after repair
+      - adoption/view build and validation with adopted_nodes=1, citation_edges=9, impact_queue_open=0
+    failure_modes:
+      - controller drift from main-authored concrete source-mining artifacts in run_20260524_061000_source_mining_origin_canon
+      - node-planning wrong output paths and premature root adoption boundary
+      - false empty-file claim for present X/HN JSON local captures
+      - PyYAML environment ambiguity between python3 and /opt/homebrew/bin/python3
+      - view build ordering issue where node validation failed before kb_view existed and passed after view build
+    patches_already_applied:
+      - ".llmwiki/control/orchestration_gates.yaml hardened controller/executor and generation/adoption gates"
+      - ".llmwiki/skills/llmwiki-node-planning/SKILL.md patched for version bundle paths and source-state recheck"
+      - ".llmwiki/skills/llmwiki-source-mining/SKILL.md patched for byte-size/content verification before empty-file claims"
+    remaining_patch_required: false
+    remaining_blockers: none
+    decision: "Origin/canon 0-1 node is adopted. Keep main as controller; next highest-value action is dispatching a worker source-mining/planning task packet for cand_002_working_definition, using the adopted origin/canon node as an anchor."
+    next_action: dispatch_worker_task_packet_for_cand_002_working_definition_source_mining_and_frontier_update
+  - run_id: run_20260524_075000_worker_skill_eval_working_definition
+    status: loop_done
+    evaluated_run_chain:
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition
+      - .llmwiki/runs/run_20260524_073000_worker_node_planning_working_definition
+      - .llmwiki/runs/run_20260524_073500_worker_generation_working_definition
+      - .llmwiki/runs/run_20260524_074000_worker_audit_working_definition
+      - .llmwiki/runs/run_20260524_074500_worker_adoption_view_working_definition
+    adopted_nodes: 2
+    adopted_node_id: 20260524_072000_llm_wiki_working_definition
+    adopted_version: "1.0"
+    passed:
+      - worker-attributed source mining and frontier update for cand_002_working_definition
+      - frontier-gated node planning and generation-entry pass
+      - version-bundle generation under nodes/<node_id>/versions/1.0/
+      - independent audit with official card validator pass and adopt_recommended decision
+      - adoption/view build and validation with adopted_nodes=2, citation_edges=21, impact_queue_open=0
+    failure_modes: []
+    new_failure_mode: none
+    patches_already_applied: []
+    remaining_patch_required: false
+    remaining_blockers: none
+    decision: "Working-definition 0-1 node is adopted. No new failure mode appeared, and no skill patch is required. Keep main as controller; next highest-value action is dispatching a worker source-mining/frontier-update task packet for cand_003_architecture."
+    next_action: dispatch_worker_task_packet_for_cand_003_architecture_source_mining
+  - run_id: run_20260524_083000_worker_skill_eval_architecture
+    status: loop_done
+    evaluated_run_chain:
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture
+      - .llmwiki/runs/run_20260524_081000_worker_node_planning_architecture
+      - .llmwiki/runs/run_20260524_081500_worker_generation_architecture
+      - .llmwiki/runs/run_20260524_082000_worker_audit_architecture
+      - .llmwiki/runs/run_20260524_082500_worker_adoption_view_architecture
+    adopted_nodes: 3
+    adopted_node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    adopted_version: "1.0"
+    passed:
+      - worker-attributed source mining and frontier update for cand_003_architecture
+      - frontier-gated node planning and generation-entry pass
+      - version-bundle generation under nodes/<node_id>/versions/1.0/
+      - independent audit with official card validator pass and adopt_recommended decision
+      - adoption/view build and validation with adopted_nodes=3, citation_edges=35, impact_queue_open=0
+      - final node validation pass after kb_view rendering
+    failure_modes: []
+    new_failure_mode: none
+    patches_already_applied: []
+    remaining_patch_required: false
+    remaining_blockers: none
+    decision: "Architecture 0-1 node is adopted. No new failure mode appeared, and no skill patch is required. Keep main as controller; next highest-value action is dispatching a worker source-mining/frontier-update task packet for cand_004_workflow, because architecture explicitly left detailed ingest/compile/query/lint workflow to that next candidate."
+    next_action: dispatch_worker_task_packet_for_cand_004_workflow_source_mining
+  - run_id: run_20260524_092000_worker_skill_eval_workflow
+    status: loop_done
+    evaluated_run_chain:
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow
+      - .llmwiki/runs/run_20260524_085000_worker_node_planning_workflow
+      - .llmwiki/runs/run_20260524_085500_worker_generation_workflow
+      - .llmwiki/runs/run_20260524_090000_worker_audit_workflow
+      - .llmwiki/runs/run_20260524_091000_worker_adoption_view_workflow
+    adopted_nodes: 4
+    adopted_node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    adopted_version: "1.0"
+    passed:
+      - worker-attributed source mining and frontier update for cand_004_workflow
+      - frontier-gated node planning and generation-entry pass
+      - version-bundle generation under nodes/<node_id>/versions/1.0/
+      - independent audit with card validator pass and adopt_recommended decision
+      - adoption/view build with generated/status.yaml reporting adopted_nodes=4, citation_edges=51, impact_queue_open=0
+    failure_modes:
+      - adopted root metadata points to a version metadata file that still records candidate status because the adoption/view task forbade writing versions/1.0/*
+    new_failure_mode: adoption_metadata_boundary_too_narrow
+    patches_applied:
+      - ".llmwiki/skills/llmwiki-view-building/SKILL.md clarified adoption/view may update selected version metadata adoption fields after audit pass"
+      - ".llmwiki/skills/llmwiki-node-metadata/SKILL.md clarified adopted root and selected version metadata must agree"
+    remaining_patch_required: false
+    remaining_blockers: none
+    decision: "Workflow 0-1 node is adopted in generated views, but node validation needs a narrow metadata repair. Skills were revised because the mismatch breaks the official node validator and the metadata consistency hard rule."
+    next_action: cand_004_workflow_adoption_metadata_repair_and_revalidate
+  - run_id: run_20260524_103000_worker_skill_eval_vs_rag_write_loop
+    status: loop_done
+    evaluated_run_chain:
+      - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop
+      - .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop
+      - .llmwiki/runs/run_20260524_100000_worker_generation_vs_rag_write_loop
+      - .llmwiki/runs/run_20260524_101000_worker_audit_vs_rag_write_loop
+      - .llmwiki/runs/run_20260524_102000_worker_adoption_view_vs_rag_write_loop
+    adopted_nodes: 5
+    adopted_node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+    adopted_version: "1.0"
+    passed:
+      - worker-attributed source mining and frontier update for cand_010_vs_rag_write_loop
+      - frontier-gated node planning and generation-entry pass
+      - version-bundle generation under nodes/<node_id>/versions/1.0/
+      - independent audit with card validator pass, anti-RAG/strawman checks, adjacent-system checks, and adopt_recommended decision
+      - adoption/view build with selected-version metadata synchronization and generated/status.yaml reporting adopted_nodes=5, citation_edges=73, impact_queue_open=0
+    failure_modes: []
+    new_failure_mode: high_risk_comparison_guardrails_needed
+    patches_applied:
+      - ".llmwiki/skills/llmwiki-card-generation/SKILL.md added comparison/adjacent-system generation rules"
+      - ".llmwiki/skills/llmwiki-adoption-audit/SKILL.md added comparison/adjacent-system adoption checks"
+    remaining_patch_required: false
+    remaining_blockers: none
+    decision: "cand_010_vs_rag_write_loop is adopted and validated. Because comparison/adjacent-system nodes are recurring and high-risk for strawman, unsupported absence, superiority, equivalence, and prior-KB misuse claims, minimal reusable guardrails were added before continuing."
+    next_action: dispatch_worker_task_packet_for_cand_008_risks_governance_provenance_source_mining
+  - run_id: run_20260524_120000_worker_skill_eval_risks_governance_provenance
+    status: loop_done
+    evaluated_run_chain:
+      - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance
+      - .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance
+      - .llmwiki/runs/run_20260524_110000_worker_generation_risks_governance_provenance
+      - .llmwiki/runs/run_20260524_111000_worker_audit_risks_governance_provenance
+      - .llmwiki/runs/run_20260524_112000_worker_adoption_view_risks_governance_provenance
+      - .llmwiki/runs/run_20260524_113000_worker_repair_footnote_layout_contract
+      - .llmwiki/runs/run_20260524_114000_worker_adoption_view_risks_governance_provenance_after_footnote_repair
+      - .llmwiki/runs/run_20260524_115000_worker_legacy_footnote_layout_migration
+    adopted_nodes: 6
+    adopted_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    adopted_version: "1.0"
+    passed:
+      - worker-attributed cand_008 source mining, planning, generation, audit, repair, adoption/view, migration, and skill evaluation
+      - bounded risk/governance/provenance evidence chain with adjacent/security/framework/discourse boundaries preserved
+      - deferred retrieval requests recorded for OWASP detail, enterprise governance, and blocked community discourse without blocking v1
+      - adoption/view correctly blocked before writes when footnote layout gate failed
+      - footnote layout repair and legacy migration left 0 adopted-card/view layout failures
+      - selected-version adoption metadata synchronization validated across all 6 adopted nodes
+    failure_modes:
+      - footnote layout contract was first caught at adoption/view instead of earlier audit/generation completion
+      - knowledge_frontier cand_008 lifecycle status remains stale as ready_to_build/generation despite adopted status elsewhere
+    patches_already_applied:
+      - ".llmwiki/skills/llmwiki-card-generation/SKILL.md requires References before final Footnotes"
+      - ".llmwiki/skills/llmwiki-citation-formatting/SKILL.md requires the same citation block section layout"
+      - ".llmwiki/skills/llmwiki-view-building/SKILL.md runs the footnote layout gate before adoption/view writes"
+      - ".llmwiki/skills/llmwiki-adoption-audit/SKILL.md checks the footnote layout gate"
+    new_failure_mode: none_unpatched
+    remaining_patch_required: false
+    remaining_blockers: none
+    decision: "cand_008_risks_governance_provenance is adopted and validated after footnote repair and legacy migration. No new skill patch is required; continue v1 KB coverage with a source-mining/frontier worker for the source-rich implementation ecosystem candidate."
+    next_action: cand_006_implementation_ecosystem_source_mining_frontier
+  - run_id: run_20260524_131000_worker_skill_eval_implementation_ecosystem
+    status: loop_done
+    evaluated_run_chain:
+      - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem
+      - .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem
+      - .llmwiki/runs/run_20260524_124000_worker_generation_implementation_ecosystem
+      - .llmwiki/runs/run_20260524_125500_worker_audit_implementation_ecosystem_replacement
+      - .llmwiki/runs/run_20260524_130000_worker_adoption_view_implementation_ecosystem
+    adopted_nodes: 7
+    adopted_node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+    adopted_version: "1.0"
+    passed:
+      - worker-attributed cand_006 source mining, planning, generation, replacement audit, and adoption/view
+      - bounded implementation-ecosystem evidence chain with local implementation sources treated as descriptive evidence only
+      - deferred retrieval recorded without blocking v1
+      - footnote layout contract passed in generation, audit, and adoption/view
+      - selected-version adoption metadata synchronized and validators passed
+      - adoption/view refreshed generated outputs after audit overreach, making post-adoption generated state authoritative
+    failure_modes:
+      - audit worker startup can silently stall at initialized/no-progress state without durable LOOP_BLOCKED artifact
+      - replacement audit worker overreached by running a generated-mutating citation script and writing generated/backlinks.yaml plus generated/citation_graph.yaml
+      - knowledge_frontier lifecycle fields for some adopted candidates remain stale, but frontier writes were out of scope for this skill-eval run
+    patches_applied:
+      - ".llmwiki/skills/llmwiki-loop-orchestration/SKILL.md added worker startup/status-before-long-work and timeboxed LOOP_BLOCKED requirements"
+      - ".llmwiki/skills/llmwiki-loop-orchestration/SKILL.md added audit generated-overreach guard"
+      - ".llmwiki/skills/llmwiki-citation-audit/SKILL.md added read-only generated-state guard and accidental mutation disclosure requirement"
+      - ".llmwiki/skills/llmwiki-adoption-audit/SKILL.md added read-only audit guard and generated-overreach recovery requirement"
+    remaining_patch_required: false
+    remaining_blockers: none
+    decision: "revise_skills_then_continue; cand_006 is adopted and validated, and high-risk audit startup/overreach guardrails were minimally patched before continuing."
+    next_action: cand_007_evaluation_evidence_source_mining_frontier
+  - run_id: run_20260524_141000_worker_skill_eval_evaluation_evidence
+    status: loop_done
+    evaluated_run_chain:
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence
+      - .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence
+      - .llmwiki/runs/run_20260524_134000_worker_generation_evaluation_evidence
+      - .llmwiki/runs/run_20260524_135000_worker_audit_evaluation_evidence
+      - .llmwiki/runs/run_20260524_140000_worker_adoption_view_evaluation_evidence
+    adopted_nodes: 8
+    adopted_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+    adopted_version: "1.0"
+    passed:
+      - worker-attributed cand_007 source mining, planning, generation, audit, and adoption/view
+      - bounded evaluation/evidence chain with direct, adjacent, implementation-described, process, and prior-KB evidence tiers separated
+      - unsupported empirical superiority, benchmark leadership, production, enterprise, adoption, and scale claims avoided
+      - audit read-only guard held
+      - footnote layout contract passed in generation, audit, and adoption/view
+      - selected-version adoption metadata synchronized and validators passed
+    failure_modes:
+      - knowledge_frontier lifecycle fields for some adopted candidates remain stale, but frontier writes were out of scope for this skill-eval run
+    patches_applied: []
+    remaining_patch_required: false
+    remaining_blockers: none
+    decision: "v1_final_audit_recommended; cand_007 is adopted and validated, and the adopted 8-node KB is sufficient for usable v1 pending final QA/delivery consistency checks."
+    next_action: v1_final_qa_delivery_worker

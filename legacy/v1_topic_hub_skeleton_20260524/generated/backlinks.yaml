@@ -1,0 +1,180 @@
+schema: kb.backlinks.v1
+generated_at: '2026-05-24T21:45:32+08:00'
+backlinks:
+  20260524_062000_llm_wiki_origin_and_canon:
+  - citing_node: 20260524_072000_llm_wiki_working_definition
+    citing_version: '1.0'
+    citation_kind: footnote
+    citation_id: '2'
+    propagation_strength: strong
+  - citing_node: 20260524_072000_llm_wiki_working_definition
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R2
+    propagation_strength: medium
+  - citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+    citing_version: '1.0'
+    citation_kind: footnote
+    citation_id: '2'
+    propagation_strength: strong
+  - citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R2
+    propagation_strength: medium
+  - citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    citing_version: '1.0'
+    citation_kind: footnote
+    citation_id: '3'
+    propagation_strength: strong
+  - citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R3
+    propagation_strength: medium
+  - citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R10
+    propagation_strength: medium
+  - citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R17
+    propagation_strength: medium
+  - citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R17
+    propagation_strength: medium
+  - citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R22
+    propagation_strength: medium
+  20260524_072000_llm_wiki_working_definition:
+  - citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+    citing_version: '1.0'
+    citation_kind: footnote
+    citation_id: '3'
+    propagation_strength: strong
+  - citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R3
+    propagation_strength: medium
+  - citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    citing_version: '1.0'
+    citation_kind: footnote
+    citation_id: '2'
+    propagation_strength: strong
+  - citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R2
+    propagation_strength: medium
+  - citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R11
+    propagation_strength: medium
+  - citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R18
+    propagation_strength: medium
+  - citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R18
+    propagation_strength: medium
+  - citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R16
+    propagation_strength: medium
+  20260524_080000_llm_wiki_three_layer_architecture:
+  - citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    citing_version: '1.0'
+    citation_kind: footnote
+    citation_id: '4'
+    propagation_strength: strong
+  - citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R4
+    propagation_strength: medium
+  - citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R12
+    propagation_strength: medium
+  - citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R19
+    propagation_strength: medium
+  - citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R19
+    propagation_strength: medium
+  - citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R17
+    propagation_strength: medium
+  20260524_084000_llm_wiki_ingest_compile_query_lint_workflow:
+  - citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R13
+    propagation_strength: medium
+  - citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R20
+    propagation_strength: medium
+  - citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R20
+    propagation_strength: medium
+  - citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R18
+    propagation_strength: medium
+  20260524_094000_llm_wiki_vs_rag_write_loop:
+  - citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R21
+    propagation_strength: medium
+  - citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R21
+    propagation_strength: medium
+  - citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R19
+    propagation_strength: medium
+  20260524_104000_llm_wiki_risks_governance_and_provenance:
+  - citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R22
+    propagation_strength: medium
+  - citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R20
+    propagation_strength: medium
+  20260524_122000_llm_wiki_implementation_ecosystem:
+  - citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+    citing_version: '1.0'
+    citation_kind: reference
+    citation_id: R21
+    propagation_strength: medium

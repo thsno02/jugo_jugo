@@ -1,0 +1,1091 @@
+schema: kb.knowledge_frontier.v1
+updated_at: "2026-05-24T22:55:00+08:00"
+main_language: zh-CN
+active_topic: llm_wiki
+note: "Frontier update is worker-attributed. Candidate cand_001_origin_and_canon was built and adopted through worker-attributed generation, audit, re-audit, and adoption/view runs; prior main-authored drift run is preserved only as a drift sample and is not used as authority."
+candidates:
+  - candidate_id: cand_001_origin_and_canon
+    proposed_node_slug: llm_wiki_origin_and_canon
+    proposed_node_id: 20260524_062000_llm_wiki_origin_and_canon
+    status: built_adopted
+    frontier_update_run: .llmwiki/runs/run_20260524_062500_worker_frontier_update_origin_canon
+    frontier_update_executor_role: worker_executor
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - hacker-news-original-thread
+      - karpathy-x-launch-post
+    source_mining_run: .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon
+    source_mining_artifacts:
+      - .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon/source_scope.md
+      - .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon/source_mining.md
+      - .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon/retrieval_requests.md
+      - .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon/mining_trace.md
+    raw_paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - data/raw/hacker_news/hacker-news-original-thread/item.json
+      - data/raw/webpage/karpathy-x-launch-post/text.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.json
+    direct_evidence:
+      - source_id: karpathy-gist-llm-wiki
+        supports:
+          - canonical idea-file framing
+          - raw/wiki/schema architecture
+          - ingest/query/lint operations
+          - index/log navigation files
+          - optional tooling and implementation flexibility
+      - source_id: hacker-news-original-thread
+        supports:
+          - early public discussion metadata visible in text
+          - immediate RAG comparison debate
+          - early support, skepticism, risk, scale, and maintenance concerns
+      - source_id: karpathy-x-launch-post
+        supports:
+          - bounded launch context and source inventory
+        limitation: "Allowed raw files are present in the current checkout; use only for bounded launch-context/source-inventory claims unless a later audit authorizes wider claims."
+    claim_ids:
+      - claim_000001_origin_and_canon_original_karpathy_statement_exact_text
+      - claim_000002_origin_and_canon_original_date
+      - claim_000003_origin_and_canon_original_context
+      - claim_000004_origin_and_canon_examples_and_intended_workflow
+      - claim_000005_origin_and_canon_stated_or_implied_non_goals
+      - claim_000006_origin_and_canon_immediate_discussion_context
+      - claim_000007_origin_and_canon_early_forks_or_implementations
+      - claim_000008_origin_and_canon_minimal_example
+    coverage_records:
+      - covrec_origin_and_canon_original_karpathy_statement_exact_text
+      - covrec_origin_and_canon_original_date
+      - covrec_origin_and_canon_original_context
+      - covrec_origin_and_canon_examples_and_intended_workflow
+      - covrec_origin_and_canon_stated_or_implied_non_goals
+      - covrec_origin_and_canon_immediate_discussion_context
+      - covrec_origin_and_canon_early_forks_or_implementations
+      - covrec_origin_and_canon_minimal_example
+    candidate_statement: "LLM Wiki 的 local canonical origin 可以由 Karpathy 的 idea file 和 immediate HN discussion 锚定；首版节点应描述 idea-file pattern、三层架构、ingest/query/lint 操作与早期争议，并明确 X launch raw 文件当前存在但只支持 bounded launch context/source inventory，不能外推采用、生态、企业或经验效果。"
+    why_it_matters: "它是后续 working definition、architecture、workflow、comparison 与 risk nodes 的前置锚点；先建立 bounded origin/canon 可避免从 planner hunch 直接生成节点。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "X launch post raw files are present in the current checkout, but broader X-specific chronology, social-metric interpretation, adoption, ecosystem, enterprise, and empirical-effectiveness claims require separate audit/source mining."
+      - "Pre-Karpathy historical lineage remains out of scope and must be listed as a limitation."
+      - "Reddit/community reception is blocked or outside this batch and must not support this node."
+      - "Enterprise-scale, empirical effectiveness, and ecosystem/adoption claims require separate mining."
+    build_constraints:
+      - "Use gist as primary canonical source."
+      - "Use HN text only for immediate discourse and visible story metadata."
+      - "Use X launch files only for bounded launch-context/source-inventory claims unless a later audit authorizes wider direct citation."
+      - "Do not claim full historical origin or broad adoption."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_origin_node
+    build_run: .llmwiki/runs/run_20260524_064000_worker_generation_origin_canon
+    audit_run: .llmwiki/runs/run_20260524_065500_worker_reaudit_origin_canon
+    adoption_run: .llmwiki/runs/run_20260524_070000_worker_adoption_view_origin_canon
+    adopted_node_id: 20260524_062000_llm_wiki_origin_and_canon
+    adopted_version: "1.0"
+    adopted_at: "2026-05-24T06:47:33+08:00"
+    next_action: completed
+  - candidate_id: cand_002_working_definition
+    proposed_node_slug: llm_wiki_working_definition
+    proposed_node_id: 20260524_072000_llm_wiki_working_definition
+    status: built_adopted
+    frontier_update_run: .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition
+    frontier_update_executor_role: worker_executor
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - 20260524_062000_llm_wiki_origin_and_canon
+      - reports/coverage_framework.md
+      - reports/source_gap_review.md
+    source_mining_run: .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition
+    source_mining_artifacts:
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/source_scope.md
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/source_mining.md
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/retrieval_requests.md
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/mining_trace.md
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/frontier_trace.md
+    raw_paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - data/raw/hacker_news/hacker-news-original-thread/item.json
+      - data/raw/webpage/karpathy-x-launch-post/text.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.json
+    prior_kb_anchor:
+      node_id: 20260524_062000_llm_wiki_origin_and_canon
+      version: "1.0"
+      usable_as_support: true
+      paths:
+        - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+        - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/provenance.md
+        - kb/20260524_062000_llm_wiki_origin_and_canon.md
+    direct_evidence:
+      - source_id: karpathy-gist-llm-wiki
+        supports:
+          - abstract idea-file framing rather than fixed implementation
+          - immutable raw sources as source of truth
+          - LLM-generated markdown wiki layer
+          - schema/instructions file controlling structure, conventions, and workflows
+          - ingest/query/lint operations and update/writeback loop
+          - index/log navigation support
+          - human source curation, question steering, emphasis, and review
+          - optional/modular tooling boundary
+      - source_id: 20260524_062000_llm_wiki_origin_and_canon
+        supports:
+          - adopted bounded origin/canon anchor
+          - evidence boundaries for avoiding adoption, enterprise, ecosystem, and empirical claims
+      - source_id: reports/source_gap_review.md
+        supports:
+          - coverage-status confirmation that origin/definition coverage is strong
+        limitation: "Navigation/coverage status only; not primary definitional authority."
+      - source_id: reports/coverage_framework.md
+        supports:
+          - planning boundary for clear definition and boundary tests
+        limitation: "Framework/process source only; not primary definitional authority."
+    claim_ids:
+      - claim_000001_origin_and_canon_original_karpathy_statement_exact_text
+      - claim_000004_origin_and_canon_examples_and_intended_workflow
+      - claim_000005_origin_and_canon_stated_or_implied_non_goals
+      - claim_000008_origin_and_canon_minimal_example
+    coverage_records: []
+    candidate_statement: "LLM Wiki 可被工作性地定义为一个 source-preserving、LLM/agent-maintained knowledge pattern：不可变 raw sources 作为来源真值，LLM/agent 将其编译成持久、可检查、互联的 markdown/wiki artifact，并由 schema/instructions 约束结构、约定与维护流程；系统通过 ingest、query、lint 与 update/writeback 循环复用和修订知识，人类负责来源选择、问题方向、强调重点与审阅。"
+    why_it_matters: "该定义为后续 architecture、workflow、comparison 与 risk/governance nodes 提供共同边界，避免把 LLM Wiki 过早写成单一产品、普通 RAG、纯 PKM、企业解决方案或经验效果结论。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "Pre-Karpathy lineage is outside this candidate and should remain a limitation."
+      - "Enterprise readiness, empirical effectiveness, adoption metrics, implementation ecosystem maturity, and scale limits require separate source mining."
+      - "A rigorous comparison with RAG, graph RAG, PKM, knowledge graphs, documentation systems, and agent memory requires a later comparison batch."
+      - "The coverage framework's stricter provenance/auditability criteria should be presented as KB boundary criteria, not as Karpathy's exact original definition unless directly supported by the gist."
+    build_constraints:
+      - "Use gist text as primary source for the working definition."
+      - "Use adopted origin/canon only as prior KB anchor and evidence-boundary support."
+      - "Use reports/manifests only for coverage status, navigation, and gaps."
+      - "Keep the definition bounded to raw-source preservation, compiled wiki artifact, schema/instruction rules, ingest/query/lint/update loop, and human source/question steering."
+      - "Do not claim enterprise readiness, empirical effectiveness, full ecosystem maturity, broad adoption, or measured superiority over RAG."
+      - "Distinguish source-backed observations from worker synthesis."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_working_definition
+    build_run: .llmwiki/runs/run_20260524_073500_worker_generation_working_definition
+    audit_run: .llmwiki/runs/run_20260524_074000_worker_audit_working_definition
+    adoption_run: .llmwiki/runs/run_20260524_074500_worker_adoption_view_working_definition
+    skill_eval_run: .llmwiki/runs/run_20260524_075000_worker_skill_eval_working_definition
+    adopted_node_id: 20260524_072000_llm_wiki_working_definition
+    adopted_version: "1.0"
+    adopted_at: "2026-05-24T07:07:58+08:00"
+    next_action: completed
+  - candidate_id: cand_003_architecture
+    proposed_node_slug: llm_wiki_three_layer_architecture
+    proposed_node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    status: built_adopted
+    frontier_update_run: .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture
+    frontier_update_executor_role: worker_executor
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - 20260524_062000_llm_wiki_origin_and_canon
+      - 20260524_072000_llm_wiki_working_definition
+      - repo-atomicstrata-llm-wiki-compiler
+      - clawhub-llm-wiki-karpathy
+      - reports/source_gap_review.md
+      - reports/coverage_framework.md
+    source_mining_run: .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture
+    source_mining_artifacts:
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/source_scope.md
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/source_mining.md
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/retrieval_requests.md
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/mining_trace.md
+      - .llmwiki/runs/run_20260524_080000_worker_source_mining_architecture/frontier_trace.md
+    raw_paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    prior_kb_anchors:
+      - node_id: 20260524_062000_llm_wiki_origin_and_canon
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - node_id: 20260524_072000_llm_wiki_working_definition
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_072000_llm_wiki_working_definition.md
+    direct_evidence:
+      - source_id: karpathy-gist-llm-wiki
+        supports:
+          - "direct three-layer architecture: raw sources, wiki, schema"
+          - raw sources as immutable source of truth
+          - wiki as LLM-generated markdown directory with summaries, entity pages, concept pages, comparisons, overview, and synthesis
+          - schema/instruction document governing structure, conventions, ingest, answering/query, and maintenance workflows
+          - index.md and log.md as navigation/history infrastructure
+          - optional/modular tooling and implementation-specific directory/schema choices
+          - ingest, query, and lint as operations that connect the layers
+      - source_id: 20260524_062000_llm_wiki_origin_and_canon
+        supports:
+          - adopted bounded canon for the gist
+          - boundary against adoption, ecosystem, enterprise, empirical, or broad historical claims
+      - source_id: 20260524_072000_llm_wiki_working_definition
+        supports:
+          - adopted source-preserving and agent-maintained working definition
+          - prior boundary for raw-source preservation, compiled wiki layer, schema/instruction governance, and maintenance loop
+      - source_id: repo-atomicstrata-llm-wiki-compiler
+        supports:
+          - implementation mapping from sources to hash check, concept extraction, wiki generation, wikilink resolution, and index
+          - wiki output model with concepts, queries, index, schema, candidate review, citations, lint, view, query, watch, and MCP
+        limitation: "Implementation evidence only; not primary abstract architecture authority."
+      - source_id: clawhub-llm-wiki-karpathy
+        supports:
+          - implementation/runtime evidence for raw/wiki/schema operating model, representation storage, generated index/log, deterministic lint, CLI, MCP, and OpenClaw host entry
+        limitation: "Plugin listing/runtime evidence only; not adoption or empirical evidence."
+      - source_id: reports/source_gap_review.md
+        supports:
+          - coverage status that workflow architecture coverage is strong
+          - warning that neutral architecture taxonomy remains a gap
+        limitation: "Secondary gap report only."
+    claim_ids:
+      - claim_000001_origin_and_canon_original_karpathy_statement_exact_text
+      - claim_000004_origin_and_canon_examples_and_intended_workflow
+      - claim_000005_origin_and_canon_stated_or_implied_non_goals
+      - claim_000013_architecture_and_data_model_source_acquisition_model
+      - claim_000014_architecture_and_data_model_compilation_model
+      - claim_000015_architecture_and_data_model_storage_model
+      - claim_000016_architecture_and_data_model_query_model
+      - claim_000017_architecture_and_data_model_update_model
+      - claim_000018_architecture_and_data_model_link_model
+      - claim_000019_architecture_and_data_model_agent_interfaces
+    coverage_records: []
+    candidate_statement: "LLM Wiki 的首版 architecture 节点可以被界定为三层：不可变 raw source layer 作为来源真值，LLM/agent 编译并维护的 markdown/wiki layer 作为持久知识 artifact，schema/instruction layer 作为结构、约定与 ingest/query/maintenance 流程的约束；index/log、provenance/citation、review、lint、search、CLI/MCP/viewer 等应写作支持基础设施或实现变体，而不是第四个核心层。"
+    why_it_matters: "该架构节点为后续 workflow、implementation ecosystem、comparison、risk/governance nodes 提供结构支架，同时继承 origin/canon 与 working definition 的证据边界，避免把抽象模式误写成单一产品、普通 RAG、企业成熟方案或经验效果结论。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "No blocker for bounded first version."
+      - "Neutral cross-implementation architecture taxonomy remains a later research task; this first version should state that repo and ClawHub are implementation-flavored support, not comprehensive ecosystem evidence."
+      - "Scale, enterprise readiness, adoption, empirical effectiveness, and broad implementation convergence require separate source mining."
+      - "Detailed ingest/compile/query/lint workflow should be handled by cand_004_workflow rather than overexpanded inside the architecture node."
+    build_constraints:
+      - "Use Karpathy gist as primary architecture evidence."
+      - "Use adopted origin/canon and working definition nodes only as prior KB anchors and boundary support."
+      - "Use repo README and ClawHub only for directly present implementation-flavored details."
+      - "Keep the node centered on raw source layer, compiled wiki layer, schema/instruction layer, and supporting index/log/tooling infrastructure."
+      - "Do not write ecosystem survey, enterprise, adoption, social-metric, empirical performance, or broad comparison claims."
+      - "Distinguish source-backed three-layer facts from worker synthesis about supporting infrastructure."
+      - "Do not collapse the architecture node into the later workflow node."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_architecture_node
+    build_run: .llmwiki/runs/run_20260524_081500_worker_generation_architecture
+    audit_run: .llmwiki/runs/run_20260524_082000_worker_audit_architecture
+    adoption_run: .llmwiki/runs/run_20260524_082500_worker_adoption_view_architecture
+    skill_eval_run: .llmwiki/runs/run_20260524_083000_worker_skill_eval_architecture
+    adopted_node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    adopted_version: "1.0"
+    adopted_at: "2026-05-24T08:25:00+08:00"
+    next_action: completed
+  - candidate_id: cand_004_workflow
+    proposed_node_slug: llm_wiki_ingest_compile_query_lint_workflow
+    proposed_node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    status: built_adopted
+    frontier_update_run: .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow
+    frontier_update_executor_role: worker_executor
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - repo-atomicstrata-llm-wiki-compiler
+      - clawhub-llm-wiki-karpathy
+      - 20260524_062000_llm_wiki_origin_and_canon
+      - 20260524_072000_llm_wiki_working_definition
+      - 20260524_080000_llm_wiki_three_layer_architecture
+      - reports/source_gap_review.md
+      - reports/coverage_framework.md
+    source_mining_run: .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow
+    source_mining_artifacts:
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/source_scope.md
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/source_mining.md
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/retrieval_requests.md
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/mining_trace.md
+      - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/frontier_trace.md
+    raw_paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    prior_kb_anchors:
+      - node_id: 20260524_062000_llm_wiki_origin_and_canon
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - node_id: 20260524_072000_llm_wiki_working_definition
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_072000_llm_wiki_working_definition.md
+      - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    direct_evidence:
+      - source_id: karpathy-gist-llm-wiki
+        supports:
+          - ingest flow from raw source to summary page, index update, relevant page updates, and log entry
+          - query flow over wiki pages with citations and file-back of valuable answers
+          - lint/health-check for contradictions, stale claims, orphan pages, missing concepts, missing cross-references, and data gaps
+          - index.md and log.md as navigation/history files for ingest, query, and lint passes
+          - human source curation, emphasis guidance, and review
+          - optional/modular tooling and implementation-specific directory/schema choices
+      - source_id: repo-atomicstrata-llm-wiki-compiler
+        supports:
+          - source-to-wiki compile pipeline with hash check, concept extraction, wiki page generation, wikilink resolution, and index.md
+          - incremental compile, two-phase pipeline, review candidates, approval/rejection, and deferred source/deletion bookkeeping
+          - query --save writeback, index rebuild, saved query context, source markers, line-range citations, lint validation, viewer health, watch mode, and MCP tools
+        limitation: "Implementation/process evidence only; not primary abstract workflow authority."
+      - source_id: clawhub-llm-wiki-karpathy
+        supports:
+          - raw/wiki/schema runtime, representation-first ingest, compile-readiness tracking, stored representations, source note validation, gap mapping/promotion, generated index/log, deterministic lint, CLI/MCP tools, and runtime-vs-agent responsibility split
+        limitation: "Implementation/runtime evidence only; not ecosystem/adoption or empirical evidence."
+      - source_id: 20260524_062000_llm_wiki_origin_and_canon
+        supports:
+          - adopted bounded canon and overclaim prohibitions
+      - source_id: 20260524_072000_llm_wiki_working_definition
+        supports:
+          - adopted source-preserving, agent-maintained working definition with ingest/query/lint/update loop
+      - source_id: 20260524_080000_llm_wiki_three_layer_architecture
+        supports:
+          - adopted raw/wiki/schema architecture and boundary that detailed workflow belongs in cand_004
+      - source_id: reports/source_gap_review.md
+        supports:
+          - coverage note that workflow architecture coverage is strong
+          - non-blocking gaps around measurement, scale, governance, comparison, and neutral taxonomy
+        limitation: "Secondary gap report only."
+      - source_id: reports/coverage_framework.md
+        supports:
+          - evidence-label and boundary vocabulary for source preservation, compilation, persistent representation, provenance/auditability, and maintenance
+        limitation: "Secondary framework only."
+    claim_ids:
+      - claim_000019_workflow_and_operations_end_to_end_lifecycle
+      - claim_000020_workflow_and_operations_human_in_loop_boundaries
+      - claim_000021_workflow_and_operations_agent_interfaces
+      - claim_000022_workflow_and_operations_failure_handling
+      - claim_000004_origin_and_canon_examples_and_intended_workflow
+      - claim_000013_architecture_and_data_model_source_acquisition_model
+      - claim_000014_architecture_and_data_model_compilation_model
+      - claim_000017_architecture_and_data_model_update_model
+      - claim_000018_architecture_and_data_model_query_model
+    coverage_records:
+      - covrec_workflow_and_operations_end_to_end_lifecycle
+      - covrec_workflow_and_operations_human_in_loop_boundaries
+      - covrec_workflow_and_operations_agent_interfaces
+      - covrec_workflow_and_operations_failure_handling
+    candidate_statement: "LLM Wiki 的核心 workflow 可被首版界定为一个 bounded maintenance loop：人类策展 raw sources 并指导重点，LLM/agent 在 schema/instruction 约束下执行 ingest/source intake、compile/wiki update、query/synthesis、lint/health-check、update/file-back 与 index/log maintenance；实现可通过 CLI/MCP、review queue、hash/incremental compile、representation readiness、source/citation validation、gap mapping 和 deterministic runtime writes 支撑这些阶段，但这些工具是实现变体而非抽象必要条件。"
+    why_it_matters: "该节点把已采用的 origin/canon、working definition 与三层 architecture 转成可执行维护流程，为后续 node_planning/generation 提供边界清晰的 workflow candidate，并避免把 workflow 误扩成生态、企业、经验效果或 broad comparison 节点。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "No blocker for bounded first version."
+      - "Neutral cross-implementation workflow taxonomy remains a later research task; this version should treat repo and ClawHub as implementation examples only."
+      - "Ingestion quality, compile reliability, citation accuracy, scale behavior, long-term drift, enterprise governance, and empirical effectiveness require separate source mining/evaluation."
+      - "Broad RAG/PKM/agent-memory comparisons should remain outside this workflow node."
+      - "Multimodal details should be limited to directly present representation-readiness and tool-surface observations, not quality or benchmark claims."
+    build_constraints:
+      - "Use Karpathy gist as primary workflow evidence."
+      - "Use adopted origin/canon, working definition, and architecture nodes only as prior KB anchors and boundary support."
+      - "Use atomicstrata README and ClawHub listing only for directly present implementation/process details."
+      - "Center the node on ingest, compile, query, lint/health-check, update/file-back, index/log maintenance, and review/runtime boundaries."
+      - "Do not write an implementation ecosystem survey, enterprise suitability node, empirical results node, scale/reliability claim, or broad comparison."
+      - "Distinguish source-backed observations from worker synthesis."
+      - "Do not require CLI, MCP, Obsidian, vector search, representation storage, or review queues as universal LLM Wiki requirements."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_workflow_node
+    build_run: .llmwiki/runs/run_20260524_085500_worker_generation_workflow
+    audit_run: .llmwiki/runs/run_20260524_090000_worker_audit_workflow
+    adoption_run: .llmwiki/runs/run_20260524_091000_worker_adoption_view_workflow
+    skill_eval_run: .llmwiki/runs/run_20260524_092000_worker_skill_eval_workflow
+    metadata_repair_run: .llmwiki/runs/run_20260524_093000_worker_adoption_metadata_repair_workflow
+    adopted_node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    adopted_version: "1.0"
+    adopted_at: "2026-05-24T17:04:30+08:00"
+    next_action: completed
+  - candidate_id: cand_005_comparison_space
+    proposed_node_slug: llm_wiki_vs_rag_and_adjacent_systems
+    status: needs_more_mining
+    discovered_from:
+      - arxiv-graphrag
+      - arxiv-alce
+      - arxiv-ragas
+      - hacker-news-original-thread
+    candidate_statement: "LLM Wiki 与 RAG、PKM、knowledge graph、agent memory、documentation systems 的关系需要分层比较。"
+    why_it_matters: "它防止把 LLM Wiki 简化成 just RAG 或普通文档库。"
+    evidence_state: broad_and_needs_decomposition
+    missing_evidence:
+      - "需要按 adjacent system 拆分 source mining，避免一次性 hub node 过宽。"
+    suggested_first_version: "1.0"
+    next_action: decompose_before_build
+  - candidate_id: cand_006_implementation_ecosystem
+    proposed_node_slug: llm_wiki_implementation_ecosystem
+    proposed_node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+    status: built_adopted
+    frontier_update_run: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem
+    frontier_update_executor_role: worker_executor
+    discovered_from:
+      - repo-nashsu-llm-wiki
+      - repo-samuraigpt-llm-wiki-agent
+      - repo-sdyckjq-llm-wiki-skill
+      - repo-atomicstrata-llm-wiki-compiler
+      - repo-kytmanov-obsidian-local
+      - repo-vectifyai-openkb
+      - repo-ngmeyer-librarian-mcp
+      - pypi-my-llm-wiki
+      - pypi-llm-wiki-mcp
+      - clawhub-llm-wiki-karpathy
+      - obsidian-community-plugin
+      - aillm-wiki-directory
+      - llm-wiki-net
+      - reports/source_gap_review.md
+      - reports/coverage_framework.md
+    source_mining_run: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem
+    source_mining_artifacts:
+      - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/source_scope.md
+      - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/source_mining.md
+      - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/retrieval_requests.md
+      - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/mining_trace.md
+      - .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/frontier_trace.md
+    raw_paths:
+      - data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+      - data/raw/github_repo/repo-nashsu-llm-wiki/github_repo.json
+      - data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+      - data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/github_repo.json
+      - data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+      - data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/github_repo.json
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/github_repo.json
+      - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+      - data/raw/github_repo/repo-kytmanov-obsidian-local/github_repo.json
+      - data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+      - data/raw/github_repo/repo-vectifyai-openkb/github_repo.json
+      - data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+      - data/raw/github_repo/repo-ngmeyer-librarian-mcp/github_repo.json
+      - data/raw/pypi/pypi-my-llm-wiki/text.txt
+      - data/raw/pypi/pypi-my-llm-wiki/pypi.json
+      - data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+      - data/raw/pypi/pypi-llm-wiki-mcp/pypi.json
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+      - data/raw/webpage/obsidian-community-plugin/text.txt
+      - data/raw/webpage/aillm-wiki-directory/text.txt
+      - data/raw/webpage/llm-wiki-net/text.txt
+    prior_kb_anchors:
+      - node_id: 20260524_062000_llm_wiki_origin_and_canon
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - node_id: 20260524_072000_llm_wiki_working_definition
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_072000_llm_wiki_working_definition.md
+      - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+      - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+      - node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+      - node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+    direct_evidence:
+      - source_id: repo-nashsu-llm-wiki
+        supports:
+          - UI/desktop/web-app implementation family
+          - multimodal ingest, graph/vector/search/API workflow claims
+          - high local repository metadata activity signal
+      - source_id: repo-samuraigpt-llm-wiki-agent
+        supports:
+          - coding-agent skill/template family
+          - raw/wiki/index/log/syntheses/graph file-structure motif
+          - ingest/query/lint/graph workflows and multi-format conversion
+      - source_id: repo-atomicstrata-llm-wiki-compiler
+        supports:
+          - CLI/MCP compiler family
+          - review candidates, lint, watch, view, citations/provenance, confidence/contradiction metadata
+      - source_id: repo-kytmanov-obsidian-local
+        supports:
+          - Obsidian/local-first runtime family
+          - provider switching, source hashes, rejection feedback, draft annotations, hand-edit protection, no-vector query
+      - source_id: pypi-my-llm-wiki
+        supports:
+          - Python package/library registry evidence
+          - beta package metadata and supported input claims
+      - source_id: pypi-llm-wiki-mcp
+        supports:
+          - MCP package registry evidence
+          - alpha package metadata, MCP tools, Claude Code skills, storage safety mechanics
+      - source_id: clawhub-llm-wiki-karpathy
+        supports:
+          - plugin/runtime distribution family
+          - standalone CLI, MCP, OpenClaw host, raw/wiki/schema runtime, deterministic lint
+      - source_id: llm-wiki-net
+        supports:
+          - multi-runtime command/plugin implementation family
+          - topic hubs, immutable raw, compiled articles, audit, output, archive/inventory/dataset manifests
+    candidate_statement: "本地语料足以支持一个 bounded v1 implementation ecosystem 节点：LLM Wiki 已在本地捕获材料中表现为多种实现形态，包括 UI/desktop app、coding-agent skill/template、CLI/MCP compiler、Obsidian/local-first workflow、graph/MCP vault tool、Python package/library、plugin directory runtime、多运行时命令插件，以及 long-document/OpenKB-like adjacent systems；这些材料能描述实现类型、功能表面和 metadata activity signals，但不能证明真实使用规模、质量、成熟度、企业 readiness 或市场排名。"
+    why_it_matters: "它把前序 origin/definition/architecture/workflow 节点连接到实际工具链和文件结构，帮助后续 generation 区分 source-backed implementation facts、registry metadata、directory self-description 与 weak adoption/community evidence。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "Package downloads, plugin installs, active-user counts, traffic/clones, contributor histories, issue/PR outcome analysis, release history, dependency/security posture, and real deployment reports are not present locally."
+      - "Blocked Reddit/community captures remain unusable for practical reception, plugin feedback, OpenKB long-PDF discussion, Obsidian reception, and multimodal/PDF/PPT questions."
+      - "README/package/plugin claims are mostly author or directory self-description; they do not independently validate quality, reliability, adoption, or sustained maintenance."
+      - "Long-document and multimodal handling should be scoped to implementations that explicitly claim it; do not generalize across the ecosystem."
+      - "Enterprise readiness, compliance, governance maturity, and security posture require separate retrieval/mining."
+    build_constraints:
+      - "Use repo README and package/plugin captures for implementation facts."
+      - "Use github_repo.json only for snapshot metadata: stars, forks, open issues, language, license, timestamps."
+      - "Use reports as process/gap context, not as primary implementation evidence."
+      - "Use adopted KB nodes only as continuity/boundary anchors, not as new source evidence."
+      - "Do not rank tools, infer quality, infer active usage, or claim market adoption from stars/forks."
+      - "Keep the node descriptive: implementation families, feature surfaces, evidence grades, and missing evidence."
+      - "References must appear before the final Footnotes section in any card-oriented planning note or generation packet."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_implementation_landscape
+    node_planning_run: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem
+    node_planning_executor_role: worker_executor
+    generation_entry_decision: generation_entry_pass
+    planned_node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+    retrieval_required_before_generation: false
+    build_run: .llmwiki/runs/run_20260524_124000_worker_generation_implementation_ecosystem
+    audit_run: .llmwiki/runs/run_20260524_125500_worker_audit_implementation_ecosystem_replacement
+    adoption_run: .llmwiki/runs/run_20260524_130000_worker_adoption_view_implementation_ecosystem
+    skill_eval_run: .llmwiki/runs/run_20260524_131000_worker_skill_eval_implementation_ecosystem
+    adopted_node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+    adopted_version: "1.0"
+    adopted_at: "2026-05-24T20:40:11+08:00"
+    next_action: completed
+  - candidate_id: cand_007_evaluation_evidence
+    proposed_node_slug: llm_wiki_evaluation_evidence
+    proposed_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+    status: built_adopted
+    frontier_update_run: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence
+    frontier_update_executor_role: worker_executor
+    discovered_from:
+      - arxiv-wicer
+      - arxiv-knowledge-compounding
+      - repo-atomicstrata-llm-wiki-compiler
+      - repo-kytmanov-obsidian-local
+      - arxiv-alce
+      - arxiv-ragas
+      - arxiv-ares
+      - arxiv-ragchecker
+      - reports/coverage_framework.md
+      - reports/source_gap_review.md
+    source_mining_run: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence
+    source_mining_artifacts:
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/source_scope.md
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/source_inventory.md
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/source_notes.md
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/source_mining.md
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_matrix.yaml
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/retrieval_requests.md
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/mining_trace.md
+      - .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/frontier_trace.md
+    raw_paths:
+      - data/raw/arxiv/arxiv-wicer/text.txt
+      - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+      - data/raw/arxiv/arxiv-alce/text.txt
+      - data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-ragas/text.txt
+      - data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-ares/text.txt
+      - data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-ragchecker/text.txt
+      - data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+      - data/raw/github_repo/repo-amazon-ragchecker/repo/README.md
+      - data/raw/github_repo/repo-stanford-ares/repo/README.md
+    prior_kb_anchors:
+      - node_id: 20260524_062000_llm_wiki_origin_and_canon
+        version: "1.0"
+        usable_as_support: true
+        limitation: continuity_only_not_new_evidence
+        path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - node_id: 20260524_072000_llm_wiki_working_definition
+        version: "1.0"
+        usable_as_support: true
+        limitation: continuity_only_not_new_evidence
+        path: kb/20260524_072000_llm_wiki_working_definition.md
+      - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+        version: "1.0"
+        usable_as_support: true
+        limitation: continuity_only_not_new_evidence
+        path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+      - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+        version: "1.0"
+        usable_as_support: true
+        limitation: continuity_only_not_new_evidence
+        path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+      - node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+        version: "1.0"
+        usable_as_support: true
+        limitation: continuity_only_not_new_evidence
+        path: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+      - node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+        version: "1.0"
+        usable_as_support: true
+        limitation: continuity_only_not_new_evidence
+        path: kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+      - node_id: 20260524_122000_llm_wiki_implementation_ecosystem
+        version: "1.0"
+        usable_as_support: true
+        limitation: continuity_only_not_new_evidence
+        path: kb/20260524_122000_llm_wiki_implementation_ecosystem.md
+    direct_evidence:
+      - source_id: arxiv-wicer
+        supports:
+          - direct LLM Wiki / wiki-memory compile-evaluate-refine framing
+          - compilation gap as an evaluation problem
+          - diagnostic probes identifying dropped facts
+          - iterative refinement/preservation of dropped facts
+          - benchmark-style comparison against RAG and full-context/KV-cache baselines
+          - limitations around hardware, model, baseline, validation scope, and LLM-as-judge evaluation
+        limitation: "Single recent direct evaluation source; not proof of broad superiority or production reliability."
+      - source_id: arxiv-knowledge-compounding
+        supports:
+          - controlled query-sequence/token-cost framing for self-evolving knowledge wikis
+          - need to state baseline, method, query concentration, reproducibility, and projection limits for economic claims
+        limitation: "Local acquisition is arXiv abstract/PDF-only; do not use for detailed method/log claims without later extraction or retrieval."
+      - source_id: repo-atomicstrata-llm-wiki-compiler
+        supports:
+          - paragraph source markers and claim-level source ranges
+          - lint validation of source-range citations
+          - confidence and contradiction metadata
+          - candidate review queue
+          - explicit future evaluation harness for answer quality, citation accuracy, update drift, retrieval recall, and scale curves
+        limitation: "Implementation self-description; not independent measurement of reliability."
+      - source_id: repo-kytmanov-obsidian-local
+        supports:
+          - safe provider/model compare previews
+          - synthesis source hashes and non-overwrite behavior
+          - item audit and rejection feedback loop
+          - low-confidence and single-source draft annotations
+        limitation: "Implementation self-description; not abstract requirement or benchmark proof."
+      - source_id: arxiv-alce
+        supports:
+          - adjacent citation-generation evaluation dimensions
+          - correctness and citation-quality distinction
+          - citation recall/precision and human-evaluation framing
+          - partial-support and NLI limitation warnings
+        limitation: "Adjacent citation-evaluation source, not direct LLM Wiki benchmark."
+      - source_id: arxiv-ragas
+        supports:
+          - adjacent RAG faithfulness, answer relevance, and context relevance vocabulary
+        limitation: "Adjacent RAG evaluation source, not persistent wiki maintenance evidence."
+      - source_id: arxiv-ares
+        supports:
+          - adjacent context relevance, answer faithfulness, answer relevance, PPI, human validation, and domain-shift limits
+        limitation: "Adjacent RAG triple evaluation, not LLM Wiki compiled-artifact evidence."
+      - source_id: arxiv-ragchecker
+        supports:
+          - adjacent claim-level entailment diagnostics
+          - claim recall, context precision, faithfulness, hallucination, context utilization, and noise sensitivity metrics
+        limitation: "Adjacent RAG diagnostic source; transfer only as method vocabulary."
+      - source_id: reports/coverage_framework.md
+        supports:
+          - evaluation dimensions, evidence grades, claim records, citation discipline, and judgment gates
+        limitation: "Process framework, not primary empirical evidence."
+      - source_id: reports/source_gap_review.md
+        supports:
+          - current evaluation/quality coverage status and missing evidence list
+        limitation: "Secondary gap review, not primary empirical evidence."
+    candidate_statement: "LLM Wiki 的 evaluation/evidence 首版应写成证据分层和评估边界，而不是效果胜利宣言：直接 WiCER/knowledge-wiki 证据支持 compile/evaluate/refine、compilation gap、诊断 probes、baseline/scale/reproducibility 边界；相邻 RAG/citation 评估支持 answer grounding、citation support、context relevance、claim recall、faithfulness、hallucination/noise diagnostics 等指标词汇；实现 README 支持 source ranges、lint、confidence/contradiction labels、review queues 和 safe compare previews 等可审计机制；process reports 要求每个经验或战略 claim 说明证据等级、baseline/method、source gaps 和 deferred retrieval。"
+    why_it_matters: "它给后续 KB 节点一个可信度表达和评估边界，防止把 anecdotal utility、repo README、相邻 RAG 结果或单篇 WiCER 结果写成 LLM Wiki 已被全面实证验证。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "No broad independent replication of WiCER or Knowledge Compounding results in the local corpus."
+      - "No direct long-term drift curves, stale-claim rates, citation precision/recall audit of adopted LLM Wiki pages, or human expert evaluation for this KB."
+      - "No broad provider/model/corpus/source-type comparison covering multilingual, code, multimodal, enterprise, team, and high-scale settings."
+      - "Knowledge Compounding is locally available as arXiv abstract/PDF-only source and should not be used for detailed method/log claims without further extraction or retrieval."
+      - "Adjacent RAG/citation metrics are method vocabulary, not direct proof that LLM Wiki nodes are faithful or useful."
+    build_constraints:
+      - "Center the node on evaluation dimensions, evidence grades, and boundaries."
+      - "Use WiCER as strongest direct LLM Wiki evaluation source, but state its limitations."
+      - "Use Knowledge Compounding only for cautious economic-evaluation framing unless full experiment details are later mined."
+      - "Use ALCE/Ragas/ARES/RAGChecker as adjacent evaluation frameworks; label them as adjacent."
+      - "Use implementation READMEs only for described auditability mechanisms, not measured reliability."
+      - "Use reports as process/gap context; do not treat prior KB anchors as new fact sources."
+      - "Do not claim empirical superiority, production effectiveness, enterprise readiness, adoption, ROI, or benchmark leadership."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_evaluation_evidence_node
+    node_planning_run: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence
+    node_planning_decision: generation_entry_pass
+    generation_entry_gate: pass
+    target_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+    retrieval_required_before_generation: false
+    build_run: .llmwiki/runs/run_20260524_134000_worker_generation_evaluation_evidence
+    audit_run: .llmwiki/runs/run_20260524_135000_worker_audit_evaluation_evidence
+    adoption_run: .llmwiki/runs/run_20260524_140000_worker_adoption_view_evaluation_evidence
+    skill_eval_run: .llmwiki/runs/run_20260524_141000_worker_skill_eval_evaluation_evidence
+    adopted_node_id: 20260524_132000_llm_wiki_evaluation_evidence
+    adopted_version: "1.0"
+    adopted_at: "2026-05-24T21:29:27+08:00"
+    next_action: completed
+  - candidate_id: cand_008_risks_governance_provenance
+    proposed_node_slug: llm_wiki_risks_governance_and_provenance
+    proposed_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    status: built_adopted
+    frontier_update_run: .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance
+    frontier_update_executor_role: worker_executor
+    discovered_from:
+      - repo-atomicstrata-llm-wiki-compiler
+      - repo-kytmanov-obsidian-local
+      - arxiv-wicer
+      - arxiv-memory-as-metabolism
+      - arxiv-alce
+      - arxiv-etamp-memory-poisoning
+      - arxiv-poisonedrag
+      - arxiv-graph-poisoning
+      - hacker-news-original-thread
+      - owasp-llm-top10-2025
+      - owasp-agentic-top10-2026
+      - nist-gai-profile
+      - microsoft-agent-governance-toolkit-docs
+      - reports/source_gap_review.md
+      - reports/coverage_framework.md
+    source_mining_run: .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance
+    source_mining_artifacts:
+      - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/source_scope.md
+      - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/source_mining.md
+      - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/retrieval_requests.md
+      - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/mining_trace.md
+      - .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance/frontier_trace.md
+    raw_paths:
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+      - data/raw/arxiv/arxiv-wicer/text.txt
+      - data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-memory-as-metabolism/text.txt
+      - data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-alce/text.txt
+      - data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+      - data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-poisonedrag/text.txt
+      - data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt
+      - data/raw/arxiv/arxiv-graph-poisoning/text.txt
+      - data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - data/raw/webpage/owasp-llm-top10-2025/text.txt
+      - data/raw/webpage/owasp-agentic-top10-2026/text.txt
+      - data/raw/webpage/nist-gai-profile/text.txt
+      - data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+    prior_kb_anchors:
+      - node_id: 20260524_062000_llm_wiki_origin_and_canon
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - node_id: 20260524_072000_llm_wiki_working_definition
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_072000_llm_wiki_working_definition.md
+      - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+      - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+      - node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+        version: "1.0"
+        usable_as_boundary_only: true
+        path: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+    direct_evidence:
+      - source_id: repo-atomicstrata-llm-wiki-compiler
+        supports:
+          - source attribution and paragraph source markers
+          - claim-level line-range citations and lint validation
+          - candidate review queue with approve/reject/archive
+          - confidence, provenanceState, contradictedBy metadata
+          - low-confidence, contradicted-page, and uncited-paragraph linting
+          - roadmap gaps for rollback, audit, stale-claim checks, freshness reports, and operation logs
+        limitation: "Implementation evidence only; not proof all LLM Wikis provide these controls or that controls are effective."
+      - source_id: repo-kytmanov-obsidian-local
+        supports:
+          - source hashes for synthesis pages
+          - refusal to overwrite manually edited synthesis
+          - draft review, rejection feedback, low-confidence/single-source annotations
+          - stale article linting and inline source citations
+          - conservative item ledger for named references without sufficient source support
+        limitation: "Implementation evidence only; local-first single project."
+      - source_id: arxiv-wicer
+        supports:
+          - LLM Wiki-specific compilation gap and dropped-fact risk
+          - evaluate/refine loop for diagnostic probes and preservation of dropped facts
+          - limitations around hardware, model, baseline, partial validation, and LLM-as-judge
+      - source_id: arxiv-memory-as-metabolism
+        supports:
+          - user-coupled drift and entrenchment framing
+          - TRIAGE, DECAY, CONTEXTUALIZE, CONSOLIDATE, AUDIT governance vocabulary
+          - source preservation and audit-record obligations
+        limitation: "Normative/theoretical governance source; not incident-rate evidence."
+      - source_id: arxiv-alce
+        supports:
+          - citation generation/evaluation difficulty
+          - need to evaluate correctness separately from citation quality
+          - partial support and NLI-evaluation limitations
+        limitation: "Adjacent citation-evaluation source, not an LLM Wiki benchmark."
+      - source_id: arxiv-etamp-memory-poisoning
+        supports:
+          - persistent memory as attack surface across sessions/sites
+        limitation: "Adjacent agent-memory threat model; not direct LLM Wiki incident evidence."
+      - source_id: arxiv-poisonedrag
+        supports:
+          - external knowledge database poisoning as attack surface
+        limitation: "Adjacent RAG threat model; do not transfer attack rates."
+      - source_id: arxiv-graph-poisoning
+        supports:
+          - source-text manipulation can poison constructed graph structures
+        limitation: "Adjacent GraphRAG threat model; not direct LLM Wiki evidence."
+      - source_id: hacker-news-original-thread
+        supports:
+          - early discourse around staleness, correctness, drift, contradiction-lint scaling, second-order information, and review
+        limitation: "Discourse only; not technical authority."
+      - source_id: owasp-llm-top10-2025
+        supports:
+          - broad LLM application security framework existence
+        limitation: "Captured text is high-level only; not detailed category evidence."
+      - source_id: owasp-agentic-top10-2026
+        supports:
+          - broad agentic application security framework existence
+        limitation: "Captured text is high-level only."
+      - source_id: nist-gai-profile
+        supports:
+          - voluntary GAI risk-management profile framing
+        limitation: "General GAI governance, not LLM Wiki-specific."
+      - source_id: microsoft-agent-governance-toolkit-docs
+        supports:
+          - policy, authorization, approval, prompt-injection detection, DLP, sandboxing, tracing, kill switch, lifecycle, compliance, and attribution control vocabulary
+        limitation: "Vendor/toolkit docs; not independent proof of effectiveness."
+    claim_ids:
+      - claim_000037_risks_governance_ethics_provenance_risk
+      - claim_000038_risks_governance_ethics_maintenance_risk
+      - claim_000039_risks_governance_ethics_privacy_security_risk
+      - claim_000040_risks_governance_ethics_governance_model
+      - claim_000041_risks_governance_ethics_epistemic_risk
+    candidate_statement: "LLM Wiki 的首版 risks/governance/provenance 节点应把风险界定为 source-preserving wiki 维护循环中的 traceability 和 state-change 问题：LLM/agent 将 raw sources 编译成持久 wiki 后，可能出现 citation/claim provenance 漂移、编译丢事实、stale/contradictory pages、弱证据被 canonical 化、未审阅写回、敏感来源暴露，以及来自相邻 RAG/GraphRAG/agent-memory 系统的 source/memory poisoning 类比威胁；可证的治理边界是 source preservation、claim-level citation、review/approve/reject gates、lint/audit、confidence/contradiction labels、hash/change detection、rollback/deletion policy 和 human approval，而不是企业合规充分性或已实证的风险降低。"
+    why_it_matters: "该节点为后续 generation/audit 提供风险和治理边界，防止 LLM Wiki 被写成天然可信、自动自治或企业安全方案，也防止把相邻安全论文的攻击率直接外推到 LLM Wiki。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "No direct evidence of real-world LLM Wiki security incidents or incident rates."
+      - "No source-supported claim that LLM Wiki controls reduce risk by a measured amount."
+      - "Enterprise access control, multi-user governance, compliance/legal sufficiency, source licensing, and institutional review require later retrieval/mining."
+      - "Blocked Reddit community discourse remains unavailable and should not be used substantively."
+      - "Captured OWASP pages are high-level landing pages; detailed category claims require preserved whitepaper/category text before use."
+    build_constraints:
+      - "Frame the node as risk taxonomy and governance boundary, not as compliance advice."
+      - "Use implementation repos and WiCER as strongest LLM Wiki-specific evidence."
+      - "Use ALCE only for adjacent citation-faithfulness/audit evidence."
+      - "Use eTAMP, PoisonedRAG, and GraphRAG poisoning only as adjacent threat models; never transfer attack rates to LLM Wiki."
+      - "Use OWASP/NIST/Microsoft only as broad framework/control vocabulary unless exact detailed pages are later preserved."
+      - "Use HN as early discourse only."
+      - "Do not claim enterprise readiness, compliance sufficiency, measured risk reduction, or production security maturity."
+      - "Distinguish primary sources, process notes, adjacent evidence, and prior KB anchors."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_risk_governance_provenance_node
+    planning_run: .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance
+    generation_entry_gate_run: .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/generation_entry_gate.md
+    generation_entry_decision: pass
+    target_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    build_run: .llmwiki/runs/run_20260524_110000_worker_generation_risks_governance_provenance
+    audit_run: .llmwiki/runs/run_20260524_111000_worker_audit_risks_governance_provenance
+    adoption_run: .llmwiki/runs/run_20260524_114000_worker_adoption_view_risks_governance_provenance_after_footnote_repair
+    skill_eval_run: .llmwiki/runs/run_20260524_120000_worker_skill_eval_risks_governance_provenance
+    adopted_node_id: 20260524_104000_llm_wiki_risks_governance_and_provenance
+    adopted_version: "1.0"
+    adopted_at: "2026-05-24T18:54:17+08:00"
+    next_action: completed
+  - candidate_id: cand_009_scale_boundaries
+    proposed_node_slug: llm_wiki_scale_boundaries_and_enterprise_limits
+    status: needs_retrieval
+    discovered_from:
+      - reports/source_gap_review.md
+      - aicritique-enterprise-knowledge
+      - aicritique-enterprise-knowledge-dynamic-20260524
+    candidate_statement: "企业规模、长期维护和组织治理边界仍需要更可靠来源。"
+    why_it_matters: "这是完整 KB 的 strategic coverage，但目前 source quality 不足。"
+    evidence_state: insufficient
+    missing_evidence:
+      - "AICritique enterprise source 被拦截或 http_error。"
+      - "需要未来个人设备重新 retrieve 或寻找替代 case study / enterprise docs。"
+    suggested_first_version: "1.0"
+    next_action: write_retrieval_request_when_needed
+  - candidate_id: cand_010_vs_rag_write_loop
+    proposed_node_slug: llm_wiki_vs_rag_write_loop
+    proposed_node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+    status: built_adopted
+    frontier_update_run: .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop
+    frontier_update_executor_role: worker_executor
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - hacker-news-original-thread
+      - repo-atomicstrata-llm-wiki-compiler
+      - arxiv-graphrag
+      - arxiv-ragas
+      - arxiv-alce
+      - arxiv-zep
+      - langchain-long-term-memory-docs
+      - atlan-llm-wiki-vs-rag-dynamic-20260524
+      - 20260524_062000_llm_wiki_origin_and_canon
+      - 20260524_072000_llm_wiki_working_definition
+      - 20260524_080000_llm_wiki_three_layer_architecture
+      - 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    source_mining_run: .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop
+    source_mining_artifacts:
+      - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/source_scope.md
+      - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/source_mining.md
+      - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/retrieval_requests.md
+      - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/mining_trace.md
+      - .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop/frontier_trace.md
+    raw_paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+      - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+      - data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+      - data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+      - data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+      - data/raw/arxiv/arxiv-zep/source/main.tex
+      - data/raw/webpage/langchain-long-term-memory-docs/text.txt
+      - data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt
+    prior_kb_anchors:
+      - node_id: 20260524_062000_llm_wiki_origin_and_canon
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+      - node_id: 20260524_072000_llm_wiki_working_definition
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_072000_llm_wiki_working_definition.md
+      - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+      - node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+        version: "1.0"
+        usable_as_support: true
+        path: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+    direct_evidence:
+      - source_id: karpathy-gist-llm-wiki
+        supports:
+          - RAG contrast as query-time chunk retrieval and answer generation
+          - persistent wiki as compounding artifact between user and raw sources
+          - ingest, query, lint, index, log, and filed-back answer workflow
+      - source_id: hacker-news-original-thread
+        supports:
+          - early "just RAG" versus write-loop discourse
+          - static corpus, stale claim, second-order information, and scale concerns
+        limitation: "Early discourse framing only; not technical authority for RAG definitions."
+      - source_id: repo-atomicstrata-llm-wiki-compiler
+        supports:
+          - implementation comparison with RAG
+          - persistent browsable artifact, `query --save`, index rebuild, source markers, claim provenance, lint, review, MCP, and retrieval/search support
+        limitation: "Implementation evidence only; not universal abstract requirement."
+      - source_id: arxiv-graphrag
+        supports:
+          - canonical/vector RAG as query-time retrieval over records that fit context
+          - GraphRAG graph index, community summaries, and map-reduce global answer workflow
+          - warning against reducing RAG to raw chunk lookup
+      - source_id: arxiv-ragas
+        supports:
+          - RAG as retrieval plus LLM generation over a reference textual database
+          - evaluation axes for faithfulness, answer relevance, and context relevance
+      - source_id: arxiv-alce
+        supports:
+          - retrieval of supporting evidence and answer generation with citations
+          - citation quality as a hard evaluation dimension
+      - source_id: arxiv-zep
+        supports:
+          - dynamic agent memory using temporal knowledge graph
+          - historical relationship maintenance, contradiction invalidation, and source-episode traceability
+        limitation: "Adjacent agent-memory evidence; not an LLM Wiki source."
+      - source_id: langchain-long-term-memory-docs
+        supports:
+          - persistent agent memory documents organized by namespace/key
+          - tool-level read/write/search
+        limitation: "Documentation for adjacent memory stores, not RAG core or LLM Wiki canon."
+      - source_id: atlan-llm-wiki-vs-rag-dynamic-20260524
+        supports:
+          - secondary compile-time vs query-time comparison vocabulary
+          - scale/governance caveat vocabulary
+        limitation: "Secondary/vendor framing only; do not use as primary technical authority."
+    candidate_statement: "LLM Wiki 与 RAG 的首版差异不应写成 retrieval vs no retrieval；两者都可能使用 retrieval、索引、摘要、引用和迭代综合。可证的最小差异是 artifact/workflow 边界：LLM Wiki 把 raw sources 编译并维护为可由人和 agent 共同浏览、引用、lint、更新、file-back 的持久 wiki/node 层；RAG/GraphRAG 主要定义 query-time grounding 的 retrieval、graph index、community summary 与 answer synthesis 机制；agent memory 系统也有持久读写/时间图谱，但不自动等同于 LLM Wiki 的 raw/wiki/schema 维护循环。"
+    why_it_matters: "该比较切片能防止后续节点把 LLM Wiki 简化成 just RAG，也防止反向夸大为 anti-RAG；它为 comparison_space 的首个 bounded node 提供可引用边界。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "No blocker for bounded first version."
+      - "Broad comparison with PKM, documentation systems, knowledge graphs, data catalogs, and enterprise platforms remains outside this slice."
+      - "Empirical performance, token-efficiency, adoption, and scale-threshold claims require separate source mining."
+      - "Enterprise access control, concurrency, and governance claims need primary/non-vendor sources before being promoted beyond caveats."
+      - "Atlan source is secondary/product framing only."
+    build_constraints:
+      - "Frame the difference as artifact/workflow boundary, not retrieval absence."
+      - "Use Karpathy gist as primary LLM Wiki pattern source."
+      - "Use atomicstrata README as implementation evidence for writeback, provenance, lint, and retrieval/search coexistence."
+      - "Use HN only for early debate/risk discourse."
+      - "Use GraphRAG and Ragas for RAG/GraphRAG technical definitions and evaluation axes."
+      - "Use ALCE only for citation/evidence-generation overlap."
+      - "Use Zep and LangChain docs only for adjacent agent-memory write/read systems."
+      - "Do not claim LLM Wiki is better than RAG, that RAG lacks durable artifacts, or that all agent memory equals LLM Wiki."
+      - "Do not use prior KB anchors as new fact sources; use them only for boundary continuity."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_comparison_node
+    planning_run: .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop
+    generation_entry_gate_run: .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop
+    generation_entry_decision: pass
+    planned_node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+    build_run: .llmwiki/runs/run_20260524_100000_worker_generation_vs_rag_write_loop
+    audit_run: .llmwiki/runs/run_20260524_101000_worker_audit_vs_rag_write_loop
+    adoption_run: .llmwiki/runs/run_20260524_102000_worker_adoption_view_vs_rag_write_loop
+    skill_eval_run: .llmwiki/runs/run_20260524_103000_worker_skill_eval_vs_rag_write_loop
+    adopted_node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+    adopted_version: "1.0"
+    adopted_at: "2026-05-24T17:54:00+08:00"
+    next_action: completed
+  - candidate_id: cand_011_initial_risk_discourse
+    proposed_node_slug: llm_wiki_initial_risk_discourse
+    status: deferred
+    discovered_from:
+      - hacker-news-original-thread
+    source_mining_run: .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon
+    merged_into: cand_008_risks_governance_provenance
+    merge_run: .llmwiki/runs/run_20260524_104000_worker_source_mining_risks_governance_provenance
+    candidate_statement: "早期 HN 讨论已经出现 model collapse、second-order information、stale claims、quality assurance、context bloat 与 human thinking/offloading 等风险语汇。"
+    why_it_matters: "可作为后续 risks/governance/provenance node 的 early-discourse seed。"
+    evidence_state: merged_as_early_discourse_seed
+    citation_feasibility: partial
+    missing_evidence:
+      - "Standalone node deferred because HN discourse is narrow and better used as early-discourse evidence inside cand_008."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    next_action: no_standalone_build_now

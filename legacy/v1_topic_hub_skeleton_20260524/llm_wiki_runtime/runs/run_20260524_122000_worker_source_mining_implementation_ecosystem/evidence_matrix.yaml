@@ -1,0 +1,140 @@
+schema: kb.evidence_matrix.v1
+run_id: run_20260524_122000_worker_source_mining_implementation_ecosystem
+target_candidate: cand_006_implementation_ecosystem
+entries:
+  - source_id: repo-nashsu-llm-wiki
+    path: data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+    source_type: github_repo_readme
+    claim_or_observation: "README describes a UI-oriented LLM Wiki app with ingest, multimodal input, graph/vector/search, persistent queue, review, web clipper, and local API features."
+    candidate_use: "UI/desktop/web-app implementation family."
+    confidence: high_for_self_described_features
+    citation_target:
+      path: data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+    retrieval_state: local_complete
+  - source_id: repo-nashsu-llm-wiki-metadata
+    path: data/raw/github_repo/repo-nashsu-llm-wiki/github_repo.json
+    source_type: github_repo_metadata
+    claim_or_observation: "Snapshot metadata: nashsu/llm_wiki, 8658 stars, 1069 forks, 109 open issues, TypeScript, created 2026-04-08, updated 2026-05-21, pushed 2026-05-19."
+    candidate_use: "Surface activity signal only."
+    confidence: high_for_metadata_snapshot
+    citation_target:
+      path: data/raw/github_repo/repo-nashsu-llm-wiki/github_repo.json
+    retrieval_state: local_complete
+  - source_id: repo-samuraigpt-llm-wiki-agent
+    path: data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+    source_type: github_repo_readme
+    claim_or_observation: "README documents a coding-agent skill with raw/wiki/index/log/overview/sources/entities/concepts/syntheses/graph layout and ingest/query/lint/graph workflows."
+    candidate_use: "Agent-skill/template implementation family and file-structure motif."
+    confidence: high
+    citation_target:
+      path: data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+    retrieval_state: local_complete
+  - source_id: repo-sdyckjq-llm-wiki-skill
+    path: data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+    source_type: github_repo_readme
+    claim_or_observation: "README describes a skill/plugin implementation with graph UX, confidence labels, cache, hooks, reports, comparisons, and timeline outputs."
+    candidate_use: "Skill/plugin UX family."
+    confidence: medium_high
+    citation_target:
+      path: data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+    retrieval_state: local_complete
+  - source_id: repo-atomicstrata-llm-wiki-compiler
+    path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    source_type: github_repo_readme
+    claim_or_observation: "README documents npm CLI/MCP compiler operations including ingest, compile, query, view, lint, watch, candidate review, source markers, citations, confidence/contradiction metadata, and retrieval/reranking."
+    candidate_use: "CLI/MCP compiler family and provenance/control capabilities."
+    confidence: high
+    citation_target:
+      path: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    retrieval_state: local_complete
+  - source_id: repo-kytmanov-obsidian-local
+    path: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+    source_type: github_repo_readme
+    claim_or_observation: "README documents a local-first Obsidian runtime with ingest, compile, review, query, lint, watch, provider switching, source hashes, rejection feedback, annotations, and hand-edit protection."
+    candidate_use: "Obsidian/local-first workflow family."
+    confidence: high
+    citation_target:
+      path: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+    retrieval_state: local_complete
+  - source_id: repo-vectifyai-openkb
+    path: data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+    source_type: github_repo_readme
+    claim_or_observation: "README documents OpenKB/long-document capabilities including long-PDF handling, MarkItDown conversion, multimodality, wiki foundation, query/chat generators, and skill factory."
+    candidate_use: "Long-document/OpenKB-like adjacent implementation family."
+    confidence: medium_high
+    citation_target:
+      path: data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+    retrieval_state: local_complete
+  - source_id: repo-ngmeyer-librarian-mcp
+    path: data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+    source_type: github_repo_readme
+    claim_or_observation: "README documents an MCP server for Markdown/Obsidian vaults with graph traversal, auto-wikilinks, trigram search, Louvain community detection, D3 graph view, and slash-command skill wrappers."
+    candidate_use: "MCP/graph-vault adjacent family."
+    confidence: high_for_this_implementation
+    citation_target:
+      path: data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+    retrieval_state: local_complete
+  - source_id: github_repo_metadata_batch
+    path: data/raw/github_repo/*/github_repo.json
+    source_type: github_repo_metadata_batch
+    claim_or_observation: "Local metadata snapshot covers 15 repos with stars/forks/open issues/language/license/timestamps; largest local star counts include nashsu/llm_wiki, AgriciDaniel/claude-obsidian, SamurAIGPT/llm-wiki-agent, VectifyAI/OpenKB, sdyckjq-lab/llm-wiki-skill, Ar9av/obsidian-wiki, atomicstrata/llm-wiki-compiler."
+    candidate_use: "Activity/traction surface signals, with explicit non-usage boundary."
+    confidence: high_for_snapshot_metadata
+    citation_target:
+      path: data/raw/github_repo/
+    retrieval_state: local_complete
+  - source_id: pypi-my-llm-wiki
+    path: data/raw/pypi/pypi-my-llm-wiki/text.txt
+    source_type: pypi_page
+    claim_or_observation: "PyPI page records `my-llm-wiki` 0.9.0, beta, MIT, Python >=3.10, and summary about turning folders into queryable knowledge graphs."
+    candidate_use: "Python package/library family and registry metadata."
+    confidence: high_for_package_metadata
+    citation_target:
+      path: data/raw/pypi/pypi-my-llm-wiki/text.txt
+    retrieval_state: local_complete
+  - source_id: pypi-llm-wiki-mcp
+    path: data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+    source_type: pypi_page
+    claim_or_observation: "PyPI page records `llm-wiki-mcp` 0.1.1, alpha, MIT, Python >=3.11, MCP server plus Claude Code skills, local filesystem storage, atomic writes, etag checks, log integrity, and path containment."
+    candidate_use: "MCP package family and maturity boundary."
+    confidence: high_for_package_metadata
+    citation_target:
+      path: data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+    retrieval_state: local_complete
+  - source_id: clawhub-llm-wiki-karpathy
+    path: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    source_type: plugin_directory_page
+    claim_or_observation: "Plugin page describes standalone CLI, stdio MCP server, config generator, OpenClaw host entry, raw/wiki/schema runtime, multimodal raw kinds, source-id repair, compile-readiness, gap mapping, and deterministic lint."
+    candidate_use: "Plugin/runtime distribution family."
+    confidence: medium_high_directory_self_description
+    citation_target:
+      path: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+    retrieval_state: local_complete
+  - source_id: llm-wiki-net
+    path: data/raw/webpage/llm-wiki-net/text.txt
+    source_type: project_webpage
+    claim_or_observation: "Project page describes multi-runtime plugin/command support for Claude Code, Codex, OpenCode, Pi, and AGENTS.md, plus topic hubs, raw sources, compiled articles, audit, output generation, archive/inventory/dataset manifests."
+    candidate_use: "Multi-runtime command/plugin implementation family."
+    confidence: medium_project_self_description
+    citation_target:
+      path: data/raw/webpage/llm-wiki-net/text.txt
+    retrieval_state: local_complete
+  - source_id: source_gap_review
+    path: reports/source_gap_review.md
+    source_type: secondary_process_report
+    claim_or_observation: "Report says UX/tooling/ecosystem coverage is strong enough for a preliminary landscape, but adoption/community discourse remains incomplete because Reddit is blocked, package downloads are absent, and directory/plugin pages often lack usage counts."
+    candidate_use: "Readiness and gap framing only."
+    confidence: high_as_process_note
+    citation_target:
+      path: reports/source_gap_review.md
+    retrieval_state: local_complete
+  - source_id: coverage_framework
+    path: reports/coverage_framework.md
+    source_type: secondary_process_framework
+    claim_or_observation: "Framework requires representative implementation survey, repo/docs citation for implementation claims, and avoiding any single definitive implementation."
+    candidate_use: "Planning constraints and citation discipline."
+    confidence: high_as_process_note
+    citation_target:
+      path: reports/coverage_framework.md
+    retrieval_state: local_complete
+

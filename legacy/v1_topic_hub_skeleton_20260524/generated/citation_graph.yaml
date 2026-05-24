@@ -1,0 +1,3539 @@
+schema: kb.citation_graph.v1
+generated_at: '2026-05-24T21:45:32+08:00'
+edge_count: 185
+edges:
+- citing_node: 20260524_062000_llm_wiki_origin_and_canon
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: primary_canonical_evidence
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Supports the bounded canonical description of LLM Wiki as an idea file with a persistent
+    wiki layer, three-layer architecture, ingest/query/lint operations, index/log navigation, and optional
+    tooling.
+  evidence_summary: The gist describes LLM Wiki as a pattern for LLM-built personal knowledge bases, gives
+    raw sources/wiki/schema layers, names ingest/query/lint, explains index.md and log.md, and frames
+    implementation details as abstract and modular.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_062000_llm_wiki_origin_and_canon
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: early_discourse_evidence
+  target: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only the observed early public discussion around the idea file, including visible
+    story metadata, RAG comparison debate, support, skepticism, and risk/maintenance concerns.
+  evidence_summary: The HN text includes the story title, visible points/comment count/byline, links to
+    gist and X mirrors, and comments discussing RAG, writeback, raw-source discipline, staleness, scale,
+    and cognitive offloading concerns.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: hacker_news/hacker-news-original-thread
+- citing_node: 20260524_062000_llm_wiki_origin_and_canon
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: evidence_boundary
+  target: .llmwiki/runs/run_20260524_063000_worker_node_planning_origin_canon/evidence_scope.yaml
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_063000_worker_node_planning_origin_canon/evidence_scope.yaml
+  pinned_version_exists: true
+  why_cited: Defines which sources may support this candidate and forbids X-specific wording, broad adoption,
+    historical lineage, enterprise, and empirical-effectiveness claims.
+  evidence_summary: The evidence scope marks the gist as primary evidence and HN as secondary early-discourse
+    evidence, but its empty-file characterization of X/HN JSON was later found false and is superseded
+    by the repair report.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_062000_llm_wiki_origin_and_canon
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '4'
+  citation_role: gap_record
+  target: .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon/evidence_gaps.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_062000_worker_source_mining_origin_canon/evidence_gaps.md
+  pinned_version_exists: true
+  why_cited: Records non-blocking gaps that must remain visible in this first version and retrieval blockers
+    for broader future claims.
+  evidence_summary: The gap record documents the earlier boundary decision, but its empty-file statement
+    for X raw files and HN item JSON was later found false; remaining broader gaps include historical
+    lineage, ecosystem/adoption, empirical, governance, Reddit, and enterprise claims.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_062000_llm_wiki_origin_and_canon
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '5'
+  citation_role: repair_boundary
+  target: .llmwiki/runs/run_20260524_065000_worker_repair_origin_canon/repair_report.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_065000_worker_repair_origin_canon/repair_report.md
+  pinned_version_exists: true
+  why_cited: Records the local file-size/content verification that supersedes the false empty-file claims
+    in earlier source-mining and planning artifacts.
+  evidence_summary: The repair report states that X text/raw/raw.json and HN item.json are non-empty in
+    the current checkout, corrects the evidence boundary, preserves candidate_pending_audit, and records
+    the process failure.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_062000_llm_wiki_origin_and_canon
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: primary_canonical_source
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Provides the direct source for the node's canonical pattern, architecture, workflow, indexing/logging,
+    optional tooling, and implementation-boundary claims.
+  evidence_summary: The source is the readable local gist text for the LLM Wiki idea file.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_062000_llm_wiki_origin_and_canon
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: secondary_discourse_source
+  target: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  pinned_version_exists: true
+  why_cited: Provides immediate public-discussion evidence without promoting HN comments into authoritative
+    technical conclusions.
+  evidence_summary: The source contains the captured HN story text, visible story metadata, links, and
+    comments around RAG comparison, writeback, maintenance, and risks.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: hacker_news/hacker-news-original-thread
+- citing_node: 20260524_062000_llm_wiki_origin_and_canon
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R3
+  citation_role: process_boundary
+  target: .llmwiki/runs/run_20260524_063000_worker_node_planning_origin_canon/evidence_scope.yaml
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_063000_worker_node_planning_origin_canon/evidence_scope.yaml
+  pinned_version_exists: true
+  why_cited: Records the earlier planning boundary for this candidate, including overclaim prohibitions
+    that still apply.
+  evidence_summary: The process artifact enumerates allowed primary and secondary evidence and lists forbidden
+    claims; its empty-file basis for the X inventory boundary is superseded by the repair report.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_062000_llm_wiki_origin_and_canon
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R4
+  citation_role: repair_process_source
+  target: .llmwiki/runs/run_20260524_065000_worker_repair_origin_canon/repair_report.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_065000_worker_repair_origin_canon/repair_report.md
+  pinned_version_exists: true
+  why_cited: Supersedes the stale empty-file boundary with verified current local file state.
+  evidence_summary: The report records that the X launch files and HN item JSON are present and non-empty,
+    and that use remains bounded to launch context, source inventory, and HN story metadata/discourse.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: primary_definition_support
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Supports the working definition's core claims about raw sources, LLM-generated wiki, schema/instructions,
+    ingest/query/lint operations, index/log navigation, optional tooling, and human/LLM role division.
+  evidence_summary: The gist describes LLM Wiki as an abstract pattern for LLM-built personal knowledge
+    bases with immutable raw sources, a persistent maintained markdown wiki, schema-governed workflows,
+    compounding writeback, and modular implementation choices.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: prior_kb_anchor
+  target: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Anchors this working-definition node to the adopted bounded origin/canon node and carries
+    forward the boundary that the gist is the current canonical source while HN and X remain bounded context.
+  evidence_summary: The adopted node states that the Karpathy idea file is the bounded canon for the local
+    corpus and that broader adoption, enterprise, ecosystem, empirical, and historical-lineage claims
+    require separate evidence.
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_062000_llm_wiki_origin_and_canon
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: secondary_boundary_framing
+  target: reports/coverage_framework.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/coverage_framework.md
+  pinned_version_exists: true
+  why_cited: Helps frame the boundary tests that distinguish a persistent source-backed artifact from
+    vector retrieval alone, chat memory alone, or human-only PKM, without treating the framework as Karpathy's
+    original wording.
+  evidence_summary: The framework defines a strong LLM Wiki description around source preservation, knowledge
+    compilation, persistent representation, provenance/auditability, and maintenance over time.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '4'
+  citation_role: bounded_discourse_context
+  target: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only the observation that early public discussion included RAG comparison, source/backlink/staleness
+    framing, and quality concerns; it is not used as authoritative technical proof.
+  evidence_summary: The captured HN thread includes the story title and comments debating whether the
+    idea is RAG, how raw sources/backlinks relate to staleness and correctness, and possible risks such
+    as quality degradation or maintenance scale.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: hacker_news/hacker-news-original-thread
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '5'
+  citation_role: bounded_launch_context
+  target: data/raw/webpage/karpathy-x-launch-post/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/karpathy-x-launch-post/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only launch-context and source-inventory claims about the gist being shared as an
+    idea file that agents can customize, not adoption, social-metric, ecosystem, or empirical claims.
+  evidence_summary: The local X capture links the gist and states that the idea file is intentionally
+    abstract so another person's agent can customize and build a version for specific needs.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/karpathy-x-launch-post
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '6'
+  citation_role: secondary_gap_framing
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Identifies non-blocking gaps that should remain outside this first working-definition node,
+    including enterprise, empirical, adoption, ecosystem, comparison, risk, and governance claims.
+  evidence_summary: The source-gap review marks origin/definition coverage as strong while noting missing
+    or under-covered evidence for historical lineage, independent empirical validation, scale boundaries,
+    citation accuracy, governance, and adoption analysis.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: primary_definitional_source
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Provides the direct evidence for the node's working definition, architecture, operations,
+    human/LLM role division, navigation files, and optional-tooling boundary.
+  evidence_summary: The local gist text frames LLM Wiki as an abstract pattern where immutable raw sources
+    feed an LLM-maintained persistent markdown wiki governed by schema/instructions and maintained through
+    ingest, query, lint, and writeback.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: prior_kb_dependency
+  target: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides the adopted KB anchor for the local canon and preserves the boundary that this definition
+    should not become adoption, enterprise, empirical, ecosystem, or full-lineage evidence.
+  evidence_summary: The adopted node records the Karpathy gist as bounded canon and treats HN and X as
+    limited discourse or launch context rather than technical or adoption proof.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_062000_llm_wiki_origin_and_canon
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R3
+  citation_role: bounded_discourse_source
+  target: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  pinned_version_exists: true
+  why_cited: Gives limited early-discourse context for public reactions and boundary concerns without
+    supporting technical correctness or adoption claims.
+  evidence_summary: The capture includes the HN story and comments around RAG comparisons, source preservation,
+    backlinks, staleness, quality, and maintenance concerns.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: hacker_news/hacker-news-original-thread
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R4
+  citation_role: bounded_launch_source
+  target: data/raw/webpage/karpathy-x-launch-post/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/karpathy-x-launch-post/text.txt
+  pinned_version_exists: true
+  why_cited: Documents the local launch/source-inventory context for the gist as an idea file intended
+    for agent customization.
+  evidence_summary: The capture contains the gist link and the launch framing that sharing an idea file
+    lets another person's agent customize and build an LLM wiki for specific needs.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/karpathy-x-launch-post
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R5
+  citation_role: secondary_boundary_framework
+  target: reports/coverage_framework.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/coverage_framework.md
+  pinned_version_exists: true
+  why_cited: Supplies project-level boundary tests for future comparison and audit, while remaining secondary
+    to the gist for the definition itself.
+  evidence_summary: The framework describes criteria such as source preservation, compiled persistent
+    artifacts, provenance/auditability, maintenance, and limits of vector retrieval alone or chat memory
+    alone.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_072000_llm_wiki_working_definition
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R6
+  citation_role: secondary_gap_report
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Keeps unresolved evidence gaps visible so the first version does not overclaim beyond the
+    allowed source batch.
+  evidence_summary: The report says origin/definition coverage is strong but broader historical, empirical,
+    enterprise, ecosystem, adoption, risk, governance, and comparison claims need separate evidence.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: primary_architecture_support
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Supports the direct three-layer architecture claim, including raw sources as immutable source
+    of truth, the LLM-generated markdown wiki layer, schema/instructions, index.md/log.md support, and
+    optional/modular tooling boundaries.
+  evidence_summary: The gist names raw sources, the wiki, and the schema as the architecture layers; it
+    also describes index.md, log.md, ingest/query/lint operations, and notes that exact structure and
+    tooling depend on domain and preference.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: prior_kb_anchor
+  target: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Anchors this architecture node to the adopted bounded canon and preserves the prohibition
+    against adoption, ecosystem, enterprise, empirical, and broad historical claims.
+  evidence_summary: The adopted node records the Karpathy idea file as the local bounded canon and treats
+    broader public-discourse and launch-context materials as limited context rather than technical proof.
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_062000_llm_wiki_origin_and_canon
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: prior_kb_anchor
+  target: kb/20260524_072000_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: 'Provides the adopted working definition that this architecture node builds on: source preservation,
+    LLM-maintained compiled wiki, schema/instruction governance, and maintenance loops.'
+  evidence_summary: The adopted node defines LLM Wiki as a source-preserving, LLM/agent-maintained knowledge
+    pattern with immutable raw sources, a persistent markdown/wiki artifact, and schema-governed ingest/query/lint/update
+    behavior.
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_072000_llm_wiki_working_definition
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '4'
+  citation_role: implementation_detail_support
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports implementation-flavored details such as sources, hash checks, concept extraction,
+    wiki generation, wikilinks, index, schema, candidates, provenance markers, lint, viewer, query/save,
+    watch, and MCP.
+  evidence_summary: The README maps Karpathy's pattern into a compiler with source ingest, incremental
+    compile, wiki output directories, schema file, review queue, claim-level provenance, local viewer,
+    lint checks, and MCP tooling.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '5'
+  citation_role: implementation_detail_support
+  target: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only directly present runtime details around a raw/wiki/schema operating model,
+    generated index/log, representation storage, deterministic lint, CLI, MCP, and OpenClaw host entry.
+  evidence_summary: The ClawHub listing describes an installable runtime with raw/wiki/schema language,
+    runtime-owned structure, agent-owned synthesis, generated wiki navigation, representation storage,
+    lint, CLI commands, MCP tools, and out-of-scope items.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/clawhub-llm-wiki-karpathy
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '6'
+  citation_role: secondary_gap_framing
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Keeps non-blocking gaps visible so this architecture node does not claim neutral taxonomy,
+    empirical reliability, ecosystem maturity, scale boundaries, enterprise suitability, or broad comparison
+    conclusions.
+  evidence_summary: The report says workflow architecture coverage is strong, but notes missing neutral
+    architecture taxonomy, independent validation, long-term maintenance evidence, scale evidence, citation
+    audits, governance coverage, and broader comparison evidence.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '7'
+  citation_role: secondary_boundary_framing
+  target: reports/coverage_framework.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/coverage_framework.md
+  pinned_version_exists: true
+  why_cited: Supplies project-level distinction terms such as observed facts, interpretations, hypotheses,
+    source preservation, persistent representation, provenance, and maintenance without treating the framework
+    as primary architecture evidence.
+  evidence_summary: The framework defines evidence-oriented categories and boundary tests for LLM Wiki
+    coverage, including source preservation, knowledge compilation, persistent representation, auditability,
+    and maintenance over time.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: primary_architecture_source
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Provides the direct source for the three-layer architecture and for index/log/tooling boundary
+    claims.
+  evidence_summary: The source names raw sources, the wiki, and the schema, then separately describes
+    operations, index.md, log.md, optional tools, and modular implementation choices.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: prior_kb_dependency
+  target: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Preserves the adopted canon boundary that keeps this node from becoming adoption, enterprise,
+    empirical, ecosystem, or historical-lineage evidence.
+  evidence_summary: The adopted node treats the Karpathy gist as bounded canon and explicitly limits broader
+    public context to discourse or launch inventory.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_062000_llm_wiki_origin_and_canon
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R3
+  citation_role: prior_kb_dependency
+  target: kb/20260524_072000_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Supplies the adopted definition that this architecture node refines into a bounded three-layer
+    description.
+  evidence_summary: The adopted node states that LLM Wiki preserves raw sources, compiles them into a
+    persistent interlinked markdown/wiki layer, and governs maintenance through schema or instruction
+    files.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_072000_llm_wiki_working_definition
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R4
+  citation_role: implementation_variant_source
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides directly mined implementation-flavored examples of how the raw/wiki/schema pattern
+    can be instantiated with compiler, review, citation, lint, viewer, and MCP features.
+  evidence_summary: The README describes a source-to-wiki compiler, output directories, schema.json, candidate
+    review, paragraph and line-range source markers, lint checks, local web viewer, query/save, watch,
+    and MCP server.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R5
+  citation_role: implementation_variant_source
+  target: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  pinned_version_exists: true
+  why_cited: Provides a second implementation-flavored source for raw/wiki/schema operating language and
+    supporting runtime infrastructure.
+  evidence_summary: The listing describes a runtime with raw/wiki/schema operating model, generated index/log,
+    deterministic lint, CLI and MCP wrappers, OpenClaw compatibility, and representation storage for multimodal
+    materials.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/clawhub-llm-wiki-karpathy
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R6
+  citation_role: secondary_gap_report
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Records why broader taxonomy, empirical, ecosystem, scale, governance, and comparison claims
+    remain out of scope for this first version.
+  evidence_summary: The report marks workflow architecture coverage as strong but records missing neutral
+    architecture taxonomy and several evidence gaps outside this node.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_080000_llm_wiki_three_layer_architecture
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R7
+  citation_role: secondary_boundary_framework
+  target: reports/coverage_framework.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/coverage_framework.md
+  pinned_version_exists: true
+  why_cited: Provides project-level vocabulary for evidence types and boundary tests, without replacing
+    primary source evidence from the gist.
+  evidence_summary: The framework distinguishes observed facts, interpretations, hypotheses, and evaluation
+    results, and lists source preservation, persistent representation, provenance, and maintenance as
+    coverage dimensions.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: primary_workflow_support
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Supports the abstract workflow claims about ingest, query, lint, index.md, log.md, human
+    guidance, and optional/modular tooling.
+  evidence_summary: The gist describes new-source ingest into wiki pages, index, entity/concept updates
+    and log; wiki-based query with cited synthesis and file-back; periodic lint for contradictions, stale
+    claims, orphans, missing concepts, missing links and gaps; and index/log maintenance.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: prior_kb_anchor
+  target: kb/20260524_072000_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Carries forward the adopted definition of LLM Wiki as a source-preserving, agent-maintained
+    pattern with ingest/query/lint/update loops.
+  evidence_summary: The adopted working-definition node defines LLM Wiki around immutable raw sources,
+    persistent markdown/wiki artifacts, schema-governed maintenance, and human source/question steering.
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_072000_llm_wiki_working_definition
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: prior_kb_anchor
+  target: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Anchors the workflow to the adopted bounded canon and preserves prohibitions against adoption,
+    ecosystem, enterprise, empirical, and broad historical claims.
+  evidence_summary: The adopted origin/canon node treats the Karpathy gist as the local bounded canon
+    and limits broader discourse or launch context to non-authoritative context.
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_062000_llm_wiki_origin_and_canon
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '4'
+  citation_role: prior_kb_anchor
+  target: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides the adopted raw/wiki/schema architecture that this workflow node operationalizes
+    without re-opening architecture scope.
+  evidence_summary: The adopted architecture node describes raw sources, compiled wiki, and schema/instruction
+    layers, and treats index/log and tooling as supporting infrastructure rather than core layers.
+  propagation_strength: strong
+  target_kind: node
+  cited_node: 20260524_080000_llm_wiki_three_layer_architecture
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '5'
+  citation_role: implementation_variant_support
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports directly mined implementation details for source-to-wiki compile, review, query
+    save, lint, watch, viewer, source markers, line-range citations, and MCP tools.
+  evidence_summary: The README describes a pipeline from sources through hash checks, concept extraction,
+    page generation, wikilink resolution and index; query --save; review candidates; citation/provenance
+    markers; lint checks; and CLI/MCP surfaces.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '6'
+  citation_role: implementation_variant_support
+  target: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  pinned_version_exists: true
+  why_cited: Supports directly mined runtime details for representation-first ingest, compile readiness,
+    source validation, gap mapping, index/log generation, deterministic lint, CLI/MCP tools, and runtime-agent
+    responsibility split.
+  evidence_summary: The listing describes raw/wiki/schema runtime structure, stored representations, readiness
+    states, source-note validation, generated navigation, deterministic lint, CLI and MCP tool surfaces,
+    and explicit out-of-scope items.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/clawhub-llm-wiki-karpathy
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '7'
+  citation_role: secondary_gap_framing
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Records non-blocking gaps so the workflow node does not overclaim quality, reliability, scale,
+    governance, adoption, ecosystem maturity, or broad comparison conclusions.
+  evidence_summary: The report marks workflow architecture coverage as strong while noting missing neutral
+    taxonomy, independent validation, long-term maintenance evidence, scale evidence, citation audits,
+    governance coverage, and comparison evidence.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '8'
+  citation_role: secondary_boundary_framing
+  target: reports/coverage_framework.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/coverage_framework.md
+  pinned_version_exists: true
+  why_cited: Supplies project vocabulary for evidence labels and boundary tests without replacing the
+    gist as primary workflow authority.
+  evidence_summary: The framework distinguishes observed facts, interpretations, hypotheses, evaluation
+    results, and strategic judgments, and lists source preservation, compilation, persistent representation,
+    provenance, and maintenance as boundary dimensions.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: primary_workflow_source
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Provides the direct source for the abstract ingest, query, lint, index/log, human role, and
+    modular-tooling workflow claims.
+  evidence_summary: The local gist text describes LLM Wiki as an idea file whose operations include ingesting
+    sources into wiki updates, answering against the wiki with citations and file-back, linting for health
+    issues, and maintaining index/log files.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: prior_kb_dependency
+  target: kb/20260524_072000_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Supplies the adopted definition that the workflow operationalizes as a source-preserving,
+    agent-maintained knowledge pattern.
+  evidence_summary: The adopted node ties LLM Wiki to immutable raw sources, persistent compiled wiki
+    artifacts, schema/instruction governance, and ingest/query/lint/update maintenance.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_072000_llm_wiki_working_definition
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R3
+  citation_role: prior_kb_dependency
+  target: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Preserves the local canon and overclaim boundaries for this workflow node.
+  evidence_summary: The adopted node identifies the Karpathy gist as bounded canon and blocks broader
+    adoption, enterprise, ecosystem, empirical, or full-historical claims without separate evidence.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_062000_llm_wiki_origin_and_canon
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R4
+  citation_role: prior_kb_dependency
+  target: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides the adopted raw/wiki/schema architecture that this node turns into a bounded maintenance
+    workflow.
+  evidence_summary: The adopted node distinguishes raw source layer, compiled wiki layer, schema/instruction
+    layer, and supporting index/log/tooling infrastructure.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_080000_llm_wiki_three_layer_architecture
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R5
+  citation_role: implementation_variant_source
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Gives directly mined process and tooling details for one compiler-style implementation of
+    the workflow.
+  evidence_summary: The README describes ingest, incremental compile, review candidates, query save, index
+    rebuild, source markers, line-range citations, lint diagnostics, local viewer, watch mode, and MCP
+    server tools.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R6
+  citation_role: implementation_variant_source
+  target: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  pinned_version_exists: true
+  why_cited: Gives directly mined runtime details for a representation-first CLI/MCP implementation of
+    the workflow.
+  evidence_summary: The listing describes raw/wiki/schema runtime responsibilities, representation storage,
+    compile-readiness states, source validation, gap mapping and promotion, generated index/log, deterministic
+    lint, and runtime-agent responsibility boundaries.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/clawhub-llm-wiki-karpathy
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R7
+  citation_role: secondary_gap_report
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Keeps unresolved evidence gaps visible and prevents this first version from overclaiming
+    beyond the scoped workflow.
+  evidence_summary: The report says workflow architecture coverage is strong but flags gaps around neutral
+    taxonomy, independent validation, scale, citation accuracy, long-term maintenance, governance, and
+    comparison.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R8
+  citation_role: secondary_boundary_framework
+  target: reports/coverage_framework.md
+  target_exists: true
+  target_version: report_snapshot
+  pinned_version: reports/coverage_framework.md
+  pinned_version_exists: true
+  why_cited: Provides evidence-label and boundary vocabulary for distinguishing observed facts from synthesis
+    and hypotheses.
+  evidence_summary: The framework describes source preservation, knowledge compilation, persistent representation,
+    provenance/auditability, and maintenance as boundary tests for LLM Wiki coverage.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: report_snapshot
+  cited_source: null
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: primary_llm_wiki_boundary_support
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Supports the core claim that LLM Wiki centers a persistent markdown wiki maintained between
+    user and raw sources, with ingest, query file-back, lint, index, and log operations.
+  evidence_summary: The gist contrasts query-time retrieval from raw documents with incrementally building
+    and maintaining a persistent wiki; it describes raw/wiki/schema layers, ingest updates, query answers
+    filed back, lint checks, index.md, and log.md.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: implementation_boundary_support
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports implementation-level claims that a concrete LLM Wiki compiler uses persistent artifacts,
+    query --save writeback, index rebuild, provenance, lint/review, and retrieval/search/embeddings.
+  evidence_summary: The README contrasts RAG with compiling sources into a persistent artifact, describes
+    query --save and index rebuild, documents provenance/lint/review/MCP/viewer surfaces, and lists chunked
+    retrieval, semantic search, embeddings, and reranking.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: discourse_framing
+  target: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  pinned_version_exists: true
+  why_cited: Frames why the node must address both just-RAG interpretations and write-loop interpretations
+    without treating HN as technical authority.
+  evidence_summary: The thread includes comments calling the pattern just RAG or persistent memory RAG,
+    and counter-comments identifying the write loop, backlinks, filed-back outputs, and linting as the
+    distinctive part.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: hacker_news/hacker-news-original-thread
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '4'
+  citation_role: technical_adjacent_boundary
+  target: data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+  pinned_version_exists: true
+  why_cited: Supports the RAG and GraphRAG baseline without straw-manning RAG as only raw chunk lookup.
+  evidence_summary: The paper describes canonical RAG as retrieving external corpus records for a query
+    and generating from those records; GraphRAG builds a graph index, pregenerates community summaries,
+    and uses map-reduce over summaries for global questions.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-graphrag
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '5'
+  citation_role: rag_evaluation_boundary
+  target: data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+  pinned_version_exists: true
+  why_cited: Supports the claim that RAG is a retrieval plus LLM generation pipeline with evaluation dimensions
+    for retrieval focus and faithful answer generation.
+  evidence_summary: The paper describes RAG systems as composed of retrieval and LLM-based generation
+    modules and evaluates context relevance, faithfulness, and answer relevance.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-ragas
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '6'
+  citation_role: citation_overlap_support
+  target: data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+  pinned_version_exists: true
+  why_cited: Supports the limited overlap claim that retrieval-grounded answer systems can evaluate citation
+    quality and verifiability.
+  evidence_summary: ALCE requires systems to retrieve supporting evidence and generate answers with citations,
+    with metrics for fluency, correctness, and citation quality; it also reports incomplete citation support
+    as an open difficulty.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-alce
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '7'
+  citation_role: agent_memory_adjacency
+  target: data/raw/arxiv/arxiv-zep/source/main.tex
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-zep/source/main.tex
+  pinned_version_exists: true
+  why_cited: Supports the adjacent-memory comparison for dynamic temporal knowledge graphs, episode traceability,
+    and contradiction invalidation.
+  evidence_summary: The Zep paper describes Graphiti as a dynamic temporally aware knowledge graph with
+    episode, semantic entity, and community subgraphs; semantic artifacts can be traced to source episodes
+    and new edges can invalidate contradictory older edges.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-zep
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '8'
+  citation_role: agent_memory_adjacency
+  target: data/raw/webpage/langchain-long-term-memory-docs/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/langchain-long-term-memory-docs/text.txt
+  pinned_version_exists: true
+  why_cited: Supports the adjacent-memory comparison for persistent JSON memories with read/write/search
+    tools.
+  evidence_summary: The docs describe long-term memory persisting across conversations and sessions as
+    JSON documents organized by namespace and key, with stores accessible to tools for read, write, and
+    search operations.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/langchain-long-term-memory-docs
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '9'
+  citation_role: scope_boundary
+  target: .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/evidence_scope.yaml
+  target_exists: true
+  target_version: planning_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/evidence_scope.yaml
+  pinned_version_exists: true
+  why_cited: Records the planner-authorized evidence boundaries and forbidden claims for this first-version
+    candidate.
+  evidence_summary: The evidence scope marks local evidence sufficient only for a bounded first version
+    and forbids superiority, adoption, enterprise-readiness, empirical, scale, access-control, concurrency,
+    broad comparison, and uncited adjacent-system claims.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: planning_snapshot
+  cited_source: null
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: primary_llm_wiki_source
+  target: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Provides the primary local source for LLM Wiki as a persistent maintained wiki artifact with
+    ingest, query file-back, lint, index, and log operations.
+  evidence_summary: The gist defines the pattern as a structured interlinked markdown wiki maintained
+    between raw sources and user interaction, with human sourcing/question steering and LLM maintenance
+    work.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: gist_raw/karpathy-gist-llm-wiki
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: implementation_variant_source
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides implementation evidence for persistent artifacts, query save, index rebuild, provenance,
+    lint/review, MCP, and retrieval/search coexistence.
+  evidence_summary: The README describes compiling sources into a persistent artifact, query --save, candidate
+    review, source markers, claim-level provenance, lint diagnostics, local viewer, MCP server, semantic
+    search, embeddings, and reranking.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R3
+  citation_role: discourse_context_source
+  target: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  pinned_version_exists: true
+  why_cited: Provides early discussion context for the just-RAG/write-loop boundary debate without serving
+    as primary technical authority.
+  evidence_summary: The thread contains both just-RAG and persistent-memory-RAG interpretations and responses
+    emphasizing write loop, backlinks, file-back, linting, staleness, and maintenance concerns.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: hacker_news/hacker-news-original-thread
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R4
+  citation_role: technical_adjacent_source
+  target: data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-graphrag/source/graph_rag.tex
+  pinned_version_exists: true
+  why_cited: Provides source-backed RAG and GraphRAG baseline claims for retrieval, graph indexing, community
+    summaries, and map-reduce answer synthesis.
+  evidence_summary: The paper describes canonical RAG retrieval into context and GraphRAG's graph index,
+    community summarization, and global answer generation from community summaries.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-graphrag
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R5
+  citation_role: technical_adjacent_source
+  target: data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-ragas/source/arxiv-version.tex
+  pinned_version_exists: true
+  why_cited: Provides source-backed RAG pipeline and evaluation vocabulary without asserting maintained
+    wiki artifacts.
+  evidence_summary: The paper describes RAG systems as retrieval plus LLM generation over reference textual
+    databases and evaluates faithfulness, answer relevance, and context relevance.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-ragas
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R6
+  citation_role: citation_overlap_source
+  target: data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-alce/source/emnlp2023.tex
+  pinned_version_exists: true
+  why_cited: Provides source-backed evidence that retrieval-grounded answer generation can include citation-quality
+    evaluation.
+  evidence_summary: ALCE requires retrieval of supporting evidence and answers with citations, evaluates
+    fluency, correctness, and citation quality, and notes limitations in complete citation support.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-alce
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R7
+  citation_role: agent_memory_source
+  target: data/raw/arxiv/arxiv-zep/source/main.tex
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-zep/source/main.tex
+  pinned_version_exists: true
+  why_cited: Provides source-backed evidence for dynamic temporal KG memory, traceability, and update
+    mechanisms adjacent to LLM Wiki.
+  evidence_summary: The paper describes a memory layer based on Graphiti, with episode, semantic entity,
+    and community subgraphs, dynamic updates, source episode traceability, and temporal contradiction
+    invalidation.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-zep
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R8
+  citation_role: agent_memory_source
+  target: data/raw/webpage/langchain-long-term-memory-docs/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/langchain-long-term-memory-docs/text.txt
+  pinned_version_exists: true
+  why_cited: Provides documentation evidence for persistent JSON memory stores with tool-mediated read/write/search.
+  evidence_summary: The docs describe long-term memory across sessions and conversations, JSON documents
+    organized by namespace/key, store.put/get/search operations, and read/write tools.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/langchain-long-term-memory-docs
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R9
+  citation_role: process_scope_source
+  target: .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/evidence_scope.yaml
+  target_exists: true
+  target_version: planning_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_095000_worker_node_planning_vs_rag_write_loop/evidence_scope.yaml
+  pinned_version_exists: true
+  why_cited: Pins the generation boundary, allowed sources, prior-KB roles, and forbidden claim classes
+    for audit.
+  evidence_summary: The evidence scope authorizes bounded generation and forbids anti-RAG, superiority,
+    empirical, adoption, enterprise, scale, broad comparison, and uncited adjacent-system claims.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: planning_snapshot
+  cited_source: null
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R10
+  citation_role: prior_kb_anchor
+  target: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around the local canon and overclaim boundaries for LLM Wiki nodes.
+  evidence_summary: The adopted node treats the Karpathy gist as bounded canon and limits broader launch,
+    adoption, ecosystem, and empirical claims.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_062000_llm_wiki_origin_and_canon
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R11
+  citation_role: prior_kb_anchor
+  target: kb/20260524_072000_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around LLM Wiki as source-preserving maintained artifact, not as authority
+    for new RAG facts.
+  evidence_summary: The adopted node defines LLM Wiki through raw sources, persistent compiled wiki artifacts,
+    schema/instruction governance, and maintenance loops.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_072000_llm_wiki_working_definition
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R12
+  citation_role: prior_kb_anchor
+  target: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around raw/wiki/schema architecture while keeping adjacent-system claims
+    tied to primary sources.
+  evidence_summary: The adopted node distinguishes raw source layer, compiled wiki layer, schema/instruction
+    layer, and supporting infrastructure such as index/log/tooling.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_080000_llm_wiki_three_layer_architecture
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R13
+  citation_role: prior_kb_anchor
+  target: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around the LLM Wiki maintenance workflow, not primary evidence for RAG
+    or memory systems.
+  evidence_summary: The adopted node bounds the LLM Wiki workflow around ingest/source intake, compile/wiki
+    update, query/synthesis, file-back/update, lint/health-check, and index/log maintenance.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: primary_implementation_support
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports implementation-specific claims about source attribution, paragraph markers, claim-level
+    line ranges, lint validation, review queue, confidence/provenance/contradiction metadata, viewer provenance
+    chips, and roadmap boundaries.
+  evidence_summary: The README documents source frontmatter, paragraph and line-range citations, lint
+    checks for malformed or impossible citations, review approve/reject flow, metadata and lint rules,
+    read-only viewer provenance/citation chips, and future roadmap items for rollback, audit, stale checks,
+    freshness reports, and durable operation logs.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: primary_implementation_support
+  target: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports implementation-specific claims about source hashes, selected-source traceability,
+    hand-edit protection, draft review, rejection feedback, low-confidence/single-source annotations,
+    stale linting, and source-supported item ledger.
+  evidence_summary: The README describes persisted source question/selected pages/source page body hashes,
+    update-in-place refusal after manual edits, interactive review and rejection feedback, low-confidence
+    and single-source annotations, stale linting, and conservative knowledge item handling.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-kytmanov-obsidian-local
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: primary_llm_wiki_research_support
+  target: data/raw/arxiv/arxiv-wicer/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-wicer/text.txt
+  pinned_version_exists: true
+  why_cited: Supports the direct LLM Wiki claim that blind compilation can drop critical facts and that
+    WiCER addresses the compilation gap with evaluate/refine.
+  evidence_summary: The abstract frames LLM Wiki as compiling domain knowledge into a persistent artifact,
+    identifies a compilation gap from blind compilation discarding critical facts, and summarizes WiCER's
+    evaluate/refine approach and reported bounded results.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-wicer
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '4'
+  citation_role: adjacent_citation_audit_support
+  target: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supports the bounded analogy that generated citations need separate citation-quality evaluation
+    and may only partially support a claim.
+  evidence_summary: ALCE defines citation quality through citation recall and precision, requires retrieval
+    of supporting evidence, discusses partial-support cases and NLI limits, and separates citation quality
+    from correctness and fluency.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-alce
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '5'
+  citation_role: primary_llm_wiki_method_and_limit_support
+  target: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supports details of the WiCER evaluate-diagnose-recompile method and the limits that prevent
+    overgeneralizing WiCER into universal production reliability.
+  evidence_summary: The bundle describes diagnostic probes, failure diagnosis, preservation constraints,
+    targeted fact pinning, random knowledge displacement, and limitations around hardware, model, RAG
+    baseline, validation scope, and LLM-as-judge.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-wicer
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '6'
+  citation_role: adjacent_security_threat_model
+  target: data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only the adjacent threat model that persistent agent memory can become a cross-session
+    attack surface through untrusted observations.
+  evidence_summary: The abstract describes environment-injected trajectory-based agent memory poisoning,
+    where observations can contaminate memory and activate during later sessions or sites; the card does
+    not transfer its measured rates to LLM Wiki.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-etamp-memory-poisoning
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '7'
+  citation_role: adjacent_security_threat_model
+  target: data/raw/arxiv/arxiv-poisonedrag/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-poisonedrag/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only the adjacent analogy that external knowledge databases in retrieval systems
+    can be attack surfaces for malicious text injection.
+  evidence_summary: The abstract states that RAG grounds generation on an external knowledge database
+    and proposes knowledge corruption attacks by injecting malicious texts; the card excludes transfer
+    of reported attack rates.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-poisonedrag
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '8'
+  citation_role: adjacent_security_threat_model
+  target: data/raw/arxiv/arxiv-graph-poisoning/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-graph-poisoning/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only the adjacent analogy that transforming raw text into a compiled structure can
+    introduce poisoning risks.
+  evidence_summary: The abstract describes GraphRAG converting raw text into structured knowledge graphs
+    and shows that modifying source text can manipulate graph construction and downstream reasoning; the
+    card does not claim direct LLM Wiki exploitation.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-graph-poisoning
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '9'
+  citation_role: adjacent_governance_framing
+  target: data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Provides adjacent governance vocabulary for drift, entrenchment, source preservation, audit
+    records, and audit sensitivity without serving as empirical incident evidence.
+  evidence_summary: The source frames personal wiki-style memory systems around TRIAGE, DECAY, CONTEXTUALIZE,
+    CONSOLIDATE, and AUDIT; it requires preserving linkouts/original sources and audit records before
+    state transitions while noting audit sensitivity as an open problem.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-memory-as-metabolism
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '10'
+  citation_role: broad_framework_vocabulary
+  target: data/raw/webpage/owasp-llm-top10-2025/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/owasp-llm-top10-2025/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only the existence of a broad OWASP LLM application security framework, not detailed
+    LLM Wiki-specific category claims.
+  evidence_summary: The captured page describes the OWASP Top 10 for LLM Applications as a community-driven
+    effort about AI application security issues; detailed category bodies were not used.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/owasp-llm-top10-2025
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '11'
+  citation_role: broad_framework_vocabulary
+  target: data/raw/webpage/owasp-agentic-top10-2026/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/owasp-agentic-top10-2026/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only the existence of a broad agentic AI security framework, not LLM Wiki-specific
+    obligations.
+  evidence_summary: The captured page describes the OWASP Top 10 for Agentic Applications 2026 as a peer-reviewed
+    framework for autonomous and agentic AI system risks.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/owasp-agentic-top10-2026
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '12'
+  citation_role: broad_governance_vocabulary
+  target: data/raw/webpage/nist-gai-profile/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/nist-gai-profile/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only voluntary GAI risk-management vocabulary and does not impose LLM Wiki-specific
+    compliance requirements.
+  evidence_summary: The page identifies the NIST GAI Profile as a cross-sectoral companion to AI RMF 1.0,
+    intended for voluntary use in risk management.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/nist-gai-profile
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '13'
+  citation_role: scope_boundary
+  target: .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/evidence_scope.yaml
+  target_exists: true
+  target_version: planning_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/evidence_scope.yaml
+  pinned_version_exists: true
+  why_cited: Pins the planner-authorized evidence boundaries, source categories, prior-KB limits, and
+    forbidden claim classes for this candidate.
+  evidence_summary: The evidence scope separates primary LLM Wiki evidence, adjacent evidence, framework/discourse/process
+    sources, and prior-KB anchors; it forbids detailed OWASP claims, enterprise sufficiency, incident-rate
+    claims, and measured effectiveness.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: planning_snapshot
+  cited_source: null
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '14'
+  citation_role: early_discourse_seed
+  target: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only early discourse around staleness, correctness, drift, lint scaling, review,
+    second-order information, and source backlinks.
+  evidence_summary: The thread includes comments about raw-source backlinks, staleness, correctness, drift,
+    contradiction lint scaling, reviewing documentation changes, and concerns about LLM-generated wiki
+    noise.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: hacker_news/hacker-news-original-thread
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '15'
+  citation_role: process_gap_boundary
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Supports the explicit evidence-gap list and prevents unsupported expansion into enterprise,
+    compliance, privacy, security, licensing, and incident claims.
+  evidence_summary: The report marks risks/governance coverage as medium and identifies missing evidence
+    around privacy/security, access control, legal/compliance, poisoning, prompt injection, licensing,
+    and institutional review.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '16'
+  citation_role: vendor_control_vocabulary
+  target: data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+  pinned_version_exists: true
+  why_cited: Provides only vendor control vocabulary for governance mechanisms such as policy, sandboxing,
+    tracing, lifecycle, and kill-switch style controls.
+  evidence_summary: The captured docs list runtime governance concepts including policy enforcement, zero-trust
+    identity, execution sandboxing, SRE, kill switch, monitoring, lifecycle, compliance checks, and audit-related
+    mechanisms.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/microsoft-agent-governance-toolkit-docs
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: primary_implementation_source
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides direct implementation evidence for source attribution, claim-level provenance, lint,
+    review queue, uncertainty/contradiction metadata, viewer provenance chips, and roadmap boundaries.
+  evidence_summary: The README is the strongest source for concrete LLM Wiki provenance and review controls
+    in this node.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: primary_implementation_source
+  target: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides direct implementation evidence for local-first source hashes, review feedback, hand-edit
+    protection, weak-evidence annotations, stale linting, and source-supported item ledger.
+  evidence_summary: The README documents traceability and review controls in an Obsidian-local LLM Wiki
+    implementation.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-kytmanov-obsidian-local
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R3
+  citation_role: primary_llm_wiki_research_source
+  target: data/raw/arxiv/arxiv-wicer/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-wicer/text.txt
+  pinned_version_exists: true
+  why_cited: Provides LLM Wiki-specific research evidence for compilation gap, dropped facts, and evaluate/refine.
+  evidence_summary: WiCER supports compile/maintenance risk and bounded evaluate/refine controls.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-wicer
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R4
+  citation_role: primary_llm_wiki_method_source
+  target: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Provides method and limitation details needed to avoid overclaiming WiCER's results.
+  evidence_summary: The bundle documents diagnostic probes, fact pinning, failure-set behavior, limitations,
+    and deployment caveats.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-wicer
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R5
+  citation_role: adjacent_citation_evaluation_source
+  target: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Provides adjacent evidence that citation generation requires citation-quality evaluation
+    and can have partial-support edge cases.
+  evidence_summary: ALCE separates citation quality from correctness and fluency and discusses citation
+    recall, precision, human evaluation, and NLI limitations.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-alce
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R6
+  citation_role: adjacent_security_source
+  target: data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-etamp-memory-poisoning/text.txt
+  pinned_version_exists: true
+  why_cited: Provides adjacent persistent-memory poisoning vocabulary for untrusted observations entering
+    durable memory.
+  evidence_summary: eTAMP is used only as a threat-model analogy for persistent memory, not as LLM Wiki
+    incident evidence.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-etamp-memory-poisoning
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R7
+  citation_role: adjacent_security_source
+  target: data/raw/arxiv/arxiv-poisonedrag/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-poisonedrag/text.txt
+  pinned_version_exists: true
+  why_cited: Provides adjacent RAG knowledge-database poisoning vocabulary for external knowledge stores.
+  evidence_summary: PoisonedRAG is used only to frame database/source poisoning risk by analogy.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-poisonedrag
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R8
+  citation_role: adjacent_security_source
+  target: data/raw/arxiv/arxiv-graph-poisoning/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-graph-poisoning/text.txt
+  pinned_version_exists: true
+  why_cited: Provides adjacent graph-construction poisoning vocabulary for compiled structures derived
+    from raw text.
+  evidence_summary: The paper supports a source-transformation attack-surface analogy, not direct LLM
+    Wiki exploitation.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-graph-poisoning
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R9
+  citation_role: adjacent_governance_source
+  target: data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Provides adjacent governance vocabulary for drift, entrenchment, source preservation, audit
+    records, and audit sensitivity.
+  evidence_summary: The source is normative/theoretical and is used for framing, not measured LLM Wiki
+    effectiveness.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-memory-as-metabolism
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R10
+  citation_role: broad_framework_source
+  target: data/raw/webpage/owasp-llm-top10-2025/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/owasp-llm-top10-2025/text.txt
+  pinned_version_exists: true
+  why_cited: Provides only broad LLM application security framework context.
+  evidence_summary: The local capture supports framework existence, not detailed category claims.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/owasp-llm-top10-2025
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R11
+  citation_role: broad_framework_source
+  target: data/raw/webpage/owasp-agentic-top10-2026/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/owasp-agentic-top10-2026/text.txt
+  pinned_version_exists: true
+  why_cited: Provides only broad agentic application security framework context.
+  evidence_summary: The local capture supports framework existence, not LLM Wiki-specific obligations.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/owasp-agentic-top10-2026
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R12
+  citation_role: broad_governance_source
+  target: data/raw/webpage/nist-gai-profile/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/nist-gai-profile/text.txt
+  pinned_version_exists: true
+  why_cited: Provides voluntary GAI risk-management vocabulary.
+  evidence_summary: The source is used for general governance vocabulary, not compliance sufficiency.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/nist-gai-profile
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R13
+  citation_role: vendor_control_vocabulary_source
+  target: data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt
+  pinned_version_exists: true
+  why_cited: Provides control vocabulary such as policy enforcement, sandboxing, tracing, lifecycle, and
+    kill switch.
+  evidence_summary: The docs are vendor documentation and are not used as proof of LLM Wiki control effectiveness.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/microsoft-agent-governance-toolkit-docs
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R14
+  citation_role: discourse_context_source
+  target: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/hacker_news/hacker-news-original-thread/text.txt
+  pinned_version_exists: true
+  why_cited: Provides early discourse around staleness, correctness, drift, source backlinks, lint scaling,
+    review, and second-order information.
+  evidence_summary: The thread is used as discourse only and not as technical authority.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: hacker_news/hacker-news-original-thread
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R15
+  citation_role: process_scope_source
+  target: .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/evidence_scope.yaml
+  target_exists: true
+  target_version: planning_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_105000_worker_node_planning_risks_governance_provenance/evidence_scope.yaml
+  pinned_version_exists: true
+  why_cited: Pins allowed source categories, forbidden uses, retrieval status, and prior-KB limits for
+    this candidate.
+  evidence_summary: The planning scope is used to keep the node bounded and audit-ready.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: planning_snapshot
+  cited_source: null
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R16
+  citation_role: process_gap_source
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Provides KB-internal evidence gaps that block broader governance, legal, privacy, enterprise,
+    and incident claims.
+  evidence_summary: The report documents under-covered risk/governance areas and deferred retrieval needs.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R17
+  citation_role: prior_kb_anchor
+  target: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around LLM Wiki canon and overclaim boundaries without serving as new
+    risk/governance evidence.
+  evidence_summary: The prior node is used only as a terminology and scope anchor.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_062000_llm_wiki_origin_and_canon
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R18
+  citation_role: prior_kb_anchor
+  target: kb/20260524_072000_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around LLM Wiki as source-preserving maintained artifact without serving
+    as primary risk evidence.
+  evidence_summary: The prior node anchors the local definition but does not support new governance facts.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_072000_llm_wiki_working_definition
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R19
+  citation_role: prior_kb_anchor
+  target: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around raw/wiki/schema layers and helps keep risk claims tied to layer
+    boundaries.
+  evidence_summary: The prior node is a boundary anchor only.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_080000_llm_wiki_three_layer_architecture
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R20
+  citation_role: prior_kb_anchor
+  target: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around LLM Wiki workflow terms such as ingest, compile, query, file-back,
+    and lint.
+  evidence_summary: The prior node anchors workflow vocabulary only.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R21
+  citation_role: prior_kb_anchor
+  target: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around artifact/workflow boundaries between LLM Wiki and adjacent retrieval
+    or memory systems.
+  evidence_summary: The prior node is used only to avoid scope drift, not as primary evidence for risk,
+    governance, or security facts.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: primary_implementation_support
+  target: data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports source-specific claims that one local capture describes a UI/desktop/web-app implementation
+    with two-step ingest, multimodal input, graph/vector/search, persistent queue, review, web clipper,
+    and local API surfaces.
+  evidence_summary: The README is used as project self-description for this implementation family, not
+    as validation of adoption or quality.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-nashsu-llm-wiki
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: primary_implementation_support
+  target: data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports source-specific claims about the coding-agent skill/template family and raw/wiki/index/log/overview/sources/entities/concepts/syntheses/graph
+    file structure.
+  evidence_summary: The README documents file layout and ingest/query/lint/graph workflows for one agent-skill
+    implementation.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-samuraigpt-llm-wiki-agent
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: primary_implementation_support
+  target: data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports source-specific claims about skill/plugin UX, graph visualization, confidence labels,
+    cache, hooks, reports, comparison tables, and timeline outputs.
+  evidence_summary: The README is treated as project self-description and not as independent effectiveness
+    evidence.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-sdyckjq-llm-wiki-skill
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '4'
+  citation_role: primary_implementation_support
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports claims about CLI/MCP compiler operations, review, source markers, source-range citations,
+    confidence and contradiction metadata, and retrieval/reranking.
+  evidence_summary: The README documents ingest, compile, query, view, lint, watch, candidate review,
+    citations, provenance controls, and retrieval mechanics.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '5'
+  citation_role: primary_implementation_support
+  target: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports claims about Obsidian/local-first commands, provider switching, source hashes, rejection
+    feedback, draft annotations, hand-edit protection, and no-vector query mode.
+  evidence_summary: The README documents an Obsidian-oriented local workflow and human-review/provenance
+    controls.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-kytmanov-obsidian-local
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '6'
+  citation_role: adjacent_implementation_support
+  target: data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports source-specific adjacent OpenKB/long-document claims while preserving the boundary
+    that these features are not universal LLM Wiki capabilities.
+  evidence_summary: The README documents long-PDF handling, MarkItDown conversion, multimodality, wiki
+    foundation, query/chat generators, and skill factory for OpenKB.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-vectifyai-openkb
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '7'
+  citation_role: adjacent_implementation_support
+  target: data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports source-specific adjacent MCP/graph-vault claims while preserving the boundary that
+    these capabilities are not required by all LLM Wiki implementations.
+  evidence_summary: The README documents Markdown/Obsidian vault graph traversal, auto-wikilinks, trigram
+    search, Louvain community detection, D3 graph view, and slash-command wrappers.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-ngmeyer-librarian-mcp
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '8'
+  citation_role: package_registry_support
+  target: data/raw/pypi/pypi-my-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/pypi/pypi-my-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Supports package metadata and package self-description for the Python package/library family.
+  evidence_summary: The PyPI page records version, beta classifier, MIT license, Python version requirement,
+    and a summary about turning folders into queryable knowledge graphs.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: pypi/pypi-my-llm-wiki
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '9'
+  citation_role: package_registry_support
+  target: data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+  pinned_version_exists: true
+  why_cited: Supports package metadata and package self-description for an MCP package with Claude Code
+    skills and local storage safeguards.
+  evidence_summary: The PyPI page records version, alpha classifier, MIT license, Python requirement,
+    MCP server and skills, local filesystem storage, atomic writes, etag checks, log integrity, and path
+    containment.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: pypi/pypi-llm-wiki-mcp
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '10'
+  citation_role: plugin_directory_support
+  target: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  pinned_version_exists: true
+  why_cited: Supports plugin/runtime distribution claims for standalone CLI, stdio MCP server, config
+    generator, OpenClaw host entry, raw/wiki/schema runtime, multimodal raw kinds, source-id repair, compile-readiness,
+    gap mapping, and deterministic lint.
+  evidence_summary: The directory page is used as self-description and not as install or usage evidence.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/clawhub-llm-wiki-karpathy
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '11'
+  citation_role: project_page_support
+  target: data/raw/webpage/llm-wiki-net/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/llm-wiki-net/text.txt
+  pinned_version_exists: true
+  why_cited: Supports multi-runtime command/plugin self-description and claims about topic hubs, raw sources,
+    compiled articles, audit, outputs, archive, inventory, and dataset manifests.
+  evidence_summary: The project page is used as source-specific implementation evidence, not independent
+    adoption evidence.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/llm-wiki-net
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '12'
+  citation_role: metadata_snapshot_support
+  target: data/raw/github_repo/repo-nashsu-llm-wiki/github_repo.json
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-nashsu-llm-wiki/github_repo.json
+  pinned_version_exists: true
+  why_cited: Supports the use of local GitHub metadata only as snapshot fields and anchors the warning
+    against adoption or quality inference.
+  evidence_summary: The JSON file records repository metadata fields such as stars, forks, open issues,
+    language, license, and timestamps.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-nashsu-llm-wiki
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '13'
+  citation_role: process_evidence_support
+  target: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/evidence_matrix.yaml
+  target_exists: true
+  target_version: source_mining_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/evidence_matrix.yaml
+  pinned_version_exists: true
+  why_cited: Supports the overall source-to-claim mapping and evidence-quality distinctions used in this
+    card.
+  evidence_summary: The matrix separates primary implementation evidence, metadata snapshots, package/plugin
+    pages, adjacent implementations, and process/gap notes.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_mining_snapshot
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '14'
+  citation_role: process_scope_support
+  target: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem/evidence_scope.md
+  target_exists: true
+  target_version: planning_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem/evidence_scope.md
+  pinned_version_exists: true
+  why_cited: Supports allowed claim types, forbidden claim types, source boundaries, prior-KB limits,
+    and the requirement to keep References before final Footnotes.
+  evidence_summary: The scope defines this node as a bounded implementation landscape and excludes adoption,
+    ranking, quality, maturity, and broad trend claims.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: planning_snapshot
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '15'
+  citation_role: process_gap_support
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Supports the evidence-gap claims around package downloads, plugin installs, active users,
+    deployment reports, issue/PR analysis, and independent quality evaluation.
+  evidence_summary: The report says tooling/ecosystem coverage is enough for a preliminary landscape while
+    adoption/community/deployment metrics remain weak or missing.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '16'
+  citation_role: process_framework_support
+  target: reports/coverage_framework.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: reports/coverage_framework.md
+  pinned_version_exists: true
+  why_cited: Supports the representative-survey discipline and the rule that implementation claims need
+    repo/docs citation and no single implementation should be definitive.
+  evidence_summary: The framework distinguishes observed facts, interpretations, hypotheses, evaluation
+    results, and strategic judgments.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: primary_implementation_source
+  target: data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-nashsu-llm-wiki/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides direct README self-description for the UI/desktop/web-app implementation family
+    and its ingest, multimodal, graph/search, queue, review, clipper, and API surfaces.
+  evidence_summary: The README supports source-specific claims about one app-oriented LLM Wiki implementation.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-nashsu-llm-wiki
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: primary_implementation_source
+  target: data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-samuraigpt-llm-wiki-agent/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides direct README evidence for coding-agent skill/template structure and raw/wiki/index/log/graph
+    file motifs.
+  evidence_summary: The README supports claims about file layout and ingest/query/lint/graph workflows
+    in a coding-agent implementation.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-samuraigpt-llm-wiki-agent
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R3
+  citation_role: primary_implementation_source
+  target: data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-sdyckjq-llm-wiki-skill/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides README self-description for skill/plugin UX, confidence labels, cache, hooks, reports,
+    comparisons, and timeline outputs.
+  evidence_summary: The README is used as project self-description, not as independent effectiveness or
+    adoption evidence.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-sdyckjq-llm-wiki-skill
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R4
+  citation_role: primary_implementation_source
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides direct implementation evidence for a CLI/MCP compiler with ingest, compile, query,
+    view, lint, watch, review, citations, provenance, confidence, contradiction metadata, and retrieval/reranking.
+  evidence_summary: The README is a strong engineering source for compiler and provenance/control surfaces.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R5
+  citation_role: primary_implementation_source
+  target: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides direct implementation evidence for local-first Obsidian runtime commands, provider
+    switching, source hashes, review feedback, draft annotations, and hand-edit protection.
+  evidence_summary: The README supports source-specific claims about an Obsidian/local-first LLM Wiki
+    workflow.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-kytmanov-obsidian-local
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R6
+  citation_role: adjacent_implementation_source
+  target: data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-vectifyai-openkb/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides adjacent long-document/OpenKB-like evidence for PageIndex-style long-PDF handling,
+    MarkItDown conversion, multimodality, wiki foundation, query/chat generators, and skill factory.
+  evidence_summary: The README is used only for source-specific adjacent implementation breadth and not
+    to generalize capabilities to all LLM Wiki implementations.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-vectifyai-openkb
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R7
+  citation_role: adjacent_implementation_source
+  target: data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-ngmeyer-librarian-mcp/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides adjacent MCP/graph-vault evidence for Markdown/Obsidian vault graph traversal, auto-wikilinks,
+    trigram search, Louvain community detection, D3 graph view, and slash-command wrappers.
+  evidence_summary: The README supports graph-vault and MCP adjacency, not a universal LLM Wiki requirement.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-ngmeyer-librarian-mcp
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R8
+  citation_role: package_registry_source
+  target: data/raw/pypi/pypi-my-llm-wiki/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/pypi/pypi-my-llm-wiki/text.txt
+  pinned_version_exists: true
+  why_cited: Provides registry metadata and package self-description for the Python package/library family.
+  evidence_summary: The local PyPI capture supports version, maturity classifier, license, Python requirement,
+    and package summary claims, not downloads or usage.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: pypi/pypi-my-llm-wiki
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R9
+  citation_role: package_registry_source
+  target: data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/pypi/pypi-llm-wiki-mcp/text.txt
+  pinned_version_exists: true
+  why_cited: Provides registry metadata and package self-description for the MCP package family and local
+    storage mechanics.
+  evidence_summary: The local PyPI capture supports version, alpha classifier, license, Python requirement,
+    MCP/skills, local filesystem, atomic write, etag, log-integrity, and path-containment claims.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: pypi/pypi-llm-wiki-mcp
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R10
+  citation_role: plugin_directory_source
+  target: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  pinned_version_exists: true
+  why_cited: Provides plugin-directory self-description for a CLI/MCP/OpenClaw-compatible runtime and
+    raw/wiki/schema implementation surfaces.
+  evidence_summary: The page is treated as distribution-listing evidence, not usage or install evidence.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/clawhub-llm-wiki-karpathy
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R11
+  citation_role: project_page_source
+  target: data/raw/webpage/llm-wiki-net/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/webpage/llm-wiki-net/text.txt
+  pinned_version_exists: true
+  why_cited: Provides project-page self-description for multi-runtime command/plugin support and implementation
+    artifacts such as topic hubs, raw sources, compiled articles, audit, outputs, archive, inventory,
+    and dataset manifests.
+  evidence_summary: The page supports source-specific multi-runtime implementation claims and is not used
+    as independent adoption evidence.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: webpage/llm-wiki-net
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R12
+  citation_role: metadata_snapshot_source
+  target: data/raw/github_repo/repo-nashsu-llm-wiki/github_repo.json
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-nashsu-llm-wiki/github_repo.json
+  pinned_version_exists: true
+  why_cited: Provides an example of local GitHub metadata fields and anchors the rule that stars, forks,
+    issues, language, license, and timestamps are metadata only.
+  evidence_summary: The metadata snapshot is used only for repository surface fields and not for adoption,
+    ranking, quality, or maturity claims.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-nashsu-llm-wiki
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R13
+  citation_role: process_evidence_map
+  target: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/evidence_matrix.yaml
+  target_exists: true
+  target_version: source_mining_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_122000_worker_source_mining_implementation_ecosystem/evidence_matrix.yaml
+  pinned_version_exists: true
+  why_cited: Pins the source-to-claim mapping, source quality notes, and local-complete retrieval state
+    used for generation.
+  evidence_summary: The matrix separates primary implementation sources, metadata snapshots, package/plugin
+    pages, adjacent implementations, and process/gap notes.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_mining_snapshot
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R14
+  citation_role: process_scope_source
+  target: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem/evidence_scope.md
+  target_exists: true
+  target_version: planning_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_123000_worker_node_planning_implementation_ecosystem/evidence_scope.md
+  pinned_version_exists: true
+  why_cited: Pins allowed inputs, forbidden claim types, prior-KB limits, and the footnote layout contract
+    for this candidate.
+  evidence_summary: The scope is used to keep generation inside a bounded implementation landscape.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: planning_snapshot
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R15
+  citation_role: process_gap_source
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Provides gap framing for missing adoption, package download, plugin install, deployment,
+    quality, and community-discourse evidence.
+  evidence_summary: The report supports caution around adoption and implementation-quality claims while
+    recognizing enough tooling/ecosystem coverage for a preliminary landscape.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R16
+  citation_role: process_framework_source
+  target: reports/coverage_framework.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: reports/coverage_framework.md
+  pinned_version_exists: true
+  why_cited: Provides evidence discipline requiring representative implementation survey, repo/docs citations,
+    and avoidance of a single definitive implementation.
+  evidence_summary: The framework supplies process constraints for claim types and source quality.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R17
+  citation_role: prior_kb_anchor
+  target: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around the LLM Wiki origin and canon boundary without serving as new
+    implementation evidence.
+  evidence_summary: Used only as a boundary anchor.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_062000_llm_wiki_origin_and_canon
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R18
+  citation_role: prior_kb_anchor
+  target: kb/20260524_072000_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around what counts as LLM Wiki while leaving implementation facts to
+    primary sources.
+  evidence_summary: Used only as a vocabulary and boundary anchor.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_072000_llm_wiki_working_definition
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R19
+  citation_role: prior_kb_anchor
+  target: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around raw/wiki/schema layer language without supporting new implementation
+    facts.
+  evidence_summary: Used only to keep layer vocabulary stable.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_080000_llm_wiki_three_layer_architecture
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R20
+  citation_role: prior_kb_anchor
+  target: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around ingest, compile, query, lint, and writeback vocabulary.
+  evidence_summary: Used only as workflow terminology anchor.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R21
+  citation_role: prior_kb_anchor
+  target: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around adjacent-system boundaries and prevents collapsing every retrieval
+    or memory system into LLM Wiki.
+  evidence_summary: Used only as boundary anchor.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R22
+  citation_role: prior_kb_anchor
+  target: kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around provenance and citation-audit boundary language without serving
+    as implementation ecosystem evidence.
+  evidence_summary: Used only as a boundary anchor for provenance wording.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '1'
+  citation_role: primary_direct_evaluation_support
+  target: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supports the claim that WiCER directly evaluates a wiki-memory compile-evaluate-refine loop
+    and should be treated as the strongest direct evidence, with model, hardware, RAG baseline, validation,
+    judge, and scope limits.
+  evidence_summary: The source bundle includes the WiCER algorithm, RepLiQA setup, diagnostic probes,
+    results, ablation, reproducibility notes, and limitations.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-wicer
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '2'
+  citation_role: primary_direct_metadata_support
+  target: data/raw/arxiv/arxiv-wicer/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-wicer/text.txt
+  pinned_version_exists: true
+  why_cited: Supports title, abstract-level summary, RepLiQA scope, compilation-gap framing, and high-level
+    result wording for WiCER.
+  evidence_summary: The abstract describes the LLM Wiki pattern, compilation gap, 17 RepLiQA domains,
+    6,800 questions, baseline comparisons, WiCER improvement, ablation, and source availability.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-wicer
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '3'
+  citation_role: cautious_economic_framing_support
+  target: data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+  pinned_version_exists: true
+  why_cited: Supports only the narrow point that economic/token-cost claims need explicit baseline, query
+    sequence, method, reproducibility, and projection boundaries.
+  evidence_summary: The abstract records four sequential queries, matched RAG baseline, token consumption
+    comparison, dynamic ROI framing, and projections; this card does not use it as broad ROI or enterprise
+    proof.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-knowledge-compounding
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '4'
+  citation_role: implementation_self_description_support
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports implementation-described source markers, line-range citations, citation linting,
+    confidence and contradiction metadata, review queues, and future evaluation harness gap.
+  evidence_summary: The README is used as self-description of auditability controls, not as measured reliability
+    evidence.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '5'
+  citation_role: implementation_self_description_support
+  target: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  pinned_version_exists: true
+  why_cited: Supports implementation-described compare previews, source hashes, non-overwrite behavior,
+    item audit, rejection feedback, review, and low-confidence/single-source warnings.
+  evidence_summary: The README is used as source-specific implementation self-description only.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-kytmanov-obsidian-local
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '6'
+  citation_role: adjacent_citation_evaluation_support
+  target: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supports the distinction between citation recall, citation precision, citation support, human
+    evaluation, and partial-support caveats.
+  evidence_summary: ALCE provides adjacent citation-quality vocabulary and cautions; it is not direct
+    LLM Wiki evidence.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-alce
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '7'
+  citation_role: adjacent_rag_evaluation_support
+  target: data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supports adjacent terms faithfulness, answer relevance, context relevance, and reference-free
+    evaluation.
+  evidence_summary: Ragas vocabulary is useful for LLM Wiki query/synthesis evaluation checklists but
+    remains RAG-centered.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-ragas
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '8'
+  citation_role: adjacent_rag_evaluation_support
+  target: data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supports adjacent evaluator-calibration vocabulary, human preference validation, PPI confidence
+    intervals, and domain-shift boundaries.
+  evidence_summary: ARES evaluates RAG triples and evaluator confidence, not persistent wiki artifacts.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-ares
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '9'
+  citation_role: adjacent_rag_diagnostic_support
+  target: data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supports claim-level diagnostic vocabulary including claim recall, context precision, context
+    utilization, faithfulness, hallucination, and noise sensitivity.
+  evidence_summary: RAGChecker provides adjacent module-diagnostic vocabulary and is not used as direct
+    LLM Wiki benchmark proof.
+  propagation_strength: strong
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-ragchecker
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '10'
+  citation_role: process_framework_support
+  target: reports/coverage_framework.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: reports/coverage_framework.md
+  pinned_version_exists: true
+  why_cited: Supports local requirements for evidence grades, claim records, citation discipline, evaluation
+    dimensions, baselines, methods, and limitations.
+  evidence_summary: The framework instructs this KB to distinguish observed facts, interpretations, hypotheses,
+    evaluation results, and strategic judgments.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '11'
+  citation_role: process_gap_support
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Supports the statement that evaluation/quality coverage is medium and that direct replication,
+    broader tests, drift measurement, citation audits, and human expert evaluation remain missing.
+  evidence_summary: The report identifies WiCER as strongest benchmark-style evidence while listing non-blocking
+    but important evidence gaps.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '12'
+  citation_role: process_evidence_map_support
+  target: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_matrix.yaml
+  target_exists: true
+  target_version: source_mining_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_matrix.yaml
+  pinned_version_exists: true
+  why_cited: Supports source tier separation and claim-to-source boundaries used throughout the card.
+  evidence_summary: The matrix labels WiCER as primary direct evidence, Knowledge Compounding as narrow
+    economic framing, READMEs as implementation self-description, RAG/citation papers as adjacent vocabulary,
+    and process reports as gap/process sources.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_mining_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '13'
+  citation_role: process_gap_boundary_support
+  target: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_gaps.md
+  target_exists: true
+  target_version: source_mining_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_gaps.md
+  pinned_version_exists: true
+  why_cited: Supports the explicit list of claims to avoid and future evidence needed before stronger
+    evaluation statements.
+  evidence_summary: The gap note forbids superiority, solved-hallucination, proven-reliability, universal
+    scale, general ROI, and direct-transfer claims.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_mining_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '14'
+  citation_role: deferred_retrieval_support
+  target: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/retrieval_requests.md
+  target_exists: true
+  target_version: source_mining_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/retrieval_requests.md
+  pinned_version_exists: true
+  why_cited: Supports the statement that further retrieval is useful but not required for this bounded
+    first version.
+  evidence_summary: Deferred retrieval includes WiCER code/logs, Knowledge Compounding full extraction,
+    direct local citation audits, independent replications, negative cases, and user studies.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_mining_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: footnote
+  citation_id: '15'
+  citation_role: process_scope_support
+  target: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence/evidence_scope.yaml
+  target_exists: true
+  target_version: planning_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence/evidence_scope.yaml
+  pinned_version_exists: true
+  why_cited: Supports the final boundary statement and the permitted evidence scope for the candidate.
+  evidence_summary: The scope authorizes a bounded first version about evaluation dimensions, evidence
+    levels, citation auditability, and deferred retrieval while excluding broad empirical, production,
+    enterprise, adoption, ROI, benchmark, and generic LLM-eval claims.
+  propagation_strength: strong
+  target_kind: artifact
+  cited_node: null
+  cited_version: planning_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R1
+  citation_role: primary_direct_evaluation_source
+  target: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Provides the strongest direct local evidence for evaluating an LLM Wiki/wiki-memory compile-evaluate-refine
+    loop and its compilation-gap boundary.
+  evidence_summary: Supports evaluation dimensions such as compilation loss, diagnostic probes, refinement
+    iterations, RAG/full-context baselines, model/hardware scope, LLM-as-judge validation, and reproducibility
+    constraints.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-wicer
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R2
+  citation_role: primary_direct_metadata_source
+  target: data/raw/arxiv/arxiv-wicer/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-wicer/text.txt
+  pinned_version_exists: true
+  why_cited: Pins the title, abstract, submission metadata, and high-level summary of WiCER without relying
+    only on the source bundle.
+  evidence_summary: The abstract states the LLM Wiki pattern, compilation gap, RepLiQA scope, baseline
+    comparisons, WiCER iteration result, ablation claim, and source-availability statement.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-wicer
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R3
+  citation_role: cautious_economic_framing_source
+  target: data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-knowledge-compounding/text.txt
+  pinned_version_exists: true
+  why_cited: Provides narrow abstract-level support that economic and token-cost claims need explicit
+    query sequence, baseline, method, and projection boundaries.
+  evidence_summary: The abstract describes a controlled four-query experiment, matched RAG baseline, token
+    consumption comparison, dynamic ROI framing, and projection claims, but this card does not use it
+    as broad ROI proof.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-knowledge-compounding
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R4
+  citation_role: implementation_self_description_source
+  target: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides implementation-described auditability controls such as paragraph source markers,
+    line-range citations, lint validation, confidence/contradiction metadata, review queues, and future
+    evaluation harness gaps.
+  evidence_summary: Used only as project self-description for auditability surfaces, not as proof that
+    these controls are correct or effective.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-atomicstrata-llm-wiki-compiler
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R5
+  citation_role: implementation_self_description_source
+  target: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md
+  pinned_version_exists: true
+  why_cited: Provides implementation-described compare previews, source hashes, hand-edit protection,
+    item audit, rejection feedback, and confidence warnings.
+  evidence_summary: Used only as local-first implementation self-description, not as independent benchmark
+    or reliability evidence.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: github_repo/repo-kytmanov-obsidian-local
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R6
+  citation_role: adjacent_citation_evaluation_vocabulary
+  target: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-alce/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supplies adjacent vocabulary for citation recall, citation precision, human evaluation, and
+    partial-support caveats.
+  evidence_summary: Supports the distinction between citation presence and citation support; it is not
+    direct LLM Wiki evidence.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-alce
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R7
+  citation_role: adjacent_rag_evaluation_vocabulary
+  target: data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supplies adjacent vocabulary for faithfulness, answer relevance, context relevance, and reference-free
+    RAG evaluation.
+  evidence_summary: Used as method vocabulary for grounding and relevance checks, not as a persistent
+    wiki maintenance benchmark.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-ragas
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R8
+  citation_role: adjacent_rag_evaluation_vocabulary
+  target: data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-ares/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supplies adjacent vocabulary for evaluator calibration, context relevance, answer faithfulness,
+    answer relevance, human validation, PPI, confidence intervals, and domain-shift limits.
+  evidence_summary: Used as adjacent evaluation vocabulary only; it does not validate LLM Wiki compiled
+    artifacts.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-ares
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R9
+  citation_role: adjacent_rag_diagnostic_vocabulary
+  target: data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+  target_exists: true
+  target_version: raw_snapshot
+  pinned_version: data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt
+  pinned_version_exists: true
+  why_cited: Supplies adjacent claim-level diagnostic vocabulary for retriever/generator decomposition,
+    claim recall, context precision, faithfulness, hallucination, context utilization, and noise sensitivity.
+  evidence_summary: Used as diagnostic vocabulary only; its RAG setting is not direct LLM Wiki evidence.
+  propagation_strength: medium
+  target_kind: source
+  cited_node: null
+  cited_version: raw_snapshot
+  cited_source: arxiv/arxiv-ragchecker
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R10
+  citation_role: process_framework_source
+  target: reports/coverage_framework.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: reports/coverage_framework.md
+  pinned_version_exists: true
+  why_cited: Provides local process rules for evidence grades, claim records, citation discipline, evaluation
+    dimensions, and judgment gates.
+  evidence_summary: Supports the requirement to label observed facts, interpretations, hypotheses, evaluation
+    results, strategic judgments, baselines, methods, and limitations.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R11
+  citation_role: process_gap_source
+  target: reports/source_gap_review.md
+  target_exists: true
+  target_version: process_snapshot
+  pinned_version: reports/source_gap_review.md
+  pinned_version_exists: true
+  why_cited: Provides local gap status for evaluation/quality coverage and missing direct evidence.
+  evidence_summary: Supports the boundary that evaluation evidence is medium, with WiCER strongest, while
+    replication, provider/model comparisons, drift data, citation audits, and human expert evaluation
+    remain missing.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: process_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R12
+  citation_role: process_evidence_map
+  target: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_matrix.yaml
+  target_exists: true
+  target_version: source_mining_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_matrix.yaml
+  pinned_version_exists: true
+  why_cited: Pins the source-to-claim mapping, source tier labels, confidence notes, and retrieval state
+    used for this candidate.
+  evidence_summary: Separates direct evidence, economic framing, implementation self-description, adjacent
+    vocabulary, process notes, and prior KB anchors.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_mining_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R13
+  citation_role: process_gap_boundary
+  target: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_gaps.md
+  target_exists: true
+  target_version: source_mining_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/evidence_gaps.md
+  pinned_version_exists: true
+  why_cited: Records non-blocking gaps and claims to avoid during generation.
+  evidence_summary: Supports deferred retrieval boundaries for independent replication, local citation
+    audits, long-term drift, provider/model/corpus comparisons, Knowledge Compounding full extraction,
+    and adjacent metric transfer.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_mining_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R14
+  citation_role: deferred_retrieval_boundary
+  target: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/retrieval_requests.md
+  target_exists: true
+  target_version: source_mining_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_132000_worker_source_mining_evaluation_evidence/retrieval_requests.md
+  pinned_version_exists: true
+  why_cited: Identifies future retrieval that is useful but not required for the bounded first version.
+  evidence_summary: Preserves deferred work for WiCER code/logs, Knowledge Compounding full extraction,
+    local adopted-card audits, independent replications, negative cases, and user studies.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: source_mining_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R15
+  citation_role: process_scope_source
+  target: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence/evidence_scope.yaml
+  target_exists: true
+  target_version: planning_snapshot
+  pinned_version: .llmwiki/runs/run_20260524_133000_worker_node_planning_evaluation_evidence/evidence_scope.yaml
+  pinned_version_exists: true
+  why_cited: Pins allowed source tiers, supported sections, unsupported claims, prior-KB policy, and deferred
+    retrieval for this candidate.
+  evidence_summary: Authorizes bounded generation and forbids broad superiority, production reliability,
+    enterprise readiness, adoption/scale, general ROI, benchmark leadership, generic LLM evaluation, and
+    direct transfer of adjacent RAG results.
+  propagation_strength: medium
+  target_kind: artifact
+  cited_node: null
+  cited_version: planning_snapshot
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R16
+  citation_role: prior_kb_anchor
+  target: kb/20260524_072000_llm_wiki_working_definition.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity for the LLM Wiki working definition without serving as new evaluation
+    evidence.
+  evidence_summary: Used only as a vocabulary and boundary anchor.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_072000_llm_wiki_working_definition
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R17
+  citation_role: prior_kb_anchor
+  target: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity for raw/wiki/schema and artifact-layer language without supporting new
+    evaluation claims.
+  evidence_summary: Used only to keep layer vocabulary stable.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_080000_llm_wiki_three_layer_architecture
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R18
+  citation_role: prior_kb_anchor
+  target: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity for ingest, compile, query, lint, review, and writeback vocabulary without
+    acting as evaluation proof.
+  evidence_summary: Used only as workflow terminology anchor.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R19
+  citation_role: prior_kb_anchor
+  target: kb/20260524_094000_llm_wiki_vs_rag_write_loop.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_094000_llm_wiki_vs_rag_write_loop/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around adjacent-system boundaries and prevents superiority or equivalence
+    overclaims.
+  evidence_summary: Used only as a boundary anchor for RAG/GraphRAG/PKM/agent-memory comparisons.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_094000_llm_wiki_vs_rag_write_loop
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R20
+  citation_role: prior_kb_anchor
+  target: kb/20260524_104000_llm_wiki_risks_governance_and_provenance.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_104000_llm_wiki_risks_governance_and_provenance/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around provenance, risk, and citation-audit boundary language.
+  evidence_summary: Used only as provenance/audit vocabulary anchor.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_104000_llm_wiki_risks_governance_and_provenance
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R21
+  citation_role: prior_kb_anchor
+  target: kb/20260524_122000_llm_wiki_implementation_ecosystem.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_122000_llm_wiki_implementation_ecosystem/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around implementation self-description boundaries and ecosystem wording.
+  evidence_summary: Used only as boundary anchor; implementation evidence in this node still comes from
+    raw README sources.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_122000_llm_wiki_implementation_ecosystem
+  cited_version: '"1.0"'
+  cited_source: null
+- citing_node: 20260524_132000_llm_wiki_evaluation_evidence
+  citing_version: '1.0'
+  citation_kind: reference
+  citation_id: R22
+  citation_role: prior_kb_anchor
+  target: kb/20260524_062000_llm_wiki_origin_and_canon.md
+  target_exists: true
+  target_version: '"1.0"'
+  pinned_version: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  pinned_version_exists: true
+  why_cited: Provides continuity around bounded canon and non-goal discipline.
+  evidence_summary: Used only as a boundary anchor, not as evaluation evidence.
+  propagation_strength: medium
+  target_kind: node
+  cited_node: 20260524_062000_llm_wiki_origin_and_canon
+  cited_version: '"1.0"'
+  cited_source: null

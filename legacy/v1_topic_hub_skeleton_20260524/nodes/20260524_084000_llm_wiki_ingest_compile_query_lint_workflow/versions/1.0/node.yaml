@@ -1,0 +1,109 @@
+schema: kb.node_version.v1
+id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+node_id: 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+version: "1.0"
+title: "LLM Wiki 的 ingest/compile/query/lint 维护工作流"
+slug: llm_wiki_ingest_compile_query_lint_workflow
+status: active
+version_status: adopted
+adoption_status: adopted
+adopted: true
+adoption_gate: citation_and_adoption_audit_passed
+version_adopted_at: "2026-05-24T17:04:30+08:00"
+created_at: "2026-05-24T08:55:00+08:00"
+created_by:
+  executor_role: worker_executor
+  run_id: run_20260524_085500_worker_generation_workflow
+  task_packet: .llmwiki/runs/run_20260524_085000_worker_node_planning_workflow/next_task_packet.md
+candidate_id: cand_004_workflow
+candidate_source: .llmwiki/control/knowledge_frontier.yaml
+version_dir: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0
+paths:
+  card: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/card.md
+  provenance: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/provenance.md
+  change: nodes/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow/versions/1.0/change.md
+  kb_view: kb/20260524_084000_llm_wiki_ingest_compile_query_lint_workflow.md
+prior_kb_anchors:
+  - node_id: 20260524_062000_llm_wiki_origin_and_canon
+    version: "1.0"
+    adopted_kb_path: kb/20260524_062000_llm_wiki_origin_and_canon.md
+    pinned_version_path: nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+  - node_id: 20260524_072000_llm_wiki_working_definition
+    version: "1.0"
+    adopted_kb_path: kb/20260524_072000_llm_wiki_working_definition.md
+    pinned_version_path: nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+  - node_id: 20260524_080000_llm_wiki_three_layer_architecture
+    version: "1.0"
+    adopted_kb_path: kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    pinned_version_path: nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+evidence_state: enough_for_first_version
+retrieval_required_before_audit: false
+audit:
+  state: passed
+  run: .llmwiki/runs/run_20260524_090000_worker_audit_workflow/audit_report.md
+  decision: adopt_recommended
+  adoption_run: .llmwiki/runs/run_20260524_091000_worker_adoption_view_workflow
+  required_before_adoption: true
+  required_gates:
+    - object_topic_gate
+    - source_scope_gate
+    - citation_gate
+    - provenance_gate
+    - overclaim_gate
+    - retrieval_gate
+    - language_gate
+    - root_metadata_adoption_gate
+  known_limits:
+    - "The Karpathy gist is the primary abstract workflow source; implementation sources are not treated as universal requirements."
+    - "The node is limited to ingest/source intake, compile/wiki update, query/synthesis, lint/health-check, update/file-back, and index/log maintenance."
+    - "No enterprise readiness, ecosystem maturity, adoption, empirical effectiveness, scale/reliability, or broad comparison claims are made."
+stability:
+  level: first_version_candidate
+  support_eligibility: bounded_workflow_only
+tags:
+  - llm_wiki
+  - workflow
+  - ingest
+  - compile
+  - query
+  - lint
+  - writeback
+  - index_log
+claim_scope:
+  includes:
+    - ingest or source intake from curated raw sources
+    - compile or wiki update into durable markdown/wiki artifacts
+    - query or synthesis over the compiled wiki
+    - lint or health-check for contradictions stale claims orphan pages missing concepts missing cross-references citation/provenance issues and gaps
+    - update or file-back of valuable answers and approved outputs
+    - index and log maintenance as navigation and operation-history infrastructure
+    - directly mined implementation variants for review queues hash checks representation readiness source validation deterministic writes CLI and MCP surfaces
+  excludes:
+    - implementation ecosystem survey
+    - enterprise suitability or governance conclusions
+    - empirical effectiveness benchmark or scale/reliability claims
+    - adoption maturity social metrics or broad market claims
+    - broad comparison with RAG PKM knowledge graphs documentation systems or agent memory
+    - universal requirement for CLI MCP Obsidian vector search representation storage or review queues
+dependencies:
+  raw_source_paths:
+    - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+    - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+    - data/raw/github_repo/repo-atomicstrata-llm-wiki-compiler/repo/README.md
+    - data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt
+  prior_kb_paths:
+    - kb/20260524_062000_llm_wiki_origin_and_canon.md
+    - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+    - kb/20260524_072000_llm_wiki_working_definition.md
+    - nodes/20260524_072000_llm_wiki_working_definition/versions/1.0/card.md
+    - kb/20260524_080000_llm_wiki_three_layer_architecture.md
+    - nodes/20260524_080000_llm_wiki_three_layer_architecture/versions/1.0/card.md
+  process_paths:
+    - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/source_mining.md
+    - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/candidate_frontier_delta.yaml
+    - .llmwiki/runs/run_20260524_084000_worker_source_mining_workflow/loop_delivery.md
+    - .llmwiki/runs/run_20260524_085000_worker_node_planning_workflow/evidence_scope.yaml
+    - .llmwiki/runs/run_20260524_085000_worker_node_planning_workflow/next_task_packet.md
+    - .llmwiki/runs/run_20260524_085000_worker_node_planning_workflow/generation_entry_gate.md
+    - reports/source_gap_review.md
+    - reports/coverage_framework.md

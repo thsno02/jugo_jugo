@@ -1,0 +1,131 @@
+schema: kb.orchestration_gates.v1
+updated_at: "2026-05-24T06:18:00+08:00"
+main_language: zh-CN
+active_topic: llm_wiki
+status: active_controller_executor_boundary
+roles:
+  main_agent:
+    authority: controller_decision_maker
+    may_do:
+      - create_or_review_task_packet
+      - read_worker_summary_status_gate_delivery
+      - decide_adoption_repair_retrieval_defer_next_action
+      - update_control_state_queue_summary_status
+    must_not_do:
+      - execute_source_mining
+      - execute_frontier_update
+      - execute_node_planning
+      - execute_generation
+      - execute_audit
+      - execute_view_build
+      - execute_skill_eval
+      - write_concrete_kb_or_run_artifacts_except_controller_notes
+  worker_executor:
+    authority: bounded_task_packet_execution
+    must_do:
+      - produce_executor_attribution
+      - write_summary_status_gate_or_delivery_for_main_review
+      - stay_within_allowed_inputs_and_outputs
+concrete_artifact_classes:
+  - source_mining
+  - card
+  - provenance
+  - change
+  - audit
+  - view
+  - frontier_update
+  - node_planning
+  - skill_eval
+process_intervention:
+  trigger: "Any concrete artifact in source_mining/card/provenance/change/audit/view/frontier_update/node_planning/skill_eval is directly authored by main_agent."
+  required_actions:
+    - mark_run_as_controller_drift_sample
+    - preserve_existing_artifacts
+    - prevent_direct_adoption_from_main_authored_artifact
+    - create_or_dispatch_worker_task_packet_for_review_or_rerun
+    - patch_relevant_skill_or_agent_task_boundary
+gates:
+  - id: gate_000_executor_attribution
+    from_phase: any_concrete_execution
+    to_phase: controller_review
+    hard_requirements:
+      - "Concrete artifacts must be produced by worker/sub-agent or independent worker mode from a task packet."
+      - "Main agent may create/review packets and decide next action, but must not directly write concrete artifacts."
+      - "Every worker delivery must state executor_role, task_packet, allowed_inputs, outputs_written, and LOOP_DONE or LOOP_BLOCKED."
+    failure_action: "skill_process_intervention_and_worker_rerun_or_review"
+  - id: gate_001_source_mining_to_frontier_update
+    from_phase: source_mining
+    to_phase: frontier_update
+    required_artifacts:
+      - source_scope.md
+      - source_mining.md
+      - candidate_frontier_delta.yaml
+      - evidence_gaps.md
+      - retrieval_requests.md
+      - mining_trace.md
+    failure_action: "LOOP_BLOCKED or return_to_source_mining"
+  - id: gate_002_frontier_to_node_planning
+    from_phase: frontier_update
+    to_phase: node_planning
+    required_artifacts:
+      - .llmwiki/control/knowledge_frontier.yaml
+    required_candidate_state:
+      status: ready_to_build
+      must_have:
+        - discovered_from
+        - evidence_state
+        - candidate_statement
+        - why_it_matters
+      must_not_have:
+        - unresolved_retrieval_blocker
+    failure_action: "continue_mining_or_write_retrieval_request"
+  - id: gate_003_node_planning_to_generation_entry
+    from_phase: node_planning
+    to_phase: generation_entry_gate
+    required_artifacts:
+      - planner_report.md
+      - evidence_scope.yaml
+      - next_task_packet.md
+    hard_requirements:
+      - "next_task_packet.md must name a candidate already present in .llmwiki/control/knowledge_frontier.yaml."
+      - "candidate must be ready_to_build."
+      - "packet must cite the source mining run that made the candidate ready."
+    failure_action: "repair_planning_contract"
+  - id: gate_004_generation_entry_to_bundle_generation
+    from_phase: generation_entry_gate
+    to_phase: version_bundle_generation
+    required_artifacts:
+      - generation_entry_gate.md
+    hard_requirements:
+      - "gate result must be pass."
+      - "allowed inputs, forbidden inputs, version target, and output paths must be explicit."
+      - "first-version generation output paths must be under nodes/<node_id>/versions/1.0/ for node.yaml, card.md, provenance.md, and change.md."
+      - "generation must not write or adopt root nodes/<node_id>/node.yaml before adoption audit passes."
+    failure_action: "LOOP_BLOCKED before card generation"
+  - id: gate_005_bundle_to_audit
+    from_phase: version_bundle_generation
+    to_phase: citation_and_adoption_audit
+    required_artifacts:
+      - node.yaml
+      - card.md
+      - provenance.md
+      - change.md
+    failure_action: "repair_bundle_before_audit"
+  - id: gate_006_audit_to_view_building
+    from_phase: citation_and_adoption_audit
+    to_phase: view_building
+    required_artifacts:
+      - citation_audit.md
+      - audit_report.md
+    hard_requirements:
+      - "adoption decision must be adopt."
+      - "major versions require impact analysis before adoption."
+    failure_action: "repair_or_retrieve_or_defer"
+  - id: gate_007_view_to_skill_eval
+    from_phase: view_building
+    to_phase: skill_evaluation
+    required_artifacts:
+      - kb/_index.yaml
+      - generated/status.yaml
+      - .llmwiki/runs/<run_id>/skill_eval.md
+    failure_action: "repair_instrumentation_or_record_blocker"

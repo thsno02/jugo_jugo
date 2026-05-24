@@ -1,0 +1,31 @@
+schema: kb.candidate_frontier_delta.v1
+run_id: run_20260524_094000_worker_source_mining_vs_rag_write_loop
+executor_role: cand_010_vs_rag_write_loop source-mining worker
+target_candidate: cand_010_vs_rag_write_loop
+candidates:
+  - candidate_id: cand_010_vs_rag_write_loop
+    proposed_node_slug: llm_wiki_vs_rag_write_loop
+    proposed_node_id: 20260524_094000_llm_wiki_vs_rag_write_loop
+    status: ready_to_build
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - hacker-news-original-thread
+      - repo-atomicstrata-llm-wiki-compiler
+      - arxiv-graphrag
+      - arxiv-ragas
+      - arxiv-alce
+      - arxiv-zep
+      - langchain-long-term-memory-docs
+      - atlan-llm-wiki-vs-rag-dynamic-20260524
+      - 20260524_062000_llm_wiki_origin_and_canon
+      - 20260524_072000_llm_wiki_working_definition
+      - 20260524_080000_llm_wiki_three_layer_architecture
+      - 20260524_084000_llm_wiki_ingest_compile_query_lint_workflow
+    source_mining_run: .llmwiki/runs/run_20260524_094000_worker_source_mining_vs_rag_write_loop
+    evidence_state: enough_for_first_version
+    citation_feasibility: strong_for_bounded_comparison_node
+    retrieval_required_before_build: false
+    candidate_statement: "LLM Wiki 与 RAG 的首版差异不应写成 retrieval vs no retrieval；两者都可能使用 retrieval、索引、摘要、引用和迭代综合。可证的最小差异是 artifact/workflow 边界：LLM Wiki 把 raw sources 编译并维护为可由人和 agent 共同浏览、引用、lint、更新、file-back 的持久 wiki/node 层；RAG/GraphRAG 主要定义 query-time grounding 的 retrieval、graph index、community summary 与 answer synthesis 机制；agent memory 系统也有持久读写/时间图谱，但不自动等同于 LLM Wiki 的 raw/wiki/schema 维护循环。"
+    why_it_matters: "该比较切片能防止后续节点把 LLM Wiki 简化成 just RAG，也防止反向夸大为 anti-RAG；它为 comparison_space 的首个 bounded node 提供可引用边界。"
+    next_action: node_planning
+

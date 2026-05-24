@@ -1,0 +1,26 @@
+schema: kb.schema.v1
+generated_at: '2026-05-24T05:10:00+08:00'
+language: zh-CN
+contracts:
+  node_database: nodes/ 是可维护 node version bundles 的 source of truth。
+  kb_view: kb/ 只渲染 adopted versions。
+  generated: generated/ 保存可重建的 citation graph、backlinks、impact queue 和 status。
+  version_bundle:
+  - node.yaml
+  - card.md
+  - provenance.md
+  - change.md
+  required_card_sections:
+  - '# Title'
+  - '## Footnotes'
+  - '## References'
+  required_citation_fields:
+  - target
+  - target_version
+  - pinned_version
+  - citation_role
+  - why_cited
+  - evidence_summary
+  version_semantics:
+    minor: 核心含义和 support contract 仍成立，不触发 impact propagation。
+    major: 核心含义或 support contract 改变，下游 citation 需要 review。

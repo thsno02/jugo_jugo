@@ -1,0 +1,89 @@
+schema: kb.candidate_frontier_delta.v1
+run_id: run_20260524_072000_worker_source_mining_working_definition
+executor_role: worker_executor
+created_at: "2026-05-24T07:20:00+08:00"
+updates:
+  - candidate_id: cand_002_working_definition
+    proposed_node_slug: llm_wiki_working_definition
+    status: ready_to_build
+    frontier_update_run: .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition
+    frontier_update_executor_role: worker_executor
+    discovered_from:
+      - karpathy-gist-llm-wiki
+      - 20260524_062000_llm_wiki_origin_and_canon
+      - reports/coverage_framework.md
+      - reports/source_gap_review.md
+    source_mining_run: .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition
+    source_mining_artifacts:
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/source_scope.md
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/source_mining.md
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/candidate_frontier_delta.yaml
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/evidence_gaps.md
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/retrieval_requests.md
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/mining_trace.md
+      - .llmwiki/runs/run_20260524_072000_worker_source_mining_working_definition/frontier_trace.md
+    raw_paths:
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt
+      - data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt
+      - data/raw/hacker_news/hacker-news-original-thread/text.txt
+      - data/raw/hacker_news/hacker-news-original-thread/item.json
+      - data/raw/webpage/karpathy-x-launch-post/text.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.txt
+      - data/raw/webpage/karpathy-x-launch-post/raw.json
+    prior_kb_anchor:
+      node_id: 20260524_062000_llm_wiki_origin_and_canon
+      version: "1.0"
+      usable_as_support: true
+      paths:
+        - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/card.md
+        - nodes/20260524_062000_llm_wiki_origin_and_canon/versions/1.0/provenance.md
+        - kb/20260524_062000_llm_wiki_origin_and_canon.md
+    direct_evidence:
+      - source_id: karpathy-gist-llm-wiki
+        supports:
+          - abstract idea-file framing rather than fixed implementation
+          - immutable raw sources as source of truth
+          - LLM-generated markdown wiki layer
+          - schema/instructions file controlling structure, conventions, and workflows
+          - ingest/query/lint operations and update/writeback loop
+          - index/log navigation support
+          - human source curation, question steering, emphasis, and review
+          - optional/modular tooling boundary
+      - source_id: 20260524_062000_llm_wiki_origin_and_canon
+        supports:
+          - adopted bounded origin/canon anchor
+          - evidence boundaries for avoiding adoption, enterprise, ecosystem, and empirical claims
+      - source_id: reports/source_gap_review.md
+        supports:
+          - coverage-status confirmation that origin/definition coverage is strong
+        limitation: "Navigation/coverage status only; not primary definitional authority."
+      - source_id: reports/coverage_framework.md
+        supports:
+          - planning boundary for clear definition and boundary tests
+        limitation: "Framework/process source only; not primary definitional authority."
+    claim_ids:
+      - claim_000001_origin_and_canon_original_karpathy_statement_exact_text
+      - claim_000004_origin_and_canon_examples_and_intended_workflow
+      - claim_000005_origin_and_canon_stated_or_implied_non_goals
+      - claim_000008_origin_and_canon_minimal_example
+    coverage_records: []
+    candidate_statement: "LLM Wiki 可被工作性地定义为一个 source-preserving、LLM/agent-maintained knowledge pattern：不可变 raw sources 作为来源真值，LLM/agent 将其编译成持久、可检查、互联的 markdown/wiki artifact，并由 schema/instructions 约束结构、约定与维护流程；系统通过 ingest、query、lint 与 update/writeback 循环复用和修订知识，人类负责来源选择、问题方向、强调重点与审阅。"
+    why_it_matters: "该定义为后续 architecture、workflow、comparison 与 risk/governance nodes 提供共同边界，避免把 LLM Wiki 过早写成单一产品、普通 RAG、纯 PKM、企业解决方案或经验效果结论。"
+    evidence_state: enough_for_first_version
+    missing_evidence:
+      - "Pre-Karpathy lineage is outside this candidate and should remain a limitation."
+      - "Enterprise readiness, empirical effectiveness, adoption metrics, implementation ecosystem maturity, and scale limits require separate source mining."
+      - "A rigorous comparison with RAG, graph RAG, PKM, knowledge graphs, documentation systems, and agent memory requires a later comparison batch."
+      - "The coverage framework's stricter provenance/auditability criteria should be presented as KB boundary criteria, not as Karpathy's exact original definition unless directly supported by the gist."
+    build_constraints:
+      - "Use gist text as primary source for the working definition."
+      - "Use adopted origin/canon only as prior KB anchor and evidence-boundary support."
+      - "Use reports/manifests only for coverage status, navigation, and gaps."
+      - "Keep the definition bounded to raw-source preservation, compiled wiki artifact, schema/instruction rules, ingest/query/lint/update loop, and human source/question steering."
+      - "Do not claim enterprise readiness, empirical effectiveness, full ecosystem maturity, broad adoption, or measured superiority over RAG."
+      - "Distinguish source-backed observations from worker synthesis."
+    suggested_first_version: "1.0"
+    retrieval_required_before_build: false
+    citation_feasibility: strong_for_bounded_working_definition
+    next_action: node_planning
+new_candidates: []
