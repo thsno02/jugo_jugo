@@ -55,15 +55,17 @@
 - 2026-05-25：创建 `iteration_20260525_0016_card_audit_schema_layer`，审计输入限定为候选 10 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 10 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0017_card_adoption_schema_layer`，指定 `card_id` 为 `llm-wiki-schema-configuration-document`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 10 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第三张 KB 卡采纳完成。adoption read_log 将目标 KB 路径列为允许输入，确认 adoption template 修复已消除前两轮边界噪声。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：3 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：3。
-- 已采纳知识卡数量：2。
+- 已采纳知识卡数量：3。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
+- adoption 模板修复后新增边界噪声：0。
 - 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
 
 ## 证据链接（evidence_links）
@@ -156,6 +158,10 @@
 - [候选 10 audit pass 决策](../decisions/20260525-0409-card-audit-pass-candidate-10.md)
 - [候选 10 adoption 任务包](../iterations/iteration_20260525_0017_card_adoption_schema_layer/task.md)
 - [候选 10 adoption dispatch](../iterations/iteration_20260525_0017_card_adoption_schema_layer/dispatch_request.json)
+- [候选 10 adoption 交付](../iterations/iteration_20260525_0017_card_adoption_schema_layer/loop_delivery.md)
+- [候选 10 采纳决策](../decisions/20260525-0417-card-adoption-accepted-candidate-10.md)
+- [已采纳知识卡：Schema 是 LLM Wiki 的配置文档](../../kb/cards/llm-wiki-schema-configuration-document.md)
+- [已采纳 provenance：Schema 是 LLM Wiki 的配置文档](../../kb/provenance/llm-wiki-schema-configuration-document.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

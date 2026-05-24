@@ -11,22 +11,24 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0018_card_adoption_candidate_10`
-
-- `role`: `card_adoption_worker`
-- `action`: 将审计通过的候选 10 草稿卡和 provenance 采纳到 KB，并最小更新卡片索引。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0017_card_adoption_schema_layer`
-- `card_id`: `llm-wiki-schema-configuration-document`
-- `target_card_path`: `llm_wiki/kb/cards/llm-wiki-schema-configuration-document.md`
-- `target_provenance_path`: `llm_wiki/kb/provenance/llm-wiki-schema-configuration-document.md`
-- `target_index_path`: `llm_wiki/kb/indexes/cards.md`
-- `note`: 任务包已创建并通过 `validate_scope.py`；dispatch 使用 `fork_context:false`，worker 完成后关闭。
+暂无。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0018_card_adoption_candidate_10`
+
+- `role`: `card_adoption_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0017_card_adoption_schema_layer`
+- `card_id`: `llm-wiki-schema-configuration-document`
+- `adopted_card`: `llm_wiki/kb/cards/llm-wiki-schema-configuration-document.md`
+- `adopted_provenance`: `llm_wiki/kb/provenance/llm-wiki-schema-configuration-document.md`
+- `index`: `llm_wiki/kb/indexes/cards.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0417-card-adoption-accepted-candidate-10.md`
 
 ### `task_20260525_0017_card_audit_candidate_10`
 
