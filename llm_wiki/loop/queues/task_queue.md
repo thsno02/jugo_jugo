@@ -11,20 +11,21 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0037_card_drafting_candidate_1`
-
-- `role`: `card_drafting_worker`
-- `action`: 将候选 1 写成一张原子事实知识卡草稿和一份 provenance。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0036_card_drafting_llm_wiki_pattern_file`
-- `source_evidence`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`
-- `selection_reason`: 证据集中在来源开头，事实边界是来源如何定位 LLM Wiki 模式与该文件用途；不重复已采纳事实。
-- `note`: 任务包已创建并通过 `validate_scope.py`；dispatch 使用 `fork_context:false`，worker 完成后关闭。
+暂无。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0037_card_drafting_candidate_1`
+
+- `role`: `card_drafting_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0036_card_drafting_llm_wiki_pattern_file`
+- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0631-card-drafting-candidate-1-ready-for-audit.md`
 
 ### `task_20260525_0036_card_adoption_candidate_4`
 
