@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T05:08:32+08:00",
-  "status": "CARD_AUDIT_IN_PROGRESS",
+  "updated_at": "2026-05-25T05:12:48+08:00",
+  "status": "READY_FOR_CARD_ADOPTION",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_audit",
+  "current_phase": "card_adoption",
   "current_iteration": "iteration_20260525_0025_card_audit_rag_no_accumulation",
-  "last_completed_iteration": "iteration_20260525_0024_card_drafting_rag_no_accumulation",
-  "current_task_id": "task_20260525_0026_card_audit_candidate_2",
+  "last_completed_iteration": "iteration_20260525_0025_card_audit_rag_no_accumulation",
+  "current_task_id": null,
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "监控 iteration_20260525_0025_card_audit_rag_no_accumulation 的 card_audit_worker 交付；完成后关闭 sub-agent，运行 inspect_delivery.py，并根据 audit_result 决定 revise/reject/adoption。",
+  "next_action": "为候选 2 创建 card_adoption_worker 窄任务包；目标 card_id 暂定为 rag-document-qa-does-not-accumulate-synthesized-knowledge，dispatch 使用 fork_context:false。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",
