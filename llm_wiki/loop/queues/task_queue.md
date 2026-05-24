@@ -13,18 +13,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待创建（ready）
-
 ### `task_20260525_0011_card_audit_candidate_7`
 
 - `role`: `card_audit_worker`
 - `action`: 审计候选 7 drafting 产物是否可进入采纳流程。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0010_card_audit_architecture_layers`
 - `draft_card_path`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers/artifacts/draft_card.md`
 - `provenance_path`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers/artifacts/provenance.md`
 - `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33`
-- `note`: 待创建任务包；audit worker 不得采纳知识卡。
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0010_card_audit_architecture_layers/artifacts/audit_report.md`
+- `note`: 任务包已创建并通过 `validate_scope.py`；audit worker 不得采纳知识卡。
 
 ## 已阻塞（blocked）
 
