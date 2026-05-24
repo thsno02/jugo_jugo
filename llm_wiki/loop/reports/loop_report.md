@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 8 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
+当前状态：已有 8 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12 都已完成 drafting、audit 和 adoption；候选 4 已完成 drafting，准备进入独立审计。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 12 的知识卡 `Query 操作回写好答案` 已采纳为 `accepted`。本轮 adoption worker 已在完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 4 的草稿卡 `持久复合 wiki` 已通过交付验收，下一步创建 `card_audit_worker` 窄任务包。candidate 4 drafting worker 已在完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
 
 ## 过程轨迹（process_trace）
 
@@ -87,18 +87,20 @@
 - 2026-05-25：创建 `iteration_20260525_0032_card_adoption_query_workflow`，指定 `card_id` 为 `llm-wiki-query-answer-writeback`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 12 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第八张 KB 卡采纳完成。
 - 2026-05-25：从剩余事实候选中选择候选 4，原因是其证据集中在单行、事实边界清楚，且与已采纳的持久 wiki 模式相邻但不重复；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0033_card_drafting_persistent_composite_wiki`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 4 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。`read_log.md` 记录关键词定位曾返回其它候选命中行和一次本轮目录文件名检查，但未用于卡片或 provenance，暂记为非阻塞边界观察。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
-- 草稿知识卡数量：8 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
+- 草稿知识卡数量：9 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：8。
 - 已采纳知识卡数量：8。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
 - adoption 模板修复后新增边界噪声：0。
 - 输出文件存在性检查导致的轻微任务外读取观察：1。
-- `fact_candidates.md` 相邻行读取导致的轻微边界观察：1。
+- `fact_candidates.md` 相邻行或关键词定位导致的轻微边界观察：2。
+- 本轮 iteration 目录文件名检查导致的轻微边界观察：1。
 - 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
 
 ## 证据链接（evidence_links）
@@ -275,6 +277,9 @@
 - [候选 4 drafting 任务包](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/task.md)
 - [候选 4 drafting dispatch](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/dispatch_request.json)
 - [候选 4 选择决策](../decisions/20260525-0607-select-candidate-4-for-drafting.md)
+- [候选 4 草稿卡](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/artifacts/draft_card.md)
+- [候选 4 provenance](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/artifacts/provenance.md)
+- [候选 4 drafting 可审计决策](../decisions/20260525-0612-card-drafting-candidate-4-ready-for-audit.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
