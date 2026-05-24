@@ -60,6 +60,7 @@
 - 2026-05-25：候选 9 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 - 2026-05-25：创建 `iteration_20260525_0019_card_audit_wiki_layer`，审计输入限定为候选 9 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:31-32`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 9 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0020_card_adoption_wiki_layer`，指定 `card_id` 为 `llm-wiki-wiki-layer-generated-markdown-directory`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -175,6 +176,8 @@
 - [候选 9 audit dispatch](../iterations/iteration_20260525_0019_card_audit_wiki_layer/dispatch_request.json)
 - [候选 9 audit 报告](../iterations/iteration_20260525_0019_card_audit_wiki_layer/artifacts/audit_report.md)
 - [候选 9 audit pass 决策](../decisions/20260525-0431-card-audit-pass-candidate-9.md)
+- [候选 9 adoption 任务包](../iterations/iteration_20260525_0020_card_adoption_wiki_layer/task.md)
+- [候选 9 adoption dispatch](../iterations/iteration_20260525_0020_card_adoption_wiki_layer/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
