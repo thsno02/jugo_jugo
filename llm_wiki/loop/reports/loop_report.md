@@ -78,6 +78,7 @@
 - 2026-05-25：候选 11 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。`read_log.md` 记录候选字段复核时相邻扫到候选 12 标题开头，但未用于卡片或 provenance，暂记为非阻塞边界观察。
 - 2026-05-25：创建 `iteration_20260525_0028_card_audit_ingest_workflow`，审计输入限定为候选 11 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:35-38`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 11 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0029_card_adoption_ingest_workflow`，指定 `card_id` 为 `llm-wiki-ingest-example-flow`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -241,6 +242,8 @@
 - [候选 11 audit dispatch](../iterations/iteration_20260525_0028_card_audit_ingest_workflow/dispatch_request.json)
 - [候选 11 audit 报告](../iterations/iteration_20260525_0028_card_audit_ingest_workflow/artifacts/audit_report.md)
 - [候选 11 audit pass 决策](../decisions/20260525-0537-card-audit-pass-candidate-11.md)
+- [候选 11 adoption 任务包](../iterations/iteration_20260525_0029_card_adoption_ingest_workflow/task.md)
+- [候选 11 adoption dispatch](../iterations/iteration_20260525_0029_card_adoption_ingest_workflow/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
