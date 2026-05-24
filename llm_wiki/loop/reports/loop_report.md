@@ -66,6 +66,7 @@
 - 2026-05-25：候选 3 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 - 2026-05-25：创建 `iteration_20260525_0022_card_audit_persistent_wiki_mode`，审计输入限定为候选 3 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 3 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0023_card_adoption_persistent_wiki_mode`，指定 `card_id` 为 `llm-wiki-persistent-wiki-alternative-mode`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -197,6 +198,8 @@
 - [候选 3 audit dispatch](../iterations/iteration_20260525_0022_card_audit_persistent_wiki_mode/dispatch_request.json)
 - [候选 3 audit 报告](../iterations/iteration_20260525_0022_card_audit_persistent_wiki_mode/artifacts/audit_report.md)
 - [候选 3 audit pass 决策](../decisions/20260525-0452-card-audit-pass-candidate-3.md)
+- [候选 3 adoption 任务包](../iterations/iteration_20260525_0023_card_adoption_persistent_wiki_mode/task.md)
+- [候选 3 adoption dispatch](../iterations/iteration_20260525_0023_card_adoption_persistent_wiki_mode/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
