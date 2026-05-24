@@ -8,7 +8,7 @@
 
 ## 当前决策（current_decision）
 
-当前状态：第一轮 `source_mining_worker` 已完成并通过交付检查；第一次 drafting 产物因 `loop_delivery.md` 缺少标准 marker 未通过交付检查。已完成最小 prompt 修复并通过独立审计；候选 8 的 drafting revision 已通过交付检查，下一步进入 card audit。
+当前状态：第一轮 `source_mining_worker` 已完成并通过交付检查；第一次 drafting 产物因 `loop_delivery.md` 缺少标准 marker 未通过交付检查。已完成最小 prompt 修复并通过独立审计；候选 8 的 drafting revision 已通过交付检查，card audit 任务包已创建。
 
 当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；第一轮 source mining 产出 12 个候选并通过 `inspect_delivery.py`。第一次 drafting 暴露出 delivery marker 契约缺口，已把 `loop_delivery.md` 内必须写入 `LOOP_DONE` 或 `LOOP_BLOCKED` 的要求补入 `base_worker.md`，且独立审计为 `pass`。旧 drafting iteration 不手工补写，候选 8 已通过 revision 重跑进入审计准备状态。sub-agent 生命周期采用有意图管理：完成且不需复用的 worker 关闭；未来如遇反复读取同一大来源，可显式设置 alive worker 降低重复 IO 和上下文消耗。
 
@@ -34,6 +34,7 @@
 - 2026-05-25：`iteration_20260525_0004_delivery_marker_prompt_repair` 最小修改 `base_worker.md` 的交付 marker 规则；`iteration_20260525_0005_prompt_repair_audit` 独立审计结论为 `audit_result: pass`，审计 worker 已关闭。
 - 2026-05-25：创建 `iteration_20260525_0006_card_drafting_raw_sources_truth_r1`，在修复后的 worker prompt 下重跑候选 8 drafting revision。
 - 2026-05-25：候选 8 drafting revision 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0007_card_audit_raw_sources_truth_r1`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`。
 
 ## 关键指标（key_metrics）
 
@@ -88,6 +89,8 @@
 - [候选 8 草稿卡](../iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/draft_card.md)
 - [候选 8 provenance](../iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/provenance.md)
 - [候选 8 drafting revision 可审计决策](../decisions/20260525-0301-card-drafting-revision-ready-for-audit.md)
+- [候选 8 audit 任务包](../iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/task.md)
+- [候选 8 audit dispatch](../iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

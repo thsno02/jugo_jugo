@@ -17,10 +17,12 @@
 
 - `role`: `card_audit_worker`
 - `action`: 审计候选 8 drafting revision 的草稿卡和 provenance 是否可进入采纳流程。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1`
 - `draft_card_path`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/draft_card.md`
 - `provenance_path`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/provenance.md`
 - `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:27-30`
-- `note`: 待创建任务包；审计 worker 不得采纳知识卡。
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/artifacts/audit_report.md`
+- `note`: 任务包已创建并通过 `validate_scope.py`；审计 worker 不得采纳知识卡。
 
 ## 已阻塞（blocked）
 
