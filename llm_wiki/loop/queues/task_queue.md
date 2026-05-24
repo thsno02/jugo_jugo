@@ -4,6 +4,16 @@
 
 ## 待派发（queued）
 
+### `task_20260525_0010_card_drafting_candidate_7`
+
+- `role`: `card_drafting_worker`
+- `action`: 将第一轮 source mining 的 `候选 7` 写成一张草稿原子事实知识卡，并写一份 provenance。
+- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
+- `candidate_id`: `候选 7`
+- `candidate_statement`: 该来源把 LLM Wiki 架构分成三个层次：原始来源、wiki 和 schema。
+- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33`
+- `note`: 当前来源很小，默认使用单次 worker；若未来进入大来源重复 IO，再显式启用 alive sub-agent。
+
 ### `task_20260525_0002_cli_worker_smoke`
 
 - `role`: `independent_evaluator`
@@ -13,18 +23,7 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0009_card_adoption_candidate_8`
-
-- `role`: `card_adoption_worker`
-- `action`: 采纳候选 8 审计通过的草稿卡，写入 `llm_wiki/kb/` 并更新最小索引。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0008_card_adoption_raw_sources_truth`
-- `card_id`: `raw-sources-readonly-source-of-truth`
-- `draft_card_path`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/draft_card.md`
-- `provenance_path`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/provenance.md`
-- `audit_report_path`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/artifacts/audit_report.md`
-- `target_card_path`: `llm_wiki/kb/cards/raw-sources-readonly-source-of-truth.md`
-- `target_provenance_path`: `llm_wiki/kb/provenance/raw-sources-readonly-source-of-truth.md`
-- `note`: 任务包已创建并通过 `validate_scope.py`；adoption worker 不得采纳未授权知识卡，不得创建 hub/cluster/topic coverage。
+暂无。
 
 ## 已阻塞（blocked）
 
@@ -78,6 +77,17 @@
 - `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1`
 - `output`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/artifacts/audit_report.md`
 - `decision`: `llm_wiki/loop/decisions/20260525-0308-card-audit-pass-candidate-8.md`
+
+### `task_20260525_0009_card_adoption_candidate_8`
+
+- `role`: `card_adoption_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0008_card_adoption_raw_sources_truth`
+- `card_id`: `raw-sources-readonly-source-of-truth`
+- `adopted_card`: `llm_wiki/kb/cards/raw-sources-readonly-source-of-truth.md`
+- `adopted_provenance`: `llm_wiki/kb/provenance/raw-sources-readonly-source-of-truth.md`
+- `index`: `llm_wiki/kb/indexes/cards.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0316-card-adoption-accepted-candidate-8.md`
 
 ### `task_20260525_0001_prelaunch_validation`
 

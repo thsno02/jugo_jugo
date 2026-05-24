@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：第一轮 `source_mining_worker` 已完成并通过交付检查；第一次 drafting 产物因 `loop_delivery.md` 缺少标准 marker 未通过交付检查。已完成最小 prompt 修复并通过独立审计；候选 8 的 drafting revision 已通过交付检查，card audit 结论为 `pass`，card adoption 任务包已创建。
+当前状态：第一张原子事实知识卡已采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 已完成 drafting、audit 和 adoption；下一步从同一候选集选择候选 7 进入 drafting。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；第一轮 source mining 产出 12 个候选并通过 `inspect_delivery.py`。候选 8 已完成 drafting revision 与独立 card audit，审计结论为 `pass`。sub-agent 生命周期采用有意图管理：完成且不需复用的 worker 关闭；未来如遇反复读取同一大来源，可显式设置 alive worker 降低重复 IO 和上下文消耗。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 已采纳为 `accepted`。sub-agent 生命周期采用有意图管理：完成且不需复用的 worker 关闭；未来如遇反复读取同一大来源，可显式设置 alive worker 降低重复 IO 和上下文消耗。下一步处理候选 7；当前来源很小，暂不启用 alive worker。
 
 ## 过程轨迹（process_trace）
 
@@ -37,18 +37,17 @@
 - 2026-05-25：创建 `iteration_20260525_0007_card_audit_raw_sources_truth_r1`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`。
 - 2026-05-25：`card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0008_card_adoption_raw_sources_truth`，指定 `card_id` 为 `raw-sources-readonly-source-of-truth`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：`card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，知识卡、provenance 和最小索引已写入 `llm_wiki/kb/`。
+- 2026-05-25：记录 sub-agent 生命周期策略：独立判断和单次写入 worker 完成后关闭；若未来出现大来源或高重复 IO，可显式使用 alive worker，但必须在任务包或 decision 中声明边界。
 
 ## 关键指标（key_metrics）
 
-当前还没有知识卡产出，因此不统计卡片数量。
-
-后续最小指标：
-
-- 事实候选数量。
-- 草稿知识卡数量。
-- 审计通过数量。
-- 已采纳知识卡数量。
-- 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数。
+- 事实候选数量：12。
+- 草稿知识卡数量：1 个有效 revision，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
+- 审计通过数量：1。
+- 已采纳知识卡数量：1。
+- 因交付 marker 缺失导致的返工次数：1。
+- 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
 
 ## 证据链接（evidence_links）
 
@@ -97,6 +96,12 @@
 - [候选 8 audit pass 决策](../decisions/20260525-0308-card-audit-pass-candidate-8.md)
 - [候选 8 adoption 任务包](../iterations/iteration_20260525_0008_card_adoption_raw_sources_truth/task.md)
 - [候选 8 adoption dispatch](../iterations/iteration_20260525_0008_card_adoption_raw_sources_truth/dispatch_request.json)
+- [候选 8 adoption 交付](../iterations/iteration_20260525_0008_card_adoption_raw_sources_truth/loop_delivery.md)
+- [候选 8 采纳决策](../decisions/20260525-0316-card-adoption-accepted-candidate-8.md)
+- [sub-agent 生命周期策略决策](../decisions/20260525-0316-subagent-lifecycle-policy.md)
+- [已采纳知识卡：Raw sources 是只读事实来源](../../kb/cards/raw-sources-readonly-source-of-truth.md)
+- [已采纳 provenance：Raw sources 是只读事实来源](../../kb/provenance/raw-sources-readonly-source-of-truth.md)
+- [知识卡索引](../../kb/indexes/cards.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
@@ -107,4 +112,5 @@
 - 如果任务包允许输入过宽，独立审计就无法判断上下文泄漏。
 - 公司网络环境可能限制网页 retrieve，因此当前优先使用 `data/` 中已获取来源。
 - 如果知识卡写成审计日志或中间状态，说明 `card_drafting_worker` 的任务模板需要演化。
+- adoption worker 为了避免覆盖读取了目标 KB 路径并已记录原因；后续应把“读取目标写入路径做存在性和冲突检查”显式写入 adoption 任务模板，减少边界噪声。
 - `user-insights` 本次覆盖率是 `partial`；它只作为过程洞察和人类 recall，不作为知识卡事实来源。未来获得完整 transcript 或 verified refreshed fork 后再做 coverage repair。
