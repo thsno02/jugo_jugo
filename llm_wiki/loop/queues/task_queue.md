@@ -11,7 +11,14 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0034_card_drafting_candidate_4`
+
+- `role`: `card_drafting_worker`
+- `action`: 将候选 4 写成一张原子事实知识卡草稿和一份 provenance。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki`
+- `source_evidence`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13`
+- `selection_reason`: 证据集中在单行，事实边界是 wiki 作为持久复合产物会保留链接、矛盾标记和综合内容；与已采纳的持久 wiki 模式相邻但不重复。
+- `note`: 任务包已创建并通过 `validate_scope.py`；dispatch 使用 `fork_context:false`，worker 完成后关闭。
 
 ## 已阻塞（blocked）
 

@@ -86,6 +86,7 @@
 - 2026-05-25：候选 12 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0032_card_adoption_query_workflow`，指定 `card_id` 为 `llm-wiki-query-answer-writeback`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 12 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第八张 KB 卡采纳完成。
+- 2026-05-25：从剩余事实候选中选择候选 4，原因是其证据集中在单行、事实边界清楚，且与已采纳的持久 wiki 模式相邻但不重复；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0033_card_drafting_persistent_composite_wiki`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13`，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -271,6 +272,9 @@
 - [候选 12 采纳决策](../decisions/20260525-0604-card-adoption-accepted-candidate-12.md)
 - [已采纳知识卡：Query 操作回写好答案](../../kb/cards/llm-wiki-query-answer-writeback.md)
 - [已采纳 provenance：Query 操作回写好答案](../../kb/provenance/llm-wiki-query-answer-writeback.md)
+- [候选 4 drafting 任务包](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/task.md)
+- [候选 4 drafting dispatch](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/dispatch_request.json)
+- [候选 4 选择决策](../decisions/20260525-0607-select-candidate-4-for-drafting.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
