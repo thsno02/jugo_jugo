@@ -62,6 +62,7 @@
 - 2026-05-25：候选 9 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0020_card_adoption_wiki_layer`，指定 `card_id` 为 `llm-wiki-wiki-layer-generated-markdown-directory`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 9 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第四张 KB 卡采纳完成。目标 KB 路径读取仍作为允许输入记录，adoption template 修复保持有效；本轮额外读取 `loop_status.md/read_log.md` 仅用于避免覆盖输出，记录为轻微过程噪声观察，不触发修复。
+- 2026-05-25：从剩余事实候选中选择候选 3，原因是其证据集中在核心想法段落、事实边界清楚，且不重复已采纳的架构层卡；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0021_card_drafting_persistent_wiki_mode`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13`，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -184,6 +185,8 @@
 - [候选 9 采纳决策](../decisions/20260525-0438-card-adoption-accepted-candidate-9.md)
 - [已采纳知识卡：Wiki 层由 LLM 生成和维护](../../kb/cards/llm-wiki-wiki-layer-generated-markdown-directory.md)
 - [已采纳 provenance：Wiki 层由 LLM 生成和维护](../../kb/provenance/llm-wiki-wiki-layer-generated-markdown-directory.md)
+- [候选 3 drafting 任务包](../iterations/iteration_20260525_0021_card_drafting_persistent_wiki_mode/task.md)
+- [候选 3 drafting dispatch](../iterations/iteration_20260525_0021_card_drafting_persistent_wiki_mode/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

@@ -11,7 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0022_card_drafting_candidate_3`
+
+- `role`: `card_drafting_worker`
+- `action`: 将第一轮 source mining 的 `候选 3` 写成一张草稿原子事实知识卡，并写一份 provenance。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0021_card_drafting_persistent_wiki_mode`
+- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
+- `candidate_id`: `候选 3`
+- `candidate_statement`: 该来源提出的替代模式是让 LLM 递增式构建并维护一个持久 wiki，使其位于用户与原始来源之间，并在新增来源时把关键信息整合进既有 wiki。
+- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13`
+- `note`: 任务包已创建并通过 `validate_scope.py`；当前来源很小，默认使用单次 worker。
 
 ## 已阻塞（blocked）
 
