@@ -13,16 +13,18 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0010_card_drafting_candidate_7`
+暂无。
 
-- `role`: `card_drafting_worker`
-- `action`: 将第一轮 source mining 的 `候选 7` 写成一张草稿原子事实知识卡，并写一份 provenance。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers`
-- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
-- `candidate_id`: `候选 7`
-- `candidate_statement`: 该来源把 LLM Wiki 架构分成三个层次：原始来源、wiki 和 schema。
+## 待创建（ready）
+
+### `task_20260525_0011_card_audit_candidate_7`
+
+- `role`: `card_audit_worker`
+- `action`: 审计候选 7 drafting 产物是否可进入采纳流程。
+- `draft_card_path`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers/artifacts/draft_card.md`
+- `provenance_path`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers/artifacts/provenance.md`
 - `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33`
-- `note`: 任务包已创建并通过 `validate_scope.py`；当前来源很小，默认使用单次 worker。
+- `note`: 待创建任务包；audit worker 不得采纳知识卡。
 
 ## 已阻塞（blocked）
 
@@ -87,6 +89,14 @@
 - `adopted_provenance`: `llm_wiki/kb/provenance/raw-sources-readonly-source-of-truth.md`
 - `index`: `llm_wiki/kb/indexes/cards.md`
 - `decision`: `llm_wiki/loop/decisions/20260525-0316-card-adoption-accepted-candidate-8.md`
+
+### `task_20260525_0010_card_drafting_candidate_7`
+
+- `role`: `card_drafting_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers`
+- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0324-card-drafting-candidate-7-ready-for-audit.md`
 
 ### `task_20260525_0001_prelaunch_validation`
 
