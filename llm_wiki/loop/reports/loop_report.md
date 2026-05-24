@@ -80,6 +80,7 @@
 - 2026-05-25：候选 11 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0029_card_adoption_ingest_workflow`，指定 `card_id` 为 `llm-wiki-ingest-example-flow`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 11 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第七张 KB 卡采纳完成。
+- 2026-05-25：从剩余事实候选中选择候选 12，原因是其证据集中在 Query 小节、流程边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0030_card_drafting_query_workflow`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:39-40`，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -249,6 +250,9 @@
 - [候选 11 采纳决策](../decisions/20260525-0544-card-adoption-accepted-candidate-11.md)
 - [已采纳知识卡：Ingest 示例流程](../../kb/cards/llm-wiki-ingest-example-flow.md)
 - [已采纳 provenance：Ingest 示例流程](../../kb/provenance/llm-wiki-ingest-example-flow.md)
+- [候选 12 drafting 任务包](../iterations/iteration_20260525_0030_card_drafting_query_workflow/task.md)
+- [候选 12 drafting dispatch](../iterations/iteration_20260525_0030_card_drafting_query_workflow/dispatch_request.json)
+- [候选 12 选择决策](../decisions/20260525-0546-select-candidate-12-for-drafting.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
