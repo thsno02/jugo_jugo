@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 7 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
+当前状态：已有 7 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11 都已完成 drafting、audit 和 adoption；候选 12 已完成 drafting，准备进入独立审计。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 11 的知识卡 `Ingest 示例流程` 已采纳为 `accepted`。本轮 adoption worker 已在完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 12 的草稿卡 `Query 操作回写好答案` 已通过交付验收，下一步创建 `card_audit_worker` 窄任务包。candidate 12 drafting worker 已在完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
 
 ## 过程轨迹（process_trace）
 
@@ -81,11 +81,12 @@
 - 2026-05-25：创建 `iteration_20260525_0029_card_adoption_ingest_workflow`，指定 `card_id` 为 `llm-wiki-ingest-example-flow`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 11 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第七张 KB 卡采纳完成。
 - 2026-05-25：从剩余事实候选中选择候选 12，原因是其证据集中在 Query 小节、流程边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0030_card_drafting_query_workflow`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:39-40`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 12 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
-- 草稿知识卡数量：7 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
+- 草稿知识卡数量：8 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：7。
 - 已采纳知识卡数量：7。
 - 因交付 marker 缺失导致的返工次数：1。
@@ -253,6 +254,9 @@
 - [候选 12 drafting 任务包](../iterations/iteration_20260525_0030_card_drafting_query_workflow/task.md)
 - [候选 12 drafting dispatch](../iterations/iteration_20260525_0030_card_drafting_query_workflow/dispatch_request.json)
 - [候选 12 选择决策](../decisions/20260525-0546-select-candidate-12-for-drafting.md)
+- [候选 12 草稿卡](../iterations/iteration_20260525_0030_card_drafting_query_workflow/artifacts/draft_card.md)
+- [候选 12 provenance](../iterations/iteration_20260525_0030_card_drafting_query_workflow/artifacts/provenance.md)
+- [候选 12 drafting 可审计决策](../decisions/20260525-0551-card-drafting-candidate-12-ready-for-audit.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
