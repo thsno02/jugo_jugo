@@ -11,7 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0033_card_adoption_candidate_12`
+
+- `role`: `card_adoption_worker`
+- `action`: 将审计通过的候选 12 草稿卡和 provenance 采纳到 KB，并最小更新卡片索引。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0032_card_adoption_query_workflow`
+- `card_id`: `llm-wiki-query-answer-writeback`
+- `target_card_path`: `llm_wiki/kb/cards/llm-wiki-query-answer-writeback.md`
+- `target_provenance_path`: `llm_wiki/kb/provenance/llm-wiki-query-answer-writeback.md`
+- `target_index_path`: `llm_wiki/kb/indexes/cards.md`
+- `note`: 任务包已创建并通过 `validate_scope.py`；dispatch 使用 `fork_context:false`，worker 完成后关闭。
 
 ## 已阻塞（blocked）
 
