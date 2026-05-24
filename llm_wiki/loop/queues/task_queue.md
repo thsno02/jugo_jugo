@@ -15,18 +15,26 @@
 
 ## 待办（pending）
 
-### `task_20260525_0039_validate_scope_path_check_repair`
+### `task_20260525_0040_validate_scope_path_check_repair_audit`
 
-- `role`: `tooling_repair`
-- `action`: 根据候选 1 audit task 的 `fact_candidate_path` 不存在但 `validate_scope.py` 仍通过这一失败证据，最小修复 `llm_wiki/loop/tools/validate_scope.py`。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair/artifacts/tooling_repair_report.md`
-- `note`: 修复后必须跑当前错误 task 的负向检查、一个既有有效 task 的正向检查，并交给 independent_evaluator 审计。
+- `role`: `independent_evaluator`
+- `action`: 审计 `validate_scope.py` 路径检查修复是否对应失败证据、范围最小、验证充分。
+- `target_iteration`: `llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair`
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/artifacts/independent_audit.md`
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0039_validate_scope_path_check_repair`
+
+- `role`: `tooling_repair`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair/artifacts/tooling_repair_report.md`
+- `status`: awaiting independent evaluation before main-agent acceptance.
 
 ### `task_20260525_0038_card_audit_candidate_1`
 
