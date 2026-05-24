@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 2 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 和候选 7 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计；候选 10 drafting 任务包已创建。
+当前状态：已有 6 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计；后续继续从剩余候选中选择非重复、证据清晰的事实进入 drafting。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 和候选 7 的知识卡 `LLM Wiki 的三层架构` 已采纳为 `accepted`。`card_adoption_task.md` 的目标路径读取边界已修复并通过独立审计；恢复 KB 生产，候选 10 进入 drafting。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 2 的知识卡 `RAG 式文档问答不积累综合知识` 已采纳为 `accepted`。本轮 adoption worker 已在完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
 
 ## 过程轨迹（process_trace）
 
@@ -73,13 +73,14 @@
 - 2026-05-25：创建 `iteration_20260525_0025_card_audit_rag_no_accumulation`，审计输入限定为候选 2 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:7-10`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 2 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0026_card_adoption_rag_no_accumulation`，指定 `card_id` 为 `rag-document-qa-does-not-accumulate-synthesized-knowledge`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 2 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第六张 KB 卡采纳完成。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：6 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：6。
-- 已采纳知识卡数量：5。
+- 已采纳知识卡数量：6。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
 - adoption 模板修复后新增边界噪声：0。
@@ -221,6 +222,10 @@
 - [候选 2 audit pass 决策](../decisions/20260525-0513-card-audit-pass-candidate-2.md)
 - [候选 2 adoption 任务包](../iterations/iteration_20260525_0026_card_adoption_rag_no_accumulation/task.md)
 - [候选 2 adoption dispatch](../iterations/iteration_20260525_0026_card_adoption_rag_no_accumulation/dispatch_request.json)
+- [候选 2 adoption 交付](../iterations/iteration_20260525_0026_card_adoption_rag_no_accumulation/loop_delivery.md)
+- [候选 2 采纳决策](../decisions/20260525-0522-card-adoption-accepted-candidate-2.md)
+- [已采纳知识卡：RAG 式文档问答不积累综合知识](../../kb/cards/rag-document-qa-does-not-accumulate-synthesized-knowledge.md)
+- [已采纳 provenance：RAG 式文档问答不积累综合知识](../../kb/provenance/rag-document-qa-does-not-accumulate-synthesized-knowledge.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
@@ -231,5 +236,5 @@
 - 如果任务包允许输入过宽，独立审计就无法判断上下文泄漏。
 - 公司网络环境可能限制网页 retrieve，因此当前优先使用 `data/` 中已获取来源。
 - 如果知识卡写成审计日志或中间状态，说明 `card_drafting_worker` 的任务模板需要演化。
-- adoption worker 为了避免覆盖读取了目标 KB 路径并已记录原因；后续应把“读取目标写入路径做存在性和冲突检查”显式写入 adoption 任务模板，减少边界噪声。
+- adoption 任务模板已经显式允许目标 KB 路径读取用于存在性、覆盖冲突和最小索引更新；后续若出现新的任务外读取并影响审计可读性，再作为失败证据处理。
 - `user-insights` 本次覆盖率是 `partial`；它只作为过程洞察和人类 recall，不作为知识卡事实来源。未来获得完整 transcript 或 verified refreshed fork 后再做 coverage repair。
