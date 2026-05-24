@@ -11,21 +11,21 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0035_card_audit_candidate_4`
-
-- `role`: `card_audit_worker`
-- `action`: 独立审计候选 4 草稿卡和 provenance 是否可进入采纳流程。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0034_card_audit_persistent_composite_wiki`
-- `draft_card`: `llm_wiki/loop/iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/artifacts/draft_card.md`
-- `provenance`: `llm_wiki/loop/iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/artifacts/provenance.md`
-- `source_evidence`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13`
-- `note`: 任务包已创建并通过 `validate_scope.py`；dispatch 使用 `fork_context:false`，worker 完成后关闭。
+暂无。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0035_card_audit_candidate_4`
+
+- `role`: `card_audit_worker`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0034_card_audit_persistent_composite_wiki`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0034_card_audit_persistent_composite_wiki/artifacts/audit_report.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0618-card-audit-pass-candidate-4.md`
 
 ### `task_20260525_0034_card_drafting_candidate_4`
 
