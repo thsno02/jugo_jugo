@@ -13,22 +13,30 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0003_source_mining_bootstrap`
+### `task_20260525_0004_card_drafting_candidate_8`
 
-- `role`: `source_mining_worker`
-- `action`: 从本地 `data/` 中选择一个已获取来源，生成第一批事实候选。
-- `preferred_source_index`: `data/manifests/acquired_sources_index.md`
-- `fallback_source_index`: `data/manifests/sources.jsonl`
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist`
-- `source_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki`
-- `output`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
-- `note`: 只有前置门禁通过后，主控 agent 才能把具体 `source_id` 和 `source_path` 写入任务包并派发执行者。
+- `role`: `card_drafting_worker`
+- `action`: 将第一轮 source mining 的 `候选 8` 写成一张草稿原子事实知识卡，并写一份可读 provenance。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0003_card_drafting_raw_sources_truth`
+- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
+- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:27-30`
+- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
+- `note`: 只处理一个候选；不得写多张卡，不得采纳。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0003_source_mining_bootstrap`
+
+- `role`: `source_mining_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
+- `candidate_count`: 12
+- `decision`: `llm_wiki/loop/decisions/20260525-0241-source-mining-accepted-candidate-8.md`
 
 ### `task_20260525_0001_prelaunch_validation`
 

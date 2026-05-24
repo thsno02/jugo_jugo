@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：第一轮 `source_mining_worker` 已派发，正在从一个已获取本地来源中挖掘事实候选。
+当前状态：第一轮 `source_mining_worker` 已完成并通过交付检查；已选择一个候选进入 `card_drafting_worker` 草稿阶段。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；本轮选择 `data/raw/gist_raw/karpathy-gist-llm-wiki` 作为唯一来源，原因是它为 `status: ok` 的本地已获取 `gist_raw` 来源，接近原始材料、可离线读取，且适合第一轮 bottom-up 挖掘事实候选。主控 agent 只监控任务包、状态、读日志和交付，不亲自抽取事实。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；第一轮 source mining 产出 12 个候选并通过 `inspect_delivery.py`。主控 agent 已关闭完成的 source mining worker，并选择 `候选 8` 进入单卡 drafting，因为它证据集中、事实边界清楚，适合验证草稿卡和 provenance 的最小闭环。
 
 ## 过程轨迹（process_trace）
 
@@ -28,6 +28,8 @@
 - 2026-05-25：独立审计结论为 `concern`；已修正 canonical 用户洞察链接，显式接受 `coverage: partial` 为非阻塞残余风险，并补足后续 CLI smoke 审计输入范围。
 - 2026-05-25：新增给下一位 main-agent 的长程执行计划，覆盖 KB 生产、skills/prompt 演化、文件系统管理和 out-of-loop 反思；同时把通用 long-horizon loop pattern 沉淀进 `agent-loop-runner` skill。
 - 2026-05-25：创建并派发 `iteration_20260525_0002_source_mining_karpathy_gist`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`，执行者只接收 base worker、source mining worker prompt 和当前 task packet。
+- 2026-05-25：`source_mining_worker` 返回 `LOOP_DONE`，主控 agent 随即关闭该 sub-agent；`inspect_delivery.py` 返回 `pass`，12 个事实候选进入候选集。
+- 2026-05-25：写入决策 `20260525-0241-source-mining-accepted-candidate-8.md`，选择候选 8 进入 `iteration_20260525_0003_card_drafting_raw_sources_truth`。
 
 ## 关键指标（key_metrics）
 
@@ -69,6 +71,10 @@
 - [Main-agent 执行计划自审计](../reflections/20260525-main-agent-plan-self-audit.md)
 - [第一轮 source mining 任务包](../iterations/iteration_20260525_0002_source_mining_karpathy_gist/task.md)
 - [第一轮 source mining dispatch](../iterations/iteration_20260525_0002_source_mining_karpathy_gist/dispatch_request.json)
+- [第一轮事实候选](../iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md)
+- [接受 source mining 并选择候选 8 的决策](../decisions/20260525-0241-source-mining-accepted-candidate-8.md)
+- [候选 8 drafting 任务包](../iterations/iteration_20260525_0003_card_drafting_raw_sources_truth/task.md)
+- [候选 8 drafting dispatch](../iterations/iteration_20260525_0003_card_drafting_raw_sources_truth/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

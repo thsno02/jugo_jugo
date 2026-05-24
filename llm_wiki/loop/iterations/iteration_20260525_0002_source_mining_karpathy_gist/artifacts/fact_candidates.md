@@ -12,7 +12,7 @@
 - fact_type: known_fact
 - support: 来源开头直接给出标题、模式定位和文件用途。
 - scope: 仅限该来源对自身文档目的和 LLM Wiki 概念的描述。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`；证据要点包括标题、个人知识库模式、复制给 LLM agent、传达高层想法、由 agent 与用户协作细化。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`；证据要点：标题和开头段落说明这是面向 LLM 的个人知识库模式说明文件，具体细节由用户与 agent 协作展开。
 - draft_status: candidate
 
 ## 候选 2
@@ -21,7 +21,7 @@
 - fact_type: known_fact
 - support: 来源在核心想法部分先描述 RAG 工作方式，再说明其“每次重新发现”的局限。
 - scope: 仅限该来源对 RAG 式文档问答体验的对比性描述。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:7-10`；证据要点包括上传文件、查询时检索片段、生成答案、每次问题重新拼接知识、缺少积累。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:7-10`；证据要点：核心想法小节先描述 RAG 式文档问答，再指出其每次查询都重新查找和拼接、缺少积累。
 - draft_status: candidate
 
 ## 候选 3
@@ -30,7 +30,7 @@
 - fact_type: known_fact
 - support: 来源在核心想法部分明确把持久 wiki 与只在查询时检索原文区分开。
 - scope: 仅限该来源提出的 LLM Wiki 模式。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13`；证据要点包括递增构建、维护持久 wiki、结构化互链 markdown、读取新来源、提取关键信息、整合入既有 wiki。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13`；证据要点：来源提出让 LLM 维护一个位于用户与原始材料之间的持久 wiki，并在新增来源时把信息纳入既有结构。
 - draft_status: candidate
 
 ## 候选 4
@@ -39,7 +39,7 @@
 - fact_type: known_fact
 - support: 来源明确强调 wiki 是持久且会复合增长的产物，并列出其保留的内容类型。
 - scope: 仅限该来源对 LLM Wiki 产物性质的描述。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13-15`；证据要点包括持久复合、已有交叉引用、已标记矛盾、综合反映已读内容、随来源和问题变丰富。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13`；证据要点：来源强调 wiki 会保存已有链接、矛盾标记和综合结果，并随新增来源与问题继续变丰富。
 - draft_status: candidate
 
 ## 候选 5
@@ -48,7 +48,7 @@
 - fact_type: known_fact
 - support: 来源说明用户通常不直接写 wiki，并用 Obsidian 与 LLM agent 的协作比喻说明分工。
 - scope: 仅限该来源对人机分工的描述。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16` 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:68-69`；证据要点包括用户负责 sourcing、exploration、questions，LLM 负责 summarizing、cross-referencing、filing、bookkeeping。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16` 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:68-69`；证据要点：来源分别说明用户很少直接写 wiki、负责选源和提问，而 LLM 负责摘要、链接、归档和维护。
 - draft_status: candidate
 
 ## 候选 6
@@ -57,7 +57,7 @@
 - fact_type: known_fact
 - support: 来源在适用场景列表中逐项给出这些用例。
 - scope: 仅限该来源列举的可能应用场景。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23`；证据要点包括 personal、research、reading a book、business/team，以及若干累积知识场景。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23`；证据要点：来源列出个人记录、研究、读书、团队内部知识库，以及其它长期积累知识的场景。
 - draft_status: candidate
 
 ## 候选 7
@@ -66,7 +66,7 @@
 - fact_type: known_fact
 - support: 来源在 Architecture 小节直接列出三层结构。
 - scope: 仅限该来源提出的架构分层。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33`；证据要点包括 Raw sources、The wiki、The schema 三个层次。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33`；证据要点：Architecture 小节明确写出三层结构，随后分别解释原始来源、wiki 和 schema。
 - draft_status: candidate
 
 ## 候选 8
@@ -75,7 +75,7 @@
 - fact_type: known_fact
 - support: 来源对 Raw sources 层作出定义，并说明其不可变与 source of truth 地位。
 - scope: 仅限该来源对 Raw sources 层的规定。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:27-30`；证据要点包括 curated collection、articles/papers/images/data files、immutable、LLM reads but never modifies、source of truth。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:27-30`；证据要点：原始来源层被描述为用户策展的文档集合，LLM 只读不改，并被设定为事实依据。
 - draft_status: candidate
 
 ## 候选 9
@@ -84,7 +84,7 @@
 - fact_type: known_fact
 - support: 来源对 The wiki 层的定义列出了内容类型和 LLM 负责的维护行为。
 - scope: 仅限该来源对 wiki 层的规定。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:31-32`；证据要点包括 LLM-generated markdown files、summaries、entity pages、concept pages、comparisons、overview、synthesis、updates、cross-references、consistent。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:31-32`；证据要点：wiki 层被描述为 LLM 生成和维护的 markdown 文件目录，包含多类页面并保持链接与一致性。
 - draft_status: candidate
 
 ## 候选 10
@@ -93,7 +93,7 @@
 - fact_type: known_fact
 - support: 来源对 The schema 层的定义说明了它的文件形式和作用。
 - scope: 仅限该来源对 schema 层的规定。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33-34`；证据要点包括 CLAUDE.md 或 AGENTS.md、wiki structure、conventions、workflows、ingesting sources、answering questions、maintaining wiki。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`；证据要点：schema 层被描述为配置文档，用来规定结构、约定，以及摄取、问答和维护流程。
 - draft_status: candidate
 
 ## 候选 11
@@ -102,7 +102,7 @@
 - fact_type: known_fact
 - support: 来源在 Operations 的 Ingest 小节给出示例流程。
 - scope: 仅限该来源示例化的 ingest 操作流程。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:35-38`；证据要点包括 drop source、LLM reads、discusses takeaways、writes summary、updates index、updates entity/concept pages、appends log。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:35-38`；证据要点：Ingest 小节给出从放入新来源到阅读、讨论、写摘要、更新页面与日志的示例流程。
 - draft_status: candidate
 
 ## 候选 12
@@ -111,5 +111,5 @@
 - fact_type: known_fact
 - support: 来源在 Operations 的 Query 小节说明查询步骤和把答案归档回 wiki 的做法。
 - scope: 仅限该来源对 query 操作流程的描述。
-- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:39-40`；证据要点包括 questions against the wiki、search relevant pages、synthesizes answer with citations、answers can be filed back into wiki as new pages。
+- source_evidence: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:39-40`；证据要点：Query 小节说明 LLM 先查找并阅读相关 wiki 页面，再生成带引用答案，且有价值答案可回写为新页面。
 - draft_status: candidate
