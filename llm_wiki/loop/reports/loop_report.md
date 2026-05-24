@@ -10,7 +10,7 @@
 
 当前状态：已有 10 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的知识卡 `LLM Wiki 作为模式文件` 已采纳为 `llm-wiki-pattern-file`。候选 5 drafting 已完成，草稿卡 `人提问，LLM 维护` 和 provenance 通过交付验收；候选 5 audit 任务包已创建、通过新版 scope 校验并渲染 dispatch。候选 5 的 read_log 边界噪声已写入 out-of-loop reflection；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的知识卡 `LLM Wiki 作为模式文件` 已采纳为 `llm-wiki-pattern-file`。候选 5 草稿卡 `人提问，LLM 维护` 已通过 audit，可以进入 adoption；采纳时必须保留范围限制，不把该来源的人机分工描述扩展为通用方法论事实。当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -104,12 +104,13 @@
 - 2026-05-25：从剩余事实候选中选择候选 5，原因是其聚焦人机分工、事实边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0041_card_drafting_human_llm_roles`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16,68-69`，任务包通过新版 `validate_scope.py`。
 - 2026-05-25：候选 5 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。`read_log.md` 记录 `rg` 曾显示下一候选标题但未用于卡片或 provenance，也记录按运行环境读取 `agent-loop-runner` skill 仅用于流程约束；已写入读取边界噪声反思，下一步继续生产。
 - 2026-05-25：创建 `iteration_20260525_0042_card_audit_human_llm_roles`，审计输入限定为候选 5 草稿卡、provenance、候选 5 字段和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16,68-69`；任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 5 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。`read_log.md` 记录一次 skill 文件读取，仅用于流程约束，不作为事实证据。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：11 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
-- 审计通过数量：10。
+- 审计通过数量：11。
 - 已采纳知识卡数量：10。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
@@ -119,7 +120,7 @@
 - 本轮 iteration 目录文件名检查导致的轻微边界观察：1。
 - 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
 - 因 `validate_scope.py` 未发现允许输入路径不存在导致的控制面修复次数：1。
-- 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：2。
+- 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：3。
 
 ## 证据链接（evidence_links）
 
@@ -339,6 +340,8 @@
 - [读取边界噪声反思](../reflections/20260525-read-boundary-noise-reflection.md)
 - [候选 5 audit 任务包](../iterations/iteration_20260525_0042_card_audit_human_llm_roles/task.md)
 - [候选 5 audit dispatch](../iterations/iteration_20260525_0042_card_audit_human_llm_roles/dispatch_request.json)
+- [候选 5 audit 报告](../iterations/iteration_20260525_0042_card_audit_human_llm_roles/artifacts/audit_report.md)
+- [候选 5 audit pass 决策](../decisions/20260525-0718-card-audit-pass-candidate-5.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

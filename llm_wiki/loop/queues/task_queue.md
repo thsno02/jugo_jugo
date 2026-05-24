@@ -11,14 +11,7 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0043_card_audit_candidate_5`
-
-- `role`: `card_audit_worker`
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0042_card_audit_human_llm_roles`
-- `inputs`: 候选 5 草稿卡、provenance、`data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16,68-69`
-- `dispatch`: `llm_wiki/loop/iterations/iteration_20260525_0042_card_audit_human_llm_roles/dispatch_request.json`
-- `lifecycle`: one-shot worker；完成后关闭，不保留 alive 上下文。
-- `status`: ready_to_dispatch
+暂无。
 
 ## 待办（pending）
 
@@ -29,6 +22,14 @@
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0043_card_audit_candidate_5`
+
+- `role`: `card_audit_worker`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0042_card_audit_human_llm_roles`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0042_card_audit_human_llm_roles/artifacts/audit_report.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0718-card-audit-pass-candidate-5.md`
 
 ### `task_20260525_0042_card_drafting_candidate_5`
 

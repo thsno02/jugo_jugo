@@ -1,0 +1,6 @@
+status: done
+task_id: task_20260525_0043_card_audit_candidate_5
+updated: 2026-05-25
+result: pass
+delivery: llm_wiki/loop/iterations/iteration_20260525_0042_card_audit_human_llm_roles/loop_delivery.md
+artifact: llm_wiki/loop/iterations/iteration_20260525_0042_card_audit_human_llm_roles/artifacts/audit_report.md
