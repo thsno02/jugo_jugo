@@ -15,6 +15,9 @@
 - `draft_card_path`:
 - `provenance_path`:
 - `audit_report_path`:
+- `target_card_path`: 仅用于存在性和覆盖冲突检查。
+- `target_provenance_path`: 仅用于存在性和覆盖冲突检查。
+- `target_index_path`: `llm_wiki/kb/indexes/cards.md`，仅用于保留既有最小索引内容并做增量更新。
 
 ## 禁止输入
 
@@ -40,6 +43,7 @@
 - 不把采纳动作写成枢纽页。
 - 出处论证和知识卡分文件保存，但彼此链接。
 - 如果知识卡含 `Footnotes`，它必须仍然是最后一个 section。
+- 读取目标 KB 路径只允许用于存在性检查、覆盖冲突检查和最小索引增量更新，不得用目标 KB 里的其它内容补充事实。
 
 ## 成功门禁
 

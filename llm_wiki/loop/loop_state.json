@@ -1,12 +1,12 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T03:37:12+08:00",
-  "status": "REFLECTION_REQUIRED",
+  "updated_at": "2026-05-25T03:40:03+08:00",
+  "status": "TEMPLATE_REPAIR_AUDIT_READY",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "small_batch_reflection_ready",
+  "current_phase": "template_repair_audit_ready",
   "current_iteration": null,
-  "last_completed_iteration": "iteration_20260525_0011_card_adoption_architecture_layers",
+  "last_completed_iteration": "iteration_20260525_0012_adoption_template_repair",
   "current_task_id": null,
   "current_focus": [
     "grow_atomic_fact_cards",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "写入小批量 accepted cards 后的 out-of-loop 反思；重复 adoption read_log 边界噪声提示需要最小修复 card_adoption_task.md，显式允许读取目标 KB 路径做冲突检查。",
+  "next_action": "创建 independent_evaluator 任务包，审计 iteration_20260525_0012_adoption_template_repair 是否为证据驱动的最小模板修复；审计通过后恢复 KB 生产。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",

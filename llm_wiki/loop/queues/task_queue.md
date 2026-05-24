@@ -19,12 +19,18 @@
 
 ### `task_20260525_0013_adoption_template_repair`
 
-- `role`: `skill_evolution_worker` 或明确修复任务
+- `role`: `main_agent_control_plane_repair`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0012_adoption_template_repair`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0012_adoption_template_repair/artifacts/template_repair_report.md`
+
+### `task_20260525_0014_adoption_template_repair_audit`
+
+- `role`: `independent_evaluator`
 - `action`: 根据两次 adoption worker `read_log.md` 的重复边界噪声，最小修复 `llm_wiki/loop/task_templates/card_adoption_task.md`，显式允许读取目标 KB 卡片、目标 provenance 和索引文件用于存在性、覆盖冲突和增量索引检查。
-- `failure_evidence`:
-  - `llm_wiki/loop/iterations/iteration_20260525_0008_card_adoption_raw_sources_truth/read_log.md`
-  - `llm_wiki/loop/iterations/iteration_20260525_0011_card_adoption_architecture_layers/read_log.md`
-- `note`: 修复后需要独立审计；不要扩大 adoption worker 的生产范围。
+- `target`: `llm_wiki/loop/iterations/iteration_20260525_0012_adoption_template_repair`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0013_adoption_template_repair_audit/artifacts/independent_audit.md`
+- `note`: 待创建任务包；审计通过后恢复 KB 生产。
 
 ## 已阻塞（blocked）
 
