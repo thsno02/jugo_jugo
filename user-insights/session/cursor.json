@@ -1,0 +1,27 @@
+{
+  "project": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
+  "project_slug": "jugo_jugo_llm_wiki",
+  "mode": "record_incremental",
+  "phase": "record_completed",
+  "updated_at": "2026-05-25T01:57:43+08:00",
+  "coverage": "partial",
+  "interaction_access": {
+    "declared_source_access": "full_thread_if_available_via_fork_context; otherwise compact_handoff",
+    "effective_source_access": "current_visible_context + compact_handoff",
+    "full_transcript_available": false,
+    "refresh_fork_verified": false
+  },
+  "last_processed": {
+    "session_id": "session_20260525_llm_wiki_loop_bootstrap",
+    "event_id": "E016",
+    "source_marker": "latest_visible_user_insights_wake_task",
+    "timestamp": "2026-05-25T01:57:43+08:00"
+  },
+  "last_written": {
+    "session_log": "user-insights/sessions/session_20260525_llm_wiki_loop_bootstrap/session_log.md",
+    "metadata": "user-insights/sessions/session_20260525_llm_wiki_loop_bootstrap/metadata.json",
+    "registry": "user-insights/session_registry.json"
+  },
+  "next_action": "If full transcript or refreshed fork becomes available, run coverage repair; otherwise wait for next record_incremental wake."
+}
+

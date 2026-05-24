@@ -1,0 +1,33 @@
+{
+  "sidecar": "user-insights",
+  "status": "idle_after_record",
+  "mode": "record_incremental",
+  "project": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
+  "project_slug": "jugo_jugo_llm_wiki",
+  "main_language": "zh",
+  "write_policy": "write_allowed",
+  "updated_at": "2026-05-25T01:57:43+08:00",
+  "coverage": "partial",
+  "coverage_reason": "No independent refresh fork or full transcript tool was exposed; current visible raw user turns were used as primary source.",
+  "files_written": [
+    "user-insights/sessions/session_20260525_llm_wiki_loop_bootstrap/session_log.md",
+    "user-insights/sessions/session_20260525_llm_wiki_loop_bootstrap/metadata.json",
+    "user-insights/session_registry.json",
+    "user-insights/session/cursor.json",
+    "user-insights/session/sidecar_state.json",
+    "user-insights/index.md"
+  ],
+  "files_not_modified": [
+    "llm_wiki/loop/user_insights/README.md",
+    "llm_wiki/loop/user_insights/session_20260525.md"
+  ],
+  "doc_folder": "unknown",
+  "doc_folder_sync": "skipped",
+  "dream_mode_aggregation": "skipped",
+  "open_questions": [
+    "Need full transcript or verified refreshed fork for complete coverage.",
+    "Need explicit doc folder before backup/sync.",
+    "Need explicit organize_workspace/full_dream trigger before project topic aggregation."
+  ]
+}
+

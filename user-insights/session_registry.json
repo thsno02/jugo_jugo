@@ -1,0 +1,24 @@
+{
+  "project": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
+  "project_slug": "jugo_jugo_llm_wiki",
+  "updated_at": "2026-05-25T01:57:43+08:00",
+  "sessions": [
+    {
+      "session_id": "session_20260525_llm_wiki_loop_bootstrap",
+      "source": "current_visible_context",
+      "thread_id": "unknown",
+      "main_language": "zh",
+      "coverage": "partial",
+      "coverage_reason": "Raw user turns are visible in current context, but full transcript/fork access is not independently verified.",
+      "event_count": 16,
+      "first_event": "E001",
+      "last_event": "E016",
+      "latest_timestamp": "2026-05-25T01:57:43+08:00",
+      "last_processed_event": "E016",
+      "aggregated_into_project_topics": false,
+      "session_log": "sessions/session_20260525_llm_wiki_loop_bootstrap/session_log.md",
+      "metadata": "sessions/session_20260525_llm_wiki_loop_bootstrap/metadata.json"
+    }
+  ]
+}
+

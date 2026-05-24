@@ -1,0 +1,32 @@
+{
+  "session_id": "session_20260525_llm_wiki_loop_bootstrap",
+  "project": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
+  "project_slug": "jugo_jugo_llm_wiki",
+  "main_language": "zh",
+  "language_source": "user_explicit + chat_dominant",
+  "mode": "record_incremental",
+  "trigger_reason": "explicit_user_request",
+  "created_at": "2026-05-25T01:57:43+08:00",
+  "updated_at": "2026-05-25T01:57:43+08:00",
+  "coverage": "partial",
+  "coverage_reason": "Current context exposes many raw user turns and compact handoff, but no independent refresh fork or full transcript tool is available in this run.",
+  "source_access_declared": "full_thread_if_available_via_fork_context; otherwise compact_handoff and mark coverage limited",
+  "effective_source_access": "current_visible_context + compact_handoff",
+  "source_pointer": "forked_context_requested_but_not_verified",
+  "scope_hint": "project",
+  "sensitivity": "normal",
+  "event_count": 16,
+  "last_processed_event": "E016",
+  "last_processed_source_marker": "latest_visible_user_insights_wake_task",
+  "canonical_workspace_log": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/user-insights",
+  "noncanonical_fallback_note": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/llm_wiki/loop/user_insights is a pre-skill fallback and was not modified.",
+  "doc_folder": "unknown",
+  "doc_folder_sync": "skipped",
+  "aggregation_status": "not_aggregated",
+  "open_questions": [
+    "If a full transcript or refreshed fork becomes available, rerun or repair coverage.",
+    "Doc folder is unknown; no backup or sync was attempted.",
+    "Dream-mode aggregation into topics/takeaways/dashboard was intentionally not performed."
+  ]
+}
+
