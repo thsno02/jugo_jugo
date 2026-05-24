@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 2 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 和候选 7 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计，当前恢复生产，下一步处理候选 10。
+当前状态：已有 2 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 和候选 7 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计；候选 10 drafting 任务包已创建。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 和候选 7 的知识卡 `LLM Wiki 的三层架构` 已采纳为 `accepted`。`card_adoption_task.md` 的目标路径读取边界已修复并通过独立审计；恢复 KB 生产，选择候选 10 进入下一张卡。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 和候选 7 的知识卡 `LLM Wiki 的三层架构` 已采纳为 `accepted`。`card_adoption_task.md` 的目标路径读取边界已修复并通过独立审计；恢复 KB 生产，候选 10 进入 drafting。
 
 ## 过程轨迹（process_trace）
 
@@ -50,6 +50,7 @@
 - 2026-05-25：创建 `iteration_20260525_0013_adoption_template_repair_audit`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`。
 - 2026-05-25：`iteration_20260525_0013_adoption_template_repair_audit` 返回 `audit_result: concern`；原因是审计任务包把 out-of-loop reflection 误列为 `target_artifacts`。已写入澄清决策，并创建 `iteration_20260525_0014_adoption_template_repair_audit_r1`。
 - 2026-05-25：修正版 adoption template 修复审计返回 `audit_result: pass`；接受模板修复并恢复 KB 生产，下一步选择候选 10。
+- 2026-05-25：创建 `iteration_20260525_0015_card_drafting_schema_layer`，选择候选 10，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -140,6 +141,8 @@
 - [adoption template 修正版审计 dispatch](../iterations/iteration_20260525_0014_adoption_template_repair_audit_r1/dispatch_request.json)
 - [adoption template 修正版审计报告](../iterations/iteration_20260525_0014_adoption_template_repair_audit_r1/artifacts/independent_audit.md)
 - [接受 adoption template 修复决策](../decisions/20260525-0354-accept-adoption-template-repair.md)
+- [候选 10 drafting 任务包](../iterations/iteration_20260525_0015_card_drafting_schema_layer/task.md)
+- [候选 10 drafting dispatch](../iterations/iteration_20260525_0015_card_drafting_schema_layer/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

@@ -2,18 +2,6 @@
 
 当前队列只放主控 agent 可以派发的窄任务，不放大目标。
 
-## 待派发（queued）
-
-### `task_20260525_0016_card_drafting_candidate_10`
-
-- `role`: `card_drafting_worker`
-- `action`: 将第一轮 source mining 的 `候选 10` 写成一张草稿原子事实知识卡，并写一份 provenance。
-- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
-- `candidate_id`: `候选 10`
-- `candidate_statement`: 在该来源的架构中，schema 是指导 LLM 如何组织 wiki、遵循约定以及执行摄取、问答和维护工作流的配置文档。
-- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`
-- `note`: 待创建任务包；当前来源很小，默认使用单次 worker。
-
 ### `task_20260525_0002_cli_worker_smoke`
 
 - `role`: `independent_evaluator`
@@ -23,7 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0016_card_drafting_candidate_10`
+
+- `role`: `card_drafting_worker`
+- `action`: 将第一轮 source mining 的 `候选 10` 写成一张草稿原子事实知识卡，并写一份 provenance。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0015_card_drafting_schema_layer`
+- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
+- `candidate_id`: `候选 10`
+- `candidate_statement`: 在该来源的架构中，schema 是指导 LLM 如何组织 wiki、遵循约定以及执行摄取、问答和维护工作流的配置文档。
+- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`
+- `note`: 任务包已创建并通过 `validate_scope.py`；当前来源很小，默认使用单次 worker。
 
 ## 已阻塞（blocked）
 
