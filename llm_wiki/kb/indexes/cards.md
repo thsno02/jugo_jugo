@@ -11,3 +11,4 @@
 | Ingest 示例流程 | `llm_wiki/kb/cards/llm-wiki-ingest-example-flow.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:35-38` |
 | Query 操作回写好答案 | `llm_wiki/kb/cards/llm-wiki-query-answer-writeback.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:39-40` |
 | 持久复合 wiki | `llm_wiki/kb/cards/llm-wiki-persistent-compounding-artifact.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13` |
+| LLM Wiki 作为模式文件 | `llm_wiki/kb/cards/llm-wiki-pattern-file.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5` |

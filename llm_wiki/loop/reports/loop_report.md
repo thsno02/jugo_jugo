@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 9 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4 都已完成 drafting、audit 和 adoption；候选 1 已完成 drafting 和 audit，audit 结论为 `pass`。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
+当前状态：已有 10 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的草稿卡 `LLM Wiki 作为模式文件` 已通过 audit，可以进入 adoption 的内容门槛。候选 1 audit task 暴露出的 `fact_candidate_path` 错误已转化为 `validate_scope.py` 最小修复，并通过 independent evaluator 审计；主控 agent 已接受修复。当前已创建候选 1 adoption 任务包，`card_id` 为 `llm-wiki-pattern-file`，目标 KB 文件不存在，任务包通过新版 scope 校验并已渲染 dispatch。本轮继续使用 one-shot adoption worker，完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的知识卡 `LLM Wiki 作为模式文件` 已采纳为 `llm-wiki-pattern-file`。候选 1 audit task 暴露出的 `fact_candidate_path` 错误已转化为 `validate_scope.py` 最小修复，并通过 independent evaluator 审计；主控 agent 已接受修复。下一步从剩余候选中选择一个事实边界清楚、来源证据可读且不重复已采纳卡片的候选进入 drafting；当前没有需要 alive sub-agent 常驻的证据。
 
 ## 过程轨迹（process_trace）
 
@@ -100,13 +100,14 @@
 - 2026-05-25：创建 `iteration_20260525_0039_validate_scope_path_check_repair_audit` 独立审计任务包，输入限定为 repair task/status/delivery/read_log/report、`validate_scope.py`、失败决策和正/负向任务样例；任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：`iteration_20260525_0039_validate_scope_path_check_repair_audit` 返回 `audit_result: pass`，主控 agent 关闭该 evaluator；`inspect_delivery.py` 返回 `pass`。接受 `validate_scope.py` 修复，恢复候选 1 adoption。审计 `read_log.md` 中记录的一次 skill 文件读取仅用于运行环境约束，不作为审计证据，暂记为非阻塞边界记录。
 - 2026-05-25：创建 `iteration_20260525_0040_card_adoption_llm_wiki_pattern_file`，指定 `card_id` 为 `llm-wiki-pattern-file`，目标 KB 路径不存在，任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 1 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第十张 KB 卡采纳完成。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：10 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
-- 审计通过数量：9。
-- 已采纳知识卡数量：9。
+- 审计通过数量：10。
+- 已采纳知识卡数量：10。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
 - adoption 模板修复后新增边界噪声：0。
@@ -322,6 +323,10 @@
 - [接受 validate_scope 修复决策](../decisions/20260525-0654-accept-validate-scope-path-check-repair.md)
 - [候选 1 adoption 任务包](../iterations/iteration_20260525_0040_card_adoption_llm_wiki_pattern_file/task.md)
 - [候选 1 adoption dispatch](../iterations/iteration_20260525_0040_card_adoption_llm_wiki_pattern_file/dispatch_request.json)
+- [候选 1 adoption 交付](../iterations/iteration_20260525_0040_card_adoption_llm_wiki_pattern_file/loop_delivery.md)
+- [候选 1 采纳决策](../decisions/20260525-0702-card-adoption-accepted-candidate-1.md)
+- [已采纳知识卡：LLM Wiki 作为模式文件](../../kb/cards/llm-wiki-pattern-file.md)
+- [已采纳 provenance：LLM Wiki 作为模式文件](../../kb/provenance/llm-wiki-pattern-file.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

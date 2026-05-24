@@ -11,15 +11,7 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0041_card_adoption_candidate_1`
-
-- `role`: `card_adoption_worker`
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0040_card_adoption_llm_wiki_pattern_file`
-- `card_id`: `llm-wiki-pattern-file`
-- `inputs`: candidate 1 draft/provenance/audit report and target KB card/provenance/index paths.
-- `dispatch`: `llm_wiki/loop/iterations/iteration_20260525_0040_card_adoption_llm_wiki_pattern_file/dispatch_request.json`
-- `lifecycle`: one-shot worker；完成后关闭，不保留 alive 上下文。
-- `status`: ready_to_dispatch
+暂无。
 
 ## 待办（pending）
 
@@ -30,6 +22,17 @@
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0041_card_adoption_candidate_1`
+
+- `role`: `card_adoption_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0040_card_adoption_llm_wiki_pattern_file`
+- `card_id`: `llm-wiki-pattern-file`
+- `adopted_card`: `llm_wiki/kb/cards/llm-wiki-pattern-file.md`
+- `adopted_provenance`: `llm_wiki/kb/provenance/llm-wiki-pattern-file.md`
+- `index`: `llm_wiki/kb/indexes/cards.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0702-card-adoption-accepted-candidate-1.md`
 
 ### `task_20260525_0040_validate_scope_path_check_repair_audit`
 
