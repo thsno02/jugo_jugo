@@ -15,18 +15,27 @@
 
 ## 待办（pending）
 
-### `task_20260525_0046_drafting_candidate_boundary_repair`
+### `task_20260525_0047_drafting_candidate_boundary_repair_audit`
 
-- `role`: `prompt_template_repair`
-- `action`: 根据候选 6 drafting `read_log.md` 中相邻候选尾部字段被检索上下文带出的失败证据，最小修复 drafting worker / task template 的候选块读取规则。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0045_drafting_candidate_boundary_repair/artifacts/prompt_repair_report.md`
-- `note`: 修复后需 independent evaluator 审计通过，再恢复候选 6 audit。
+- `role`: `independent_evaluator`
+- `action`: 审计 `task_20260525_0046_drafting_candidate_boundary_repair` 是否基于失败证据、最小修改、未扩大目标、并保留 atomic fact card 生产循环。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0046_drafting_candidate_boundary_repair_audit/artifacts/independent_audit.md`
+- `note`: 审计通过后恢复候选 6 audit；审计 concern/fail 则进入最小修正或 human checkpoint。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0046_drafting_candidate_boundary_repair`
+
+- `role`: `prompt_template_repair`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0045_drafting_candidate_boundary_repair`
+- `changed_files`: `llm_wiki/loop/system_prompts/card_drafting_worker.md`, `llm_wiki/loop/task_templates/card_drafting_task.md`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0045_drafting_candidate_boundary_repair/artifacts/prompt_repair_report.md`
+- `validation`: `validate_scope.py` pass; `inspect_delivery.py` pass
 
 ### `task_20260525_0045_card_drafting_candidate_6`
 
