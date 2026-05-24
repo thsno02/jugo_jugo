@@ -17,10 +17,14 @@
 
 - `role`: `card_adoption_worker`
 - `action`: 采纳候选 8 审计通过的草稿卡，写入 `llm_wiki/kb/` 并更新最小索引。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0008_card_adoption_raw_sources_truth`
+- `card_id`: `raw-sources-readonly-source-of-truth`
 - `draft_card_path`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/draft_card.md`
 - `provenance_path`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/provenance.md`
 - `audit_report_path`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/artifacts/audit_report.md`
-- `note`: 待创建任务包；adoption worker 不得采纳未授权知识卡，不得创建 hub/cluster/topic coverage。
+- `target_card_path`: `llm_wiki/kb/cards/raw-sources-readonly-source-of-truth.md`
+- `target_provenance_path`: `llm_wiki/kb/provenance/raw-sources-readonly-source-of-truth.md`
+- `note`: 任务包已创建并通过 `validate_scope.py`；adoption worker 不得采纳未授权知识卡，不得创建 hub/cluster/topic coverage。
 
 ## 已阻塞（blocked）
 
