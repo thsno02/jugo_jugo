@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T02:42:44+08:00",
-  "status": "CARD_DRAFTING_IN_PROGRESS",
+  "updated_at": "2026-05-25T02:50:03+08:00",
+  "status": "PROMPT_REPAIR_AUDIT_IN_PROGRESS",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_drafting",
-  "current_iteration": "iteration_20260525_0003_card_drafting_raw_sources_truth",
-  "last_completed_iteration": "iteration_20260525_0002_source_mining_karpathy_gist",
-  "current_task_id": "task_20260525_0004_card_drafting_candidate_8",
+  "current_phase": "prompt_repair_audit",
+  "current_iteration": "iteration_20260525_0005_prompt_repair_audit",
+  "last_completed_iteration": "iteration_20260525_0004_delivery_marker_prompt_repair",
+  "current_task_id": "task_20260525_0006_prompt_repair_independent_audit",
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "监控 iteration_20260525_0003_card_drafting_raw_sources_truth 的 card_drafting_worker 交付；执行者必须写 loop_status.md、loop_delivery.md、read_log.md、artifacts/draft_card.md 和 artifacts/provenance.md；主控 agent 不得亲自写卡或 provenance。",
+  "next_action": "监控 iteration_20260525_0005_prompt_repair_audit 的 independent_evaluator 交付；若审计通过，则创建新的 card_drafting revision iteration，重新生成候选 8 草稿卡并验证 delivery marker；主控 agent 不得手工补写失败 iteration 的交付文件。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",

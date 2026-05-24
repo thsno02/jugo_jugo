@@ -26,7 +26,7 @@
 结束前必须写：
 
 - `loop_status.md`
-- `loop_delivery.md`
+- `loop_delivery.md`，并在文件中写入 `LOOP_DONE` 或 `LOOP_BLOCKED`
 - `read_log.md`
 
 最终回复必须以 `LOOP_DONE` 或 `LOOP_BLOCKED` 开头。

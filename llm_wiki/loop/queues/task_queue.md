@@ -21,7 +21,17 @@
 - `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
 - `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:27-30`
 - `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
-- `note`: 只处理一个候选；不得写多张卡，不得采纳。
+- `result`: `delivery_inspection_fail`
+- `note`: 草稿卡和 provenance 已生成，但 `loop_delivery.md` 缺少 `LOOP_DONE` / `LOOP_BLOCKED` marker，不能进入审计；已触发最小 prompt 修复。
+
+### `task_20260525_0006_prompt_repair_independent_audit`
+
+- `role`: `independent_evaluator`
+- `action`: 独立审计 delivery marker prompt 修复是否最小、可恢复、未扩大生产范围。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0005_prompt_repair_audit`
+- `target`: `llm_wiki/loop/iterations/iteration_20260525_0004_delivery_marker_prompt_repair`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0005_prompt_repair_audit/artifacts/independent_audit.md`
+- `note`: 审计完成后关闭 sub-agent；若通过，再开新的 card drafting revision。
 
 ## 已阻塞（blocked）
 
