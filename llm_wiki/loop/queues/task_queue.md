@@ -11,22 +11,21 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0019_card_drafting_candidate_9`
-
-- `role`: `card_drafting_worker`
-- `action`: 将第一轮 source mining 的 `候选 9` 写成一张草稿原子事实知识卡，并写一份 provenance。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0018_card_drafting_wiki_layer`
-- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
-- `candidate_id`: `候选 9`
-- `candidate_statement`: 在该来源的架构中，wiki 层是由 LLM 生成的 markdown 文件目录，包含摘要、实体页、概念页、比较、概览和综合等内容，并由 LLM 创建、更新、维护交叉引用和一致性。
-- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:31-32`
-- `note`: 任务包已创建并通过 `validate_scope.py`；当前来源很小，默认使用单次 worker。
+暂无。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0019_card_drafting_candidate_9`
+
+- `role`: `card_drafting_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0018_card_drafting_wiki_layer`
+- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0424-card-drafting-candidate-9-ready-for-audit.md`
 
 ### `task_20260525_0018_card_adoption_candidate_10`
 
