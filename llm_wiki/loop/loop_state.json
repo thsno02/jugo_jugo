@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T06:31:25+08:00",
-  "status": "READY_FOR_CARD_AUDIT",
+  "updated_at": "2026-05-25T06:34:49+08:00",
+  "status": "CARD_AUDIT_IN_PROGRESS",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
   "current_phase": "card_audit",
-  "current_iteration": "iteration_20260525_0036_card_drafting_llm_wiki_pattern_file",
+  "current_iteration": "iteration_20260525_0037_card_audit_llm_wiki_pattern_file",
   "last_completed_iteration": "iteration_20260525_0036_card_drafting_llm_wiki_pattern_file",
-  "current_task_id": null,
+  "current_task_id": "task_20260525_0038_card_audit_candidate_1",
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "为候选 1 创建 card_audit_worker 窄任务包，输入限定为草稿卡、provenance 和 data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5；dispatch 使用 fork_context:false，完成后关闭 worker。",
+  "next_action": "派发候选 1 card_audit_worker；dispatch 使用 fork_context:false，执行者只接收 base_worker、card_audit_worker system prompt 和当前 task.md。完成后立即关闭 worker，再用 inspect_delivery.py 验收。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",

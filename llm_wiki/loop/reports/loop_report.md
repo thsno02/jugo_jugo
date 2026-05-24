@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 9 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4 都已完成 drafting、audit 和 adoption；候选 1 已完成 drafting，准备进入独立审计。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
+当前状态：已有 9 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4 都已完成 drafting、audit 和 adoption；候选 1 已完成 drafting，当前已创建 card audit 任务包并准备派发。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的草稿卡 `LLM Wiki 作为模式文件` 已通过交付验收，下一步创建 `card_audit_worker` 窄任务包。candidate 1 drafting worker 已在完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的草稿卡 `LLM Wiki 作为模式文件` 已通过交付验收，候选 1 audit 任务包通过 scope 校验并已渲染 dispatch，下一步派发 `card_audit_worker`。本轮继续使用 one-shot worker，完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
 
 ## 过程轨迹（process_trace）
 
@@ -94,6 +94,7 @@
 - 2026-05-25：候选 4 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第九张 KB 卡采纳完成。
 - 2026-05-25：从剩余事实候选中选择候选 1，原因是其证据集中在来源开头、事实边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0036_card_drafting_llm_wiki_pattern_file`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 1 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0037_card_audit_llm_wiki_pattern_file`，审计输入限定为候选 1 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 
 ## 关键指标（key_metrics）
 
@@ -302,6 +303,8 @@
 - [候选 1 草稿卡](../iterations/iteration_20260525_0036_card_drafting_llm_wiki_pattern_file/artifacts/draft_card.md)
 - [候选 1 provenance](../iterations/iteration_20260525_0036_card_drafting_llm_wiki_pattern_file/artifacts/provenance.md)
 - [候选 1 drafting 可审计决策](../decisions/20260525-0631-card-drafting-candidate-1-ready-for-audit.md)
+- [候选 1 audit 任务包](../iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/task.md)
+- [候选 1 audit dispatch](../iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

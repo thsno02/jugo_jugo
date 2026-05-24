@@ -11,7 +11,14 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0038_card_audit_candidate_1`
+
+- `role`: `card_audit_worker`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file`
+- `inputs`: 候选 1 草稿卡、provenance、`data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`
+- `dispatch`: `llm_wiki/loop/iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/dispatch_request.json`
+- `lifecycle`: one-shot worker；完成后关闭，不保留 alive 上下文。
+- `status`: ready_to_dispatch
 
 ## 已阻塞（blocked）
 
