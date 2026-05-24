@@ -23,8 +23,9 @@
 
 ## 验证
 
-- 任务包预期通过 `validate_scope.py`。
-- 后续需由 `independent_evaluator` 审计：改动是否与失败证据匹配、范围是否最小、是否保留 atomic fact card 生产目标。
+- `2026-05-25T07:48:27+08:00` 实际运行 `python3 llm_wiki/loop/tools/validate_scope.py llm_wiki/loop/iterations/iteration_20260525_0045_drafting_candidate_boundary_repair/task.md`，输出 `scope_validation: pass`。
+- `2026-05-25T07:48:27+08:00` 实际运行 `python3 llm_wiki/loop/tools/inspect_delivery.py iteration_20260525_0045_drafting_candidate_boundary_repair`，输出 `delivery_inspection: pass`。
+- 后续需由 `independent_evaluator` 复审：改动是否与失败证据匹配、范围是否最小、是否保留 atomic fact card 生产目标，以及本 validation evidence correction 是否足以关闭此前 concern。
 
 ## 剩余风险
 

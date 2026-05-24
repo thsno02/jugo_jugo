@@ -1,12 +1,12 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T07:46:59+08:00",
-  "status": "PROMPT_REPAIR_VALIDATION_EVIDENCE_REQUIRED",
+  "updated_at": "2026-05-25T07:50:17+08:00",
+  "status": "PROMPT_REPAIR_VALIDATION_EVIDENCE_AUDIT_REQUIRED",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
   "current_phase": "prompt_evolution_repair",
-  "current_iteration": "iteration_20260525_0046_drafting_candidate_boundary_repair_audit",
-  "last_completed_iteration": "iteration_20260525_0046_drafting_candidate_boundary_repair_audit",
+  "current_iteration": "iteration_20260525_0047_drafting_boundary_validation_evidence_repair",
+  "last_completed_iteration": "iteration_20260525_0047_drafting_boundary_validation_evidence_repair",
   "current_task_id": null,
   "current_focus": [
     "grow_atomic_fact_cards",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "创建最小 validation evidence correction iteration，补写 prompt/template repair 的 validate_scope.py 与 inspect_delivery.py 实际结果；随后重新派发 independent_evaluator 审计。",
+  "next_action": "创建并派发 independent_evaluator 复审 validation evidence correction；审计通过后恢复候选 6 card_audit_worker。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",

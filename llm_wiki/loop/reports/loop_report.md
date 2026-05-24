@@ -10,7 +10,7 @@
 
 当前状态：已有 11 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1、5 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 5 知识卡 `人提问，LLM 维护` 已采纳为 `llm-wiki-human-llm-role-division`。候选 6 drafting 已完成，草稿卡保持为“该来源列举了一组可能应用场景”这一清单型事实，没有扩写成场景报告。候选块读取边界的最小 prompt/template repair 已完成，但 independent evaluator 给出 `concern`：修复本身合规，缺少实际 validation result 的落盘证据。下一步只补写 validation evidence 并重新审计；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 5 知识卡 `人提问，LLM 维护` 已采纳为 `llm-wiki-human-llm-role-division`。候选 6 drafting 已完成，草稿卡保持为“该来源列举了一组可能应用场景”这一清单型事实，没有扩写成场景报告。候选块读取边界的最小 prompt/template repair 已完成；针对 independent evaluator 的 `concern`，已补写实际 `validate_scope.py` 与 `inspect_delivery.py` 结果。下一步派发 independent evaluator 复审，审计通过后恢复候选 6 audit；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -112,6 +112,7 @@
 - 2026-05-25：创建 `iteration_20260525_0045_drafting_candidate_boundary_repair`，最小修改 `card_drafting_worker.md` 与 `card_drafting_task.md` 的候选块读取规则；`validate_scope.py` 和 `inspect_delivery.py` 均返回 `pass`。本修复未改卡片 schema，未创建 alive sub-agent，下一步进入 independent evaluator 审计。
 - 2026-05-25：创建 `iteration_20260525_0046_drafting_candidate_boundary_repair_audit`，任务包限定为修复任务、修复交付、改动后的 prompt/template 和失败证据；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选块读取边界修复审计返回 `audit_result: concern`；审计确认修复范围合规，但指出目标修复产物未记录实际 `validate_scope.py` pass 结果。主控 agent 关闭该 one-shot evaluator，并转入最小 validation evidence correction。
+- 2026-05-25：创建 `iteration_20260525_0047_drafting_boundary_validation_evidence_repair`，只补写目标修复报告中的实际 `validate_scope.py` 与 `inspect_delivery.py` 输出；该 correction 自身通过 `validate_scope.py` 和 `inspect_delivery.py`。
 
 ## 关键指标（key_metrics）
 
@@ -129,6 +130,7 @@
 - 因 `validate_scope.py` 未发现允许输入路径不存在导致的控制面修复次数：1。
 - 因失败证据触发的 prompt/template 修复次数：2。
 - prompt/template 修复审计 concern 数量：1。
+- validation evidence correction 数量：1。
 - 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：3。
 
 ## 证据链接（evidence_links）
@@ -369,6 +371,8 @@
 - [候选块读取边界修复审计 dispatch](../iterations/iteration_20260525_0046_drafting_candidate_boundary_repair_audit/dispatch_request.json)
 - [候选块读取边界修复审计报告](../iterations/iteration_20260525_0046_drafting_candidate_boundary_repair_audit/artifacts/independent_audit.md)
 - [候选块读取边界修复审计 concern 决策](../decisions/20260525-0747-drafting-boundary-repair-audit-concern.md)
+- [候选块读取边界 validation evidence correction 任务](../iterations/iteration_20260525_0047_drafting_boundary_validation_evidence_repair/task.md)
+- [候选块读取边界 validation evidence correction 报告](../iterations/iteration_20260525_0047_drafting_boundary_validation_evidence_repair/artifacts/validation_evidence_report.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

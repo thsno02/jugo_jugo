@@ -15,18 +15,27 @@
 
 ## 待办（pending）
 
-### `task_20260525_0048_drafting_boundary_validation_evidence_repair`
+### `task_20260525_0049_drafting_boundary_validation_evidence_audit`
 
-- `role`: `prompt_repair_validation_evidence`
-- `action`: 根据 independent evaluator 的 concern，只补写候选块读取边界修复的实际 `validate_scope.py` / `inspect_delivery.py` 结果记录。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0047_drafting_boundary_validation_evidence_repair/artifacts/validation_evidence_report.md`
-- `note`: 不修改候选 6 草稿卡，不扩大 prompt/template 修复范围；完成后重新派发 independent evaluator。
+- `role`: `independent_evaluator`
+- `action`: 复审 `task_20260525_0048_drafting_boundary_validation_evidence_repair` 是否足以关闭 validation result 未落盘 concern，并确认 prompt/template 修复仍保持最小范围。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0048_drafting_boundary_validation_evidence_audit/artifacts/independent_audit.md`
+- `note`: 审计通过后恢复候选 6 audit；若仍 concern/fail，则记录 human_checkpoint 或进一步最小修复。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0048_drafting_boundary_validation_evidence_repair`
+
+- `role`: `prompt_repair_validation_evidence`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0047_drafting_boundary_validation_evidence_repair`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0047_drafting_boundary_validation_evidence_repair/artifacts/validation_evidence_report.md`
+- `changed_files`: `llm_wiki/loop/iterations/iteration_20260525_0045_drafting_candidate_boundary_repair/artifacts/prompt_repair_report.md`
+- `validation`: `validate_scope.py` pass; `inspect_delivery.py` pass
 
 ### `task_20260525_0047_drafting_candidate_boundary_repair_audit`
 
