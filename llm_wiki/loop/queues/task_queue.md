@@ -11,16 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待办（pending）
-
 ### `task_20260525_0049_drafting_boundary_validation_evidence_audit`
 
 - `role`: `independent_evaluator`
 - `action`: 复审 `task_20260525_0048_drafting_boundary_validation_evidence_repair` 是否足以关闭 validation result 未落盘 concern，并确认 prompt/template 修复仍保持最小范围。
 - `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0048_drafting_boundary_validation_evidence_audit/artifacts/independent_audit.md`
 - `note`: 审计通过后恢复候选 6 audit；若仍 concern/fail，则记录 human_checkpoint 或进一步最小修复。
+
+## 待办（pending）
+
+暂无。
 
 ## 已阻塞（blocked）
 
