@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T07:38:00+08:00",
-  "status": "PROMPT_REPAIR_AUDIT_REQUIRED",
+  "updated_at": "2026-05-25T07:41:37+08:00",
+  "status": "PROMPT_REPAIR_AUDIT_DISPATCH_READY",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
   "current_phase": "prompt_evolution_audit",
-  "current_iteration": "iteration_20260525_0045_drafting_candidate_boundary_repair",
+  "current_iteration": "iteration_20260525_0046_drafting_candidate_boundary_repair_audit",
   "last_completed_iteration": "iteration_20260525_0045_drafting_candidate_boundary_repair",
-  "current_task_id": null,
+  "current_task_id": "task_20260525_0047_drafting_candidate_boundary_repair_audit",
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "创建并派发 independent_evaluator 审计候选块读取边界 prompt/template repair；审计通过后恢复候选 6 card_audit_worker。",
+  "next_action": "派发 independent_evaluator 审计候选块读取边界 prompt/template repair；等待 loop_delivery.md 后 inspect_delivery。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",

@@ -11,16 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待办（pending）
-
 ### `task_20260525_0047_drafting_candidate_boundary_repair_audit`
 
 - `role`: `independent_evaluator`
 - `action`: 审计 `task_20260525_0046_drafting_candidate_boundary_repair` 是否基于失败证据、最小修改、未扩大目标、并保留 atomic fact card 生产循环。
 - `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0046_drafting_candidate_boundary_repair_audit/artifacts/independent_audit.md`
 - `note`: 审计通过后恢复候选 6 audit；审计 concern/fail 则进入最小修正或 human checkpoint。
+
+## 待办（pending）
+
+暂无。
 
 ## 已阻塞（blocked）
 
