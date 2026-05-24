@@ -13,25 +13,15 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0004_card_drafting_candidate_8`
+### `task_20260525_0007_card_drafting_candidate_8_r1`
 
 - `role`: `card_drafting_worker`
-- `action`: 将第一轮 source mining 的 `候选 8` 写成一张草稿原子事实知识卡，并写一份可读 provenance。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0003_card_drafting_raw_sources_truth`
+- `action`: 在 delivery marker prompt 修复后，重新将第一轮 source mining 的 `候选 8` 写成一张草稿原子事实知识卡和一份 provenance。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1`
 - `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
 - `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:27-30`
 - `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
-- `result`: `delivery_inspection_fail`
-- `note`: 草稿卡和 provenance 已生成，但 `loop_delivery.md` 缺少 `LOOP_DONE` / `LOOP_BLOCKED` marker，不能进入审计；已触发最小 prompt 修复。
-
-### `task_20260525_0006_prompt_repair_independent_audit`
-
-- `role`: `independent_evaluator`
-- `action`: 独立审计 delivery marker prompt 修复是否最小、可恢复、未扩大生产范围。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0005_prompt_repair_audit`
-- `target`: `llm_wiki/loop/iterations/iteration_20260525_0004_delivery_marker_prompt_repair`
-- `output`: `llm_wiki/loop/iterations/iteration_20260525_0005_prompt_repair_audit/artifacts/independent_audit.md`
-- `note`: 审计完成后关闭 sub-agent；若通过，再开新的 card drafting revision。
+- `note`: 不读取失败 drafting iteration 的草稿卡或 provenance；完成后必须关闭 sub-agent 并运行 `inspect_delivery.py`。
 
 ## 已阻塞（blocked）
 
@@ -47,6 +37,28 @@
 - `output`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
 - `candidate_count`: 12
 - `decision`: `llm_wiki/loop/decisions/20260525-0241-source-mining-accepted-candidate-8.md`
+
+### `task_20260525_0004_card_drafting_candidate_8`
+
+- `role`: `card_drafting_worker`
+- `result`: `delivery_inspection_fail`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0003_card_drafting_raw_sources_truth`
+- `note`: 草稿卡和 provenance 已生成，但 `loop_delivery.md` 缺少 `LOOP_DONE` / `LOOP_BLOCKED` marker，不能进入审计；已触发最小 prompt 修复。
+
+### `task_20260525_0005_delivery_marker_prompt_repair`
+
+- `role`: `main_agent_control_plane_repair`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0004_delivery_marker_prompt_repair`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0004_delivery_marker_prompt_repair/artifacts/prompt_repair_report.md`
+
+### `task_20260525_0006_prompt_repair_independent_audit`
+
+- `role`: `independent_evaluator`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0005_prompt_repair_audit`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0005_prompt_repair_audit/artifacts/independent_audit.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0254-accept-delivery-marker-prompt-repair.md`
 
 ### `task_20260525_0001_prelaunch_validation`
 

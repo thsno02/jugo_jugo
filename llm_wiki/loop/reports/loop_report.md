@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：第一轮 `source_mining_worker` 已完成并通过交付检查；已选择一个候选进入 `card_drafting_worker` 草稿阶段。
+当前状态：第一轮 `source_mining_worker` 已完成并通过交付检查；第一次 drafting 产物因 `loop_delivery.md` 缺少标准 marker 未通过交付检查。已完成最小 prompt 修复并通过独立审计，正在重跑候选 8 的 drafting revision。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；第一轮 source mining 产出 12 个候选并通过 `inspect_delivery.py`。主控 agent 已关闭完成的 source mining worker，并选择 `候选 8` 进入单卡 drafting，因为它证据集中、事实边界清楚，适合验证草稿卡和 provenance 的最小闭环。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；第一轮 source mining 产出 12 个候选并通过 `inspect_delivery.py`。第一次 drafting 暴露出 delivery marker 契约缺口，已把 `loop_delivery.md` 内必须写入 `LOOP_DONE` 或 `LOOP_BLOCKED` 的要求补入 `base_worker.md`，且独立审计为 `pass`。旧 drafting iteration 不手工补写，改为新开 revision 重新生成候选 8 草稿卡。
 
 ## 过程轨迹（process_trace）
 
@@ -30,6 +30,9 @@
 - 2026-05-25：创建并派发 `iteration_20260525_0002_source_mining_karpathy_gist`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`，执行者只接收 base worker、source mining worker prompt 和当前 task packet。
 - 2026-05-25：`source_mining_worker` 返回 `LOOP_DONE`，主控 agent 随即关闭该 sub-agent；`inspect_delivery.py` 返回 `pass`，12 个事实候选进入候选集。
 - 2026-05-25：写入决策 `20260525-0241-source-mining-accepted-candidate-8.md`，选择候选 8 进入 `iteration_20260525_0003_card_drafting_raw_sources_truth`。
+- 2026-05-25：候选 8 第一次 drafting 生成草稿卡和 provenance，但 `inspect_delivery.py` 因 `loop_delivery.md` 缺少 `LOOP_DONE` / `LOOP_BLOCKED` 失败；主控 agent 未补写 worker 交付，而是记录失败并修复稳定 prompt。
+- 2026-05-25：`iteration_20260525_0004_delivery_marker_prompt_repair` 最小修改 `base_worker.md` 的交付 marker 规则；`iteration_20260525_0005_prompt_repair_audit` 独立审计结论为 `audit_result: pass`，审计 worker 已关闭。
+- 2026-05-25：创建 `iteration_20260525_0006_card_drafting_raw_sources_truth_r1`，在修复后的 worker prompt 下重跑候选 8 drafting revision。
 
 ## 关键指标（key_metrics）
 
@@ -75,6 +78,12 @@
 - [接受 source mining 并选择候选 8 的决策](../decisions/20260525-0241-source-mining-accepted-candidate-8.md)
 - [候选 8 drafting 任务包](../iterations/iteration_20260525_0003_card_drafting_raw_sources_truth/task.md)
 - [候选 8 drafting dispatch](../iterations/iteration_20260525_0003_card_drafting_raw_sources_truth/dispatch_request.json)
+- [delivery marker prompt 修复任务](../iterations/iteration_20260525_0004_delivery_marker_prompt_repair/task.md)
+- [prompt 修复报告](../iterations/iteration_20260525_0004_delivery_marker_prompt_repair/artifacts/prompt_repair_report.md)
+- [prompt 修复独立审计](../iterations/iteration_20260525_0005_prompt_repair_audit/artifacts/independent_audit.md)
+- [接受 prompt 修复决策](../decisions/20260525-0254-accept-delivery-marker-prompt-repair.md)
+- [候选 8 drafting revision 任务包](../iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/task.md)
+- [候选 8 drafting revision dispatch](../iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

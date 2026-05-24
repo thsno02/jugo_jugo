@@ -1,0 +1,26 @@
+## 读取记录
+
+- `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+  - 原因：当前任务属于 filesystem-backed agent loop 执行场景，开发者指令要求使用匹配技能。
+  - 用途：仅用于执行流程约束，不作为知识卡事实来源。
+- `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/task.md`
+  - 原因：当前任务包。
+  - 用途：确认候选、允许输入、允许写入、交付要求和阻塞条件。
+- `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
+  - 原因：任务允许用于核对 `候选 8` 字段。
+  - 用途：只读取并核对 `候选 8` 的 statement、fact_type、support、scope 和 source_evidence。
+- `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:27-30`
+  - 原因：任务指定的来源证据行。
+  - 用途：支撑草稿知识卡和出处论证。
+- `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/loop_status.md`
+  - 原因：结束前验证要求文件存在。
+  - 用途：只验证本轮状态文件存在。
+- `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/loop_delivery.md`
+  - 原因：结束前验证交付标记。
+  - 用途：只验证包含 `LOOP_DONE`。
+- `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/draft_card.md`
+  - 原因：结束前验证知识卡门禁。
+  - 用途：只验证 `status: draft`、`References` 与 `Footnotes` 顺序。
+- `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/provenance.md`
+  - 原因：结束前验证要求文件存在。
+  - 用途：只验证出处论证文件存在。
