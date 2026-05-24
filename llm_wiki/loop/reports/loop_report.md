@@ -67,13 +67,14 @@
 - 2026-05-25：创建 `iteration_20260525_0022_card_audit_persistent_wiki_mode`，审计输入限定为候选 3 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 3 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0023_card_adoption_persistent_wiki_mode`，指定 `card_id` 为 `llm-wiki-persistent-wiki-alternative-mode`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 3 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第五张 KB 卡采纳完成。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：5 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：5。
-- 已采纳知识卡数量：4。
+- 已采纳知识卡数量：5。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
 - adoption 模板修复后新增边界噪声：0。
@@ -200,6 +201,10 @@
 - [候选 3 audit pass 决策](../decisions/20260525-0452-card-audit-pass-candidate-3.md)
 - [候选 3 adoption 任务包](../iterations/iteration_20260525_0023_card_adoption_persistent_wiki_mode/task.md)
 - [候选 3 adoption dispatch](../iterations/iteration_20260525_0023_card_adoption_persistent_wiki_mode/dispatch_request.json)
+- [候选 3 adoption 交付](../iterations/iteration_20260525_0023_card_adoption_persistent_wiki_mode/loop_delivery.md)
+- [候选 3 采纳决策](../decisions/20260525-0459-card-adoption-accepted-candidate-3.md)
+- [已采纳知识卡：持久 wiki 替代模式](../../kb/cards/llm-wiki-persistent-wiki-alternative-mode.md)
+- [已采纳 provenance：持久 wiki 替代模式](../../kb/provenance/llm-wiki-persistent-wiki-alternative-mode.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
