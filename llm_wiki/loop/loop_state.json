@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T04:47:35+08:00",
-  "status": "CARD_AUDIT_IN_PROGRESS",
+  "updated_at": "2026-05-25T04:51:48+08:00",
+  "status": "READY_FOR_CARD_ADOPTION",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_audit",
+  "current_phase": "card_adoption",
   "current_iteration": "iteration_20260525_0022_card_audit_persistent_wiki_mode",
-  "last_completed_iteration": "iteration_20260525_0021_card_drafting_persistent_wiki_mode",
-  "current_task_id": "task_20260525_0023_card_audit_candidate_3",
+  "last_completed_iteration": "iteration_20260525_0022_card_audit_persistent_wiki_mode",
+  "current_task_id": null,
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "监控 iteration_20260525_0022_card_audit_persistent_wiki_mode 的 card_audit_worker 交付；完成后关闭 sub-agent，运行 inspect_delivery.py，并根据 audit_result 决定 revise/reject/adoption。",
+  "next_action": "为候选 3 创建 card_adoption_worker 窄任务包；目标 card_id 暂定为 llm-wiki-persistent-wiki-alternative-mode，dispatch 使用 fork_context:false。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",

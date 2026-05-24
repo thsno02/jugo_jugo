@@ -65,12 +65,13 @@
 - 2026-05-25：从剩余事实候选中选择候选 3，原因是其证据集中在核心想法段落、事实边界清楚，且不重复已采纳的架构层卡；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0021_card_drafting_persistent_wiki_mode`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13`，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 3 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 - 2026-05-25：创建 `iteration_20260525_0022_card_audit_persistent_wiki_mode`，审计输入限定为候选 3 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 3 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：5 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
-- 审计通过数量：4。
+- 审计通过数量：5。
 - 已采纳知识卡数量：4。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
@@ -194,6 +195,8 @@
 - [候选 3 drafting 可审计决策](../decisions/20260525-0446-card-drafting-candidate-3-ready-for-audit.md)
 - [候选 3 audit 任务包](../iterations/iteration_20260525_0022_card_audit_persistent_wiki_mode/task.md)
 - [候选 3 audit dispatch](../iterations/iteration_20260525_0022_card_audit_persistent_wiki_mode/dispatch_request.json)
+- [候选 3 audit 报告](../iterations/iteration_20260525_0022_card_audit_persistent_wiki_mode/artifacts/audit_report.md)
+- [候选 3 audit pass 决策](../decisions/20260525-0452-card-audit-pass-candidate-3.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
