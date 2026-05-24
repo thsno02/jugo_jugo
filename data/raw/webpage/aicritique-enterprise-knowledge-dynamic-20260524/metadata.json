@@ -1,0 +1,26 @@
+{
+  "bytes": 1461,
+  "content_type": "text/html;charset=UTF-8",
+  "fetched_at": "2026-05-23T21:02:15.708024+00:00",
+  "final_url": "https://office-sec.alibaba-inc.com/dialog?hijackSign=d59797b3086f92bd7f35240f5f4ec491&hijackTime=1779570098841&host=www.aicritique.org&jumpSign=0df298d6f45ed65b111c5254511d9f11&jumpTime=1779570098802&param=https%3A%2F%2Fwww.aicritique.org%2Fus%2F2026%2F05%2F08%2Fandrej-karpathys-latest-concept-llm-wiki-and-the-future-of-enterprise-knowledge%2F&policyAction=cloud_gray&policyId=119645&policyVersion=15&procTags=software%3A%3A333&umid=417F6C27-93AD-5EBA-9277-36A97AE60FE7&sk",
+  "http_status": 200,
+  "ok": false,
+  "requested_url": "https://www.aicritique.org/us/2026/05/08/andrej-karpathys-latest-concept-llm-wiki-and-the-future-of-enterprise-knowledge/",
+  "sha256": "ba383efef5c090270a884cbd212727801d6a6a3a371748ff473ced79aa708cc8",
+  "source": {
+    "id": "aicritique-enterprise-knowledge-dynamic-20260524",
+    "priority": "p1",
+    "tags": [
+      "dynamic_retrieval",
+      "enterprise",
+      "llm-wiki",
+      "evidence-gap:aicritique_intercept_failure"
+    ],
+    "title": "Andrej Karpathy's latest concept LLM Wiki and the future of enterprise knowledge",
+    "type": "webpage",
+    "url": "https://www.aicritique.org/us/2026/05/08/andrej-karpathys-latest-concept-llm-wiki-and-the-future-of-enterprise-knowledge/"
+  },
+  "text_sha256": "b16e30435b8cf0320fcadab886d85b4b08c335812974a35e7842376bae0c4ae3",
+  "transport": "curl",
+  "transport_warning": "network_intercepted_by_office_sec"
+}

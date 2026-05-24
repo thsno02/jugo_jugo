@@ -1,0 +1,27 @@
+{
+  "bytes": 247838,
+  "content_type": "text/html",
+  "fetched_at": "2026-05-23T21:02:37.761506+00:00",
+  "final_url": "https://atlan.com/know/llm-wiki-vs-rag-knowledge-base/",
+  "http_status": 200,
+  "ok": true,
+  "requested_url": "https://atlan.com/know/llm-wiki-vs-rag-knowledge-base/",
+  "sha256": "72869eea3c0935252392b3cd91ba3609579bd9d55b14ee9ee3c94109bea6bc3d",
+  "source": {
+    "id": "atlan-llm-wiki-vs-rag-dynamic-20260524",
+    "priority": "p1",
+    "tags": [
+      "dynamic_retrieval",
+      "enterprise",
+      "rag",
+      "llm-wiki",
+      "evidence-gap:enterprise_framing"
+    ],
+    "title": "LLM Wiki vs RAG: The Karpathy Concept and Enterprise Reality",
+    "type": "webpage",
+    "url": "https://atlan.com/know/llm-wiki-vs-rag-knowledge-base/"
+  },
+  "text_sha256": "f27203512fea57d57c73ca7111281782f3778e9dcc46447331ad2a0ca9a19c60",
+  "transport": "requests",
+  "transport_warning": null
+}
