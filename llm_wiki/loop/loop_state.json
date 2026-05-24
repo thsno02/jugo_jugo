@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T07:20:27+08:00",
-  "status": "CARD_ADOPTION_IN_PROGRESS",
+  "updated_at": "2026-05-25T07:25:07+08:00",
+  "status": "READY_FOR_NEXT_SELECTION",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_adoption",
+  "current_phase": "card_drafting",
   "current_iteration": "iteration_20260525_0043_card_adoption_human_llm_roles",
-  "last_completed_iteration": "iteration_20260525_0042_card_audit_human_llm_roles",
-  "current_task_id": "task_20260525_0044_card_adoption_candidate_5",
+  "last_completed_iteration": "iteration_20260525_0043_card_adoption_human_llm_roles",
+  "current_task_id": null,
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "派发候选 5 card_adoption_worker；dispatch 使用 fork_context:false，执行者只接收 base_worker、card_adoption_worker system prompt 和当前 task.md。完成后立即关闭 worker，再用 inspect_delivery.py 验收。",
+  "next_action": "判断第一轮 source mining 剩余候选 6 是否值得作为清单型原子事实进入 drafting；若事实边界过宽，则记录决策并回到 source mining 选择新的本地来源。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",

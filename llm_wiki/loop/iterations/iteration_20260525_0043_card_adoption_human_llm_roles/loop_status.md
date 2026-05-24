@@ -1,0 +1,5 @@
+status: done
+task_id: task_20260525_0044_card_adoption_candidate_5
+iteration_id: iteration_20260525_0043_card_adoption_human_llm_roles
+role: card_adoption_worker
+result: LOOP_DONE
