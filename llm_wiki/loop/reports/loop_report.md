@@ -70,6 +70,7 @@
 - 2026-05-25：候选 3 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第五张 KB 卡采纳完成。
 - 2026-05-25：从剩余事实候选中选择候选 2，原因是其证据集中、对比对象清楚，且不重复已采纳的持久 wiki 与架构层事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0024_card_drafting_rag_no_accumulation`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:7-10`，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 2 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0025_card_audit_rag_no_accumulation`，审计输入限定为候选 2 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:7-10`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 
 ## 关键指标（key_metrics）
 
@@ -212,6 +213,8 @@
 - [候选 2 草稿卡](../iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/artifacts/draft_card.md)
 - [候选 2 provenance](../iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/artifacts/provenance.md)
 - [候选 2 drafting 可审计决策](../decisions/20260525-0506-card-drafting-candidate-2-ready-for-audit.md)
+- [候选 2 audit 任务包](../iterations/iteration_20260525_0025_card_audit_rag_no_accumulation/task.md)
+- [候选 2 audit dispatch](../iterations/iteration_20260525_0025_card_audit_rag_no_accumulation/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
