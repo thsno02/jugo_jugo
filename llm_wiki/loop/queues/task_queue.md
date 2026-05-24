@@ -11,15 +11,7 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0040_validate_scope_path_check_repair_audit`
-
-- `role`: `independent_evaluator`
-- `action`: 审计 `validate_scope.py` 路径检查修复是否对应失败证据、范围最小、验证充分。
-- `target_iteration`: `llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair`
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/artifacts/independent_audit.md`
-- `dispatch`: `llm_wiki/loop/iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/dispatch_request.json`
-- `lifecycle`: one-shot worker；完成后关闭，不保留 alive 上下文。
-- `status`: ready_to_dispatch
+暂无。
 
 ## 待办（pending）
 
@@ -31,13 +23,21 @@
 
 ## 已完成（done）
 
+### `task_20260525_0040_validate_scope_path_check_repair_audit`
+
+- `role`: `independent_evaluator`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/artifacts/independent_audit.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0654-accept-validate-scope-path-check-repair.md`
+
 ### `task_20260525_0039_validate_scope_path_check_repair`
 
 - `role`: `tooling_repair`
 - `result`: `LOOP_DONE`
 - `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair`
 - `output`: `llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair/artifacts/tooling_repair_report.md`
-- `status`: awaiting independent evaluation before main-agent acceptance.
+- `decision`: `llm_wiki/loop/decisions/20260525-0654-accept-validate-scope-path-check-repair.md`
 
 ### `task_20260525_0038_card_audit_candidate_1`
 

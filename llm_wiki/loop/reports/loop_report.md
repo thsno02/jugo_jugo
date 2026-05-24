@@ -10,7 +10,7 @@
 
 当前状态：已有 9 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4 都已完成 drafting、audit 和 adoption；候选 1 已完成 drafting 和 audit，audit 结论为 `pass`。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的草稿卡 `LLM Wiki 作为模式文件` 已通过 audit，可以进入 adoption 的内容门槛。但 audit task 暴露出一个控制面失败：任务包中的 `fact_candidate_path` 指向不存在的 `0001_source_mining`，而 `validate_scope.py` 未能在派发前发现。`validate_scope.py` 已做最小修复并通过正/负向检查；当前已创建并准备派发 independent evaluator 审计修复，审计通过后恢复候选 1 adoption。本轮继续使用 one-shot evaluator，完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的草稿卡 `LLM Wiki 作为模式文件` 已通过 audit，可以进入 adoption 的内容门槛。候选 1 audit task 暴露出的 `fact_candidate_path` 错误已转化为 `validate_scope.py` 最小修复，并通过 independent evaluator 审计；主控 agent 已接受修复。下一步恢复候选 1 adoption。本轮继续使用 one-shot adoption worker，完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
 
 ## 过程轨迹（process_trace）
 
@@ -98,6 +98,7 @@
 - 2026-05-25：候选 1 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`。审计同时记录 `fact_candidate_path` 读取失败；主控 agent 判断 audit pass 内容上可接受，但这是 `validate_scope.py` 未检查允许输入路径存在性的失败证据，先转入 tooling repair。
 - 2026-05-25：创建 `iteration_20260525_0038_validate_scope_path_check_repair` 显式 tooling repair；最小修复 `validate_scope.py`，使允许输入区中不存在的必需本地路径触发 `scope_validation: fail`。负向检查命中候选 1 错误 audit task，正向检查通过候选 1 drafting task，repair delivery 通过 `inspect_delivery.py`；下一步派发 independent evaluator 审计修复。
 - 2026-05-25：创建 `iteration_20260525_0039_validate_scope_path_check_repair_audit` 独立审计任务包，输入限定为 repair task/status/delivery/read_log/report、`validate_scope.py`、失败决策和正/负向任务样例；任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：`iteration_20260525_0039_validate_scope_path_check_repair_audit` 返回 `audit_result: pass`，主控 agent 关闭该 evaluator；`inspect_delivery.py` 返回 `pass`。接受 `validate_scope.py` 修复，恢复候选 1 adoption。审计 `read_log.md` 中记录的一次 skill 文件读取仅用于运行环境约束，不作为审计证据，暂记为非阻塞边界记录。
 
 ## 关键指标（key_metrics）
 
@@ -113,6 +114,7 @@
 - 本轮 iteration 目录文件名检查导致的轻微边界观察：1。
 - 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
 - 因 `validate_scope.py` 未发现允许输入路径不存在导致的控制面修复次数：1。
+- 独立审计中读取 agent-loop-runner skill 但未作为证据使用的非阻塞边界记录：1。
 
 ## 证据链接（evidence_links）
 
@@ -315,6 +317,8 @@
 - [validate_scope 路径检查修复报告](../iterations/iteration_20260525_0038_validate_scope_path_check_repair/artifacts/tooling_repair_report.md)
 - [validate_scope 修复审计任务](../iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/task.md)
 - [validate_scope 修复审计 dispatch](../iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/dispatch_request.json)
+- [validate_scope 修复独立审计](../iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/artifacts/independent_audit.md)
+- [接受 validate_scope 修复决策](../decisions/20260525-0654-accept-validate-scope-path-check-repair.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
