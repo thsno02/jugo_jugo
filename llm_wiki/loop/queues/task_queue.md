@@ -11,15 +11,7 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0042_card_drafting_candidate_5`
-
-- `role`: `card_drafting_worker`
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0041_card_drafting_human_llm_roles`
-- `candidate`: `候选 5`
-- `source_evidence`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16,68-69`
-- `dispatch`: `llm_wiki/loop/iterations/iteration_20260525_0041_card_drafting_human_llm_roles/dispatch_request.json`
-- `lifecycle`: one-shot worker；完成后关闭，不保留 alive 上下文。
-- `status`: ready_to_dispatch
+暂无。
 
 ## 待办（pending）
 
@@ -30,6 +22,15 @@
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0042_card_drafting_candidate_5`
+
+- `role`: `card_drafting_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0041_card_drafting_human_llm_roles`
+- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0710-card-drafting-candidate-5-ready-for-audit.md`
+- `reflection`: `llm_wiki/loop/reflections/20260525-read-boundary-noise-reflection.md`
 
 ### `task_20260525_0041_card_adoption_candidate_1`
 

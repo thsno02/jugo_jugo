@@ -10,7 +10,7 @@
 
 当前状态：已有 10 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的知识卡 `LLM Wiki 作为模式文件` 已采纳为 `llm-wiki-pattern-file`。当前从剩余候选中选择候选 5 进入 drafting，因为它聚焦该来源中的人机分工，事实边界清楚，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster 规划。候选 5 drafting 任务包已通过新版 scope 校验并渲染 dispatch；当前没有需要 alive sub-agent 常驻的证据。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的知识卡 `LLM Wiki 作为模式文件` 已采纳为 `llm-wiki-pattern-file`。候选 5 drafting 已完成，草稿卡 `人提问，LLM 维护` 和 provenance 通过交付验收，下一步进入独立 audit。候选 5 的 read_log 出现相邻候选标题读取和 skill 文件读取两类非阻塞边界噪声，已写入 out-of-loop reflection；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -102,22 +102,23 @@
 - 2026-05-25：创建 `iteration_20260525_0040_card_adoption_llm_wiki_pattern_file`，指定 `card_id` 为 `llm-wiki-pattern-file`，目标 KB 路径不存在，任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 1 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第十张 KB 卡采纳完成。
 - 2026-05-25：从剩余事实候选中选择候选 5，原因是其聚焦人机分工、事实边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0041_card_drafting_human_llm_roles`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16,68-69`，任务包通过新版 `validate_scope.py`。
+- 2026-05-25：候选 5 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。`read_log.md` 记录 `rg` 曾显示下一候选标题但未用于卡片或 provenance，也记录按运行环境读取 `agent-loop-runner` skill 仅用于流程约束；已写入读取边界噪声反思，下一步继续生产。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
-- 草稿知识卡数量：10 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
+- 草稿知识卡数量：11 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：10。
 - 已采纳知识卡数量：10。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
 - adoption 模板修复后新增边界噪声：0。
 - 输出文件存在性检查导致的轻微任务外读取观察：1。
-- `fact_candidates.md` 相邻行或关键词定位导致的轻微边界观察：2。
+- `fact_candidates.md` 相邻行或关键词定位导致的轻微边界观察：3。
 - 本轮 iteration 目录文件名检查导致的轻微边界观察：1。
 - 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
 - 因 `validate_scope.py` 未发现允许输入路径不存在导致的控制面修复次数：1。
-- 独立审计中读取 agent-loop-runner skill 但未作为证据使用的非阻塞边界记录：1。
+- 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：2。
 
 ## 证据链接（evidence_links）
 
@@ -331,6 +332,10 @@
 - [候选 5 选择决策](../decisions/20260525-0704-select-candidate-5-for-drafting.md)
 - [候选 5 drafting 任务包](../iterations/iteration_20260525_0041_card_drafting_human_llm_roles/task.md)
 - [候选 5 drafting dispatch](../iterations/iteration_20260525_0041_card_drafting_human_llm_roles/dispatch_request.json)
+- [候选 5 草稿卡](../iterations/iteration_20260525_0041_card_drafting_human_llm_roles/artifacts/draft_card.md)
+- [候选 5 provenance](../iterations/iteration_20260525_0041_card_drafting_human_llm_roles/artifacts/provenance.md)
+- [候选 5 drafting 可审计决策](../decisions/20260525-0710-card-drafting-candidate-5-ready-for-audit.md)
+- [读取边界噪声反思](../reflections/20260525-read-boundary-noise-reflection.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
