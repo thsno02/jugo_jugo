@@ -11,16 +11,19 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待办（pending）
-
 ### `task_20260525_0040_validate_scope_path_check_repair_audit`
 
 - `role`: `independent_evaluator`
 - `action`: 审计 `validate_scope.py` 路径检查修复是否对应失败证据、范围最小、验证充分。
 - `target_iteration`: `llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair`
 - `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/artifacts/independent_audit.md`
+- `dispatch`: `llm_wiki/loop/iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/dispatch_request.json`
+- `lifecycle`: one-shot worker；完成后关闭，不保留 alive 上下文。
+- `status`: ready_to_dispatch
+
+## 待办（pending）
+
+暂无。
 
 ## 已阻塞（blocked）
 
