@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T03:16:50+08:00",
-  "status": "READY_FOR_CARD_DRAFTING",
+  "updated_at": "2026-05-25T03:20:20+08:00",
+  "status": "CARD_DRAFTING_IN_PROGRESS",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_drafting_ready",
-  "current_iteration": null,
+  "current_phase": "card_drafting",
+  "current_iteration": "iteration_20260525_0009_card_drafting_architecture_layers",
   "last_completed_iteration": "iteration_20260525_0008_card_adoption_raw_sources_truth",
-  "current_task_id": null,
+  "current_task_id": "task_20260525_0010_card_drafting_candidate_7",
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "创建 card_drafting_worker 任务包，处理第一轮 source mining 候选 7；证据范围为 data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33；当前小来源不需要 alive sub-agent，若未来出现大来源重复 IO 再显式启用。",
+  "next_action": "监控 iteration_20260525_0009_card_drafting_architecture_layers 的 card_drafting_worker 交付；完成后关闭 sub-agent 并运行 inspect_delivery.py。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",

@@ -4,16 +4,6 @@
 
 ## 待派发（queued）
 
-### `task_20260525_0010_card_drafting_candidate_7`
-
-- `role`: `card_drafting_worker`
-- `action`: 将第一轮 source mining 的 `候选 7` 写成一张草稿原子事实知识卡，并写一份 provenance。
-- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
-- `candidate_id`: `候选 7`
-- `candidate_statement`: 该来源把 LLM Wiki 架构分成三个层次：原始来源、wiki 和 schema。
-- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33`
-- `note`: 当前来源很小，默认使用单次 worker；若未来进入大来源重复 IO，再显式启用 alive sub-agent。
-
 ### `task_20260525_0002_cli_worker_smoke`
 
 - `role`: `independent_evaluator`
@@ -23,7 +13,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0010_card_drafting_candidate_7`
+
+- `role`: `card_drafting_worker`
+- `action`: 将第一轮 source mining 的 `候选 7` 写成一张草稿原子事实知识卡，并写一份 provenance。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers`
+- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
+- `candidate_id`: `候选 7`
+- `candidate_statement`: 该来源把 LLM Wiki 架构分成三个层次：原始来源、wiki 和 schema。
+- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33`
+- `note`: 任务包已创建并通过 `validate_scope.py`；当前来源很小，默认使用单次 worker。
 
 ## 已阻塞（blocked）
 

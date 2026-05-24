@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：第一张原子事实知识卡已采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 已完成 drafting、audit 和 adoption；下一步从同一候选集选择候选 7 进入 drafting。
+当前状态：第一张原子事实知识卡已采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 已完成 drafting、audit 和 adoption；候选 7 的 drafting task 已创建并派发准备中。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 已采纳为 `accepted`。sub-agent 生命周期采用有意图管理：完成且不需复用的 worker 关闭；未来如遇反复读取同一大来源，可显式设置 alive worker 降低重复 IO 和上下文消耗。下一步处理候选 7；当前来源很小，暂不启用 alive worker。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 已采纳为 `accepted`。候选 7 将由单次 `card_drafting_worker` 处理；当前来源很小，暂不启用 alive worker。
 
 ## 过程轨迹（process_trace）
 
@@ -39,6 +39,7 @@
 - 2026-05-25：创建 `iteration_20260525_0008_card_adoption_raw_sources_truth`，指定 `card_id` 为 `raw-sources-readonly-source-of-truth`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 - 2026-05-25：`card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，知识卡、provenance 和最小索引已写入 `llm_wiki/kb/`。
 - 2026-05-25：记录 sub-agent 生命周期策略：独立判断和单次写入 worker 完成后关闭；若未来出现大来源或高重复 IO，可显式使用 alive worker，但必须在任务包或 decision 中声明边界。
+- 2026-05-25：创建 `iteration_20260525_0009_card_drafting_architecture_layers`，选择候选 7，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33`，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -102,6 +103,8 @@
 - [已采纳知识卡：Raw sources 是只读事实来源](../../kb/cards/raw-sources-readonly-source-of-truth.md)
 - [已采纳 provenance：Raw sources 是只读事实来源](../../kb/provenance/raw-sources-readonly-source-of-truth.md)
 - [知识卡索引](../../kb/indexes/cards.md)
+- [候选 7 drafting 任务包](../iterations/iteration_20260525_0009_card_drafting_architecture_layers/task.md)
+- [候选 7 drafting dispatch](../iterations/iteration_20260525_0009_card_drafting_architecture_layers/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
