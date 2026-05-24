@@ -88,6 +88,7 @@
 - 2026-05-25：候选 12 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第八张 KB 卡采纳完成。
 - 2026-05-25：从剩余事实候选中选择候选 4，原因是其证据集中在单行、事实边界清楚，且与已采纳的持久 wiki 模式相邻但不重复；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0033_card_drafting_persistent_composite_wiki`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13`，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 4 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。`read_log.md` 记录关键词定位曾返回其它候选命中行和一次本轮目录文件名检查，但未用于卡片或 provenance，暂记为非阻塞边界观察。
+- 2026-05-25：创建 `iteration_20260525_0034_card_audit_persistent_composite_wiki`，审计输入限定为候选 4 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 
 ## 关键指标（key_metrics）
 
@@ -280,6 +281,8 @@
 - [候选 4 草稿卡](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/artifacts/draft_card.md)
 - [候选 4 provenance](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/artifacts/provenance.md)
 - [候选 4 drafting 可审计决策](../decisions/20260525-0612-card-drafting-candidate-4-ready-for-audit.md)
+- [候选 4 audit 任务包](../iterations/iteration_20260525_0034_card_audit_persistent_composite_wiki/task.md)
+- [候选 4 audit dispatch](../iterations/iteration_20260525_0034_card_audit_persistent_composite_wiki/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
