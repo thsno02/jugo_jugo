@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：第一张原子事实知识卡已采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 已完成 drafting、audit 和 adoption；候选 7 已完成 drafting 和 audit，adoption 任务包已创建。
+当前状态：已有 2 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 和候选 7 都已完成 drafting、audit 和 adoption。当前暂停继续生产，进入小批量后的 out-of-loop 反思与模板修复。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 已采纳为 `accepted`。候选 7 审计结论为 `pass`，adoption 任务目标为 `llm-wiki-three-layer-architecture`；当前来源很小，暂不启用 alive worker。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 和候选 7 的知识卡 `LLM Wiki 的三层架构` 已采纳为 `accepted`。两次 adoption 都记录了同类目标 KB 路径读取边界噪声，因此下一步先做反思和 `card_adoption_task.md` 最小修复，再继续生产。
 
 ## 过程轨迹（process_trace）
 
@@ -44,14 +44,17 @@
 - 2026-05-25：创建 `iteration_20260525_0010_card_audit_architecture_layers`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`。
 - 2026-05-25：候选 7 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0011_card_adoption_architecture_layers`，指定 `card_id` 为 `llm-wiki-three-layer-architecture`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 7 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第二张 KB 卡采纳完成。
+- 2026-05-25：两轮 adoption 的 `read_log.md` 均记录目标 KB 路径读取为额外读取；主控 agent 将其记录为重复边界噪声，暂停生产并进入反思与模板修复。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：2 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：2。
-- 已采纳知识卡数量：1。
+- 已采纳知识卡数量：2。
 - 因交付 marker 缺失导致的返工次数：1。
+- 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
 - 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
 
 ## 证据链接（evidence_links）
@@ -118,6 +121,10 @@
 - [候选 7 audit pass 决策](../decisions/20260525-0330-card-audit-pass-candidate-7.md)
 - [候选 7 adoption 任务包](../iterations/iteration_20260525_0011_card_adoption_architecture_layers/task.md)
 - [候选 7 adoption dispatch](../iterations/iteration_20260525_0011_card_adoption_architecture_layers/dispatch_request.json)
+- [候选 7 adoption 交付](../iterations/iteration_20260525_0011_card_adoption_architecture_layers/loop_delivery.md)
+- [候选 7 采纳决策](../decisions/20260525-0337-card-adoption-accepted-candidate-7.md)
+- [已采纳知识卡：LLM Wiki 的三层架构](../../kb/cards/llm-wiki-three-layer-architecture.md)
+- [已采纳 provenance：LLM Wiki 的三层架构](../../kb/provenance/llm-wiki-three-layer-architecture.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

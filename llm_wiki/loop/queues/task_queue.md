@@ -13,18 +13,18 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0012_card_adoption_candidate_7`
+暂无。
 
-- `role`: `card_adoption_worker`
-- `action`: 采纳候选 7 审计通过的草稿卡，写入 `llm_wiki/kb/` 并更新最小索引。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0011_card_adoption_architecture_layers`
-- `card_id`: `llm-wiki-three-layer-architecture`
-- `draft_card_path`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers/artifacts/draft_card.md`
-- `provenance_path`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers/artifacts/provenance.md`
-- `audit_report_path`: `llm_wiki/loop/iterations/iteration_20260525_0010_card_audit_architecture_layers/artifacts/audit_report.md`
-- `target_card_path`: `llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md`
-- `target_provenance_path`: `llm_wiki/kb/provenance/llm-wiki-three-layer-architecture.md`
-- `note`: 任务包已创建并通过 `validate_scope.py`；adoption worker 不得采纳未授权知识卡，不得创建 hub/cluster/topic coverage。
+## 待创建（ready）
+
+### `task_20260525_0013_adoption_template_repair`
+
+- `role`: `skill_evolution_worker` 或明确修复任务
+- `action`: 根据两次 adoption worker `read_log.md` 的重复边界噪声，最小修复 `llm_wiki/loop/task_templates/card_adoption_task.md`，显式允许读取目标 KB 卡片、目标 provenance 和索引文件用于存在性、覆盖冲突和增量索引检查。
+- `failure_evidence`:
+  - `llm_wiki/loop/iterations/iteration_20260525_0008_card_adoption_raw_sources_truth/read_log.md`
+  - `llm_wiki/loop/iterations/iteration_20260525_0011_card_adoption_architecture_layers/read_log.md`
+- `note`: 修复后需要独立审计；不要扩大 adoption worker 的生产范围。
 
 ## 已阻塞（blocked）
 
@@ -105,6 +105,17 @@
 - `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0010_card_audit_architecture_layers`
 - `output`: `llm_wiki/loop/iterations/iteration_20260525_0010_card_audit_architecture_layers/artifacts/audit_report.md`
 - `decision`: `llm_wiki/loop/decisions/20260525-0330-card-audit-pass-candidate-7.md`
+
+### `task_20260525_0012_card_adoption_candidate_7`
+
+- `role`: `card_adoption_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0011_card_adoption_architecture_layers`
+- `card_id`: `llm-wiki-three-layer-architecture`
+- `adopted_card`: `llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md`
+- `adopted_provenance`: `llm_wiki/kb/provenance/llm-wiki-three-layer-architecture.md`
+- `index`: `llm_wiki/kb/indexes/cards.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0337-card-adoption-accepted-candidate-7.md`
 
 ### `task_20260525_0001_prelaunch_validation`
 
