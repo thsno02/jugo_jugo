@@ -52,6 +52,7 @@
 - 2026-05-25：修正版 adoption template 修复审计返回 `audit_result: pass`；接受模板修复并恢复 KB 生产，下一步选择候选 10。
 - 2026-05-25：创建 `iteration_20260525_0015_card_drafting_schema_layer`，选择候选 10，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 10 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0016_card_audit_schema_layer`，审计输入限定为候选 10 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 
 ## 关键指标（key_metrics）
 
@@ -147,6 +148,8 @@
 - [候选 10 草稿卡](../iterations/iteration_20260525_0015_card_drafting_schema_layer/artifacts/draft_card.md)
 - [候选 10 provenance](../iterations/iteration_20260525_0015_card_drafting_schema_layer/artifacts/provenance.md)
 - [候选 10 drafting 可审计决策](../decisions/20260525-0403-card-drafting-candidate-10-ready-for-audit.md)
+- [候选 10 audit 任务包](../iterations/iteration_20260525_0016_card_audit_schema_layer/task.md)
+- [候选 10 audit dispatch](../iterations/iteration_20260525_0016_card_audit_schema_layer/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

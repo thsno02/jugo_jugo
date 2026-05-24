@@ -11,7 +11,15 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0017_card_audit_candidate_10`
+
+- `role`: `card_audit_worker`
+- `action`: 审计候选 10 草稿卡、provenance 与 `raw.txt:33` 的对应关系，判断是否可进入采纳流程。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0016_card_audit_schema_layer`
+- `draft_card_path`: `llm_wiki/loop/iterations/iteration_20260525_0015_card_drafting_schema_layer/artifacts/draft_card.md`
+- `provenance_path`: `llm_wiki/loop/iterations/iteration_20260525_0015_card_drafting_schema_layer/artifacts/provenance.md`
+- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`
+- `note`: 任务包已创建并通过 `validate_scope.py`；dispatch 使用 `fork_context:false`，worker 完成后关闭。
 
 ## 已阻塞（blocked）
 
