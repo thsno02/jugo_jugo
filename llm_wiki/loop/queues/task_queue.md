@@ -11,20 +11,31 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0038_card_audit_candidate_1`
+暂无。
 
-- `role`: `card_audit_worker`
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file`
-- `inputs`: 候选 1 草稿卡、provenance、`data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`
-- `dispatch`: `llm_wiki/loop/iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/dispatch_request.json`
-- `lifecycle`: one-shot worker；完成后关闭，不保留 alive 上下文。
-- `status`: ready_to_dispatch
+## 待办（pending）
+
+### `task_20260525_0039_validate_scope_path_check_repair`
+
+- `role`: `tooling_repair`
+- `action`: 根据候选 1 audit task 的 `fact_candidate_path` 不存在但 `validate_scope.py` 仍通过这一失败证据，最小修复 `llm_wiki/loop/tools/validate_scope.py`。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair/artifacts/tooling_repair_report.md`
+- `note`: 修复后必须跑当前错误 task 的负向检查、一个既有有效 task 的正向检查，并交给 independent_evaluator 审计。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0038_card_audit_candidate_1`
+
+- `role`: `card_audit_worker`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/artifacts/audit_report.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0641-card-audit-pass-candidate-1-with-task-path-risk.md`
+- `residual_risk`: 任务包中的 `fact_candidate_path` 不存在；已转入 validate_scope tooling repair。
 
 ### `task_20260525_0037_card_drafting_candidate_1`
 

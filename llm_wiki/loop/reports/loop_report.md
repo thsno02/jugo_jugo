@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 9 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4 都已完成 drafting、audit 和 adoption；候选 1 已完成 drafting，当前已创建 card audit 任务包并准备派发。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
+当前状态：已有 9 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4 都已完成 drafting、audit 和 adoption；候选 1 已完成 drafting 和 audit，audit 结论为 `pass`。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的草稿卡 `LLM Wiki 作为模式文件` 已通过交付验收，候选 1 audit 任务包通过 scope 校验并已渲染 dispatch，下一步派发 `card_audit_worker`。本轮继续使用 one-shot worker，完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 1 的草稿卡 `LLM Wiki 作为模式文件` 已通过 audit，可以进入 adoption 的内容门槛。但 audit task 暴露出一个控制面失败：任务包中的 `fact_candidate_path` 指向不存在的 `0001_source_mining`，而 `validate_scope.py` 未能在派发前发现。下一步先做最小 tooling repair，再恢复候选 1 adoption。本轮 audit worker 已关闭；当前没有需要 alive sub-agent 常驻的证据。
 
 ## 过程轨迹（process_trace）
 
@@ -95,6 +95,7 @@
 - 2026-05-25：从剩余事实候选中选择候选 1，原因是其证据集中在来源开头、事实边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0036_card_drafting_llm_wiki_pattern_file`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 1 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 - 2026-05-25：创建 `iteration_20260525_0037_card_audit_llm_wiki_pattern_file`，审计输入限定为候选 1 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 1 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`。审计同时记录 `fact_candidate_path` 读取失败；主控 agent 判断 audit pass 内容上可接受，但这是 `validate_scope.py` 未检查允许输入路径存在性的失败证据，先转入 tooling repair。
 
 ## 关键指标（key_metrics）
 
@@ -109,6 +110,7 @@
 - `fact_candidates.md` 相邻行或关键词定位导致的轻微边界观察：2。
 - 本轮 iteration 目录文件名检查导致的轻微边界观察：1。
 - 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
+- 因 `validate_scope.py` 未发现允许输入路径不存在导致的控制面修复次数：1。
 
 ## 证据链接（evidence_links）
 
@@ -305,6 +307,8 @@
 - [候选 1 drafting 可审计决策](../decisions/20260525-0631-card-drafting-candidate-1-ready-for-audit.md)
 - [候选 1 audit 任务包](../iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/task.md)
 - [候选 1 audit dispatch](../iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/dispatch_request.json)
+- [候选 1 audit 报告](../iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/artifacts/audit_report.md)
+- [候选 1 audit pass 与路径风险决策](../decisions/20260525-0641-card-audit-pass-candidate-1-with-task-path-risk.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
