@@ -9,3 +9,4 @@
 | 持久 wiki 替代模式 | `llm_wiki/kb/cards/llm-wiki-persistent-wiki-alternative-mode.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13` |
 | RAG 式文档问答不积累综合知识 | `llm_wiki/kb/cards/rag-document-qa-does-not-accumulate-synthesized-knowledge.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:7-10` |
 | Ingest 示例流程 | `llm_wiki/kb/cards/llm-wiki-ingest-example-flow.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:35-38` |
+| Query 操作回写好答案 | `llm_wiki/kb/cards/llm-wiki-query-answer-writeback.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:39-40` |

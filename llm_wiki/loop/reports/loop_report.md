@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 7 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11 都已完成 drafting、audit 和 adoption；候选 12 已完成 drafting 和 audit，准备进入 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
+当前状态：已有 8 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 12 审计结论为 `audit_result: pass`，下一步创建 `card_adoption_worker` 窄任务包。candidate 12 audit worker 已在完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 12 的知识卡 `Query 操作回写好答案` 已采纳为 `accepted`。本轮 adoption worker 已在完成后关闭；当前没有需要 alive sub-agent 常驻的证据。
 
 ## 过程轨迹（process_trace）
 
@@ -85,13 +85,14 @@
 - 2026-05-25：创建 `iteration_20260525_0031_card_audit_query_workflow`，审计输入限定为候选 12 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:39-40`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 12 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0032_card_adoption_query_workflow`，指定 `card_id` 为 `llm-wiki-query-answer-writeback`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 12 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第八张 KB 卡采纳完成。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：8 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：8。
-- 已采纳知识卡数量：7。
+- 已采纳知识卡数量：8。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
 - adoption 模板修复后新增边界噪声：0。
@@ -266,6 +267,10 @@
 - [候选 12 audit pass 决策](../decisions/20260525-0557-card-audit-pass-candidate-12.md)
 - [候选 12 adoption 任务包](../iterations/iteration_20260525_0032_card_adoption_query_workflow/task.md)
 - [候选 12 adoption dispatch](../iterations/iteration_20260525_0032_card_adoption_query_workflow/dispatch_request.json)
+- [候选 12 adoption 交付](../iterations/iteration_20260525_0032_card_adoption_query_workflow/loop_delivery.md)
+- [候选 12 采纳决策](../decisions/20260525-0604-card-adoption-accepted-candidate-12.md)
+- [已采纳知识卡：Query 操作回写好答案](../../kb/cards/llm-wiki-query-answer-writeback.md)
+- [已采纳 provenance：Query 操作回写好答案](../../kb/provenance/llm-wiki-query-answer-writeback.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
