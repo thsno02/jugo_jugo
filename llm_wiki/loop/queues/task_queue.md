@@ -11,7 +11,14 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0028_card_drafting_candidate_11`
+
+- `role`: `card_drafting_worker`
+- `action`: 将候选 11 写成一张原子事实知识卡草稿和一份 provenance。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0027_card_drafting_ingest_workflow`
+- `source_evidence`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:35-38`
+- `selection_reason`: 证据集中在 Ingest 小节，流程边界清楚，且不重复已采纳事实；不是主题覆盖、hub 或 cluster 规划。
+- `note`: 任务包已创建并通过 `validate_scope.py`；dispatch 使用 `fork_context:false`，worker 完成后关闭。
 
 ## 已阻塞（blocked）
 

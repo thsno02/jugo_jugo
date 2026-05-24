@@ -74,6 +74,7 @@
 - 2026-05-25：候选 2 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0026_card_adoption_rag_no_accumulation`，指定 `card_id` 为 `rag-document-qa-does-not-accumulate-synthesized-knowledge`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 2 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第六张 KB 卡采纳完成。
+- 2026-05-25：从剩余事实候选中选择候选 11，原因是其证据集中在 Ingest 小节、流程边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0027_card_drafting_ingest_workflow`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:35-38`，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -226,6 +227,9 @@
 - [候选 2 采纳决策](../decisions/20260525-0522-card-adoption-accepted-candidate-2.md)
 - [已采纳知识卡：RAG 式文档问答不积累综合知识](../../kb/cards/rag-document-qa-does-not-accumulate-synthesized-knowledge.md)
 - [已采纳 provenance：RAG 式文档问答不积累综合知识](../../kb/provenance/rag-document-qa-does-not-accumulate-synthesized-knowledge.md)
+- [候选 11 drafting 任务包](../iterations/iteration_20260525_0027_card_drafting_ingest_workflow/task.md)
+- [候选 11 drafting dispatch](../iterations/iteration_20260525_0027_card_drafting_ingest_workflow/dispatch_request.json)
+- [候选 11 选择决策](../decisions/20260525-0525-select-candidate-11-for-drafting.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
