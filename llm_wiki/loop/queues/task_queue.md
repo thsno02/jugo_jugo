@@ -13,15 +13,14 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0007_card_drafting_candidate_8_r1`
+### `task_20260525_0008_card_audit_candidate_8_r1`
 
-- `role`: `card_drafting_worker`
-- `action`: 在 delivery marker prompt 修复后，重新将第一轮 source mining 的 `候选 8` 写成一张草稿原子事实知识卡和一份 provenance。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1`
-- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
+- `role`: `card_audit_worker`
+- `action`: 审计候选 8 drafting revision 的草稿卡和 provenance 是否可进入采纳流程。
+- `draft_card_path`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/draft_card.md`
+- `provenance_path`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/provenance.md`
 - `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:27-30`
-- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
-- `note`: 不读取失败 drafting iteration 的草稿卡或 provenance；完成后必须关闭 sub-agent 并运行 `inspect_delivery.py`。
+- `note`: 待创建任务包；审计 worker 不得采纳知识卡。
 
 ## 已阻塞（blocked）
 
@@ -59,6 +58,14 @@
 - `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0005_prompt_repair_audit`
 - `output`: `llm_wiki/loop/iterations/iteration_20260525_0005_prompt_repair_audit/artifacts/independent_audit.md`
 - `decision`: `llm_wiki/loop/decisions/20260525-0254-accept-delivery-marker-prompt-repair.md`
+
+### `task_20260525_0007_card_drafting_candidate_8_r1`
+
+- `role`: `card_drafting_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1`
+- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0301-card-drafting-revision-ready-for-audit.md`
 
 ### `task_20260525_0001_prelaunch_validation`
 
