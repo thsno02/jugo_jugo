@@ -56,6 +56,7 @@
 - 2026-05-25：候选 10 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 - 2026-05-25：创建 `iteration_20260525_0017_card_adoption_schema_layer`，指定 `card_id` 为 `llm-wiki-schema-configuration-document`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 10 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第三张 KB 卡采纳完成。adoption read_log 将目标 KB 路径列为允许输入，确认 adoption template 修复已消除前两轮边界噪声。
+- 2026-05-25：从剩余事实候选中选择候选 9，原因是该候选来源证据集中、事实边界清楚，且不重复既有 accepted cards；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0018_card_drafting_wiki_layer`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:31-32`，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -162,6 +163,8 @@
 - [候选 10 采纳决策](../decisions/20260525-0417-card-adoption-accepted-candidate-10.md)
 - [已采纳知识卡：Schema 是 LLM Wiki 的配置文档](../../kb/cards/llm-wiki-schema-configuration-document.md)
 - [已采纳 provenance：Schema 是 LLM Wiki 的配置文档](../../kb/provenance/llm-wiki-schema-configuration-document.md)
+- [候选 9 drafting 任务包](../iterations/iteration_20260525_0018_card_drafting_wiki_layer/task.md)
+- [候选 9 drafting dispatch](../iterations/iteration_20260525_0018_card_drafting_wiki_layer/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
