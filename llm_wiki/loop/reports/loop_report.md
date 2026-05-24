@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：第一轮 `source_mining_worker` 已完成并通过交付检查；第一次 drafting 产物因 `loop_delivery.md` 缺少标准 marker 未通过交付检查。已完成最小 prompt 修复并通过独立审计；候选 8 的 drafting revision 已通过交付检查，card audit 任务包已创建。
+当前状态：第一轮 `source_mining_worker` 已完成并通过交付检查；第一次 drafting 产物因 `loop_delivery.md` 缺少标准 marker 未通过交付检查。已完成最小 prompt 修复并通过独立审计；候选 8 的 drafting revision 已通过交付检查，card audit 结论为 `pass`，下一步进入采纳准备状态。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；第一轮 source mining 产出 12 个候选并通过 `inspect_delivery.py`。第一次 drafting 暴露出 delivery marker 契约缺口，已把 `loop_delivery.md` 内必须写入 `LOOP_DONE` 或 `LOOP_BLOCKED` 的要求补入 `base_worker.md`，且独立审计为 `pass`。旧 drafting iteration 不手工补写，候选 8 已通过 revision 重跑进入审计准备状态。sub-agent 生命周期采用有意图管理：完成且不需复用的 worker 关闭；未来如遇反复读取同一大来源，可显式设置 alive worker 降低重复 IO 和上下文消耗。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；第一轮 source mining 产出 12 个候选并通过 `inspect_delivery.py`。候选 8 已完成 drafting revision 与独立 card audit，审计结论为 `pass`。sub-agent 生命周期采用有意图管理：完成且不需复用的 worker 关闭；未来如遇反复读取同一大来源，可显式设置 alive worker 降低重复 IO 和上下文消耗。
 
 ## 过程轨迹（process_trace）
 
@@ -35,6 +35,7 @@
 - 2026-05-25：创建 `iteration_20260525_0006_card_drafting_raw_sources_truth_r1`，在修复后的 worker prompt 下重跑候选 8 drafting revision。
 - 2026-05-25：候选 8 drafting revision 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 - 2026-05-25：创建 `iteration_20260525_0007_card_audit_raw_sources_truth_r1`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`。
+- 2026-05-25：`card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 
 ## 关键指标（key_metrics）
 
@@ -91,6 +92,8 @@
 - [候选 8 drafting revision 可审计决策](../decisions/20260525-0301-card-drafting-revision-ready-for-audit.md)
 - [候选 8 audit 任务包](../iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/task.md)
 - [候选 8 audit dispatch](../iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/dispatch_request.json)
+- [候选 8 audit 报告](../iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/artifacts/audit_report.md)
+- [候选 8 audit pass 决策](../decisions/20260525-0308-card-audit-pass-candidate-8.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

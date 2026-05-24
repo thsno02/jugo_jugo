@@ -1,0 +1,5 @@
+status: done
+task_id: task_20260525_0008_card_audit_candidate_8_r1
+role: card_audit_worker
+audit_result: pass
+delivery: llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/loop_delivery.md

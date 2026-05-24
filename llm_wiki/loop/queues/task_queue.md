@@ -13,16 +13,14 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0008_card_audit_candidate_8_r1`
+### `task_20260525_0009_card_adoption_candidate_8`
 
-- `role`: `card_audit_worker`
-- `action`: 审计候选 8 drafting revision 的草稿卡和 provenance 是否可进入采纳流程。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1`
+- `role`: `card_adoption_worker`
+- `action`: 采纳候选 8 审计通过的草稿卡，写入 `llm_wiki/kb/` 并更新最小索引。
 - `draft_card_path`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/draft_card.md`
 - `provenance_path`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/provenance.md`
-- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:27-30`
-- `output`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/artifacts/audit_report.md`
-- `note`: 任务包已创建并通过 `validate_scope.py`；审计 worker 不得采纳知识卡。
+- `audit_report_path`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/artifacts/audit_report.md`
+- `note`: 待创建任务包；adoption worker 不得采纳未授权知识卡，不得创建 hub/cluster/topic coverage。
 
 ## 已阻塞（blocked）
 
@@ -68,6 +66,14 @@
 - `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1`
 - `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
 - `decision`: `llm_wiki/loop/decisions/20260525-0301-card-drafting-revision-ready-for-audit.md`
+
+### `task_20260525_0008_card_audit_candidate_8_r1`
+
+- `role`: `card_audit_worker`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/artifacts/audit_report.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0308-card-audit-pass-candidate-8.md`
 
 ### `task_20260525_0001_prelaunch_validation`
 
