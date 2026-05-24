@@ -11,22 +11,30 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0049_drafting_boundary_validation_evidence_audit`
-
-- `role`: `independent_evaluator`
-- `action`: 复审 `task_20260525_0048_drafting_boundary_validation_evidence_repair` 是否足以关闭 validation result 未落盘 concern，并确认 prompt/template 修复仍保持最小范围。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0048_drafting_boundary_validation_evidence_audit/artifacts/independent_audit.md`
-- `note`: 审计通过后恢复候选 6 audit；若仍 concern/fail，则记录 human_checkpoint 或进一步最小修复。
+暂无。
 
 ## 待办（pending）
 
-暂无。
+### `task_20260525_0050_card_audit_candidate_6`
+
+- `role`: `card_audit_worker`
+- `action`: 审计候选 6 草稿卡 `LLM Wiki 应用场景清单` 是否被 `raw.txt:17-23` 支撑，且没有扩写成场景报告、hub、cluster 或 topic coverage。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases/artifacts/audit_report.md`
+- `note`: 只审计候选 6；不使用父聊天上下文。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0049_drafting_boundary_validation_evidence_audit`
+
+- `role`: `independent_evaluator`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0048_drafting_boundary_validation_evidence_audit`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0048_drafting_boundary_validation_evidence_audit/artifacts/independent_audit.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0757-accept-drafting-boundary-repair.md`
 
 ### `task_20260525_0048_drafting_boundary_validation_evidence_repair`
 
