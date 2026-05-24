@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：第一张原子事实知识卡已采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 已完成 drafting、audit 和 adoption；候选 7 已完成 drafting，card audit 任务包已创建。
+当前状态：第一张原子事实知识卡已采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 已完成 drafting、audit 和 adoption；候选 7 已完成 drafting 和 audit，下一步进入采纳准备状态。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 已采纳为 `accepted`。候选 7 drafting 交付通过，当前由独立 `card_audit_worker` 审计；当前来源很小，暂不启用 alive worker。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 已采纳为 `accepted`。候选 7 审计结论为 `pass`，可以创建 adoption 任务；当前来源很小，暂不启用 alive worker。
 
 ## 过程轨迹（process_trace）
 
@@ -42,12 +42,13 @@
 - 2026-05-25：创建 `iteration_20260525_0009_card_drafting_architecture_layers`，选择候选 7，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33`，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 7 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 - 2026-05-25：创建 `iteration_20260525_0010_card_audit_architecture_layers`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`。
+- 2026-05-25：候选 7 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：2 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
-- 审计通过数量：1。
+- 审计通过数量：2。
 - 已采纳知识卡数量：1。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
@@ -112,6 +113,8 @@
 - [候选 7 drafting 可审计决策](../decisions/20260525-0324-card-drafting-candidate-7-ready-for-audit.md)
 - [候选 7 audit 任务包](../iterations/iteration_20260525_0010_card_audit_architecture_layers/task.md)
 - [候选 7 audit dispatch](../iterations/iteration_20260525_0010_card_audit_architecture_layers/dispatch_request.json)
+- [候选 7 audit 报告](../iterations/iteration_20260525_0010_card_audit_architecture_layers/artifacts/audit_report.md)
+- [候选 7 audit pass 决策](../decisions/20260525-0330-card-audit-pass-candidate-7.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

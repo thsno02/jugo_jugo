@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T03:26:22+08:00",
-  "status": "CARD_AUDIT_IN_PROGRESS",
+  "updated_at": "2026-05-25T03:30:51+08:00",
+  "status": "READY_FOR_CARD_ADOPTION",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_audit",
-  "current_iteration": "iteration_20260525_0010_card_audit_architecture_layers",
-  "last_completed_iteration": "iteration_20260525_0008_card_adoption_raw_sources_truth",
-  "current_task_id": "task_20260525_0011_card_audit_candidate_7",
+  "current_phase": "card_adoption_ready",
+  "current_iteration": null,
+  "last_completed_iteration": "iteration_20260525_0010_card_audit_architecture_layers",
+  "current_task_id": null,
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "监控 iteration_20260525_0010_card_audit_architecture_layers 的 card_audit_worker 交付；完成后关闭 sub-agent 并运行 inspect_delivery.py。",
+  "next_action": "创建 card_adoption_worker 任务包，采纳 iteration_20260525_0009_card_drafting_architecture_layers 的审计通过草稿卡；主控 agent 不得亲自采纳。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",
