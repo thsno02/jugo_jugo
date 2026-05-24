@@ -11,7 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0036_card_adoption_candidate_4`
+
+- `role`: `card_adoption_worker`
+- `action`: 将审计通过的候选 4 草稿卡和 provenance 采纳到 KB，并最小更新卡片索引。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0035_card_adoption_persistent_composite_wiki`
+- `card_id`: `llm-wiki-persistent-compounding-artifact`
+- `target_card_path`: `llm_wiki/kb/cards/llm-wiki-persistent-compounding-artifact.md`
+- `target_provenance_path`: `llm_wiki/kb/provenance/llm-wiki-persistent-compounding-artifact.md`
+- `target_index_path`: `llm_wiki/kb/indexes/cards.md`
+- `note`: 任务包已创建并通过 `validate_scope.py`；dispatch 使用 `fork_context:false`，worker 完成后关闭。
 
 ## 已阻塞（blocked）
 
