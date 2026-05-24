@@ -11,7 +11,15 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0032_card_audit_candidate_12`
+
+- `role`: `card_audit_worker`
+- `action`: 独立审计候选 12 草稿卡和 provenance 是否可进入采纳流程。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0031_card_audit_query_workflow`
+- `draft_card`: `llm_wiki/loop/iterations/iteration_20260525_0030_card_drafting_query_workflow/artifacts/draft_card.md`
+- `provenance`: `llm_wiki/loop/iterations/iteration_20260525_0030_card_drafting_query_workflow/artifacts/provenance.md`
+- `source_evidence`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:39-40`
+- `note`: 任务包已创建并通过 `validate_scope.py`；dispatch 使用 `fork_context:false`，worker 完成后关闭。
 
 ## 已阻塞（blocked）
 
