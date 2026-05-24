@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 2 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 和候选 7 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，并已最小修复 adoption 任务模板；下一步需要独立审计该修复。
+当前状态：已有 2 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8 和候选 7 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，并已最小修复 adoption 任务模板；adoption template 修复审计任务包已创建。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 和候选 7 的知识卡 `LLM Wiki 的三层架构` 已采纳为 `accepted`。两次 adoption 都记录了同类目标 KB 路径读取边界噪声，因此已修复 `card_adoption_task.md`，显式允许读取目标 KB 路径用于存在性、冲突和索引检查；修复通过独立审计后再继续生产。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 8 的知识卡 `Raw sources 是只读事实来源` 和候选 7 的知识卡 `LLM Wiki 的三层架构` 已采纳为 `accepted`。两次 adoption 都记录了同类目标 KB 路径读取边界噪声，因此已修复 `card_adoption_task.md`，显式允许读取目标 KB 路径用于存在性、冲突和索引检查；当前正在进行独立审计。
 
 ## 过程轨迹（process_trace）
 
@@ -47,6 +47,7 @@
 - 2026-05-25：候选 7 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第二张 KB 卡采纳完成。
 - 2026-05-25：两轮 adoption 的 `read_log.md` 均记录目标 KB 路径读取为额外读取；主控 agent 将其记录为重复边界噪声，暂停生产并进入反思与模板修复。
 - 2026-05-25：写入小批量采纳后的反思；最小修复 `card_adoption_task.md`，把目标 KB 卡片、目标 provenance 和索引文件列为允许读取，但用途限定为存在性、覆盖冲突和最小索引增量更新。
+- 2026-05-25：创建 `iteration_20260525_0013_adoption_template_repair_audit`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`。
 
 ## 关键指标（key_metrics）
 
@@ -129,6 +130,8 @@
 - [小批量采纳后的反思](../reflections/20260525-small-batch-adoption-template-reflection.md)
 - [adoption template 修复任务](../iterations/iteration_20260525_0012_adoption_template_repair/task.md)
 - [adoption template 修复报告](../iterations/iteration_20260525_0012_adoption_template_repair/artifacts/template_repair_report.md)
+- [adoption template 修复审计任务](../iterations/iteration_20260525_0013_adoption_template_repair_audit/task.md)
+- [adoption template 修复审计 dispatch](../iterations/iteration_20260525_0013_adoption_template_repair_audit/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T03:40:03+08:00",
-  "status": "TEMPLATE_REPAIR_AUDIT_READY",
+  "updated_at": "2026-05-25T03:41:52+08:00",
+  "status": "TEMPLATE_REPAIR_AUDIT_IN_PROGRESS",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "template_repair_audit_ready",
-  "current_iteration": null,
+  "current_phase": "template_repair_audit",
+  "current_iteration": "iteration_20260525_0013_adoption_template_repair_audit",
   "last_completed_iteration": "iteration_20260525_0012_adoption_template_repair",
-  "current_task_id": null,
+  "current_task_id": "task_20260525_0014_adoption_template_repair_audit",
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "创建 independent_evaluator 任务包，审计 iteration_20260525_0012_adoption_template_repair 是否为证据驱动的最小模板修复；审计通过后恢复 KB 生产。",
+  "next_action": "监控 iteration_20260525_0013_adoption_template_repair_audit 的 independent_evaluator 交付；完成后关闭 sub-agent 并运行 inspect_delivery.py；若 audit_result: pass，恢复 KB 生产。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",
