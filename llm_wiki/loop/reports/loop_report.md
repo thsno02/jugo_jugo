@@ -51,11 +51,12 @@
 - 2026-05-25：`iteration_20260525_0013_adoption_template_repair_audit` 返回 `audit_result: concern`；原因是审计任务包把 out-of-loop reflection 误列为 `target_artifacts`。已写入澄清决策，并创建 `iteration_20260525_0014_adoption_template_repair_audit_r1`。
 - 2026-05-25：修正版 adoption template 修复审计返回 `audit_result: pass`；接受模板修复并恢复 KB 生产，下一步选择候选 10。
 - 2026-05-25：创建 `iteration_20260525_0015_card_drafting_schema_layer`，选择候选 10，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 10 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
-- 草稿知识卡数量：2 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
+- 草稿知识卡数量：3 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：2。
 - 已采纳知识卡数量：2。
 - 因交付 marker 缺失导致的返工次数：1。
@@ -143,6 +144,9 @@
 - [接受 adoption template 修复决策](../decisions/20260525-0354-accept-adoption-template-repair.md)
 - [候选 10 drafting 任务包](../iterations/iteration_20260525_0015_card_drafting_schema_layer/task.md)
 - [候选 10 drafting dispatch](../iterations/iteration_20260525_0015_card_drafting_schema_layer/dispatch_request.json)
+- [候选 10 草稿卡](../iterations/iteration_20260525_0015_card_drafting_schema_layer/artifacts/draft_card.md)
+- [候选 10 provenance](../iterations/iteration_20260525_0015_card_drafting_schema_layer/artifacts/provenance.md)
+- [候选 10 drafting 可审计决策](../decisions/20260525-0403-card-drafting-candidate-10-ready-for-audit.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
