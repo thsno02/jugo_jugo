@@ -11,22 +11,21 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0025_card_drafting_candidate_2`
-
-- `role`: `card_drafting_worker`
-- `action`: 将第一轮 source mining 的 `候选 2` 写成一张草稿原子事实知识卡，并写一份 provenance。
-- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation`
-- `fact_candidate_path`: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`
-- `candidate_id`: `候选 2`
-- `candidate_statement`: 该来源将常见 RAG 体验描述为在查询时从上传文件中检索相关片段并生成答案，并指出这种方式不会在问题之间积累已经综合出的知识。
-- `source_evidence_path`: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:7-10`
-- `note`: 任务包已创建并通过 `validate_scope.py`；当前来源很小，默认使用单次 worker。
+暂无。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0025_card_drafting_candidate_2`
+
+- `role`: `card_drafting_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation`
+- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0506-card-drafting-candidate-2-ready-for-audit.md`
 
 ### `task_20260525_0024_card_adoption_candidate_3`
 

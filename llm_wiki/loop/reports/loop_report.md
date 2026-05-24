@@ -69,11 +69,12 @@
 - 2026-05-25：创建 `iteration_20260525_0023_card_adoption_persistent_wiki_mode`，指定 `card_id` 为 `llm-wiki-persistent-wiki-alternative-mode`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
 - 2026-05-25：候选 3 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第五张 KB 卡采纳完成。
 - 2026-05-25：从剩余事实候选中选择候选 2，原因是其证据集中、对比对象清楚，且不重复已采纳的持久 wiki 与架构层事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0024_card_drafting_rag_no_accumulation`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:7-10`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 2 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
-- 草稿知识卡数量：5 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
+- 草稿知识卡数量：6 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：5。
 - 已采纳知识卡数量：5。
 - 因交付 marker 缺失导致的返工次数：1。
@@ -208,6 +209,9 @@
 - [已采纳 provenance：持久 wiki 替代模式](../../kb/provenance/llm-wiki-persistent-wiki-alternative-mode.md)
 - [候选 2 drafting 任务包](../iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/task.md)
 - [候选 2 drafting dispatch](../iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/dispatch_request.json)
+- [候选 2 草稿卡](../iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/artifacts/draft_card.md)
+- [候选 2 provenance](../iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/artifacts/provenance.md)
+- [候选 2 drafting 可审计决策](../decisions/20260525-0506-card-drafting-candidate-2-ready-for-audit.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
