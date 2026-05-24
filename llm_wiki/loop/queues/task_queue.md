@@ -13,18 +13,18 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待创建（ready）
-
 ### `task_20260525_0012_card_adoption_candidate_7`
 
 - `role`: `card_adoption_worker`
 - `action`: 采纳候选 7 审计通过的草稿卡，写入 `llm_wiki/kb/` 并更新最小索引。
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0011_card_adoption_architecture_layers`
+- `card_id`: `llm-wiki-three-layer-architecture`
 - `draft_card_path`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers/artifacts/draft_card.md`
 - `provenance_path`: `llm_wiki/loop/iterations/iteration_20260525_0009_card_drafting_architecture_layers/artifacts/provenance.md`
 - `audit_report_path`: `llm_wiki/loop/iterations/iteration_20260525_0010_card_audit_architecture_layers/artifacts/audit_report.md`
-- `note`: 待创建任务包；adoption worker 不得采纳未授权知识卡，不得创建 hub/cluster/topic coverage。
+- `target_card_path`: `llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md`
+- `target_provenance_path`: `llm_wiki/kb/provenance/llm-wiki-three-layer-architecture.md`
+- `note`: 任务包已创建并通过 `validate_scope.py`；adoption worker 不得采纳未授权知识卡，不得创建 hub/cluster/topic coverage。
 
 ## 已阻塞（blocked）
 
