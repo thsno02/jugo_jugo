@@ -1,0 +1,181 @@
+{
+  "schema": "llm_wiki.loop_manifest.v1",
+  "loop_root": "llm_wiki/loop",
+  "kb_root": "llm_wiki/kb",
+  "system_prompt_root": "llm_wiki/loop/system_prompts",
+  "plan_root": "llm_wiki/loop/plans",
+  "reflection_root": "llm_wiki/loop/reflections",
+  "source_roots": [
+    "data/manifests",
+    "data/raw",
+    "data/logs"
+  ],
+  "loop_owner": "main_owned",
+  "loop_shape": "0_to_1_probe_loop",
+  "primary_object": "atomic_fact_card",
+  "language_policy": {
+    "human_readable_main_language": "zh",
+    "allowed_english": [
+      "file_paths",
+      "status_codes",
+      "schema_fields",
+      "commands",
+      "package_names",
+      "source_titles",
+      "References",
+      "Footnotes"
+    ]
+  },
+  "current_focus": [
+    "从本地来源生长原子事实知识卡",
+    "为每张卡写可读出处论证",
+    "用审计证据演化技能和任务模板"
+  ],
+  "non_goals": [
+    "枢纽页",
+    "聚类",
+    "主题覆盖",
+    "复杂元数据",
+    "没有来源支撑的 agent 综合"
+  ],
+  "card_contract": {
+    "required_fields": [
+      "statement",
+      "fact_type",
+      "support",
+      "scope",
+      "status"
+    ],
+    "fact_type_values": [
+      "known_fact",
+      "accepted_fact"
+    ],
+    "status_values": [
+      "draft",
+      "accepted",
+      "rejected"
+    ],
+    "section_order_rule": "References 必须早于 Footnotes；Footnotes 必须是最后一个 section。"
+  },
+  "roles": {
+    "main_agent": {
+      "system_prompt": "llm_wiki/loop/system_prompts/main_agent.md",
+      "owns": [
+        "状态迁移",
+        "任务包创建",
+        "采纳决策",
+        "停止逻辑",
+        "偏差干预"
+      ],
+      "must_not_do": [
+        "大段来源挖掘",
+        "批量写卡",
+        "批量审计",
+        "批量采纳"
+      ]
+    },
+    "source_mining_worker": {
+      "system_prompt": "llm_wiki/loop/system_prompts/source_mining_worker.md",
+      "task_template": "llm_wiki/loop/task_templates/source_mining_task.md",
+      "default_allowed_inputs": [
+        "当前 task.md 指定的一个来源目录或文件",
+        "data/manifests/acquired_sources_index.md",
+        "data/manifests/sources.jsonl"
+      ],
+      "default_allowed_writes": [
+        "当前 iteration 目录",
+        "当前 iteration/artifacts 目录",
+        "llm_wiki/kb/candidates"
+      ]
+    },
+    "card_drafting_worker": {
+      "system_prompt": "llm_wiki/loop/system_prompts/card_drafting_worker.md",
+      "task_template": "llm_wiki/loop/task_templates/card_drafting_task.md",
+      "default_allowed_inputs": [
+        "当前 task.md 指定的事实候选",
+        "当前 task.md 指定的来源片段"
+      ],
+      "default_allowed_writes": [
+        "当前 iteration 目录",
+        "当前 iteration/artifacts 目录"
+      ]
+    },
+    "card_audit_worker": {
+      "system_prompt": "llm_wiki/loop/system_prompts/card_audit_worker.md",
+      "task_template": "llm_wiki/loop/task_templates/card_audit_task.md",
+      "default_allowed_inputs": [
+        "当前 task.md 指定的草稿知识卡",
+        "当前 task.md 指定的出处论证",
+        "当前 task.md 指定的来源片段"
+      ],
+      "default_allowed_writes": [
+        "当前 iteration 目录",
+        "当前 iteration/artifacts 目录"
+      ]
+    },
+    "card_adoption_worker": {
+      "system_prompt": "llm_wiki/loop/system_prompts/card_adoption_worker.md",
+      "task_template": "llm_wiki/loop/task_templates/card_adoption_task.md",
+      "default_allowed_inputs": [
+        "当前 task.md 指定的审计通过知识卡",
+        "当前 task.md 指定的出处论证",
+        "当前 task.md 指定的审计结论"
+      ],
+      "default_allowed_writes": [
+        "llm_wiki/kb/cards",
+        "llm_wiki/kb/provenance",
+        "llm_wiki/kb/indexes",
+        "当前 iteration 目录"
+      ]
+    },
+    "skill_evolution_worker": {
+      "system_prompt": "llm_wiki/loop/system_prompts/skill_evolution_worker.md",
+      "task_template": "llm_wiki/loop/task_templates/skill_evolution_task.md",
+      "default_allowed_inputs": [
+        "当前 task.md 指定的失败证据",
+        "当前 task.md 指定的技能文件",
+        "当前 task.md 指定的任务模板"
+      ],
+      "default_allowed_writes": [
+        "llm_wiki/skills",
+        "llm_wiki/loop/task_templates",
+        "当前 iteration 目录"
+      ]
+    },
+    "independent_evaluator": {
+      "system_prompt": "llm_wiki/loop/system_prompts/independent_evaluator.md",
+      "task_template": "llm_wiki/loop/task_templates/independent_evaluation_task.md",
+      "default_allowed_inputs": [
+        "当前 task.md 指定的任务包和产物"
+      ],
+      "default_allowed_writes": [
+        "当前 iteration 目录",
+        "当前 iteration/artifacts 目录"
+      ]
+    },
+    "monitor": {
+      "system_prompt": "llm_wiki/loop/system_prompts/monitor.md",
+      "default_allowed_inputs": [
+        "llm_wiki/loop/loop_state.json",
+        "当前 iteration 的 loop_status.md",
+        "当前 iteration 的 loop_delivery.md",
+        "当前 task.md 指定的产物存在性"
+      ],
+      "default_allowed_writes": [
+        "当前 iteration 目录",
+        "当前 iteration/artifacts 目录"
+      ]
+    }
+  },
+  "required_worker_artifacts": [
+    "loop_status.md",
+    "loop_delivery.md",
+    "read_log.md"
+  ],
+  "long_horizon_plan": "llm_wiki/loop/plans/main_agent_long_horizon_execution_plan.md",
+  "network_policy": {
+    "default": "prefer_local_data",
+    "max_retrieve_attempts_per_source": 2,
+    "on_company_network_failure": "记录失败并搁置，未来在个人设备重试。"
+  }
+}

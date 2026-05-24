@@ -1,0 +1,23 @@
+# read_log
+
+- path: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/task.md`
+  - reason: 当前任务包。
+  - use: 确认角色、允许输入、允许写入、成功门禁和阻塞条件。
+- path: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+  - reason: 开发者指令要求循环类任务使用 `agent-loop-runner` 技能。
+  - use: 读取最小必要工作流约束，辅助按任务包写回状态与交付。
+- path: `data/raw/gist_raw/karpathy-gist-llm-wiki`
+  - reason: 任务包指定的来源目录。
+  - use: 确认目录中存在可读文件 `raw.txt`、`text.txt`、`metadata.json`。
+- path: `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt`
+  - reason: 任务包指定来源正文。
+  - use: 按行号抽取事实候选证据。
+- path: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt`
+  - reason: 任务包指定来源目录中的正文副本。
+  - use: 仅检查行数，确认与 `raw.txt` 同为 75 行；未用于候选证据。
+- path: `data/raw/gist_raw/karpathy-gist-llm-wiki/metadata.json`
+  - reason: 任务包指定来源目录中的元数据。
+  - use: 确认来源 `id`、标题、类型、抓取状态和 URL。
+- path: `data/manifests/acquired_sources_index.md`
+  - reason: 任务包允许的 `source_manifest`。
+  - use: 确认 `karpathy-gist-llm-wiki` 在清单中为 `ok`，路径为指定来源目录。
