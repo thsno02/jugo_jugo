@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T06:20:16+08:00",
-  "status": "CARD_ADOPTION_IN_PROGRESS",
+  "updated_at": "2026-05-25T06:24:47+08:00",
+  "status": "READY_FOR_CARD_DRAFTING",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_adoption",
+  "current_phase": "candidate_selection",
   "current_iteration": "iteration_20260525_0035_card_adoption_persistent_composite_wiki",
-  "last_completed_iteration": "iteration_20260525_0034_card_audit_persistent_composite_wiki",
-  "current_task_id": "task_20260525_0036_card_adoption_candidate_4",
+  "last_completed_iteration": "iteration_20260525_0035_card_adoption_persistent_composite_wiki",
+  "current_task_id": null,
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "派发并监控 iteration_20260525_0035_card_adoption_persistent_composite_wiki 的 card_adoption_worker；完成后关闭 sub-agent，运行 inspect_delivery.py，并确认 KB/index 采纳结果。",
+  "next_action": "从第一轮 source mining 的剩余候选中选择一个非重复、证据清晰、来源边界明确的候选，创建下一轮 card_drafting_worker 窄任务包；继续使用 fork_context:false，并在单次 worker 完成后关闭。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",
