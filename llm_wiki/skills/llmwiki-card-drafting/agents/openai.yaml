@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Wiki 知识卡草稿"
+  short_description: "将单个事实候选写成中文原子卡和出处论证"
+  default_prompt: "将一个事实候选转成一张可读知识卡和出处论证。"

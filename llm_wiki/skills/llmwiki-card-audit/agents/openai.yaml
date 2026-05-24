@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Wiki 知识卡审计"
+  short_description: "审计原子卡的事实粒度、出处论证和中文可读性"
+  default_prompt: "审计指定知识卡和出处论证，给出通过、修订、拒绝或暂缓结论。"

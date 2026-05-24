@@ -1,6 +1,6 @@
-# Source Digests Index
+# 来源摘要索引
 
-| Digest | Source | Type | Status | Coverage | Readable text |
+| 摘要 ID | 来源 | 类型 | 状态 | 覆盖范围 | 可读文本 |
 |---|---|---|---|---|---|
 | digest_owasp-llm-top10-2025 | owasp-llm-top10-2025 | webpage | complete | risks_governance_ethics | data/raw/webpage/owasp-llm-top10-2025/text.txt |
 | digest_repo-stanford-ares | repo-stanford-ares | github_repo | complete | problem_and_motivation, architecture_and_data_model, workflow_and_operations, evaluation_and_evidence, ecosystem_and_implementations, comparison_space | data/raw/github_repo/repo-stanford-ares/README.remote |

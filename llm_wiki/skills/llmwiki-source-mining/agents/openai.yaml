@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Wiki 来源挖掘"
+  short_description: "从单一来源抽取带证据定位的原子事实候选"
+  default_prompt: "读取指定来源，抽取事实候选并记录证据边界。"

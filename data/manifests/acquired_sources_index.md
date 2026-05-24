@@ -1,6 +1,6 @@
-# Acquired Sources Index
+# 已获取来源索引
 
-| Status | Type | Source | Local dir |
+| 状态 | 类型 | 来源 | 本地目录 |
 |---|---|---|---|
 | ok | gist_raw | [Andrej Karpathy LLM Wiki / LLM Knowledge Bases idea file](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | `data/raw/gist_raw/karpathy-gist-llm-wiki` |
 | ok | webpage | [Karpathy X launch post API mirror](https://api.fxtwitter.com/karpathy/status/2040470801506541998) | `data/raw/webpage/karpathy-x-launch-post` |

@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Wiki 循环控制"
+  short_description: "控制主 agent 决策、派发和边界，不直接生产知识"
+  default_prompt: "读取任务和状态，按原子事实循环规则决定下一步派发。"

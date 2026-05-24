@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Wiki 知识卡采纳"
+  short_description: "把审计通过的原子卡纳入当前知识库状态"
+  default_prompt: "采纳审计通过的知识卡，更新索引和状态。"

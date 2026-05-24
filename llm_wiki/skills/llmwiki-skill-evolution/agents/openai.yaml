@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Wiki 技能进化"
+  short_description: "根据循环失败和审计结果迭代原子事实技能"
+  default_prompt: "读取循环摩擦和审计结果，提出并应用技能修订。"
