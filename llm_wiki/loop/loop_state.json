@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T08:22:21+08:00",
-  "status": "CARD_DRAFTING_DISPATCH_READY",
+  "updated_at": "2026-05-25T08:26:57+08:00",
+  "status": "READY_FOR_CARD_AUDIT",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_drafting",
+  "current_phase": "card_audit",
   "current_iteration": "iteration_20260525_0052_card_drafting_idea_file_agent_builds",
-  "last_completed_iteration": "iteration_20260525_0051_source_mining_karpathy_x_launch",
-  "current_task_id": "task_20260525_0053_card_drafting_candidate_3",
+  "last_completed_iteration": "iteration_20260525_0052_card_drafting_idea_file_agent_builds",
+  "current_task_id": null,
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "派发 card_drafting_worker 处理 karpathy-x-launch-post 候选 3；等待 loop_delivery.md 后 inspect_delivery。",
+  "next_action": "创建并派发 card_audit_worker 审计第二轮候选 3 草稿卡。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",

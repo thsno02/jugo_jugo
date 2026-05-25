@@ -1,0 +1,10 @@
+- path: `llm_wiki/loop/iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/task.md`
+  - reason: 读取当前任务包。
+  - use: 确认目标、允许输入、允许写入、候选边界、输出要求和成功门禁。
+- path: `llm_wiki/loop/iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/artifacts/fact_candidates.md`
+  - reason: 仅核对任务指定的 `候选 3` 字段。
+  - use: 使用精确块读取命令，只输出 `候选 3`；未使用相邻候选内容。
+- path: `data/raw/webpage/karpathy-x-launch-post/raw.json`
+  - reason: 读取任务指定的来源证据。
+  - use: 仅通过 JSON pointer `$.tweet.text` 读取发布帖正文，用于支撑草稿卡和出处论证。
+- boundary_noise: none

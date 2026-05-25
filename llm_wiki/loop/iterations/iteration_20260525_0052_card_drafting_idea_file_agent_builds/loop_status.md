@@ -1,0 +1,4 @@
+status: completed
+task_id: task_20260525_0053_card_drafting_candidate_3
+role: card_drafting_worker
+delivery: LOOP_DONE

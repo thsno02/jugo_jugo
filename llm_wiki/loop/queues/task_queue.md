@@ -11,22 +11,30 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0053_card_drafting_candidate_3`
-
-- `role`: `card_drafting_worker`
-- `action`: 将第二轮 source mining 的候选 3 写成一张 draft atomic fact card，并写 provenance。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/artifacts/draft_card.md`, `llm_wiki/loop/iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/artifacts/provenance.md`
-- `note`: 只处理候选 3；不使用父聊天上下文，不读取已采纳 KB 卡片补充事实。
+暂无。
 
 ## 待办（pending）
 
-暂无。
+### `task_20260525_0054_card_audit_candidate_3`
+
+- `role`: `card_audit_worker`
+- `action`: 审计第二轮候选 3 草稿卡 `idea file 分享想法` 是否被 `raw.json` 的 `$.tweet.text` 支撑。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/artifacts/audit_report.md`
+- `note`: 只审计候选 3；不使用父聊天上下文。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0053_card_drafting_candidate_3`
+
+- `role`: `card_drafting_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds`
+- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0826-card-drafting-candidate-3-ready-for-audit.md`
 
 ### `task_20260525_0052_source_mining_karpathy_x_launch`
 
