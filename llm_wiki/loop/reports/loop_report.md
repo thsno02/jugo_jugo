@@ -10,7 +10,7 @@
 
 当前状态：已有 14 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选并已全部完成 drafting、audit 和 adoption。第二轮 source mining 已采纳候选 3 和候选 6。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 6 已完成 drafting、audit 和 adoption；采纳后仍保留 `known_fact` 与当前 scope。第二轮候选 12 已被选择进入 drafting，任务包通过 `validate_scope.py`，下一步派发 worker；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 6 已完成 drafting、audit 和 adoption；采纳后仍保留 `known_fact` 与当前 scope。第二轮候选 12 drafting 已完成并通过交付检查，下一步创建 audit worker 任务包；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -138,11 +138,12 @@
 - 2026-05-25：创建 `iteration_20260525_0059_card_adoption_idea_file_abstract_vague`，指定 `card_id` 为 `idea-file-abstract-vague`，目标 KB 路径不存在，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：第二轮候选 6 adoption worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，第十四张 KB 卡采纳完成。
 - 2026-05-25：从第二轮剩余候选中选择候选 12，原因是它聚焦被引用推文对 wiki `health checks` 的检查和清理方式描述，证据集中在 `$.tweet.quote.text`，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0060_card_drafting_wiki_health_checks`，任务包通过 `validate_scope.py`。
+- 2026-05-25：第二轮候选 12 drafting worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：24。
-- 草稿知识卡数量：14 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
+- 草稿知识卡数量：15 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：14。
 - 审计 revise 数量：1。
 - 已采纳知识卡数量：14。
@@ -462,6 +463,9 @@
 - [第二轮候选 12 选择决策](../decisions/20260525-0926-select-candidate-12-for-drafting.md)
 - [第二轮候选 12 drafting 任务包](../iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/task.md)
 - [第二轮候选 12 drafting dispatch](../iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/dispatch_request.json)
+- [第二轮候选 12 草稿卡](../iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/artifacts/draft_card.md)
+- [第二轮候选 12 provenance](../iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/artifacts/provenance.md)
+- [第二轮候选 12 drafting 可审计决策](../decisions/20260525-0931-card-drafting-candidate-12-ready-for-audit.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

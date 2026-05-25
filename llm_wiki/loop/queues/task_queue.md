@@ -11,22 +11,30 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0061_card_drafting_candidate_12`
-
-- `role`: `card_drafting_worker`
-- `action`: 将第二轮候选 12 写成一张原子事实草稿卡，并写 provenance。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/artifacts/draft_card.md`, `llm_wiki/loop/iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/artifacts/provenance.md`
-- `note`: 只处理候选 12；来源证据限定为 `data/raw/webpage/karpathy-x-launch-post/raw.json` 的 `$.tweet.quote.text`。
+暂无。
 
 ## 待办（pending）
 
-暂无。
+### `task_20260525_0062_card_audit_candidate_12`
+
+- `role`: `card_audit_worker`
+- `action`: 独立审计第二轮候选 12 草稿卡和 provenance。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0061_card_audit_wiki_health_checks/artifacts/audit_report.md`
+- `note`: 审计输入限定为草稿卡、provenance、候选 12 字段和 `raw.json` 的 `$.tweet.quote.text`；不使用父聊天上下文。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0061_card_drafting_candidate_12`
+
+- `role`: `card_drafting_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0060_card_drafting_wiki_health_checks`
+- `outputs`: `artifacts/draft_card.md`, `artifacts/provenance.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0931-card-drafting-candidate-12-ready-for-audit.md`
 
 ### `task_20260525_0060_card_adoption_candidate_6`
 
