@@ -11,12 +11,7 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0063_card_adoption_candidate_12`
-
-- `role`: `card_adoption_worker`
-- `action`: 采纳第二轮候选 12 知识卡；保留 `known_fact` 与当前 scope，不扩大为通用实践效果。
-- `expected_output`: `llm_wiki/kb/cards/llm-wiki-health-checks.md`, `llm_wiki/kb/provenance/llm-wiki-health-checks.md`
-- `note`: 只使用 audit pass 后的 draft/provenance；不使用父聊天上下文。
+暂无。
 
 ## 待办（pending）
 
@@ -27,6 +22,17 @@
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0063_card_adoption_candidate_12`
+
+- `role`: `card_adoption_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0062_card_adoption_wiki_health_checks`
+- `card_id`: `llm-wiki-health-checks`
+- `adopted_card`: `llm_wiki/kb/cards/llm-wiki-health-checks.md`
+- `adopted_provenance`: `llm_wiki/kb/provenance/llm-wiki-health-checks.md`
+- `index`: `llm_wiki/kb/indexes/cards.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0948-card-adoption-accepted-candidate-12.md`
 
 ### `task_20260525_0062_card_audit_candidate_12`
 

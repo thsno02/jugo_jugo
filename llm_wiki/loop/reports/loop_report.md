@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 14 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选并已全部完成 drafting、audit 和 adoption。第二轮 source mining 已采纳候选 3 和候选 6。
+当前状态：已有 15 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选并已全部完成 drafting、audit 和 adoption。第二轮 source mining 已采纳候选 3、候选 6 和候选 12。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 6 已完成 drafting、audit 和 adoption；采纳后仍保留 `known_fact` 与当前 scope。第二轮候选 12 adoption 任务包已创建并通过 `validate_scope.py`，下一步派发 worker；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 12 已完成 drafting、audit 和 adoption；采纳后仍保留 `known_fact` 与当前 scope。下一步从第二轮剩余候选中继续选择一个事实边界清楚、来源证据可读且不重复已采纳卡片的候选；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -142,6 +142,7 @@
 - 2026-05-25：创建 `iteration_20260525_0061_card_audit_wiki_health_checks`，审计输入限定为候选 12 草稿卡、provenance、候选 12 字段和 `raw.json` 的 `$.tweet.quote.text`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：第二轮候选 12 audit worker 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，下一步进入 adoption。
 - 2026-05-25：创建 `iteration_20260525_0062_card_adoption_wiki_health_checks`，指定 `card_id` 为 `llm-wiki-health-checks`，目标 KB 路径不存在，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 12 adoption worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，第十五张 KB 卡采纳完成。
 
 ## 关键指标（key_metrics）
 
@@ -149,7 +150,7 @@
 - 草稿知识卡数量：15 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：15。
 - 审计 revise 数量：1。
-- 已采纳知识卡数量：14。
+- 已采纳知识卡数量：15。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
 - adoption 模板修复后新增边界噪声：0。
@@ -163,7 +164,7 @@
 - validation evidence correction 数量：1。
 - prompt/template 修复复审通过数量：1。
 - 同 iteration `dispatch_request.json` 递归自检读取观察：1。
-- 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：9。
+- 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：10。
 
 ## 证据链接（evidence_links）
 
@@ -475,6 +476,10 @@
 - [第二轮候选 12 audit pass 决策](../decisions/20260525-0938-card-audit-pass-candidate-12.md)
 - [第二轮候选 12 adoption 任务包](../iterations/iteration_20260525_0062_card_adoption_wiki_health_checks/task.md)
 - [第二轮候选 12 adoption dispatch](../iterations/iteration_20260525_0062_card_adoption_wiki_health_checks/dispatch_request.json)
+- [第二轮候选 12 adoption 交付](../iterations/iteration_20260525_0062_card_adoption_wiki_health_checks/loop_delivery.md)
+- [第二轮候选 12 采纳决策](../decisions/20260525-0948-card-adoption-accepted-candidate-12.md)
+- [已采纳知识卡：LLM health checks 清理 wiki](../../kb/cards/llm-wiki-health-checks.md)
+- [已采纳 provenance：LLM health checks 清理 wiki](../../kb/provenance/llm-wiki-health-checks.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
