@@ -1,0 +1,5 @@
+{"event": "initialized", "created_time": "2026-05-25T15:32:02+08:00", "note": "Subagent lifecycle registry placeholder for brain/leaf experiments."}
+{"agent_id": "smoke-production-brain", "brain": "production", "event": "brain_message_claimed", "message_id": "msg_smoke_audit_to_production_20260525_1532", "time": "2026-05-25T15:34:40+08:00"}
+{"brain": "production", "event": "brain_message_completed", "message_id": "msg_smoke_audit_to_production_20260525_1532", "time": "2026-05-25T15:34:40+08:00"}
+{"agent_id": "smoke-audit-brain", "brain": "audit", "event": "brain_message_claimed", "message_id": "msg_smoke_production_to_audit_20260525_1532", "time": "2026-05-25T15:35:25+08:00"}
+{"brain": "audit", "event": "brain_message_completed", "message_id": "msg_smoke_production_to_audit_20260525_1532", "time": "2026-05-25T15:35:25+08:00"}

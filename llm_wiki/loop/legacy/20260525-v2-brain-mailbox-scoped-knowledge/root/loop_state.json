@@ -1,0 +1,37 @@
+{
+  "schema": "llm_wiki.loop_state.v2",
+  "updated_at": "2026-05-25T15:51:23+08:00",
+  "status": "LOOP_V2_DESIGN_READY",
+  "loop_owner": "main_owned_with_brain_mailbox",
+  "loop_shape": "brain_mailbox_scoped_knowledge_loop",
+  "current_phase": "v2_design_and_control_plane_alignment",
+  "current_iteration": "iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a",
+  "last_completed_iteration": "iteration_20260525_0063_card_drafting_wiki_qa_scale",
+  "current_task_id": "task_20260525_0066_card_batch_drafting_karpathy_launch_remaining_a",
+  "current_focus": [
+    "grow_scoped_knowledge_cards",
+    "build_readable_provenance",
+    "brain_mailbox_coordination",
+    "title_similarity_top3_before_publication",
+    "comparison_provenance_before_fusion",
+    "evolve_skills_from_loop_failures"
+  ],
+  "active_non_goals": [
+    "hub",
+    "cluster",
+    "topic_coverage",
+    "low_information_title_restatement_cards",
+    "agent_synthesis_as_source"
+  ],
+  "next_action": "按 LOOP_DESIGN_V2.md 对当前 prompt/template 和队列做一次轻量一致性检查；随后让 production brain 处理 material-to-draft，similarity brain 处理 Jieba/Jaccard top3 和 comparison provenance。",
+  "blockers": [],
+  "residual_risks": [
+    "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",
+    "Codex CLI and Claude CLI write-file worker loops remain unverified; native Codex sub-agent remains the short-term route.",
+    "Candidate 1 audit task included a non-existent fact_candidate_path; audit pass is accepted because source lines 1-5 support the card. Scope validation path checking has been repaired and independently audited.",
+    "V2 brain-mailbox loop 是新设计；mailbox 文件通信已 smoke 验证，但自动 scheduler / 真实 sub-agent 唤醒仍是预留接口。",
+    "scoped knowledge card 契约刚更新；已存在 draft 需要补 metadata、知识含量审计和 V2 similarity/comparison provenance。"
+  ],
+  "human_checkpoint_required": false,
+  "language": "zh_main"
+}

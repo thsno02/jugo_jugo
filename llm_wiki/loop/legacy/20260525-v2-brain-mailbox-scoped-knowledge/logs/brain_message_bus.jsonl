@@ -1,0 +1,19 @@
+{"event": "initialized", "created_time": "2026-05-25T15:32:02+08:00", "note": "Brain mailbox message bus initialized."}
+{"event": "message_created", "from_brain": "audit", "message_id": "msg_smoke_audit_to_production_20260525_1532", "time": "2026-05-25T15:34:28+08:00", "to_brain": "production", "type": "revision_request"}
+{"event": "message_routed", "from_brain": "audit", "message_id": "msg_smoke_audit_to_production_20260525_1532", "time": "2026-05-25T15:34:28+08:00", "to_brain": "production", "type": "revision_request"}
+{"event": "wake_marked", "reason": "hook:smoke_send", "time": "2026-05-25T15:34:28+08:00", "wake_map": {"production": ["msg_smoke_audit_to_production_20260525_1532"]}}
+{"agent_id": "smoke-production-brain", "brain": "production", "event": "message_claimed", "message_id": "msg_smoke_audit_to_production_20260525_1532", "time": "2026-05-25T15:34:40+08:00"}
+{"event": "wake_marked", "reason": "claim", "time": "2026-05-25T15:34:40+08:00", "wake_map": {}}
+{"brain": "production", "event": "message_completed", "message_id": "msg_smoke_audit_to_production_20260525_1532", "response": "Smoke revision acknowledged; production would create a revision iteration and return artifact refs.", "time": "2026-05-25T15:34:40+08:00"}
+{"event": "response_created", "from_brain": "production", "message_id": "msg_smoke_production_to_audit_20260525_1532", "responds_to": "msg_smoke_audit_to_production_20260525_1532", "time": "2026-05-25T15:34:40+08:00", "to_brain": "audit", "type": "revision_response"}
+{"event": "wake_marked", "reason": "complete", "time": "2026-05-25T15:34:40+08:00", "wake_map": {}}
+{"event": "message_routed", "from_brain": "production", "message_id": "msg_smoke_production_to_audit_20260525_1532", "time": "2026-05-25T15:34:40+08:00", "to_brain": "audit", "type": "revision_response"}
+{"event": "wake_marked", "reason": "hook:smoke_response", "time": "2026-05-25T15:34:40+08:00", "wake_map": {"audit": ["msg_smoke_production_to_audit_20260525_1532"]}}
+{"agent_id": "smoke-audit-brain", "brain": "audit", "event": "message_claimed", "message_id": "msg_smoke_production_to_audit_20260525_1532", "time": "2026-05-25T15:35:25+08:00"}
+{"event": "wake_marked", "reason": "claim", "time": "2026-05-25T15:35:25+08:00", "wake_map": {}}
+{"brain": "audit", "event": "message_completed", "message_id": "msg_smoke_production_to_audit_20260525_1532", "response": "Smoke response received; mailbox round trip closed.", "time": "2026-05-25T15:35:25+08:00"}
+{"event": "wake_marked", "reason": "complete", "time": "2026-05-25T15:35:25+08:00", "wake_map": {}}
+{"event": "message_reconciled", "from_brain": "production", "message_id": "msg_smoke_production_to_audit_20260525_1532", "status": "resolved", "time": "2026-05-25T15:35:25+08:00", "to_brain": "audit"}
+{"event": "message_reconciled", "from_brain": "audit", "message_id": "msg_smoke_audit_to_production_20260525_1532", "status": "resolved", "time": "2026-05-25T15:35:25+08:00", "to_brain": "production"}
+{"event": "wake_marked", "reason": "reconcile", "time": "2026-05-25T15:35:25+08:00", "wake_map": {}}
+{"event": "wake_marked", "reason": "hook:smoke_empty", "time": "2026-05-25T15:37:04+08:00", "wake_map": {}}

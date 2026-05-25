@@ -1,0 +1,517 @@
+# LLM Wiki 循环报告
+
+## 为什么存在（why_this_loop）
+
+这个循环存在的原因是：LLM Wiki 的知识库不能从主题骨架或枢纽页开始，而要从可以被来源支撑的 scoped knowledge cards 开始。
+
+当前不追求覆盖率，也不追求结构完整。当前要降低的不确定性是：能否稳定地从本地来源中抽出事实候选，并经过出处论证和审计，沉淀为可读的 zet 风格知识卡。
+
+## 当前决策（current_decision）
+
+当前状态：已有 15 张 V1 知识卡采纳到 KB。V2 设计已开始接管控制面：旧版 draft-first 控制面已归档到 `legacy/20260525-v1-draft-first-control-plane/`，当前 primary object 改为 scoped knowledge card。
+
+当前决策：切换到 V2 brain-mailbox loop。production brain 负责 material -> scoped draft card，similarity brain 负责 Jieba/Jaccard title top3 与三问 comparison provenance，audit brain 负责 publication / fusion audit，ops brain 负责 mailbox、queue 和 wake marker。similarity 是新版流程的一等环节。
+
+## 过程轨迹（process_trace）
+
+- 2026-05-25：创建循环控制面初版。
+- 2026-05-25：明确主控 agent 是决策者，执行者只做有界任务。
+- 2026-05-25：把当前阶段非目标固定为枢纽页、聚类、主题覆盖、低信息量标题改写卡和没有来源支撑的 agent 综合。
+- 2026-05-25：记录第 0 轮 bootstrap 交付，保证循环状态可从磁盘恢复。
+- 2026-05-25：独立执行者审计通过控制面，并指出 4 个最小修复点；已修复读写顺序、选源准则、恢复准则和审计写入范围。
+- 2026-05-25：补充预定义 system prompt 层，把稳定角色边界从主控 agent 的临场判断中移出。
+- 2026-05-25：完成 Codex hooks + custom agents 最小可行性调查；结论是 hooks 适合做 guardrail/context/stop 检查，不适合直接作为原生 sub-agent dispatcher。
+- 2026-05-25：建立前置门禁、上下文隔离、main-agent 弹性、sub-agent 演化、生命周期、CLI 验证和用户洞察记录。
+- 2026-05-25：完成 Claude CLI 与 Codex CLI 的最小 worker runtime smoke；Claude 无工具写作 smoke 返回 `READY`，Codex `--ephemeral --sandbox read-only` smoke 返回 `READY`，同时确认外部 Codex CLI 会触发已信任 hooks 并产生日志噪声。
+- 2026-05-25：`user-insights` sidecar 已写入顶层 `user-insights/`，coverage 标记为 `partial`；`llm_wiki/loop/user_insights/` 仅保留为 pre-skill fallback。
+- 2026-05-25：已派发 `iteration_20260525_0001_prelaunch_validation` 独立审计，检查前置门禁是否足以进入 source mining。
+- 2026-05-25：独立审计结论为 `concern`；已修正 canonical 用户洞察链接，显式接受 `coverage: partial` 为非阻塞残余风险，并补足后续 CLI smoke 审计输入范围。
+- 2026-05-25：新增给下一位 main-agent 的长程执行计划，覆盖 KB 生产、skills/prompt 演化、文件系统管理和 out-of-loop 反思；同时把通用 long-horizon loop pattern 沉淀进 `agent-loop-runner` skill。
+- 2026-05-25：创建并派发 `iteration_20260525_0002_source_mining_karpathy_gist`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`，执行者只接收 base worker、source mining worker prompt 和当前 task packet。
+- 2026-05-25：`source_mining_worker` 返回 `LOOP_DONE`，主控 agent 随即关闭该 sub-agent；`inspect_delivery.py` 返回 `pass`，12 个事实候选进入候选集。
+- 2026-05-25：写入决策 `20260525-0241-source-mining-accepted-candidate-8.md`，选择候选 8 进入 `iteration_20260525_0003_card_drafting_raw_sources_truth`。
+- 2026-05-25：候选 8 第一次 drafting 生成草稿卡和 provenance，但 `inspect_delivery.py` 因 `loop_delivery.md` 缺少 `LOOP_DONE` / `LOOP_BLOCKED` 失败；主控 agent 未补写 worker 交付，而是记录失败并修复稳定 prompt。
+- 2026-05-25：`iteration_20260525_0004_delivery_marker_prompt_repair` 最小修改 `base_worker.md` 的交付 marker 规则；`iteration_20260525_0005_prompt_repair_audit` 独立审计结论为 `audit_result: pass`，审计 worker 已关闭。
+- 2026-05-25：创建 `iteration_20260525_0006_card_drafting_raw_sources_truth_r1`，在修复后的 worker prompt 下重跑候选 8 drafting revision。
+- 2026-05-25：候选 8 drafting revision 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0007_card_audit_raw_sources_truth_r1`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`。
+- 2026-05-25：`card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0008_card_adoption_raw_sources_truth`，指定 `card_id` 为 `raw-sources-readonly-source-of-truth`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：`card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，知识卡、provenance 和最小索引已写入 `llm_wiki/kb/`。
+- 2026-05-25：记录 sub-agent 生命周期策略：独立判断和单次写入 worker 完成后关闭；若未来出现大来源或高重复 IO，可显式使用 alive worker，但必须在任务包或 decision 中声明边界。
+- 2026-05-25：创建 `iteration_20260525_0009_card_drafting_architecture_layers`，选择候选 7，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:25-33`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 7 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0010_card_audit_architecture_layers`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`。
+- 2026-05-25：候选 7 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0011_card_adoption_architecture_layers`，指定 `card_id` 为 `llm-wiki-three-layer-architecture`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 7 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第二张 KB 卡采纳完成。
+- 2026-05-25：两轮 adoption 的 `read_log.md` 均记录目标 KB 路径读取为额外读取；主控 agent 将其记录为重复边界噪声，暂停生产并进入反思与模板修复。
+- 2026-05-25：写入小批量采纳后的反思；最小修复 `card_adoption_task.md`，把目标 KB 卡片、目标 provenance 和索引文件列为允许读取，但用途限定为存在性、覆盖冲突和最小索引增量更新。
+- 2026-05-25：创建 `iteration_20260525_0013_adoption_template_repair_audit`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context: false`。
+- 2026-05-25：`iteration_20260525_0013_adoption_template_repair_audit` 返回 `audit_result: concern`；原因是审计任务包把 out-of-loop reflection 误列为 `target_artifacts`。已写入澄清决策，并创建 `iteration_20260525_0014_adoption_template_repair_audit_r1`。
+- 2026-05-25：修正版 adoption template 修复审计返回 `audit_result: pass`；接受模板修复并恢复 KB 生产，下一步选择候选 10。
+- 2026-05-25：创建 `iteration_20260525_0015_card_drafting_schema_layer`，选择候选 10，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 10 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0016_card_audit_schema_layer`，审计输入限定为候选 10 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:33`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 10 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0017_card_adoption_schema_layer`，指定 `card_id` 为 `llm-wiki-schema-configuration-document`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 10 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第三张 KB 卡采纳完成。adoption read_log 将目标 KB 路径列为允许输入，确认 adoption template 修复已消除前两轮边界噪声。
+- 2026-05-25：从剩余事实候选中选择候选 9，原因是该候选来源证据集中、事实边界清楚，且不重复既有 accepted cards；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0018_card_drafting_wiki_layer`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:31-32`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 9 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0019_card_audit_wiki_layer`，审计输入限定为候选 9 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:31-32`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 9 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0020_card_adoption_wiki_layer`，指定 `card_id` 为 `llm-wiki-wiki-layer-generated-markdown-directory`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 9 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第四张 KB 卡采纳完成。目标 KB 路径读取仍作为允许输入记录，adoption template 修复保持有效；本轮额外读取 `loop_status.md/read_log.md` 仅用于避免覆盖输出，记录为轻微过程噪声观察，不触发修复。
+- 2026-05-25：从剩余事实候选中选择候选 3，原因是其证据集中在核心想法段落、事实边界清楚，且不重复已采纳的架构层卡；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0021_card_drafting_persistent_wiki_mode`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 3 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0022_card_audit_persistent_wiki_mode`，审计输入限定为候选 3 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:11-13`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 3 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0023_card_adoption_persistent_wiki_mode`，指定 `card_id` 为 `llm-wiki-persistent-wiki-alternative-mode`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 3 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第五张 KB 卡采纳完成。
+- 2026-05-25：从剩余事实候选中选择候选 2，原因是其证据集中、对比对象清楚，且不重复已采纳的持久 wiki 与架构层事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0024_card_drafting_rag_no_accumulation`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:7-10`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 2 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0025_card_audit_rag_no_accumulation`，审计输入限定为候选 2 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:7-10`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 2 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0026_card_adoption_rag_no_accumulation`，指定 `card_id` 为 `rag-document-qa-does-not-accumulate-synthesized-knowledge`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 2 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第六张 KB 卡采纳完成。
+- 2026-05-25：从剩余事实候选中选择候选 11，原因是其证据集中在 Ingest 小节、流程边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0027_card_drafting_ingest_workflow`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:35-38`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 11 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。`read_log.md` 记录候选字段复核时相邻扫到候选 12 标题开头，但未用于卡片或 provenance，暂记为非阻塞边界观察。
+- 2026-05-25：创建 `iteration_20260525_0028_card_audit_ingest_workflow`，审计输入限定为候选 11 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:35-38`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 11 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0029_card_adoption_ingest_workflow`，指定 `card_id` 为 `llm-wiki-ingest-example-flow`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 11 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第七张 KB 卡采纳完成。
+- 2026-05-25：从剩余事实候选中选择候选 12，原因是其证据集中在 Query 小节、流程边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0030_card_drafting_query_workflow`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:39-40`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 12 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0031_card_audit_query_workflow`，审计输入限定为候选 12 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:39-40`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 12 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0032_card_adoption_query_workflow`，指定 `card_id` 为 `llm-wiki-query-answer-writeback`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 12 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第八张 KB 卡采纳完成。
+- 2026-05-25：从剩余事实候选中选择候选 4，原因是其证据集中在单行、事实边界清楚，且与已采纳的持久 wiki 模式相邻但不重复；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0033_card_drafting_persistent_composite_wiki`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 4 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。`read_log.md` 记录关键词定位曾返回其它候选命中行和一次本轮目录文件名检查，但未用于卡片或 provenance，暂记为非阻塞边界观察。
+- 2026-05-25：创建 `iteration_20260525_0034_card_audit_persistent_composite_wiki`，审计输入限定为候选 4 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 4 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。
+- 2026-05-25：创建 `iteration_20260525_0035_card_adoption_persistent_composite_wiki`，指定 `card_id` 为 `llm-wiki-persistent-compounding-artifact`，目标 KB 路径不存在，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 4 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第九张 KB 卡采纳完成。
+- 2026-05-25：从剩余事实候选中选择候选 1，原因是其证据集中在来源开头、事实边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0036_card_drafting_llm_wiki_pattern_file`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`，任务包通过 `validate_scope.py`。
+- 2026-05-25：候选 1 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0037_card_audit_llm_wiki_pattern_file`，审计输入限定为候选 1 草稿卡、provenance 和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 1 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`。审计同时记录 `fact_candidate_path` 读取失败；主控 agent 判断 audit pass 内容上可接受，但这是 `validate_scope.py` 未检查允许输入路径存在性的失败证据，先转入 tooling repair。
+- 2026-05-25：创建 `iteration_20260525_0038_validate_scope_path_check_repair` 显式 tooling repair；最小修复 `validate_scope.py`，使允许输入区中不存在的必需本地路径触发 `scope_validation: fail`。负向检查命中候选 1 错误 audit task，正向检查通过候选 1 drafting task，repair delivery 通过 `inspect_delivery.py`；下一步派发 independent evaluator 审计修复。
+- 2026-05-25：创建 `iteration_20260525_0039_validate_scope_path_check_repair_audit` 独立审计任务包，输入限定为 repair task/status/delivery/read_log/report、`validate_scope.py`、失败决策和正/负向任务样例；任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：`iteration_20260525_0039_validate_scope_path_check_repair_audit` 返回 `audit_result: pass`，主控 agent 关闭该 evaluator；`inspect_delivery.py` 返回 `pass`。接受 `validate_scope.py` 修复，恢复候选 1 adoption。审计 `read_log.md` 中记录的一次 skill 文件读取仅用于运行环境约束，不作为审计证据，暂记为非阻塞边界记录。
+- 2026-05-25：创建 `iteration_20260525_0040_card_adoption_llm_wiki_pattern_file`，指定 `card_id` 为 `llm-wiki-pattern-file`，目标 KB 路径不存在，任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 1 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第十张 KB 卡采纳完成。
+- 2026-05-25：从剩余事实候选中选择候选 5，原因是其聚焦人机分工、事实边界清楚，且不重复已采纳事实；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0041_card_drafting_human_llm_roles`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16,68-69`，任务包通过新版 `validate_scope.py`。
+- 2026-05-25：候选 5 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。`read_log.md` 记录 `rg` 曾显示下一候选标题但未用于卡片或 provenance，也记录按运行环境读取 `agent-loop-runner` skill 仅用于流程约束；已写入读取边界噪声反思，下一步继续生产。
+- 2026-05-25：创建 `iteration_20260525_0042_card_audit_human_llm_roles`，审计输入限定为候选 5 草稿卡、provenance、候选 5 字段和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16,68-69`；任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 5 `card_audit_worker` 返回 `audit_result: pass`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，写入采纳准备决策。`read_log.md` 记录一次 skill 文件读取，仅用于流程约束，不作为事实证据。
+- 2026-05-25：创建 `iteration_20260525_0043_card_adoption_human_llm_roles`，指定 `card_id` 为 `llm-wiki-human-llm-role-division`，目标 KB 路径不存在，任务包通过新版 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 5 `card_adoption_worker` 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，第十一张 KB 卡采纳完成。`read_log.md` 明确未读取任务包允许输入之外的文件。
+- 2026-05-25：选择候选 6 进入 drafting，原因是它可被收窄为“该来源列举了一组可能适用场景”这一清单型原子事实，且是第一轮 source mining 中最后一个未处理候选；选择不基于主题覆盖或 hub/cluster 规划。创建 `iteration_20260525_0044_card_drafting_llm_wiki_use_cases`，证据范围为 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23`，任务包通过新版 `validate_scope.py`。
+- 2026-05-25：候选 6 drafting worker 返回 `LOOP_DONE`，主控 agent 关闭该 worker；`inspect_delivery.py` 返回 `pass`，草稿卡没有扩写成场景页。`read_log.md` 再次记录 `fact_candidates.md` 检索上下文带出相邻候选字段，触发读取边界噪声反思的复开条件；进入最小 prompt/template repair，暂缓候选 6 audit。
+- 2026-05-25：创建 `iteration_20260525_0045_drafting_candidate_boundary_repair`，最小修改 `card_drafting_worker.md` 与 `card_drafting_task.md` 的候选块读取规则；`validate_scope.py` 和 `inspect_delivery.py` 均返回 `pass`。本修复未改卡片 schema，未创建 alive sub-agent，下一步进入 independent evaluator 审计。
+- 2026-05-25：创建 `iteration_20260525_0046_drafting_candidate_boundary_repair_audit`，任务包限定为修复任务、修复交付、改动后的 prompt/template 和失败证据；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选块读取边界修复审计返回 `audit_result: concern`；审计确认修复范围合规，但指出目标修复产物未记录实际 `validate_scope.py` pass 结果。主控 agent 关闭该 one-shot evaluator，并转入最小 validation evidence correction。
+- 2026-05-25：创建 `iteration_20260525_0047_drafting_boundary_validation_evidence_repair`，只补写目标修复报告中的实际 `validate_scope.py` 与 `inspect_delivery.py` 输出；该 correction 自身通过 `validate_scope.py` 和 `inspect_delivery.py`。
+- 2026-05-25：创建 `iteration_20260525_0048_drafting_boundary_validation_evidence_audit`，任务包限定为 correction 交付、prior concern、更新后的修复报告和原修复任务/交付；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：validation evidence 复审返回 `audit_result: pass`；主控 agent 关闭该 one-shot evaluator，接受候选块读取边界修复，并恢复候选 6 card audit 链路。
+- 2026-05-25：创建 `iteration_20260525_0049_card_audit_llm_wiki_use_cases`，审计输入限定为候选 6 草稿卡、provenance、候选 6 字段和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 6 card audit 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，下一步进入 adoption。
+- 2026-05-25：创建 `iteration_20260525_0050_card_adoption_llm_wiki_use_cases`，指定 `card_id` 为 `llm-wiki-listed-use-cases`，目标 KB 路径不存在，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 6 adoption worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，第十二张 KB 卡采纳完成。第一轮 source mining 的 12 个候选全部完成生产链路。
+- 2026-05-25：选择 `karpathy-x-launch-post` 作为下一轮 source mining 来源；理由是直接发布语境、`status: ok`、本地目录小且结构清楚，选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0051_source_mining_karpathy_x_launch`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮 source mining worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，产出 12 个候选。递归 `rg` 自检意外读取同 iteration `dispatch_request.json`，未用于事实抽取，暂记为过程噪声。
+- 2026-05-25：选择第二轮候选 3 进入 drafting，原因是它聚焦发布帖对 `idea file` 的表述，证据集中在 `data/raw/webpage/karpathy-x-launch-post/raw.json` 的 `$.tweet.text`，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0052_card_drafting_idea_file_agent_builds`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 3 drafting worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。`read_log.md` 记录精确块读取，无相邻候选噪声。
+- 2026-05-25：创建 `iteration_20260525_0053_card_audit_idea_file_agent_builds`，审计输入限定为候选 3 草稿卡、provenance、候选 3 字段和 `data/raw/webpage/karpathy-x-launch-post/raw.json` 的 `$.tweet.text`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 3 audit worker 返回 `audit_result: revise`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。修订点限于 statement 的归属语，不触发 prompt/tool 演化。
+- 2026-05-25：创建 `iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1`，任务包要求只按 audit report 最小修订归属语，不扩大来源证据；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 3 revision worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。修订版 statement 已改为“这条发布帖”，未扩大来源证据。
+- 2026-05-25：创建 `iteration_20260525_0055_card_audit_idea_file_agent_builds_r1`，审计输入限定为修订版草稿卡、provenance、候选 3 字段、prior audit report 和 `raw.json` 的 `$.tweet.text`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 3 audit r1 worker 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。上一轮归属语问题已关闭，下一步进入 adoption。
+- 2026-05-25：创建 `iteration_20260525_0056_card_adoption_idea_file_agent_builds`，指定 `card_id` 为 `idea-file-share-the-idea`，目标 KB 路径不存在，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 3 adoption worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，第十三张 KB 卡采纳完成。
+- 2026-05-25：从第二轮剩余候选中选择候选 6，原因是它聚焦这条发布帖对 idea file 抽象/模糊程度与 Discussion 参与入口的说明，证据集中在 `$.tweet.text`，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0057_card_drafting_idea_file_abstract_vague`，任务包通过 `validate_scope.py`。
+- 2026-05-25：第二轮候选 6 drafting worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0058_card_audit_idea_file_abstract_vague`，审计输入限定为候选 6 草稿卡、provenance、候选 6 字段和 `raw.json` 的 `$.tweet.text`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 6 audit worker 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，下一步进入 adoption。
+- 2026-05-25：创建 `iteration_20260525_0059_card_adoption_idea_file_abstract_vague`，指定 `card_id` 为 `idea-file-abstract-vague`，目标 KB 路径不存在，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 6 adoption worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，第十四张 KB 卡采纳完成。
+- 2026-05-25：从第二轮剩余候选中选择候选 12，原因是它聚焦被引用推文对 wiki `health checks` 的检查和清理方式描述，证据集中在 `$.tweet.quote.text`，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0060_card_drafting_wiki_health_checks`，任务包通过 `validate_scope.py`。
+- 2026-05-25：第二轮候选 12 drafting worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：创建 `iteration_20260525_0061_card_audit_wiki_health_checks`，审计输入限定为候选 12 草稿卡、provenance、候选 12 字段和 `raw.json` 的 `$.tweet.quote.text`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 12 audit worker 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，下一步进入 adoption。
+- 2026-05-25：创建 `iteration_20260525_0062_card_adoption_wiki_health_checks`，指定 `card_id` 为 `llm-wiki-health-checks`，目标 KB 路径不存在，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 12 adoption worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，第十五张 KB 卡采纳完成。
+- 2026-05-25：从第二轮剩余候选中选择候选 11，原因是它聚焦被引用推文中一个具体研究 wiki 的规模与 Q&A/research 用法，证据集中在 `$.tweet.quote.text`，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0063_card_drafting_wiki_qa_scale`，任务包通过 `validate_scope.py`。
+- 2026-05-25：第二轮候选 11 drafting worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：根据用户对 7 小时仅 15 张 accepted card 的吞吐质疑，记录流程偏差并切换到 `DRAFT_FIRST_PIPELINE.md`：batch atomic draft 优先，相似门前置到 publication 之前，审计与采纳后置批处理。candidate 11 不立即单卡 audit，而是登记到 `queues/draft_backlog.md`。
+- 2026-05-25：创建首个 batch drafting 任务包 `iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a`，处理 `karpathy-x-launch-post` 候选 2、4、5、8、9、10；任务包通过 `validate_scope.py`，dispatch payload 已渲染。
+- 2026-05-25：完成最小 brain mailbox smoke：文件层面的 A brain 写 outbox、hook route、B brain wake marker、claim/complete、reply 和 reconcile 闭环可行；真实自动 spawn/resume Codex sub-agent 仍未验证。
+- 2026-05-25：根据用户新的设计判断，把 V1 draft-first 控制面归档到 `legacy/20260525-v1-draft-first-control-plane/`，写入 `LOOP_DESIGN_V2.md` 和 `CARD_CONTRACT_V2.md`；新版使用 brain mailbox、scoped knowledge card、Jieba/Jaccard title similarity top3 和 comparison provenance 三问。
+
+## 关键指标（key_metrics）
+
+- 事实候选数量：24。
+- 草稿知识卡数量：16 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
+- draft backlog 已登记数量：1。
+- 当前生产流程：V2 brain-mailbox material draft first，similarity top3 和 comparison provenance 是 publication / fusion 前的必经分流。
+- 审计通过数量：15。
+- 审计 revise 数量：1。
+- 已采纳知识卡数量：15。
+- 因交付 marker 缺失导致的返工次数：1。
+- 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
+- adoption 模板修复后新增边界噪声：0。
+- 输出文件存在性检查导致的轻微任务外读取观察：2。
+- `fact_candidates.md` 相邻行或关键词定位导致的轻微边界观察：4，其中 1 次已复开为 prompt/template repair。
+- 本轮 iteration 目录文件名检查导致的轻微边界观察：1。
+- 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
+- 因 `validate_scope.py` 未发现允许输入路径不存在导致的控制面修复次数：1。
+- 因失败证据触发的 prompt/template 修复次数：2。
+- prompt/template 修复审计 concern 数量：1。
+- validation evidence correction 数量：1。
+- prompt/template 修复复审通过数量：1。
+- 同 iteration `dispatch_request.json` 递归自检读取观察：1。
+- 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：10。
+
+## 证据链接（evidence_links）
+
+- [循环 README](../README.md)
+- [运行手册](../RUNBOOK.md)
+- [执行者边界](../SUBAGENT_SCOPE.md)
+- [循环状态](../loop_state.json)
+- [循环清单](../loop_manifest.json)
+- [前置要求](../PRELAUNCH_REQUIREMENTS.md)
+- [上下文隔离](../CONTEXT_ISOLATION.md)
+- [main-agent 弹性](../MAIN_AGENT_ELASTICITY.md)
+- [sub-agent 演化](../SUBAGENT_EVOLUTION.md)
+- [sub-agent 生命周期](../SUBAGENT_LIFECYCLE.md)
+- [技术验证](../TECH_VALIDATION.md)
+- [用户洞察索引](../../../user-insights/index.md)
+- [用户洞察 session log](../../../user-insights/sessions/session_20260525_llm_wiki_loop_bootstrap/session_log.md)
+- [system prompt 目录](../system_prompts/README.md)
+- [任务队列](../queues/task_queue.md)
+- [第 0 轮 bootstrap](../iterations/iteration_0000_bootstrap/loop_delivery.md)
+- [第 0 轮独立审计摘要](../iterations/iteration_0000_bootstrap/artifacts/independent_scope_audit.md)
+- [Codex hooks 可行性 smoke](../iterations/iteration_0000_bootstrap/artifacts/codex_hooks_feasibility_smoke.md)
+- [CLI worker smoke](../iterations/iteration_0000_bootstrap/artifacts/cli_worker_smoke.md)
+- [前置门禁审计任务](../iterations/iteration_20260525_0001_prelaunch_validation/task.md)
+- [前置门禁审计报告](../iterations/iteration_20260525_0001_prelaunch_validation/artifacts/independent_audit.md)
+- [前置 concern 处理决策](../decisions/20260525-0208-prelaunch-concern-resolution.md)
+- [Main-agent 长程执行计划](../plans/main_agent_long_horizon_execution_plan.md)
+- [Main-agent 执行计划自审计](../reflections/20260525-main-agent-plan-self-audit.md)
+- [第一轮 source mining 任务包](../iterations/iteration_20260525_0002_source_mining_karpathy_gist/task.md)
+- [第一轮 source mining dispatch](../iterations/iteration_20260525_0002_source_mining_karpathy_gist/dispatch_request.json)
+- [第一轮事实候选](../iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md)
+- [接受 source mining 并选择候选 8 的决策](../decisions/20260525-0241-source-mining-accepted-candidate-8.md)
+- [候选 8 drafting 任务包](../iterations/iteration_20260525_0003_card_drafting_raw_sources_truth/task.md)
+- [候选 8 drafting dispatch](../iterations/iteration_20260525_0003_card_drafting_raw_sources_truth/dispatch_request.json)
+- [delivery marker prompt 修复任务](../iterations/iteration_20260525_0004_delivery_marker_prompt_repair/task.md)
+- [prompt 修复报告](../iterations/iteration_20260525_0004_delivery_marker_prompt_repair/artifacts/prompt_repair_report.md)
+- [prompt 修复独立审计](../iterations/iteration_20260525_0005_prompt_repair_audit/artifacts/independent_audit.md)
+- [接受 prompt 修复决策](../decisions/20260525-0254-accept-delivery-marker-prompt-repair.md)
+- [候选 8 drafting revision 任务包](../iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/task.md)
+- [候选 8 drafting revision dispatch](../iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/dispatch_request.json)
+- [候选 8 草稿卡](../iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/draft_card.md)
+- [候选 8 provenance](../iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/artifacts/provenance.md)
+- [候选 8 drafting revision 可审计决策](../decisions/20260525-0301-card-drafting-revision-ready-for-audit.md)
+- [候选 8 audit 任务包](../iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/task.md)
+- [候选 8 audit dispatch](../iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/dispatch_request.json)
+- [候选 8 audit 报告](../iterations/iteration_20260525_0007_card_audit_raw_sources_truth_r1/artifacts/audit_report.md)
+- [候选 8 audit pass 决策](../decisions/20260525-0308-card-audit-pass-candidate-8.md)
+- [候选 8 adoption 任务包](../iterations/iteration_20260525_0008_card_adoption_raw_sources_truth/task.md)
+- [候选 8 adoption dispatch](../iterations/iteration_20260525_0008_card_adoption_raw_sources_truth/dispatch_request.json)
+- [候选 8 adoption 交付](../iterations/iteration_20260525_0008_card_adoption_raw_sources_truth/loop_delivery.md)
+- [候选 8 采纳决策](../decisions/20260525-0316-card-adoption-accepted-candidate-8.md)
+- [sub-agent 生命周期策略决策](../decisions/20260525-0316-subagent-lifecycle-policy.md)
+- [已采纳知识卡：Raw sources 是只读事实来源](../../kb/cards/raw-sources-readonly-source-of-truth.md)
+- [已采纳 provenance：Raw sources 是只读事实来源](../../kb/provenance/raw-sources-readonly-source-of-truth.md)
+- [知识卡索引](../../kb/indexes/cards.md)
+- [候选 7 drafting 任务包](../iterations/iteration_20260525_0009_card_drafting_architecture_layers/task.md)
+- [候选 7 drafting dispatch](../iterations/iteration_20260525_0009_card_drafting_architecture_layers/dispatch_request.json)
+- [候选 7 草稿卡](../iterations/iteration_20260525_0009_card_drafting_architecture_layers/artifacts/draft_card.md)
+- [候选 7 provenance](../iterations/iteration_20260525_0009_card_drafting_architecture_layers/artifacts/provenance.md)
+- [候选 7 drafting 可审计决策](../decisions/20260525-0324-card-drafting-candidate-7-ready-for-audit.md)
+- [候选 7 audit 任务包](../iterations/iteration_20260525_0010_card_audit_architecture_layers/task.md)
+- [候选 7 audit dispatch](../iterations/iteration_20260525_0010_card_audit_architecture_layers/dispatch_request.json)
+- [候选 7 audit 报告](../iterations/iteration_20260525_0010_card_audit_architecture_layers/artifacts/audit_report.md)
+- [候选 7 audit pass 决策](../decisions/20260525-0330-card-audit-pass-candidate-7.md)
+- [候选 7 adoption 任务包](../iterations/iteration_20260525_0011_card_adoption_architecture_layers/task.md)
+- [候选 7 adoption dispatch](../iterations/iteration_20260525_0011_card_adoption_architecture_layers/dispatch_request.json)
+- [候选 7 adoption 交付](../iterations/iteration_20260525_0011_card_adoption_architecture_layers/loop_delivery.md)
+- [候选 7 采纳决策](../decisions/20260525-0337-card-adoption-accepted-candidate-7.md)
+- [已采纳知识卡：LLM Wiki 的三层架构](../../kb/cards/llm-wiki-three-layer-architecture.md)
+- [已采纳 provenance：LLM Wiki 的三层架构](../../kb/provenance/llm-wiki-three-layer-architecture.md)
+- [小批量采纳后的反思](../reflections/20260525-small-batch-adoption-template-reflection.md)
+- [adoption template 修复任务](../iterations/iteration_20260525_0012_adoption_template_repair/task.md)
+- [adoption template 修复报告](../iterations/iteration_20260525_0012_adoption_template_repair/artifacts/template_repair_report.md)
+- [adoption template 修复审计任务](../iterations/iteration_20260525_0013_adoption_template_repair_audit/task.md)
+- [adoption template 修复审计 dispatch](../iterations/iteration_20260525_0013_adoption_template_repair_audit/dispatch_request.json)
+- [adoption template 修复审计 concern](../iterations/iteration_20260525_0013_adoption_template_repair_audit/artifacts/independent_audit.md)
+- [adoption template 审计 concern 澄清决策](../decisions/20260525-0348-adoption-template-audit-concern-resolution.md)
+- [adoption template 修正版审计任务](../iterations/iteration_20260525_0014_adoption_template_repair_audit_r1/task.md)
+- [adoption template 修正版审计 dispatch](../iterations/iteration_20260525_0014_adoption_template_repair_audit_r1/dispatch_request.json)
+- [adoption template 修正版审计报告](../iterations/iteration_20260525_0014_adoption_template_repair_audit_r1/artifacts/independent_audit.md)
+- [接受 adoption template 修复决策](../decisions/20260525-0354-accept-adoption-template-repair.md)
+- [候选 10 drafting 任务包](../iterations/iteration_20260525_0015_card_drafting_schema_layer/task.md)
+- [候选 10 drafting dispatch](../iterations/iteration_20260525_0015_card_drafting_schema_layer/dispatch_request.json)
+- [候选 10 草稿卡](../iterations/iteration_20260525_0015_card_drafting_schema_layer/artifacts/draft_card.md)
+- [候选 10 provenance](../iterations/iteration_20260525_0015_card_drafting_schema_layer/artifacts/provenance.md)
+- [候选 10 drafting 可审计决策](../decisions/20260525-0403-card-drafting-candidate-10-ready-for-audit.md)
+- [候选 10 audit 任务包](../iterations/iteration_20260525_0016_card_audit_schema_layer/task.md)
+- [候选 10 audit dispatch](../iterations/iteration_20260525_0016_card_audit_schema_layer/dispatch_request.json)
+- [候选 10 audit 报告](../iterations/iteration_20260525_0016_card_audit_schema_layer/artifacts/audit_report.md)
+- [候选 10 audit pass 决策](../decisions/20260525-0409-card-audit-pass-candidate-10.md)
+- [候选 10 adoption 任务包](../iterations/iteration_20260525_0017_card_adoption_schema_layer/task.md)
+- [候选 10 adoption dispatch](../iterations/iteration_20260525_0017_card_adoption_schema_layer/dispatch_request.json)
+- [候选 10 adoption 交付](../iterations/iteration_20260525_0017_card_adoption_schema_layer/loop_delivery.md)
+- [候选 10 采纳决策](../decisions/20260525-0417-card-adoption-accepted-candidate-10.md)
+- [已采纳知识卡：Schema 是 LLM Wiki 的配置文档](../../kb/cards/llm-wiki-schema-configuration-document.md)
+- [已采纳 provenance：Schema 是 LLM Wiki 的配置文档](../../kb/provenance/llm-wiki-schema-configuration-document.md)
+- [候选 9 drafting 任务包](../iterations/iteration_20260525_0018_card_drafting_wiki_layer/task.md)
+- [候选 9 drafting dispatch](../iterations/iteration_20260525_0018_card_drafting_wiki_layer/dispatch_request.json)
+- [候选 9 草稿卡](../iterations/iteration_20260525_0018_card_drafting_wiki_layer/artifacts/draft_card.md)
+- [候选 9 provenance](../iterations/iteration_20260525_0018_card_drafting_wiki_layer/artifacts/provenance.md)
+- [候选 9 drafting 可审计决策](../decisions/20260525-0424-card-drafting-candidate-9-ready-for-audit.md)
+- [候选 9 audit 任务包](../iterations/iteration_20260525_0019_card_audit_wiki_layer/task.md)
+- [候选 9 audit dispatch](../iterations/iteration_20260525_0019_card_audit_wiki_layer/dispatch_request.json)
+- [候选 9 audit 报告](../iterations/iteration_20260525_0019_card_audit_wiki_layer/artifacts/audit_report.md)
+- [候选 9 audit pass 决策](../decisions/20260525-0431-card-audit-pass-candidate-9.md)
+- [候选 9 adoption 任务包](../iterations/iteration_20260525_0020_card_adoption_wiki_layer/task.md)
+- [候选 9 adoption dispatch](../iterations/iteration_20260525_0020_card_adoption_wiki_layer/dispatch_request.json)
+- [候选 9 adoption 交付](../iterations/iteration_20260525_0020_card_adoption_wiki_layer/loop_delivery.md)
+- [候选 9 采纳决策](../decisions/20260525-0438-card-adoption-accepted-candidate-9.md)
+- [已采纳知识卡：Wiki 层由 LLM 生成和维护](../../kb/cards/llm-wiki-wiki-layer-generated-markdown-directory.md)
+- [已采纳 provenance：Wiki 层由 LLM 生成和维护](../../kb/provenance/llm-wiki-wiki-layer-generated-markdown-directory.md)
+- [候选 3 drafting 任务包](../iterations/iteration_20260525_0021_card_drafting_persistent_wiki_mode/task.md)
+- [候选 3 drafting dispatch](../iterations/iteration_20260525_0021_card_drafting_persistent_wiki_mode/dispatch_request.json)
+- [候选 3 草稿卡](../iterations/iteration_20260525_0021_card_drafting_persistent_wiki_mode/artifacts/draft_card.md)
+- [候选 3 provenance](../iterations/iteration_20260525_0021_card_drafting_persistent_wiki_mode/artifacts/provenance.md)
+- [候选 3 drafting 可审计决策](../decisions/20260525-0446-card-drafting-candidate-3-ready-for-audit.md)
+- [候选 3 audit 任务包](../iterations/iteration_20260525_0022_card_audit_persistent_wiki_mode/task.md)
+- [候选 3 audit dispatch](../iterations/iteration_20260525_0022_card_audit_persistent_wiki_mode/dispatch_request.json)
+- [候选 3 audit 报告](../iterations/iteration_20260525_0022_card_audit_persistent_wiki_mode/artifacts/audit_report.md)
+- [候选 3 audit pass 决策](../decisions/20260525-0452-card-audit-pass-candidate-3.md)
+- [候选 3 adoption 任务包](../iterations/iteration_20260525_0023_card_adoption_persistent_wiki_mode/task.md)
+- [候选 3 adoption dispatch](../iterations/iteration_20260525_0023_card_adoption_persistent_wiki_mode/dispatch_request.json)
+- [候选 3 adoption 交付](../iterations/iteration_20260525_0023_card_adoption_persistent_wiki_mode/loop_delivery.md)
+- [候选 3 采纳决策](../decisions/20260525-0459-card-adoption-accepted-candidate-3.md)
+- [已采纳知识卡：持久 wiki 替代模式](../../kb/cards/llm-wiki-persistent-wiki-alternative-mode.md)
+- [已采纳 provenance：持久 wiki 替代模式](../../kb/provenance/llm-wiki-persistent-wiki-alternative-mode.md)
+- [候选 2 drafting 任务包](../iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/task.md)
+- [候选 2 drafting dispatch](../iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/dispatch_request.json)
+- [候选 2 草稿卡](../iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/artifacts/draft_card.md)
+- [候选 2 provenance](../iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/artifacts/provenance.md)
+- [候选 2 drafting 可审计决策](../decisions/20260525-0506-card-drafting-candidate-2-ready-for-audit.md)
+- [候选 2 audit 任务包](../iterations/iteration_20260525_0025_card_audit_rag_no_accumulation/task.md)
+- [候选 2 audit dispatch](../iterations/iteration_20260525_0025_card_audit_rag_no_accumulation/dispatch_request.json)
+- [候选 2 audit 报告](../iterations/iteration_20260525_0025_card_audit_rag_no_accumulation/artifacts/audit_report.md)
+- [候选 2 audit pass 决策](../decisions/20260525-0513-card-audit-pass-candidate-2.md)
+- [候选 2 adoption 任务包](../iterations/iteration_20260525_0026_card_adoption_rag_no_accumulation/task.md)
+- [候选 2 adoption dispatch](../iterations/iteration_20260525_0026_card_adoption_rag_no_accumulation/dispatch_request.json)
+- [候选 2 adoption 交付](../iterations/iteration_20260525_0026_card_adoption_rag_no_accumulation/loop_delivery.md)
+- [候选 2 采纳决策](../decisions/20260525-0522-card-adoption-accepted-candidate-2.md)
+- [已采纳知识卡：RAG 式文档问答不积累综合知识](../../kb/cards/rag-document-qa-does-not-accumulate-synthesized-knowledge.md)
+- [已采纳 provenance：RAG 式文档问答不积累综合知识](../../kb/provenance/rag-document-qa-does-not-accumulate-synthesized-knowledge.md)
+- [候选 11 drafting 任务包](../iterations/iteration_20260525_0027_card_drafting_ingest_workflow/task.md)
+- [候选 11 drafting dispatch](../iterations/iteration_20260525_0027_card_drafting_ingest_workflow/dispatch_request.json)
+- [候选 11 选择决策](../decisions/20260525-0525-select-candidate-11-for-drafting.md)
+- [候选 11 草稿卡](../iterations/iteration_20260525_0027_card_drafting_ingest_workflow/artifacts/draft_card.md)
+- [候选 11 provenance](../iterations/iteration_20260525_0027_card_drafting_ingest_workflow/artifacts/provenance.md)
+- [候选 11 drafting 可审计决策](../decisions/20260525-0530-card-drafting-candidate-11-ready-for-audit.md)
+- [候选 11 audit 任务包](../iterations/iteration_20260525_0028_card_audit_ingest_workflow/task.md)
+- [候选 11 audit dispatch](../iterations/iteration_20260525_0028_card_audit_ingest_workflow/dispatch_request.json)
+- [候选 11 audit 报告](../iterations/iteration_20260525_0028_card_audit_ingest_workflow/artifacts/audit_report.md)
+- [候选 11 audit pass 决策](../decisions/20260525-0537-card-audit-pass-candidate-11.md)
+- [候选 11 adoption 任务包](../iterations/iteration_20260525_0029_card_adoption_ingest_workflow/task.md)
+- [候选 11 adoption dispatch](../iterations/iteration_20260525_0029_card_adoption_ingest_workflow/dispatch_request.json)
+- [候选 11 adoption 交付](../iterations/iteration_20260525_0029_card_adoption_ingest_workflow/loop_delivery.md)
+- [候选 11 采纳决策](../decisions/20260525-0544-card-adoption-accepted-candidate-11.md)
+- [已采纳知识卡：Ingest 示例流程](../../kb/cards/llm-wiki-ingest-example-flow.md)
+- [已采纳 provenance：Ingest 示例流程](../../kb/provenance/llm-wiki-ingest-example-flow.md)
+- [候选 12 drafting 任务包](../iterations/iteration_20260525_0030_card_drafting_query_workflow/task.md)
+- [候选 12 drafting dispatch](../iterations/iteration_20260525_0030_card_drafting_query_workflow/dispatch_request.json)
+- [候选 12 选择决策](../decisions/20260525-0546-select-candidate-12-for-drafting.md)
+- [候选 12 草稿卡](../iterations/iteration_20260525_0030_card_drafting_query_workflow/artifacts/draft_card.md)
+- [候选 12 provenance](../iterations/iteration_20260525_0030_card_drafting_query_workflow/artifacts/provenance.md)
+- [候选 12 drafting 可审计决策](../decisions/20260525-0551-card-drafting-candidate-12-ready-for-audit.md)
+- [候选 12 audit 任务包](../iterations/iteration_20260525_0031_card_audit_query_workflow/task.md)
+- [候选 12 audit dispatch](../iterations/iteration_20260525_0031_card_audit_query_workflow/dispatch_request.json)
+- [候选 12 audit 报告](../iterations/iteration_20260525_0031_card_audit_query_workflow/artifacts/audit_report.md)
+- [候选 12 audit pass 决策](../decisions/20260525-0557-card-audit-pass-candidate-12.md)
+- [候选 12 adoption 任务包](../iterations/iteration_20260525_0032_card_adoption_query_workflow/task.md)
+- [候选 12 adoption dispatch](../iterations/iteration_20260525_0032_card_adoption_query_workflow/dispatch_request.json)
+- [候选 12 adoption 交付](../iterations/iteration_20260525_0032_card_adoption_query_workflow/loop_delivery.md)
+- [候选 12 采纳决策](../decisions/20260525-0604-card-adoption-accepted-candidate-12.md)
+- [已采纳知识卡：Query 操作回写好答案](../../kb/cards/llm-wiki-query-answer-writeback.md)
+- [已采纳 provenance：Query 操作回写好答案](../../kb/provenance/llm-wiki-query-answer-writeback.md)
+- [候选 4 drafting 任务包](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/task.md)
+- [候选 4 drafting dispatch](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/dispatch_request.json)
+- [候选 4 选择决策](../decisions/20260525-0607-select-candidate-4-for-drafting.md)
+- [候选 4 草稿卡](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/artifacts/draft_card.md)
+- [候选 4 provenance](../iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/artifacts/provenance.md)
+- [候选 4 drafting 可审计决策](../decisions/20260525-0612-card-drafting-candidate-4-ready-for-audit.md)
+- [候选 4 audit 任务包](../iterations/iteration_20260525_0034_card_audit_persistent_composite_wiki/task.md)
+- [候选 4 audit dispatch](../iterations/iteration_20260525_0034_card_audit_persistent_composite_wiki/dispatch_request.json)
+- [候选 4 audit 报告](../iterations/iteration_20260525_0034_card_audit_persistent_composite_wiki/artifacts/audit_report.md)
+- [候选 4 audit pass 决策](../decisions/20260525-0618-card-audit-pass-candidate-4.md)
+- [候选 4 adoption 任务包](../iterations/iteration_20260525_0035_card_adoption_persistent_composite_wiki/task.md)
+- [候选 4 adoption dispatch](../iterations/iteration_20260525_0035_card_adoption_persistent_composite_wiki/dispatch_request.json)
+- [候选 4 adoption 交付](../iterations/iteration_20260525_0035_card_adoption_persistent_composite_wiki/loop_delivery.md)
+- [候选 4 采纳决策](../decisions/20260525-0624-card-adoption-accepted-candidate-4.md)
+- [已采纳知识卡：持久复合 wiki](../../kb/cards/llm-wiki-persistent-compounding-artifact.md)
+- [已采纳 provenance：持久复合 wiki](../../kb/provenance/llm-wiki-persistent-compounding-artifact.md)
+- [候选 1 drafting 任务包](../iterations/iteration_20260525_0036_card_drafting_llm_wiki_pattern_file/task.md)
+- [候选 1 drafting dispatch](../iterations/iteration_20260525_0036_card_drafting_llm_wiki_pattern_file/dispatch_request.json)
+- [候选 1 选择决策](../decisions/20260525-0626-select-candidate-1-for-drafting.md)
+- [候选 1 草稿卡](../iterations/iteration_20260525_0036_card_drafting_llm_wiki_pattern_file/artifacts/draft_card.md)
+- [候选 1 provenance](../iterations/iteration_20260525_0036_card_drafting_llm_wiki_pattern_file/artifacts/provenance.md)
+- [候选 1 drafting 可审计决策](../decisions/20260525-0631-card-drafting-candidate-1-ready-for-audit.md)
+- [候选 1 audit 任务包](../iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/task.md)
+- [候选 1 audit dispatch](../iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/dispatch_request.json)
+- [候选 1 audit 报告](../iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/artifacts/audit_report.md)
+- [候选 1 audit pass 与路径风险决策](../decisions/20260525-0641-card-audit-pass-candidate-1-with-task-path-risk.md)
+- [validate_scope 路径检查修复任务](../iterations/iteration_20260525_0038_validate_scope_path_check_repair/task.md)
+- [validate_scope 路径检查修复报告](../iterations/iteration_20260525_0038_validate_scope_path_check_repair/artifacts/tooling_repair_report.md)
+- [validate_scope 修复审计任务](../iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/task.md)
+- [validate_scope 修复审计 dispatch](../iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/dispatch_request.json)
+- [validate_scope 修复独立审计](../iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/artifacts/independent_audit.md)
+- [接受 validate_scope 修复决策](../decisions/20260525-0654-accept-validate-scope-path-check-repair.md)
+- [候选 1 adoption 任务包](../iterations/iteration_20260525_0040_card_adoption_llm_wiki_pattern_file/task.md)
+- [候选 1 adoption dispatch](../iterations/iteration_20260525_0040_card_adoption_llm_wiki_pattern_file/dispatch_request.json)
+- [候选 1 adoption 交付](../iterations/iteration_20260525_0040_card_adoption_llm_wiki_pattern_file/loop_delivery.md)
+- [候选 1 采纳决策](../decisions/20260525-0702-card-adoption-accepted-candidate-1.md)
+- [已采纳知识卡：LLM Wiki 作为模式文件](../../kb/cards/llm-wiki-pattern-file.md)
+- [已采纳 provenance：LLM Wiki 作为模式文件](../../kb/provenance/llm-wiki-pattern-file.md)
+- [候选 5 选择决策](../decisions/20260525-0704-select-candidate-5-for-drafting.md)
+- [候选 5 drafting 任务包](../iterations/iteration_20260525_0041_card_drafting_human_llm_roles/task.md)
+- [候选 5 drafting dispatch](../iterations/iteration_20260525_0041_card_drafting_human_llm_roles/dispatch_request.json)
+- [候选 5 草稿卡](../iterations/iteration_20260525_0041_card_drafting_human_llm_roles/artifacts/draft_card.md)
+- [候选 5 provenance](../iterations/iteration_20260525_0041_card_drafting_human_llm_roles/artifacts/provenance.md)
+- [候选 5 drafting 可审计决策](../decisions/20260525-0710-card-drafting-candidate-5-ready-for-audit.md)
+- [读取边界噪声反思](../reflections/20260525-read-boundary-noise-reflection.md)
+- [候选 5 audit 任务包](../iterations/iteration_20260525_0042_card_audit_human_llm_roles/task.md)
+- [候选 5 audit dispatch](../iterations/iteration_20260525_0042_card_audit_human_llm_roles/dispatch_request.json)
+- [候选 5 audit 报告](../iterations/iteration_20260525_0042_card_audit_human_llm_roles/artifacts/audit_report.md)
+- [候选 5 audit pass 决策](../decisions/20260525-0718-card-audit-pass-candidate-5.md)
+- [候选 5 adoption 任务包](../iterations/iteration_20260525_0043_card_adoption_human_llm_roles/task.md)
+- [候选 5 adoption dispatch](../iterations/iteration_20260525_0043_card_adoption_human_llm_roles/dispatch_request.json)
+- [候选 5 adoption 交付](../iterations/iteration_20260525_0043_card_adoption_human_llm_roles/loop_delivery.md)
+- [候选 5 采纳决策](../decisions/20260525-0725-card-adoption-accepted-candidate-5.md)
+- [已采纳知识卡：人提问，LLM 维护](../../kb/cards/llm-wiki-human-llm-role-division.md)
+- [已采纳 provenance：人提问，LLM 维护](../../kb/provenance/llm-wiki-human-llm-role-division.md)
+- [候选 6 选择决策](../decisions/20260525-0727-select-candidate-6-for-drafting.md)
+- [候选 6 drafting 任务包](../iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/task.md)
+- [候选 6 drafting dispatch](../iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/dispatch_request.json)
+- [候选 6 草稿卡](../iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/artifacts/draft_card.md)
+- [候选 6 provenance](../iterations/iteration_20260525_0044_card_drafting_llm_wiki_use_cases/artifacts/provenance.md)
+- [候选 6 drafting 与读取边界修复决策](../decisions/20260525-0733-card-drafting-candidate-6-requires-boundary-repair.md)
+- [候选块读取边界修复任务](../iterations/iteration_20260525_0045_drafting_candidate_boundary_repair/task.md)
+- [候选块读取边界修复报告](../iterations/iteration_20260525_0045_drafting_candidate_boundary_repair/artifacts/prompt_repair_report.md)
+- [候选块读取边界修复审计任务](../iterations/iteration_20260525_0046_drafting_candidate_boundary_repair_audit/task.md)
+- [候选块读取边界修复审计 dispatch](../iterations/iteration_20260525_0046_drafting_candidate_boundary_repair_audit/dispatch_request.json)
+- [候选块读取边界修复审计报告](../iterations/iteration_20260525_0046_drafting_candidate_boundary_repair_audit/artifacts/independent_audit.md)
+- [候选块读取边界修复审计 concern 决策](../decisions/20260525-0747-drafting-boundary-repair-audit-concern.md)
+- [候选块读取边界 validation evidence correction 任务](../iterations/iteration_20260525_0047_drafting_boundary_validation_evidence_repair/task.md)
+- [候选块读取边界 validation evidence correction 报告](../iterations/iteration_20260525_0047_drafting_boundary_validation_evidence_repair/artifacts/validation_evidence_report.md)
+- [候选块读取边界 validation evidence 复审任务](../iterations/iteration_20260525_0048_drafting_boundary_validation_evidence_audit/task.md)
+- [候选块读取边界 validation evidence 复审 dispatch](../iterations/iteration_20260525_0048_drafting_boundary_validation_evidence_audit/dispatch_request.json)
+- [候选块读取边界 validation evidence 复审报告](../iterations/iteration_20260525_0048_drafting_boundary_validation_evidence_audit/artifacts/independent_audit.md)
+- [接受候选块读取边界修复决策](../decisions/20260525-0757-accept-drafting-boundary-repair.md)
+- [候选 6 audit 任务包](../iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases/task.md)
+- [候选 6 audit dispatch](../iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases/dispatch_request.json)
+- [候选 6 audit 报告](../iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases/artifacts/audit_report.md)
+- [候选 6 audit pass 决策](../decisions/20260525-0803-card-audit-pass-candidate-6.md)
+- [候选 6 adoption 任务包](../iterations/iteration_20260525_0050_card_adoption_llm_wiki_use_cases/task.md)
+- [候选 6 adoption dispatch](../iterations/iteration_20260525_0050_card_adoption_llm_wiki_use_cases/dispatch_request.json)
+- [候选 6 adoption 交付](../iterations/iteration_20260525_0050_card_adoption_llm_wiki_use_cases/loop_delivery.md)
+- [候选 6 采纳决策](../decisions/20260525-0812-card-adoption-accepted-candidate-6.md)
+- [已采纳知识卡：LLM Wiki 应用场景清单](../../kb/cards/llm-wiki-listed-use-cases.md)
+- [已采纳 provenance：LLM Wiki 应用场景清单](../../kb/provenance/llm-wiki-listed-use-cases.md)
+- [第二轮 source mining 任务包](../iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/task.md)
+- [第二轮 source mining dispatch](../iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/dispatch_request.json)
+- [第二轮 source mining 候选集](../iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/artifacts/fact_candidates.md)
+- [接受第二轮 source mining 并选择候选 3 的决策](../decisions/20260525-0821-source-mining-accepted-candidate-3.md)
+- [第二轮候选 3 drafting 任务包](../iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/task.md)
+- [第二轮候选 3 drafting dispatch](../iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/dispatch_request.json)
+- [第二轮候选 3 草稿卡](../iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/artifacts/draft_card.md)
+- [第二轮候选 3 provenance](../iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/artifacts/provenance.md)
+- [第二轮候选 3 drafting 可审计决策](../decisions/20260525-0826-card-drafting-candidate-3-ready-for-audit.md)
+- [第二轮候选 3 audit 任务包](../iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/task.md)
+- [第二轮候选 3 audit dispatch](../iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/dispatch_request.json)
+- [第二轮候选 3 audit 报告](../iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/artifacts/audit_report.md)
+- [第二轮候选 3 audit revise 决策](../decisions/20260525-0834-card-audit-revise-candidate-3.md)
+- [第二轮候选 3 drafting revision 任务包](../iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/task.md)
+- [第二轮候选 3 drafting revision dispatch](../iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/dispatch_request.json)
+- [第二轮候选 3 revision 草稿卡](../iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/artifacts/draft_card.md)
+- [第二轮候选 3 revision provenance](../iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/artifacts/provenance.md)
+- [第二轮候选 3 revision 可审计决策](../decisions/20260525-0841-card-drafting-candidate-3-revision-ready-for-audit.md)
+- [第二轮候选 3 audit r1 任务包](../iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/task.md)
+- [第二轮候选 3 audit r1 dispatch](../iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/dispatch_request.json)
+- [第二轮候选 3 audit r1 报告](../iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/artifacts/audit_report.md)
+- [第二轮候选 3 audit r1 pass 决策](../decisions/20260525-0849-card-audit-pass-candidate-3-r1.md)
+- [第二轮候选 3 adoption 任务包](../iterations/iteration_20260525_0056_card_adoption_idea_file_agent_builds/task.md)
+- [第二轮候选 3 adoption dispatch](../iterations/iteration_20260525_0056_card_adoption_idea_file_agent_builds/dispatch_request.json)
+- [第二轮候选 3 adoption 交付](../iterations/iteration_20260525_0056_card_adoption_idea_file_agent_builds/loop_delivery.md)
+- [第二轮候选 3 采纳决策](../decisions/20260525-0858-card-adoption-accepted-candidate-3.md)
+- [已采纳知识卡：idea file 分享想法](../../kb/cards/idea-file-share-the-idea.md)
+- [已采纳 provenance：idea file 分享想法](../../kb/provenance/idea-file-share-the-idea.md)
+- [第二轮候选 6 选择决策](../decisions/20260525-0903-select-candidate-6-for-drafting.md)
+- [第二轮候选 6 drafting 任务包](../iterations/iteration_20260525_0057_card_drafting_idea_file_abstract_vague/task.md)
+- [第二轮候选 6 drafting dispatch](../iterations/iteration_20260525_0057_card_drafting_idea_file_abstract_vague/dispatch_request.json)
+- [第二轮候选 6 草稿卡](../iterations/iteration_20260525_0057_card_drafting_idea_file_abstract_vague/artifacts/draft_card.md)
+- [第二轮候选 6 provenance](../iterations/iteration_20260525_0057_card_drafting_idea_file_abstract_vague/artifacts/provenance.md)
+- [第二轮候选 6 drafting 可审计决策](../decisions/20260525-0909-card-drafting-candidate-6-ready-for-audit.md)
+- [第二轮候选 6 audit 任务包](../iterations/iteration_20260525_0058_card_audit_idea_file_abstract_vague/task.md)
+- [第二轮候选 6 audit dispatch](../iterations/iteration_20260525_0058_card_audit_idea_file_abstract_vague/dispatch_request.json)
+- [第二轮候选 6 audit 报告](../iterations/iteration_20260525_0058_card_audit_idea_file_abstract_vague/artifacts/audit_report.md)
+- [第二轮候选 6 audit pass 决策](../decisions/20260525-0917-card-audit-pass-candidate-6.md)
+- [第二轮候选 6 adoption 任务包](../iterations/iteration_20260525_0059_card_adoption_idea_file_abstract_vague/task.md)
+- [第二轮候选 6 adoption dispatch](../iterations/iteration_20260525_0059_card_adoption_idea_file_abstract_vague/dispatch_request.json)
+- [第二轮候选 6 adoption 交付](../iterations/iteration_20260525_0059_card_adoption_idea_file_abstract_vague/loop_delivery.md)
+- [第二轮候选 6 采纳决策](../decisions/20260525-0924-card-adoption-accepted-candidate-6.md)
+- [已采纳知识卡：idea file 的抽象性](../../kb/cards/idea-file-abstract-vague.md)
+- [已采纳 provenance：idea file 的抽象性](../../kb/provenance/idea-file-abstract-vague.md)
+- [第二轮候选 12 选择决策](../decisions/20260525-0926-select-candidate-12-for-drafting.md)
+- [第二轮候选 12 drafting 任务包](../iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/task.md)
+- [第二轮候选 12 drafting dispatch](../iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/dispatch_request.json)
+- [第二轮候选 12 草稿卡](../iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/artifacts/draft_card.md)
+- [第二轮候选 12 provenance](../iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/artifacts/provenance.md)
+- [第二轮候选 12 drafting 可审计决策](../decisions/20260525-0931-card-drafting-candidate-12-ready-for-audit.md)
+- [第二轮候选 12 audit 任务包](../iterations/iteration_20260525_0061_card_audit_wiki_health_checks/task.md)
+- [第二轮候选 12 audit dispatch](../iterations/iteration_20260525_0061_card_audit_wiki_health_checks/dispatch_request.json)
+- [第二轮候选 12 audit 报告](../iterations/iteration_20260525_0061_card_audit_wiki_health_checks/artifacts/audit_report.md)
+- [第二轮候选 12 audit pass 决策](../decisions/20260525-0938-card-audit-pass-candidate-12.md)
+- [第二轮候选 12 adoption 任务包](../iterations/iteration_20260525_0062_card_adoption_wiki_health_checks/task.md)
+- [第二轮候选 12 adoption dispatch](../iterations/iteration_20260525_0062_card_adoption_wiki_health_checks/dispatch_request.json)
+- [第二轮候选 12 adoption 交付](../iterations/iteration_20260525_0062_card_adoption_wiki_health_checks/loop_delivery.md)
+- [第二轮候选 12 采纳决策](../decisions/20260525-0948-card-adoption-accepted-candidate-12.md)
+- [已采纳知识卡：LLM health checks 清理 wiki](../../kb/cards/llm-wiki-health-checks.md)
+- [已采纳 provenance：LLM health checks 清理 wiki](../../kb/provenance/llm-wiki-health-checks.md)
+- [第二轮候选 11 选择决策](../decisions/20260525-0950-select-candidate-11-for-drafting.md)
+- [第二轮候选 11 drafting 任务包](../iterations/iteration_20260525_0063_card_drafting_wiki_qa_scale/task.md)
+- [第二轮候选 11 drafting dispatch](../iterations/iteration_20260525_0063_card_drafting_wiki_qa_scale/dispatch_request.json)
+- [第二轮候选 11 草稿卡](../iterations/iteration_20260525_0063_card_drafting_wiki_qa_scale/artifacts/draft_card.md)
+- [第二轮候选 11 provenance](../iterations/iteration_20260525_0063_card_drafting_wiki_qa_scale/artifacts/provenance.md)
+- [第二轮候选 11 drafting 可审计决策](../decisions/20260525-0957-card-drafting-candidate-11-ready-for-audit.md)
+- [Loop Design V2](../LOOP_DESIGN_V2.md)
+- [Card Contract V2](../CARD_CONTRACT_V2.md)
+- [Loop Design V2 采纳决策](../decisions/20260525-1551-adopt-loop-design-v2.md)
+- [Material Draft First Pipeline V2](../DRAFT_FIRST_PIPELINE.md)
+- [Brain mailbox smoke](../brains/smoke_tests/20260525_brain_mailbox_smoke.md)
+- [草稿知识卡 backlog](../queues/draft_backlog.md)
+- [Atomic Draft First 切换决策](../decisions/20260525-1035-switch-to-atomic-draft-first.md)
+- [首个 batch drafting 任务包](../iterations/iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a/task.md)
+- [首个 batch drafting dispatch](../iterations/iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a/dispatch_request.json)
+- [知识库产物面](../../kb/README.md)
+- [来源索引](../../../data/manifests/acquired_sources_index.md)
+
+## 风险与失败（risks_and_failures）
+
+- 主控 agent 可能再次变成具体执行者，导致上下文变脏。
+- 执行者如果没有窄任务包，容易把来源摘要写成主题页。
+- 如果任务包允许输入过宽，独立审计就无法判断上下文泄漏。
+- 公司网络环境可能限制网页 retrieve，因此当前优先使用 `data/` 中已获取来源。
+- 如果知识卡写成审计日志或中间状态，说明 `card_drafting_worker` 的任务模板需要演化。
+- adoption 任务模板已经显式允许目标 KB 路径读取用于存在性、覆盖冲突和最小索引更新；后续若出现新的任务外读取并影响审计可读性，再作为失败证据处理。
+- `user-insights` 本次覆盖率是 `partial`；它只作为过程洞察和人类 recall，不作为知识卡事实来源。未来获得完整 transcript 或 verified refreshed fork 后再做 coverage repair。
