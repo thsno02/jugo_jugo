@@ -10,7 +10,7 @@
 
 当前状态：已有 11 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1、5 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第一轮 source mining 的 12 个候选已经全部完成 drafting、audit 和 adoption，KB 现在有 12 张 accepted atomic fact cards。第二轮候选 3 audit 返回 `revise`：核心事实成立，但 statement 中“Karpathy 的发布帖”未被允许的 `$.tweet.text` 字段直接证明。revision 任务包已创建并通过 `validate_scope.py`，下一步派发 drafting worker；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第一轮 source mining 的 12 个候选已经全部完成 drafting、audit 和 adoption，KB 现在有 12 张 accepted atomic fact cards。第二轮候选 3 revision 已完成：statement 已收窄为“这条发布帖”，没有扩大来源字段。下一步复审修订版草稿卡；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -126,6 +126,7 @@
 - 2026-05-25：创建 `iteration_20260525_0053_card_audit_idea_file_agent_builds`，审计输入限定为候选 3 草稿卡、provenance、候选 3 字段和 `data/raw/webpage/karpathy-x-launch-post/raw.json` 的 `$.tweet.text`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：第二轮候选 3 audit worker 返回 `audit_result: revise`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。修订点限于 statement 的归属语，不触发 prompt/tool 演化。
 - 2026-05-25：创建 `iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1`，任务包要求只按 audit report 最小修订归属语，不扩大来源证据；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 3 revision worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。修订版 statement 已改为“这条发布帖”，未扩大来源证据。
 
 ## 关键指标（key_metrics）
 
@@ -418,6 +419,9 @@
 - [第二轮候选 3 audit revise 决策](../decisions/20260525-0834-card-audit-revise-candidate-3.md)
 - [第二轮候选 3 drafting revision 任务包](../iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/task.md)
 - [第二轮候选 3 drafting revision dispatch](../iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/dispatch_request.json)
+- [第二轮候选 3 revision 草稿卡](../iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/artifacts/draft_card.md)
+- [第二轮候选 3 revision provenance](../iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/artifacts/provenance.md)
+- [第二轮候选 3 revision 可审计决策](../decisions/20260525-0841-card-drafting-candidate-3-revision-ready-for-audit.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
