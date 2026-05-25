@@ -1,0 +1,15 @@
+{
+  "schema": "loop_capsule_manifest.v1",
+  "loop_id": "v0_meta_kb_initialization_demo_20260524",
+  "path": "loops/v0_meta_kb_initialization_demo_20260524",
+  "created_date": "2026-05-24",
+  "capsule_type": "kb_initialization_demo",
+  "internal_structure": "legacy_snapshot",
+  "primary_outputs": [
+    "nodes",
+    "kb",
+    "generated",
+    ".llmwiki_snapshot"
+  ],
+  "product_status": "not_promoted"
+}

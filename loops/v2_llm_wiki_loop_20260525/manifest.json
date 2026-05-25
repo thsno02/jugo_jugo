@@ -1,0 +1,18 @@
+{
+  "schema": "loop_capsule_manifest.v1",
+  "loop_id": "v2_llm_wiki_loop_20260525",
+  "path": "loops/v2_llm_wiki_loop_20260525",
+  "created_date": "2026-05-25",
+  "capsule_type": "llm_wiki_atomic_card_loop",
+  "internal_structure": "iterations_brains_mailbox_outputs_snapshots",
+  "primary_outputs": [
+    "outputs/llm_wiki"
+  ],
+  "control_plane_entries": [
+    "loop_manifest.json",
+    "loop_state.json",
+    "LOOP_DESIGN_V2.md",
+    "CARD_CONTRACT_V2.md"
+  ],
+  "product_status": "candidate_not_promoted"
+}

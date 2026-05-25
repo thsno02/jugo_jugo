@@ -20,10 +20,10 @@ material / exhausted 来源
    - 对一个已完成 source mining 或 exhausted 的来源，按候选列表批量生成 scoped draft cards 和 draft provenance。
    - 每张卡必须遵守 `CARD_CONTRACT_V2.md` 的 metadata。
    - 正文不使用强模板，但必须有知识含量，不能只是标题的 restatement 或 paraphrase。
-   - 草稿只保留 `status: draft`，不进入 `llm_wiki/kb/cards/`。
+   - 草稿只保留 `status: draft`，不进入 `loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/`。
 
 2. `similarity_top3`
-   - 读取 draft title 和 `llm_wiki/kb/indexes/cards.md`。
+   - 读取 draft title 和 `loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md`。
    - 用 Jieba 对标题分词，计算 Jaccard set similarity。
    - 每张 draft 只列出 top 3 accepted cards。
    - 相似度是候选选择机制，不是事实审计。
@@ -38,7 +38,7 @@ material / exhausted 来源
    - 输出分类：`new_card`、`merge_candidate`、`provenance_delta`、`duplicate_skip`、`revise_before_gate`。
 
 4. `draft_backlog`
-   - `llm_wiki/loop/queues/draft_backlog.md` 是非公开草稿的恢复入口。
+   - `loops/v2_llm_wiki_loop_20260525/queues/draft_backlog.md` 是非公开草稿的恢复入口。
    - backlog 记录草稿路径、provenance 路径、similarity top3、comparison provenance、audit 状态和 adoption 状态。
 
 5. `audit_publication`

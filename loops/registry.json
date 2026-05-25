@@ -1,0 +1,37 @@
+{
+  "schema": "loop_registry.v1",
+  "updated_at": "2026-05-25T20:36:44+08:00",
+  "stable_products": {
+    "llm_wiki": {
+      "status": "not_promoted",
+      "root_path": null,
+      "reason": "Current LLM Wiki artifacts are loop outputs, not a repository-level stable product."
+    }
+  },
+  "loops": [
+    {
+      "loop_id": "v0_meta_kb_initialization_demo_20260524",
+      "path": "loops/v0_meta_kb_initialization_demo_20260524",
+      "status": "archived",
+      "product_status": "not_promoted",
+      "summary": "Mechanism-oriented KB initialization demo; useful as evidence, not the target LLM Wiki product."
+    },
+    {
+      "loop_id": "v1_topic_hub_skeleton_20260524",
+      "path": "loops/v1_topic_hub_skeleton_20260524",
+      "status": "archived",
+      "product_status": "not_promoted",
+      "summary": "Topic/hub skeleton experiment; archived because it optimized top-down coverage rather than atomic knowledge cards."
+    },
+    {
+      "loop_id": "v2_llm_wiki_loop_20260525",
+      "path": "loops/v2_llm_wiki_loop_20260525",
+      "status": "archived",
+      "product_status": "candidate_not_promoted",
+      "candidate_outputs": [
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki"
+      ],
+      "summary": "Atomic/scoped knowledge-card loop with brain-mailbox design work and candidate LLM Wiki KB outputs."
+    }
+  ]
+}

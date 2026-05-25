@@ -38,7 +38,7 @@ The main-agent should stay out of the production loop unless there is a design
 or policy problem. It owns charter, skill updates, stop logic, and human
 checkpoint decisions.
 
-All cross-brain requests go through mailbox files in `llm_wiki/loop/brains/`.
+All cross-brain requests go through mailbox files in `loops/v2_llm_wiki_loop_20260525/brains/`.
 A brain does not silently write another brain's state; it writes an outbox
 message, the hook routes it, and the target brain claims it.
 

@@ -1,0 +1,17 @@
+{
+  "schema": "loop_capsule_manifest.v1",
+  "loop_id": "v1_topic_hub_skeleton_20260524",
+  "path": "loops/v1_topic_hub_skeleton_20260524",
+  "created_date": "2026-05-24",
+  "capsule_type": "topic_hub_skeleton",
+  "internal_structure": "llm_wiki_runtime_with_nodes",
+  "primary_outputs": [
+    "nodes",
+    "kb",
+    "generated",
+    "reports",
+    "llm_wiki_runtime",
+    "audits"
+  ],
+  "product_status": "not_promoted"
+}

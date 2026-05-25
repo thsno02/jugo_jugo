@@ -1,0 +1,16 @@
+{
+  "schema": "llm_wiki.loop_manifest.v3",
+  "loop_root": "loops/v2_llm_wiki_loop_20260525/transition/empty_next_loop_workspace",
+  "loops_root": "loops",
+  "active_status": "retired_transition_artifact",
+  "previous_loop_archive": "loops/v2_llm_wiki_loop_20260525",
+  "recovery_policy": {
+    "default_recovery_inputs": [
+      "loops/current_loop.json",
+      "loops/registry.json",
+      "loops/README.md"
+    ],
+    "legacy_policy": "Do not read archived loop capsules unless a task explicitly asks for historical evidence or migration.",
+    "audit_policy": "New audits should be scoped to the corresponding run, task, message, artifact, or decision."
+  }
+}

@@ -29,7 +29,7 @@ iterations/<iteration_id>/task.md
 执行者不可以读取：
 
 - 父聊天上下文。
-- `legacy/`。
+- `loops/`。
 - 旧审计报告。
 - 其它执行者产物。
 - 未列出的来源目录。

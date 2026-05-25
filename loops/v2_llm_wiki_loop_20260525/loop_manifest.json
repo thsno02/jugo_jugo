@@ -1,15 +1,15 @@
 {
   "schema": "llm_wiki.loop_manifest.v2",
-  "loop_root": "llm_wiki/loop",
-  "kb_root": "llm_wiki/kb",
-  "active_design": "llm_wiki/loop/LOOP_DESIGN_V2.md",
-  "card_contract": "llm_wiki/loop/CARD_CONTRACT_V2.md",
-  "brain_root": "llm_wiki/loop/brains",
-  "legacy_root": "legacy",
-  "system_prompt_root": "llm_wiki/loop/system_prompts",
-  "plan_root": "llm_wiki/loop/plans",
-  "reflection_root": "llm_wiki/loop/reflections",
-  "draft_backlog": "llm_wiki/loop/queues/draft_backlog.md",
+  "loop_root": "loops/v2_llm_wiki_loop_20260525",
+  "kb_root": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb",
+  "active_design": "loops/v2_llm_wiki_loop_20260525/LOOP_DESIGN_V2.md",
+  "card_contract": "loops/v2_llm_wiki_loop_20260525/CARD_CONTRACT_V2.md",
+  "brain_root": "loops/v2_llm_wiki_loop_20260525/brains",
+  "loops_root": "loops",
+  "system_prompt_root": "loops/v2_llm_wiki_loop_20260525/system_prompts",
+  "plan_root": "loops/v2_llm_wiki_loop_20260525/plans",
+  "reflection_root": "loops/v2_llm_wiki_loop_20260525/reflections",
+  "draft_backlog": "loops/v2_llm_wiki_loop_20260525/queues/draft_backlog.md",
   "source_roots": [
     "data/manifests",
     "data/raw",
@@ -85,7 +85,7 @@
   },
   "roles": {
     "main_agent": {
-      "system_prompt": "llm_wiki/loop/system_prompts/main_agent.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/main_agent.md",
       "owns": [
         "状态迁移",
         "任务包创建",
@@ -102,8 +102,8 @@
       ]
     },
     "source_mining_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/source_mining_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/source_mining_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/source_mining_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/source_mining_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的一个来源目录或文件",
         "data/manifests/acquired_sources_index.md",
@@ -112,12 +112,12 @@
       "default_allowed_writes": [
         "当前 iteration 目录",
         "当前 iteration/artifacts 目录",
-        "llm_wiki/kb/candidates"
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/candidates"
       ]
     },
     "card_drafting_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/card_drafting_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/card_drafting_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/card_drafting_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/card_drafting_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的事实候选",
         "当前 task.md 指定的来源片段"
@@ -128,8 +128,8 @@
       ]
     },
     "card_batch_drafting_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/card_batch_drafting_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/card_batch_drafting_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/card_batch_drafting_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/card_batch_drafting_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的事实候选列表",
         "当前 task.md 指定的来源片段"
@@ -140,14 +140,14 @@
       ]
     },
     "card_similarity_gate_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/card_similarity_gate_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/card_similarity_gate_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/card_similarity_gate_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/card_similarity_gate_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的草稿知识卡",
         "当前 task.md 指定的草稿 provenance",
-        "llm_wiki/kb/indexes/cards.md",
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
         "title similarity top3 从 index 中选出的 accepted card 路径",
-        "llm_wiki/loop/queues/draft_backlog.md"
+        "loops/v2_llm_wiki_loop_20260525/queues/draft_backlog.md"
       ],
       "default_allowed_writes": [
         "当前 iteration 目录",
@@ -157,8 +157,8 @@
       ]
     },
     "card_audit_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/card_audit_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/card_audit_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/card_audit_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/card_audit_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的草稿知识卡",
         "当前 task.md 指定的出处论证",
@@ -170,8 +170,8 @@
       ]
     },
     "card_batch_audit_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/card_batch_audit_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/card_batch_audit_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/card_batch_audit_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/card_batch_audit_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的草稿知识卡",
         "当前 task.md 指定的出处论证",
@@ -184,8 +184,8 @@
       ]
     },
     "card_fusion_audit_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/card_fusion_audit_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/card_fusion_audit_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/card_fusion_audit_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/card_fusion_audit_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的 draft card",
         "当前 task.md 指定的 draft provenance",
@@ -200,8 +200,8 @@
       ]
     },
     "card_fusion_adoption_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/card_fusion_adoption_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/card_fusion_adoption_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/card_fusion_adoption_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/card_fusion_adoption_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的 comparison provenance",
         "当前 task.md 指定的 fusion audit pass 报告",
@@ -215,53 +215,53 @@
       ]
     },
     "card_adoption_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/card_adoption_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/card_adoption_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/card_adoption_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/card_adoption_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的审计通过知识卡",
         "当前 task.md 指定的出处论证",
         "当前 task.md 指定的审计结论"
       ],
       "default_allowed_writes": [
-        "llm_wiki/kb/cards",
-        "llm_wiki/kb/provenance",
-        "llm_wiki/kb/indexes",
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards",
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/provenance",
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes",
         "当前 iteration 目录"
       ]
     },
     "card_batch_adoption_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/card_batch_adoption_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/card_batch_adoption_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/card_batch_adoption_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/card_batch_adoption_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的审计通过知识卡",
         "当前 task.md 指定的出处论证",
         "当前 task.md 指定的批量审计报告",
-        "llm_wiki/kb/indexes/cards.md"
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md"
       ],
       "default_allowed_writes": [
-        "llm_wiki/kb/cards",
-        "llm_wiki/kb/provenance",
-        "llm_wiki/kb/indexes",
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards",
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/provenance",
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes",
         "当前 iteration 目录"
       ]
     },
     "skill_evolution_worker": {
-      "system_prompt": "llm_wiki/loop/system_prompts/skill_evolution_worker.md",
-      "task_template": "llm_wiki/loop/task_templates/skill_evolution_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/skill_evolution_worker.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/skill_evolution_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的失败证据",
         "当前 task.md 指定的技能文件",
         "当前 task.md 指定的任务模板"
       ],
       "default_allowed_writes": [
-        "llm_wiki/skills",
-        "llm_wiki/loop/task_templates",
+        "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/skills",
+        "loops/v2_llm_wiki_loop_20260525/task_templates",
         "当前 iteration 目录"
       ]
     },
     "independent_evaluator": {
-      "system_prompt": "llm_wiki/loop/system_prompts/independent_evaluator.md",
-      "task_template": "llm_wiki/loop/task_templates/independent_evaluation_task.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/independent_evaluator.md",
+      "task_template": "loops/v2_llm_wiki_loop_20260525/task_templates/independent_evaluation_task.md",
       "default_allowed_inputs": [
         "当前 task.md 指定的任务包和产物"
       ],
@@ -271,9 +271,9 @@
       ]
     },
     "monitor": {
-      "system_prompt": "llm_wiki/loop/system_prompts/monitor.md",
+      "system_prompt": "loops/v2_llm_wiki_loop_20260525/system_prompts/monitor.md",
       "default_allowed_inputs": [
-        "llm_wiki/loop/loop_state.json",
+        "loops/v2_llm_wiki_loop_20260525/loop_state.json",
         "当前 iteration 的 loop_status.md",
         "当前 iteration 的 loop_delivery.md",
         "当前 task.md 指定的产物存在性"
@@ -289,7 +289,7 @@
     "loop_delivery.md",
     "read_log.md"
   ],
-  "long_horizon_plan": "llm_wiki/loop/plans/main_agent_long_horizon_execution_plan.md",
+  "long_horizon_plan": "loops/v2_llm_wiki_loop_20260525/plans/main_agent_long_horizon_execution_plan.md",
   "network_policy": {
     "default": "prefer_local_data",
     "max_retrieve_attempts_per_source": 2,

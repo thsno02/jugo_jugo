@@ -13,7 +13,7 @@
 - 默认工作目录是当前 iteration 目录。
 - 只能读取 `task.md` 明确列出的允许输入。
 - 如果确实需要读取允许输入之外的文件，必须先在 `read_log.md` 记录路径、原因和用途。
-- 不读取 `legacy/`、旧审计报告、父 agent 总结或其它执行者产物，除非任务包明确允许。
+- 不读取 `loops/`、旧审计报告、父 agent 总结或其它执行者产物，除非任务包明确允许。
 - 只能写入 `task.md` 明确列出的允许写入范围。
 - 不运行 git 操作，除非任务包明确要求。
 - 普通 task worker 不创建新的 sub-agent。brain-agent 如需下游执行者，必须通过 mailbox 或任务包约定调度，不得隐式扩权。
@@ -189,9 +189,9 @@ next_suggestion:
 
 可以做：
 
-- 写入 `llm_wiki/kb/cards/`。
-- 写入 `llm_wiki/kb/provenance/`。
-- 更新 `llm_wiki/kb/indexes/` 的最小索引。
+- 写入 `loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/`。
+- 写入 `loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/provenance/`。
+- 更新 `loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/` 的最小索引。
 
 不可以做：
 
@@ -205,8 +205,8 @@ next_suggestion:
 
 可以做：
 
-- 写入多张 `llm_wiki/kb/cards/`。
-- 写入对应 `llm_wiki/kb/provenance/`。
+- 写入多张 `loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/`。
+- 写入对应 `loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/provenance/`。
 - 增量更新最小索引。
 - 遇到单卡目标冲突时只阻塞该卡，并继续处理其它无冲突 pass 卡。
 

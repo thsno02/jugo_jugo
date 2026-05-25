@@ -1,6 +1,6 @@
-# LLM Wiki 原子事实知识库
+# Candidate LLM Wiki 原子事实知识库
 
-这是下一轮 KB 的可见工作入口。
+这是 `v2_llm_wiki_loop_20260525` 产出的候选 KB。它不是仓库根目录的 promoted stable `llm_wiki/` 产品。
 
 当前目标不是枢纽页、聚类、主题覆盖，也不是重建一个复杂图谱。当前目标只有一个：
 
@@ -82,9 +82,9 @@ status: draft | accepted | rejected
 - 不把旧 v1 枢纽骨架当作当前 KB 主体。
 - 不把 agent 综合当作事实来源。
 
-## 当前技能
+## 候选技能
 
-当前活跃技能放在 `skills/`，主语言为中文：
+该 loop 当时使用的技能放在 `skills/`，主语言为中文：
 
 - `llmwiki-loop-controller`：主控 agent 决策、派发、上下文隔离和偏差干预。
 - `llmwiki-source-mining`：从单一来源抽取原子事实候选。
@@ -93,35 +93,25 @@ status: draft | accepted | rejected
 - `llmwiki-card-adoption`：采纳审计通过的知识卡，更新最小索引和状态。
 - `llmwiki-skill-evolution`：根据循环失败和审计结果迭代技能。
 
-旧版 `legacy/v1_topic_hub_skeleton_20260524/llm_wiki_runtime/skills/` 是节点/主题循环的历史快照，不是当前活跃技能集。
+旧版 `loops/v1_topic_hub_skeleton_20260524/llm_wiki_runtime/skills/` 是节点/主题循环的历史快照，不是该候选 KB 的技能集。
 
 ## 循环控制面
 
-循环不再藏在聊天上下文里，也不再散落在 README、脚本输出和临时报告中。
+该候选 KB 的生产控制面在 capsule 根目录：
 
-当前循环控制面放在 `loop/`：
-
-- `loop/README.md`：说明这个循环为什么存在、当前只做什么。
-- `loop/RUNBOOK.md`：主控 agent 如何启动、恢复、派发、审计和干预。
-- `loop/SUBAGENT_SCOPE.md`：执行者的行为边界、输入输出约束和禁止事项。
-- `loop/loop_state.json`：可恢复的机器状态。
-- `loop/loop_manifest.json`：角色、目录、门禁和非目标。
-- `loop/system_prompts/`：主控 agent 和执行者的稳定 system prompt。
-- `loop/task_templates/`：派发给执行者的任务包模板。
-- `loop/iterations/`：每一轮循环的任务包、状态、交付和证据。
-- `loop/reports/`：给人类和未来 agent 审计的循环报告。
-
-主控 agent 是决策者，不是具体挖掘者。只要主控 agent 开始亲自做大段来源挖掘、写卡、采纳，就应该视为流程或技能设计出现偏差，并回到 `loop/system_prompts/main_agent.md`、`loop/SUBAGENT_SCOPE.md` 和 `loop/RUNBOOK.md` 修复。
+- `../../loop_manifest.json`
+- `../../loop_state.json`
+- `../../LOOP_DESIGN_V2.md`
+- `../../CARD_CONTRACT_V2.md`
+- `../../iterations/`
+- `../../reports/`
 
 ## 知识库产物面
 
 知识库产物放在 `kb/`。
 
-当前 `kb/` 只用于沉淀事实候选、知识卡、出处论证和索引，不放循环控制文件。循环过程中的中间状态、任务包和审计报告都留在 `loop/`。
+当前 `kb/` 只用于沉淀事实候选、知识卡、出处论证和索引，不放循环控制文件。
 
-## 旧产物
+## Promotion Rule
 
-旧产物已移入 `../legacy/`：
-
-- `../legacy/v0_meta_kb_initialization_demo_20260524/`
-- `../legacy/v1_topic_hub_skeleton_20260524/`
+只有明确的人类 promotion decision 才能把这个候选 KB 发布为仓库根目录 `llm_wiki/`。

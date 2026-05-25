@@ -1,0 +1,8 @@
+{
+  "schema": "loop_capsule_status.v1",
+  "loop_id": "v0_meta_kb_initialization_demo_20260524",
+  "status": "archived",
+  "updated_at": "2026-05-25T20:36:44+08:00",
+  "product_status": "not_promoted",
+  "reason": "Mechanism-oriented KB demo; useful as evidence, not the target LLM Wiki product."
+}

@@ -1,11 +1,11 @@
 {
   "schema": "llm_wiki.loop_state.v3",
   "updated_at": "2026-05-25T19:54:38+08:00",
-  "status": "NEW_LOOP_NOT_STARTED",
+  "status": "RETIRED_TRANSITION_ARTIFACT",
   "current_loop_id": null,
   "current_phase": "awaiting_new_loop_charter",
-  "previous_loop_archive": "legacy/v2_llm_wiki_loop_20260525",
-  "next_action": "Define the new loop charter, state schema, run layout, and audit placement before creating new production artifacts.",
+  "previous_loop_archive": "loops/v2_llm_wiki_loop_20260525",
+  "next_action": "Create a new loop capsule under loops/<loop_id>/ before writing new production artifacts.",
   "human_checkpoint_required": true,
   "notes": [
     "The prior loop products are historical and must not be treated as active state.",

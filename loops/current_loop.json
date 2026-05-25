@@ -1,0 +1,14 @@
+{
+  "schema": "current_loop_pointer.v1",
+  "updated_at": "2026-05-25T20:36:44+08:00",
+  "active_loop_id": null,
+  "active_loop_path": null,
+  "next_action": "Create a new loop capsule under loops/<loop_id>/ before writing new loop products.",
+  "stable_product_roots": {
+    "llm_wiki": null
+  },
+  "notes": [
+    "Root llm_wiki/ is intentionally absent because no candidate has been promoted to stable product status.",
+    "Do not use directory moves as archive operations; update status metadata instead."
+  ]
+}

@@ -1,8 +1,10 @@
-# LLM Wiki 循环控制面
+# LLM Wiki Loop Capsule
 
-这个目录专门管理 LLM Wiki 从 0 到 1 的循环。
+这个目录是 `v2_llm_wiki_loop_20260525` 的完整 loop capsule。
 
-当前活跃版本是 V2：brain-mailbox + scoped knowledge card。
+状态：`archived`
+
+该 loop 使用 V2：brain-mailbox + scoped knowledge card。它的候选产物在 `outputs/llm_wiki/`，尚未 promoted 到仓库根目录 `llm_wiki/`。
 
 循环的产物不是“漂亮的主题结构”，而是一批可读、可审计、可追溯的 scoped knowledge cards。当前阶段仍然不做枢纽页、聚类或主题覆盖，但卡片不再追求机械的过度 atomic；卡片本身必须有知识含量。
 
@@ -18,7 +20,7 @@ material / exhausted 来源
 -> 已采纳 scoped knowledge card
 ```
 
-当前采用 `LOOP_DESIGN_V2.md` 和 `CARD_CONTRACT_V2.md`。旧版 draft-first 控制面已冻结到 `legacy/v2_llm_wiki_loop_20260525/snapshots/draft_first_control_plane/`。
+当前采用 `LOOP_DESIGN_V2.md` 和 `CARD_CONTRACT_V2.md`。旧版 draft-first 控制面已冻结到 `snapshots/draft_first_control_plane/`。
 
 ## 主控原则
 
@@ -61,14 +63,16 @@ material / exhausted 来源
 - `reflections/`：out-of-loop 的轨迹、组件和流程反思；不能作为事实来源。
 - `logs/`：循环级轻量日志说明。具体来源访问日志优先放在 `data/logs/`。
 - `tools/`：机械脚本，负责生成任务包、渲染 dispatch 和检查交付。
-- `legacy/`：冻结旧版设计；不能作为当前恢复入口。
+- `outputs/llm_wiki/`：候选 KB 产物，不是 stable product。
+- `snapshots/`：冻结旧版设计；不能作为当前恢复入口。
+- `transition/`：迁移到 capsule 模型时保留的过渡痕迹。
 - `user_insights/`：发现正式 `user-insights` skill 前的临时 fallback，只保留为历史痕迹。
 
 用户洞察的正式记录位置在仓库顶层 `user-insights/`，由专用 sidecar 写入；loop 控制面只读取其状态和高层输出，不把它当作执行者任务产物。
 
 ## 恢复入口
 
-未来任意 agent 恢复时，先读：
+未来任意 agent 审计或恢复该 capsule 时，先读：
 
 1. `loop_state.json`
 2. `loop_manifest.json`

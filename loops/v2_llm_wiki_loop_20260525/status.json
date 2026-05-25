@@ -1,0 +1,11 @@
+{
+  "schema": "loop_capsule_status.v1",
+  "loop_id": "v2_llm_wiki_loop_20260525",
+  "status": "archived",
+  "updated_at": "2026-05-25T20:36:44+08:00",
+  "product_status": "candidate_not_promoted",
+  "candidate_outputs": [
+    "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki"
+  ],
+  "reason": "Closed so the next loop can start from a fresh capsule; candidate LLM Wiki output was not promoted to root llm_wiki/."
+}

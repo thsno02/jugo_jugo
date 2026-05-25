@@ -102,7 +102,7 @@
 - `user-insights/session/cursor.json`
 - `user-insights/session/sidecar_state.json`
 
-`llm_wiki/loop/user_insights/` 是发现正式 skill 前的临时 fallback，只保留为历史痕迹；后续增量记录必须由 `user-insights` sidecar 写入顶层 `user-insights/`。
+`loops/v2_llm_wiki_loop_20260525/user_insights/` 是发现正式 skill 前的临时 fallback，只保留为历史痕迹；后续增量记录必须由 `user-insights` sidecar 写入顶层 `user-insights/`。
 
 ## 启动判定
 

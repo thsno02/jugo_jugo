@@ -7,18 +7,18 @@
 主控 agent 每次启动或恢复循环时，只先读这些文件：
 
 - `llm_wiki/README.md`
-- `llm_wiki/loop/README.md`
-- `llm_wiki/loop/LOOP_DESIGN_V2.md`
-- `llm_wiki/loop/CARD_CONTRACT_V2.md`
-- `llm_wiki/loop/brains/README.md`
-- `llm_wiki/loop/PRELAUNCH_REQUIREMENTS.md`
-- `llm_wiki/loop/loop_state.json`
-- `llm_wiki/loop/loop_manifest.json`
-- `llm_wiki/loop/queues/task_queue.md`
-- `llm_wiki/loop/reports/loop_report.md`
-- `llm_wiki/loop/plans/main_agent_long_horizon_execution_plan.md`
+- `loops/v2_llm_wiki_loop_20260525/README.md`
+- `loops/v2_llm_wiki_loop_20260525/LOOP_DESIGN_V2.md`
+- `loops/v2_llm_wiki_loop_20260525/CARD_CONTRACT_V2.md`
+- `loops/v2_llm_wiki_loop_20260525/brains/README.md`
+- `loops/v2_llm_wiki_loop_20260525/PRELAUNCH_REQUIREMENTS.md`
+- `loops/v2_llm_wiki_loop_20260525/loop_state.json`
+- `loops/v2_llm_wiki_loop_20260525/loop_manifest.json`
+- `loops/v2_llm_wiki_loop_20260525/queues/task_queue.md`
+- `loops/v2_llm_wiki_loop_20260525/reports/loop_report.md`
+- `loops/v2_llm_wiki_loop_20260525/plans/main_agent_long_horizon_execution_plan.md`
 
-如果需要选择来源，再读 `data/manifests/acquired_sources_index.md` 或 `data/manifests/sources.jsonl`。不要先读旧版 `legacy/` 报告来决定当前循环，除非任务明确要求历史审计。
+如果需要选择来源，再读 `data/manifests/acquired_sources_index.md` 或 `data/manifests/sources.jsonl`。不要先读旧版 `loops/` 报告来决定当前循环，除非任务明确要求历史审计。
 
 如果 `queues/task_queue.md` 或 `reports/loop_report.md` 缺失、过期或与 `loop_state.json` 矛盾，以 `loop_state.json` 为准，先修复控制面，再派发执行者。
 
@@ -55,7 +55,7 @@
 
 ## Mailbox 调度
 
-brain 之间的请求必须落到 `llm_wiki/loop/brains/<brain>/outbox.jsonl`，再由 hook / `brainctl route` 投递到目标 inbox 和 queue。
+brain 之间的请求必须落到 `loops/v2_llm_wiki_loop_20260525/brains/<brain>/outbox.jsonl`，再由 hook / `brainctl route` 投递到目标 inbox 和 queue。
 
 主控 agent 或 ops brain 唤醒目标 brain 前，先检查：
 
@@ -96,11 +96,11 @@ task input = iterations/<iteration_id>/task.md
 
 主控 agent 优先调用 `tools/`，减少临场 prompt：
 
-- `python3 llm_wiki/loop/tools/create_task.py ...`
-- `python3 llm_wiki/loop/tools/render_dispatch.py ...`
-- `python3 llm_wiki/loop/tools/validate_scope.py <task.md>`
-- `python3 llm_wiki/loop/tools/inspect_delivery.py <iteration_id>`
-- `python3 llm_wiki/loop/tools/cli_capability_probe.py --output <path>`
+- `python3 loops/v2_llm_wiki_loop_20260525/tools/create_task.py ...`
+- `python3 loops/v2_llm_wiki_loop_20260525/tools/render_dispatch.py ...`
+- `python3 loops/v2_llm_wiki_loop_20260525/tools/validate_scope.py <task.md>`
+- `python3 loops/v2_llm_wiki_loop_20260525/tools/inspect_delivery.py <iteration_id>`
+- `python3 loops/v2_llm_wiki_loop_20260525/tools/cli_capability_probe.py --output <path>`
 
 ## 当前允许的循环动作
 

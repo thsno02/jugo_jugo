@@ -1,0 +1,8 @@
+{
+  "schema": "loop_capsule_status.v1",
+  "loop_id": "v1_topic_hub_skeleton_20260524",
+  "status": "archived",
+  "updated_at": "2026-05-25T20:36:44+08:00",
+  "product_status": "not_promoted",
+  "reason": "Topic/hub skeleton experiment; archived because it optimized top-down coverage rather than atomic knowledge cards."
+}
