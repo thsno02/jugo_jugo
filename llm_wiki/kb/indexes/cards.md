@@ -13,3 +13,4 @@
 | 持久复合 wiki | `llm_wiki/kb/cards/llm-wiki-persistent-compounding-artifact.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:13` |
 | LLM Wiki 作为模式文件 | `llm_wiki/kb/cards/llm-wiki-pattern-file.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:1-5` |
 | 人提问，LLM 维护 | `llm_wiki/kb/cards/llm-wiki-human-llm-role-division.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:15-16`; `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:68-69` |
+| LLM Wiki 应用场景清单 | `llm_wiki/kb/cards/llm-wiki-listed-use-cases.md` | accepted | `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23` |

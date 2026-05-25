@@ -10,7 +10,7 @@
 
 当前状态：已有 11 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1、5 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 5 知识卡 `人提问，LLM 维护` 已采纳为 `llm-wiki-human-llm-role-division`。候选 6 drafting 已完成，草稿卡保持为“该来源列举了一组可能应用场景”这一清单型事实，没有扩写成场景报告。候选 6 card audit 已通过；adoption 任务包已创建并通过 `validate_scope.py`，下一步派发 worker。当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第一轮 source mining 的 12 个候选已经全部完成 drafting、audit 和 adoption，KB 现在有 12 张 accepted atomic fact cards。下一步回到 `READY_FOR_SOURCE_MINING`，从 `data/manifests/` 中选择一个新的 `status: ok` 本地来源继续 bottom-up 事实候选挖掘；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -118,17 +118,18 @@
 - 2026-05-25：创建 `iteration_20260525_0049_card_audit_llm_wiki_use_cases`，审计输入限定为候选 6 草稿卡、provenance、候选 6 字段和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 6 card audit 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，下一步进入 adoption。
 - 2026-05-25：创建 `iteration_20260525_0050_card_adoption_llm_wiki_use_cases`，指定 `card_id` 为 `llm-wiki-listed-use-cases`，目标 KB 路径不存在，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 6 adoption worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，第十二张 KB 卡采纳完成。第一轮 source mining 的 12 个候选全部完成生产链路。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：12 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：12。
-- 已采纳知识卡数量：11。
+- 已采纳知识卡数量：12。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
 - adoption 模板修复后新增边界噪声：0。
-- 输出文件存在性检查导致的轻微任务外读取观察：1。
+- 输出文件存在性检查导致的轻微任务外读取观察：2。
 - `fact_candidates.md` 相邻行或关键词定位导致的轻微边界观察：4，其中 1 次已复开为 prompt/template repair。
 - 本轮 iteration 目录文件名检查导致的轻微边界观察：1。
 - 因上下文泄漏、focus drift、来源不足或语言漂移导致的返工次数：0。
@@ -389,6 +390,10 @@
 - [候选 6 audit pass 决策](../decisions/20260525-0803-card-audit-pass-candidate-6.md)
 - [候选 6 adoption 任务包](../iterations/iteration_20260525_0050_card_adoption_llm_wiki_use_cases/task.md)
 - [候选 6 adoption dispatch](../iterations/iteration_20260525_0050_card_adoption_llm_wiki_use_cases/dispatch_request.json)
+- [候选 6 adoption 交付](../iterations/iteration_20260525_0050_card_adoption_llm_wiki_use_cases/loop_delivery.md)
+- [候选 6 采纳决策](../decisions/20260525-0812-card-adoption-accepted-candidate-6.md)
+- [已采纳知识卡：LLM Wiki 应用场景清单](../../kb/cards/llm-wiki-listed-use-cases.md)
+- [已采纳 provenance：LLM Wiki 应用场景清单](../../kb/provenance/llm-wiki-listed-use-cases.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

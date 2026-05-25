@@ -11,22 +11,33 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0051_card_adoption_candidate_6`
-
-- `role`: `card_adoption_worker`
-- `action`: 采纳候选 6 审计通过的草稿卡，保持“该来源列举应用场景”的限定，不写成场景报告或完整分类。
-- `expected_output`: `llm_wiki/kb/cards/llm-wiki-listed-use-cases.md`, `llm_wiki/kb/provenance/llm-wiki-listed-use-cases.md`
-- `note`: 只使用候选 6 草稿卡、provenance 和 audit pass 报告。
+暂无。
 
 ## 待办（pending）
 
-暂无。
+### `task_20260525_0052_source_mining_next_source`
+
+- `role`: `source_mining_worker`
+- `action`: 从 `data/manifests/acquired_sources_index.md` 和必要时 `data/manifests/sources.jsonl` 中选择一个 `status: ok` 本地来源，创建并派发下一轮窄 source mining 任务包。
+- `expected_output`: 下一轮 `fact_candidates.md`
+- `note`: 只选一个来源；选择理由必须记录在 task 或 decision 中，不按主题覆盖、hub 或 cluster 规划选源。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0051_card_adoption_candidate_6`
+
+- `role`: `card_adoption_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0050_card_adoption_llm_wiki_use_cases`
+- `card_id`: `llm-wiki-listed-use-cases`
+- `adopted_card`: `llm_wiki/kb/cards/llm-wiki-listed-use-cases.md`
+- `adopted_provenance`: `llm_wiki/kb/provenance/llm-wiki-listed-use-cases.md`
+- `index`: `llm_wiki/kb/indexes/cards.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0812-card-adoption-accepted-candidate-6.md`
 
 ### `task_20260525_0050_card_audit_candidate_6`
 
