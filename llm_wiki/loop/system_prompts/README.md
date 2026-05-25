@@ -32,8 +32,12 @@ runtime inputs = README + loop_state.json + loop_manifest.json + task_queue.md +
 - `base_worker.md`：所有执行者共享的基础边界。
 - `source_mining_worker.md`：来源挖掘执行者。
 - `card_drafting_worker.md`：知识卡草稿执行者。
+- `card_batch_drafting_worker.md`：批量知识卡草稿执行者。
+- `card_similarity_gate_worker.md`：知识卡相似门执行者。
 - `card_audit_worker.md`：知识卡审计执行者。
+- `card_batch_audit_worker.md`：批量知识卡审计执行者。
 - `card_adoption_worker.md`：知识卡采纳执行者。
+- `card_batch_adoption_worker.md`：批量知识卡采纳执行者。
 - `skill_evolution_worker.md`：技能演化执行者。
 - `independent_evaluator.md`：独立审计执行者。
 - `monitor.md`：低噪声状态监控者。

@@ -11,16 +11,25 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0066_card_batch_drafting_karpathy_launch_remaining_a`
+
+- `role`: `card_batch_drafting_worker`
+- `action`: 批量处理 `karpathy-x-launch-post` 剩余高价值候选 2、4、5、8、9、10，生成 atomic draft cards 和 provenance。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a/artifacts/batch_manifest.md`
+- `note`: 先生成 draft，不做融合、审计或采纳；candidate 11 已登记到 draft backlog，后续统一走相似门和 audit/publication。
 
 ## 待办（pending）
+
+暂无。
+
+## 待后置审计（deferred_publication_queue）
 
 ### `task_20260525_0065_card_audit_candidate_11`
 
 - `role`: `card_audit_worker`
 - `action`: 独立审计第二轮候选 11 草稿卡和 provenance。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0064_card_audit_wiki_qa_scale/artifacts/audit_report.md`
-- `note`: 审计输入限定为草稿卡、provenance、候选 11 字段和 `raw.json` 的 `$.tweet.quote.text`；不使用父聊天上下文。
+- `expected_output`: 后续 publication audit batch 或单卡 audit iteration。
+- `note`: 按 Atomic Draft First 流程后置；不再作为当前立即 pending 项。
 
 ## 已阻塞（blocked）
 

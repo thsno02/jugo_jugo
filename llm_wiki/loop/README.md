@@ -9,11 +9,14 @@
 ```text
 data/ 中已有来源
 -> 事实候选
--> 草稿态 zet 风格原子事实知识卡
--> 出处论证
--> 审计
+-> 批量草稿态 zet 风格原子事实知识卡 + 出处论证
+-> 相似卡门禁
+-> draft backlog
+-> 批量审计
 -> 已采纳原子事实知识卡
 ```
+
+当前采用 `DRAFT_FIRST_PIPELINE.md`：先把已挖掘或 exhausted 来源批量转成 atomic draft cards，再后置融合判断、审计和公开发布。
 
 ## 主控原则
 
@@ -40,6 +43,7 @@ data/ 中已有来源
 - `SUBAGENT_LIFECYCLE.md`：sub-agent 生命周期策略。
 - `TECH_VALIDATION.md`：Codex / Claude / hook 技术验证路线。
 - `SUBAGENT_SCOPE.md`：执行者的行为边界、输入输出约束和终止标记。
+- `DRAFT_FIRST_PIPELINE.md`：先生成 atomic draft，再做相似门、后置审计和公开发布的吞吐优化流程。
 - `loop_state.json`：当前循环状态，供恢复和监控使用。
 - `loop_manifest.json`：角色、目录、非目标、门禁和语言规则。
 - `system_prompts/`：主控 agent 和各类执行者的稳定 system prompt。

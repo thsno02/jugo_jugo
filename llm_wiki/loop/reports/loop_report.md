@@ -10,7 +10,7 @@
 
 当前状态：已有 15 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选并已全部完成 drafting、audit 和 adoption。第二轮 source mining 已采纳候选 3、候选 6 和候选 12。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 12 已完成 drafting、audit 和 adoption；采纳后仍保留 `known_fact` 与当前 scope。第二轮候选 11 drafting 已完成并通过交付检查，下一步创建 audit worker 任务包；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受用户指出的吞吐问题，停止“写一张、审一张、采纳一张”的单卡串行节奏，切换到 Atomic Draft First：先把已挖掘或 exhausted 来源批量转成 atomic draft cards，再通过相似门判断新卡、融合、重复和 provenance 增量，最后批量 audit/publication。第二轮候选 11 已登记到 draft backlog，audit 后置到 publication 批次。
 
 ## 过程轨迹（process_trace）
 
@@ -145,11 +145,15 @@
 - 2026-05-25：第二轮候选 12 adoption worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，第十五张 KB 卡采纳完成。
 - 2026-05-25：从第二轮剩余候选中选择候选 11，原因是它聚焦被引用推文中一个具体研究 wiki 的规模与 Q&A/research 用法，证据集中在 `$.tweet.quote.text`，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0063_card_drafting_wiki_qa_scale`，任务包通过 `validate_scope.py`。
 - 2026-05-25：第二轮候选 11 drafting worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
+- 2026-05-25：根据用户对 7 小时仅 15 张 accepted card 的吞吐质疑，记录流程偏差并切换到 `DRAFT_FIRST_PIPELINE.md`：batch atomic draft 优先，相似门前置到 publication 之前，审计与采纳后置批处理。candidate 11 不立即单卡 audit，而是登记到 `queues/draft_backlog.md`。
+- 2026-05-25：创建首个 batch drafting 任务包 `iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a`，处理 `karpathy-x-launch-post` 候选 2、4、5、8、9、10；任务包通过 `validate_scope.py`，dispatch payload 已渲染。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：24。
 - 草稿知识卡数量：16 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
+- draft backlog 已登记数量：1。
+- 当前生产流程：Atomic Draft First，首批 batch size 限制在 6 个候选以内。
 - 审计通过数量：15。
 - 审计 revise 数量：1。
 - 已采纳知识卡数量：15。
@@ -488,6 +492,11 @@
 - [第二轮候选 11 草稿卡](../iterations/iteration_20260525_0063_card_drafting_wiki_qa_scale/artifacts/draft_card.md)
 - [第二轮候选 11 provenance](../iterations/iteration_20260525_0063_card_drafting_wiki_qa_scale/artifacts/provenance.md)
 - [第二轮候选 11 drafting 可审计决策](../decisions/20260525-0957-card-drafting-candidate-11-ready-for-audit.md)
+- [Atomic Draft First 流程](../DRAFT_FIRST_PIPELINE.md)
+- [草稿知识卡 backlog](../queues/draft_backlog.md)
+- [Atomic Draft First 切换决策](../decisions/20260525-1035-switch-to-atomic-draft-first.md)
+- [首个 batch drafting 任务包](../iterations/iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a/task.md)
+- [首个 batch drafting dispatch](../iterations/iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

@@ -5,6 +5,7 @@
   "system_prompt_root": "llm_wiki/loop/system_prompts",
   "plan_root": "llm_wiki/loop/plans",
   "reflection_root": "llm_wiki/loop/reflections",
+  "draft_backlog": "llm_wiki/loop/queues/draft_backlog.md",
   "source_roots": [
     "data/manifests",
     "data/raw",
@@ -29,6 +30,8 @@
   "current_focus": [
     "从本地来源生长原子事实知识卡",
     "为每张卡写可读出处论证",
+    "优先批量生成 atomic draft cards",
+    "用相似门判断新卡、融合和 provenance 增量",
     "用审计证据演化技能和任务模板"
   ],
   "non_goals": [
@@ -100,6 +103,33 @@
         "当前 iteration/artifacts 目录"
       ]
     },
+    "card_batch_drafting_worker": {
+      "system_prompt": "llm_wiki/loop/system_prompts/card_batch_drafting_worker.md",
+      "task_template": "llm_wiki/loop/task_templates/card_batch_drafting_task.md",
+      "default_allowed_inputs": [
+        "当前 task.md 指定的事实候选列表",
+        "当前 task.md 指定的来源片段"
+      ],
+      "default_allowed_writes": [
+        "当前 iteration 目录",
+        "当前 iteration/artifacts 目录"
+      ]
+    },
+    "card_similarity_gate_worker": {
+      "system_prompt": "llm_wiki/loop/system_prompts/card_similarity_gate_worker.md",
+      "task_template": "llm_wiki/loop/task_templates/card_similarity_gate_task.md",
+      "default_allowed_inputs": [
+        "当前 task.md 指定的草稿知识卡",
+        "当前 task.md 指定的草稿 provenance",
+        "llm_wiki/kb/indexes/cards.md",
+        "当前 task.md 指定的相似 accepted card 路径",
+        "llm_wiki/loop/queues/draft_backlog.md"
+      ],
+      "default_allowed_writes": [
+        "当前 iteration 目录",
+        "当前 iteration/artifacts 目录"
+      ]
+    },
     "card_audit_worker": {
       "system_prompt": "llm_wiki/loop/system_prompts/card_audit_worker.md",
       "task_template": "llm_wiki/loop/task_templates/card_audit_task.md",
@@ -113,6 +143,20 @@
         "当前 iteration/artifacts 目录"
       ]
     },
+    "card_batch_audit_worker": {
+      "system_prompt": "llm_wiki/loop/system_prompts/card_batch_audit_worker.md",
+      "task_template": "llm_wiki/loop/task_templates/card_batch_audit_task.md",
+      "default_allowed_inputs": [
+        "当前 task.md 指定的草稿知识卡",
+        "当前 task.md 指定的出处论证",
+        "当前 task.md 指定的来源片段",
+        "当前 task.md 指定的相似门报告"
+      ],
+      "default_allowed_writes": [
+        "当前 iteration 目录",
+        "当前 iteration/artifacts 目录"
+      ]
+    },
     "card_adoption_worker": {
       "system_prompt": "llm_wiki/loop/system_prompts/card_adoption_worker.md",
       "task_template": "llm_wiki/loop/task_templates/card_adoption_task.md",
@@ -120,6 +164,22 @@
         "当前 task.md 指定的审计通过知识卡",
         "当前 task.md 指定的出处论证",
         "当前 task.md 指定的审计结论"
+      ],
+      "default_allowed_writes": [
+        "llm_wiki/kb/cards",
+        "llm_wiki/kb/provenance",
+        "llm_wiki/kb/indexes",
+        "当前 iteration 目录"
+      ]
+    },
+    "card_batch_adoption_worker": {
+      "system_prompt": "llm_wiki/loop/system_prompts/card_batch_adoption_worker.md",
+      "task_template": "llm_wiki/loop/task_templates/card_batch_adoption_task.md",
+      "default_allowed_inputs": [
+        "当前 task.md 指定的审计通过知识卡",
+        "当前 task.md 指定的出处论证",
+        "当前 task.md 指定的批量审计报告",
+        "llm_wiki/kb/indexes/cards.md"
       ],
       "default_allowed_writes": [
         "llm_wiki/kb/cards",

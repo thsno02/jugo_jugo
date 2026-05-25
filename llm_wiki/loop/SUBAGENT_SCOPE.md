@@ -90,6 +90,42 @@ next_suggestion:
 - 扩写成主题页。
 - 加入未在来源中支撑的背景知识。
 
+### `card_batch_drafting_worker`
+
+把任务包指定的多个事实候选写成一组互相独立的草稿知识卡和 provenance。
+
+可以做：
+
+- 阅读任务包指定的候选块和来源片段。
+- 为每个清楚候选写一张 atomic draft card。
+- 为每张 drafted card 写 provenance。
+- 写 `batch_manifest.md` 记录 drafted、skipped 或 blocked。
+
+不可以做：
+
+- 采纳知识卡。
+- 审计知识卡。
+- 读取 KB 卡片来补充事实。
+- 判断是否融合既有卡。
+- 把多个候选合成主题页。
+
+### `card_similarity_gate_worker`
+
+判断草稿卡与现有卡之间的知识身份关系。
+
+可以做：
+
+- 读取任务包指定的草稿卡、provenance、KB 索引和相似卡路径。
+- 输出 `new_atomic_card`、`merge_candidate`、`provenance_delta`、`duplicate_skip` 或 `revise_before_gate`。
+- 说明最相似卡片和判断理由。
+
+不可以做：
+
+- 做事实审计。
+- 采纳知识卡。
+- 读取未列出的 KB 卡片。
+- 为草稿卡寻找新来源。
+
 ### `card_audit_worker`
 
 审计一张草稿知识卡是否可以进入采纳流程。
@@ -104,6 +140,22 @@ next_suggestion:
 不可以做：
 
 - 直接改写并采纳知识卡，除非任务包明确要求小修。
+- 根据父聊天上下文补足事实。
+
+### `card_batch_audit_worker`
+
+逐张审计一组草稿知识卡是否可以进入公开采纳流程。
+
+可以做：
+
+- 对每张草稿卡独立给出 `pass`、`revise` 或 `reject`。
+- 对照任务包指定的 provenance 和来源证据。
+- 写批量审计报告。
+
+不可以做：
+
+- 直接采纳知识卡。
+- 把一张卡的来源证据挪给另一张卡。
 - 根据父聊天上下文补足事实。
 
 ### `card_adoption_worker`
@@ -121,6 +173,23 @@ next_suggestion:
 - 采纳没有审计证据的知识卡。
 - 重命名或重写大量旧卡。
 - 创建枢纽页或聚类页。
+
+### `card_batch_adoption_worker`
+
+把任务包指定且审计通过的一组知识卡移入知识库产物面。
+
+可以做：
+
+- 写入多张 `llm_wiki/kb/cards/`。
+- 写入对应 `llm_wiki/kb/provenance/`。
+- 增量更新最小索引。
+- 遇到单卡目标冲突时只阻塞该卡，并继续处理其它无冲突 pass 卡。
+
+不可以做：
+
+- 采纳没有审计证据的知识卡。
+- 静默覆盖已有不同内容。
+- 创建枢纽页、聚类页或主题覆盖页。
 
 ### `skill_evolution_worker`
 

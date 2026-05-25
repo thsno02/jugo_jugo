@@ -35,6 +35,19 @@
 
 如果当前任务是长程恢复或无人值守继续执行，先对照 `plans/main_agent_long_horizon_execution_plan.md`，确认本轮动作属于生产、演化、反思或运维中的哪一条链路。不要在同一轮里混改生产产物和大组件设计。
 
+## Atomic Draft First 模式
+
+当 `loop_state.json.status` 是 `ATOMIC_DRAFT_FIRST_READY` 或 `ATOMIC_DRAFT_BATCH_IN_PROGRESS` 时，主控 agent 优先使用 `DRAFT_FIRST_PIPELINE.md`：
+
+1. 对一个已完成 source mining 的来源，批量生成 atomic draft cards 和 provenance。
+2. 把草稿登记到 `queues/draft_backlog.md`。
+3. 用 `card_similarity_gate_worker` 判断 `new_atomic_card`、`merge_candidate`、`provenance_delta`、`duplicate_skip` 或 `revise_before_gate`。
+4. `new_atomic_card` 可以跳过融合审计，但最终公开发布前仍需 audit。
+5. `merge_candidate` 和 `provenance_delta` 必须先审计融合或增量 provenance。
+6. audit/publication 按 batch 推进；单卡 revise/reject/read-boundary failure 只拆出该卡，不阻塞整批。
+
+这个模式替代“写一张、审一张、采纳一张”的默认节奏。它仍然禁止无 provenance 草稿、无审计公开发布和把 draft 当 accepted。
+
 ## 提示词组合方式（prompt）
 
 派发执行者时，主控 agent 使用：
@@ -75,8 +88,12 @@ task input = iterations/<iteration_id>/task.md
 
 - 从一个本地来源挖掘事实候选。
 - 把一个事实候选写成一张草稿知识卡和一份出处论证。
+- 把一个已挖掘来源的多个候选批量写成 atomic draft cards 和 provenance。
+- 对一组草稿卡做相似门判断。
 - 审计一张草稿知识卡。
+- 批量审计多张草稿知识卡。
 - 采纳一张审计通过的知识卡。
+- 批量采纳多张审计通过且无冲突的知识卡。
 - 根据失败证据迭代技能或任务模板。
 - 独立审计执行者是否越界、泄漏上下文或造成 focus drift。
 
@@ -86,6 +103,8 @@ task input = iterations/<iteration_id>/task.md
 - 做聚类。
 - 做主题覆盖。
 - 批量生成没有出处论证的知识卡。
+- 把相似门结论当作事实审计结论。
+- 把 draft backlog 当作公开 KB。
 - 把 agent 的综合判断当作事实来源。
 - 为知识卡引入复杂元数据，除非循环失败证据证明必要。
 - 让执行者读取父聊天上下文或旧审计报告来补全任务。

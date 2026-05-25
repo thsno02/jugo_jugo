@@ -1,16 +1,18 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T09:57:16+08:00",
-  "status": "READY_FOR_CARD_AUDIT",
+  "updated_at": "2026-05-25T10:35:24+08:00",
+  "status": "CARD_BATCH_DRAFTING_DISPATCH_READY",
   "loop_owner": "main_owned",
-  "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_audit",
-  "current_iteration": "iteration_20260525_0063_card_drafting_wiki_qa_scale",
+  "loop_shape": "draft_first_batch_loop",
+  "current_phase": "atomic_draft_batching",
+  "current_iteration": "iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a",
   "last_completed_iteration": "iteration_20260525_0063_card_drafting_wiki_qa_scale",
-  "current_task_id": null,
+  "current_task_id": "task_20260525_0066_card_batch_drafting_karpathy_launch_remaining_a",
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
+    "draft_first_batching",
+    "similarity_gate_before_publication",
     "evolve_skills_from_loop_failures"
   ],
   "active_non_goals": [
@@ -20,12 +22,13 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "为第二轮候选 11 创建 card_audit_worker 任务包；审计输入限定为草稿卡、provenance、候选 11 和 raw.json 的 $.tweet.quote.text。",
+  "next_action": "派发 card_batch_drafting_worker，批量处理 karpathy-x-launch-post 剩余高价值候选 2、4、5、8、9、10；候选 11 已登记到 draft_backlog，audit/publication 后置到批次流程。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",
     "Codex CLI and Claude CLI write-file worker loops remain unverified; native Codex sub-agent remains the short-term route.",
-    "Candidate 1 audit task included a non-existent fact_candidate_path; audit pass is accepted because source lines 1-5 support the card. Scope validation path checking has been repaired and independently audited."
+    "Candidate 1 audit task included a non-existent fact_candidate_path; audit pass is accepted because source lines 1-5 support the card. Scope validation path checking has been repaired and independently audited.",
+    "Atomic Draft First 是新流程；首批 batch size 限制在 6 个候选以内，并保留 similarity gate 与 publication audit，避免把 draft 误当 accepted。"
   ],
   "human_checkpoint_required": false,
   "language": "zh_main"
