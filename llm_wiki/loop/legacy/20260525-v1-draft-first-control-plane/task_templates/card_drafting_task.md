@@ -7,7 +7,7 @@
 
 ## 目标
 
-把一个事实候选写成一张 zet 风格 scoped draft knowledge card，并写一份整理后的出处论证。
+把一个事实候选写成一张 zet 风格原子事实知识卡，并写一份整理后的出处论证。
 
 ## 允许输入
 
@@ -41,27 +41,19 @@
 
 知识卡应该是结果，不是流程日志。
 
-必须包含 `CARD_CONTRACT_V2.md` 的固定 metadata：
+必须包含极简契约：
 
-- `id`
-- `title`
+- `statement`
+- `fact_type`
+- `support`
+- `scope`
 - `status: draft`
-- `card_type`
-- `tags`
-- `created_time`
-- `edited_time`
-- `edited_entity`
-- `source_ids`
-- `provenance_card`
-- `aliases`
-- `related`
 
 写作要求：
 
 - 标题短。
-- 正文只围绕一个主要知识范围。
-- 正文必须提供知识信息，不能只是标题 restatement 或 paraphrase。
-- 可以说明机制、边界、对比或 operational definition，但不能扩写成主题页。
+- 正文只围绕一个主要事实。
+- 可以有简短解释，但不能扩写成主题页。
 - `References` 必须放在 `Footnotes` 前。
 - `Footnotes` 必须是最后一个 section。
 
@@ -80,9 +72,8 @@
 
 - 只生成一张知识卡。
 - 知识卡可读，不像中间状态。
-- 知识卡正文有信息量，不是标题改写。
 - 出处论证可读，不是流水日志。
-- metadata 完整，`edited_entity` 区分 `llm` / `human` / `llm+human`。
+- 没有新增复杂元数据。
 - `loop_status.md`、`loop_delivery.md`、`read_log.md` 都存在。
 
 ## 阻塞条件

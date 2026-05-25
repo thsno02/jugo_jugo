@@ -35,6 +35,8 @@
 ## 成功门禁
 
 - 每张卡都有明确审计结论。
+- 每张卡都检查 `CARD_CONTRACT_V2.md` 固定 metadata。
+- 每张卡都检查正文知识含量，不能只做标题改写。
 - 结论只引用任务包允许输入。
 - 没有直接采纳知识卡。
 - `loop_status.md`、`loop_delivery.md`、`read_log.md` 都存在。

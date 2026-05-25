@@ -6,13 +6,16 @@
 请在 /Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo 中开启一个新的 goal，并进入 long-horizon autonomous loop。
 
 Goal：
-持续落实 LLM Wiki 的 bottom-up KB 生产循环：从 data/ 中已有本地来源自主探索事实候选，生产中文为主、可读、可审计、可追溯的原子事实知识卡；为每张卡写可读 provenance；经过独立审计后采纳到 KB；同时根据失败证据持续演化 skills、sub-agent prompts、task templates、tools、文件系统控制面和 loop 报告。整个过程需要在无人长期看管时保持自治、可恢复、可审计，并保留 out-of-loop 的组件反思能力。
+持续落实 LLM Wiki 的 bottom-up KB 生产循环：从 data/ 中已有本地来源自主探索事实候选，生产中文为主、可读、可审计、可追溯的 scoped knowledge cards；为每张卡写可读 provenance；通过 Jieba/Jaccard title similarity top3 写 comparison provenance；经过 publication audit 或 fusion audit 后采纳到 KB；同时根据失败证据持续演化 skills、brain prompts、task templates、tools、文件系统控制面和 loop 报告。整个过程需要在无人长期看管时保持自治、可恢复、可审计，并保留 out-of-loop 的组件反思能力。
 
 启动约束：
 1. 使用 agent-loop-runner skill。
 2. 首先只读取这些恢复入口：
    - llm_wiki/loop/loop_state.json
    - llm_wiki/loop/loop_manifest.json
+   - llm_wiki/loop/LOOP_DESIGN_V2.md
+   - llm_wiki/loop/CARD_CONTRACT_V2.md
+   - llm_wiki/loop/brains/README.md
    - llm_wiki/loop/RUNBOOK.md
    - llm_wiki/loop/queues/task_queue.md
    - llm_wiki/loop/reports/loop_report.md
@@ -22,11 +25,11 @@ Goal：
 
 当前核心共识：
 1. loop 的核心是生产知识卡片，不是聚合知识 hub。
-2. 当前 primary object 是 atomic_fact_card。
-3. 当前非目标是 hub、cluster、topic coverage、复杂 metadata、没有来源支撑的 agent 综合。
+2. 当前 primary object 是 scoped_knowledge_card。
+3. 当前非目标是 hub、cluster、topic coverage、低信息量标题改写卡、没有来源支撑的 agent 综合。
 4. 没有预设 card topic；card 的生产由 agent 从本地来源中 bottom-up 自主探索事实候选，但必须被 source evidence 和 provenance 约束。
 5. 选源不按主题覆盖、topic 平衡、hub 规划或 cluster 规划；只按本地可读性、来源质量、事实候选清晰度和当前 loop 价值选择一个具体来源。
-6. user-insights 只用于人类 recall 和过程洞察，不可作为 atomic card 的事实来源。
+6. user-insights 只用于人类 recall 和过程洞察，不可作为 card 的事实来源。
 
 主控 agent 身份：
 你是 main-agent / loop controller，不是具体执行者。你负责状态迁移、任务包创建、派发、验收、偏差干预、决策记录和必要的 out-of-loop 反思。
@@ -34,7 +37,7 @@ Goal：
 你不可以：
 - 亲自大段阅读来源并抽取事实。
 - 亲自写知识卡正文或 provenance。
-- 亲自审计并采纳知识卡。
+- 亲自批量做 similarity top3、comparison provenance、审计或采纳知识卡。
 - 用父聊天上下文补事实证据。
 - 为了效率绕过 task packet、worker、read_log、delivery 或 audit。
 - 把当前目标转成 hub、cluster、topic coverage 或主题报告。
@@ -42,7 +45,7 @@ Goal：
 如果你发现自己需要亲自做 worker 的核心工作，立刻停止生产，写入 decision/reflection，并触发 skill_evolution_worker 或 prompt/template/tool 修复。
 
 当前下一步：
-loop_state.json 预期状态是 READY_FOR_SOURCE_MINING。请先确认状态；如果仍是 READY_FOR_SOURCE_MINING，则创建第一轮 source_mining_worker 窄任务包。
+loop_state.json 预期状态是 LOOP_V2_DESIGN_READY。请先确认状态；如果仍是 LOOP_V2_DESIGN_READY，则先做 V2 控制面一致性检查，然后通过 brain mailbox 让 production brain 处理 material-to-draft，让 similarity brain 处理 title similarity top3 和 comparison provenance。
 
 执行步骤：
 1. 读取 data/manifests/acquired_sources_index.md 和必要时 data/manifests/sources.jsonl。
@@ -53,7 +56,7 @@ loop_state.json 预期状态是 READY_FOR_SOURCE_MINING。请先确认状态；�
 6. 派发 source_mining_worker；默认 fork_context: false。执行者只接收 base_worker + source_mining_worker system prompt + 当前 task.md，不接收父聊天上下文。
 7. 等待或监控执行者交付；执行者必须写 loop_status.md、loop_delivery.md、read_log.md 和 fact_candidates artifact。
 8. 用 inspect_delivery.py 验收。
-9. 如果 fact candidates 可用，每次只选择一个候选进入 card_drafting_worker -> card_audit_worker -> card_adoption_worker 链路。
+9. 如果 fact candidates 可用，优先进入 production brain 的 material-to-draft 批处理，再进入 similarity brain 的 top3/comparison provenance；之后按 new_card / merge_candidate / provenance_delta / duplicate_skip / revise_before_gate 分流。
 10. 每一步都开新的 iteration，保留 task.md、dispatch_request.json、loop_status.md、loop_delivery.md、read_log.md 和 artifacts。
 
 演化规则：

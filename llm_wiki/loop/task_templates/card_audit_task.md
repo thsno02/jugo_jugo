@@ -32,16 +32,16 @@
 
 ## 审计问题
 
-- 这张卡是否只表达一个主要事实？
-- `statement` 是否被来源支撑？
-- `fact_type` 是 `known_fact` 还是 `accepted_fact`，是否合理？
-- `scope` 是否清楚限制了适用范围？
-- `support` 是否足够具体？
+- 这张卡是否只表达一个主要知识范围？
+- 卡片的核心知识是否被来源支撑？
+- 固定 metadata 是否完整，尤其是 `tags`、`created_time`、`edited_time`、`edited_entity`、`source_ids` 和 `provenance_card`？
+- scope 或边界是否清楚限制了适用范围？
+- 正文是否有信息量，而不是标题 restatement 或 paraphrase？
 - 出处论证是否能 justify 这张卡暂时成立？
 - 正文是否可读，是否像 zet 风格知识卡？
 - `References` 是否在 `Footnotes` 前？
 - `Footnotes` 是否是最后一个 section？
-- 是否出现枢纽页、聚类、主题覆盖或复杂元数据漂移？
+- 是否出现枢纽页、聚类、主题覆盖或 metadata 缺失？
 
 ## 结论格式
 

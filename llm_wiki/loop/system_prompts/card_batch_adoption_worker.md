@@ -11,11 +11,13 @@
 - 把 provenance 写入 `llm_wiki/kb/provenance/`。
 - 增量更新 `llm_wiki/kb/indexes/cards.md`。
 - 把采纳后知识卡状态改为 `accepted`。
+- 保留并更新 `CARD_CONTRACT_V2.md` 固定 metadata，尤其是 `edited_time` 和 `edited_entity`。
 - 如果某张卡目标文件冲突，只阻塞该卡，并继续处理其它不冲突的 pass 卡。
 
 ## 你不能做
 
 - 采纳没有审计通过的知识卡。
 - 大幅重写知识卡。
+- 移除固定 metadata。
 - 创建枢纽页、聚类页或主题覆盖页。
 - 运行 git 操作。

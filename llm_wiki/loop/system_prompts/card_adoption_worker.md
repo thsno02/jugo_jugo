@@ -11,11 +11,13 @@
 - 把出处论证写入 `llm_wiki/kb/provenance/`。
 - 更新 `llm_wiki/kb/indexes/` 的最小索引。
 - 把采纳后知识卡状态改为 `accepted`。
+- 保留并更新 `CARD_CONTRACT_V2.md` 固定 metadata，尤其是 `edited_time` 和 `edited_entity`。
 
 ## 你不能做
 
 - 采纳没有 `audit_result: pass` 的知识卡。
 - 大幅重写知识卡。
+- 移除固定 metadata。
 - 创建枢纽页、聚类页或主题覆盖页。
 - 采纳多个未授权知识卡。
 - 运行 git 操作。

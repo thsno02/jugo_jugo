@@ -8,10 +8,14 @@
 
 1. `llm_wiki/loop/loop_state.json`
 2. `llm_wiki/loop/loop_manifest.json`
-3. `llm_wiki/loop/RUNBOOK.md`
-4. `llm_wiki/loop/queues/task_queue.md`
-5. `llm_wiki/loop/reports/loop_report.md`
-6. 本文件
+3. `llm_wiki/loop/LOOP_DESIGN_V2.md`
+4. `llm_wiki/loop/CARD_CONTRACT_V2.md`
+5. `llm_wiki/loop/brains/README.md`
+6. `llm_wiki/loop/RUNBOOK.md`
+7. `llm_wiki/loop/queues/task_queue.md`
+8. `llm_wiki/loop/queues/draft_backlog.md`
+9. `llm_wiki/loop/reports/loop_report.md`
+10. 本文件
 
 如果状态、队列和报告矛盾，以 `loop_state.json` 为准，先修控制面，再派发执行者。
 
@@ -24,9 +28,10 @@
 ```text
 data/ 中一个本地来源
 -> 事实候选
--> 一张草稿原子事实知识卡
+-> scoped draft knowledge card
 -> 一份可读出处论证
--> 一份独立审计
+-> title similarity top3 + comparison provenance
+-> publication audit 或 fusion audit
 -> 一张已采纳知识卡
 ```
 
@@ -35,7 +40,7 @@ data/ 中一个本地来源
 - 枢纽页。
 - 聚类。
 - 主题覆盖。
-- 复杂元数据。
+- 低信息量标题改写卡。
 - 没有来源支撑的 agent 综合。
 
 只有当已有足够数量的 accepted cards，并且主控 agent 写出新的阶段决策后，才能讨论 hub、cluster 或 topic 层。当前阶段不要提前铺这些结构。
@@ -71,13 +76,14 @@ data/ 中一个本地来源
 
 ### 3.1 KB 生产链路
 
-生产链路只围绕原子事实卡。
+生产链路只围绕 scoped knowledge cards。
 
 ```text
-source_mining_worker
--> card_drafting_worker
--> card_audit_worker
--> card_adoption_worker
+production brain / source_mining_worker
+-> card_batch_drafting_worker
+-> card_similarity_gate_worker
+-> card_audit_worker 或 card_fusion_audit_worker
+-> card_adoption_worker 或 card_fusion_adoption_worker
 ```
 
 每个 worker 默认 `fork_context: false`，只接收：
@@ -337,7 +343,7 @@ python3 llm_wiki/loop/tools/inspect_delivery.py <iteration_id>
 - `fact_candidates.md` 是否存在。
 - 候选是否有具体 source evidence。
 - 是否至少有几个可继续 drafting 的候选，除非来源不足。
-- 是否出现主题页、hub、cluster、复杂元数据。
+- 是否出现主题页、hub、cluster、低信息量标题改写卡或 metadata 缺失。
 - `read_log.md` 是否记录越界读取。
 
 如果通过，写 decision 或更新报告，选择一个候选进入 drafting。不要一次性把所有候选都写成卡。

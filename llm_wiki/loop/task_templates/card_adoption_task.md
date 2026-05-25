@@ -39,7 +39,8 @@
 
 - 只有 `audit_result: pass` 的知识卡可以采纳。
 - 采纳后知识卡的 `status` 改为 `accepted`。
-- 不新增复杂元数据。
+- 保留并更新 `CARD_CONTRACT_V2.md` 固定 metadata。
+- `edited_time` 更新为采纳时刻，`edited_entity` 标记本次编辑实体。
 - 不把采纳动作写成枢纽页。
 - 出处论证和知识卡分文件保存，但彼此链接。
 - 如果知识卡含 `Footnotes`，它必须仍然是最后一个 section。
@@ -50,6 +51,7 @@
 - 知识卡落在 `llm_wiki/kb/cards/`。
 - 出处论证落在 `llm_wiki/kb/provenance/`。
 - 最小索引包含卡片标题、路径、状态和来源。
+- 采纳卡 metadata 完整。
 - `loop_status.md`、`loop_delivery.md`、`read_log.md` 都存在。
 
 ## 阻塞条件

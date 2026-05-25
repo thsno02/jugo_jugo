@@ -9,7 +9,6 @@
 - `task.md` 只能收窄权限，不能放宽 system prompt。
 - 主控 agent 负责选择角色、填任务包、派发、验收和状态迁移。
 - 执行者负责完成窄任务，并把状态、读写和交付写回磁盘。
-- V2 中 brain-agent 之间通过 `llm_wiki/loop/brains/` mailbox 通信；普通 task worker 仍只读当前 task。
 
 ## 组合方式
 
@@ -35,8 +34,6 @@ runtime inputs = README + loop_state.json + loop_manifest.json + task_queue.md +
 - `card_drafting_worker.md`：知识卡草稿执行者。
 - `card_batch_drafting_worker.md`：批量知识卡草稿执行者。
 - `card_similarity_gate_worker.md`：知识卡相似门执行者。
-- `card_fusion_audit_worker.md`：融合或 provenance 增量审计执行者。
-- `card_fusion_adoption_worker.md`：融合审计通过后的 A 卡 provenance 链接执行者。
 - `card_audit_worker.md`：知识卡审计执行者。
 - `card_batch_audit_worker.md`：批量知识卡审计执行者。
 - `card_adoption_worker.md`：知识卡采纳执行者。

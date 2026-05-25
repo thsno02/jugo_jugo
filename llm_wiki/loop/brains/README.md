@@ -1,6 +1,6 @@
 # Brain mailbox protocol
 
-`status`: `experimental`
+`status`: `minimal verified control-plane primitive`
 
 本目录是一个最小 brain-agent team control plane。它不假设 Codex 已经提供完整 agent team runtime，而是在文件系统上提供可恢复的 mailbox、route、claim、complete 和 wake 标记。
 
@@ -33,8 +33,8 @@ brains/<brain>/
 
 - `audit`: 产生审计请求。
 - `production`: 响应 revision / draft / production 请求。
-- `similarity`: 后续负责 title similarity top3 和 comparison。
-- `ops`: 后续负责 routing、lifecycle registry 和 push window。
+- `similarity`: 负责 title similarity top3 和 comparison provenance。
+- `ops`: 负责 routing、lifecycle registry、wake marker 和 push window。
 
 ## Message 状态
 
@@ -85,3 +85,4 @@ llm_wiki/loop/hooks/brain-mailbox-hook.sh
 - 这是最小实验，不是完整 scheduler。
 - `brainctl hook` 只写 wake marker；真正 spawn/resume 仍由 main-agent 或未来 ops brain 完成。
 - brain 之间不直接 spawn 对方 child worker。
+- 文件层面的 A brain -> B brain request -> B wake marker -> claim/complete/reply 已通过 smoke test；真实自动唤醒 Codex sub-agent 仍未验证。

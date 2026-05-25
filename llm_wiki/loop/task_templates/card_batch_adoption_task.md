@@ -41,6 +41,7 @@
 - 每张采纳卡落在 `llm_wiki/kb/cards/`。
 - 每份 provenance 落在 `llm_wiki/kb/provenance/`。
 - 最小索引包含卡片标题、路径、状态和来源。
+- 每张采纳卡保留并更新 `CARD_CONTRACT_V2.md` 固定 metadata。
 - 冲突或非 pass 卡被清楚记录，未静默覆盖。
 - `loop_status.md`、`loop_delivery.md`、`read_log.md` 都存在。
 

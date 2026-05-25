@@ -11,12 +11,16 @@
 当前常驻角色：
 
 - `main_agent`
+- `ops_brain`
 
 可选常驻角色：
 
 - `monitor`
+- `production_brain`
+- `similarity_brain`
+- `audit_brain`
 
-常驻角色不能直接生产知识卡。
+常驻 brain 可以保留 lane 判断，但跨 brain 请求必须通过 mailbox。main-agent 不能直接生产知识卡。
 
 ### 短期驻留
 
@@ -41,9 +45,11 @@
 
 ## 为什么大多数执行者阅后即焚
 
-原子事实卡需要强 provenance。执行者保留太多历史上下文，反而容易把旧判断、主题结构和父聊天内容混进新卡。
+scoped knowledge cards 仍然需要强 provenance。普通执行者保留太多历史上下文，反而容易把旧判断、主题结构和父聊天内容混进新卡。
 
 阅后即焚让每张卡都重新从任务包和来源证据出发。
+
+brain-agent 的长期上下文只用于 lane 控制、队列判断和流程记忆，不替代具体 task worker 的来源边界。
 
 ## 生命周期记录
 

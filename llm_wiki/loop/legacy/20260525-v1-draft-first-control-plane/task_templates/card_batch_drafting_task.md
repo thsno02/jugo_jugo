@@ -7,7 +7,7 @@
 
 ## 目标
 
-把任务包列出的多个事实候选批量写成 scoped draft knowledge cards。每个候选最多一张卡；每张卡必须有 provenance。
+把任务包列出的多个事实候选批量写成 atomic draft cards。每个候选最多一张卡；每张卡必须有 provenance。
 
 ## 允许输入
 
@@ -36,10 +36,8 @@
 
 ## 知识卡要求
 
-- 每张卡只表达一个主要知识范围。
+- 每张卡只表达一个主要事实。
 - 标题短，正文可读，不像中间状态。
-- 正文必须有知识含量，不能只是标题 restatement 或 paraphrase。
-- 每张卡必须包含 `CARD_CONTRACT_V2.md` 的固定 metadata。
 - 不生成 hub、cluster 或 coverage 文档。
 - `References` 必须放在 `Footnotes` 前。
 - `Footnotes` 必须是最后一个 section。
@@ -60,8 +58,7 @@
 - `artifacts/batch_manifest.md` 存在，并列出每个候选的结果。
 - 每张 drafted 卡都有对应 provenance。
 - 所有 drafted 卡都是 `status: draft`。
-- metadata 完整，`edited_entity` 区分 `llm` / `human` / `llm+human`。
-- 每张 drafted 卡的正文都有可读知识信息。
+- 没有新增复杂元数据。
 - `loop_status.md`、`loop_delivery.md`、`read_log.md` 都存在。
 
 ## 阻塞条件

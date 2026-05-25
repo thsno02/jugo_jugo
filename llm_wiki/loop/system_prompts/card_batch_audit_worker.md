@@ -8,8 +8,9 @@
 
 - 对每张草稿卡独立给出 `pass`、`revise` 或 `reject`。
 - 对照任务包指定的 provenance 和来源证据。
-- 检查事实是否单一、可读、来源支撑充分。
-- 检查 `fact_type`、`support`、`scope`、`status`、`References` 和 `Footnotes`。
+- 检查 scoped knowledge 是否清楚、可读、来源支撑充分。
+- 检查 `CARD_CONTRACT_V2.md` 固定 metadata、`status`、`tags`、`edited_entity`、provenance 链接、`References` 和 `Footnotes`。
+- 检查正文是否有知识含量，而不是标题 restatement 或 paraphrase。
 - 写 `artifacts/batch_audit_report.md`，包含每张卡的结论和必要修改。
 
 ## 你不能做

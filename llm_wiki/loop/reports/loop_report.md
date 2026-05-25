@@ -2,21 +2,21 @@
 
 ## 为什么存在（why_this_loop）
 
-这个循环存在的原因是：LLM Wiki 的知识库不能从主题骨架或枢纽页开始，而要从可以被来源支撑的原子事实知识卡开始。
+这个循环存在的原因是：LLM Wiki 的知识库不能从主题骨架或枢纽页开始，而要从可以被来源支撑的 scoped knowledge cards 开始。
 
 当前不追求覆盖率，也不追求结构完整。当前要降低的不确定性是：能否稳定地从本地来源中抽出事实候选，并经过出处论证和审计，沉淀为可读的 zet 风格知识卡。
 
 ## 当前决策（current_decision）
 
-当前状态：已有 15 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选并已全部完成 drafting、audit 和 adoption。第二轮 source mining 已采纳候选 3、候选 6 和候选 12。
+当前状态：已有 15 张 V1 知识卡采纳到 KB。V2 设计已开始接管控制面：旧版 draft-first 控制面已归档到 `legacy/20260525-v1-draft-first-control-plane/`，当前 primary object 改为 scoped knowledge card。
 
-当前决策：接受用户指出的吞吐问题，停止“写一张、审一张、采纳一张”的单卡串行节奏，切换到 Atomic Draft First：先把已挖掘或 exhausted 来源批量转成 atomic draft cards，再通过相似门判断新卡、融合、重复和 provenance 增量，最后批量 audit/publication。第二轮候选 11 已登记到 draft backlog，audit 后置到 publication 批次。
+当前决策：切换到 V2 brain-mailbox loop。production brain 负责 material -> scoped draft card，similarity brain 负责 Jieba/Jaccard title top3 与三问 comparison provenance，audit brain 负责 publication / fusion audit，ops brain 负责 mailbox、queue 和 wake marker。similarity 是新版流程的一等环节。
 
 ## 过程轨迹（process_trace）
 
 - 2026-05-25：创建循环控制面初版。
 - 2026-05-25：明确主控 agent 是决策者，执行者只做有界任务。
-- 2026-05-25：把当前阶段非目标固定为枢纽页、聚类、主题覆盖和复杂元数据。
+- 2026-05-25：把当前阶段非目标固定为枢纽页、聚类、主题覆盖、低信息量标题改写卡和没有来源支撑的 agent 综合。
 - 2026-05-25：记录第 0 轮 bootstrap 交付，保证循环状态可从磁盘恢复。
 - 2026-05-25：独立执行者审计通过控制面，并指出 4 个最小修复点；已修复读写顺序、选源准则、恢复准则和审计写入范围。
 - 2026-05-25：补充预定义 system prompt 层，把稳定角色边界从主控 agent 的临场判断中移出。
@@ -147,13 +147,15 @@
 - 2026-05-25：第二轮候选 11 drafting worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 - 2026-05-25：根据用户对 7 小时仅 15 张 accepted card 的吞吐质疑，记录流程偏差并切换到 `DRAFT_FIRST_PIPELINE.md`：batch atomic draft 优先，相似门前置到 publication 之前，审计与采纳后置批处理。candidate 11 不立即单卡 audit，而是登记到 `queues/draft_backlog.md`。
 - 2026-05-25：创建首个 batch drafting 任务包 `iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a`，处理 `karpathy-x-launch-post` 候选 2、4、5、8、9、10；任务包通过 `validate_scope.py`，dispatch payload 已渲染。
+- 2026-05-25：完成最小 brain mailbox smoke：文件层面的 A brain 写 outbox、hook route、B brain wake marker、claim/complete、reply 和 reconcile 闭环可行；真实自动 spawn/resume Codex sub-agent 仍未验证。
+- 2026-05-25：根据用户新的设计判断，把 V1 draft-first 控制面归档到 `legacy/20260525-v1-draft-first-control-plane/`，写入 `LOOP_DESIGN_V2.md` 和 `CARD_CONTRACT_V2.md`；新版使用 brain mailbox、scoped knowledge card、Jieba/Jaccard title similarity top3 和 comparison provenance 三问。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：24。
 - 草稿知识卡数量：16 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - draft backlog 已登记数量：1。
-- 当前生产流程：Atomic Draft First，首批 batch size 限制在 6 个候选以内。
+- 当前生产流程：V2 brain-mailbox material draft first，similarity top3 和 comparison provenance 是 publication / fusion 前的必经分流。
 - 审计通过数量：15。
 - 审计 revise 数量：1。
 - 已采纳知识卡数量：15。
@@ -492,7 +494,11 @@
 - [第二轮候选 11 草稿卡](../iterations/iteration_20260525_0063_card_drafting_wiki_qa_scale/artifacts/draft_card.md)
 - [第二轮候选 11 provenance](../iterations/iteration_20260525_0063_card_drafting_wiki_qa_scale/artifacts/provenance.md)
 - [第二轮候选 11 drafting 可审计决策](../decisions/20260525-0957-card-drafting-candidate-11-ready-for-audit.md)
-- [Atomic Draft First 流程](../DRAFT_FIRST_PIPELINE.md)
+- [Loop Design V2](../LOOP_DESIGN_V2.md)
+- [Card Contract V2](../CARD_CONTRACT_V2.md)
+- [Loop Design V2 采纳决策](../decisions/20260525-1551-adopt-loop-design-v2.md)
+- [Material Draft First Pipeline V2](../DRAFT_FIRST_PIPELINE.md)
+- [Brain mailbox smoke](../brains/smoke_tests/20260525_brain_mailbox_smoke.md)
 - [草稿知识卡 backlog](../queues/draft_backlog.md)
 - [Atomic Draft First 切换决策](../decisions/20260525-1035-switch-to-atomic-draft-first.md)
 - [首个 batch drafting 任务包](../iterations/iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a/task.md)

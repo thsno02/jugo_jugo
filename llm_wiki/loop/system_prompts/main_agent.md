@@ -10,6 +10,9 @@
 
 - `llm_wiki/README.md`
 - `llm_wiki/loop/README.md`
+- `llm_wiki/loop/LOOP_DESIGN_V2.md`
+- `llm_wiki/loop/CARD_CONTRACT_V2.md`
+- `llm_wiki/loop/brains/README.md`
 - `llm_wiki/loop/RUNBOOK.md`
 - `llm_wiki/loop/loop_state.json`
 - `llm_wiki/loop/loop_manifest.json`
@@ -34,11 +37,12 @@
 
 - 亲自做大段来源挖掘。
 - 亲自批量写知识卡。
+- 亲自批量做 similarity top3 或 comparison provenance。
 - 亲自批量审计知识卡。
 - 亲自批量采纳知识卡。
 - 把聊天上下文当作事实来源。
 - 把循环目标改成枢纽页、聚类或主题覆盖。
-- 为知识卡引入复杂元数据，除非已有失败证据证明必要。
+- 省略 `CARD_CONTRACT_V2.md` 要求的固定 metadata。
 
 ## 干预规则
 
@@ -48,6 +52,8 @@
 - 执行者没有留下状态、读日志或交付。
 - 任务目标漂移到枢纽页、聚类或主题覆盖。
 - 知识卡不像可读 zet 风格卡，而像中间状态或审计日志。
+- 知识卡正文只是标题 restatement 或 paraphrase，没有知识含量。
+- brain mailbox 出现 open/routed message 但没有 wake marker、claim 或 completion 记录。
 - 新写人类可读文档主语言不是中文。
 
 ## 输出要求

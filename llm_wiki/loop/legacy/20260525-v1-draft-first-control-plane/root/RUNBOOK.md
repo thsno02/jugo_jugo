@@ -8,9 +8,6 @@
 
 - `llm_wiki/README.md`
 - `llm_wiki/loop/README.md`
-- `llm_wiki/loop/LOOP_DESIGN_V2.md`
-- `llm_wiki/loop/CARD_CONTRACT_V2.md`
-- `llm_wiki/loop/brains/README.md`
 - `llm_wiki/loop/PRELAUNCH_REQUIREMENTS.md`
 - `llm_wiki/loop/loop_state.json`
 - `llm_wiki/loop/loop_manifest.json`
@@ -38,33 +35,18 @@
 
 如果当前任务是长程恢复或无人值守继续执行，先对照 `plans/main_agent_long_horizon_execution_plan.md`，确认本轮动作属于生产、演化、反思或运维中的哪一条链路。不要在同一轮里混改生产产物和大组件设计。
 
-## Brain-Mailbox 模式
+## Atomic Draft First 模式
 
-当 `loop_state.json.loop_shape` 指向 `brain_mailbox_scoped_knowledge_loop` 时，主控 agent 优先使用 `LOOP_DESIGN_V2.md`、`CARD_CONTRACT_V2.md` 和 `brains/README.md`：
+当 `loop_state.json.status` 是 `ATOMIC_DRAFT_FIRST_READY` 或 `ATOMIC_DRAFT_BATCH_IN_PROGRESS` 时，主控 agent 优先使用 `DRAFT_FIRST_PIPELINE.md`：
 
-1. main-agent 或 ops brain 只创建 mailbox message / task packet，不直接做 production。
-2. production brain 把 material / exhausted source 变成 scoped draft cards 和 draft provenance。
-3. similarity brain 对 draft title 和 accepted-card index 做 Jieba/Jaccard top3。
-4. similarity brain 只读取 top3 A 卡，写 comparison provenance 三问。
-5. `new_card` 进入 publication audit。
-6. `merge_candidate` 和 `provenance_delta` 先通过 `card_fusion_audit_worker`，再由 fusion adoption 把 comparison provenance 链接回 A 卡 provenance。
-7. `duplicate_skip` 保留 comparison provenance，不进入公开 KB。
-8. audit/publication 按 batch 推进；单卡 revise/reject/read-boundary failure 只拆出该卡，不阻塞整批。
+1. 对一个已完成 source mining 的来源，批量生成 atomic draft cards 和 provenance。
+2. 把草稿登记到 `queues/draft_backlog.md`。
+3. 用 `card_similarity_gate_worker` 判断 `new_atomic_card`、`merge_candidate`、`provenance_delta`、`duplicate_skip` 或 `revise_before_gate`。
+4. `new_atomic_card` 可以跳过融合审计，但最终公开发布前仍需 audit。
+5. `merge_candidate` 和 `provenance_delta` 必须先审计融合或增量 provenance。
+6. audit/publication 按 batch 推进；单卡 revise/reject/read-boundary failure 只拆出该卡，不阻塞整批。
 
-这个模式替代“写一张、审一张、采纳一张”的默认节奏。它仍然禁止无 provenance 草稿、低信息量卡、无审计公开发布和把 draft 当 accepted。
-
-## Mailbox 调度
-
-brain 之间的请求必须落到 `llm_wiki/loop/brains/<brain>/outbox.jsonl`，再由 hook / `brainctl route` 投递到目标 inbox 和 queue。
-
-主控 agent 或 ops brain 唤醒目标 brain 前，先检查：
-
-- 目标 `wake_required.json` 是否为 `true`。
-- 目标 `queue.jsonl` 是否有 `open` 或 `routed` message。
-- message 是否有明确 `type`、`from`、`to`、`payload` 和期望 artifact。
-- 目标 brain 是否只能写自己的 lane artifact 或任务包指定写入范围。
-
-被唤醒的 brain 必须先 `claim`，结束时 `complete` 或 `block`。跨 brain 回复仍然走 outbox。
+这个模式替代“写一张、审一张、采纳一张”的默认节奏。它仍然禁止无 provenance 草稿、无审计公开发布和把 draft 当 accepted。
 
 ## 提示词组合方式（prompt）
 
@@ -106,11 +88,8 @@ task input = iterations/<iteration_id>/task.md
 
 - 从一个本地来源挖掘事实候选。
 - 把一个事实候选写成一张草稿知识卡和一份出处论证。
-- 把一个已挖掘或 exhausted 来源的多个候选批量写成 scoped draft cards 和 provenance。
-- 对一组草稿卡做 title similarity top3。
-- 为 draft/A 卡组合写 comparison provenance 三问。
-- 审计 draft card 与 accepted A 卡之间的融合或 provenance 增量决策。
-- 在融合审计通过后，把 comparison provenance 链接回 A 卡 provenance。
+- 把一个已挖掘来源的多个候选批量写成 atomic draft cards 和 provenance。
+- 对一组草稿卡做相似门判断。
 - 审计一张草稿知识卡。
 - 批量审计多张草稿知识卡。
 - 采纳一张审计通过的知识卡。
@@ -124,25 +103,21 @@ task input = iterations/<iteration_id>/task.md
 - 做聚类。
 - 做主题覆盖。
 - 批量生成没有出处论证的知识卡。
-- 生成只有标题改写、缺乏知识含量的卡。
-- 把 similarity top3 或 comparison provenance 当作事实审计结论。
+- 把相似门结论当作事实审计结论。
 - 把 draft backlog 当作公开 KB。
-- 在没有融合审计通过时修改或链接 accepted A 卡。
 - 把 agent 的综合判断当作事实来源。
-- 省略 `CARD_CONTRACT_V2.md` 要求的固定 metadata。
+- 为知识卡引入复杂元数据，除非循环失败证据证明必要。
 - 让执行者读取父聊天上下文或旧审计报告来补全任务。
 
 ## 干预条件
 
 出现以下情况时，主控 agent 停止继续生产知识卡，先修复流程：
 
-- 任务目标从 scoped knowledge card 漂移到枢纽页、主题或覆盖率。
+- 任务目标从原子事实卡漂移到枢纽页、主题或覆盖率。
 - 执行者没有写 `loop_status.md` 或 `loop_delivery.md`。
 - 执行者读取了允许输入之外的材料却没有记录原因。
 - 执行者写入了允许写入范围之外的文件。
 - 知识卡变成中间状态、审计日志或流程记录，而不是可读 zet 风格卡。
-- 知识卡正文只是标题 restatement 或 paraphrase，没有足够知识含量。
-- 知识卡缺少 `created_time`、`edited_time`、`edited_entity`、`tags` 或 provenance 链接。
 - `References` 没有放在 `Footnotes` 之前，或 `Footnotes` 不是最后一个 section。
 - 新写的人类可读文档主语言不是中文。
 

@@ -16,10 +16,10 @@
 - 不读取 `legacy/`、旧审计报告、父 agent 总结或其它执行者产物，除非任务包明确允许。
 - 只能写入 `task.md` 明确列出的允许写入范围。
 - 不运行 git 操作，除非任务包明确要求。
-- 普通 task worker 不创建新的 sub-agent。brain-agent 如需下游执行者，必须通过 mailbox 或任务包约定调度，不得隐式扩权。
+- 不创建新的 sub-agent。
 - 不做枢纽页、聚类或主题覆盖。
 - 不把 agent 的综合判断写成事实来源。
-- 知识卡必须遵守 `CARD_CONTRACT_V2.md` 的固定 metadata。
+- 不引入复杂元数据，除非任务包明确要求技能演化实验。
 - 结束前必须写 `loop_status.md`、`loop_delivery.md` 和 `read_log.md`。
 
 执行者启动时可以先创建最小的 `loop_status.md` 和空的 `read_log.md`。如果随后需要读取允许输入之外的文件，必须先把路径、原因和用途写入 `read_log.md`，再使用该文件中的信息。
@@ -75,34 +75,31 @@ next_suggestion:
 
 ### `card_drafting_worker`
 
-把一个事实候选写成一张 scoped draft knowledge card 和一份出处论证。
+把一个事实候选写成一张草稿知识卡和一份出处论证。
 
 可以做：
 
 - 阅读任务包指定的事实候选和来源片段。
-- 写一张 zet 风格可读知识卡，正文必须有知识含量。
+- 写一张 zet 风格可读知识卡。
 - 写整理后的出处论证。
 - 确保 `References` 在 `Footnotes` 前，且 `Footnotes` 是最后一个 section。
-- 写入 `CARD_CONTRACT_V2.md` 要求的 metadata。
 
 不可以做：
 
 - 采纳知识卡。
 - 扩写成主题页。
 - 加入未在来源中支撑的背景知识。
-- 只把标题 restate 或 paraphrase 成正文。
 
 ### `card_batch_drafting_worker`
 
-把任务包指定的多个事实候选写成一组互相独立的 scoped draft cards 和 provenance。
+把任务包指定的多个事实候选写成一组互相独立的草稿知识卡和 provenance。
 
 可以做：
 
 - 阅读任务包指定的候选块和来源片段。
-- 为每个清楚候选写一张 scoped draft card。
+- 为每个清楚候选写一张 atomic draft card。
 - 为每张 drafted card 写 provenance。
 - 写 `batch_manifest.md` 记录 drafted、skipped 或 blocked。
-- 写入 `CARD_CONTRACT_V2.md` 要求的 metadata。
 
 不可以做：
 
@@ -111,25 +108,21 @@ next_suggestion:
 - 读取 KB 卡片来补充事实。
 - 判断是否融合既有卡。
 - 把多个候选合成主题页。
-- 生成只有标题改写、缺乏知识含量的低信息卡。
 
 ### `card_similarity_gate_worker`
 
-先用 title similarity top3 列出可能相似的现有卡，再阅读 top candidates 并形成三问 provenance。
+判断草稿卡与现有卡之间的知识身份关系。
 
 可以做：
 
 - 读取任务包指定的草稿卡、provenance、KB 索引和相似卡路径。
-- 用 Jieba title tokens 和 Jaccard set similarity 产出 top3。
-- 对 draft card / A 卡组合回答：为什么有共同点、不同在哪里、下一步操作依据是什么。
-- 输出 `new_card`、`merge_candidate`、`provenance_delta`、`duplicate_skip` 或 `revise_before_gate`。
-- 写 comparison provenance。
+- 输出 `new_atomic_card`、`merge_candidate`、`provenance_delta`、`duplicate_skip` 或 `revise_before_gate`。
+- 说明最相似卡片和判断理由。
 
 不可以做：
 
 - 做事实审计。
 - 采纳知识卡。
-- 修改 accepted KB 卡或 accepted provenance。
 - 读取未列出的 KB 卡片。
 - 为草稿卡寻找新来源。
 
@@ -139,9 +132,8 @@ next_suggestion:
 
 可以做：
 
-- 检查 scoped knowledge 是否清楚、可读、来源支撑充分。
-- 检查固定 metadata、scope、status、tags、edited_entity 和 provenance 链接是否合理。
-- 检查正文是否具有知识含量，而不是标题改写。
+- 检查事实是否单一、可读、来源支撑充分。
+- 检查 `fact_type`、`scope`、`status` 是否合理。
 - 检查出处论证是否足以 justify 这张卡。
 - 写审计结论和返工建议。
 
@@ -158,29 +150,12 @@ next_suggestion:
 
 - 对每张草稿卡独立给出 `pass`、`revise` 或 `reject`。
 - 对照任务包指定的 provenance 和来源证据。
-- 检查 `CARD_CONTRACT_V2.md` 和知识含量要求。
 - 写批量审计报告。
 
 不可以做：
 
 - 直接采纳知识卡。
 - 把一张卡的来源证据挪给另一张卡。
-- 根据父聊天上下文补足事实。
-
-### `card_fusion_audit_worker`
-
-审计 draft card 与 accepted A 卡之间的融合或 provenance 增量决策。
-
-可以做：
-
-- 检查 comparison provenance 是否回答三问。
-- 判断 `merge_candidate` 或 `provenance_delta` 是否被证据支撑。
-- 判断拟写入 A 卡 provenance 的链接或增量是否准确、最小、可追踪。
-
-不可以做：
-
-- 直接修改 accepted A 卡或 A 卡 provenance。
-- 直接采纳 draft card。
 - 根据父聊天上下文补足事实。
 
 ### `card_adoption_worker`
@@ -215,22 +190,6 @@ next_suggestion:
 - 采纳没有审计证据的知识卡。
 - 静默覆盖已有不同内容。
 - 创建枢纽页、聚类页或主题覆盖页。
-
-### `card_fusion_adoption_worker`
-
-在融合审计通过后，把 comparison provenance 或 provenance delta 链接回 accepted A 卡 provenance。
-
-可以做：
-
-- 只按 fusion audit 批准的链接或增量更新 A 卡 provenance。
-- 在任务包明确授权且 fusion audit 批准时，对 A 卡正文做最小改动。
-- 写清楚 comparison provenance 和 fusion audit report 链接。
-
-不可以做：
-
-- 采纳没有融合审计通过的 draft card。
-- 静默覆盖 accepted A 卡或 A 卡 provenance。
-- 大幅重写 A 卡。
 
 ### `skill_evolution_worker`
 

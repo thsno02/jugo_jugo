@@ -11,12 +11,19 @@
 
 ## 进行中（in_progress）
 
+### `task_20260525_v2_control_plane_alignment`
+
+- `role`: `main_agent`
+- `action`: 完成 V2 控制面一致性检查，确认 legacy snapshot、`LOOP_DESIGN_V2.md`、`CARD_CONTRACT_V2.md`、brain mailbox、similarity top3 和 prompt/template 边界一致。
+- `expected_output`: 更新后的 loop docs、manifest、state、queue 和报告。
+- `note`: similarity 是新版流程内容；旧版 Atomic Draft First 只保留在 `legacy/`。
+
 ### `task_20260525_0066_card_batch_drafting_karpathy_launch_remaining_a`
 
 - `role`: `card_batch_drafting_worker`
-- `action`: 批量处理 `karpathy-x-launch-post` 剩余高价值候选 2、4、5、8、9、10，生成 atomic draft cards 和 provenance。
+- `action`: 待 V2 对齐后，批量处理 `karpathy-x-launch-post` 剩余高价值候选 2、4、5、8、9、10，生成 scoped draft cards 和 provenance。
 - `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a/artifacts/batch_manifest.md`
-- `note`: 先生成 draft，不做融合、审计或采纳；candidate 11 已登记到 draft backlog，后续统一走相似门和 audit/publication。
+- `note`: 先生成 draft，不读取 KB；candidate 11 已登记到 draft backlog，后续统一走 similarity top3、comparison provenance 和 audit/publication。
 
 ## 待办（pending）
 
@@ -29,7 +36,7 @@
 - `role`: `card_audit_worker`
 - `action`: 独立审计第二轮候选 11 草稿卡和 provenance。
 - `expected_output`: 后续 publication audit batch 或单卡 audit iteration。
-- `note`: 按 Atomic Draft First 流程后置；不再作为当前立即 pending 项。
+- `note`: 按 V2 流程后置；先补 metadata、similarity top3 和 comparison provenance，不再作为当前立即 pending 项。
 
 ## 已阻塞（blocked）
 
