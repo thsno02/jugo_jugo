@@ -10,7 +10,7 @@
 
 当前状态：已有 11 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1、5 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第一轮 source mining 的 12 个候选已经全部完成 drafting、audit 和 adoption，KB 现在有 12 张 accepted atomic fact cards。第二轮候选 3 drafting 已完成，草稿卡 `idea file 分享想法` 可进入 audit。当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第一轮 source mining 的 12 个候选已经全部完成 drafting、audit 和 adoption，KB 现在有 12 张 accepted atomic fact cards。第二轮候选 3 drafting 已完成，草稿卡 `idea file 分享想法` 可进入 audit；audit 任务包已创建并通过 `validate_scope.py`，下一步派发 worker。当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -123,6 +123,7 @@
 - 2026-05-25：第二轮 source mining worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，产出 12 个候选。递归 `rg` 自检意外读取同 iteration `dispatch_request.json`，未用于事实抽取，暂记为过程噪声。
 - 2026-05-25：选择第二轮候选 3 进入 drafting，原因是它聚焦发布帖对 `idea file` 的表述，证据集中在 `data/raw/webpage/karpathy-x-launch-post/raw.json` 的 `$.tweet.text`，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0052_card_drafting_idea_file_agent_builds`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：第二轮候选 3 drafting worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。`read_log.md` 记录精确块读取，无相邻候选噪声。
+- 2026-05-25：创建 `iteration_20260525_0053_card_audit_idea_file_agent_builds`，审计输入限定为候选 3 草稿卡、provenance、候选 3 字段和 `data/raw/webpage/karpathy-x-launch-post/raw.json` 的 `$.tweet.text`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 
 ## 关键指标（key_metrics）
 
@@ -407,6 +408,8 @@
 - [第二轮候选 3 草稿卡](../iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/artifacts/draft_card.md)
 - [第二轮候选 3 provenance](../iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/artifacts/provenance.md)
 - [第二轮候选 3 drafting 可审计决策](../decisions/20260525-0826-card-drafting-candidate-3-ready-for-audit.md)
+- [第二轮候选 3 audit 任务包](../iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/task.md)
+- [第二轮候选 3 audit dispatch](../iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

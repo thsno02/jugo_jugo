@@ -11,16 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待办（pending）
-
 ### `task_20260525_0054_card_audit_candidate_3`
 
 - `role`: `card_audit_worker`
 - `action`: 审计第二轮候选 3 草稿卡 `idea file 分享想法` 是否被 `raw.json` 的 `$.tweet.text` 支撑。
 - `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/artifacts/audit_report.md`
 - `note`: 只审计候选 3；不使用父聊天上下文。
+
+## 待办（pending）
+
+暂无。
 
 ## 已阻塞（blocked）
 
