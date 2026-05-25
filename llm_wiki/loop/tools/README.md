@@ -11,6 +11,7 @@
 - `validate_scope.py`：检查任务包是否包含必要边界。
 - `inspect_delivery.py`：检查执行者是否留下必要交付。
 - `cli_capability_probe.py`：记录 Codex / Claude CLI 的本地能力线索。
+- `brainctl.py`：实验性的 brain mailbox / queue controller，负责 message send、route、hook wake、claim、complete 和 status。
 
 ## 原则
 
