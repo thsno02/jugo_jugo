@@ -11,16 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待办（pending）
-
 ### `task_20260525_0051_card_adoption_candidate_6`
 
 - `role`: `card_adoption_worker`
 - `action`: 采纳候选 6 审计通过的草稿卡，保持“该来源列举应用场景”的限定，不写成场景报告或完整分类。
 - `expected_output`: `llm_wiki/kb/cards/llm-wiki-listed-use-cases.md`, `llm_wiki/kb/provenance/llm-wiki-listed-use-cases.md`
 - `note`: 只使用候选 6 草稿卡、provenance 和 audit pass 报告。
+
+## 待办（pending）
+
+暂无。
 
 ## 已阻塞（blocked）
 
