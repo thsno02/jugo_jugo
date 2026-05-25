@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T08:34:50+08:00",
-  "status": "CARD_DRAFTING_REVISION_REQUIRED",
+  "updated_at": "2026-05-25T08:36:49+08:00",
+  "status": "CARD_DRAFTING_REVISION_DISPATCH_READY",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
   "current_phase": "card_drafting_revision",
-  "current_iteration": "iteration_20260525_0053_card_audit_idea_file_agent_builds",
+  "current_iteration": "iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1",
   "last_completed_iteration": "iteration_20260525_0053_card_audit_idea_file_agent_builds",
-  "current_task_id": null,
+  "current_task_id": "task_20260525_0055_card_drafting_candidate_3_revision",
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "创建第二轮候选 3 drafting revision 任务包，最小修订 statement 中未被 $.tweet.text 直接支撑的归属语。",
+  "next_action": "派发第二轮候选 3 card_drafting_worker revision；等待 loop_delivery.md 后 inspect_delivery。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",

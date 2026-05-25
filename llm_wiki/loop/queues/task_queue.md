@@ -11,16 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待办（pending）
-
 ### `task_20260525_0055_card_drafting_candidate_3_revision`
 
 - `role`: `card_drafting_worker`
 - `action`: 按 audit revise 要求最小修订候选 3 草稿卡和 provenance，把未由 `$.tweet.text` 直接证明的“Karpathy 的发布帖”归属语改为“这条发布帖”或“该来源帖文”。
 - `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/artifacts/draft_card.md`, `llm_wiki/loop/iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/artifacts/provenance.md`
 - `note`: 不扩大来源证据，不加入作者元数据，不读取已采纳 KB 卡片补充事实。
+
+## 待办（pending）
+
+暂无。
 
 ## 已阻塞（blocked）
 
