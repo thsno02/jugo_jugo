@@ -10,7 +10,7 @@
 
 当前状态：已有 12 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选并已全部完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 3 revision 已通过 audit r1：statement 已收窄为“这条发布帖”，没有扩大来源字段。下一步创建 adoption worker 任务包，采纳时必须保留 `known_fact` 与当前 scope；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 3 revision 已通过 audit r1：statement 已收窄为“这条发布帖”，没有扩大来源字段。adoption worker 任务包已创建并通过 `validate_scope.py`，下一步派发 worker；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -129,6 +129,7 @@
 - 2026-05-25：第二轮候选 3 revision worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。修订版 statement 已改为“这条发布帖”，未扩大来源证据。
 - 2026-05-25：创建 `iteration_20260525_0055_card_audit_idea_file_agent_builds_r1`，审计输入限定为修订版草稿卡、provenance、候选 3 字段、prior audit report 和 `raw.json` 的 `$.tweet.text`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：第二轮候选 3 audit r1 worker 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。上一轮归属语问题已关闭，下一步进入 adoption。
+- 2026-05-25：创建 `iteration_20260525_0056_card_adoption_idea_file_agent_builds`，指定 `card_id` 为 `idea-file-share-the-idea`，目标 KB 路径不存在，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 
 ## 关键指标（key_metrics）
 
@@ -428,6 +429,8 @@
 - [第二轮候选 3 audit r1 dispatch](../iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/dispatch_request.json)
 - [第二轮候选 3 audit r1 报告](../iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/artifacts/audit_report.md)
 - [第二轮候选 3 audit r1 pass 决策](../decisions/20260525-0849-card-audit-pass-candidate-3-r1.md)
+- [第二轮候选 3 adoption 任务包](../iterations/iteration_20260525_0056_card_adoption_idea_file_agent_builds/task.md)
+- [第二轮候选 3 adoption dispatch](../iterations/iteration_20260525_0056_card_adoption_idea_file_agent_builds/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

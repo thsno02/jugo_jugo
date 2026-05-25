@@ -11,16 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待办（pending）
-
 ### `task_20260525_0057_card_adoption_candidate_3`
 
 - `role`: `card_adoption_worker`
 - `action`: 采纳第二轮候选 3 修订版知识卡；保留 `known_fact` 与当前 scope，不扩大为通用定义。
 - `expected_output`: `llm_wiki/kb/cards/idea-file-share-the-idea.md`, `llm_wiki/kb/provenance/idea-file-share-the-idea.md`
 - `note`: 只使用 audit pass 后的修订版 draft/provenance；不使用父聊天上下文。
+
+## 待办（pending）
+
+暂无。
 
 ## 已阻塞（blocked）
 
