@@ -11,22 +11,30 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0054_card_audit_candidate_3`
-
-- `role`: `card_audit_worker`
-- `action`: 审计第二轮候选 3 草稿卡 `idea file 分享想法` 是否被 `raw.json` 的 `$.tweet.text` 支撑。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/artifacts/audit_report.md`
-- `note`: 只审计候选 3；不使用父聊天上下文。
+暂无。
 
 ## 待办（pending）
 
-暂无。
+### `task_20260525_0055_card_drafting_candidate_3_revision`
+
+- `role`: `card_drafting_worker`
+- `action`: 按 audit revise 要求最小修订候选 3 草稿卡和 provenance，把未由 `$.tweet.text` 直接证明的“Karpathy 的发布帖”归属语改为“这条发布帖”或“该来源帖文”。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/artifacts/draft_card.md`, `llm_wiki/loop/iterations/iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1/artifacts/provenance.md`
+- `note`: 不扩大来源证据，不加入作者元数据，不读取已采纳 KB 卡片补充事实。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0054_card_audit_candidate_3`
+
+- `role`: `card_audit_worker`
+- `result`: `audit_result: revise`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/artifacts/audit_report.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0834-card-audit-revise-candidate-3.md`
 
 ### `task_20260525_0053_card_drafting_candidate_3`
 

@@ -1,0 +1,6 @@
+status: done
+task_id: task_20260525_0054_card_audit_candidate_3
+role: card_audit_worker
+audit_result: revise
+delivery: llm_wiki/loop/iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/loop_delivery.md
+artifact: llm_wiki/loop/iterations/iteration_20260525_0053_card_audit_idea_file_agent_builds/artifacts/audit_report.md
