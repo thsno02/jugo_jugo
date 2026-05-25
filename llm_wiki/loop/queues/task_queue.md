@@ -11,16 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待办（pending）
-
 ### `task_20260525_0056_card_audit_candidate_3_r1`
 
 - `role`: `card_audit_worker`
 - `action`: 复审第二轮候选 3 修订版草稿卡是否关闭 previous audit revise 的归属语问题。
 - `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/artifacts/audit_report.md`
 - `note`: 只审计修订版草稿卡；不使用父聊天上下文。
+
+## 待办（pending）
+
+暂无。
 
 ## 已阻塞（blocked）
 
