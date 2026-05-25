@@ -11,22 +11,30 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0050_card_audit_candidate_6`
-
-- `role`: `card_audit_worker`
-- `action`: 审计候选 6 草稿卡 `LLM Wiki 应用场景清单` 是否被 `raw.txt:17-23` 支撑，且没有扩写成场景报告、hub、cluster 或 topic coverage。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases/artifacts/audit_report.md`
-- `note`: 只审计候选 6；不使用父聊天上下文。
+暂无。
 
 ## 待办（pending）
 
-暂无。
+### `task_20260525_0051_card_adoption_candidate_6`
+
+- `role`: `card_adoption_worker`
+- `action`: 采纳候选 6 审计通过的草稿卡，保持“该来源列举应用场景”的限定，不写成场景报告或完整分类。
+- `expected_output`: `llm_wiki/kb/cards/llm-wiki-listed-use-cases.md`, `llm_wiki/kb/provenance/llm-wiki-listed-use-cases.md`
+- `note`: 只使用候选 6 草稿卡、provenance 和 audit pass 报告。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0050_card_audit_candidate_6`
+
+- `role`: `card_audit_worker`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases/artifacts/audit_report.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0803-card-audit-pass-candidate-6.md`
 
 ### `task_20260525_0049_drafting_boundary_validation_evidence_audit`
 

@@ -10,7 +10,7 @@
 
 当前状态：已有 11 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1、5 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 5 知识卡 `人提问，LLM 维护` 已采纳为 `llm-wiki-human-llm-role-division`。候选 6 drafting 已完成，草稿卡保持为“该来源列举了一组可能应用场景”这一清单型事实，没有扩写成场景报告。候选块读取边界的最小 prompt/template repair 已通过复审并被接受；候选 6 card audit 任务包已创建并通过 `validate_scope.py`，下一步派发 worker。当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源；候选 5 知识卡 `人提问，LLM 维护` 已采纳为 `llm-wiki-human-llm-role-division`。候选 6 drafting 已完成，草稿卡保持为“该来源列举了一组可能应用场景”这一清单型事实，没有扩写成场景报告。候选 6 card audit 已通过，下一步进入 adoption；采纳时必须保持“该来源列举”的限定。当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -116,12 +116,13 @@
 - 2026-05-25：创建 `iteration_20260525_0048_drafting_boundary_validation_evidence_audit`，任务包限定为 correction 交付、prior concern、更新后的修复报告和原修复任务/交付；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：validation evidence 复审返回 `audit_result: pass`；主控 agent 关闭该 one-shot evaluator，接受候选块读取边界修复，并恢复候选 6 card audit 链路。
 - 2026-05-25：创建 `iteration_20260525_0049_card_audit_llm_wiki_use_cases`，审计输入限定为候选 6 草稿卡、provenance、候选 6 字段和 `data/raw/gist_raw/karpathy-gist-llm-wiki/raw.txt:17-23`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：候选 6 card audit 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，下一步进入 adoption。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：12。
 - 草稿知识卡数量：12 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
-- 审计通过数量：11。
+- 审计通过数量：12。
 - 已采纳知识卡数量：11。
 - 因交付 marker 缺失导致的返工次数：1。
 - 因 adoption 模板未显式允许读取目标 KB 路径导致的非阻塞边界噪声：2。
@@ -383,6 +384,8 @@
 - [接受候选块读取边界修复决策](../decisions/20260525-0757-accept-drafting-boundary-repair.md)
 - [候选 6 audit 任务包](../iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases/task.md)
 - [候选 6 audit dispatch](../iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases/dispatch_request.json)
+- [候选 6 audit 报告](../iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases/artifacts/audit_report.md)
+- [候选 6 audit pass 决策](../decisions/20260525-0803-card-audit-pass-candidate-6.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
