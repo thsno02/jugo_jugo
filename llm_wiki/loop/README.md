@@ -6,12 +6,12 @@ This directory is now the empty active workspace for the next loop.
 
 The previous loop's active products were moved to:
 
-`llm_wiki/loop/legacy/20260525-closed-llm-wiki-loop-products/`
+`legacy/v2_llm_wiki_loop_20260525/`
 
 ## Recovery Rule
 
-Do not recover the current loop from `legacy/` by default. Legacy is historical
-evidence only.
+Do not recover the current loop from repository-root `legacy/` by default.
+Legacy is historical evidence only.
 
 A new loop should first define:
 

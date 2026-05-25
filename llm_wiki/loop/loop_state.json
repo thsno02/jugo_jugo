@@ -4,7 +4,7 @@
   "status": "NEW_LOOP_NOT_STARTED",
   "current_loop_id": null,
   "current_phase": "awaiting_new_loop_charter",
-  "previous_loop_archive": "llm_wiki/loop/legacy/20260525-closed-llm-wiki-loop-products",
+  "previous_loop_archive": "legacy/v2_llm_wiki_loop_20260525",
   "next_action": "Define the new loop charter, state schema, run layout, and audit placement before creating new production artifacts.",
   "human_checkpoint_required": true,
   "notes": [

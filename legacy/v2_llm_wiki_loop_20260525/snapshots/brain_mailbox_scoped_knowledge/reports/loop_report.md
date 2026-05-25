@@ -8,7 +8,7 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 15 张 V1 知识卡采纳到 KB。V2 设计已开始接管控制面：旧版 draft-first 控制面已归档到 `legacy/20260525-v1-draft-first-control-plane/`，当前 primary object 改为 scoped knowledge card。
+当前状态：已有 15 张 V1 知识卡采纳到 KB。V2 设计已开始接管控制面：旧版 draft-first 控制面已归档到 `legacy/v2_llm_wiki_loop_20260525/snapshots/draft_first_control_plane/`，当前 primary object 改为 scoped knowledge card。
 
 当前决策：切换到 V2 brain-mailbox loop。production brain 负责 material -> scoped draft card，similarity brain 负责 Jieba/Jaccard title top3 与三问 comparison provenance，audit brain 负责 publication / fusion audit，ops brain 负责 mailbox、queue 和 wake marker。similarity 是新版流程的一等环节。
 
@@ -148,7 +148,7 @@
 - 2026-05-25：根据用户对 7 小时仅 15 张 accepted card 的吞吐质疑，记录流程偏差并切换到 `DRAFT_FIRST_PIPELINE.md`：batch atomic draft 优先，相似门前置到 publication 之前，审计与采纳后置批处理。candidate 11 不立即单卡 audit，而是登记到 `queues/draft_backlog.md`。
 - 2026-05-25：创建首个 batch drafting 任务包 `iteration_20260525_0064_card_batch_drafting_karpathy_launch_remaining_a`，处理 `karpathy-x-launch-post` 候选 2、4、5、8、9、10；任务包通过 `validate_scope.py`，dispatch payload 已渲染。
 - 2026-05-25：完成最小 brain mailbox smoke：文件层面的 A brain 写 outbox、hook route、B brain wake marker、claim/complete、reply 和 reconcile 闭环可行；真实自动 spawn/resume Codex sub-agent 仍未验证。
-- 2026-05-25：根据用户新的设计判断，把 V1 draft-first 控制面归档到 `legacy/20260525-v1-draft-first-control-plane/`，写入 `LOOP_DESIGN_V2.md` 和 `CARD_CONTRACT_V2.md`；新版使用 brain mailbox、scoped knowledge card、Jieba/Jaccard title similarity top3 和 comparison provenance 三问。
+- 2026-05-25：根据用户新的设计判断，把 V1 draft-first 控制面归档到 `legacy/v2_llm_wiki_loop_20260525/snapshots/draft_first_control_plane/`，写入 `LOOP_DESIGN_V2.md` 和 `CARD_CONTRACT_V2.md`；新版使用 brain mailbox、scoped knowledge card、Jieba/Jaccard title similarity top3 和 comparison provenance 三问。
 
 ## 关键指标（key_metrics）
 

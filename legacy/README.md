@@ -1,6 +1,6 @@
 # 旧产物归档
 
-这个目录保存已经降级为旧产物的两轮 KB 产物。它们仍然有审计价值，但不再代表当前要建设的 KB 形态。
+这个目录保存已经降级为旧产物的 KB / loop 产物。它们仍然有审计价值，但不再代表当前要建设的 KB 形态。
 
 ## v0_meta_kb_initialization_demo_20260524
 
@@ -50,3 +50,17 @@
 ## 语言边界
 
 当前新写的说明、审计报告和活跃工作文档以中文为主语言。`legacy/v0_*` 与 `legacy/v1_*` 里面的原始运行产物作为证据快照保留原貌，其中可能仍有英文标题、状态码和过程记录；除非进入新的重写流程，否则不直接翻译这些历史快照，以免改变审计对象。
+
+## v2_llm_wiki_loop_20260525
+
+路径：`legacy/v2_llm_wiki_loop_20260525/`
+
+这是一轮已经关闭的 LLM Wiki loop 的完整工作产物。它原来位于 `llm_wiki/loop/`，现在作为过去 loop 的产物移到仓库根目录 `legacy/` 下，避免污染新的 active loop 工作区。
+
+包含：
+
+- loop docs / state / manifest；
+- iterations、decisions、audits、reports、queues；
+- brain mailbox、hooks、tools、logs；
+- system prompts 和 task templates。
+- snapshots 下保留本轮 loop 内的中间控制面快照，仅作为证据，不作为独立 legacy 版本。

@@ -19,7 +19,7 @@
 
 将 V1 draft-first 控制面冻结到：
 
-`llm_wiki/loop/legacy/20260525-v1-draft-first-control-plane/`
+`legacy/v2_llm_wiki_loop_20260525/snapshots/draft_first_control_plane/`
 
 当前活跃设计切换到：
 

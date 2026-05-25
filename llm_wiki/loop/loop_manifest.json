@@ -1,9 +1,9 @@
 {
   "schema": "llm_wiki.loop_manifest.v3",
   "loop_root": "llm_wiki/loop",
-  "legacy_root": "llm_wiki/loop/legacy",
+  "legacy_root": "legacy",
   "active_status": "empty_for_new_loop",
-  "previous_loop_archive": "llm_wiki/loop/legacy/20260525-closed-llm-wiki-loop-products",
+  "previous_loop_archive": "legacy/v2_llm_wiki_loop_20260525",
   "recovery_policy": {
     "default_recovery_inputs": [
       "llm_wiki/loop/README.md",

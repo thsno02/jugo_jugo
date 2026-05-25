@@ -18,7 +18,7 @@ material / exhausted 来源
 -> 已采纳 scoped knowledge card
 ```
 
-当前采用 `LOOP_DESIGN_V2.md` 和 `CARD_CONTRACT_V2.md`。旧版 draft-first 控制面已冻结到 `legacy/20260525-v1-draft-first-control-plane/`。
+当前采用 `LOOP_DESIGN_V2.md` 和 `CARD_CONTRACT_V2.md`。旧版 draft-first 控制面已冻结到 `legacy/v2_llm_wiki_loop_20260525/snapshots/draft_first_control_plane/`。
 
 ## 主控原则
 

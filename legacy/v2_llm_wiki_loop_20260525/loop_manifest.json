@@ -5,7 +5,7 @@
   "active_design": "llm_wiki/loop/LOOP_DESIGN_V2.md",
   "card_contract": "llm_wiki/loop/CARD_CONTRACT_V2.md",
   "brain_root": "llm_wiki/loop/brains",
-  "legacy_root": "llm_wiki/loop/legacy",
+  "legacy_root": "legacy",
   "system_prompt_root": "llm_wiki/loop/system_prompts",
   "plan_root": "llm_wiki/loop/plans",
   "reflection_root": "llm_wiki/loop/reflections",
