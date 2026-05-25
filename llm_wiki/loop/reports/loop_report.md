@@ -10,7 +10,7 @@
 
 当前状态：已有 11 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1、5 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第一轮 source mining 的 12 个候选已经全部完成 drafting、audit 和 adoption，KB 现在有 12 张 accepted atomic fact cards。下一轮 source mining 已选 `karpathy-x-launch-post`：这是 Karpathy 发布语境的 API mirror，本地状态为 `ok`，目录小且结构清楚；任务包已通过 `validate_scope.py`，下一步派发 worker。当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第一轮 source mining 的 12 个候选已经全部完成 drafting、audit 和 adoption，KB 现在有 12 张 accepted atomic fact cards。第二轮 source mining 已从 `karpathy-x-launch-post` 产出 12 个候选；已选择候选 3 进入 drafting，原因是其直接来自发布帖正文，事实边界清楚，且不重复已采纳卡片。当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -120,10 +120,12 @@
 - 2026-05-25：创建 `iteration_20260525_0050_card_adoption_llm_wiki_use_cases`，指定 `card_id` 为 `llm-wiki-listed-use-cases`，目标 KB 路径不存在，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：候选 6 adoption worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，第十二张 KB 卡采纳完成。第一轮 source mining 的 12 个候选全部完成生产链路。
 - 2026-05-25：选择 `karpathy-x-launch-post` 作为下一轮 source mining 来源；理由是直接发布语境、`status: ok`、本地目录小且结构清楚，选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0051_source_mining_karpathy_x_launch`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮 source mining worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，产出 12 个候选。递归 `rg` 自检意外读取同 iteration `dispatch_request.json`，未用于事实抽取，暂记为过程噪声。
+- 2026-05-25：选择第二轮候选 3 进入 drafting，原因是它聚焦发布帖对 `idea file` 的表述，证据集中在 `data/raw/webpage/karpathy-x-launch-post/raw.json` 的 `$.tweet.text`，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0052_card_drafting_idea_file_agent_builds`，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 
 ## 关键指标（key_metrics）
 
-- 事实候选数量：12。
+- 事实候选数量：24。
 - 草稿知识卡数量：12 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
 - 审计通过数量：12。
 - 已采纳知识卡数量：12。
@@ -397,6 +399,10 @@
 - [已采纳 provenance：LLM Wiki 应用场景清单](../../kb/provenance/llm-wiki-listed-use-cases.md)
 - [第二轮 source mining 任务包](../iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/task.md)
 - [第二轮 source mining dispatch](../iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/dispatch_request.json)
+- [第二轮 source mining 候选集](../iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/artifacts/fact_candidates.md)
+- [接受第二轮 source mining 并选择候选 3 的决策](../decisions/20260525-0821-source-mining-accepted-candidate-3.md)
+- [第二轮候选 3 drafting 任务包](../iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/task.md)
+- [第二轮候选 3 drafting dispatch](../iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

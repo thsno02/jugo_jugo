@@ -11,12 +11,12 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0052_source_mining_karpathy_x_launch`
+### `task_20260525_0053_card_drafting_candidate_3`
 
-- `role`: `source_mining_worker`
-- `action`: 从 `data/raw/webpage/karpathy-x-launch-post` 这个 `status: ok` 本地来源中抽取事实候选。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/artifacts/fact_candidates.md`
-- `note`: 选择理由已写入 task；one-shot worker，`fork_context:false`。
+- `role`: `card_drafting_worker`
+- `action`: 将第二轮 source mining 的候选 3 写成一张 draft atomic fact card，并写 provenance。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/artifacts/draft_card.md`, `llm_wiki/loop/iterations/iteration_20260525_0052_card_drafting_idea_file_agent_builds/artifacts/provenance.md`
+- `note`: 只处理候选 3；不使用父聊天上下文，不读取已采纳 KB 卡片补充事实。
 
 ## 待办（pending）
 
@@ -27,6 +27,16 @@
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0052_source_mining_karpathy_x_launch`
+
+- `role`: `source_mining_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0051_source_mining_karpathy_x_launch`
+- `source_id`: `karpathy-x-launch-post`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/artifacts/fact_candidates.md`
+- `fact_candidates_count`: 12
+- `decision`: `llm_wiki/loop/decisions/20260525-0821-source-mining-accepted-candidate-3.md`
 
 ### `task_20260525_0051_card_adoption_candidate_6`
 
