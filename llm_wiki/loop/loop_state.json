@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T09:24:28+08:00",
-  "status": "READY_FOR_CARD_DRAFTING",
+  "updated_at": "2026-05-25T09:27:38+08:00",
+  "status": "CARD_DRAFTING_DISPATCH_READY",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_adoption",
-  "current_iteration": "iteration_20260525_0059_card_adoption_idea_file_abstract_vague",
+  "current_phase": "card_drafting",
+  "current_iteration": "iteration_20260525_0060_card_drafting_wiki_health_checks",
   "last_completed_iteration": "iteration_20260525_0059_card_adoption_idea_file_abstract_vague",
-  "current_task_id": null,
+  "current_task_id": "task_20260525_0061_card_drafting_candidate_12",
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "从第二轮 source mining 的剩余候选中选择一个事实边界清楚、来源证据可读且不重复已采纳卡片的候选，创建下一轮 card_drafting_worker 任务包；选择不基于主题覆盖、hub 或 cluster 规划。",
+  "next_action": "派发 card_drafting_worker 处理 karpathy-x-launch-post 候选 12；等待 loop_delivery.md 后 inspect_delivery。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",
