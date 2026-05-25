@@ -10,7 +10,7 @@
 
 当前状态：已有 15 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选并已全部完成 drafting、audit 和 adoption。第二轮 source mining 已采纳候选 3、候选 6 和候选 12。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 12 已完成 drafting、audit 和 adoption；采纳后仍保留 `known_fact` 与当前 scope。下一步从第二轮剩余候选中继续选择一个事实边界清楚、来源证据可读且不重复已采纳卡片的候选；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 12 已完成 drafting、audit 和 adoption；采纳后仍保留 `known_fact` 与当前 scope。第二轮候选 11 已被选择进入 drafting，任务包通过 `validate_scope.py`，下一步派发 worker；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -143,6 +143,7 @@
 - 2026-05-25：第二轮候选 12 audit worker 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，下一步进入 adoption。
 - 2026-05-25：创建 `iteration_20260525_0062_card_adoption_wiki_health_checks`，指定 `card_id` 为 `llm-wiki-health-checks`，目标 KB 路径不存在，任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：第二轮候选 12 adoption worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，第十五张 KB 卡采纳完成。
+- 2026-05-25：从第二轮剩余候选中选择候选 11，原因是它聚焦被引用推文中一个具体研究 wiki 的规模与 Q&A/research 用法，证据集中在 `$.tweet.quote.text`，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0063_card_drafting_wiki_qa_scale`，任务包通过 `validate_scope.py`。
 
 ## 关键指标（key_metrics）
 
@@ -480,6 +481,9 @@
 - [第二轮候选 12 采纳决策](../decisions/20260525-0948-card-adoption-accepted-candidate-12.md)
 - [已采纳知识卡：LLM health checks 清理 wiki](../../kb/cards/llm-wiki-health-checks.md)
 - [已采纳 provenance：LLM health checks 清理 wiki](../../kb/provenance/llm-wiki-health-checks.md)
+- [第二轮候选 11 选择决策](../decisions/20260525-0950-select-candidate-11-for-drafting.md)
+- [第二轮候选 11 drafting 任务包](../iterations/iteration_20260525_0063_card_drafting_wiki_qa_scale/task.md)
+- [第二轮候选 11 drafting dispatch](../iterations/iteration_20260525_0063_card_drafting_wiki_qa_scale/dispatch_request.json)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 
