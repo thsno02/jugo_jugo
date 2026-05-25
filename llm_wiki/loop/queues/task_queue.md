@@ -11,12 +11,7 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0060_card_adoption_candidate_6`
-
-- `role`: `card_adoption_worker`
-- `action`: 采纳第二轮候选 6 知识卡；保留 `known_fact` 与当前 scope，不扩大为通用事实。
-- `expected_output`: `llm_wiki/kb/cards/idea-file-abstract-vague.md`, `llm_wiki/kb/provenance/idea-file-abstract-vague.md`
-- `note`: 只使用 audit pass 后的 draft/provenance；不使用父聊天上下文。
+暂无。
 
 ## 待办（pending）
 
@@ -27,6 +22,17 @@
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0060_card_adoption_candidate_6`
+
+- `role`: `card_adoption_worker`
+- `result`: `LOOP_DONE`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0059_card_adoption_idea_file_abstract_vague`
+- `card_id`: `idea-file-abstract-vague`
+- `adopted_card`: `llm_wiki/kb/cards/idea-file-abstract-vague.md`
+- `adopted_provenance`: `llm_wiki/kb/provenance/idea-file-abstract-vague.md`
+- `index`: `llm_wiki/kb/indexes/cards.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0924-card-adoption-accepted-candidate-6.md`
 
 ### `task_20260525_0059_card_audit_candidate_6`
 
