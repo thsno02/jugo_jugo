@@ -1,0 +1,4 @@
+- `llm_wiki/loop/iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/artifacts/draft_card.md`：读取被审计知识卡全文，用于检查 statement、fact_type、support、scope、status、References 和 Footnotes。
+- `llm_wiki/loop/iterations/iteration_20260525_0060_card_drafting_wiki_health_checks/artifacts/provenance.md`：读取出处论证全文，用于检查卡片事实是否由指定来源论证支撑。
+- `data/raw/webpage/karpathy-x-launch-post/raw.json` 的 `$.tweet.quote.text`：仅抽取指定 JSON pointer 文本，用于核对直接来源证据。
+- `llm_wiki/loop/iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/artifacts/fact_candidates.md` 中 `候选 12`：先定位标题行，再仅抽取 candidate 12 段落，用于核对允许候选事实。

@@ -11,22 +11,30 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0062_card_audit_candidate_12`
-
-- `role`: `card_audit_worker`
-- `action`: 独立审计第二轮候选 12 草稿卡和 provenance。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0061_card_audit_wiki_health_checks/artifacts/audit_report.md`
-- `note`: 审计输入限定为草稿卡、provenance、候选 12 字段和 `raw.json` 的 `$.tweet.quote.text`；不使用父聊天上下文。
+暂无。
 
 ## 待办（pending）
 
-暂无。
+### `task_20260525_0063_card_adoption_candidate_12`
+
+- `role`: `card_adoption_worker`
+- `action`: 采纳第二轮候选 12 知识卡；保留 `known_fact` 与当前 scope，不扩大为通用实践效果。
+- `expected_output`: `llm_wiki/kb/cards/llm-wiki-health-checks.md`, `llm_wiki/kb/provenance/llm-wiki-health-checks.md`
+- `note`: 只使用 audit pass 后的 draft/provenance；不使用父聊天上下文。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0062_card_audit_candidate_12`
+
+- `role`: `card_audit_worker`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0061_card_audit_wiki_health_checks`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0061_card_audit_wiki_health_checks/artifacts/audit_report.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0938-card-audit-pass-candidate-12.md`
 
 ### `task_20260525_0061_card_drafting_candidate_12`
 
