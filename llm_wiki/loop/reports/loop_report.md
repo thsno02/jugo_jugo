@@ -8,9 +8,9 @@
 
 ## 当前决策（current_decision）
 
-当前状态：已有 11 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选，其中候选 8、7、10、9、3、2、11、12、4、1、5 都已完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
+当前状态：已有 12 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选并已全部完成 drafting、audit 和 adoption。小批量后的 out-of-loop 反思已完成，adoption 任务模板修复已通过修正版独立审计。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第一轮 source mining 的 12 个候选已经全部完成 drafting、audit 和 adoption，KB 现在有 12 张 accepted atomic fact cards。第二轮候选 3 revision 已完成：statement 已收窄为“这条发布帖”，没有扩大来源字段。audit r1 任务包已创建并通过 `validate_scope.py`，下一步派发 worker；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 3 revision 已通过 audit r1：statement 已收窄为“这条发布帖”，没有扩大来源字段。下一步创建 adoption worker 任务包，采纳时必须保留 `known_fact` 与当前 scope；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -128,12 +128,13 @@
 - 2026-05-25：创建 `iteration_20260525_0054_card_drafting_idea_file_agent_builds_r1`，任务包要求只按 audit report 最小修订归属语，不扩大来源证据；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
 - 2026-05-25：第二轮候选 3 revision worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。修订版 statement 已改为“这条发布帖”，未扩大来源证据。
 - 2026-05-25：创建 `iteration_20260525_0055_card_audit_idea_file_agent_builds_r1`，审计输入限定为修订版草稿卡、provenance、候选 3 字段、prior audit report 和 `raw.json` 的 `$.tweet.text`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 3 audit r1 worker 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`。上一轮归属语问题已关闭，下一步进入 adoption。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：24。
 - 草稿知识卡数量：13 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
-- 审计通过数量：12。
+- 审计通过数量：13。
 - 审计 revise 数量：1。
 - 已采纳知识卡数量：12。
 - 因交付 marker 缺失导致的返工次数：1。
@@ -149,7 +150,7 @@
 - validation evidence correction 数量：1。
 - prompt/template 修复复审通过数量：1。
 - 同 iteration `dispatch_request.json` 递归自检读取观察：1。
-- 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：5。
+- 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：6。
 
 ## 证据链接（evidence_links）
 
@@ -425,6 +426,8 @@
 - [第二轮候选 3 revision 可审计决策](../decisions/20260525-0841-card-drafting-candidate-3-revision-ready-for-audit.md)
 - [第二轮候选 3 audit r1 任务包](../iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/task.md)
 - [第二轮候选 3 audit r1 dispatch](../iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/dispatch_request.json)
+- [第二轮候选 3 audit r1 报告](../iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/artifacts/audit_report.md)
+- [第二轮候选 3 audit r1 pass 决策](../decisions/20260525-0849-card-audit-pass-candidate-3-r1.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

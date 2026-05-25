@@ -11,22 +11,30 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0056_card_audit_candidate_3_r1`
-
-- `role`: `card_audit_worker`
-- `action`: 复审第二轮候选 3 修订版草稿卡是否关闭 previous audit revise 的归属语问题。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/artifacts/audit_report.md`
-- `note`: 只审计修订版草稿卡；不使用父聊天上下文。
+暂无。
 
 ## 待办（pending）
 
-暂无。
+### `task_20260525_0057_card_adoption_candidate_3`
+
+- `role`: `card_adoption_worker`
+- `action`: 采纳第二轮候选 3 修订版知识卡；保留 `known_fact` 与当前 scope，不扩大为通用定义。
+- `expected_output`: `llm_wiki/kb/cards/idea-file-share-the-idea.md`, `llm_wiki/kb/provenance/idea-file-share-the-idea.md`
+- `note`: 只使用 audit pass 后的修订版 draft/provenance；不使用父聊天上下文。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0056_card_audit_candidate_3_r1`
+
+- `role`: `card_audit_worker`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0055_card_audit_idea_file_agent_builds_r1/artifacts/audit_report.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0849-card-audit-pass-candidate-3-r1.md`
 
 ### `task_20260525_0055_card_drafting_candidate_3_revision`
 
