@@ -11,16 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0052_source_mining_karpathy_x_launch`
+
+- `role`: `source_mining_worker`
+- `action`: 从 `data/raw/webpage/karpathy-x-launch-post` 这个 `status: ok` 本地来源中抽取事实候选。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/artifacts/fact_candidates.md`
+- `note`: 选择理由已写入 task；one-shot worker，`fork_context:false`。
 
 ## 待办（pending）
 
-### `task_20260525_0052_source_mining_next_source`
-
-- `role`: `source_mining_worker`
-- `action`: 从 `data/manifests/acquired_sources_index.md` 和必要时 `data/manifests/sources.jsonl` 中选择一个 `status: ok` 本地来源，创建并派发下一轮窄 source mining 任务包。
-- `expected_output`: 下一轮 `fact_candidates.md`
-- `note`: 只选一个来源；选择理由必须记录在 task 或 decision 中，不按主题覆盖、hub 或 cluster 规划选源。
+暂无。
 
 ## 已阻塞（blocked）
 
