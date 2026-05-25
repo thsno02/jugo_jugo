@@ -11,16 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待办（pending）
-
 ### `task_20260525_0062_card_audit_candidate_12`
 
 - `role`: `card_audit_worker`
 - `action`: 独立审计第二轮候选 12 草稿卡和 provenance。
 - `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0061_card_audit_wiki_health_checks/artifacts/audit_report.md`
 - `note`: 审计输入限定为草稿卡、provenance、候选 12 字段和 `raw.json` 的 `$.tweet.quote.text`；不使用父聊天上下文。
+
+## 待办（pending）
+
+暂无。
 
 ## 已阻塞（blocked）
 
