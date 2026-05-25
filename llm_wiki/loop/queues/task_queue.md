@@ -11,7 +11,12 @@
 
 ## 进行中（in_progress）
 
-暂无。
+### `task_20260525_0058_card_drafting_candidate_6`
+
+- `role`: `card_drafting_worker`
+- `action`: 将第二轮候选 6 写成一张原子事实草稿卡，并写 provenance。
+- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0057_card_drafting_idea_file_abstract_vague/artifacts/draft_card.md`, `llm_wiki/loop/iterations/iteration_20260525_0057_card_drafting_idea_file_abstract_vague/artifacts/provenance.md`
+- `note`: 只处理候选 6；来源证据限定为 `data/raw/webpage/karpathy-x-launch-post/raw.json` 的 `$.tweet.text`。
 
 ## 待办（pending）
 
