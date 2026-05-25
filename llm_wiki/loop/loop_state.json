@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T09:51:50+08:00",
-  "status": "CARD_DRAFTING_DISPATCH_READY",
+  "updated_at": "2026-05-25T09:57:16+08:00",
+  "status": "READY_FOR_CARD_AUDIT",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_drafting",
+  "current_phase": "card_audit",
   "current_iteration": "iteration_20260525_0063_card_drafting_wiki_qa_scale",
-  "last_completed_iteration": "iteration_20260525_0062_card_adoption_wiki_health_checks",
-  "current_task_id": "task_20260525_0064_card_drafting_candidate_11",
+  "last_completed_iteration": "iteration_20260525_0063_card_drafting_wiki_qa_scale",
+  "current_task_id": null,
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "派发 card_drafting_worker 处理 karpathy-x-launch-post 候选 11；等待 loop_delivery.md 后 inspect_delivery。",
+  "next_action": "为第二轮候选 11 创建 card_audit_worker 任务包；审计输入限定为草稿卡、provenance、候选 11 和 raw.json 的 $.tweet.quote.text。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",
