@@ -11,16 +11,16 @@
 
 ## 进行中（in_progress）
 
-暂无。
-
-## 待办（pending）
-
 ### `task_20260525_0050_card_audit_candidate_6`
 
 - `role`: `card_audit_worker`
 - `action`: 审计候选 6 草稿卡 `LLM Wiki 应用场景清单` 是否被 `raw.txt:17-23` 支撑，且没有扩写成场景报告、hub、cluster 或 topic coverage。
 - `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0049_card_audit_llm_wiki_use_cases/artifacts/audit_report.md`
 - `note`: 只审计候选 6；不使用父聊天上下文。
+
+## 待办（pending）
+
+暂无。
 
 ## 已阻塞（blocked）
 
