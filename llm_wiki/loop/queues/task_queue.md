@@ -11,22 +11,30 @@
 
 ## 进行中（in_progress）
 
-### `task_20260525_0059_card_audit_candidate_6`
-
-- `role`: `card_audit_worker`
-- `action`: 独立审计第二轮候选 6 草稿卡和 provenance。
-- `expected_output`: `llm_wiki/loop/iterations/iteration_20260525_0058_card_audit_idea_file_abstract_vague/artifacts/audit_report.md`
-- `note`: 审计输入限定为草稿卡、provenance、候选 6 字段和 `raw.json` 的 `$.tweet.text`；不使用父聊天上下文。
+暂无。
 
 ## 待办（pending）
 
-暂无。
+### `task_20260525_0060_card_adoption_candidate_6`
+
+- `role`: `card_adoption_worker`
+- `action`: 采纳第二轮候选 6 知识卡；保留 `known_fact` 与当前 scope，不扩大为通用事实。
+- `expected_output`: `llm_wiki/kb/cards/idea-file-abstract-vague.md`, `llm_wiki/kb/provenance/idea-file-abstract-vague.md`
+- `note`: 只使用 audit pass 后的 draft/provenance；不使用父聊天上下文。
 
 ## 已阻塞（blocked）
 
 暂无。
 
 ## 已完成（done）
+
+### `task_20260525_0059_card_audit_candidate_6`
+
+- `role`: `card_audit_worker`
+- `result`: `audit_result: pass`
+- `iteration`: `llm_wiki/loop/iterations/iteration_20260525_0058_card_audit_idea_file_abstract_vague`
+- `output`: `llm_wiki/loop/iterations/iteration_20260525_0058_card_audit_idea_file_abstract_vague/artifacts/audit_report.md`
+- `decision`: `llm_wiki/loop/decisions/20260525-0917-card-audit-pass-candidate-6.md`
 
 ### `task_20260525_0058_card_drafting_candidate_6`
 

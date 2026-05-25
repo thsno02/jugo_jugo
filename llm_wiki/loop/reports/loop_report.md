@@ -10,7 +10,7 @@
 
 当前状态：已有 13 张原子事实知识卡采纳到 KB。第一轮 source mining 产出 12 个候选并已全部完成 drafting、audit 和 adoption。第二轮 source mining 已采纳候选 3。
 
-当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 3 已完成 drafting、audit revision、audit r1 和 adoption；采纳后仍保留 `known_fact` 与当前 scope。第二轮候选 6 audit 任务包已创建并通过 `validate_scope.py`，下一步派发 worker；当前没有证据表明需要 alive sub-agent 常驻。
+当前决策：接受 `user-insights` 的 `coverage: partial` 作为非阻塞残余风险，因为它不是知识卡事实来源。第二轮候选 3 已完成 drafting、audit revision、audit r1 和 adoption；采纳后仍保留 `known_fact` 与当前 scope。第二轮候选 6 audit 已通过，下一步创建 adoption worker 任务包；当前没有证据表明需要 alive sub-agent 常驻。
 
 ## 过程轨迹（process_trace）
 
@@ -134,12 +134,13 @@
 - 2026-05-25：从第二轮剩余候选中选择候选 6，原因是它聚焦这条发布帖对 idea file 抽象/模糊程度与 Discussion 参与入口的说明，证据集中在 `$.tweet.text`，且不重复已采纳卡片；选择不基于主题覆盖、hub 或 cluster。创建 `iteration_20260525_0057_card_drafting_idea_file_abstract_vague`，任务包通过 `validate_scope.py`。
 - 2026-05-25：第二轮候选 6 drafting worker 返回 `LOOP_DONE`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，草稿卡和 provenance 进入 card audit 准备状态。
 - 2026-05-25：创建 `iteration_20260525_0058_card_audit_idea_file_abstract_vague`，审计输入限定为候选 6 草稿卡、provenance、候选 6 字段和 `raw.json` 的 `$.tweet.text`；任务包通过 `validate_scope.py`，dispatch 使用 `fork_context:false`。
+- 2026-05-25：第二轮候选 6 audit worker 返回 `audit_result: pass`；主控 agent 关闭该 one-shot worker，`inspect_delivery.py` 返回 `pass`，下一步进入 adoption。
 
 ## 关键指标（key_metrics）
 
 - 事实候选数量：24。
 - 草稿知识卡数量：14 个有效 drafting 产物，1 个因交付 marker 缺失而不采纳的失败 drafting iteration。
-- 审计通过数量：13。
+- 审计通过数量：14。
 - 审计 revise 数量：1。
 - 已采纳知识卡数量：13。
 - 因交付 marker 缺失导致的返工次数：1。
@@ -155,7 +156,7 @@
 - validation evidence correction 数量：1。
 - prompt/template 修复复审通过数量：1。
 - 同 iteration `dispatch_request.json` 递归自检读取观察：1。
-- 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：8。
+- 执行者读取 agent-loop-runner skill 但未作为事实或审计证据使用的非阻塞边界记录：9。
 
 ## 证据链接（evidence_links）
 
@@ -447,6 +448,8 @@
 - [第二轮候选 6 drafting 可审计决策](../decisions/20260525-0909-card-drafting-candidate-6-ready-for-audit.md)
 - [第二轮候选 6 audit 任务包](../iterations/iteration_20260525_0058_card_audit_idea_file_abstract_vague/task.md)
 - [第二轮候选 6 audit dispatch](../iterations/iteration_20260525_0058_card_audit_idea_file_abstract_vague/dispatch_request.json)
+- [第二轮候选 6 audit 报告](../iterations/iteration_20260525_0058_card_audit_idea_file_abstract_vague/artifacts/audit_report.md)
+- [第二轮候选 6 audit pass 决策](../decisions/20260525-0917-card-audit-pass-candidate-6.md)
 - [知识库产物面](../../kb/README.md)
 - [来源索引](../../../data/manifests/acquired_sources_index.md)
 

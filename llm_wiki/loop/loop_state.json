@@ -1,13 +1,13 @@
 {
   "schema": "llm_wiki.loop_state.v1",
-  "updated_at": "2026-05-25T09:12:49+08:00",
-  "status": "CARD_AUDIT_DISPATCH_READY",
+  "updated_at": "2026-05-25T09:17:26+08:00",
+  "status": "READY_FOR_CARD_ADOPTION",
   "loop_owner": "main_owned",
   "loop_shape": "0_to_1_probe_loop",
-  "current_phase": "card_audit",
+  "current_phase": "card_adoption",
   "current_iteration": "iteration_20260525_0058_card_audit_idea_file_abstract_vague",
-  "last_completed_iteration": "iteration_20260525_0057_card_drafting_idea_file_abstract_vague",
-  "current_task_id": "task_20260525_0059_card_audit_candidate_6",
+  "last_completed_iteration": "iteration_20260525_0058_card_audit_idea_file_abstract_vague",
+  "current_task_id": null,
   "current_focus": [
     "grow_atomic_fact_cards",
     "build_readable_provenance",
@@ -20,7 +20,7 @@
     "complex_metadata",
     "agent_synthesis_as_source"
   ],
-  "next_action": "派发第二轮候选 6 card_audit_worker；等待 loop_delivery.md 后 inspect_delivery。",
+  "next_action": "为第二轮候选 6 创建 card_adoption_worker 任务包；保留 known_fact 与当前 scope，不扩大为通用事实。",
   "blockers": [],
   "residual_risks": [
     "user-insights coverage is partial; accepted as non-blocking because user-insights is not a factual source for atomic cards.",
