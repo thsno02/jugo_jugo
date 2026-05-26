@@ -1,0 +1,56 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/wikibase-item-property-snak-statement.md",
+  "draft_card_id": "wikibase-item-property-snak-statement",
+  "draft_title": "Wikibase 数据模型的四个核心结构——Item / Property / Snak / Statement",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "item",
+    "property",
+    "snak",
+    "statement",
+    "wikibase",
+    "四个",
+    "数据模型",
+    "核心",
+    "的",
+    "结构"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0769,
+      "shared_tokens": [
+        "的"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-three-layer-architecture",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md",
+      "title": "LLM Wiki 的三层架构",
+      "score": 0.0714,
+      "shared_tokens": [
+        "的"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-schema-configuration-document",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-schema-configuration-document.md",
+      "title": "Schema 是 LLM Wiki 的配置文档",
+      "score": 0.0625,
+      "shared_tokens": [
+        "的"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
