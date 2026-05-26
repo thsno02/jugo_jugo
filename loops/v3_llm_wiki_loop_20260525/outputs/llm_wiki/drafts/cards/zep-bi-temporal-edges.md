@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-zep]
 provenance_card: ../provenance/zep-bi-temporal-edges.md
 aliases: [bi-temporal model, Graphiti edge invalidation, t_valid/t_invalid]
-related: [zep-graphiti-three-tier-graph]
+related: [zep-graphiti-three-tier-graph, zep-hybrid-search-rerank, zep-dmr-benchmark-critique, mem0-graph-memory-variant, longmemeval-time-aware-query-expansion, lightmem-sleep-time-offline-parallel-update]
 ---
 
 Zep/Graphiti 的关键差异化能力是把"事实何时是真的"和"事实何时被系统记下来"拆成两条互不相关的时间轴，并在边上同时记录四个时间戳：

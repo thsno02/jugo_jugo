@@ -1,0 +1,57 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/zep-bi-temporal-edges.md",
+  "draft_card_id": "zep-bi-temporal-edges",
+  "draft_title": "Zep 用双时间线 + 边失效让事实\"会过期\"而不是被覆盖",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "zep",
+    "不是",
+    "事实",
+    "会",
+    "双",
+    "失效",
+    "时间",
+    "用",
+    "线",
+    "而",
+    "被",
+    "覆盖",
+    "让",
+    "边",
+    "过期"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "raw-sources-readonly-source-of-truth",
+      "card_path": "llm_wiki/kb/cards/raw-sources-readonly-source-of-truth.md",
+      "title": "Raw sources 是只读事实来源",
+      "score": 0.05,
+      "shared_tokens": [
+        "事实"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0,
+      "shared_tokens": []
+    },
+    {
+      "rank": 3,
+      "card_id": "idea-file-share-the-idea",
+      "card_path": "llm_wiki/kb/cards/idea-file-share-the-idea.md",
+      "title": "idea file 分享想法",
+      "score": 0.0,
+      "shared_tokens": []
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
