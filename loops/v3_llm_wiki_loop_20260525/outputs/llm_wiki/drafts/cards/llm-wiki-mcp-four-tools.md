@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [pypi-llm-wiki-mcp]
 provenance_card: ../provenance/llm-wiki-mcp-four-tools.md
 aliases: [wiki_read, wiki_write_page, wiki_log_append, wiki_inventory, four MCP tools]
-related: [llm-wiki-mcp-design-boundary-mechanics-not-content, llm-wiki-mcp-skills-vs-tools-workflow]
+related: [llm-wiki-mcp-design-boundary-mechanics-not-content, llm-wiki-mcp-skills-vs-tools-workflow, karpathy-llm-kb-three-operations, llm-wiki-ingest-vs-query-workflow, langgraph-tool-runtime-store-access, mem0-tool-call-add-update-delete-noop]
 ---
 
 ## 四个工具的契约
