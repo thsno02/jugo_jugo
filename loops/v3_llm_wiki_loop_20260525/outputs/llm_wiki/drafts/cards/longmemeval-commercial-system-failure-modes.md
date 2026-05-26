@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-commercial-system-failure-modes.md
 aliases: ["ChatGPT memory failure", "Coze memory failure", "LongMemEval pilot"]
-related: [longmemeval-five-core-memory-abilities, longmemeval-benchmark-construction-pipeline]
+related: [longmemeval-five-core-memory-abilities, longmemeval-benchmark-construction-pipeline, longmemeval-three-stage-memory-framework, mem0-baseline-failure-modes, locomo-long-context-adversarial-collapse]
 ---
 
 LongMemEval 论文里最容易被忽视的一节是 §3.4 pilot study——作者拿 97 道题、3–6 个 session 的 *缩水版* 历史（约 LongMemEval-S 的 1/10）去实测 ChatGPT 与 Coze 这两个商业 memory-augmented 助手。结论是：**两个系统都比直接拿全文重读（offline reading）掉 30%–64%**，而且失败模式互不相同——这是 "把 user 事实存起来" 不等于 "拥有长期记忆" 的最直接证据。
