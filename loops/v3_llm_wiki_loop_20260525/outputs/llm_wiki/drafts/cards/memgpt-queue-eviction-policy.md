@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-queue-eviction-policy.md
 aliases: [memory pressure warning, queue flush, recursive summary system message]
-related: [memgpt-main-vs-external-context, memgpt-function-chaining-heartbeat]
+related: [memgpt-main-vs-external-context, memgpt-function-chaining-heartbeat, memgpt-virtual-context-os-analogy, lightmem-light2-topic-aware-stm, memory-as-metabolism-five-operations]
 ---
 
 MemGPT 把"上下文要溢出怎么办"做成一条**显式的、双水位、对 LLM 可见**的驱逐策略，由 queue manager 执行：
