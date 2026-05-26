@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-alce]
 provenance_card: ../provenance/alce-prompting-strategies.md
 aliases: ["Vanilla / Summ / Snippet / Interact / Rerank", "ALCE 提示策略对比"]
-related: [alce-three-dimension-citation-metric]
+related: [alce-three-dimension-citation-metric, alce-retriever-and-context-utilization-gap, alce-citation-recall-precision-nli, karpathy-wiki-full-context-vs-rag, ragchecker-tuning-knobs-saturate]
 ---
 
 ALCE 在 baseline 之外提出了若干种把"检索结果合成进生成"的 prompting 策略，每种都对应一个具体的工程取舍：
