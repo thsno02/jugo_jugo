@@ -1,0 +1,63 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/karpathy-wiki-full-context-vs-rag.md",
+  "draft_card_id": "karpathy-wiki-full-context-vs-rag",
+  "draft_title": "\"Feed full wiki context, not chunked RAG retrieval\"——Karpathy 立场在插件中的执行",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "chunked",
+    "context",
+    "feed",
+    "full",
+    "karpathy",
+    "not",
+    "rag",
+    "retrieval",
+    "wiki",
+    "中",
+    "在",
+    "执行",
+    "插件",
+    "的",
+    "立场"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "llm-wiki-three-layer-architecture",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md",
+      "title": "LLM Wiki 的三层架构",
+      "score": 0.1111,
+      "shared_tokens": [
+        "wiki",
+        "的"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-schema-configuration-document",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-schema-configuration-document.md",
+      "title": "Schema 是 LLM Wiki 的配置文档",
+      "score": 0.1,
+      "shared_tokens": [
+        "wiki",
+        "的"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-persistent-compounding-artifact",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-persistent-compounding-artifact.md",
+      "title": "持久复合 wiki",
+      "score": 0.0588,
+      "shared_tokens": [
+        "wiki"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}

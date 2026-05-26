@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [obsidian-community-plugin]
 provenance_card: ../provenance/karpathy-wiki-full-context-vs-rag.md
 aliases: [full-context query, anti-RAG stance, long-context model recommendation]
-related: [karpathy-llm-wiki-obsidian-plugin-overview, karpathy-wiki-extraction-granularity]
+related: [karpathy-llm-wiki-obsidian-plugin-overview, karpathy-wiki-extraction-granularity, karpathy-llm-wiki-vs-rag, anthemcreation-llm-wiki-vs-rag-multi-hop, hn-llm-wiki-is-just-rag-debate, auto-index-replaces-rag-at-small-scale, robin-cartier-scale-ceiling]
 ---
 
 ## 立场陈述
