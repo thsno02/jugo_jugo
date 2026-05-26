@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [developersio-jp-pattern]
 provenance_card: ../provenance/karpathy-llm-kb-three-layer-arch.md
 aliases: ["LLM KB 3-layer", "Raw / Schema / Wiki"]
-related: [llm-knowledge-base-five-stage-workflow, aillm-wiki-four-defining-properties]
+related: [llm-knowledge-base-five-stage-workflow, aillm-wiki-four-defining-properties, karpathy-gist-three-layers, karpathy-llm-wiki-three-layers, anthemcreation-llm-wiki-three-layer-architecture, karpathy-llm-kb-three-operations, morishige-kb-compile-mem0-overlay]
 ---
 
 DevelopersIO 上 Classmethod 工程师森茂洋整理的 Karpathy "LLM Knowledge Base" 概念结构，把它拆为三层，比五阶段工作流卡更接近**数据建模视角**：
