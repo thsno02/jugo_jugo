@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-alce]
 provenance_card: ../provenance/alce-citation-recall-precision-nli.md
 aliases: ["AIS-style citation evaluation", "ALCE citation 二元判定"]
-related: [alce-three-dimension-citation-metric]
+related: [alce-three-dimension-citation-metric, alce-eli5-claim-recall-design, ragas-faithfulness-metric, ragchecker-claim-entailment-decomposition, ares-three-judge-rag-evaluation]
 ---
 
 ALCE 的"citation quality"得分不是模糊打分，而是两个严格的二元判定，全部由 TRUE（一个在 SNLI/MNLI/Fever/Scitail/PAWS/VitaminC 上 fine-tune 的 T5-11B NLI 模型）执行。规则化的定义如下，其中 $\phi(\text{premise}, \text{hypothesis})=1$ 当且仅当 premise 蕴含 hypothesis：
