@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-cross-domain-generalization-limits.md
 aliases: [ARES cross-domain transfer, ARES judge generalization boundary, ARES XGLUE CodeSearchNet T-Rex]
-related: [ares-three-judge-rag-evaluation, ares-synthetic-data-pipeline, ares-ppi-confidence-bound]
+related: [ares-three-judge-rag-evaluation, ares-synthetic-data-pipeline, ares-ppi-confidence-bound, ragchecker-tuning-knobs-saturate, wicer-llm-judge-human-validation]
 ---
 
 ## 主张
