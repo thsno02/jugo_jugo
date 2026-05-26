@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [microsoft-agent-governance-toolkit-docs]
 provenance_card: ../provenance/microsoft-agent-governance-eight-packages.md
 aliases: [Agent Governance Toolkit, Microsoft Agent OS, agent runtime sandboxing rings]
-related: []
+related: [microsoft-agent-governance-standards-alignment, owasp-agentic-top10-2026-positioning, owasp-agentic-vs-llm-top10-2025, nist-ai-rmf-gai-profile, etamp-environment-injected-memory-poisoning, poisonedrag-knowledge-database-attack-surface]
 ---
 
 微软 `agent-governance-toolkit` 把"如何在生产环境里治理一群自主智能体"拆成 8 个独立但同名前缀的包，每个包负责一个明确职责。这种"按运行时关心点切分"的做法本身就是值得收藏的设计选择——它让安全/合规、调度、可靠性、生态等问题不必塞在同一个"agent framework"里。
