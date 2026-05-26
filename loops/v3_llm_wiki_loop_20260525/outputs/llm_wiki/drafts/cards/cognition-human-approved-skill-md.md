@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [cognitionus-llm-wiki-guide]
 provenance_card: ../provenance/cognition-human-approved-skill-md.md
 aliases: [SKILL.md gate, confirm-first capture, human approval before group save]
-related: [cognition-skill-loop-evidence-to-teaching]
+related: [cognition-skill-loop-evidence-to-teaching, llm-wiki-schema-is-most-important, robin-cartier-schema-as-product-doc, idea-file-as-agent-era-artifact, microsoft-agent-governance-eight-packages]
 ---
 
 ## 规则

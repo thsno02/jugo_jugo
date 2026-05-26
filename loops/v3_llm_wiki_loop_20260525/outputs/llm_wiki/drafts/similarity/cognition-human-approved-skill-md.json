@@ -1,0 +1,61 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/cognition-human-approved-skill-md.md",
+  "draft_card_id": "cognition-human-approved-skill-md",
+  "draft_title": "SKILL.md 写入闸门：人工审批作为团队级 agent 记忆的第一道安全机制",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "agent",
+    "md",
+    "skill",
+    "人工",
+    "作为",
+    "写入",
+    "团队",
+    "安全",
+    "审批",
+    "机制",
+    "的",
+    "第一道",
+    "级",
+    "记忆",
+    "闸门"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0556,
+      "shared_tokens": [
+        "的"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-pattern-file",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-pattern-file.md",
+      "title": "LLM Wiki 作为模式文件",
+      "score": 0.0526,
+      "shared_tokens": [
+        "作为"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-three-layer-architecture",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md",
+      "title": "LLM Wiki 的三层架构",
+      "score": 0.0526,
+      "shared_tokens": [
+        "的"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
