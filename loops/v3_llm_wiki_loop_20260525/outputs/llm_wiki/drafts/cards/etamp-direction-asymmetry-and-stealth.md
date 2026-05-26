@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-etamp-memory-poisoning]
 provenance_card: ../provenance/etamp-direction-asymmetry-and-stealth.md
 aliases: [ASR direction asymmetry, Shopping→Reddit highest ASR, ETAMP stealth ASR_A ≈ 0]
-related: [etamp-environment-injected-memory-poisoning, etamp-capability-vs-security]
+related: [etamp-environment-injected-memory-poisoning, etamp-capability-vs-security, etamp-attack-payload-structure, etamp-pseudo-trajectory-methodology, poisonedrag-knowledge-database-attack-surface, gragpoison-additive-vs-edit-attack]
 ---
 
 ## 主张
