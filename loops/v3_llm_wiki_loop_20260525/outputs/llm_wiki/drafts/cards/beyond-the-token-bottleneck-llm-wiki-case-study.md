@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [complete-tech-live-frontier]
 provenance_card: ../provenance/beyond-the-token-bottleneck-llm-wiki-case-study.md
 aliases: ["BTTB case study", "CompleteTech LLM Wiki implementation"]
-related: [llm-knowledge-base-five-stage-workflow]
+related: [llm-knowledge-base-five-stage-workflow, agents-md-as-schema-layer, karpathy-llm-wiki-obsidian-plugin-overview, my-llm-wiki-three-layer-implementation, anthemcreation-llm-wiki-setup-cost-envelope, morishige-kb-compile-mem0-overlay]
 ---
 
 CompleteTech LLC 把 Karpathy 的 LLM Wiki 模式应用到一个真实研究前沿（latent-space reasoning + inter-agent latent communication），开源仓库 `github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck`（镜像 `ctech.llc/bttb`）。这是一份**有规模数据的生产参考实现**，对验证"模式是否真的能压住 bookkeeping 成本"很有意义。
