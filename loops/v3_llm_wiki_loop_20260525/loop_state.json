@@ -1,0 +1,47 @@
+{
+  "schema": "llm_wiki_loop_state.v3",
+  "loop_id": "v3_llm_wiki_loop_20260525",
+  "status": "active",
+  "phase": "all_materials_drafted",
+  "current_iteration": "iteration_20260525_0001_first_production_pass",
+  "current_focus": "171 张 draft 卡片已落地，等待 comparison_provenance 阶段对全部卡片（特别是 top1 ≥ 0.30 的 9 张）做决定。",
+  "counters": {
+    "materials_total": 72,
+    "materials_drafted": 43,
+    "materials_blocked_empty_source": 22,
+    "materials_blocked_upstream": 7,
+    "draft_cards_created": 171,
+    "draft_provenance_created": 171,
+    "similarity_checks_completed": 171,
+    "comparison_provenance_written": 0,
+    "new_cards_adopted": 0,
+    "fusion_audits_completed": 0
+  },
+  "similarity_score_distribution": {
+    ">=0.50": 1,
+    "0.30-0.50": 8,
+    "0.15-0.30": 30,
+    "0.05-0.15": 107,
+    "<0.05": 25
+  },
+  "queues": {
+    "material_queue": "queues/material_queue.md",
+    "draft_backlog": "queues/draft_backlog.md",
+    "audit_queue": "queues/audit_queue.md",
+    "task_queue": "queues/task_queue.md"
+  },
+  "latest_decision": "all_materials_drafted_no_adoption",
+  "blockers": [],
+  "observations": [
+    "draft 卡片全部用中文撰写；title-jaccard 与 v2（中文标题）现在能产出有意义的分数分布（39 张卡 top1 ≥ 0.15），证明跨语言标题相似度问题已通过统一语言解决。",
+    "最高 top1 = 0.500：`karpathy-llm-kb-three-layer-arch`（developersio-jp-pattern）↔ v2 `llm-wiki-three-layer-architecture`，是非常强的 merge_candidate 信号。",
+    "65 条 `complete` 状态材料中，22 条 github_repo `README.remote` 为 0KB，按合同记为 `blocked: empty_source`，未读未写。",
+    "7 条 `pending_or_blocked` 状态材料（aicritique-enterprise-knowledge + 6 个 reddit）按 upstream 状态直接记 blocked，未尝试 draft。",
+    "First-pass workers 因防御性 `limit:2000` 漏读了 14 篇 arxiv 论文的后半段；revision pass 全文读完后又新增 34 张卡，所有原卡审阅后未发现事实错误。",
+    "新建工具 `tools/similarity_top3.py`（Jieba + Jaccard）作为 similarity_top3 的事实实现。",
+    "新建 PostToolUse hook `hooks/commit_card.sh` 和项目 `.claude/settings.json` 配置：每写一张卡，hook 自动 `git add`+`git commit` 卡片 + 配对 provenance + 配对 similarity，并通过文件锁串行化并发 worker 的提交。",
+    "新建 worker 模板 `task_templates/batch_worker_prompt.md`，里面强制中文输出和『一次读完整个源文件』两条规则。"
+  ],
+  "next_action": "对 171 张 draft 逐张运行 comparison_provenance；优先处理 top1 ≥ 0.30 的 9 张（高 merge_candidate 风险），再处理 top1 ∈ [0.15, 0.30) 的 30 张。之后进入 publication_gate / fusion_audit。",
+  "updated_at": "2026-05-26T12:30:00+08:00"
+}

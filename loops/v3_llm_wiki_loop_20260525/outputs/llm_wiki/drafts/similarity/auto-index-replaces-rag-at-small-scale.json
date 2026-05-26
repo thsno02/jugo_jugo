@@ -2,55 +2,56 @@
   "schema": "title_similarity_top3.v3",
   "draft_card": "outputs/llm_wiki/drafts/cards/auto-index-replaces-rag-at-small-scale.md",
   "draft_card_id": "auto-index-replaces-rag-at-small-scale",
-  "draft_title": "Auto-maintained indexes replace fancy RAG at small wiki scale",
+  "draft_title": "小规模 wiki 下自维护索引可以替代 RAG",
   "tokenizer": "jieba",
   "tokenizer_version": "0.42.1",
   "metric": "jaccard_set_similarity",
   "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
   "comparison_base_card_count": 15,
   "draft_title_tokens": [
-    "at",
-    "auto",
-    "fancy",
-    "indexes",
-    "maintained",
     "rag",
-    "replace",
-    "scale",
-    "small",
-    "wiki"
+    "wiki",
+    "下",
+    "可以",
+    "小规模",
+    "替代",
+    "索引",
+    "维护",
+    "自"
   ],
   "candidates": [
     {
       "rank": 1,
-      "card_id": "llm-wiki-persistent-compounding-artifact",
-      "card_path": "llm_wiki/kb/cards/llm-wiki-persistent-compounding-artifact.md",
-      "title": "持久复合 wiki",
-      "score": 0.0833,
+      "card_id": "llm-wiki-persistent-wiki-alternative-mode",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-persistent-wiki-alternative-mode.md",
+      "title": "持久 wiki 替代模式",
+      "score": 0.1818,
       "shared_tokens": [
-        "wiki"
+        "wiki",
+        "替代"
       ]
     },
     {
       "rank": 2,
-      "card_id": "llm-wiki-persistent-wiki-alternative-mode",
-      "card_path": "llm_wiki/kb/cards/llm-wiki-persistent-wiki-alternative-mode.md",
-      "title": "持久 wiki 替代模式",
-      "score": 0.0769,
+      "card_id": "llm-wiki-wiki-layer-generated-markdown-directory",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-wiki-layer-generated-markdown-directory.md",
+      "title": "Wiki 层由 LLM 生成和维护",
+      "score": 0.1429,
       "shared_tokens": [
-        "wiki"
+        "wiki",
+        "维护"
       ]
     },
     {
       "rank": 3,
-      "card_id": "llm-wiki-health-checks",
-      "card_path": "llm_wiki/kb/cards/llm-wiki-health-checks.md",
-      "title": "LLM health checks 清理 wiki",
-      "score": 0.0714,
+      "card_id": "llm-wiki-persistent-compounding-artifact",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-persistent-compounding-artifact.md",
+      "title": "持久复合 wiki",
+      "score": 0.0909,
       "shared_tokens": [
         "wiki"
       ]
     }
   ],
-  "created_time": "2026-05-25T21:41:17+08:00"
+  "created_time": "2026-05-26T11:29:14+08:00"
 }

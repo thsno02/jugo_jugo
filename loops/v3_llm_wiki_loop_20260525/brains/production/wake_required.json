@@ -1,0 +1,7 @@
+{
+  "schema": "wake_required.v1",
+  "brain": "production",
+  "wake_required": false,
+  "reason": "First production pass complete; next material not yet queued.",
+  "updated_at": "2026-05-25T22:15:00+08:00"
+}

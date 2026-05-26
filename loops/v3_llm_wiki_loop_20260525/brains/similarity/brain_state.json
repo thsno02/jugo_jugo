@@ -1,0 +1,10 @@
+{
+  "schema": "brain_state.v1",
+  "brain": "similarity",
+  "status": "idle",
+  "current_task": null,
+  "last_completed_task": "similarity-top3-full-171-drafts",
+  "last_completed_at": "2026-05-26T12:25:00+08:00",
+  "cumulative_similarity_artifacts": 171,
+  "updated_at": "2026-05-26T12:30:00+08:00"
+}

@@ -1,0 +1,10 @@
+{
+  "schema": "brain_state.v1",
+  "brain": "production",
+  "status": "idle",
+  "current_task": null,
+  "last_completed_task": "all-materials-first-pass-and-revision",
+  "last_completed_at": "2026-05-26T12:30:00+08:00",
+  "cumulative_cards_produced": 171,
+  "updated_at": "2026-05-26T12:30:00+08:00"
+}
