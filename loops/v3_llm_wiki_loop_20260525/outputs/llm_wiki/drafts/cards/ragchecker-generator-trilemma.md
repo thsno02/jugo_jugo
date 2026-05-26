@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ragchecker]
 provenance_card: ../provenance/ragchecker-generator-trilemma.md
 aliases: ["RAG generator metric trilemma", "RAG 生成端三角"]
-related: [ragchecker-claim-entailment-decomposition]
+related: [ragchecker-claim-entailment-decomposition, rag-chunk-level-faithfulness, ragchecker-retriever-claim-vs-chunk-precision, ragchecker-tuning-knobs-saturate, ragas-reference-free-rag-evaluation, alce-three-dimension-citation-metric, ares-three-judge-rag-evaluation]
 ---
 
 RAGChecker 把生成器维度拆成 5 个 claim-级指标，其中三个互相牵制，构成"三难"：
