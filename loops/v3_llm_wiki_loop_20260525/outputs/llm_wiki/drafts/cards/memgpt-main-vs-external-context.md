@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-main-vs-external-context.md
 aliases: [main context, external context, recall storage, archival storage]
-related: [memgpt-virtual-context-os-analogy, memgpt-queue-eviction-policy]
+related: [memgpt-virtual-context-os-analogy, memgpt-queue-eviction-policy, memgpt-function-chaining-heartbeat, memgpt-dmr-task-evaluation, lightmem-three-stage-atkinson-shiffrin, langgraph-store-namespace-key-json-model]
 ---
 
 MemGPT 把"LLM 看得到的所有信息"分成两大类，五个具名区，每一区的角色、写入方式、是否可被 LLM 直接读都不同：
