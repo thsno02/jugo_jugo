@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-self-reflection-gleaning.md
 aliases: ["graph extraction gleaning", "GraphRAG chunk size"]
-related: [graphrag-global-sensemaking-pipeline]
+related: [graphrag-global-sensemaking-pipeline, graphrag-leiden-community-hierarchy, graphrag-context-window-8k-optimal, mem0-extract-update-pipeline, karpathy-wiki-extraction-granularity, wikibase-item-property-snak-statement]
 ---
 
 GraphRAG 索引阶段最敏感的工程参数是 chunk 大小：chunk 越大越省 LLM 调用，但 LLM 容易"漏抽实体"。论文用一个**多轮自我反思（self-reflection）"gleaning" 循环**把"大 chunk 省 token"和"小 chunk 高召回"两边的优势都拿到，是 GraphRAG 之所以能稳定生产知识图的关键 trick。
