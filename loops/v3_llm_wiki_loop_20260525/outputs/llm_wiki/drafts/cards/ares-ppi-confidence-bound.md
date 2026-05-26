@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-ppi-confidence-bound.md
 aliases: ["prediction-powered inference for RAG", "ARES rectifier function"]
-related: [ares-three-judge-rag-evaluation, ares-synthetic-data-pipeline]
+related: [ares-three-judge-rag-evaluation, ares-synthetic-data-pipeline, ares-gpt4-vs-human-annotation-tradeoff, ares-mock-rag-system-evaluation-design, wicer-llm-judge-human-validation]
 ---
 
 ARES 报告的"RAG 得分"既不是 LLM 判官的原始平均预测，也不是把 150 条人工标注当 ground truth 拍出来的平均值。它是用 prediction-powered inference（PPI）把这两件事缝起来：让小的 human preference validation set（150–300 条）给 LLM 判官在更大未标注集上的预测做一次"rectifier"校准，最终输出一个 95% 置信区间。
