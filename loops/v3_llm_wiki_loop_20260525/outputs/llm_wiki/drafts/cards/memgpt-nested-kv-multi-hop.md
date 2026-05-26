@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-nested-kv-multi-hop.md
 aliases: [nested key-value retrieval, multi-hop lookup benchmark]
-related: [memgpt-function-chaining-heartbeat]
+related: [memgpt-function-chaining-heartbeat, memgpt-virtual-context-os-analogy, memgpt-docqa-pagination-failure-mode, locomo-long-context-adversarial-collapse]
 ---
 
 MemGPT 论文提出的"嵌套 KV 检索 (nested KV retrieval)"是一个**故意把全部数据塞进上下文都解不开**的基准，用来分离"上下文容量"与"多步推理调用"两种能力：
