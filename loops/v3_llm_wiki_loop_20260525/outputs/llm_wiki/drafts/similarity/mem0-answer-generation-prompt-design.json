@@ -1,0 +1,60 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/mem0-answer-generation-prompt-design.md",
+  "draft_card_id": "mem0-answer-generation-prompt-design",
+  "draft_title": "Mem0 的\"答案生成 prompt\"把时间换算与冲突仲裁写成显式指令",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "mem0",
+    "prompt",
+    "与",
+    "仲裁",
+    "写成",
+    "冲突",
+    "把",
+    "指令",
+    "换算",
+    "时间",
+    "显式",
+    "生成",
+    "的",
+    "答案"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0588,
+      "shared_tokens": [
+        "的"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-query-answer-writeback",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-query-answer-writeback.md",
+      "title": "Query 操作回写好答案",
+      "score": 0.0556,
+      "shared_tokens": [
+        "答案"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-three-layer-architecture",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md",
+      "title": "LLM Wiki 的三层架构",
+      "score": 0.0556,
+      "shared_tokens": [
+        "的"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
