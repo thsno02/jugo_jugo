@@ -1,0 +1,64 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/nvk-llm-wiki-audit-and-librarian.md",
+  "draft_card_id": "nvk-llm-wiki-audit-and-librarian",
+  "draft_title": "nvk/llm-wiki 的 audit + librarian——把\"信任评估\"做成可重复 workflow",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "audit",
+    "librarian",
+    "llm",
+    "nvk",
+    "wiki",
+    "workflow",
+    "信任",
+    "做成",
+    "可",
+    "把",
+    "的",
+    "评估",
+    "重复"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "llm-wiki-three-layer-architecture",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md",
+      "title": "LLM Wiki 的三层架构",
+      "score": 0.2,
+      "shared_tokens": [
+        "llm",
+        "wiki",
+        "的"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-schema-configuration-document",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-schema-configuration-document.md",
+      "title": "Schema 是 LLM Wiki 的配置文档",
+      "score": 0.1765,
+      "shared_tokens": [
+        "llm",
+        "wiki",
+        "的"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-health-checks",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-health-checks.md",
+      "title": "LLM health checks 清理 wiki",
+      "score": 0.125,
+      "shared_tokens": [
+        "llm",
+        "wiki"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
