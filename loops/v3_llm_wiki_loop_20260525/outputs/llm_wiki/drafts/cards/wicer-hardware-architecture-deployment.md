@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-hardware-architecture-deployment.md
 aliases: [WiCER hardware projection, M4 Pro vs RTX 4090 vs Inferentia2, cached knowledge serving hardware]
-related: [wicer-fc-rag-document-count-crossover]
+related: [wicer-fc-rag-document-count-crossover, wicer-blind-compilation-catastrophic-loss, wicer-cegar-compile-evaluate-refine, anthemcreation-llm-wiki-setup-cost-envelope, kunal-local-setup-walls]
 ---
 
 ## 主张
