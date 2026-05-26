@@ -1,0 +1,2 @@
+{"message_id":"msg-20260525-v3-bootstrap-audit","created_time":"2026-05-25T20:54:47+08:00","from":"main","to":"audit","kind":"bootstrap","subject":"Prepare fusion and provenance-delta audit path","payload_path":"PROVENANCE_CONTRACT_V3.md","requires_wake":false,"status":"closed"}
+{"message_id":"msg-20260526-fusion-audit-request","created_time":"2026-05-26T14:00:00+08:00","from":"similarity","to":"audit","kind":"task_request","subject":"对 8 张 provenance_delta 做 fusion_audit","payload_path":"queues/audit_queue.md","requires_wake":true,"status":"open"}

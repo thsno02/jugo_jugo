@@ -1,0 +1,7 @@
+{
+  "schema": "wake_required.v1",
+  "brain": "audit",
+  "wake_required": true,
+  "reason": "8 张 provenance_delta 待 fusion_audit；详细列表见 queues/audit_queue.md。",
+  "updated_at": "2026-05-26T14:00:00+08:00"
+}

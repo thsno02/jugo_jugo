@@ -1,0 +1,9 @@
+{
+  "schema": "brain_state.v1",
+  "brain": "audit",
+  "status": "idle",
+  "current_task": null,
+  "pending_items": 8,
+  "pending_queue": "queues/audit_queue.md",
+  "updated_at": "2026-05-26T14:00:00+08:00"
+}

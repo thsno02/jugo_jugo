@@ -2,9 +2,9 @@
   "schema": "llm_wiki_loop_state.v3",
   "loop_id": "v3_llm_wiki_loop_20260525",
   "status": "active",
-  "phase": "all_materials_drafted",
+  "phase": "comparison_provenance_complete",
   "current_iteration": "iteration_20260525_0001_first_production_pass",
-  "current_focus": "171 张 draft 卡片已落地，等待 comparison_provenance 阶段对全部卡片（特别是 top1 ≥ 0.30 的 9 张）做决定。",
+  "current_focus": "171 张 draft 已完成 comparison_provenance；下一步 8 张 provenance_delta 进 fusion_audit，163 张 new_card 进 publication_gate。",
   "counters": {
     "materials_total": 72,
     "materials_drafted": 43,
@@ -13,7 +13,13 @@
     "draft_cards_created": 171,
     "draft_provenance_created": 171,
     "similarity_checks_completed": 171,
-    "comparison_provenance_written": 0,
+    "comparison_provenance_written": 171,
+    "decision_new_card": 163,
+    "decision_merge_candidate": 0,
+    "decision_provenance_delta": 8,
+    "decision_duplicate_skip": 0,
+    "decision_revise_before_gate": 0,
+    "audit_required_pending": 8,
     "new_cards_adopted": 0,
     "fusion_audits_completed": 0
   },
@@ -30,18 +36,16 @@
     "audit_queue": "queues/audit_queue.md",
     "task_queue": "queues/task_queue.md"
   },
-  "latest_decision": "all_materials_drafted_no_adoption",
+  "latest_decision": "comparison_provenance_complete",
   "blockers": [],
   "observations": [
-    "draft 卡片全部用中文撰写；title-jaccard 与 v2（中文标题）现在能产出有意义的分数分布（39 张卡 top1 ≥ 0.15），证明跨语言标题相似度问题已通过统一语言解决。",
-    "最高 top1 = 0.500：`karpathy-llm-kb-three-layer-arch`（developersio-jp-pattern）↔ v2 `llm-wiki-three-layer-architecture`，是非常强的 merge_candidate 信号。",
-    "65 条 `complete` 状态材料中，22 条 github_repo `README.remote` 为 0KB，按合同记为 `blocked: empty_source`，未读未写。",
-    "7 条 `pending_or_blocked` 状态材料（aicritique-enterprise-knowledge + 6 个 reddit）按 upstream 状态直接记 blocked，未尝试 draft。",
-    "First-pass workers 因防御性 `limit:2000` 漏读了 14 篇 arxiv 论文的后半段；revision pass 全文读完后又新增 34 张卡，所有原卡审阅后未发现事实错误。",
-    "新建工具 `tools/similarity_top3.py`（Jieba + Jaccard）作为 similarity_top3 的事实实现。",
-    "新建 PostToolUse hook `hooks/commit_card.sh` 和项目 `.claude/settings.json` 配置：每写一张卡，hook 自动 `git add`+`git commit` 卡片 + 配对 provenance + 配对 similarity，并通过文件锁串行化并发 worker 的提交。",
-    "新建 worker 模板 `task_templates/batch_worker_prompt.md`，里面强制中文输出和『一次读完整个源文件』两条规则。"
+    "comparison 阶段证实 title-similarity 的局限：top1=0.500 的卡（score 最高的那张）实际上是 provenance_delta 而非 merge_candidate；而许多 0.30-0.50 的卡因高频中文 token（如『的』『LLM』『wiki』『三层』）误中，实际是 new_card。",
+    "8 张 provenance_delta 全部围绕 v2 既有的『LLM Wiki 三层架构』和『idea-file』『schema configuration』三组 accepted card：anthemcreation / karpathy-gist / karpathy-llm-wiki / karpathy-llm-kb 等都给出了 v2 卡未涵盖的具体实现细节或限定条件。",
+    "0 张 merge_candidate / duplicate_skip / revise_before_gate：第一轮 production pass 的 draft 在与 v2 的重叠度上落在可推进的位置——没有完全等价于 v2 的卡，没有质量太差需要回炉的卡。",
+    "comparison 阶段的高频干扰卡（被反复列入 top 1 的 v2 卡）：`idea-file-abstract-vague`、`llm-wiki-three-layer-architecture`、`llm-wiki-schema-configuration-document`、`llm-wiki-human-llm-role-division`。这些卡标题里含常见 token，jaccard 容易高估它们的相关度。",
+    "Hook 扩展到 comparison 目录：commit_card.sh 现在也会在写 comparison/*.md 时自动 commit，提交信息为 `v3 comparison provenance: <id>`；并发锁继续生效。",
+    "comparison_worker_prompt 模板已固化，未来 worker 派发可以直接复用。"
   ],
-  "next_action": "对 171 张 draft 逐张运行 comparison_provenance；优先处理 top1 ≥ 0.30 的 9 张（高 merge_candidate 风险），再处理 top1 ∈ [0.15, 0.30) 的 30 张。之后进入 publication_gate / fusion_audit。",
-  "updated_at": "2026-05-26T12:30:00+08:00"
+  "next_action": "(1) fusion_audit on 8 provenance_delta items（见 audit_queue.md），通过后把 comparison 反向链接到对应 v2 accepted card 的 provenance；(2) publication_gate on 163 new_card items，通过后写入 outputs/llm_wiki/kb/cards/ 与 outputs/llm_wiki/kb/provenance/。",
+  "updated_at": "2026-05-26T14:00:00+08:00"
 }

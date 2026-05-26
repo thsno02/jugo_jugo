@@ -1,198 +1,219 @@
 # Draft Backlog
 
-截至 2026-05-26，v3 已产出 **171** 张 draft 卡片（每张配对 draft provenance 与 title-similarity top 3 工件），全部待 comparison_provenance 与 publication_gate / fusion_audit 处理。
+截至 2026-05-26，v3 已对 **171** 张 draft 卡片完成 draft + draft provenance + title-similarity top-3 + comparison provenance。下一步：8 张 `provenance_delta` 走 fusion_audit；163 张 `new_card` 走 publication_gate。
 
 ## 表头说明
 
-- `draft_card` / `draft_provenance` / `similarity_result`：相对 `loops/v3_llm_wiki_loop_20260525/` 的路径。
+- `draft_card` / `draft_provenance` / `similarity_result` / `comparison_provenance`：相对 `loops/v3_llm_wiki_loop_20260525/` 的路径（按 draft_card_id 一一对应）。
 - `top1_v2_match`：title-jaccard top1 候选（v2 `cards.md` 索引）。
-- `top1_score`：Jaccard 分数。
-- `decision`：本轮全部为 `pending`，等待 comparison_provenance。
-- `audit_status`：`not_required_yet`（comparison_provenance 阶段才决定）。
-- `adoption_status`：`not_adopted`（本轮不进入公共 KB）。
+- `decision`：comparison_provenance 阶段写入的判定。
+- `audit_required`：comparison_provenance 阶段标记是否需 audit。
+- `adoption_status`：本轮全部 `not_adopted`（推到 publication_gate / fusion_audit 之后）。
+
+## 决策汇总
+
+| decision | 数量 | 下一步 |
+| --- | ---: | --- |
+| `new_card` | 163 | publication_gate（轻量门控；通过即 adopt 到 v3 KB） |
+| `provenance_delta` | 8 | fusion_audit（通过后把 comparison 反向链接到对应 v2 accepted card 的 provenance） |
+| `merge_candidate` | 0 | — |
+| `duplicate_skip` | 0 | — |
+| `revise_before_gate` | 0 | — |
 
 ## 卡片清单
 
-| draft_card_id | top1 v2 match | score | source_id |
-| --- | --- | --- | --- |
-| `agents-md-as-schema-layer` | `llm-wiki-schema-configuration-document` | 0.250 | `complete-tech-live-frontier` |
-| `aillm-wiki-four-defining-properties` | `llm-wiki-pattern-file` | 0.231 | `aillm-wiki-directory` |
-| `aillm-wiki-schema-as-bottleneck` | `llm-wiki-schema-configuration-document` | 0.333 | `aillm-wiki-directory` |
-| `alce-citation-recall-precision-nli` | `idea-file-abstract-vague` | 0.059 | `arxiv-alce` |
-| `alce-eli5-claim-recall-design` | `idea-file-abstract-vague` | 0.053 | `arxiv-alce` |
-| `alce-prompting-strategies` | `idea-file-abstract-vague` | 0.091 | `arxiv-alce` |
-| `alce-retriever-and-context-utilization-gap` | `llm-wiki-query-answer-writeback` | 0.111 | `arxiv-alce` |
-| `alce-three-dimension-citation-metric` | `idea-file-abstract-vague` | 0.000 | `arxiv-alce` |
-| `anthemcreation-llm-wiki-setup-cost-envelope` | `llm-wiki-three-layer-architecture` | 0.231 | `anthemcreation-fr-guide` |
-| `anthemcreation-llm-wiki-three-layer-architecture` | `llm-wiki-three-layer-architecture` | 0.286 | `anthemcreation-fr-guide` |
-| `anthemcreation-llm-wiki-vs-rag-multi-hop` | `llm-wiki-three-layer-architecture` | 0.214 | `anthemcreation-fr-guide` |
-| `ares-cross-domain-generalization-limits` | `llm-wiki-query-answer-writeback` | 0.056 | `arxiv-ares` |
-| `ares-gpt4-vs-human-annotation-tradeoff` | `idea-file-abstract-vague` | 0.056 | `arxiv-ares` |
-| `ares-mock-rag-system-evaluation-design` | `idea-file-abstract-vague` | 0.067 | `arxiv-ares` |
-| `ares-ppi-confidence-bound` | `idea-file-abstract-vague` | 0.062 | `arxiv-ares` |
-| `ares-synthetic-data-pipeline` | `llm-wiki-persistent-wiki-alternative-mode` | 0.067 | `arxiv-ares` |
-| `ares-three-judge-rag-evaluation` | `rag-document-qa-does-not-accumulate-synthesized-knowledge` | 0.067 | `arxiv-ares` |
-| `audit-by-suspension-against-entrenchment` | `idea-file-abstract-vague` | 0.050 | `arxiv-memory-as-metabolism` |
-| `auto-index-replaces-rag-at-small-scale` | `llm-wiki-persistent-wiki-alternative-mode` | 0.182 | `karpathy-x-launch-post` |
-| `beyond-the-token-bottleneck-llm-wiki-case-study` | `llm-wiki-pattern-file` | 0.188 | `complete-tech-live-frontier` |
-| `cognition-human-approved-skill-md` | `idea-file-abstract-vague` | 0.056 | `cognitionus-llm-wiki-guide` |
-| `cognition-skill-loop-evidence-to-teaching` | `idea-file-abstract-vague` | 0.077 | `cognitionus-llm-wiki-guide` |
-| `docs-as-code-five-pillars` | `idea-file-abstract-vague` | 0.083 | `writethedocs-docs-as-code` |
-| `docs-as-code-merge-block-incentive` | `llm-wiki-schema-configuration-document` | 0.158 | `writethedocs-docs-as-code` |
-| `enterprise-llm-wiki-drift-detection-loop` | `llm-wiki-three-layer-architecture` | 0.200 | `falconer-enterprise-guide` |
-| `enterprise-llm-wiki-four-properties` | `llm-wiki-health-checks` | 0.133 | `falconer-enterprise-guide` |
-| `enterprise-llm-wiki-tool-native-ingestion` | `llm-wiki-health-checks` | 0.143 | `falconer-enterprise-guide` |
-| `etamp-attack-payload-structure` | `idea-file-abstract-vague` | 0.067 | `arxiv-etamp-memory-poisoning` |
-| `etamp-capability-vs-security` | `idea-file-abstract-vague` | 0.000 | `arxiv-etamp-memory-poisoning` |
-| `etamp-chaos-monkey-agent-robustness` | `idea-file-abstract-vague` | 0.000 | `arxiv-etamp-memory-poisoning` |
-| `etamp-direction-asymmetry-and-stealth` | `idea-file-abstract-vague` | 0.062 | `arxiv-etamp-memory-poisoning` |
-| `etamp-environment-injected-memory-poisoning` | `idea-file-abstract-vague` | 0.056 | `arxiv-etamp-memory-poisoning` |
-| `etamp-frustration-exploitation` | `idea-file-abstract-vague` | 0.059 | `arxiv-etamp-memory-poisoning` |
-| `etamp-long-context-recall-diagnostic` | `rag-document-qa-does-not-accumulate-synthesized-knowledge` | 0.056 | `arxiv-etamp-memory-poisoning` |
-| `etamp-pseudo-trajectory-methodology` | `idea-file-abstract-vague` | 0.000 | `arxiv-etamp-memory-poisoning` |
-| `file-outputs-back-as-compounding-loop` | `llm-wiki-persistent-compounding-artifact` | 0.091 | `karpathy-x-launch-post` |
-| `gragpoison-additive-vs-edit-attack` | `idea-file-abstract-vague` | 0.071 | `arxiv-graph-poisoning` |
-| `graphrag-adaptive-benchmark-via-personas` | `llm-wiki-wiki-layer-generated-markdown-directory` | 0.056 | `arxiv-graphrag` |
-| `graphrag-context-window-8k-optimal` | `idea-file-abstract-vague` | 0.000 | `arxiv-graphrag` |
-| `graphrag-global-sensemaking-pipeline` | `idea-file-abstract-vague` | 0.067 | `arxiv-graphrag` |
-| `graphrag-leiden-community-hierarchy` | `idea-file-abstract-vague` | 0.083 | `arxiv-graphrag` |
-| `graphrag-manipulation-only-attack-surface` | `idea-file-abstract-vague` | 0.111 | `arxiv-graph-poisoning` |
-| `graphrag-pipeline-formalism` | `llm-wiki-three-layer-architecture` | 0.154 | `arxiv-graph-poisoning` |
-| `graphrag-root-community-token-efficiency` | `idea-file-abstract-vague` | 0.000 | `arxiv-graphrag` |
-| `graphrag-self-reflection-gleaning` | `idea-file-abstract-vague` | 0.067 | `arxiv-graphrag` |
-| `graphrag-text-defense-blind-spot` | `idea-file-abstract-vague` | 0.000 | `arxiv-graph-poisoning` |
-| `hn-llm-wiki-is-just-rag-debate` | `llm-wiki-three-layer-architecture` | 0.214 | `hacker-news-original-thread` |
-| `hn-source-granularity-changes-synthesis-quality` | `llm-wiki-schema-configuration-document` | 0.286 | `hacker-news-original-thread` |
-| `hn-writing-as-thinking-vs-llm-wiki` | `llm-wiki-human-llm-role-division` | 0.067 | `hacker-news-original-thread` |
-| `idea-file-as-agent-era-artifact` | `idea-file-abstract-vague` | 0.300 | `karpathy-x-launch-post` |
-| `karpathy-gist-bookkeeping-burden` | `llm-wiki-wiki-layer-generated-markdown-directory` | 0.182 | `karpathy-gist-llm-wiki` |
-| `karpathy-gist-memex-connection` | `llm-wiki-schema-configuration-document` | 0.200 | `karpathy-gist-llm-wiki` |
-| `karpathy-gist-three-layers` | `llm-wiki-three-layer-architecture` | 0.250 | `karpathy-gist-llm-wiki` |
-| `karpathy-llm-kb-three-layer-arch` | `llm-wiki-three-layer-architecture` | 0.500 | `developersio-jp-pattern` |
-| `karpathy-llm-kb-three-operations` | `llm-wiki-query-answer-writeback` | 0.133 | `developersio-jp-pattern` |
-| `karpathy-llm-wiki-obsidian-plugin-overview` | `llm-wiki-three-layer-architecture` | 0.333 | `obsidian-community-plugin` |
-| `karpathy-llm-wiki-source-executable-analogy` | `llm-wiki-health-checks` | 0.167 | `anthemcreation-en-guide` |
-| `karpathy-llm-wiki-three-layers` | `llm-wiki-three-layer-architecture` | 0.308 | `marvin-hn-persistent-knowledge` |
-| `karpathy-llm-wiki-vs-rag` | `llm-wiki-schema-configuration-document` | 0.222 | `marvin-hn-persistent-knowledge` |
-| `karpathy-wiki-aliases-and-dedup` | `idea-file-abstract-vague` | 0.062 | `obsidian-community-plugin` |
-| `karpathy-wiki-extraction-granularity` | `idea-file-abstract-vague` | 0.053 | `obsidian-community-plugin` |
-| `karpathy-wiki-full-context-vs-rag` | `llm-wiki-three-layer-architecture` | 0.111 | `obsidian-community-plugin` |
-| `knowledge-compounding-dynamic-roi` | `idea-file-abstract-vague` | 0.056 | `arxiv-knowledge-compounding` |
-| `knowledge-compounding-three-mechanisms` | `llm-wiki-ingest-example-flow` | 0.067 | `arxiv-knowledge-compounding` |
-| `knowledge-compounding-tokens-as-capital` | `llm-wiki-human-llm-role-division` | 0.077 | `arxiv-knowledge-compounding` |
-| `kunal-llm-c-rag-misinterpretation` | `llm-wiki-three-layer-architecture` | 0.143 | `kunal-local-knowledge-base` |
-| `kunal-local-setup-walls` | `llm-wiki-schema-configuration-document` | 0.118 | `kunal-local-knowledge-base` |
-| `langgraph-store-namespace-key-json-model` | `llm-wiki-schema-configuration-document` | 0.133 | `langchain-long-term-memory-docs` |
-| `langgraph-tool-runtime-store-access` | `idea-file-abstract-vague` | 0.000 | `langchain-long-term-memory-docs` |
-| `lightmem-complexity-formula` | `idea-file-abstract-vague` | 0.062 | `arxiv-lightmem` |
-| `lightmem-light2-topic-aware-stm` | `idea-file-abstract-vague` | 0.071 | `arxiv-lightmem` |
-| `lightmem-precompress-and-topic-segmentation` | `idea-file-abstract-vague` | 0.059 | `arxiv-lightmem` |
-| `lightmem-sleep-time-offline-parallel-update` | `idea-file-abstract-vague` | 0.062 | `arxiv-lightmem` |
-| `lightmem-three-stage-atkinson-shiffrin` | `llm-wiki-three-layer-architecture` | 0.267 | `arxiv-lightmem` |
-| `llm-knowledge-base-five-stage-workflow` | `llm-wiki-human-llm-role-division` | 0.200 | `karpathy-x-launch-post` |
-| `llm-wiki-contradictions-are-assets` | `llm-wiki-three-layer-architecture` | 0.188 | `openaitoolshub-six-months` |
-| `llm-wiki-ingest-vs-query-workflow` | `llm-wiki-health-checks` | 0.143 | `anthemcreation-en-guide` |
-| `llm-wiki-karpathy-lint-grounding-trail` | `llm-wiki-persistent-compounding-artifact` | 0.083 | `clawhub-llm-wiki-karpathy` |
-| `llm-wiki-karpathy-multimodal-representation-path` | `llm-wiki-ingest-example-flow` | 0.100 | `clawhub-llm-wiki-karpathy` |
-| `llm-wiki-karpathy-runtime-vs-agent-split` | `llm-wiki-three-layer-architecture` | 0.300 | `clawhub-llm-wiki-karpathy` |
-| `llm-wiki-mcp-design-boundary-mechanics-not-content` | `llm-wiki-schema-configuration-document` | 0.250 | `pypi-llm-wiki-mcp` |
-| `llm-wiki-mcp-four-tools` | `llm-wiki-three-layer-architecture` | 0.200 | `pypi-llm-wiki-mcp` |
-| `llm-wiki-mcp-skills-vs-tools-workflow` | `llm-wiki-three-layer-architecture` | 0.214 | `pypi-llm-wiki-mcp` |
-| `llm-wiki-rohit-v2-improvements` | `idea-file-abstract-vague` | 0.056 | `openaitoolshub-six-months` |
-| `llm-wiki-schema-is-most-important` | `llm-wiki-schema-configuration-document` | 0.333 | `openaitoolshub-six-months` |
-| `llm-wiki-tldr-load-bearing` | `idea-file-abstract-vague` | 0.000 | `openaitoolshub-six-months` |
-| `locomo-event-summarization-five-error-types` | `llm-wiki-pattern-file` | 0.105 | `arxiv-locomo` |
-| `locomo-long-context-adversarial-collapse` | `llm-wiki-schema-configuration-document` | 0.136 | `arxiv-locomo` |
-| `locomo-observation-rag-beats-summary-rag` | `rag-document-qa-does-not-accumulate-synthesized-knowledge` | 0.050 | `arxiv-locomo` |
-| `locomo-persona-event-graph-pipeline` | `idea-file-abstract-vague` | 0.067 | `arxiv-locomo` |
-| `locomo-three-task-evaluation-framework` | `idea-file-abstract-vague` | 0.000 | `arxiv-locomo` |
-| `locomo-very-long-term-dialogue-dataset` | `idea-file-abstract-vague` | 0.059 | `arxiv-locomo` |
-| `longmemeval-benchmark-construction-pipeline` | `idea-file-abstract-vague` | 0.071 | `arxiv-longmemeval` |
-| `longmemeval-chain-of-note-and-json-reading` | `idea-file-abstract-vague` | 0.000 | `arxiv-longmemeval` |
-| `longmemeval-commercial-system-failure-modes` | `idea-file-abstract-vague` | 0.059 | `arxiv-longmemeval` |
-| `longmemeval-five-core-memory-abilities` | `llm-wiki-schema-configuration-document` | 0.111 | `arxiv-longmemeval` |
-| `longmemeval-key-expansion-with-facts` | `idea-file-abstract-vague` | 0.000 | `arxiv-longmemeval` |
-| `longmemeval-three-stage-memory-framework` | `idea-file-abstract-vague` | 0.000 | `arxiv-longmemeval` |
-| `longmemeval-time-aware-query-expansion` | `idea-file-abstract-vague` | 0.053 | `arxiv-longmemeval` |
-| `mem0-answer-generation-prompt-design` | `idea-file-abstract-vague` | 0.059 | `arxiv-mem0` |
-| `mem0-baseline-failure-modes` | `idea-file-abstract-vague` | 0.062 | `arxiv-mem0` |
-| `mem0-extract-update-pipeline` | `idea-file-abstract-vague` | 0.053 | `arxiv-mem0` |
-| `mem0-graph-memory-variant` | `idea-file-abstract-vague` | 0.000 | `arxiv-mem0` |
-| `mem0-locomo-benchmark-evaluation` | `idea-file-abstract-vague` | 0.067 | `arxiv-mem0` |
-| `mem0-rag-chunk-size-ablation` | `idea-file-abstract-vague` | 0.059 | `arxiv-mem0` |
-| `mem0-tool-call-add-update-delete-noop` | `llm-wiki-three-layer-architecture` | 0.118 | `arxiv-mem0` |
-| `memgpt-dmr-task-evaluation` | `idea-file-abstract-vague` | 0.062 | `arxiv-memgpt` |
-| `memgpt-docqa-pagination-failure-mode` | `llm-wiki-schema-configuration-document` | 0.087 | `arxiv-memgpt` |
-| `memgpt-function-chaining-heartbeat` | `idea-file-abstract-vague` | 0.059 | `arxiv-memgpt` |
-| `memgpt-main-vs-external-context` | `llm-wiki-wiki-layer-generated-markdown-directory` | 0.087 | `arxiv-memgpt` |
-| `memgpt-nested-kv-multi-hop` | `idea-file-abstract-vague` | 0.000 | `arxiv-memgpt` |
-| `memgpt-queue-eviction-policy` | `idea-file-abstract-vague` | 0.000 | `arxiv-memgpt` |
-| `memgpt-virtual-context-os-analogy` | `llm-wiki-three-layer-architecture` | 0.100 | `arxiv-memgpt` |
-| `memory-as-metabolism-architectural-separability` | `llm-wiki-three-layer-architecture` | 0.125 | `arxiv-memory-as-metabolism` |
-| `memory-as-metabolism-conflict-routing-matrix` | `idea-file-abstract-vague` | 0.000 | `arxiv-memory-as-metabolism` |
-| `memory-as-metabolism-contextualize-depth-fitted` | `idea-file-abstract-vague` | 0.000 | `arxiv-memory-as-metabolism` |
-| `memory-as-metabolism-five-operations` | `llm-wiki-three-layer-architecture` | 0.143 | `arxiv-memory-as-metabolism` |
-| `memory-as-metabolism-mirror-vs-compensate` | `idea-file-abstract-vague` | 0.100 | `arxiv-memory-as-metabolism` |
-| `memory-gravity-load-bearing-protection` | `rag-document-qa-does-not-accumulate-synthesized-knowledge` | 0.053 | `arxiv-memory-as-metabolism` |
-| `microsoft-agent-governance-eight-packages` | `idea-file-abstract-vague` | 0.000 | `microsoft-agent-governance-toolkit-docs` |
-| `microsoft-agent-governance-standards-alignment` | `idea-file-abstract-vague` | 0.000 | `microsoft-agent-governance-toolkit-docs` |
-| `minority-pressure-promotion` | `idea-file-abstract-vague` | 0.056 | `arxiv-memory-as-metabolism` |
-| `morishige-kb-compile-mem0-overlay` | `llm-wiki-three-layer-architecture` | 0.200 | `developersio-jp-pattern` |
-| `my-llm-wiki-supported-source-types` | `llm-wiki-schema-configuration-document` | 0.167 | `pypi-my-llm-wiki` |
-| `my-llm-wiki-three-layer-implementation` | `llm-wiki-three-layer-architecture` | 0.308 | `pypi-my-llm-wiki` |
-| `nist-ai-rmf-gai-profile` | `llm-wiki-schema-configuration-document` | 0.118 | `nist-gai-profile` |
-| `nvk-llm-wiki-audit-and-librarian` | `llm-wiki-three-layer-architecture` | 0.200 | `llm-wiki-net` |
-| `nvk-llm-wiki-hub-and-topic-wikis` | `llm-wiki-three-layer-architecture` | 0.214 | `llm-wiki-net` |
-| `nvk-llm-wiki-parallel-multi-agent-research` | `llm-wiki-three-layer-architecture` | 0.167 | `llm-wiki-net` |
-| `obsidian-as-ide-llm-as-programmer` | `llm-wiki-schema-configuration-document` | 0.308 | `marvin-hn-persistent-knowledge` |
-| `owasp-agentic-top10-2026-positioning` | `idea-file-abstract-vague` | 0.083 | `owasp-agentic-top10-2026` |
-| `owasp-agentic-vs-llm-top10-2025` | `llm-wiki-human-llm-role-division` | 0.077 | `owasp-agentic-top10-2026` |
-| `owasp-genai-landscape-2026q2` | `idea-file-abstract-vague` | 0.000 | `owasp-llm-top10-2025` |
-| `owasp-llm-top10-community-genealogy` | `llm-wiki-human-llm-role-division` | 0.059 | `owasp-llm-top10-2025` |
-| `poisonedrag-baselines-isolate-two-conditions` | `idea-file-abstract-vague` | 0.083 | `arxiv-poisonedrag` |
-| `poisonedrag-existing-defenses-insufficient` | `idea-file-abstract-vague` | 0.000 | `arxiv-poisonedrag` |
-| `poisonedrag-knowledge-database-attack-surface` | `llm-wiki-schema-configuration-document` | 0.133 | `arxiv-poisonedrag` |
-| `poisonedrag-retrieval-generation-two-conditions` | `llm-wiki-wiki-layer-generated-markdown-directory` | 0.067 | `arxiv-poisonedrag` |
-| `poisonedrag-survives-advanced-rag-and-agents` | `llm-wiki-human-llm-role-division` | 0.067 | `arxiv-poisonedrag` |
-| `rag-chunk-level-faithfulness` | `idea-file-abstract-vague` | 0.100 | `arxiv-ragchecker` |
-| `ragas-answer-relevance-metric` | `llm-wiki-human-llm-role-division` | 0.062 | `arxiv-ragas` |
-| `ragas-context-relevance-metric` | `llm-wiki-human-llm-role-division` | 0.071 | `arxiv-ragas` |
-| `ragas-faithfulness-metric` | `llm-wiki-human-llm-role-division` | 0.059 | `arxiv-ragas` |
-| `ragas-reference-free-rag-evaluation` | `idea-file-abstract-vague` | 0.059 | `arxiv-ragas` |
-| `ragas-wikieval-dataset` | `idea-file-abstract-vague` | 0.056 | `arxiv-ragas` |
-| `ragchecker-claim-entailment-decomposition` | `idea-file-abstract-vague` | 0.067 | `arxiv-ragchecker` |
-| `ragchecker-generator-trilemma` | `idea-file-abstract-vague` | 0.077 | `arxiv-ragchecker` |
-| `ragchecker-retriever-claim-vs-chunk-precision` | `idea-file-abstract-vague` | 0.000 | `arxiv-ragchecker` |
-| `ragchecker-tuning-knobs-saturate` | `idea-file-abstract-vague` | 0.083 | `arxiv-ragchecker` |
-| `retrieval-not-enough-for-stale-kb` | `llm-wiki-query-answer-writeback` | 0.056 | `falconer-enterprise-guide` |
-| `robin-cartier-scale-ceiling` | `llm-wiki-three-layer-architecture` | 0.150 | `robin-cartier-llm-knowledge-bases` |
-| `robin-cartier-schema-as-product-doc` | `llm-wiki-schema-configuration-document` | 0.222 | `robin-cartier-llm-knowledge-bases` |
-| `tkpa-graph-guided-targeted-poisoning` | `idea-file-abstract-vague` | 0.067 | `arxiv-graph-poisoning` |
-| `ukpa-coreference-disruption` | `idea-file-abstract-vague` | 0.067 | `arxiv-graph-poisoning` |
-| `ukpa-edit-distance-stealth-tradeoff` | `idea-file-abstract-vague` | 0.053 | `arxiv-graph-poisoning` |
-| `wicer-blind-compilation-catastrophic-loss` | `llm-wiki-persistent-compounding-artifact` | 0.071 | `arxiv-wicer` |
-| `wicer-cegar-compile-evaluate-refine` | `llm-wiki-persistent-compounding-artifact` | 0.100 | `arxiv-wicer` |
-| `wicer-fc-rag-document-count-crossover` | `rag-document-qa-does-not-accumulate-synthesized-knowledge` | 0.111 | `arxiv-wicer` |
-| `wicer-hardware-architecture-deployment` | `idea-file-abstract-vague` | 0.000 | `arxiv-wicer` |
-| `wicer-llm-judge-human-validation` | `llm-wiki-three-layer-architecture` | 0.111 | `arxiv-wicer` |
-| `wicer-recovery-distribution-exceeds-fc-raw` | `raw-sources-readonly-source-of-truth` | 0.059 | `arxiv-wicer` |
-| `wicer-targeted-vs-random-pinning-ablation` | `raw-sources-readonly-source-of-truth` | 0.067 | `arxiv-wicer` |
-| `wikibase-conceptual-not-serialization` | `raw-sources-readonly-source-of-truth` | 0.067 | `wikibase-data-model` |
-| `wikibase-item-property-snak-statement` | `idea-file-abstract-vague` | 0.077 | `wikibase-data-model` |
-| `wikibase-statement-rank-and-references` | `idea-file-abstract-vague` | 0.083 | `wikibase-data-model` |
-| `wikibase-three-snak-types` | `idea-file-abstract-vague` | 0.000 | `wikibase-data-model` |
-| `wikibase-timevalue-uncertain-dates` | `idea-file-abstract-vague` | 0.071 | `wikibase-data-model` |
-| `zep-bi-temporal-edges` | `raw-sources-readonly-source-of-truth` | 0.050 | `arxiv-zep` |
-| `zep-dmr-benchmark-critique` | `idea-file-abstract-vague` | 0.050 | `arxiv-zep` |
-| `zep-graphiti-three-tier-graph` | `llm-wiki-three-layer-architecture` | 0.059 | `arxiv-zep` |
-| `zep-hybrid-search-rerank` | `idea-file-abstract-vague` | 0.056 | `arxiv-zep` |
+| draft_card_id | source_id | top1 v2 match | score | decision | audit |
+| --- | --- | --- | ---: | --- | :---: |
+| `agents-md-as-schema-layer` | `complete-tech-live-frontier` | `llm-wiki-schema-configuration-document` | 0.250 | `provenance_delta` | ✓ |
+| `aillm-wiki-four-defining-properties` | `aillm-wiki-directory` | `llm-wiki-pattern-file` | 0.231 | `new_card` |  |
+| `aillm-wiki-schema-as-bottleneck` | `aillm-wiki-directory` | `llm-wiki-schema-configuration-document` | 0.333 | `new_card` |  |
+| `alce-citation-recall-precision-nli` | `arxiv-alce` | `idea-file-abstract-vague` | 0.059 | `new_card` |  |
+| `alce-eli5-claim-recall-design` | `arxiv-alce` | `idea-file-abstract-vague` | 0.053 | `new_card` |  |
+| `alce-prompting-strategies` | `arxiv-alce` | `idea-file-abstract-vague` | 0.091 | `new_card` |  |
+| `alce-retriever-and-context-utilization-gap` | `arxiv-alce` | `llm-wiki-query-answer-writeback` | 0.111 | `new_card` |  |
+| `alce-three-dimension-citation-metric` | `arxiv-alce` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `anthemcreation-llm-wiki-setup-cost-envelope` | `anthemcreation-fr-guide` | `llm-wiki-three-layer-architecture` | 0.231 | `new_card` |  |
+| `anthemcreation-llm-wiki-three-layer-architecture` | `anthemcreation-fr-guide` | `llm-wiki-three-layer-architecture` | 0.286 | `provenance_delta` | ✓ |
+| `anthemcreation-llm-wiki-vs-rag-multi-hop` | `anthemcreation-fr-guide` | `llm-wiki-three-layer-architecture` | 0.214 | `new_card` |  |
+| `ares-cross-domain-generalization-limits` | `arxiv-ares` | `llm-wiki-query-answer-writeback` | 0.056 | `new_card` |  |
+| `ares-gpt4-vs-human-annotation-tradeoff` | `arxiv-ares` | `idea-file-abstract-vague` | 0.056 | `new_card` |  |
+| `ares-mock-rag-system-evaluation-design` | `arxiv-ares` | `idea-file-abstract-vague` | 0.067 | `new_card` |  |
+| `ares-ppi-confidence-bound` | `arxiv-ares` | `idea-file-abstract-vague` | 0.062 | `new_card` |  |
+| `ares-synthetic-data-pipeline` | `arxiv-ares` | `llm-wiki-persistent-wiki-alternative-mode` | 0.067 | `new_card` |  |
+| `ares-three-judge-rag-evaluation` | `arxiv-ares` | `rag-document-qa-does-not-accumulate-synthesized-knowledge` | 0.067 | `new_card` |  |
+| `audit-by-suspension-against-entrenchment` | `arxiv-memory-as-metabolism` | `idea-file-abstract-vague` | 0.050 | `new_card` |  |
+| `auto-index-replaces-rag-at-small-scale` | `karpathy-x-launch-post` | `llm-wiki-persistent-wiki-alternative-mode` | 0.182 | `new_card` |  |
+| `beyond-the-token-bottleneck-llm-wiki-case-study` | `complete-tech-live-frontier` | `llm-wiki-pattern-file` | 0.188 | `new_card` |  |
+| `cognition-human-approved-skill-md` | `cognitionus-llm-wiki-guide` | `idea-file-abstract-vague` | 0.056 | `new_card` |  |
+| `cognition-skill-loop-evidence-to-teaching` | `cognitionus-llm-wiki-guide` | `idea-file-abstract-vague` | 0.077 | `new_card` |  |
+| `docs-as-code-five-pillars` | `writethedocs-docs-as-code` | `idea-file-abstract-vague` | 0.083 | `new_card` |  |
+| `docs-as-code-merge-block-incentive` | `writethedocs-docs-as-code` | `llm-wiki-schema-configuration-document` | 0.158 | `new_card` |  |
+| `enterprise-llm-wiki-drift-detection-loop` | `falconer-enterprise-guide` | `llm-wiki-three-layer-architecture` | 0.200 | `provenance_delta` | ✓ |
+| `enterprise-llm-wiki-four-properties` | `falconer-enterprise-guide` | `llm-wiki-health-checks` | 0.133 | `new_card` |  |
+| `enterprise-llm-wiki-tool-native-ingestion` | `falconer-enterprise-guide` | `llm-wiki-health-checks` | 0.143 | `new_card` |  |
+| `etamp-attack-payload-structure` | `arxiv-etamp-memory-poisoning` | `idea-file-abstract-vague` | 0.067 | `new_card` |  |
+| `etamp-capability-vs-security` | `arxiv-etamp-memory-poisoning` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `etamp-chaos-monkey-agent-robustness` | `arxiv-etamp-memory-poisoning` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `etamp-direction-asymmetry-and-stealth` | `arxiv-etamp-memory-poisoning` | `idea-file-abstract-vague` | 0.062 | `new_card` |  |
+| `etamp-environment-injected-memory-poisoning` | `arxiv-etamp-memory-poisoning` | `idea-file-abstract-vague` | 0.056 | `new_card` |  |
+| `etamp-frustration-exploitation` | `arxiv-etamp-memory-poisoning` | `idea-file-abstract-vague` | 0.059 | `new_card` |  |
+| `etamp-long-context-recall-diagnostic` | `arxiv-etamp-memory-poisoning` | `rag-document-qa-does-not-accumulate-synthesized-knowledge` | 0.056 | `new_card` |  |
+| `etamp-pseudo-trajectory-methodology` | `arxiv-etamp-memory-poisoning` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `file-outputs-back-as-compounding-loop` | `karpathy-x-launch-post` | `llm-wiki-persistent-compounding-artifact` | 0.091 | `new_card` |  |
+| `gragpoison-additive-vs-edit-attack` | `arxiv-graph-poisoning` | `idea-file-abstract-vague` | 0.071 | `new_card` |  |
+| `graphrag-adaptive-benchmark-via-personas` | `arxiv-graphrag` | `llm-wiki-wiki-layer-generated-markdown-directory` | 0.056 | `new_card` |  |
+| `graphrag-context-window-8k-optimal` | `arxiv-graphrag` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `graphrag-global-sensemaking-pipeline` | `arxiv-graphrag` | `idea-file-abstract-vague` | 0.067 | `new_card` |  |
+| `graphrag-leiden-community-hierarchy` | `arxiv-graphrag` | `idea-file-abstract-vague` | 0.083 | `new_card` |  |
+| `graphrag-manipulation-only-attack-surface` | `arxiv-graph-poisoning` | `idea-file-abstract-vague` | 0.111 | `new_card` |  |
+| `graphrag-pipeline-formalism` | `arxiv-graph-poisoning` | `llm-wiki-three-layer-architecture` | 0.154 | `new_card` |  |
+| `graphrag-root-community-token-efficiency` | `arxiv-graphrag` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `graphrag-self-reflection-gleaning` | `arxiv-graphrag` | `idea-file-abstract-vague` | 0.067 | `new_card` |  |
+| `graphrag-text-defense-blind-spot` | `arxiv-graph-poisoning` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `hn-llm-wiki-is-just-rag-debate` | `hacker-news-original-thread` | `llm-wiki-three-layer-architecture` | 0.214 | `new_card` |  |
+| `hn-source-granularity-changes-synthesis-quality` | `hacker-news-original-thread` | `llm-wiki-schema-configuration-document` | 0.286 | `new_card` |  |
+| `hn-writing-as-thinking-vs-llm-wiki` | `hacker-news-original-thread` | `llm-wiki-human-llm-role-division` | 0.067 | `new_card` |  |
+| `idea-file-as-agent-era-artifact` | `karpathy-x-launch-post` | `idea-file-abstract-vague` | 0.300 | `provenance_delta` | ✓ |
+| `karpathy-gist-bookkeeping-burden` | `karpathy-gist-llm-wiki` | `llm-wiki-wiki-layer-generated-markdown-directory` | 0.182 | `new_card` |  |
+| `karpathy-gist-memex-connection` | `karpathy-gist-llm-wiki` | `llm-wiki-schema-configuration-document` | 0.200 | `new_card` |  |
+| `karpathy-gist-three-layers` | `karpathy-gist-llm-wiki` | `llm-wiki-three-layer-architecture` | 0.250 | `provenance_delta` | ✓ |
+| `karpathy-llm-kb-three-layer-arch` | `developersio-jp-pattern` | `llm-wiki-three-layer-architecture` | 0.500 | `provenance_delta` | ✓ |
+| `karpathy-llm-kb-three-operations` | `developersio-jp-pattern` | `llm-wiki-query-answer-writeback` | 0.133 | `new_card` |  |
+| `karpathy-llm-wiki-obsidian-plugin-overview` | `obsidian-community-plugin` | `llm-wiki-three-layer-architecture` | 0.333 | `new_card` |  |
+| `karpathy-llm-wiki-source-executable-analogy` | `anthemcreation-en-guide` | `llm-wiki-health-checks` | 0.167 | `new_card` |  |
+| `karpathy-llm-wiki-three-layers` | `marvin-hn-persistent-knowledge` | `llm-wiki-three-layer-architecture` | 0.308 | `provenance_delta` | ✓ |
+| `karpathy-llm-wiki-vs-rag` | `marvin-hn-persistent-knowledge` | `llm-wiki-schema-configuration-document` | 0.222 | `new_card` |  |
+| `karpathy-wiki-aliases-and-dedup` | `obsidian-community-plugin` | `idea-file-abstract-vague` | 0.062 | `new_card` |  |
+| `karpathy-wiki-extraction-granularity` | `obsidian-community-plugin` | `idea-file-abstract-vague` | 0.053 | `new_card` |  |
+| `karpathy-wiki-full-context-vs-rag` | `obsidian-community-plugin` | `llm-wiki-three-layer-architecture` | 0.111 | `new_card` |  |
+| `knowledge-compounding-dynamic-roi` | `arxiv-knowledge-compounding` | `idea-file-abstract-vague` | 0.056 | `new_card` |  |
+| `knowledge-compounding-three-mechanisms` | `arxiv-knowledge-compounding` | `llm-wiki-ingest-example-flow` | 0.067 | `new_card` |  |
+| `knowledge-compounding-tokens-as-capital` | `arxiv-knowledge-compounding` | `llm-wiki-human-llm-role-division` | 0.077 | `new_card` |  |
+| `kunal-llm-c-rag-misinterpretation` | `kunal-local-knowledge-base` | `llm-wiki-three-layer-architecture` | 0.143 | `new_card` |  |
+| `kunal-local-setup-walls` | `kunal-local-knowledge-base` | `llm-wiki-schema-configuration-document` | 0.118 | `new_card` |  |
+| `langgraph-store-namespace-key-json-model` | `langchain-long-term-memory-docs` | `llm-wiki-schema-configuration-document` | 0.133 | `new_card` |  |
+| `langgraph-tool-runtime-store-access` | `langchain-long-term-memory-docs` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `lightmem-complexity-formula` | `arxiv-lightmem` | `idea-file-abstract-vague` | 0.062 | `new_card` |  |
+| `lightmem-light2-topic-aware-stm` | `arxiv-lightmem` | `idea-file-abstract-vague` | 0.071 | `new_card` |  |
+| `lightmem-precompress-and-topic-segmentation` | `arxiv-lightmem` | `idea-file-abstract-vague` | 0.059 | `new_card` |  |
+| `lightmem-sleep-time-offline-parallel-update` | `arxiv-lightmem` | `idea-file-abstract-vague` | 0.062 | `new_card` |  |
+| `lightmem-three-stage-atkinson-shiffrin` | `arxiv-lightmem` | `llm-wiki-three-layer-architecture` | 0.267 | `new_card` |  |
+| `llm-knowledge-base-five-stage-workflow` | `karpathy-x-launch-post` | `llm-wiki-human-llm-role-division` | 0.200 | `new_card` |  |
+| `llm-wiki-contradictions-are-assets` | `openaitoolshub-six-months` | `llm-wiki-three-layer-architecture` | 0.188 | `new_card` |  |
+| `llm-wiki-ingest-vs-query-workflow` | `anthemcreation-en-guide` | `llm-wiki-health-checks` | 0.143 | `new_card` |  |
+| `llm-wiki-karpathy-lint-grounding-trail` | `clawhub-llm-wiki-karpathy` | `llm-wiki-persistent-compounding-artifact` | 0.083 | `new_card` |  |
+| `llm-wiki-karpathy-multimodal-representation-path` | `clawhub-llm-wiki-karpathy` | `llm-wiki-ingest-example-flow` | 0.100 | `new_card` |  |
+| `llm-wiki-karpathy-runtime-vs-agent-split` | `clawhub-llm-wiki-karpathy` | `llm-wiki-three-layer-architecture` | 0.300 | `new_card` |  |
+| `llm-wiki-mcp-design-boundary-mechanics-not-content` | `pypi-llm-wiki-mcp` | `llm-wiki-schema-configuration-document` | 0.250 | `new_card` |  |
+| `llm-wiki-mcp-four-tools` | `pypi-llm-wiki-mcp` | `llm-wiki-three-layer-architecture` | 0.200 | `new_card` |  |
+| `llm-wiki-mcp-skills-vs-tools-workflow` | `pypi-llm-wiki-mcp` | `llm-wiki-three-layer-architecture` | 0.214 | `new_card` |  |
+| `llm-wiki-rohit-v2-improvements` | `openaitoolshub-six-months` | `idea-file-abstract-vague` | 0.056 | `new_card` |  |
+| `llm-wiki-schema-is-most-important` | `openaitoolshub-six-months` | `llm-wiki-schema-configuration-document` | 0.333 | `new_card` |  |
+| `llm-wiki-tldr-load-bearing` | `openaitoolshub-six-months` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `locomo-event-summarization-five-error-types` | `arxiv-locomo` | `llm-wiki-pattern-file` | 0.105 | `new_card` |  |
+| `locomo-long-context-adversarial-collapse` | `arxiv-locomo` | `llm-wiki-schema-configuration-document` | 0.136 | `new_card` |  |
+| `locomo-observation-rag-beats-summary-rag` | `arxiv-locomo` | `rag-document-qa-does-not-accumulate-synthesized-knowledge` | 0.050 | `new_card` |  |
+| `locomo-persona-event-graph-pipeline` | `arxiv-locomo` | `idea-file-abstract-vague` | 0.067 | `new_card` |  |
+| `locomo-three-task-evaluation-framework` | `arxiv-locomo` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `locomo-very-long-term-dialogue-dataset` | `arxiv-locomo` | `idea-file-abstract-vague` | 0.059 | `new_card` |  |
+| `longmemeval-benchmark-construction-pipeline` | `arxiv-longmemeval` | `idea-file-abstract-vague` | 0.071 | `new_card` |  |
+| `longmemeval-chain-of-note-and-json-reading` | `arxiv-longmemeval` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `longmemeval-commercial-system-failure-modes` | `arxiv-longmemeval` | `idea-file-abstract-vague` | 0.059 | `new_card` |  |
+| `longmemeval-five-core-memory-abilities` | `arxiv-longmemeval` | `llm-wiki-schema-configuration-document` | 0.111 | `new_card` |  |
+| `longmemeval-key-expansion-with-facts` | `arxiv-longmemeval` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `longmemeval-three-stage-memory-framework` | `arxiv-longmemeval` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `longmemeval-time-aware-query-expansion` | `arxiv-longmemeval` | `idea-file-abstract-vague` | 0.053 | `new_card` |  |
+| `mem0-answer-generation-prompt-design` | `arxiv-mem0` | `idea-file-abstract-vague` | 0.059 | `new_card` |  |
+| `mem0-baseline-failure-modes` | `arxiv-mem0` | `idea-file-abstract-vague` | 0.062 | `new_card` |  |
+| `mem0-extract-update-pipeline` | `arxiv-mem0` | `idea-file-abstract-vague` | 0.053 | `new_card` |  |
+| `mem0-graph-memory-variant` | `arxiv-mem0` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `mem0-locomo-benchmark-evaluation` | `arxiv-mem0` | `idea-file-abstract-vague` | 0.067 | `new_card` |  |
+| `mem0-rag-chunk-size-ablation` | `arxiv-mem0` | `idea-file-abstract-vague` | 0.059 | `new_card` |  |
+| `mem0-tool-call-add-update-delete-noop` | `arxiv-mem0` | `llm-wiki-three-layer-architecture` | 0.118 | `new_card` |  |
+| `memgpt-dmr-task-evaluation` | `arxiv-memgpt` | `idea-file-abstract-vague` | 0.062 | `new_card` |  |
+| `memgpt-docqa-pagination-failure-mode` | `arxiv-memgpt` | `llm-wiki-schema-configuration-document` | 0.087 | `new_card` |  |
+| `memgpt-function-chaining-heartbeat` | `arxiv-memgpt` | `idea-file-abstract-vague` | 0.059 | `new_card` |  |
+| `memgpt-main-vs-external-context` | `arxiv-memgpt` | `llm-wiki-wiki-layer-generated-markdown-directory` | 0.087 | `new_card` |  |
+| `memgpt-nested-kv-multi-hop` | `arxiv-memgpt` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `memgpt-queue-eviction-policy` | `arxiv-memgpt` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `memgpt-virtual-context-os-analogy` | `arxiv-memgpt` | `llm-wiki-three-layer-architecture` | 0.100 | `new_card` |  |
+| `memory-as-metabolism-architectural-separability` | `arxiv-memory-as-metabolism` | `llm-wiki-three-layer-architecture` | 0.125 | `new_card` |  |
+| `memory-as-metabolism-conflict-routing-matrix` | `arxiv-memory-as-metabolism` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `memory-as-metabolism-contextualize-depth-fitted` | `arxiv-memory-as-metabolism` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `memory-as-metabolism-five-operations` | `arxiv-memory-as-metabolism` | `llm-wiki-three-layer-architecture` | 0.143 | `new_card` |  |
+| `memory-as-metabolism-mirror-vs-compensate` | `arxiv-memory-as-metabolism` | `idea-file-abstract-vague` | 0.100 | `new_card` |  |
+| `memory-gravity-load-bearing-protection` | `arxiv-memory-as-metabolism` | `rag-document-qa-does-not-accumulate-synthesized-knowledge` | 0.053 | `new_card` |  |
+| `microsoft-agent-governance-eight-packages` | `microsoft-agent-governance-toolkit-docs` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `microsoft-agent-governance-standards-alignment` | `microsoft-agent-governance-toolkit-docs` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `minority-pressure-promotion` | `arxiv-memory-as-metabolism` | `idea-file-abstract-vague` | 0.056 | `new_card` |  |
+| `morishige-kb-compile-mem0-overlay` | `developersio-jp-pattern` | `llm-wiki-three-layer-architecture` | 0.200 | `new_card` |  |
+| `my-llm-wiki-supported-source-types` | `pypi-my-llm-wiki` | `llm-wiki-schema-configuration-document` | 0.167 | `new_card` |  |
+| `my-llm-wiki-three-layer-implementation` | `pypi-my-llm-wiki` | `llm-wiki-three-layer-architecture` | 0.308 | `new_card` |  |
+| `nist-ai-rmf-gai-profile` | `nist-gai-profile` | `llm-wiki-schema-configuration-document` | 0.118 | `new_card` |  |
+| `nvk-llm-wiki-audit-and-librarian` | `llm-wiki-net` | `llm-wiki-three-layer-architecture` | 0.200 | `new_card` |  |
+| `nvk-llm-wiki-hub-and-topic-wikis` | `llm-wiki-net` | `llm-wiki-three-layer-architecture` | 0.214 | `new_card` |  |
+| `nvk-llm-wiki-parallel-multi-agent-research` | `llm-wiki-net` | `llm-wiki-three-layer-architecture` | 0.167 | `new_card` |  |
+| `obsidian-as-ide-llm-as-programmer` | `marvin-hn-persistent-knowledge` | `llm-wiki-schema-configuration-document` | 0.308 | `new_card` |  |
+| `owasp-agentic-top10-2026-positioning` | `owasp-agentic-top10-2026` | `idea-file-abstract-vague` | 0.083 | `new_card` |  |
+| `owasp-agentic-vs-llm-top10-2025` | `owasp-agentic-top10-2026` | `llm-wiki-human-llm-role-division` | 0.077 | `new_card` |  |
+| `owasp-genai-landscape-2026q2` | `owasp-llm-top10-2025` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `owasp-llm-top10-community-genealogy` | `owasp-llm-top10-2025` | `llm-wiki-human-llm-role-division` | 0.059 | `new_card` |  |
+| `poisonedrag-baselines-isolate-two-conditions` | `arxiv-poisonedrag` | `idea-file-abstract-vague` | 0.083 | `new_card` |  |
+| `poisonedrag-existing-defenses-insufficient` | `arxiv-poisonedrag` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `poisonedrag-knowledge-database-attack-surface` | `arxiv-poisonedrag` | `llm-wiki-schema-configuration-document` | 0.133 | `new_card` |  |
+| `poisonedrag-retrieval-generation-two-conditions` | `arxiv-poisonedrag` | `llm-wiki-wiki-layer-generated-markdown-directory` | 0.067 | `new_card` |  |
+| `poisonedrag-survives-advanced-rag-and-agents` | `arxiv-poisonedrag` | `llm-wiki-human-llm-role-division` | 0.067 | `new_card` |  |
+| `rag-chunk-level-faithfulness` | `arxiv-ragchecker` | `idea-file-abstract-vague` | 0.100 | `new_card` |  |
+| `ragas-answer-relevance-metric` | `arxiv-ragas` | `llm-wiki-human-llm-role-division` | 0.062 | `new_card` |  |
+| `ragas-context-relevance-metric` | `arxiv-ragas` | `llm-wiki-human-llm-role-division` | 0.071 | `new_card` |  |
+| `ragas-faithfulness-metric` | `arxiv-ragas` | `llm-wiki-human-llm-role-division` | 0.059 | `new_card` |  |
+| `ragas-reference-free-rag-evaluation` | `arxiv-ragas` | `idea-file-abstract-vague` | 0.059 | `new_card` |  |
+| `ragas-wikieval-dataset` | `arxiv-ragas` | `idea-file-abstract-vague` | 0.056 | `new_card` |  |
+| `ragchecker-claim-entailment-decomposition` | `arxiv-ragchecker` | `idea-file-abstract-vague` | 0.067 | `new_card` |  |
+| `ragchecker-generator-trilemma` | `arxiv-ragchecker` | `idea-file-abstract-vague` | 0.077 | `new_card` |  |
+| `ragchecker-retriever-claim-vs-chunk-precision` | `arxiv-ragchecker` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `ragchecker-tuning-knobs-saturate` | `arxiv-ragchecker` | `idea-file-abstract-vague` | 0.083 | `new_card` |  |
+| `retrieval-not-enough-for-stale-kb` | `falconer-enterprise-guide` | `llm-wiki-query-answer-writeback` | 0.056 | `new_card` |  |
+| `robin-cartier-scale-ceiling` | `robin-cartier-llm-knowledge-bases` | `llm-wiki-three-layer-architecture` | 0.150 | `new_card` |  |
+| `robin-cartier-schema-as-product-doc` | `robin-cartier-llm-knowledge-bases` | `llm-wiki-schema-configuration-document` | 0.222 | `provenance_delta` | ✓ |
+| `tkpa-graph-guided-targeted-poisoning` | `arxiv-graph-poisoning` | `idea-file-abstract-vague` | 0.067 | `new_card` |  |
+| `ukpa-coreference-disruption` | `arxiv-graph-poisoning` | `idea-file-abstract-vague` | 0.067 | `new_card` |  |
+| `ukpa-edit-distance-stealth-tradeoff` | `arxiv-graph-poisoning` | `idea-file-abstract-vague` | 0.053 | `new_card` |  |
+| `wicer-blind-compilation-catastrophic-loss` | `arxiv-wicer` | `llm-wiki-persistent-compounding-artifact` | 0.071 | `new_card` |  |
+| `wicer-cegar-compile-evaluate-refine` | `arxiv-wicer` | `llm-wiki-persistent-compounding-artifact` | 0.100 | `new_card` |  |
+| `wicer-fc-rag-document-count-crossover` | `arxiv-wicer` | `rag-document-qa-does-not-accumulate-synthesized-knowledge` | 0.111 | `new_card` |  |
+| `wicer-hardware-architecture-deployment` | `arxiv-wicer` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `wicer-llm-judge-human-validation` | `arxiv-wicer` | `llm-wiki-three-layer-architecture` | 0.111 | `new_card` |  |
+| `wicer-recovery-distribution-exceeds-fc-raw` | `arxiv-wicer` | `raw-sources-readonly-source-of-truth` | 0.059 | `new_card` |  |
+| `wicer-targeted-vs-random-pinning-ablation` | `arxiv-wicer` | `raw-sources-readonly-source-of-truth` | 0.067 | `new_card` |  |
+| `wikibase-conceptual-not-serialization` | `wikibase-data-model` | `raw-sources-readonly-source-of-truth` | 0.067 | `new_card` |  |
+| `wikibase-item-property-snak-statement` | `wikibase-data-model` | `idea-file-abstract-vague` | 0.077 | `new_card` |  |
+| `wikibase-statement-rank-and-references` | `wikibase-data-model` | `idea-file-abstract-vague` | 0.083 | `new_card` |  |
+| `wikibase-three-snak-types` | `wikibase-data-model` | `idea-file-abstract-vague` | 0.000 | `new_card` |  |
+| `wikibase-timevalue-uncertain-dates` | `wikibase-data-model` | `idea-file-abstract-vague` | 0.071 | `new_card` |  |
+| `zep-bi-temporal-edges` | `arxiv-zep` | `raw-sources-readonly-source-of-truth` | 0.050 | `new_card` |  |
+| `zep-dmr-benchmark-critique` | `arxiv-zep` | `idea-file-abstract-vague` | 0.050 | `new_card` |  |
+| `zep-graphiti-three-tier-graph` | `arxiv-zep` | `llm-wiki-three-layer-architecture` | 0.059 | `new_card` |  |
+| `zep-hybrid-search-rerank` | `arxiv-zep` | `idea-file-abstract-vague` | 0.056 | `new_card` |  |
+
+## provenance_delta 列表（待 audit）
+
+下列 8 张 draft 在 comparison 阶段被判为 `provenance_delta`：v2 已有同主题 accepted card，但 draft 引入了新证据 / 新边界 / 新数值 / 新视角。fusion_audit 通过后应把对应 comparison 文件反向链接到 v2 accepted card 的 provenance。
+
+- `agents-md-as-schema-layer` — top1 `llm-wiki-schema-configuration-document` @ 0.250
+- `anthemcreation-llm-wiki-three-layer-architecture` — top1 `llm-wiki-three-layer-architecture` @ 0.286
+- `enterprise-llm-wiki-drift-detection-loop` — top1 `llm-wiki-three-layer-architecture` @ 0.200
+- `idea-file-as-agent-era-artifact` — top1 `idea-file-abstract-vague` @ 0.300
+- `karpathy-gist-three-layers` — top1 `llm-wiki-three-layer-architecture` @ 0.250
+- `karpathy-llm-kb-three-layer-arch` — top1 `llm-wiki-three-layer-architecture` @ 0.500
+- `karpathy-llm-wiki-three-layers` — top1 `llm-wiki-three-layer-architecture` @ 0.308
+- `robin-cartier-schema-as-product-doc` — top1 `llm-wiki-schema-configuration-document` @ 0.222
 
 ## 全局观察
 
-- 最高 top1 = **0.500**（`karpathy-llm-kb-three-layer-arch` ↔ v2 `llm-wiki-three-layer-architecture`）——极强的 merge_candidate 信号。
-- top1 ≥ 0.30 的卡片共 9 张，全部需要在 comparison_provenance 阶段判定 `merge_candidate` / `provenance_delta` / `duplicate_skip`。
-- top1 ∈ [0.15, 0.30) 的卡片共 30 张，可能为 `new_card` 但与 v2 既有卡片在主题上邻近。
-- top1 < 0.05 的卡片共 25 张，候选很可能不相关，倾向 `new_card`。
+- title-similarity 不准确性已被 comparison 阶段消化：最高 top1 = 0.500 的卡片实际是 `provenance_delta`（同主题不同视角），而很多 0.30–0.50 的卡片实际是 `new_card`（v2 candidate 是因为高频常用 token 误中）。
+- `idea-file-abstract-vague` 在 v2 cards.md 中作为 jaccard 高频干扰卡反复出现在低分段 top1，但 comparison 阶段已逐张验证主题无关。
+- 0 张 `merge_candidate` / `duplicate_skip` / `revise_before_gate`：第一轮 production pass 的 171 张 draft 在质量和与 v2 的重叠程度上落在可推进的位置。
 
 ## 默认条目 schema（保留）
 

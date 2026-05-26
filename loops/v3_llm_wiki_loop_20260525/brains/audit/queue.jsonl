@@ -1,0 +1,2 @@
+{"task_id":"audit-bootstrap","created_time":"2026-05-25T20:54:47+08:00","status":"closed","task":"Wait for merge_candidate or provenance_delta items.","closed_at":"2026-05-26T14:00:00+08:00"}
+{"task_id":"fusion-audit-8-provenance-delta","created_time":"2026-05-26T14:00:00+08:00","status":"pending","task":"对 8 张 provenance_delta 做 fusion_audit；详细列表见 queues/audit_queue.md。"}
