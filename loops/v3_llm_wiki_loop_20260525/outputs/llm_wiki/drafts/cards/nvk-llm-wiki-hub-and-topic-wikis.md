@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [llm-wiki-net]
 provenance_card: ../provenance/nvk-llm-wiki-hub-and-topic-wikis.md
 aliases: ["nvk llm-wiki architecture", "topic-wiki isolation"]
-related: [llm-knowledge-base-five-stage-workflow]
+related: [llm-knowledge-base-five-stage-workflow, nvk-llm-wiki-audit-and-librarian, nvk-llm-wiki-parallel-multi-agent-research, robin-cartier-scale-ceiling, karpathy-gist-three-layers]
 ---
 
 `nvk/llm-wiki`（由 nvk 开发的、Karpathy LLM Wiki gist 的工具化实现）把"wiki"拆成 **Hub + 多个 Topic-Wiki** 的两级结构，而不是一个大库装一切。这是它最重要的设计决策之一，也是它能多 topic 同时维护而互不污染的关键。
