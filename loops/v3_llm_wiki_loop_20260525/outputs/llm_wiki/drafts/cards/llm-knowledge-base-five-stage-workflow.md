@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [karpathy-x-launch-post]
 provenance_card: ../provenance/llm-knowledge-base-five-stage-workflow.md
 aliases: ["LLM KB 工作流", "Karpathy wiki 流水线"]
-related: [idea-file-as-agent-era-artifact]
+related: [idea-file-as-agent-era-artifact, karpathy-llm-kb-three-operations, llm-wiki-ingest-vs-query-workflow, file-outputs-back-as-compounding-loop, auto-index-replaces-rag-at-small-scale, karpathy-llm-wiki-three-layers]
 ---
 
 Karpathy 把自己个人的"LLM 维护知识库"描述成五个先后衔接的操作，而不是一步到位的"RAG"。每一阶段都有自己独立的产物和独立的 LLM 任务。正是因为五个阶段被分开处理，这套 wiki 才能在不断增长的同时不退化成原始文件堆。
