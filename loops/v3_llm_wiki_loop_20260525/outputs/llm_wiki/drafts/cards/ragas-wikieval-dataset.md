@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ragas]
 provenance_card: ../provenance/ragas-wikieval-dataset.md
 aliases: [WikiEval, Ragas 验证数据集]
-related: [ragas-reference-free-rag-evaluation, ragas-faithfulness-metric, ragas-answer-relevance-metric, ragas-context-relevance-metric]
+related: [ragas-reference-free-rag-evaluation, ragas-faithfulness-metric, ragas-answer-relevance-metric, ragas-context-relevance-metric, ares-mock-rag-system-evaluation-design, graphrag-adaptive-benchmark-via-personas]
 ---
 
 ## 数据集动机与构造
