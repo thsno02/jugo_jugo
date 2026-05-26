@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-as-metabolism-conflict-routing-matrix.md
 aliases: [conflict routing matrix, mirror-compensate procedural rule, sycophancy override, base-model correction row]
-related: [memory-as-metabolism-mirror-vs-compensate, memory-as-metabolism-architectural-separability, audit-by-suspension-against-entrenchment]
+related: [memory-as-metabolism-mirror-vs-compensate, memory-as-metabolism-architectural-separability, audit-by-suspension-against-entrenchment, memory-as-metabolism-five-operations, minority-pressure-promotion, mem0-tool-call-add-update-delete-noop]
 ---
 
 ## 主张
