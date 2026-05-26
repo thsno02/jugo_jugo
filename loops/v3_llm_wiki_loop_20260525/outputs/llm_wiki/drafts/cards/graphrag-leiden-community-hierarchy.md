@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-leiden-community-hierarchy.md
 aliases: ["GraphRAG community summary", "C0/C1/C2/C3 levels"]
-related: [graphrag-global-sensemaking-pipeline, graphrag-root-community-token-efficiency]
+related: [graphrag-global-sensemaking-pipeline, graphrag-root-community-token-efficiency, graphrag-self-reflection-gleaning, wicer-cegar-compile-evaluate-refine, zep-graphiti-three-tier-graph, mem0-graph-memory-variant]
 ---
 
 GraphRAG 的核心索引产物不是知识图本身，而是知识图上的**分层社群摘要**。论文用 Leiden 算法（Traag 2019，graspologic 实现）在抽好的实体图上做递归社群检测：每层都是对全图节点的"互斥且穷尽"（MECE）的划分，直到某层社群不可再分。这棵社群树支撑"分而治之的全局摘要"。
