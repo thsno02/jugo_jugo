@@ -1,0 +1,54 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/memory-gravity-load-bearing-protection.md",
+  "draft_card_id": "memory-gravity-load-bearing-protection",
+  "draft_title": "Memory Gravity：用结构承重保护知识基础，对抗\"绝对在位陷阱\"",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "gravity",
+    "memory",
+    "保护",
+    "在位",
+    "基础",
+    "对抗",
+    "承重",
+    "用",
+    "知识",
+    "结构",
+    "绝对",
+    "陷阱"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "rag-document-qa-does-not-accumulate-synthesized-knowledge",
+      "card_path": "llm_wiki/kb/cards/rag-document-qa-does-not-accumulate-synthesized-knowledge.md",
+      "title": "RAG 式文档问答不积累综合知识",
+      "score": 0.0526,
+      "shared_tokens": [
+        "知识"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0,
+      "shared_tokens": []
+    },
+    {
+      "rank": 3,
+      "card_id": "idea-file-share-the-idea",
+      "card_path": "llm_wiki/kb/cards/idea-file-share-the-idea.md",
+      "title": "idea file 分享想法",
+      "score": 0.0,
+      "shared_tokens": []
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
