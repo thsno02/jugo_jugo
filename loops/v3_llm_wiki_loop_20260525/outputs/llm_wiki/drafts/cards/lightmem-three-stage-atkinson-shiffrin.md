@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-lightmem]
 provenance_card: ../provenance/lightmem-three-stage-atkinson-shiffrin.md
 aliases: ["LightMem architecture", "human-memory-inspired LLM memory"]
-related: [lightmem-precompress-sensory-memory, lightmem-topic-aware-stm, lightmem-sleep-time-offline-update]
+related: [lightmem-precompress-and-topic-segmentation, lightmem-light2-topic-aware-stm, lightmem-sleep-time-offline-parallel-update, lightmem-complexity-formula, memgpt-virtual-context-os-analogy, memgpt-main-vs-external-context]
 ---
 
 LightMem（Fang et al., ZJU + NUS, ICLR 2026 投稿）把 Atkinson–Shiffrin 人类记忆模型的三级结构——感觉记忆、短期记忆（STM）、长期记忆（LTM）——直接映射成 LLM agent 的三个独立模块，目的不是提精度的极限，而是在已有 memory system（Mem0、A-MEM、MemoryOS、LangMem）"高效精度但极高 overhead"之间找到帕累托更优的点。
