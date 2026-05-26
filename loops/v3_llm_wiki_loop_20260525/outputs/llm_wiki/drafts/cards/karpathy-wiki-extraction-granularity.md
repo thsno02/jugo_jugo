@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [obsidian-community-plugin]
 provenance_card: ../provenance/karpathy-wiki-extraction-granularity.md
 aliases: [extraction granularity, Minimal/Coarse/Standard/Fine/Custom, ingestion budget knob]
-related: [karpathy-llm-wiki-obsidian-plugin-overview, karpathy-wiki-full-context-vs-rag]
+related: [karpathy-llm-wiki-obsidian-plugin-overview, karpathy-wiki-full-context-vs-rag, karpathy-wiki-aliases-and-dedup, hn-source-granularity-changes-synthesis-quality, robin-cartier-scale-ceiling, anthemcreation-llm-wiki-setup-cost-envelope]
 ---
 
 ## 五档定义
