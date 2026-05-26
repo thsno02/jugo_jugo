@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graph-poisoning]
 provenance_card: ../provenance/tkpa-graph-guided-targeted-poisoning.md
 aliases: ["Targeted Knowledge Poisoning Attack", "定向知识投毒"]
-related: [graphrag-manipulation-only-attack-surface]
+related: [graphrag-manipulation-only-attack-surface, gragpoison-additive-vs-edit-attack, ukpa-coreference-disruption, graphrag-pipeline-formalism, graphrag-text-defense-blind-spot, graphrag-leiden-community-hierarchy, poisonedrag-retrieval-generation-two-conditions]
 ---
 
 TKPA（Targeted Knowledge Poisoning Attack）的核心立场是：要让 GraphRAG 对**特定查询**给出攻击者想要的答案，最有效的不是在文本层随机改字，而是**先在图域定位最脆弱的小邻域，再把改动反映射回原文**。它把投毒抽象为"网络干预"问题，整个流水线四步：
