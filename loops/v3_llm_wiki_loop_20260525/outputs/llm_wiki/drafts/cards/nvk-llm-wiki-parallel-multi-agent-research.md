@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [llm-wiki-net]
 provenance_card: ../provenance/nvk-llm-wiki-parallel-multi-agent-research.md
 aliases: ["wiki:research workflow", "thesis-driven research"]
-related: [nvk-llm-wiki-hub-and-topic-wikis]
+related: [nvk-llm-wiki-hub-and-topic-wikis, nvk-llm-wiki-audit-and-librarian, file-outputs-back-as-compounding-loop, llm-knowledge-base-five-stage-workflow, llm-wiki-karpathy-runtime-vs-agent-split]
 ---
 
 `/wiki:research` 是 nvk/llm-wiki 工具的核心命令——它把"Karpathy LLM Wiki 的 ingest 阶段"展开成一个可调参的、并行多 agent 的、由 gap 驱动多轮的研究流程。它的设计点是同时压住"搜不够"和"过度浏览"两个失败模式。
