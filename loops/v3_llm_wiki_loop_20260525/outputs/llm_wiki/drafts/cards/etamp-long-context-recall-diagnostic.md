@@ -58,4 +58,21 @@ Zou 等（2026）Appendix F 给出一个简单但必要的诊断：当一个模�
 
 - **公布 ASR 必须同时公布 long-context recall**——否则跨模型 ASR 比较没有可比性；
 - **frontier model 评测应把 recall-vs-refusal 作为强制诊断**：单独 ASR 数字会让"上下文限制"被错记为"安全增强"；
-- **O
+- **OSS / 较小模型在 ASR 评测里"看起来安全"是一个 fragile 信号**——升一代 context 能力可能直接破防。
+
+## References
+
+- §F "Long Context Recall Test"：`data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` 第 906–996 行。
+- Table tab:long_context_recall 数字：第 970–982 行。
+- Interpretation 段：第 984–996 行。
+
+## Footnotes
+
+[^1]: Recall table 原文（第 972–981 行）：
+    > "GPT-OSS-120B  282  19   6.7%  6.7% / GPT-5-mini  280  119  42.5%  42.5% / GPT-5.2  282  282  100.0% 100.0% / Qwen2.5-VL-72B  283  280  98.9%  98.9% / Qwen3-VL-32B  282  282  100.0% 100.0%"
+
+[^2]: 诊断逻辑原文（第 988–996 行）：
+    > "GPT-OSS-120B (6.7% recall): The extremely low recall rate indicates a severe needle-in-haystack failure. This model's apparent immunity to the attack is largely due to its inability to process and retrieve information from long contexts, rather than robust safety alignment ... GPT-5.2, Qwen2.5-VL-72B, Qwen3-VL-32B (≥98.9% recall): Near-perfect recall demonstrates these models can reliably locate hidden instructions in long contexts. For these models, any observed attack resistance can be more confidently attributed to safety alignment rather than context processing limitations."
+
+[^3]: 关键判断原文（第 996 行）：
+    > "This diagnostic is critical for interpreting Attack Success Rate (ASR_B) results: a low ASR_B combined with low recall suggests the defense is incidental (context limitations), while low ASR_B with high recall suggests intentional resistance (safety alignment)."
