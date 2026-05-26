@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [karpathy-gist-llm-wiki]
 provenance_card: ../provenance/karpathy-gist-three-layers.md
 aliases: [LLM Wiki 三层架构, raw/wiki/schema separation, CLAUDE.md as schema]
-related: [karpathy-gist-bookkeeping-burden, karpathy-gist-memex-connection]
+related: [karpathy-gist-bookkeeping-burden, karpathy-gist-memex-connection, karpathy-llm-wiki-three-layers, karpathy-llm-kb-three-layer-arch, anthemcreation-llm-wiki-three-layer-architecture, robin-cartier-schema-as-product-doc, llm-wiki-schema-is-most-important]
 ---
 
 Karpathy 在 2026 年 gist 里把"LLM Wiki"模式形式化成**三层结构 + 严格的所有权分离**，这是它和"普通 RAG 上的笔记库"最关键的区别：
