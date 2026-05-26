@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [kunal-local-knowledge-base]
 provenance_card: ../provenance/kunal-local-setup-walls.md
 aliases: [local LLM setup pitfalls, llm.c macOS issue, RAG self-build walls]
-related: [kunal-llm-c-rag-misinterpretation]
+related: [kunal-llm-c-rag-misinterpretation, anthemcreation-llm-wiki-setup-cost-envelope, enterprise-llm-wiki-tool-native-ingestion]
 ---
 
 Kunal 在自建 llm.c 本地 RAG 的两周实战里总结出三个会**直接吃掉一整个周末**的坑。即使读者最终不走 llm.c 路线，这三堵墙在任何"完全本地、最简依赖"的 LLM 知识库建设里都会复现，因此值得标注：
