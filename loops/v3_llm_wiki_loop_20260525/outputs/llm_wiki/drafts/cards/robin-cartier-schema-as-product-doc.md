@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [robin-cartier-llm-knowledge-bases]
 provenance_card: ../provenance/robin-cartier-schema-as-product-doc.md
 aliases: [schema is the real innovation, living PRD for AI colleague]
-related: [karpathy-gist-three-layers, robin-cartier-scale-ceiling]
+related: [karpathy-gist-three-layers, robin-cartier-scale-ceiling, llm-wiki-schema-is-most-important, aillm-wiki-schema-as-bottleneck, agents-md-as-schema-layer, llm-wiki-mcp-design-boundary-mechanics-not-content]
 ---
 
 Robin Cartier 在 verdict 里下了一个比 Karpathy 原 gist 更激进的判断：**真正可推广的创新不是 wiki 本身，而是 schema 文件**——而且 schema 不应该被看作"配置"，应该看作"给 AI 同事的活产品需求文档"。
