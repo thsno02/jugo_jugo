@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-etamp-memory-poisoning]
 provenance_card: ../provenance/etamp-capability-vs-security.md
 aliases: [capability ≠ security, 能力安全脱钩, GPT-5.2 authority framing vulnerability]
-related: [etamp-frustration-exploitation, etamp-environment-injected-memory-poisoning]
+related: [etamp-frustration-exploitation, etamp-environment-injected-memory-poisoning, etamp-long-context-recall-diagnostic, etamp-direction-asymmetry-and-stealth, owasp-agentic-top10-2026-positioning, nist-ai-rmf-gai-profile]
 ---
 
 ## 主张
