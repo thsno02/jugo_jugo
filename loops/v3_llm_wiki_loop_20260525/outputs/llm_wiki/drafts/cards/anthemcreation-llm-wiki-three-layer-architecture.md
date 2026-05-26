@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [anthemcreation-fr-guide]
 provenance_card: ../provenance/anthemcreation-llm-wiki-three-layer-architecture.md
 aliases: [LLM wiki Karpathy, sources brutes / wiki / agents.md, three-layer LLM wiki]
-related: []
+related: [karpathy-gist-three-layers, karpathy-llm-wiki-three-layers, karpathy-llm-kb-three-layer-arch, anthemcreation-llm-wiki-setup-cost-envelope, anthemcreation-llm-wiki-vs-rag-multi-hop, my-llm-wiki-three-layer-implementation, agents-md-as-schema-layer]
 ---
 
 Karpathy 2026 年 4 月发布的 LLM wiki 蓝图（GitHub Gist）被这家法国机构（Anthem Création）总结成一段紧凑的工程描述：整个系统由三层构成，三层之间的"写"与"读"权限被严格分离。把这三层记牢，可以避免大多数 LLM wiki 初学者把"原始 PDF 也丢进 wiki 文件夹"或"让用户和 LLM 同时写一个文件"这两类常见错误。
