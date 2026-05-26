@@ -1,0 +1,61 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/enterprise-llm-wiki-four-properties.md",
+  "draft_card_id": "enterprise-llm-wiki-four-properties",
+  "draft_title": "企业级 LLM Wiki 必须同时具备 capture / link / compound / stay current 四性",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "capture",
+    "compound",
+    "current",
+    "link",
+    "llm",
+    "stay",
+    "wiki",
+    "企业级",
+    "具备",
+    "同时",
+    "四性",
+    "必须"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "llm-wiki-health-checks",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-health-checks.md",
+      "title": "LLM health checks 清理 wiki",
+      "score": 0.1333,
+      "shared_tokens": [
+        "llm",
+        "wiki"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-listed-use-cases",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-listed-use-cases.md",
+      "title": "LLM Wiki 应用场景清单",
+      "score": 0.1333,
+      "shared_tokens": [
+        "llm",
+        "wiki"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-pattern-file",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-pattern-file.md",
+      "title": "LLM Wiki 作为模式文件",
+      "score": 0.1333,
+      "shared_tokens": [
+        "llm",
+        "wiki"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
