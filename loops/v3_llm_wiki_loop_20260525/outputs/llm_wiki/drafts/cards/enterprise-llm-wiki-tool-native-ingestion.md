@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [falconer-enterprise-guide]
 provenance_card: ../provenance/enterprise-llm-wiki-tool-native-ingestion.md
 aliases: ["tool-native ingestion", "no curated raw folder"]
-related: [enterprise-llm-wiki-four-properties]
+related: [enterprise-llm-wiki-four-properties, enterprise-llm-wiki-drift-detection-loop, retrieval-not-enough-for-stale-kb, my-llm-wiki-supported-source-types, llm-wiki-karpathy-multimodal-representation-path]
 ---
 
 Karpathy 个人 LLM Wiki 之所以能跑通，关键之一是 `raw/` 目录由他本人有意识地维护——挑哪些文章塞进来、塞多少、什么时候塞，都由唯一一个 curator 决定。这种 curated capture 在企业里**结构上不可能存在**，不是纪律问题。Falconer 指南把这一点写成必要的设计转换：
