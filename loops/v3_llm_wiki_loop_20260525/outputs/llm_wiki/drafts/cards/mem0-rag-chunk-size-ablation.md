@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-rag-chunk-size-ablation.md
 aliases: [mem0 RAG sweep, chunk size sweep, k=1 vs k=2 ablation]
-related: [mem0-locomo-benchmark-evaluation]
+related: [mem0-locomo-benchmark-evaluation, mem0-baseline-failure-modes, ragchecker-tuning-knobs-saturate, wicer-fc-rag-document-count-crossover]
 ---
 
 ## 为什么要看这张表
