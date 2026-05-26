@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-knowledge-compounding]
 provenance_card: ../provenance/knowledge-compounding-dynamic-roi.md
 aliases: [动态 Agentic ROI, Cost(t) 模型, H(t) 覆盖率]
-related: [knowledge-compounding-three-mechanisms, knowledge-compounding-tokens-as-capital, karpathy-llm-wiki-vs-rag]
+related: [knowledge-compounding-three-mechanisms, knowledge-compounding-tokens-as-capital, karpathy-llm-wiki-vs-rag, file-outputs-back-as-compounding-loop, llm-knowledge-base-five-stage-workflow]
 ---
 
 ## 核心主张
