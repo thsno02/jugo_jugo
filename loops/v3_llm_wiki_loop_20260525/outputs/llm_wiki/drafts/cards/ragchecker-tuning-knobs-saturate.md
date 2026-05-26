@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ragchecker]
 provenance_card: ../provenance/ragchecker-tuning-knobs-saturate.md
 aliases: ["RAG 调优建议", "RAGChecker tuning suggestions"]
-related: [ragchecker-generator-trilemma, ragchecker-retriever-claim-vs-chunk-precision]
+related: [ragchecker-generator-trilemma, ragchecker-retriever-claim-vs-chunk-precision, rag-chunk-level-faithfulness, ragchecker-claim-entailment-decomposition, ares-cross-domain-generalization-limits, mem0-rag-chunk-size-ablation]
 ---
 
 RAGChecker 在 Writing / Finance / KIWI 三个难度递增的数据集上扫了四个 RAG 常用旋钮，并用各模块指标解释机制。论文把结论压缩成"Suggestions to RAG Builders"，可以提炼成四条可直接照抄的操作规则。
