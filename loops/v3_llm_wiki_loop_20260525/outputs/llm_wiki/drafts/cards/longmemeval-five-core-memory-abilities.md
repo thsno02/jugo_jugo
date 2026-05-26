@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-five-core-memory-abilities.md
 aliases: [IE, MR, KU, TR, ABS, LongMemEval 五能力]
-related: [locomo-three-task-evaluation-framework]
+related: [locomo-three-task-evaluation-framework, longmemeval-three-stage-memory-framework, longmemeval-benchmark-construction-pipeline, longmemeval-commercial-system-failure-modes, zep-dmr-benchmark-critique]
 ---
 
 ## 五种能力
