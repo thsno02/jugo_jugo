@@ -1,0 +1,63 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/locomo-event-summarization-five-error-types.md",
+  "draft_card_id": "locomo-event-summarization-five-error-types",
+  "draft_title": "LoCoMo 给 LLM 事件摘要错误划出五类——失败模式比 ROUGE 分数更可操作",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "llm",
+    "locomo",
+    "rouge",
+    "事件",
+    "五类",
+    "分数",
+    "划出",
+    "可",
+    "失败",
+    "摘要",
+    "操作",
+    "更",
+    "模式",
+    "比",
+    "给",
+    "错误"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "llm-wiki-pattern-file",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-pattern-file.md",
+      "title": "LLM Wiki 作为模式文件",
+      "score": 0.1053,
+      "shared_tokens": [
+        "llm",
+        "模式"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-human-llm-role-division",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-human-llm-role-division.md",
+      "title": "人提问，LLM 维护",
+      "score": 0.0526,
+      "shared_tokens": [
+        "llm"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-persistent-wiki-alternative-mode",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-persistent-wiki-alternative-mode.md",
+      "title": "持久 wiki 替代模式",
+      "score": 0.0526,
+      "shared_tokens": [
+        "模式"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
