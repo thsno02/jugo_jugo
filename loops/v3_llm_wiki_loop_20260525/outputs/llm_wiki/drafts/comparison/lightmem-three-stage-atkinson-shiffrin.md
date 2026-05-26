@@ -13,6 +13,11 @@ existing_cards:
   - card_id: idea-file-abstract-vague
     card_path: llm_wiki/kb/cards/idea-file-abstract-vague.md
     score: 0.0588
+decision: new_card
+audit_required: false
+created_time: 2026-05-26T12:32:00+08:00
+edited_time: 2026-05-26T12:32:00+08:00
+edited_entity: llm
 ---
 
 ## 1. draft 与候选为什么看起来相关
