@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [hacker-news-original-thread]
 provenance_card: ../provenance/hn-writing-as-thinking-vs-llm-wiki.md
 aliases: ["writing-as-thinking pushback", "AI de-skilling"]
-related: [hn-llm-wiki-is-just-rag-debate]
+related: [hn-llm-wiki-is-just-rag-debate, hn-source-granularity-changes-synthesis-quality, karpathy-gist-bookkeeping-burden, idea-file-as-agent-era-artifact, obsidian-as-ide-llm-as-programmer]
 ---
 
 HN 帖子里反对 Karpathy LLM Wiki 设想的最有质量的论点不是技术性反对（如 "model collapse" 或 "context overflow"），而是**认知论反对**——围绕"知识库的价值在产物还是在写作过程"。
