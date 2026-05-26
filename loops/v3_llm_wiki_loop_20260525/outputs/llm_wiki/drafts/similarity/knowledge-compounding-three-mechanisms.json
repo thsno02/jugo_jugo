@@ -1,0 +1,59 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/knowledge-compounding-three-mechanisms.md",
+  "draft_card_id": "knowledge-compounding-three-mechanisms",
+  "draft_title": "知识复利的三个微观机制：INGEST 摊销 / answer 回灌 / 外部检索写回",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "answer",
+    "ingest",
+    "三个",
+    "写回",
+    "回灌",
+    "复利",
+    "外部",
+    "微观",
+    "摊销",
+    "机制",
+    "检索",
+    "的",
+    "知识"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "llm-wiki-ingest-example-flow",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-ingest-example-flow.md",
+      "title": "Ingest 示例流程",
+      "score": 0.0667,
+      "shared_tokens": [
+        "ingest"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0625,
+      "shared_tokens": [
+        "的"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-three-layer-architecture",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md",
+      "title": "LLM Wiki 的三层架构",
+      "score": 0.0588,
+      "shared_tokens": [
+        "的"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
