@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [obsidian-community-plugin]
 provenance_card: ../provenance/karpathy-wiki-aliases-and-dedup.md
 aliases: [page aliases, semantic-tier duplicate detection, alias-aware search]
-related: [karpathy-llm-wiki-obsidian-plugin-overview]
+related: [karpathy-llm-wiki-obsidian-plugin-overview, karpathy-wiki-extraction-granularity, karpathy-wiki-full-context-vs-rag, robin-cartier-scale-ceiling, llm-wiki-contradictions-are-assets]
 ---
 
 ## 问题：跨语言写作的 wiki 容易长出"语义重复页"
