@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [wikibase-data-model]
 provenance_card: ../provenance/wikibase-statement-rank-and-references.md
 aliases: [preferred / normal / deprecated rank, best rank]
-related: [wikibase-item-property-snak-statement]
+related: [wikibase-item-property-snak-statement, wikibase-three-snak-types, wikibase-conceptual-not-serialization, llm-wiki-karpathy-lint-grounding-trail, llm-wiki-contradictions-are-assets, zep-bi-temporal-edges]
 ---
 
 ## Rank 的三级与"best rank"
