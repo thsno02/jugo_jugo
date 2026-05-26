@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [anthemcreation-fr-guide]
 provenance_card: ../provenance/anthemcreation-llm-wiki-vs-rag-multi-hop.md
 aliases: [LLM wiki vs RAG, raisonnement multi-hop, personal knowledge wiki]
-related: [anthemcreation-llm-wiki-three-layer-architecture]
+related: [anthemcreation-llm-wiki-three-layer-architecture, karpathy-llm-wiki-vs-rag, karpathy-wiki-full-context-vs-rag, hn-llm-wiki-is-just-rag-debate, karpathy-llm-wiki-source-executable-analogy, auto-index-replaces-rag-at-small-scale]
 ---
 
 把 LLM wiki 与 RAG 放在一起比较，最容易掉进的坑是"它比 RAG 快/慢"。这篇法语指南给出的关键 framing 是：两者的差异不在延迟，而在**推理深度**——LLM wiki 在 query 时面对的已经是被 LLM **预先合成、链接、消歧**过的知识。
