@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-extract-update-pipeline.md
 aliases: [Mem0 pipeline, extraction phase, update phase, mem-zero]
-related: [mem0-tool-call-add-update-delete-noop, mem0-graph-memory-variant]
+related: [mem0-tool-call-add-update-delete-noop, mem0-graph-memory-variant, mem0-answer-generation-prompt-design, mem0-locomo-benchmark-evaluation, memgpt-main-vs-external-context, lightmem-sleep-time-offline-parallel-update]
 ---
 
 ## 设计目标
