@@ -1,0 +1,51 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/poisonedrag-retrieval-generation-two-conditions.md",
+  "draft_card_id": "poisonedrag-retrieval-generation-two-conditions",
+  "draft_title": "PoisonedRAG 把\"投毒文本\"拆成检索条件+生成条件两段",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "poisonedrag",
+    "两段",
+    "把",
+    "投毒",
+    "拆成",
+    "文本",
+    "条件",
+    "检索",
+    "生成"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "llm-wiki-wiki-layer-generated-markdown-directory",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-wiki-layer-generated-markdown-directory.md",
+      "title": "Wiki 层由 LLM 生成和维护",
+      "score": 0.0667,
+      "shared_tokens": [
+        "生成"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0,
+      "shared_tokens": []
+    },
+    {
+      "rank": 3,
+      "card_id": "idea-file-share-the-idea",
+      "card_path": "llm_wiki/kb/cards/idea-file-share-the-idea.md",
+      "title": "idea file 分享想法",
+      "score": 0.0,
+      "shared_tokens": []
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
