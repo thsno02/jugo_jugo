@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-locomo]
 provenance_card: ../provenance/locomo-persona-event-graph-pipeline.md
 aliases: [LoCoMo 生成管线]
-related: [locomo-very-long-term-dialogue-dataset]
+related: [locomo-very-long-term-dialogue-dataset, locomo-three-task-evaluation-framework, locomo-event-summarization-five-error-types, longmemeval-benchmark-construction-pipeline]
 ---
 
 ## 机制概览
