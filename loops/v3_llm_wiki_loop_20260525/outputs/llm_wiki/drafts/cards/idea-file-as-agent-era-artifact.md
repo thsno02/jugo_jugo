@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [karpathy-x-launch-post]
 provenance_card: ../provenance/idea-file-as-agent-era-artifact.md
 aliases: ["idea file", "想法文件", "share-the-idea 模式"]
-related: []
+related: [file-outputs-back-as-compounding-loop, auto-index-replaces-rag-at-small-scale, llm-knowledge-base-five-stage-workflow, karpathy-gist-memex-connection, cognition-skill-loop-evidence-to-teaching]
 ---
 
 Karpathy 提出：在 LLM 智能体时代，"构建者真正需要分发的东西"发生了位移。作者不再交付完整的应用——具体的代码、打包好的工具、部署好的界面——而是把"想法本身"以一份刻意保持抽象的 `idea file`（gist 或 markdown 规格）打包出去，让每一位接收者的编码智能体在本地构建出属于他自己的版本。
