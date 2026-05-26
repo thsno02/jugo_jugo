@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [cognitionus-llm-wiki-guide]
 provenance_card: ../provenance/cognition-skill-loop-evidence-to-teaching.md
 aliases: [Cognition skill loop, evidence to skill, agent team brain loop]
-related: [cognition-human-approved-skill-md, cognition-author-attributed-skill-retrieval]
+related: [cognition-human-approved-skill-md, file-outputs-back-as-compounding-loop, idea-file-as-agent-era-artifact, knowledge-compounding-three-mechanisms, llm-wiki-mcp-skills-vs-tools-workflow]
 ---
 
 ## "产品就是闭环，不是仪表盘"
