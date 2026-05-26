@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-etamp-memory-poisoning]
 provenance_card: ../provenance/etamp-attack-payload-structure.md
 aliases: [payload structure, 三段式 payload, 注入指令结构]
-related: [etamp-environment-injected-memory-poisoning, etamp-frustration-exploitation]
+related: [etamp-environment-injected-memory-poisoning, etamp-frustration-exploitation, etamp-direction-asymmetry-and-stealth, etamp-capability-vs-security, poisonedrag-retrieval-generation-two-conditions, owasp-agentic-top10-2026-positioning]
 ---
 
 ## 三段式结构
