@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-root-community-token-efficiency.md
 aliases: ["C0 root summary", "GraphRAG cost tradeoff"]
-related: [graphrag-leiden-community-hierarchy]
+related: [graphrag-leiden-community-hierarchy, graphrag-context-window-8k-optimal, graphrag-global-sensemaking-pipeline, wicer-fc-rag-document-count-crossover, karpathy-wiki-full-context-vs-rag, llm-wiki-tldr-load-bearing]
 ---
 
 GraphRAG 论文里最直接落地的一个工程发现：当一个语料需要被**反复**用全局问题查询时，用**根级社群摘要（C0）**当索引，比把全部源文做 map-reduce 总结（TS 基线）便宜 9–43 倍，同时还保留对 vector RAG（SS 基线）72% / 62% 的 comprehensiveness / diversity 胜率。
