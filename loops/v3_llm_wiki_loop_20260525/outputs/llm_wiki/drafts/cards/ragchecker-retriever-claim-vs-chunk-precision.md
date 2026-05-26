@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ragchecker]
 provenance_card: ../provenance/ragchecker-retriever-claim-vs-chunk-precision.md
 aliases: ["RAGChecker retriever metric asymmetry", "claim recall vs context precision"]
-related: [ragchecker-claim-entailment-decomposition, rag-chunk-level-faithfulness]
+related: [ragchecker-claim-entailment-decomposition, rag-chunk-level-faithfulness, ragchecker-generator-trilemma, ragchecker-tuning-knobs-saturate, ragas-context-relevance-metric, alce-retriever-and-context-utilization-gap]
 ---
 
 RAGChecker 在 retriever 模块上同时报两个指标：**claim recall（CR）** 与 **context precision（CP）**，但它们的粒度是**不一样**的——CR 在 claim 层算，CP 在 chunk 层算。这一非对称的选择不是疏忽，是论文显式设计的结果。

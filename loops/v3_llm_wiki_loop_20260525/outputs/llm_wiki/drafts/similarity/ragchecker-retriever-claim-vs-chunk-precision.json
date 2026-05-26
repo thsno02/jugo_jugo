@@ -1,0 +1,50 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/ragchecker-retriever-claim-vs-chunk-precision.md",
+  "draft_card_id": "ragchecker-retriever-claim-vs-chunk-precision",
+  "draft_title": "RAGChecker 检索端的非对称——claim-level recall vs chunk-level precision",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "chunk",
+    "claim",
+    "level",
+    "precision",
+    "ragchecker",
+    "recall",
+    "vs",
+    "检索",
+    "端的",
+    "非对称"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0,
+      "shared_tokens": []
+    },
+    {
+      "rank": 2,
+      "card_id": "idea-file-share-the-idea",
+      "card_path": "llm_wiki/kb/cards/idea-file-share-the-idea.md",
+      "title": "idea file 分享想法",
+      "score": 0.0,
+      "shared_tokens": []
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-health-checks",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-health-checks.md",
+      "title": "LLM health checks 清理 wiki",
+      "score": 0.0,
+      "shared_tokens": []
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
