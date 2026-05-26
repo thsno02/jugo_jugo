@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-three-judge-rag-evaluation.md
 aliases: ["ARES 三维度评估", "context relevance / answer faithfulness / answer relevance"]
-related: [alce-three-dimension-citation-metric]
+related: [alce-three-dimension-citation-metric, ragas-reference-free-rag-evaluation, ragchecker-generator-trilemma, ares-synthetic-data-pipeline, ares-ppi-confidence-bound, ares-cross-domain-generalization-limits]
 ---
 
 ARES（Automated RAG Evaluation System）不把"RAG 好不好"压成单一分数，而是为同一条 query–document–answer 三元组训练三个独立的二分类判官，每个判官只回答一个问题：
