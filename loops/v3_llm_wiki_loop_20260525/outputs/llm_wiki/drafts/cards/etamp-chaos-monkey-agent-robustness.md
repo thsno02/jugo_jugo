@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-etamp-memory-poisoning]
 provenance_card: ../provenance/etamp-chaos-monkey-agent-robustness.md
 aliases: [Chaos Monkey, agent chaos engineering, 概率性动作扰动]
-related: [etamp-frustration-exploitation, etamp-environment-injected-memory-poisoning]
+related: [etamp-frustration-exploitation, etamp-environment-injected-memory-poisoning, etamp-pseudo-trajectory-methodology, etamp-capability-vs-security, ares-mock-rag-system-evaluation-design, owasp-agentic-top10-2026-positioning]
 ---
 
 ## 操作定义
