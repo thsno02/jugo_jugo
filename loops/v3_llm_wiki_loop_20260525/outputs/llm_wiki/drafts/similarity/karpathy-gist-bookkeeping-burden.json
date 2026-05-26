@@ -1,0 +1,72 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/karpathy-gist-bookkeeping-burden.md",
+  "draft_card_id": "karpathy-gist-bookkeeping-burden",
+  "draft_title": "个人 wiki 真正崩溃的不是读和想，而是\"维护成本指数增长\"——LLM 把它降到零",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "llm",
+    "wiki",
+    "不是",
+    "个人",
+    "和",
+    "增长",
+    "它",
+    "崩溃",
+    "想",
+    "成本",
+    "把",
+    "指数",
+    "的",
+    "真正",
+    "维护",
+    "而是",
+    "读",
+    "降到",
+    "零"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "llm-wiki-wiki-layer-generated-markdown-directory",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-wiki-layer-generated-markdown-directory.md",
+      "title": "Wiki 层由 LLM 生成和维护",
+      "score": 0.1818,
+      "shared_tokens": [
+        "llm",
+        "wiki",
+        "和",
+        "维护"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-three-layer-architecture",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md",
+      "title": "LLM Wiki 的三层架构",
+      "score": 0.1429,
+      "shared_tokens": [
+        "llm",
+        "wiki",
+        "的"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-schema-configuration-document",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-schema-configuration-document.md",
+      "title": "Schema 是 LLM Wiki 的配置文档",
+      "score": 0.1304,
+      "shared_tokens": [
+        "llm",
+        "wiki",
+        "的"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}

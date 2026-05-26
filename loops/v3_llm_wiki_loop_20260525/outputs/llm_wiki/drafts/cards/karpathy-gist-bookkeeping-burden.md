@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [karpathy-gist-llm-wiki]
 provenance_card: ../provenance/karpathy-gist-bookkeeping-burden.md
 aliases: [maintenance bottleneck, why LLM wiki works, bookkeeping cost]
-related: [karpathy-gist-three-layers, karpathy-gist-memex-connection]
+related: [karpathy-gist-three-layers, karpathy-gist-memex-connection, robin-cartier-scale-ceiling, enterprise-llm-wiki-drift-detection-loop, retrieval-not-enough-for-stale-kb, kunal-llm-c-rag-misinterpretation]
 ---
 
 Karpathy 在 gist 的 "Why this works" 段给出 LLM Wiki 模式有效性的核心解释，这一论点本身可独立成立、对评估任何 PKM 设计都有用：
