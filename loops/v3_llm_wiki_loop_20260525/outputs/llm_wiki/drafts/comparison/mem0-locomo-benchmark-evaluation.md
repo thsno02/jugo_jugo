@@ -13,6 +13,11 @@ existing_cards:
   - card_id: llm-wiki-schema-configuration-document
     card_path: llm_wiki/kb/cards/llm-wiki-schema-configuration-document.md
     score: 0.0556
+decision: new_card
+audit_required: false
+created_time: 2026-05-26T16:00:00+08:00
+edited_time: 2026-05-26T16:00:00+08:00
+edited_entity: llm
 ---
 
 ## 1. draft 与候选为什么看起来相关
