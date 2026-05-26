@@ -1,0 +1,50 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/llm-wiki-karpathy-multimodal-representation-path.md",
+  "draft_card_id": "llm-wiki-karpathy-multimodal-representation-path",
+  "draft_title": "非文本资产走 representation-first ingest 路径",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "first",
+    "ingest",
+    "representation",
+    "文本",
+    "资产",
+    "走",
+    "路径",
+    "非"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "llm-wiki-ingest-example-flow",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-ingest-example-flow.md",
+      "title": "Ingest 示例流程",
+      "score": 0.1,
+      "shared_tokens": [
+        "ingest"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0,
+      "shared_tokens": []
+    },
+    {
+      "rank": 3,
+      "card_id": "idea-file-share-the-idea",
+      "card_path": "llm_wiki/kb/cards/idea-file-share-the-idea.md",
+      "title": "idea file 分享想法",
+      "score": 0.0,
+      "shared_tokens": []
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}

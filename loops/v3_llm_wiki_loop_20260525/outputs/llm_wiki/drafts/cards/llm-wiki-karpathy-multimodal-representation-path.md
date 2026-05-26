@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [clawhub-llm-wiki-karpathy]
 provenance_card: ../provenance/llm-wiki-karpathy-multimodal-representation-path.md
 aliases: ["representation-first ingest", ".llm-kb/representations/"]
-related: [llm-wiki-karpathy-runtime-vs-agent-split]
+related: [llm-wiki-karpathy-runtime-vs-agent-split, llm-wiki-karpathy-lint-grounding-trail, my-llm-wiki-supported-source-types, enterprise-llm-wiki-tool-native-ingestion, karpathy-wiki-extraction-granularity]
 ---
 
 `@harrylabs/llm-wiki-karpathy` v0.4.4 把 ingest 路径分成两条：
