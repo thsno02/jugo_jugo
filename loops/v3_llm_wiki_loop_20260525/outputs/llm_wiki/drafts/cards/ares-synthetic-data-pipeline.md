@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-synthetic-data-pipeline.md
 aliases: ["ARES 合成数据生成", "weak/strong negative generation"]
-related: [ares-three-judge-rag-evaluation, ares-ppi-confidence-bound]
+related: [ares-three-judge-rag-evaluation, ares-ppi-confidence-bound, ares-gpt4-vs-human-annotation-tradeoff, ares-cross-domain-generalization-limits, ragas-wikieval-dataset, longmemeval-benchmark-construction-pipeline]
 ---
 
 ARES 之所以能"少标注、不依赖外部 API、跑在 commercial GPU 上"，关键不是判官本身，而是它的合成数据生成路径——把"昂贵的人工标注 query/answer/标签"压成"少量 in-domain passage + 5 个 few-shot 样本"。流程：
