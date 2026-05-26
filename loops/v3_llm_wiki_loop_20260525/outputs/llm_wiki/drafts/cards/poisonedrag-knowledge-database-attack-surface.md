@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-poisonedrag]
 provenance_card: ../provenance/poisonedrag-knowledge-database-attack-surface.md
 aliases: [knowledge corruption attack, RAG 知识库投毒, RAG attack surface]
-related: [poisonedrag-retrieval-generation-two-conditions]
+related: [poisonedrag-retrieval-generation-two-conditions, poisonedrag-baselines-isolate-two-conditions, poisonedrag-existing-defenses-insufficient, poisonedrag-survives-advanced-rag-and-agents, gragpoison-additive-vs-edit-attack, graphrag-manipulation-only-attack-surface, etamp-environment-injected-memory-poisoning, owasp-llm-top10-community-genealogy]
 ---
 
 谈论 LLM 安全时常见的两类攻击是：(1) 训练阶段污染（data poisoning，需要改训练数据）和 (2) 推理阶段提示注入（prompt injection，需要改用户输入）。PoisonedRAG 的核心观察是：RAG 系统在**部署时**还多了一个具体的、攻击者真能写入的攻击面——**知识数据库本身**。这个面有四个值得记住的特征。
