@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graph-poisoning]
 provenance_card: ../provenance/graphrag-text-defense-blind-spot.md
 aliases: ["GraphRAG defense failure", "text-level defense bypass"]
-related: [tkpa-graph-guided-targeted-poisoning, ukpa-coreference-disruption]
+related: [tkpa-graph-guided-targeted-poisoning, ukpa-coreference-disruption, gragpoison-additive-vs-edit-attack, graphrag-manipulation-only-attack-surface, ukpa-edit-distance-stealth-tradeoff, poisonedrag-existing-defenses-insufficient]
 ---
 
 Wen 等人测试了三类被视为"代表性"的 RAG 投毒防御——Perplexity-based Filter (PF, GPT-2)、LLM-based Contamination Detector (LLMDet)、Semantic Closeness Checking (SCC)——结果对 TKPA / UKPA 几乎全部失效：F1 在 0.04 ~ 0.13 之间，最高的 LLMDet 对 TKPA 也只有 0.13。这一结果的解释超出"防御工具能力不足"，应当读作**对一类防御方法整体的结构性失明**。
