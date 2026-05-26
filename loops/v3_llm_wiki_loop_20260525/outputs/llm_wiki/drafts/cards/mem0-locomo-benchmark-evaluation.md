@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-locomo-benchmark-evaluation.md
 aliases: [Mem0 LOCOMO results, LLM-as-Judge mem0, 91% p95 latency reduction]
-related: [mem0-extract-update-pipeline, mem0-graph-memory-variant]
+related: [mem0-extract-update-pipeline, mem0-graph-memory-variant, mem0-baseline-failure-modes, mem0-rag-chunk-size-ablation, locomo-three-task-evaluation-framework, locomo-very-long-term-dialogue-dataset]
 ---
 
 ## 评估对象与指标
