@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [robin-cartier-llm-knowledge-bases]
 provenance_card: ../provenance/robin-cartier-scale-ceiling.md
 aliases: [LLM wiki scaling, 200 page ceiling, dedup fragility, temporal weakness]
-related: [karpathy-gist-bookkeeping-burden, robin-cartier-schema-as-product-doc]
+related: [karpathy-gist-bookkeeping-burden, robin-cartier-schema-as-product-doc, auto-index-replaces-rag-at-small-scale, karpathy-wiki-extraction-granularity, nvk-llm-wiki-hub-and-topic-wikis, anthemcreation-llm-wiki-setup-cost-envelope]
 ---
 
 Robin Cartier 作为实践者给 Karpathy 模式做了"实战裁决"，给出**四条具体的缩放局限**，每一条都是规划 LLM Wiki 工程时必须事先承认的工程约束：
