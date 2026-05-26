@@ -1,0 +1,55 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/zep-graphiti-three-tier-graph.md",
+  "draft_card_id": "zep-graphiti-three-tier-graph",
+  "draft_title": "Zep/Graphiti 用三层子图（情节-实体-社区）显式区分情节记忆与语义记忆",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "graphiti",
+    "zep",
+    "三层",
+    "与",
+    "区分",
+    "子图",
+    "实体",
+    "情节",
+    "显式",
+    "用",
+    "社区",
+    "记忆",
+    "语义记忆"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "llm-wiki-three-layer-architecture",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md",
+      "title": "LLM Wiki 的三层架构",
+      "score": 0.0588,
+      "shared_tokens": [
+        "三层"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0,
+      "shared_tokens": []
+    },
+    {
+      "rank": 3,
+      "card_id": "idea-file-share-the-idea",
+      "card_path": "llm_wiki/kb/cards/idea-file-share-the-idea.md",
+      "title": "idea file 分享想法",
+      "score": 0.0,
+      "shared_tokens": []
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
