@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [clawhub-llm-wiki-karpathy]
 provenance_card: ../provenance/llm-wiki-karpathy-runtime-vs-agent-split.md
 aliases: ["runtime owns structure, agent owns synthesis", "@harrylabs/llm-wiki-karpathy 责任划分"]
-related: [llm-wiki-karpathy-multimodal-representation-path, llm-knowledge-base-five-stage-workflow]
+related: [llm-wiki-karpathy-multimodal-representation-path, llm-knowledge-base-five-stage-workflow, llm-wiki-karpathy-lint-grounding-trail, karpathy-llm-wiki-obsidian-plugin-overview, llm-wiki-mcp-design-boundary-mechanics-not-content, karpathy-llm-kb-three-operations]
 ---
 
 `@harrylabs/llm-wiki-karpathy`（v0.4.4）这个 plugin 把 LLM Wiki 工作流明确切成两层职责，是它和"一个 LLM 全做"型方案的关键差别：
