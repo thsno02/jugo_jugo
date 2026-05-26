@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-gpt4-vs-human-annotation-tradeoff.md
 aliases: [ARES GPT-4 labels, annotation cost reduction, few-shot label generation]
-related: [ares-synthetic-data-pipeline, ares-ppi-confidence-bound, ares-three-judge-rag-evaluation]
+related: [ares-synthetic-data-pipeline, ares-ppi-confidence-bound, ares-three-judge-rag-evaluation, wicer-llm-judge-human-validation, ragas-reference-free-rag-evaluation]
 ---
 
 ## 主张
