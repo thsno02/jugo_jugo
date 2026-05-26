@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [anthemcreation-en-guide]
 provenance_card: ../provenance/karpathy-llm-wiki-source-executable-analogy.md
 aliases: [source vs executable, Karpathy compiled wiki]
-related: [my-llm-wiki-three-layer-implementation]
+related: [my-llm-wiki-three-layer-implementation, anthemcreation-llm-wiki-three-layer-architecture, karpathy-llm-wiki-vs-rag, karpathy-gist-three-layers, llm-wiki-ingest-vs-query-workflow, karpathy-wiki-full-context-vs-rag]
 ---
 
 ## 核心区分
