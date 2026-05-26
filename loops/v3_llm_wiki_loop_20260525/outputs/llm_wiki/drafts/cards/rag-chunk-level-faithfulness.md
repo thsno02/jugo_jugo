@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ragchecker]
 provenance_card: ../provenance/rag-chunk-level-faithfulness.md
 aliases: ["chunk-level faithfulness", "relevant > irrelevant noise sensitivity"]
-related: [ragchecker-generator-trilemma, ragchecker-claim-entailment-decomposition]
+related: [ragchecker-generator-trilemma, ragchecker-claim-entailment-decomposition, ragchecker-retriever-claim-vs-chunk-precision, ragchecker-tuning-knobs-saturate, ragas-faithfulness-metric, alce-eli5-claim-recall-design]
 ---
 
 RAGChecker 在 8 个 RAG 系统 × 10 个领域上反复观察到：**relevant noise sensitivity 系统性高于 irrelevant noise sensitivity**——也就是说 LLM 更可能把"相关 chunk 里的杂质"照搬下来，而对"完全不相关的 chunk 里的内容"几乎不动。论文把这个现象命名为 *chunk-level faithfulness*：
