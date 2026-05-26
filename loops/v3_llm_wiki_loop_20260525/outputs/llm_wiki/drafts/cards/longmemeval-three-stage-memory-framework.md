@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-three-stage-memory-framework.md
 aliases: [unified memory view, CP1-CP4, 三阶段四控制点]
-related: [longmemeval-five-core-memory-abilities]
+related: [longmemeval-five-core-memory-abilities, longmemeval-key-expansion-with-facts, longmemeval-chain-of-note-and-json-reading, longmemeval-time-aware-query-expansion, lightmem-three-stage-atkinson-shiffrin, mem0-extract-update-pipeline]
 ---
 
 ## 统一视角
