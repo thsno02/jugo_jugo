@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-chain-of-note-and-json-reading.md
 aliases: [CoN, structured prompt, reading strategy]
-related: [longmemeval-three-stage-memory-framework]
+related: [longmemeval-three-stage-memory-framework, longmemeval-five-core-memory-abilities, longmemeval-key-expansion-with-facts, longmemeval-time-aware-query-expansion, mem0-answer-generation-prompt-design]
 ---
 
 ## 规则
