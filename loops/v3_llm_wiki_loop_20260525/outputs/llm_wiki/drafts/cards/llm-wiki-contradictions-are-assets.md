@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [openaitoolshub-six-months]
 provenance_card: ../provenance/llm-wiki-contradictions-are-assets.md
 aliases: [contradictions are assets, contradiction protocol, don't overwrite mark]
-related: [llm-wiki-rohit-v2-improvements, llm-wiki-schema-is-most-important]
+related: [llm-wiki-rohit-v2-improvements, llm-wiki-schema-is-most-important, llm-wiki-tldr-load-bearing, enterprise-llm-wiki-drift-detection-loop, llm-wiki-karpathy-lint-grounding-trail, nvk-llm-wiki-audit-and-librarian]
 ---
 
 ## 区分对象
