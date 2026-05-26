@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-zep]
 provenance_card: ../provenance/zep-hybrid-search-rerank.md
 aliases: [Zep memory retrieval, Graphiti BFS rerank]
-related: [zep-graphiti-three-tier-graph]
+related: [zep-graphiti-three-tier-graph, zep-bi-temporal-edges, zep-dmr-benchmark-critique, longmemeval-key-expansion-with-facts, graphrag-leiden-community-hierarchy]
 ---
 
 Zep 把图检索抽象为 $f: S \to S$，输入查询字符串 $\alpha$，输出可直接喂给 agent 的上下文字符串 $\beta$。整条链路是 $f(\alpha) = \chi(\rho(\varphi(\alpha)))$，由 search、reranker、constructor 三步组成。
