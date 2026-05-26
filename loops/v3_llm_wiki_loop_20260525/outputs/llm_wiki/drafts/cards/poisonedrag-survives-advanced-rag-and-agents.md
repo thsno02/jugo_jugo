@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-poisonedrag]
 provenance_card: ../provenance/poisonedrag-survives-advanced-rag-and-agents.md
 aliases: ["PoisonedRAG advanced RAG", "PoisonedRAG real-world"]
-related: [poisonedrag-knowledge-database-attack-surface, poisonedrag-existing-defenses-insufficient]
+related: [poisonedrag-knowledge-database-attack-surface, poisonedrag-existing-defenses-insufficient, poisonedrag-retrieval-generation-two-conditions, poisonedrag-baselines-isolate-two-conditions, etamp-environment-injected-memory-poisoning, ragchecker-generator-trilemma, owasp-agentic-top10-2026-positioning]
 ---
 
 PoisonedRAG 论文的主实验在"基本 RAG"上做：Contriever + PaLM 2 / GPT-4 + 三个静态 QA 数据集。许多读者会下意识地把这套结果归到"研究环境"。Zou 等人特地补了四组"现实化"实验，专门把攻击 inject 到更接近生产的设置里——结果证明攻击效力几乎不被这些"硬化"路线削弱。
