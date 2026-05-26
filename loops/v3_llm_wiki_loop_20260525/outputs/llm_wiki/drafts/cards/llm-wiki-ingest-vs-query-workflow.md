@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [anthemcreation-en-guide]
 provenance_card: ../provenance/llm-wiki-ingest-vs-query-workflow.md
 aliases: [LLM wiki workflow, ingest phase, query phase]
-related: [karpathy-llm-wiki-source-executable-analogy]
+related: [karpathy-llm-wiki-source-executable-analogy, karpathy-llm-kb-three-operations, llm-knowledge-base-five-stage-workflow, file-outputs-back-as-compounding-loop, llm-wiki-karpathy-lint-grounding-trail]
 ---
 
 ## 两个阶段的角色分工
