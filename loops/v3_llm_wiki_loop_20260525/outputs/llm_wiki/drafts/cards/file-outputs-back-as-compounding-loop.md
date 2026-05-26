@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [karpathy-x-launch-post]
 provenance_card: ../provenance/file-outputs-back-as-compounding-loop.md
 aliases: ["问答结果回写", "输出即下一次输入"]
-related: [llm-knowledge-base-five-stage-workflow]
+related: [llm-knowledge-base-five-stage-workflow, idea-file-as-agent-era-artifact, knowledge-compounding-three-mechanisms, karpathy-llm-kb-three-operations, llm-wiki-ingest-vs-query-workflow]
 ---
 
 Karpathy 的 setup 里"不显眼但关键"的一步发生在查询答案产生**之后**。作者不把答案当作终态输出。答案会被渲染成 markdown 文件（或幻灯、或图像），回到 Obsidian 里查看，并且经常被"归档"回 wiki，让 wiki 在下一次查询时更强。
