@@ -1,0 +1,55 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/poisonedrag-baselines-isolate-two-conditions.md",
+  "draft_card_id": "poisonedrag-baselines-isolate-two-conditions",
+  "draft_title": "PoisonedRAG 的五个基线分别\"丢\"哪一个条件",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "poisonedrag",
+    "一个",
+    "丢",
+    "五个",
+    "分别",
+    "哪",
+    "基线",
+    "条件",
+    "的"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0833,
+      "shared_tokens": [
+        "的"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-three-layer-architecture",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md",
+      "title": "LLM Wiki 的三层架构",
+      "score": 0.0769,
+      "shared_tokens": [
+        "的"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-schema-configuration-document",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-schema-configuration-document.md",
+      "title": "Schema 是 LLM Wiki 的配置文档",
+      "score": 0.0667,
+      "shared_tokens": [
+        "的"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
