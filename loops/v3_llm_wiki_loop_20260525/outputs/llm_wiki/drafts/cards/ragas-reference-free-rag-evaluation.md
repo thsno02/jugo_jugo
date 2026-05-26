@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ragas]
 provenance_card: ../provenance/ragas-reference-free-rag-evaluation.md
 aliases: [Retrieval Augmented Generation Assessment, RAGAS, reference-free RAG metrics]
-related: [ragas-faithfulness-metric, ragas-answer-relevance-metric, ragas-context-relevance-metric, ragas-wikieval-dataset]
+related: [ragas-faithfulness-metric, ragas-answer-relevance-metric, ragas-context-relevance-metric, ragas-wikieval-dataset, ares-three-judge-rag-evaluation, alce-three-dimension-citation-metric, ragchecker-generator-trilemma]
 ---
 
 ## 框架定位
