@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-etamp-memory-poisoning]
 provenance_card: ../provenance/etamp-long-context-recall-diagnostic.md
 aliases: [long-context recall test, recall vs refusal diagnostic, ETAMP Appendix F]
-related: [etamp-environment-injected-memory-poisoning, etamp-capability-vs-security]
+related: [etamp-environment-injected-memory-poisoning, etamp-capability-vs-security, etamp-frustration-exploitation, locomo-long-context-adversarial-collapse, longmemeval-three-stage-memory-framework, memgpt-nested-kv-multi-hop]
 ---
 
 ## 解决的问题：低 ASR 不等于"安全对齐"
