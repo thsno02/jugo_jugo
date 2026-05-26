@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-mock-rag-system-evaluation-design.md
 aliases: [mock RAG systems, ARES evaluation design, pseudo RAG ranking, controlled accuracy splits]
-related: [ares-three-judge-rag-evaluation, ares-ppi-confidence-bound]
+related: [ares-three-judge-rag-evaluation, ares-ppi-confidence-bound, ares-synthetic-data-pipeline, ragas-wikieval-dataset, graphrag-adaptive-benchmark-via-personas]
 ---
 
 ## 主张

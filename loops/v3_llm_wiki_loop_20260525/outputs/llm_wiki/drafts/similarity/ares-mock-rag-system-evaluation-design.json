@@ -1,0 +1,58 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/ares-mock-rag-system-evaluation-design.md",
+  "draft_card_id": "ares-mock-rag-system-evaluation-design",
+  "draft_title": "用 mock RAG（已知准确率梯度）作为 ARES 自身的 ranking 基准",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "ares",
+    "mock",
+    "rag",
+    "ranking",
+    "作为",
+    "准确率",
+    "基准",
+    "已知",
+    "梯度",
+    "用",
+    "的",
+    "自身"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "idea-file-abstract-vague",
+      "card_path": "llm_wiki/kb/cards/idea-file-abstract-vague.md",
+      "title": "idea file 的抽象性",
+      "score": 0.0667,
+      "shared_tokens": [
+        "的"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-pattern-file",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-pattern-file.md",
+      "title": "LLM Wiki 作为模式文件",
+      "score": 0.0625,
+      "shared_tokens": [
+        "作为"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-three-layer-architecture",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md",
+      "title": "LLM Wiki 的三层架构",
+      "score": 0.0625,
+      "shared_tokens": [
+        "的"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
