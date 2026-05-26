@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [hacker-news-original-thread]
 provenance_card: ../provenance/hn-llm-wiki-is-just-rag-debate.md
 aliases: ["LLM Wiki vs RAG", "write loop distinction"]
-related: [llm-knowledge-base-five-stage-workflow]
+related: [llm-knowledge-base-five-stage-workflow, karpathy-llm-wiki-vs-rag, karpathy-wiki-full-context-vs-rag, anthemcreation-llm-wiki-vs-rag-multi-hop, kunal-llm-c-rag-misinterpretation, hn-source-granularity-changes-synthesis-quality]
 ---
 
 Karpathy 发布 LLM Wiki gist 后，HN 第一波热门评论是 `kenforthewin` 的"This is just RAG"，论点是：即使没用 vector DB，也是"建索引文件 + 构建语义结构 + 检索"——本质就是 RAG。后续讨论把"是 / 不是 RAG"细化成一个有用的区分：**LLM Wiki 的差异不在 retrieval 端，而在 write 端**。
