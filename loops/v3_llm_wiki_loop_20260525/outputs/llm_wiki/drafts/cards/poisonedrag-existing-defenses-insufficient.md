@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-poisonedrag]
 provenance_card: ../provenance/poisonedrag-existing-defenses-insufficient.md
 aliases: [paraphrasing defense, PPL detection defense, knowledge expansion, duplicate filtering, RAG 投毒防御失效]
-related: [poisonedrag-knowledge-database-attack-surface, poisonedrag-retrieval-generation-two-conditions]
+related: [poisonedrag-knowledge-database-attack-surface, poisonedrag-retrieval-generation-two-conditions, poisonedrag-baselines-isolate-two-conditions, poisonedrag-survives-advanced-rag-and-agents, graphrag-text-defense-blind-spot, ragchecker-claim-entailment-decomposition]
 ---
 
 PoisonedRAG 把现有 LLM/RAG 防御逐一搬过来打了一遍，结论是四类都不行。把每一类**为什么不行**记下来比"它们都不行"本身更有价值——这些失败模式会帮你判断手头的防御设计是否有同样漏洞。
