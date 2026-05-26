@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [pypi-my-llm-wiki]
 provenance_card: ../provenance/my-llm-wiki-supported-source-types.md
 aliases: [my-llm-wiki file types]
-related: [my-llm-wiki-three-layer-implementation]
+related: [my-llm-wiki-three-layer-implementation, karpathy-wiki-extraction-granularity, llm-wiki-karpathy-multimodal-representation-path, enterprise-llm-wiki-tool-native-ingestion, graphrag-self-reflection-gleaning]
 ---
 
 ## 三条并行的源抽取管道
