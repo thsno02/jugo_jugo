@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [pypi-my-llm-wiki]
 provenance_card: ../provenance/my-llm-wiki-three-layer-implementation.md
 aliases: [my-llm-wiki, llm-wiki CLI]
-related: [karpathy-llm-wiki-source-vs-executable]
+related: [my-llm-wiki-supported-source-types, karpathy-llm-wiki-source-executable-analogy, karpathy-gist-three-layers, anthemcreation-llm-wiki-three-layer-architecture, karpathy-llm-wiki-obsidian-plugin-overview, wicer-cegar-compile-evaluate-refine]
 ---
 
 ## 这个包做了什么
