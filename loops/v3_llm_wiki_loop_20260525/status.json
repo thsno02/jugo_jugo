@@ -4,18 +4,17 @@
   "status": "active",
   "product_status": "candidate_in_progress",
   "created_at": "2026-05-25T20:54:47+08:00",
-  "updated_at": "2026-05-26T14:00:00+08:00",
-  "active_phase": "comparison_provenance_complete",
+  "updated_at": "2026-05-26T15:00:00+08:00",
+  "active_phase": "interlinks_complete",
   "current_iteration": "iteration_20260525_0001_first_production_pass",
   "blockers": [],
-  "next_action": "fusion_audit 8 张 provenance_delta（见 queues/audit_queue.md）；publication_gate 163 张 new_card。adoption 仍未发生。",
+  "next_action": "fusion_audit 8 张 provenance_delta；publication_gate 163 张 new_card；通过后 adopt 进 v3 KB 并把 related 路径从 drafts/ 改写为 kb/。",
   "notes": [
-    "171 张 draft 全部完成 comparison_provenance：163 张 new_card，8 张 provenance_delta，0 张 merge_candidate/duplicate_skip/revise_before_gate。",
-    "Hook 扩展支持 comparison/ 自动提交；commit message 形如 `v3 comparison provenance: <id>`。",
-    "8 张 provenance_delta 集中在 Karpathy LLM Wiki 范式相关的 v2 三类锚点（三层架构、idea-file、schema 配置文档）；fusion_audit 通过后再决定是否往 v2 accepted-provenance 加反向链接。",
-    "本轮**未**对任何卡片做 KB adoption；adoption 决策推后到 publication_gate / fusion_audit。",
-    "comparison 阶段读取范围严格按 CONTEXT_BOUNDARY.md 的 comparison_provenance allowlist：only top-3 v2 candidate bodies 与必要的 v2 provenance。没有越界读 v2 iterations/audits/reports/reflections。",
-    "新建 task_templates/comparison_worker_prompt.md 作为 comparison_provenance worker 的复用模板。",
+    "171 张 draft 全部完成 draft + draft provenance + similarity + comparison provenance + interlinks。",
+    "interlinks：974 条 related 边，平均每卡 5.70 条，长度分布 3-8，0 张孤立卡，0 个 dangling id。",
+    "interlink 阶段把卡片按主题切成 6 个 cluster（A 概念/B 工具/C 内存架构/D RAG 评估/E 安全治理/F 知识表示），6 个并行 worker（model:opus）独立挑选 related；hook 扩展到 comparison/ 已经吃过 171 次 comparison 写入，interlink 阶段又承担了 171 次 card edit 提交。",
+    "comparison + interlink 两个阶段都没有 KB adoption；adoption 推到 publication_gate / fusion_audit。",
+    "新增/更新工具与模板：tools/similarity_top3.py、hooks/commit_card.sh、task_templates/{batch_worker_prompt.md, comparison_worker_prompt.md, interlink_worker_prompt.md}。",
     "Top-level start command 仍为：claude --permission-mode auto -p \"$(cat loops/v3_llm_wiki_loop_20260525/LOOP_START_PROMPT.md)\" --output-format text"
   ]
 }

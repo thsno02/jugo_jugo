@@ -1,0 +1,3 @@
+{"task_id":"ops-bootstrap","created_time":"2026-05-25T20:54:47+08:00","status":"closed","task":"Keep queue, state, and report files consistent.","closed_at":"2026-05-26T15:00:00+08:00"}
+{"task_id":"interlink-coverage-verification","created_time":"2026-05-26T14:50:00+08:00","status":"closed","task":"验证 171 张 draft 卡 related 字段：0 missing / 0 empty / 0 dangling / 0 orphan；974 条边，平均 5.70/卡。","closed_at":"2026-05-26T15:00:00+08:00"}
+{"task_id":"adoption-pipeline-prep","created_time":"2026-05-26T15:00:00+08:00","status":"pending","task":"等 fusion_audit + publication_gate 完成后，把通过的卡片连同 related 一起迁进 outputs/llm_wiki/kb/；维护 kb/indexes/cards.md。"}

@@ -1,0 +1,2 @@
+{"message_id":"msg-20260525-v3-bootstrap-ops-outbox","created_time":"2026-05-25T20:54:47+08:00","from":"ops","to":"main","kind":"bootstrap_state","subject":"Ops brain initialized","payload_path":"brains/ops/brain_state.json","requires_wake":false,"status":"closed"}
+{"message_id":"msg-20260526-interlinks-verified","created_time":"2026-05-26T15:00:00+08:00","from":"ops","to":"main","kind":"status_update","subject":"171 张 draft interlinks 验证通过：974 边、0 dangling、0 orphan","payload_path":"loop_state.json","requires_wake":false,"status":"closed"}

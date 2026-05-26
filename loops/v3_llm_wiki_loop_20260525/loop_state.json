@@ -2,9 +2,9 @@
   "schema": "llm_wiki_loop_state.v3",
   "loop_id": "v3_llm_wiki_loop_20260525",
   "status": "active",
-  "phase": "comparison_provenance_complete",
+  "phase": "interlinks_complete",
   "current_iteration": "iteration_20260525_0001_first_production_pass",
-  "current_focus": "171 张 draft 已完成 comparison_provenance；下一步 8 张 provenance_delta 进 fusion_audit，163 张 new_card 进 publication_gate。",
+  "current_focus": "171 张 draft 已完成 draft + provenance + similarity + comparison + interlinks。下一步 8 张 provenance_delta 走 fusion_audit，163 张 new_card 走 publication_gate 并 adopt 进 v3 KB。",
   "counters": {
     "materials_total": 72,
     "materials_drafted": 43,
@@ -21,7 +21,11 @@
     "decision_revise_before_gate": 0,
     "audit_required_pending": 8,
     "new_cards_adopted": 0,
-    "fusion_audits_completed": 0
+    "fusion_audits_completed": 0,
+    "interlinks_total_edges": 974,
+    "interlinks_avg_per_card": 5.70,
+    "interlinks_orphan_cards": 0,
+    "interlinks_dangling_ids": 0
   },
   "similarity_score_distribution": {
     ">=0.50": 1,
@@ -30,22 +34,43 @@
     "0.05-0.15": 107,
     "<0.05": 25
   },
+  "interlink_length_distribution": {
+    "3": 1,
+    "4": 10,
+    "5": 57,
+    "6": 80,
+    "7": 18,
+    "8": 5
+  },
+  "interlink_top_hubs": {
+    "llm-knowledge-base-five-stage-workflow": 18,
+    "karpathy-llm-wiki-vs-rag": 17,
+    "karpathy-gist-three-layers": 15,
+    "mem0-extract-update-pipeline": 13,
+    "ares-three-judge-rag-evaluation": 12,
+    "karpathy-wiki-full-context-vs-rag": 12,
+    "owasp-agentic-top10-2026-positioning": 12,
+    "llm-wiki-schema-is-most-important": 11,
+    "memory-as-metabolism-five-operations": 11,
+    "file-outputs-back-as-compounding-loop": 11
+  },
   "queues": {
     "material_queue": "queues/material_queue.md",
     "draft_backlog": "queues/draft_backlog.md",
     "audit_queue": "queues/audit_queue.md",
     "task_queue": "queues/task_queue.md"
   },
-  "latest_decision": "comparison_provenance_complete",
+  "latest_decision": "interlinks_complete",
   "blockers": [],
   "observations": [
     "comparison 阶段证实 title-similarity 的局限：top1=0.500 的卡（score 最高的那张）实际上是 provenance_delta 而非 merge_candidate；而许多 0.30-0.50 的卡因高频中文 token（如『的』『LLM』『wiki』『三层』）误中，实际是 new_card。",
     "8 张 provenance_delta 全部围绕 v2 既有的『LLM Wiki 三层架构』和『idea-file』『schema configuration』三组 accepted card：anthemcreation / karpathy-gist / karpathy-llm-wiki / karpathy-llm-kb 等都给出了 v2 卡未涵盖的具体实现细节或限定条件。",
-    "0 张 merge_candidate / duplicate_skip / revise_before_gate：第一轮 production pass 的 draft 在与 v2 的重叠度上落在可推进的位置——没有完全等价于 v2 的卡，没有质量太差需要回炉的卡。",
-    "comparison 阶段的高频干扰卡（被反复列入 top 1 的 v2 卡）：`idea-file-abstract-vague`、`llm-wiki-three-layer-architecture`、`llm-wiki-schema-configuration-document`、`llm-wiki-human-llm-role-division`。这些卡标题里含常见 token，jaccard 容易高估它们的相关度。",
+    "interlink 阶段把 171 张卡片切成 6 个语义 cluster（A 概念/B 工具/C 内存架构/D RAG 评估/E 安全治理/F 知识表示），每个 cluster 一个 worker；最终 974 条 related 边，平均每卡 5.70 条；0 张卡 related 为空、0 个 dangling id、0 张孤立卡。",
+    "interlink 自然涌现的语义中心节点：`llm-knowledge-base-five-stage-workflow`（18 入边）、`karpathy-llm-wiki-vs-rag`（17）、`karpathy-gist-three-layers`（15）、`mem0-extract-update-pipeline`（13）。这些枢纽与各 worker 在各自 cluster 内独立挑选，互不通气，能涌现一致 hub 说明 wiki 概念骨架在卡片库里确实存在。",
+    "interlink worker 顺手修掉了首轮 production worker 留下的 4 张卡 frontmatter 中的占位 / 笔误 id（catalog 不存在的 id），让所有 related 都指向真实卡片。",
     "Hook 扩展到 comparison 目录：commit_card.sh 现在也会在写 comparison/*.md 时自动 commit，提交信息为 `v3 comparison provenance: <id>`；并发锁继续生效。",
-    "comparison_worker_prompt 模板已固化，未来 worker 派发可以直接复用。"
+    "comparison_worker_prompt / interlink_worker_prompt 两个模板已固化，未来 worker 派发可以直接复用。"
   ],
-  "next_action": "(1) fusion_audit on 8 provenance_delta items（见 audit_queue.md），通过后把 comparison 反向链接到对应 v2 accepted card 的 provenance；(2) publication_gate on 163 new_card items，通过后写入 outputs/llm_wiki/kb/cards/ 与 outputs/llm_wiki/kb/provenance/。",
-  "updated_at": "2026-05-26T14:00:00+08:00"
+  "next_action": "(1) fusion_audit on 8 provenance_delta items（见 audit_queue.md），通过后把 comparison 反向链接到对应 v2 accepted card 的 provenance；(2) publication_gate on 163 new_card items；(3) 通过 publication_gate 的卡片 adopt 进 outputs/llm_wiki/kb/cards/ + outputs/llm_wiki/kb/provenance/，并把 related 字段里的 draft 路径改写为 kb 路径。",
+  "updated_at": "2026-05-26T15:00:00+08:00"
 }

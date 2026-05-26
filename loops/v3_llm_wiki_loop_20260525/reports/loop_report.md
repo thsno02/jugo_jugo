@@ -2,7 +2,7 @@
 
 ## 当前决定
 
-V3 已对 `data/manifests/source_digests_index.md` 中**全部 72 条来源**完成 first-pass draft + comparison_provenance。最终产出 **171 张 draft 卡片 + 171 张 draft provenance + 171 份 title-similarity top-3 工件 + 171 份 comparison provenance**。comparison 判定：**163 张 `new_card`、8 张 `provenance_delta`、0 张 `merge_candidate`/`duplicate_skip`/`revise_before_gate`**。本轮未做任何 KB adoption，adoption 推到 publication_gate（new_card）与 fusion_audit（provenance_delta）。
+V3 已对 `data/manifests/source_digests_index.md` 中**全部 72 条来源**完成 first-pass draft + comparison_provenance + interlinks。最终产出 **171 张 draft 卡片 + 171 张 draft provenance + 171 份 title-similarity top-3 工件 + 171 份 comparison provenance + 974 条 wiki 内部互链（related 边）**。comparison 判定：**163 张 `new_card`、8 张 `provenance_delta`、0 张 `merge_candidate`/`duplicate_skip`/`revise_before_gate`**。本轮未做任何 KB adoption，adoption 推到 publication_gate（new_card）与 fusion_audit（provenance_delta），通过后再把卡片连同 related 路径一起迁进 `outputs/llm_wiki/kb/`。
 
 ## Why This Loop
 
@@ -25,6 +25,7 @@ V2 已证明卡片生产可行，但流程偏慢，部分卡片过原子或更�
 - 2026-05-26：扩展 PostToolUse hook `commit_card.sh` 以支持 `outputs/llm_wiki/drafts/comparison/*.md` 的自动提交（commit message `v3 comparison provenance: <id>`），文件锁继续生效。
 - 2026-05-26：新建 `task_templates/comparison_worker_prompt.md`（中文输出、严格按 CONTEXT_BOUNDARY.md 的 comparison_provenance 读取范围、三问 + decision schema）；按 similarity 分布分 8 个并行 worker（HIGH 9 / MID-A 15 / MID-B 15 / LOW-1..4 共 107 / VLOW 25）写出全部 171 份 comparison provenance。
 - 2026-05-26：comparison 判定汇总——163 张 `new_card`、8 张 `provenance_delta`、0 张其他；8 张 `provenance_delta` 写入 `queues/audit_queue.md` 待 fusion_audit。
+- 2026-05-26：新建 `task_templates/interlink_worker_prompt.md`；按主题切 6 个 cluster（A 概念 49 / B 工具 7 / C 内存架构 47 / D RAG 评估 21 / E 安全治理 27 / F 知识表示 20），6 个并行 worker（model:opus）独立挑选 related。最终 974 条 related 边，平均每卡 5.70 条，长度分布 3-8，0 张孤立卡，0 个 dangling id。Worker 顺手清理了首轮 production 留下的 4 个 catalog 不存在的占位 id。
 
 ## 产出工件
 
@@ -57,6 +58,8 @@ Draft 卡片（按 material 聚合）：见 `queues/material_queue.md` 与 `queu
 - 公共 KB adopted 卡片：0（推后到 publication_gate）
 - Fusion audits 待办：8（见 `queues/audit_queue.md`）
 - Fusion audits 已完成：0
+- Related 边总数：**974**（平均每卡 **5.70** 条；最大 8，最小 3；0 张孤立卡）
+- Interlink hubs（入度 top 5）：`llm-knowledge-base-five-stage-workflow` (18) / `karpathy-llm-wiki-vs-rag` (17) / `karpathy-gist-three-layers` (15) / `mem0-extract-update-pipeline` (13) / `ares-three-judge-rag-evaluation` (12)
 
 ## Similarity 分数分布
 
@@ -99,6 +102,7 @@ Draft 卡片（按 material 聚合）：见 `queues/material_queue.md` 与 `queu
 
 1. **fusion_audit** 上述 8 张 `provenance_delta`（见 `queues/audit_queue.md`）：核对 comparison 三问是否实质回答、v2 body 是否真读过、scope 是否保留、provenance 链接是否增量可追溯。通过后把 comparison 文件反向链接到 v2 accepted card provenance。
 2. **publication_gate** 163 张 `new_card`：检查每张是否满足知识密度阈值；通过则写入 `outputs/llm_wiki/kb/cards/` 与 `outputs/llm_wiki/kb/provenance/`，并维护 `outputs/llm_wiki/kb/indexes/cards.md`。
-3. **补查 3 张 similarity miss**：fusion_audit 完成 8 张 provenance_delta 之后，对 `karpathy-llm-kb-three-operations`、`file-outputs-back-as-compounding-loop`、`llm-wiki-karpathy-multimodal-representation-path` 三张做一次定向比对（强制对 v2 真实邻居做 comparison），判断是否需要补写为 provenance_delta。
-4. **upstream 跟进**：7 条 `pending_or_blocked` 上游材料补齐后重新入队；22 条 0KB README 上游补内容后再 draft。
-5. **机制改进考虑**（可选，独立任务）：similarity_top3.py 是否引入中文停用词过滤 / alias 加权 / id slug 补充 title。
+3. **Adoption 阶段 related 路径迁移**：通过 publication_gate 的卡片在搬进 `outputs/llm_wiki/kb/cards/` 时，related 字段的引用语义不变（仍是 id），但如果引用方/被引用方有一边还停留在 drafts/，需在文档约定里说明：related id 即可（路径解析由 reader 完成），或在 adoption 时把 related 中已 adopt 的目标改写为绝对 kb 路径。建议保持 id-only 形式不变，由后续 reader 工具按 status 字段查找。
+4. **补查 3 张 similarity miss**：fusion_audit 完成 8 张 provenance_delta 之后，对 `karpathy-llm-kb-three-operations`、`file-outputs-back-as-compounding-loop`、`llm-wiki-karpathy-multimodal-representation-path` 三张做一次定向比对（强制对 v2 真实邻居做 comparison），判断是否需要补写为 provenance_delta。
+5. **upstream 跟进**：7 条 `pending_or_blocked` 上游材料补齐后重新入队；22 条 0KB README 上游补内容后再 draft。
+6. **机制改进考虑**（可选，独立任务）：similarity_top3.py 是否引入中文停用词过滤 / alias 加权 / id slug 补充 title。
