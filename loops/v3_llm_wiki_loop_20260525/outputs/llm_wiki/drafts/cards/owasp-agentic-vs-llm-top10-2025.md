@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [owasp-agentic-top10-2026]
 provenance_card: ../provenance/owasp-agentic-vs-llm-top10-2025.md
 aliases: ["OWASP agent vs LLM 区分", "agentic top 10 vs LLM top 10"]
-related: [owasp-agentic-top10-2026-positioning]
+related: [owasp-agentic-top10-2026-positioning, owasp-llm-top10-community-genealogy, owasp-genai-landscape-2026q2, microsoft-agent-governance-standards-alignment, nist-ai-rmf-gai-profile]
 ---
 
 OWASP GenAI Security Project 的 resources 列表里，"Agentic Applications 2026" 不是 "LLM Top 10 for 2025" 的升级版，而是并列条目。这一并列结构本身是一条值得提取的设计信号：OWASP 显式承认 agentic 系统的风险不可被早期 LLM Top 10 完全覆盖。

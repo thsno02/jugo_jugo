@@ -1,0 +1,56 @@
+{
+  "schema": "title_similarity_top3.v3",
+  "draft_card": "outputs/llm_wiki/drafts/cards/owasp-agentic-vs-llm-top10-2025.md",
+  "draft_card_id": "owasp-agentic-vs-llm-top10-2025",
+  "draft_title": "OWASP 为什么把 Agentic Top 10 与 LLM Top 10 分开列",
+  "tokenizer": "jieba",
+  "tokenizer_version": "0.42.1",
+  "metric": "jaccard_set_similarity",
+  "comparison_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+  "comparison_base_card_count": 15,
+  "draft_title_tokens": [
+    "10",
+    "agentic",
+    "llm",
+    "owasp",
+    "top",
+    "与",
+    "为什么",
+    "分开",
+    "列",
+    "把"
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "card_id": "llm-wiki-human-llm-role-division",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-human-llm-role-division.md",
+      "title": "人提问，LLM 维护",
+      "score": 0.0769,
+      "shared_tokens": [
+        "llm"
+      ]
+    },
+    {
+      "rank": 2,
+      "card_id": "llm-wiki-health-checks",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-health-checks.md",
+      "title": "LLM health checks 清理 wiki",
+      "score": 0.0714,
+      "shared_tokens": [
+        "llm"
+      ]
+    },
+    {
+      "rank": 3,
+      "card_id": "llm-wiki-listed-use-cases",
+      "card_path": "llm_wiki/kb/cards/llm-wiki-listed-use-cases.md",
+      "title": "LLM Wiki 应用场景清单",
+      "score": 0.0714,
+      "shared_tokens": [
+        "llm"
+      ]
+    }
+  ],
+  "created_time": "2026-05-26T11:29:14+08:00"
+}
