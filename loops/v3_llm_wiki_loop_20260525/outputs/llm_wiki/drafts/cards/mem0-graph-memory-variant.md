@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-graph-memory-variant.md
 aliases: [Mem0g, mem0 graph variant, entity-relationship memory]
-related: [mem0-extract-update-pipeline, mem0-locomo-benchmark-evaluation]
+related: [mem0-extract-update-pipeline, mem0-locomo-benchmark-evaluation, mem0-tool-call-add-update-delete-noop, zep-graphiti-three-tier-graph, zep-bi-temporal-edges]
 ---
 
 ## 数据结构
