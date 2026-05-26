@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-blind-compilation-catastrophic-loss.md
 aliases: [compilation gap, 盲编译失败, wiki 编译过度压缩]
-related: [wicer-cegar-compile-evaluate-refine]
+related: [wicer-cegar-compile-evaluate-refine, wicer-recovery-distribution-exceeds-fc-raw, wicer-fc-rag-document-count-crossover, karpathy-llm-wiki-source-executable-analogy, locomo-event-summarization-five-error-types]
 ---
 
 如果没有评测反馈，让 LLM "把 80 篇原始文档压缩成 wiki" 这种最直觉的做法会同时踩两个坑：**压缩率失控**和**关键事实被删**。WiCER 论文在 17 个 RepLiQA 主题、6,800 道题上量化了这件事——结果不是"略有损失"，而是塌方式的灾难失败率。
