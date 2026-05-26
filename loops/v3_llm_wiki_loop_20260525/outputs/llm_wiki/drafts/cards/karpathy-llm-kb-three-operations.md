@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [developersio-jp-pattern]
 provenance_card: ../provenance/karpathy-llm-kb-three-operations.md
 aliases: ["LLM KB ingest query lint", "filing back"]
-related: [karpathy-llm-kb-three-layer-arch, llm-knowledge-base-five-stage-workflow]
+related: [karpathy-llm-kb-three-layer-arch, llm-knowledge-base-five-stage-workflow, llm-wiki-ingest-vs-query-workflow, file-outputs-back-as-compounding-loop, llm-wiki-karpathy-lint-grounding-trail, morishige-kb-compile-mem0-overlay]
 ---
 
 森茂洋根据 Karpathy 的 gist 总结，Wiki 之上有三类操作：
