@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [wikibase-data-model]
 provenance_card: ../provenance/wikibase-three-snak-types.md
 aliases: [PropertyNoValueSnak, PropertySomeValueSnak, PropertyValueSnak]
-related: [wikibase-item-property-snak-statement]
+related: [wikibase-item-property-snak-statement, wikibase-statement-rank-and-references, wikibase-conceptual-not-serialization, wikibase-timevalue-uncertain-dates, llm-wiki-contradictions-are-assets]
 ---
 
 ## 三种 Snak 的语义差
