@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ragchecker]
 provenance_card: ../provenance/ragchecker-claim-entailment-decomposition.md
 aliases: ["RAGChecker 评估单元", "claim-level RAG evaluation"]
-related: []
+related: [ragchecker-generator-trilemma, ragchecker-retriever-claim-vs-chunk-precision, rag-chunk-level-faithfulness, ragchecker-tuning-knobs-saturate, ragas-faithfulness-metric, alce-citation-recall-precision-nli, alce-eli5-claim-recall-design]
 ---
 
 RAGChecker（Amazon AWS AI, NeurIPS'24）整套指标共用一个底层原语：**把任意长文回答 $m$ 与 ground-truth $gt$ 都拆成"claim 集合"$\{c_i\}$，再用 entailment 检查每条 $c_i$ 是否被某个参考文本（response、ground truth 或 retrieved chunks）所蕴含**。所有 retriever / generator / overall 指标都只是在这两个集合与 entailment 关系上做不同的子集统计。
