@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-as-metabolism-mirror-vs-compensate.md
 aliases: [Mirror-vs-Compensate, 操作维度对齐与认知失效补偿, companion governance principle]
-related: [memory-as-metabolism-five-operations, memory-gravity-load-bearing-protection, minority-pressure-promotion]
+related: [memory-as-metabolism-five-operations, memory-gravity-load-bearing-protection, minority-pressure-promotion, memory-as-metabolism-conflict-routing-matrix, memory-as-metabolism-architectural-separability, audit-by-suspension-against-entrenchment]
 ---
 
 ## 核心主张
