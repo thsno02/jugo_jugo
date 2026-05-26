@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ragas]
 provenance_card: ../provenance/ragas-answer-relevance-metric.md
 aliases: [answer relevance, AR metric, 反推问句相似度]
-related: [ragas-reference-free-rag-evaluation, ragas-faithfulness-metric, ragas-context-relevance-metric]
+related: [ragas-reference-free-rag-evaluation, ragas-faithfulness-metric, ragas-context-relevance-metric, ragas-wikieval-dataset, alce-eli5-claim-recall-design, ares-three-judge-rag-evaluation]
 ---
 
 ## 算法（反推 + 相似度）
