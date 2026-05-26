@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/minority-pressure-promotion.md
 aliases: [minority-hypothesis retention, multi-cycle buffer pressure, prediction 4]
-related: [memory-as-metabolism-five-operations, memory-gravity-load-bearing-protection]
+related: [memory-as-metabolism-five-operations, memory-gravity-load-bearing-protection, memory-as-metabolism-mirror-vs-compensate, memory-as-metabolism-conflict-routing-matrix, audit-by-suspension-against-entrenchment, longmemeval-five-core-memory-abilities]
 ---
 
 ## 解决的问题：流式 coherence 的自封闭
