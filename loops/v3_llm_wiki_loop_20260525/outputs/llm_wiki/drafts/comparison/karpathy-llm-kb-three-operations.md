@@ -54,3 +54,17 @@ edited_entity: llm
 
 - 这张 draft 是本批 LOW score 卡中**少见的"真共享但仍 new_card"**案例：jaccard 0.1333 实际上低估了 Query/filing back 的主题重叠；判 `new_card` 的依据是 draft 与 v2 候选不在同一抽象层（合卡 vs 原子卡）。
 - 同批 `kunal-llm-c-rag-misinterpretation` 与 `llm-wiki-ingest-vs-query-workflow` 都涉及对 Karpathy gist 的二次解读，三张卡共同构成"原始 + 多语种二次源"的对照视图。
+
+## 6. 2026-05-27 v2_anchor 再核对
+
+**触发**：first-pass loop report 中把本卡片列为"3 张 similarity miss"之一，怀疑真实 v2 邻居未进 top-3。
+
+**再核对结论**：top-1 `llm-wiki-query-answer-writeback` @ 0.1333 实际上是真实的 v2 邻居（worker 在 §1–§3 已正确识别并讨论）；它确实进了 top-3，前述"miss"判断不成立。
+
+**最终决策**：维持 worker 原判 **`new_card`**。原因：
+- 抽象层级差异：v2 是单点事实卡（Query+writeback 一条事实），draft 是三操作合卡（Ingest / Query / Lint 三论点 + Karpathy"事前编译 vs 事后检索"的对照）。合并或降级为 delta 都会损失 draft 的 Ingest/Lint 内容。
+- 来源差异：v2 来自 Karpathy gist 原文 L39-40；draft 来自日文二次源 `developersio-jp-pattern` 对同一 gist 的整体解读。两源不构成同一 fact 的多次报道，而是 different lens。
+
+**是否加 v2_anchor 到 kb provenance**：不加。`v2_anchor` 字段保留给 `provenance_delta` 判定，本卡是 `new_card`。但本 §6 已记录"v3 draft ↔ v2 query-answer-writeback"的主题邻接，未来需要做 v3↔v2 cross-loop 索引时可直接读这里。
+
+**audit trail**：recheck performed 2026-05-27；recheck reviewer = main loop controller；recheck conclusion = `new_card_confirmed`。
