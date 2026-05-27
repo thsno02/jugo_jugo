@@ -51,3 +51,17 @@ edited_entity: llm
 
 - 这是 LOW batch 中**少见的"top 1 与 draft 主题真有交集"**案例（共享 `ingest`），但抽象层级差异让 `new_card` 而不是 `provenance_delta` 更合适。
 - top 2/3 score=0，是 v2 仅 15 张候选 + jieba 分母效应导致的极端情况。
+
+## 6. 2026-05-27 v2_anchor 再核对
+
+**触发**：first-pass loop report 中把本卡片列为"3 张 similarity miss"之一。
+
+**再核对结论**：top-1 `llm-wiki-ingest-example-flow` @ 0.100 是真实 v2 邻居（共享 ingest 主题），worker 已在 §1–§3 正确识别并讨论。所谓"miss"判断不成立——真实邻居就在 top-1。
+
+**最终决策**：维持 worker 原判 **`new_card`**。原因：
+- 抽象层级差异：v2 是 Karpathy gist 描述的概念示例流程（read source → discuss → summarize → update index → log）；draft 是 `@harrylabs/llm-wiki-karpathy` v0.4.4 软件包的具体 ingest 实现（manifest v2 schema / kb_* 工具集 / representation-first 路径 / compile_readiness 三态 / lint 检查项）。两者主题相邻但论点对象完全不同。
+- 设计立场差异：draft 的核心主张"runtime 不做 OCR/vision，把多模态理解隔离在 agent 一侧"是 v2 完全没有的工程立场。
+
+**是否加 v2_anchor 到 kb provenance**：不加。本卡是新主题（多模态 ingest）+ 新软件包（v0.4.4）的具体实现细则，不是 v2 ingest-example-flow 的 delta；从抽象层看 v2 卡是"概念示例"，draft 是"软件包实现"，把两者绑成 anchor 关系会误导后续读者。
+
+**audit trail**：recheck performed 2026-05-27；recheck conclusion = `new_card_confirmed`；topical neighbor v2 `llm-wiki-ingest-example-flow` 已在 §1 explicit 标注。
