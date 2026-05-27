@@ -51,3 +51,19 @@ edited_entity: llm
 
 - draft 自身 provenance 已显式指出："标题 token 与 v2 中的 'Query 操作回写好答案' 预期会高度重合；comparison provenance 阶段需要评估本卡片中新增的'结构性框架'是否足以独立成新卡，或者更应作为 provenance delta"——v2 `llm-wiki-query-answer-writeback` 卡未进入本批 top 3（jieba 把"回写好答案"切成 `回写` `好` `答案` 而 draft 的"回写进 wiki"切成 `回写` `进` `wiki`，主题词集合不同），但它确实与本 draft 论点高度重叠。建议 publication_gate 同时考察本 draft 与 v2 query-answer-writeback 的关系，可能产生 audit 阶段的合并/cross-link 提案。
 - v2 池子里有三张 wiki 主题卡（候选 #1/#2/#3）共同形成本 draft 的 top 3，是单一主题词分母效应的典型表现。
+
+## 6. 2026-05-27 v2_anchor 再核对
+
+**触发**：first-pass loop report 中把本卡片列为"3 张 similarity miss"之一。
+
+**再核对结论**：
+- top-1 `llm-wiki-persistent-compounding-artifact` @ 0.091 是真实 v2 邻居（compounding 性质论断）——worker 已正确识别并讨论。
+- 另有 v2 `llm-wiki-query-answer-writeback`（writeback 事实）**确实未进入 top-3**——它的标题是"Query 操作回写好答案"，jieba 把"回写好答案"切成 `回写 好 答案`、把 draft 的"回写进 wiki 形成复利循环"切成 `回写 进 wiki 形成 复利 循环`，主题词集合分布差异让它落到 top-4 之外。worker 在 §5 已显式标注了这个 miss。
+
+**最终决策**：维持 worker 原判 **`new_card`**。原因：
+- 性质 vs 操作分轴：v2 `llm-wiki-persistent-compounding-artifact` 是"wiki 是 compounding artifact"的 known_fact 性质卡；v2 `llm-wiki-query-answer-writeback` 是"Query 操作可以回写好答案"的事实卡；draft 是把这两条性质 / 事实落到"如何让 compounding 发生"的 operational_rule（含 4 项操作步骤 + linting 兜底边界）。合并任意一个会损失 draft 的操作步骤与失败模式。
+- 来源段差异：v2 两张卡来自 Karpathy gist；draft 来自 Karpathy launch 推文 quote 的 Output: 段 + Linting: 段，两段在原文里是显式绑定的设计对偶。
+
+**是否加 v2_anchor 到 kb provenance**：不加。本卡是 operational_rule 落地卡，与 v2 两张 known_fact 性质卡是同主题不同抽象层而非 delta 关系。本 §6 已记录两条 v3↔v2 主题邻接（compounding + writeback），未来 v3↔v2 索引可读这里。
+
+**audit trail**：recheck performed 2026-05-27；recheck conclusion = `new_card_confirmed_with_two_v2_neighbors_noted`。
