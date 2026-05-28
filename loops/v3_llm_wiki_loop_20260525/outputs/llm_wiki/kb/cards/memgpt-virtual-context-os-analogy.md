@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-virtual-context-os-analogy.md
 aliases: [virtual context management, MemGPT memory hierarchy, MemoryGPT]
-related: [memgpt-main-vs-external-context, memgpt-queue-eviction-policy, memgpt-function-chaining-heartbeat, memgpt-dmr-task-evaluation, lightmem-three-stage-atkinson-shiffrin, mem0-extract-update-pipeline]
+related: [memgpt-main-vs-external-context, memgpt-queue-eviction-policy, lightmem-three-stage-atkinson-shiffrin]
 ---
 
 MemGPT 的核心抽象不是"在 LLM 外面挂一个 RAG"，而是把整套**传统操作系统的虚拟内存范式**搬到 LLM 上[^src1]：
