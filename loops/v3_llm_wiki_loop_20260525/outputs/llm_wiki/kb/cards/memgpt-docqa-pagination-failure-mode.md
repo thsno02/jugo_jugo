@@ -5,7 +5,7 @@ status: accepted
 card_type: example_pattern
 tags: [#memgpt, #document-qa, #NaturalQuestions, #retriever-pagination, #failure-mode]
 created_time: 2026-05-26T15:30:00+08:00
-edited_time: 2026-05-27T14:32:00+08:00
+edited_time: 2026-05-28T11:10:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-docqa-pagination-failure-mode.md
