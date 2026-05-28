@@ -37,15 +37,10 @@ Falconer 的核心论断："Better retrieval over bad context delivers wrong ans
 - 在"底层数据频繁变更但没有维护循环"的场景下，retrieval 反而比静态文档危险，因为它把伪权威感拉到最高。
 - "维护循环"本身需要 LLM 持续运行，是有成本的——不是"装个搜索就能省下维护成本"，而是"维护成本必须存在，只是从人转到 LLM"。
 
-## References
-
-- "Why retrieval tools don't solve this" 整段：`data/raw/webpage/falconer-enterprise-guide/text.txt` L124–130。
-- FAQ 中重申该立场："Why doesn't adding AI search to Confluence or Notion fix this?"：同文件 L148。
-- Anthropic 关于 context 是 agent 最稀缺资源：同文件 L74 + L150。
-
 ## Footnotes
 
-- `data/raw/webpage/falconer-enterprise-guide/text.txt` L128：`"Retrieval doesn't fix the maintenance problem. A semantic search engine pointed at a stale knowledge base returns confidently-worded answers from documents that haven't been true since Q2. Better retrieval over bad context delivers wrong answers more quickly than slow retrieval over bad context."`
-- 同文件 L130：`"What makes Karpathy's LLM Wiki interesting is the maintenance loop, not the search layer. The graph stays accurate because the LLM is doing the linting, drafting, and reconciliation work continuously."`
-- 同文件 L148：FAQ：`"Without that loop, smarter search over bad context just produces wrong answers faster."`
-- 同文件 L150：`"the Anthropic engineering team describes context as the scarcest resource for AI agents."`
+[^src1]: `data/raw/webpage/falconer-enterprise-guide/text.txt` L128 — "Retrieval doesn't fix the maintenance problem. A semantic search engine pointed at a stale knowledge base returns confidently-worded answers from documents that haven't been true since Q2. Better retrieval over bad context delivers wrong answers more quickly than slow retrieval over bad context."
+[^src2]: 同文件 L130 — "What makes Karpathy's LLM Wiki interesting is the maintenance loop, not the search layer. The graph stays accurate because the LLM is doing the linting, drafting, and reconciliation work continuously."
+[^src3]: 同文件 L148（FAQ）— "Without that loop, smarter search over bad context just produces wrong answers faster."
+[^src4]: 同文件 L150 — "the Anthropic engineering team describes context as the scarcest resource for AI agents."
+[^v3-1]: [enterprise-llm-wiki-drift-detection-loop](enterprise-llm-wiki-drift-detection-loop.md) — 企业版连续后台 drift detection 维护循环的本卡。
