@@ -21,7 +21,7 @@ related: [mem0-locomo-benchmark-evaluation, mem0-baseline-failure-modes, ragchec
 
 - RAG 用 OpenAI `text-embedding-small-3` 嵌入；
 - chunk sizes：128 / 256 / 512 / 1024 / 2048 / 4096 / 8192 tokens（8192 是嵌入模型上限）；
-- top-$k\in\{1,2\}$；论文显式**排除 $k>2$**，理由：LOCOMO 平均对话 26k tokens，$k=2$ × 8192 = 16k 已经覆盖大半，更大就退化成 full-context；
+- top-$k\in\{1,2\}$；论文显式**排除 $k>2$**[^src2]，理由：LOCOMO 平均对话 26k tokens，$k=2$ × 8192 = 16k 已经覆盖大半，更大就退化成 full-context；
 - 评价指标：Overall LLM-as-a-Judge `J`，10 次独立运行 mean ± 1σ。
 
 ## 主要数字（Overall J ± σ）
