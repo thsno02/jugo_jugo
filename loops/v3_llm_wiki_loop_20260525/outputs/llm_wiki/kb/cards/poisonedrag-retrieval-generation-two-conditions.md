@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-poisonedrag]
 provenance_card: ../provenance/poisonedrag-retrieval-generation-two-conditions.md
 aliases: [PoisonedRAG 双条件, retrieval condition + generation condition, S + I 拆解]
-related: [poisonedrag-knowledge-database-attack-surface, poisonedrag-baselines-isolate-two-conditions, poisonedrag-existing-defenses-insufficient, poisonedrag-survives-advanced-rag-and-agents, etamp-attack-payload-structure, tkpa-graph-guided-targeted-poisoning, ragas-faithfulness-metric]
+related: [etamp-attack-payload-structure, tkpa-graph-guided-targeted-poisoning, ragas-faithfulness-metric]
 ---
 
 PoisonedRAG（Zou 等，PSU + IIT）想做的事：往 RAG 的 knowledge database 里塞少量恶意文本，让 LLM 对**特定目标问题** Q 输出**攻击者指定**的目标答案 R。难点在于：一段单一文本同时要满足"被检索回来"和"误导生成"这两件事，而这两件事在直觉上互相矛盾——文本越像 Q，越容易被检索回来，但也越不像"答案的证据"，未必能改变模型答案。
