@@ -27,7 +27,7 @@ Karpathy 2026 年 4 月发布的 LLM wiki 蓝图（GitHub Gist）[^v3-1]被这�
 - Wiki：LLM 写入，人只读；
 - agents.md：人写入，LLM 读并执行。
 
-这种"写者唯一"的设计直接借用了 Karpathy 提出的编译类比——原始源是 *源代码*，wiki 是 *编译产物*：「les sources brutes sont comme du code source, et la wiki LLM est l'exécutable compilé. Vous ne re-compilez pas à chaque fois que vous lancez un programme.」[^2] 你不会每次运行就重新编译一遍，所以也不该在每次查询时重抓原文。
+这种"写者唯一"的设计直接借用了 Karpathy 提出的编译类比[^v3-3]——原始源是 *源代码*，wiki 是 *编译产物*：「les sources brutes sont comme du code source, et la wiki LLM est l'exécutable compilé. Vous ne re-compilez pas à chaque fois que vous lancez un programme.」[^src2] 你不会每次运行就重新编译一遍，所以也不该在每次查询时重抓原文。
 
 Ingestion 时 LLM 在第二层做的具体动作（原文列举）：
 
