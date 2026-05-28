@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#wikibase, #wikidata, #knowledge-representation, #missing-data]
 created_time: 2026-05-26T15:15:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T12:20:00+08:00
 edited_entity: llm
 source_ids: [wikibase-data-model]
 provenance_card: ../provenance/wikibase-three-snak-types.md
