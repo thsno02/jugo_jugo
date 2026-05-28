@@ -33,7 +33,7 @@ related: [alce-three-dimension-citation-metric, alce-prompting-strategies, mem0-
 
 关键观察：
 
-- **ELI5 上 BM25 R@100 才 31.8%**——这是任何下游 reader 在 ELI5 上的硬上限。换言之，**ELI5 的 correctness 跌得难看不是 LLM 笨，是 retriever 没把 gold 召回来**。
+- **ELI5 上 BM25 R@100 才 31.8%**——这是任何下游 reader 在 ELI5 上的硬上限。换言之，**ELI5 的 correctness 跌得难看不是 LLM 笨，是 retriever 没把 gold 召回来**[^src4]。
 - ASQA 上 GTR > DPR（R@5: 56.8 vs 51.5）——dense retriever 的选择直接影响 reader；
 - "Oracle" 用 top-100 passages 重排出来的 5 条 gold 集合在三个数据集上都和 R@100 一致——证明 oracle 设置确实对应了 retrieve 能达到的最高覆盖。
 
