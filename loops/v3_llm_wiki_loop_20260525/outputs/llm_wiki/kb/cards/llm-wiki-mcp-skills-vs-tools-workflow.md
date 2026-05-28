@@ -41,9 +41,9 @@ related: [llm-wiki-mcp-four-tools, llm-wiki-mcp-design-boundary-mechanics-not-co
 ## 关键设计选择：每次都重读 schema
 
 > "Each skill reads wiki/CLAUDE.md for the active schema on every run, so you can evolve the schema without re-installing anything."
-> —— `text.txt:139`
+> —— `text.txt:139` [^src2]
 
-skill 不把 schema 硬编码进自己的 prompt，而是**每次运行都重新读** `wiki/CLAUDE.md`。这让用户可以在 wiki 本地迭代 schema，不需要重装 plugin，也避免 skill 与 schema 版本漂移。
+skill 不把 schema 硬编码进自己的 prompt，而是**每次运行都重新读** `wiki/CLAUDE.md`。这让用户可以在 wiki 本地迭代 schema，不需要重装 plugin，也避免 skill 与 schema 版本漂移 [^v3-4]。
 
 ## 分发方式
 
