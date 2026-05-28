@@ -23,9 +23,9 @@ related: [anthemcreation-llm-wiki-three-layer-architecture, karpathy-llm-wiki-ob
 4. 把第一批原始源放进**独立的子目录**（建议 `/sources/`），不要和 wiki 文件混在一起；
 5. 让 LLM ingest 第一篇源，生成 index、entity pages 与互相链接的摘要。
 
-工具替换余地：Obsidian 不强制——VS Code + Markdown Preview Enhanced、Logseq 都能用，关键是文件保持 flat markdown，方便 LLM 读写[^1]。
+工具替换余地：Obsidian 不强制——VS Code + Markdown Preview Enhanced、Logseq 都能用，关键是文件保持 flat markdown，方便 LLM 读写[^src1]。
 
-**成本封顶（原文成本表）**：
+**成本封顶（原文成本表）**[^src3]：
 
 | 配置 | Setup 成本 | 维护成本 |
 | --- | --- | --- |
