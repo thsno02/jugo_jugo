@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#obsidian, #karpathy-wiki, #deduplication, #cross-lingual]
 created_time: 2026-05-26T12:35:00+08:00
-edited_time: 2026-05-27T10:19:00+08:00
+edited_time: 2026-05-28T11:22:00+08:00
 edited_entity: llm
 source_ids: [obsidian-community-plugin]
 provenance_card: ../provenance/karpathy-wiki-aliases-and-dedup.md
