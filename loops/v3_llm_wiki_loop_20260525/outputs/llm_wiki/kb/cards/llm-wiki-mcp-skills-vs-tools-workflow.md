@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [pypi-llm-wiki-mcp]
 provenance_card: ../provenance/llm-wiki-mcp-skills-vs-tools-workflow.md
 aliases: [wiki-init, wiki-ingest, wiki-query, wiki-lint, skills vs tools]
-related: [llm-wiki-mcp-four-tools, llm-wiki-mcp-design-boundary-mechanics-not-content, karpathy-llm-kb-three-operations, llm-wiki-ingest-vs-query-workflow, llm-wiki-karpathy-runtime-vs-agent-split, cognition-human-approved-skill-md]
+related: [llm-wiki-mcp-four-tools, karpathy-llm-kb-three-operations, cognition-human-approved-skill-md, llm-wiki-mcp-design-boundary-mechanics-not-content]
 ---
 
 ## 两层分工
