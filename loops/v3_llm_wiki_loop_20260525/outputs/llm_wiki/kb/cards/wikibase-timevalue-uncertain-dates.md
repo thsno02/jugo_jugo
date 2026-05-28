@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [wikibase-data-model]
 provenance_card: ../provenance/wikibase-timevalue-uncertain-dates.md
 aliases: [TimeValue precision, uncertain date Wikibase]
-related: [wikibase-three-snak-types, wikibase-item-property-snak-statement, wikibase-statement-rank-and-references, zep-bi-temporal-edges, longmemeval-time-aware-query-expansion]
+related: [wikibase-three-snak-types, wikibase-item-property-snak-statement, wikibase-conceptual-not-serialization]
 ---
 
 ## TimeValue 的字段结构
