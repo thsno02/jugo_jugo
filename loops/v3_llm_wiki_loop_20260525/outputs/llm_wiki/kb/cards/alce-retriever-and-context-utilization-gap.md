@@ -83,22 +83,16 @@ ALCE 由此推出三条挑战：**(1) retriever 质量是上限**；**(2) contex
 
 - 选 ALCE 报数据时**必须报 retriever 与其 R@k**——否则无法判断 reader 上限；
 - **在 ELI5 上做开放 evaluation 时尤其要警告**：BM25 R@100=31.8% 意味着所有方法都不可能在 claim recall 上超过 ~32 分。这是为什么 ELI5 上 ChatGPT \vani{} claim recall 才 12 分却仍然算"合理水平"；
-- 给 4K 上下文模型加 passage **超过 5 条几乎没用**；给 16K 也没用；只有 GPT-4 级模型加 passage 才继续涨——投入算力前要看模型档次。
-
-## References
-
-- §"Retrieval Analysis" 与 retrieval 表（`sections/results.tex` 第 1499–1531 行，`tables/retrieval_asqa.tex` 第 2336–2351 行，`tables/retrieval_eli5.tex` 第 2353–2367 行，`tables/retrieval_qampari.tex` 第 2369–2383 行）；
-- ASQA different LLMs 表（`tables/asqa_different_llms.tex` 第 1608–1656 行）；
-- 数据集设置：100 词 passages、top-100 检索（`sections/benchmark.tex` 第 741–746 行）；
-- "GPT-4 brings limited improvement but is better at using long context" 段（`sections/results.tex` 第 1428–1436 行）；
-- 来源：`data/raw/arxiv/arxiv-alce/agent_source_bundle.txt`。
+- 给 4K 上下文模型加 passage **超过 5 条几乎没用**；给 16K 也没用；只有 GPT-4 级模型加 passage 才继续涨——投入算力前要看模型档次。RAGChecker 在 Writing/Finance/KIWI 三数据集扫 $k$ 5→20 也看到类似饱和曲线[^v3-3]，方向一致。
 
 ## Footnotes
 
-[^1]: GPT-4 vs ChatGPT-16K 段（results.tex 第 1434–1435 行）："including more passages with ChatGPT-16K does not improve the results (Table 2), suggesting that processing more passages is non-trivial and GPT-4 is better at synthesizing information from its long context than ChatGPT."
-
-[^2]: Oracle vs Vanilla vs retrieval recall（results.tex 第 1513–1517 行）："both models' correctness lags behind the corresponding retrieval recall (except for ELI5 top-5). The discrepancy suggests that despite the presence of accurate answers in context, LLMs struggle to utilize them in their outputs."
-
-[^3]: ASQA oracle 48.9 vs vanilla 40.4（tables/asqa_full.tex 第 1684 行）："oracle (5-psg) & 64.4 & 48.9 & 74.5 & 72.7"。
-
-[^4]: ELI5 retrieval R@100 = 31.8（tables/retrieval_eli5.tex 第 2361 行）："BM25 & 3.0 & 6.6 & 9.6 & 19.3 & 31.8"。
+[^src1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` `sections/results.tex` 第 1434–1435 行 — "including more passages with ChatGPT-16K does not improve the results (Table 2), suggesting that processing more passages is non-trivial and GPT-4 is better at synthesizing information from its long context than ChatGPT."
+[^src2]: 同文件 `sections/results.tex` 第 1513–1517 行 — "both models' correctness lags behind the corresponding retrieval recall (except for ELI5 top-5). The discrepancy suggests that despite the presence of accurate answers in context, LLMs struggle to utilize them in their outputs."
+[^src3]: 同文件 `tables/asqa_full.tex` 第 1684 行 — "oracle (5-psg) & 64.4 & 48.9 & 74.5 & 72.7"，ASQA oracle 48.9 vs vanilla 40.4。
+[^src4]: 同文件 `tables/retrieval_eli5.tex` 第 2361 行 — "BM25 & 3.0 & 6.6 & 9.6 & 19.3 & 31.8"，ELI5 retrieval R@100 = 31.8。
+[^src5]: 同文件 `sections/benchmark.tex` 第 741–746 行 — 数据集设置：100 词 passages、top-100 检索。
+[^src6]: 同文件 §"Retrieval Analysis" 与 retrieval 表（`sections/results.tex` 1499–1531；`tables/retrieval_asqa.tex` 2336–2351；`tables/retrieval_qampari.tex` 2369–2383；`tables/asqa_different_llms.tex` 1608–1656） — GPT-4 长 context 利用率优于 ChatGPT 的完整数据。
+[^v3-1]: [alce-prompting-strategies](alce-prompting-strategies.md) — top-100 → top-$k$ 的截取是由 Vanilla / Summ / Snippet / Interact / Rerank 等 prompting 策略各自决定的。
+[^v3-2]: [ragchecker-generator-trilemma](ragchecker-generator-trilemma.md) — RAGChecker 的 *context utilization* 指标是同一现象的 claim-level 版本：检索到的 chunk 中包含的 ground-truth claim 有多少出现在最终回答里。
+[^v3-3]: [ragchecker-tuning-knobs-saturate](ragchecker-tuning-knobs-saturate.md) — 扫 $k$、chunk size 时同样观察到"recall 升 → faithfulness 升 → F1 升但收益饱和"的曲线。
