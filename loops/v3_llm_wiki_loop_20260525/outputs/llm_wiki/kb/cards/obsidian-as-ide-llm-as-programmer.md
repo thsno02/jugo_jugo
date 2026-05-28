@@ -45,13 +45,8 @@ Karpathy 在 LLM Wiki gist 中给出一个关键类比[^src1]，HN 编辑反响�
 - 评估一个新 wiki 工具时问："它给我的体验是不是 IDE 级？"——能不能跳转、能不能 grep、能不能看图。
 - 不要把"LLM 维护"误解成"LLM 自动批改"；和工程师 review PR 一样，LLM 提交的每一笔改动**应该可审计、可撤回**。
 
-## References
-
-- 类比原文：`data/raw/webpage/marvin-hn-persistent-knowledge/text.txt:35`。
-- 类比落地的理由：`text.txt:35`。
-
 ## Footnotes
 
-- 类比原文：`text.txt:35` —— "Karpathy explicitly describes Obsidian as the IDE, the LLM as the programmer, and the wiki as the codebase."
-- 类比为什么命中：`text.txt:35` —— "the tedious part of knowledge management is not thinking. It is cross-linking pages, updating summaries, tracking contradictions, and keeping structure coherent across dozens or hundreds of files. Those are exactly the repetitive bookkeeping tasks that humans avoid and LLM agents can absorb."
-- 模式抽象性原文：`text.txt:37` —— "It is not pitching one fixed implementation. It is a pattern that can fit personal research, reading notes, due diligence, internal team wikis, or long-running hobby projects."
+[^src1]: `data/raw/webpage/marvin-hn-persistent-knowledge/text.txt:35` — "Karpathy explicitly describes Obsidian as the IDE, the LLM as the programmer, and the wiki as the codebase."
+[^src2]: 同文件 `text.txt:35` — "the tedious part of knowledge management is not thinking. It is cross-linking pages, updating summaries, tracking contradictions, and keeping structure coherent across dozens or hundreds of files. Those are exactly the repetitive bookkeeping tasks that humans avoid and LLM agents can absorb." 以及 `text.txt:37` — "It is not pitching one fixed implementation. It is a pattern that can fit personal research, reading notes, due diligence, internal team wikis, or long-running hobby projects."
+[^v3-1]: [karpathy-gist-bookkeeping-burden](karpathy-gist-bookkeeping-burden.md) — "bookkeeping 是 wiki 真正崩溃点" 的本卡。
