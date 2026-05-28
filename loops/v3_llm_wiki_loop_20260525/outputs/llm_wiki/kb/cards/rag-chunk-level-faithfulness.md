@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#rag, #ragchecker, #generator, #noise]
 created_time: 2026-05-26T11:30:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T16:20:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ragchecker]
 provenance_card: ../provenance/rag-chunk-level-faithfulness.md
