@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#memory, #mem0, #benchmark, #LOCOMO, #evaluation]
 created_time: 2026-05-26T11:45:00+08:00
-edited_time: 2026-05-27T11:57:00+08:00
+edited_time: 2026-05-28T10:52:00+08:00
 edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-locomo-benchmark-evaluation.md
