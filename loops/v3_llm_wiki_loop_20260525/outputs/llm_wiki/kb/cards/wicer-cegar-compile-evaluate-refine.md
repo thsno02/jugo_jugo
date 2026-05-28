@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-cegar-compile-evaluate-refine.md
 aliases: [WiCER 算法, Wiki-memory Compile Evaluate Refine, 反例制导的 wiki 编译]
-related: [wicer-blind-compilation-catastrophic-loss, wicer-targeted-vs-random-pinning-ablation, wicer-recovery-distribution-exceeds-fc-raw, wicer-llm-judge-human-validation, docs-as-code-merge-block-incentive, graphrag-leiden-community-hierarchy, llm-knowledge-base-five-stage-workflow, morishige-kb-compile-mem0-overlay]
+related: [wicer-blind-compilation-catastrophic-loss, wicer-llm-judge-human-validation, wicer-targeted-vs-random-pinning-ablation, graphrag-leiden-community-hierarchy, docs-as-code-merge-block-incentive]
 ---
 
 WiCER 把"raw 文档 → 编译成 wiki"当作一次有损抽象，把"诊断探针打分"当作反例制导的细化（CEGAR），用迭代把丢失的事实重新钉回下一轮编译[^src1]。这不是简单的"评测后重写一遍"——关键在于把每次失败的探针拆成一个具体的事实片段（约 50–100 字），放进累积集合 `F_cumulative`，作为下一次编译调用的硬约束。盲编译为何会塌方（信息缺失而非找不到）见 compilation gap 的灾难失败率分析[^v3-1]。
