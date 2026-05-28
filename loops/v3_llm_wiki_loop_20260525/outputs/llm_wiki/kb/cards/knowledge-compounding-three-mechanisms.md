@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#agentic-roi, #knowledge-compounding, #llm-wiki, #ingest, #feedback-loop]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T10:23:00+08:00
+edited_time: 2026-05-28T10:02:00+08:00
 edited_entity: llm
 source_ids: [arxiv-knowledge-compounding]
 provenance_card: ../provenance/knowledge-compounding-three-mechanisms.md
