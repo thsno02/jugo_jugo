@@ -13,12 +13,12 @@ aliases: ["四属性框架", "capture link compound stay-current"]
 related: [enterprise-llm-wiki-tool-native-ingestion, enterprise-llm-wiki-drift-detection-loop, retrieval-not-enough-for-stale-kb, aillm-wiki-four-defining-properties, karpathy-gist-three-layers, karpathy-llm-wiki-vs-rag]
 ---
 
-Falconer 的企业级 LLM Wiki 指南把 Karpathy 个人 LLM Wiki 工作流抽象成四个属性，把 "personal pattern" 和 "enterprise pattern" 拉到同一个分析框架里。判断企业知识系统是否真的"像 Karpathy 工作流一样会复利"，看它有没有同时满足这四条：
+Falconer 的企业级 LLM Wiki 指南把 Karpathy 个人 LLM Wiki 工作流抽象成四个属性[^src1]，把 "personal pattern" 和 "enterprise pattern" 拉到同一个分析框架里。判断企业知识系统是否真的"像 Karpathy 工作流一样会复利"，看它有没有同时满足这四条：
 
-- **Capture（捕获）**：把外部材料/工作产物变成 wiki 的输入。个人版的 capture 是 `raw/` 目录里的手动整理；企业版"原料是工作本身"——分散在 GitHub PR、Slack thread、Linear 工单、Granola 会议记录、Google Drive 设计文档等十几种工具里。
-- **Link（连接）**：在概念 / 实体之间建立可导航的反向链接。个人版用 Obsidian 的 vault 内 bidirectional links；企业版必须做 **跨工具的实体解析**——把 "the payments service" 在设计文档、`payments-service` 在 GitHub repo、`@payments-team` 在 Slack channel 识别为同一实体。
+- **Capture（捕获）**：把外部材料/工作产物变成 wiki 的输入。个人版的 capture 是 `raw/` 目录里的手动整理；企业版"原料是工作本身"——分散在 GitHub PR、Slack thread、Linear 工单、Granola 会议记录、Google Drive 设计文档等十几种工具里[^v3-1]。
+- **Link（连接）**：在概念 / 实体之间建立可导航的反向链接。个人版用 Obsidian 的 vault 内 bidirectional links；企业版必须做 **跨工具的实体解析**——把 "the payments service" 在设计文档、`payments-service` 在 GitHub repo、`@payments-team` 在 Slack channel 识别为同一实体[^src3]。
 - **Compound（复利）**：每一次新输入都让整个知识结构更有用，而不是堆成压不进上下文的 doc 堆。个人版靠 LLM 把新 source 合并进既有 wiki page；企业版要在新 PR 与既有 runbook 矛盾时**检测矛盾、起草更新、路由给 doc owner**——也就是 compound 必须处理冲突源，不能只做累加。
-- **Stay current（保持新鲜）**：让系统对"已经过期 / 已经被推翻"的内容做主动维护。个人版靠 Karpathy 自己定期跑 lint；企业版必须**持续后台**做 drift detection，因为没有任何单个员工有能力为整个组织扛维护。
+- **Stay current（保持新鲜）**：让系统对"已经过期 / 已经被推翻"的内容做主动维护。个人版靠 Karpathy 自己定期跑 lint；企业版必须**持续后台**做 drift detection[^v3-2]，因为没有任何单个员工有能力为整个组织扛维护。
 
 这四个属性的关键 insight：
 
