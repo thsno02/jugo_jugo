@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#memory, #companion-system, #contextualize, #selective-absorption, #dream-cycle]
 created_time: 2026-05-26T15:10:00+08:00
-edited_time: 2026-05-27T14:48:00+08:00
+edited_time: 2026-05-28T11:22:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-as-metabolism-contextualize-depth-fitted.md
