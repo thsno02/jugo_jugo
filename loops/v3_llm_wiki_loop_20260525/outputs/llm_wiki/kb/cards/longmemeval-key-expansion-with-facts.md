@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-key-expansion-with-facts.md
 aliases: [document expansion, multi-key indexing, fact-augmented key]
-related: [longmemeval-three-stage-memory-framework, locomo-observation-rag-beats-summary-rag, longmemeval-time-aware-query-expansion, longmemeval-chain-of-note-and-json-reading, zep-hybrid-search-rerank]
+related: [longmemeval-three-stage-memory-framework, locomo-observation-rag-beats-summary-rag, zep-hybrid-search-rerank]
 ---
 
 ## 规则
