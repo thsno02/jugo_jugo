@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#agent-memory, #team-knowledge, #skill-as-artifact, #cognition]
 created_time: 2026-05-26T12:00:00+08:00
-edited_time: 2026-05-27T14:38:00+08:00
+edited_time: 2026-05-28T10:54:00+08:00
 edited_entity: llm
 source_ids: [cognitionus-llm-wiki-guide]
 provenance_card: ../provenance/cognition-skill-loop-evidence-to-teaching.md
