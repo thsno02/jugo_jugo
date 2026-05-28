@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#memory-system, #lightmem, #atkinson-shiffrin, #agent-memory]
 created_time: 2026-05-26T11:05:00+08:00
-edited_time: 2026-05-27T10:00:00+08:00
+edited_time: 2026-05-28T10:06:00+08:00
 edited_entity: llm
 source_ids: [arxiv-lightmem]
 provenance_card: ../provenance/lightmem-three-stage-atkinson-shiffrin.md
