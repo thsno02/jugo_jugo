@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [falconer-enterprise-guide]
 provenance_card: ../provenance/enterprise-llm-wiki-four-properties.md
 aliases: ["四属性框架", "capture link compound stay-current"]
-related: [enterprise-llm-wiki-tool-native-ingestion, enterprise-llm-wiki-drift-detection-loop, retrieval-not-enough-for-stale-kb, aillm-wiki-four-defining-properties, karpathy-gist-three-layers, karpathy-llm-wiki-vs-rag]
+related: [enterprise-llm-wiki-tool-native-ingestion, enterprise-llm-wiki-drift-detection-loop, retrieval-not-enough-for-stale-kb]
 ---
 
 Falconer 的企业级 LLM Wiki 指南把 Karpathy 个人 LLM Wiki 工作流抽象成四个属性[^src1]，把 "personal pattern" 和 "enterprise pattern" 拉到同一个分析框架里。判断企业知识系统是否真的"像 Karpathy 工作流一样会复利"，看它有没有同时满足这四条：
