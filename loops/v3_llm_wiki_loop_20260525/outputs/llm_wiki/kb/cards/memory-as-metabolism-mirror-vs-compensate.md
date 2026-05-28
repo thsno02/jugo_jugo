@@ -47,19 +47,19 @@ Miteski (2026) 提出，针对单用户的"伴侣型"个人 LLM 记忆系统，�
 ## 边界与诚实之处
 
 - **不是真理追踪器**：框架不主张能取代外部真理判断，论文反复强调"truth re-enters through consequence, not through correspondence"。
-- **承认部分性的安全故事**：mirror 一侧的对齐被作为"伴侣可用性"的代价显式接受；compensate 一侧仅在三个时间尺度（agent 内 consolidation、跨 agent federation、底模演化）上提供结构性防御，而非保证。
-- **AUDIT 灵敏度是开放问题**：若 stress-test 查询集自我确认或过窄，固化仍可幸存（§9 limitation）。
-
-## References
-
-- 论文正文 §1.2 "Mirror where mirroring serves utility. Compensate where mirroring damages it." 第 283–344 行附近。
-- §5.0 "Mapping operations to mirror and compensate" 表格，第 1037–1067 行。
-- 来源：`data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt`。
+- **承认部分性的安全故事**：mirror 一侧的对齐被作为"伴侣可用性"的代价显式接受；compensate 一侧仅在三个时间尺度（agent 内 consolidation、跨 agent federation、底模演化）上提供结构性防御，而非保证。底模演化作为外部纠错通道依赖架构可分离性[^v3-7]。
+- **AUDIT 灵敏度是开放问题**：若 stress-test 查询集自我确认或过窄，固化仍可幸存（§9 limitation）[^src4]。
 
 ## Footnotes
 
-[^1]: 原文（agent_source_bundle.txt 第 309–311 行）："Qian et al. (arXiv:2510.01924) uses it explicitly in 'To Mask or to Mirror' — empirically observing that some models mirror human biases while others mask and compensate for them at inference time."
-
-[^2]: 原文（第 322–327 行）："The contribution is the TRIAGE → CONSOLIDATE → AUDIT execution model as a binding: not the discovery of the tension, and not the individual operations, but the procedural rule that decides how and when each operation applies to the mirror-vs-compensate conflict in a companion wiki."
-
-[^3]: 原文（第 346–360 行）："The framework defaults to preserving operational continuity in the streaming path and routing the conflict to scheduled compensate operations ... mirror by default under time pressure, compensate during scheduled integration windows, and treat AUDIT as the tiebreaker."
+[^src1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 309–311 行 — "Qian et al. (arXiv:2510.01924) uses it explicitly in 'To Mask or to Mirror' — empirically observing that some models mirror human biases while others mask and compensate for them at inference time."
+[^src2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 322–327 行（§1.2 程序冲突规则原则化）+ 第 346–360 行 — "The contribution is the TRIAGE → CONSOLIDATE → AUDIT execution model as a binding: not the discovery of the tension, and not the individual operations, but the procedural rule that decides how and when each operation applies to the mirror-vs-compensate conflict in a companion wiki."；"The framework defaults to preserving operational continuity in the streaming path and routing the conflict to scheduled compensate operations ... mirror by default under time pressure, compensate during scheduled integration windows, and treat AUDIT as the tiebreaker."
+[^src3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1037–1067 行 — §5.0 "Mapping operations to mirror and compensate" 表格。
+[^src4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — §9 limitation 中关于 AUDIT 灵敏度的承认。
+[^v3-1]: [minority-pressure-promotion](minority-pressure-promotion.md) — 少数派 buffer 压力 promotion 的具体机制。
+[^v3-2]: [audit-by-suspension-against-entrenchment](audit-by-suspension-against-entrenchment.md) — AUDIT-by-suspension 的伪代码与三分支结果。
+[^v3-3]: [lightmem-sleep-time-offline-parallel-update](lightmem-sleep-time-offline-parallel-update.md) — sleep-time consolidation 机制在 LightMem 的实现。
+[^v3-4]: [memory-as-metabolism-conflict-routing-matrix](memory-as-metabolism-conflict-routing-matrix.md) — 7 行冲突路由矩阵的具体程序化。
+[^v3-5]: [memory-as-metabolism-contextualize-depth-fitted](memory-as-metabolism-contextualize-depth-fitted.md) — CONTEXTUALIZE 选择性吸收的细节。
+[^v3-6]: [memory-gravity-load-bearing-protection](memory-gravity-load-bearing-protection.md) — Memory gravity 承重保护机制。
+[^v3-7]: [memory-as-metabolism-architectural-separability](memory-as-metabolism-architectural-separability.md) — 架构可分离性作为外部纠错通道。
