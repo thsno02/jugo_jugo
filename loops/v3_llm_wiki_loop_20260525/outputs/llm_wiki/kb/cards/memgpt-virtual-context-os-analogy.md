@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#memgpt, #virtual-context, #os-analogy, #memory-hierarchy]
 created_time: 2026-05-26T11:20:00+08:00
-edited_time: 2026-05-27T14:42:00+08:00
+edited_time: 2026-05-28T11:00:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-virtual-context-os-analogy.md
