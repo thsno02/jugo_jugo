@@ -13,7 +13,7 @@ aliases: ["idea file", "想法文件", "share-the-idea 模式"]
 related: [file-outputs-back-as-compounding-loop, auto-index-replaces-rag-at-small-scale, llm-knowledge-base-five-stage-workflow, karpathy-gist-memex-connection, cognition-skill-loop-evidence-to-teaching]
 ---
 
-Karpathy 提出：在 LLM 智能体时代，"构建者真正需要分发的东西"发生了位移。作者不再交付完整的应用——具体的代码、打包好的工具、部署好的界面——而是把"想法本身"以一份刻意保持抽象的 `idea file`（gist 或 markdown 规格）打包出去，让每一位接收者的编码智能体在本地构建出属于他自己的版本。
+Karpathy 提出[^src1]：在 LLM 智能体时代，"构建者真正需要分发的东西"发生了位移[^v2-1]。作者不再交付完整的应用——具体的代码、打包好的工具、部署好的界面——而是把"想法本身"以一份刻意保持抽象的 `idea file`（gist 或 markdown 规格）打包出去，让每一位接收者的编码智能体在本地构建出属于他自己的版本。
 
 分发出来的物件看起来很小（一份 gist、一份 spec），但它正在做以前"完整 repo + 安装说明"才能做的事。关键是接收者一侧的智能体会把本地细节补齐：他的数据布局、他偏好的 IDE、他选择的查看器、他的快捷键。同一份 idea file 因此可以在很多人的机器上展开成形态各异的具体实现，而原作者完全不需要维护其中任何一份。
 
