@@ -31,7 +31,7 @@ Kunal Ganglani 在 2026 年 4 月的博文 "I Set Up Karpathy's Local Knowledge 
 1. **SEO 与术语污染**：Kunal 的文章在 SEO 上抢"LLM Wiki Karpathy"关键词，会让搜索结果里出现错误的"实现指南"，干扰真正想了解 wiki 模式的人；
 2. **它说明"LLM Wiki"已经被泛化使用**：很多人把任何"基于个人文档的本地 LLM 系统"都叫 LLM Wiki，但这其实是 RAG 的旧称，没有 Karpathy gist 里的 incremental wiki maintenance 含义；
 3. **它无意间还原了"对照组"**：Kunal 文章实际上是"本地 RAG 体验报告"——它的痛点（chunking 取舍、CPU 太慢、回答质量比不上 GPT-4）正好印证了为什么 Karpathy 选择 markdown wiki + 大模型而不是 small local + RAG；
-4. **Kunal 的结论自相印证**：他自己写"the boring answer is actually the right one for most developers"——多数人用 Obsidian + 好插件就够了。某种意义上，这个结论隐含支持了 Karpathy 的"markdown wiki + agent"路线，只是用了错误的术语包装。
+4. **Kunal 的结论自相印证**：他自己写"the boring answer is actually the right one for most developers"——多数人用 Obsidian + 好插件就够了[^src3]。某种意义上，这个结论隐含支持了 Karpathy 的"markdown wiki + agent"路线，只是用了错误的术语包装。
 
 **对 LLM Wiki 主题页面的提醒**：
 - 应该在术语定义段明确指出**两种 LLM Wiki 解读并存**：(a) Karpathy gist 模式（markdown + agent 维护）、(b) 本地 RAG（llm.c 风格）；
