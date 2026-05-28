@@ -15,20 +15,20 @@ related: [kunal-llm-c-rag-misinterpretation, anthemcreation-llm-wiki-setup-cost-
 
 Kunal 在自建 llm.c 本地 RAG 的两周实战里总结出三个会**直接吃掉一整个周末**的坑。即使读者最终不走 llm.c 路线，这三堵墙在任何"完全本地、最简依赖"的 LLM 知识库建设里都会复现，因此值得标注：
 
-**Wall 1：macOS 编译——Clang 不支持 OpenMP**
+**Wall 1：macOS 编译——Clang 不支持 OpenMP**[^src1]
 - llm.c 依赖 OpenMP 做并行；
 - macOS 默认 Clang 编译器**不支持 OpenMP**，但错误信息**不会提示**这是根本原因；
 - 修复路径：`brew install gcc`，用 Homebrew 提供的 GCC 编译；
 - Linux + 较新 GCC 几乎零摩擦——这意味着 Mac 用户是当前文档体验最差的人群；
 - 这是 Hacker News 上该项目最常见的抱怨。
 
-**Wall 2：数据准备——没有文档加载器**
+**Wall 2：数据准备——没有文档加载器**[^src2]
 - llm.c 的 wiki 功能期望**一个大文本文件**；
 - 真实用户的笔记通常散落在多个工具、多个 markdown 文件（Kunal 自己 400 多份）；
 - 没有内置的 document loader——必须**自己写预处理脚本**把所有文件拼接成单文件，并用文档边界 marker 分隔；
 - "hackable" 哲学的双刃剑：透明=自由 + 自由=自建。
 
-**Wall 3：硬件现实——CPU 推理太慢**
+**Wall 3：硬件现实——CPU 推理太慢**[^src3]
 - M2 MacBook Pro 上 CPU 推理对中等索引每 query 30+ 秒，不能用；
 - CUDA GPU 上降到几秒；
 - 没有 GPU 就放弃日常使用——所谓"完全本地"的隐藏成本是**硬件资本支出**。
