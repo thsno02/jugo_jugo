@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#llm-wiki, #agents-md, #schema, #convention, #predictability]
 created_time: 2026-05-26T11:21:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T10:00:00+08:00
 edited_entity: llm
 source_ids: [complete-tech-live-frontier]
 provenance_card: ../provenance/agents-md-as-schema-layer.md
