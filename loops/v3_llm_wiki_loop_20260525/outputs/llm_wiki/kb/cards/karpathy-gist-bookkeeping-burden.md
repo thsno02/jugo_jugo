@@ -35,7 +35,7 @@ Karpathy 在 gist 的 "Why this works" 段给出 LLM Wiki 模式有效性的核�
 - 对人侧的最小操作分工：**人做不可替代的思考层**——curate sources, direct analysis, ask good questions, think about meaning。Karpathy 总结："The LLM's job is everything else."
 
 边界与误用：
-- "维护成本接近零"在小规模成立；在数百页以上规模，LLM 也可能漏更新或重复创建近似页面（这是 Robin Cartier 等实践者在大规模下观察到的局限）；
+- "维护成本接近零"在小规模成立；在数百页以上规模，LLM 也可能漏更新或重复创建近似页面（这是 Robin Cartier 等实践者在大规模下观察到的局限[^v3-1]）；
 - "人不写 wiki"是默认而非铁律——人有时仍需手写少量页面（例如方法论说明），但写完后须告知 LLM 维护交接；
 - LLM 不会"无聊"不代表它不会犯错——错误模式从"忘记更新"变成"幻觉式更新"，问题域转移而非消失。
 
