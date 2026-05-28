@@ -18,7 +18,7 @@ Falconer 指南把"语义搜索 / RAG"和"LLM Wiki 维护循环"明确切开。�
 - **检索层（Glean / Notion AI / Confluence AI search 等）**：让用户更容易找到已经被捕获的信息。query → 找到 doc → 回答。
 - **维护循环（Karpathy LLM Wiki 模式 / Falconer 企业版）**：保持底层知识图谱本身的准确性——LLM 持续做 linting、起草、矛盾消解。
 
-Falconer 的核心论断："Better retrieval over bad context delivers wrong answers more quickly than slow retrieval over bad context." 把它拆成几条规则：
+Falconer 的核心论断："Better retrieval over bad context delivers wrong answers more quickly than slow retrieval over bad context."[^src1] 把它拆成几条规则：
 
 - **检索改善只放大底层准确性**。底层 KB 是正确的，更好的检索让答案更快得到；底层 KB 是陈旧的，更好的检索让错误答案更快地被自信地交付。
 - **语义搜索本身不修复 doc**。它不会发现"这条 runbook 在 Q2 后就不再为真"，也不会发现"这两个 doc 互相矛盾"。
