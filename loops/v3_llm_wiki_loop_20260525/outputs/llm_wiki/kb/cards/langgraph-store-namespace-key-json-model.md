@@ -48,7 +48,7 @@ store.search(namespace, filter={...}, query="...")
 
 ## 索引配置（向量检索）
 
-要让 `store.search(..., query="language preferences")` 走向量相似度，需在 store 构造时传 `IndexConfig`：
+要让 `store.search(..., query="language preferences")` 走向量相似度，需在 store 构造时传 `IndexConfig` [^src3]：
 
 ```python
 from langgraph.store.base import IndexConfig
