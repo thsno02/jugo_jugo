@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [karpathy-gist-llm-wiki]
 provenance_card: ../provenance/karpathy-gist-memex-connection.md
 aliases: [Memex connection, Bush 1945 vision, associative trails]
-related: [karpathy-gist-bookkeeping-burden, karpathy-gist-three-layers, idea-file-as-agent-era-artifact, obsidian-as-ide-llm-as-programmer]
+related: [karpathy-gist-bookkeeping-burden]
 ---
 
 Karpathy 在 gist 末段把 LLM Wiki 模式直接连到 Vannevar Bush 1945 年提出的 **Memex** 设想，这一连接不是装饰，而是说明 LLM Wiki 真正回答了一个被搁置 80 年的问题：
