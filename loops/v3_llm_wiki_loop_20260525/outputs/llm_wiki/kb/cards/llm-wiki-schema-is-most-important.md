@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [openaitoolshub-six-months]
 provenance_card: ../provenance/llm-wiki-schema-is-most-important.md
 aliases: [schema-first, schema is the most important file, schema.md]
-related: [karpathy-llm-wiki-three-layers, llm-wiki-mcp-design-boundary-mechanics-not-content, llm-wiki-tldr-load-bearing, llm-wiki-rohit-v2-improvements, robin-cartier-schema-as-product-doc, aillm-wiki-schema-as-bottleneck, agents-md-as-schema-layer]
+related: [llm-wiki-mcp-skills-vs-tools-workflow, agents-md-as-schema-layer]
 ---
 
 ## 经验主张
