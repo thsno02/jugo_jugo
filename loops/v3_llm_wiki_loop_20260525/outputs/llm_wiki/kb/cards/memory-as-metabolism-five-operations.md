@@ -15,15 +15,15 @@ related: [memory-as-metabolism-mirror-vs-compensate, memory-gravity-load-bearing
 
 ## 五个操作各司其职
 
-Miteski (2026) 把 companion wiki 的保留/治理层切成 5 个操作 + 2 个支撑机制，每个都有明确的运行节奏与失败模式：
+Miteski (2026) 把 companion wiki 的保留/治理层切成 5 个操作 + 2 个支撑机制[^src1]，每个都有明确的运行节奏与失败模式：
 
-1. **TRIAGE（流式、毫秒级）**：浅过滤——拒绝明显垃圾、对最近 buffer 去重、检查结构合法性、打 ingestion 时间戳。**不做任何语义评分、不读 active wiki、不做留弃决策**。所有通过 TRIAGE 的条目进入 raw buffer 等下一个 consolidation 窗口。
-2. **CONTEXTUALIZE（批量、调度内）**：把外部源压缩到"用户当前 working-context depth"的工作表示，并强制保留到原始源的 linkout。它**只在 dream cycle 里运行**，因为深度推断成本高；同一份外部源若用户上下文在两个 cycle 之间漂移，下一次按新上下文重压缩。
-3. **DECAY（持续）**：在 active wiki 上跑 vitality 公式（见下）；vitality 低于阈值的条目**被压缩成 summary，不是删除**。
-4. **CONSOLIDATE（批量、调度内）**：本框架的中心 compensate 机制，分四个 phase——buffer 内部互评、与 active wiki 评分、按 fuzzy coherence 分桶（直接整合 / 标记关注 / 隔离）、少数派 buffer 压力 promotion。
-5. **AUDIT（慢周期、月度或更长）**：对最高 gravity 条目做"暂时悬挂 + 重跑历史查询"的反事实测试。性能未变就削 gravity；性能改善就归档。
+1. **TRIAGE（流式、毫秒级）**：浅过滤——拒绝明显垃圾、对最近 buffer 去重、检查结构合法性、打 ingestion 时间戳。**不做任何语义评分、不读 active wiki、不做留弃决策**[^src2]。所有通过 TRIAGE 的条目进入 raw buffer 等下一个 consolidation 窗口。
+2. **CONTEXTUALIZE（批量、调度内）**：把外部源压缩到"用户当前 working-context depth"的工作表示[^v3-1]，并强制保留到原始源的 linkout[^src3]。它**只在 dream cycle 里运行**，因为深度推断成本高；同一份外部源若用户上下文在两个 cycle 之间漂移，下一次按新上下文重压缩。
+3. **DECAY（持续）**：在 active wiki 上跑 vitality 公式（见下）[^src4]；vitality 低于阈值的条目**被压缩成 summary，不是删除**。
+4. **CONSOLIDATE（批量、调度内）**：本框架的中心 compensate 机制[^v3-2]，分四个 phase——buffer 内部互评、与 active wiki 评分、按 fuzzy coherence 分桶（直接整合 / 标记关注 / 隔离）、少数派 buffer 压力 promotion[^v3-3]。这与 LightMem sleep-time offline parallel update 的"在线 soft / 离线整合"思路属于同一家族[^v3-4]。
+5. **AUDIT（慢周期、月度或更长）**：对最高 gravity 条目做"暂时悬挂 + 重跑历史查询"的反事实测试[^v3-5]。性能未变就削 gravity；性能改善就归档。
 
-支撑机制：**memory gravity**（承重保护）与 **minority-hypothesis retention**（buffer/quarantine 中保留方差）。
+支撑机制：**memory gravity**（承重保护）[^v3-6] 与 **minority-hypothesis retention**（buffer/quarantine 中保留方差）[^v3-3]。
 
 ## vitality 公式（DECAY 用）
 
