@@ -32,18 +32,13 @@ related: [llm-wiki-karpathy-multimodal-representation-path, llm-knowledge-base-f
 
 边界：
 
-- runtime 显式 out-of-scope：embeddings、向量搜索、数据库索引、rename 跟踪、内置 OCR / vision、自治后台 agent。任何依赖这些的功能都必须由 agent 层或外部工具提供。
+- runtime 显式 out-of-scope[^src4]：embeddings、向量搜索、数据库索引、rename 跟踪、内置 OCR / vision、自治后台 agent。任何依赖这些的功能都必须由 agent 层或外部工具提供。
 - 这套划分针对 Obsidian-style markdown vault，不直接适用于"内容存储在 DB / 第三方 wiki"的场景。
-
-## References
-
-- 运行时哲学的二段责任划分：`data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` L146–172（"Runtime Philosophy"）。
-- 多模态 ingest 模型与 `kb_prepare_source_bundle` 角色：同文件 L77–95 + L172–175。
-- 显式 out-of-scope 清单：同文件 L176–189。
 
 ## Footnotes
 
-- `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` L148-160：runtime 拥有 `"canonical paths / canonical IDs / validation / deterministic writes / manifest-backed representation tracking / generated wiki navigation"`。
-- 同文件 L162-172：agent 拥有 `"summarization / OCR, vision, or profiling work performed outside the runtime / synthesis / deciding whether a result belongs in output, concept, entity, or synthesis / improving the wiki over time instead of leaving value trapped in chat"`。
-- 同文件 L172-174：`"kb_prepare_source_bundle is the bridge between those layers for non-text assets"`。
-- 同文件 L181-187：out-of-scope —— `"embeddings or vector search / database-backed indexing / rename tracking / built-in OCR, vision, or PDF parsing inside the runtime itself / autonomous background agents inside the package"`。
+[^src1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` L148-160 — runtime 拥有 "canonical paths / canonical IDs / validation / deterministic writes / manifest-backed representation tracking / generated wiki navigation"
+[^src2]: 同文件 L162-172 — agent 拥有 "summarization / OCR, vision, or profiling work performed outside the runtime / synthesis / deciding whether a result belongs in output, concept, entity, or synthesis / improving the wiki over time instead of leaving value trapped in chat"
+[^src3]: 同文件 L172-174 — "kb_prepare_source_bundle is the bridge between those layers for non-text assets"
+[^src4]: 同文件 L181-187 — out-of-scope: "embeddings or vector search / database-backed indexing / rename tracking / built-in OCR, vision, or PDF parsing inside the runtime itself / autonomous background agents inside the package"
+[^v3-1]: [llm-wiki-karpathy-multimodal-representation-path](llm-wiki-karpathy-multimodal-representation-path.md) — `kb_prepare_source_bundle` 握手与 representation-first ingest 的展开。
