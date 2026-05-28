@@ -49,19 +49,12 @@ nvk/llm-wiki 把"LLM 写出来的东西能不能信"拆成两个互补的命令�
 - 在每次 ingest 或 compile 之后跑一次 `librarian`，把分数写进文章 frontmatter（便于下次"快速 metadata 扫描"复用）；
 - 在每次生成 *output*（report / slides / plan）之前跑一次 `audit --artifact` 校验它依赖的所有 wiki 文章仍然 fresh；
 - 把"audit 触发 fresh research"的预算上限设定好（否则它能跑到外网耗 token 没尽头）；
-- `lint --fix` 适合在 CI 里自动跑；`audit` 涉及外网 fetch 适合手动触发。
-
-## References
-
-- nvk/llm-wiki 主站，"Librarian / Audit / Lessons / Plan / Output / Lint" 等命令段：`data/raw/webpage/llm-wiki-net/text.txt`，行 52–70；commands 表中关于这些命令的行 219–230。
+- `lint --fix` 适合在 CI 里自动跑；`audit` 涉及外网 fetch 适合手动触发[^v3-1]。
 
 ## Footnotes
 
-- librarian 描述（行 52–54）：
-  > "Score every article for staleness and quality. Two-tier scan: fast metadata check, then deep content read for flagged articles. Checkpoint recovery. Machine-readable JSON + human-readable report."
-- audit 描述（行 56–58）：
-  > "Answer the broader trust question. Reuse the librarian pass, trace outputs across raw/ , wiki/ , and output/ , detect drift, inspect provenance, and do fresh research when local evidence is not enough."
-- lint（行 228）：
-  > "/wiki:lint Health checks. --fix auto-repairs. --deep web-verifies facts."
-- retract（行 230）：
-  > "/wiki:retract Remove a source and clean up downstream references."
+[^src1]: `data/raw/webpage/llm-wiki-net/text.txt` 行 52-54 — "Score every article for staleness and quality. Two-tier scan: fast metadata check, then deep content read for flagged articles. Checkpoint recovery. Machine-readable JSON + human-readable report."
+[^src2]: 同文件 行 56-58 — "Answer the broader trust question. Reuse the librarian pass, trace outputs across raw/ , wiki/ , and output/ , detect drift, inspect provenance, and do fresh research when local evidence is not enough."
+[^src3]: 同文件 行 228 — "/wiki:lint Health checks. --fix auto-repairs. --deep web-verifies facts."
+[^src4]: 同文件 行 230 — "/wiki:retract Remove a source and clean up downstream references."
+[^v3-1]: [enterprise-llm-wiki-drift-detection-loop](enterprise-llm-wiki-drift-detection-loop.md) — 企业版的连续后台 drift detection，与 nvk audit 的手动触发是同主题不同执行模式。
