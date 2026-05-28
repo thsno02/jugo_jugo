@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#llm-wiki, #workflow, #obsidian]
 created_time: 2026-05-26T15:05:00+08:00
-edited_time: 2026-05-27T10:12:00+08:00
+edited_time: 2026-05-28T11:36:00+08:00
 edited_entity: llm
 source_ids: [anthemcreation-en-guide]
 provenance_card: ../provenance/llm-wiki-ingest-vs-query-workflow.md
