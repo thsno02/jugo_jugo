@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [nist-gai-profile]
 provenance_card: ../provenance/nist-ai-rmf-gai-profile.md
 aliases: [NIST AI 600-1, GAI Profile, AI RMF Generative AI Profile]
-related: [microsoft-agent-governance-standards-alignment, microsoft-agent-governance-eight-packages, owasp-agentic-top10-2026-positioning, owasp-llm-top10-community-genealogy, owasp-genai-landscape-2026q2]
+related: [owasp-llm-top10-community-genealogy, microsoft-agent-governance-standards-alignment, owasp-agentic-top10-2026-positioning]
 ---
 
 ## 这份文档是什么
