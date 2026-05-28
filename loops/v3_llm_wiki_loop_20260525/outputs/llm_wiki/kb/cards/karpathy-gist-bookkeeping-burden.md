@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#llm-wiki, #knowledge-management, #maintenance, #karpathy]
 created_time: 2026-05-26T11:50:00+08:00
-edited_time: 2026-05-27T10:13:00+08:00
+edited_time: 2026-05-28T11:09:00+08:00
 edited_entity: llm
 source_ids: [karpathy-gist-llm-wiki]
 provenance_card: ../provenance/karpathy-gist-bookkeeping-burden.md
