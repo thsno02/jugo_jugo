@@ -15,7 +15,7 @@ related: [ares-synthetic-data-pipeline, ares-ppi-confidence-bound, ares-three-ju
 
 ## 主张
 
-Saad-Falcon 等（2024）做了一组消融：把 ARES 里需要的 human preference validation set（150–300 条人工标注）**完全用 GPT-4 标注替代**——使用 few-shot prompt 生成 500 条 GPT-4 labels。结果：Kendall's τ 在大多数设定下下降 **0.05–0.30**，**但人工标注成本从"几百条"降到"少于 10 条 few-shot 样本"**——这是 ARES 实际部署时一个有意义的成本/精度权衡。
+Saad-Falcon 等（2024）做了一组消融：把 ARES[^v3-3] 里需要的 human preference validation set（150–300 条人工标注）**完全用 GPT-4 标注替代**——使用 few-shot prompt 生成 500 条 GPT-4 labels。结果：Kendall's τ 在大多数设定下下降 **0.05–0.30**，**但人工标注成本从"几百条"降到"少于 10 条 few-shot 样本"**——这是 ARES 实际部署时一个有意义的成本/精度权衡[^src1]。
 
 ## 数字对照（Table tab:gpt4_labels）
 
