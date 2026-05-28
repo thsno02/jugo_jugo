@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-alce]
 provenance_card: ../provenance/alce-three-dimension-citation-metric.md
 aliases: ["ALCE benchmark", "ALCE 三维度评估"]
-related: [alce-citation-recall-precision-nli, alce-eli5-claim-recall-design, ares-three-judge-rag-evaluation, ragas-reference-free-rag-evaluation, ragchecker-generator-trilemma]
+related: [alce-eli5-claim-recall-design, alce-citation-recall-precision-nli, ares-three-judge-rag-evaluation, ragas-reference-free-rag-evaluation, ragchecker-generator-trilemma]
 ---
 
 ALCE（Automatic LLMs' Citation Evaluation）是第一个把"LLM 生成带引用"做成可自动评分的 benchmark[^src1]。它故意把得分拆成三个互相牵制的维度：
