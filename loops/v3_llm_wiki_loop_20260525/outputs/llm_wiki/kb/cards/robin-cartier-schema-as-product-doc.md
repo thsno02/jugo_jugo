@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#schema, #CLAUDE-md, #AGENTS-md, #robin-cartier, #PRD]
 created_time: 2026-05-26T12:05:00+08:00
-edited_time: 2026-05-27T14:44:00+08:00
+edited_time: 2026-05-28T10:35:00+08:00
 edited_entity: llm
 source_ids: [robin-cartier-llm-knowledge-bases]
 provenance_card: ../provenance/robin-cartier-schema-as-product-doc.md
