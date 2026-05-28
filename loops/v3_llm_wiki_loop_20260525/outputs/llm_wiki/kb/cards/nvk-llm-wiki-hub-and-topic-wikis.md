@@ -47,7 +47,7 @@ related: [llm-knowledge-base-five-stage-workflow, nvk-llm-wiki-audit-and-librari
 **Topic-Wiki 的不变量：**
 
 - 每个 topic 一个独立的 Obsidian vault，可以 `open ~/wiki/topics/nutrition/` 直接打开；
-- `raw/` 是 **immutable**：一旦 ingest，永不修改。Articles 在它上面合成；retract 时同时移除两者，保持 audit trail；
+- `raw/` 是 **immutable**[^src1]：一旦 ingest，永不修改。Articles 在它上面合成；retract 时同时移除两者，保持 audit trail；
 - `inventory/` 是 *state* 而非 evidence——存可清点的"事物"：items, source candidates, corpora, entities, open questions, watch items, next actions；明示不作为事实证据；
 - `datasets/` 只放 manifest（路径、samples、profile、query recipe）——大型外部数据不进 `raw/`，wiki 充当"索引界面"；
 - `wiki/` 文章分三类目录：concepts（基础理念）/ topics（具体专题、状态报告）/ references（工具表、数据表）；每个目录都有 `_index.md` 作为"派生缓存"，agent 永远不"blindly scan"。
