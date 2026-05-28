@@ -70,19 +70,11 @@ related: [llm-knowledge-base-five-stage-workflow, nvk-llm-wiki-audit-and-librari
 
 - topic 隔离意味着同一概念可能在多个 topic 里重复出现——`/wiki:query --with` 是显式抢救机制，但维护成本要承认；
 - archive 是 *quiet*，不是 *delete*：archived topic 仍占磁盘；要彻底删除需要手动；
-- hub 的 `wikis.json` 应当存"逻辑路径"（如 `topics/bitcoin`）而不是某台机器的绝对路径，否则跨机器同步会失败。
-
-## References
-
-- `nvk/llm-wiki` 主站文档：`data/raw/webpage/llm-wiki-net/text.txt`，目录树在行 140；hub 与 isolation 段在行 142–168；commands 部分行 174。
-- iCloud / 同步章节里关于"portable hub path"的劝告：行 332–334。
+- hub 的 `wikis.json` 应当存"逻辑路径"（如 `topics/bitcoin`）而不是某台机器的绝对路径，否则跨机器同步会失败[^src4]。
 
 ## Footnotes
 
-- 目录树原文见行 140（单行密集排版）。
-- "One topic, one wiki ... Each research area is isolated."——行 142–144。
-- "Raw is immutable"段（行 150–152）：
-  > "Once a source is ingested it is never modified. Articles synthesize on top. Retraction removes both cleanly."
-- "Inventory is state" 段（行 154–156）；"Datasets stay external" 段（行 158–160）；"Archive is quiet" 段（行 162–164）。
-- Hub 与 wikis.json 同步劝告（行 332–334）：
-  > "Shared wikis.json entries should store topic paths such as topics/bitcoin , not /Users/alice/.../topics/bitcoin ."
+[^src1]: `data/raw/webpage/llm-wiki-net/text.txt` 行 150-152（"Raw is immutable" 段）— "Once a source is ingested it is never modified. Articles synthesize on top. Retraction removes both cleanly."
+[^src2]: 同文件 行 142-144 — "One topic, one wiki ... Each research area is isolated."；以及行 140 目录树原文。
+[^src3]: 同文件 行 154-156（"Inventory is state"）+ 行 158-160（"Datasets stay external"）+ 行 162-164（"Archive is quiet"）。
+[^src4]: 同文件 行 332-334 — "Shared wikis.json entries should store topic paths such as topics/bitcoin , not /Users/alice/.../topics/bitcoin ."
