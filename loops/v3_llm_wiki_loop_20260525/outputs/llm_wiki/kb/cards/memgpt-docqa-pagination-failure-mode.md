@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-docqa-pagination-failure-mode.md
 aliases: [MemGPT NaturalQuestions evaluation, archival storage iteration, premature stop in pagination]
-related: [memgpt-main-vs-external-context, memgpt-function-chaining-heartbeat, memgpt-nested-kv-multi-hop, memgpt-dmr-task-evaluation]
+related: [memgpt-main-vs-external-context, memgpt-function-chaining-heartbeat, memgpt-nested-kv-multi-hop]
 ---
 
 ## 任务设计
