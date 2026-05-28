@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-time-aware-query-expansion.md
 aliases: [time-aware indexing, temporal query expansion]
-related: [longmemeval-five-core-memory-abilities, longmemeval-key-expansion-with-facts, longmemeval-three-stage-memory-framework, zep-bi-temporal-edges, mem0-graph-memory-variant]
+related: [longmemeval-five-core-memory-abilities, longmemeval-three-stage-memory-framework, longmemeval-key-expansion-with-facts, zep-bi-temporal-edges]
 ---
 
 ## 机制
