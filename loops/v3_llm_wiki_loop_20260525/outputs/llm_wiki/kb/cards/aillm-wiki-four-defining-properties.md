@@ -15,10 +15,10 @@ related: [llm-knowledge-base-five-stage-workflow, aillm-wiki-schema-as-bottlenec
 
 aillm.wiki 是 Karpathy LLM Wiki 模式公开传播后第一波出现的"非官方目录站"之一。它把这个模式压缩为四条**对外可营销的定义性属性**——既是它向"非技术用户"解释 LLM Wiki 时的话术，也是社区暂时形成的最低共识：
 
-1. **Persistent Knowledge（持久 / 复利）**——和 RAG 每次重新检索不同，新源会"波及"已有页面、自动标记矛盾、保持互链。原文举例："Add a paper about transformer scaling and the pages for attention, optimization, and GPU economics all get updated — not just retrieved from a chunk cache."
-2. **Markdown-First（纯文本优先）**——一组 markdown 文件 + 文件夹，不需要 vector DB / embedding / 基础设施；可被 `grep`、`git diff`、离线打开。原话："The knowledge base outlives any tool you use to build it."
-3. **LLM-Maintained（LLM 维护）**——人定 schema，LLM 编译、更新、互引；输出可预测、可审计；人留在循环里但不打字。
-4. **Token-Efficient（token 经济）**——把"编译后的知识"装进上下文比把"原始 chunk"灌进上下文便宜很多；声称在小到中等规模的知识库（如 400K 词）上比 RAG 在 latency 与 accuracy 上都更优。
+1. **Persistent Knowledge（持久 / 复利）**——和 RAG 每次重新检索不同，新源会"波及"已有页面、自动标记矛盾、保持互链[^src1]。原文举例："Add a paper about transformer scaling and the pages for attention, optimization, and GPU economics all get updated — not just retrieved from a chunk cache."
+2. **Markdown-First（纯文本优先）**——一组 markdown 文件 + 文件夹，不需要 vector DB / embedding / 基础设施；可被 `grep`、`git diff`、离线打开。原话："The knowledge base outlives any tool you use to build it."[^src2]
+3. **LLM-Maintained（LLM 维护）**——人定 schema，LLM 编译、更新、互引；输出可预测、可审计；人留在循环里但不打字[^src3]。
+4. **Token-Efficient（token 经济）**——把"编译后的知识"装进上下文比把"原始 chunk"灌进上下文便宜很多；声称在小到中等规模的知识库（如 400K 词）上比 RAG 在 latency 与 accuracy 上都更优[^src4]。
 
 为什么这四条值得记住：
 
