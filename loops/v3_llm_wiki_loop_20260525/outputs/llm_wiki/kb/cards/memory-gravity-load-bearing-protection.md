@@ -24,13 +24,13 @@ G_i^base = f(C(i), F(i))
 - **C(i)**：中心性度量（eigenvector centrality / PageRank / 域适配变体，框架不锁定，但要求文档化）。
 - **F(i)**：**前瞻性碎片化成本**——若现在删除 i，wiki 当前的连贯运转会"破"多少。
 
-它的角色是 mirror 机制中"保护操作连续性"的一半：与 vitality 公式中的 utility 项分立，确保**安静的基础条目**（quiet foundations）即便很少直接产生效用也不被 DECAY 压缩。
+它的角色是 mirror 机制中"保护操作连续性"的一半[^v3-1]：与 vitality 公式中的 utility 项分立，确保**安静的基础条目**（quiet foundations）即便很少直接产生效用也不被 DECAY 压缩。
 
 ## 四条 MUST 性质
 
 1. **中心性单调**：C(i)>C(j) ∧ F(i)=F(j) ⇒ G_i^base > G_j^base。
 2. **碎片化单调**：F(i)>F(j) ∧ C(i)=C(j) ⇒ G_i^base > G_j^base。
-3. **在位次线性增长（sub-linear under incumbency）**：当 C(i) 无界增长时，G^base 必须次线性增长。这是为了防御 **Absolute Incumbency Trap**——某条目被引用次数极高导致其保护无限增长、结构上无法被推翻——的安全属性，不是优化。
+3. **在位次线性增长（sub-linear under incumbency）**：当 C(i) 无界增长时，G^base 必须次线性增长[^src2]。这是为了防御 **Absolute Incumbency Trap**——某条目被引用次数极高导致其保护无限增长、结构上无法被推翻——的安全属性，不是优化。
 4. **有界归一**：G^base 归一到有界范围，跨条目可比。
 
 ## 时间衰减但结构不衰减
