@@ -41,15 +41,10 @@ Karpathy 2026-04 发布 LLM Wiki Gist 时给出的核心类比[^src1]是：
 - 没有官方 Karpathy 实现——只有一个 Gist 作为蓝图，需要用户自己用 `agents.md` 把"如何命名页面 / 何时新建 entity vs 更新已有 / 如何记录矛盾"等规则写清楚[^v3-2]。`agents.md` 质量直接决定 wiki 一致性[^src3]。
 - 当语料 > 几百文档，token 维护互联的成本会让 vector search 重新变得划算——文章明确指出这是 LLM wiki 与 RAG 的"切换点"。
 
-## References
-
-- "source code / executable" 类比：`data/raw/webpage/anthemcreation-en-guide/text.txt` 第 80 行。
-- 三层定义：第 82-88 行。
-- 规模阈值（10-100 文档 vs 上千 chunk）：第 144-148 行。
-- agents.md 重要性 + 警告：第 114 行 + 第 152 行。
-
 ## Footnotes
 
-- 类比原文："He describes the following analogy: raw sources are like source code, and the LLM wiki is the compiled executable. You don't recompile every time you run a program. The wiki remains canonical, alive, and improves with each new source ingested."（第 80 行）
-- 个人规模优势："For wikis of 100 articles, structured markdown is more than sufficient. A vector database becomes useful only beyond a certain scale, where semantic search over thousands of chunks becomes necessary."（第 148 行）
-- 模型质量警告："A weak model can propagate errors without flagging them. Plan for periodic human review of key pages, especially in the first weeks. The quality of your agents.md directly determines the base's reliability."（第 152 行）
+[^src1]: `data/raw/webpage/anthemcreation-en-guide/text.txt` 第 80 行 — "He describes the following analogy: raw sources are like source code, and the LLM wiki is the compiled executable. You don't recompile every time you run a program. The wiki remains canonical, alive, and improves with each new source ingested."
+[^src2]: 同文件 第 148 行 — "For wikis of 100 articles, structured markdown is more than sufficient. A vector database becomes useful only beyond a certain scale, where semantic search over thousands of chunks becomes necessary."
+[^src3]: 同文件 第 152 行 — "A weak model can propagate errors without flagging them. Plan for periodic human review of key pages, especially in the first weeks. The quality of your agents.md directly determines the base's reliability."
+[^v3-1]: [auto-index-replaces-rag-at-small-scale](auto-index-replaces-rag-at-small-scale.md) — 100 篇 / 40 万词规模下 auto-index 替代 RAG 的本卡。
+[^v3-2]: [agents-md-as-schema-layer](agents-md-as-schema-layer.md) — `agents.md` 作为 schema 层的展开。
