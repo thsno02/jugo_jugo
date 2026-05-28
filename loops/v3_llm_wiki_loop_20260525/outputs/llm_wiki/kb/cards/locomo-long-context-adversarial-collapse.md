@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#long-context, #adversarial, #hallucination, #locomo]
 created_time: 2026-05-26T15:30:00+08:00
-edited_time: 2026-05-27T10:55:00+08:00
+edited_time: 2026-05-28T10:22:00+08:00
 edited_entity: llm
 source_ids: [arxiv-locomo]
 provenance_card: ../provenance/locomo-long-context-adversarial-collapse.md
