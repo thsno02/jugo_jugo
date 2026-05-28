@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#graphrag, #entity-extraction, #prompt-engineering, #self-reflection]
 created_time: 2026-05-26T15:00:00+08:00
-edited_time: 2026-05-27T10:08:00+08:00
+edited_time: 2026-05-28T11:25:00+08:00
 edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-self-reflection-gleaning.md
