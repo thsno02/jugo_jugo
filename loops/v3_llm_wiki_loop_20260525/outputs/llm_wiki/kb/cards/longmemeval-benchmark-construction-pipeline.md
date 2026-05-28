@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-benchmark-construction-pipeline.md
 aliases: ["LongMemEval construction", "LongMemEval-S vs -M"]
-related: [longmemeval-five-core-memory-abilities, longmemeval-commercial-system-failure-modes, locomo-persona-event-graph-pipeline, locomo-very-long-term-dialogue-dataset]
+related: [longmemeval-five-core-memory-abilities, locomo-very-long-term-dialogue-dataset, longmemeval-commercial-system-failure-modes]
 ---
 
 LongMemEval 之所以能在 500 道题里同时覆盖五类记忆能力[^v3-1]，是因为它把"题目"与"对话历史"解耦：题目和 evidence 是人工撰写的、对话历史是用一个**大海捞针式（needle-in-a-haystack）拼装器**临时合成的[^src1]。理解这条管线，就能理解为什么它的难度可以"自由放大"到 1.5M token——与 LoCoMo 把对话长度锁定在 9K token / 19 session[^v3-2] 形成鲜明对照。
