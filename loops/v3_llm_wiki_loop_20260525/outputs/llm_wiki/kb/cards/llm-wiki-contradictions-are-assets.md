@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#karpathy-llm-wiki, #contradictions, #rohit-v2, #pitfalls]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T10:08:00+08:00
+edited_time: 2026-05-28T11:34:00+08:00
 edited_entity: llm
 source_ids: [openaitoolshub-six-months]
 provenance_card: ../provenance/llm-wiki-contradictions-are-assets.md
