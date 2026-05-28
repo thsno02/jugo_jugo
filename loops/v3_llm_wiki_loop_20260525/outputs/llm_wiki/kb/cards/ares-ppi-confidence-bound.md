@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#rag, #ares, #ppi, #statistical-inference, #evaluation]
 created_time: 2026-05-26T11:10:00+08:00
-edited_time: 2026-05-27T14:24:00+08:00
+edited_time: 2026-05-28T15:25:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-ppi-confidence-bound.md
