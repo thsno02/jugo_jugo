@@ -46,20 +46,10 @@ Cognition 把"agent 把一次成功操作沉淀为团队可用技能"的过程�
 
 - 草稿生成是 LLM 任务，输出固定为 SKILL.md 格式；
 - 审批是单人动作（页面：作者本人，不是团队投票或 PR review）；
-- group-code 协议：一个队员创建 group，其他人用同 code 加入后才能看到对方的 SKILL.md（这意味着写入边界也是显式邀请边界）。
-
-## References
-
-- 来源页面：`data/raw/webpage/cognitionus-llm-wiki-guide/text.txt`。
-- 第 79–92 行（DRAFT SKILL 步）。
-- 第 135–137 行(Confirm-first capture)。
-- 第 140–141 行（Person-specific retrieval）。
-- 第 143–145 行（Group-code setup）。
+- group-code 协议：一个队员创建 group，其他人用同 code 加入后才能看到对方的 SKILL.md（这意味着写入边界也是显式邀请边界）[^src3]。
 
 ## Footnotes
 
-[^1]: 起草 + 等待人审 verbatim（第 92 行）："Cognition drafts the SKILL.md and waits for a human yes before sharing it."
-
-[^2]: Confirm-first capture verbatim（第 136 行）："Cognition drafts skills and waits for explicit approval before saving anything to the group."
-
-[^3]: Group-code 写入边界与邀请边界绑定 verbatim（第 144 行）："One teammate creates the group. Everyone else joins with the same code and starts sharing memory."
+[^src1]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` 第 92 行 — "Cognition drafts the SKILL.md and waits for a human yes before sharing it."
+[^src2]: 同文件 第 136 行（Confirm-first capture）— "Cognition drafts skills and waits for explicit approval before saving anything to the group."
+[^src3]: 同文件 第 144 行（Group-code 写入边界与邀请边界绑定）— "One teammate creates the group. Everyone else joins with the same code and starts sharing memory."
