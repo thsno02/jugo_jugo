@@ -41,7 +41,7 @@ D-Mem (You, Yuan, Cai, arXiv 2603.18631) 有 dual-process：快速检索路径 +
 - **压缩深度在 integration 之前就决定**，不是检索时反应式切换；
 - **深度从 wiki topology + query 行为推断**，不仅仅从单次 retrieval query 推断。
 
-> "The coordination bundle—depth inference from user context, compression fitted to that depth, originals preserved as a structural non-optional commitment, deferred to the dream cycle rather than run at streaming ingestion—is what prior work does not assemble together."[^3]
+> "The coordination bundle—depth inference from user context, compression fitted to that depth, originals preserved as a structural non-optional commitment, deferred to the dream cycle rather than run at streaming ingestion—is what prior work does not assemble together."[^src4]
 
 ## metabolic 比喻
 
