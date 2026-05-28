@@ -55,26 +55,26 @@ LongMemEval 论文里最容易被忽视的一节是 §3.4 pilot study——作�
 
 **长上下文 LLM 也不是出路**：
 
-同一节 pilot 还测了 GPT-4o / Llama-3.1-70B / Phi-3 等长上下文 LLM 直读 LongMemEval-S（~115K token）：**30–60% 准确率掉幅**（相对只读 oracle evidence session）。即便加 Chain-of-Note 也救不回。这说明 "把全文塞进 context" 与 "理解全文" 之间存在系统性 gap。
+同一节 pilot 还测了 GPT-4o / Llama-3.1-70B / Phi-3 等长上下文 LLM 直读 LongMemEval-S（~115K token）：**30–60% 准确率掉幅**（相对只读 oracle evidence session）[^src6]。即便加 Chain-of-Note 也救不回[^v3-5]。这说明 "把全文塞进 context" 与 "理解全文" 之间存在系统性 gap，与 LoCoMo 长上下文 adversarial 塌陷[^v3-6] 是同一现象的不同切面。
 
 **操作含义 / 设计警示**：
 
-- **不要假设"我存了 user fact = 我有长期记忆"**——存了之后能否原样取出、能否跨 session 关联、能否拒答未发生的事实，都是独立的能力。
+- **不要假设"我存了 user fact = 我有长期记忆"**[^src7]——存了之后能否原样取出、能否跨 session 关联、能否拒答未发生的事实，都是独立的能力。
 - 真实产品里 ChatGPT 类系统的 KU 失败最隐蔽——表面看每次都"记得"，但事实被偷偷篡改。用户察觉时已经迟了。
 - Coze 类系统的 IE 失败比 ChatGPT 类更容易调试——只要 evidence 间接表达，failure 就稳定可复现。
 
-## References
-
-- §3.4 LongMemEval represents a significant challenge：`data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` 行 1402–1412。
-- 商业系统 pilot 数字表 `fig:proof-of-difficulty-commercial-systems`：行 156–166。
-- ChatGPT 失败模式描述："ChatGPT generally records the evidence statements immediately after it has been presented in the evidence session. However, as the interaction proceeds, ChatGPT often modify this information when it compresses the history"——行 1629。
-- Coze 失败模式："Coze often failed to record indirectly provided user information."——行 1407。
-- 长上下文 LLM 在 LongMemEval-S 掉 30–60%：行 1412 + 表 `fig:proof-of-difficulty-long-context`（行 175–195）。
-- 5 标注员人工评分（按能力类）：行 1631–1651（`tab:commercial-system-detailed`）。
-
 ## Footnotes
 
-- "Both ChatGPT and Coze exhibited significant performance drops compared to offline reading, underscoring the challenging nature of \BENCHMARK{}."——行 1407。
-- "this result highlights the \textbf{gap between building a seemingly personalized chat assistant by recalling isolated facts and demonstrating a genuinely strong memory ability}."——行 1407。
-- 评测周期与样本规模："97 questions and created a short chat history of 3-6 sessions (approximately 10x shorter than \BENCHMARK\textsubscript{\textsc{S}})"，"All evaluations were conducted in the first two weeks of August 2024."——行 1407 + 行 1627。
-- 长上下文 LLM 30–60% 掉幅："these LLMs showed a 30\% to 60\% performance decline when tasked with reading the entire \BENCHMARK\textsubscript{\textsc{S}} history, regardless of whether the chain-of-note technique was applied"——行 1412。
+[^src1]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1402–1412（§3.4 LongMemEval represents a significant challenge）+ 行 1627 — "97 questions and created a short chat history of 3-6 sessions (approximately 10x shorter than \BENCHMARK\textsubscript{\textsc{S}})"。
+[^src2]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1407 — "Both ChatGPT and Coze exhibited significant performance drops compared to offline reading, underscoring the challenging nature of \BENCHMARK{}."
+[^src3]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 156–166（`fig:proof-of-difficulty-commercial-systems`）— 商业系统 pilot 数字表。
+[^src4]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1629 — "ChatGPT generally records the evidence statements immediately after it has been presented in the evidence session. However, as the interaction proceeds, ChatGPT often modify this information when it compresses the history"。
+[^src5]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1407 — "Coze often failed to record indirectly provided user information."
+[^src6]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1412 + 行 175–195（`fig:proof-of-difficulty-long-context`）— "these LLMs showed a 30\% to 60\% performance decline when tasked with reading the entire \BENCHMARK\textsubscript{\textsc{S}} history, regardless of whether the chain-of-note technique was applied"。
+[^src7]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1407 — "this result highlights the \textbf{gap between building a seemingly personalized chat assistant by recalling isolated facts and demonstrating a genuinely strong memory ability}."
+[^v3-1]: [lightmem-sleep-time-offline-parallel-update](lightmem-sleep-time-offline-parallel-update.md) — Tokyo/Kyoto case 是 hard update 危险的另一例证。
+[^v3-2]: [longmemeval-five-core-memory-abilities](longmemeval-five-core-memory-abilities.md) — KU/IE/MR/TR/ABS 五能力定义。
+[^v3-3]: [longmemeval-benchmark-construction-pipeline](longmemeval-benchmark-construction-pipeline.md) — evidence 间接表达是 pipeline 第 4 步刻意设计的难点。
+[^v3-4]: [mem0-baseline-failure-modes](mem0-baseline-failure-modes.md) — Mem0 自己拆解的 baseline 失败模式。
+[^v3-5]: [longmemeval-chain-of-note-and-json-reading](longmemeval-chain-of-note-and-json-reading.md) — Chain-of-Note 在 reading 阶段虽有用，对长上下文直读救不回 30–60% 掉幅。
+[^v3-6]: [locomo-long-context-adversarial-collapse](locomo-long-context-adversarial-collapse.md) — LoCoMo 上长上下文 adversarial 2.1% 的同源现象。
