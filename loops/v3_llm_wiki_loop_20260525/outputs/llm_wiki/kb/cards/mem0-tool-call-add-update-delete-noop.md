@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-tool-call-add-update-delete-noop.md
 aliases: [Mem0 update operations, ClassifyOperation, tool-call routing]
-related: [mem0-extract-update-pipeline, mem0-graph-memory-variant, mem0-answer-generation-prompt-design, memory-as-metabolism-five-operations, lightmem-sleep-time-offline-parallel-update, zep-bi-temporal-edges]
+related: [mem0-extract-update-pipeline, memory-as-metabolism-five-operations, minority-pressure-promotion, zep-bi-temporal-edges, audit-by-suspension-against-entrenchment, lightmem-sleep-time-offline-parallel-update]
 ---
 
 ## 把 update 决策当成语义任务
