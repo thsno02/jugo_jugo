@@ -52,7 +52,7 @@ skill 不把 schema 硬编码进自己的 prompt，而是**每次运行都重新
   claude plugin marketplace add https://github.com/flsteven87/llm-wiki-mcp
   claude plugin install llm-wiki-skills@llm-wiki-mcp
   ```
-- 这些 skill 以 package data 形式打包在 `llm_wiki_mcp/skills/` 下，**也可以通过 `importlib.resources`** 由非 Claude Code 的 agent 加载。
+- 这些 skill 以 package data 形式打包在 `llm_wiki_mcp/skills/` 下，**也可以通过 `importlib.resources`** 由非 Claude Code 的 agent 加载 [^src4]。
 
 ## 操作含义
 
