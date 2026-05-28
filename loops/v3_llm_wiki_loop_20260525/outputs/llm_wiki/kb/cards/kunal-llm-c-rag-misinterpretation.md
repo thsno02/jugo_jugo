@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [kunal-local-knowledge-base]
 provenance_card: ../provenance/kunal-llm-c-rag-misinterpretation.md
 aliases: [LLM Wiki 术语漂移, Karpathy llm.c 误读, Kunal Ganglani's interpretation]
-related: [karpathy-gist-three-layers, karpathy-gist-bookkeeping-burden, hn-llm-wiki-is-just-rag-debate, karpathy-llm-wiki-vs-rag, kunal-local-setup-walls]
+related: [kunal-local-setup-walls, karpathy-gist-three-layers, auto-index-replaces-rag-at-small-scale]
 ---
 
 Kunal Ganglani 在 2026 年 4 月的博文 "I Set Up Karpathy's Local Knowledge Base — Here's What Actually Works" 把"Karpathy 的 LLM Wiki"解读为**基于 llm.c 的本地 RAG 系统**——这与 Karpathy 在 2026 年 4 月 gist 里描述的模式**完全不同**。这一漂移本身是一个值得在 wiki 里标注的术语现象。
