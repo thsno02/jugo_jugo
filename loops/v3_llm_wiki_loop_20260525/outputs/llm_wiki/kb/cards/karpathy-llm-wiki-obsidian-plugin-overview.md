@@ -5,7 +5,7 @@ status: accepted
 card_type: example_pattern
 tags: [#obsidian, #karpathy-wiki, #llm-wiki, #plugin]
 created_time: 2026-05-26T12:30:00+08:00
-edited_time: 2026-05-27T10:16:00+08:00
+edited_time: 2026-05-28T11:15:00+08:00
 edited_entity: llm
 source_ids: [obsidian-community-plugin]
 provenance_card: ../provenance/karpathy-llm-wiki-obsidian-plugin-overview.md
