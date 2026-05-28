@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-baseline-failure-modes.md
 aliases: [mem0 baseline analysis, why baselines fail on LOCOMO]
-related: [mem0-locomo-benchmark-evaluation, mem0-rag-chunk-size-ablation, mem0-extract-update-pipeline, mem0-graph-memory-variant, zep-graphiti-three-tier-graph, longmemeval-commercial-system-failure-modes]
+related: [zep-graphiti-three-tier-graph, zep-bi-temporal-edges, longmemeval-commercial-system-failure-modes, mem0-locomo-benchmark-evaluation, zep-dmr-benchmark-critique]
 ---
 
 ## 为什么要分别看
