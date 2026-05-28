@@ -13,29 +13,27 @@ aliases: [DMR 基准批判, Deep Memory Retrieval 局限]
 related: [zep-graphiti-three-tier-graph, zep-bi-temporal-edges, zep-hybrid-search-rerank, memgpt-dmr-task-evaluation, longmemeval-five-core-memory-abilities]
 ---
 
-Zep 论文用一整节论证 MemGPT 团队提出的 **Deep Memory Retrieval (DMR) 基准已不适合衡量"agent 长程记忆"**，给出的依据可以独立成立，不依赖于"Zep 比 MemGPT 强"这一点：
+Zep 论文用一整节论证 MemGPT 团队提出的 **Deep Memory Retrieval (DMR) 基准已不适合衡量"agent 长程记忆"**[^v3-1]，给出的依据可以独立成立，不依赖于"Zep 比 MemGPT 强"这一点[^src1]：
 
-1. **规模太小，已被 baseline 打满**：DMR 一共 500 段对话，每段 5 个 session、单 session ≤12 条 message，平均一段才 60 条消息——直接塞进现代 LLM 的上下文窗口完全没问题。论文复现的"full-conversation baseline"在 gpt-4-turbo 上拿到 94.4%，gpt-4o-mini 上拿到 98.0%，已经超过原 MemGPT 报告的 93.4%。换句话说，**任何检索/记忆策略带来的提升都被"全部塞进上下文"这种朴素做法挤压到零点几个百分点的边际**。
-2. **问题形态过窄**：DMR 全是"单轮、事实型"问题，根本不考查多 session 综合、时间推理、知识更新这种真实长程记忆能力。
+1. **规模太小，已被 baseline 打满**：DMR 一共 500 段对话，每段 5 个 session、单 session ≤12 条 message，平均一段才 60 条消息——直接塞进现代 LLM 的上下文窗口完全没问题。论文复现的"full-conversation baseline"在 gpt-4-turbo 上拿到 94.4%，gpt-4o-mini 上拿到 98.0%[^src2]，已经超过原 MemGPT 报告的 93.4%。换句话说，**任何检索/记忆策略带来的提升都被"全部塞进上下文"这种朴素做法挤压到零点几个百分点的边际**。
+2. **问题形态过窄**：DMR 全是"单轮、事实型"问题，根本不考查多 session 综合、时间推理、知识更新这种真实长程记忆能力[^src3]。
 3. **题面措辞含糊**：很多问题用了"favorite drink to relax with"、"weird hobby"这类原对话里并没有显式标注的概念，使得正确答案在某种程度上靠 LLM 自己脑补一致性。
 4. **不代表企业场景**：DMR 对话很短、风格单一，不能反映客服、跨会话综合等实际部署。
 5. **复现性差**：Zep 团队"由于 MemGPT 论文方法学不足，无法用 gpt-4o-mini 复现 MemGPT 的 DMR 结果"。
 
 操作含义：
 - 用 DMR 作为新记忆系统主基准已经不能区分方法优劣；
-- 论文给出的替代是 LongMemEval（平均 115k tokens、六类问题），后者中 Zep 相对 full-context 有 18.5% 的精度提升 + ~90% 延迟降低，**真正能拉开差距**；
-- 对工程团队的含义：**评估记忆系统时要看上下文长度增长曲线下方法的相对优势，而不是单一短上下文的点估计**。
+- 论文给出的替代是 LongMemEval[^v3-2]（平均 115k tokens、六类问题），后者中 Zep 相对 full-context 有 18.5% 的精度提升 + ~90% 延迟降低，**真正能拉开差距**；
+- 对工程团队的含义：**评估记忆系统时要看上下文长度增长曲线下方法的相对优势，而不是单一短上下文的点估计**。这与 Mem0 baseline 失败模式中 A-Mem 高 F1 / 低 J 同源——单一指标会误导[^v3-3]。
 
-边界：批判针对的是 DMR 作为基准的"区分能力"，不是 MemGPT 算法本身。Zep 自己也没在 LongMemEval 上拿到 MemGPT 的对比数（论文明说 MemGPT 框架不支持注入既有历史，他们 workaround 用 archival history 也跑不出回答），这一处比较未实现。
-
-## References
-
-Zep 论文 §4.2 "Deep Memory Retrieval (DMR)" 与 §4.3.1 "LongMemEval and MemGPT"。
-
-- 源路径：`data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`（main.tex 行 218–226 DMR 批判与基线复现数据；表 1 行 236–252；行 257–266 转用 LongMemEval 与 MemGPT 比较的工程困难）。
+边界：批判针对的是 DMR 作为基准的"区分能力"，不是 MemGPT 算法本身。Zep 自己也没在 LongMemEval 上拿到 MemGPT 的对比数（论文明说 MemGPT 框架不支持注入既有历史，他们 workaround 用 archival history 也跑不出回答）[^src4]，这一处比较未实现。
 
 ## Footnotes
 
-- "已被打满"原文（行 222–224）："Zep achieved 94.8% accuracy with gpt-4-turbo and 98.2% with gpt-4o-mini ... each conversation contains only 60 messages, easily fitting within current LLM context windows."
-- 五点局限原文（行 224）："The evaluation relies exclusively on single-turn, fact-retrieval questions ... Many questions contain ambiguous phrasing ... Most critically, the dataset poorly represents real-world enterprise use cases for LLM agents."
-- 无法对比 MemGPT 原文（行 266）："we attempted to evaluate MemGPT using the LongMemEval dataset ... we were unable to achieve successful question responses using this approach."
+[^src1]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` — main.tex 行 218–226（§4.2 DMR 批判与基线复现数据）+ 表 1 行 236–252。
+[^src2]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` — main.tex 行 222–224 — "Zep achieved 94.8% accuracy with gpt-4-turbo and 98.2% with gpt-4o-mini ... each conversation contains only 60 messages, easily fitting within current LLM context windows."
+[^src3]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` — main.tex 行 224 — "The evaluation relies exclusively on single-turn, fact-retrieval questions ... Many questions contain ambiguous phrasing ... Most critically, the dataset poorly represents real-world enterprise use cases for LLM agents."
+[^src4]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` — main.tex 行 257–266（§4.3.1 "LongMemEval and MemGPT" 工程困难）+ 行 266 — "we attempted to evaluate MemGPT using the LongMemEval dataset ... we were unable to achieve successful question responses using this approach."
+[^v3-1]: [memgpt-dmr-task-evaluation](memgpt-dmr-task-evaluation.md) — MemGPT 团队的 DMR 任务定义。
+[^v3-2]: [longmemeval-five-core-memory-abilities](longmemeval-five-core-memory-abilities.md) — Zep 推荐的 LongMemEval 替代基准。
+[^v3-3]: [mem0-baseline-failure-modes](mem0-baseline-failure-modes.md) — A-Mem 高 F1 / 低 J 是单一指标误导的另一例。
