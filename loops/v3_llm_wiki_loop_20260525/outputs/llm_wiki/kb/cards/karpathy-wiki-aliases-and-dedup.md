@@ -21,13 +21,13 @@ related: [karpathy-llm-wiki-obsidian-plugin-overview, karpathy-wiki-extraction-g
 
 ### 1. 强制别名（Mandatory Page Aliases）
 
-每个生成页**必须**至少含 1 个别名，常见类型：
+每个生成页**必须**至少含 1 个别名[^src1]，常见类型：
 
 - 翻译（如 `"监督学习"` 之于 Supervised Learning）；
 - 缩写（如 `"DSA"` 之于 DeepSeek-Sparse-Attention）；
 - 别称（如 product code name vs 公开名）。
 
-别名写在 frontmatter 的 `aliases: []`，是后续重复检测和 alias-aware 搜索的基础。**没有别名 = 重复检测失灵**——这是页面在 FAQ 中明确指出的：早于 v1.7.11 生成的页缺少别名是"无害但限制功能"的状态，需 `Complete Aliases` 命令补齐。
+别名写在 frontmatter 的 `aliases: []`，是后续重复检测和 alias-aware 搜索的基础。**没有别名 = 重复检测失灵**——这是页面在 FAQ 中明确指出的：早于 v1.7.11 生成的页缺少别名是"无害但限制功能"的状态，需 `Complete Aliases` 命令补齐[^src3]。
 
 ### 2. 两层语义重复检测（v1.7.10+）
 
