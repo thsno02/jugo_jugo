@@ -58,7 +58,7 @@ schema/    # 📋 wiki 结构配置（命名、模板、分类）
 
 ## 模型选型建议（页面立场）
 
-页面明确"This plugin follows Karpathy's philosophy: feed the LLM full Wiki context, not chunked RAG retrieval"——因此**强烈推荐长上下文模型**。给出的"价值优选"档：
+页面明确"This plugin follows Karpathy's philosophy: feed the LLM full Wiki context, not chunked RAG retrieval"[^v3-1]——因此**强烈推荐长上下文模型**。给出的"价值优选"档：
 
 - DeepSeek V4-Flash（1M context，$0.14/M）；
 - Gemini-3.5-Flash（1M context，4× 输出速度优于 GPT-5.5）；
