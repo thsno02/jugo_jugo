@@ -15,9 +15,9 @@ related: [memory-as-metabolism-five-operations, memory-as-metabolism-mirror-vs-c
 
 ## 解决的问题：外部源没有"唯一正确压缩"
 
-Miteski (2026) 把 CONTEXTUALIZE 作为五操作之一**独立**地从 TRIAGE 拆出来，理由是同一份外部文档（如架构决策记录）对 Product Owner 和 Developer 来说应该有**不同的有用摘要**——前者要目标 / 权衡 / 利益相关方理由，后者要实现约束 / 库选型 / edge cases。**两者都不是错的，只是当前工作深度不同**——论文称之为 "contextually correct compressions"。
+Miteski (2026) 把 CONTEXTUALIZE 作为五操作之一[^v3-1]**独立**地从 TRIAGE 拆出来[^src1]，理由是同一份外部文档（如架构决策记录）对 Product Owner 和 Developer 来说应该有**不同的有用摘要**——前者要目标 / 权衡 / 利益相关方理由，后者要实现约束 / 库选型 / edge cases。**两者都不是错的，只是当前工作深度不同**——论文称之为 "contextually correct compressions"。
 
-> "A naive ingestion pipeline that compresses external sources to some imagined complete representation pays a double cost. It bloats the wiki with content the user does not need, and it makes the wiki harder to consolidate against because the entries are too long to participate cleanly in coherence operations."[^1]
+> "A naive ingestion pipeline that compresses external sources to some imagined complete representation pays a double cost. It bloats the wiki with content the user does not need, and it makes the wiki harder to consolidate against because the entries are too long to participate cleanly in coherence operations."[^src2]
 
 ## 三条不可让渡的设计承诺
 
