@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#llm-wiki, #rag, #hacker-news, #knowledge-synthesis, #write-loop]
 created_time: 2026-05-26T11:10:00+08:00
-edited_time: 2026-05-27T10:10:00+08:00
+edited_time: 2026-05-28T11:02:00+08:00
 edited_entity: llm
 source_ids: [hacker-news-original-thread]
 provenance_card: ../provenance/hn-llm-wiki-is-just-rag-debate.md
