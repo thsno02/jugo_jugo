@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#llm-wiki, #schema, #operations, #workflow]
 created_time: 2026-05-26T11:50:00+08:00
-edited_time: 2026-05-27T14:02:00+08:00
+edited_time: 2026-05-28T10:42:00+08:00
 edited_entity: llm
 source_ids: [aillm-wiki-directory]
 provenance_card: ../provenance/aillm-wiki-schema-as-bottleneck.md
