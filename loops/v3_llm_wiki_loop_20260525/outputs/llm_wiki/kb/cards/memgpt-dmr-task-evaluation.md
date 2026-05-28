@@ -37,12 +37,12 @@ DMR (Deep Memory Retrieval) 是 MemGPT 论文为了量化**对话 agent 的一�
 | GPT-4 (baseline) | 32.1% | 0.296 |
 | + MemGPT | 92.5% | 0.814 |
 | GPT-4 Turbo (baseline) | 35.3% | 0.359 |
-| **+ MemGPT** | **93.4%** | **0.827** |
+| **+ MemGPT** | **93.4%** | **0.827** |[^src3]
 
 读法：
 
-- baseline 都拿到一份"前 5 个 session 的 lossy recursive summary"作为上下文——这是 baseline 能拿到的最强 fixed-context 信号；
-- MemGPT 看不到 summary，但可以**通过 conversation_search 函数翻 recall storage 的完整历史**；
+- baseline 都拿到一份"前 5 个 session 的 lossy recursive summary"作为上下文[^src4]——这是 baseline 能拿到的最强 fixed-context 信号；
+- MemGPT 看不到 summary，但可以**通过 conversation_search 函数翻 recall storage 的完整历史**[^v3-3]；
 - **GPT-4 baseline 反而 比 GPT-3.5 baseline 差**（32.1 vs 38.7）——论文未深入分析，但提示 lossy summary + 长 prompt 在更强模型上不一定有正向收益；
 - 一旦套上 MemGPT，GPT-4 跳到 92.5%，GPT-4 Turbo 跳到 93.4%；ROUGE-L recall 也跟着翻倍。
 
@@ -59,19 +59,12 @@ DMR (Deep Memory Retrieval) 是 MemGPT 论文为了量化**对话 agent 的一�
 - 92.5% 不等于 "MemGPT 永远不会忘"——它只表明在 narrow gold 的窄题上，retrieval 路径几乎都命中；
 - LLM-judge 用 GPT-4 评分会引入 self-preference 偏差；论文用 ROUGE-L recall 做 sanity 但没给 IRR。
 
-## References
-
-- §experiments DMR 任务与表（`sections/experiments.tex` 第 1375–1389 行，table 在 `tables/deep_memory_retrieval_table_singlecol.tex` 第 1793–1832 行）。
-- LLM judge prompt 完整文本（`sections/appendix.tex` 第 1231–1255 行）。
-- self-instruct 生成 DMR 数据集（`sections/appendix.tex` 第 1257–1294 行）。
-- 来源：`data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt`。
-
 ## Footnotes
 
-[^1]: 任务设计原文（experiments.tex 第 1370–1376 行）："Each multi-session chat in MSC has five total sessions, and each session consists of a roughly a dozen messages. As part of our consistency experiments, we created a new session (session 6) that contains a single question-answer response pair between the same two personas. ... we generated the DMR question-answer (QA) pairs using a separate LLM that was instructed to write a question from one user to another that could only be answered correctly using knowledge gained from the past sessions."
-
-[^2]: ROUGE-L recall 选型理由（experiments.tex 第 1379–1380 行）："In practice, we notice that the generated responses (from both MemGPT and the baselines) were generally more verbose than the gold responses. We use the ROUGE-L recall (R) metric to account for the verbosity of the generated agent replies compared to the relatively short gold answer labels."
-
-[^3]: GPT-4 + MemGPT 92.5%（tables/deep_memory_retrieval_table_singlecol.tex 第 1819–1827 行）："GPT-4 & 32.1\% & 0.296 / + MemGPT & 92.5\% & 0.814 / GPT-4 Turbo & 35.3\% & 0.359 / + MemGPT & 93.4\% & 0.827"
-
-[^4]: baseline 拿 lossy summary 作为上下文（experiments.tex 第 1388 行）："The baselines are able to see a lossy summarization of the past five conversations to mimic an extended recursive summarization procedure, while MemGPT instead has access to the full conversation history but must access it via paginated search queries to recall memory."
+[^src1]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` — experiments 行 1370–1376（§experiments DMR 任务）+ appendix 行 1257–1294（self-instruct 生成 DMR 数据集）— "Each multi-session chat in MSC has five total sessions, and each session consists of a roughly a dozen messages. As part of our consistency experiments, we created a new session (session 6) that contains a single question-answer response pair between the same two personas. ... we generated the DMR question-answer (QA) pairs using a separate LLM that was instructed to write a question from one user to another that could only be answered correctly using knowledge gained from the past sessions."
+[^src2]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` — experiments 行 1379–1380 + appendix 行 1231–1255（LLM judge prompt 完整文本）— "In practice, we notice that the generated responses (from both MemGPT and the baselines) were generally more verbose than the gold responses. We use the ROUGE-L recall (R) metric to account for the verbosity of the generated agent replies compared to the relatively short gold answer labels."
+[^src3]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` — tables/deep_memory_retrieval_table_singlecol.tex 行 1793–1832 — "GPT-4 & 32.1\% & 0.296 / + MemGPT & 92.5\% & 0.814 / GPT-4 Turbo & 35.3\% & 0.359 / + MemGPT & 93.4\% & 0.827"。
+[^src4]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` — experiments 行 1388 — "The baselines are able to see a lossy summarization of the past five conversations to mimic an extended recursive summarization procedure, while MemGPT instead has access to the full conversation history but must access it via paginated search queries to recall memory."
+[^v3-1]: [mem0-answer-generation-prompt-design](mem0-answer-generation-prompt-design.md) — Mem0 复用并改写 MemGPT 的 LLM-as-Judge 评估范式。
+[^v3-2]: [zep-dmr-benchmark-critique](zep-dmr-benchmark-critique.md) — Zep 对 DMR 已饱和的批评。
+[^v3-3]: [memgpt-main-vs-external-context](memgpt-main-vs-external-context.md) — recall storage 是 conversation_search 函数翻阅的对象。
