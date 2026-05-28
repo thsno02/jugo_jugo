@@ -5,7 +5,7 @@ status: accepted
 card_type: example_pattern
 tags: [#memgpt, #benchmark, #multi-hop, #nested-kv]
 created_time: 2026-05-26T11:40:00+08:00
-edited_time: 2026-05-27T14:38:00+08:00
+edited_time: 2026-05-28T11:08:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-nested-kv-multi-hop.md
