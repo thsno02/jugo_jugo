@@ -20,7 +20,7 @@ Steven Wu 的 `llm-wiki-mcp` 0.1.1（PyPI, 2026-04-08）把 Karpathy LLM Wiki �
 | 工具 | Annotation | 作用 |
 |---|---|---|
 | `wiki_read` | read-only, idempotent | 读一页，返回 body、解析后的 frontmatter、outgoing links、etag |
-| `wiki_write_page` | destructive, idempotent | 原子写入；`etag=null` 表示创建，已读 etag 表示更新（CAS） |
+| `wiki_write_page` | destructive, idempotent | 原子写入 [^src2]；`etag=null` 表示创建，已读 etag 表示更新（CAS） |
 | `wiki_log_append` | not idempotent | 在 `log.md` 追加一条 Karpathy 格式 `## [YYYY-MM-DD] op | Title` 的条目 |
 | `wiki_inventory` | read-only, idempotent | 全图快照：pages、frontmatter、link edges、log entries；可附加 plain-text mention 扫描做 backlink 审计 |
 
