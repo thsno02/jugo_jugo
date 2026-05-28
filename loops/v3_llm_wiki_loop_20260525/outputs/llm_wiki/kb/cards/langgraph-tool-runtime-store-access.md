@@ -63,7 +63,7 @@ agent 被指示更新 user 信息时，会自动调用这个工具——LLM 决�
 
 ## 关键设计选择
 
-- **store 不自动写**：所有写入须经显式工具调用；这与 ChatGPT memory 的"自动检测重要事实"相反，把写入主动权交给开发者/agent 推理。
+- **store 不自动写**：所有写入须经显式工具调用 [^v3-2]；这与 ChatGPT memory 的"自动检测重要事实"相反，把写入主动权交给开发者/agent 推理。
 - **context 不在 prompt 里**：`user_id` 通过 `runtime.context` 传递，不需要把它注入对话 prompt——避免敏感字段进入 LLM 输入。
 - **dataclass 作为 Context**：编译期类型安全；如果 `runtime.context.user_id` 没传，运行期立刻报错而不是默默用错 key。
 
