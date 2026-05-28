@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#karpathy-llm-wiki, #architecture, #three-layers, #ingest-query-lint]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T14:42:00+08:00
+edited_time: 2026-05-28T10:30:00+08:00
 edited_entity: llm
 source_ids: [marvin-hn-persistent-knowledge]
 provenance_card: ../provenance/karpathy-llm-wiki-three-layers.md
