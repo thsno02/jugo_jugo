@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/audit-by-suspension-against-entrenchment.md
 aliases: [AUDIT operation, structural stress test, gravity-reduction path, Kuhnian discipline at entry level]
-related: [memory-gravity-load-bearing-protection, memory-as-metabolism-five-operations, memory-as-metabolism-conflict-routing-matrix, memory-as-metabolism-mirror-vs-compensate, minority-pressure-promotion]
+related: [memory-gravity-load-bearing-protection, minority-pressure-promotion, memory-as-metabolism-conflict-routing-matrix, memory-as-metabolism-five-operations]
 ---
 
 ## AUDIT 做什么
