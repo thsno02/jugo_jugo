@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#temporal-reasoning, #query-expansion, #rag]
 created_time: 2026-05-26T14:40:00+08:00
-edited_time: 2026-05-27T11:34:00+08:00
+edited_time: 2026-05-28T10:42:00+08:00
 edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-time-aware-query-expansion.md
