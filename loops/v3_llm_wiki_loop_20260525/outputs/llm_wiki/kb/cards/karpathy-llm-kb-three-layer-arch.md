@@ -13,11 +13,11 @@ aliases: ["LLM KB 3-layer", "Raw / Schema / Wiki"]
 related: [llm-knowledge-base-five-stage-workflow, aillm-wiki-four-defining-properties, karpathy-gist-three-layers, karpathy-llm-wiki-three-layers, anthemcreation-llm-wiki-three-layer-architecture, karpathy-llm-kb-three-operations, morishige-kb-compile-mem0-overlay]
 ---
 
-DevelopersIO 上 Classmethod 工程师森茂洋整理的 Karpathy "LLM Knowledge Base" 概念结构，把它拆为三层，比五阶段工作流卡更接近**数据建模视角**：
+DevelopersIO 上 Classmethod 工程师森茂洋整理的 Karpathy "LLM Knowledge Base" 概念结构，把它拆为三层[^v2-1]，比五阶段工作流卡[^v3-1]更接近**数据建模视角**：
 
-- **Raw sources**：不可变的精选素材——文章、论文、仓库、图片。源语原话："記事、論文、リポジトリ、画像など、不変の精選ドキュメントです"。Web 文章通过 Obsidian Web Clipper 转 Markdown；相关图片也下载到本地以便 LLM 引用。
-- **Schema**：定义 wiki 的结构与规约——分类法、命名规则、互链规则。"wiki の『設計図』"。在 Claude Code 实践里，schema 常常以分目录的 `CLAUDE.md` 形式存在。
-- **Wiki**：LLM 编译出来的 markdown 文件群——raw 的 summary、概念实体页、互链 backlinks。森茂强调："人間が直接書くことはほとんどない という点"——人类几乎不直接写 wiki 层，wiki 是 LLM 的领域，人类负责 curation 与方向。
+- **Raw sources**：不可变的精选素材——文章、论文、仓库、图片。源语原话："記事、論文、リポジトリ、画像など、不変の精選ドキュメントです"[^src1]。Web 文章通过 Obsidian Web Clipper 转 Markdown；相关图片也下载到本地以便 LLM 引用。
+- **Schema**：定义 wiki 的结构与规约——分类法、命名规则、互链规则。"wiki の『設計図』"[^src2]。在 Claude Code 实践里，schema 常常以分目录的 `CLAUDE.md` 形式存在。
+- **Wiki**：LLM 编译出来的 markdown 文件群——raw 的 summary、概念实体页、互链 backlinks。森茂强调："人間が直接書くことはほとんどない という点"[^src3]——人类几乎不直接写 wiki 层，wiki 是 LLM 的领域，人类负责 curation 与方向。
 
 为什么这个三层划分值得记住：
 
