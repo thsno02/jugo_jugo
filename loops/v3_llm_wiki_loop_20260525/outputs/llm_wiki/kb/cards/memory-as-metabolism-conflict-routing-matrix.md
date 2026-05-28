@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#memory, #companion-system, #governance, #conflict-routing, #procedural-rule]
 created_time: 2026-05-26T15:10:00+08:00
-edited_time: 2026-05-27T14:46:00+08:00
+edited_time: 2026-05-28T11:20:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-as-metabolism-conflict-routing-matrix.md
