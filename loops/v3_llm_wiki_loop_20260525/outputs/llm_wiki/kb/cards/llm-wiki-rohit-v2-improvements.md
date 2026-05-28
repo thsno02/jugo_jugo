@@ -65,14 +65,9 @@ Jim 的 Pitfall #3 是真实损失的对照：他 Month 4 让 Claude 把"RAG 是
 - 6 种 link type 是 Jim / Rohit 的选择；实际数量应按主题复杂度调；过少失去区分力，过多 LLM 标注不一致。
 - Jim 同时声明：在他 35 页规模下尚未需要 GBrain 的 Postgres + Dream Cycle；v2 是 100-500 页范围的"刚刚好"。
 
-## References
-
-- 三件事完整描述：`data/raw/webpage/openaitoolshub-six-months/text.txt:52-58`。
-- Pitfall #3（重写矛盾的后果）：`text.txt:96`。
-- 维护时间对比表：`text.txt:72-85`。
-
 ## Footnotes
 
-- Memory Lifecycle 原文：`text.txt:52` —— "Memory Lifecycle frontmatter: every page has last_verified: 2026-05-01, confidence: high|medium|low, and (when relevant) superseded_by: another-page.md or contradicts: an-older-claim.md. v1 has none of these."
-- Typed wikilinks 原文：`text.txt:56` —— "instead of plain [[obsidian]], I write [[obsidian]] (uses) or [[gbrain]] (alternative-to). Six relationship types total... it lets Claude give much sharper answers because the graph isn't just 'X is connected to Y' but 'X uses Y' or 'X contradicts Y'."
-- Contradiction protocol 原文：`text.txt:58` —— "when Claude finds a new claim that contradicts a wiki page, the rule is don't overwrite, mark. Add contradicts: field, keep both, surface during lint."
+[^src1]: `data/raw/webpage/openaitoolshub-six-months/text.txt:52` — "Memory Lifecycle frontmatter: every page has last_verified: 2026-05-01, confidence: high|medium|low, and (when relevant) superseded_by: another-page.md or contradicts: an-older-claim.md. v1 has none of these."
+[^src2]: 同文件 `text.txt:56` — "instead of plain [[obsidian]], I write [[obsidian]] (uses) or [[gbrain]] (alternative-to). Six relationship types total... it lets Claude give much sharper answers because the graph isn't just 'X is connected to Y' but 'X uses Y' or 'X contradicts Y'."
+[^src3]: 同文件 `text.txt:58` — "when Claude finds a new claim that contradicts a wiki page, the rule is don't overwrite, mark. Add contradicts: field, keep both, surface during lint."
+[^v3-1]: [llm-wiki-contradictions-are-assets](llm-wiki-contradictions-are-assets.md) — Contradiction Protocol 在 Jim Pitfall #3 视角下的展开。
