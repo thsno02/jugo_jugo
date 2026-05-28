@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#llm-wiki, #rag, #retrieval, #indexes, #scale]
 created_time: 2026-05-25T22:05:00+08:00
-edited_time: 2026-05-27T14:32:00+08:00
+edited_time: 2026-05-28T10:48:00+08:00
 edited_entity: llm
 source_ids: [karpathy-x-launch-post]
 provenance_card: ../provenance/auto-index-replaces-rag-at-small-scale.md
