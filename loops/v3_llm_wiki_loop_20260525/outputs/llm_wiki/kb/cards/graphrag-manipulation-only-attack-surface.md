@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graph-poisoning]
 provenance_card: ../provenance/graphrag-manipulation-only-attack-surface.md
 aliases: ["manipulation-only KPA", "graph poisoning without injection"]
-related: [gragpoison-additive-vs-edit-attack, graphrag-pipeline-formalism, graphrag-text-defense-blind-spot, tkpa-graph-guided-targeted-poisoning, ukpa-coreference-disruption, graphrag-global-sensemaking-pipeline, graphrag-leiden-community-hierarchy, poisonedrag-knowledge-database-attack-surface]
+related: [graphrag-pipeline-formalism, graphrag-global-sensemaking-pipeline, graphrag-leiden-community-hierarchy, poisonedrag-knowledge-database-attack-surface, gragpoison-additive-vs-edit-attack]
 ---
 
 GraphRAG 的安全文献此前主要研究"加内容"型攻击：在语料库里注入新的恶意 chunk，或在 chunk 内塞入提示词指令。Wen 等人指出，GraphRAG 还有一个被忽视的攻击面——**只修改语料中已有的少量字词，不加任何新文本，也能让构造出的知识图谱永久带毒**[^src1]。这一面之所以被忽视，是因为图谱"先构图、再回答"的流水线把单字级改动的影响向下游放大了——具体参见 GraphRAG 流水线形式化[^v3-1] 与 global sensemaking 两阶段[^v3-2]、Leiden 社群层次[^v3-3] 三张卡。
