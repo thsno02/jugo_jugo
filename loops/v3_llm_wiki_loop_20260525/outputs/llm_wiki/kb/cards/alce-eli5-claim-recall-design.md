@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-alce]
 provenance_card: ../provenance/alce-eli5-claim-recall-design.md
 aliases: [ELI5 claim recall, sub-claim correctness, ALCE long-form correctness metric]
-related: [alce-three-dimension-citation-metric, alce-citation-recall-precision-nli, ragas-faithfulness-metric, ragchecker-claim-entailment-decomposition, ares-synthetic-data-pipeline]
+related: [alce-three-dimension-citation-metric, alce-citation-recall-precision-nli, ragas-faithfulness-metric, ragchecker-claim-entailment-decomposition]
 ---
 
 ## 为什么不能用 ROUGE
