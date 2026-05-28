@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#dialogue-generation, #generative-agent, #event-graph]
 created_time: 2026-05-26T14:05:00+08:00
-edited_time: 2026-05-27T10:59:00+08:00
+edited_time: 2026-05-28T10:18:00+08:00
 edited_entity: llm
 source_ids: [arxiv-locomo]
 provenance_card: ../provenance/locomo-persona-event-graph-pipeline.md
