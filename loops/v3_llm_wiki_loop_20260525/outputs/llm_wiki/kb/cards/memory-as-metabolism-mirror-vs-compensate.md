@@ -27,21 +27,21 @@ Miteski (2026) 提出，针对单用户的"伴侣型"个人 LLM 记忆系统，�
 当 mirror 与 compensate 在同一事件上指向相反方向时，框架按时间窗口分发：
 
 1. **流式路径（TRIAGE）默认镜像**：单条矛盾不实时覆盖高引力条目，避免在毫秒级破坏用户的操作连续性。
-2. **调度的整合窗口（CONSOLIDATE）做补偿**：批量整合时对积累的矛盾施加更高摩擦，让"少数派 buffer 压力"有结构化机会改写主导解释。
-3. **AUDIT 作为决胜者**：当受引力保护的条目在多轮 AUDIT 中持续与坏结果相关时，强制走 §5.8 的引力削减通路，剥离其保护。
+2. **调度的整合窗口（CONSOLIDATE）做补偿**：批量整合时对积累的矛盾施加更高摩擦，让"少数派 buffer 压力"有结构化机会改写主导解释[^v3-1]。
+3. **AUDIT 作为决胜者**：当受引力保护的条目在多轮 AUDIT 中持续与坏结果相关时，强制走 §5.8 的引力削减通路，剥离其保护[^v3-2]。
 
-这是 v3 论文宣称的核心新贡献——不是 mirror/compensate 词汇本身（Qian 等 arXiv:2510.01924 已用），不是 sleep-time consolidation 机制本身（LightMem、SleepGate 已实现），而是**"时间结构化的程序冲突规则作为单用户 companion 衬底的绑定"**。
+这是 v3 论文宣称的核心新贡献——不是 mirror/compensate 词汇本身（Qian 等 arXiv:2510.01924 已用）[^src1]，不是 sleep-time consolidation 机制本身（LightMem[^v3-3]、SleepGate 已实现），而是**"时间结构化的程序冲突规则作为单用户 companion 衬底的绑定"**[^src2]。具体路由细节由 7 行冲突路由矩阵定义[^v3-4]。
 
-## 五操作的角色分配
+## 五操作的角色分配[^src3]
 
 | 操作 | 镜像/补偿 | 角色 |
 | --- | --- | --- |
 | TRIAGE | 镜像（中立采集） | 浅层流式过滤 |
 | DECAY | 镜像（运营连续性） | 活动 wiki 上的生存权重保留 |
-| CONTEXTUALIZE | **补偿**（选择性吸收） | 把外部源压缩到用户当前 working depth |
+| CONTEXTUALIZE | **补偿**（选择性吸收） | 把外部源压缩到用户当前 working depth[^v3-5] |
 | CONSOLIDATE | **补偿**（中心机制） | 批量深度整合、buffer-to-wiki |
 | AUDIT | **补偿** | 高引力条目的结构性压力测试 |
-| Memory gravity | 镜像 | 承重保护 |
+| Memory gravity | 镜像 | 承重保护[^v3-6] |
 | Minority-hypothesis retention | **补偿** | buffer/quarantine 中的方差保留 |
 
 ## 边界与诚实之处
