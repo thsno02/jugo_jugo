@@ -27,7 +27,7 @@ Steven Wu 的 `llm-wiki-mcp` 0.1.1（PyPI, 2026-04-08）把 Karpathy LLM Wiki �
 ## 关键设计要点
 
 - **`wiki_log_append` 是唯一非幂等的工具**——日志条目天然带语义"这件事发生过一次"，重复 append 会失真。LLM 必须意识到这一点，不能在重试逻辑里盲目重放。
-- **`wiki_write_page` 用 etag CAS（compare-and-swap）实现乐观并发**：每个 page 的 etag 是 `sha256(body) || mtime_ns`；更新时不匹配会抛 `WikiConflictError`，agent 需要 **重读 → 合并 → 重写**。
+- **`wiki_write_page` 用 etag CAS（compare-and-swap）实现乐观并发**：每个 page 的 etag 是 `sha256(body) || mtime_ns`；更新时不匹配会抛 `WikiConflictError`，agent 需要 **重读 → 合并 → 重写** [^src3]。
 - **`wiki_inventory` 把整张图一次性给 agent**：不是为 production-scale 设计的接口，而是为"让 agent 在一次 Read 内审计所有 backlink 与 orphan"提供的便利接口。
 
 ## 故意不暴露的部分
