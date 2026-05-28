@@ -34,9 +34,9 @@ related: [llm-wiki-mcp-four-tools, llm-wiki-mcp-skills-vs-tools-workflow, llm-wi
 ## 为什么这样切边界
 
 > "Karpathy's gist is deliberately silent on content shape; baking a schema into the server would defeat the point."
-> —— `text.txt:187`
+> —— `text.txt:187` [^src2]
 
-Karpathy 原始 gist 把 schema 留给用户的 AGENTS.md / CLAUDE.md 是有意为之；如果把 schema 烧进 server，每个用户的 wiki 都要被同一个 schema 约束，gist 提倡的"每个领域自己长出 schema"就不成立。
+Karpathy 原始 gist 把 schema 留给用户的 AGENTS.md / CLAUDE.md 是有意为之 [^v3-1][^v3-2]；如果把 schema 烧进 server，每个用户的 wiki 都要被同一个 schema 约束，gist 提倡的"每个领域自己长出 schema"就不成立。
 
 ## 实践含义
 
