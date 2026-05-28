@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#llm-wiki, #multimodal, #ocr, #pdf, #representation, #ingest]
 created_time: 2026-05-26T11:38:00+08:00
-edited_time: 2026-05-27T10:18:00+08:00
+edited_time: 2026-05-28T11:40:00+08:00
 edited_entity: llm
 source_ids: [clawhub-llm-wiki-karpathy]
 provenance_card: ../provenance/llm-wiki-karpathy-multimodal-representation-path.md
