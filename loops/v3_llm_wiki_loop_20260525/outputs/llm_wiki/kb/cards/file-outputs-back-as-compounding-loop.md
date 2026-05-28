@@ -25,12 +25,10 @@ Karpathy 的 setup 里"不显眼但关键"的一步发生在查询答案产生**
 
 为什么重要：没有"回写"这一步，wiki 就只是原始语料的静态衍生物，每次查询都从同一个基线开始。引入回写之后，wiki 和用户的实际专长在一同复利增长。代价只是"每次查询多归档一步"；收益是答案质量单调上升。
 
-边界：被归档的答案只有在 linting 能够发现它和源材料的矛盾时才安全。失去了健康检查的兜底，回写会把一个错误答案放大成"下一次查询会依赖的事实"。
-
-## References
-
-- Karpathy 引用推文中的 Output 章节（`data/raw/webpage/karpathy-x-launch-post/text.txt`，JSON 指针 `$.tweet.quote.text`）。
+边界：被归档的答案只有在 linting 能够发现它和源材料的矛盾时才安全[^v3-2]。失去了健康检查的兜底，回写会把一个错误答案放大成"下一次查询会依赖的事实"。
 
 ## Footnotes
 
-- `data/raw/webpage/karpathy-x-launch-post/text.txt` — JSON 指针 `$.tweet.quote.text`，"Output:" 章节（`"Often, I end up \"filing\" the outputs back into the wiki to enhance it for further queries. So my own explorations and queries always \"add up\" in the knowledge base."`）。
+[^src1]: `data/raw/webpage/karpathy-x-launch-post/text.txt` — JSON 指针 `$.tweet.quote.text`，"Output:" 章节 — "Often, I end up \"filing\" the outputs back into the wiki to enhance it for further queries. So my own explorations and queries always \"add up\" in the knowledge base."
+[^v3-1]: [knowledge-compounding-three-mechanisms](knowledge-compounding-three-mechanisms.md) — answer 回灌作为三种复利机制之一的展开。
+[^v3-2]: [llm-wiki-karpathy-lint-grounding-trail](llm-wiki-karpathy-lint-grounding-trail.md) — lint 强制 grounding trail 的本卡，是回写安全的兜底。
