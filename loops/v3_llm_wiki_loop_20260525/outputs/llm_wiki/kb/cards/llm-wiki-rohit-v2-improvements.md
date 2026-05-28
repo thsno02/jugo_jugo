@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#rohit-v2, #karpathy-llm-wiki, #memory-lifecycle, #typed-relationships, #contradictions]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T10:34:00+08:00
+edited_time: 2026-05-28T11:44:00+08:00
 edited_entity: llm
 source_ids: [openaitoolshub-six-months]
 provenance_card: ../provenance/llm-wiki-rohit-v2-improvements.md
