@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#llm-agent, #idea-file, #分发, #knowledge-system]
 created_time: 2026-05-25T22:05:00+08:00
-edited_time: 2026-05-27T14:36:00+08:00
+edited_time: 2026-05-28T10:15:00+08:00
 edited_entity: llm
 source_ids: [karpathy-x-launch-post]
 provenance_card: ../provenance/idea-file-as-agent-era-artifact.md
