@@ -56,25 +56,20 @@ Mem0g 检索时同时跑两条路径[^src3]：
 - LLM 接口：**GPT-4o-mini** + function calling，做实体/关系结构化抽取与 update 决策；
 - 与 base 版共享上下文窗口与 update 阶段框架。
 
-## 性能侧的权衡（来自 LOCOMO 评估）
+## 性能侧的权衡（来自 LOCOMO 评估）[^v3-4]
 
 - **temporal** 与 **open-domain** 类题目上 Mem0g 是表中最高 J 分（J=58.13 / 75.71），比 base Mem0 高 2–3 个点；
-- **single-hop** 与 **multi-hop** 上 Mem0g **不如** base Mem0（J=65.71 vs 67.13；J=47.19 vs 51.15），论文解释为"关系结构对单 turn 检索增益有限，可能引入冗余"；
+- **single-hop** 与 **multi-hop** 上 Mem0g **不如** base Mem0（J=65.71 vs 67.13；J=47.19 vs 51.15），论文解释为"关系结构对单 turn 检索增益有限，可能引入冗余"[^src4]；
 - token 占用约 14k/对话（base Mem0 7k 的两倍），但仍远小于 Zep 的 600k+；
 - 端到端 p50/p95 时延 1.091s / 2.590s（base Mem0 0.708s / 1.440s）——图开销可控但确实增加。
 
-详细评估在 [mem0-locomo-benchmark-evaluation](mem0-locomo-benchmark-evaluation.md)。
-
-## References
-
-- §3.2（`sections/proposed_work.tex` 第 1163–1188 行）：图结构定义、抽取与冲突解决、双路检索、Neo4j 实现。
-- §4 评估表（`sections/result.tex` 第 1047–1085 行）：各类型题目 Mem0 vs Mem0g 的 F1/B1/J 对比。
-- 来源：`data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`。
-
 ## Footnotes
 
-[^1]: 冲突解决保留时序推理原文（第 1184 行）："An LLM-based *update resolver* determines if certain relationships should be obsolete, marking them as invalid rather than physically removing them to enable temporal reasoning."
-
-[^2]: 双路检索原文（第 1186 行）："The memory retrieval functionality in Mem0g implements a dual-approach strategy for optimal information access. The entity-centric method first identifies key entities within a query ... the semantic triplet approach takes a more holistic view by encoding the entire query as a dense embedding."
-
-[^3]: Mem0g 在 single-hop / multi-hop 上不优于 base 原文（§4 `result.tex` 第 1201–1204 行）："the addition of graph memory in Mem0g does not provide performance gains here, indicating potential inefficiencies or redundancies in structured graph representations for complex integrative tasks compared to dense natural language memory alone."
+[^src1]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/proposed_work.tex` 第 1163–1188 行（§3.2）— 图结构定义、抽取与冲突解决、双路检索、Neo4j 实现。
+[^src2]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — 第 1184 行 — "An LLM-based *update resolver* determines if certain relationships should be obsolete, marking them as invalid rather than physically removing them to enable temporal reasoning."
+[^src3]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — 第 1186 行 — "The memory retrieval functionality in Mem0g implements a dual-approach strategy for optimal information access. The entity-centric method first identifies key entities within a query ... the semantic triplet approach takes a more holistic view by encoding the entire query as a dense embedding."
+[^src4]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/result.tex` 第 1201–1204 行 — "the addition of graph memory in Mem0g does not provide performance gains here, indicating potential inefficiencies or redundancies in structured graph representations for complex integrative tasks compared to dense natural language memory alone."
+[^v3-1]: [mem0-tool-call-add-update-delete-noop](mem0-tool-call-add-update-delete-noop.md) — base 版的 DELETE 直接移除。
+[^v3-2]: [zep-bi-temporal-edges](zep-bi-temporal-edges.md) — Zep bi-temporal edges 的同向选择。
+[^v3-3]: [zep-graphiti-three-tier-graph](zep-graphiti-three-tier-graph.md) — Zep Graphiti 的三层图替代方案。
+[^v3-4]: [mem0-locomo-benchmark-evaluation](mem0-locomo-benchmark-evaluation.md) — LOCOMO 评估完整数字与对照。
