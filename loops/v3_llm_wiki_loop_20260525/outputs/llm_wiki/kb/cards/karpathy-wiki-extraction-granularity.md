@@ -49,17 +49,9 @@ Karpathy LLM Wiki 插件[^v3-1]在 `Settings → Wiki Output / Extraction` 中�
 - **Custom 设为 300**：除非确知文档值得，否则会让 wiki 出现大量低质量页，反过来损害去重和 lint 性能。
 - **Minimal 用在分析型文档**：会错过关键实体，未来检索找不到。
 
-## References
-
-- 来源页面：`data/raw/webpage/obsidian-community-plugin/text.txt`。
-- 第 240–250 行：五档定义与典型条目数 + 推荐场景。
-- 第 230–238 行：升级后启用并发与 Batch Delay 的指引（v1.7.3+）。
-- 第 419–432 行：FAQ "How do I speed up ingestion" / "How do I control API costs"。
-
 ## Footnotes
 
-[^1]: 五档及典型条目数 verbatim（第 241–249 行）："Fine (~100 items) — Deep analysis, edge-case mentions included. High token cost, best for key sources. Standard (~50 items) — Balanced extraction. Good default for daily notes. Coarse (~10 items) — Quick overview, core entities only. Low cost, fast ingestion. Minimal (~5 items) — Essential items only. Ideal for batch processing 100+ files or testing new sources. Custom (1–300 items) — User-defined entity/concept limits for specialized workflows."
-
-[^2]: 按价值分档使用 verbatim（第 250 行）："Recommendation: Use Minimal or Coarse for large folders to save time and API costs. Use Fine selectively on key documents that warrant deep analysis."
-
-[^3]: 三旋钮配合 verbatim（第 420 行）："In Settings → Ingestion Acceleration: increase Page Generation Concurrency to 3–5 (parallel page creation), lower Batch Delay to 100–300ms (watch for rate limits). Choose 'Minimal', 'Coarse', or 'Standard' Extraction Granularity to reduce page count and save API costs."
+[^src1]: `data/raw/webpage/obsidian-community-plugin/text.txt` 第 241-249 行 — "Fine (~100 items) — Deep analysis, edge-case mentions included. High token cost, best for key sources. Standard (~50 items) — Balanced extraction. Good default for daily notes. Coarse (~10 items) — Quick overview, core entities only. Low cost, fast ingestion. Minimal (~5 items) — Essential items only. Ideal for batch processing 100+ files or testing new sources. Custom (1–300 items) — User-defined entity/concept limits for specialized workflows."
+[^src2]: 同文件 第 250 行 — "Recommendation: Use Minimal or Coarse for large folders to save time and API costs. Use Fine selectively on key documents that warrant deep analysis."
+[^src3]: 同文件 第 420 行 — "In Settings → Ingestion Acceleration: increase Page Generation Concurrency to 3–5 (parallel page creation), lower Batch Delay to 100–300ms (watch for rate limits). Choose 'Minimal', 'Coarse', or 'Standard' Extraction Granularity to reduce page count and save API costs."
+[^v3-1]: [karpathy-llm-wiki-obsidian-plugin-overview](karpathy-llm-wiki-obsidian-plugin-overview.md) — 插件总览，本卡是 Extraction 设置的细化。
