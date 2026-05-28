@@ -17,7 +17,7 @@ related: [langgraph-store-namespace-key-json-model, mem0-tool-call-add-update-de
 
 LangChain 让工具访问 long-term memory 的官方路径是：
 
-1. 在 `create_agent(..., store=store)` 中把 store 传入；
+1. 在 `create_agent(..., store=store)` 中把 store [^v3-1] 传入；
 2. 工具函数声明 `runtime: ToolRuntime[Context]` 形参；
 3. 在工具内通过 `runtime.store` 调用 `.get / .put / .search`。
 
