@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#lightmem, #long-term-memory, #soft-update, #offline-parallel]
 created_time: 2026-05-26T11:07:00+08:00
-edited_time: 2026-05-27T10:32:00+08:00
+edited_time: 2026-05-28T10:12:00+08:00
 edited_entity: llm
 source_ids: [arxiv-lightmem]
 provenance_card: ../provenance/lightmem-sleep-time-offline-parallel-update.md
