@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [wikibase-data-model]
 provenance_card: ../provenance/wikibase-conceptual-not-serialization.md
 aliases: [Wikibase conceptual model, WON]
-related: [wikibase-item-property-snak-statement, wikibase-three-snak-types, wikibase-statement-rank-and-references, llm-wiki-schema-is-most-important, robin-cartier-schema-as-product-doc, aillm-wiki-schema-as-bottleneck]
+related: [wikibase-item-property-snak-statement]
 ---
 
 ## 这份文档**不是**什么
