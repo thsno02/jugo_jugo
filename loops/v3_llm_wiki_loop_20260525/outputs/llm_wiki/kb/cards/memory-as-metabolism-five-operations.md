@@ -40,7 +40,7 @@ vitality(entry) =
 
 ## sleep-function 架构的设计理由
 
-为什么要把 streaming ingestion 与 deep integration 拆开？因为**流式 coherence 是自封闭的**：一条孤立到达的反对证据，单独与主导 wiki 比对，**总会**被立即隔离，主导解释永不更新。批量 consolidation 让 buffer 内部多条互相支持的反对证据**作为一个 cluster** 评分，单条隔离的事件变成"积累的 buffer 压力"，少数派从此有结构通道翻盘。
+为什么要把 streaming ingestion 与 deep integration 拆开？因为**流式 coherence 是自封闭的**：一条孤立到达的反对证据，单独与主导 wiki 比对，**总会**被立即隔离，主导解释永不更新。批量 consolidation 让 buffer 内部多条互相支持的反对证据**作为一个 cluster** 评分，单条隔离的事件变成"积累的 buffer 压力"，少数派从此有结构通道翻盘[^src5]。
 
 > "Streaming coherence is self-sealing. A single entry arriving alone and scored against the dominant wiki gets quarantined immediately if it contradicts the dominant interpretation, which means the dominant interpretation never updates. Batched consolidation breaks this lock."
 
@@ -48,21 +48,20 @@ vitality(entry) =
 
 - **CONSOLIDATE 可放大相关噪声**：多条相互支持但同样错误的条目也能积累 buffer 压力。框架明确声明"anti-entrenchment, not truth-guaranteeing"，并提出 source diversity weighting、time-spread requirements、external validation signals 等候选防御但未实现。
 - **Valley of Amnesia**：promotion 阈值过早穿越会造成操作连续性的突然丢失，是 transition-stability 层面单独的开放问题。
-- **TRIAGE 不能做任何 coherence 工作**：一旦 TRIAGE 开始读 active wiki 或做语义评分，架构立刻退化为流式 coherence，self-sealing 重现。这是 §7.5 conformance 章节的硬性 MUST NOT。
-
-## References
-
-- 第 1004–1070 行：§5.0 五操作总表与角色分配。
-- 第 1131–1175 行：§5.1 raw buffer & consolidation cycle；§5.2 TRIAGE。
-- 第 1176–1210 行：§5.3 DECAY 与 vitality 公式。
-- 第 1320–1383 行：§5.5 CONSOLIDATE 四 phase。
-- 第 1555–1604 行：§5.8 AUDIT 伪代码。
-- 来源：`data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt`。
+- **TRIAGE 不能做任何 coherence 工作**：一旦 TRIAGE 开始读 active wiki 或做语义评分，架构立刻退化为流式 coherence，self-sealing 重现。这是 §7.5 conformance 章节的硬性 MUST NOT[^src2]。
+- 与 Mem0 把 update 留在 online 的 add/update/delete/noop 选项形成对照[^v3-7]——后者在 ingestion 阶段就承担硬删除的风险。
 
 ## Footnotes
 
-[^1]: TRIAGE 的硬约束原文（第 1898–1904 行 §7.5 conformance）："MUST NOT perform semantic contradiction resolution... MUST NOT read the active wiki during ingestion — any implementation where TRIAGE queries existing wiki content is non-conforming."
-
-[^2]: CONTEXTUALIZE 的 linkout 不可交换原文（第 1906–1912 行）："MUST preserve a linkout to the original external source — this is non-optional and cannot be traded off for storage efficiency."
-
-[^3]: vitality 公式原文出现在第 1184–1191 行（verbatim 块）。
+[^src1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1004–1070 行（§5.0 五操作总表与角色分配）+ 第 1131–1175 行（§5.1 raw buffer & consolidation cycle；§5.2 TRIAGE）+ 第 1320–1383 行（§5.5 CONSOLIDATE 四 phase）+ 第 1555–1604 行（§5.8 AUDIT 伪代码）。
+[^src2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1898–1904 行（§7.5 conformance）— "MUST NOT perform semantic contradiction resolution... MUST NOT read the active wiki during ingestion — any implementation where TRIAGE queries existing wiki content is non-conforming."
+[^src3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1906–1912 行 — "MUST preserve a linkout to the original external source — this is non-optional and cannot be traded off for storage efficiency."
+[^src4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1184–1191 行（vitality 公式 verbatim 块）+ 第 1176–1210 行（§5.3 DECAY 与 vitality 公式）。
+[^src5]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — §5.0 / §5.5 上下文中的 "Streaming coherence is self-sealing..." 段落（与五操作总表一段。
+[^v3-1]: [memory-as-metabolism-contextualize-depth-fitted](memory-as-metabolism-contextualize-depth-fitted.md) — depth-fitted 压缩与 cold memory 三层模型。
+[^v3-2]: [memory-as-metabolism-mirror-vs-compensate](memory-as-metabolism-mirror-vs-compensate.md) — CONSOLIDATE 在 mirror/compensate 中的角色。
+[^v3-3]: [minority-pressure-promotion](minority-pressure-promotion.md) — 少数派 buffer 压力 promotion 是 CONSOLIDATE 第 4 phase。
+[^v3-4]: [lightmem-sleep-time-offline-parallel-update](lightmem-sleep-time-offline-parallel-update.md) — LightMem 在线 soft / 离线整合的同源思路。
+[^v3-5]: [audit-by-suspension-against-entrenchment](audit-by-suspension-against-entrenchment.md) — AUDIT-by-suspension 伪代码与反事实测试细节。
+[^v3-6]: [memory-gravity-load-bearing-protection](memory-gravity-load-bearing-protection.md) — 承重保护 vitality 公式中的 gravity 项。
+[^v3-7]: [mem0-tool-call-add-update-delete-noop](mem0-tool-call-add-update-delete-noop.md) — Mem0 把硬删除留在 online 的对照路径。
