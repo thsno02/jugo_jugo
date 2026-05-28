@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#memory, #companion-system, #design-principle, #governance]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T14:52:00+08:00
+edited_time: 2026-05-28T11:16:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-as-metabolism-mirror-vs-compensate.md
