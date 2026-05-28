@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-gravity-load-bearing-protection.md
 aliases: [memory gravity, structural load-bearing protection, prospective fragmentation cost]
-related: [memory-as-metabolism-five-operations, audit-by-suspension-against-entrenchment, memory-as-metabolism-mirror-vs-compensate, minority-pressure-promotion, zep-graphiti-three-tier-graph]
+related: [memory-as-metabolism-mirror-vs-compensate, memory-as-metabolism-five-operations, audit-by-suspension-against-entrenchment, minority-pressure-promotion]
 ---
 
 ## 是什么
