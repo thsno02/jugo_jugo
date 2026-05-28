@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ragas]
 provenance_card: ../provenance/ragas-context-relevance-metric.md
 aliases: [context relevance, CR metric, sentence extraction ratio]
-related: [ragas-reference-free-rag-evaluation, ragas-faithfulness-metric, ragas-answer-relevance-metric, ragas-wikieval-dataset, alce-retriever-and-context-utilization-gap, ragchecker-retriever-claim-vs-chunk-precision]
+related: [ragas-reference-free-rag-evaluation, ragas-faithfulness-metric, alce-retriever-and-context-utilization-gap, ragchecker-retriever-claim-vs-chunk-precision, ragas-wikieval-dataset, ares-three-judge-rag-evaluation]
 ---
 
 ## 算法
