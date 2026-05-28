@@ -21,10 +21,10 @@ Karpathy 个人 LLM Wiki 的 health check 是 on-demand 的[^v3-1]——他想�
 
 企业级 LLM Wiki 因此必须把 health check 从"人触发"改成**连续后台循环**，并且把发现的问题**按 ownership 路由给具体 doc owner** 审阅。具体机制：
 
-- **Continuous drift detection**：背景任务持续监控代码 / 线程 / 决策的变化，识别哪些既有文档因此过期或矛盾。频率匹配企业本身的变更速率（"weekly review rather than quarterly audit"），不再依赖人去发起体检。
-- **Contradiction routing**：当新 PR 与既有 runbook 矛盾时，系统**起草更新草稿**，而不是只发"contradiction alert"。草稿配上对应 doc 的 owner，让 owner 在数秒内 accept / reject。这意味着系统必须懂得 ownership 与路由——这是个人版没有的负担。
-- **SSOT designations**：把"某文档对某领域是 canonical"作为 system property 显式登记（架构决策 / runbook / 入职指南 / 产品规格 / API 参考）。一旦 SSOT 被指定，系统从那时起监控它，而把其他相冲突的 source 当 supplementary context 而不是 competing truth。SSOT 是 stay-current 循环的锚点——没有锚点就无法判断"谁该被更新"。
-- **作为副产品的图谱增长**：团队不必改变工作方式（"the team doesn't change how it works"）；图谱在 PR merge、Slack thread 结题、决策落地时自动扩展。这是"compounding without additional work"的关键。
+- **Continuous drift detection**：背景任务持续监控代码 / 线程 / 决策的变化，识别哪些既有文档因此过期或矛盾。频率匹配企业本身的变更速率（"weekly review rather than quarterly audit"）[^src3]，不再依赖人去发起体检。
+- **Contradiction routing**：当新 PR 与既有 runbook 矛盾时，系统**起草更新草稿**，而不是只发"contradiction alert"[^src2]。草稿配上对应 doc 的 owner，让 owner 在数秒内 accept / reject。这意味着系统必须懂得 ownership 与路由——这是个人版没有的负担。
+- **SSOT designations**：把"某文档对某领域是 canonical"作为 system property 显式登记（架构决策 / runbook / 入职指南 / 产品规格 / API 参考）。一旦 SSOT 被指定，系统从那时起监控它，而把其他相冲突的 source 当 supplementary context 而不是 competing truth[^src4]。SSOT 是 stay-current 循环的锚点——没有锚点就无法判断"谁该被更新"。
+- **作为副产品的图谱增长**：团队不必改变工作方式（"the team doesn't change how it works"）；图谱在 PR merge、Slack thread 结题、决策落地时自动扩展[^src5]。这是"compounding without additional work"的关键。
 
 操作含义：
 
