@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#llm-wiki-mcp, #mcp, #tooling, #karpathy-llm-wiki]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T10:27:00+08:00
+edited_time: 2026-05-28T14:18:00+08:00
 edited_entity: llm
 source_ids: [pypi-llm-wiki-mcp]
 provenance_card: ../provenance/llm-wiki-mcp-four-tools.md
