@@ -15,7 +15,7 @@ related: [memgpt-virtual-context-os-analogy, memgpt-main-vs-external-context, me
 
 ## 任务设计
 
-DMR (Deep Memory Retrieval) 是 MemGPT 论文为了量化**对话 agent 的一致性 (consistency)** 而新造的任务，建立在 Multi-Session Chat (MSC) dataset 之上：
+DMR (Deep Memory Retrieval) 是 MemGPT 论文为了量化**对话 agent 的一致性 (consistency)** 而新造的任务[^src1]，建立在 Multi-Session Chat (MSC) dataset 之上：
 
 - MSC 原本 5 个 session × 每 session 大约一打消息；
 - 作者**自造 session 6**，里面只有一对 Q–A：用户提一个**明确回指前 5 个 session 中某细节**的问题，gold answer 范围非常狭窄；
