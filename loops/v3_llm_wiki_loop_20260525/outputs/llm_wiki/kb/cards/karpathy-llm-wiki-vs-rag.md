@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [marvin-hn-persistent-knowledge]
 provenance_card: ../provenance/karpathy-llm-wiki-vs-rag.md
 aliases: [persistent rag, wiki vs RAG, compiled artifact]
-related: [karpathy-llm-wiki-three-layers, obsidian-as-ide-llm-as-programmer, knowledge-compounding-dynamic-roi, karpathy-wiki-full-context-vs-rag, anthemcreation-llm-wiki-vs-rag-multi-hop, hn-llm-wiki-is-just-rag-debate, karpathy-llm-wiki-source-executable-analogy]
+related: [karpathy-gist-bookkeeping-burden, obsidian-as-ide-llm-as-programmer]
 ---
 
 ## 区分对象
