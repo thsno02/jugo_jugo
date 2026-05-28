@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#memgpt, #benchmark, #DMR, #MSC, #LLM-judge, #ROUGE-L]
 created_time: 2026-05-26T15:25:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T11:12:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-dmr-task-evaluation.md
