@@ -36,11 +36,11 @@ Ingestion 时 LLM 在第二层做的具体动作（原文列举）：
 - 在源之间**标注并合成矛盾**（contradictions entre sources）；
 - 自动建立**双向 backlinks**。
 
-读侧：查询直接打到 wiki，而不是回到原始源。这是这套系统能做 **multi-hop 推理** 的物理基础——知识已经被预先合成、链接、消歧。
+读侧：查询直接打到 wiki，而不是回到原始源。这是这套系统能做 **multi-hop 推理** 的物理基础[^v3-4]——知识已经被预先合成、链接、消歧。
 
 操作含义：
 
-- `agents.md` 不是可选 README，是规约文件；它的质量直接决定 wiki 长期一致性，文中明示「La qualité de votre agents.md détermine directement la fiabilité de la base.」
+- `agents.md` 不是可选 README，是规约文件；它的质量直接决定 wiki 长期一致性，文中明示「La qualité de votre agents.md détermine directement la fiabilité de la base.」[^src3]
 - 原始源和 wiki 必须在文件层物理分离，否则 LLM 重写 wiki 时可能误改原文；
 - 编辑器选用 Obsidian / VS Code + Markdown Preview / Logseq 都行，关键约束是文件保持**flat markdown**，便于 LLM 读写。
 
