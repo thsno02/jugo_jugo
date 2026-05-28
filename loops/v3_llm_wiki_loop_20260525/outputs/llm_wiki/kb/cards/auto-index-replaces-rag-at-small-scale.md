@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [karpathy-x-launch-post]
 provenance_card: ../provenance/auto-index-replaces-rag-at-small-scale.md
 aliases: ["小规模无 RAG 规则", "索引优先检索"]
-related: [llm-knowledge-base-five-stage-workflow, karpathy-llm-wiki-vs-rag, karpathy-wiki-full-context-vs-rag, anthemcreation-llm-wiki-vs-rag-multi-hop, robin-cartier-scale-ceiling, file-outputs-back-as-compounding-loop]
+related: [robin-cartier-scale-ceiling]
 ---
 
 一个常见的默认假设是：任何 wiki 规模的问答系统都必须搭一套基于向量嵌入的 RAG。Karpathy 的实践经验在一个具体的工作点上反驳了这个假设——约 100 篇文章、约 40 万词。在这个规模下他发现，"LLM 在自维护索引文件和每篇文档的简短摘要这件事上做得很不错，能够轻松读到所有相关的关键数据。"[^src1]
