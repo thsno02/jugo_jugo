@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#karpathy-llm-wiki, #tldr, #context-window, #operational-rule]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T10:44:00+08:00
+edited_time: 2026-05-28T11:48:00+08:00
 edited_entity: llm
 source_ids: [openaitoolshub-six-months]
 provenance_card: ../provenance/llm-wiki-tldr-load-bearing.md
