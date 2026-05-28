@@ -15,7 +15,7 @@ related: [karpathy-llm-wiki-vs-rag, karpathy-llm-wiki-three-layers, karpathy-gis
 
 ## 类比
 
-Karpathy 在 LLM Wiki gist 中给出一个关键类比，HN 编辑反响中被反复引用：
+Karpathy 在 LLM Wiki gist 中给出一个关键类比[^src1]，HN 编辑反响中被反复引用：
 
 > **Obsidian is the IDE. The LLM is the programmer. The wiki is the codebase.**
 
