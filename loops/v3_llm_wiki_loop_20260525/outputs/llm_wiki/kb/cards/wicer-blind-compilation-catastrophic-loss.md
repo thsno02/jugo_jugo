@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#llm-wiki, #knowledge-compilation, #failure-mode, #wicer]
 created_time: 2026-05-26T11:05:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T11:30:00+08:00
 edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-blind-compilation-catastrophic-loss.md
