@@ -29,9 +29,9 @@ representation-first 的标准步骤：
 这条路径的设计意图：
 
 - **把"理解非文本资产"的随机性隔离在 agent 一侧**——runtime 不依赖 OCR / vision 引擎，确保 runtime 自身可以无 GPU、无外部 API 跑。
-- **保留 grounding trail**：`kb_lint` 会检查 multimodal source note 是否有"a believable review trail"。如果 source note 引用的事实在 representations 里找不到，lint 会发警告。这意味着多模态笔记的可信度可以被自动复核。
-- **manifest schema v2** 新增字段 `raw_kind`、`mime_type`、`size_bytes`、`asset_refs`、stored representations，把"这条 source 是什么类型 / 看过哪些资产 / 存了哪些中间产物"在 manifest 里串起来。
-- **source note 校验**：source 笔记里的 `raw_kind`、`mime_type`、`asset_paths` 必须和实际 reviewed assets 对齐，否则 lint 会报不一致。
+- **保留 grounding trail**：`kb_lint`[^v3-2] 会检查 multimodal source note 是否有"a believable review trail"。如果 source note 引用的事实在 representations 里找不到，lint 会发警告。这意味着多模态笔记的可信度可以被自动复核。
+- **manifest schema v2**[^src3] 新增字段 `raw_kind`、`mime_type`、`size_bytes`、`asset_refs`、stored representations，把"这条 source 是什么类型 / 看过哪些资产 / 存了哪些中间产物"在 manifest 里串起来。
+- **source note 校验**[^src4]：source 笔记里的 `raw_kind`、`mime_type`、`asset_paths` 必须和实际 reviewed assets 对齐，否则 lint 会报不一致。
 
 边界 / 反例：
 
