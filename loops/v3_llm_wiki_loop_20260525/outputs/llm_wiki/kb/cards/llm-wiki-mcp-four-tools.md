@@ -32,7 +32,7 @@ Steven Wu 的 `llm-wiki-mcp` 0.1.1（PyPI, 2026-04-08）把 Karpathy LLM Wiki �
 
 ## 故意不暴露的部分
 
-- `index.md` 和 `raw/` **不**作为 MCP tool 暴露：
+- `index.md` 和 `raw/` **不**作为 MCP tool 暴露 [^src4]：
   - `index.md` 由 LLM 在 host 侧用 Read / Write 操作（属于"被 curate 的内容"，不应通过 server 自动化）。
   - `raw/` 在 server 视角是 immutable，不允许被 agent 通过 MCP 改动。
 - 这种"主动留白"是设计选择——不是缺失功能。
