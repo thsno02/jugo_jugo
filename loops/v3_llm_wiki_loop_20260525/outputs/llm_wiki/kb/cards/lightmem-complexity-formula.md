@@ -13,9 +13,9 @@ aliases: ["LightMem cost model", "LightMem complexity"]
 related: [lightmem-three-stage-atkinson-shiffrin, lightmem-light2-topic-aware-stm, lightmem-sleep-time-offline-parallel-update, lightmem-precompress-and-topic-segmentation, mem0-locomo-benchmark-evaluation]
 ---
 
-LightMem 论文的 §"Complexity analysis" 给出了一张严格的成本对比表，把"主流 memory system"和 LightMem 在 summary / update / API calls / runtime 四项上的渐进复杂度并排放出来。这张表是其他"LightMem 比 baseline 便宜 X 倍"的实测数字的解释根因。
+LightMem 论文的 §"Complexity analysis" 给出了一张严格的成本对比表，把"主流 memory system"和 LightMem 在 summary / update / API calls / runtime 四项上的渐进复杂度并排放出来[^src1]。这张表是其他"LightMem 比 baseline 便宜 X 倍"的实测数字的解释根因。
 
-**符号清单（论文 Appendix 表 1）：**
+**符号清单（论文 Appendix 表 1）[^src2]：**
 
 - `N`：对话总回合数；`T`：每回合平均 token 数；
 - `r`：单次压缩保留率（pre-compress 之后 token 数 = `r·T`）；`x`：每条消息触发的压缩迭代次数；
