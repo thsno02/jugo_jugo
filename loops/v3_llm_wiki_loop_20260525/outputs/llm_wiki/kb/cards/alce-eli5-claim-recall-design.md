@@ -46,7 +46,7 @@ ALCE 在 ELI5 上的 correctness 度量[^v3-1]分两步：
 
 - ROUGE-L 奖励"和 gold 字面重合"；BM25 top-1 passage 因为是 Wikipedia/Web 自然文本，自然有大量与 gold 主题词重合的 token——容易刷分；
 - claim recall 测"是否覆盖关键事实"，重叠词无效——top-1 passage 看似切题，但常常**只覆盖问题的一个 facet**，而 ELI5 gold 是多 facet 综合答案；
-- 论文显式援引 Krishna 2021 "hurdles" 论文作为反 ROUGE 的依据，意思是这一选型不是 ALCE 首创，而是 long-form QA 评估的共识转向。
+- 论文显式援引 Krishna 2021 "hurdles" 论文作为反 ROUGE 的依据[^src4]，意思是这一选型不是 ALCE 首创，而是 long-form QA 评估的共识转向。Ragas 的 faithfulness[^v3-3]与 RAGChecker 的 claim entailment[^v3-4]也都跳过表面相似指标、走"拆原子主张→蕴含判定"同一条路。
 
 ## 操作含义
 
