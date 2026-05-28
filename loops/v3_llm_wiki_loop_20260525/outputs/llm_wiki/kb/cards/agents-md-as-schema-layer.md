@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [complete-tech-live-frontier]
 provenance_card: ../provenance/agents-md-as-schema-layer.md
 aliases: ["AGENTS.md schema", "wiki schema config"]
-related: [beyond-the-token-bottleneck-llm-wiki-case-study, llm-knowledge-base-five-stage-workflow, robin-cartier-schema-as-product-doc, llm-wiki-schema-is-most-important, aillm-wiki-schema-as-bottleneck, anthemcreation-llm-wiki-three-layer-architecture]
+related: [beyond-the-token-bottleneck-llm-wiki-case-study, idea-file-as-agent-era-artifact, llm-wiki-schema-configuration-document]
 ---
 
 CompleteTech 的 BTTB 案例[^v3-1]把 Karpathy LLM Wiki 三层架构里那一层最容易被忽视的 `schema` 显式落地为一个 `AGENTS.md` 文件[^v2-1]。这张卡专门讨论"schema 层"的角色，因为它是决定 LLM 多轮写入是否会**发散成 slop** 的设计杠杆。
