@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#karpathy-llm-wiki, #rag, #persistent-rag, #compounding]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T10:18:00+08:00
+edited_time: 2026-05-28T11:19:00+08:00
 edited_entity: llm
 source_ids: [marvin-hn-persistent-knowledge]
 provenance_card: ../provenance/karpathy-llm-wiki-vs-rag.md
