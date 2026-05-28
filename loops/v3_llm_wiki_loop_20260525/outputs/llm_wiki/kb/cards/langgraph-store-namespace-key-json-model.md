@@ -15,9 +15,9 @@ related: [langgraph-tool-runtime-store-access, memgpt-main-vs-external-context, 
 
 ## 模型
 
-LangChain 的 long-term memory 通过 **LangGraph stores** 实现。store 把每条记忆存为一份 JSON 文档，并以两段坐标定位：
+LangChain 的 long-term memory 通过 **LangGraph stores** 实现。store 把每条记忆存为一份 JSON 文档，并以两段坐标定位 [^src1]：
 
-- **namespace（命名空间）**：类似文件夹，一个元组（tuple），常包含 user id、组织 id 或其他业务标签，用于做**层级化组织**。
+- **namespace（命名空间）**：类似文件夹，一个元组（tuple），常包含 user id、组织 id 或其他业务标签，用于做**层级化组织** [^src2]。
 - **key（键）**：命名空间内的唯一标识符，类似文件名。
 
 写入接口三件套：
