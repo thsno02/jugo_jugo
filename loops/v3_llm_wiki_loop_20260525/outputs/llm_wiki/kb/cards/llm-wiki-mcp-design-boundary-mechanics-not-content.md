@@ -49,14 +49,13 @@ Karpathy 原始 gist 把 schema 留给用户的 AGENTS.md / CLAUDE.md 是有意�
 - 这个分工要求 user 真的会写 schema；如果用户不写，server 不会拦截"乱七八糟的 wiki"——server 的"安全网"覆盖不到内容质量层。
 - alpha 阶段（v0.1.1）只支持 local filesystem backend；其他 backend 留给 Protocol 实现者。
 
-## References
-
-- 设计边界声明：`data/raw/pypi/pypi-llm-wiki-mcp/text.txt:117` 与 `text.txt:177-187`。
-- WikiStorage Protocol 扩展点：`text.txt:191-195`。
-- CVE 编号：`text.txt:184`。
-
 ## Footnotes
 
-- 边界原文：`text.txt:117` —— "The server handles the boring layer LLMs keep getting wrong: atomic writes, etag conflict checks, append-only log integrity, path containment. The skills give the agent a workflow to follow. The wiki schema lives in your own wiki/CLAUDE.md and grows with your domain. There is no Layer 3 schema validation in the server."
-- 设计哲学原文：`text.txt:187` —— "The server does not validate frontmatter shape, page categories, or link targets. That layer lives in your wiki/CLAUDE.md schema doc and grows with the LLM. Karpathy's gist is deliberately silent on content shape; baking a schema into the server would defeat the point."
-- CVE 防护原文：`text.txt:184` —— "Path containment. Slugs are regex-validated. Resolved paths are checked against the realpath of the root, blocking the CVE-2025-53109 symlink-escape class."
+[^src1]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 117 行 verbatim："The server handles the boring layer LLMs keep getting wrong: atomic writes, etag conflict checks, append-only log integrity, path containment. The skills give the agent a workflow to follow. The wiki schema lives in your own wiki/CLAUDE.md and grows with your domain. There is no Layer 3 schema validation in the server."
+[^src2]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 187 行 verbatim："The server does not validate frontmatter shape, page categories, or link targets. That layer lives in your wiki/CLAUDE.md schema doc and grows with the LLM. Karpathy's gist is deliberately silent on content shape; baking a schema into the server would defeat the point."
+[^src3]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 184 行 verbatim："Path containment. Slugs are regex-validated. Resolved paths are checked against the realpath of the root, blocking the CVE-2025-53109 symlink-escape class."
+[^src4]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 191–195 行，WikiStorage Protocol 扩展点描述。
+[^v3-1]: [karpathy-gist-three-layers](karpathy-gist-three-layers.md) — Karpathy gist 把 raw / wiki / schema 三层所有权严格分离，正是 llm-wiki-mcp 不肯把 schema 烧进 server 的源头。
+[^v3-2]: [agents-md-as-schema-layer](agents-md-as-schema-layer.md) — AGENTS.md / CLAUDE.md 作为 schema 层让多轮 ingest 不发散，是 llm-wiki-mcp 让用户自填 schema 的具体形态。
+[^v3-3]: [llm-wiki-schema-is-most-important](llm-wiki-schema-is-most-important.md) — openaitoolshub 半年实战总结：schema.md 是 LLM Wiki 里最重要的文件，缺了就退化。
+[^v3-4]: [llm-wiki-mcp-four-tools](llm-wiki-mcp-four-tools.md) — `wiki_write_page` 的 atomic write + etag CAS 在该卡有完整描述。
