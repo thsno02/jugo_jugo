@@ -19,9 +19,9 @@ Karpathy 2026 年 4 月发布的 LLM wiki 蓝图（GitHub Gist）[^v3-1]被这�
 
 1. **Sources brutes immuables**（不可变原始源）—— 论文、PDF、抓取下来的网页等；**永不修改**，存放在独立子目录（教程里建议 `/sources/`）。
 2. **Wiki gérée par LLM**（LLM 管理的 wiki）—— 一组互相链接的 markdown 文件，由 LLM 自动创建和更新；包含实体页（entity pages）、主题摘要（résumés de sujets）、跨源对比（comparaisons）与综述（synthèses）。
-3. **Fichier d'instructions**（指令文件）—— 典型文件名为 `agents.md`，定义"如何命名页面、何时新建实体 vs 更新已有页面、如何形式化矛盾"等规则——它是把 wiki 长期保持一致的主要杠杆。
+3. **Fichier d'instructions**（指令文件）—— 典型文件名为 `agents.md`[^v3-2]，定义"如何命名页面、何时新建实体 vs 更新已有页面、如何形式化矛盾"等规则——它是把 wiki 长期保持一致的主要杠杆。
 
-权限边界：原文一句话写得很硬——「Les sources brutes restent immuables. Le LLM écrit dans la wiki, l'utilisateur lit la wiki. La séparation des rôles est stricte.」[^1] 即：
+权限边界：原文一句话写得很硬——「Les sources brutes restent immuables. Le LLM écrit dans la wiki, l'utilisateur lit la wiki. La séparation des rôles est stricte.」[^src1] 即：
 
 - 原始源：人/抓取脚本写入，LLM 只读；
 - Wiki：LLM 写入，人只读；
