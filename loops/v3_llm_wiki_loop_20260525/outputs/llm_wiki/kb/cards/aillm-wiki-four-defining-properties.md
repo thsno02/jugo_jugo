@@ -32,14 +32,12 @@ aillm.wiki 是 Karpathy LLM Wiki 模式公开传播后第一波出现的"非官�
 - "Markdown-First" 不是"禁止任何工具"——下面 aillm.wiki 的"Open-Source Directory"等栏目本身就在评测各种 Obsidian 插件、Claude Code 工作流；意思是**底层数据是 markdown**，工具可换。
 - 这四条属性是平台自陈，未经第三方验证；引用时应注明来源。
 
-## References
-
-- 四属性章节："Persistent Knowledge / Markdown-First / LLM-Maintained / Token-Efficient"（`data/raw/webpage/aillm-wiki-directory/text.txt`，第 25–39 行）。
-- 与 RAG 的对比段（同文件 L25–27）以及 small-to-mid 规模限定（L37–39）。
-
 ## Footnotes
 
-- L26–27：*"Unlike RAG, your knowledge compounds. New sources ripple through existing pages, contradictions get flagged, and everything stays interlinked."*
-- L30–31：*"Plain markdown files in a folder. No vector DB, no embeddings, no infrastructure to maintain ... The knowledge base outlives any tool you use to build it."*
-- L33–35：*"Let Claude, Gemini, or any capable LLM compile, update, and cross-reference your raw sources into a structured wiki — automatically."*
-- L37–39：*"A 400K-word wiki beats RAG on small-to-mid knowledge bases for both latency and accuracy."*
+[^src1]: `data/raw/webpage/aillm-wiki-directory/text.txt` L26-27 — "Unlike RAG, your knowledge compounds. New sources ripple through existing pages, contradictions get flagged, and everything stays interlinked."
+[^src2]: 同文件 L30-31 — "Plain markdown files in a folder. No vector DB, no embeddings, no infrastructure to maintain ... The knowledge base outlives any tool you use to build it."
+[^src3]: 同文件 L33-35 — "Let Claude, Gemini, or any capable LLM compile, update, and cross-reference your raw sources into a structured wiki — automatically."
+[^src4]: 同文件 L37-39 — "A 400K-word wiki beats RAG on small-to-mid knowledge bases for both latency and accuracy."
+[^v3-1]: [karpathy-llm-wiki-vs-rag](karpathy-llm-wiki-vs-rag.md) — "退化为 RAG"的边界对比在此卡作为独立 distinction 展开。
+[^v3-2]: [karpathy-gist-three-layers](karpathy-gist-three-layers.md) — Karpathy gist 的 "intentionally abstract" 立场。
+[^v3-3]: [robin-cartier-scale-ceiling](robin-cartier-scale-ceiling.md) — small-to-mid 规模 / ~200 页天花板的另一独立 source claim。
