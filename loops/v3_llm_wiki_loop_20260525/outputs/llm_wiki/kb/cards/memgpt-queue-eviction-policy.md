@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#memgpt, #queue-manager, #context-overflow, #recursive-summarization]
 created_time: 2026-05-26T11:30:00+08:00
-edited_time: 2026-05-27T14:40:00+08:00
+edited_time: 2026-05-28T11:04:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-queue-eviction-policy.md
