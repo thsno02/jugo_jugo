@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-locomo]
 provenance_card: ../provenance/locomo-three-task-evaluation-framework.md
 aliases: [LoCoMo 评测框架]
-related: [longmemeval-five-core-memory-abilities, locomo-very-long-term-dialogue-dataset, locomo-long-context-adversarial-collapse, locomo-event-summarization-five-error-types, locomo-observation-rag-beats-summary-rag, mem0-locomo-benchmark-evaluation]
+related: [locomo-long-context-adversarial-collapse, locomo-persona-event-graph-pipeline, longmemeval-five-core-memory-abilities]
 ---
 
 ## 三个任务对应的不同记忆面
