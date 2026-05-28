@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [marvin-hn-persistent-knowledge]
 provenance_card: ../provenance/obsidian-as-ide-llm-as-programmer.md
 aliases: [Obsidian IDE 类比, LLM as maintenance engine, wiki as codebase]
-related: [karpathy-llm-wiki-vs-rag, karpathy-llm-wiki-three-layers, karpathy-gist-bookkeeping-burden, karpathy-llm-wiki-obsidian-plugin-overview, anthemcreation-llm-wiki-setup-cost-envelope, beyond-the-token-bottleneck-llm-wiki-case-study]
+related: [karpathy-gist-bookkeeping-burden]
 ---
 
 ## 类比
