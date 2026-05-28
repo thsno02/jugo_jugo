@@ -39,16 +39,11 @@ Robin Cartier 作为实践者给 Karpathy 模式做了"实战裁决"，给出**�
 - "无 RAG infrastructure"也是双刃剑——小规模优势在大规模会变成缺陷；
 - 把这套局限当成"反对 wiki 模式"是误用——真正含义是**选择合适的工具到合适的规模**。
 
-## References
-
-Robin Cartier, "Karpathy's LLM Knowledge Base: A Practitioner's Verdict" (2026-04-08)，在 robin-cartier-llm-knowledge-bases 页面 "Strengths and limits" + "When to use it vs alternatives" 两节给出。
-
-- 源路径：`data/raw/webpage/robin-cartier-llm-knowledge-bases/text.txt`（行 39–47 四条局限；行 49–58 选择矩阵；行 35–37 强项侧）。
-
 ## Footnotes
 
-- 200 页规则原文（行 41）："Scale ceiling around ~200 pages / ~100K tokens of index + content. Beyond that, the LLM can't hold the index in context and you need sub-wikis or a retrieval layer."
-- 去重脆弱原文（行 43）："Deduplication is LLM-dependent and fragile at scale — without a deterministic guard, the wiki will accumulate near-duplicate pages over time."
-- 时间信号弱原文（行 45）："Temporal signal is weak: a single 'last updated' field loses the trend-tracking capability a relational store would give you (first_seen / last_seen)."
-- 单用户原文（行 47）："Single-user by default: no access control, no merge conflicts, no audit trail beyond the log file."
-- 选择矩阵原文（行 49–57）：表格内容逐行复述。
+[^src1]: `data/raw/webpage/robin-cartier-llm-knowledge-bases/text.txt` 行 41 — "Scale ceiling around ~200 pages / ~100K tokens of index + content. Beyond that, the LLM can't hold the index in context and you need sub-wikis or a retrieval layer."
+[^src2]: 同文件 行 43 — "Deduplication is LLM-dependent and fragile at scale — without a deterministic guard, the wiki will accumulate near-duplicate pages over time."
+[^src3]: 同文件 行 45 — "Temporal signal is weak: a single 'last updated' field loses the trend-tracking capability a relational store would give you (first_seen / last_seen)."
+[^src4]: 同文件 行 47 — "Single-user by default: no access control, no merge conflicts, no audit trail beyond the log file."；以及行 49-57 选择矩阵。
+[^v3-1]: [auto-index-replaces-rag-at-small-scale](auto-index-replaces-rag-at-small-scale.md) — Karpathy 模式在小规模 100 页 / 40 万词区间适用的本卡。
+[^v3-2]: [karpathy-wiki-aliases-and-dedup](karpathy-wiki-aliases-and-dedup.md) — Karpathy 插件的强制别名 + 两层语义去重，针对的就是这种漂移。
