@@ -27,7 +27,7 @@ aillm.wiki 把搭建 LLM Wiki 简化为三步：
 
 - **schema 决定输出形状**：同一份论文按"research"和按"engineering"编译，会拆出完全不同的实体页与互链；选错就要在 wiki 长大后回头大改。
 - **schema 决定可压缩性**：LLM 把 raw 编译进 wiki 时，是按 schema 决定"保留什么/丢什么/连到哪"。schema 越贴合自己的思维模型，长期 token 成本越低，跨会话一致性越好。
-- **schema 决定可重复性**：当下次新源进来，LLM 必须沿用既有 schema 才能"自动把页面写成同一形状"；schema 不稳定，wiki 就退化成不一致 markdown 堆。
+- **schema 决定可重复性**：当下次新源进来，LLM 必须沿用既有 schema 才能"自动把页面写成同一形状"[^v3-1]；schema 不稳定，wiki 就退化成不一致 markdown 堆。
 
 操作含义：
 
