@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [owasp-llm-top10-2025]
 provenance_card: ../provenance/owasp-llm-top10-community-genealogy.md
 aliases: ["OWASP LLM Top 10", "OWASP GenAI Top 10"]
-related: [owasp-genai-landscape-2026q2, owasp-agentic-top10-2026-positioning, owasp-agentic-vs-llm-top10-2025, nist-ai-rmf-gai-profile, microsoft-agent-governance-standards-alignment, microsoft-agent-governance-eight-packages]
+related: [nist-ai-rmf-gai-profile, microsoft-agent-governance-standards-alignment, owasp-genai-landscape-2026q2, microsoft-agent-governance-eight-packages, owasp-agentic-top10-2026-positioning]
 ---
 
 OWASP 的 *Top 10 for LLM Applications* 不是某个机构发布的安全标准，而是一份**社区驱动**的"当下最值得防的 LLM 相关风险清单"[^src1]。它在 2023 年首版，2024 年 11 月 17 日推出 2025 版，由 OWASP GenAI 项目维护。它的存在意义在于：在缺乏成熟法规与认证框架的阶段，给 LLM 应用开发者与安全工程师一个**共享的优先级坐标**——讨论 prompt injection、训练数据泄漏、不安全输出处理时，可以直接引用一个被业界广泛认可的编号体系，而不必每次重新定义术语。NIST AI 600-1 GAI Profile[^v3-1] 在 voluntary 政府框架一侧扮演同等坐标的角色；二者一同被微软 Agent Governance Toolkit[^v3-2] 列为对齐对象，可见这套"坐标→工具"链路的工程闭环。
