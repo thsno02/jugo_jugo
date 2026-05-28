@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-function-chaining-heartbeat.md
 aliases: [function chaining, heartbeat flag, MemGPT control flow]
-related: [memgpt-main-vs-external-context, memgpt-nested-kv-multi-hop, memgpt-docqa-pagination-failure-mode, memgpt-virtual-context-os-analogy, langgraph-tool-runtime-store-access]
+related: [memgpt-docqa-pagination-failure-mode, memgpt-nested-kv-multi-hop]
 ---
 
 MemGPT 的事件驱动控制流里，**默认每次函数执行完成后控制权交还用户**（"yield"），等下一个外部事件（user message、scheduled interrupt 等）才再次推理[^src1]。这对长程任务是不够的——比如分页翻 retriever 的结果、把多份文档的信息拼起来回答一个问题，都需要 LLM 自己接力调多次函数。
