@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#karpathy-llm-wiki, #analogy, #maintenance-engine, #knowledge-management]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T15:16:00+08:00
+edited_time: 2026-05-28T11:58:00+08:00
 edited_entity: llm
 source_ids: [marvin-hn-persistent-knowledge]
 provenance_card: ../provenance/obsidian-as-ide-llm-as-programmer.md
