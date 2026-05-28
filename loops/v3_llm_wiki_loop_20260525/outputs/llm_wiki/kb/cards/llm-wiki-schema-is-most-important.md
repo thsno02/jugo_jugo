@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#karpathy-llm-wiki, #schema, #pitfalls, #rohit-v2]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T10:42:00+08:00
+edited_time: 2026-05-28T11:46:00+08:00
 edited_entity: llm
 source_ids: [openaitoolshub-six-months]
 provenance_card: ../provenance/llm-wiki-schema-is-most-important.md
