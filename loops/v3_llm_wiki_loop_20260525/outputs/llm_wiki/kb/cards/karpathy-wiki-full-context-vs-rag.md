@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#karpathy-wiki, #rag, #long-context, #design-philosophy]
 created_time: 2026-05-26T12:40:00+08:00
-edited_time: 2026-05-27T10:21:00+08:00
+edited_time: 2026-05-28T11:26:00+08:00
 edited_entity: llm
 source_ids: [obsidian-community-plugin]
 provenance_card: ../provenance/karpathy-wiki-full-context-vs-rag.md
