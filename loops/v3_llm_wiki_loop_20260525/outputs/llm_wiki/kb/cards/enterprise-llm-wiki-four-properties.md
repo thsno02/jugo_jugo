@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#enterprise, #llm-wiki, #karpathy, #knowledge-graph, #maintenance]
 created_time: 2026-05-26T11:45:00+08:00
-edited_time: 2026-05-27T14:44:00+08:00
+edited_time: 2026-05-28T10:56:00+08:00
 edited_entity: llm
 source_ids: [falconer-enterprise-guide]
 provenance_card: ../provenance/enterprise-llm-wiki-four-properties.md
