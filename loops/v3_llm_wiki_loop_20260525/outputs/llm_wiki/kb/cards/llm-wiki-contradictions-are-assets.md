@@ -28,9 +28,9 @@ related: [llm-wiki-rohit-v2-improvements, llm-wiki-schema-is-most-important, llm
 2. **领域结构信号**：相同主题在不同时间出现互斥结论，往往说明该主题本身在演化（如"RAG vs LLM wiki"在 2025-2026 的工业实践转向）。
 3. **检验后续判断的锚点**：当第三条新声明又来时，你可以用前两条矛盾去测试它是否一致——单一覆盖式知识库做不到这件事。
 
-Jim 的 Pitfall #3 是反向证据：他 Month 4 让 Claude 把 "RAG is the right architecture for personal knowledge bases" 重写成"LLM wiki replaces RAG"，两个月后需要旧 reasoning 与人辩论时，**旧版本已经永久丢失**。
+Jim 的 Pitfall #3 是反向证据：他 Month 4 让 Claude 把 "RAG is the right architecture for personal knowledge bases" 重写成"LLM wiki replaces RAG"，两个月后需要旧 reasoning 与人辩论时，**旧版本已经永久丢失**[^src1]。
 
-## 操作协议（Rohit v2 给出的）
+## 操作协议（Rohit v2 给出的）[^v3-1]
 
 **规则**：当 LLM 发现新声明与已有 wiki 页冲突 → **不要重写** → 给两个页都加 `contradicts:` frontmatter → 保留两版 → lint 时统一暴露。
 
