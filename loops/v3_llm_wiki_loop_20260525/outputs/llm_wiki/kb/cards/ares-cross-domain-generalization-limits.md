@@ -15,7 +15,7 @@ related: [ares-three-judge-rag-evaluation, ares-synthetic-data-pipeline, ares-pp
 
 ## 主张
 
-Saad-Falcon 等（2024）测了 ARES fine-tuned LLM judge 的跨域迁移，给出一个清晰的"什么能迁移、什么不能"的分界线：
+Saad-Falcon 等（2024）测了 ARES[^v3-1] fine-tuned LLM judge 的跨域迁移，给出一个清晰的"什么能迁移、什么不能"的分界线：
 
 - **能迁移**：query 类型变（NQ ↔ FEVER）、document 类型变(NQ ↔ MultiRC)、两者同时变（NQ ↔ ReCoRD）。Kendall's τ 普遍 ≥ 0.78，多数 ≥ 0.89。
 - **不能迁移**：
