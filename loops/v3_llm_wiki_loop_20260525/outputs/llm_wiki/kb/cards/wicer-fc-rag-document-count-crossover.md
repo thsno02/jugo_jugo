@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#kv-cache, #rag, #lost-in-the-middle, #llm-wiki]
 created_time: 2026-05-26T11:10:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T11:40:00+08:00
 edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-fc-rag-document-count-crossover.md
