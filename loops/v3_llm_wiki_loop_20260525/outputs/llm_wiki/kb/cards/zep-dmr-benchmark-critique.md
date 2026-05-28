@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-zep]
 provenance_card: ../provenance/zep-dmr-benchmark-critique.md
 aliases: [DMR 基准批判, Deep Memory Retrieval 局限]
-related: [zep-graphiti-three-tier-graph, zep-bi-temporal-edges, zep-hybrid-search-rerank, memgpt-dmr-task-evaluation, longmemeval-five-core-memory-abilities]
+related: [memgpt-dmr-task-evaluation, longmemeval-five-core-memory-abilities, mem0-baseline-failure-modes]
 ---
 
 Zep 论文用一整节论证 MemGPT 团队提出的 **Deep Memory Retrieval (DMR) 基准已不适合衡量"agent 长程记忆"**[^v3-1]，给出的依据可以独立成立，不依赖于"Zep 比 MemGPT 强"这一点[^src1]：
