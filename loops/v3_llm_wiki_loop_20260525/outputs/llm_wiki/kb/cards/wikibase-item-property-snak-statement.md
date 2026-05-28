@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [wikibase-data-model]
 provenance_card: ../provenance/wikibase-item-property-snak-statement.md
 aliases: [Wikibase core model, Wikidata model]
-related: [wikibase-three-snak-types, wikibase-statement-rank-and-references, wikibase-conceptual-not-serialization, graphrag-self-reflection-gleaning, mem0-graph-memory-variant, zep-graphiti-three-tier-graph, karpathy-llm-wiki-vs-rag]
+related: [wikibase-three-snak-types, wikibase-statement-rank-and-references, wikibase-conceptual-not-serialization, graphrag-global-sensemaking-pipeline]
 ---
 
 ## 四层抽象
