@@ -49,10 +49,10 @@ D(Δt) 是单调非增的衰减函数（指数 / 幂律 / 分段都可，需文�
 base gravity 是**纯结构属性**；effective gravity 是其访问调制形式；**utility 信号绝不进入 gravity**。这保留了框架的三力架构：
 
 - **gravity** 保护结构承重；
-- **utility** 通过 §5.3 vitality 驱动 access-modulated decay；
-- **AUDIT** 通过反事实悬挂剥离"结构显著但功能空洞"的高 gravity 条目。
+- **utility** 通过 §5.3 vitality 驱动 access-modulated decay[^v3-2]；
+- **AUDIT** 通过反事实悬挂剥离"结构显著但功能空洞"的高 gravity 条目[^v3-3]。
 
-把 utility 折进 effective gravity 会**坍缩两个独立机制**，破坏 compensate 故事——这是论文的一个显式架构承诺。
+把 utility 折进 effective gravity 会**坍缩两个独立机制**[^src3]，破坏 compensate 故事——这是论文的一个显式架构承诺。
 
 ## 与 PageRank / h-index 的区别
 
