@@ -15,13 +15,13 @@ related: [karpathy-llm-wiki-vs-rag, obsidian-as-ide-llm-as-programmer, llm-wiki-
 
 ## 三层架构
 
-Karpathy 在 gist 里把整套系统分成三个**职责正交**的层：
+Karpathy 在 gist 里把整套系统分成三个**职责正交**的层[^src1][^v2-1]：
 
 1. **Raw sources（原始源层）**：immutable 的 article / paper / transcript / image / dataset。是 ground truth，**不被 LLM 改写**。
 2. **Wiki（编译层）**：LLM-authored markdown 页，含 summaries / concepts / entities / comparisons / 更宏观的 synthesis。这是 LLM 的"工作区"。
-3. **Schema（规则层）**：一份 AGENTS.md 或 CLAUDE.md，告诉 agent "这个 wiki 应该长什么样、怎么维护"。
+3. **Schema（规则层）**：一份 AGENTS.md 或 CLAUDE.md[^v3-1]，告诉 agent "这个 wiki 应该长什么样、怎么维护"。
 
-任何一层缺失都会失效：缺 raw → 无可追溯证据；缺 wiki → 退化为 RAG；缺 schema → 退化成另一堆笔记。
+任何一层缺失都会失效：缺 raw → 无可追溯证据；缺 wiki → 退化为 RAG[^v3-2]；缺 schema → 退化成另一堆笔记。
 
 ## 三个核心操作
 
