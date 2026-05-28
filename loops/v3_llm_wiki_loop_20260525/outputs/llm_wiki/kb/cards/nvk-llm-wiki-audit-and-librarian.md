@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#llm-wiki, #nvk, #audit, #librarian, #provenance, #staleness]
 created_time: 2026-05-26T11:27:00+08:00
-edited_time: 2026-05-27T15:10:00+08:00
+edited_time: 2026-05-28T11:52:00+08:00
 edited_entity: llm
 source_ids: [llm-wiki-net]
 provenance_card: ../provenance/nvk-llm-wiki-audit-and-librarian.md
