@@ -15,14 +15,14 @@ related: [nvk-llm-wiki-hub-and-topic-wikis, agents-md-as-schema-layer, enterpris
 
 nvk/llm-wiki 把"LLM 写出来的东西能不能信"拆成两个互补的命令：`/wiki:librarian` 做内容打分，`/wiki:audit` 做证据链与可信度的反向追溯。这两件事单独都不新鲜，把它们做成**可重复的 workflow**、并把审计触发的"补研究"也包进去，是这套工具值得借鉴的地方。
 
-**`/wiki:librarian`——文章级 staleness + quality 打分：**
+**`/wiki:librarian`——文章级 staleness + quality 打分**[^src1]：
 
 - 两层扫描：第一层只读 frontmatter / metadata 做快速判断，flagged 的文章再做"deep content read"；
 - 输出"machine-readable JSON + human-readable report"，便于自动化也便于人审；
 - 有 checkpoint recovery——对大 wiki 跑长 librarian 不怕中断；
 - `--article <path>` 可针对单篇做。
 
-**`/wiki:audit`——回答"这条输出能信吗"：**
+**`/wiki:audit`——回答"这条输出能信吗"**[^src2]：
 
 - 复用 librarian 的 pass，但把范围从"文章质量"扩成"输出可信度"；
 - 跨三层追溯：`raw/` / `wiki/` / `output/`——一份 report 是从哪些文章合成的，那些文章又依赖哪些 raw 源；
