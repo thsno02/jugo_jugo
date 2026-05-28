@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#graphrag, #community-detection, #leiden, #summary-hierarchy]
 created_time: 2026-05-26T11:01:00+08:00
-edited_time: 2026-05-27T10:04:00+08:00
+edited_time: 2026-05-28T11:15:00+08:00
 edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-leiden-community-hierarchy.md
