@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#llm-wiki, #knowledge-compilation, #cegar, #wicer]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T11:35:00+08:00
 edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-cegar-compile-evaluate-refine.md
