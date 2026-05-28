@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#memory, #companion-system, #safety, #architectural-separability, #base-model-evolution]
 created_time: 2026-05-26T15:10:00+08:00
-edited_time: 2026-05-27T14:44:00+08:00
+edited_time: 2026-05-28T11:18:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-as-metabolism-architectural-separability.md
