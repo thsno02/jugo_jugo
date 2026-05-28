@@ -5,7 +5,7 @@ status: accepted
 card_type: example_pattern
 tags: [#llm-wiki, #knowledge-graph, #karpathy]
 created_time: 2026-05-26T14:45:00+08:00
-edited_time: 2026-05-27T15:06:00+08:00
+edited_time: 2026-05-28T14:28:00+08:00
 edited_entity: llm
 source_ids: [pypi-my-llm-wiki]
 provenance_card: ../provenance/my-llm-wiki-three-layer-implementation.md
