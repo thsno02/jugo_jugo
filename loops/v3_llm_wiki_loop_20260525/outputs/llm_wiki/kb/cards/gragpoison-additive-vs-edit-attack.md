@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graph-poisoning]
 provenance_card: ../provenance/gragpoison-additive-vs-edit-attack.md
 aliases: ["GRAGPOISON vs TKPA/UKPA", "additive vs manipulation attack"]
-related: [graphrag-manipulation-only-attack-surface, tkpa-graph-guided-targeted-poisoning, ukpa-coreference-disruption, graphrag-pipeline-formalism, graphrag-text-defense-blind-spot, poisonedrag-knowledge-database-attack-surface]
+related: [poisonedrag-knowledge-database-attack-surface, graphrag-text-defense-blind-spot]
 ---
 
 Wen 等人把 GraphRAG 投毒文献划成两条互补的"家族"：第一条是 GRAGPOISON（Liang 等，arXiv:2501.14050）代表的 **additive** 路线——往语料库里**加**新的 chunk，再让构图器把这些 chunk 抽出来的新实体/关系当成真知识；第二条是本论文提出的 **in-place edit** 路线（TKPA / UKPA）——**不加任何 chunk**，只改动语料中已有的少数词[^src1]。两条家族在攻击者能力、可观察痕迹、可防御性上完全不同，混着谈会丢精度。
