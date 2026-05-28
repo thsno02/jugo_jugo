@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#memory, #mem0, #baselines, #LangMem, #Zep, #A-Mem, #OpenAI-memory]
 created_time: 2026-05-26T15:20:00+08:00
-edited_time: 2026-05-27T11:47:00+08:00
+edited_time: 2026-05-28T10:54:00+08:00
 edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-baseline-failure-modes.md
