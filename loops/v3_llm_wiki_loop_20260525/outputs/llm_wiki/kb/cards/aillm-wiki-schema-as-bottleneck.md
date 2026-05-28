@@ -40,14 +40,9 @@ aillm.wiki 把搭建 LLM Wiki 简化为三步：
 - 这是站方的工程判断 + 营销话术（卖 Starter Kit 与 Schema Library），不是被同行评议过的实证结论；引用时应注明。
 - "三步走"也是简化叙事，真实流程通常需要在第 3 步反馈到第 1 步迭代 schema。
 
-## References
-
-- "Build Your LLM Wiki in 3 Steps" 章节（`data/raw/webpage/aillm-wiki-directory/text.txt`，第 53–73 行）。
-- "hardest part is picking a schema" 原句见同节引言（L53–55）。
-- 五个 schema 模板说明见 "Ready-to-Use Templates" 章节（L46–48）以及 "Schema Library"（L83–86）。
-
 ## Footnotes
 
-- L55：*"The hardest part is picking a schema that matches how you actually think — once that is locked in, every new source compiles itself in the same predictable shape."*
-- L59–61：*"Start from one of our five battle-tested schema.md templates — general, research, engineering, product, or SEO."*
-- L72–73：*"As new sources arrive, the LLM updates existing pages rather than creating orphans."*
+[^src1]: `data/raw/webpage/aillm-wiki-directory/text.txt` L55 — "The hardest part is picking a schema that matches how you actually think — once that is locked in, every new source compiles itself in the same predictable shape."
+[^src2]: 同文件 L59-61 — "Start from one of our five battle-tested schema.md templates — general, research, engineering, product, or SEO."
+[^src3]: 同文件 L72-73 — "As new sources arrive, the LLM updates existing pages rather than creating orphans."
+[^v3-1]: [agents-md-as-schema-layer](agents-md-as-schema-layer.md) — schema 文件让多轮 ingest "自动写成同一形状"的展开。
