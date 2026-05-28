@@ -18,8 +18,7 @@ related: [llm-wiki-rohit-v2-improvements, llm-wiki-schema-is-most-important, llm
 - **传统知识库视角**：矛盾 = 数据质量 bug，应消除（覆盖、删除、自动 reconcile）。
 - **LLM Wiki 视角（Rohit v2 + Jim 实战观察）**：矛盾 = **资产**，应被显式保留并 surface。
 
-> "contradictions are assets, not errors. I now explicitly run contradicts: and keep both versions."
-> —— `text.txt:96`
+> "contradictions are assets, not errors. I now explicitly run contradicts: and keep both versions."[^src1]
 
 ## 为什么是资产
 
