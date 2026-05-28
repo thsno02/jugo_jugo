@@ -56,24 +56,19 @@ ALCE 在 ELI5 上的 correctness 度量[^v3-1]分两步：
 
 ## 已知失败模式
 
-- sub-claim 不能完全覆盖 gold——ELI5 答案多样，3 条可能漏掉合理变体（论文 Limitations §2 明确承认）；
+- sub-claim 不能完全覆盖 gold——ELI5 答案多样，3 条可能漏掉合理变体（论文 Limitations §2 明确承认）[^src6]；
 - claim recall 8/120 (6.67%) 错抽率不可忽视，会在小规模评测里制造 noise；
 - 若被测系统**回答风格与 sub-claim 完全错位**（如 ASCII art / 列表），NLI 模型的判定会偏向 0——这一边界论文未量化。
 
-## References
-
-- ELI5 claim 抽取流程：`sections/appendix.tex` §"Generating Claims for ELI5"（第 244–278 行）。
-- ELI5 claim 抽取 prompt：`tables/eli5_claims_prompt.tex`（第 1823–1866 行）。
-- ROUGE vs claim recall 对比表（`tables/eli5_rouge.tex` 第 1954–1973 行）。
-- 论文 limitations 中关于 sub-claim 不全的承认（第 106–110 行）。
-- 来源：`data/raw/arxiv/arxiv-alce/agent_source_bundle.txt`。
-
 ## Footnotes
 
-[^1]: 抽取质量 verbatim（appendix.tex 第 266–270 行）："To ensure that the generated sub-claims are of good quality, we manually inspect a random sample of 40 answers and their generated sub-claims (totaling to 120 sub-claims). ... We found that 112 out of the 120 (93.33%) sub-claims received a score of 1, meaning that our generated sub-claims are of high quality and faithful to the ground truth. Furthermore, the average number of words in the generated sub-claims is 14 words, and they are typically just one sentence long."
-
-[^2]: NLI accuracy（appendix.tex 第 273–277 行）："we first manually annotate the entailment scores between 40 outputs and their sub-claims (in total of 120 pairs; ...). We then use the NLI model to obtain the entailment scores for the output and sub-claims. Using the human annotations as the ground truth label, we found that the NLI model achieved an accuracy of 80.0%."
-
-[^3]: ROUGE 反例表（tables/eli5_rouge.tex 第 1962–1967 行）："ChatGPT vani 20.6 12.0 / ChatGPT oracle 21.2 21.3 / LLaMa-13B vani 16.2 3.9 / Top-1 passage 19.1 3.0"
-
-[^4]: 反 ROUGE 论证（appendix.tex 第 249–252 行）："We elect not to use ROUGE-L as our main correctness metrics since it does not account for the different ways of expressing the same answer and it can be easily gamed [Krishna 2021]. ... A system can easily achieve high ROUGE-L score by retrieving and returning the top passage from a BM25 index."
+[^src1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` `sections/appendix.tex` 第 266–270 行 — "To ensure that the generated sub-claims are of good quality, we manually inspect a random sample of 40 answers and their generated sub-claims (totaling to 120 sub-claims). ... We found that 112 out of the 120 (93.33%) sub-claims received a score of 1, meaning that our generated sub-claims are of high quality and faithful to the ground truth. Furthermore, the average number of words in the generated sub-claims is 14 words, and they are typically just one sentence long."
+[^src2]: 同文件 `sections/appendix.tex` 第 273–277 行 — "we first manually annotate the entailment scores between 40 outputs and their sub-claims (in total of 120 pairs; ...). We then use the NLI model to obtain the entailment scores for the output and sub-claims. Using the human annotations as the ground truth label, we found that the NLI model achieved an accuracy of 80.0%."
+[^src3]: 同文件 `tables/eli5_rouge.tex` 第 1962–1967 行 — "ChatGPT vani 20.6 12.0 / ChatGPT oracle 21.2 21.3 / LLaMa-13B vani 16.2 3.9 / Top-1 passage 19.1 3.0"。
+[^src4]: 同文件 `sections/appendix.tex` 第 249–252 行 — "We elect not to use ROUGE-L as our main correctness metrics since it does not account for the different ways of expressing the same answer and it can be easily gamed [Krishna 2021]. ... A system can easily achieve high ROUGE-L score by retrieving and returning the top passage from a BM25 index."
+[^src5]: 同文件 `tables/eli5_claims_prompt.tex` 第 1823–1866 行 — ELI5 claim 抽取的 few-shot prompt 模板（3 例 in-context demo）。
+[^src6]: 同文件 limitations 第 106–110 行 — sub-claim 只取 3 条，无法完全覆盖 ELI5 多样答案的局限。
+[^v3-1]: [alce-three-dimension-citation-metric](alce-three-dimension-citation-metric.md) — ELI5 claim recall 是 ALCE 三维度评估中 *correctness* 那一维针对 long-form 数据集的口径。
+[^v3-2]: [alce-citation-recall-precision-nli](alce-citation-recall-precision-nli.md) — TRUE NLI 模型与 citation quality 用的是同一个 T5-11B；对该模型的能力上限和 Cohen κ 在那里展开。
+[^v3-3]: [ragas-faithfulness-metric](ragas-faithfulness-metric.md) — 同样"先拆原子断言再做蕴含判定"的范式，judge 换成 LLM-as-judge。
+[^v3-4]: [ragchecker-claim-entailment-decomposition](ragchecker-claim-entailment-decomposition.md) — 同样的 claim + entailment 原语，extractor/checker 改为 Llama3-70B（RefChecker）。
