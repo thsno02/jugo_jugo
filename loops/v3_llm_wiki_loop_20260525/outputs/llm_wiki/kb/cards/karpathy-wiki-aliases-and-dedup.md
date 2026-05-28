@@ -41,7 +41,7 @@ Lint 时分两轮判定候选：
 ## 与同 batch 其它 dedup 思想的对比
 
 - 与 **mem0** 的 `Contradicts → DELETE` 路径相比，Karpathy 插件的策略是"先**人工触发** Lint，再 **LLM 验证** 候选，再用户**审视后 Merge**"——三步都有人参与，写入安全等级高，但延迟与人力成本也高。
-- 与 **memory-as-metabolism** 的 minority retention 立场不同：插件做的是"语义重复"的合并，而不是"少数派假说"的保留——目标是减少冗余，不是保留方差。两者不冲突，但说明 dedup 与 minority retention 是两个独立坐标轴。
+- 与 **memory-as-metabolism** 的 minority retention 立场不同：插件做的是"语义重复"的合并，而不是"少数派假说"的保留——目标是减少冗余，不是保留方差。两者不冲突，但说明 dedup 与 minority retention 是两个独立坐标轴[^v3-1]。
 
 ## 关键设计选择
 
