@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#memory, #mem0, #tool-call, #update-operations]
 created_time: 2026-05-26T11:35:00+08:00
-edited_time: 2026-05-27T12:01:00+08:00
+edited_time: 2026-05-28T10:48:00+08:00
 edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-tool-call-add-update-delete-noop.md
