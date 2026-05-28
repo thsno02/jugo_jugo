@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-targeted-vs-random-pinning-ablation.md
 aliases: [WiCER ablation, random pinning control, targeted diagnosis matters]
-related: [wicer-cegar-compile-evaluate-refine, wicer-recovery-distribution-exceeds-fc-raw, wicer-blind-compilation-catastrophic-loss, ragchecker-tuning-knobs-saturate, ares-mock-rag-system-evaluation-design]
+related: [wicer-cegar-compile-evaluate-refine, wicer-recovery-distribution-exceeds-fc-raw]
 ---
 
 WiCER[^v3-1] 的核心做法可以拆成两件事：(a) **pinning 机制**——把若干段 50–100 字的文本作为硬约束塞回下一轮编译；(b) **diagnosis**——这些段从哪里来。如果 (a) 单独就能修复盲编译，那论文里的复杂诊断流程其实没必要。论文做了一组对照来回答这个问题。
