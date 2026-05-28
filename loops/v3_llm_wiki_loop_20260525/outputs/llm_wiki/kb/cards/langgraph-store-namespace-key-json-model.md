@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#langchain, #langgraph, #long-term-memory, #store, #api-model]
 created_time: 2026-05-26T12:15:00+08:00
-edited_time: 2026-05-27T10:27:00+08:00
+edited_time: 2026-05-28T14:10:00+08:00
 edited_entity: llm
 source_ids: [langchain-long-term-memory-docs]
 provenance_card: ../provenance/langgraph-store-namespace-key-json-model.md
