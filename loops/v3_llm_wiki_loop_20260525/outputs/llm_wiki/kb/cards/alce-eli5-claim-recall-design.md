@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#citation, #alce, #eli5, #correctness, #sub-claim, #NLI, #instructGPT]
 created_time: 2026-05-26T15:40:00+08:00
-edited_time: 2026-05-27T14:06:00+08:00
+edited_time: 2026-05-28T15:15:00+08:00
 edited_entity: llm
 source_ids: [arxiv-alce]
 provenance_card: ../provenance/alce-eli5-claim-recall-design.md
