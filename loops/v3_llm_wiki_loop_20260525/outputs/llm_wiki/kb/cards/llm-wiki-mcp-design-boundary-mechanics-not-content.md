@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [pypi-llm-wiki-mcp]
 provenance_card: ../provenance/llm-wiki-mcp-design-boundary-mechanics-not-content.md
 aliases: [mechanics not content shape, no Layer 3 validation, schema lives in CLAUDE.md]
-related: [llm-wiki-mcp-four-tools, llm-wiki-mcp-skills-vs-tools-workflow, llm-wiki-schema-is-most-important, karpathy-gist-three-layers, agents-md-as-schema-layer, aillm-wiki-schema-as-bottleneck]
+related: [karpathy-gist-three-layers, agents-md-as-schema-layer, llm-wiki-schema-is-most-important, llm-wiki-mcp-four-tools]
 ---
 
 ## 区分对象
