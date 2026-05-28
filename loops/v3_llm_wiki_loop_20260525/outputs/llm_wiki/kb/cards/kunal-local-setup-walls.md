@@ -46,17 +46,12 @@ Kunal 在自建 llm.c 本地 RAG 的两周实战里总结出三个会**直接吃
 
 边界：
 - 三堵墙的具体形态会随项目演化（OpenMP 与否、是否带 loader、是否有 Apple Silicon 内核），但**类别**稳定：编译环境 / 数据准备 / 硬件能力；
-- Kunal 文章的整体立场是"概念正确、当前实现太早"——把三堵墙作为"为什么概念落地难"的具体证据来读最准确。
-
-## References
-
-Kunal Ganglani, "LLM Wiki: I Set Up Karpathy's Local Knowledge Base — Here's What Actually Works [2026 Guide]"，2026-04-15。
-
-- 源路径：`data/raw/webpage/kunal-local-knowledge-base/text.txt`（行 95–101 三堵墙完整列表与各自修复路径；行 119–129 作者对落地难度的总结）。
+- Kunal 文章的整体立场是"概念正确、当前实现太早"[^src4]——把三堵墙作为"为什么概念落地难"的具体证据来读最准确。
 
 ## Footnotes
 
-- Wall 1 原文（行 97）："If you're on a Mac, the default Clang compiler doesn't support OpenMP, which llm.c needs for parallelism. This is the single most common complaint in the Hacker News threads around the project. The fix is installing GCC via Homebrew (brew install gcc), but the error messages don't point you there."
-- Wall 2 原文（行 99）："The wiki feature expects a single large text file. My notes lived in 400 markdown files across three tools, so I needed a preprocessing step. I wrote a quick script to concatenate everything with document boundary markers."
-- Wall 3 原文（行 101）："Running inference on CPU is possible but slow. I'm talking 30+ seconds per query on an M2 MacBook Pro for even modest-sized indexes. With a CUDA-capable GPU, queries drop to a few seconds."
-- 总体定性原文（行 119）："I think the core idea here — a personal, queryable, local knowledge base — is where things are actually headed. The current implementation is just too early."
+[^src1]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` 行 97 — "If you're on a Mac, the default Clang compiler doesn't support OpenMP, which llm.c needs for parallelism. This is the single most common complaint in the Hacker News threads around the project. The fix is installing GCC via Homebrew (brew install gcc), but the error messages don't point you there."
+[^src2]: 同文件 行 99 — "The wiki feature expects a single large text file. My notes lived in 400 markdown files across three tools, so I needed a preprocessing step. I wrote a quick script to concatenate everything with document boundary markers."
+[^src3]: 同文件 行 101 — "Running inference on CPU is possible but slow. I'm talking 30+ seconds per query on an M2 MacBook Pro for even modest-sized indexes. With a CUDA-capable GPU, queries drop to a few seconds."
+[^src4]: 同文件 行 119 — "I think the core idea here — a personal, queryable, local knowledge base — is where things are actually headed. The current implementation is just too early."
+[^v3-1]: [anthemcreation-llm-wiki-setup-cost-envelope](anthemcreation-llm-wiki-setup-cost-envelope.md) — Karpathy 模式 5 分钟 / < 10€ 的零墙落地路径。
