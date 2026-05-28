@@ -37,7 +37,7 @@ Cognition 把"agent 把一次成功操作沉淀为团队可用技能"的过程�
 
 ## 与"自动巩固"派的张力
 
-`arxiv-memory-as-metabolism` 描述的 CONSOLIDATE 是**调度自动**的：低 cohesion 隔离、高 cohesion 直接整合，无须人工介入。Cognition 的立场可以看成另一极端——**所有进入共享空间的条目都过人审**，把整合责任交回人。两种立场没有谁更对，但分别假设了不同信任模型：
+`memory-as-metabolism-five-operations` 描述的 CONSOLIDATE 是**调度自动**的：低 cohesion 隔离、高 cohesion 直接整合，无须人工介入。Cognition 的立场可以看成另一极端——**所有进入共享空间的条目都过人审**，把整合责任交回人。两种立场没有谁更对，但分别假设了不同信任模型：
 
 - 自动 CONSOLIDATE 适合**单用户 companion**（用户即审者，承担自己 wiki 的所有后果）；
 - 人审 SKILL.md 适合**多用户 team brain**（一条错误的共享技能可能误导整组，所以写入门槛抬高）。
