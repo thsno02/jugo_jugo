@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#long-term-memory, #dialogue-dataset, #benchmark]
 created_time: 2026-05-26T14:00:00+08:00
-edited_time: 2026-05-27T11:10:00+08:00
+edited_time: 2026-05-28T10:16:00+08:00
 edited_entity: llm
 source_ids: [arxiv-locomo]
 provenance_card: ../provenance/locomo-very-long-term-dialogue-dataset.md
