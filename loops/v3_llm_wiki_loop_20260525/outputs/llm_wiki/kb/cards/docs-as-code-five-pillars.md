@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [writethedocs-docs-as-code]
 provenance_card: ../provenance/docs-as-code-five-pillars.md
 aliases: ["Docs as Code 五大支柱", "Documentation as Code"]
-related: [docs-as-code-merge-block-incentive, enterprise-llm-wiki-four-properties, enterprise-llm-wiki-tool-native-ingestion, llm-wiki-karpathy-lint-grounding-trail, wicer-cegar-compile-evaluate-refine, nvk-llm-wiki-audit-and-librarian]
+related: [docs-as-code-merge-block-incentive, wicer-cegar-compile-evaluate-refine]
 ---
 
 Write the Docs 社区把 "Docs as Code"（Documentation as Code）定义为**一种文档应当与代码使用同一套工具链的工作哲学**[^src1]。这套哲学不只是"用 git 管 markdown"，它在原始定义里被拆成五条具体工具栈支柱[^src2]：
