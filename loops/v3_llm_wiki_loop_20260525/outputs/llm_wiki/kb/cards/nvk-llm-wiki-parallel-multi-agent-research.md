@@ -34,7 +34,7 @@ related: [nvk-llm-wiki-hub-and-topic-wikis, nvk-llm-wiki-audit-and-librarian, fi
 
 - 一个 agent 串行做完搜索 + 写作 + 自评，会陷入"已知偏差"循环：第一轮搜到的文献会强约束后面的搜索词；
 - 多 agent **从不同角度并行启动**（学术 / 技术 / 应用 / 新闻 / 反方），把 confirmation bias 摊平到 swarm 级；
-- gap report 不是产物的修饰，而是**下一轮研究的目标函数**——这是 LLM Wiki 从"一次性 ingest" 升级成"长期增长"的循环不变量；
+- gap report 不是产物的修饰，而是**下一轮研究的目标函数**——这是 LLM Wiki 从"一次性 ingest" 升级成"长期增长"[^v3-1]的循环不变量；
 - 多轮 vs 单轮：单轮适合快速摸底，`--min-time 2h` 适合主题研究/学习，`--plan` 适合大题分解，`thesis` 适合判断真伪。
 
 **与 fuzzy router 的衔接：**
