@@ -39,18 +39,11 @@ representation-first 的标准步骤：
 - 当代理切换、模型升级导致旧的 representation 过期时，lint 会标 `stale representations`——但 runtime 不会自动重生成，要 agent 来做。
 - representation 路径只覆盖列举出的 raw kinds；其它 mime（如视频、音频）目前不在 schema 内。
 
-## References
-
-- 两条 ingest 路径定义：`data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` L77–95（"Multimodal Ingest Model"）。
-- 支持的 raw kinds 与 manifest v2 字段：同文件 L46–55（"What 0.4.4 Implements" 前段）。
-- compile_readiness 三态与 lint 检查项：同文件 L66–73 + L172–174。
-- representation 相关命令：同文件 L62（`.llm-kb/representations/` 与 `kb_prepare_representation` / `kb_upsert_representation` / `kb_read_representations`）。
-
 ## Footnotes
 
-- `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` L79-92：两路径全文 + `"The runtime intentionally does not perform OCR or vision itself."`
-- 同文件 L51-52：支持的 raw kinds（text / PDF / image / structured data 各自的扩展名清单）。
-- 同文件 L52-53：`"manifest schema version 2, including raw_kind, mime_type, size_bytes, asset_refs, and stored representations"`。
-- 同文件 L67-68：`"compile-readiness tracking with ready, partial, and needs_representation"`。
-- 同文件 L69: `"source note validation that keeps raw_kind, mime_type, and asset_paths aligned with the actual reviewed assets"`。
-- 同文件 L73: lint 项里包含 `"missing representation trails, stale representations, inconsistent asset_paths"`。
+[^src1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` L51-52 — 支持的 raw kinds（text / PDF / image / structured data 各自的扩展名清单）。
+[^src2]: 同文件 L79-92 — 两路径全文 + "The runtime intentionally does not perform OCR or vision itself."
+[^src3]: 同文件 L52-53 — "manifest schema version 2, including raw_kind, mime_type, size_bytes, asset_refs, and stored representations"; 以及 L67-68 — "compile-readiness tracking with ready, partial, and needs_representation"
+[^src4]: 同文件 L69 — "source note validation that keeps raw_kind, mime_type, and asset_paths aligned with the actual reviewed assets"; L73 lint 项里包含 "missing representation trails, stale representations, inconsistent asset_paths"
+[^v3-1]: [llm-wiki-karpathy-runtime-vs-agent-split](llm-wiki-karpathy-runtime-vs-agent-split.md) — runtime / agent 责任分割的本卡。
+[^v3-2]: [llm-wiki-karpathy-lint-grounding-trail](llm-wiki-karpathy-lint-grounding-trail.md) — kb_lint 强制 grounding trail 的本卡。
