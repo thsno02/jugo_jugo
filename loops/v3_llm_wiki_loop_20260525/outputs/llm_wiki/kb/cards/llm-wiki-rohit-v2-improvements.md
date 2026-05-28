@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [openaitoolshub-six-months]
 provenance_card: ../provenance/llm-wiki-rohit-v2-improvements.md
 aliases: [Rohit Ghumare v2, memory lifecycle frontmatter, typed wikilinks, contradiction protocol]
-related: [llm-wiki-schema-is-most-important, llm-wiki-contradictions-are-assets, karpathy-llm-wiki-three-layers, llm-wiki-tldr-load-bearing, karpathy-gist-three-layers, llm-wiki-karpathy-runtime-vs-agent-split]
+related: [llm-wiki-contradictions-are-assets]
 ---
 
 ## 背景
