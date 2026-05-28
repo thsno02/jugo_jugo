@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-ragas]
 provenance_card: ../provenance/ragas-faithfulness-metric.md
 aliases: [F = |V| / |S|, statement decomposition, 忠实度指标]
-related: [ragas-reference-free-rag-evaluation, ragas-answer-relevance-metric, ragas-context-relevance-metric, ragas-wikieval-dataset, alce-citation-recall-precision-nli, ragchecker-claim-entailment-decomposition, ragchecker-generator-trilemma]
+related: [ragas-wikieval-dataset, ragas-answer-relevance-metric, ragas-context-relevance-metric, ragchecker-claim-entailment-decomposition, alce-citation-recall-precision-nli, alce-eli5-claim-recall-design]
 ---
 
 ## 算法两步走
