@@ -15,13 +15,13 @@ related: [cognition-human-approved-skill-md, file-outputs-back-as-compounding-lo
 
 ## "产品就是闭环，不是仪表盘"
 
-Cognition 主张面向编码 agent 的团队记忆**不是上下文堆栈**，而是一个 4 步、连续运转的闭环：
+Cognition 主张面向编码 agent 的团队记忆**不是上下文堆栈**，而是一个 4 步、连续运转的闭环[^src1]：
 
 | 步骤 | 行为 | 何时触发 |
 | --- | --- | --- |
 | **01 Ask first**（先问） | 任务开始时 agent 先查询团队**已经解决过**的相似问题 | 任务起点 |
 | **02 Capture work**（捕获工作） | 命令、文件编辑、卡点、结果作为证据流被记录为可复用工作流的原材料 | 任务进行中 |
-| **03 Save skills**（保存技能） | Cognition 起草 SKILL.md 并**等待人审 yes** 才向团队公开 | 工作结束、确认有价值后 |
+| **03 Save skills**（保存技能） | Cognition 起草 SKILL.md 并**等待人审 yes** 才向团队公开[^v3-1] | 工作结束、确认有价值后 |
 | **04 Retrieve later**（后续取用） | 下一个 agent（如同事 Bob）遇到同类墙时，加载前一作者（Alice）的修复方案 | 下次相似任务 |
 
 页面用了一个具体场景串起这个闭环：Alice 在 Claude Code 中解决了 Vercel 的 `.env` 生产配置错配问题（"vercel --prod failed → .env production mismatch → build passed after fix"），系统把这些证据 → 起草草稿 `vercel-env-scoping` → 等待 Alice 的人审 → Bob 后来在同样问题上撞墙，agent 立即拉出 "Using Alice's deploy fix"。
