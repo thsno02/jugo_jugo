@@ -40,15 +40,11 @@ Classmethod 工程师森茂洋的实践提供了一个值得记住的 *retrofit*
 - Karpathy 与森茂都强调这仍是 "hacky collection of scripts"；不要把 `/kb-compile` 当成可以照抄上线的产品级方案。
 - "Mem0 + wiki 互补"是经验判断，没有跑过 A/B 测试；引用应注明。
 
-## References
-
-- 整段实践见 §"自分は Claude Code でこう組み込んでいる"（`data/raw/webpage/developersio-jp-pattern/text.txt`，第 85–111 行）。
-- 与 RAG 的折衷见 §"RAG とどう違うのか"末段（同文件 L83）。
-- "hacky collection of scripts" 自评见 L66、L109、L121。
-
 ## Footnotes
 
-- L97：目录结构 *"workspace/ ├── knowledge/ ├── wiki/ │ ├── _index.md │ ├── _recent.md │ └── projects/"*。
-- L99：*"workspace/knowledge/ が Raw sources、各ディレクトリに置いた CLAUDE.md が Schema、 workspace/wiki/ が Compiled Wiki に相当します。"*
-- L101：*"/kb-compile blog のように特定のプロジェクトだけをコンパイルすることも、 /kb-compile --all で全体を一括更新することもできます。Karpathy 氏の Lint に相当する --lint オプションもあって、矛盾検出やリンク切れチェック、古い記事の検出ができるようにしています。"*
-- L83：*"アドホックな質問には RAG 的な検索が便利で、全体像の把握やプロジェクト横断の理解には wiki が便利"*。
+[^src1]: `data/raw/webpage/developersio-jp-pattern/text.txt` L97 — 目录结构 "workspace/ ├── knowledge/ ├── wiki/ │ ├── _index.md │ ├── _recent.md │ └── projects/"
+[^src2]: 同文件 L99 — "workspace/knowledge/ が Raw sources、各ディレクトリに置いた CLAUDE.md が Schema、 workspace/wiki/ が Compiled Wiki に相当します。"
+[^src3]: 同文件 L101 — "/kb-compile blog のように特定のプロジェクトだけをコンパイルすることも、 /kb-compile --all で全体を一括更新することもできます。Karpathy 氏の Lint に相当する --lint オプションもあって、矛盾検出やリンク切れチェック、古い記事の検出ができるようにしています。"
+[^src4]: 同文件 L83 — "アドホックな質問には RAG 的な検索が便利で、全体像の把握やプロジェクト横断の理解には wiki が便利"
+[^v3-1]: [karpathy-llm-kb-three-layer-arch](karpathy-llm-kb-three-layer-arch.md) — Raw / Schema / Wiki 三层架构的本卡。
+[^v3-2]: [karpathy-llm-kb-three-operations](karpathy-llm-kb-three-operations.md) — Ingest / Query / Lint 三操作的本卡。
