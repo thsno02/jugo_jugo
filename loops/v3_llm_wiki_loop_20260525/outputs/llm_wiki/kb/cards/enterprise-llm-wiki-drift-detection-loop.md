@@ -30,7 +30,7 @@ Karpathy 个人 LLM Wiki 的 health check 是 on-demand 的[^v3-1]——他想�
 
 - **drift detection 与 ownership 必须同时存在**。只检测不路由，等于把告警堆成另一种"无人处理的孤岛"；只路由不检测，等于把负担推回 doc owner 主动巡检。
 - **review cadence 应该匹配组织变更率**。一个每天 50 个 PR 的工程组织无法用季度 audit；同理，把日审给低变更率的 ops 团队是过载。系统应让团队配置 review cadence，但 detection 永远 on。
-- **AI agent 是消费者，不只是工具**。企业级 Wiki 的关键消费者已经不只是人——文章特别指出"agents query the same knowledge graph through Claude MCP"。agent 在循环里既消费又（间接）生产 context，这让 stay-current 的失败影响放大。
+- **AI agent 是消费者，不只是工具**。企业级 Wiki 的关键消费者已经不只是人——文章特别指出"agents query the same knowledge graph through Claude MCP"[^src6]。agent 在循环里既消费又（间接）生产 context，这让 stay-current 的失败影响放大。
 
 边界 / 反例：
 
