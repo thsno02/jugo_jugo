@@ -40,9 +40,9 @@ Karpathy 原始 gist 把 schema 留给用户的 AGENTS.md / CLAUDE.md 是有意�
 
 ## 实践含义
 
-- **用户责任**：必须在 `wiki/CLAUDE.md` 里写出 frontmatter 字段、slug 规则、page 类型、link 约定、contradiction-resolution 协议。**没有这份文件**，wiki 在 2-3 个月内会退化成"a graveyard of abandoned notes"（呼应同源同主题的 openaitoolshub 经验文章）。
-- **系统责任**：server 保证 `wiki_write_page` 不会丢数据、不会被竞态破坏、不会被路径越权——这些是 LLM 自己写永远写不对的。
-- **扩展责任**：想换存储后端（SQLite / Notion / GDrive）只需实现 `WikiStorage` Protocol 给 `build_server` 用，因为 mechanics 与 storage 解耦。
+- **用户责任**：必须在 `wiki/CLAUDE.md` 里写出 frontmatter 字段、slug 规则、page 类型、link 约定、contradiction-resolution 协议。**没有这份文件**，wiki 在 2-3 个月内会退化成"a graveyard of abandoned notes"（呼应同源同主题的 openaitoolshub 经验文章 [^v3-3]）。
+- **系统责任**：server 保证 `wiki_write_page` [^v3-4] 不会丢数据、不会被竞态破坏、不会被路径越权——这些是 LLM 自己写永远写不对的。
+- **扩展责任**：想换存储后端（SQLite / Notion / GDrive）只需实现 `WikiStorage` Protocol 给 `build_server` 用，因为 mechanics 与 storage 解耦 [^src4]。
 
 ## 边界与限制
 
