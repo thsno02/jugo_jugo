@@ -17,8 +17,7 @@ related: [karpathy-llm-wiki-three-layers, llm-wiki-schema-is-most-important, llm
 
 Jim Liu 在 6 个月 35 页的实战观察：
 
-> "TL;DR enforcement saves your context window more than the index does. Every page in my wiki has a ≤50-character TL;DR at the top. When I ask Claude 'what did I decide about RAG vs LLM wiki?', it can scan 35 TL;DRs in a single read instead of trying to compress 35 full pages."
-> —— `text.txt:38`
+> "TL;DR enforcement saves your context window more than the index does. Every page in my wiki has a ≤50-character TL;DR at the top. When I ask Claude 'what did I decide about RAG vs LLM wiki?', it can scan 35 TL;DRs in a single read instead of trying to compress 35 full pages."[^src1]
 
 Karpathy gist 提到过"TL;DR on top"的想法，但只是一笔带过；Jim 给它一个准确定位：**load-bearing**（承重，结构上不可缺）。
 
