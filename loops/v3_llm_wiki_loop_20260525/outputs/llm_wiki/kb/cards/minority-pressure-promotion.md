@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#memory, #consolidation, #belief-revision, #variance]
 created_time: 2026-05-26T11:15:00+08:00
-edited_time: 2026-05-27T15:00:00+08:00
+edited_time: 2026-05-28T11:28:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/minority-pressure-promotion.md
