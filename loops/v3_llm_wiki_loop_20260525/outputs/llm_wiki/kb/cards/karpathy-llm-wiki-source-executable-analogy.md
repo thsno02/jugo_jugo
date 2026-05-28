@@ -38,7 +38,7 @@ Karpathy 2026-04 发布 LLM Wiki Gist 时给出的核心类比[^src1]是：
 ## 边界与误用
 
 - "wiki 编译"比"源码编译"宽松：LLM 的编译结果**不确定**且依赖模型质量。换模型重 ingest，wiki 结构可能漂移。
-- 没有官方 Karpathy 实现——只有一个 Gist 作为蓝图，需要用户自己用 `agents.md` 把"如何命名页面 / 何时新建 entity vs 更新已有 / 如何记录矛盾"等规则写清楚。`agents.md` 质量直接决定 wiki 一致性。
+- 没有官方 Karpathy 实现——只有一个 Gist 作为蓝图，需要用户自己用 `agents.md` 把"如何命名页面 / 何时新建 entity vs 更新已有 / 如何记录矛盾"等规则写清楚[^v3-2]。`agents.md` 质量直接决定 wiki 一致性[^src3]。
 - 当语料 > 几百文档，token 维护互联的成本会让 vector search 重新变得划算——文章明确指出这是 LLM wiki 与 RAG 的"切换点"。
 
 ## References
