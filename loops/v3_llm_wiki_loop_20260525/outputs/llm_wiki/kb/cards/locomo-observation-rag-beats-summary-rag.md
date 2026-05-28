@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#rag, #long-term-memory, #retrieval-granularity]
 created_time: 2026-05-26T14:15:00+08:00
-edited_time: 2026-05-27T10:57:00+08:00
+edited_time: 2026-05-28T10:24:00+08:00
 edited_entity: llm
 source_ids: [arxiv-locomo]
 provenance_card: ../provenance/locomo-observation-rag-beats-summary-rag.md
