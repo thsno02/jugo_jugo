@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#citation, #alce, #prompting, #rag, #rerank]
 created_time: 2026-05-26T11:25:00+08:00
-edited_time: 2026-05-27T14:08:00+08:00
+edited_time: 2026-05-28T15:10:00+08:00
 edited_entity: llm
 source_ids: [arxiv-alce]
 provenance_card: ../provenance/alce-prompting-strategies.md
