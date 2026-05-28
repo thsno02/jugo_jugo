@@ -74,10 +74,10 @@ related: [alce-three-dimension-citation-metric, alce-prompting-strategies, mem0-
 读法：
 
 - retrieval recall 56.8 是天花板；
-- 给 gold passage 时 LLM 拿到 48.9——还差 8 个点没拣干净（"context 里有答案但模型没用上"）；
-- 给真实 retrieve 结果时再降到 40.4——8.5 个点的下降归因于 retriever 噪声。
+- 给 gold passage 时 LLM 拿到 48.9——还差 8 个点没拣干净（"context 里有答案但模型没用上"[^src2]）；
+- 给真实 retrieve 结果时再降到 40.4——8.5 个点的下降归因于 retriever 噪声[^src3]。
 
-ALCE 由此推出三条挑战：**(1) retriever 质量是上限**；**(2) context window 限制了能塞多少 passage**；**(3) LLM 在上下文里 synthesize 多文档的能力本身就有限**。后两条之所以同时成立，是因为 (3) 即便给到长 context（ChatGPT-16K）也不会自动好。
+ALCE 由此推出三条挑战：**(1) retriever 质量是上限**；**(2) context window 限制了能塞多少 passage**；**(3) LLM 在上下文里 synthesize 多文档的能力本身就有限**。后两条之所以同时成立，是因为 (3) 即便给到长 context（ChatGPT-16K）也不会自动好。第 (3) 条对应 RAGChecker 在生成器侧报告的 *context utilization* 指标[^v3-2]——"语料里相关的部分有多少被搬进答案"——只是 ALCE 在 reader-上限角度报，RAGChecker 在 claim-level 报。
 
 ## 操作含义
 
