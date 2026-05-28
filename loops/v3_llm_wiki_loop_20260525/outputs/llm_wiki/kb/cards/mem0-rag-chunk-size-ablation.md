@@ -41,9 +41,9 @@ related: [mem0-locomo-benchmark-evaluation, mem0-baseline-failure-modes, ragchec
 读出来的几条规律：
 
 1. **k=2 显著优于 k=1**：每个 chunk 大小上 k=2 都比 k=1 高 9–13 个 J 分；更多上下文确实有用，但仅在 k≤2 之内值得花。
-2. **最优 chunk 在 256 附近**：太小（128）丢上下文，过大（1024/2048/4096）噪声压垮信号；曲线**非单调**——在 4096 跌至谷底后又在 8192 反弹（因为 8192 几乎等价 full-context-of-one-chunk，命中率升高）。
-3. **k=2、chunk=256 是 J=60.97 的甜点**——这是 Mem0 abstract 里用作"strongest RAG configuration"的参照点。
-4. Mem0 的 66.88 比这一甜点高约 **5.91 J（绝对）/ 9.7%（相对）**；Mem0g 的 68.44 高 **7.47 J / 12.2%（相对）**。论文写"around a 10% relative improvement"对应的就是 Mem0；"around 12% relative gain"对应 Mem0g。
+2. **最优 chunk 在 256 附近**：太小（128）丢上下文，过大（1024/2048/4096）噪声压垮信号；曲线**非单调**——在 4096 跌至谷底后又在 8192 反弹（因为 8192 几乎等价 full-context-of-one-chunk，命中率升高）。这与 LoCoMo 观察的"observation top-5 优于 top-50"的 SNR 现象同质[^v3-2]。
+3. **k=2、chunk=256 是 J=60.97 的甜点**[^src3]——这是 Mem0 abstract 里用作"strongest RAG configuration"的参照点。
+4. Mem0 的 66.88 比这一甜点高约 **5.91 J（绝对）/ 9.7%（相对）**；Mem0g 的 68.44 高 **7.47 J / 12.2%（相对）**[^src4]。论文写"around a 10% relative improvement"对应的就是 Mem0；"around 12% relative gain"对应 Mem0g。
 
 ## 时延-质量权衡（同表）
 
