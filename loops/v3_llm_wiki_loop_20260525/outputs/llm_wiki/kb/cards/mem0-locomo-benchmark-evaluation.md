@@ -23,7 +23,7 @@ Mem0 评估同时报告[^src1]：
 - **token**：用 `cl100k_base` 编码，统计检索阶段返回的 token 数；
 - **延迟**：search latency（取 memories/chunks 的时间）+ total latency（含 LLM 生成）的 p50 与 p95。
 
-## 主表数据（LLM-as-Judge）
+## 主表数据（LLM-as-Judge）[^src2]
 
 | 方法 | Single-Hop J | Multi-Hop J | Open-Domain J | Temporal J |
 | --- | --- | --- | --- | --- |
@@ -37,20 +37,20 @@ Mem0 评估同时报告[^src1]：
 要点：
 
 - **Mem0** 在 single-hop、multi-hop 上是表中最高 J；
-- **Mem0g** 在 temporal 上最高，open-domain 仅次于 Zep；
-- OpenAI 在 temporal 上跌至 21.71，论文归因于"即便显式 prompt 要求带时间戳，多数生成记忆仍丢失时间戳"。
+- **Mem0g** 在 temporal 上最高，open-domain 仅次于 Zep[^v3-3]；
+- OpenAI 在 temporal 上跌至 21.71，论文归因于"即便显式 prompt 要求带时间戳，多数生成记忆仍丢失时间戳"[^src3]——这与 LongMemEval 商业系统 pilot 观察的 KU 失败属于同源问题[^v3-4]。
 
-## 总分（Overall J）与 RAG / Full-context 对比
+## 总分（Overall J）与 RAG / Full-context 对比[^src4]
 
 - **Full-context**（26k tokens 全塞进窗口）J ≈ 72.90 —— 最高，但 p50/p95 total latency = 9.870s / 17.117s；
-- **最强 RAG 配置**（k=2, chunk=256）J ≈ 60.97；
+- **最强 RAG 配置**（k=2, chunk=256）J ≈ 60.97[^v3-5]；
 - **Mem0** J ≈ 66.88，**Mem0g** J ≈ 68.44；
 - 与 full-context 相比，**Mem0 的 p95 total latency 降低约 92%（17.117s → 1.440s），Mem0g 降低约 85%（→ 2.590s）**；
 - 与最强 RAG 相比，Mem0/g 提升约 10–12% 的 J 分。
 
-论文给出的 "26% relative improvement in LLM-as-Judge over OpenAI" 是 abstract 中的总结性数字，源自上述四类问题加权后与 OpenAI ChatGPT memory 的对比。
+论文给出的 "26% relative improvement in LLM-as-Judge over OpenAI" 是 abstract 中的总结性数字[^src5]，源自上述四类问题加权后与 OpenAI ChatGPT memory 的对比。
 
-## token / 构建效率（vs Zep）
+## token / 构建效率（vs Zep）[^src6]
 
 - **Mem0**：~7k tokens/对话；
 - **Mem0g**：~14k tokens/对话；
@@ -58,28 +58,27 @@ Mem0 评估同时报告[^src1]：
 - 原始 full-context：~26k tokens/对话；
 - **Mem0g vs Zep**：约 43× 更少 token，存储与查询成本差距明显。
 
-另：论文报告 Zep 添加记忆后**短时间**内即时检索经常答错，须等"几个小时"再 query 才好——猜测 Zep 内部有异步 LLM 图构建。Mem0 图构建在最坏情况下也小于 1 分钟，新记忆可立即用于查询。
+另：论文报告 Zep 添加记忆后**短时间**内即时检索经常答错，须等"几个小时"再 query 才好[^src7]——猜测 Zep 内部有异步 LLM 图构建。Mem0 图构建在最坏情况下也小于 1 分钟，新记忆可立即用于查询。
 
 ## 论文未声称的事
 
-- **不是 SOTA 全胜**：Zep 在 open-domain F1/J 仍有 ~1pp 优势；
+- **不是 SOTA 全胜**：Zep 在 open-domain F1/J 仍有 ~1pp 优势；详细对比见 baseline 失败模式分析[^v3-6]；
 - 不评估 adversarial / unanswerable 类问题；
 - 不做长序列以外的多模态评估；
 - 不报告 NOOP 比率，因此"语义抖动率"在论文中不可直接量化。
 
-## References
-
-- §4 主表（`sections/result.tex` 第 1047–1085 行）：四类题目质量对比。
-- §4.3 / Table（第 1218–1264 行）：延迟与 token 总体比较，含 RAG/full-context/Zep/LangMem/OpenAI/Mem0/Mem0g 全部条目。
-- §3.4 / §5（第 1313–1318 行）：token 总览，含 Zep 600k 与 Mem0 7k 的对比。
-- abstract（`sections/abs.tex` 第 681–698 行）：26% over OpenAI、91% p95 lower latency、>90% token cost 节省的总体声明。
-- 数据集说明 §3.1（`sections/experiment_setup.tex` 第 1010–1011 行）。
-- 来源：`data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`。
-
 ## Footnotes
 
-[^1]: abstract 总体声明 verbatim（第 689–691 行）："Mem0 achieves 26% relative improvements in the LLM-as-a-Judge metric over OpenAI, while Mem0 with graph memory achieves around 2% higher overall score than the base Mem0 configuration. ... Mem0 attains a 91% lower p95 latency and saves more than 90% token cost."
-
-[^2]: OpenAI temporal 跌幅原因原文（§4 `result.tex` 第 1212 行）："OpenAI notably underperforms, with scores below 15%, primarily due to missing timestamps in most generated memories despite explicit prompting in the OpenAI ChatGPT to extract memories with timestamps."
-
-[^3]: Zep 异步图构建的运营观察原文（第 1316 行）："After adding memories to Zep's system, we observed that immediate memory retrieval attempts often failed to answer our queries correctly. Interestingly, re-running identical searches after a delay of several hours yielded considerably better results."
+[^src1]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/experiment_setup.tex` 第 1010–1011 行（§3.1 数据集说明）— LOCOMO 评估的 base 设置与四类题目划分。
+[^src2]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/result.tex` 第 1047–1085 行（§4 主表）— 四类题目质量对比 F1/B1/J。
+[^src3]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/result.tex` 第 1212 行 — "OpenAI notably underperforms, with scores below 15%, primarily due to missing timestamps in most generated memories despite explicit prompting in the OpenAI ChatGPT to extract memories with timestamps."
+[^src4]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/result.tex` 第 1218–1264 行（§4.3 / Table）— RAG/full-context/Zep/LangMem/OpenAI/Mem0/Mem0g 全部条目的延迟与 token。
+[^src5]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/abs.tex` 第 689–691 行 — "Mem0 achieves 26% relative improvements in the LLM-as-a-Judge metric over OpenAI, while Mem0 with graph memory achieves around 2% higher overall score than the base Mem0 configuration. ... Mem0 attains a 91% lower p95 latency and saves more than 90% token cost."
+[^src6]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — 第 1313–1318 行 — token 总览，含 Zep 600k 与 Mem0 7k 的对比。
+[^src7]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — 第 1316 行 — "After adding memories to Zep's system, we observed that immediate memory retrieval attempts often failed to answer our queries correctly. Interestingly, re-running identical searches after a delay of several hours yielded considerably better results."
+[^v3-1]: [locomo-very-long-term-dialogue-dataset](locomo-very-long-term-dialogue-dataset.md) — LOCOMO 数据集本身的"超长对话"定义。
+[^v3-2]: [locomo-three-task-evaluation-framework](locomo-three-task-evaluation-framework.md) — LOCOMO 的三任务评测框架，包含被 Mem0 排除的 adversarial 类。
+[^v3-3]: [mem0-graph-memory-variant](mem0-graph-memory-variant.md) — Mem0g 图变体的具体设计。
+[^v3-4]: [longmemeval-commercial-system-failure-modes](longmemeval-commercial-system-failure-modes.md) — ChatGPT 在 LongMemEval 上的 KU 失败属于同源问题。
+[^v3-5]: [mem0-rag-chunk-size-ablation](mem0-rag-chunk-size-ablation.md) — k=2, chunk=256 的 RAG 甜点扫表来源。
+[^v3-6]: [mem0-baseline-failure-modes](mem0-baseline-failure-modes.md) — 五个 baseline 的不同失败模式分析。
