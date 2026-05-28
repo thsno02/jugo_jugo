@@ -27,8 +27,7 @@ Karpathy 的 LLM Wiki gist（2026-04-04 发布，HN 274 分 89 评论）[^src1]�
 | 答案性质 | transient（每次重生成） | compiled artifact（会被累积复用） |
 | 价值随时间 | 与质问数量无关 | 单调累积 |
 
-> "In that model, the wiki becomes a compiled artifact that keeps getting better over time rather than a transient answer assembled on demand."
-> —— `text.txt:25`
+> "In that model, the wiki becomes a compiled artifact that keeps getting better over time rather than a transient answer assembled on demand."[^src3]
 
 ## 关键的"增量动作"
 
