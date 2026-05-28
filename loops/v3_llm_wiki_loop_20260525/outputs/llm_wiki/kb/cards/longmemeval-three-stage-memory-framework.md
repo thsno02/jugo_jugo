@@ -15,36 +15,36 @@ related: [longmemeval-five-core-memory-abilities, longmemeval-key-expansion-with
 
 ## 统一视角
 
-LongMemEval 提出一个统一框架把"现有所有 memory-augmented chat assistant"都装下：把长期记忆建模成一个 key-value 数据存 $[(k_1, v_1), (k_2, v_2), ...]$，分三个执行阶段、暴露四个可调控制点（control point, CP）：
+LongMemEval 提出一个统一框架把"现有所有 memory-augmented chat assistant"都装下：把长期记忆建模成一个 key-value 数据存 $[(k_1, v_1), (k_2, v_2), ...]$，分三个执行阶段、暴露四个可调控制点（control point, CP）[^src1]：
 
 | 阶段 | 控制点 | 含义 |
 |---|---|---|
-| **Indexing** | CP1: Value | 把每个 session 存成什么粒度——整段 session？拆成 round？再压成 fact / summary / keyphrase？ |
+| **Indexing** | CP1: Value[^src2] | 把每个 session 存成什么粒度——整段 session？拆成 round？再压成 fact / summary / keyphrase？ |
 | **Indexing** | CP2: Key | 用什么作为 key——直接用 value 自身？用从 value 抽出来的 fact / summary / keyphrase？还是用拼接后的 V + fact？ |
 | **Retrieval** | CP3: Query | query 怎么构造——直接用问题？加上提取的时间区间？做关键词扩写？|
-| **Reading** | CP4: Reading strategy | 检索到的 top-k 怎么读——直接喂给 LLM？用 Chain-of-Note 先抽证据再答？JSON 结构化？|
+| **Reading** | CP4: Reading strategy[^src3] | 检索到的 top-k 怎么读——直接喂给 LLM？用 Chain-of-Note 先抽证据再答？JSON 结构化？|
 
-九个现有系统（In-context RAG、MemoryBank、LD-Agent、CoN、ChatGPT、Coze、RAPTOR、MemWalker、HippoRAG）都可视为这四个 CP 的不同实例。
+九个现有系统（In-context RAG、MemoryBank、LD-Agent、CoN、ChatGPT、Coze、RAPTOR、MemWalker、HippoRAG）都可视为这四个 CP 的不同实例[^src4]。
 
 ## 为什么这套视角值得用
 
-- **每条记忆系统的优化都能定位到某个 CP**。论文实验依次扫描四个 CP 找到组合："Value=round + Key=V+fact + Query=question+time + Reading=CoN(JSON)"是当时最优解。
+- **每条记忆系统的优化都能定位到某个 CP**。论文实验依次扫描四个 CP 找到组合："Value=round + Key=V+fact[^v3-1] + Query=question+time[^v3-2] + Reading=CoN(JSON)[^v3-3]"是当时最优解。
 - 把"indexing 是写入侧 vs retrieval 是读出侧 vs reading 是生成侧"分开后，三者优化彼此正交；尤其 reading 一项被很多 RAG 工作忽视，论文实验显示**即便 oracle 检索，CoN+JSON 仍能比 naive 读法多 10 个绝对分**。
-- 框架是 plug-and-play 的：你可以替换某个 CP 而不动其它，对工程实现友好。
+- 框架是 plug-and-play 的：你可以替换某个 CP 而不动其它，对工程实现友好。Mem0 的 extract→update→retrieve 管线就可以视为该框架下"indexing+retrieval 全自动化"的具体选型[^v3-4]；LightMem 的三层 Atkinson–Shiffrin 架构则把 indexing/CP1 进一步多分了一级缓冲[^v3-5]。
 
 ## 边界
 
 - 框架只覆盖"在线 context 压缩"路线——把每个 session 顺序处理后存起来按需检索；它不涵盖差异化的 architecture-level memory（如 Memorizing Transformer、TRIME）或单纯的 long-context 直读路线。
 - "value 可以是 round / session / fact"是离散的几种选择，并不是连续 spectrum——选项之间的取舍由实验决定，没有理论解。
 
-## References
-
-- 三阶段四控制点定义：`data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` 第 1418-1456 行（§4 unified view + §4.2 CP1-CP4）。
-- 九系统映射表：第 1141-1153 行（表 `tab:memory-system-dimensions-comp`），最后一行是论文推荐设计：`round | K = V + fact | question + time | flat | Yes | CoN`。
-- "Reading 也很重要"：第 1521 行（reading 设计在 oracle retrieval 下仍能影响 10 绝对分）。
-
 ## Footnotes
 
-- CP 1 Value 原文："The value represents the format and granularity of each session stored in memory."（第 1447 行）
-- CP 4 Reading 原文："optimizations such as extracting key information before answering (Chain-of-Note ...) and using structured format prompting ... are crucial for achieving high reading performance."（第 1456 行）
-- 推荐设计行（表 `tab:memory-system-dimensions-comp`）："Our Design | round | K = V + fact | question + time | flat | Yes | CoN"（第 1153 行）
+[^src1]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 第 1418-1456 行（§4 unified view + §4.2 CP1-CP4）— 三阶段四控制点定义。
+[^src2]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 第 1447 行 — "The value represents the format and granularity of each session stored in memory."
+[^src3]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 第 1456 行 — "optimizations such as extracting key information before answering (Chain-of-Note ...) and using structured format prompting ... are crucial for achieving high reading performance."；第 1521 行 — reading 设计在 oracle retrieval 下仍能影响 10 绝对分。
+[^src4]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 第 1141-1153 行（表 `tab:memory-system-dimensions-comp`）+ 第 1153 行 — "Our Design | round | K = V + fact | question + time | flat | Yes | CoN"。
+[^v3-1]: [longmemeval-key-expansion-with-facts](longmemeval-key-expansion-with-facts.md) — CP2 Key 的最优做法 K = V + fact。
+[^v3-2]: [longmemeval-time-aware-query-expansion](longmemeval-time-aware-query-expansion.md) — CP3 Query 的时间感知扩展。
+[^v3-3]: [longmemeval-chain-of-note-and-json-reading](longmemeval-chain-of-note-and-json-reading.md) — CP4 Reading 的 CoN + JSON。
+[^v3-4]: [mem0-extract-update-pipeline](mem0-extract-update-pipeline.md) — Mem0 在该框架下的具体落点。
+[^v3-5]: [lightmem-three-stage-atkinson-shiffrin](lightmem-three-stage-atkinson-shiffrin.md) — LightMem 把 indexing/CP1 拆成 sensory / STM / LTM 三层。
