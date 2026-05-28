@@ -16,14 +16,14 @@ related: [karpathy-gist-three-layers, karpathy-gist-bookkeeping-burden, hn-llm-w
 Kunal Ganglani 在 2026 年 4 月的博文 "I Set Up Karpathy's Local Knowledge Base — Here's What Actually Works" 把"Karpathy 的 LLM Wiki"解读为**基于 llm.c 的本地 RAG 系统**——这与 Karpathy 在 2026 年 4 月 gist 里描述的模式**完全不同**。这一漂移本身是一个值得在 wiki 里标注的术语现象。
 
 **Kunal 的解读（FAQ 直白复述）**：
-- "Karpathy's LLM wiki is a local, private, queryable knowledge base built on Andrej Karpathy's open-source llm.c project — a minimalist C/CUDA implementation"；
-- 架构是三阶段 RAG："Ingestion → Embedding → Generation"，把文档切成 256–512 token chunks，做 vector embedding，按 cosine 相似度取 top-K 拼进 prompt；
+- "Karpathy's LLM wiki is a local, private, queryable knowledge base built on Andrej Karpathy's open-source llm.c project — a minimalist C/CUDA implementation"[^src1]；
+- 架构是三阶段 RAG："Ingestion → Embedding → Generation"，把文档切成 256–512 token chunks，做 vector embedding，按 cosine 相似度取 top-K 拼进 prompt[^src2]；
 - "No vector database. No orchestration framework. Just C code doing matrix math"；
-- 实战痛点：macOS Clang 缺 OpenMP、需要手写文档预处理脚本、CPU 推理太慢。
+- 实战痛点：macOS Clang 缺 OpenMP、需要手写文档预处理脚本、CPU 推理太慢[^v3-1]。
 
-**Karpathy gist 里的 LLM Wiki 实际上是**：
+**Karpathy gist 里的 LLM Wiki 实际上是**[^v3-2]：
 - 一个由 LLM 自维护的 markdown wiki，**没有 embedding、没有 vector DB、没有 chunking**；
-- "Auto-index 替代 RAG"在小规模成立；
+- "Auto-index 替代 RAG"在小规模成立[^v3-3]；
 - 关键创新是 schema 文件 + LLM 主动维护交叉引用；
 - 与 llm.c 项目无关——llm.c 本来是 Karpathy 的 LLM 训练教学项目。
 
