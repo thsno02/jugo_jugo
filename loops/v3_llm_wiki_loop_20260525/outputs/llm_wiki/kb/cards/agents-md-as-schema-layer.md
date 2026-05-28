@@ -30,7 +30,7 @@ CompleteTech 的 BTTB 案例[^v3-1]把 Karpathy LLM Wiki 三层架构里那一�
 
 - prompt 在每次调用都重新构造，标准容易跨 session 漂移；
 - `AGENTS.md` 是仓库内的不可变约定，多个 ingest workflow 共享同一份；
-- 它可以被 `audit` workflow 反向校验（`schema-self-audit`）——schema 本身也有人来 lint 它；
+- 它可以被 `audit` workflow 反向校验（`schema-self-audit`）——schema 本身也有人来 lint 它[^src2]；
 - LLM 在执行任何写动作前可以先 grep `AGENTS.md` 拿到本类 page 的"完成"判据，避免靠常识猜。
 
 **实践含义（操作规则）：**
