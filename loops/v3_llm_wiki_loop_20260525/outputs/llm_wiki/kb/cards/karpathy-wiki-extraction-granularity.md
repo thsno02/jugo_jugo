@@ -15,7 +15,7 @@ related: [karpathy-llm-wiki-obsidian-plugin-overview, karpathy-wiki-full-context
 
 ## 五档定义
 
-Karpathy LLM Wiki 插件在 `Settings → Wiki Output / Extraction` 中提供五档抽取粒度（v1.6.2 引入，v1.10.0 扩展），控制 LLM 从单一源中**抽出的实体/概念条目数量**：
+Karpathy LLM Wiki 插件[^v3-1]在 `Settings → Wiki Output / Extraction` 中提供五档抽取粒度（v1.6.2 引入，v1.10.0 扩展），控制 LLM 从单一源中**抽出的实体/概念条目数量**[^src1]：
 
 | 档位 | 约束 | 典型条目数 | 推荐场景 |
 | --- | --- | --- | --- |
