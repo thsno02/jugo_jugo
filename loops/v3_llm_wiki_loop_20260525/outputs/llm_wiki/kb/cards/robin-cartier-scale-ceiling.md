@@ -24,7 +24,7 @@ Robin Cartier 作为实践者给 Karpathy 模式做了"实战裁决"，给出**�
 
 | 场景 | 适合的模式 |
 |------|------------|
-| 个人 second brain / 研究 / 学习 | LLM wiki（Karpathy 模式） |
+| 个人 second brain / 研究 / 学习 | LLM wiki（Karpathy 模式）[^v3-1] |
 | 操作自动化、趋势追踪、流水线投喂的知识 | 结构化关系型知识库 |
 | 企业级、百万级文档 | RAG（或混合） |
 
