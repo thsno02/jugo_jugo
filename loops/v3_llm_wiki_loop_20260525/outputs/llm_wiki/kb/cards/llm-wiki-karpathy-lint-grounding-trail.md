@@ -30,7 +30,7 @@ README 列出的 lint 检查项[^src1]（一一对应 wiki 失败模式）：
 
 - **lint 是写完后的强制门槛，而不是可选检查**——runtime 把 lint 暴露成顶层命令，意味着任何 wiki 发布前都应该跑一次。
 - **lint 不修复，agent 修复**：lint 列出告警；修复（重生成 representation、补 backlink、消解矛盾、补缺笔记）需要 agent 决策。这条规则与 runtime/agent 责任分割一致。
-- **多模态 wiki 必须有 "believable review trail"**：仅靠 source note 文本无法证明 agent 真的读了 PDF / 图片；representation trail 是这份证据。无 trail 的多模态 note 会被 lint 拦下。
+- **多模态 wiki 必须有 "believable review trail"**[^src2]：仅靠 source note 文本无法证明 agent 真的读了 PDF / 图片；representation trail 是这份证据。无 trail 的多模态 note 会被 lint 拦下。
 
 边界：
 
