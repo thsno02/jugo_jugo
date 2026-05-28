@@ -13,11 +13,11 @@ aliases: [LLM Wiki 三层架构, raw/wiki/schema separation, CLAUDE.md as schema
 related: [karpathy-gist-bookkeeping-burden, karpathy-gist-memex-connection, karpathy-llm-wiki-three-layers, karpathy-llm-kb-three-layer-arch, anthemcreation-llm-wiki-three-layer-architecture, robin-cartier-schema-as-product-doc, llm-wiki-schema-is-most-important]
 ---
 
-Karpathy 在 2026 年 gist 里把"LLM Wiki"模式形式化成**三层结构 + 严格的所有权分离**，这是它和"普通 RAG 上的笔记库"最关键的区别：
+Karpathy 在 2026 年 gist 里把"LLM Wiki"模式形式化成**三层结构 + 严格的所有权分离**[^v2-1]，这是它和"普通 RAG 上的笔记库"最关键的区别：
 
-1. **Raw sources** — 你自己收集的源文档（文章、论文、图像、数据文件）。**immutable**。"LLM reads from them but never modifies them. This is your source of truth."
-2. **The wiki** — LLM 生成的 markdown 目录（摘要、实体页、概念页、对比页、总览、综合页）。**"The LLM owns this layer entirely."** 创建页面、随新源更新、维护交叉引用、保持一致性都是 LLM 的活；人类只读。
-3. **The schema** — 一份指挥 LLM 的文档（例如 Claude Code 的 `CLAUDE.md`，Codex 的 `AGENTS.md`）。**这是关键的配置文件**——它告诉 LLM wiki 怎么组织、约定是什么、ingest/query/lint 时跟哪些工作流。"You and the LLM co-evolve this over time as you figure out what works for your domain."
+1. **Raw sources** — 你自己收集的源文档（文章、论文、图像、数据文件）。**immutable**。"LLM reads from them but never modifies them. This is your source of truth."[^src1]
+2. **The wiki** — LLM 生成的 markdown 目录（摘要、实体页、概念页、对比页、总览、综合页）。**"The LLM owns this layer entirely."** 创建页面、随新源更新、维护交叉引用、保持一致性都是 LLM 的活；人类只读。[^src2]
+3. **The schema** — 一份指挥 LLM 的文档（例如 Claude Code 的 `CLAUDE.md`，Codex 的 `AGENTS.md`）。**这是关键的配置文件**[^v3-1]——它告诉 LLM wiki 怎么组织、约定是什么、ingest/query/lint 时跟哪些工作流。"You and the LLM co-evolve this over time as you figure out what works for your domain."[^src3]
 
 所有权分离的工程含义：
 - 任何修改 raw 的动作都是错误——它破坏了"the source of truth"的不可变假设；
