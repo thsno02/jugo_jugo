@@ -5,7 +5,7 @@ status: accepted
 card_type: example_pattern
 tags: [#llm-wiki, #source-granularity, #empirical, #hacker-news]
 created_time: 2026-05-26T11:12:00+08:00
-edited_time: 2026-05-27T10:11:00+08:00
+edited_time: 2026-05-28T11:05:00+08:00
 edited_entity: llm
 source_ids: [hacker-news-original-thread]
 provenance_card: ../provenance/hn-source-granularity-changes-synthesis-quality.md
