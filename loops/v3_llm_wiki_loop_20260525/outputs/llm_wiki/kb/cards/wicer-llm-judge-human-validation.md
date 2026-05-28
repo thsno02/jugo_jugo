@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-llm-judge-human-validation.md
 aliases: [WiCER human validation, LLM judge human agreement, Claude Sonnet judge calibration]
-related: [wicer-cegar-compile-evaluate-refine, wicer-recovery-distribution-exceeds-fc-raw, ares-gpt4-vs-human-annotation-tradeoff, ragas-reference-free-rag-evaluation, graphrag-adaptive-benchmark-via-personas, ares-three-judge-rag-evaluation]
+related: [wicer-cegar-compile-evaluate-refine, graphrag-adaptive-benchmark-via-personas]
 ---
 
 ## 主张
