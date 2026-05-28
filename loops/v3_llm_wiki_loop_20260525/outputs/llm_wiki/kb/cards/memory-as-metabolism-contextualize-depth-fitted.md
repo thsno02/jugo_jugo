@@ -49,25 +49,18 @@ D-Mem (You, Yuan, Cai, arXiv 2603.18631) 有 dual-process：快速检索路径 +
 
 ## 失败模式与 §9 的承认
 
-- **depth 推断错时，systematic compression distortion 会传到 active wiki**（§9 limitation）；
+- **depth 推断错时，systematic compression distortion 会传到 active wiki**（§9 limitation）[^src5]；
 - linkout 是部分缓解（用户能回到原文），但 anchoring 效应意味着用户可能只看压缩条目不查原文；
 - "reliable inference of working-context depth from behavioral signals" 是论文承认的开放研究问题；
 - 与 personalized summarization / adaptive hypermedia 的概念重叠（§9 limitation 中承认），但**协调 bundle**（depth 推断 + 压缩 + linkout + dream cycle 调度）是论文声称的新组合。
 
-## References
-
-- §5.4 "CONTEXTUALIZE — depth-fitted compression of external sources"：`data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` 第 1210–1318 行（含 D-Mem 对照、三层存储、metabolic 比喻、与 TRIAGE 分立的理由）。
-- §7.5 CONTEXTUALIZE conformance MUST：第 1906–1912 行（linkout / dream cycle / cold memory object / 不丢弃原文）。
-- §4 system model cold memory entity：第 916–933 行。
-- §9 limitations 中 depth inference & adaptive hypermedia 重叠承认：第 2188–2210 行。
-
 ## Footnotes
 
-[^1]: 第 1226–1232 行：
-    > "A naive ingestion pipeline that compresses external sources to some imagined complete representation pays a double cost. It bloats the wiki with content the user does not need, and it makes the wiki harder to consolidate against because the entries are too long to participate cleanly in coherence operations. A pipeline that compresses too aggressively pays a different cost: it strips out the depth the user actually needs and leaves them with summaries that are accurate but operationally useless."
-
-[^2]: 第 1906–1912 行（§7.5 conformance）：
-    > "CONTEXTUALIZE - MUST preserve a linkout to the original external source — this is non-optional and cannot be traded off for storage efficiency - MUST run in the scheduled consolidation cycle, not at streaming ingestion time - MUST create a cold memory object for every processed external source before producing a depth-fitted representation - MUST NOT discard the original source after compression"
-
-[^3]: 第 1248–1253 行（与 D-Mem 区分）：
-    > "The coordination bundle—depth inference from user context, compression fitted to that depth, originals preserved as a structural non-optional commitment, deferred to the dream cycle rather than run at streaming ingestion—is what prior work does not assemble together. D-Mem provides one of the components; CONTEXTUALIZE provides the governance logic that determines when and how deeply to compress."
+[^src1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1210–1318 行（§5.4 "CONTEXTUALIZE — depth-fitted compression of external sources"）+ 第 916–933 行（§4 system model cold memory entity）— 三层存储、metabolic 比喻、与 TRIAGE 分立的理由。
+[^src2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1226–1232 行 — "A naive ingestion pipeline that compresses external sources to some imagined complete representation pays a double cost. It bloats the wiki with content the user does not need, and it makes the wiki harder to consolidate against because the entries are too long to participate cleanly in coherence operations. A pipeline that compresses too aggressively pays a different cost: it strips out the depth the user actually needs and leaves them with summaries that are accurate but operationally useless."
+[^src3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1906–1912 行（§7.5 conformance）— "CONTEXTUALIZE - MUST preserve a linkout to the original external source — this is non-optional and cannot be traded off for storage efficiency - MUST run in the scheduled consolidation cycle, not at streaming ingestion time - MUST create a cold memory object for every processed external source before producing a depth-fitted representation - MUST NOT discard the original source after compression"
+[^src4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1248–1253 行 — "The coordination bundle—depth inference from user context, compression fitted to that depth, originals preserved as a structural non-optional commitment, deferred to the dream cycle rather than run at streaming ingestion—is what prior work does not assemble together. D-Mem provides one of the components; CONTEXTUALIZE provides the governance logic that determines when and how deeply to compress."
+[^src5]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 2188–2210 行（§9 limitations 中 depth inference & adaptive hypermedia 重叠承认）。
+[^v3-1]: [memory-as-metabolism-five-operations](memory-as-metabolism-five-operations.md) — CONTEXTUALIZE 在五操作中的位置。
+[^v3-2]: [memory-gravity-load-bearing-protection](memory-gravity-load-bearing-protection.md) — 深度推断与 gravity 推断同源。
+[^v3-3]: [lightmem-precompress-and-topic-segmentation](lightmem-precompress-and-topic-segmentation.md) — LightMem 在 ingestion 前的选择性吸收。
