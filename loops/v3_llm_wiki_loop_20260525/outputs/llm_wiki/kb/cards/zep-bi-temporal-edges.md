@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#zep, #temporal-knowledge-graph, #fact-invalidation]
 created_time: 2026-05-26T11:05:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T11:32:00+08:00
 edited_entity: llm
 source_ids: [arxiv-zep]
 provenance_card: ../provenance/zep-bi-temporal-edges.md
