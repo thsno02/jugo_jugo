@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#memory, #mem0, #prompt-engineering, #temporal-reasoning, #llm-instruction]
 created_time: 2026-05-26T15:10:00+08:00
-edited_time: 2026-05-27T11:45:00+08:00
+edited_time: 2026-05-28T10:58:00+08:00
 edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-answer-generation-prompt-design.md
