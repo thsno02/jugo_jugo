@@ -31,16 +31,14 @@ related: [my-llm-wiki-supported-source-types, karpathy-llm-wiki-source-executabl
 ## 边界
 
 - 输出是 Obsidian vault，对其他编辑器友好但 graph view 等高级功能依赖 Obsidian。
-- Image / HEIC 等结构化抽取依赖"vision OCR via Claude Code agent mode (`/wiki .`)"，需要 Claude Code 运行环境，不是纯 CLI。
+- Image / HEIC 等结构化抽取依赖"vision OCR via Claude Code agent mode (`/wiki .`)"，需要 Claude Code 运行环境，不是纯 CLI [^v3-3]。
 - Docling、leiden、office 等多文档类型支持都是 extras，需要按需 `pip install 'my-llm-wiki[docling]'`。
-
-## References
-
-- 三层结构 + 工具描述：`data/raw/pypi/pypi-my-llm-wiki/text.txt` 第 100 行（Karpathy 概念回顾） + 第 102-104 行（三层落地命令）。
-- 文件类型覆盖：第 108-115 行（code 19 语言、markdown、PDF/DOCX/PPTX/HTML/EPUB via Docling、HEIC/PNG/JPG 通过 vision OCR）。
-- 元数据：第 27-65 行（version 0.9.0 / Apr 28 2026 / MIT / phuc-nt / Python ≥3.10）。
 
 ## Footnotes
 
-- 三层定义原文："a personal knowledge system with three layers: raw files (never modified), a compiled wiki with cross-references, and a schema that tells the LLM how to maintain it. The key insight: compile once, query forever, and let the wiki grow with every session as a 'persistent, compounding artifact' rather than re-deriving knowledge on every query."（第 100 行）
-- 写回命令："`llm-wiki note '<insight>'` writes back from your Claude Code sessions so the graph compounds over time."（第 104 行）
+[^src1]: `data/raw/pypi/pypi-my-llm-wiki/text.txt` — 第 100 行 verbatim："a personal knowledge system with three layers: raw files (never modified), a compiled wiki with cross-references, and a schema that tells the LLM how to maintain it. The key insight: compile once, query forever, and let the wiki grow with every session as a 'persistent, compounding artifact' rather than re-deriving knowledge on every query."
+[^src2]: `data/raw/pypi/pypi-my-llm-wiki/text.txt` — 第 102–104 行，三层落地命令；含 verbatim："`llm-wiki note '<insight>'` writes back from your Claude Code sessions so the graph compounds over time."
+[^src3]: `data/raw/pypi/pypi-my-llm-wiki/text.txt` — 第 27–65 行，PyPI 元数据（version 0.9.0 / Apr 28 2026 / MIT / phuc-nt / Python ≥3.10）。
+[^v3-1]: [karpathy-gist-three-layers](karpathy-gist-three-layers.md) — Karpathy gist 的 raw / wiki / schema 三层形式化，是 my-llm-wiki 复现的设计原型。
+[^v3-2]: [file-outputs-back-as-compounding-loop](file-outputs-back-as-compounding-loop.md) — "查询输出回写进 wiki 形成复利循环" 正是 `llm-wiki note` 子命令实现的工作流。
+[^v3-3]: [my-llm-wiki-supported-source-types](my-llm-wiki-supported-source-types.md) — 三条源抽取管道（含图像通过 Claude Code agent mode `/wiki .` 完成 OCR）在该卡有完整描述。
