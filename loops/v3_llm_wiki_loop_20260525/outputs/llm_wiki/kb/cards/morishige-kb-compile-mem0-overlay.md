@@ -5,7 +5,7 @@ status: accepted
 card_type: example_pattern
 tags: [#llm-wiki, #claude-code, #mem0, #practice]
 created_time: 2026-05-26T12:05:00+08:00
-edited_time: 2026-05-27T15:02:00+08:00
+edited_time: 2026-05-28T11:50:00+08:00
 edited_entity: llm
 source_ids: [developersio-jp-pattern]
 provenance_card: ../provenance/morishige-kb-compile-mem0-overlay.md
