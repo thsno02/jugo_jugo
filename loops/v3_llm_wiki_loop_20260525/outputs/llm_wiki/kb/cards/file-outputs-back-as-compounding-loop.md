@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#llm-wiki, #knowledge-system, #compounding, #workflow]
 created_time: 2026-05-25T22:05:00+08:00
-edited_time: 2026-05-27T15:04:00+08:00
+edited_time: 2026-05-28T11:00:00+08:00
 edited_entity: llm
 source_ids: [karpathy-x-launch-post]
 provenance_card: ../provenance/file-outputs-back-as-compounding-loop.md
