@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graph-poisoning]
 provenance_card: ../provenance/graphrag-pipeline-formalism.md
 aliases: ["GraphRAG pipeline", "community summary as context"]
-related: [graphrag-manipulation-only-attack-surface, gragpoison-additive-vs-edit-attack, tkpa-graph-guided-targeted-poisoning, ukpa-coreference-disruption, graphrag-global-sensemaking-pipeline, graphrag-leiden-community-hierarchy]
+related: [graphrag-global-sensemaking-pipeline, graphrag-leiden-community-hierarchy, graphrag-manipulation-only-attack-surface, ukpa-coreference-disruption, tkpa-graph-guided-targeted-poisoning]
 ---
 
 GraphRAG（以 Microsoft GraphRAG 为代表）与普通 chunk-RAG 最本质的差别，是 LLM 回答时**根本不读原始 chunk**，而是读一层"社区摘要"。论文用一组函数把整条管线写成显式形式[^src1]，这套写法解释了为什么"改几个字也能把整套系统拖垮"。要把这套形式化与 Microsoft GraphRAG 的工程版本对齐，可参看 global sensemaking 两阶段流水线[^v3-1] 与 Leiden 社群层次[^v3-2]。
