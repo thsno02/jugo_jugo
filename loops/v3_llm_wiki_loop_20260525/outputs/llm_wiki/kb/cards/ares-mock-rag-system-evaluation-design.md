@@ -15,7 +15,7 @@ related: [ares-three-judge-rag-evaluation, ares-ppi-confidence-bound, ares-synth
 
 ## 主张
 
-Saad-Falcon 等（2024）测 ARES 的关键挑战是：**怎么知道 ARES 给出的排名是对的？** 真实 RAG 系统没有 ground-truth 排名。论文的方法是**构造 9 个"准确率已知"的 mock RAG 系统**，每个相差 2.5% 准确率，覆盖 70%–90% 区间——这样既能测试 ARES 能不能正确排序，又能测试它能不能区分**只差几个百分点**的相邻系统。
+Saad-Falcon 等（2024）测 ARES[^v3-1] 的关键挑战是：**怎么知道 ARES 给出的排名是对的？** 真实 RAG 系统没有 ground-truth 排名。论文的方法是**构造 9 个"准确率已知"的 mock RAG 系统**，每个相差 2.5% 准确率，覆盖 70%–90% 区间——这样既能测试 ARES 能不能正确排序，又能测试它能不能区分**只差几个百分点**的相邻系统[^src1]。
 
 ## 构造方法
 
@@ -26,7 +26,7 @@ Saad-Falcon 等（2024）测 ARES 的关键挑战是：**怎么知道 ARES 给�
    - **同文档相关负例**：从同一 Wikipedia 文档的其他段落随机抽
    - **跨文档无关负例**：从完全随机的 Wikipedia 文档抽
 3. **按准确率梯度做 9 个 splits**：70.0%、72.5%、75.0%、...、90.0%——每个 split 是一个独立的"mock RAG 系统"
-4. **Kendall's τ 计算**：因为每个 mock RAG 的准确率事先已知，**真实排名固定**；ARES 的排名与真实排名之间的 Kendall's τ 就是 ARES 是否合格的客观指标。
+4. **Kendall's τ 计算**：因为每个 mock RAG 的准确率事先已知，**真实排名固定**；ARES 的排名与真实排名之间的 Kendall's τ 就是 ARES 是否合格的客观指标[^src2][^src4]。
 
 ## 为什么这种构造比"用真实 RAG 比"更可信
 
