@@ -43,20 +43,13 @@ Karpathy 发布 LLM Wiki gist 后，HN 第一波热门评论是 `kenforthewin` �
 - 把 LLM Wiki 当 RAG 实现时，容易忽略"write-loop 的循环不变量"——比如反向链接一致性、原始 raw 不可变性[^v3-2]——这些不是 RAG retriever 评测会发现的问题；
 - 反过来，把它视为"超越 RAG"的新范式也会过度营销：实际上它仍要回答 retrieval 的核心问题，只不过用"自建索引 + 结构化 markdown"代替了 vector 查询。
 
-## References
-
-- HN 原帖讨论：`data/raw/hacker_news/hacker-news-original-thread/text.txt`，行 108–151（包含 `kenforthewin`、`panarky`、`darkhanakh`、`devmor` 子串）。
-- "compaction for RAG" 评论：行 417–419。
-
 ## Footnotes
 
-- `kenforthewin` 主帖（行 108–111）：
-  > "This is just RAG. Yes, it's not using a vector database - but it's building an index file of semantic connections, it's constructing hierarchical semantic structures in the filesystem to aid retrieval .. this is RAG."
-- `panarky` 反驳（行 114–116）：
-  > "There's nothing about RAG that requires embeddings. The retrieval part can be grep if you don't care about semantic search."
-- `darkhanakh` write-loop 区分（行 135–139）：
-  > "but the interesting bit here is the write loop - the LLM is authoring and maintaining the wiki itself, building backlinks, filing its own outputs back in. thats not retrieval thats knowledge synthesis. in vanilla RAG your corpus is static, here it isnt"
-- `devmor` "persistent memory RAG"（行 141–144）。
-- `kenforthewin` 第二轮回复（行 146–150）：
-  > "What I'm pushing back on specifically is the insistence that the core loop ... is not RAG."
-- `mememememememo` 一句话（行 419）。
+[^src1]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` 行 108-111（`kenforthewin` 主帖）— "This is just RAG. Yes, it's not using a vector database - but it's building an index file of semantic connections, it's constructing hierarchical semantic structures in the filesystem to aid retrieval .. this is RAG."
+[^src2]: 同文件 行 114-116（`panarky` 反驳）— "There's nothing about RAG that requires embeddings. The retrieval part can be grep if you don't care about semantic search."
+[^src3]: 同文件 行 135-139（`darkhanakh` write-loop 区分）— "but the interesting bit here is the write loop - the LLM is authoring and maintaining the wiki itself, building backlinks, filing its own outputs back in. thats not retrieval thats knowledge synthesis. in vanilla RAG your corpus is static, here it isnt"
+[^src4]: 同文件 行 141-144（`devmor` "persistent memory RAG"）。
+[^src5]: 同文件 行 146-150（`kenforthewin` 第二轮回复）— "What I'm pushing back on specifically is the insistence that the core loop ... is not RAG."
+[^src6]: 同文件 行 417-419（`mememememememo` "compaction for RAG"）。
+[^v3-1]: [karpathy-gist-bookkeeping-burden](karpathy-gist-bookkeeping-burden.md) — "bookkeeping 才是真正崩溃点" 的本卡。
+[^v3-2]: [file-outputs-back-as-compounding-loop](file-outputs-back-as-compounding-loop.md) — write-loop 与回写不变量的本卡。
