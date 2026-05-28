@@ -40,13 +40,12 @@ v1 的 `[[obsidian]]` 只携带"X 与 Y 相关"这一弱信息。v2 把链接变
 - `[[X]] (contradicts)`
 - ...
 
-> "It feels fussy at first; by month two it lets Claude give much sharper answers because the graph isn't just 'X is connected to Y' but 'X uses Y' or 'X contradicts Y'."
-> —— `text.txt:56`
+> "It feels fussy at first; by month two it lets Claude give much sharper answers because the graph isn't just 'X is connected to Y' but 'X uses Y' or 'X contradicts Y'."[^src2]
 
 ## 3. Contradiction protocol（矛盾不重写，标注）
 
 **v1 默认行为**：LLM 发现新声明与旧页冲突 → 通常重写旧页。
-**v2 强制规则**：发现冲突 → 加 `contradicts:` frontmatter → **两版都保留** → lint 时统一暴露。
+**v2 强制规则**[^v3-1]：发现冲突 → 加 `contradicts:` frontmatter → **两版都保留** → lint 时统一暴露[^src3]。
 
 Jim 的 Pitfall #3 是真实损失的对照：他 Month 4 让 Claude 把"RAG 是 PKM 正确架构"的旧页重写成"LLM wiki 替代 RAG"，两个月后他需要旧 reasoning 与人辩论，已经没了。
 
