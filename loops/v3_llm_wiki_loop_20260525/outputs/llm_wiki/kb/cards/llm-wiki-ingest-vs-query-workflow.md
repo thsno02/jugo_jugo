@@ -30,7 +30,7 @@ LLM wiki 的运行被显式拆成两个阶段，对应两个不同的"用户↔L
 ## 为什么这种分阶段有意义
 
 - **写时贵、读时便宜**：ingest 时 LLM 干 "synthesize / link / detect contradiction" 的重活；query 时 LLM 只需在 wiki 上做轻量阅读。这把成本前置，节省每次查询的 token。
-- **agents.md 是写阶段的契约**——它定义"何时新建 entity 页 vs 更新已有"、"如何 format 矛盾"。质量好坏直接决定 ingest 行为是否稳定。
+- **agents.md 是写阶段的契约**[^v3-2]——它定义"何时新建 entity 页 vs 更新已有"、"如何 format 矛盾"。质量好坏直接决定 ingest 行为是否稳定。
 - **Obsidian 不是强需求**——VS Code + Markdown Preview Enhanced、Logseq 均可。只要文件是 flat markdown，工具可换。
 
 ## 边界
