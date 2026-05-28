@@ -17,8 +17,8 @@ related: [alce-three-dimension-citation-metric, alce-prompting-strategies, mem0-
 
 - **Wikipedia 21M passages**（ASQA + QAMPARI）：dense retrieval (GTR, DPR)；
 - **Sphere 899M Web passages**（ELI5）：BM25；
-- 所有任务**预先把语料切成 100 词 passage**；这与 Bing Chat 引整页 Web 不同——动机是"人更容易验证，且能在小 context 内多放几条";
-- 每题统一**取 top-100 passages**，再由 prompting 策略截到 top-$k$；
+- 所有任务**预先把语料切成 100 词 passage**；这与 Bing Chat 引整页 Web 不同——动机是"人更容易验证，且能在小 context 内多放几条"[^src5]；
+- 每题统一**取 top-100 passages**，再由 prompting 策略截到 top-$k$[^v3-1]；
 - 答案侧统一允许"每条语句至多 3 个 citations"。
 
 ## Retrieval recall 是性能天花板
