@@ -30,7 +30,7 @@ HN 评论里最稀有的不是观点，而是**数字**。`vbarsoum` 给了一�
 - 输出 173K 词，输入 155K 词——`vbarsoum` 强调："**It's not compression — it's synthesis**"；
 - 成本 12M tokens，10–15 分钟。
 
-**作者点睛（行 523 末）：**
+**作者点睛**[^src2]：
 
 > "a vector database is only useful to machines. You can't open a .faiss file and browse it. A wiki is useful to both. ... when I do ask the AI a question, it reads the same wiki pages I do, and the answers are better than RAG because the knowledge is already structured and cross-referenced instead of retrieved as raw chunks."
 
