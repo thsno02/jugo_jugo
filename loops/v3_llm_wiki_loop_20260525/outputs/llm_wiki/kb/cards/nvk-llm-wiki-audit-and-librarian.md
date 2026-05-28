@@ -41,8 +41,8 @@ nvk/llm-wiki 把"LLM 写出来的东西能不能信"拆成两个互补的命令�
 
 - `librarian` ≈ unit tests（针对单页文章的健康）；
 - `audit` ≈ end-to-end / integration tests（从 raw 到 output 的完整链路）；
-- `lint --fix` ≈ format check（断链、缺索引、archive registry 漂移；`--fix` 自动修可修的，`--deep` 额外做事实联网核验）；
-- `retract` ≈ 撤销 commit + 清理下游引用。
+- `lint --fix` ≈ format check（断链、缺索引、archive registry 漂移；`--fix` 自动修可修的，`--deep` 额外做事实联网核验）[^src3]；
+- `retract` ≈ 撤销 commit + 清理下游引用[^src4]。
 
 **操作规则（可复用到自建 LLM Wiki）：**
 
