@@ -24,9 +24,9 @@ DMR (Deep Memory Retrieval) 是 MemGPT 论文为了量化**对话 agent 的一�
 
 ## 双指标：ROUGE-L recall + LLM-judge
 
-- **ROUGE-L recall (R)**：选 recall 而不是 F1 / precision，理由是"生成回答普遍比 gold 长很多"——precision 会被冗长惩罚；
+- **ROUGE-L recall (R)**：选 recall 而不是 F1 / precision，理由是"生成回答普遍比 gold 长很多"[^src2]——precision 会被冗长惩罚；
 - **LLM-as-Judge**：GPT-4 当裁判，被给定 question + gold + generated，输出 CORRECT/WRONG。论文借用并形式化了 prompt（"shell necklace" hawaii 示例），并显式列出 CORRECT 的可接受变体（"got a ton of stuff... that surfboard, the mug, the necklace, those coasters too.." 也算对）；
-- 这条评估范式后来被 Mem0 复用并改写（见 mem0 论文 appendix），是 MSC-style memory 评估的事实标准。
+- 这条评估范式后来被 Mem0 复用并改写（见 mem0 论文 appendix）[^v3-1]，是 MSC-style memory 评估的事实标准；但其区分度也在 Zep 论文中受到批评，理由是顶尖模型在 DMR 上已饱和[^v3-2]。
 
 ## 主结果（论文 Table）
 
