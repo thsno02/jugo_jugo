@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#memory-system, #framework, #rag]
 created_time: 2026-05-26T14:25:00+08:00
-edited_time: 2026-05-27T11:32:00+08:00
+edited_time: 2026-05-28T10:38:00+08:00
 edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-three-stage-memory-framework.md
