@@ -38,7 +38,7 @@ CompleteTech 的 BTTB 案例[^v3-1]把 Karpathy LLM Wiki 三层架构里那一�
 - 在 LLM Wiki 项目里**先固定 schema 再开始 ingest**——否则前 10 篇 raw 的写入风格会"污染"后续；
 - schema 文件应该被 LLM 视作高优先级输入；可以在 `AGENTS.md` 顶部直接写"This file is the schema. Read it before any wiki write action."；
 - 改 schema 时把"已有 page 不符合新 schema 的列表"当 follow-up 任务，而不是默默让旧页发散；
-- 与 v2 中 `idea-file-as-agent-era-artifact` 卡呼应：idea-file 是 LLM 阅读的对象，schema 是 LLM 写作的合同。
+- 与 `idea-file-as-agent-era-artifact` 卡[^v3-2]呼应：idea-file 是 LLM 阅读的对象，schema 是 LLM 写作的合同。
 
 **边界与误用：**
 
