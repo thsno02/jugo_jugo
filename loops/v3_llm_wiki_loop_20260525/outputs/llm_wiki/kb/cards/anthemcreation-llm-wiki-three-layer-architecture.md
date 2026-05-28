@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#llm-wiki, #karpathy, #agents-md, #obsidian]
 created_time: 2026-05-26T11:50:00+08:00
-edited_time: 2026-05-27T14:32:00+08:00
+edited_time: 2026-05-28T10:05:00+08:00
 edited_entity: llm
 source_ids: [anthemcreation-fr-guide]
 provenance_card: ../provenance/anthemcreation-llm-wiki-three-layer-architecture.md
