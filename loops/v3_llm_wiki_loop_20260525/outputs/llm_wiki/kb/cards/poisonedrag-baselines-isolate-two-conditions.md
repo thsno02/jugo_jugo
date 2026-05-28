@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-poisonedrag]
 provenance_card: ../provenance/poisonedrag-baselines-isolate-two-conditions.md
 aliases: ["Naive Attack vs GCG vs Disinformation vs Prompt Injection vs Corpus Poisoning", "PoisonedRAG baselines"]
-related: [poisonedrag-retrieval-generation-two-conditions, poisonedrag-existing-defenses-insufficient, poisonedrag-knowledge-database-attack-surface, poisonedrag-survives-advanced-rag-and-agents, etamp-pseudo-trajectory-methodology, gragpoison-additive-vs-edit-attack]
+related: [etamp-pseudo-trajectory-methodology, poisonedrag-retrieval-generation-two-conditions, gragpoison-additive-vs-edit-attack]
 ---
 
 PoisonedRAG 论文在 Table 7 给了五个基线 + 自己（黑/白盒）在 NQ / HotpotQA / MS-MARCO 上的 ASR / F1 对比[^src1]。最有用的读法不是"PoisonedRAG 赢了"，而是**每个基线恰好"丢掉"两条件之一**——这把"为什么 retrieval condition + generation condition 必须同时满足"用消融的方式证明了。这种"按条件拆基线"的方法学与 eTAMP 用 pseudo / non-pseudo 拆 PR 与 ASR$_B$[^v3-1] 是同一族——只有把混合在一起的失败模式拆开，跨方法 / 跨模型的比较才有意义。
