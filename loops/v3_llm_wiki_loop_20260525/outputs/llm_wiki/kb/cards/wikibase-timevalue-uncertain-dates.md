@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#wikibase, #wikidata, #temporal, #datatype]
 created_time: 2026-05-26T15:25:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T12:25:00+08:00
 edited_entity: llm
 source_ids: [wikibase-data-model]
 provenance_card: ../provenance/wikibase-timevalue-uncertain-dates.md
