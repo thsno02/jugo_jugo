@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#llm-wiki, #knowledge-base, #karpathy, #marketing]
 created_time: 2026-05-26T11:45:00+08:00
-edited_time: 2026-05-27T14:00:00+08:00
+edited_time: 2026-05-28T10:40:00+08:00
 edited_entity: llm
 source_ids: [aillm-wiki-directory]
 provenance_card: ../provenance/aillm-wiki-four-defining-properties.md
