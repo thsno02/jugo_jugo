@@ -58,7 +58,7 @@ related: [llm-knowledge-base-five-stage-workflow, nvk-llm-wiki-audit-and-librari
 
 - nutrition 的 query 不会被 woodworking 的内容污染；
 - "deep query" 仍可显式跨 wiki（命令支持 `--with <wiki>`、`--include-archived`）；
-- archive 是 topic 级，不是 page 级：把整个 topic 移到 `topics/.archive/` 让它"安静"但不删除。
+- archive 是 topic 级，不是 page 级[^src3]：把整个 topic 移到 `topics/.archive/` 让它"安静"但不删除。
 
 **操作含义：**
 
