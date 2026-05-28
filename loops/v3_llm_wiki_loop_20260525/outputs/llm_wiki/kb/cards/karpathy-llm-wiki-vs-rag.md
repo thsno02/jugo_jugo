@@ -15,7 +15,7 @@ related: [karpathy-llm-wiki-three-layers, obsidian-as-ide-llm-as-programmer, kno
 
 ## 区分对象
 
-Karpathy 的 LLM Wiki gist（2026-04-04 发布，HN 274 分 89 评论）从一个**对 RAG 的不满**出发：现有 document workflow 大多还停在 "RAG 模式"——上传文件、query 时检索 chunk、每次从零拼装答案。Karpathy 主张换一个**中间层**：让 LLM 在每次新源到达时**增量构建并维护**一个由互链 markdown 页面组成的持久 wiki。
+Karpathy 的 LLM Wiki gist（2026-04-04 发布，HN 274 分 89 评论）[^src1]从一个**对 RAG 的不满**出发[^src2]：现有 document workflow 大多还停在 "RAG 模式"——上传文件、query 时检索 chunk、每次从零拼装答案。Karpathy 主张换一个**中间层**：让 LLM 在每次新源到达时**增量构建并维护**一个由互链 markdown 页面组成的持久 wiki。
 
 ## 两种范式的对比
 
