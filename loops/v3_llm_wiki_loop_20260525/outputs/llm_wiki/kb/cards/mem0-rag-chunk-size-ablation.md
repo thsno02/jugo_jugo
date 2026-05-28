@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#memory, #mem0, #rag, #ablation, #LOCOMO]
 created_time: 2026-05-26T15:15:00+08:00
-edited_time: 2026-05-27T11:59:00+08:00
+edited_time: 2026-05-28T10:56:00+08:00
 edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-rag-chunk-size-ablation.md
