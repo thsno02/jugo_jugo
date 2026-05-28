@@ -34,15 +34,13 @@ Karpathy 在 2026 年 gist 里把"LLM Wiki"模式形式化成**三层结构 + �
 - 三层不是强制的——可以根据规模简化，例如不需要单独的 schema 文件、不需要图像处理；
 - 人始终可以编辑 wiki（git 仓库特性带来），但**默认不编辑**是为了让 LLM 维护成本接近零；如果人编辑频繁，所有权又混乱了。
 
-## References
-
-Karpathy 2026 LLM Wiki gist 的 "Architecture" 段落明确给出三层定义。
-
-- 源路径：`data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt`（行 27–33 "Architecture" 段的 raw/wiki/schema 三段定义；行 15 "You never (or rarely) write the wiki yourself"；行 75 "intentionally abstract"边界声明）。
-
 ## Footnotes
 
-- Raw 不可变原文（行 29）："Raw sources — your curated collection of source documents. ... These are immutable — the LLM reads from them but never modifies them. This is your source of truth."
-- Wiki 由 LLM 持有原文（行 31）："The wiki — a directory of LLM-generated markdown files. ... The LLM owns this layer entirely. It creates pages, updates them when new sources arrive, maintains cross-references, and keeps everything consistent. You read it; the LLM writes it."
-- Schema 是关键配置（行 33）："The schema — a document (e.g. CLAUDE.md for Claude Code or AGENTS.md for Codex) that tells the LLM how the wiki is structured ... This is the key configuration file — it's what makes the LLM a disciplined wiki maintainer rather than a generic chatbot."
-- 不写 wiki 原文（行 15）："You never (or rarely) write the wiki yourself — the LLM writes and maintains all of it. You're in charge of sourcing, exploration, and asking the right questions."
+[^src1]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` 行 29 — "Raw sources — your curated collection of source documents. ... These are immutable — the LLM reads from them but never modifies them. This is your source of truth."
+[^src2]: 同文件 行 31 — "The wiki — a directory of LLM-generated markdown files. ... The LLM owns this layer entirely. It creates pages, updates them when new sources arrive, maintains cross-references, and keeps everything consistent. You read it; the LLM writes it."
+[^src3]: 同文件 行 33 — "The schema — a document (e.g. CLAUDE.md for Claude Code or AGENTS.md for Codex) that tells the LLM how the wiki is structured ... This is the key configuration file — it's what makes the LLM a disciplined wiki maintainer rather than a generic chatbot."
+[^src4]: 同文件 行 15 — "You never (or rarely) write the wiki yourself — the LLM writes and maintains all of it. You're in charge of sourcing, exploration, and asking the right questions."
+[^src5]: 同文件 行 75 — "intentionally abstract" 边界声明，gist 不规定具体目录结构 / 页面格式 / 工具选择。
+[^v3-1]: [agents-md-as-schema-layer](agents-md-as-schema-layer.md) — schema 文件的角色（让多轮 ingest 不发散）在此卡有更细的展开。
+[^v3-2]: [robin-cartier-schema-as-product-doc](robin-cartier-schema-as-product-doc.md) — schema-as-PRD 的提法来自 Robin Cartier 的进一步推断。
+[^v2-1]: v2 anchor [llm-wiki-three-layer-architecture](../../../../../v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md) — 本卡是该卡的 delta：从 Karpathy gist 原文位置补齐三层 + 所有权严格分离的工程含义，并显式标出"人写 wiki 是错误"的边界。
