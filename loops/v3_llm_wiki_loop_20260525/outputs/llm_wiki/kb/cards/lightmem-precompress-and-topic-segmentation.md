@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#lightmem, #prompt-compression, #topic-segmentation, #llmlingua-2]
 created_time: 2026-05-26T11:06:00+08:00
-edited_time: 2026-05-27T10:31:00+08:00
+edited_time: 2026-05-28T10:08:00+08:00
 edited_entity: llm
 source_ids: [arxiv-lightmem]
 provenance_card: ../provenance/lightmem-precompress-and-topic-segmentation.md
