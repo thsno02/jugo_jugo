@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#llm-wiki, #setup, #cost, #obsidian, #claude]
 created_time: 2026-05-26T12:00:00+08:00
-edited_time: 2026-05-27T14:14:00+08:00
+edited_time: 2026-05-28T10:44:00+08:00
 edited_entity: llm
 source_ids: [anthemcreation-fr-guide]
 provenance_card: ../provenance/anthemcreation-llm-wiki-setup-cost-envelope.md
