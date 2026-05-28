@@ -28,8 +28,8 @@ Falconer 的核心论断："Better retrieval over bad context delivers wrong ans
 操作含义：
 
 - **评估企业 KB 产品时**，要分别问两个问题：(1) 它如何让我查到信息？(2) 它如何确保被查到的信息是 current 的？只回答第一个问题的工具不在"LLM Wiki"范畴。
-- **决定要不要在公司接 RAG 之前**，先回答"底层 doc 的 freshness 是否被维护"。如果底层是陈旧 Confluence，先解决维护问题再上 RAG，否则只是把"翻不到答案"换成"快速翻到错答案"。
-- **AI agent 消费这套系统时风险被放大**。文章引用 Anthropic 工程团队："context is the scarcest resource for AI agents"——一个没维护的 KB 是 agent 最差的输入，因为 agent 把这些 context 翻译成代码 / 决策的速度远高于人。
+- **决定要不要在公司接 RAG 之前**，先回答"底层 doc 的 freshness 是否被维护"[^src3]。如果底层是陈旧 Confluence，先解决维护问题再上 RAG[^v3-1]，否则只是把"翻不到答案"换成"快速翻到错答案"。
+- **AI agent 消费这套系统时风险被放大**。文章引用 Anthropic 工程团队："context is the scarcest resource for AI agents"[^src4]——一个没维护的 KB 是 agent 最差的输入，因为 agent 把这些 context 翻译成代码 / 决策的速度远高于人。
 
 边界 / 反例：
 
