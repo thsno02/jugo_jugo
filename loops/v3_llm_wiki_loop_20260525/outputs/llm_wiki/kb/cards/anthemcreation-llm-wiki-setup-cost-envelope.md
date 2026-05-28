@@ -45,17 +45,11 @@ related: [anthemcreation-llm-wiki-three-layer-architecture, karpathy-llm-wiki-ob
 - 弱 LLM 会把源中的错误悄无声息地写进 wiki，因此**前几周建议人工抽查关键页面**；
 - Karpathy 没有发布官方实现，落地仍需基于 Gist 手动配置（这正是这套教程能存在的原因）。
 
-把这套数字与"三层架构"（见 `anthemcreation-llm-wiki-three-layer-architecture`）合在一起：你只需要"一个空文件夹 + 一份 agents.md + 一份 Gist 提示"，技术栈就完整了；剩下的工作是反复 ingest，让 wiki 自己 compound。
-
-## References
-
-- Anthem Création 法语博客 §"Configurer votre LLM wiki" 第 114–126 行（五步流程）、§"Coûts réels du système" 第 128–137 行（成本表）、FAQ §"Quelles sont les limites" 第 208–210 行（限制）。本卡的步骤、价格区间与风险条款均出自这些段落。
+把这套数字与"三层架构"[^v3-1]合在一起：你只需要"一个空文件夹 + 一份 agents.md + 一份 Gist 提示"，技术栈就完整了；剩下的工作是反复 ingest，让 wiki 自己 compound。
 
 ## Footnotes
 
-[^1]: `data/raw/webpage/anthemcreation-fr-guide/text.txt` 第 126 行：
-    > "Obsidian n'est pas obligatoire, mais il est recommandé par Karpathy pour son affichage graphique des liens. Des alternatives viables existent : VS Code avec une extension Markdown Preview Enhanced, ou Logseq qui gère aussi les backlinks bidirectionnels. L'essentiel reste que vos fichiers soient en markdown plat, compatible avec n'importe quel éditeur."
-[^2]: 同文件第 210 行：
-    > "Le système excelle à échelle personnelle, typiquement de 10 à quelques centaines de documents. Au-delà, la gestion des interliens peut devenir coûteuse en tokens et une vector search devient plus adaptée."
-[^3]: 同文件第 130–136 行（成本表）：
-    > "Obsidian + LLM open source (Llama 3) Gratuit 0 €/mois / Obsidian + Claude API Gratuit ~0,01 à 0,10 € par doc ingéré / Wiki de 100 documents (Claude) Moins de 10 € Faible (ingestions incrémentales)"
+[^src1]: `data/raw/webpage/anthemcreation-fr-guide/text.txt` 第 126 行 — "Obsidian n'est pas obligatoire, mais il est recommandé par Karpathy pour son affichage graphique des liens. Des alternatives viables existent : VS Code avec une extension Markdown Preview Enhanced, ou Logseq qui gère aussi les backlinks bidirectionnels. L'essentiel reste que vos fichiers soient en markdown plat, compatible avec n'importe quel éditeur."
+[^src2]: 同文件第 210 行 — "Le système excelle à échelle personnelle, typiquement de 10 à quelques centaines de documents. Au-delà, la gestion des interliens peut devenir coûteuse en tokens et une vector search devient plus adaptée."
+[^src3]: 同文件第 130-136 行（成本表）— "Obsidian + LLM open source (Llama 3) Gratuit 0 €/mois / Obsidian + Claude API Gratuit ~0,01 à 0,10 € par doc ingéré / Wiki de 100 documents (Claude) Moins de 10 € Faible (ingestions incrémentales)"
+[^v3-1]: [anthemcreation-llm-wiki-three-layer-architecture](anthemcreation-llm-wiki-three-layer-architecture.md) — 三层架构卡，与本卡的成本路径合在一起构成最小可行栈。
