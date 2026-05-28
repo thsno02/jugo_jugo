@@ -46,12 +46,10 @@ CompleteTech 的 BTTB 案例[^v3-1]把 Karpathy LLM Wiki 三层架构里那一�
 - schema 太宽则形同虚设，回到"靠 prompt 撑住一切"的状态——不可持续；
 - 在没有 `audit / lint` 这条 workflow 之前，schema 是死的——它需要执行层把它当真。
 
-## References
-
-- "Beyond the Token Bottleneck"：`data/raw/webpage/complete-tech-live-frontier/text.txt` 行 124–128（schema 段）；行 128（workflows 包括 `audit (... schema-self-audit)`）。
-
 ## Footnotes
 
-- 原文（行 124–126）：
-  > "AGENTS.md — the schema. Page types, linking conventions, depth standards, what counts as 'done' for each page class. This is what makes the LLM's output predictable and the wiki maintainable across many ingest passes."
-- workflows audit 列表中包含 `schema-self-audit`：行 128。
+[^src1]: `data/raw/webpage/complete-tech-live-frontier/text.txt` 行 124–126 — "AGENTS.md — the schema. Page types, linking conventions, depth standards, what counts as 'done' for each page class. This is what makes the LLM's output predictable and the wiki maintainable across many ingest passes."
+[^src2]: `data/raw/webpage/complete-tech-live-frontier/text.txt` 行 128 — workflows audit 列表中包含 `schema-self-audit`，说明 schema 本身也是 audit 对象。
+[^v3-1]: [beyond-the-token-bottleneck-llm-wiki-case-study](beyond-the-token-bottleneck-llm-wiki-case-study.md) — 本卡讨论的 `AGENTS.md` schema 实例来自 BTTB 案例。
+[^v3-2]: [idea-file-as-agent-era-artifact](idea-file-as-agent-era-artifact.md) — schema 是写作合同、idea-file 是阅读对象，两者是对偶角色。
+[^v2-1]: v2 anchor [llm-wiki-schema-configuration-document](../../../../../v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/llm-wiki-schema-configuration-document.md) — 本卡是该卡的 delta：把"schema = 配置文档"具体化到 `AGENTS.md`，并补出 BTTB 的四个配置维度与 `schema-self-audit` workflow。
