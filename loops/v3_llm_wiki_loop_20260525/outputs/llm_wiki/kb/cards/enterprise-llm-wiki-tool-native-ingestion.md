@@ -16,7 +16,7 @@ related: [enterprise-llm-wiki-four-properties, enterprise-llm-wiki-drift-detecti
 Karpathy 个人 LLM Wiki 之所以能跑通，关键之一是 `raw/` 目录由他本人有意识地维护——挑哪些文章塞进来、塞多少、什么时候塞，都由唯一一个 curator 决定。这种 curated capture 在企业里**结构上不可能存在**，不是纪律问题。Falconer 指南把这一点写成必要的设计转换：
 
 - **个人版的 capture 模型**：`raw/` 目录 + 单一 curator + 显式的"保存这篇文章"动作。
-- **企业版的 capture 模型**：tool-native ingestion——直接从工作发生的地方拉信息，不依赖任何人去 "saving sources"。具体连接对象包括 GitHub（代码与 PR）、Slack（决策线程）、Linear（工单与项目上下文）、Granola（会议记录 / 站会）、Google Drive（设计文档与 RFC）、已有 wiki（Notion / Confluence / 内部 markdown）。
+- **企业版的 capture 模型**：tool-native ingestion——直接从工作发生的地方拉信息，不依赖任何人去 "saving sources"[^src1]。具体连接对象包括 GitHub（代码与 PR）、Slack（决策线程）、Linear（工单与项目上下文）、Granola（会议记录 / 站会）、Google Drive（设计文档与 RFC）、已有 wiki（Notion / Confluence / 内部 markdown）。
 
 转换的具体规则：
 
