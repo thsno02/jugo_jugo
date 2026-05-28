@@ -52,7 +52,7 @@ related: [llm-knowledge-base-five-stage-workflow, nvk-llm-wiki-audit-and-librari
 - `datasets/` 只放 manifest（路径、samples、profile、query recipe）——大型外部数据不进 `raw/`，wiki 充当"索引界面"；
 - `wiki/` 文章分三类目录：concepts（基础理念）/ topics（具体专题、状态报告）/ references（工具表、数据表）；每个目录都有 `_index.md` 作为"派生缓存"，agent 永远不"blindly scan"。
 
-**为什么 isolation 这件事这么重要：**
+**为什么 isolation 这件事这么重要**[^src2]：
 
 > "Each research area is isolated. No cross-topic noise. Queries stay focused. A multi-wiki peek finds overlap when relevant."
 
