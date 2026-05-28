@@ -15,7 +15,7 @@ related: [llm-wiki-mcp-four-tools, llm-wiki-mcp-skills-vs-tools-workflow, llm-wi
 
 ## 区分对象
 
-`llm-wiki-mcp` 在 README 里**反复强调一条边界**：server 只负责"LLM 总是搞错的无聊机械层"（mechanics），而 wiki 的内容形态（schema）**完全留给用户的 `wiki/CLAUDE.md`** 来定义。这条边界把"协议层"和"语义层"切得很干净。
+`llm-wiki-mcp` 在 README 里**反复强调一条边界**：server 只负责"LLM 总是搞错的无聊机械层"（mechanics），而 wiki 的内容形态（schema）**完全留给用户的 `wiki/CLAUDE.md`** 来定义 [^src1]。这条边界把"协议层"和"语义层"切得很干净。
 
 ## Server 负责的（mechanics）
 
