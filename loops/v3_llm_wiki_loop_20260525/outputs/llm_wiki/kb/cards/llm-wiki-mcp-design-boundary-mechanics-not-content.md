@@ -21,7 +21,7 @@ related: [llm-wiki-mcp-four-tools, llm-wiki-mcp-skills-vs-tools-workflow, llm-wi
 
 1. **Atomic writes**：page 用 tmp-file + fsync + rename；log entry 用 O_APPEND 单次写入。
 2. **Optimistic concurrency**：每个 page 有 etag `sha256(body) || mtime_ns`；冲突时抛 `WikiConflictError`，agent 必须 re-read + merge + retry。
-3. **Path containment**：slug 经正则校验；resolved path 与 root 的 realpath 比对，封堵 CVE-2025-53109 类的 symlink-escape。
+3. **Path containment**：slug 经正则校验；resolved path 与 root 的 realpath 比对，封堵 CVE-2025-53109 类的 symlink-escape [^src3]。
 4. **Format-locked log line**：log 行必须是 `## [YYYY-MM-DD] operation | Title`；operation 名是自由字符串，但破坏行结构的字符会被拒。
 
 ## Server **不**负责的（content shape）
