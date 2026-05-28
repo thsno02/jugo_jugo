@@ -13,14 +13,14 @@ aliases: ["BTTB case study", "CompleteTech LLM Wiki implementation"]
 related: [llm-knowledge-base-five-stage-workflow, agents-md-as-schema-layer, karpathy-llm-wiki-obsidian-plugin-overview, my-llm-wiki-three-layer-implementation, anthemcreation-llm-wiki-setup-cost-envelope, morishige-kb-compile-mem0-overlay]
 ---
 
-CompleteTech LLC 把 Karpathy 的 LLM Wiki 模式应用到一个真实研究前沿（latent-space reasoning + inter-agent latent communication），开源仓库 `github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck`（镜像 `ctech.llc/bttb`）。这是一份**有规模数据的生产参考实现**，对验证"模式是否真的能压住 bookkeeping 成本"很有意义。
+CompleteTech LLC 把 Karpathy 的 LLM Wiki 模式应用到一个真实研究前沿（latent-space reasoning + inter-agent latent communication），开源仓库 `github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck`（镜像 `ctech.llc/bttb`）[^url1]。这是一份**有规模数据的生产参考实现**，对验证"模式是否真的能压住 bookkeeping 成本"[^src4]很有意义。
 
-**规模事实（2026/04/06 Field Note）：**
+**规模事实（2026/04/06 Field Note）：**[^src1]
 
 - 27 个源（26 篇论文 + 1 个开源项目，Dec 2022 – Apr 2026）；
 - 120+ 页 wiki：source summaries、concept pages、13 个研究组的 entity profiles、9 个 Maps of Content (MoC)、9 个 analysis / synthesis 页、overview、change log；
 - **1400+ internal links** 把所有页面织在一起；
-- 仓库 split-license：代码 Apache 2.0，内容 CC-BY 4.0。
+- 仓库 split-license：代码 Apache 2.0，内容 CC-BY 4.0[^src5]。
 
 **架构上如何映射 Karpathy 三层（raw / wiki / schema）：**
 
