@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-etamp-memory-poisoning]
 provenance_card: ../provenance/etamp-pseudo-trajectory-methodology.md
 aliases: [pseudo trajectory ETAMP, poison rate methodology, ASR conditional on PR]
-related: [etamp-environment-injected-memory-poisoning, etamp-attack-payload-structure, etamp-chaos-monkey-agent-robustness, etamp-direction-asymmetry-and-stealth, ares-mock-rag-system-evaluation-design, poisonedrag-baselines-isolate-two-conditions]
+related: [ares-mock-rag-system-evaluation-design, poisonedrag-baselines-isolate-two-conditions]
 ---
 
 ## 主张
