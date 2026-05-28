@@ -34,14 +34,11 @@ Robin Cartier 在 verdict 里下了一个比 Karpathy 原 gist[^v3-1] 更激进�
 - "无监督执行"是理想态，实际中 schema 仍需多次迭代和必要的人工审查门控；
 - 把任何配置文件都包装成"PRD"是一种话术性扩张；不是所有 schema 都需要 PRD 那么高的形式化度，简单脚本的 README 仍然有效。
 
-## References
-
-Robin Cartier, "Karpathy's LLM Knowledge Base: A Practitioner's Verdict" (2026-04-08)，Key points 段落的最后一条。
-
-- 源路径：`data/raw/webpage/robin-cartier-llm-knowledge-bases/text.txt`（行 29 schema 是真创新这一论断；行 19 schema 文件的角色定义；行 33 Jack Roberts 把同模式放进 AI memory OS 的语境）。
-
 ## Footnotes
 
-- 核心论断原文（行 29）："The schema file is the real innovation, not the wiki itself. Treating CLAUDE.md as 'a living product requirements document for an AI colleague' scales far beyond knowledge management to any workflow that needs operational knowledge encoded for the LLM to follow autonomously [src-002]."
-- Schema 角色定义（行 19）："Schema file (e.g. CLAUDE.md) — governs folder structure, citation rules, ingest workflow, and linting conventions."
-- 更广 AI memory OS 框架（行 33）："Jack Roberts places the same pattern inside a broader AI memory operating system: Obsidian/markdown is the readable long-term memory option, while Pinecone/vector memory is the scalable semantic-search option [src-059]."
+[^src1]: `data/raw/webpage/robin-cartier-llm-knowledge-bases/text.txt` 行 29 — "The schema file is the real innovation, not the wiki itself. Treating CLAUDE.md as 'a living product requirements document for an AI colleague' scales far beyond knowledge management to any workflow that needs operational knowledge encoded for the LLM to follow autonomously."
+[^src2]: 同文件 行 19 — "Schema file (e.g. CLAUDE.md) — governs folder structure, citation rules, ingest workflow, and linting conventions." 以及 Karpathy gist 中 "You and the LLM co-evolve this" 的呼应。
+[^src3]: 同文件 行 33 — "Jack Roberts places the same pattern inside a broader AI memory operating system: Obsidian/markdown is the readable long-term memory option, while Pinecone/vector memory is the scalable semantic-search option."
+[^v3-1]: [karpathy-gist-three-layers](karpathy-gist-three-layers.md) — Robin 的判断建立在 Karpathy gist 三层架构基础上。
+[^v3-2]: [robin-cartier-scale-ceiling](robin-cartier-scale-ceiling.md) — Robin 自己关于 wiki 模式 ~200 页天花板的另一卡。
+[^v2-1]: v2 anchor [llm-wiki-schema-configuration-document](../../../../../v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/llm-wiki-schema-configuration-document.md) — 本卡是该卡的 delta：把"schema = 配置文档"升级为"schema = PRD"，并指出 schema 的可推广性大于 wiki 模式本身。
