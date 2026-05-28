@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [falconer-enterprise-guide]
 provenance_card: ../provenance/retrieval-not-enough-for-stale-kb.md
 aliases: ["better retrieval over bad context", "retrieval ≠ maintenance"]
-related: [enterprise-llm-wiki-drift-detection-loop, enterprise-llm-wiki-four-properties, karpathy-gist-bookkeeping-burden, anthemcreation-llm-wiki-vs-rag-multi-hop, karpathy-llm-wiki-vs-rag, llm-wiki-contradictions-are-assets]
+related: [enterprise-llm-wiki-drift-detection-loop]
 ---
 
 Falconer 指南把"语义搜索 / RAG"和"LLM Wiki 维护循环"明确切开。前者是查询层、后者是底层图谱的真新鲜程度。两者解决的不是同一类问题：
