@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-answer-generation-prompt-design.md
 aliases: [Mem0 results prompt, mem0 time normalization prompt, mem0 contradiction policy]
-related: [mem0-extract-update-pipeline, mem0-locomo-benchmark-evaluation, mem0-tool-call-add-update-delete-noop, longmemeval-chain-of-note-and-json-reading]
+related: [mem0-locomo-benchmark-evaluation, longmemeval-chain-of-note-and-json-reading, mem0-graph-memory-variant]
 ---
 
 ## 为什么要单独看"答案生成 prompt"
