@@ -15,11 +15,11 @@ related: [my-llm-wiki-three-layer-implementation, karpathy-wiki-extraction-granu
 
 ## 三条并行的源抽取管道
 
-`my-llm-wiki` 0.9.0 把"任何文件夹变成可查询知识图"的能力靠三条管道并存:
+`my-llm-wiki` 0.9.0 [^v3-1] 把"任何文件夹变成可查询知识图"的能力靠三条管道并存:
 
-1. **代码（19 语言）via Tree-sitter AST**——Python / TypeScript / JavaScript / Go / Rust / Java / C / C++ / Ruby / C# 等。抽取的不是简单 token，而是 class、function、`extends`/`implements` 类型继承、function signature、doc comment（Javadoc / JSDoc / GoDoc / `///`），以及 call graph。
-2. **办公文档 via Docling**（PDF / DOCX / PPTX / HTML / EPUB），需 `pip install 'my-llm-wiki[docling]'`。保留 heading 与 table；扫描版 PDF 自动走 OCR；EPUB 用 stdlib `zipfile` 拆包后走 Docling 的 HTML pipeline；无 Word heading 样式的文档用"bold-as-heading" fallback。
-3. **图像（HEIC / PNG / JPG）via vision OCR**——结构化 pass 时先生成 hub 节点，真正 OCR 通过 Claude Code 的 agent mode 命令 `/wiki .` 完成。
+1. **代码（19 语言）via Tree-sitter AST**——Python / TypeScript / JavaScript / Go / Rust / Java / C / C++ / Ruby / C# 等。抽取的不是简单 token，而是 class、function、`extends`/`implements` 类型继承、function signature、doc comment（Javadoc / JSDoc / GoDoc / `///`），以及 call graph [^src1]。
+2. **办公文档 via Docling**（PDF / DOCX / PPTX / HTML / EPUB），需 `pip install 'my-llm-wiki[docling]'` [^src4]。保留 heading 与 table；扫描版 PDF 自动走 OCR；EPUB 用 stdlib `zipfile` 拆包后走 Docling 的 HTML pipeline；无 Word heading 样式的文档用"bold-as-heading" fallback [^src2]。
+3. **图像（HEIC / PNG / JPG）via vision OCR**——结构化 pass 时先生成 hub 节点，真正 OCR 通过 Claude Code 的 agent mode 命令 `/wiki .` 完成 [^src3][^v3-2]。
 
 Markdown / 纯文本是 native 一等公民：heading、definition、`[[wikilinks]]`、跨文档引用都直接解析。
 
