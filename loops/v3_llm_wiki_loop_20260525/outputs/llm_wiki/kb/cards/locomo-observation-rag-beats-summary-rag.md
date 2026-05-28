@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-locomo]
 provenance_card: ../provenance/locomo-observation-rag-beats-summary-rag.md
 aliases: [observation 检索, RAG 单元粒度]
-related: [locomo-three-task-evaluation-framework, longmemeval-key-expansion-with-facts, locomo-long-context-adversarial-collapse, longmemeval-three-stage-memory-framework]
+related: [locomo-three-task-evaluation-framework, locomo-long-context-adversarial-collapse, longmemeval-key-expansion-with-facts]
 ---
 
 ## 规则
