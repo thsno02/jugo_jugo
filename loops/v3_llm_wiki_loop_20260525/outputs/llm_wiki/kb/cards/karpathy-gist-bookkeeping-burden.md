@@ -39,15 +39,10 @@ Karpathy 在 gist 的 "Why this works" 段给出 LLM Wiki 模式有效性的核�
 - "人不写 wiki"是默认而非铁律——人有时仍需手写少量页面（例如方法论说明），但写完后须告知 LLM 维护交接；
 - LLM 不会"无聊"不代表它不会犯错——错误模式从"忘记更新"变成"幻觉式更新"，问题域转移而非消失。
 
-## References
-
-Karpathy 2026 LLM Wiki gist 的 "Why this works" 段；"Operations" 段说明 ingest/lint 入口对应"新增维护 / 漂移维护"。
-
-- 源路径：`data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt`（行 64–70 "Why this works" 完整段；行 37 "A single source might touch 10-15 wiki pages"；行 41 lint 段）。
-
 ## Footnotes
 
-- 核心主张原文（行 66）："The tedious part of maintaining a knowledge base is not the reading or the thinking — it's the bookkeeping. Updating cross-references, keeping summaries current, noting when new data contradicts old claims, maintaining consistency across dozens of pages. Humans abandon wikis because the maintenance burden grows faster than the value. LLMs don't get bored, don't forget to update a cross-reference, and can touch 15 files in one pass. The wiki stays maintained because the cost of maintenance is near zero."
-- 人侧分工原文（行 68）："The human's job is to curate sources, direct the analysis, ask good questions, and think about what it all means. The LLM's job is everything else."
-- 单源触 10–15 页（行 37）："A single source might touch 10-15 wiki pages."
-- Lint 处理漂移原文（行 41）："Periodically, ask the LLM to health-check the wiki. Look for: contradictions between pages, stale claims that newer sources have superseded, orphan pages with no inbound links, important concepts mentioned but lacking their own page, missing cross-references, data gaps that could be filled with a web search."
+[^src1]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` 行 66 — "The tedious part of maintaining a knowledge base is not the reading or the thinking — it's the bookkeeping. Updating cross-references, keeping summaries current, noting when new data contradicts old claims, maintaining consistency across dozens of pages. Humans abandon wikis because the maintenance burden grows faster than the value. LLMs don't get bored, don't forget to update a cross-reference, and can touch 15 files in one pass. The wiki stays maintained because the cost of maintenance is near zero."
+[^src2]: 同文件 行 68 — "The human's job is to curate sources, direct the analysis, ask good questions, and think about what it all means. The LLM's job is everything else."
+[^src3]: 同文件 行 37 — "A single source might touch 10-15 wiki pages."
+[^src4]: 同文件 行 41 — "Periodically, ask the LLM to health-check the wiki. Look for: contradictions between pages, stale claims that newer sources have superseded, orphan pages with no inbound links, important concepts mentioned but lacking their own page, missing cross-references, data gaps that could be filled with a web search."
+[^v3-1]: [robin-cartier-scale-ceiling](robin-cartier-scale-ceiling.md) — Robin Cartier 实战中观察到的 ~200 页天花板，是"维护成本接近零"假设的边界。
