@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [clawhub-llm-wiki-karpathy]
 provenance_card: ../provenance/llm-wiki-karpathy-lint-grounding-trail.md
 aliases: ["kb_lint", "wiki health checks"]
-related: [llm-wiki-karpathy-runtime-vs-agent-split, llm-wiki-karpathy-multimodal-representation-path, karpathy-llm-kb-three-operations, llm-wiki-contradictions-are-assets, enterprise-llm-wiki-drift-detection-loop, nvk-llm-wiki-audit-and-librarian]
+related: [llm-wiki-karpathy-runtime-vs-agent-split, llm-wiki-karpathy-multimodal-representation-path, llm-wiki-contradictions-are-assets]
 ---
 
 `@harrylabs/llm-wiki-karpathy` 把 wiki health 直接做成 runtime 的一等品[^v3-1]：`kb_lint` 是 deterministic 的，每次运行同一份 vault 必出同样的告警集合。lint 检查项不是纯结构性的，而是同时对"内容是否有 grounding"做检测，这让 wiki 内部的可信度可以被工具复核。
