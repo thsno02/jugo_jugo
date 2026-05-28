@@ -24,14 +24,14 @@ ELI5 是长篇开放式回答（人类答案平均 131 词），传统 ROUGE-L �
 | LLaMa-13B \vani{} | 16.2 | 3.9 |
 | **Top-1 passage 直接返回** | **19.1** | **3.0** |
 
-最后一行是 ALCE 论文用来说明问题的关键反例：**直接把 BM25 top-1 passage 当回答**就能拿到 ROUGE-L=19.1，几乎不输 ChatGPT 的 20.6，但 claim recall 只有 3.0——它根本没覆盖 gold answer 的不同侧面。
+最后一行是 ALCE 论文用来说明问题的关键反例：**直接把 BM25 top-1 passage 当回答**就能拿到 ROUGE-L=19.1，几乎不输 ChatGPT 的 20.6，但 claim recall 只有 3.0——它根本没覆盖 gold answer 的不同侧面[^src3]。
 
 ## 替代方案：sub-claim 抽取 + NLI 判蕴含
 
-ALCE 在 ELI5 上的 correctness 度量分两步：
+ALCE 在 ELI5 上的 correctness 度量[^v3-1]分两步：
 
-1. **claim 抽取（离线，一次性）**：用 `text-davinci-003` (InstructGPT) **从 ELI5 训练集人工答案里抽 3 条 sub-claim**。论文先手工标 3 个示例做 in-context demo，再以此 prompt 大规模生成；
-2. **claim recall 评估（在线，每次评测）**：拿待评模型的生成回答当 premise，把每条 sub-claim 当 hypothesis 喂 TRUE NLI 模型；只要 NLI 输出"1"，该 sub-claim 算被覆盖；3 条里覆盖几条直接给百分比作为 claim recall。
+1. **claim 抽取（离线，一次性）**：用 `text-davinci-003` (InstructGPT) **从 ELI5 训练集人工答案里抽 3 条 sub-claim**。论文先手工标 3 个示例做 in-context demo，再以此 prompt 大规模生成[^src5]；
+2. **claim recall 评估（在线，每次评测）**：拿待评模型的生成回答当 premise，把每条 sub-claim 当 hypothesis 喂 TRUE NLI 模型[^v3-2]；只要 NLI 输出"1"，该 sub-claim 算被覆盖；3 条里覆盖几条直接给百分比作为 claim recall。
 
 ## 质量检查（论文给出的关键数字）
 
