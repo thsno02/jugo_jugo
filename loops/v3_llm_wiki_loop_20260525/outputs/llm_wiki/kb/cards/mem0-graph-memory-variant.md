@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#memory, #mem0, #knowledge-graph, #neo4j, #temporal-reasoning]
 created_time: 2026-05-26T11:40:00+08:00
-edited_time: 2026-05-27T11:55:00+08:00
+edited_time: 2026-05-28T10:50:00+08:00
 edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-graph-memory-variant.md
