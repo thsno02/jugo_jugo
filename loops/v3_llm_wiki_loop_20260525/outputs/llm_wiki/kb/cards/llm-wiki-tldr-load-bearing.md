@@ -51,12 +51,7 @@ index 解决 **发现** 问题（有哪些页）；TL;DR 解决 **筛选 + 召�
 - TL;DR 是"页的最简表达"，对那些只能用图 / 表 / 公式表达的页不适用；强制 50 字符会失真。
 - 字符上限可调，但**必须存在**——没有上限的 TL;DR 退化为"另一个 summary 段"。
 
-## References
-
-- 主张：`data/raw/webpage/openaitoolshub-six-months/text.txt:38`。
-- Karpathy gist 提及 TL;DR 但不强调：`text.txt:38`。
-
 ## Footnotes
 
-- 原文主张：`text.txt:38` —— "TL;DR enforcement saves your context window more than the index does. Every page in my wiki has a ≤50-character TL;DR at the top. When I ask Claude 'what did I decide about RAG vs LLM wiki?', it can scan 35 TL;DRs in a single read instead of trying to compress 35 full pages. Karpathy's gist mentions the TL;DR-on-top idea once; in practice it's load-bearing."
-- Jim 的页结构定位：`text.txt:36`（35 页 + 80 raw input + log.md + schema.md）。
+[^src1]: `data/raw/webpage/openaitoolshub-six-months/text.txt:38` — "TL;DR enforcement saves your context window more than the index does. Every page in my wiki has a ≤50-character TL;DR at the top. When I ask Claude 'what did I decide about RAG vs LLM wiki?', it can scan 35 TL;DRs in a single read instead of trying to compress 35 full pages. Karpathy's gist mentions the TL;DR-on-top idea once; in practice it's load-bearing." 以及同文件 text.txt:36 Jim 的页结构定位（35 页 + 80 raw input + log.md + schema.md）。
+[^v3-1]: [llm-wiki-schema-is-most-important](llm-wiki-schema-is-most-important.md) — schema-first 主张的本卡。
