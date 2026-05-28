@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-as-metabolism-five-operations.md
 aliases: [five-op retention policy, sleep-function architecture, TRIAGE-CONSOLIDATE-AUDIT]
-related: [memory-as-metabolism-mirror-vs-compensate, memory-gravity-load-bearing-protection, memory-as-metabolism-contextualize-depth-fitted, memory-as-metabolism-conflict-routing-matrix, audit-by-suspension-against-entrenchment, minority-pressure-promotion, lightmem-sleep-time-offline-parallel-update]
+related: [memory-as-metabolism-contextualize-depth-fitted, memory-as-metabolism-mirror-vs-compensate, minority-pressure-promotion, lightmem-sleep-time-offline-parallel-update, audit-by-suspension-against-entrenchment, memory-gravity-load-bearing-protection, mem0-tool-call-add-update-delete-noop]
 ---
 
 ## 五个操作各司其职
