@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [aillm-wiki-directory]
 provenance_card: ../provenance/aillm-wiki-four-defining-properties.md
 aliases: ["LLM Wiki four properties", "aillm.wiki definition"]
-related: [llm-knowledge-base-five-stage-workflow, aillm-wiki-schema-as-bottleneck, enterprise-llm-wiki-four-properties, karpathy-gist-three-layers, karpathy-llm-kb-three-layer-arch, karpathy-llm-wiki-vs-rag]
+related: [karpathy-llm-wiki-vs-rag, karpathy-gist-three-layers, robin-cartier-scale-ceiling]
 ---
 
 aillm.wiki 是 Karpathy LLM Wiki 模式公开传播后第一波出现的"非官方目录站"之一。它把这个模式压缩为四条**对外可营销的定义性属性**——既是它向"非技术用户"解释 LLM Wiki 时的话术，也是社区暂时形成的最低共识：
