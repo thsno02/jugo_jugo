@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#rag, #ares, #cross-domain, #generalization, #llm-judge]
 created_time: 2026-05-26T15:30:00+08:00
-edited_time: 2026-05-27T14:18:00+08:00
+edited_time: 2026-05-28T15:30:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-cross-domain-generalization-limits.md
