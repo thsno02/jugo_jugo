@@ -45,7 +45,7 @@ Karpathy LLM Wiki Obsidian 插件[^v3-1]页面明确声明：
 | Lightweight | Claude Haiku 4.5 | 200K tokens | 小 wiki 可用 |
 | Flagship | Claude Opus 4.7 / GPT-5.5 | 1M tokens | 选择性使用 |
 
-本地 Ollama 上下文典型 8K–128K，所以页面建议**云端 ingestion + 本地 query** 的混合方案——本地模型在小 wiki 子集上可用，但不能承担全 wiki 查询。
+本地 Ollama 上下文典型 8K–128K，所以页面建议**云端 ingestion + 本地 query** 的混合方案——本地模型在小 wiki 子集上可用，但不能承担全 wiki 查询[^src3]。
 
 ## 边界与代价
 
