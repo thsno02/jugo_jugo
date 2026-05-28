@@ -30,14 +30,14 @@ LongMemEval 论文里最容易被忽视的一节是 §3.4 pilot study——作�
 **ChatGPT 的失败模式：覆盖式压缩。**
 
 - 行为：evidence statement 一出现就被立刻 record 下来；
-- 失败：随着对话推进，ChatGPT 把历史 "compress" 成更短的 fact 时，会**修改**之前记下的内容（典型如"用户的车型"被覆盖成"用户喜欢电动车"），原始信息丢失。
-- 对应 5 类能力里：**KU（Knowledge Update）失败** —— 不是不会更新，而是更新得太激进，把不该改的也改了。
+- 失败：随着对话推进，ChatGPT 把历史 "compress" 成更短的 fact 时，会**修改**之前记下的内容（典型如"用户的车型"被覆盖成"用户喜欢电动车"），原始信息丢失[^src4]。这正是 LightMem case study 用 "Tokyo → Kyoto" 反例论证 hard update 危险的现实证据[^v3-1]。
+- 对应 5 类能力里：**KU（Knowledge Update）失败**[^v3-2] —— 不是不会更新，而是更新得太激进，把不该改的也改了。
 
 **Coze 的失败模式：拒绝间接表达。**
 
 - 行为：只 record "用户直接陈述" 的事实；
-- 失败：当 LongMemEval 的 evidence 通过 *间接* 方式表达（"帮我查车保险" → 隐含 "我有车"）时，Coze 根本没把这件事存进 memory。
-- 对应 5 类能力里：**IE（Information Extraction）失败** —— 在事实抽取阶段就漏掉了。
+- 失败：当 LongMemEval 的 evidence 通过 *间接* 方式表达（"帮我查车保险" → 隐含 "我有车"）时[^v3-3]，Coze 根本没把这件事存进 memory[^src5]。
+- 对应 5 类能力里：**IE（Information Extraction）失败** —— 在事实抽取阶段就漏掉了。这与 Mem0 自己分析的 baseline 失败模式（full-context / RAG / OpenAI memory 在 LoCoMo 上各类掉分）属于同源问题[^v3-4]。
 
 **人工评估细节（appendix）**：
 
