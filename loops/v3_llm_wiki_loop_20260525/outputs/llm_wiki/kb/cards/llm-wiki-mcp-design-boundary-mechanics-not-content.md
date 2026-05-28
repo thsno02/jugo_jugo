@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#llm-wiki-mcp, #design-philosophy, #karpathy-llm-wiki, #schema]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T10:25:00+08:00
+edited_time: 2026-05-28T14:15:00+08:00
 edited_entity: llm
 source_ids: [pypi-llm-wiki-mcp]
 provenance_card: ../provenance/llm-wiki-mcp-design-boundary-mechanics-not-content.md
