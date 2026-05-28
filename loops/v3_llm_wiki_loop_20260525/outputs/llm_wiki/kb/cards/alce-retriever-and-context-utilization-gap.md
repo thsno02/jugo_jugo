@@ -61,7 +61,7 @@ related: [alce-three-dimension-citation-metric, alce-prompting-strategies, mem0-
 2. **ChatGPT-16K 模式**给更多 passage 反而**不涨甚至略跌**——"长 context"对 ChatGPT 在 ALCE 上是浪费；
 3. GPT-4 是少有的例外：5-psg → 20-psg 时 correctness 41.3 → 44.4 单调升，citation recall 也升——**只有 GPT-4 这一档模型**能从更多 passage 里继续提取信息。
 
-论文用一句结论收尾："processing more passages is non-trivial and GPT-4 is better at synthesizing information from its long context than ChatGPT."
+论文用一句结论收尾："processing more passages is non-trivial and GPT-4 is better at synthesizing information from its long context than ChatGPT."[^src1][^src6]
 
 ## ASQA correctness 平台化的更细节据点
 
