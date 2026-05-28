@@ -70,9 +70,9 @@ schema/    # 📋 wiki 结构配置（命名、模板、分类）
 
 ## 一致性与维护机制（页面突出的"非 RAG"特性）
 
-- **Mandatory page aliases**：每个生成页至少含 1 个别名（翻译、缩写、别名），是跨语言去重的支撑；
+- **Mandatory page aliases**：每个生成页至少含 1 个别名（翻译、缩写、别名），是跨语言去重的支撑[^v3-2]；
 - **Semantic-tier duplicate detection**（v1.7.10+）：Tier 1 始终 LLM 验证（跨语言、缩写、高相似度标题），Tier 2 填充剩余 token 预算；
-- **Contradiction state machine**：detected → review_ok → resolved（AI 修复）或 detected → pending_fix（人工）；
+- **Contradiction state machine**：detected → review_ok → resolved（AI 修复）或 detected → pending_fix（人工）[^src3]；
 - **Smart Knowledge Fusion**：多源更新合并新信息且保留矛盾的归属，`reviewed: true` 标记的页面**受写保护**；
 - **Smart Fix All**：按因果顺序批修——污染页 → 别名 → 重复合并 → 死链 → 孤儿 → 空页扩展。
 
