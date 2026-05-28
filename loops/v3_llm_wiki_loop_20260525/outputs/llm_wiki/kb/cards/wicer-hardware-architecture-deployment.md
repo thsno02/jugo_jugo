@@ -15,7 +15,7 @@ related: [wicer-fc-rag-document-count-crossover, wicer-blind-compilation-catastr
 
 ## 主张
 
-WiCER 论文 Appendix B 给出了"cached knowledge base QA"工作负载的跨硬件部署对照，结论与"用 GPU 越大越好"的直觉相反——**Apple M4 Pro 的可用性能 / 成本比对个人或单实例 KV-cache 部署最优；RTX 4090 是延迟敏感场景的最佳绝对性能；Inferentia2 对该工作负载结构性不适配**。
+WiCER 论文 Appendix B 给出了"cached knowledge base QA"工作负载的跨硬件部署对照[^src1]，结论与"用 GPU 越大越好"的直觉相反——**Apple M4 Pro 的可用性能 / 成本比对个人或单实例 KV-cache 部署最优；RTX 4090 是延迟敏感场景的最佳绝对性能；Inferentia2 对该工作负载结构性不适配**。这套部署对照默认了 WiCER 主实验的"FC 在精编 wiki 上 TTFT 优势 4–7×"的前提[^v3-1]。
 
 ## 三套硬件画像
 
