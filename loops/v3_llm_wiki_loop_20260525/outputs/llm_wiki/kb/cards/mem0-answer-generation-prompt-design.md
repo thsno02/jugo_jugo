@@ -15,7 +15,7 @@ related: [mem0-extract-update-pipeline, mem0-locomo-benchmark-evaluation, mem0-t
 
 ## 为什么要单独看"答案生成 prompt"
 
-很多对 Mem0 的描述只讲"检索什么"或"存什么"。但论文附录的 *Prompt Template for Results Generation* 显示：决定 Mem0 在 **temporal** 题上能从 21.71（OpenAI）拉到 55.51 J 分的关键，不只是存了带时间戳的记忆，而是**在生成时强制 LLM 做时间换算 + 冲突仲裁**——这两步本来该模型自己想，被 Mem0 显式写进了 prompt。
+很多对 Mem0 的描述只讲"检索什么"或"存什么"。但论文附录的 *Prompt Template for Results Generation*[^src1] 显示：决定 Mem0 在 **temporal** 题上能从 21.71（OpenAI）拉到 55.51 J 分的关键[^v3-1]，不只是存了带时间戳的记忆，而是**在生成时强制 LLM 做时间换算 + 冲突仲裁**——这两步本来该模型自己想，被 Mem0 显式写进了 prompt。这一点与 LongMemEval 强调的 reading 阶段 Chain-of-Note 是同质的方法论选择[^v3-2]。
 
 ## 上下文结构
 
