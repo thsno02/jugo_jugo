@@ -44,8 +44,7 @@ Jim 的 Pitfall #3 是反向证据：他 Month 4 让 Claude 把 "RAG is the righ
 
 Jim 自己明确指出：**在 regulated 领域（legal / medical / financial advisory），这个哲学不适用**：
 
-> "You're in a regulated field (legal, medical, financial advisory). The contradictions-as-assets philosophy clashes with compliance requirements that demand single-source-of-truth."
-> —— `text.txt:136`
+> "You're in a regulated field (legal, medical, financial advisory). The contradictions-as-assets philosophy clashes with compliance requirements that demand single-source-of-truth."[^src2]
 
 这些领域要求**单一权威**，矛盾必须解决并消除——"contradictions are assets"是个人 / 团队知识库的哲学，不要无脑外推到合规场景。
 
