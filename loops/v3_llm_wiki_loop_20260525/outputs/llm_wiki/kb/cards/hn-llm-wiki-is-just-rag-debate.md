@@ -29,8 +29,8 @@ Karpathy 发布 LLM Wiki gist 后，HN 第一波热门评论是 `kenforthewin` �
 
 **第三方融合（`devmor` 与 `mememememememo`）：**
 
-- `devmor` 把它称为 "persistent memory RAG"——retrieval 仍是核心，只是把 corpus 从静态换成了 LLM 持续维护；
-- `mememememememo` 一句话总结："compaction for RAG"——重点不在检索方式，而在把 raw → wiki 这步当作"压缩"操作。
+- `devmor` 把它称为 "persistent memory RAG"——retrieval 仍是核心，只是把 corpus 从静态换成了 LLM 持续维护[^src4]；
+- `mememememememo` 一句话总结："compaction for RAG"——重点不在检索方式，而在把 raw → wiki 这步当作"压缩"操作[^src6]。
 
 **这一区分对工程实现的价值：**
 
