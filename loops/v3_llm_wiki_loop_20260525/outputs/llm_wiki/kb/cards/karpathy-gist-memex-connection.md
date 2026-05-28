@@ -24,12 +24,12 @@ Karpathy 在 gist 末段把 LLM Wiki 模式直接连到 Vannevar Bush 1945 年�
 - "private, actively curated, with the connections between documents as valuable as the documents themselves"——Memex 原本是私域、主动 curate 的；
 - web 的最终形态是公开、被动 aggregate、SEO 驱动——和 Memex 想象的几乎相反。
 
-**Bush 没能解决的一块**：**"The part he couldn't solve was who does the maintenance."**——associative trails 必须有人持续地建、更新、修剪，但人没有耐心做这件事。Memex 因此一直停留在思想实验阶段。
+**Bush 没能解决的一块**：**"The part he couldn't solve was who does the maintenance."**[^src1]——associative trails 必须有人持续地建、更新、修剪，但人没有耐心做这件事。Memex 因此一直停留在思想实验阶段。
 
 **LLM Wiki 的填补**：
 - 私域 + 主动 curate 的目标依旧成立（你选源、你定方向）；
 - associative trails = wiki 中的交叉引用、概念页、对比页；
-- "The LLM handles that."——LLM 接手了那个被搁置 80 年的"谁来维护"问题。
+- "The LLM handles that."[^src1]——LLM 接手了那个被搁置 80 年的"谁来维护"[^v3-1]问题。
 
 为什么这是一个 source_claim 而不只是叙事：
 - 它隐含了一个评估标准：**任何不解决维护问题的 PKM 工具都只能复刻 Memex 的失败**——例如纯手动 Obsidian、Notion、Roam，最终都退化成"个人 wiki 坟场"；
