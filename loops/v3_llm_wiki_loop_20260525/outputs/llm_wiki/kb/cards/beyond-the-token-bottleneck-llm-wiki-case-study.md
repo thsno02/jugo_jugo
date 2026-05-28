@@ -52,16 +52,13 @@ CompleteTech LLC 把 Karpathy 的 LLM Wiki 模式应用到一个真实研究前�
 - 这是单团队报告，未公开 ingest 总耗时 / 成本；
 - 它是面向**研究文献** 的，不是面向产品文档、代码 docs 或 PKM；要照搬到其他领域，必须重写 schema。
 
-## References
-
-- "Beyond the Token Bottleneck — Building Karpathy's LLM Wiki on a Live Frontier"，CompleteTech LLC, 2026-04-06：`data/raw/webpage/complete-tech-live-frontier/text.txt`，行 81–148。
-- 仓库 `github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck`，镜像 `ctech.llc/bttb`（行 94、150）。
-
 ## Footnotes
 
-- 规模事实：行 90、94、122–130。
-- 三层架构映射：行 120–128。
-- ingest 循环原文："One paper, ten to fifteen page touches, hundreds of new and updated links."——行 130。
-- Karpathy "the tedious part of maintaining a knowledge base is not the reading or the thinking — it's the bookkeeping"——行 92。
-- License split：行 148。
-- 三条理由：行 136–140。
+[^src1]: `data/raw/webpage/complete-tech-live-frontier/text.txt` 行 90、94、122-130 — 规模事实：27 个源、120+ 页 wiki、1400+ internal links。
+[^src2]: 同文件 行 120-128 — Karpathy 三层架构（raw / wiki / schema）的实际目录映射：`raw/` / `wiki/` / `AGENTS.md`。
+[^src3]: 同文件 行 130 — "One paper, ten to fifteen page touches, hundreds of new and updated links."
+[^src4]: 同文件 行 92 — Karpathy: "the tedious part of maintaining a knowledge base is not the reading or the thinking — it's the bookkeeping."
+[^src5]: 同文件 行 148 — split-license：代码 Apache 2.0，内容 CC-BY 4.0；以及 行 136-140 三条做这件事的理由。
+[^url1]: <https://github.com/CompleteTech-LLC-AI-Research/beyond-the-token-bottleneck>
+[^v3-1]: [agents-md-as-schema-layer](agents-md-as-schema-layer.md) — `AGENTS.md` 作为 schema 层的展开。
+[^v3-2]: [karpathy-gist-bookkeeping-burden](karpathy-gist-bookkeeping-burden.md) — Karpathy "bookkeeping 才是真正崩溃点"的本卡。
