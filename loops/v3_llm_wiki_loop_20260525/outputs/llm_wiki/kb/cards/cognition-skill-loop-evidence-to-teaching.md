@@ -52,16 +52,9 @@ Cognition 把自己定位为**与"generic company brain"对立**[^src2]：
 - 仅文本/操作类型的技能（命令、文件编辑、决策、结果），未涉及视觉/二进制工件。
 - 页面是产品宣传材料，**未公开**衰减算法、新鲜度具体度量与 person-specific 检索的实现细节。
 
-## References
-
-- 来源页面：`data/raw/webpage/cognitionus-llm-wiki-guide/text.txt`。
-- 第 49–107 行：4 步闭环（SKILL LOOKUP / EVIDENCE LOG / DRAFT SKILL / AGENT CONTEXT）。
-- 第 112–146 行："Memory that decays, consolidates, and teaches back" 与四对位机制。
-
 ## Footnotes
 
-[^1]: 闭环 4 步小标题原文（第 60–107 行）："Ask first / Capture work / Save skills / Retrieve later"，对应正文 "At task start, the agent checks what your team has already figured out" 等四段描述。
-
-[^2]: 与公司大脑对位原文（第 116 行）："Generic company brains store context. Cognition treats work as learning signal: sessions become approved skills, skills get freshness and outcome history, and agents retrieve executable guidance instead of a pile of notes."
-
-[^3]: Confirm-first capture 原文（第 136 行）："Cognition drafts skills and waits for explicit approval before saving anything to the group."
+[^src1]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` 第 60-107 行（4 步小标题原文）— "Ask first / Capture work / Save skills / Retrieve later"，对应正文 "At task start, the agent checks what your team has already figured out" 等四段描述。
+[^src2]: 同文件 第 116 行 — "Generic company brains store context. Cognition treats work as learning signal: sessions become approved skills, skills get freshness and outcome history, and agents retrieve executable guidance instead of a pile of notes."
+[^src3]: 同文件 第 136 行（Confirm-first capture）— "Cognition drafts skills and waits for explicit approval before saving anything to the group."
+[^v3-1]: [cognition-human-approved-skill-md](cognition-human-approved-skill-md.md) — SKILL.md 写入闸门（人审 yes）的展开。
