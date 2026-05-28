@@ -38,19 +38,13 @@ Karpathy 个人 LLM Wiki 的 health check 是 on-demand 的[^v3-1]——他想�
 - SSOT 指定本身是治理动作，不是技术动作。系统能监控 SSOT，但谁算 owner、谁有 SSOT 写权限是组织决定，文章未给具体治理模型。
 - 跨工具实体解析的精度是 drift detection 的上限——如果系统把 `payments-service`（GitHub）与"the payments team"（Slack channel）错解析为同一实体，drift 告警会乱。
 
-## References
-
-- "Stay current: health checks need to run automatically"：`data/raw/webpage/falconer-enterprise-guide/text.txt` L68–74。
-- 连续 drift detection 与按 owner 路由：同文件 L82–86。
-- SSOT 指定与 "Step 3 / Step 4"：同文件 L112–118。
-- agent 作为消费者：同文件 L120–122 + L150。
-- Anthropic 关于 "context as the scarcest resource"：同文件 L74 + L150。
-
 ## Footnotes
 
-- `data/raw/webpage/falconer-enterprise-guide/text.txt` L70-72：`"At the company scale, the same approach doesn't generalize. The engineer who wrote the runbook six months ago is on a different project; the senior engineer who knew the context has moved on; the system the doc described has been rewritten twice."`
-- 同文件 L84：`"When a new PR contradicts the runbook, the system needs to detect the contradiction, draft an update, and route it to the document owner for review."`
-- 同文件 L86：`"It runs as a background loop, surfacing flagged content on a schedule the team can act on (weekly review rather than quarterly audit)"`。
-- 同文件 L112-116：`"designating which documents are canonical for each domain ... Once a doc is marked canonical, the system monitors it from that point forward and treats conflicting sources as supplementary context rather than competing truth."`
-- 同文件 L118：`"As PRs merge, Slack threads resolve, and decisions land, the system detects which documents are now affected and drafts proposed updates."`
-- 同文件 L122：`"AI coding agents through protocols like Claude MCP. The agents query the same knowledge graph the humans do"`。
+[^src1]: `data/raw/webpage/falconer-enterprise-guide/text.txt` L70-72 — "At the company scale, the same approach doesn't generalize. The engineer who wrote the runbook six months ago is on a different project; the senior engineer who knew the context has moved on; the system the doc described has been rewritten twice."
+[^src2]: 同文件 L84 — "When a new PR contradicts the runbook, the system needs to detect the contradiction, draft an update, and route it to the document owner for review."
+[^src3]: 同文件 L86 — "It runs as a background loop, surfacing flagged content on a schedule the team can act on (weekly review rather than quarterly audit)."
+[^src4]: 同文件 L112-116 — "designating which documents are canonical for each domain ... Once a doc is marked canonical, the system monitors it from that point forward and treats conflicting sources as supplementary context rather than competing truth."
+[^src5]: 同文件 L118 — "As PRs merge, Slack threads resolve, and decisions land, the system detects which documents are now affected and drafts proposed updates."
+[^src6]: 同文件 L122 — "AI coding agents through protocols like Claude MCP. The agents query the same knowledge graph the humans do."
+[^v3-1]: [llm-wiki-karpathy-lint-grounding-trail](llm-wiki-karpathy-lint-grounding-trail.md) — Karpathy 个人版的 health check（kb_lint）是 on-demand 的，本卡讨论企业版为何必须连续后台运行。
+[^v2-1]: v2 anchor [llm-wiki-health-checks](../../../../../v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/llm-wiki-health-checks.md) — 本卡是该卡的 delta：把"health check"从个人 on-demand 升级到企业连续后台 + owner 路由 + SSOT 设计三机制。
