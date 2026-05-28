@@ -31,7 +31,7 @@ Karpathy LLM Wiki 插件[^v3-1]在 `Settings → Wiki Output / Extraction` 中�
 - **wiki 体积可控**：直接影响 wiki 长大的速度，间接影响 query 时的全 wiki context 是否仍然装得下长上下文模型；
 - **试水成本低**：用户在新源上可以先 Minimal，再决定是否升 Standard / Fine。
 
-页面建议：**Minimal / Coarse 适合大文件夹**，**Fine 选择性用于关键文档**——这是一个明确的"按价值分档"使用模式。
+页面建议：**Minimal / Coarse 适合大文件夹**，**Fine 选择性用于关键文档**——这是一个明确的"按价值分档"使用模式[^src2]。
 
 ## 与其它"成本旋钮"的配合
 
