@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#rag, #indexing, #key-design]
 created_time: 2026-05-26T14:30:00+08:00
-edited_time: 2026-05-27T11:30:00+08:00
+edited_time: 2026-05-28T10:40:00+08:00
 edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-key-expansion-with-facts.md
