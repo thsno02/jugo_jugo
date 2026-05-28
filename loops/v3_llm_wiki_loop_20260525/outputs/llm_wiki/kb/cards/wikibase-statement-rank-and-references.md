@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#wikibase, #wikidata, #rank, #citation]
 created_time: 2026-05-26T15:20:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T12:15:00+08:00
 edited_entity: llm
 source_ids: [wikibase-data-model]
 provenance_card: ../provenance/wikibase-statement-rank-and-references.md
