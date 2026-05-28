@@ -15,7 +15,7 @@ related: [longmemeval-three-stage-memory-framework, locomo-observation-rag-beats
 
 ## 规则
 
-LongMemEval §5.2 系统比较了七种 key 设计，确定一条工程优化原则：
+LongMemEval §5.2 系统比较了七种 key 设计[^src1]，确定一条工程优化原则——这是 LongMemEval 三阶段框架中 CP2 Key 的最优落点[^v3-1]：
 
 - **不要只用 value 自身做 key**，也**不要只用 fact / summary / keyphrase 替换 value 做 key**（替换会丢上下文，recall 反而掉）。
 - **正确做法**：indexing 时把抽出的 user fact 与原 value 拼接成新的 key（"document expansion"）。这条做法称为 **K = V + fact**。
