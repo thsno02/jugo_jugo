@@ -25,12 +25,11 @@ Rohit Ghumare 给出更直白的版本："Schema is the most important file."[^s
 
 - **schema 决定增量动作的语义**：frontmatter 字段名 / canonical slug 规则 / contradiction 解决协议 → 都是每次 ingest 时 LLM 必须遵从的规则。schema 不清，LLM 每次都用自己的"默认习惯"，半年后 wiki 内部不自洽。
 - **schema 决定可寻址性**：slug 命名规则不统一 → 同一个人 / 概念出现两个 slug（如 `karpathy.md` 和 `andrej-karpathy.md`）→ LLM 当成两个实体处理 → 推荐 / 搜索失真（Jim 的 Pitfall #4）。
-- **schema 是 onboarding 文档**：每个 skill 都在每次运行时重读 schema（参见 `llm-wiki-mcp-skills-vs-tools-workflow`）；schema 写得清楚 = agent 行为可预测。
+- **schema 是 onboarding 文档**：每个 skill 都在每次运行时重读 schema[^v3-1]；schema 写得清楚 = agent 行为可预测。
 
 ## Jim 的"schema first"实操
 
-> "I wrote schema.md before I had 5 pages."
-> —— `text.txt:50`
+> "I wrote schema.md before I had 5 pages."[^src2]
 
 即"先写规则，再写第一页"。具体定义的内容：
 
