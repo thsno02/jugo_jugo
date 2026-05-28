@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#economics, #knowledge-compounding, #capital-goods, #token-economics]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T10:24:00+08:00
+edited_time: 2026-05-28T10:04:00+08:00
 edited_entity: llm
 source_ids: [arxiv-knowledge-compounding]
 provenance_card: ../provenance/knowledge-compounding-tokens-as-capital.md
