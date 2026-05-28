@@ -26,7 +26,7 @@ CompleteTech LLC 把 Karpathy 的 LLM Wiki 模式应用到一个真实研究前�
 
 - `raw/` — 26 篇源 PDF，外加 per-paper provenance index、ingest checklist、bulk arXiv downloader。**惯例上只读**，LLM 不编辑这一层；
 - `wiki/` — 120+ 页 LLM 生成内容；
-- `AGENTS.md` — **schema 层**：page types、linking conventions、depth standards、每类 page 的"完成"定义。这是让 LLM 多轮 ingest 之间输出保持可预测、wiki 可维护的关键；
+- `AGENTS.md` — **schema 层**[^v3-1]：page types、linking conventions、depth standards、每类 page 的"完成"定义[^src2]。这是让 LLM 多轮 ingest 之间输出保持可预测、wiki 可维护的关键；
 - `workflows/` — maintainer playbooks：create（ingest / batch-ingest / synthesize）、enrich、audit（gap-analysis / verification / lint / plugin-audit / schema-self-audit）、query、meta；决策树在 `workflows/README.md`。
 
 **核心循环——ingest 一篇论文的副作用：**
