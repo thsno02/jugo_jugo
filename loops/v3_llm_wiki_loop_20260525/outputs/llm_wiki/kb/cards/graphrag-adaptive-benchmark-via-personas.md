@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-adaptive-benchmark-via-personas.md
 aliases: ["GraphRAG 评测协议", "adaptive sensemaking benchmark"]
-related: [graphrag-global-sensemaking-pipeline, graphrag-context-window-8k-optimal, ragas-reference-free-rag-evaluation, wicer-llm-judge-human-validation, ares-three-judge-rag-evaluation, alce-three-dimension-citation-metric]
+related: [graphrag-global-sensemaking-pipeline, wicer-llm-judge-human-validation]
 ---
 
 GraphRAG 论文[^v3-1]不仅给出方法，还给出一套针对"全局意义建构"问题的评测协议——因为 HotPotQA / MultiHop-RAG / MT-Bench 这些已有基准只评事实型检索，没法用来评 "What are the main themes in the dataset?" 这类没有 gold answer 的问题。论文的协议有三块：
