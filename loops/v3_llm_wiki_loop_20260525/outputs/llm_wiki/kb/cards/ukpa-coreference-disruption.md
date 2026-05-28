@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graph-poisoning]
 provenance_card: ../provenance/ukpa-coreference-disruption.md
 aliases: ["Universal Knowledge Poisoning Attack", "通用知识投毒"]
-related: [graphrag-manipulation-only-attack-surface, tkpa-graph-guided-targeted-poisoning, ukpa-edit-distance-stealth-tradeoff, gragpoison-additive-vs-edit-attack, graphrag-text-defense-blind-spot, graphrag-pipeline-formalism, graphrag-global-sensemaking-pipeline]
+related: [graphrag-pipeline-formalism, graphrag-global-sensemaking-pipeline, ukpa-edit-distance-stealth-tradeoff, tkpa-graph-guided-targeted-poisoning, graphrag-text-defense-blind-spot]
 ---
 
 UKPA（Universal Knowledge Poisoning Attack）的目标不是改一个答案，而是**让 GraphRAG 在所有查询上一起退化**。它的关键洞察来自 NLP：跨 chunk 的实体合并（entity linking）几乎完全靠**共指线索**——代词、定指描述、其他指代表达——来判断"散落在不同段落里的提及"是否同一个实体[^src1]。这些信号是脆弱、上下文敏感的；轻微改写就能让共指模型不再聚类同一实体。UKPA 把这种语言学弱点武器化，攻击者**完全在文本域**操作，从不接触最终图，却能让构图阶段就出大量裂解——这正是 GraphRAG 流水线形式化[^v3-1] 与 global sensemaking 两阶段[^v3-2] 中 $f_{\text{extract}}$ 的脆弱点。
