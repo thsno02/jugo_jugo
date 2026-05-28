@@ -15,7 +15,7 @@ related: [mem0-locomo-benchmark-evaluation, mem0-baseline-failure-modes, ragchec
 
 ## 为什么要看这张表
 
-论文 abstract 给出的"Mem0 比 RAG 高 10–12%"是和**最强 RAG 配置**比的。这暗含一件事：RAG 的强弱本身随 chunk 大小与 k 值 swing 巨大——选错配置，对 Mem0 的相对优势会被夸大或低估。论文 Table 2（experiment_setup.tex 之后的 latency_comparison）把整个网格扫了一遍，给出**唯一一份**在 LOCOMO 上系统性的 chunk × k ablation。
+论文 abstract 给出的"Mem0 比 RAG 高 10–12%"是和**最强 RAG 配置**比的。这暗含一件事：RAG 的强弱本身随 chunk 大小与 k 值 swing 巨大——选错配置，对 Mem0 的相对优势会被夸大或低估。论文 Table 2（experiment_setup.tex 之后的 latency_comparison）把整个网格扫了一遍，给出**唯一一份**在 LOCOMO[^v3-1] 上系统性的 chunk × k ablation[^src1]。
 
 ## 实验设置
 
