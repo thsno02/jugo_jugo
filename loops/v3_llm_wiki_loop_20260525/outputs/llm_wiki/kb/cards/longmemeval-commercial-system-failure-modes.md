@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#long-term-memory, #failure-modes, #commercial-systems, #benchmark]
 created_time: 2026-05-26T15:21:00+08:00
-edited_time: 2026-05-27T11:22:00+08:00
+edited_time: 2026-05-28T10:34:00+08:00
 edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-commercial-system-failure-modes.md
