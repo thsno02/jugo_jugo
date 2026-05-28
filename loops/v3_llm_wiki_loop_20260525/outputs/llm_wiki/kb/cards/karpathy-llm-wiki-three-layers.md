@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [marvin-hn-persistent-knowledge]
 provenance_card: ../provenance/karpathy-llm-wiki-three-layers.md
 aliases: [raw + wiki + schema, ingest query lint, three layers three operations]
-related: [karpathy-llm-wiki-vs-rag, obsidian-as-ide-llm-as-programmer, llm-wiki-mcp-skills-vs-tools-workflow, llm-knowledge-base-five-stage-workflow, karpathy-gist-three-layers, karpathy-llm-kb-three-layer-arch, anthemcreation-llm-wiki-three-layer-architecture, llm-wiki-schema-is-most-important]
+related: [agents-md-as-schema-layer, karpathy-llm-wiki-vs-rag, file-outputs-back-as-compounding-loop, llm-wiki-three-layer-architecture]
 ---
 
 ## 三层架构
