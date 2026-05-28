@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [writethedocs-docs-as-code]
 provenance_card: ../provenance/docs-as-code-merge-block-incentive.md
 aliases: ["block merging without docs", "PR docs gating"]
-related: [docs-as-code-five-pillars, enterprise-llm-wiki-drift-detection-loop, llm-wiki-karpathy-lint-grounding-trail, wicer-cegar-compile-evaluate-refine, wicer-recovery-distribution-exceeds-fc-raw]
+related: [docs-as-code-five-pillars, wicer-cegar-compile-evaluate-refine, wicer-recovery-distribution-exceeds-fc-raw]
 ---
 
 Write the Docs 社区列举 Docs as Code 三条收益时[^v3-1]，第三条不是"工具更好"或"质量更高"，而是一种**激励机制**：
