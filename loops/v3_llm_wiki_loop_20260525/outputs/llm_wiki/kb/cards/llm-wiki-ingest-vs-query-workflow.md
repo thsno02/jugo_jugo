@@ -37,17 +37,13 @@ LLM wiki 的运行被显式拆成两个阶段，对应两个不同的"用户↔L
 
 - Ingest 时 LLM 决定"建新 entity 还是更新旧"——若 agents.md 不严，相似概念会被 fork 成多个页面。
 - 当 wiki 增长到几百页，"自动 backlink + 自动矛盾检测"的 token 成本变高，社区有人用 vector search 做 hybrid。
-- 文章把 setup 描述成 "5 分钟"——但这只是最初 1 个 source 的成本；wiki 真正的价值在 10+ 文档累积后才显现。
-
-## References
-
-- 两阶段定义：`data/raw/webpage/anthemcreation-en-guide/text.txt` 第 92-112 行（Ingestion phase / Query phase 两节）。
-- Setup 步骤：第 118-130 行。
-- agents.md 的角色：第 114 行 + 第 152 行。
-- "在累积中显现价值"：第 176 行。
+- 文章把 setup 描述成 "5 分钟"[^v3-3]——但这只是最初 1 个 source 的成本；wiki 真正的价值在 10+ 文档累积后才显现[^src3]。
 
 ## Footnotes
 
-- Ingest 四种典型行为："Create a new entity page for a concept that didn't exist yet (e.g., a 'Phi-2' page detailing its 2.7 billion parameters trained on 1.4 trillion tokens) / Update an existing page with new information / Identify and synthesize contradictions between sources / Create automatic backlinks between related pages"（第 100-106 行）
-- 角色分离："The raw sources remain immutable. The LLM writes to the wiki, the user reads the wiki. The separation of roles is strict."（第 108 行）
-- 价值在累积中显现："Start small. Choose a topic you are actively studying, add your first 5 sources, and let the LLM build the initial pages. The system's value reveals itself in accumulation, not in the initial setup."（第 176 行）
+[^src1]: `data/raw/webpage/anthemcreation-en-guide/text.txt` 第 100-106 行（Ingest 四种典型行为）— "Create a new entity page for a concept that didn't exist yet (e.g., a 'Phi-2' page detailing its 2.7 billion parameters trained on 1.4 trillion tokens) / Update an existing page with new information / Identify and synthesize contradictions between sources / Create automatic backlinks between related pages"
+[^src2]: 同文件 第 108 行（角色分离）— "The raw sources remain immutable. The LLM writes to the wiki, the user reads the wiki. The separation of roles is strict."
+[^src3]: 同文件 第 176 行（价值在累积中显现）— "Start small. Choose a topic you are actively studying, add your first 5 sources, and let the LLM build the initial pages. The system's value reveals itself in accumulation, not in the initial setup."
+[^v3-1]: [anthemcreation-llm-wiki-vs-rag-multi-hop](anthemcreation-llm-wiki-vs-rag-multi-hop.md) — multi-hop 推理优势的本卡。
+[^v3-2]: [agents-md-as-schema-layer](agents-md-as-schema-layer.md) — `agents.md` 作为写阶段契约的本卡。
+[^v3-3]: [anthemcreation-llm-wiki-setup-cost-envelope](anthemcreation-llm-wiki-setup-cost-envelope.md) — 5 分钟 setup 路径的本卡。
