@@ -42,7 +42,7 @@ Cognition 把自己定位为**与"generic company brain"对立**[^src2]：
 
 ## 写卡的三个安全/治理承诺
 
-- **Confirm-first capture**：草稿不直接进团队库，需明确人审通过才保存——避免 agent 自动把私人或未确认的内容暴露给团队。
+- **Confirm-first capture**：草稿不直接进团队库，需明确人审通过才保存——避免 agent 自动把私人或未确认的内容暴露给团队[^src3]。
 - **Person-specific retrieval**：skill 携带"谁教的、为什么这位作者的判断有效"，让 agent 跟随**正确的品味**，而非平均化推荐。
 - **Group-code setup**：一个队员创建 group，其他人用同样 code 加入，开始共享记忆——这是 onboarding 的最小协议。
 
