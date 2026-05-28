@@ -15,10 +15,10 @@ related: [karpathy-gist-bookkeeping-burden, robin-cartier-schema-as-product-doc,
 
 Robin Cartier 作为实践者给 Karpathy 模式做了"实战裁决"，给出**四条具体的缩放局限**，每一条都是规划 LLM Wiki 工程时必须事先承认的工程约束：
 
-1. **规模上限约 200 页 / 100K tokens**——这是 index + 页内容总和能塞进 LLM 上下文窗口的实际门槛。一旦超过，LLM 就不能在单次推理里"看到全索引"，必须切子 wiki 或引入检索层。这条规则直接决定了什么领域用 wiki，什么用 RAG。
-2. **去重在规模放大时变得脆弱**——LLM 自身的去重判断没有确定性保障，"the wiki will accumulate near-duplicate pages over time"。换言之，没有显式去重守卫（embedding 相似度阈值 + 规则化合并流程）的话，wiki 会**慢慢长出近似重复页面**，并且这种漂移很难一次性补救。
-3. **时间信号过弱**——单一"last updated"字段无法表达"首次见到 / 最近见到"这种关系型存储能轻松提供的趋势追踪能力。如果你需要"哪些事实在多少时间内被多源印证"这种时间趋势分析，wiki 模式不适合。
-4. **天然单用户**——没有访问控制、没有 merge conflict 解决机制、没有 audit trail（除了 log 文件）。多人写就要么解决治理问题，要么改用别的形态。
+1. **规模上限约 200 页 / 100K tokens**[^src1]——这是 index + 页内容总和能塞进 LLM 上下文窗口的实际门槛。一旦超过，LLM 就不能在单次推理里"看到全索引"，必须切子 wiki 或引入检索层。这条规则直接决定了什么领域用 wiki，什么用 RAG。
+2. **去重在规模放大时变得脆弱**[^src2]——LLM 自身的去重判断没有确定性保障，"the wiki will accumulate near-duplicate pages over time"。换言之，没有显式去重守卫（embedding 相似度阈值 + 规则化合并流程）的话，wiki 会**慢慢长出近似重复页面**，并且这种漂移很难一次性补救[^v3-2]。
+3. **时间信号过弱**[^src3]——单一"last updated"字段无法表达"首次见到 / 最近见到"这种关系型存储能轻松提供的趋势追踪能力。如果你需要"哪些事实在多少时间内被多源印证"这种时间趋势分析，wiki 模式不适合。
+4. **天然单用户**[^src4]——没有访问控制、没有 merge conflict 解决机制、没有 audit trail（除了 log 文件）。多人写就要么解决治理问题，要么改用别的形态。
 
 **实操含义（Robin 自己给的选择矩阵）**：
 
