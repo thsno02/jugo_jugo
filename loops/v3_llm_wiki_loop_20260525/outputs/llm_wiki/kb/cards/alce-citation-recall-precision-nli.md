@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#citation, #alce, #nli, #evaluation, #ais]
 created_time: 2026-05-26T11:20:00+08:00
-edited_time: 2026-05-27T14:04:00+08:00
+edited_time: 2026-05-28T15:00:00+08:00
 edited_entity: llm
 source_ids: [arxiv-alce]
 provenance_card: ../provenance/alce-citation-recall-precision-nli.md
