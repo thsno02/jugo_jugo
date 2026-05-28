@@ -48,14 +48,12 @@ Karpathy 在 gist 里把整套系统分成三个**职责正交**的层[^src1][^v
 - 周期性 lint 是**非可选**——多人 / 多 agent 写过同一片区域后矛盾会快速堆积。
 - 不要把 raw/ 和 wiki/ 混在同一个目录或 .gitignore 规则里，否则不可逆操作会发生。
 
-## References
-
-- 三层架构原文：`data/raw/webpage/marvin-hn-persistent-knowledge/text.txt:29`。
-- 三操作原文：`text.txt:31`。
-- index / log 双特殊文件：`text.txt:31`。
-
 ## Footnotes
 
-- 三层原文：`text.txt:29` —— "Karpathy frames the system in three layers. The first is raw sources... The second is the wiki, a directory of LLM-authored markdown pages... The third is the schema, a rules document such as AGENTS.md or CLAUDE.md that tells the agent how the wiki should be structured and maintained."
-- 三操作原文：`text.txt:31` —— "Ingest means reading a new source, discussing it, writing a summary, updating the index, touching related pages, and appending to the log. Query means answering questions against the wiki itself, then optionally filing the resulting analysis back into the knowledge base as a new page. Lint means periodically checking for contradictions, stale claims, orphan pages, weak cross-references, or missing concepts."
-- 两特殊文件原文：`text.txt:31` —— "Two special files, index.md and log.md, help navigation by separating the content-oriented map of the wiki from the chronological record of how it evolved."
+[^src1]: `data/raw/webpage/marvin-hn-persistent-knowledge/text.txt:29` — "Karpathy frames the system in three layers. The first is raw sources... The second is the wiki, a directory of LLM-authored markdown pages... The third is the schema, a rules document such as AGENTS.md or CLAUDE.md that tells the agent how the wiki should be structured and maintained."
+[^src2]: 同文件 `text.txt:31` — "Ingest means reading a new source, discussing it, writing a summary, updating the index, touching related pages, and appending to the log. Query means answering questions against the wiki itself, then optionally filing the resulting analysis back into the knowledge base as a new page. Lint means periodically checking for contradictions, stale claims, orphan pages, weak cross-references, or missing concepts."
+[^src3]: 同文件 `text.txt:31` — "Two special files, index.md and log.md, help navigation by separating the content-oriented map of the wiki from the chronological record of how it evolved."
+[^v3-1]: [agents-md-as-schema-layer](agents-md-as-schema-layer.md) — schema 文件以 AGENTS.md 形式落地的展开。
+[^v3-2]: [karpathy-llm-wiki-vs-rag](karpathy-llm-wiki-vs-rag.md) — "缺 wiki → 退化为 RAG" 这个 distinction 的本卡。
+[^v3-3]: [file-outputs-back-as-compounding-loop](file-outputs-back-as-compounding-loop.md) — Query 把分析回灌为新页正是复利循环的机制。
+[^v2-1]: v2 anchor [llm-wiki-three-layer-architecture](../../../../../v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md) — 本卡是该卡的 delta：从 marvin-hn-persistent-knowledge 视角再次确认三层架构，并补出三操作（Ingest / Query / Lint）+ index.md / log.md 两特殊文件。
