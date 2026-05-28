@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [owasp-agentic-top10-2026]
 provenance_card: ../provenance/owasp-agentic-top10-2026-positioning.md
 aliases: ["OWASP Top 10 for Agentic Applications", "agentic risk top 10"]
-related: [owasp-agentic-vs-llm-top10-2025, owasp-llm-top10-community-genealogy, owasp-genai-landscape-2026q2, microsoft-agent-governance-standards-alignment, nist-ai-rmf-gai-profile, etamp-environment-injected-memory-poisoning]
+related: [owasp-llm-top10-community-genealogy, owasp-agentic-vs-llm-top10-2025, etamp-environment-injected-memory-poisoning, owasp-genai-landscape-2026q2, microsoft-agent-governance-standards-alignment]
 ---
 
 OWASP GenAI Security Project 在 2025 年 12 月 9 日[^src2] 发布的 **OWASP Top 10 for Agentic Applications 2026**，是 OWASP 在传统 LLM Top 10[^v3-1] 之外、面向 agentic / 自治 AI 系统单列的一份风险清单。要点（按源页的官方描述还原，不外推内容）：
