@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-as-metabolism-architectural-separability.md
 aliases: [architectural separability, separability as safety commitment, base-model correction channel, do not fold wiki into weights]
-related: [memory-as-metabolism-mirror-vs-compensate, audit-by-suspension-against-entrenchment, memory-as-metabolism-conflict-routing-matrix, memory-as-metabolism-five-operations, karpathy-llm-wiki-vs-rag]
+related: [memory-as-metabolism-conflict-routing-matrix, memory-as-metabolism-mirror-vs-compensate, audit-by-suspension-against-entrenchment]
 ---
 
 ## 主张
