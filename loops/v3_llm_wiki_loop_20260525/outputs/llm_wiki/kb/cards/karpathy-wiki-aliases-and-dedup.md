@@ -34,7 +34,7 @@ related: [karpathy-llm-wiki-obsidian-plugin-overview, karpathy-wiki-extraction-g
 Lint 时分两轮判定候选：
 
 - **Tier 1（始终 LLM 验证）**：直接名称匹配——跨语言对照、缩写匹配、高相似标题。Tier 1 候选**全部送 LLM 复核**，因为这是高置信信号。
-- **Tier 2（填充剩余 token 预算）**：间接信号——共享链接、中等相似度。Tier 2 仅在 LLM 预算还有余时纳入，避免拖慢 lint。
+- **Tier 2（填充剩余 token 预算）**：间接信号——共享链接、中等相似度。Tier 2 仅在 LLM 预算还有余时纳入，避免拖慢 lint[^src2]。
 
 发现重复后用户可以 `Merge Duplicates`：插件让 LLM 融合两页内容，**同时保留双方的别名**（防止融合后再次被判为新候选）。
 
