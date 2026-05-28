@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#memory, #graph-centrality, #retention, #safety]
 created_time: 2026-05-26T11:10:00+08:00
-edited_time: 2026-05-27T14:54:00+08:00
+edited_time: 2026-05-28T11:24:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-gravity-load-bearing-protection.md
