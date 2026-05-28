@@ -46,21 +46,17 @@ Miteski (2026) §5.0 给出一张 7 行冲突路由矩阵[^src1]，把"mirror vs
 - **Row 3 是"伴侣不能只听用户的话"的硬规则**：utility-based routing 在这里**显式被关闭**——这条直接对抗 sycophancy 类失败模式；
 - **Row 4 的 exception clause 不是无关条款**：默认"single-source 进 buffer"看似稳健，但 hard veto 会"结构性挡掉"权威单源（如严谨论文）的快速更新；exception 让实现保留 high-trust source 升权而**不**改写默认；
 - **Row 7 是 separability 安全承诺的具体落地**：失去 separability，row 7 不可实施，整个矩阵 cross-base-model 一致性塌掉。
-
-## References
-
-- §5.0 矩阵全文：`data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` 第 1072–1129 行（含 legend + 7 行 + Limitation 段）。
-- §1.2 程序冲突规则原则化：第 318–328 行。
-- §11 conclusion 把"time-structured procedural conflict rule"列为四条 framing contribution 之二：第 2423–2431 行。
-- §9 residual failure mode（无信号情况）：第 2226–2230 行。
+- 这种"在不同时间窗口分发决策"的思路与 Mem0 的"online ClassifyOperation 立刻决定 ADD/UPDATE/DELETE/NOOP"是不同的范式选择[^v3-6]——后者把全部冲突推到流式路径。
 
 ## Footnotes
 
-[^1]: Row 3 原文（第 1107 行附近）：
-    > "User repeatedly reinforces a consistent claim that external safety or epistemic signals (when available) flag as harmful, but user-reported utility remains stable or high — Safety — Compensate regardless of utility signal. Route to AUDIT priority queue; apply the highest available friction in the CONSOLIDATE path to any attempt to integrate reinforcing content; flag high-gravity reinforcing entries for stress test. Do not mirror at the operational layer even if continuity pressure is high. ... Utility-based routing (the standard Operational→Epistemic bridge in row 2) does not trigger. Safety requires an explicit override: some reinforcement patterns must be resisted regardless of user-reported utility."
-
-[^2]: Row 7 与 separability 强依赖原文（第 1115 行附近）：
-    > "External correction channel. The wiki entry is flagged for review on the next CONSOLIDATE cycle post-update. This row depends structurally on architectural separability (§8.3): the external correction channel exists only because the wiki is not folded into base model weights. The separability commitment is what keeps this row operational across base model generations."
-
-[^3]: 矩阵 limitation 段原文（第 1120–1129 行）：
-    > "Row 7 names the base-model correction channel, but the structural residual—fully novel bad beliefs not represented in the base model and not contradicted by subsequent experience—is not captured by any row in this matrix. This is the limit acknowledged in §9 and not resolved by the routing logic. The matrix specifies how the framework behaves when the relevant conflict signal exists; it does not manufacture signal that external sources do not provide. The matrix does not define calibration parameters (e.g., cycle counts, source diversity thresholds), which are explicitly left to implementation and empirical validation."
+[^src1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1072–1129 行（§5.0 矩阵全文：legend + 7 行 + Limitation 段）。
+[^src2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 318–328 行（§1.2 程序冲突规则原则化）+ 第 2423–2431 行（§11 conclusion）— 把"time-structured procedural conflict rule"列为四条 framing contribution 之二。
+[^src3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1107 行附近（Row 3）— "User repeatedly reinforces a consistent claim that external safety or epistemic signals (when available) flag as harmful, but user-reported utility remains stable or high — Safety — Compensate regardless of utility signal. Route to AUDIT priority queue; apply the highest available friction in the CONSOLIDATE path to any attempt to integrate reinforcing content; flag high-gravity reinforcing entries for stress test. Do not mirror at the operational layer even if continuity pressure is high. ... Utility-based routing (the standard Operational→Epistemic bridge in row 2) does not trigger. Safety requires an explicit override: some reinforcement patterns must be resisted regardless of user-reported utility."
+[^src4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1115 行附近（Row 7 与 separability 强依赖）+ 第 1120–1129 行（矩阵 limitation 段）+ 第 2226–2230 行（§9 residual） — "External correction channel. The wiki entry is flagged for review on the next CONSOLIDATE cycle post-update. This row depends structurally on architectural separability (§8.3): the external correction channel exists only because the wiki is not folded into base model weights. The separability commitment is what keeps this row operational across base model generations."；"Row 7 names the base-model correction channel, but the structural residual—fully novel bad beliefs not represented in the base model and not contradicted by subsequent experience—is not captured by any row in this matrix."
+[^v3-1]: [memory-as-metabolism-mirror-vs-compensate](memory-as-metabolism-mirror-vs-compensate.md) — mirror/compensate 原则定义。
+[^v3-2]: [memory-as-metabolism-five-operations](memory-as-metabolism-five-operations.md) — TRIAGE 与 CONSOLIDATE 的角色分配。
+[^v3-3]: [minority-pressure-promotion](minority-pressure-promotion.md) — Buffer + multi-cycle promotion 是 Row 4/5 的具体机制。
+[^v3-4]: [audit-by-suspension-against-entrenchment](audit-by-suspension-against-entrenchment.md) — Row 6 的 AUDIT override gravity-reduction 通路。
+[^v3-5]: [memory-as-metabolism-architectural-separability](memory-as-metabolism-architectural-separability.md) — Row 7 结构性依赖架构可分离性。
+[^v3-6]: [mem0-tool-call-add-update-delete-noop](mem0-tool-call-add-update-delete-noop.md) — Mem0 把冲突解决全留在 online 的对照范式。
