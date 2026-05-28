@@ -15,7 +15,7 @@ related: [my-llm-wiki-three-layer-implementation, anthemcreation-llm-wiki-three-
 
 ## 核心区分
 
-Karpathy 2026-04 发布 LLM Wiki Gist 时给出的核心类比是：
+Karpathy 2026-04 发布 LLM Wiki Gist 时给出的核心类比[^src1]是：
 
 - **原始资料 = 源代码（source code）**——论文、PDF、笔记，保持不变。
 - **LLM 维护的 wiki = 编译产物（compiled executable）**——markdown 互联文件，被 LLM 主动写入、合并、消解矛盾。
