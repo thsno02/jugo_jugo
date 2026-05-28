@@ -77,16 +77,10 @@ agent 被指示更新 user 信息时，会自动调用这个工具——LLM 决�
 - 工具调用次数 = LLM 推理次数 × 平均工具数，对**高频写**场景需注意 token / 延迟成本；
 - 文档示例都是单 key 单 value，对**批量更新**或**事务性更新**没有给出推荐模式。
 
-## References
-
-- 来源页面：`data/raw/webpage/langchain-long-term-memory-docs/text.txt`。
-- 第 186–208 行：Read long-term memory in tools（`get_user_info` 完整示例 + 多模型选项卡）。
-- 第 212–234 行：Write long-term memory from tools（`save_user_info` 完整示例）。
-
 ## Footnotes
 
-[^1]: 读工具完整代码 verbatim 节选（第 206 行）："@tool def get_user_info(runtime: ToolRuntime[Context]) -> str: ... user_info = runtime.store.get(('users',), user_id); return str(user_info.value) if user_info else 'Unknown user'"
-
-[^2]: 写工具调用方式 verbatim（第 232 行）："agent.invoke({'messages': [{'role': 'user', 'content': 'My name is John Smith'}]}, context=Context(user_id='user_123'))"
-
-[^3]: 多模型选项卡（第 192–204 行）列出 InMemoryStore / PostgreSQL / Google / OpenAI / Anthropic / OpenRouter / Fireworks / Baseten / Ollama 等，证明工具/store 代码与 model 无关。
+[^src1]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` — 第 206 行 verbatim："@tool def get_user_info(runtime: ToolRuntime[Context]) -> str: ... user_info = runtime.store.get(('users',), user_id); return str(user_info.value) if user_info else 'Unknown user'"。
+[^src2]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` — 第 232 行 verbatim："agent.invoke({'messages': [{'role': 'user', 'content': 'My name is John Smith'}]}, context=Context(user_id='user_123'))"。
+[^src3]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` — 第 192–204 行，多模型选项卡列出 InMemoryStore / PostgreSQL / Google / OpenAI / Anthropic / OpenRouter / Fireworks / Baseten / Ollama 等，证明工具/store 代码与 model 无关。
+[^v3-1]: [langgraph-store-namespace-key-json-model](langgraph-store-namespace-key-json-model.md) — store 的 namespace/key/JSON 文档模型在该卡定义，本卡是它的调用侧。
+[^v3-2]: [mem0-tool-call-add-update-delete-noop](mem0-tool-call-add-update-delete-noop.md) — Mem0 的 ADD/UPDATE/DELETE/NOOP 把"何时写、写什么"显式交给 LLM 推理，与 LangGraph 让工具显式写出同源思路。
