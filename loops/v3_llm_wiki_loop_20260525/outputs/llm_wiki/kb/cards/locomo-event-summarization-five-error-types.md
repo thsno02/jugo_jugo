@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-locomo]
 provenance_card: ../provenance/locomo-event-summarization-five-error-types.md
 aliases: ["LoCoMo summary error taxonomy", "event summarization error types"]
-related: [locomo-three-task-evaluation-framework, locomo-long-context-adversarial-collapse, locomo-very-long-term-dialogue-dataset, longmemeval-commercial-system-failure-modes]
+related: [locomo-three-task-evaluation-framework, locomo-long-context-adversarial-collapse, locomo-persona-event-graph-pipeline, longmemeval-commercial-system-failure-modes]
 ---
 
 LoCoMo 的事件摘要任务（让模型把对话里出现的"个人事件"列出来与 ground-truth 事件图比对，属于 LoCoMo 三任务评测的第二项[^v3-1]）不止给一个 FactScore 分数，论文 §6.2 + Appendix D.1 还人工分类了 LLM 失败模式，得到 5 个稳定的错误类型[^src1]。这套分类对设计 evaluator / debug 数据集 / 训目标都比单一指标更可操作。
