@@ -20,7 +20,7 @@ Robin Cartier 在 verdict 里下了一个比 Karpathy 原 gist[^v3-1] 更激进�
 这句话拆开来有三个含义：
 1. **schema 的可推广性 > wiki 的可推广性**：wiki 模式天花板在 200 页[^v3-2]，但用 schema 来"以文档形式编码工作流"这一模式不受此限制——可用在任何需要 LLM 自主执行的协作流程上。
 2. **schema 是 PRD 不是 README**：PRD（product requirements document）的语义意味着它"指定要做什么、怎么验收"。Schema 也应该写得让 LLM 在没有人监督的情况下能照执行——这等价于把"运营 know-how"编码进文档；
-3. **"活"——schema 需要持续演化**。Karpathy gist 里也说"You and the LLM co-evolve this"；Robin 把这一点强调为可推广性的关键属性。
+3. **"活"——schema 需要持续演化**。Karpathy gist 里也说"You and the LLM co-evolve this"[^src2]；Robin 把这一点强调为可推广性的关键属性。
 
 **为什么这是一个有用的视角调整**：
 - 把 schema 看作 PRD 后，工程团队就有了已知的产品工程语言来评估它：清晰度、可验收准则、版本治理、变更日志；
