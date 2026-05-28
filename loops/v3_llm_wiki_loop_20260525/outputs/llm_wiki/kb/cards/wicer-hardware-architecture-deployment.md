@@ -31,8 +31,8 @@ WiCER 论文 Appendix B 给出了"cached knowledge base QA"工作负载的跨硬
 ## 三条非平凡机制
 
 1. **解码受 bandwidth-bound**：RTX 4090 1,008 GB/s vs M4 Pro 273 GB/s（3.7×），换来 ~4.4× 的生成吞吐（53 vs 12 tok/s），因为单 batch autoregressive decode 是内存带宽瓶颈。
-2. **Prefill 受 compute-bound**：CUDA tensor cores 提供 ~2,600 tok/s prefill，cold-start 67K context 从 M4 的 ~130s 降到 ~26s（5×）；暖 TTFT 跌到 0.2s 以下，**此时 RAG 的延迟优势消失**——"the latency case for RAG largely disappears on desktop GPU hardware"[^1]。
-3. **CUDA 下 Q8 KV 零代价**：fused Flash Attention kernel 处理 8-bit 对称量化 KV 无 dequantization 开销，所以 CUDA 上推荐 Q8（2× 显存节省）而非 Apple Silicon 下需要的 Q4（4×）。
+2. **Prefill 受 compute-bound**：CUDA tensor cores 提供 ~2,600 tok/s prefill，cold-start 67K context 从 M4 的 ~130s 降到 ~26s（5×）；暖 TTFT 跌到 0.2s 以下，**此时 RAG 的延迟优势消失**——"the latency case for RAG largely disappears on desktop GPU hardware"[^src2]。
+3. **CUDA 下 Q8 KV 零代价**：fused Flash Attention kernel 处理 8-bit 对称量化 KV 无 dequantization 开销，所以 CUDA 上推荐 Q8（2× 显存节省）而非 Apple Silicon 下需要的 Q4（4×）[^src3]。
 
 ## Inferentia2 为什么结构性不适配
 
