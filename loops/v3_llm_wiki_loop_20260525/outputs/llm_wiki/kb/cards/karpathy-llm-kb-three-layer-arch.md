@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#llm-wiki, #karpathy, #architecture, #knowledge-system]
 created_time: 2026-05-26T11:55:00+08:00
-edited_time: 2026-05-27T14:40:00+08:00
+edited_time: 2026-05-28T10:25:00+08:00
 edited_entity: llm
 source_ids: [developersio-jp-pattern]
 provenance_card: ../provenance/karpathy-llm-kb-three-layer-arch.md
