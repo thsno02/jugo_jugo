@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#rag, #ares, #synthetic-data, #fine-tuning, #llm-judge]
 created_time: 2026-05-26T11:05:00+08:00
-edited_time: 2026-05-27T14:26:00+08:00
+edited_time: 2026-05-28T15:45:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-synthetic-data-pipeline.md
