@@ -17,8 +17,8 @@ related: [cognition-skill-loop-evidence-to-teaching, llm-wiki-schema-is-most-imp
 
 Cognition 把"agent 把一次成功操作沉淀为团队可用技能"的过程切成**两个不对称阶段**：
 
-1. **草稿阶段（自动）**：Cognition 在 agent 完成任务后自动起草一份 `SKILL.md`，记录步骤、检查项、失败模式、作者归属、当前状态（如 `awaiting approval`）。
-2. **保存阶段（人审）**：草稿**不直接进**团队共享库。系统等待原作者**显式的人工 yes**——页面用 "Cognition drafts skills and waits for explicit approval before saving anything to the group" 表达。
+1. **草稿阶段（自动）**：Cognition 在 agent 完成任务后自动起草一份 `SKILL.md`，记录步骤、检查项、失败模式、作者归属、当前状态（如 `awaiting approval`）[^src1]。
+2. **保存阶段（人审）**：草稿**不直接进**团队共享库。系统等待原作者**显式的人工 yes**——页面用 "Cognition drafts skills and waits for explicit approval before saving anything to the group" 表达[^src2]。
 
 只有审批通过的 SKILL.md 才会进入团队 brain，被其他 agent 检索到。
 
