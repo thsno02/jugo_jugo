@@ -40,12 +40,7 @@ Karpathy 在 gist 末段把 LLM Wiki 模式直接连到 Vannevar Bush 1945 年�
 - Memex 还有许多其它设想（例如桌上式硬件、缩微胶卷介质），LLM Wiki **只匹配 Memex 的概念骨架**，不必也不可能复刻技术细节；
 - 把 LLM Wiki 等同于"完整的 Memex 复刻"会高估它的当前成熟度——它解决了维护，但其它 Memex 设想里关于"思想路径的分享"等概念尚未在 LLM Wiki 里完整实现。
 
-## References
-
-Karpathy 2026 LLM Wiki gist 的结束段引 Memex 与"maintenance"问题。
-
-- 源路径：`data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt`（行 70 Memex 类比 + Bush 未解决问题的完整论证）。
-
 ## Footnotes
 
-- 原文完整段（行 70）："The idea is related in spirit to Vannevar Bush's Memex (1945) — a personal, curated knowledge store with associative trails between documents. Bush's vision was closer to this than to what the web became: private, actively curated, with the connections between documents as valuable as the documents themselves. The part he couldn't solve was who does the maintenance. The LLM handles that."
+[^src1]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` 行 70 — "The idea is related in spirit to Vannevar Bush's Memex (1945) — a personal, curated knowledge store with associative trails between documents. Bush's vision was closer to this than to what the web became: private, actively curated, with the connections between documents as valuable as the documents themselves. The part he couldn't solve was who does the maintenance. The LLM handles that."
+[^v3-1]: [karpathy-gist-bookkeeping-burden](karpathy-gist-bookkeeping-burden.md) — "谁来维护"对应的 bookkeeping 负担在此卡有展开。
