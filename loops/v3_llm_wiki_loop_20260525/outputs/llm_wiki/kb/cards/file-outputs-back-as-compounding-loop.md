@@ -13,9 +13,9 @@ aliases: ["问答结果回写", "输出即下一次输入"]
 related: [llm-knowledge-base-five-stage-workflow, idea-file-as-agent-era-artifact, knowledge-compounding-three-mechanisms, karpathy-llm-kb-three-operations, llm-wiki-ingest-vs-query-workflow]
 ---
 
-Karpathy 的 setup 里"不显眼但关键"的一步发生在查询答案产生**之后**。作者不把答案当作终态输出。答案会被渲染成 markdown 文件（或幻灯、或图像），回到 Obsidian 里查看，并且经常被"归档"回 wiki，让 wiki 在下一次查询时更强。
+Karpathy 的 setup 里"不显眼但关键"的一步发生在查询答案产生**之后**。作者不把答案当作终态输出。答案会被渲染成 markdown 文件（或幻灯、或图像），回到 Obsidian 里查看，并且经常被"归档"回 wiki，让 wiki 在下一次查询时更强[^src1]。
 
-由此带来的结构性效果是：每一次研究会话结束后，wiki 的能力都严格地比之前更强。作者原话是："我自己的探索和查询总是在知识库里'累加'。"
+由此带来的结构性效果是：每一次研究会话结束后，wiki 的能力都严格地比之前更强[^v3-1]。作者原话是："我自己的探索和查询总是在知识库里'累加'。"
 
 操作层面如何落实这条规则：
 
