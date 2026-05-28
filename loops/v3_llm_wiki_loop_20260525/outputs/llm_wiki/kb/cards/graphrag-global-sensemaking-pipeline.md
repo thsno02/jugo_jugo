@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-global-sensemaking-pipeline.md
 aliases: ["GraphRAG pipeline", "From Local to Global"]
-related: [graphrag-leiden-community-hierarchy, graphrag-root-community-token-efficiency, graphrag-context-window-8k-optimal, graphrag-pipeline-formalism, mem0-graph-memory-variant, zep-graphiti-three-tier-graph, karpathy-llm-wiki-vs-rag]
+related: [graphrag-self-reflection-gleaning, wikibase-item-property-snak-statement, graphrag-leiden-community-hierarchy, graphrag-context-window-8k-optimal, graphrag-adaptive-benchmark-via-personas, graphrag-root-community-token-efficiency]
 ---
 
 GraphRAG（Edge et al., Microsoft Research, NeurIPS 2024）针对的是传统 vector RAG 答不出的一类问题——"What are the main themes in the dataset?"这种需要对整个语料做意义建构（sensemaking）的查询[^src1]。论文给出的解法是把流水线拆成**索引时**与**查询时**两个阶段，并在二者之间放一个"分层社群摘要"的中间产物。
