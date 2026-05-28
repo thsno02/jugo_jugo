@@ -18,8 +18,8 @@ Classmethod 工程师森茂洋的实践提供了一个值得记住的 *retrofit*
 具体做法：
 
 - **保留 Mem0 + pgvector 作为检索层**：用于 ad-hoc 查询、跨会话的 fact 抽取、向量检索。这一层不写人类可读的结构化文档。
-- **新增 `workspace/wiki/` 作为编译产物**：与 `workspace/knowledge/` raw 并列，再加上各级 `CLAUDE.md` 作为 schema。
-- **新增 `/kb-compile` 自定义命令**：对应 Karpathy 的 Ingest 操作。支持 `/kb-compile blog` 只编译某项目，`/kb-compile --all` 全量更新，`/kb-compile --lint` 做 Karpathy 意义下的 Lint（矛盾检测、链断、过时记录）。
+- **新增 `workspace/wiki/` 作为编译产物**[^src1]：与 `workspace/knowledge/` raw 并列[^v3-1]，再加上各级 `CLAUDE.md` 作为 schema[^src2]。
+- **新增 `/kb-compile` 自定义命令**[^src3]：对应 Karpathy 的 Ingest 操作[^v3-2]。支持 `/kb-compile blog` 只编译某项目，`/kb-compile --all` 全量更新，`/kb-compile --lint` 做 Karpathy 意义下的 Lint（矛盾检测、链断、过时记录）。
 - **`_index.md` + `_recent.md` 两份索引**：前者是 30+ 项目的全景地图（表格 + frontmatter + backlinks），新会话开场只读这一份就能把握"现在每个项目走到哪"。
 
 为什么这套混合架构在工程上合理：
