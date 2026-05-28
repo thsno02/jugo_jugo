@@ -15,7 +15,7 @@ related: [mem0-extract-update-pipeline, mem0-locomo-benchmark-evaluation, mem0-t
 
 ## 数据结构
 
-Mem0g 把记忆表示为**有向带标签图** $G = (V, E, L)$：
+Mem0g 把记忆表示为**有向带标签图** $G = (V, E, L)$[^src1]：
 
 - **节点 V**：实体（如 `Alice`、`San_Francisco`）。每个实体节点存 (1) 实体类型分类（Person / Location / Event 等），(2) 嵌入向量 $e_v$，(3) 创建时间戳 $t_v$ 等元数据。
 - **边 E**：实体间关系（如 `lives_in`）。
