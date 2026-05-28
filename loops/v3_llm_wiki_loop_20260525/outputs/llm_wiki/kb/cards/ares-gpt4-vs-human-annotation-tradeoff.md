@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#rag, #ares, #gpt4-labels, #annotation-cost, #ppi]
 created_time: 2026-05-26T15:30:00+08:00
-edited_time: 2026-05-27T14:20:00+08:00
+edited_time: 2026-05-28T15:40:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-gpt4-vs-human-annotation-tradeoff.md
