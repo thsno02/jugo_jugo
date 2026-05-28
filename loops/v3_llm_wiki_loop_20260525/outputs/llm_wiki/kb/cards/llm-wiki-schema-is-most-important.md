@@ -55,14 +55,10 @@ Jim 的诊断：Karpathy gist 把 schema 定位为"三层之一"，与 raw / wik
 - 这条经验来自 sample size = 1（35 页、6 个月、个人项目）；外推到团队 / 千页规模时 schema 的作用方式可能不同。
 - "schema 比内容重要"是相对强调，不否认内容质量也重要；正确读法是"没有 schema，再多内容也会退化"。
 
-## References
-
-- Schema-first 主张：`data/raw/webpage/openaitoolshub-six-months/text.txt:14, 50`。
-- Pitfall #4（schema 与工具切换）：`text.txt:98`。
-- "graveyard within two months" 警告：`text.txt:138`。
-
 ## Footnotes
 
-- 主张原文：`text.txt:14` —— "The pattern works — far better than I expected — but only if you treat the schema file as the most important file, which Karpathy's original gist underplays."
-- Schema-first 实操：`text.txt:50` —— "Schema first, content second. I wrote schema.md before I had 5 pages. It defines the frontmatter fields, the canonical slug rules, the contradiction-resolution protocol. This is the part most write-ups skip and the part that matters most. Rohit Ghumare put it bluntly: 'Schema is the most important file.' He's right."
-- Pitfall #4 原文：`text.txt:98` —— "I migrated from one note app to Obsidian and forgot that my schema specified aliases field for canonical slug deduplication... Result: two pages on the same person under different slugs (karpathy.md and andrej-karpathy.md), Claude treated them as different entities, recommendations got weird. Lesson: any tool change starts with re-reading schema.md and writing a migration plan."
+[^src1]: `data/raw/webpage/openaitoolshub-six-months/text.txt:14` — "The pattern works — far better than I expected — but only if you treat the schema file as the most important file, which Karpathy's original gist underplays."
+[^src2]: 同文件 `text.txt:50` — "Schema first, content second. I wrote schema.md before I had 5 pages. It defines the frontmatter fields, the canonical slug rules, the contradiction-resolution protocol. This is the part most write-ups skip and the part that matters most. Rohit Ghumare put it bluntly: 'Schema is the most important file.' He's right."
+[^src3]: 同文件 `text.txt:98`（Pitfall #4）— "I migrated from one note app to Obsidian and forgot that my schema specified aliases field for canonical slug deduplication... Result: two pages on the same person under different slugs (karpathy.md and andrej-karpathy.md), Claude treated them as different entities, recommendations got weird. Lesson: any tool change starts with re-reading schema.md and writing a migration plan."
+[^v3-1]: [llm-wiki-mcp-skills-vs-tools-workflow](llm-wiki-mcp-skills-vs-tools-workflow.md) — skill 层每次运行重读 schema 的设计参考。
+[^v3-2]: [agents-md-as-schema-layer](agents-md-as-schema-layer.md) — `AGENTS.md` 作为 schema 实例的展开。
