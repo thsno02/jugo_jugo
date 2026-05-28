@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-alce]
 provenance_card: ../provenance/alce-retriever-and-context-utilization-gap.md
 aliases: [ALCE retrieval analysis, oracle vs vanilla, GTR vs DPR, context utilization ceiling]
-related: [alce-three-dimension-citation-metric, alce-prompting-strategies, mem0-rag-chunk-size-ablation, ragchecker-retriever-claim-vs-chunk-precision, wicer-fc-rag-document-count-crossover, karpathy-wiki-full-context-vs-rag]
+related: [alce-prompting-strategies, ragchecker-generator-trilemma, ragchecker-tuning-knobs-saturate]
 ---
 
 ## ALCE 的检索栈
