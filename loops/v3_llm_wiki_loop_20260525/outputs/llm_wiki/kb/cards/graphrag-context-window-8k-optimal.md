@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-context-window-8k-optimal.md
 aliases: ["GraphRAG 8k window", "context window ablation"]
-related: [graphrag-global-sensemaking-pipeline, graphrag-root-community-token-efficiency, graphrag-self-reflection-gleaning, wicer-fc-rag-document-count-crossover, locomo-long-context-adversarial-collapse, llm-wiki-tldr-load-bearing]
+related: [graphrag-global-sensemaking-pipeline, wicer-fc-rag-document-count-crossover, graphrag-self-reflection-gleaning]
 ---
 
 GraphRAG 论文[^v3-1]做的一个反直觉但被作者定为"全局默认"的设置：在做 query-time map-reduce 时，**8K 上下文窗口在所有比较里都是最优的**——比 16K / 32K / 64K 更能产出 comprehensive、diverse、empowering 的答案[^src1]。
