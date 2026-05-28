@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-recovery-distribution-exceeds-fc-raw.md
 aliases: [WiCER recovery distribution, super-recovery topics, WiCER beats FC raw]
-related: [wicer-cegar-compile-evaluate-refine, wicer-blind-compilation-catastrophic-loss, wicer-targeted-vs-random-pinning-ablation, wicer-fc-rag-document-count-crossover, docs-as-code-merge-block-incentive, karpathy-llm-wiki-source-executable-analogy]
+related: [wicer-cegar-compile-evaluate-refine, wicer-fc-rag-document-count-crossover, wicer-blind-compilation-catastrophic-loss, wicer-targeted-vs-random-pinning-ablation]
 ---
 
 ## 主张
