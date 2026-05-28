@@ -29,7 +29,7 @@ related: [llm-wiki-mcp-four-tools, llm-wiki-mcp-design-boundary-mechanics-not-co
 | `wiki-query` | "wiki 里关于 steering vectors 怎么说？" | Yes |
 | `wiki-lint` | "跑一次 wiki 体检" | Yes |
 
-`wiki-init` 是一次性脚手架；其余三个对应 Karpathy 原始 gist 提出的三大操作（Ingest / Query / Lint）。
+`wiki-init` 是一次性脚手架；其余三个对应 Karpathy 原始 gist 提出的三大操作（Ingest / Query / Lint） [^v3-2]。
 
 ## 为什么 skill 层必要
 
