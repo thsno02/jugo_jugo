@@ -28,7 +28,7 @@ aillm.wiki 是 Karpathy LLM Wiki 模式公开传播后第一波出现的"非官�
 
 边界与误读：
 
-- "Token-Efficient" 声称的 latency / accuracy 优势仅在 small-to-mid 规模下成立，原文也明确这一点（"For most personal knowledge bases ..."）。把它推到数千文档级会失效，这与 Karpathy 在原帖中 "~small scale" 的限定一致。
+- "Token-Efficient" 声称的 latency / accuracy 优势仅在 small-to-mid 规模下成立，原文也明确这一点（"For most personal knowledge bases ..."）。把它推到数千文档级会失效，这与 Karpathy 在原帖中 "~small scale" 的限定一致[^v3-3]。
 - "Markdown-First" 不是"禁止任何工具"——下面 aillm.wiki 的"Open-Source Directory"等栏目本身就在评测各种 Obsidian 插件、Claude Code 工作流；意思是**底层数据是 markdown**，工具可换。
 - 这四条属性是平台自陈，未经第三方验证；引用时应注明来源。
 
