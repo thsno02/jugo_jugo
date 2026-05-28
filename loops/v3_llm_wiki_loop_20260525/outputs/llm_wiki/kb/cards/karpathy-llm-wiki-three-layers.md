@@ -25,12 +25,12 @@ Karpathy 在 gist 里把整套系统分成三个**职责正交**的层[^src1][^v
 
 ## 三个核心操作
 
-在三层之上，gist 规定 agent 必须能做三件事，对应 wiki 的全生命周期：
+在三层之上，gist 规定 agent 必须能做三件事[^src2]，对应 wiki 的全生命周期：
 
 | 操作 | 含义 | 触发时机 |
 |---|---|---|
 | **Ingest** | 读新源 → 讨论 → 写摘要 → 更新 index → 触达相关页 → append log | 有新源进入 raw/ |
-| **Query** | 拿问题对 wiki 做问答，可选地把分析结果回灌成新页 | 用户提问 / agent 自查 |
+| **Query** | 拿问题对 wiki 做问答，可选地把分析结果回灌成新页[^v3-3] | 用户提问 / agent 自查 |
 | **Lint** | 周期性检查矛盾、过期声明、孤儿页、弱 cross-reference、缺失概念 | 手动 / 周期触发 |
 
 这三者与"数据库的 CRUD"不是 1:1 对应——Ingest 不是"INSERT"，它必然附带 UPDATE 多个旧页；Query 不是"SELECT"，它可能 INSERT 新页；Lint 不是 housekeeping，它是 wiki 的健康闭环。
