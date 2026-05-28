@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#llm-wiki, #nvk, #multi-agent, #research, #thesis-mode]
 created_time: 2026-05-26T11:26:00+08:00
-edited_time: 2026-05-27T15:14:00+08:00
+edited_time: 2026-05-28T11:56:00+08:00
 edited_entity: llm
 source_ids: [llm-wiki-net]
 provenance_card: ../provenance/nvk-llm-wiki-parallel-multi-agent-research.md
