@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [anthemcreation-fr-guide]
 provenance_card: ../provenance/anthemcreation-llm-wiki-setup-cost-envelope.md
 aliases: [LLM wiki setup, Karpathy wiki cost, Obsidian Claude workflow]
-related: [anthemcreation-llm-wiki-three-layer-architecture, karpathy-llm-wiki-obsidian-plugin-overview, beyond-the-token-bottleneck-llm-wiki-case-study, my-llm-wiki-three-layer-implementation, robin-cartier-scale-ceiling]
+related: [anthemcreation-llm-wiki-three-layer-architecture]
 ---
 
 法语指南给出的 LLM wiki 落地路径异乎寻常的轻：5 分钟、零开发能力、个位数欧元，就能跑起来一个 Karpathy 风格的个人知识基。把这套数字记牢有助于劝退两类常见的伪需求："要先搭一个 RAG 后端"和"要先选一个 vector DB"。
