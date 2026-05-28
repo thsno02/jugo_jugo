@@ -28,7 +28,7 @@ Cognition 主张面向编码 agent 的团队记忆**不是上下文堆栈**，�
 
 ## 与"通用公司大脑"的差异
 
-Cognition 把自己定位为**与"generic company brain"对立**：
+Cognition 把自己定位为**与"generic company brain"对立**[^src2]：
 
 - 通用公司大脑只是把上下文堆起来；
 - Cognition 把**工作本身**当作**学习信号**，把会话/操作压缩为"被人类审核过的技能"，并对其建立**新鲜度与结果历史**。
