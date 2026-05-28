@@ -17,10 +17,9 @@ related: [karpathy-llm-wiki-three-layers, llm-wiki-mcp-design-boundary-mechanics
 
 Jim Liu（独立开发者，悉尼，openaitoolshub.org 站长）在 Obsidian 上跑 Karpathy LLM Wiki 模式 6 个月、覆盖 35 页之后得到一个**反 Karpathy gist 强调比例**的结论：
 
-> "The pattern works — far better than I expected — but only if you treat the schema file as the most important file, which Karpathy's original gist underplays."
-> —— `text.txt:14`
+> "The pattern works — far better than I expected — but only if you treat the schema file as the most important file, which Karpathy's original gist underplays."[^src1]
 
-Rohit Ghumare 给出更直白的版本："Schema is the most important file."（`text.txt:50`）
+Rohit Ghumare 给出更直白的版本："Schema is the most important file."[^src2]
 
 ## 为什么 schema 比内容重要
 
