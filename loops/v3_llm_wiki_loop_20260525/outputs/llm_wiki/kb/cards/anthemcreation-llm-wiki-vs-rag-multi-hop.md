@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#llm-wiki, #rag, #multi-hop, #personal-knowledge]
 created_time: 2026-05-26T11:55:00+08:00
-edited_time: 2026-05-27T14:16:00+08:00
+edited_time: 2026-05-28T10:46:00+08:00
 edited_entity: llm
 source_ids: [anthemcreation-fr-guide]
 provenance_card: ../provenance/anthemcreation-llm-wiki-vs-rag-multi-hop.md
