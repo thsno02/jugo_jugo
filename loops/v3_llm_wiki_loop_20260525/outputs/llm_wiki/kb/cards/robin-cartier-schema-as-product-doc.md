@@ -25,7 +25,7 @@ Robin Cartier 在 verdict 里下了一个比 Karpathy 原 gist[^v3-1] 更激进�
 **为什么这是一个有用的视角调整**：
 - 把 schema 看作 PRD 后，工程团队就有了已知的产品工程语言来评估它：清晰度、可验收准则、版本治理、变更日志；
 - 它把 LLM-as-colleague 从隐喻提升为一种实际的"协作合同"——LLM 看 schema 就像新员工看入职手册；
-- 它解释了为什么 Karpathy 模式可以扩展到 wiki 之外：任何"重复发生的、依赖 LLM 自主执行的工作流"（CI 运维、Pull Request 评审、定期报告生成等）都可用 schema-as-PRD 编码。
+- 它解释了为什么 Karpathy 模式可以扩展到 wiki 之外：任何"重复发生的、依赖 LLM 自主执行的工作流"（CI 运维、Pull Request 评审、定期报告生成等）都可用 schema-as-PRD 编码[^src3]。
 
 **对应到本仓库的"loop capsule"实践**：本仓库的 loop README + 任务模板（如 batch_worker_prompt.md）本质上就是一份 schema-as-PRD——它告诉每个 worker 角色、边界、产物格式、失败处理。这一模式的成立性来自 Robin 的观察。
 
