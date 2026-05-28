@@ -15,11 +15,11 @@ related: [karpathy-llm-wiki-obsidian-plugin-overview, karpathy-wiki-extraction-g
 
 ## 立场陈述
 
-Karpathy LLM Wiki Obsidian 插件页面明确声明：
+Karpathy LLM Wiki Obsidian 插件[^v3-1]页面明确声明：
 
-> "This plugin follows Karpathy's philosophy: feed the LLM full Wiki context, not chunked RAG retrieval. Long-context models are strongly recommended — the larger your Wiki grows, the more context the LLM needs."
+> "This plugin follows Karpathy's philosophy: feed the LLM full Wiki context, not chunked RAG retrieval. Long-context models are strongly recommended — the larger your Wiki grows, the more context the LLM needs."[^src1]
 
-并给出 Karpathy 对 RAG 的原始批评："RAG fragments knowledge and breaks the LLM's ability to reason across the full knowledge graph."
+并给出 Karpathy 对 RAG 的原始批评："RAG fragments knowledge and breaks the LLM's ability to reason across the full knowledge graph."[^src2]
 
 ## 与 RAG 范式的具体差异
 
