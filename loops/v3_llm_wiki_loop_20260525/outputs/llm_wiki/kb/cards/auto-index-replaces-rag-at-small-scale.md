@@ -22,12 +22,9 @@ related: [llm-knowledge-base-five-stage-workflow, karpathy-llm-wiki-vs-rag, karp
 
 之所以这种方式在小规模下成立：索引 + 摘要把整份语料"压扁"成一张可被导航的地图，整张地图能塞进单次上下文。LLM 在做的事情是"在一份精心维护的地图上按关键词/主题路由"，而不是"在一堆不透明向量里做近邻搜索"。错误是显式的（链接错了、摘要过时了），并且可以被同一个 LLM 在 linting 阶段直接修掉。
 
-边界：这并不是在说 RAG 整体不必要。这是关于"小语料、且索引 + 摘要维护成本很低"这一段范围内的规则。作者本人也明确指出，wiki 真正变大之后下一步应当考虑"合成数据 + 微调"。
-
-## References
-
-- Karpathy 引用推文中的 Q&A 章节（`data/raw/webpage/karpathy-x-launch-post/text.txt`，JSON 指针 `$.tweet.quote.text`）。
+边界：这并不是在说 RAG 整体不必要。这是关于"小语料、且索引 + 摘要维护成本很低"这一段范围内的规则[^v3-1]。作者本人也明确指出，wiki 真正变大之后下一步应当考虑"合成数据 + 微调"。
 
 ## Footnotes
 
-- `data/raw/webpage/karpathy-x-launch-post/text.txt` — JSON 指针 `$.tweet.quote.text`，"Q&A:" 章节（`"I thought I had to reach for fancy RAG, but the LLM has been pretty good about auto-maintaining index files and brief summaries of all the documents and it reads all the important related data fairly easily at this ~small scale."`）。
+[^src1]: `data/raw/webpage/karpathy-x-launch-post/text.txt` — JSON 指针 `$.tweet.quote.text`，"Q&A:" 章节 — "I thought I had to reach for fancy RAG, but the LLM has been pretty good about auto-maintaining index files and brief summaries of all the documents and it reads all the important related data fairly easily at this ~small scale."
+[^v3-1]: [robin-cartier-scale-ceiling](robin-cartier-scale-ceiling.md) — Robin Cartier 给出 ~200 页天花板的另一独立测算。
