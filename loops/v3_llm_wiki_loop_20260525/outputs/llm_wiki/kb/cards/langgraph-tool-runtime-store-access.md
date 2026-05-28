@@ -41,6 +41,7 @@ def get_user_info(runtime: ToolRuntime[Context]) -> str:
     user_info = runtime.store.get(("users",), user_id)
     return str(user_info.value) if user_info else "Unknown user"
 ```
+[^src1]
 
 - namespace 由代码硬定（这里 `("users",)`），key 来自 runtime 上下文的 `user_id`；
 - 返回的 `StoreValue` 对象同时携带 value 和 metadata。
