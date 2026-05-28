@@ -37,18 +37,18 @@ LLM 基于背景段落生成若干 `(question, answer)` 候选；专家手工筛
 
 **步骤 5：大海捞针历史拼装。**
 
-测试时把上述 evidence session **散落地塞进**一段更长的、无关的 user-AI 对话流里：
+测试时把上述 evidence session **散落地塞进**一段更长的、无关的 user-AI 对话流里[^src6]：
 - 25% 抽自 ShareGPT，25% 抽自 UltraChat，50% 来自其他属性的 simulated session；
 - 这些 distractor 与 evidence 共同 shuffle，再按顺序分配 plausible 时间戳——若 evidence 已有时间锚，则 distractor 时间戳被它约束。
-- 提供两个标准长度：**LongMemEval-S ≈ 115k token / 题**，**LongMemEval-M = 500 session ≈ 1.5M token / 题**。
-- 因为是合成拼装，**history 可以无限拉长**——这是它和 LoCoMo(固定 9K token)最大的差异。
+- 提供两个标准长度：**LongMemEval-S ≈ 115k token / 题**，**LongMemEval-M = 500 session ≈ 1.5M token / 题**[^src7]。
+- 因为是合成拼装，**history 可以无限拉长**——这是它和 LoCoMo 最大的差异。
 
-**步骤 6：evidence 位置在 session 内被人工**多样化分布**——以避免"信息永远在 session 开头"导致检索作弊。论文 `fig:benchmark-basic-stats` 显示 evidence 位置在 session 中均匀分布。
+**步骤 6：evidence 位置在 session 内被人工**多样化分布**——以避免"信息永远在 session 开头"导致检索作弊。论文 `fig:benchmark-basic-stats` 显示 evidence 位置在 session 中均匀分布[^src8]。
 
 **为什么这套设计能成立**：
 
 - **题与历史解耦** 让难度可控：换 distractor 数量 / 时间跨度 / 检索模型，都不必重新出题。
-- **evidence 间接表达** + **70% 人工编辑** 让数据无法靠"模式匹配关键词"过关，必须真的看懂语义。
+- **evidence 间接表达** + **70% 人工编辑** 让数据无法靠"模式匹配关键词"过关，必须真的看懂语义。也正因如此，"只 record 直接陈述的事实"的商业系统会立刻在 IE 上失败[^v3-3]。
 - **拒答题(abstention)** 是从其他类型修改成 "false premise"——不是单独写的，所以分布与正常题贴近，不会让 abstention 检测器靠"题型识别"作弊。
 
 **边界**：
@@ -57,20 +57,16 @@ LLM 基于背景段落生成若干 `(question, answer)` 候选；专家手工筛
 - abstention 只有 30 道，样本小，置信区间宽。
 - LongMemEval-S/M 的 115K 与 1.5M 是 fixed 提供的两个 setting，未来若需要 5M / 10M token 上限，原算法可继续扩展，但**至今没有发布**。
 
-## References
-
-- §3.2 Benchmark Curation 全章节：`data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` 行 1357–1392。
-- 属性本体 164 项：行 887–921(`tables/attribute_ontology.tex`)。
-- evidence session 间接表达与 70% 人工编辑：行 1375–1377。
-- 大海捞针拼装混合源(25/25/50)：行 1594–1599。
-- LongMemEval-S/M 标准设置：行 1391("$\sim$115k tokens/question" / "500 sessions, $\sim$1.5M tokens")。
-- evidence 位置均匀分布：行 944–953(`fig:benchmark-basic-stats` subfig1)。
-
 ## Footnotes
 
-- 属性五大类："demographic information, lifestyle, situational context, life events, and belongings"(行 1570)。
-- 5% 通过率："In total, approximately 1000 questions were generated for each question type, and the final yield rate is about 5\%."(行 1580)
-- 间接 evidence："The user LLM is instructed to convey the evidence statement indirectly, e.g., instead of stating ``I bought a new car last month,'' it might instead ask for help about car insurance and reveal the information incidentally."(行 1375)
-- 70% 人工编辑："In total, roughly 70\% of the sessions are human edited."(行 1586)
-- 大海捞针类比："Our approach is analogous to the needle-in-a-haystack test (kamradt2023needle), which asks a model to retrieve brief information (the ``needle") embedded in a long document (the ``haystack")."(行 1391)
-- distractor 混合："we always use the following mixture: 25\% ShareGPT, 25\% UltraChat, and 50\% simulated sessions"(行 1597)。
+[^src1]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1357–1392（§3.2 Benchmark Curation 全章节）+ 行 1391 — "Our approach is analogous to the needle-in-a-haystack test (kamradt2023needle), which asks a model to retrieve brief information (the ``needle") embedded in a long document (the ``haystack")."
+[^src2]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 887–921（`tables/attribute_ontology.tex`）+ 行 1570 — 属性五大类："demographic information, lifestyle, situational context, life events, and belongings"。
+[^src3]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1580 — "In total, approximately 1000 questions were generated for each question type, and the final yield rate is about 5\%."
+[^src4]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1375 — "The user LLM is instructed to convey the evidence statement indirectly, e.g., instead of stating ``I bought a new car last month,'' it might instead ask for help about car insurance and reveal the information incidentally."
+[^src5]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1586 — "In total, roughly 70\% of the sessions are human edited."
+[^src6]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1594–1599 + 1597 — distractor 混合："we always use the following mixture: 25\% ShareGPT, 25\% UltraChat, and 50\% simulated sessions"。
+[^src7]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 1391 — "$\sim$115k tokens/question" / "500 sessions, $\sim$1.5M tokens"。
+[^src8]: `data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt` — 行 944–953（`fig:benchmark-basic-stats` subfig1）— evidence 位置在 session 中均匀分布。
+[^v3-1]: [longmemeval-five-core-memory-abilities](longmemeval-five-core-memory-abilities.md) — 五种核心能力定义。
+[^v3-2]: [locomo-very-long-term-dialogue-dataset](locomo-very-long-term-dialogue-dataset.md) — LoCoMo 固定 9K token / 19 session 的对照。
+[^v3-3]: [longmemeval-commercial-system-failure-modes](longmemeval-commercial-system-failure-modes.md) — Coze 在 IE 上失败的具体表现。
