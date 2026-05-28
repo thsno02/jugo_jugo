@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#graphrag, #cost-efficiency, #context-window, #token-budget]
 created_time: 2026-05-26T11:02:00+08:00
-edited_time: 2026-05-27T10:07:00+08:00
+edited_time: 2026-05-28T11:20:00+08:00
 edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-root-community-token-efficiency.md
