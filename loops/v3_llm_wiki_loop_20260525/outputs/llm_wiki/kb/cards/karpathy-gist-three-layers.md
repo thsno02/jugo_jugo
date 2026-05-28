@@ -21,7 +21,7 @@ Karpathy 在 2026 年 gist 里把"LLM Wiki"模式形式化成**三层结构 + �
 
 所有权分离的工程含义：
 - 任何修改 raw 的动作都是错误——它破坏了"the source of truth"的不可变假设；
-- 人写 wiki 也是错误（或至少不应主流化）——"You never (or rarely) write the wiki yourself"。原因：人写的页面无法被 LLM 在下一次 ingest 时自动维护，会破坏交叉引用一致性；
+- 人写 wiki 也是错误（或至少不应主流化）——"You never (or rarely) write the wiki yourself"[^src4]。原因：人写的页面无法被 LLM 在下一次 ingest 时自动维护，会破坏交叉引用一致性；
 - schema 是**人 + LLM 共同演进**的——它不是死的配置，而是"实验 → 改 schema → 更好的下次 ingest"的反馈环节。
 
 为什么这种分层比"一个文件夹塞 markdown"更有结构：
