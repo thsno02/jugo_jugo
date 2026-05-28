@@ -40,17 +40,15 @@ Steven Wu 的 `llm-wiki-mcp` 0.1.1（PyPI, 2026-04-08）把 Karpathy LLM Wiki �
 ## 操作含义
 
 - agent 写一页之前必须先 `wiki_read` 拿 etag；这是 CAS 协议的硬要求。
-- agent 完成 ingest / lint / contradiction-mark 等操作后**必须**调一次 `wiki_log_append`，否则 log.md 失去"事情发生过"的可审计性。
+- agent 完成 ingest / lint / contradiction-mark [^v3-2][^v3-3] 等操作后**必须**调一次 `wiki_log_append`，否则 log.md 失去"事情发生过"的可审计性。
 - `wiki_inventory` 适合作为"会话开始时一次性建立 mental map"的工具调用，而非高频轮询。
-
-## References
-
-- 四个工具清单：`data/raw/pypi/pypi-llm-wiki-mcp/text.txt:155-167`。
-- etag CAS 与并发：`text.txt:181`。
-- 故意不暴露 index/raw：`text.txt:167`。
 
 ## Footnotes
 
-- 四工具描述原文：`text.txt:159-165`，每条配 annotation 与一句话功能。
-- 原子写实现细节：`text.txt:180` —— "Atomic writes. tmp-file + fsync + rename for pages. O_APPEND single-write for log entries."
-- CAS 协议原文：`text.txt:181` —— "Every page has an etag (sha256(body) || mtime_ns). Updates supply the etag they read; a mismatch raises WikiConflictError, and the agent re-reads, merges, and retries."
+[^src1]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 159–165 行，四个工具清单，每条配 annotation 与一句话功能描述。
+[^src2]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 180 行 verbatim："Atomic writes. tmp-file + fsync + rename for pages. O_APPEND single-write for log entries."
+[^src3]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 181 行 verbatim："Every page has an etag (sha256(body) || mtime_ns). Updates supply the etag they read; a mismatch raises WikiConflictError, and the agent re-reads, merges, and retries."
+[^src4]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 167 行，故意不暴露 index.md 与 raw/ 的设计说明。
+[^v3-1]: [karpathy-gist-three-layers](karpathy-gist-three-layers.md) — Karpathy gist 的 raw / wiki / schema 三层是 llm-wiki-mcp 的设计原型。
+[^v3-2]: [karpathy-llm-kb-three-operations](karpathy-llm-kb-three-operations.md) — Karpathy "LLM KB" 的三个操作 Ingest / Query / Lint，是 wiki_log_append 必须记录的 op 类型来源。
+[^v3-3]: [llm-wiki-contradictions-are-assets](llm-wiki-contradictions-are-assets.md) — contradiction-mark 不是 bug 修复而是资产，正解释了为什么它是必须 log 的一类操作。
