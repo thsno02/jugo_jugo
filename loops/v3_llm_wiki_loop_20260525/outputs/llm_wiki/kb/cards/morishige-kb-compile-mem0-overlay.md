@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [developersio-jp-pattern]
 provenance_card: ../provenance/morishige-kb-compile-mem0-overlay.md
 aliases: ["/kb-compile", "Karpathy pattern 实战", "Mem0 + wiki"]
-related: [karpathy-llm-kb-three-layer-arch, karpathy-llm-kb-three-operations, mem0-extract-update-pipeline, file-outputs-back-as-compounding-loop, beyond-the-token-bottleneck-llm-wiki-case-study, my-llm-wiki-three-layer-implementation]
+related: [karpathy-llm-kb-three-layer-arch, karpathy-llm-kb-three-operations]
 ---
 
 Classmethod 工程师森茂洋的实践提供了一个值得记住的 *retrofit* 模式：**在已经运行的 Mem0 + pgvector "记忆 / 检索"基础设施之上，再叠一层 LLM Wiki，而不是推倒重来**。这正面回答了一个普遍的工程顾虑——已经投入大量精力做了 RAG/Memory 的人，要不要为了 Karpathy 模式重建一切。
