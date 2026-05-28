@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [langchain-long-term-memory-docs]
 provenance_card: ../provenance/langgraph-tool-runtime-store-access.md
 aliases: [ToolRuntime, runtime.store, agent tool memory access]
-related: [langgraph-store-namespace-key-json-model, mem0-tool-call-add-update-delete-noop, mem0-extract-update-pipeline, memgpt-function-chaining-heartbeat, memory-as-metabolism-five-operations, llm-wiki-mcp-four-tools]
+related: [langgraph-store-namespace-key-json-model, mem0-tool-call-add-update-delete-noop]
 ---
 
 ## 接入方式
