@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-lightmem]
 provenance_card: ../provenance/lightmem-light2-topic-aware-stm.md
 aliases: ["Light2 STM", "topic-aware short-term memory"]
-related: [lightmem-three-stage-atkinson-shiffrin, lightmem-precompress-and-topic-segmentation, lightmem-sleep-time-offline-parallel-update, lightmem-complexity-formula, memgpt-queue-eviction-policy]
+related: [lightmem-complexity-formula, lightmem-precompress-and-topic-segmentation, memgpt-queue-eviction-policy]
 ---
 
 LightMem 的第二层模块 Light2 是"中转和总结"层：它把上游 Light1 切好的 topic 段堆进 STM buffer，等达到 token 阈值 `th` 时一次性调用主干 LLM 的 `f_sum` 做总结、产出可索引的记忆条目交给 LTM[^src1]。这是 LightMem 把 API 调用从 O(N) 压到 O(Nr^x T/th) 的中间一环[^v3-1]。
