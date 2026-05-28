@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#karpathy-wiki, #extraction, #cost-control, #knobs]
 created_time: 2026-05-26T12:45:00+08:00
-edited_time: 2026-05-27T10:20:00+08:00
+edited_time: 2026-05-28T11:24:00+08:00
 edited_entity: llm
 source_ids: [obsidian-community-plugin]
 provenance_card: ../provenance/karpathy-wiki-extraction-granularity.md
