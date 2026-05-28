@@ -46,21 +46,21 @@ LoCoMo 的事件摘要任务（让模型把对话里出现的"个人事件"列�
 
 **与 long-context LLM 现象互证**：
 
-- **speaker attribution 错** 这个类与 `locomo-long-context-adversarial-collapse` 卡里 long-context LLM "misassigning dialogs or events to the wrong speaker" 是同一根因——注意力稀释导致 "谁" 这个维度先丢。
-- **hallucination** 类与 long-context LLM 在 adversarial 上塌到 2.1% 也是同一机制的不同表现：context 越长，模型越倾向"找一个看起来像答案的句子"。
+- **speaker attribution 错** 这个类与长上下文 LLM "misassigning dialogs or events to the wrong speaker" 是同一根因——注意力稀释导致 "谁" 这个维度先丢[^v3-2]。
+- **hallucination** 类与 long-context LLM 在 adversarial 上塌到 2.1% 也是同一机制的不同表现：context 越长，模型越倾向"找一个看起来像答案的句子"。论文同时报告长上下文模型在事件摘要上反而比 4K base 差[^src3]。
 
 **边界**：
 
 - 这 5 类是 GPT-3.5-turbo 在 LoCoMo 上的错误分布；换更强模型 (GPT-4 / Claude) 比例会变化，但论文未给细分数字。
-- "saliency" 类隐含了"什么算 life event"的主观判断——FactScore 与人工标注都靠 GT 事件图当 oracle，但事件图本身也是 LLM 生成 + 人工编辑的产物，有 bias。
-
-## References
-
-- 五类错误首次列出：`data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` 行 493。
-- 完整 5 类例子表 `tab:summary_errors`：行 754–774。
-- "long-context LLM 不擅用 context" 互证：行 491 + 行 444。
+- "saliency" 类隐含了"什么算 life event"的主观判断——FactScore 与人工标注都靠 GT 事件图当 oracle，但事件图本身也是 LLM 生成 + 人工编辑的产物（见 persona + 事件图 pipeline[^v3-3]），有 bias。
+- 类似的"五类失败"分类在商用记忆系统层面也被 LongMemEval 整理过[^v3-4]，两套互为对照。
 
 ## Footnotes
 
-- 五类原始定义："(1) \textbf{missing information} in events because the model fails to make temporal and/or causal connections over a lengthy conversation; (2) \textbf{hallucinations} i.e., models pad extra details that are either not present in the conversation or are part of a different event in the same session; (3) errors from \textbf{misunderstanding of dialog cues} such as humor or sarcasm is a distinctive issue with comprehension of dialogs; (4) inaccurate \textbf{speaker attributions}; and (5) insignificant dialogs that are wrongly considered as \textbf{salient} events."（行 493）
-- 长上下文模型在事件摘要上反而比 4K base 差："the \textbf{long-context model does not surpass the base model}, despite its capability for extended-range reasoning facilitated by a larger context window. \texttt{gpt-3.5-turbo-16k} exhibits a decline in both precision (by 3.0\%) and recall (by 8.7\%)"——行 491。
+[^src1]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` — 行 493 — 五类原始定义："(1) \textbf{missing information} in events because the model fails to make temporal and/or causal connections over a lengthy conversation; (2) \textbf{hallucinations} i.e., models pad extra details that are either not present in the conversation or are part of a different event in the same session; (3) errors from \textbf{misunderstanding of dialog cues} such as humor or sarcasm is a distinctive issue with comprehension of dialogs; (4) inaccurate \textbf{speaker attributions}; and (5) insignificant dialogs that are wrongly considered as \textbf{salient} events."
+[^src2]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` — 行 754–774 — 完整 5 类例子表 `tab:summary_errors`。
+[^src3]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` — 行 491 — "the \textbf{long-context model does not surpass the base model}, despite its capability for extended-range reasoning facilitated by a larger context window. \texttt{gpt-3.5-turbo-16k} exhibits a decline in both precision (by 3.0\%) and recall (by 8.7\%)"。
+[^v3-1]: [locomo-three-task-evaluation-framework](locomo-three-task-evaluation-framework.md) — 事件摘要是三任务中的第二项。
+[^v3-2]: [locomo-long-context-adversarial-collapse](locomo-long-context-adversarial-collapse.md) — speaker attribution 与长上下文塌陷的同根性。
+[^v3-3]: [locomo-persona-event-graph-pipeline](locomo-persona-event-graph-pipeline.md) — GT 事件图是 LLM 生成 + 人工编辑。
+[^v3-4]: [longmemeval-commercial-system-failure-modes](longmemeval-commercial-system-failure-modes.md) — 商用系统层面的类似失败分类。
