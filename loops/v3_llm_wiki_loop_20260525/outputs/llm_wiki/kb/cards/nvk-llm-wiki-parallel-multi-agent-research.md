@@ -27,8 +27,8 @@ related: [nvk-llm-wiki-hub-and-topic-wikis, nvk-llm-wiki-audit-and-librarian, fi
 - `--min-time <duration>`（如 `1h` / `2h`）：在时间窗口内多轮研究，每轮针对上一轮的 gap 深挖；
 - `--plan`：先把宏 topic 分解成多个独立 *path*（如 "mechanisms / clinical evidence / devices / criticisms"），每个 path 跑自己的 5-agent swarm；ingest 并行，最后**统一一次 compile** 看到所有源以做跨 path 合成；
 - `--new-topic`：研究和创建 topic-wiki 一气呵成；
-- `--mode thesis "<claim>"`：thesis-driven 研究——agent 被分到 *supporting / opposing / mechanistic / meta-review / adjacent*，输出 *verdict* （supported / partially / contradicted / insufficient / mixed），并在 round 2 *focuses harder on the weaker side*，对抗确认偏差；
-- `--retardmax`：10-agent、跳过 plan、最广撒网、aggressive ingest、稍后再 lint——"act first, think later"。
+- `--mode thesis "<claim>"`：thesis-driven 研究——agent 被分到 *supporting / opposing / mechanistic / meta-review / adjacent*，输出 *verdict* （supported / partially / contradicted / insufficient / mixed），并在 round 2 *focuses harder on the weaker side*，对抗确认偏差[^src2]；
+- `--retardmax`：10-agent、跳过 plan、最广撒网、aggressive ingest、稍后再 lint——"act first, think later"[^src4]。
 
 **为什么把它结构成"agent 群 + gap 报告"：**
 
