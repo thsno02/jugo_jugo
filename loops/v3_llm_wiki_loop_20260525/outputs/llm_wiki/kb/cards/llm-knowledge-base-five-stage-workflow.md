@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#llm-wiki, #workflow, #knowledge-system, #operations]
 created_time: 2026-05-25T22:05:00+08:00
-edited_time: 2026-05-27T10:05:00+08:00
+edited_time: 2026-05-28T11:32:00+08:00
 edited_entity: llm
 source_ids: [karpathy-x-launch-post]
 provenance_card: ../provenance/llm-knowledge-base-five-stage-workflow.md
