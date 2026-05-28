@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-as-metabolism-contextualize-depth-fitted.md
 aliases: [CONTEXTUALIZE operation, depth-fitted compression, selective absorption, cold memory tier]
-related: [memory-as-metabolism-five-operations, memory-as-metabolism-mirror-vs-compensate, memory-gravity-load-bearing-protection, lightmem-precompress-and-topic-segmentation, karpathy-wiki-extraction-granularity]
+related: [memory-as-metabolism-five-operations, memory-gravity-load-bearing-protection, lightmem-precompress-and-topic-segmentation]
 ---
 
 ## 解决的问题：外部源没有"唯一正确压缩"
