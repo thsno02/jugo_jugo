@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#docs-as-code, #documentation, #write-the-docs, #toolchain]
 created_time: 2026-05-26T11:15:00+08:00
-edited_time: 2026-05-27T14:40:00+08:00
+edited_time: 2026-05-28T12:30:00+08:00
 edited_entity: llm
 source_ids: [writethedocs-docs-as-code]
 provenance_card: ../provenance/docs-as-code-five-pillars.md
