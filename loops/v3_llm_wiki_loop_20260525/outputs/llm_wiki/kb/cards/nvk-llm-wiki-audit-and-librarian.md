@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [llm-wiki-net]
 provenance_card: ../provenance/nvk-llm-wiki-audit-and-librarian.md
 aliases: ["wiki:audit workflow", "wiki:librarian workflow"]
-related: [nvk-llm-wiki-hub-and-topic-wikis, agents-md-as-schema-layer, enterprise-llm-wiki-drift-detection-loop, llm-wiki-karpathy-lint-grounding-trail, retrieval-not-enough-for-stale-kb, llm-wiki-contradictions-are-assets]
+related: [enterprise-llm-wiki-drift-detection-loop]
 ---
 
 nvk/llm-wiki 把"LLM 写出来的东西能不能信"拆成两个互补的命令：`/wiki:librarian` 做内容打分，`/wiki:audit` 做证据链与可信度的反向追溯。这两件事单独都不新鲜，把它们做成**可重复的 workflow**、并把审计触发的"补研究"也包进去，是这套工具值得借鉴的地方。
