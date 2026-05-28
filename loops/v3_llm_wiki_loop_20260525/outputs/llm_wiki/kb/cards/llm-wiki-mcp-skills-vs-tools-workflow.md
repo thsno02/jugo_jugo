@@ -60,15 +60,13 @@ skill 不把 schema 硬编码进自己的 prompt，而是**每次运行都重新
 - 用 Claude Desktop / Cursor 时：只有 tool，没有 workflow guard；agent 一致性靠用户 prompt 兜底，或者参考 README 自己写 system prompt 模拟 skill。
 - 不用 Claude 系列时：可通过 `importlib.resources` 把 skill markdown 取出来塞进自己的 agent system prompt。
 
-## References
-
-- Skill 列表与对应问句：`data/raw/pypi/pypi-llm-wiki-mcp/text.txt:141-151`。
-- Skill 每次重读 schema：`text.txt:139`。
-- 只装 tool 没装 skill 的退化：`text.txt:153`。
-- 非 Claude 用户的 importlib 装载：`text.txt:195`。
-
 ## Footnotes
 
-- Skill 安装命令：`text.txt:138`。
-- 三大操作来自 Karpathy gist：`text.txt:151` —— "wiki-init is a one-shot scaffolder; the other three are Karpathy's three operations."
-- 跳过 bookkeeping 的退化原文：`text.txt:153` —— "The agent has to derive the workflow from tool descriptions alone, which works for one-off reads and writes but tends to skip the bookkeeping (log entries, backlink audits) the skills make explicit."
+[^src1]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 141–151 行，四个 skill 列表与对应问句（含 `text.txt:151` verbatim："wiki-init is a one-shot scaffolder; the other three are Karpathy's three operations."）。
+[^src2]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 139 行 verbatim："Each skill reads wiki/CLAUDE.md for the active schema on every run, so you can evolve the schema without re-installing anything."
+[^src3]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 153 行 verbatim："Other MCP clients (Claude Desktop, Cursor) get the four tools but not the skills. The agent has to derive the workflow from tool descriptions alone, which works for one-off reads and writes but tends to skip the bookkeeping (log entries, backlink audits) the skills make explicit."
+[^src4]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` — 第 195 行，非 Claude 用户通过 `importlib.resources` 加载 skill markdown 的说明。
+[^v3-1]: [llm-wiki-mcp-four-tools](llm-wiki-mcp-four-tools.md) — 四个 MCP tool 的契约（annotation / CAS / 故意留白）。
+[^v3-2]: [karpathy-llm-kb-three-operations](karpathy-llm-kb-three-operations.md) — Karpathy "LLM KB" 的三个操作 Ingest / Query / Lint，是 skill 层 wiki-ingest / wiki-query / wiki-lint 的概念源头。
+[^v3-3]: [cognition-human-approved-skill-md](cognition-human-approved-skill-md.md) — Cognition 把 SKILL.md 作为人工审批闸门，与本卡 "skill 把必做步骤显式编码出来" 是同一思路的不同实例化。
+[^v3-4]: [llm-wiki-mcp-design-boundary-mechanics-not-content](llm-wiki-mcp-design-boundary-mechanics-not-content.md) — server 不烧 schema 进去，skill 每次重读 `wiki/CLAUDE.md` 正是这条边界在 skill 层的对应物。
