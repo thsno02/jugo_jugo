@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#llm-wiki, #karpathy, #runtime, #agent, #obsidian, #plugin]
 created_time: 2026-05-26T11:35:00+08:00
-edited_time: 2026-05-27T10:20:00+08:00
+edited_time: 2026-05-28T11:42:00+08:00
 edited_entity: llm
 source_ids: [clawhub-llm-wiki-karpathy]
 provenance_card: ../provenance/llm-wiki-karpathy-runtime-vs-agent-split.md
