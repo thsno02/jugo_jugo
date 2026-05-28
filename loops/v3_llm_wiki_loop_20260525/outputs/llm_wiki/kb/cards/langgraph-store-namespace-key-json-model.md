@@ -62,21 +62,13 @@ store = InMemoryStore(
 
 ## 使用边界
 
-- store 是**显式调用**模型——agent 不会自动把每条消息写入 store，需通过工具调用（详见 [langgraph-tool-runtime-store-access](langgraph-tool-runtime-store-access.md)）或外部代码主动 `.put`。
+- store 是**显式调用**模型——agent 不会自动把每条消息写入 store，需通过工具调用 [^v3-1] 或外部代码主动 `.put`。
 - 跨命名空间搜索通过**内容过滤**而非天然支持的"全局搜索"——namespace 是隔离边界，不是索引前缀。
 - 文档没有规定 store 的"遗忘"机制（衰减、TTL 等），这一层由开发者自己实现。
 
-## References
-
-- 来源页面：`data/raw/webpage/langchain-long-term-memory-docs/text.txt`。
-- 第 138–148 行：long-term vs short-term 的差别 + "stored as JSON documents organized by namespace and key"。
-- 第 152–164 行：`create_agent` 接入 store 的代码（InMemoryStore / PostgresStore）。
-- 第 170–182 行：namespace/key 的层级组织与 IndexConfig 示例。
-
 ## Footnotes
 
-[^1]: 模型 verbatim 节选（第 148 行）："Long-term memory is built on LangGraph stores, which save data as JSON documents organized by namespace and key."
-
-[^2]: namespace 层级用途 verbatim（第 172 行）："Each memory is organized under a custom namespace (similar to a folder) and a distinct key (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information. This structure enables hierarchical organization of memories. Cross-namespace searching is then supported through content filters."
-
-[^3]: IndexConfig 示例代码出现在第 178 行附近（InMemoryStore 块）。
+[^src1]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` — 第 148 行 verbatim："Long-term memory is built on LangGraph stores, which save data as JSON documents organized by namespace and key."
+[^src2]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` — 第 172 行 verbatim："Each memory is organized under a custom namespace (similar to a folder) and a distinct key (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information. This structure enables hierarchical organization of memories. Cross-namespace searching is then supported through content filters."
+[^src3]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` — 第 178 行附近，InMemoryStore 块的 IndexConfig 示例代码。
+[^v3-1]: [langgraph-tool-runtime-store-access](langgraph-tool-runtime-store-access.md) — 工具读写 store 的官方接入路径（ToolRuntime + runtime.store）。
