@@ -31,15 +31,12 @@ DevelopersIO 上 Classmethod 工程师森茂洋整理的 Karpathy "LLM Knowledge
 - 三层不是绝对——森茂自己的实践在 raw 和 wiki 之间另加了 Memory MCP（Mem0 + pgvector）作为"检索层"[^v3-2]。三层是骨架，不是禁止扩展。
 - "人不直接写 wiki"不是"人不可以编辑 wiki"——是"日常工作流不依赖人写 wiki"。bug 修补与紧急更正仍然合理。
 
-## References
-
-- 三层架构整段见 §"3 層アーキテクチャ"（`data/raw/webpage/developersio-jp-pattern/text.txt`，第 46–53 行）。
-- 森茂自己的目录映射见 §"自分は Claude Code でこう組み込んでいる"（同文件 L85–99）。
-- Karpathy 原贴日期与背景在 L23–28。
-
 ## Footnotes
 
-- L48：*"Raw sources は、記事、論文、リポジトリ、画像など、不変の精選ドキュメントです。"*
-- L50：*"Schema は、wiki の構造や規約を定義する設定ドキュメントです ... いわば wiki の『設計図』です。"*
-- L52：*"Wiki は、LLM が生成した Markdown ファイル群です ... 重要なのは、人間が直接書くことはほとんどない という点。"*
-- L97–99：森茂的目录映射 `workspace/knowledge/` → Raw、各 `CLAUDE.md` → Schema、`workspace/wiki/` → Wiki。
+[^src1]: `data/raw/webpage/developersio-jp-pattern/text.txt` L48 — "Raw sources は、記事、論文、リポジトリ、画像など、不変の精選ドキュメントです。"
+[^src2]: 同文件 L50 — "Schema は、wiki の構造や規約を定義する設定ドキュメントです ... いわば wiki の『設計図』です。"
+[^src3]: 同文件 L52 — "Wiki は、LLM が生成した Markdown ファイル群です ... 重要なのは、人間が直接書くことはほとんどない という点。"
+[^src4]: 同文件 L97-99 — 森茂的目录映射 `workspace/knowledge/` → Raw、各 `CLAUDE.md` → Schema、`workspace/wiki/` → Wiki。
+[^v3-1]: [llm-knowledge-base-five-stage-workflow](llm-knowledge-base-five-stage-workflow.md) — 五阶段工作流卡是同一概念的过程视角，本卡是数据建模视角。
+[^v3-2]: [morishige-kb-compile-mem0-overlay](morishige-kb-compile-mem0-overlay.md) — 森茂自己在 raw 与 wiki 之间加 Mem0 + pgvector 检索层的落地实践。
+[^v2-1]: v2 anchor [llm-wiki-three-layer-architecture](../../../../../v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md) — 本卡是该卡的 delta：DevelopersIO 日文视角再次确认 Raw / Schema / Wiki 三层，并补出森茂的本地化目录映射与 Memory MCP 扩展。
