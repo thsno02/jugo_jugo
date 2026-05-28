@@ -44,15 +44,13 @@ Ingestion 时 LLM 在第二层做的具体动作（原文列举）：
 - 原始源和 wiki 必须在文件层物理分离，否则 LLM 重写 wiki 时可能误改原文；
 - 编辑器选用 Obsidian / VS Code + Markdown Preview / Logseq 都行，关键约束是文件保持**flat markdown**，便于 LLM 读写。
 
-## References
-
-- Anthem Création 2026-04-12 法语博客 "LLM Wiki de Karpathy : Créez votre base de connaissance avec Claude et Obsidian"（material `anthemcreation-fr-guide`），第 78–86 行三层结构、第 88–110 行 ingestion/query 流程、第 162 行 agents.md 重要性提示。原始素材是 Karpathy 2026-04 在 GitHub Gist 发布的 blueprint。
-
 ## Footnotes
 
-[^1]: `data/raw/webpage/anthemcreation-fr-guide/text.txt` 第 104 行：
-    > "Les sources brutes restent immuables. Le LLM écrit dans la wiki, l'utilisateur lit la wiki. La séparation des rôles est stricte."
-[^2]: 同文件第 76 行（编译类比）：
-    > "Il décrit l'analogie suivante : les sources brutes sont comme du code source, et la wiki LLM est l'exécutable compilé. Vous ne re-compilez pas à chaque fois que vous lancez un programme. La wiki reste canonique, vivante, et s'améliore à chaque nouvelle source ingérée."
-[^3]: 同文件第 162 行（agents.md 决定 fiabilité）：
-    > "La qualité de votre agents.md détermine directement la fiabilité de la base."
+[^src1]: `data/raw/webpage/anthemcreation-fr-guide/text.txt` 第 104 行 — "Les sources brutes restent immuables. Le LLM écrit dans la wiki, l'utilisateur lit la wiki. La séparation des rôles est stricte."
+[^src2]: `data/raw/webpage/anthemcreation-fr-guide/text.txt` 第 76 行（编译类比）— "Il décrit l'analogie suivante : les sources brutes sont comme du code source, et la wiki LLM est l'exécutable compilé. Vous ne re-compilez pas à chaque fois que vous lancez un programme. La wiki reste canonique, vivante, et s'améliore à chaque nouvelle source ingérée."
+[^src3]: `data/raw/webpage/anthemcreation-fr-guide/text.txt` 第 162 行 — "La qualité de votre agents.md détermine directement la fiabilité de la base."
+[^v3-1]: [karpathy-gist-three-layers](karpathy-gist-three-layers.md) — Anthem Création 的总结直接来自 Karpathy gist 三层蓝图。
+[^v3-2]: [agents-md-as-schema-layer](agents-md-as-schema-layer.md) — `agents.md` 作为 schema 层的角色在此卡有更细节的展开。
+[^v3-3]: [karpathy-llm-wiki-source-executable-analogy](karpathy-llm-wiki-source-executable-analogy.md) — 编译类比来自 Karpathy 自己的同一段表述。
+[^v3-4]: [anthemcreation-llm-wiki-vs-rag-multi-hop](anthemcreation-llm-wiki-vs-rag-multi-hop.md) — multi-hop 推理优势在此卡作为独立 distinction 展开。
+[^v2-1]: v2 anchor [llm-wiki-three-layer-architecture](../../../../../v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/llm-wiki-three-layer-architecture.md) — 本卡是该卡的 delta：从 Anthem Création 法语视角再次确认三层结构，并补全"写者唯一"权限边界与 ingestion 实操列表。
