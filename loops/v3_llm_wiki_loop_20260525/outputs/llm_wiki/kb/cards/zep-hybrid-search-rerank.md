@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#zep, #retrieval, #reranking, #graph-rag]
 created_time: 2026-05-26T11:10:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T11:34:00+08:00
 edited_entity: llm
 source_ids: [arxiv-zep]
 provenance_card: ../provenance/zep-hybrid-search-rerank.md
