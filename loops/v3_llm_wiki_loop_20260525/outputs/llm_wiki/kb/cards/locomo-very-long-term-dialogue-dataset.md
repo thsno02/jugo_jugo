@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-locomo]
 provenance_card: ../provenance/locomo-very-long-term-dialogue-dataset.md
 aliases: [LoCoMo dataset, 超长对话 benchmark]
-related: [longmemeval-five-core-memory-abilities, locomo-three-task-evaluation-framework, locomo-persona-event-graph-pipeline, mem0-locomo-benchmark-evaluation, longmemeval-benchmark-construction-pipeline]
+related: [locomo-persona-event-graph-pipeline, mem0-locomo-benchmark-evaluation, longmemeval-benchmark-construction-pipeline]
 ---
 
 ## 这张卡片想锁定什么
