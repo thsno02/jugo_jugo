@@ -23,7 +23,7 @@ Jim Liu 用 Karpathy v1 跑了 35 页之后，发现三个**v1 不修就会反�
 
 v1 没有"page 何时被验证过 / 我对它的把握有多大 / 它是否被新页取代"这些元数据；结果**过期的 ChatGPT 定价声明和最新的并排站着**，两者都被自信断言。
 
-v2 给每页加：
+v2 给每页加[^src1]：
 - `last_verified: 2026-05-01`
 - `confidence: high | medium | low`
 - `superseded_by: another-page.md`（如适用）
