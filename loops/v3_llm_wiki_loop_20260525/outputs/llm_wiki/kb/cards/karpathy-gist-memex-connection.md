@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#memex, #karpathy, #knowledge-management, #history]
 created_time: 2026-05-26T11:55:00+08:00
-edited_time: 2026-05-27T10:14:00+08:00
+edited_time: 2026-05-28T11:11:00+08:00
 edited_entity: llm
 source_ids: [karpathy-gist-llm-wiki]
 provenance_card: ../provenance/karpathy-gist-memex-connection.md
