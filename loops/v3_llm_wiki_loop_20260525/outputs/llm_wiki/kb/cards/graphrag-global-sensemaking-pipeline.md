@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#graphrag, #rag, #knowledge-graph, #sensemaking]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T10:03:00+08:00
+edited_time: 2026-05-28T11:10:00+08:00
 edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-global-sensemaking-pipeline.md
