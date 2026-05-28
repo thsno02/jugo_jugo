@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-knowledge-compounding]
 provenance_card: ../provenance/knowledge-compounding-tokens-as-capital.md
 aliases: [token 资本品论, capital goods view of tokens, 从边际成本到资本积累]
-related: [knowledge-compounding-dynamic-roi, knowledge-compounding-three-mechanisms, karpathy-llm-wiki-vs-rag, file-outputs-back-as-compounding-loop]
+related: [knowledge-compounding-dynamic-roi, knowledge-compounding-three-mechanisms]
 ---
 
 ## 区分对象
