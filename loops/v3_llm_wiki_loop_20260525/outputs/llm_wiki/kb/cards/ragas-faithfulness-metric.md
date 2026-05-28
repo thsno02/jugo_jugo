@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#ragas, #faithfulness, #hallucination-detection, #rag-evaluation]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T15:55:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ragas]
 provenance_card: ../provenance/ragas-faithfulness-metric.md
