@@ -21,7 +21,7 @@ Karpathy 发布 LLM Wiki gist 后，HN 第一波热门评论是 `kenforthewin` �
 
 并且 linting 阶段"auditing inconsistencies, imputing missing data, suggesting connections" 更像"维护 zettelkasten"而不是"返回 top-k 的搜索引擎"。
 
-**支持"是 RAG"的反驳（`kenforthewin`）：**
+**支持"是 RAG"的反驳（`kenforthewin`）**[^src1][^src5]：
 
 > "Whether that's via vector DB queries or a structured index/filesystem approach, that fundamental problem - retrieving the best data for the LLM's context - is RAG."
 
