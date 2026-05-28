@@ -13,9 +13,9 @@ aliases: ["GPT-3.5-turbo-16K adversarial 2.1%", "long-context hallucination"]
 related: [locomo-three-task-evaluation-framework, locomo-observation-rag-beats-summary-rag, locomo-event-summarization-five-error-types, longmemeval-five-core-memory-abilities, graphrag-context-window-8k-optimal]
 ---
 
-LoCoMo 用 adversarial 题（不可答、期望模型识别并拒答）做了一个"控制实验"，把长上下文 LLM 的隐藏缺陷暴露得很清楚：**给同一个 GPT-3.5-turbo-16K，把 context 从 4K 扩到 16K，adversarial F1 从 13.1 暴跌到 2.1**，而总体 F1 反而升到 37.8。换句话说：**喂得越多、越容易瞎编**。
+LoCoMo 用 adversarial 题（不可答、期望模型识别并拒答；adversarial 在 LoCoMo 评测框架中是 5 类 reasoning 之一[^v3-1]）做了一个"控制实验"，把长上下文 LLM 的隐藏缺陷暴露得很清楚：**给同一个 GPT-3.5-turbo-16K，把 context 从 4K 扩到 16K，adversarial F1 从 13.1 暴跌到 2.1**，而总体 F1 反而升到 37.8。换句话说：**喂得越多、越容易瞎编**。
 
-**数据来源（论文 Table `tab:qa_results`）**：
+**数据来源（论文 Table `tab:qa_results`）[^src1]**：
 
 | 模型 | Context | Single-Hop | Multi-Hop | Temporal | Open-Dom | **Adversarial** | Overall |
 |---|---|---|---|---|---|---|---|
