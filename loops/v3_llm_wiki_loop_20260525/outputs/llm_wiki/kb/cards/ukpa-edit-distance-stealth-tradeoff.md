@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-graph-poisoning]
 provenance_card: ../provenance/ukpa-edit-distance-stealth-tradeoff.md
 aliases: ["UKPA edit distance ablation", "small-edit sweet spot"]
-related: [ukpa-coreference-disruption, graphrag-text-defense-blind-spot, tkpa-graph-guided-targeted-poisoning, gragpoison-additive-vs-edit-attack, graphrag-manipulation-only-attack-surface]
+related: [ukpa-coreference-disruption, gragpoison-additive-vs-edit-attack, graphrag-text-defense-blind-spot, tkpa-graph-guided-targeted-poisoning]
 ---
 
 UKPA[^v3-1] 在生成扰动候选时硬性约束了"编辑距离要小"。Wen 等人做了一项 ablation 验证这个约束的具体取值：把允许的编辑距离上限 $d_{\text{edit}}$ 设到 1、3、5，分别观察攻击效果与文本异常度。结论可以一句话概括——**$d_{\text{edit}} \leq 3$ 已经把 QA 从 0.95 打到 0.50，再放大到 $\leq 5$ 攻击力几乎不再涨，但 perplexity 显著升高，把隐蔽性丢掉**[^src1]。
