@@ -29,10 +29,9 @@ Karpathy 在 LLM Wiki gist 中给出一个关键类比[^src1]，HN 编辑反响�
 
 ## 为什么这个类比正好命中
 
-> "the tedious part of knowledge management is not thinking. It is cross-linking pages, updating summaries, tracking contradictions, and keeping structure coherent across dozens or hundreds of files. Those are exactly the repetitive bookkeeping tasks that humans avoid and LLM agents can absorb."
-> —— `text.txt:35`
+> "the tedious part of knowledge management is not thinking. It is cross-linking pages, updating summaries, tracking contradictions, and keeping structure coherent across dozens or hundreds of files. Those are exactly the repetitive bookkeeping tasks that humans avoid and LLM agents can absorb."[^src2]
 
-类比之所以"resonate"，是因为软件工程里"程序员讨厌的重复 bookkeeping 工作"（重构、文档同步、依赖图维护）与"知识管理里人讨厌的工作"（cross-link、摘要更新、矛盾追踪）在**结构上同构**——两者都是 graph 上的局部一致性维护。
+类比之所以"resonate"，是因为软件工程里"程序员讨厌的重复 bookkeeping 工作"（重构、文档同步、依赖图维护）与"知识管理里人讨厌的工作"（cross-link、摘要更新、矛盾追踪）在**结构上同构**[^v3-1]——两者都是 graph 上的局部一致性维护。
 
 ## 边界与陷阱
 
