@@ -53,14 +53,10 @@ Karpathy 在 gist 里用"Obsidian 是 IDE，LLM 是程序员，wiki 是 codebase
 - 在文档规模极大（>10K）时，pre-compile 整张 wiki 不可行——RAG 仍然有不可替代的位置（见 openaitoolshub 经验文章 FAQ）。
 - 在主题极度跳跃的 workflow 里，cross-link / synthesis 的复利收益弱，wiki 的相对优势不明显。
 
-## References
-
-- HN 热度数字：`data/raw/webpage/marvin-hn-persistent-knowledge/text.txt:23`。
-- compiled artifact 关键句：`text.txt:25`。
-- 增量动作列表：`text.txt:25`。
-
 ## Footnotes
 
-- HN 反响原文：`text.txt:23` —— "At crawl time, the Hacker News thread around the gist had 274 points and 89 comments, with readers treating it less as a note-taking trick and more as an architectural pattern for agent workflows."
-- 对 RAG 的不满原文：`text.txt:23` —— "Andrej Karpathy's LLM Wiki, posted on April 4, 2026, starts from a simple complaint: most document workflows still look like RAG. You upload files, the model retrieves relevant chunks at query time, and then rebuilds the answer from scratch every time."
-- compiled artifact 原文：`text.txt:25`。
+[^src1]: `data/raw/webpage/marvin-hn-persistent-knowledge/text.txt:23` — "At crawl time, the Hacker News thread around the gist had 274 points and 89 comments, with readers treating it less as a note-taking trick and more as an architectural pattern for agent workflows."
+[^src2]: 同文件 `text.txt:23` — "Andrej Karpathy's LLM Wiki, posted on April 4, 2026, starts from a simple complaint: most document workflows still look like RAG. You upload files, the model retrieves relevant chunks at query time, and then rebuilds the answer from scratch every time."
+[^src3]: 同文件 `text.txt:25` — "In that model, the wiki becomes a compiled artifact that keeps getting better over time rather than a transient answer assembled on demand." 以及 ingest 时的"摘要 / 实体页 / 矛盾 flag / cross-link / synthesis"增量动作清单。
+[^v3-1]: [karpathy-gist-bookkeeping-burden](karpathy-gist-bookkeeping-burden.md) — "维护成本压到接近零"的本卡。
+[^v3-2]: [obsidian-as-ide-llm-as-programmer](obsidian-as-ide-llm-as-programmer.md) — Obsidian = IDE / LLM = 程序员 / wiki = codebase 类比的本卡。
