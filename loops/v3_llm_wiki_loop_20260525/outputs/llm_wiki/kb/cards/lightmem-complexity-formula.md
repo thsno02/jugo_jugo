@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#lightmem, #complexity-analysis, #cost-model, #api-calls]
 created_time: 2026-05-26T15:11:00+08:00
-edited_time: 2026-05-27T10:29:00+08:00
+edited_time: 2026-05-28T10:14:00+08:00
 edited_entity: llm
 source_ids: [arxiv-lightmem]
 provenance_card: ../provenance/lightmem-complexity-formula.md
