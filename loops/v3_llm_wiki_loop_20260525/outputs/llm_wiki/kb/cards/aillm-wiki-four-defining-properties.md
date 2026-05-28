@@ -23,8 +23,8 @@ aillm.wiki 是 Karpathy LLM Wiki 模式公开传播后第一波出现的"非官�
 为什么这四条值得记住：
 
 - 它们是**当下社区对 LLM Wiki 与 RAG 差别**的最简洁划分，可以作为做项目宣传或工程取舍时的"四个 lens"。
-- 缺哪一条都不该叫 LLM Wiki：如果用了 vector DB 就破坏了 Markdown-First；如果靠人手写页面就破坏了 LLM-Maintained；如果每次回答都现切 chunk 就退化为 RAG，破坏了 Persistent Knowledge。
-- 这是**站方话术，不是技术规范**。Karpathy 的 gist 本人写得更模糊（"intentionally vague"），aillm.wiki 是社区把模糊定义实例化的尝试之一。
+- 缺哪一条都不该叫 LLM Wiki：如果用了 vector DB 就破坏了 Markdown-First；如果靠人手写页面就破坏了 LLM-Maintained；如果每次回答都现切 chunk 就退化为 RAG[^v3-1]，破坏了 Persistent Knowledge。
+- 这是**站方话术，不是技术规范**。Karpathy 的 gist 本人写得更模糊（"intentionally vague"）[^v3-2]，aillm.wiki 是社区把模糊定义实例化的尝试之一。
 
 边界与误读：
 
