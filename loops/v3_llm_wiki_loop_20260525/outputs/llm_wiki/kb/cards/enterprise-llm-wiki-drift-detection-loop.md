@@ -13,9 +13,9 @@ aliases: ["continuous drift detection", "doc owner routing", "SSOT designations"
 related: [enterprise-llm-wiki-four-properties, retrieval-not-enough-for-stale-kb, enterprise-llm-wiki-tool-native-ingestion, llm-wiki-contradictions-are-assets, nvk-llm-wiki-audit-and-librarian, karpathy-gist-bookkeeping-burden]
 ---
 
-Karpathy 个人 LLM Wiki 的 health check 是 on-demand 的——他想跑就跑、看到 lint 结果自己处理。Falconer 指南指出这个模型在企业里**不能直接放大**，因为：
+Karpathy 个人 LLM Wiki 的 health check 是 on-demand 的[^v3-1]——他想跑就跑、看到 lint 结果自己处理。Falconer 指南指出这个模型在企业里**不能直接放大**[^v2-1]，因为：
 
-1. 写 runbook 的人六个月后已经去做别的项目，知道上下文的资深工程师已经离职，系统本身也被改写过两次。
+1. 写 runbook 的人六个月后已经去做别的项目，知道上下文的资深工程师已经离职，系统本身也被改写过两次[^src1]。
 2. 不一致会"安静地"累积，直到一个新人按错误假设构建、或者一个 AI agent 读了陈旧 runbook 生成"2024 年还能跑"的代码。
 3. Anthropic 工程团队把 "context as the scarcest resource for AI agents" 作为核心约束——一个一年没体检过的知识图谱是 agent 最差的输入。
 
