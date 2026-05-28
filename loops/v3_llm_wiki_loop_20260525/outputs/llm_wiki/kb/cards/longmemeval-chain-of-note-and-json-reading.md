@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#reading-strategy, #chain-of-note, #structured-prompt]
 created_time: 2026-05-26T14:35:00+08:00
-edited_time: 2026-05-27T11:14:00+08:00
+edited_time: 2026-05-28T10:36:00+08:00
 edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-chain-of-note-and-json-reading.md
