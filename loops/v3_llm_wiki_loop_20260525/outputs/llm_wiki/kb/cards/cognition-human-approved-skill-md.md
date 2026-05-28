@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#agent-memory, #governance, #human-in-the-loop, #cognition]
 created_time: 2026-05-26T12:05:00+08:00
-edited_time: 2026-05-27T14:36:00+08:00
+edited_time: 2026-05-28T10:52:00+08:00
 edited_entity: llm
 source_ids: [cognitionus-llm-wiki-guide]
 provenance_card: ../provenance/cognition-human-approved-skill-md.md
