@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#rag, #evaluation, #ares, #llm-judge]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T14:28:00+08:00
+edited_time: 2026-05-28T15:50:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-three-judge-rag-evaluation.md
