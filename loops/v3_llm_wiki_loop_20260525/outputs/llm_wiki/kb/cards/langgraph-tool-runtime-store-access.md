@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#langchain, #langgraph, #tool-calling, #agent-runtime]
 created_time: 2026-05-26T12:20:00+08:00
-edited_time: 2026-05-27T10:28:00+08:00
+edited_time: 2026-05-28T14:12:00+08:00
 edited_entity: llm
 source_ids: [langchain-long-term-memory-docs]
 provenance_card: ../provenance/langgraph-tool-runtime-store-access.md
