@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#rag, #ares, #evaluation-design, #experimental-methodology, #mock-systems]
 created_time: 2026-05-26T15:30:00+08:00
-edited_time: 2026-05-27T14:22:00+08:00
+edited_time: 2026-05-28T15:35:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ares]
 provenance_card: ../provenance/ares-mock-rag-system-evaluation-design.md
