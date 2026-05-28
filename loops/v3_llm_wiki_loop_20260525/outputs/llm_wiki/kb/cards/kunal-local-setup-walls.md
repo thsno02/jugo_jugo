@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#local-llm, #rag, #setup, #operational-experience, #llm-c]
 created_time: 2026-05-26T12:15:00+08:00
-edited_time: 2026-05-27T10:26:00+08:00
+edited_time: 2026-05-28T11:30:00+08:00
 edited_entity: llm
 source_ids: [kunal-local-knowledge-base]
 provenance_card: ../provenance/kunal-local-setup-walls.md
