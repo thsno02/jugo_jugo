@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#wikibase, #wikidata, #data-model, #knowledge-graph]
 created_time: 2026-05-26T15:10:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T12:10:00+08:00
 edited_entity: llm
 source_ids: [wikibase-data-model]
 provenance_card: ../provenance/wikibase-item-property-snak-statement.md
