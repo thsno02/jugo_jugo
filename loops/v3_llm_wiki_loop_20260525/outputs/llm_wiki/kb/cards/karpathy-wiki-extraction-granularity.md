@@ -41,7 +41,7 @@ Karpathy LLM Wiki 插件[^v3-1]在 `Settings → Wiki Output / Extraction` 中�
 2. **Batch Delay**（默认 300ms；起 100ms，建议 500–800ms 抗限流）：批之间的间隔。Standard 以下档位下可放小。
 3. **Smart Batch Skip**（v1.7.7+）：自动跳过已处理文件，与粒度选择正交。
 
-三个旋钮一起构成"**深度 × 并发 × 节奏**"的成本曲面，让 ingestion 在 API 费用、限流概率、wiki 增长速度之间取得平衡。
+三个旋钮一起构成"**深度 × 并发 × 节奏**"的成本曲面[^src3]，让 ingestion 在 API 费用、限流概率、wiki 增长速度之间取得平衡。
 
 ## 反对模式（容易踩的坑）
 
