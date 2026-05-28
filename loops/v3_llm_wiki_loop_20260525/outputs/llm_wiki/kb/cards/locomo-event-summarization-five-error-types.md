@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#event-summarization, #error-taxonomy, #locomo, #factuality]
 created_time: 2026-05-26T15:31:00+08:00
-edited_time: 2026-05-27T10:46:00+08:00
+edited_time: 2026-05-28T10:26:00+08:00
 edited_entity: llm
 source_ids: [arxiv-locomo]
 provenance_card: ../provenance/locomo-event-summarization-five-error-types.md
