@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#long-term-memory, #benchmark, #evaluation]
 created_time: 2026-05-26T14:20:00+08:00
-edited_time: 2026-05-27T11:24:00+08:00
+edited_time: 2026-05-28T10:30:00+08:00
 edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-five-core-memory-abilities.md
