@@ -28,7 +28,7 @@ DevelopersIO 上 Classmethod 工程师森茂洋整理的 Karpathy "LLM Knowledge
 边界与误读：
 
 - Karpathy 自己把整套设计称为 "hacky collection of scripts"，森茂也引用了这句；不要把三层结构当成完成态。
-- 三层不是绝对——森茂自己的实践在 raw 和 wiki 之间另加了 Memory MCP（Mem0 + pgvector）作为"检索层"。三层是骨架，不是禁止扩展。
+- 三层不是绝对——森茂自己的实践在 raw 和 wiki 之间另加了 Memory MCP（Mem0 + pgvector）作为"检索层"[^v3-2]。三层是骨架，不是禁止扩展。
 - "人不直接写 wiki"不是"人不可以编辑 wiki"——是"日常工作流不依赖人写 wiki"。bug 修补与紧急更正仍然合理。
 
 ## References
