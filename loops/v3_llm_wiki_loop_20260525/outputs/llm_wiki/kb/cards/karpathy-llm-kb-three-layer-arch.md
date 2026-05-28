@@ -22,7 +22,7 @@ DevelopersIO 上 Classmethod 工程师森茂洋整理的 Karpathy "LLM Knowledge
 为什么这个三层划分值得记住：
 
 - 它给"什么文件可以被人手编辑"画了清楚的边界——只有 raw 和 schema；wiki 是输出层，应当可重新编译。这避免了"人改一行 wiki 又被 LLM 覆盖"的常见迷惑。
-- 它对应于现有 Claude Code / Obsidian 工作流的目录约定（如森茂的 `workspace/knowledge/` = Raw、各级 `CLAUDE.md` = Schema、`workspace/wiki/` = Wiki），不需要新工具就能落地。
+- 它对应于现有 Claude Code / Obsidian 工作流的目录约定（如森茂的 `workspace/knowledge/` = Raw、各级 `CLAUDE.md` = Schema、`workspace/wiki/` = Wiki）[^src4]，不需要新工具就能落地。
 - 它把 schema 与 wiki 显式分开，等于明确告诉工程师：**schema 是少量人工高密度产物，wiki 是大量自动低密度产物**，两者维护方式完全不同。
 
 边界与误读：
