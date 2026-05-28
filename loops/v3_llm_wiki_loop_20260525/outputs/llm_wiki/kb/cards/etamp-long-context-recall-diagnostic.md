@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#agent-security, #long-context, #recall-test, #diagnostic, #etamp]
 created_time: 2026-05-26T15:20:00+08:00
-edited_time: 2026-05-27T15:00:00+08:00
+edited_time: 2026-05-28T15:12:00+08:00
 edited_entity: llm
 source_ids: [arxiv-etamp-memory-poisoning]
 provenance_card: ../provenance/etamp-long-context-recall-diagnostic.md
@@ -15,7 +15,7 @@ related: [etamp-environment-injected-memory-poisoning, etamp-capability-vs-secur
 
 ## 解决的问题：低 ASR 不等于"安全对齐"
 
-Zou 等（2026）Appendix F 给出一个简单但必要的诊断：当一个模型在 eTAMP 攻击下 ASR 很低，**究竟是因为它没在 long context 里 recall 到注入指令（needle-in-haystack 失败），还是因为它认出来了拒绝服从（safety alignment）？** 答案对模型评测者意义完全不同。
+Zou 等（2026）Appendix F 给出一个简单但必要的诊断：当一个模型在 eTAMP 攻击下 ASR 很低，**究竟是因为它没在 long context 里 recall 到注入指令（needle-in-haystack 失败），还是因为它认出来了拒绝服从（safety alignment）？** 答案对模型评测者意义完全不同。这个区分与 LoCoMo 在长程对话上观察到的 adversarial collapse[^v3-1]、LongMemEval 的 indexing / retrieval / reading 三阶段拆分[^v3-2]、MemGPT 嵌套 KV 多跳基准[^v3-3] 都属于"把模型表现拆成可独立诊断的子能力"的同一类方法学。
 
 ## 诊断方法
 
@@ -37,6 +37,8 @@ Zou 等（2026）Appendix F 给出一个简单但必要的诊断：当一个模�
 | Qwen2.5-VL-72B | 98.9% | 98.9% | 几乎满分 recall——immune 是真免疫 |
 | Qwen3-VL-32B | 100.0% | 100.0% | 满分 recall——immune 是真免疫 |
 
+[^src1]
+
 ## 直接的解读规则
 
 - **低 ASR + 低 recall → "incidental defense"**（上下文限制偶然挡掉了攻击）；
@@ -44,9 +46,11 @@ Zou 等（2026）Appendix F 给出一个简单但必要的诊断：当一个模�
 - **高 ASR + 高 recall → 已知失败（GPT-5.2 在 frustration 下符合此剖面）**；
 - **高 ASR + 低 recall → 罕见但理论可能**（模型不必完全召回也能被部分模式诱导）。
 
+[^src2]
+
 ## 为什么这个诊断不可省
 
-没有这个诊断，会把 GPT-OSS-120B 的 6.7% recall **错读**为"OSS 模型更安全"——但实际上它只是看不见恶意指令。一旦未来一代的 OSS 模型 long-context 能力上升，安全表现可能**断崖式恶化**。Qwen 系列的 immune（≥98.9% recall + 低 ASR）才是**可信的安全信号**——它们看得见指令、不服从。
+没有这个诊断，会把 GPT-OSS-120B 的 6.7% recall **错读**为"OSS 模型更安全"——但实际上它只是看不见恶意指令。一旦未来一代的 OSS 模型 long-context 能力上升，安全表现可能**断崖式恶化**。Qwen 系列的 immune（≥98.9% recall + 低 ASR）才是**可信的安全信号**——它们看得见指令、不服从[^src3]。
 
 ## 边界与作者诚实
 
@@ -60,19 +64,11 @@ Zou 等（2026）Appendix F 给出一个简单但必要的诊断：当一个模�
 - **frontier model 评测应把 recall-vs-refusal 作为强制诊断**：单独 ASR 数字会让"上下文限制"被错记为"安全增强"；
 - **OSS / 较小模型在 ASR 评测里"看起来安全"是一个 fragile 信号**——升一代 context 能力可能直接破防。
 
-## References
-
-- §F "Long Context Recall Test"：`data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` 第 906–996 行。
-- Table tab:long_context_recall 数字：第 970–982 行。
-- Interpretation 段：第 984–996 行。
-
 ## Footnotes
 
-[^1]: Recall table 原文（第 972–981 行）：
-    > "GPT-OSS-120B  282  19   6.7%  6.7% / GPT-5-mini  280  119  42.5%  42.5% / GPT-5.2  282  282  100.0% 100.0% / Qwen2.5-VL-72B  283  280  98.9%  98.9% / Qwen3-VL-32B  282  282  100.0% 100.0%"
-
-[^2]: 诊断逻辑原文（第 988–996 行）：
-    > "GPT-OSS-120B (6.7% recall): The extremely low recall rate indicates a severe needle-in-haystack failure. This model's apparent immunity to the attack is largely due to its inability to process and retrieve information from long contexts, rather than robust safety alignment ... GPT-5.2, Qwen2.5-VL-72B, Qwen3-VL-32B (≥98.9% recall): Near-perfect recall demonstrates these models can reliably locate hidden instructions in long contexts. For these models, any observed attack resistance can be more confidently attributed to safety alignment rather than context processing limitations."
-
-[^3]: 关键判断原文（第 996 行）：
-    > "This diagnostic is critical for interpreting Attack Success Rate (ASR_B) results: a low ASR_B combined with low recall suggests the defense is incidental (context limitations), while low ASR_B with high recall suggests intentional resistance (safety alignment)."
+[^src1]: `data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` — 行 972-981 — "GPT-OSS-120B 282 19 6.7% 6.7% / GPT-5-mini 280 119 42.5% 42.5% / GPT-5.2 282 282 100.0% 100.0% / Qwen2.5-VL-72B 283 280 98.9% 98.9% / Qwen3-VL-32B 282 282 100.0% 100.0%"
+[^src2]: `data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` — 行 996 — "This diagnostic is critical for interpreting Attack Success Rate (ASR_B) results: a low ASR_B combined with low recall suggests the defense is incidental (context limitations), while low ASR_B with high recall suggests intentional resistance (safety alignment)."
+[^src3]: `data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` — 行 988-996 — "GPT-OSS-120B (6.7% recall): The extremely low recall rate indicates a severe needle-in-haystack failure... GPT-5.2, Qwen2.5-VL-72B, Qwen3-VL-32B (≥98.9% recall): Near-perfect recall demonstrates these models can reliably locate hidden instructions in long contexts."
+[^v3-1]: [locomo-long-context-adversarial-collapse](locomo-long-context-adversarial-collapse.md) — LoCoMo 的"能塞 ≠ 能懂"是同类长上下文 fragile-by-context 现象
+[^v3-2]: [longmemeval-three-stage-memory-framework](longmemeval-three-stage-memory-framework.md) — indexing / retrieval / reading 三阶段拆分是同一方法学
+[^v3-3]: [memgpt-nested-kv-multi-hop](memgpt-nested-kv-multi-hop.md) — MemGPT 多跳基准也证明"召回 ≠ 服从"必须独立测
