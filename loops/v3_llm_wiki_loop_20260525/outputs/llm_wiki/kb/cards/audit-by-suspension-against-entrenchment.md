@@ -15,7 +15,7 @@ related: [memory-gravity-load-bearing-protection, memory-as-metabolism-five-oper
 
 ## AUDIT 做什么
 
-Miteski (2026) 把 AUDIT 定义为**慢周期**（月度或更长）的结构性压力测试。它**不是真理校正**，而是测试"高 gravity 条目是否仍然对当前 agent 操作承重"。伪代码原文（§5.8）：
+Miteski (2026) 把 AUDIT 定义为**慢周期**（月度或更长）的结构性压力测试[^src1]。它**不是真理校正**，而是测试"高 gravity 条目是否仍然对当前 agent 操作承重"[^v3-1]。伪代码原文（§5.8）：
 
 ```
 FOR each entry in top_N_by_gravity:
