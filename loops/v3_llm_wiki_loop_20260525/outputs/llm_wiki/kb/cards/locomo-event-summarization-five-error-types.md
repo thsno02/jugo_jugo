@@ -13,9 +13,9 @@ aliases: ["LoCoMo summary error taxonomy", "event summarization error types"]
 related: [locomo-three-task-evaluation-framework, locomo-long-context-adversarial-collapse, locomo-very-long-term-dialogue-dataset, longmemeval-commercial-system-failure-modes]
 ---
 
-LoCoMo 的事件摘要任务（让模型把对话里出现的"个人事件"列出来与 ground-truth 事件图比对）不止给一个 FactScore 分数，论文 §6.2 + Appendix D.1 还人工分类了 LLM 失败模式，得到 5 个稳定的错误类型。这套分类对设计 evaluator / debug 数据集 / 训目标都比单一指标更可操作。
+LoCoMo 的事件摘要任务（让模型把对话里出现的"个人事件"列出来与 ground-truth 事件图比对，属于 LoCoMo 三任务评测的第二项[^v3-1]）不止给一个 FactScore 分数，论文 §6.2 + Appendix D.1 还人工分类了 LLM 失败模式，得到 5 个稳定的错误类型[^src1]。这套分类对设计 evaluator / debug 数据集 / 训目标都比单一指标更可操作。
 
-**五类错误（带 GPT-3.5-turbo 真实例子，见论文 `tab:summary_errors`）**：
+**五类错误（带 GPT-3.5-turbo 真实例子，见论文 `tab:summary_errors`）[^src2]**：
 
 1. **Missing information（漏信息）**——模型没把跨多 session 的因果或时间连成线，只描述了片段。
    - 例：GT = "Joanna submits her third screenplay on loss, identity, and connection to a film contest"
