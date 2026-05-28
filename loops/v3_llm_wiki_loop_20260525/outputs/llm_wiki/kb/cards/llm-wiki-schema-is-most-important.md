@@ -45,8 +45,8 @@ Jim 的诊断：Karpathy gist 把 schema 定位为"三层之一"，与 raw / wik
 
 ## 操作含义
 
-- **任何 Karpathy LLM Wiki 实例的第一个文件应是 `schema.md` / `CLAUDE.md` / `AGENTS.md`**。
-- **任何工具切换前必须重读 schema.md**（Jim Pitfall #4：换 note app 时没带 aliases 字段，结果产生双 slug）。
+- **任何 Karpathy LLM Wiki 实例的第一个文件应是 `schema.md` / `CLAUDE.md` / `AGENTS.md`**[^v3-2]。
+- **任何工具切换前必须重读 schema.md**（Jim Pitfall #4：换 note app 时没带 aliases 字段，结果产生双 slug）[^src3]。
 - 把 schema.md 当 Wiki 的 README + ARCHITECTURE.md 来维护，而不是当 "rule reference card"。
 - 不写 schema 的 wiki 在 2 个月内会变成"graveyard"——Jim 在三个朋友身上看到过这种失败模式。
 
