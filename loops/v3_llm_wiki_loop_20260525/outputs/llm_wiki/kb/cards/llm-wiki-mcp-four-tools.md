@@ -15,7 +15,7 @@ related: [llm-wiki-mcp-design-boundary-mechanics-not-content, llm-wiki-mcp-skill
 
 ## 四个工具的契约
 
-Steven Wu 的 `llm-wiki-mcp` 0.1.1（PyPI, 2026-04-08）把 Karpathy LLM Wiki 模式的 MCP server 收敛到四个 tool，每个都明确标注 annotation（read-only / destructive / idempotent / not-idempotent）：
+Steven Wu 的 `llm-wiki-mcp` 0.1.1（PyPI, 2026-04-08）把 Karpathy LLM Wiki 模式 [^v3-1] 的 MCP server 收敛到四个 tool，每个都明确标注 annotation（read-only / destructive / idempotent / not-idempotent） [^src1]：
 
 | 工具 | Annotation | 作用 |
 |---|---|---|
