@@ -15,12 +15,12 @@ related: [nvk-llm-wiki-hub-and-topic-wikis, nvk-llm-wiki-audit-and-librarian, fi
 
 `/wiki:research` 是 nvk/llm-wiki 工具的核心命令——它把"Karpathy LLM Wiki 的 ingest 阶段"展开成一个可调参的、并行多 agent 的、由 gap 驱动多轮的研究流程。它的设计点是同时压住"搜不够"和"过度浏览"两个失败模式。
 
-**单轮基本流程（四阶段）：**
+**单轮基本流程（四阶段）**[^src1]：
 
 1. **Ask / Pick topic**：自动判断输入是"问题"还是"topic 名"；
 2. **Parallel search**：默认 5 个 agent，`--deep` 提到 8，`--retardmax` 提到 10；每个 agent 跑 2–3 个 web 搜索，全文抓取，质量打分 1–5；
 3. **Ingest + Compile**：top 源进 `raw/`（immutable），编译为 `wiki/concepts/`、`wiki/topics/`、`wiki/references/` 下的文章，加 cross-reference、confidence score、bidirectional link；
-4. **Gap report**：每轮结束输出"已覆盖 / 仍缺失 / 建议补"，2+ gap 时提示并行追研。
+4. **Gap report**：每轮结束输出"已覆盖 / 仍缺失 / 建议补"[^src3]，2+ gap 时提示并行追研。
 
 **几种关键模式：**
 
