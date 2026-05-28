@@ -26,7 +26,7 @@ related: [my-llm-wiki-supported-source-types, karpathy-llm-wiki-source-executabl
 ## 设计中值得抓住的两点
 
 - **"编译一次，查询多次"被实现成可重跑 + 缓存的命令行**：`llm-wiki .` 不是一次性脚本，而是把 raw 文件按 hash 跳过未变的，让 wiki 像增量构建一样长成"persistent, compounding artifact"。
-- **`llm-wiki note "<insight>"` 子命令是从 Claude Code 会话写回 wiki 的入口**——让"和 LLM 聊出来的洞察"也能沉淀进同一张图，关闭"读"与"写"之间的环。这是 Karpathy 强调的"图随每次会话生长"。
+- **`llm-wiki note "<insight>"` 子命令是从 Claude Code 会话写回 wiki 的入口**——让"和 LLM 聊出来的洞察"也能沉淀进同一张图 [^src2]，关闭"读"与"写"之间的环。这是 Karpathy 强调的"图随每次会话生长" [^v3-2]。
 
 ## 边界
 
