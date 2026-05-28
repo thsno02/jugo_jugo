@@ -15,11 +15,11 @@ related: [karpathy-gist-three-layers, karpathy-gist-memex-connection, robin-cart
 
 Karpathy 在 gist 的 "Why this works" 段给出 LLM Wiki 模式有效性的核心解释，这一论点本身可独立成立、对评估任何 PKM 设计都有用：
 
-**核心主张**：
+**核心主张**[^src1]：
 > "The tedious part of maintaining a knowledge base is not the reading or the thinking — it's the bookkeeping. Updating cross-references, keeping summaries current, noting when new data contradicts old claims, maintaining consistency across dozens of pages."
 
 也就是说，传统人维护 wiki 之所以失败，不是因为**信息处理**太难（人读得动、想得动），而是因为**簿记成本**：
-- 每加入一份源材料，可能要触动 10–15 张已有页面；
+- 每加入一份源材料，可能要触动 10–15 张已有页面[^src3]；
 - 交叉引用、概念页摘要、矛盾标注，每条都需要 follow-through；
 - 这种维护负担**随页面数超线性增长**——而新内容带来的边际价值是 sub-linear 的；
 - 人类对"无聊但必须做的小事"会失去意志，wiki 最终被放弃。
