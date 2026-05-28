@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [microsoft-agent-governance-toolkit-docs]
 provenance_card: ../provenance/microsoft-agent-governance-standards-alignment.md
 aliases: [OWASP Agentic AI Top 10, NIST AI RMF, EU AI Act, SOC 2 agent governance]
-related: [microsoft-agent-governance-eight-packages, owasp-agentic-top10-2026-positioning, nist-ai-rmf-gai-profile, owasp-agentic-vs-llm-top10-2025, owasp-llm-top10-community-genealogy]
+related: [owasp-agentic-top10-2026-positioning, nist-ai-rmf-gai-profile, owasp-agentic-vs-llm-top10-2025, owasp-llm-top10-community-genealogy, microsoft-agent-governance-eight-packages]
 ---
 
 微软 `agent-governance-toolkit` 在首页声明对齐了四份独立的外部标准[^src1]，并把它们做成 toolkit 内可以**自动**核验或导出证据的项。这一节通常会被读者一扫而过，但实际值得记住——它把"agent 合规"从一个开放问题降级为一组可机器检查的约束。
