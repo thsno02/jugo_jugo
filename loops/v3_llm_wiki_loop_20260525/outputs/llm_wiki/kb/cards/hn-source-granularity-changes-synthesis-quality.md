@@ -13,7 +13,7 @@ aliases: ["source granularity matters", "chapter-level vs book-level"]
 related: [llm-knowledge-base-five-stage-workflow, hn-llm-wiki-is-just-rag-debate, karpathy-wiki-extraction-granularity, hn-writing-as-thinking-vs-llm-wiki, beyond-the-token-bottleneck-llm-wiki-case-study]
 ---
 
-HN 评论里最稀有的不是观点，而是**数字**。`vbarsoum` 给了一个可复现的实证（行 521–523）——把同样的模型、同样的提示词、同样的 3 本 Alex Hormozi 书（~155K 词、68 个源文件）按两种粒度喂给 Karpathy 的 LLM Wiki 模式，结果"完全不同类"。
+HN 评论里最稀有的不是观点，而是**数字**。`vbarsoum` 给了一个可复现的实证[^src1]——把同样的模型、同样的提示词、同样的 3 本 Alex Hormozi 书（~155K 词、68 个源文件）按两种粒度喂给 Karpathy 的 LLM Wiki 模式，结果"完全不同类"。
 
 **实验设置：**
 
