@@ -47,29 +47,20 @@ prompt 还附带一段 *APPROACH* 七步链：先找相关 memory → 看时间�
 
 ## Mem0g 版的差异
 
-Mem0g 的答案生成 prompt 复用 Mem0 base 的前 6/7 条，**只多一条**：在第 5 步插入"Analyze the knowledge graph relations to understand the user's knowledge context"，并在 prompt 末尾把每个 speaker 的 `{speaker_X_graph_memories}` 关系字段并排放进上下文。其它指令完全一致——这意味着图结构带来的提升来自**额外的关系上下文**，而不是新的推理 protocol。
+Mem0g 的答案生成 prompt 复用 Mem0 base 的前 6/7 条，**只多一条**：在第 5 步插入"Analyze the knowledge graph relations to understand the user's knowledge context"[^src3]，并在 prompt 末尾把每个 speaker 的 `{speaker_X_graph_memories}` 关系字段并排放进上下文。其它指令完全一致——这意味着图结构带来的提升来自**额外的关系上下文**，而不是新的推理 protocol。详见 Mem0g 图变体卡[^v3-3]。
 
 ## 操作含义
 
 - 若打算复刻 Mem0 的 temporal 指标，**不能省去这两段指令**——只把"带时间戳的 memory"塞给裸 LLM，温度调到 0，也未必有 55.51 J 分。
 - "prioritize the most recent memory" 是一条**基于时间戳的去冲突 heuristic**，假设记忆库时间戳可信；若上游存储时间戳缺失（OpenAI ChatGPT 的失败案例），整套机制塌掉——这解释了 OpenAI temporal J 21.71 vs Mem0 55.51 的差距并不全在"会不会存"，而在"生成时能不能用"。
-- **答案 ≤ 5–6 词**是 LOCOMO 评测下的特化约束；做开放回答场景需要重新调整这一条，否则会让 LLM 漏掉合理的解释空间。
-
-## References
-
-- *Prompt Template for Results Generation (Mem0)*：`sections/appendix.tex` 第 762–828 行（agent_source_bundle.txt 同行号）。
-- *Prompt Template for Results Generation (Mem0g)*：`sections/appendix.tex` 第 831–883 行；指明只新增 graph 关系字段与 *Analyze knowledge graph relations* 一步。
-- *LLM as a Judge prompt* 改编自 MemGPT：`sections/appendix.tex` 第 720–759 行。
-- 来源：`data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`。
+- **答案 ≤ 5–6 词**[^src4] 是 LOCOMO 评测下的特化约束；做开放回答场景需要重新调整这一条，否则会让 LLM 漏掉合理的解释空间。
 
 ## Footnotes
 
-[^1]: 时间换算原文（appendix.tex 第 783–788 行）："If there is a question about time references (like 'last year', 'two months ago', etc.), calculate the actual date based on the memory timestamp. For example, if a memory from 4 May 2022 mentions 'went to India last year,' then the trip occurred in 2021."
-
-[^2]: 冲突仲裁原文（第 780 行）："If the memories contain contradictory information, prioritize the most recent memory."
-
-[^3]: Mem0g 仅多一条 graph 步骤（第 849 行）："Analyze the knowledge graph relations to understand the user's knowledge context."
-
-[^4]: 答案长度约束（第 793 行）："The answer should be less than 5-6 words."
-
-[^5]: 角色/用户分离（第 790–791 行）："Focus only on the content of the memories from both speakers. Do not confuse character names mentioned in memories with the actual users who created those memories."
+[^src1]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/appendix.tex` 第 762–828 行（*Prompt Template for Results Generation (Mem0)*）+ 第 720–759 行（*LLM as a Judge prompt* 改编自 MemGPT）。
+[^src2]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `appendix.tex` 第 783–788 行 — "If there is a question about time references (like 'last year', 'two months ago', etc.), calculate the actual date based on the memory timestamp. For example, if a memory from 4 May 2022 mentions 'went to India last year,' then the trip occurred in 2021."；第 780 行 — "If the memories contain contradictory information, prioritize the most recent memory."；第 790–791 行 — "Focus only on the content of the memories from both speakers. Do not confuse character names mentioned in memories with the actual users who created those memories."
+[^src3]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/appendix.tex` 第 831–883 行（Mem0g 版 prompt）+ 第 849 行 — "Analyze the knowledge graph relations to understand the user's knowledge context."
+[^src4]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `appendix.tex` 第 793 行 — "The answer should be less than 5-6 words."
+[^v3-1]: [mem0-locomo-benchmark-evaluation](mem0-locomo-benchmark-evaluation.md) — temporal 55.51 vs OpenAI 21.71 的整体数字背景。
+[^v3-2]: [longmemeval-chain-of-note-and-json-reading](longmemeval-chain-of-note-and-json-reading.md) — 同属"reading 阶段强 prompt"思路。
+[^v3-3]: [mem0-graph-memory-variant](mem0-graph-memory-variant.md) — Mem0g 图变体的全部设计。
