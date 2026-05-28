@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#lightmem, #short-term-memory, #topic-granularity, #batched-summary]
 created_time: 2026-05-26T15:10:00+08:00
-edited_time: 2026-05-27T10:30:00+08:00
+edited_time: 2026-05-28T10:10:00+08:00
 edited_entity: llm
 source_ids: [arxiv-lightmem]
 provenance_card: ../provenance/lightmem-light2-topic-aware-stm.md
