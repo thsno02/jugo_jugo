@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#enterprise, #llm-wiki, #ingestion, #github, #slack, #knowledge-graph]
 created_time: 2026-05-26T11:48:00+08:00
-edited_time: 2026-05-27T14:46:00+08:00
+edited_time: 2026-05-28T10:58:00+08:00
 edited_entity: llm
 source_ids: [falconer-enterprise-guide]
 provenance_card: ../provenance/enterprise-llm-wiki-tool-native-ingestion.md
