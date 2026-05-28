@@ -19,11 +19,11 @@ LLM wiki 的运行被显式拆成两个阶段，对应两个不同的"用户↔L
 
 1. **Ingest（写入侧）**
    - 用户把新文档丢进 `/sources/` 子目录。
-   - LLM 读源、抽 key idea、然后**只写 wiki**：可能"为新概念建一个 entity 页（如 'Phi-2'，记其 2.7B 参数 / 1.4T token 训练量）"、可能"在已存在页面追加新信息"、可能"识别两源矛盾并合成对比段"、并自动建 backlink。
-   - **原始资料不可变；用户只读 wiki，LLM 只写 wiki**——角色分离严格。
+   - LLM 读源、抽 key idea、然后**只写 wiki**：可能"为新概念建一个 entity 页（如 'Phi-2'，记其 2.7B 参数 / 1.4T token 训练量）"、可能"在已存在页面追加新信息"、可能"识别两源矛盾并合成对比段"、并自动建 backlink[^src1]。
+   - **原始资料不可变；用户只读 wiki，LLM 只写 wiki**——角色分离严格[^src2]。
 2. **Query（读取侧）**
    - 用户直接查询 canonical wiki，而不是原始文档。
-   - 因为 wiki 已经是合成、互联、矛盾消解过的产物，所以可以做 RAG 不能做的多跳推理（"链接三个分散概念回答复杂问题"）。
+   - 因为 wiki 已经是合成、互联、矛盾消解过的产物，所以可以做 RAG 不能做的多跳推理（"链接三个分散概念回答复杂问题"）[^v3-1]。
 
 中间还有一个**setup 步骤**（约 5 分钟）：把 Karpathy Gist 复制到 LLM agent；建空目录在 Obsidian 中作 vault；建 `/sources/` 子目录与 wiki 隔离；让 LLM ingest 第一份源，自动生成 index 页与 entity 页。
 
