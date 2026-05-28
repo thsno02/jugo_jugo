@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#memgpt, #memory-hierarchy, #working-context, #archival-storage]
 created_time: 2026-05-26T11:25:00+08:00
-edited_time: 2026-05-27T14:36:00+08:00
+edited_time: 2026-05-28T11:02:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-main-vs-external-context.md
