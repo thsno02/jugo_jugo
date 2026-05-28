@@ -36,16 +36,13 @@ README 列出的 lint 检查项[^src1]（一一对应 wiki 失败模式）：
 
 - lint 是 deterministic 的结构 / grounding 检查，**不**做语义正确性判断。例如 representation 里的 OCR 文本本身错了、agent 把"红色"看成"蓝色"，lint 无法发现——这类错误依赖 agent / 人工 review。
 - lint 项依赖 manifest schema v2 的字段，旧 vault 升级时需要先跑 `kb_repair_source_ids` 等修复命令。
-- `contradiction candidates` 不会主动消解；这条信号只是输入，最终需要 agent / 用户做语义裁决。
-
-## References
-
-- lint 项官方清单：`data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` L73。
-- lint 与 multimodal 之间的关系：同文件 L172–175（"kb_lint stays deterministic, but now also checks whether multimodal source notes have a believable review trail"）。
-- `kb_map_gaps` / `kb_promote_gap` 的角色：同文件 L68 + L172–174。
+- `contradiction candidates` 不会主动消解；这条信号只是输入，最终需要 agent / 用户做语义裁决[^v3-3]。
 
 ## Footnotes
 
-- `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` L73：`"deterministic lint for schema and wiki health, including warnings for missing representation trails, stale representations, inconsistent asset_paths, isolated pages, stale source coverage, unsupported claims, contradiction candidates, and missing high-value pages"`。
-- 同文件 L174-175：`"kb_lint stays deterministic, but now also checks whether multimodal source notes have a believable review trail before the wiki starts depending on them."`
-- 同文件 L67-68：`"deterministic gap mapping and promotion through kb_map_gaps and kb_promote_gap"`。
+[^src1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` L73 — "deterministic lint for schema and wiki health, including warnings for missing representation trails, stale representations, inconsistent asset_paths, isolated pages, stale source coverage, unsupported claims, contradiction candidates, and missing high-value pages"
+[^src2]: 同文件 L174-175 — "kb_lint stays deterministic, but now also checks whether multimodal source notes have a believable review trail before the wiki starts depending on them."
+[^src3]: 同文件 L67-68 — "deterministic gap mapping and promotion through kb_map_gaps and kb_promote_gap"
+[^v3-1]: [llm-wiki-karpathy-runtime-vs-agent-split](llm-wiki-karpathy-runtime-vs-agent-split.md) — runtime / agent 责任分割的本卡。
+[^v3-2]: [llm-wiki-karpathy-multimodal-representation-path](llm-wiki-karpathy-multimodal-representation-path.md) — representation-first ingest 路径与 `.llm-kb/representations/` 的本卡。
+[^v3-3]: [llm-wiki-contradictions-are-assets](llm-wiki-contradictions-are-assets.md) — 矛盾作为资产、人做最终裁决的本卡。
