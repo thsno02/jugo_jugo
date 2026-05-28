@@ -36,7 +36,7 @@ Karpathy 发布 LLM Wiki gist 后，HN 第一波热门评论是 `kenforthewin` �
 
 - 如果只把它当 "RAG"，那竞品就是 vector DB + 检索器，注意力会落在 embedding 模型 / chunking / retriever；
 - 如果把它当 "write-loop + retrieval"，那竞品是 Roam / Obsidian / zettelkasten 工具，注意力落在 schema、backlink 完整性、staleness 检查、linting；
-- LLM Wiki gist 显式地把后者作为重点（"the tedious part of maintaining a knowledge base is not the reading or the thinking — it's the bookkeeping"，见 CompleteTech 引用），与 vanilla RAG 不同的设计成本就在这里。
+- LLM Wiki gist 显式地把后者作为重点（"the tedious part of maintaining a knowledge base is not the reading or the thinking — it's the bookkeeping"[^v3-1]），与 vanilla RAG 不同的设计成本就在这里。
 
 **误用提示：**
 
