@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#llm-wiki, #karpathy, #operations, #knowledge-system]
 created_time: 2026-05-26T12:00:00+08:00
-edited_time: 2026-05-27T10:15:00+08:00
+edited_time: 2026-05-28T11:13:00+08:00
 edited_entity: llm
 source_ids: [developersio-jp-pattern]
 provenance_card: ../provenance/karpathy-llm-kb-three-operations.md
