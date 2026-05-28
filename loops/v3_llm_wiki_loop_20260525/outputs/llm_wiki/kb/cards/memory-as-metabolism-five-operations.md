@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#memory, #architecture, #consolidation, #sleep-cycle]
 created_time: 2026-05-26T11:05:00+08:00
-edited_time: 2026-05-27T14:50:00+08:00
+edited_time: 2026-05-28T11:14:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 provenance_card: ../provenance/memory-as-metabolism-five-operations.md
