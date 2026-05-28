@@ -13,13 +13,13 @@ aliases: [WiCER 算法, Wiki-memory Compile Evaluate Refine, 反例制导的 wik
 related: [wicer-blind-compilation-catastrophic-loss, wicer-targeted-vs-random-pinning-ablation, wicer-recovery-distribution-exceeds-fc-raw, wicer-llm-judge-human-validation, docs-as-code-merge-block-incentive, graphrag-leiden-community-hierarchy, llm-knowledge-base-five-stage-workflow, morishige-kb-compile-mem0-overlay]
 ---
 
-WiCER 把"raw 文档 → 编译成 wiki"当作一次有损抽象，把"诊断探针打分"当作反例制导的细化（CEGAR），用迭代把丢失的事实重新钉回下一轮编译。这不是简单的"评测后重写一遍"——关键在于把每次失败的探针拆成一个具体的事实片段（约 50–100 字），放进累积集合 `F_cumulative`，作为下一次编译调用的硬约束。
+WiCER 把"raw 文档 → 编译成 wiki"当作一次有损抽象，把"诊断探针打分"当作反例制导的细化（CEGAR），用迭代把丢失的事实重新钉回下一轮编译[^src1]。这不是简单的"评测后重写一遍"——关键在于把每次失败的探针拆成一个具体的事实片段（约 50–100 字），放进累积集合 `F_cumulative`，作为下一次编译调用的硬约束。盲编译为何会塌方（信息缺失而非找不到）见 compilation gap 的灾难失败率分析[^v3-1]。
 
 算法骨架（论文 Algorithm 1）：
 
 1. 对每个源文档采一条 QA 作为探针，构成 `Q_probe`；
 2. 用目标压缩率 `r` 做一次盲编译得到 `W_0`；
-3. 每一轮：用 `W_t` 回答全部探针，由 LLM judge 打分；
+3. 每一轮：用 `W_t` 回答全部探针，由 LLM judge 打分（judge 的人评校准 r=0.94 见独立验证[^v3-2]）；
 4. 把 score = 1 的探针标为 `Failures_t`，从对应源文档抽出"被丢掉的关键事实"加入 `F_cumulative`；
 5. 调用 `Compile(D, r, preserve=F_cumulative)` 得到 `W_{t+1}`；
 6. 退出条件：无失败，或 `t>0` 且相对提升 < 10%。
@@ -29,9 +29,9 @@ WiCER 把"raw 文档 → 编译成 wiki"当作一次有损抽象，把"诊断探
 - **抽象/具体的对应关系**：concrete 系统是文档集合 D，abstract 模型是 wiki `W_t`，规约是"所有探针都不能拿 1 分"，反例就是 score-1 的探针，spurious 检查就是去 D 里确认事实确实存在但被 wiki 删掉了。
 - **单调收敛**：被显式钉过的事实不会再丢，所以"已钉事实集合上的失败子集"单调缩小；但未钉事实可能因为预算被挤占而新崩，所以净增益依赖编译预算够大。
 - **代价**：每轮 ~130K 输入 token + ~17K 输出 token（1 次编译 + 80 次 judge + ~15 次诊断），约 \$1–2，~50 分钟；80 次本地推理探针 0 API 成本。
-- **典型停在第 2 轮**：17 个 RepLiQA 主题中 10 个在第 2 轮达到峰值，其余在第 1 轮或不再改进——继续迭代会被"随机知识置换"（修一处挤掉另一处）抵消。
+- **典型停在第 2 轮**：17 个 RepLiQA 主题中 10 个在第 2 轮达到峰值，其余在第 1 轮或不再改进——继续迭代会被"随机知识置换"（修一处挤掉另一处）抵消。诊断而非 pinning 本身才是收益来源——ablation 见 +0.95 vs 随机 +0.16 对照[^v3-3]。
 
-把 WiCER 和静态编译流水线（RAPTOR、GraphRAG、层次摘要）对照：那些方法构建索引或树后就固化；WiCER 的差别在闭环——同一个 flat wiki 用评测信号反复重写。论文原话：「WiCER differs in two respects: (1) it targets a flat wiki artifact optimized for KV cache serving rather than a retrieval index, and (2) it closes the loop by evaluating the compiled artifact against diagnostic probes and iteratively refining it—a feedback mechanism absent from static compilation pipelines.」[^1]
+把 WiCER 和静态编译流水线（RAPTOR、GraphRAG、层次摘要）对照：那些方法构建索引或树后就固化（GraphRAG 的 Leiden 分层社群一旦建好就只做增量[^v3-4]）；WiCER 的差别在闭环——同一个 flat wiki 用评测信号反复重写。论文原话："WiCER differs in two respects: (1) it targets a flat wiki artifact optimized for KV cache serving rather than a retrieval index, and (2) it closes the loop by evaluating the compiled artifact against diagnostic probes and iteratively refining it—a feedback mechanism absent from static compilation pipelines."[^src2] 这种"无文档不合并"式的闭环激励也呼应 Docs as Code 的 PR 门控做法[^v3-5]。
 
 边界 / 失败模式：
 
@@ -39,10 +39,12 @@ WiCER 把"raw 文档 → 编译成 wiki"当作一次有损抽象，把"诊断探
 - 当对预算外的事实需求高时，钉得越多越挤占通用覆盖；
 - 监督信号来自 LLM judge，judge 的偏差会被钉进下一轮编译。
 
-## References
-
-- WiCER 论文 `main.tex` 第 6 节 "WiCER: Wiki-memory Compile, Evaluate, Refine"，包含 Algorithm 1 的伪代码、设计理由（CEGAR 类比）与收敛性讨论；本卡的算法骨架、代价数字与失败边界全部来自该节正文与附录 D（CEGAR 映射）。
-
 ## Footnotes
 
-[^1]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` 第 460–464 行（"Structured Knowledge Compilation" 段落末尾的两点对比）。
+[^v3-1]: [wicer-blind-compilation-catastrophic-loss](wicer-blind-compilation-catastrophic-loss.md) — 盲编译灾难失败率与 compilation gap 的量化（17 个主题 / 6800 题 / score-1 53–60%）
+[^v3-2]: [wicer-llm-judge-human-validation](wicer-llm-judge-human-validation.md) — Claude Sonnet judge 与人评 Pearson r=0.94 的 n=100 校准
+[^v3-3]: [wicer-targeted-vs-random-pinning-ablation](wicer-targeted-vs-random-pinning-ablation.md) — 诊断 pinning +0.95 vs 随机 pinning +0.16，5.9× 差距证明诊断才是收益来源
+[^v3-4]: [graphrag-leiden-community-hierarchy](graphrag-leiden-community-hierarchy.md) — 静态层次摘要的代表；MECE 子树允许增量更新但不闭环重写
+[^v3-5]: [docs-as-code-merge-block-incentive](docs-as-code-merge-block-incentive.md) — "无文档不合并"的 PR 门控与 WiCER "未消除反例则继续重写"在激励结构上同源
+[^src1]: WiCER 论文 `main.tex` 第 6 节 "WiCER: Wiki-memory Compile, Evaluate, Refine"——含 Algorithm 1 伪代码、设计理由（CEGAR 类比）与收敛性讨论；本卡的算法骨架、代价数字与失败边界全部来自该节正文与附录 D（CEGAR 映射）
+[^src2]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` 第 460–464 行（"Structured Knowledge Compilation" 段落末尾的两点对比）
