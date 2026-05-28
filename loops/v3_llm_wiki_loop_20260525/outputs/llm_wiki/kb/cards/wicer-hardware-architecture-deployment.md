@@ -53,19 +53,10 @@ WiCER 论文 Appendix B 给出了"cached knowledge base QA"工作负载的跨硬
 - "RAG 延迟优势消失"假设 RAG pipeline 至少 1-2s（embedding + retrieval + prompt 构造）；在 lean 实现下这条阈值可能下移。
 - 硬件成本是 2026 年挂牌价，云价格按 inf2.xlarge spot 估算。
 
-## References
-
-- §B "Hardware Architecture Projections"：`data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` 第 1044–1154 行。
-- Table tab:hw_rtx（RTX 4090 投影）：第 1059–1075 行。
-- Table tab:hw_summary（三硬件总对照）：第 1128–1146 行。
-- §B Deployment Recommendations：第 1147–1154 行。
-
 ## Footnotes
 
-[^1]: 第 1090–1095 行（RTX 4090 implications）：
-    > "RAG advantage diminishes: With 0.2s warm TTFT on full-context vs. ~1–2s RAG pipeline latency (embedding + retrieval + prompt construction), the latency case for RAG largely disappears on desktop GPU hardware."
-
-[^2]: 第 1086–1091 行（CUDA Q8 零代价）：
-    > "KV quantization has zero penalty on CUDA: Unlike Metal, CUDA's fused Flash Attention kernels handle 8-bit symmetric quantized KV with no dequantization overhead. Q8 KV is therefore recommended on CUDA, providing 2× memory savings without the 4× compression needed on Apple Silicon."
-
-[^3]: 第 1103–1121 行（Inferentia2 architectural constraints）："Static tensor shapes ... No KV cache quantization ... Memory scaling ... Throughput-oriented"。
+[^v3-1]: [wicer-fc-rag-document-count-crossover](wicer-fc-rag-document-count-crossover.md) — 本卡的部署对照建立在 FC vs RAG 的 TTFT/质量对照之上
+[^src1]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` — §B "Hardware Architecture Projections" 全节（第 1044–1154 行）；Table `tab:hw_rtx`（RTX 4090 投影，第 1059–1075 行）与 Table `tab:hw_summary`（三硬件总对照，第 1128–1146 行）；§B Deployment Recommendations（第 1147–1154 行）
+[^src2]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` — 第 1090–1095 行（RTX 4090 implications）："RAG advantage diminishes: With 0.2s warm TTFT on full-context vs. ~1–2s RAG pipeline latency (embedding + retrieval + prompt construction), the latency case for RAG largely disappears on desktop GPU hardware."
+[^src3]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` — 第 1086–1091 行（CUDA Q8 零代价）："KV quantization has zero penalty on CUDA: Unlike Metal, CUDA's fused Flash Attention kernels handle 8-bit symmetric quantized KV with no dequantization overhead. Q8 KV is therefore recommended on CUDA, providing 2× memory savings without the 4× compression needed on Apple Silicon."
+[^src4]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` — 第 1103–1121 行（Inferentia2 architectural constraints）："Static tensor shapes ... No KV cache quantization ... Memory scaling ... Throughput-oriented"
