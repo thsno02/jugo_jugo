@@ -25,11 +25,11 @@ LongMemEval 之所以能在 500 道题里同时覆盖五类记忆能力[^v3-1]�
 
 **步骤 3：种子题构造与人工筛改。**
 
-LLM 基于背景段落生成若干 `(question, answer)` 候选；专家手工筛选改写——粗略**1000 题候选 → 50 题最终保留(5% 通过率)**。专家再把 answer 拆成 1 或多条"evidence statements"，若涉及时间则在此阶段绑定时间戳。
+LLM 基于背景段落生成若干 `(question, answer)` 候选；专家手工筛选改写——粗略**1000 题候选 → 50 题最终保留(5% 通过率)**[^src3]。专家再把 answer 拆成 1 或多条"evidence statements"，若涉及时间则在此阶段绑定时间戳。
 
 **步骤 4：evidence session(证据会话)合成。**
 
-每条 evidence statement 用 self-chat 跑成一个独立的任务型 user-assistant 对话——关键技巧：让 user LLM **间接** 把 evidence 表达出来(不要说"我上个月买了车"，而要"帮我查查车保险"并附带提到这一事实)。约 **70% 的 session 被人工二次编辑** 以确保：
+每条 evidence statement 用 self-chat 跑成一个独立的任务型 user-assistant 对话——关键技巧：让 user LLM **间接** 把 evidence 表达出来(不要说"我上个月买了车"，而要"帮我查查车保险"并附带提到这一事实)[^src4]。约 **70% 的 session 被人工二次编辑**[^src5] 以确保：
 - evidence 真的出现在会话里；
 - 不会泄漏其他题的 evidence；
 - 时间表达自然口语化(LLM 默认偏正式)；
