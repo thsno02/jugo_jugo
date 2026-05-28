@@ -13,9 +13,9 @@ aliases: ["LongMemEval construction", "LongMemEval-S vs -M"]
 related: [longmemeval-five-core-memory-abilities, longmemeval-commercial-system-failure-modes, locomo-persona-event-graph-pipeline, locomo-very-long-term-dialogue-dataset]
 ---
 
-LongMemEval 之所以能在 500 道题里同时覆盖五类记忆能力，是因为它把"题目"与"对话历史"解耦：题目和 evidence 是人工撰写的、对话历史是用一个**大海捞针式（needle-in-a-haystack）拼装器**临时合成的。理解这条管线，就能理解为什么它的难度可以"自由放大"到 1.5M token。
+LongMemEval 之所以能在 500 道题里同时覆盖五类记忆能力[^v3-1]，是因为它把"题目"与"对话历史"解耦：题目和 evidence 是人工撰写的、对话历史是用一个**大海捞针式（needle-in-a-haystack）拼装器**临时合成的[^src1]。理解这条管线，就能理解为什么它的难度可以"自由放大"到 1.5M token——与 LoCoMo 把对话长度锁定在 9K token / 19 session[^v3-2] 形成鲜明对照。
 
-**步骤 1：属性本体(attribute ontology)。**
+**步骤 1：属性本体(attribute ontology)[^src2]。**
 
 人工搭建 164 个属性，分 5 大类——demographic、lifestyle、situational context、life events、belongings。lifestyle 下还有 shopping / media consumption / social media / daily routine / travel 等 8 个二级子类。这套本体覆盖"用户在 chat assistant 里实际会提到的话题"。
 
