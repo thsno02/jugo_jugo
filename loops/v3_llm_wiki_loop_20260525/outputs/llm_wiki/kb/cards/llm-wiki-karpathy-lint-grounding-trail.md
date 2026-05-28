@@ -13,11 +13,11 @@ aliases: ["kb_lint", "wiki health checks"]
 related: [llm-wiki-karpathy-runtime-vs-agent-split, llm-wiki-karpathy-multimodal-representation-path, karpathy-llm-kb-three-operations, llm-wiki-contradictions-are-assets, enterprise-llm-wiki-drift-detection-loop, nvk-llm-wiki-audit-and-librarian]
 ---
 
-`@harrylabs/llm-wiki-karpathy` 把 wiki health 直接做成 runtime 的一等品：`kb_lint` 是 deterministic 的，每次运行同一份 vault 必出同样的告警集合。lint 检查项不是纯结构性的，而是同时对"内容是否有 grounding"做检测，这让 wiki 内部的可信度可以被工具复核。
+`@harrylabs/llm-wiki-karpathy` 把 wiki health 直接做成 runtime 的一等品[^v3-1]：`kb_lint` 是 deterministic 的，每次运行同一份 vault 必出同样的告警集合。lint 检查项不是纯结构性的，而是同时对"内容是否有 grounding"做检测，这让 wiki 内部的可信度可以被工具复核。
 
-README 列出的 lint 检查项（一一对应 wiki 失败模式）：
+README 列出的 lint 检查项[^src1]（一一对应 wiki 失败模式）：
 
-- **missing representation trails**：source note 引用了非文本资产，但 `.llm-kb/representations/` 下没有相应 OCR / vision / metadata representation。表示这条 note 是"agent 看了图说话"，没有可复核的中间产物。
+- **missing representation trails**：source note 引用了非文本资产，但 `.llm-kb/representations/` 下没有相应 OCR / vision / metadata representation[^v3-2]。表示这条 note 是"agent 看了图说话"，没有可复核的中间产物。
 - **stale representations**：representation 比对应资产更老，意味着资产已更新但 representation 没重生成；wiki 仍引用旧理解。
 - **inconsistent asset_paths**：source note 的 `asset_paths` 与 manifest 里 reviewed asset refs 不对齐——意味着 agent 写笔记时引用了未真正审查过的资产。
 - **isolated pages**：没有任何反向链接的孤岛页面，提示这页知识没有被整合进 wiki 网络。
