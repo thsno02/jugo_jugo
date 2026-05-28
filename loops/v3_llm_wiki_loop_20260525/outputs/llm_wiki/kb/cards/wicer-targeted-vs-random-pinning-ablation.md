@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#ablation, #knowledge-compilation, #wicer]
 created_time: 2026-05-26T11:15:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T12:00:00+08:00
 edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-targeted-vs-random-pinning-ablation.md
