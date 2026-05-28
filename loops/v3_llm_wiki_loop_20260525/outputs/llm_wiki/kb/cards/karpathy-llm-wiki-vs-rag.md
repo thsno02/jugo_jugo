@@ -44,9 +44,9 @@ Karpathy gist 不是"用 LLM 写 wiki"，而是规定每次 ingest 时 agent **�
 ## 为什么这种区分在 agent 时代成立
 
 - 在前 agent 时代，wiki 维护成本高，人写不动 → wiki 退化 → 大家转向 RAG（让机器每次重生成）。
-- LLM agent 把"维护成本"压到接近零 → wiki 可以被"实时"维护 → compiled artifact 成为可行选项 → RAG 的"重生成"反而显得浪费。
+- LLM agent 把"维护成本"压到接近零[^v3-1] → wiki 可以被"实时"维护 → compiled artifact 成为可行选项 → RAG 的"重生成"反而显得浪费。
 
-Karpathy 在 gist 里用"Obsidian 是 IDE，LLM 是程序员，wiki 是 codebase"的类比来强调这是**软件开发范式**的迁移而非"做笔记的小技巧"（见兄弟卡）。
+Karpathy 在 gist 里用"Obsidian 是 IDE，LLM 是程序员，wiki 是 codebase"的类比来强调这是**软件开发范式**的迁移而非"做笔记的小技巧"[^v3-2]。
 
 ## 边界
 
