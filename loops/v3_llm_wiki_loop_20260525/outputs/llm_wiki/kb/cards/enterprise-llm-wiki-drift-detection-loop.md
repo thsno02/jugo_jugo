@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#enterprise, #llm-wiki, #drift-detection, #maintenance, #ssot]
 created_time: 2026-05-26T11:50:00+08:00
-edited_time: 2026-05-27T14:34:00+08:00
+edited_time: 2026-05-28T10:10:00+08:00
 edited_entity: llm
 source_ids: [falconer-enterprise-guide]
 provenance_card: ../provenance/enterprise-llm-wiki-drift-detection-loop.md
