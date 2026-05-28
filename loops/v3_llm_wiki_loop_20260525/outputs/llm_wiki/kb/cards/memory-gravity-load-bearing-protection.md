@@ -15,7 +15,7 @@ related: [memory-as-metabolism-five-operations, audit-by-suspension-against-entr
 
 ## 是什么
 
-Miteski (2026) 把 active wiki 视作有向加权图 W = (V, E)，节点是 wiki 条目，边是依赖引用。每个条目 i 的 base gravity 定义为：
+Miteski (2026) 把 active wiki 视作有向加权图 W = (V, E)，节点是 wiki 条目，边是依赖引用[^src1]。每个条目 i 的 base gravity 定义为：
 
 ```
 G_i^base = f(C(i), F(i))
