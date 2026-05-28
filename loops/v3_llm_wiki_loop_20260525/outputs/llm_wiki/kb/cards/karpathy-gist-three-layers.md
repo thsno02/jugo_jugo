@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#llm-wiki, #karpathy, #architecture, #schema]
 created_time: 2026-05-26T11:45:00+08:00
-edited_time: 2026-05-27T14:38:00+08:00
+edited_time: 2026-05-28T10:20:00+08:00
 edited_entity: llm
 source_ids: [karpathy-gist-llm-wiki]
 provenance_card: ../provenance/karpathy-gist-three-layers.md
