@@ -23,7 +23,7 @@ Saad-Falcon 等（2024）测了 ARES[^v3-1] fine-tuned LLM judge 的跨域迁移
   - **文本→代码**（NQ → CodeSearchNet）：τ ≈ 0.28
   - **检索 → 实体抽取**（NQ → T-Rex）：τ ≈ 0.38
 
-## 跨域表 tab:cross_domain 数字（pseudo RAG，6 个迁移对）
+## 跨域表 tab:cross_domain 数字（pseudo RAG，6 个迁移对）[^src4]
 
 | 迁移 | C.R. τ | A.R. τ | PPI range | 评估准确率 |
 | --- | --- | --- | --- | --- |
