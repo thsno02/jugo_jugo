@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#memgpt, #function-calling, #control-flow, #multi-hop-retrieval]
 created_time: 2026-05-26T11:35:00+08:00
-edited_time: 2026-05-27T14:34:00+08:00
+edited_time: 2026-05-28T11:06:00+08:00
 edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-function-chaining-heartbeat.md
