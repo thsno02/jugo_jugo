@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#citation, #benchmark, #alce, #rag, #evaluation]
 created_time: 2026-05-26T11:15:00+08:00
-edited_time: 2026-05-27T14:12:00+08:00
+edited_time: 2026-05-28T15:20:00+08:00
 edited_entity: llm
 source_ids: [arxiv-alce]
 provenance_card: ../provenance/alce-three-dimension-citation-metric.md
