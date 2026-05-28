@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-lightmem]
 provenance_card: ../provenance/lightmem-precompress-and-topic-segmentation.md
 aliases: ["Light1 sensory memory", "LightMem pre-compression"]
-related: [lightmem-three-stage-atkinson-shiffrin, lightmem-light2-topic-aware-stm, lightmem-complexity-formula, lightmem-sleep-time-offline-parallel-update, memory-as-metabolism-contextualize-depth-fitted]
+related: [lightmem-three-stage-atkinson-shiffrin, longmemeval-benchmark-construction-pipeline, lightmem-light2-topic-aware-stm, lightmem-complexity-formula]
 ---
 
 LightMem 的第一层（Light1）不是"memory storage"，而是一个 *预过滤器*——把原始对话回合压缩成几条精炼且按主题分组的小段，再丢给上层的 STM[^v3-1]。这一层由两个子模块串联完成，关键技术细节如下。
