@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#llm-wiki, #karpathy, #rag-vs-wiki]
 created_time: 2026-05-26T15:00:00+08:00
-edited_time: 2026-05-27T10:17:00+08:00
+edited_time: 2026-05-28T11:17:00+08:00
 edited_entity: llm
 source_ids: [anthemcreation-en-guide]
 provenance_card: ../provenance/karpathy-llm-wiki-source-executable-analogy.md
