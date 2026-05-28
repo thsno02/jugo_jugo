@@ -32,15 +32,11 @@ Falconer 的企业级 LLM Wiki 指南把 Karpathy 个人 LLM Wiki 工作流抽�
 - 四属性属于"流程必要条件"，与具体工具栈、组织规模无关。给 1000 人公司用和给 10 人小队用都需要这四条同时成立。
 - 文章承认：retrieval 类工具（Glean / Notion AI / Confluence AI search）通常只命中 link 与查询体验，无法解决 stay-current；这是为什么"语义搜索 over 过期 KB"会更快得出错误答案[^v3-3]。
 
-## References
-
-- 四属性总览：`data/raw/webpage/falconer-enterprise-guide/text.txt` L18–30（"Key takeaways" 段）+ L44 起的逐节展开。
-- Capture / Link / Compound / Stay current 的具体讨论：同文件 L46–74。
-- 个人到企业的属性映射表：同文件 L86–98。
-- Stack Overflow 2024 数据（量化 stay-current 缺位）：同文件 L66。
-
 ## Footnotes
 
-- `data/raw/webpage/falconer-enterprise-guide/text.txt` L20-26：`"The same four properties that make it work at the personal level (capture, link, compound, stay current) are needed at the company level, but the maintenance model has to change."`
-- 同文件 L66：`"Stack Overflow's 2024 developer survey of 65,000 professional developers found that more than 60 percent spend 30 minutes or more a day searching for solutions, and 68 percent encounter a knowledge silo at least once a week. The same survey found that for people managers (the most experienced engineers), the silo rate climbs to 73 percent."`
-- 同文件 L82：`"the graph has to understand that 'the payments service' in a design doc is the same entity as 'payments-service' in a GitHub repo and '@payments-team' in a Slack channel."`
+[^src1]: `data/raw/webpage/falconer-enterprise-guide/text.txt` L20-26 — "The same four properties that make it work at the personal level (capture, link, compound, stay current) are needed at the company level, but the maintenance model has to change."
+[^src2]: 同文件 L66 — "Stack Overflow's 2024 developer survey of 65,000 professional developers found that more than 60 percent spend 30 minutes or more a day searching for solutions, and 68 percent encounter a knowledge silo at least once a week. The same survey found that for people managers (the most experienced engineers), the silo rate climbs to 73 percent."
+[^src3]: 同文件 L82 — "the graph has to understand that 'the payments service' in a design doc is the same entity as 'payments-service' in a GitHub repo and '@payments-team' in a Slack channel."
+[^v3-1]: [enterprise-llm-wiki-tool-native-ingestion](enterprise-llm-wiki-tool-native-ingestion.md) — capture 在企业版被改成 tool-native ingestion 的展开。
+[^v3-2]: [enterprise-llm-wiki-drift-detection-loop](enterprise-llm-wiki-drift-detection-loop.md) — stay-current 在企业版的连续后台 drift detection + owner 路由展开。
+[^v3-3]: [retrieval-not-enough-for-stale-kb](retrieval-not-enough-for-stale-kb.md) — "语义搜索 over 过期 KB" 错答更快的本卡。
