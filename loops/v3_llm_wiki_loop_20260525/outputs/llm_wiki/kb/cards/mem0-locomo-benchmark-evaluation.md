@@ -15,9 +15,9 @@ related: [mem0-extract-update-pipeline, mem0-graph-memory-variant, mem0-baseline
 
 ## 评估对象与指标
 
-LOCOMO（Maharana 2024）：10 段长对话，平均 ~600 turns、~26k tokens，每段约 200 个问题，分四类：**single-hop / multi-hop / temporal / open-domain**（原 adversarial 类被排除，因 ground truth 缺失）。
+LOCOMO（Maharana 2024）[^v3-1]：10 段长对话，平均 ~600 turns、~26k tokens，每段约 200 个问题，分四类：**single-hop / multi-hop / temporal / open-domain**（原 adversarial 类被排除[^v3-2]，因 ground truth 缺失）。
 
-Mem0 评估同时报告：
+Mem0 评估同时报告[^src1]：
 
 - **质量**：F1 (F1)、BLEU-1 (B1)、**LLM-as-a-Judge (J)**（每方法 10 次独立运行，报 mean ± 1σ）；
 - **token**：用 `cl100k_base` 编码，统计检索阶段返回的 token 数；
