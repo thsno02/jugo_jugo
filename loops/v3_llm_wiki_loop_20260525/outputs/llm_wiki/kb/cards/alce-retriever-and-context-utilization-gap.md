@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#citation, #alce, #retrieval, #context-window, #chatgpt, #gpt-4]
 created_time: 2026-05-26T15:45:00+08:00
-edited_time: 2026-05-27T14:10:00+08:00
+edited_time: 2026-05-28T15:05:00+08:00
 edited_entity: llm
 source_ids: [arxiv-alce]
 provenance_card: ../provenance/alce-retriever-and-context-utilization-gap.md
