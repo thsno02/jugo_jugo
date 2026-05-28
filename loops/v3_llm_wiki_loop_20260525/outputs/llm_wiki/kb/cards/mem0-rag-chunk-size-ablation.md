@@ -57,18 +57,14 @@ related: [mem0-locomo-benchmark-evaluation, mem0-baseline-failure-modes, ragchec
 - 在长对话记忆任务里，**对 RAG 做 chunk×k 扫表是必要工序**，不能用一个 chunk 大小（很多复现品用 512 或 1024）就下结论；512 在 LOCOMO 是次优，1024+ 会被"更小 chunk"碾压。
 - 若复现 Mem0 比 RAG 的相对优势，**至少要扫到 chunk=256, k=2 这一点**，否则容易把 RAG 跑成 J~37–47，让 Mem0 看起来比实际更强。
 - $k>2$ 退化成 full-context 的论证是 LOCOMO-specific 的（对话长度 26k）；其他场景（短对话或文档库）的最优 $k$ 不一定是 2。
-
-## References
-
-- §3.4 / Table 2（`sections/result.tex` 第 1218–1264 行）：含 RAG 网格 14 行全部数据、Mem0、Mem0g、full-context、A-Mem、LangMem、OpenAI、Zep 的延迟与 J 分。
-- §4.2 / §experiment_setup（`sections/experiment_setup.tex` 第 1035 行）：明确 RAG 设置与"避免 k>2"的理由。
-- §4.2 段（`sections/result.tex` 第 1297 行）："Even the strongest RAG approach peaks at around 61% ... whereas Mem0 reaches 67%—about a 10% relative improvement—and Mem0g reaches over 68%, achieving around a 12% relative gain."
-- 来源：`data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`。
+- 完整 baseline 失败模式列在另一卡片[^v3-3]，可与本扫表互证 RAG 强弱归因。
 
 ## Footnotes
 
-[^1]: 排除 $k>2$ 的原文（experiment_setup.tex 第 1035 行）："We avoid k>2 since the average conversation length (26000 tokens) would be fully covered, negating the benefits of selective retrieval."
-
-[^2]: k=2, chunk=256 是甜点（Table 2 第 1245 行）：`& & 256 & 0.255 & 0.699 & 0.802 & 1.907 & 60.97 ± 0.20%`。
-
-[^3]: Mem0 与 RAG 的相对差距原文（result.tex 第 1297 行）："Even the strongest RAG approach peaks at around 61% in the J metric, whereas Mem0 reaches 67%—about a 10% relative improvement—and Mem0g reaches over 68%, achieving around a 12% relative gain."
+[^src1]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/result.tex` 第 1218–1264 行（§3.4 / Table 2）— 含 RAG 网格 14 行全部数据、Mem0、Mem0g、full-context、A-Mem、LangMem、OpenAI、Zep 的延迟与 J 分。
+[^src2]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `sections/experiment_setup.tex` 第 1035 行 — "We avoid k>2 since the average conversation length (26000 tokens) would be fully covered, negating the benefits of selective retrieval."
+[^src3]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — Table 2 第 1245 行 — `& & 256 & 0.255 & 0.699 & 0.802 & 1.907 & 60.97 ± 0.20%`。
+[^src4]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` — `result.tex` 第 1297 行 — "Even the strongest RAG approach peaks at around 61% in the J metric, whereas Mem0 reaches 67%—about a 10% relative improvement—and Mem0g reaches over 68%, achieving around a 12% relative gain."
+[^v3-1]: [mem0-locomo-benchmark-evaluation](mem0-locomo-benchmark-evaluation.md) — LOCOMO 评估的整体数字。
+[^v3-2]: [locomo-observation-rag-beats-summary-rag](locomo-observation-rag-beats-summary-rag.md) — observation top-5 vs top-50 的 SNR 同质现象。
+[^v3-3]: [mem0-baseline-failure-modes](mem0-baseline-failure-modes.md) — 五种 baseline 的失败模式。
