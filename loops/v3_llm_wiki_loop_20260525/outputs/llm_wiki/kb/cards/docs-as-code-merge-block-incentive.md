@@ -13,9 +13,9 @@ aliases: ["block merging without docs", "PR docs gating"]
 related: [docs-as-code-five-pillars, enterprise-llm-wiki-drift-detection-loop, llm-wiki-karpathy-lint-grounding-trail, wicer-cegar-compile-evaluate-refine, wicer-recovery-distribution-exceeds-fc-raw]
 ---
 
-Write the Docs 社区列举 Docs as Code 三条收益时，第三条不是"工具更好"或"质量更高"，而是一种**激励机制**：
+Write the Docs 社区列举 Docs as Code 三条收益时[^v3-1]，第三条不是"工具更好"或"质量更高"，而是一种**激励机制**：
 
-> "You can block merging of new features if they don't include documentation, which incentivizes developers to write about features while they are fresh."
+> "You can block merging of new features if they don't include documentation, which incentivizes developers to write about features while they are fresh."[^src1]
 
 这条规则之所以单独成卡，是因为它是 Docs as Code 工程化的"门控点"：前两条收益（writer 整合更紧密、developer 顺手写第一稿）是软现象，第三条是**硬约束**——CI 检测到 PR 改了功能代码却没改文档，pipeline failed，merge 被阻止。
 
@@ -40,14 +40,11 @@ Write the Docs 社区列举 Docs as Code 三条收益时，第三条不是"工�
 
 **与 LLM 写作器的衔接：**
 
-这条规则原本针对人写文档；但同样适用于"由 LLM 维护的 wiki / 知识库"——CI 可以检查"raw 改动 vs wiki 改动"的对应关系，让 ingest 流程必须把新 raw 体现到 wiki 上才算 merge 通过。这与 Karpathy LLM Wiki 中 *linting* 阶段、`llm-wiki by nvk` 的 `/wiki:lint --fix` 想法同源。
-
-## References
-
-- "Docs as Code — Write the Docs"：`data/raw/webpage/writethedocs-docs-as-code/text.txt`，行 25–31。
+这条规则原本针对人写文档；但同样适用于"由 LLM 维护的 wiki / 知识库"——CI 可以检查"raw 改动 vs wiki 改动"的对应关系，让 ingest 流程必须把新 raw 体现到 wiki 上才算 merge 通过。这与 WiCER 的诊断 → 重写闭环同源：把"score-1 探针"当作"文档腐烂检测器"，未消除就不结束编译轮次[^v3-2]；WiCER 用 score-1 诊断 pinning 反超 FC raw 的结果[^v3-3] 是把这套激励搬到 LLM 编译器侧的实证。
 
 ## Footnotes
 
-- 原话（行 31）：
-  > "You can block merging of new features if they don't include documentation, which incentivizes developers to write about features while they are fresh"
-- 与其他两条收益（行 27、行 29）合并在同一列表里。
+[^v3-1]: [docs-as-code-five-pillars](docs-as-code-five-pillars.md) — 三条收益的完整列举与五条工具栈支柱
+[^v3-2]: [wicer-cegar-compile-evaluate-refine](wicer-cegar-compile-evaluate-refine.md) — WiCER 把 score-1 探针失败当作"文档腐烂"信号，与 PR merge-block 同源
+[^v3-3]: [wicer-recovery-distribution-exceeds-fc-raw](wicer-recovery-distribution-exceeds-fc-raw.md) — entity-dense 主题上诊断 pinning 反超 FC raw 的结果
+[^src1]: `data/raw/webpage/writethedocs-docs-as-code/text.txt` 行 31（"Docs as Code — Write the Docs"原话）："You can block merging of new features if they don't include documentation, which incentivizes developers to write about features while they are fresh" 与其他两条收益（行 27、行 29）合并在同一列表里，整页参见行 25–31
