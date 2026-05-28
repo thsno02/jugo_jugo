@@ -39,17 +39,14 @@ Kunal Ganglani 在 2026 年 4 月的博文 "I Set Up Karpathy's Local Knowledge 
 
 边界：
 - Kunal 文章里也提到了"a local LLM wiki gives you full-stack locality"这种 framing，确实在"本地"维度有共通性——只是路径完全不同；
-- 本卡不评估 Kunal 文章的写作或洞察价值，只标注术语层面的差异；他的"build a RAG from scratch 是最大学习收益"这一观点本身有效。
-
-## References
-
-Kunal Ganglani, "LLM Wiki: I Set Up Karpathy's Local Knowledge Base — Here's What Actually Works [2026 Guide]"，2026-04-15（2026-05-10 更新）。
-
-- 源路径：`data/raw/webpage/kunal-local-knowledge-base/text.txt`（行 52–60 Kunal 对"LLM wiki"的定义；行 70–80 三阶段 RAG 流水线；行 173–195 FAQ 把 LLM Wiki 与 llm.c 划等号）。
+- 本卡不评估 Kunal 文章的写作或洞察价值，只标注术语层面的差异；他的"build a RAG from scratch 是最大学习收益"这一观点本身有效[^src4]。
 
 ## Footnotes
 
-- Kunal 把 LLM Wiki 等同于 llm.c 的 RAG 原文（行 173–175）："Karpathy's LLM wiki is a local, private, queryable knowledge base built on Andrej Karpathy's open-source llm.c project — a minimalist C/CUDA implementation that lets you ask natural-language questions against your own documents without any data leaving your machine. It uses retrieval-augmented generation (RAG) to chunk your notes, embed them as vectors, and synthesize answers using a local LLM."
-- 三阶段 RAG 原文（行 72–76）："Ingestion: Your documents get split into chunks (typically 256-512 tokens each) ... Embedding: Each chunk gets converted into a vector embedding ... Generation: The top-k most relevant chunks get stuffed into a prompt"
-- Kunal 自承多数人用 Obsidian + 插件即可（行 115）："the local wiki wins for one specific use case ... For everything else, I'll be honest — Obsidian with a good plugin is more practical today."
-- Kunal 自我反思的最大收益是构建过程本身（行 137）："the real value isn't the answer quality. It's the act of building it. Going through the RAG pipeline from scratch ... taught me more about how these systems work than any tutorial or course I've taken."
+[^src1]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` 行 173-175 — "Karpathy's LLM wiki is a local, private, queryable knowledge base built on Andrej Karpathy's open-source llm.c project — a minimalist C/CUDA implementation that lets you ask natural-language questions against your own documents without any data leaving your machine. It uses retrieval-augmented generation (RAG) to chunk your notes, embed them as vectors, and synthesize answers using a local LLM."
+[^src2]: 同文件 行 72-76 — "Ingestion: Your documents get split into chunks (typically 256-512 tokens each) ... Embedding: Each chunk gets converted into a vector embedding ... Generation: The top-k most relevant chunks get stuffed into a prompt"
+[^src3]: 同文件 行 115 — "the local wiki wins for one specific use case ... For everything else, I'll be honest — Obsidian with a good plugin is more practical today."
+[^src4]: 同文件 行 137 — "the real value isn't the answer quality. It's the act of building it. Going through the RAG pipeline from scratch ... taught me more about how these systems work than any tutorial or course I've taken."
+[^v3-1]: [kunal-local-setup-walls](kunal-local-setup-walls.md) — Kunal 本地 RAG 自建的三堵墙（macOS 编译、文档预处理、推理硬件）。
+[^v3-2]: [karpathy-gist-three-layers](karpathy-gist-three-layers.md) — Karpathy gist 实际模式：raw / wiki / schema 三层 + LLM 主动维护。
+[^v3-3]: [auto-index-replaces-rag-at-small-scale](auto-index-replaces-rag-at-small-scale.md) — 小规模下 auto-index 替代 RAG 的本卡。
