@@ -21,9 +21,9 @@ Miteski (2026) 把 CONTEXTUALIZE 作为五操作之一[^v3-1]**独立**地从 TR
 
 ## 三条不可让渡的设计承诺
 
-1. **强制 linkout 到原始源（§7.5 conformance MUST）**：原文必须可恢复——当用户 context shift 时（例如从 PO 变 EM），下一个 dream cycle 用**新** context 重压缩原文。「MUST preserve a linkout to the original external source — this is non-optional and cannot be traded off for storage efficiency.」[^2]
+1. **强制 linkout 到原始源（§7.5 conformance MUST）**[^src3]：原文必须可恢复——当用户 context shift 时（例如从 PO 变 EM），下一个 dream cycle 用**新** context 重压缩原文。「MUST preserve a linkout to the original external source — this is non-optional and cannot be traded off for storage efficiency.」
 2. **在 dream cycle 里跑，不在 streaming ingestion**：深度推断成本高，必须批量 + sleep 调度。raw buffer 把外部源原样留到下一个 cycle，**也是安全属性**——若用户 context 在 ingestion 与 consolidation 之间漂移，consolidation 时用的是**新** context。
-3. **depth 由推断而非用户显式声明**：让用户对每条 ingested source 都标 working depth 是"operationally absurd"。系统从用户其它 wiki 条目、最近查询模式、主题邻域推断——与 memory gravity 同源的推断动作。**推断会错**——这正是为何 linkout 不可让渡。
+3. **depth 由推断而非用户显式声明**：让用户对每条 ingested source 都标 working depth 是"operationally absurd"。系统从用户其它 wiki 条目、最近查询模式、主题邻域推断——与 memory gravity 同源的推断动作[^v3-2]。**推断会错**——这正是为何 linkout 不可让渡。LightMem 的预压缩 + topic 分段也是同质的"在 ingestion 前选择性吸收"思路[^v3-3]。
 
 ## 三层存储模型（CONTEXTUALIZE 引入的第三层）
 
