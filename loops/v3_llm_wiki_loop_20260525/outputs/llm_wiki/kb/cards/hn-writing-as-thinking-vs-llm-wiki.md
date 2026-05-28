@@ -46,23 +46,12 @@ HN 帖子里反对 Karpathy LLM Wiki 设想的最有质量的论点不是技术�
 - 把"我写得更快了"等同于"我懂得更多了"——这是反对者反复警告的认知陷阱；
 - 反过来，把"必须自己写"绝对化也越界——`qaadika` 自己也说 "I'm not totally against AI writing"，关键在标签和摩擦。
 
-## References
-
-- `loveparade` 论点：`data/raw/hacker_news/hacker-news-original-thread/text.txt` 行 246–248。
-- `kilroy123` 类比：行 250–253。
-- `nidnogg` 系列亲身反例：行 205–209、261–267。
-- "AI de-skilling" 命名出现于行 263。
-- `qaadika` 隔离实践：行 459–471 包含 `==BEGIN AI-GENERATED CONTENT==` 包裹的具体模板。
-
 ## Footnotes
 
-- `nidnogg` 关键句（行 209）：
-  > "I miss thinking harder and I think it would get me out of this one for sure. But the wiki workflow is just too addictive to stop."
-- `nidnogg` 命名（行 263）：
-  > "A slightly related note - I recently heard the term AI de-skilling, this treads close to it imo."
-- `qaadika` 模板（行 468–470）：
-  > "==BEGIN AI-GENERATED CONTENT==  <% tp.file.cursor(1) %>  ==END AI-GENERATED CONTENT=="
-- `qaadika` 摩擦原话（行 472）：
-  > "I also manually copy and paste from wherever I'm using AI into my notes. Nothing automated. The friction keeps me from sliding into the happy path of turning my brain off."
-- `qaadika` 收尾断言（行 461）：
-  > "There's nothing 'personal' about a knowledge base you filled by asking AI questions. It's the AI's database, you just ask it to write stuff."
+[^src1]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` 行 246-248（`loveparade`）— "Most of the value of writing docs or a wiki is not in the final artifacts, it's that the process of writing docs updates your own mental models and knowledge so that you can make better decisions down the road."
+[^src2]: 同文件 行 250-253（`kilroy123` 类比）— "Makes me think of all these tools that use AI to make fancy flashcards for you to study. It seems rather silly to me, as creating those flashcards is what helps you learn, with the studying after, cementing that knowledge in your brain."
+[^src3]: 同文件 行 209（`nidnogg`）— "I miss thinking harder and I think it would get me out of this one for sure. But the wiki workflow is just too addictive to stop."
+[^src4]: 同文件 行 263（`nidnogg` AI de-skilling 命名）— "A slightly related note - I recently heard the term AI de-skilling, this treads close to it imo."
+[^src5]: 同文件 行 468-470（`qaadika` 模板）— "==BEGIN AI-GENERATED CONTENT==  <% tp.file.cursor(1) %>  ==END AI-GENERATED CONTENT=="
+[^src6]: 同文件 行 472（`qaadika` 摩擦原话）— "I also manually copy and paste from wherever I'm using AI into my notes. Nothing automated. The friction keeps me from sliding into the happy path of turning my brain off."
+[^src7]: 同文件 行 461（`qaadika` 收尾断言）— "There's nothing 'personal' about a knowledge base you filled by asking AI questions. It's the AI's database, you just ask it to write stuff."
