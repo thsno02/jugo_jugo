@@ -36,7 +36,7 @@ HN 评论里最稀有的不是观点，而是**数字**。`vbarsoum` 给了一�
 
 **通用化为操作规则：**
 
-- 在搭 LLM Wiki 之前，把"raw 文档要切到什么粒度"作为**第一个超参**调，而不是默认"一篇文章一文件"或"一整本书一文件"；
+- 在搭 LLM Wiki 之前，把"raw 文档要切到什么粒度"作为**第一个超参**调[^v3-1]，而不是默认"一篇文章一文件"或"一整本书一文件"；
 - 评估粒度时盯三件事：**合成概念数**、**跨文件引用数**、**跨文件矛盾被识别数**——这是 vector RAG 评测不会用、但对 sensemaking 任务最相关的指标；
 - "wiki is useful to both humans and machines" 是 LLM Wiki 相对 vector DB 的根本设计差异；如果你的 raw 粒度让人类也无法浏览/校验，那机器读出来也不会更好。
 
@@ -44,17 +44,11 @@ HN 评论里最稀有的不是观点，而是**数字**。`vbarsoum` 给了一�
 
 - 这是单个用户报告的实测，不是受控实验；样本是商业书籍而非学术论文。
 - "20+ 概念合成 / 找到矛盾"等数字未公开数据集供复核。
-- 仓库地址 `github.com/vbarsoum1/llm-wiki-compiler`（评论中给出，行 523）。
-
-## References
-
-- `vbarsoum` 评论：`data/raw/hacker_news/hacker-news-original-thread/text.txt` 行 521–523。
+- 仓库地址 [github.com/vbarsoum1/llm-wiki-compiler](https://github.com/vbarsoum1/llm-wiki-compiler)[^url1]（评论中给出）。
 
 ## Footnotes
 
-- 完整原文（行 523）：
-  > "But splitting into chapter-level files and recompiling changed the output categorically. Same model, same prompts — the only variable was source granularity. The compiler produced 210 concept pages with 4,597 cross-references (19.2 avg links per page). 20+ concepts synthesized across all 3 books unprompted — one pulled from 11 source files and found a genuine contradiction between two books that neither makes explicit. 173K words of output from 155K input. It's not compression — it's synthesis."
-- "wiki is useful to both" 段落（行 523）：
-  > "a vector database is only useful to machines. You can't open a .faiss file and browse it. A wiki is useful to both."
-- 成本与时间（行 523）：
-  > "~Cost: 12M tokens, ~10-15 min."
+[^src1]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` 行 521-523（`vbarsoum` 完整原文）— "But splitting into chapter-level files and recompiling changed the output categorically. Same model, same prompts — the only variable was source granularity. The compiler produced 210 concept pages with 4,597 cross-references (19.2 avg links per page). 20+ concepts synthesized across all 3 books unprompted — one pulled from 11 source files and found a genuine contradiction between two books that neither makes explicit. 173K words of output from 155K input. It's not compression — it's synthesis. ~Cost: 12M tokens, ~10-15 min."
+[^src2]: 同文件 行 523 — "a vector database is only useful to machines. You can't open a .faiss file and browse it. A wiki is useful to both."
+[^url1]: <https://github.com/vbarsoum1/llm-wiki-compiler>
+[^v3-1]: [karpathy-wiki-extraction-granularity](karpathy-wiki-extraction-granularity.md) — Karpathy 插件的五档抽取粒度作为另一种"粒度即超参"实现。
