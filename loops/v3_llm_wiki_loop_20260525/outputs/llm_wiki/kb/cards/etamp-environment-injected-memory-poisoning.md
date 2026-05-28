@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-etamp-memory-poisoning]
 provenance_card: ../provenance/etamp-environment-injected-memory-poisoning.md
 aliases: [Environment-injected Trajectory-based Agent Memory Poisoning, 环境注入记忆投毒, eTAMP threat model]
-related: [etamp-frustration-exploitation, etamp-chaos-monkey-agent-robustness, etamp-attack-payload-structure, etamp-capability-vs-security, mem0-extract-update-pipeline, memgpt-main-vs-external-context, poisonedrag-knowledge-database-attack-surface, owasp-agentic-top10-2026-positioning]
+related: [mem0-extract-update-pipeline, memgpt-main-vs-external-context, poisonedrag-knowledge-database-attack-surface, owasp-agentic-top10-2026-positioning]
 ---
 
 ## 攻击定义
