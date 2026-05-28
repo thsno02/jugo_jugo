@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [falconer-enterprise-guide]
 provenance_card: ../provenance/enterprise-llm-wiki-drift-detection-loop.md
 aliases: ["continuous drift detection", "doc owner routing", "SSOT designations"]
-related: [enterprise-llm-wiki-four-properties, retrieval-not-enough-for-stale-kb, enterprise-llm-wiki-tool-native-ingestion, llm-wiki-contradictions-are-assets, nvk-llm-wiki-audit-and-librarian, karpathy-gist-bookkeeping-burden]
+related: [llm-wiki-karpathy-lint-grounding-trail, llm-wiki-health-checks]
 ---
 
 Karpathy 个人 LLM Wiki 的 health check 是 on-demand 的[^v3-1]——他想跑就跑、看到 lint 结果自己处理。Falconer 指南指出这个模型在企业里**不能直接放大**[^v2-1]，因为：
