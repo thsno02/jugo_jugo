@@ -59,17 +59,10 @@ Karpathy LLM Wiki Obsidian 插件[^v3-1]页面明确声明：
 - 与 **mem0**（dense memory retrieval）相对：mem0 仍是"检索 + 注入"路线，但检索单位是**已抽取的事实**而非 raw chunks；
 - 与 **memory-as-metabolism** 的 CONTEXTUALIZE 相比：后者要把外部源压缩到用户当前 working depth，本插件则是"先抽实体/概念到结构化页，再以全 wiki 上下文供 LLM 推理"——两者都拒绝"原文切块嵌入"，但在压缩 vs 不压缩、有 vs 无 governance 上分歧明显。
 
-## References
-
-- 来源页面：`data/raw/webpage/obsidian-community-plugin/text.txt`。
-- 第 343–346 行：full-context 立场与 Karpathy 对 RAG 的批评。
-- 第 348–370 行：模型选型表。
-- 第 371–375 行：Ollama / Anthropic Compatible 配置说明。
-
 ## Footnotes
 
-[^1]: full-context 立场 verbatim（第 344 行）："This plugin follows Karpathy's philosophy: feed the LLM full Wiki context, not chunked RAG retrieval. Long-context models are strongly recommended — the larger your Wiki grows, the more context the LLM needs."
-
-[^2]: 为什么不用 RAG verbatim（第 346 行）："Karpathy's original critique argues that RAG fragments knowledge and breaks the LLM's ability to reason across the full knowledge graph."
-
-[^3]: 模型选型表来自第 348–366 行；本地 Ollama 上下文限制与混合方案建议来自第 371 行。
+[^src1]: `data/raw/webpage/obsidian-community-plugin/text.txt` 第 344 行 — "This plugin follows Karpathy's philosophy: feed the LLM full Wiki context, not chunked RAG retrieval. Long-context models are strongly recommended — the larger your Wiki grows, the more context the LLM needs."
+[^src2]: 同文件 第 346 行 — "Karpathy's original critique argues that RAG fragments knowledge and breaks the LLM's ability to reason across the full knowledge graph."
+[^src3]: 同文件 第 348-366 行（模型选型表）+ 第 371 行（Ollama 上下文限制与"云端 ingestion + 本地 query"混合方案）。
+[^v3-1]: [karpathy-llm-wiki-obsidian-plugin-overview](karpathy-llm-wiki-obsidian-plugin-overview.md) — 插件总览。
+[^v3-2]: [robin-cartier-scale-ceiling](robin-cartier-scale-ceiling.md) — wiki 增大触顶后必须降级的 ~200 页天花板的本卡。
