@@ -5,7 +5,7 @@ status: accepted
 card_type: concept
 tags: [#llm-wiki, #nvk, #obsidian, #topic-isolation, #plugin]
 created_time: 2026-05-26T11:25:00+08:00
-edited_time: 2026-05-27T15:12:00+08:00
+edited_time: 2026-05-28T11:54:00+08:00
 edited_entity: llm
 source_ids: [llm-wiki-net]
 provenance_card: ../provenance/nvk-llm-wiki-hub-and-topic-wikis.md
