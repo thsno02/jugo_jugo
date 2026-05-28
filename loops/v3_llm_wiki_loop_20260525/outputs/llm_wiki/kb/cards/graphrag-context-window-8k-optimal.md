@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#graphrag, #context-window, #lost-in-the-middle, #sensemaking]
 created_time: 2026-05-26T15:01:00+08:00
-edited_time: 2026-05-27T10:02:00+08:00
+edited_time: 2026-05-28T11:05:00+08:00
 edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-context-window-8k-optimal.md
