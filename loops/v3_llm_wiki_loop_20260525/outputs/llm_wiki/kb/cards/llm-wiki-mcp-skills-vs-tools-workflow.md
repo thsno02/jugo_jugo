@@ -34,9 +34,9 @@ related: [llm-wiki-mcp-four-tools, llm-wiki-mcp-design-boundary-mechanics-not-co
 ## 为什么 skill 层必要
 
 > "Other MCP clients (Claude Desktop, Cursor) get the four tools but not the skills. The agent has to derive the workflow from tool descriptions alone, which works for one-off reads and writes but tends to skip the bookkeeping (log entries, backlink audits) the skills make explicit."
-> —— `text.txt:153`
+> —— `text.txt:153` [^src3]
 
-只给 tool 不给 workflow，agent 能完成单次读写，但会**跳过 bookkeeping**（log entry、backlink 审计、contradiction 标注）。这些 bookkeeping 正是让 wiki 长期不退化的关键，必须用 skill 把"必做步骤"显式编码出来。
+只给 tool 不给 workflow，agent 能完成单次读写，但会**跳过 bookkeeping**（log entry、backlink 审计、contradiction 标注）。这些 bookkeeping 正是让 wiki 长期不退化的关键，必须用 skill 把"必做步骤"显式编码出来 [^v3-3]。
 
 ## 关键设计选择：每次都重读 schema
 
