@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#benchmark-construction, #long-term-memory, #needle-in-haystack, #synthetic-data]
 created_time: 2026-05-26T15:20:00+08:00
-edited_time: 2026-05-27T11:12:00+08:00
+edited_time: 2026-05-28T10:32:00+08:00
 edited_entity: llm
 source_ids: [arxiv-longmemeval]
 provenance_card: ../provenance/longmemeval-benchmark-construction-pipeline.md
