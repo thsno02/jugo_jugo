@@ -13,9 +13,9 @@ aliases: [schema is the real innovation, living PRD for AI colleague]
 related: [karpathy-gist-three-layers, robin-cartier-scale-ceiling, llm-wiki-schema-is-most-important, aillm-wiki-schema-as-bottleneck, agents-md-as-schema-layer, llm-wiki-mcp-design-boundary-mechanics-not-content]
 ---
 
-Robin Cartier 在 verdict 里下了一个比 Karpathy 原 gist 更激进的判断：**真正可推广的创新不是 wiki 本身，而是 schema 文件**——而且 schema 不应该被看作"配置"，应该看作"给 AI 同事的活产品需求文档"。
+Robin Cartier 在 verdict 里下了一个比 Karpathy 原 gist[^v3-1] 更激进的判断：**真正可推广的创新不是 wiki 本身，而是 schema 文件**[^v2-1]——而且 schema 不应该被看作"配置"，应该看作"给 AI 同事的活产品需求文档"。
 
-**原话**："The schema file is the real innovation, not the wiki itself. Treating CLAUDE.md as 'a living product requirements document for an AI colleague' scales far beyond knowledge management to any workflow that needs operational knowledge encoded for the LLM to follow autonomously."
+**原话**："The schema file is the real innovation, not the wiki itself. Treating CLAUDE.md as 'a living product requirements document for an AI colleague' scales far beyond knowledge management to any workflow that needs operational knowledge encoded for the LLM to follow autonomously."[^src1]
 
 这句话拆开来有三个含义：
 1. **schema 的可推广性 > wiki 的可推广性**：wiki 模式天花板在 200 页（见 robin-cartier-scale-ceiling 卡），但用 schema 来"以文档形式编码工作流"这一模式不受此限制——可用在任何需要 LLM 自主执行的协作流程上。
