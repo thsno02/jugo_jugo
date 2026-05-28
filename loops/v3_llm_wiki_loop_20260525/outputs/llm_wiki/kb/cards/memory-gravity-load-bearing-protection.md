@@ -56,22 +56,19 @@ base gravity 是**纯结构属性**；effective gravity 是其访问调制形式
 
 ## 与 PageRank / h-index 的区别
 
-Memory gravity 借用了软件系统中的"architectural gravity"和文献计量学的 PageRank/h-index，但有一个关键的前瞻维度：F(i) 测的是"若现在删除会破多少"，**不是**过去被引用多少。这意味着一个刚集成进来、引用还不多但已是当前工作上下文承重的条目，也会被保护——纯回溯度量会低估这一点。
+Memory gravity 借用了软件系统中的"architectural gravity"和文献计量学的 PageRank/h-index，但有一个关键的前瞻维度：F(i) 测的是"若现在删除会破多少"，**不是**过去被引用多少[^src4]。这意味着一个刚集成进来、引用还不多但已是当前工作上下文承重的条目，也会被保护——纯回溯度量会低估这一点。
 
 ## 已知失效模式与 AUDIT 兜底
 
-**一个在被识别为错误之前已经成为承重的错误条目，会受到更多保护而非更少。** 论文不掩饰这一点：唯一防御是 AUDIT 的反事实悬挂——若高 gravity 条目在多轮 AUDIT 中持续与坏结果相关，走 §5.8 的 gravity-reduction 通路剥离保护（**不是改 gravity 公式本身**）。这只在 AUDIT 灵敏度足够时奏效，AUDIT 灵敏度是 §9 的开放问题。
-
-## References
-
-- 第 1385–1525 行：§5.6 Memory gravity 全章——base/eff、四性质、三力分离、PageRank/h-index 比较、已知失效模式。
-- 第 1928–1942 行：§7.5 DECAY MUST NOT 与 gravity-protection floor 的 G^base 条款。
-- 来源：`data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt`。
+**一个在被识别为错误之前已经成为承重的错误条目，会受到更多保护而非更少。** 论文不掩饰这一点：唯一防御是 AUDIT 的反事实悬挂——若高 gravity 条目在多轮 AUDIT 中持续与坏结果相关，走 §5.8 的 gravity-reduction 通路剥离保护（**不是改 gravity 公式本身**）[^v3-3]。这只在 AUDIT 灵敏度足够时奏效，AUDIT 灵敏度是 §9 的开放问题。少数派 buffer 压力 promotion 是与之互补的另一通道[^v3-4]。
 
 ## Footnotes
 
-[^1]: Absolute Incumbency Trap 的安全属性原文（第 1432–1444 行）："Sub-linear growth is a safety property, not an optimization. It complements property 4 by constraining the *shape* of gravity's response to increasing incumbency, not merely the range of gravity values."
-
-[^2]: 三力分立的硬承诺原文（第 1478–1491 行）："Folding utility into effective gravity would collapse two distinct mechanisms into one and would change the framework's compensate story; the three forces remain distinct."
-
-[^3]: F(i) 前瞻性原文（第 1519–1527 行）："Memory gravity differs on a prospective dimension that bibliometrics does not address: F(i) measures what would break if the entry were removed now, not what has historically referenced it."
+[^src1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1385–1525 行（§5.6 Memory gravity 全章）+ 第 1928–1942 行（§7.5 DECAY MUST NOT 与 gravity-protection floor 的 G^base 条款）— base/eff、四性质、三力分离、PageRank/h-index 比较、已知失效模式。
+[^src2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1432–1444 行 — "Sub-linear growth is a safety property, not an optimization. It complements property 4 by constraining the *shape* of gravity's response to increasing incumbency, not merely the range of gravity values."
+[^src3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1478–1491 行 — "Folding utility into effective gravity would collapse two distinct mechanisms into one and would change the framework's compensate story; the three forces remain distinct."
+[^src4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` — 第 1519–1527 行 — "Memory gravity differs on a prospective dimension that bibliometrics does not address: F(i) measures what would break if the entry were removed now, not what has historically referenced it."
+[^v3-1]: [memory-as-metabolism-mirror-vs-compensate](memory-as-metabolism-mirror-vs-compensate.md) — gravity 在 mirror 一侧的角色定位。
+[^v3-2]: [memory-as-metabolism-five-operations](memory-as-metabolism-five-operations.md) — vitality 公式与 DECAY 操作。
+[^v3-3]: [audit-by-suspension-against-entrenchment](audit-by-suspension-against-entrenchment.md) — AUDIT 反事实悬挂是 gravity-reduction 的唯一通路。
+[^v3-4]: [minority-pressure-promotion](minority-pressure-promotion.md) — 与 AUDIT 互补的少数派 buffer 压力翻盘通道。
