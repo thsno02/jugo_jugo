@@ -5,7 +5,7 @@ status: accepted
 card_type: example_pattern
 tags: [#ragas, #wikieval, #benchmark, #evaluation-data]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T16:15:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ragas]
 provenance_card: ../provenance/ragas-wikieval-dataset.md
