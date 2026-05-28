@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#llm-wiki, #lint, #grounding, #karpathy, #wiki-health]
 created_time: 2026-05-26T11:40:00+08:00
-edited_time: 2026-05-27T10:14:00+08:00
+edited_time: 2026-05-28T11:38:00+08:00
 edited_entity: llm
 source_ids: [clawhub-llm-wiki-karpathy]
 provenance_card: ../provenance/llm-wiki-karpathy-lint-grounding-trail.md
