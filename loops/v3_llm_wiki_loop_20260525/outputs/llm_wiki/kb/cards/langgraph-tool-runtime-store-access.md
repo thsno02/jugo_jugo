@@ -69,7 +69,7 @@ agent 被指示更新 user 信息时，会自动调用这个工具——LLM 决�
 
 ## 与 model 解耦
 
-文档展示了同一段工具代码在 Google / OpenAI / Anthropic / OpenRouter / Fireworks / Baseten / Ollama 多种模型下都可用（页面以选项卡形式列出）——`create_agent` 的 `model` 参数只换字符串，工具与 store 调用代码不变。这是 LangGraph 把记忆 API **从模型 vendor 解耦**的具体体现。
+文档展示了同一段工具代码在 Google / OpenAI / Anthropic / OpenRouter / Fireworks / Baseten / Ollama 多种模型下都可用（页面以选项卡形式列出）——`create_agent` 的 `model` 参数只换字符串，工具与 store 调用代码不变 [^src3]。这是 LangGraph 把记忆 API **从模型 vendor 解耦**的具体体现。
 
 ## 局限
 
