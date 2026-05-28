@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [aillm-wiki-directory]
 provenance_card: ../provenance/aillm-wiki-schema-as-bottleneck.md
 aliases: ["LLM Wiki 3-step build", "schema picking"]
-related: [aillm-wiki-four-defining-properties, llm-wiki-schema-is-most-important, robin-cartier-schema-as-product-doc, llm-wiki-mcp-design-boundary-mechanics-not-content, karpathy-gist-three-layers, agents-md-as-schema-layer]
+related: [agents-md-as-schema-layer]
 ---
 
 aillm.wiki 把搭建 LLM Wiki 简化为三步：
