@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [openaitoolshub-six-months]
 provenance_card: ../provenance/llm-wiki-tldr-load-bearing.md
 aliases: [TL;DR enforcement, 50-char TL;DR, context window saving]
-related: [karpathy-llm-wiki-three-layers, llm-wiki-schema-is-most-important, llm-wiki-contradictions-are-assets, llm-wiki-rohit-v2-improvements, robin-cartier-scale-ceiling]
+related: [llm-wiki-schema-is-most-important]
 ---
 
 ## 主张
