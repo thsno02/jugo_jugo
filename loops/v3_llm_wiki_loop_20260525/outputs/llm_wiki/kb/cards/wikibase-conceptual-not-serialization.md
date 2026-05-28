@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#wikibase, #specification, #data-modeling]
 created_time: 2026-05-26T15:30:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T12:05:00+08:00
 edited_entity: llm
 source_ids: [wikibase-data-model]
 provenance_card: ../provenance/wikibase-conceptual-not-serialization.md
