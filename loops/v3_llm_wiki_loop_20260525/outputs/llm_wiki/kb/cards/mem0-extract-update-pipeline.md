@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#memory, #llm-agent, #mem0, #incremental-pipeline]
 created_time: 2026-05-26T11:30:00+08:00
-edited_time: 2026-05-27T11:49:00+08:00
+edited_time: 2026-05-28T10:46:00+08:00
 edited_entity: llm
 source_ids: [arxiv-mem0]
 provenance_card: ../provenance/mem0-extract-update-pipeline.md
