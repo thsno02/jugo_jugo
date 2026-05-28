@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [obsidian-community-plugin]
 provenance_card: ../provenance/karpathy-llm-wiki-obsidian-plugin-overview.md
 aliases: [Karpathy LLM Wiki Obsidian Plugin, karpathywiki, Greener-Dalii plugin]
-related: [karpathy-wiki-full-context-vs-rag, karpathy-wiki-aliases-and-dedup, karpathy-wiki-extraction-granularity, anthemcreation-llm-wiki-setup-cost-envelope, my-llm-wiki-three-layer-implementation, beyond-the-token-bottleneck-llm-wiki-case-study, llm-wiki-karpathy-runtime-vs-agent-split]
+related: [karpathy-wiki-full-context-vs-rag, karpathy-wiki-aliases-and-dedup]
 ---
 
 ## 这是什么
