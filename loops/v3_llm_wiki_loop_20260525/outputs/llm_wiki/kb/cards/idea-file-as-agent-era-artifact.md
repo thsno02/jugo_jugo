@@ -23,12 +23,10 @@ Karpathy 提出[^src1]：在 LLM 智能体时代，"构建者真正需要分发�
 - 想法的杠杆率高于代码，因为构建成本已经塌缩到几乎为零；
 - "刻意欠规格化"反而是优点：它为个性化留出空间，避免被作者的栈锁死。
 
-边界澄清：idea file 既不是 README，也不是设计文档。README 记录的是某个已存在的构建；设计文档记录的是团队的决策与约束；而 idea file 是一颗"等待被别人的智能体重新长出来"的种子。把它当成 spec（"必须严格按 X 实现"）会消除掉它价值的来源。
-
-## References
-
-- Karpathy 关于 "idea file" 框架的发布推文（`data/raw/webpage/karpathy-x-launch-post/text.txt`，JSON 指针 `$.tweet.text`）。
+边界澄清：idea file 既不是 README，也不是设计文档。README 记录的是某个已存在的构建；设计文档记录的是团队的决策与约束；而 idea file 是一颗"等待被别人的智能体重新长出来"的种子。把它当成 spec（"必须严格按 X 实现"）会消除掉它价值的来源。这与"把查询输出回写进 wiki 形成复利"[^v3-1]共享同一种 agent-era 物件观——artifact 是被消费 + 被再生产的对象，不是静态终态。
 
 ## Footnotes
 
-- `data/raw/webpage/karpathy-x-launch-post/text.txt` — JSON 指针 `$.tweet.text`（`"in this era of LLM agents, there is less of a point/need of sharing the specific code/app, you just share the idea, then the other person's agent customizes & builds it for your specific needs"`）。
+[^src1]: `data/raw/webpage/karpathy-x-launch-post/text.txt` — JSON 指针 `$.tweet.text` — "in this era of LLM agents, there is less of a point/need of sharing the specific code/app, you just share the idea, then the other person's agent customizes & builds it for your specific needs"
+[^v3-1]: [file-outputs-back-as-compounding-loop](file-outputs-back-as-compounding-loop.md) — 与 idea file 共享同一种"agent-era artifact"物件观——artifact 被消费同时被再生产。
+[^v2-1]: v2 anchor [idea-file-abstract-vague](../../../../../v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/idea-file-abstract-vague.md) — 本卡是该卡的 delta：把"idea file 故意抽象"这个观察升级为"agent 时代分发载体"的正面理论框架，并补出 README / 设计文档的边界对比。
