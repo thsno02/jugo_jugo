@@ -38,7 +38,7 @@ WiCER 论文 Appendix B 给出了"cached knowledge base QA"工作负载的跨硬
 
 - **静态张量形状**：Neuron compilation 要求固定 seq length，可变长输入需要 padding 或多 buckets，浪费算力；
 - **无 KV 量化**：所有 KV 走 FP16/BF16，需 2× Q8 / 4× Q4 显存；
-- **吞吐导向硬件**：擅长高 batch、固定长度（embedding/classification），单用户、可变长、长上下文 QA 利用率低。
+- **吞吐导向硬件**：擅长高 batch、固定长度（embedding/classification），单用户、可变长、长上下文 QA 利用率低[^src4]。
 - 单卡 32GB HBM 在 67K context + Llama 3.1 8B 下需要 ~4.5 GB KV cache，>128K 要 inf2.24xlarge (~\$12/hr) 多卡 TP。
 
 ## 部署建议（原文 §B summary）
