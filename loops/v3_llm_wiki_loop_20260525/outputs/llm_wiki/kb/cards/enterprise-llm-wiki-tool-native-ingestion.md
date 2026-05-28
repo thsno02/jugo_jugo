@@ -37,16 +37,10 @@ Karpathy 个人 LLM Wiki 之所以能跑通，关键之一是 `raw/` 目录由�
 - 不是所有工具都同等重要：文章特别点名 GitHub / Slack / Linear / Granola / Google Drive 为"工作实际发生的地方"，这一清单反映文章作者对工程组织的偏置；非工程团队（销售、客服）的工具栈不同。
 - ingestion 连接器越多，跨工具实体解析（同一服务 / 同一团队 / 同一项目在不同工具的不同名字）压力越大。这一压力推动 link 属性从"vault 内反向链接"升级为"跨工具知识图谱"。
 
-## References
-
-- "Capture: the source folder doesn't exist at company scale"：`data/raw/webpage/falconer-enterprise-guide/text.txt` L46–52。
-- "tool-native ingestion rather than curated folder import"：同文件 L78–80。
-- 落地流程 Step 1 + Step 4 + Step 5：同文件 L100–122。
-- 既有 doc 作为 baseline：同文件 L152–155（FAQ）。
-
 ## Footnotes
 
-- `data/raw/webpage/falconer-enterprise-guide/text.txt` L52：`"For an enterprise LLM wiki to capture what the company knows, it has to ingest from where the knowledge actually lives rather than from a curated folder a single person maintains."`
-- 同文件 L80：`"There's no raw/ folder for someone to populate; the tools themselves are the raw layer, and the ingestion runs continuously rather than on the schedule of whoever happens to be saving sources."`
-- 同文件 L106：`"The goal is full coverage, because partial coverage produces a partial graph."`
-- 同文件 L152-154：`"The system ingests existing wikis (Notion, Confluence, internal markdown) as additional sources... Teams don't have to clean up their existing docs first; the system uses the cleanup as part of the baseline."`
+[^src1]: `data/raw/webpage/falconer-enterprise-guide/text.txt` L52 — "For an enterprise LLM wiki to capture what the company knows, it has to ingest from where the knowledge actually lives rather than from a curated folder a single person maintains."
+[^src2]: 同文件 L80 — "There's no raw/ folder for someone to populate; the tools themselves are the raw layer, and the ingestion runs continuously rather than on the schedule of whoever happens to be saving sources."
+[^src3]: 同文件 L106 — "The goal is full coverage, because partial coverage produces a partial graph."
+[^src4]: 同文件 L152-154 — "The system ingests existing wikis (Notion, Confluence, internal markdown) as additional sources... Teams don't have to clean up their existing docs first; the system uses the cleanup as part of the baseline."
+[^v3-1]: [enterprise-llm-wiki-drift-detection-loop](enterprise-llm-wiki-drift-detection-loop.md) — "持续触发 + drift detection + 起草更新" 的展开。
