@@ -15,13 +15,13 @@ related: [my-llm-wiki-supported-source-types, karpathy-llm-wiki-source-executabl
 
 ## 这个包做了什么
 
-`my-llm-wiki`（PyPI 0.9.0，2026-04-28，作者 phuc-nt，MIT）是 Karpathy 4 月发布的 "LLM Wiki" 概念的开源 CLI 实现。它复现了 Karpathy 描述的三层结构：
+`my-llm-wiki`（PyPI 0.9.0，2026-04-28，作者 phuc-nt，MIT） [^src3] 是 Karpathy 4 月发布的 "LLM Wiki" 概念的开源 CLI 实现。它复现了 Karpathy 描述的三层结构 [^src1][^v3-1]：
 
 1. **不可变的原始文件**（raw files）——用户放进的源文件夹，工具从不修改。
 2. **编译后的 wiki**（compiled wiki）——输出到 `wiki-out/vault/`，是一个**可直接用 Obsidian 打开的 vault**，含交叉引用 `[[wikilinks]]`。
 3. **schema / instruction**——告诉 LLM 如何维护这个 wiki。
 
-用法极简：`pip install my-llm-wiki` → `cd your-project && llm-wiki .`。重跑时用 SHA256 缓存跳过未变文件，因此可以增量编译。
+用法极简：`pip install my-llm-wiki` → `cd your-project && llm-wiki .` [^src2]。重跑时用 SHA256 缓存跳过未变文件，因此可以增量编译。
 
 ## 设计中值得抓住的两点
 
