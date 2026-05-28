@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-lightmem]
 provenance_card: ../provenance/lightmem-sleep-time-offline-parallel-update.md
 aliases: ["Light3 sleep-time update", "LightMem soft update"]
-related: [lightmem-three-stage-atkinson-shiffrin, lightmem-complexity-formula, lightmem-light2-topic-aware-stm, memory-as-metabolism-five-operations, mem0-tool-call-add-update-delete-noop, zep-bi-temporal-edges]
+related: [mem0-tool-call-add-update-delete-noop, zep-bi-temporal-edges, memory-as-metabolism-five-operations]
 ---
 
 LightMem 把 LTM 维护问题拆成 *online soft update* 和 *offline parallel update* 两步[^src1]。这是它"online cost 几乎只剩插入 + 检索"的核心来源，也是它能 outperform Mem0/MemoryOS/A-MEM 这类把 update 留在 online 的系统的工程关键。其中 Mem0 的 add/update/delete/noop 四元组就是典型的 online-update 设计参照[^v3-1]。
