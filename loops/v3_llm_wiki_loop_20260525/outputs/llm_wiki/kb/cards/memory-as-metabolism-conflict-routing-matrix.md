@@ -27,13 +27,13 @@ Miteski (2026) §5.0 给出一张 7 行冲突路由矩阵[^src1]，把"mirror vs
 
 ## 7 行（按论文表序）
 
-1. **用户词汇与 ontology 偏离 + 无效用退化** → Mirror in interaction，**不**改 canonical wiki；保留 divergence marker 供下次 CONSOLIDATE 审。
+1. **用户词汇与 ontology 偏离 + 无效用退化** → Mirror in interaction，**不**改 canonical wiki；保留 divergence marker 供下次 CONSOLIDATE 审[^v3-2]。
 2. **同上但效用在多周期内退化** → Compensate（utility 退化是 operational→epistemic 桥）。
-3. **用户反复强化 + 外部安全/认知信号判定有害 + 但用户报满意** → **Compensate regardless of utility**；AUDIT priority queue；最高 friction；强化条目标记 stress-test。**Row 3 是 sycophancy 失败模式的显式拦截**——"some reinforcement patterns must be resisted regardless of user-reported utility"。
-4. **新证据与高 gravity 条目矛盾、单源单周期** → **默认 Buffer**（进 minority branch）。**Exception**：实现可定义 high-trust source class 接受 elevated initial weight；框架不锁死 trust model，但**路由规则不可禁掉这个 exception**。
-5. **新证据与高 gravity 条目矛盾、多源多周期累积** → Compensate；CONSOLIDATE 评估 promotion；累积 buffer pressure > 现任 effective gravity 时整合（这是 Prediction 4 的 canonical case）。
-6. **高 gravity 条目在多个 AUDIT 周期重复与坏结果相关** → **AUDIT override**；不论 centrality 大小，走 §5.8 gravity-reduction 通路；条目通过 AUDIT 通道而**不是** CONSOLIDATE 通道失去保护。
-7. **底模更新引入与高 gravity 条目矛盾的新先验** → **External correction channel**；下一轮 post-update CONSOLIDATE 评审；**此行结构性依赖 §8.3 separability**——若 wiki 被折进权重，该行无法实施。
+3. **用户反复强化 + 外部安全/认知信号判定有害 + 但用户报满意** → **Compensate regardless of utility**；AUDIT priority queue；最高 friction；强化条目标记 stress-test。**Row 3 是 sycophancy 失败模式的显式拦截**——"some reinforcement patterns must be resisted regardless of user-reported utility"[^src3]。
+4. **新证据与高 gravity 条目矛盾、单源单周期** → **默认 Buffer**（进 minority branch）[^v3-3]。**Exception**：实现可定义 high-trust source class 接受 elevated initial weight；框架不锁死 trust model，但**路由规则不可禁掉这个 exception**。
+5. **新证据与高 gravity 条目矛盾、多源多周期累积** → Compensate；CONSOLIDATE 评估 promotion；累积 buffer pressure > 现任 effective gravity 时整合（这是 Prediction 4 的 canonical case）[^v3-3]。
+6. **高 gravity 条目在多个 AUDIT 周期重复与坏结果相关** → **AUDIT override**；不论 centrality 大小，走 §5.8 gravity-reduction 通路；条目通过 AUDIT 通道而**不是** CONSOLIDATE 通道失去保护[^v3-4]。
+7. **底模更新引入与高 gravity 条目矛盾的新先验** → **External correction channel**；下一轮 post-update CONSOLIDATE 评审；**此行结构性依赖 §8.3 separability**[^v3-5]——若 wiki 被折进权重，该行无法实施[^src4]。
 
 ## 两条边界（论文显式承认）
 
