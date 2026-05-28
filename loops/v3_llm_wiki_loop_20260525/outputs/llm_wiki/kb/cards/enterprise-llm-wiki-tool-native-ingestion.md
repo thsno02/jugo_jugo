@@ -20,10 +20,10 @@ Karpathy 个人 LLM Wiki 之所以能跑通，关键之一是 `raw/` 目录由�
 
 转换的具体规则：
 
-1. **没有 raw/ 目录**：如果系统设计里仍然存在一个"谁来填这个目录"的角色，企业落地就会复刻"原 wiki 没人更"的失败。
-2. **连接性优先于覆盖深度**："The goal is full coverage, because partial coverage produces a partial graph." 半覆盖会让知识图谱出现盲区，agent / 人在查询时拿到自信但错误的答案。
-3. **既有文档作为补充输入，而非清洗前提**："Teams don't have to clean up their existing docs first; the system uses the cleanup as part of the baseline."——把现存 Confluence/Notion 当 source 喂入，让系统在 ingest 过程中识别"哪些是 current / stale / canonical"。
-4. **ingestion 必须持续运行**，不能"按 curator 的节奏"——每次 PR merge、Slack 线程结题、决策落地，都触发系统去识别哪些既有文档受影响并起草更新。
+1. **没有 raw/ 目录**[^src2]：如果系统设计里仍然存在一个"谁来填这个目录"的角色，企业落地就会复刻"原 wiki 没人更"的失败。
+2. **连接性优先于覆盖深度**："The goal is full coverage, because partial coverage produces a partial graph."[^src3] 半覆盖会让知识图谱出现盲区，agent / 人在查询时拿到自信但错误的答案。
+3. **既有文档作为补充输入，而非清洗前提**："Teams don't have to clean up their existing docs first; the system uses the cleanup as part of the baseline."[^src4]——把现存 Confluence/Notion 当 source 喂入，让系统在 ingest 过程中识别"哪些是 current / stale / canonical"。
+4. **ingestion 必须持续运行**，不能"按 curator 的节奏"——每次 PR merge、Slack 线程结题、决策落地，都触发系统去识别哪些既有文档受影响并起草更新[^v3-1]。
 
 为什么这条规则成立：
 
