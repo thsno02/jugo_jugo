@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#rag, #evaluation, #ragchecker, #claim, #entailment]
 created_time: 2026-05-26T11:20:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T16:30:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ragchecker]
 provenance_card: ../provenance/ragchecker-claim-entailment-decomposition.md
