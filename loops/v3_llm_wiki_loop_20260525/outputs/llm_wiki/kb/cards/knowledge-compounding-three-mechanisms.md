@@ -15,7 +15,7 @@ related: [knowledge-compounding-dynamic-roi, knowledge-compounding-tokens-as-cap
 
 ## 三个机制（不要混淆其分工）
 
-Wen 与 Ku（2026）将"复利效应"分解为三条互相独立、可单独验证的微观机制：
+Wen 与 Ku（2026）将"复利效应"分解为三条互相独立、可单独验证的微观机制[^src1]：
 
 1. **INGEST 一次摊销到 N 次检索**：一份原始文档被读入并写成 wiki 页只发生一次，后续 N 次同领域 query 不必再触碰原文；INGEST 的 token 成本被摊到 N 上。
 2. **高价值答案的自反馈（auto-feedback）**：query 阶段产生的高质量回答会被反写到对应主题的"综合页"（synthesis page），形成新的可复用片段。
@@ -30,20 +30,18 @@ Wen 与 Ku（2026）将"复利效应"分解为三条互相独立、可单独验�
 
 ## 操作含义
 
-- 一个只实现 (i) 的系统等价于"缓存了 chunk"，复利效应非常有限。
-- 实现 (i)+(ii) 是 Karpathy LLM Wiki gist 的原始形态。
-- (iii) 是工程性扩展，需要 agent 有"主动写回外部命中"的策略；如果只把外部命中放进上下文用一次就丢，第 (iii) 项不生效。
+- 一个只实现 (i) 的系统等价于"缓存了 chunk"，复利效应非常有限。它驱动的成本曲线 Cost(t) 与覆盖率 H(t) 之间的耦合是动态 ROI 模型的核心[^v3-1]。
+- 实现 (i)+(ii) 是 Karpathy LLM Wiki gist 的原始形态，也是把 file 输出反送回循环的最小闭环[^v3-2]。
+- (iii) 是工程性扩展，需要 agent 有"主动写回外部命中"的策略；如果只把外部命中放进上下文用一次就丢，第 (iii) 项不生效。论文同时给出 ~200 行 C# 的"工业级 reference 实现"作为可复现的最小骨架[^src2]。
 
 ## 边界
 
 - 三机制都依赖 wiki 的"可寻址性"：如果 synthesis page / entity page 没有稳定 slug 或没有进入索引，回写无法被下次检索召回，复利失效。
 - 在主题极度分散的工作流中（每个 query 都跳新主题），(ii) 和 (iii) 的命中率接近零，节省主要来自 (i) 的有限部分。
 
-## References
-
-- 三机制原文：`data/raw/arxiv/arxiv-knowledge-compounding/text.txt:37`，列出 "(i) one-time INGEST amortized over N retrievals, (ii) auto-feedback of high-value answers into synthesis pages, and (iii) write-back of external search results into entity pages"。
-
 ## Footnotes
 
-- 原文引语：`data/raw/arxiv/arxiv-knowledge-compounding/text.txt:37` —— "We further identify three microeconomic mechanisms underlying the compounding effect: (i) one-time INGEST amortized over N retrievals, (ii) auto-feedback of high-value answers into synthesis pages, and (iii) write-back of external search results into entity pages."
-- 论文同时给出 ~200 行 C# 的"工业级 reference 实现"声明：`text.txt:37` —— "a minimal reproducible implementation in approximately 200 lines of C#, which we believe is the first complete industrial-grade reference implementation of Karpathy's (2026) LLM Wiki paradigm"。
+[^src1]: `data/raw/arxiv/arxiv-knowledge-compounding/text.txt` — 第 37 行 — "We further identify three microeconomic mechanisms underlying the compounding effect: (i) one-time INGEST amortized over N retrievals, (ii) auto-feedback of high-value answers into synthesis pages, and (iii) write-back of external search results into entity pages."
+[^src2]: `data/raw/arxiv/arxiv-knowledge-compounding/text.txt` — 第 37 行 — "a minimal reproducible implementation in approximately 200 lines of C#, which we believe is the first complete industrial-grade reference implementation of Karpathy's (2026) LLM Wiki paradigm"。
+[^v3-1]: [knowledge-compounding-dynamic-roi](knowledge-compounding-dynamic-roi.md) — 三机制是动态 ROI 的"为什么 Cost(t) 会下降"的微观解释。
+[^v3-2]: [file-outputs-back-as-compounding-loop](file-outputs-back-as-compounding-loop.md) — (i)+(ii) 在 Karpathy 原始 gist 中已具备的最小复利闭环。
