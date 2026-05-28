@@ -33,7 +33,7 @@ related: [karpathy-llm-kb-three-layer-arch, llm-knowledge-base-five-stage-workfl
 
 边界与误读：
 
-- Karpathy 自评 "intentionally kept a little bit abstract/vague because there are so many directions to take this in"，三操作并非穷举；未来很可能扩展出"diff / publish / sync"等操作。
+- Karpathy 自评 "intentionally kept a little bit abstract/vague because there are so many directions to take this in"[^src4]，三操作并非穷举；未来很可能扩展出"diff / publish / sync"等操作。
 - "Ingest 解决矛盾"在小规模下可行，到一定规模 LLM 自身可能成为不一致来源；引用时不宜把这句当成保证。
 - "Lint 让 LLM 处理人觉得无聊的事"是设计哲学，不是工程保证——Lint 本身需要被 audit。
 
