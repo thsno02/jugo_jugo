@@ -59,7 +59,7 @@ def save_user_info(user_info: UserInfo, runtime: ToolRuntime[Context]) -> str:
     return "Successfully saved user info."
 ```
 
-agent 被指示更新 user 信息时，会自动调用这个工具——LLM 决定**何时**写、写**什么**，工具只负责把决定落库。
+agent 被指示更新 user 信息时，会自动调用这个工具——LLM 决定**何时**写、写**什么**，工具只负责把决定落库 [^src2]。
 
 ## 关键设计选择
 
