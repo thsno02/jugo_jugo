@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [owasp-llm-top10-2025]
 provenance_card: ../provenance/owasp-genai-landscape-2026q2.md
 aliases: ["AI Security Solutions Landscape Q2 2026", "OWASP GenAI Landscape"]
-related: [owasp-llm-top10-community-genealogy, owasp-agentic-top10-2026-positioning, owasp-agentic-vs-llm-top10-2025, microsoft-agent-governance-standards-alignment, nist-ai-rmf-gai-profile]
+related: [owasp-llm-top10-community-genealogy, owasp-agentic-vs-llm-top10-2025, microsoft-agent-governance-standards-alignment]
 ---
 
 OWASP 在 2026 年 3 月 17 日 与 4 月 9 日 集中发布三份 *AI Security Solutions Landscape Q2 2026*：
