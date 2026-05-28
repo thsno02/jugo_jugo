@@ -13,10 +13,10 @@ aliases: ["representation-first ingest", ".llm-kb/representations/"]
 related: [llm-wiki-karpathy-runtime-vs-agent-split, llm-wiki-karpathy-lint-grounding-trail, my-llm-wiki-supported-source-types, enterprise-llm-wiki-tool-native-ingestion, karpathy-wiki-extraction-granularity]
 ---
 
-`@harrylabs/llm-wiki-karpathy` v0.4.4 把 ingest 路径分成两条：
+`@harrylabs/llm-wiki-karpathy` v0.4.4[^v3-1] 把 ingest 路径分成两条[^src1]：
 
 - **文本与结构化数据**（`.md`、`.txt`、`.csv`、`.tsv`、`.json`、`.html`）走"直接编译"路径：`kb_prepare_source` + `kb_read_raw` 直接从 raw/ 拉内容编译出 source note。
-- **PDF 与图片**（`.png`、`.jpg`、`.jpeg`、`.webp`、`.gif`、`.svg`）走 **representation-first** 路径。这条路径的关键是 runtime 不做 OCR / vision，而是给 agent 一个"存放中间产物"的规范位置。
+- **PDF 与图片**（`.png`、`.jpg`、`.jpeg`、`.webp`、`.gif`、`.svg`）走 **representation-first** 路径[^src2]。这条路径的关键是 runtime 不做 OCR / vision，而是给 agent 一个"存放中间产物"的规范位置。
 
 representation-first 的标准步骤：
 
