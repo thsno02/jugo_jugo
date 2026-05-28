@@ -31,9 +31,9 @@ CompleteTech LLC 把 Karpathy 的 LLM Wiki 模式应用到一个真实研究前�
 
 **核心循环——ingest 一篇论文的副作用：**
 
-> "A new paper drops into raw/pdf/ ; the LLM reads it and writes a source summary against the schema; entities and concepts get extracted and given their own pages or extended on existing ones; cross-references get threaded through every page that mentions the new work; Maps of Content get updated so the new piece sits in a guided reading path, not just an orphan node. One paper, ten to fifteen page touches, hundreds of new and updated links."
+> "A new paper drops into raw/pdf/ ; the LLM reads it and writes a source summary against the schema; entities and concepts get extracted and given their own pages or extended on existing ones; cross-references get threaded through every page that mentions the new work; Maps of Content get updated so the new piece sits in a guided reading path, not just an orphan node. One paper, ten to fifteen page touches, hundreds of new and updated links."[^src3]
 
-也就是说：**一篇新论文 ≈ 10–15 页 touches、数百条新增 / 更新 link**——这就是 Karpathy 所说的"bookkeeping"被实际数字化后是什么样。
+也就是说：**一篇新论文 ≈ 10–15 页 touches、数百条新增 / 更新 link**——这就是 Karpathy 所说的"bookkeeping"被实际数字化后[^v3-2]是什么样。
 
 **作者总结的"做这件事的三个理由"：**
 
