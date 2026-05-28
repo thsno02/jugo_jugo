@@ -27,11 +27,11 @@ Karpathy 在 gist 的 "Why this works" 段给出 LLM Wiki 模式有效性的核�
 **LLM 改变了什么**：
 - LLM 不会无聊、不会忘记一个交叉引用、单次 ingest 可以触 15 个文件；
 - "The wiki stays maintained because the cost of maintenance is near zero."
-- 人只需要做仍然只有人能做的事：**选源、定向探究、提好问题、思考含义**。
+- 人只需要做仍然只有人能做的事：**选源、定向探究、提好问题、思考含义**[^src2]。
 
 **这个论点的可操作含义**：
 - 评估一个 PKM 工具，看它是否把"bookkeeping → 零"作为设计目标。如果维护一张交叉引用页仍然要人手动操作，则它注定不可持续；
-- 这也解释了为何 wiki 模式的工作流必须**有 ingest/lint 这两个显式入口**：ingest 处理"新增带来的全量维护"，lint 处理"漂移带来的累积维护"。两个入口都把维护负担放在 LLM 身上；
+- 这也解释了为何 wiki 模式的工作流必须**有 ingest/lint 这两个显式入口**[^src4]：ingest 处理"新增带来的全量维护"，lint 处理"漂移带来的累积维护"。两个入口都把维护负担放在 LLM 身上；
 - 对人侧的最小操作分工：**人做不可替代的思考层**——curate sources, direct analysis, ask good questions, think about meaning。Karpathy 总结："The LLM's job is everything else."
 
 边界与误用：
