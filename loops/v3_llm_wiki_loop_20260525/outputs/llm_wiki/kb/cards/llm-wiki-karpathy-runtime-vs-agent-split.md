@@ -26,7 +26,7 @@ related: [llm-wiki-karpathy-multimodal-representation-path, llm-knowledge-base-f
 
 操作含义：
 
-- `kb_prepare_source_bundle` 是 runtime/agent 的关键握手点：对非文本资产（PDF、图片），runtime 一次性返回 raw metadata、reviewed asset refs、stored representations、compile_readiness 状态；agent 看到这些后才决定下一步生成什么 representation 或 source note。
+- `kb_prepare_source_bundle` 是 runtime/agent 的关键握手点[^src3]：对非文本资产（PDF、图片），runtime 一次性返回 raw metadata、reviewed asset refs、stored representations、compile_readiness 状态；agent 看到这些后才决定下一步生成什么 representation 或 source note[^v3-1]。
 - agent 不应该直接写 wiki/、不应该自己定 source id，否则会和 runtime 的 manifest 冲突——`kb_repair_source_ids` 提供逃生口但属补救手段。
 - `kb_map_gaps` / `kb_promote_gap` 让 agent 显式提出"我要补一张笔记"，runtime 决定如何落位。
 
