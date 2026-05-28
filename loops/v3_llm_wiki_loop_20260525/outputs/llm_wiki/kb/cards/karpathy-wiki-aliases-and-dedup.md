@@ -53,18 +53,9 @@ Lint 时分两轮判定候选：
 
 页面 FAQ 提示：从 < v1.7.11 升级时，**先 Regenerate index → Lint → Complete Aliases → Merge Duplicates** 才能享受 alias-aware 搜索；老版生成的页没补别名前，搜索 "DSA" 找不到 "DeepSeek-Sparse-Attention"。这意味着别名机制是**前置**的——索引和检索都依赖它工作。
 
-## References
-
-- 来源页面：`data/raw/webpage/obsidian-community-plugin/text.txt`。
-- 第 261–267 行：Mandatory Page Aliases、Duplicate Detection & Merge、Smart Knowledge Fusion 的特性段。
-- 第 215–229 行：从 < v1.7.11 升级的步骤。
-- 第 276–280 行：Semantic-Tier Duplicate Detection 的 Tier 1/Tier 2 细节。
-- 第 410–414 行：FAQ "Why does Lint show missing aliases"、"Why do I see duplicate pages like 'CoT' and '思维链'"、"How does duplicate detection work"。
-
 ## Footnotes
 
-[^1]: Mandatory aliases verbatim（第 262 行）："Every generated page includes at least 1 alias (translation, acronym, alternate name), enabling cross-language duplicate detection."
-
-[^2]: Tier 1/Tier 2 verbatim（第 277 行）："Tier 1 (direct name matches: cross-language, abbreviations, high-similarity titles) always verified; Tier 2 (indirect signals: shared links, moderate similarity) fills token budget."
-
-[^3]: 跨语言重复实例 verbatim（第 412 行）："Why do I see duplicate pages like 'CoT' and '思维链'? Pre-v1.7.10 versions lacked alias-aware duplicate detection. Run Lint Wiki → Merge Duplicates to fuse them."
+[^src1]: `data/raw/webpage/obsidian-community-plugin/text.txt` 第 262 行 — "Every generated page includes at least 1 alias (translation, acronym, alternate name), enabling cross-language duplicate detection."
+[^src2]: 同文件 第 277 行 — "Tier 1 (direct name matches: cross-language, abbreviations, high-similarity titles) always verified; Tier 2 (indirect signals: shared links, moderate similarity) fills token budget."
+[^src3]: 同文件 第 412 行 — "Why do I see duplicate pages like 'CoT' and '思维链'? Pre-v1.7.10 versions lacked alias-aware duplicate detection. Run Lint Wiki → Merge Duplicates to fuse them."
+[^v3-1]: [llm-wiki-contradictions-are-assets](llm-wiki-contradictions-are-assets.md) — "矛盾是资产 / minority retention" 立场，与本卡的 dedup 是正交坐标轴。
