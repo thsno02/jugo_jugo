@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#llm-wiki, #knowledge-compilation, #wicer, #empirical-result]
 created_time: 2026-05-26T15:00:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T11:55:00+08:00
 edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-recovery-distribution-exceeds-fc-raw.md
