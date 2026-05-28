@@ -25,10 +25,9 @@ Karpathy 把自己个人的"LLM 维护知识库"描述成五个先后衔接的�
 
 边界：这是单用户、研究规模的设计，不是团队或产品规范。Q&A 阶段不需要显式 RAG 的判断只在"this ~small scale"成立；至于真正大规模，作者本人指向"合成数据 + 微调"作为后续方向。
 
-## References
-
-- Karpathy 引用的 "LLM Knowledge Bases" 推文中按章节展开的描述（`data/raw/webpage/karpathy-x-launch-post/text.txt`，JSON 指针 `$.tweet.quote.text`）。
-
 ## Footnotes
 
-- `data/raw/webpage/karpathy-x-launch-post/text.txt` — JSON 指针 `$.tweet.quote.text`，章节 "Data ingest:"、"IDE:"、"Q&A:"、"Output:"、"Linting:"。
+[^src1]: `data/raw/webpage/karpathy-x-launch-post/text.txt` — JSON 指针 `$.tweet.quote.text`，章节 "Data ingest:"、"IDE:"、"Q&A:"、"Output:"、"Linting:" 给出五阶段定义。
+[^v3-1]: [obsidian-as-ide-llm-as-programmer](obsidian-as-ide-llm-as-programmer.md) — Obsidian 作为 IDE / LLM 作为程序员的展开。
+[^v3-2]: [auto-index-replaces-rag-at-small-scale](auto-index-replaces-rag-at-small-scale.md) — Q&A 阶段"小规模下索引替代 RAG"规则的本卡。
+[^v3-3]: [file-outputs-back-as-compounding-loop](file-outputs-back-as-compounding-loop.md) — Output 被回写形成复利循环的本卡。
