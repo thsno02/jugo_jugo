@@ -15,8 +15,8 @@ related: [llm-wiki-karpathy-multimodal-representation-path, llm-knowledge-base-f
 
 `@harrylabs/llm-wiki-karpathy`（v0.4.4）这个 plugin 把 LLM Wiki 工作流明确切成两层职责，是它和"一个 LLM 全做"型方案的关键差别：
 
-- **Runtime 拥有**："canonical paths / canonical IDs / validation / deterministic writes / manifest-backed representation tracking / generated wiki navigation"。也就是：路径、ID、模式校验、写入是确定性的，且导航是生成的而非人手写的。这意味着两次运行同一份输入，runtime 必须给同样的 wiki 结构。
-- **Agent 拥有**："summarization / OCR, vision, or profiling work performed outside the runtime / synthesis / deciding whether a result belongs in output, concept, entity, or synthesis / improving the wiki over time instead of leaving value trapped in chat"。也就是：内容侧理解、合成、判断"这是 output 笔记还是 concept 笔记"这类语义决策都留给 agent。
+- **Runtime 拥有**[^src1]："canonical paths / canonical IDs / validation / deterministic writes / manifest-backed representation tracking / generated wiki navigation"。也就是：路径、ID、模式校验、写入是确定性的，且导航是生成的而非人手写的。这意味着两次运行同一份输入，runtime 必须给同样的 wiki 结构。
+- **Agent 拥有**[^src2]："summarization / OCR, vision, or profiling work performed outside the runtime / synthesis / deciding whether a result belongs in output, concept, entity, or synthesis / improving the wiki over time instead of leaving value trapped in chat"。也就是：内容侧理解、合成、判断"这是 output 笔记还是 concept 笔记"这类语义决策都留给 agent。
 
 之所以这样切：
 
