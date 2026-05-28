@@ -15,13 +15,13 @@ related: [aillm-wiki-four-defining-properties, llm-wiki-schema-is-most-important
 
 aillm.wiki 把搭建 LLM Wiki 简化为三步：
 
-1. **Pick Your Schema**：从 5 个预置模板（general / research / engineering / product / SEO）选一个 `schema.md` + `CLAUDE.md` 组合，或自己写。
+1. **Pick Your Schema**：从 5 个预置模板（general / research / engineering / product / SEO）选一个 `schema.md` + `CLAUDE.md` 组合[^src2]，或自己写。
 2. **Drop in Your Sources**：把原始材料丢到 `raw/` 目录，让 Claude/Gemini 按 schema 编译成 `wiki/`。
-3. **Query & Compound**：提问、补源、修页面；新源会"波及"已有页面，wiki 一周比一周更聪明。
+3. **Query & Compound**：提问、补源、修页面；新源会"波及"已有页面[^src3]，wiki 一周比一周更聪明。
 
 这个流程表面上无差别，但站方明确提出一个值得记住的工程判断：
 
-> *"The hardest part is picking a schema that matches how you actually think — once that is locked in, every new source compiles itself in the same predictable shape."*
+> *"The hardest part is picking a schema that matches how you actually think — once that is locked in, every new source compiles itself in the same predictable shape."*[^src1]
 
 也就是说：**真正消耗时间的不是工具集成，不是模型选择，而是选/定义 schema**。原因可以拆成三层：
 
