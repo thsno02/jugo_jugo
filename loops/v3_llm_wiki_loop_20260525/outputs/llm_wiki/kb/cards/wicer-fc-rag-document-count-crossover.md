@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-wicer]
 provenance_card: ../provenance/wicer-fc-rag-document-count-crossover.md
 aliases: [FC vs RAG crossover, scalability gap, attention dilution crossover]
-related: [wicer-blind-compilation-catastrophic-loss, wicer-hardware-architecture-deployment, wicer-cegar-compile-evaluate-refine, graphrag-context-window-8k-optimal, locomo-long-context-adversarial-collapse, karpathy-wiki-full-context-vs-rag]
+related: [graphrag-context-window-8k-optimal, wicer-hardware-architecture-deployment, wicer-blind-compilation-catastrophic-loss, wicer-cegar-compile-evaluate-refine]
 ---
 
 WiCER 论文最值得收藏的"操作信号"不是 WiCER 本身，而是它先在两个语料上同时跑了 full-context（FC, 全文档塞进 KV cache）和 RAG（top-5 retrieval），观察到一个完整的"质量翻转"[^src1]：
