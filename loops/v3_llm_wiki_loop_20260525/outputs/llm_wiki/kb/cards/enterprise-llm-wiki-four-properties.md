@@ -23,7 +23,7 @@ Falconer 的企业级 LLM Wiki 指南把 Karpathy 个人 LLM Wiki 工作流抽�
 这四个属性的关键 insight：
 
 - **它们是必要而非充分集合**——任何企业 KB 缺其中一个就会塌掉。Confluence/Notion 的失败模式可以用这四个属性逐项归因（多数工具只命中 capture/link 两条）。
-- **个人到企业的核心断点是 stay-current**。Falconer 引用 Stack Overflow 2024 调研：60% 以上专业开发者每天花 30 分钟以上找解决方案，68% 每周至少撞一次知识孤岛，经理这一比例更升到 73%。这些数字直接量化了"stay current 缺位"的成本。
+- **个人到企业的核心断点是 stay-current**。Falconer 引用 Stack Overflow 2024 调研：60% 以上专业开发者每天花 30 分钟以上找解决方案，68% 每周至少撞一次知识孤岛，经理这一比例更升到 73%[^src2]。这些数字直接量化了"stay current 缺位"的成本。
 - **maintenance 必须从人移到系统**——Karpathy 之所以个人版能跑通，是因为 LLM 自动做了维护；企业版要把维护进一步从单个 LLM 调用移到"持续后台 + 路由到 doc owner 审阅"的循环里。
 
 边界 / 反例：
