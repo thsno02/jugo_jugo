@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#evaluation, #llm-as-judge, #benchmark, #sensemaking, #adaptive-benchmarking]
 created_time: 2026-05-26T11:03:00+08:00
-edited_time: 2026-05-27T10:01:00+08:00
+edited_time: 2026-05-28T11:00:00+08:00
 edited_entity: llm
 source_ids: [arxiv-graphrag]
 provenance_card: ../provenance/graphrag-adaptive-benchmark-via-personas.md
