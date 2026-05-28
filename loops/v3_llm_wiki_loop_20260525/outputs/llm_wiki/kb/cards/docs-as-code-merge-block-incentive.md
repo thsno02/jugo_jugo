@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#docs-as-code, #ci, #pull-request, #incentive, #process]
 created_time: 2026-05-26T11:16:00+08:00
-edited_time: 2026-05-27T14:42:00+08:00
+edited_time: 2026-05-28T12:35:00+08:00
 edited_entity: llm
 source_ids: [writethedocs-docs-as-code]
 provenance_card: ../provenance/docs-as-code-merge-block-incentive.md
