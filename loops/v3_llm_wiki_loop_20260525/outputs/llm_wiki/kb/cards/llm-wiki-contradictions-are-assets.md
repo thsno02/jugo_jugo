@@ -52,15 +52,11 @@ Jim 自己明确指出：**在 regulated 领域（legal / medical / financial ad
 
 - **schema.md 必须把 contradiction protocol 写死**：不允许 LLM 自由判断"这个矛盾应该覆盖"。
 - **lint pass 应**优先**列出 contradicts: 字段未解决的页对**，提供给用户做主动 review。
-- **任何 ingest 触发的 page 重写**都应留 git diff（呼应 `obsidian-as-ide-llm-as-programmer` 中"LLM 提交应可审计可撤回"）；保险起见，关键页可以 frontmatter `do-not-rewrite: true` 锁定。
-
-## References
-
-- 主张原文：`data/raw/webpage/openaitoolshub-six-months/text.txt:96`。
-- Pitfall #3 完整描述：`text.txt:96`。
-- Compliance 边界声明：`text.txt:136`。
+- **任何 ingest 触发的 page 重写**都应留 git diff（呼应 [obsidian-as-ide-llm-as-programmer](obsidian-as-ide-llm-as-programmer.md)[^v3-2] 中"LLM 提交应可审计可撤回"）；保险起见，关键页可以 frontmatter `do-not-rewrite: true` 锁定。
 
 ## Footnotes
 
-- 主张原文：`text.txt:96` —— "I overwrote a contradiction instead of marking it. I had an old wiki page claiming 'RAG is the right architecture for personal knowledge bases.' A new article I ingested said the opposite (LLM wiki replaces RAG). I let Claude rewrite the old page to match. Wrong move. Two months later I needed the old reasoning to argue with someone, and it was gone. Lesson: contradictions are assets, not errors. I now explicitly run contradicts: and keep both versions."
-- Compliance 边界原文：`text.txt:136` —— "You're in a regulated field (legal, medical, financial advisory). The contradictions-as-assets philosophy clashes with compliance requirements that demand single-source-of-truth."
+[^src1]: `data/raw/webpage/openaitoolshub-six-months/text.txt:96` — "I overwrote a contradiction instead of marking it. I had an old wiki page claiming 'RAG is the right architecture for personal knowledge bases.' A new article I ingested said the opposite (LLM wiki replaces RAG). I let Claude rewrite the old page to match. Wrong move. Two months later I needed the old reasoning to argue with someone, and it was gone. Lesson: contradictions are assets, not errors. I now explicitly run contradicts: and keep both versions."
+[^src2]: 同文件 `text.txt:136` — "You're in a regulated field (legal, medical, financial advisory). The contradictions-as-assets philosophy clashes with compliance requirements that demand single-source-of-truth."
+[^v3-1]: [llm-wiki-rohit-v2-improvements](llm-wiki-rohit-v2-improvements.md) — Rohit v2 三件事中的 Contradiction Protocol 来源卡。
+[^v3-2]: [obsidian-as-ide-llm-as-programmer](obsidian-as-ide-llm-as-programmer.md) — "LLM 提交应可审计可撤回" 类比的本卡。
