@@ -5,7 +5,7 @@ status: accepted
 card_type: source_claim
 tags: [#tree-sitter, #docling, #file-ingestion]
 created_time: 2026-05-26T14:50:00+08:00
-edited_time: 2026-05-27T15:04:00+08:00
+edited_time: 2026-05-28T14:25:00+08:00
 edited_entity: llm
 source_ids: [pypi-my-llm-wiki]
 provenance_card: ../provenance/my-llm-wiki-supported-source-types.md
