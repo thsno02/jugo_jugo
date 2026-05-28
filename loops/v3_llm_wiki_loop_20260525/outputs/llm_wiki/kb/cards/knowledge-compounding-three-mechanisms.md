@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-knowledge-compounding]
 provenance_card: ../provenance/knowledge-compounding-three-mechanisms.md
 aliases: [三机制, ingest 摊销, auto-feedback, write-back, 外部检索写回]
-related: [knowledge-compounding-dynamic-roi, knowledge-compounding-tokens-as-capital, file-outputs-back-as-compounding-loop, karpathy-llm-wiki-vs-rag, llm-knowledge-base-five-stage-workflow, mem0-extract-update-pipeline]
+related: [knowledge-compounding-dynamic-roi, file-outputs-back-as-compounding-loop]
 ---
 
 ## 三个机制（不要混淆其分工）
