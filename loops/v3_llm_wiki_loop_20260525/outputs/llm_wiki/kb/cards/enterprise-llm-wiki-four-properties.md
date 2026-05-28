@@ -30,7 +30,7 @@ Falconer 的企业级 LLM Wiki 指南把 Karpathy 个人 LLM Wiki 工作流抽�
 
 - 这套属性框架**不直接给出实现路径**。文章给出的实现建议（连接 GitHub / Slack / Linear / Granola；用 SSOT 指定 canonical doc；继续 ship；按周 review drift）是 Falconer 产品形态的展示，不能与四属性框架本身混为一谈。
 - 四属性属于"流程必要条件"，与具体工具栈、组织规模无关。给 1000 人公司用和给 10 人小队用都需要这四条同时成立。
-- 文章承认：retrieval 类工具（Glean / Notion AI / Confluence AI search）通常只命中 link 与查询体验，无法解决 stay-current；这是为什么"语义搜索 over 过期 KB"会更快得出错误答案。
+- 文章承认：retrieval 类工具（Glean / Notion AI / Confluence AI search）通常只命中 link 与查询体验，无法解决 stay-current；这是为什么"语义搜索 over 过期 KB"会更快得出错误答案[^v3-3]。
 
 ## References
 
