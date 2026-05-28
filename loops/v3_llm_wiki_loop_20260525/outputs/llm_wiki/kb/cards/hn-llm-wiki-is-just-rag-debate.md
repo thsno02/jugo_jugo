@@ -40,7 +40,7 @@ Karpathy 发布 LLM Wiki gist 后，HN 第一波热门评论是 `kenforthewin` �
 
 **误用提示：**
 
-- 把 LLM Wiki 当 RAG 实现时，容易忽略"write-loop 的循环不变量"——比如反向链接一致性、原始 raw 不可变性——这些不是 RAG retriever 评测会发现的问题；
+- 把 LLM Wiki 当 RAG 实现时，容易忽略"write-loop 的循环不变量"——比如反向链接一致性、原始 raw 不可变性[^v3-2]——这些不是 RAG retriever 评测会发现的问题；
 - 反过来，把它视为"超越 RAG"的新范式也会过度营销：实际上它仍要回答 retrieval 的核心问题，只不过用"自建索引 + 结构化 markdown"代替了 vector 查询。
 
 ## References
