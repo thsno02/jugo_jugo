@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#llm-wiki, #terminology, #misinterpretation, #rag, #karpathy]
 created_time: 2026-05-26T12:10:00+08:00
-edited_time: 2026-05-27T10:25:00+08:00
+edited_time: 2026-05-28T11:28:00+08:00
 edited_entity: llm
 source_ids: [kunal-local-knowledge-base]
 provenance_card: ../provenance/kunal-llm-c-rag-misinterpretation.md
