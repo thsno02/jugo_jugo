@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-zep]
 provenance_card: ../provenance/zep-graphiti-three-tier-graph.md
 aliases: [Graphiti 三层图, Zep episode/semantic/community 子图]
-related: [zep-bi-temporal-edges, zep-hybrid-search-rerank, zep-dmr-benchmark-critique, mem0-graph-memory-variant, graphrag-leiden-community-hierarchy]
+related: [mem0-graph-memory-variant, graphrag-leiden-community-hierarchy, zep-hybrid-search-rerank, zep-bi-temporal-edges]
 ---
 
 Zep 的核心组件 Graphiti 把 agent 记忆建模成一张分层时序知识图 $\mathcal{G}=(\mathcal{N}, \mathcal{E}, \phi)$[^src1]，并明确切成三层子图，每层承担不同抽象层级的责任：
