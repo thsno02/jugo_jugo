@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#rag, #evaluation, #ragchecker, #generator]
 created_time: 2026-05-26T11:25:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T16:25:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ragchecker]
 provenance_card: ../provenance/ragchecker-generator-trilemma.md
