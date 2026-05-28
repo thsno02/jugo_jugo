@@ -17,8 +17,8 @@ related: [llm-wiki-mcp-four-tools, llm-wiki-mcp-design-boundary-mechanics-not-co
 
 `llm-wiki-mcp` 给 Claude Code 用户提供两个互补的层：
 
-- **Tool 层（4 个 MCP tool）**：`wiki_read` / `wiki_write_page` / `wiki_log_append` / `wiki_inventory`，给 agent **能力**——能读写、能查整张图、能写日志。
-- **Skill 层（4 个 Claude Code skill）**：`wiki-init` / `wiki-ingest` / `wiki-query` / `wiki-lint`，给 agent **workflow**——告诉它每种意图下应该按什么顺序调哪些 tool、应该补哪些 bookkeeping。
+- **Tool 层（4 个 MCP tool）**：`wiki_read` / `wiki_write_page` / `wiki_log_append` / `wiki_inventory` [^v3-1]，给 agent **能力**——能读写、能查整张图、能写日志。
+- **Skill 层（4 个 Claude Code skill）**：`wiki-init` / `wiki-ingest` / `wiki-query` / `wiki-lint` [^src1]，给 agent **workflow**——告诉它每种意图下应该按什么顺序调哪些 tool、应该补哪些 bookkeeping。
 
 ## 四个 skill 对应的工作流
 
