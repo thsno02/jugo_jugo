@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memgpt]
 provenance_card: ../provenance/memgpt-dmr-task-evaluation.md
 aliases: [DMR task, deep memory retrieval, MSC session 6, MemGPT consistency benchmark]
-related: [memgpt-virtual-context-os-analogy, memgpt-main-vs-external-context, memgpt-docqa-pagination-failure-mode, zep-dmr-benchmark-critique, mem0-locomo-benchmark-evaluation]
+related: [mem0-answer-generation-prompt-design, zep-dmr-benchmark-critique, memgpt-main-vs-external-context]
 ---
 
 ## 任务设计
