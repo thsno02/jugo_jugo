@@ -83,19 +83,10 @@ schema/    # 📋 wiki 结构配置（命名、模板、分类）
 - 4 周内已发布 27 个版本，迭代节奏快；
 - 关键依赖：Anthropic SDK、OpenAI SDK、Obsidian Plugin API。
 
-## References
-
-- 来源页面：`data/raw/webpage/obsidian-community-plugin/text.txt`。
-- 第 80–115 行：概念与"LLM-Wiki 是什么"。
-- 第 196–212 行：命令面。
-- 第 376–390 行：三层架构与代码组织。
-- 第 343–370 行：模型选型表。
-- 第 256–305 行：知识质量与维护特性。
-
 ## Footnotes
 
-[^1]: 三层架构 verbatim（第 379 行）："sources/ # 📄 Your source documents (read-only) ↓ ingest wiki/ # 🧠 LLM-generated Wiki pages ↓ query / maintain schema/ # 📋 Wiki structure configuration (naming, templates, categories)"
-
-[^2]: 安全升级承诺 verbatim（第 449 行）："The plugin never modifies your source files. Backup wiki/ → update plugin → Regenerate index → Lint Wiki → fix selectively."
-
-[^3]: 矛盾状态机 verbatim（第 284 行）："Contradiction State Machine — detected → review_ok → resolved (AI fix) or detected → pending_fix (manual)"
+[^src1]: `data/raw/webpage/obsidian-community-plugin/text.txt` 第 379 行 — "sources/ # 📄 Your source documents (read-only) ↓ ingest wiki/ # 🧠 LLM-generated Wiki pages ↓ query / maintain schema/ # 📋 Wiki structure configuration (naming, templates, categories)"
+[^src2]: 同文件 第 449 行（安全升级承诺）— "The plugin never modifies your source files. Backup wiki/ → update plugin → Regenerate index → Lint Wiki → fix selectively."
+[^src3]: 同文件 第 284 行（矛盾状态机）— "Contradiction State Machine — detected → review_ok → resolved (AI fix) or detected → pending_fix (manual)"
+[^v3-1]: [karpathy-wiki-full-context-vs-rag](karpathy-wiki-full-context-vs-rag.md) — "feed full Wiki context, not chunked RAG retrieval" 立场在此卡作为独立 distinction 展开。
+[^v3-2]: [karpathy-wiki-aliases-and-dedup](karpathy-wiki-aliases-and-dedup.md) — 强制别名 + 两层语义去重机制的本卡。
