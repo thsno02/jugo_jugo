@@ -5,7 +5,7 @@ status: accepted
 card_type: example_pattern
 tags: [#llm-wiki, #obsidian, #case-study, #completetech, #latent-reasoning]
 created_time: 2026-05-26T11:20:00+08:00
-edited_time: 2026-05-27T14:34:00+08:00
+edited_time: 2026-05-28T10:50:00+08:00
 edited_entity: llm
 source_ids: [complete-tech-live-frontier]
 provenance_card: ../provenance/beyond-the-token-bottleneck-llm-wiki-case-study.md
