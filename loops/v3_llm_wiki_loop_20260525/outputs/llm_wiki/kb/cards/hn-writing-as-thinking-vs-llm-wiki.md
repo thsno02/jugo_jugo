@@ -5,7 +5,7 @@ status: accepted
 card_type: distinction
 tags: [#llm-wiki, #pkm, #cognition, #ai-deskilling, #hacker-news]
 created_time: 2026-05-26T11:11:00+08:00
-edited_time: 2026-05-27T10:12:00+08:00
+edited_time: 2026-05-28T11:07:00+08:00
 edited_entity: llm
 source_ids: [hacker-news-original-thread]
 provenance_card: ../provenance/hn-writing-as-thinking-vs-llm-wiki.md
