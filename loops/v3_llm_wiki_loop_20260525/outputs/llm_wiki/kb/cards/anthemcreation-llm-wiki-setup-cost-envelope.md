@@ -41,7 +41,7 @@ related: [anthemcreation-llm-wiki-three-layer-architecture, karpathy-llm-wiki-ob
 
 **风险与限制（同篇 FAQ）**：
 
-- 个人量级 10–几百篇之后，跨页链接维护会变贵，应考虑切换或叠加 vector search[^2]；
+- 个人量级 10–几百篇之后，跨页链接维护会变贵，应考虑切换或叠加 vector search[^src2]；
 - 弱 LLM 会把源中的错误悄无声息地写进 wiki，因此**前几周建议人工抽查关键页面**；
 - Karpathy 没有发布官方实现，落地仍需基于 Gist 手动配置（这正是这套教程能存在的原因）。
 
