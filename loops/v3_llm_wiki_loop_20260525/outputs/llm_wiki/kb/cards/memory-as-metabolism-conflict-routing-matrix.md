@@ -15,7 +15,7 @@ related: [memory-as-metabolism-mirror-vs-compensate, memory-as-metabolism-archit
 
 ## 主张
 
-Miteski (2026) §5.0 给出一张 7 行冲突路由矩阵，把"mirror vs compensate"从原则**程序化**为可执行规则——当流式与调度路径同时存在冲突信号时，矩阵指定**谁来处理 / 走哪条 friction / 用什么理由**。论文称之为"the procedural rule that decides how and when each operation applies to the mirror-vs-compensate conflict"——也是 §11 列出的四条 framing contribution 中**第二条**的具体实现。
+Miteski (2026) §5.0 给出一张 7 行冲突路由矩阵[^src1]，把"mirror vs compensate"[^v3-1]从原则**程序化**为可执行规则——当流式与调度路径同时存在冲突信号时，矩阵指定**谁来处理 / 走哪条 friction / 用什么理由**。论文称之为"the procedural rule that decides how and when each operation applies to the mirror-vs-compensate conflict"——也是 §11 列出的四条 framing contribution 中**第二条**的具体实现[^src2]。
 
 ## 路由 legend（必读）
 
