@@ -26,8 +26,9 @@ wiki/      # 🧠 LLM 生成的 wiki 页面
    ↓ query / maintain
 schema/    # 📋 wiki 结构配置（命名、模板、分类）
 ```
+[^src1]
 
-- `sources/` 保留**只读**——插件承诺**永不修改源文件**；
+- `sources/` 保留**只读**——插件承诺**永不修改源文件**[^src2]；
 - `wiki/` 是 LLM 写的 markdown 集合，由插件按 schema 与命令产出；
 - `schema/` 是用户和 LLM **共演化**的配置层。
 
