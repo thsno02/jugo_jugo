@@ -37,15 +37,11 @@ related: [karpathy-llm-kb-three-layer-arch, llm-knowledge-base-five-stage-workfl
 - "Ingest 解决矛盾"在小规模下可行，到一定规模 LLM 自身可能成为不一致来源；引用时不宜把这句当成保证。
 - "Lint 让 LLM 处理人觉得无聊的事"是设计哲学，不是工程保证——Lint 本身需要被 audit。
 
-## References
-
-- 三操作整段见 §"3 つの操作"（`data/raw/webpage/developersio-jp-pattern/text.txt`，第 54–62 行）。
-- Karpathy "intentionally vague" 引用见 §"意図的な「抽象さ」"（同文件 L64–66）。
-- 森茂 `/kb-compile --lint` 状态见 §"自分は Claude Code でこう組み込んでいる"（L101、L109）。
-
 ## Footnotes
 
-- L58：*"Ingest（取り込み） は、新しいソースを処理して wiki に統合する操作です ... 単なるインデックス化ではなく「統合」であることがポイントで、既存の知識と矛盾があればそれも解消されます。"*
-- L60：*"回答を新たなページとして wiki に「filing back」する ことで、自分の探索や質問がそのまま知識として蓄積されます。"*
-- L62：*"LLM は人間が退屈に感じる保守タスク——相互参照、一貫性チェック、統合の更新——を放棄しない"*
-- L66：*"intentionally kept a little bit abstract/vague because there are so many directions to take this in"*。
+[^src1]: `data/raw/webpage/developersio-jp-pattern/text.txt` L58 — "Ingest（取り込み） は、新しいソースを処理して wiki に統合する操作です ... 単なるインデックス化ではなく「統合」であることがポイントで、既存の知識と矛盾があればそれも解消されます。"
+[^src2]: 同文件 L60 — "回答を新たなページとして wiki に「filing back」する ことで、自分の探索や質問がそのまま知識として蓄積されます。"
+[^src3]: 同文件 L62 — "LLM は人間が退屈に感じる保守タスク——相互参照、一貫性チェック、統合の更新——を放棄しない"
+[^src4]: 同文件 L66 — "intentionally kept a little bit abstract/vague because there are so many directions to take this in"
+[^v3-1]: [file-outputs-back-as-compounding-loop](file-outputs-back-as-compounding-loop.md) — "Query filing back" 的复利展开。
+[^v3-2]: [llm-wiki-karpathy-lint-grounding-trail](llm-wiki-karpathy-lint-grounding-trail.md) — Lint 强制 grounding trail 的展开。
