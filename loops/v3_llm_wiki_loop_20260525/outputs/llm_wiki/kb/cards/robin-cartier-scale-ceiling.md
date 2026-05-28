@@ -5,7 +5,7 @@ status: accepted
 card_type: operational_rule
 tags: [#llm-wiki, #scale-limit, #robin-cartier, #deduplication, #temporal-signal]
 created_time: 2026-05-26T12:00:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T12:02:00+08:00
 edited_entity: llm
 source_ids: [robin-cartier-llm-knowledge-bases]
 provenance_card: ../provenance/robin-cartier-scale-ceiling.md
