@@ -15,9 +15,9 @@ related: [karpathy-llm-kb-three-layer-arch, llm-knowledge-base-five-stage-workfl
 
 森茂洋根据 Karpathy 的 gist 总结，Wiki 之上有三类操作：
 
-- **Ingest（取り込み）**：处理新源并把它"统合"到 wiki。要点是这不是单纯的 indexing，而是 *integration*——LLM 读文档、写摘要、更新相关实体页、改写 `index.md`，并且**主动消解新旧知识的矛盾**。
-- **Query（質問）**：对 wiki 提问、得到回答。Karpathy 的关键设计是**把回答作为新页面 "filing back" 到 wiki**——也就是说自己的每一次探索都直接变成持久知识，wiki 越用越富。
-- **Lint（健全性チェック）**：对整个 wiki 做健康检查——发现矛盾、过时主张、孤页、断链，并提出修复建议。Karpathy 原话被森茂引用："LLM は人間が退屈に感じる保守タスク——相互参照、一貫性チェック、統合の更新——を放棄しない"。
+- **Ingest（取り込み）**：处理新源并把它"统合"到 wiki。要点是这不是单纯的 indexing，而是 *integration*——LLM 读文档、写摘要、更新相关实体页、改写 `index.md`，并且**主动消解新旧知识的矛盾**[^src1]。
+- **Query（質問）**：对 wiki 提问、得到回答。Karpathy 的关键设计是**把回答作为新页面 "filing back" 到 wiki**[^src2][^v3-1]——也就是说自己的每一次探索都直接变成持久知识，wiki 越用越富。
+- **Lint（健全性チェック）**：对整个 wiki 做健康检查——发现矛盾、过时主张、孤页、断链，并提出修复建议[^v3-2]。Karpathy 原话被森茂引用："LLM は人間が退屈に感じる保守タスク——相互参照、一貫性チェック、統合の更新——を放棄しない"[^src3]。
 
 三个操作各自的不可替代性：
 
