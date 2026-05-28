@@ -5,7 +5,7 @@ status: accepted
 card_type: mechanism
 tags: [#ragas, #answer-relevance, #embedding, #rag-evaluation]
 created_time: 2026-05-26T11:00:00+08:00
-edited_time: 2026-05-27T14:30:00+08:00
+edited_time: 2026-05-28T16:00:00+08:00
 edited_entity: llm
 source_ids: [arxiv-ragas]
 provenance_card: ../provenance/ragas-answer-relevance-metric.md
