@@ -47,19 +47,10 @@ related: [nvk-llm-wiki-hub-and-topic-wikis, nvk-llm-wiki-audit-and-librarian, fi
 - `--retardmax` 显式是 "act first, think later"，不应被用作严肃文献调研的默认模式；
 - thesis mode 的 "skip sources that don't relate to the claim's variables" 会**裁掉跨域类比和反例**，研究目的若是 exploratory，应该用 plan + min-time 而不是 thesis。
 
-## References
-
-- `nvk/llm-wiki` 主站，Commands 与 How it works 部分：`data/raw/webpage/llm-wiki-net/text.txt`，研究流程行 122–137；`/wiki:research` 命令选项行 213–217；Research workflow 节行 276–296；`--plan` 行 350–366；thesis 行 471–478；retardmax 行 466–470。
-
 ## Footnotes
 
-- 命令行原文（行 214）：
-  > "/wiki:research <topic> 5 parallel agents. --plan (multi-path), --deep (8), --retardmax (10), --new-topic , --min-time 1h ."
-- thesis 模式（行 473–478）：
-  > "Agents are split across supporting , opposing , mechanistic , meta/review , and adjacent — balanced by design."
-  > "Sources that don't relate to the claim's variables are skipped, which keeps the wiki tight. Output is a verdict : supported, partially supported, contradicted, insufficient evidence, or mixed."
-  > "With --min-time , round two focuses harder on the weaker side of the evidence — counter-weight against confirmation bias."
-- gap report 范例（行 295）：
-  > "### Close gaps? 1. Dose-response curves for wavelength specificity 2. Long-term safety data for daily exposure 3. Device comparison ..."
-- retardmax 哲学（行 468–470）：
-  > "A research mode inspired by Elisha Long's retardmaxxing philosophy — act first, think later. Ten parallel agents, skip planning, cast the widest net, ingest aggressively, compile fast, lint later."
+[^src1]: `data/raw/webpage/llm-wiki-net/text.txt` 行 214（命令行原文）— "/wiki:research <topic> 5 parallel agents. --plan (multi-path), --deep (8), --retardmax (10), --new-topic , --min-time 1h ."
+[^src2]: 同文件 行 473-478（thesis 模式）— "Agents are split across supporting , opposing , mechanistic , meta/review , and adjacent — balanced by design. Sources that don't relate to the claim's variables are skipped, which keeps the wiki tight. Output is a verdict : supported, partially supported, contradicted, insufficient evidence, or mixed. With --min-time , round two focuses harder on the weaker side of the evidence — counter-weight against confirmation bias."
+[^src3]: 同文件 行 295（gap report 范例）— "### Close gaps? 1. Dose-response curves for wavelength specificity 2. Long-term safety data for daily exposure 3. Device comparison ..."
+[^src4]: 同文件 行 468-470（retardmax 哲学）— "A research mode inspired by Elisha Long's retardmaxxing philosophy — act first, think later. Ten parallel agents, skip planning, cast the widest net, ingest aggressively, compile fast, lint later."
+[^v3-1]: [file-outputs-back-as-compounding-loop](file-outputs-back-as-compounding-loop.md) — wiki 从一次性 ingest 升级成长期增长的复利循环本卡。
