@@ -3,7 +3,10 @@
   "brain": "audit",
   "status": "idle",
   "current_task": null,
-  "pending_items": 8,
-  "pending_queue": "queues/audit_queue.md",
-  "updated_at": "2026-05-26T14:00:00+08:00"
+  "last_completed_task": "fusion-audit-8-provenance-delta",
+  "last_completed_at": "2026-05-27T13:00:00+08:00",
+  "audits_completed": 8,
+  "audits_passed": 8,
+  "audits_failed": 0,
+  "updated_at": "2026-05-27T15:00:00+08:00"
 }

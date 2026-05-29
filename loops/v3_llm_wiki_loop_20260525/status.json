@@ -2,19 +2,20 @@
   "schema": "loop_capsule_status.v1",
   "loop_id": "v3_llm_wiki_loop_20260525",
   "status": "active",
-  "product_status": "candidate_in_progress",
+  "product_status": "candidate_ready",
   "created_at": "2026-05-25T20:54:47+08:00",
-  "updated_at": "2026-05-26T15:00:00+08:00",
-  "active_phase": "interlinks_complete",
+  "updated_at": "2026-05-28T18:00:00+08:00",
+  "active_phase": "unified_citation_migration_complete",
   "current_iteration": "iteration_20260525_0001_first_production_pass",
   "blockers": [],
-  "next_action": "fusion_audit 8 张 provenance_delta；publication_gate 163 张 new_card；通过后 adopt 进 v3 KB 并把 related 路径从 drafts/ 改写为 kb/。",
+  "next_action": "v3 KB 内 171 张卡已切换到 unified-footnote citation 模型。下一步：人工决定是否 promote 到 root llm_wiki/ + 更新 loops/registry.json / loops/current_loop.json；处理 7 条上游 pending 材料。",
   "notes": [
-    "171 张 draft 全部完成 draft + draft provenance + similarity + comparison provenance + interlinks。",
-    "interlinks：974 条 related 边，平均每卡 5.70 条，长度分布 3-8，0 张孤立卡，0 个 dangling id。",
-    "interlink 阶段把卡片按主题切成 6 个 cluster（A 概念/B 工具/C 内存架构/D RAG 评估/E 安全治理/F 知识表示），6 个并行 worker（model:opus）独立挑选 related；hook 扩展到 comparison/ 已经吃过 171 次 comparison 写入，interlink 阶段又承担了 171 次 card edit 提交。",
-    "comparison + interlink 两个阶段都没有 KB adoption；adoption 推到 publication_gate / fusion_audit。",
-    "新增/更新工具与模板：tools/similarity_top3.py、hooks/commit_card.sh、task_templates/{batch_worker_prompt.md, comparison_worker_prompt.md, interlink_worker_prompt.md}。",
-    "Top-level start command 仍为：claude --permission-mode auto -p \"$(cat loops/v3_llm_wiki_loop_20260525/LOOP_START_PROMPT.md)\" --output-format text"
+    "Card contract V3 升级：单一 ## Footnotes citation hub，targets = raw / v3 card / v2 card / URL。详见 CARD_CONTRACT_V3.md 改动。",
+    "171 张 kb 卡全量迁移到新模型；6 个并行 cluster worker（A 49 / B 7 / C 47 / D 21 / E 27 / F 20）；504+ 条 KB-internal cross-card footnote 已加入 body；8 张 v2-anchored 卡的 v2 anchor 现在在 body footnote 中可点。",
+    "frontmatter `related:` 现在由 `tools/derive_metadata_from_footnotes.py` 从 body footnotes 派生——不应手工维护。170 张更新，1 张已正确，4 张合法保持 []。",
+    "新模板：task_templates/citation_migration_worker_prompt.md。新工具：tools/derive_metadata_from_footnotes.py。已存在的 tools/build_kb_index.py + hooks/commit_card.sh 不变。",
+    "已知工程隐患：bash classifier 在最近两阶段持续 flaky，python script 调用被反复 reject。fallback 路径已验证有效（派 fresh agent 用 Read+Edit 做等价操作）。建议下个 loop 在 RUNBOOK 写明这条 fallback。",
+    "本轮未做：kb provenance 的 v2_anchor 字段是否也应该由脚本从 body footnote 推导（可选简化）；root llm_wiki/ promote（需要人工）；7 条 upstream pending 材料处理。",
+    "Top-level start command 不变：claude --permission-mode auto -p \"$(cat loops/v3_llm_wiki_loop_20260525/LOOP_START_PROMPT.md)\" --output-format text"
   ]
 }

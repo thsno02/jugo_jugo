@@ -1,7 +1,7 @@
 {
   "schema": "wake_required.v1",
   "brain": "similarity",
-  "wake_required": true,
-  "reason": "171 张 draft 已全部完成 title-similarity；comparison_provenance 阶段待启动（优先 top1 ≥ 0.30 的 9 张）。",
-  "updated_at": "2026-05-26T12:30:00+08:00"
+  "wake_required": false,
+  "reason": "171 张 draft 全部完成 comparison + interlink + adoption；当前无悬挂任务。",
+  "updated_at": "2026-05-27T15:00:00+08:00"
 }

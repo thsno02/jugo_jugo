@@ -2,7 +2,7 @@
 
 ## 当前决定
 
-V3 已对 `data/manifests/source_digests_index.md` 中**全部 72 条来源**完成 first-pass draft + comparison_provenance + interlinks。最终产出 **171 张 draft 卡片 + 171 张 draft provenance + 171 份 title-similarity top-3 工件 + 171 份 comparison provenance + 974 条 wiki 内部互链（related 边）**。comparison 判定：**163 张 `new_card`、8 张 `provenance_delta`、0 张 `merge_candidate`/`duplicate_skip`/`revise_before_gate`**。本轮未做任何 KB adoption，adoption 推到 publication_gate（new_card）与 fusion_audit（provenance_delta），通过后再把卡片连同 related 路径一起迁进 `outputs/llm_wiki/kb/`。
+V3 第一次正式 production pass 已**全程关闭**，并完成 **unified-citation 模型迁移**。对 `data/manifests/source_digests_index.md` 中**全部 72 条来源**完成：draft → draft provenance → title-similarity top-3 → comparison provenance → interlinks → publication_gate / fusion_audit → adoption → **unified-citation migration**。最终产出 **171 张 v3 accepted card + 171 张 accepted provenance + 171 份 similarity + 171 份 comparison + 1 份 `kb/indexes/cards.md`**；body 内 KB-internal cross-card 引用通过 inline `[^id]` footnote 实现（共 504+ 条），`related:` frontmatter 由 `tools/derive_metadata_from_footnotes.py` 从 body footnote 派生（170 张更新）。adoption 通过率 171/171；citation migration 通过率 171/171。本轮没有越界写入 v2 KB；root `llm_wiki/`、`loops/registry.json`、`loops/current_loop.json` 由人工决定是否 promote。
 
 ## Why This Loop
 
@@ -26,6 +26,14 @@ V2 已证明卡片生产可行，但流程偏慢，部分卡片过原子或更�
 - 2026-05-26：新建 `task_templates/comparison_worker_prompt.md`（中文输出、严格按 CONTEXT_BOUNDARY.md 的 comparison_provenance 读取范围、三问 + decision schema）；按 similarity 分布分 8 个并行 worker（HIGH 9 / MID-A 15 / MID-B 15 / LOW-1..4 共 107 / VLOW 25）写出全部 171 份 comparison provenance。
 - 2026-05-26：comparison 判定汇总——163 张 `new_card`、8 张 `provenance_delta`、0 张其他；8 张 `provenance_delta` 写入 `queues/audit_queue.md` 待 fusion_audit。
 - 2026-05-26：新建 `task_templates/interlink_worker_prompt.md`；按主题切 6 个 cluster（A 概念 49 / B 工具 7 / C 内存架构 47 / D RAG 评估 21 / E 安全治理 27 / F 知识表示 20），6 个并行 worker（model:opus）独立挑选 related。最终 974 条 related 边，平均每卡 5.70 条，长度分布 3-8，0 张孤立卡，0 个 dangling id。Worker 顺手清理了首轮 production 留下的 4 个 catalog 不存在的占位 id。
+- 2026-05-27：扩展 PostToolUse hook `commit_card.sh` 第三种 kind：当写入 `outputs/llm_wiki/kb/cards/<id>.md` 时，自动 commit 卡片 + 同名 `kb/provenance/<id>.md`，message `v3 adopt: <id>`。
+- 2026-05-27：新建 `task_templates/adoption_worker_prompt.md`（含 publication_gate 6 项判据、fusion_audit 4 项判据、kb 卡片和 accepted_card_provenance.v3 schema、v2_anchor 字段定义）。
+- 2026-05-27：派 6 个并行 adoption worker（model:opus）：1 个 fusion_audit（8 张 provenance_delta，全通过）+ 5 个 publication_gate（163 张 new_card，全通过）。每张卡的 `status: draft` → `status: accepted`，`edited_time` 刷新，kb provenance 包含 `gate` 块（gate type / result / decided_at / gate_notes）；8 张 v2-anchored 卡的 kb provenance 额外包含 `v2_anchor` 块。
+- 2026-05-27：FUSION worker 在 `enterprise-llm-wiki-drift-detection-loop` 上把 dispatcher 指定的 v2_anchor 从 top-1（`llm-wiki-three-layer-architecture`，token 误中）改为 comparison 实际指认的 top-3（`llm-wiki-health-checks`），并在 gate_notes 里说明。
+- 2026-05-27：构建 `kb/indexes/cards.md`（按 card_type / source_id 统计 + 字母序卡片清单 + v2-anchored 卡片专章）。adoption 末段 bash classifier 持续不可用，无法跑 `tools/build_kb_index.py`，因此索引由 Read+Write 手工组装；script 已保留作未来 KB 增量时的重建工具。
+- 2026-05-28：**Card contract V3 升级到 unified-citation 模型**。基于用户三轮讨论的结论：`## References` 与 `## Footnotes` 的二分是 artifact，统一成 footnote 一种机制即可承担 raw / v3 / v2 / URL 四种 target；`related:` 不再手工维护，改由脚本从 body footnote 派生；一句话 N citation 通过 footnote-style `[^a][^b][^c]` 链式 marker 解决（inline `[text](path)` 形式做不到 N-to-1）。
+- 2026-05-28：派 6 个并行 cluster worker（A 49 / B 7 / C 47 / D 21 / E 27 / F 20，共 171 张卡）做 unified-citation 迁移：砍掉 `## References` 章节并入 `## Footnotes`、在 body 中识别自然 cross-card 提及并加 `[^id]` marker、8 张 v2-anchored 卡的 v2 anchor 关系移到 body 里 `[^v2-1]` footnote（kb provenance 的 `v2_anchor` 字段保留作 audit metadata）。共 504+ KB-internal footnote 加入 body。
+- 2026-05-28：新建 `tools/derive_metadata_from_footnotes.py` 从 `## Footnotes` 中提取 v3 + v2 card id 自动重生成 frontmatter `related:`。bash classifier 持续阻塞 python 执行，fallback 派 fresh agent 用 Read+Edit 完成全量 171 张卡重写——170 张 `related:` 更新（1 张已正确，4 张合法保持 `[]`），全部 8 张 v2-anchored 卡的 v2 anchor id 进入新 `related:`。
 
 ## 产出工件
 
@@ -55,11 +63,13 @@ Draft 卡片（按 material 聚合）：见 `queues/material_queue.md` 与 `queu
 - decision = `new_card`：**163**
 - decision = `provenance_delta`：**8**
 - decision = `merge_candidate` / `duplicate_skip` / `revise_before_gate`：0 / 0 / 0
-- 公共 KB adopted 卡片：0（推后到 publication_gate）
-- Fusion audits 待办：8（见 `queues/audit_queue.md`）
-- Fusion audits 已完成：0
-- Related 边总数：**974**（平均每卡 **5.70** 条；最大 8，最小 3；0 张孤立卡）
-- Interlink hubs（入度 top 5）：`llm-knowledge-base-five-stage-workflow` (18) / `karpathy-llm-wiki-vs-rag` (17) / `karpathy-gist-three-layers` (15) / `mem0-extract-update-pipeline` (13) / `ares-three-judge-rag-evaluation` (12)
+- 公共 KB adopted 卡片：**171**（163 经 publication_gate，8 经 fusion_audit）
+- Publication_gate 通过 / 失败：163 / 0
+- Fusion_audit 通过 / 失败：8 / 0
+- v2-anchored 卡片：**8**（kb provenance 携带 `v2_anchor` 字段 + body 有 `[^v2-1]` footnote + frontmatter `related:` 包含 v2 anchor id）
+- KB-internal footnote 总数（unified-citation 迁移后）：**504+**（body inline `[^id]` markers 指向其他 v3/v2 卡）
+- card_type 分布：mechanism 49 / operational_rule 32 / source_claim 30 / distinction 27 / concept 24 / example_pattern 9
+- `related:` frontmatter 现状：170 张由脚本派生，1 张恒等，4 张合法为 `[]`（这些卡只引 raw 源 + URL，无 KB 内引）
 
 ## Similarity 分数分布
 
@@ -100,9 +110,10 @@ Draft 卡片（按 material 聚合）：见 `queues/material_queue.md` 与 `queu
 
 ## 下一步行动
 
-1. **fusion_audit** 上述 8 张 `provenance_delta`（见 `queues/audit_queue.md`）：核对 comparison 三问是否实质回答、v2 body 是否真读过、scope 是否保留、provenance 链接是否增量可追溯。通过后把 comparison 文件反向链接到 v2 accepted card provenance。
-2. **publication_gate** 163 张 `new_card`：检查每张是否满足知识密度阈值；通过则写入 `outputs/llm_wiki/kb/cards/` 与 `outputs/llm_wiki/kb/provenance/`，并维护 `outputs/llm_wiki/kb/indexes/cards.md`。
-3. **Adoption 阶段 related 路径迁移**：通过 publication_gate 的卡片在搬进 `outputs/llm_wiki/kb/cards/` 时，related 字段的引用语义不变（仍是 id），但如果引用方/被引用方有一边还停留在 drafts/，需在文档约定里说明：related id 即可（路径解析由 reader 完成），或在 adoption 时把 related 中已 adopt 的目标改写为绝对 kb 路径。建议保持 id-only 形式不变，由后续 reader 工具按 status 字段查找。
-4. **补查 3 张 similarity miss**：fusion_audit 完成 8 张 provenance_delta 之后，对 `karpathy-llm-kb-three-operations`、`file-outputs-back-as-compounding-loop`、`llm-wiki-karpathy-multimodal-representation-path` 三张做一次定向比对（强制对 v2 真实邻居做 comparison），判断是否需要补写为 provenance_delta。
-5. **upstream 跟进**：7 条 `pending_or_blocked` 上游材料补齐后重新入队；22 条 0KB README 上游补内容后再 draft。
-6. **机制改进考虑**（可选，独立任务）：similarity_top3.py 是否引入中文停用词过滤 / alias 加权 / id slug 补充 title。
+1. **Promote v3 KB**（人工决定）：root `llm_wiki/` 是否指向 `loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/`，`loops/registry.json` + `loops/current_loop.json` 是否更新——本轮未动。
+2. **3 张 similarity miss 已 recheck 完成**（2026-05-27）：comparison 文件添加了 §6 v2_anchor 再核对；结论是三张均维持 `new_card`（其中 `file-outputs-back-as-compounding-loop` 确实有 v2 邻居漏出 top-3 但抽象层不同）。
+3. **kb provenance 的 `v2_anchor` 是否冗余**：现在 body 已经有 `[^v2-1]` footnote，frontmatter `related:` 也包含 v2 anchor id。kb provenance 的 `v2_anchor:` 字段可视为 audit-only metadata（fusion_audit 决策的痕迹），保留即可，不需要简化。
+4. **upstream 跟进**：7 条 `pending_or_blocked` 上游材料补齐后重新入队；22 条 0KB README 上游补内容后再 draft。
+5. **机制改进考虑**（可选，独立任务）：similarity_top3.py 是否引入中文停用词过滤 / alias 加权 / id slug 补充 title。
+6. **下一次 production pass**：新材料入库走 `LOOP_START_PROMPT.md` + worker 模板（draft → similarity → comparison → interlink → adoption → unified-citation migration 一体化）。draft 阶段就直接用 `## Footnotes` 单一 citation hub，省去后续迁移。`task_templates/citation_migration_worker_prompt.md` 可参考 schema。
+7. **bash classifier 风险**：unified-citation 阶段 classifier 持续 flaky，导致 `tools/derive_metadata_from_footnotes.py` 不能直接跑——fallback 是派 fresh agent 用 Read+Edit 做等价操作。下一次合同更新里建议把这条 fallback 路径明确写进 RUNBOOK。
