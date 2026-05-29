@@ -1,14 +1,15 @@
 {
   "schema": "current_loop_pointer.v1",
-  "updated_at": "2026-05-25T20:36:44+08:00",
-  "active_loop_id": null,
-  "active_loop_path": null,
-  "next_action": "Create a new loop capsule under loops/<loop_id>/ before writing new loop products.",
+  "updated_at": "2026-05-25T21:26:03+08:00",
+  "active_loop_id": "v3_llm_wiki_loop_20260525",
+  "active_loop_path": "loops/v3_llm_wiki_loop_20260525",
+  "next_action": "Run the first formal v3 production pass with loops/v3_llm_wiki_loop_20260525/LOOP_START_PROMPT.md.",
   "stable_product_roots": {
     "llm_wiki": null
   },
   "notes": [
     "Root llm_wiki/ is intentionally absent because no candidate has been promoted to stable product status.",
-    "Do not use directory moves as archive operations; update status metadata instead."
+    "Do not use directory moves as archive operations; update status metadata instead.",
+    "v3 is the active loop capsule. Its candidate output remains inside loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki until an explicit promotion decision."
   ]
 }

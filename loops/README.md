@@ -68,3 +68,18 @@
 - `snapshots/` 内部控制面快照。
 
 该 loop 的 `outputs/llm_wiki/` 不是 promoted stable 产品。只有明确的人类 promotion decision 才能把候选产物发布到仓库根目录的稳定 `llm_wiki/`。
+
+### v3_llm_wiki_loop_20260525
+
+路径：`loops/v3_llm_wiki_loop_20260525/`
+
+状态：`active`
+
+这是当前 LLM Wiki loop。它继承 v2 的 scoped card 思路，但把生产顺序改成 draft-first：
+
+- material / exhausted 来源先生成有信息量的 draft cards；
+- draft title 用 Jieba 分词和 Jaccard set similarity 找 top 3 可能相似卡；
+- 对影响决策的 draft/A card 组合写 comparison provenance 三问；
+- new card 走轻量 publication gate；
+- fusion / provenance delta 必须审计，并把 provenance 增量链接回目标卡；
+- brain 之间通过文件 mailbox 和 queue 协调，main-agent 只维护控制面、任务边界和 out-of-loop 反思。

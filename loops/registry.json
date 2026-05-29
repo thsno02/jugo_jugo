@@ -1,6 +1,6 @@
 {
   "schema": "loop_registry.v1",
-  "updated_at": "2026-05-25T20:36:44+08:00",
+  "updated_at": "2026-05-25T20:54:47+08:00",
   "stable_products": {
     "llm_wiki": {
       "status": "not_promoted",
@@ -32,6 +32,16 @@
         "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki"
       ],
       "summary": "Atomic/scoped knowledge-card loop with brain-mailbox design work and candidate LLM Wiki KB outputs."
+    },
+    {
+      "loop_id": "v3_llm_wiki_loop_20260525",
+      "path": "loops/v3_llm_wiki_loop_20260525",
+      "status": "active",
+      "product_status": "candidate_in_progress",
+      "candidate_outputs": [
+        "loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki"
+      ],
+      "summary": "Draft-first LLM Wiki loop: material to knowledge-dense draft cards, lightweight title similarity top 3, audited fusion provenance, and mailbox-based brain coordination."
     }
   ]
 }
