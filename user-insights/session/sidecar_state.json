@@ -6,12 +6,14 @@
   "project_slug": "jugo_jugo_llm_wiki",
   "main_language": "zh",
   "write_policy": "write_allowed",
-  "updated_at": "2026-05-25T01:57:43+08:00",
-  "coverage": "partial",
-  "coverage_reason": "No independent refresh fork or full transcript tool was exposed; current visible raw user turns were used as primary source.",
+  "updated_at": "2026-05-27T15:30:00+08:00",
+  "coverage": "mixed",
+  "coverage_reason": "Initial Codex record used visible raw turns and compact handoff; Claude v3 update used local Claude JSONL session files and memory files.",
   "files_written": [
     "user-insights/sessions/session_20260525_llm_wiki_loop_bootstrap/session_log.md",
     "user-insights/sessions/session_20260525_llm_wiki_loop_bootstrap/metadata.json",
+    "user-insights/sessions/session_20260527_claude_v3_execution/session_log.md",
+    "user-insights/sessions/session_20260527_claude_v3_execution/metadata.json",
     "user-insights/session_registry.json",
     "user-insights/session/cursor.json",
     "user-insights/session/sidecar_state.json",
@@ -21,13 +23,12 @@
     "llm_wiki/loop/user_insights/README.md",
     "llm_wiki/loop/user_insights/session_20260525.md"
   ],
-  "doc_folder": "unknown",
-  "doc_folder_sync": "skipped",
+  "doc_folder": "docs/llm_wiki_practice_reframe",
+  "doc_folder_sync": "manual_update_completed",
   "dream_mode_aggregation": "skipped",
   "open_questions": [
-    "Need full transcript or verified refreshed fork for complete coverage.",
-    "Need explicit doc folder before backup/sync.",
+    "Need human decision on whether to promote v3 candidate KB to root llm_wiki/.",
+    "Need future design decision on card citation via footnotes and related metadata derivation.",
     "Need explicit organize_workspace/full_dream trigger before project topic aggregation."
   ]
 }
-

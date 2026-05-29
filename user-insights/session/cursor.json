@@ -3,25 +3,24 @@
   "project_slug": "jugo_jugo_llm_wiki",
   "mode": "record_incremental",
   "phase": "record_completed",
-  "updated_at": "2026-05-25T01:57:43+08:00",
-  "coverage": "partial",
+  "updated_at": "2026-05-27T15:30:00+08:00",
+  "coverage": "mixed",
   "interaction_access": {
-    "declared_source_access": "full_thread_if_available_via_fork_context; otherwise compact_handoff",
-    "effective_source_access": "current_visible_context + compact_handoff",
+    "declared_source_access": "full_thread_if_available_via_fork_context; otherwise compact_handoff; local Claude session files when requested",
+    "effective_source_access": "current_visible_context + compact_handoff + local_claude_jsonl",
     "full_transcript_available": false,
     "refresh_fork_verified": false
   },
   "last_processed": {
-    "session_id": "session_20260525_llm_wiki_loop_bootstrap",
-    "event_id": "E016",
-    "source_marker": "latest_visible_user_insights_wake_task",
-    "timestamp": "2026-05-25T01:57:43+08:00"
+    "session_id": "session_20260527_claude_v3_execution",
+    "event_id": "C007",
+    "source_marker": "claude_v3_adoption_complete_20260527",
+    "timestamp": "2026-05-27T15:00:00+08:00"
   },
   "last_written": {
-    "session_log": "user-insights/sessions/session_20260525_llm_wiki_loop_bootstrap/session_log.md",
-    "metadata": "user-insights/sessions/session_20260525_llm_wiki_loop_bootstrap/metadata.json",
+    "session_log": "user-insights/sessions/session_20260527_claude_v3_execution/session_log.md",
+    "metadata": "user-insights/sessions/session_20260527_claude_v3_execution/metadata.json",
     "registry": "user-insights/session_registry.json"
   },
-  "next_action": "If full transcript or refreshed fork becomes available, run coverage repair; otherwise wait for next record_incremental wake."
+  "next_action": "If promotion is approved, record the promotion decision; otherwise wait for next record_incremental wake."
 }
-

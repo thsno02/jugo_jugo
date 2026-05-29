@@ -1,0 +1,41 @@
+{
+  "session_id": "session_20260527_claude_v3_execution",
+  "project": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
+  "project_slug": "jugo_jugo_llm_wiki",
+  "main_language": "zh",
+  "language_source": "user_explicit + project_docs",
+  "mode": "record_incremental",
+  "trigger_reason": "explicit_user_request_to_extract_claude_user_input_and_update_docs",
+  "created_at": "2026-05-27T15:30:00+08:00",
+  "updated_at": "2026-05-27T15:30:00+08:00",
+  "coverage": "session_file",
+  "coverage_reason": "Read local Claude JSONL session files and memory files for the project; recorded relevant user inputs and progress evidence only.",
+  "source_access_declared": "local_claude_project_session_files",
+  "effective_source_access": "claude_jsonl + claude_memory + v3_loop_state",
+  "source_files": [
+    "~/.claude/projects/-Users-lw-Desktop-GitHub-llm-wiki-jugo-jugo/4379b2d9-db20-4573-9450-751bb398208a.jsonl",
+    "~/.claude/projects/-Users-lw-Desktop-GitHub-llm-wiki-jugo-jugo/f9136756-46bb-4406-82db-c876186527c6.jsonl",
+    "~/.claude/projects/-Users-lw-Desktop-GitHub-llm-wiki-jugo-jugo/46cda2aa-e94e-4141-9544-ca4d7367d5e7.jsonl",
+    "~/.claude/projects/-Users-lw-Desktop-GitHub-llm-wiki-jugo-jugo/memory/*.md",
+    "loops/v3_llm_wiki_loop_20260525/status.json",
+    "loops/v3_llm_wiki_loop_20260525/loop_state.json",
+    "loops/v3_llm_wiki_loop_20260525/reports/loop_report.md",
+    "loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md"
+  ],
+  "scope_hint": "project",
+  "sensitivity": "normal",
+  "event_count": 7,
+  "first_event": "C001",
+  "last_event": "C007",
+  "last_processed_event": "C007",
+  "last_processed_source_marker": "claude_v3_adoption_complete_20260527",
+  "canonical_workspace_log": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/user-insights",
+  "doc_folder": "docs/llm_wiki_practice_reframe",
+  "doc_folder_sync": "manual_update_completed",
+  "aggregation_status": "not_aggregated",
+  "open_questions": [
+    "Whether v3 candidate KB should be promoted to root llm_wiki/ requires human decision.",
+    "Future card-linking model should decide how to encode card citations in footnotes and derive related metadata.",
+    "Three similarity misses still need targeted comparison."
+  ]
+}

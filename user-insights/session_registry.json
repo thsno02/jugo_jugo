@@ -1,7 +1,7 @@
 {
   "project": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
   "project_slug": "jugo_jugo_llm_wiki",
-  "updated_at": "2026-05-25T01:57:43+08:00",
+  "updated_at": "2026-05-27T15:30:00+08:00",
   "sessions": [
     {
       "session_id": "session_20260525_llm_wiki_loop_bootstrap",
@@ -18,7 +18,22 @@
       "aggregated_into_project_topics": false,
       "session_log": "sessions/session_20260525_llm_wiki_loop_bootstrap/session_log.md",
       "metadata": "sessions/session_20260525_llm_wiki_loop_bootstrap/metadata.json"
+    },
+    {
+      "session_id": "session_20260527_claude_v3_execution",
+      "source": "local_claude_project_session_files",
+      "thread_id": "claude:4379b2d9-db20-4573-9450-751bb398208a",
+      "main_language": "zh",
+      "coverage": "session_file",
+      "coverage_reason": "Local Claude JSONL session files and memory files were available for the project; only relevant user inputs were extracted.",
+      "event_count": 7,
+      "first_event": "C001",
+      "last_event": "C007",
+      "latest_timestamp": "2026-05-27T15:00:00+08:00",
+      "last_processed_event": "C007",
+      "aggregated_into_project_topics": false,
+      "session_log": "sessions/session_20260527_claude_v3_execution/session_log.md",
+      "metadata": "sessions/session_20260527_claude_v3_execution/metadata.json"
     }
   ]
 }
-

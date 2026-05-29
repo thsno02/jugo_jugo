@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent 知识处理路径</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Helvetica Neue', 'PingFang SC', sans-serif;
+    background: #FAFAF8;
+    color: #1A1A1A;
+    padding: 56px 48px;
+    line-height: 1.6;
+  }
+
+  .canvas {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Flow layout */
+  .flow {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr 48px 1fr;
+    align-items: stretch;
+  }
+
+  .stage {
+    padding: 32px 28px;
+    position: relative;
+  }
+
+  .stage-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: #999;
+  }
+
+  .stage h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  /* Stage 1: Traditional */
+  .stage-1 {
+    border-top: 5px solid #E63946;
+  }
+
+  .path-box {
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    border-left: 4px solid;
+    background: #fff;
+  }
+
+  .path-box:last-child { margin-bottom: 0; }
+
+  .path-box h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .path-box p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 6px;
+  }
+
+  .path-box.p1 { border-left-color: #E63946; }
+  .path-box.p2 { border-left-color: #1D4ED8; }
+
+  .tags { margin-top: 8px; }
+
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-right: 4px;
+  }
+
+  .tag-pro { background: #D4EDDA; color: #155724; }
+  .tag-con { background: #F8D7DA; color: #721C24; }
+
+  /* Arrow connector */
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arrow svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Stage 2: Gap */
+  .stage-2 {
+    border-top: 5px solid #F4B942;
+  }
+
+  .gap-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .gap-list li {
+    font-size: 13px;
+    padding: 10px 0;
+    border-bottom: 1px solid #EEEEEA;
+    color: #444;
+  }
+
+  .gap-list li:last-child { border-bottom: none; }
+
+  .gap-list li strong {
+    color: #1A1A1A;
+  }
+
+  /* Stage 3: LLM Wiki */
+  .stage-3 {
+    border-top: 5px solid #1D4ED8;
+  }
+
+  .core-point {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #EEEEEA;
+  }
+
+  .mechanism-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .mechanism-list li {
+    font-size: 13px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background: #fff;
+    border-left: 3px solid #1D4ED8;
+    color: #444;
+  }
+
+  /* Bauhaus bar */
+  .bauhaus-bar {
+    display: flex;
+    height: 6px;
+    margin-top: 40px;
+  }
+
+  .bauhaus-bar span:nth-child(1) { flex: 3; background: #E63946; }
+  .bauhaus-bar span:nth-child(2) { flex: 2; background: #F4B942; }
+  .bauhaus-bar span:nth-child(3) { flex: 4; background: #1D4ED8; }
+  .bauhaus-bar span:nth-child(4) { flex: 1; background: #1A1A1A; }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+<div class="flow">
+
+  <!-- Stage 1: Traditional Paths -->
+  <div class="stage stage-1">
+    <div class="stage-label">现状 Status Quo</div>
+    <h2>传统两条路径</h2>
+
+    <div class="path-box p1">
+      <h4>模型内生知识</h4>
+      <p>知识写入权重，推理时直接提取。快但不可控、不可追溯。</p>
+      <div class="tags">
+        <span class="tag tag-pro">快</span>
+        <span class="tag tag-con">幻觉</span>
+        <span class="tag tag-con">不可控</span>
+      </div>
+    </div>
+
+    <div class="path-box p2">
+      <h4>RAG 检索增强</h4>
+      <p>查询时从外部语料召回片段，拼接生成。可追溯但语料静态。</p>
+      <div class="tags">
+        <span class="tag tag-pro">可追溯</span>
+        <span class="tag tag-pro">来源约束</span>
+        <span class="tag tag-con">静态</span>
+      </div>
+      <p style="margin-top:10px;font-size:11px;color:#999;">案例: Graphify, GraphRAG</p>
+    </div>
+  </div>
+
+  <!-- Arrow -->
+  <div class="arrow">
+    <svg viewBox="0 0 32 32" fill="none">
+      <path d="M8 16H24M24 16L18 10M24 16L18 22" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <!-- Stage 2: Gap -->
+  <div class="stage stage-2">
+    <div class="stage-label">缺口 Gap</div>
+    <h2>下一层问题</h2>
+
+    <ul class="gap-list">
+      <li><strong>沉淀</strong> — 哪些内容值得保留？</li>
+      <li><strong>来源</strong> — 如何保留出处和边界？</li>
+      <li><strong>冲突</strong> — 重复、矛盾、版本变化怎么处理？</li>
+      <li><strong>回流</strong> — agent 的回答如何写回知识库？</li>
+      <li><strong>消费</strong> — 沉淀的知识如何继续被人和 agent 使用？</li>
+    </ul>
+  </div>
+
+  <!-- Arrow -->
+  <div class="arrow">
+    <svg viewBox="0 0 32 32" fill="none">
+      <path d="M8 16H24M24 16L18 10M24 16L18 22" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <!-- Stage 3: LLM Wiki -->
+  <div class="stage stage-3">
+    <div class="stage-label">方案 Solution</div>
+    <h2>LLM Wiki</h2>
+
+    <p class="core-point">在原始文档和人/智能体消费之间，建立持续演化、可追溯、可审核、可维护的知识层。</p>
+
+    <ul class="mechanism-list">
+      <li>知识回流 write-back</li>
+      <li>来源追溯 provenance</li>
+      <li>冲突治理 governance</li>
+      <li>持续生长 evolving</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="bauhaus-bar">
+  <span></span><span></span><span></span><span></span>
+</div>
+
+</div>
+</body>
+</html>

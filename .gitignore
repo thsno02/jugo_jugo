@@ -14,3 +14,7 @@ data/logs/*.tmp
 # their local Git databases.
 **/.git/
 data/raw/github_repo/*/repo/
+
+.claude/
+.codex
+.obsidian/
