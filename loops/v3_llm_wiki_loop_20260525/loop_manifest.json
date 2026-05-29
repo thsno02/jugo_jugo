@@ -1,0 +1,138 @@
+{
+  "schema": "llm_wiki_loop_manifest.v3",
+  "loop_id": "v3_llm_wiki_loop_20260525",
+  "created_at": "2026-05-25T20:54:47+08:00",
+  "updated_at": "2026-05-25T21:26:03+08:00",
+  "loop_owner": "main_owned",
+  "write_scope": [
+    "loops/v3_llm_wiki_loop_20260525/**"
+  ],
+  "restricted_write_scope": {
+    "default_allow": [
+      "loops/v3_llm_wiki_loop_20260525/**"
+    ],
+    "default_deny": [
+      "README.md",
+      "loops/README.md",
+      "loops/registry.json",
+      "loops/current_loop.json",
+      "loops/v0_meta_kb_initialization_demo_20260524/**",
+      "loops/v1_topic_hub_skeleton_20260524/**",
+      "loops/v2_llm_wiki_loop_20260525/**",
+      "data/**",
+      "docs/**",
+      "scripts/**",
+      "user-insights/**"
+    ],
+    "exceptions": [
+      "Only update loops/registry.json or loops/current_loop.json when the human explicitly asks for loop registry changes."
+    ]
+  },
+  "read_scope_by_phase": {
+    "orientation": [
+      "loops/v3_llm_wiki_loop_20260525/CLAUDE_CODE_HANDOFF.md",
+      "loops/v3_llm_wiki_loop_20260525/LOOP_START_PROMPT.md",
+      "loops/v3_llm_wiki_loop_20260525/README.md",
+      "loops/v3_llm_wiki_loop_20260525/RUNBOOK.md",
+      "loops/v3_llm_wiki_loop_20260525/loop_manifest.json",
+      "loops/v3_llm_wiki_loop_20260525/loop_state.json",
+      "loops/v3_llm_wiki_loop_20260525/CARD_CONTRACT_V3.md",
+      "loops/v3_llm_wiki_loop_20260525/DRAFT_FIRST_PIPELINE_V3.md",
+      "loops/v3_llm_wiki_loop_20260525/SIMILARITY_MECHANISM_V3.md",
+      "loops/v3_llm_wiki_loop_20260525/PROVENANCE_CONTRACT_V3.md",
+      "loops/v3_llm_wiki_loop_20260525/BRAIN_MAILBOX_PROTOCOL.md",
+      "loops/v3_llm_wiki_loop_20260525/SKILLS_AND_DEPENDENCIES.md",
+      "loops/v3_llm_wiki_loop_20260525/SUBAGENT_RUNTIME_CONSTRAINTS.md",
+      "loops/v3_llm_wiki_loop_20260525/queues/**",
+      "loops/v3_llm_wiki_loop_20260525/reports/loop_report.md"
+    ],
+    "material_to_draft": [
+      "loops/v3_llm_wiki_loop_20260525/**",
+      "data/manifests/sources.jsonl",
+      "data/manifests/seed_sources.json",
+      "data/manifests/source_digests.jsonl",
+      "data/manifests/source_digests_index.md",
+      "data/raw/<only_paths_named_by_current_material_task>",
+      "data/logs/source_access_log.jsonl"
+    ],
+    "similarity_top3": [
+      "loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/drafts/cards/**",
+      "loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md",
+      "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md"
+    ],
+    "comparison_provenance": [
+      "loops/v3_llm_wiki_loop_20260525/**",
+      "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/<top3_only>",
+      "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/provenance/<top3_only>"
+    ],
+    "audit": [
+      "loops/v3_llm_wiki_loop_20260525/**",
+      "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/<audited_target_only>",
+      "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/provenance/<audited_target_only>"
+    ]
+  },
+  "read_denylist": [
+    "Prior chat transcripts or chat memory",
+    "loops/v0_meta_kb_initialization_demo_20260524/**",
+    "loops/v1_topic_hub_skeleton_20260524/**",
+    "loops/v2_llm_wiki_loop_20260525/iterations/**",
+    "loops/v2_llm_wiki_loop_20260525/audits/**",
+    "loops/v2_llm_wiki_loop_20260525/reports/**",
+    "loops/v2_llm_wiki_loop_20260525/reflections/**",
+    "loops/v2_llm_wiki_loop_20260525/brains/**",
+    "loops/v2_llm_wiki_loop_20260525/logs/**",
+    "loops/v2_llm_wiki_loop_20260525/snapshots/**",
+    "user-insights/**"
+  ],
+  "frozen_principles": [
+    "A card is knowledge, not a title restatement.",
+    "Material becomes draft cards before similarity or fusion decisions.",
+    "Similarity is a lightweight candidate-retrieval mechanism, not a truth audit.",
+    "Fusion and provenance-delta operations require audit.",
+    "New-card adoption may use a lighter publication gate, but still requires source-grounded card quality.",
+    "All decision evidence must be recoverable from files."
+  ],
+  "roles": {
+    "main_agent": "Owns loop state, task boundaries, decisions, registry updates, and out-of-loop reflection.",
+    "production_brain": "Turns source material into knowledge-dense draft cards and draft provenance.",
+    "similarity_brain": "Computes title-based top 3 similarity candidates and writes comparison tasks.",
+    "audit_brain": "Audits fusion, provenance delta, boundary failures, and process drift.",
+    "ops_brain": "Maintains queues, reports, status, links, and mailbox hygiene."
+  },
+  "local_skill_contracts": [
+    "loop_controller",
+    "material_to_draft",
+    "title_similarity_top3",
+    "comparison_provenance",
+    "publication_gate",
+    "fusion_audit",
+    "mailbox_ops"
+  ],
+  "subagent_runtime": {
+    "local_claude_code_version_checked": "2.1.128",
+    "standard_subagents_support_nested_spawn": false,
+    "process_level_nested_claude_verified": true,
+    "process_level_nested_claude_pattern": "top-level Claude -> Agent tool subagent -> Bash: claude --permission-mode auto -p \"...\" --output-format text",
+    "process_level_nested_claude_requires_initial_prompt": true,
+    "process_level_nested_claude_permission_mode": "auto",
+    "process_level_nested_claude_permission_mode_min_version": "2.1.83",
+    "process_level_nested_claude_permission_mode_note": "Auto mode avoids permission prompts while using an independent classifier before actions. Do not use bypassPermissions / dangerously-skip-permissions by default.",
+    "process_level_nested_claude_marker": "NESTED_CLAUDE_OK_9X2Y4Z",
+    "process_level_nested_claude_cwd": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
+    "default_runtime_model": "single lead/main session with optional one-layer subagents spawned by the lead",
+    "conceptual_layers": [
+      "brain roles and mailboxes",
+      "concrete task artifacts"
+    ],
+    "experimental_agent_teams": {
+      "minimum_version": "2.1.32",
+      "requires_env": "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1",
+      "local_env_observed_enabled": false,
+      "recommended_use": "production/similarity/audit/ops as teammates when peer communication is required"
+    }
+  },
+  "dependency_contract": "loops/v3_llm_wiki_loop_20260525/SKILLS_AND_DEPENDENCIES.md",
+  "start_prompt": "loops/v3_llm_wiki_loop_20260525/LOOP_START_PROMPT.md",
+  "candidate_output_root": "loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki",
+  "prior_candidate_base": "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki"
+}

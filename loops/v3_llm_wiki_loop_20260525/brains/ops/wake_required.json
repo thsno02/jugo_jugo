@@ -1,0 +1,7 @@
+{
+  "schema": "wake_required.v1",
+  "brain": "ops",
+  "wake_required": false,
+  "reason": "Bootstrap state is consistent.",
+  "updated_at": "2026-05-25T20:54:47+08:00"
+}

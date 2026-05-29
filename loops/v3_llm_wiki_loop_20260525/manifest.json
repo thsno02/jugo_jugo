@@ -1,0 +1,19 @@
+{
+  "schema": "loop_capsule_manifest.v1",
+  "loop_id": "v3_llm_wiki_loop_20260525",
+  "version": "v3",
+  "title": "V3 LLM Wiki Loop",
+  "status": "active",
+  "created_at": "2026-05-25T20:54:47+08:00",
+  "updated_at": "2026-05-25T20:54:47+08:00",
+  "path": "loops/v3_llm_wiki_loop_20260525",
+  "candidate_outputs": [
+    "loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki"
+  ],
+  "prior_candidate_inputs": [
+    "loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki"
+  ],
+  "purpose": "Run a draft-first knowledge-card loop with lightweight title similarity, comparison provenance, and audited fusion decisions.",
+  "owner": "main_agent",
+  "promotion_status": "not_promoted"
+}

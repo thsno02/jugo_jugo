@@ -1,0 +1,1 @@
+{"message_id":"msg-20260525-v3-bootstrap-ops","created_time":"2026-05-25T20:54:47+08:00","from":"main","to":"ops","kind":"bootstrap","subject":"Maintain v3 queues and loop state","payload_path":"loop_state.json","requires_wake":false,"status":"open"}
