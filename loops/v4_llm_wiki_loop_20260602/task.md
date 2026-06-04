@@ -14,26 +14,26 @@ note: v4 任务清单。实验迭代式推进：build --> test on gist --> refin
 ## Phase 0 -- Setup（脚手架）
 
 - [x] 创建 v4 capsule 目录结构
-- [ ] 链接 v3 `future_plans/` 设计文档（确认 pipeline_spec / questioning_loop_design / card_metadata_template / jj_template 可访问）
-- [ ] 验证 `--permission-mode bypassPermissions` + git 权限可正常工作
+- [x] 链接 v3 `future_plans/` 设计文档（确认 pipeline_spec / questioning_loop_design / card_metadata_template / jj_template 可访问）
+- [x] 验证 `--permission-mode bypassPermissions` + git 权限可正常工作
 
 ---
 
 ## Phase 1 -- Build Core Skills（构建核心技能）
 
-- [ ] 开发 questioning skill (`skills/questioning/SKILL.md`) -- questioner 的 5 阶段 SOP，含 SATISFIED 判据、boundary、提问策略细则
-- [ ] 开发 reader/answerer prompt (`skills/reader/PROMPT.md`) -- 被动应答者契约，四标准（源忠实、定位精确、卡片就绪、显式不确定性）
-- [ ] 开发 digest production prompt -- reader 的首遍产出（scope + toc + core_claims + terms），供 reviewer 做覆盖率检查
-- [ ] 开发 Q&A --> card reframing 逻辑 -- 对话体转知识陈述体 + metadata 填写 + typed footnote 锚定 + jj creation 事件
-- [ ] 开发 reviewer prompt -- quit-audit rubric（覆盖率检查 + 源忠实抽查 + verdict 输出格式）
+- [x] 开发 questioning skill (`skills/questioning/SKILL.md`) -- questioner 的 5 阶段 SOP，含 SATISFIED 判据、boundary、提问策略细则
+- [x] 开发 reader/answerer prompt (`skills/reader/PROMPT.md`) -- 被动应答者契约，四标准（源忠实、定位精确、卡片就绪、显式不确定性）+ digest production SOP
+- [x] 开发 digest production prompt -- 集成在 reader/PROMPT.md 中（scope + toc + core_claims + terms）
+- [x] 开发 Q&A --> card reframing 逻辑 (`skills/reframing/PROMPT.md`) -- 对话体转知识陈述体 + metadata 填写 + typed footnote 锚定 + jj creation 事件
+- [x] 开发 reviewer prompt (`skills/reviewer/PROMPT.md`) -- quit-audit rubric（覆盖率检查 + 源忠实抽查 + verdict 输出格式）
 
 ---
 
 ## Phase 2 -- Test on Seed Material（种子材料验证）
 
-- [ ] 在 karpathy-gist-llm-wiki（原始基础材料）上运行完整 questioning loop
-- [ ] 审查产出卡片 -- 质量、颗粒度、metadata 完整性、typed footnotes 锚定准确性
-- [ ] 基于审查结果迭代 skills（questioning / reader / reframing）
+- [x] 在 karpathy-gist-llm-wiki（原始基础材料）上运行完整 questioning loop（15 张卡片，reviewer pass）
+- [x] 审查产出卡片 -- 17 项问题发现（链接密度、原子性、footnote 格式一致性、摘要 alias 覆盖）
+- [x] 基于审查结果迭代 skills -- reframing（cross-link 规则、拆卡信号、alias-in-summary）; reader（统一 footnote 位置格式）; questioning（覆盖率含次要节、原子性检查）; reviewer（链接密度、重叠检测、源节覆盖）
 - [ ] 在 gist 上重新运行 -- 验证改进效果
 
 ---
