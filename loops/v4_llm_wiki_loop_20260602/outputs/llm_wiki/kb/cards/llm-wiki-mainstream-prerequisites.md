@@ -26,9 +26,11 @@ related: [llm-wiki-pattern, full-stack-locality, chunk-size-tradeoff]
 
 **4. 增量索引。** 当前添加新笔记意味着重新索引一切。对于预期每日使用的系统，这是一个"交易破坏者"（dealbreaker）。热重载索引（hot-reload indexing）是必须的[^src-5]。
 
-作者以"第一部电话"作类比："通话质量很糟糕，但跨距离交谈的概念显然是正确的。"[^src-6]预测：在 2027 年底之前将出现兼具 Notion AI 检索质量与 Obsidian 可扩展性的打磨过的本地优先知识库产品[^src-7]。
+作者以"第一部电话"作类比："通话质量很糟糕，但跨距离交谈的概念显然是正确的。"[^src-6]预测：在 2027 年底之前将出现兼具 Notion AI 检索质量与 Obsidian 可扩展性的打磨过的本地优先知识库产品[^src-7]。模式一周内爆发式传播的生态形成速度与 2027 年前才可能成熟的预测之间形成了鲜明张力[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [LLM Wiki 生态形成速度](llm-wiki-ecosystem-velocity.md) -- 主流化四条件描述了产品成熟需要的时间（预测 2027 年前），生态形成速度记录了模式传播的极快节奏（一周内），两者的张力定义了 LLM Wiki 当前所处的"概念验证已完成、产品化未完成"阶段
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L119-120 -- "I think the core idea here — a personal, queryable, local knowledge base — is where things are actually headed. The current implementation is just too early."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L123 -- "The quality gap between a 7B parameter local model and GPT-4 is still enormous for synthesis tasks. Models like Gemma and Qwen are closing it fast though."

@@ -23,9 +23,11 @@ eTAMP（Environment-injected Trajectory-based Agent Memory Poisoning）是首个
 
 该攻击的威胁模型比先前工作更加现实：攻击者仅能通过用户生成内容注入文本、基于可观察的环境特征（如 URL 模式）制作条件触发器，但不能直接访问 agent 的记忆数据库、模型架构或系统提示词 [^src-3]。投毒载荷由三部分组成：重要性信号（如"This is very important!!!"）、触发条件（基于 URL 模式或任务状态的条件语句）、攻击目标（导航至恶意 URL 的 goto 命令）[^src-4]。
 
-实验在 (Visual)WebArena 基准上表明 eTAMP 达到显著的攻击成功率：GPT-5-mini 上高达 32.5%、GPT-5.2 上 23.4%、GPT-OSS-120B 上 19.5% [^src-5]。攻击具有高度隐蔽性——Task A 期间的过早触发率（ASR_A）在几乎所有配置中均为 0%，确保用户无法察觉记忆已被投毒 [^src-6]。
+实验在 (Visual)WebArena 基准上表明 eTAMP 达到显著的攻击成功率：GPT-5-mini 上高达 32.5%、GPT-5.2 上 23.4%、GPT-OSS-120B 上 19.5% [^src-5]。攻击具有高度隐蔽性——Task A 期间的过早触发率（ASR_A）在几乎所有配置中均为 0%，确保用户无法察觉记忆已被投毒 [^src-6]。GraphRAG 知识投毒攻击从另一个向量展示了类似的威胁——仅修改源文本中极少量词语即可显著扭曲知识图谱并误导推理[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [GraphRAG 知识投毒攻击](graphrag-knowledge-poisoning-attack.md) -- eTAMP 通过环境观察投毒 agent 轨迹记忆（跨会话、跨站点），KPA 通过修改源文本投毒知识图谱构建过程（<0.05% 修改量），两者从不同攻击向量揭示了 LLM 知识系统的投毒脆弱性
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Abstract -- "We introduce Environment-injected Trajectory-based Agent Memory Poisoning (eTAMP), the first attack to achieve cross-session, cross-site compromise without requiring direct memory access."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Section: Threat Model -- "A malicious seller on an e-commerce platform embeds hidden instructions in their product page... Days later, the user asks their agent to 'research good games on Reddit'... the poisoned memory activates and causes the agent to post a promotional review"

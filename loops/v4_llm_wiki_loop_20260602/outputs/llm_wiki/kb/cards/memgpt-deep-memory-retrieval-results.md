@@ -25,9 +25,11 @@ MemGPT 论文提出了深度记忆检索（Deep Memory Retrieval, DMR）任务�
 
 **关键设计差异**：基线模型接收过去五轮对话的有损摘要来模拟递归摘要流程，而 MemGPT 能访问完整对话历史，但必须通过分页搜索查询（paginated search queries）将相关记忆召回到主上下文中 [^src-3]。
 
-**底层模型影响**：MemGPT 的性能明显依赖底层 LLM 的能力：GPT-3.5 Turbo 作为底层时由于函数调用能力有限导致性能显著下降 [^src-4]。
+**底层模型影响**：MemGPT 的性能明显依赖底层 LLM 的能力：GPT-3.5 Turbo 作为底层时由于函数调用能力有限导致性能显著下降 [^src-4]。LongMemEval 基准从更广泛的视角量化了长期记忆的准确率差距——商业系统和长上下文 LLM 均出现 30-64% 的下降[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [长期记忆准确率差距（30-60% 下降）](long-term-memory-accuracy-gap.md) -- MemGPT 的 DMR 实验展示了分层记忆管理的有效性（35.3% 至 93.4%），LongMemEval 则量化了当前系统在持续交互中面临的 30-64% 准确率差距，为 MemGPT 方案的价值提供了更宏观的问题背景
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "We introduce a new 'deep memory retrieval' (DMR) task based on the MSC dataset designed to test the consistency of a conversational agent."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- tables/deep_memory_retrieval_table_singlecol.tex -- "GPT-4 Turbo & 35.3% & 0.359 \\ $+$ \textbf{MemGPT} & \textbf{93.4\%} & \textbf{0.827}"

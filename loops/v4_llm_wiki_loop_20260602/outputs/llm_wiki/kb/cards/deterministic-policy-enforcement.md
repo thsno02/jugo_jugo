@@ -24,6 +24,8 @@ Microsoft Agent Governance Toolkit 将"确定性策略执行"（deterministic po
 
 确定性策略的核心优势在于：每次评估结果一致、可重现、可审计，不受模型输出随机性的影响。这与 ADR-0013"Fail Closed on Errors"配合——当策略引擎出错时默认拒绝，而非交由 LLM 做兜底判断 [^src-5]。
 
+来自企业知识管理领域的分析同样支持治理优先于检索的原则 [^card-1]。从标准化角度看，NIST AI RMF 将可信赖性定位为 AI 全生命周期的核心目标，确定性策略执行为该目标提供了可验证的技术保障 [^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L351 -- "Runtime governance for AI agents: deterministic policy enforcement, zero-trust identity, execution sandboxing, and SRE for autonomous agents."
@@ -31,3 +33,5 @@ Microsoft Agent Governance Toolkit 将"确定性策略执行"（deterministic po
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L272 -- "ADR-0004: Deterministic Policy"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L148-163 -- "Policy-as-Code Series: Your First Policy, Capability Scoping, Rate Limiting, Conditional Policies, Approval Workflows, Policy Testing, Policy Versioning, MCP Governance"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L290 -- "ADR-0013: Fail Closed on Errors"
+[^card-1]: [治理优先于检索架构](governance-over-retrieval.md) -- Atlan 论证"规模决定架构，治理决定结果"，确定性策略执行是该治理原则的一种操作化机制
+[^card-2]: [AI RMF 的自愿性与可信赖性导向](ai-rmf-voluntary-trustworthiness.md) -- NIST AI RMF 的可信赖性目标为确定性策略执行提供了标准化方向

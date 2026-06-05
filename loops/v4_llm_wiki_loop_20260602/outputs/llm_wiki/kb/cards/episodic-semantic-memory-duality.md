@@ -24,9 +24,11 @@ Zep 的知识图谱同时维护原始事件数据（episode 子图）和从中�
 
 这种设计的工程价值在于：episode 子图提供无损的原始数据存储和溯源能力（可追溯到每条事实的源消息），而 semantic entity 子图提供结构化的检索和推理能力。两个层次协同工作，使基于 Zep 的 LLM agent 能够发展出"更精细、更有层次的记忆结构，更好地与我们对人类记忆系统的理解对齐"[^src-3]。
 
-Zep 的实现参考了 AriGraph 中对 episodic 与 semantic 子图的区分 [^src-4]。
+Zep 的实现参考了 AriGraph 中对 episodic 与 semantic 子图的区分 [^src-4]。LoCoMo 的观察式记忆表示在工程层面验证了类似的直觉——将原始对话转化为断言式陈述（类似语义记忆提取）显著提升检索效果[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [观察断言式记忆表示](observation-based-memory-representation.md) -- Zep 的情景-语义双存储是理论框架，LoCoMo 的 observation 表示是工程验证——将对话转化为关于说话者的断言式陈述（类似语义记忆提取）使 QA F1 从 31.7 提升至 41.4
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "The dual storage of both raw episodic data and derived semantic entity information mirrors psychological models of human memory."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "These models distinguish between episodic memory, which represents distinct events, and semantic memory, which captures associations between concepts and their meanings"

@@ -28,9 +28,12 @@ Graphiti 的一项关键区分特性是其通过时间提取与边失效过程�
 
 这种机制使得数据可以随着对话演进而动态添加到 Graphiti 中，同时不丢失历史信息。
 
+LoCoMo 的时序事件图从另一个方向处理类似的时序演变问题：它通过构建含日期和因果连接的事件图来锚定对话叙事，而 Graphiti 的边失效机制则侧重于已有知识的动态更新与矛盾解决[^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.2.3 (Temporal Extraction and Edge Invalidation) -- "A key differentiating feature of Graphiti compared to other knowledge graph engines is its capacity to manage dynamic information updates through temporal extraction and edge invalidation processes."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.2.3 -- "The system employs an LLM to compare new edges against semantically related existing edges to identify potential contradictions."
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.2.3 -- "When the system identifies temporally overlapping contradictions, it invalidates the affected edges by setting their t_invalid to the t_valid of the invalidating edge. Following the transactional timeline T', Graphiti consistently prioritizes new information when determining edge invalidation."
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.2.3 -- "This comprehensive approach enables the dynamic addition of data to Graphiti as conversations evolve, while maintaining both current relationship states and historical records of relationship evolution over time."
+[^card-1]: [时序事件图作为对话锚定机制](temporal-event-graph-grounding.md) -- LoCoMo 的时序事件图通过因果连接锚定对话叙事，与 Graphiti 的边失效机制互补：前者构建时序结构，后者管理时序知识的动态更新与矛盾解决

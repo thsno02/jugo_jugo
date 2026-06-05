@@ -26,9 +26,11 @@ Mem0 的记忆更新阶段将每个候选事实的处理归类为四种互斥操
 
 4. **NOOP**：当候选事实已经存在于记忆库中或与当前知识库不相关时，不执行任何操作 [^src-5]。
 
-该分类法的关键设计决策是：不使用独立的分类器模型，而是直接利用 LLM 的推理能力，通过函数调用（tool call）机制根据候选事实与已有记忆之间的语义关系来选择合适的操作。这种方式让操作分类具备了语义理解能力，而非仅依赖简单的相似度阈值 [^src-6]。
+该分类法的关键设计决策是：不使用独立的分类器模型，而是直接利用 LLM 的推理能力，通过函数调用（tool call）机制根据候选事实与已有记忆之间的语义关系来选择合适的操作。这种方式让操作分类具备了语义理解能力，而非仅依赖简单的相似度阈值 [^src-6]。Cognition 的 agent 记忆生命周期模型在更宏观层面描述了记忆从证据到教学的完整演化路径[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [Agent 记忆四阶段生命周期](agent-memory-lifecycle-phases.md) -- Mem0 的 CRUD 操作（ADD/UPDATE/DELETE/NOOP）对应 Cognition 四阶段模型中 Evidence 和 Consolidation 阶段的具体实现，后者还涵盖 Decay 和 Teaching 阶段
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "The LLM itself determines which of four distinct operations to execute"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/appendix.tex Algorithm 1 -- "ADD for creation of new memories when no semantically equivalent memory exists"

@@ -23,9 +23,11 @@ eTAMP 论文揭示了一个令人警醒的发现：更强大的模型并不必�
 
 更深层的矛盾在于：GPT-5.2 在 Chaos Monkey 环境下对环境问题的感知率最高（7.4%），这一更高的感知能力同时关联着更高的混沌环境任务成功率（14.8%，唯一在混沌下提升的模型）和更大的攻击脆弱性 [^src-3]。论文推断：随着 agent 获得更多自主性来探索替代解决方案，它们在创造更高效用的同时也开辟了新的攻击面 [^src-4]。
 
-作为对比，Qwen2.5-VL-72B 表现出极高的鲁棒性（几乎 0% ASR），但其任务成功率也很低（9.6%），且其鲁棒性并非来自长上下文处理限制（其召回率达 98.9%），而是来自安全对齐 [^src-5]。这种能力-安全权衡关系表明，当前的模型扩展（scaling）不自动解决安全问题。
+作为对比，Qwen2.5-VL-72B 表现出极高的鲁棒性（几乎 0% ASR），但其任务成功率也很低（9.6%），且其鲁棒性并非来自长上下文处理限制（其召回率达 98.9%），而是来自安全对齐 [^src-5]。这种能力-安全权衡关系表明，当前的模型扩展（scaling）不自动解决安全问题。GraphRAG 领域的防御空白问题进一步印证了这一判断——最先进的防御方法同样无法检测知识投毒攻击[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [GraphRAG 知识投毒防御空白](graphrag-defense-gap.md) -- eTAMP 揭示更强模型不等于更安全（能力-安全脱钩），GraphRAG 论文发现最先进防御方法无法检测投毒（防御空白），两者共同指向 LLM 知识系统安全领域的系统性不足
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Abstract -- "Notably, more capable models are not more secure. GPT-5.2 shows substantial vulnerability despite superior task performance."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Table 1 -- "GPT-5.2: Authority 22.3%, Frustration Chaos 23.4%"

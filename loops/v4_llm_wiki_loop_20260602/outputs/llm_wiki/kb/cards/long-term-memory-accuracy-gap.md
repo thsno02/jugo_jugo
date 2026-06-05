@@ -24,9 +24,11 @@ LongMemEval 的基准测试揭示了一个重要发现：当前系统在持续�
 
 **核心论断**：这一结果凸显了"通过回忆孤立事实构建看似个性化的聊天助手"与"展现真正强大的记忆能力"之间的鸿沟 [^src-4]。即便是最强的当前长上下文 LLM，在没有有效记忆机制的情况下，也难以管理不断增长的交互历史。
 
-**误差分析**：在最佳记忆设计下，15%-19% 的所有实例出现"正确检索但错误生成"的情况（占错误实例的 40%-50%），表明阅读策略仍有很大改进空间。同时，约 90% 的正确回答都依赖于正确的检索，说明记忆召回是必要条件 [^src-5]。
+**误差分析**：在最佳记忆设计下，15%-19% 的所有实例出现"正确检索但错误生成"的情况（占错误实例的 40%-50%），表明阅读策略仍有很大改进空间。同时，约 90% 的正确回答都依赖于正确的检索，说明记忆召回是必要条件 [^src-5]。MemGPT 的深度记忆检索实验从解决方案角度展示了虚拟上下文管理如何缩小这一差距——通过分页搜索访问完整历史将准确率从 35.3% 提升至 93.4%[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [MemGPT 深度记忆检索实验结果](memgpt-deep-memory-retrieval-results.md) -- LongMemEval 诊断了 30-64% 的准确率差距，MemGPT 的 DMR 实验展示了分层记忆管理如何缩小这一差距（基线 35.3% vs MemGPT 93.4%）
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/3_benchmark.tex` -- Section 3.3 -- "this result highlights the gap between building a seemingly personalized chat assistant by recalling isolated facts and demonstrating a genuinely strong memory ability"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/3_benchmark.tex` -- Section 3.3 -- "ChatGPT and Coze instantiated with GPT-4o exhibits 37% and 64% performance drop, respectively"

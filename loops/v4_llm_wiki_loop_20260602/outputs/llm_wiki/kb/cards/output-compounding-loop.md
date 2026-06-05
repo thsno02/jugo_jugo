@@ -28,7 +28,7 @@ LLM Wiki 的产出层实现了一个**正反馈的复利循环**[^src-1]：
 
 跨 wiki 复利也有支持——`--with` 参数可从另一个 wiki 引入知识到当前产出中[^src-6]。项目（project）功能可将相关产出组织到带目标的文件夹中，通过 `WHY.md` 捕获项目目标[^src-7]。
 
-这一机制延伸了已有的 wiki 复利型制品概念——前者描述的是 wiki 层内部的知识积累（交叉引用、矛盾标记、综合叙述），本卡描述的是 wiki 层到产出层再回到 wiki 的闭环。
+这一机制延伸了已有的 wiki 复利型制品概念——前者描述的是 wiki 层内部的知识积累（交叉引用、矛盾标记、综合叙述），本卡描述的是 wiki 层到产出层再回到 wiki 的闭环。Wen & Ku (2026) 的知识复利理论为这一实践模式提供了形式化经济学框架，将其数学化为知识库覆盖率 H(t) 的凹饱和递推方程[^card-knowledge-compounding]。此外，Qing Claw 实现的搜索回写机制与产出回写形成互补——前者将外部搜索结果写回实体页面，后者将产出制品写回 wiki 索引，共同构成 wiki 的双向呼吸[^card-search-write-back]。
 
 ## Footnotes
 
@@ -39,3 +39,5 @@ LLM Wiki 的产出层实现了一个**正反馈的复利循环**[^src-1]：
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- Opening L14 -- "Every run compounds... The more you research, the stronger every output gets."
 [^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Cross-wiki context" L392-393 -- "Use --with to pull knowledge from another wiki into your output"
 [^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Projects" L394-396 -- "Group related outputs into project folders with goals... WHY.md that captures the goal."
+[^card-knowledge-compounding]: [知识复利效应](knowledge-compounding.md) -- Wen & Ku (2026) 将产出复利循环形式化为 H(t) 凹饱和曲线，证明持久化知识层使每任务成本成为时间递减函数，为产出回写的经济合理性提供了理论基础
+[^card-search-write-back]: [搜索回写机制](search-write-back.md) -- 搜索回写（外部搜索结果写回实体页面）与产出回写（产出制品写回 wiki 索引）是两种互补的 wiki 双向呼吸机制，共同驱动知识复利

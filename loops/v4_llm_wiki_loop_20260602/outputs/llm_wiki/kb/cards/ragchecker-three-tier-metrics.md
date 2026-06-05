@@ -29,9 +29,12 @@ RAGChecker 的设计原则基于对 RAG 评估框架两类使用者的观察[^sr
 
 **生成器层**（Generator Metrics）：共 6 个指标——faithfulness（回答声明被检索块蕴含的比例）、relevant noise sensitivity（来自相关块的错误声明）、irrelevant noise sensitivity（来自无关块的错误声明）、hallucination（不来自任何检索块的错误声明）、self-knowledge（不来自检索块的正确声明）、context utilization（被检索覆盖的标准答案声明中被生成器使用的比例）[^src-4]。
 
+这一三层体系可视为 RAGAS 三维度分解（检索质量、忠实性、生成质量）的深化扩展：RAGAS 在每个维度上定义单一指标，RAGChecker 则在检索器和生成器层各拆分为多个诊断子指标，显著增强了故障归因的粒度[^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/framework.tex, Design Principle" -- "we observe there are two major personae using a RAG evaluation framework. The first persona is a user that cares about the overall performance... The second persona is a developer that focuses on improving a RAG system"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/framework.tex, Overall Metrics" -- "precision is the proportion of correct claims in all response claims, and recall is the proportion of correct claims in all ground-truth answer claims"
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/framework.tex, Retriever Metrics" -- "we define the retriever precision at chunk-level instead of claim-level... it is likely that a chunk may contain relevant claims and irrelevant or misleading information at the same time"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/framework.tex, Generator Metrics" -- "we provide in total six metrics characterizing different aspects of its performance"
+[^card-1]: [RAG 评估三维度分解](rag-evaluation-tri-dimension.md) -- RAGAS 提出的三维度分解（检索质量、忠实性、生成质量）是 RAGChecker 三层指标体系的概念前身，RAGChecker 在每个维度上进一步拆分出多个诊断子指标

@@ -20,9 +20,11 @@ related: [lightmem-three-stage-memory, memory-augmentation-overhead]
 
 这一设计的核心洞察是：记忆的组织和整合不必在用户查询的实时路径上完成。通过将巩固操作移至"睡眠期"（即非推理时段），系统在实际测试时的在线成本可以远低于总成本。论文报告的数据显示，纯在线测试时成本的降低幅度显著高于总体成本降低：token 使用量最高减少 106x/117x，API 调用次数最高减少 159x/310x [^src-2]，而总体（含离线部分）的降低分别为 38x/20.9x 和 30x/55.5x。
 
-这一在线-离线解耦策略意味着系统可以在空闲时段批量处理记忆巩固任务，而在用户交互时仅需访问已整理好的长期记忆，从而实现极低的推理时延和成本。
+这一在线-离线解耦策略意味着系统可以在空闲时段批量处理记忆巩固任务，而在用户交互时仅需访问已整理好的长期记忆，从而实现极低的推理时延和成本。伴侣记忆框架独立提出了类似的睡眠整合架构，但其动机是反自密封的治理设计而非效率优化[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [睡眠整合架构](sleep-consolidation-architecture.md) -- LightMem 的 sleep-time update 侧重效率（解耦推理与巩固），伴侣记忆框架的 CONSOLIDATE 侧重治理（防止流式一致性判断的自密封），两者独立收敛于离线批量整合模式
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "long-term memory with sleep-time update employs an offline procedure that decouples consolidation from online inference"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "purely online test-time costs are even lower, achieving up to 106x / 117x token reduction and 159x / 310x fewer API calls"

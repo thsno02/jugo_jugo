@@ -25,8 +25,11 @@ RAGChecker 将生成器产生的错误声明按来源分为三类，其中噪声
 
 这一差距揭示了生成器的**块级信任模式**（chunk-level faithfulness）：生成器以块为单位决定信任程度，而非以声明为单位。一个包含有用信息的相关块被作为整体信任，其中的噪声也因此被采纳；而一个完全无关的块则仅产生最小影响[^src-3]。这一发现支持了 RAG 系统中知识库质量和分块精细度的重要性——相关块中混入的噪声比无关块更危险。
 
+这一发现与分块大小权衡的实践洞见相互印证：朴素固定大小分块丢弃文档结构，导致相关块中不可避免地混入噪声 [^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/framework.tex, Generator Metrics" -- "The first type includes incorrect claim that are entailed in a relevant chunk... relevant noise sensitivity. The second type includes incorrect claim that are entailed in an irrelevant chunk... irrelevant noise sensitivity"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "tables/ragchecker_results_avg.tex" -- "E5-Mistral_GPT-4: NS(I)=28.9, NS(II)=3.5; E5-Mistral_Llama3-70b: NS(I)=31.7, NS(II)=4.3"
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Main Results" -- "it further enhance the point that generators demonstrate a chunk-level faithfulness. It means a relevant chunk is trusted as a whole, while an irrelevant one only has minimal impact"
+[^card-1]: [分块大小权衡](chunk-size-tradeoff.md) -- 朴素固定大小分块丢弃文档结构导致相关块混入噪声，是 NS-I >> NS-II 现象的上游原因之一

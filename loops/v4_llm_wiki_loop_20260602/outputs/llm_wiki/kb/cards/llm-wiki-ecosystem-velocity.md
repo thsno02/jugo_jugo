@@ -27,9 +27,11 @@ Karpathy 于 2026 年 4 月提出 LLM Wiki 模式后，生态系统的形成速�
 
 该站进一步声称："the rest of the internet explains the pattern, we show you how to run it on your own machine, your own vault, your own papers"[^src-4]，将自身区分为从「解释模式」到「实际运行模式」的桥梁。
 
-生态形成的速度与 pattern-naming-resonance 所描述的「命名共振」互为因果：模式命名激活了大量既有实践者的认同，认同又驱动了快速的开源和商业生态建设。
+生态形成的速度与 pattern-naming-resonance 所描述的「命名共振」互为因果：模式命名激活了大量既有实践者的认同，认同又驱动了快速的开源和商业生态建设。然而，快速生态扩散也留下了成熟度缺口——主流化仍需满足更小模型、更智能检索、真正 UI 和增量索引四项条件[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [LLM Wiki 主流化四条件](llm-wiki-mainstream-prerequisites.md) -- 生态形成速度描述了模式传播的"快"，主流化四条件描述了产品成熟的"慢"——一周内的爆发式传播与 2027 年前才可能出现的成熟产品之间存在显著的成熟度缺口
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/aillm-wiki-directory/text.txt` -- L23 -- "The idea caught on so fast that within a week there were already open-source implementations, YouTube explainers, and a dozen hot-take blog posts."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/aillm-wiki-directory/text.txt` -- L23 -- "What was missing was a single place that turns the spec into things you can actually download and apply without another weekend of trial and error."

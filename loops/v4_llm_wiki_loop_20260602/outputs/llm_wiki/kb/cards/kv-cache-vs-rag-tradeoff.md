@@ -24,10 +24,11 @@ WiCER 论文在 17 个 RepLiQA 领域（6,800 个问题）上对全上下文 KV 
 
 **规模扩大时 KV cache 退化**：当知识量增大到超出策展范围时，全上下文推理因注意力稀释（attention dilution）退化至低于 RAG[^src-3]。
 
-这一发现的实践意义在于：LLM Wiki 的全上下文方案并非在所有场景下优于 RAG。它的优势区间是知识经过策展、规模有界的场景——正好对应 wiki 编译的目标产出。这为编译操作提供了双重动机：既是为了持久化知识，也是为了将知识压缩到注意力机制能有效处理的范围内。
+这一发现的实践意义在于：LLM Wiki 的全上下文方案并非在所有场景下优于 RAG。它的优势区间是知识经过策展、规模有界的场景——正好对应 wiki 编译的目标产出。这为编译操作提供了双重动机：既是为了持久化知识，也是为了将知识压缩到注意力机制能有效处理的范围内。Karpathy LLM Wiki 插件明确选择全上下文反 RAG 策略，其有效前提恰好是 WiCER 识别的优势区间——策展过的紧凑 wiki[^card-full-context-anti-rag]。
 
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "we observe that full context KV cache inference outperforms RAG on curated knowledge (4.38 vs. 4.08 out of 5, 7.3 faster TTFT) but degrades below RAG at scale due to attention dilution"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "4.38 vs. 4.08 out of 5, 7.3 faster TTFT"
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "degrades below RAG at scale due to attention dilution"
+[^card-full-context-anti-rag]: [全上下文反 RAG 架构选择](full-context-anti-rag.md) -- Karpathy LLM Wiki 拒绝 RAG 分块检索、向 LLM 提供完整 wiki 上下文的设计哲学，其有效性依赖于 wiki 保持策展紧凑——正好对应 WiCER 识别的全上下文优势区间

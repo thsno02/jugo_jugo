@@ -34,6 +34,8 @@ related:
 
 Anthropic 工程团队将上下文描述为 AI agent 最稀缺的资源：agent 需要即时访问当前、准确的上下文才能在真实工作中可靠执行。一年没有健康检查的知识图谱是 agent 可能的最差输入[^src-5]。
 
+Atlan 提出的"数据目录即企业 wiki"映射中，持续偏移检测对应于数据目录的"主动元数据传播"——管线运行时自动推送更新，本质上是同一机制在不同领域的投射[^card-1]。Write the Docs 的文档合并门禁则提供了互补的时间点覆盖：门禁在变更创建时保障文档质量，偏移检测在后续持续发现漂移[^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Stay current: health checks need to run automatically" 段 -- "At the personal scale, that works well: one person sees the lint output and acts on it."
@@ -41,3 +43,5 @@ Anthropic 工程团队将上下文描述为 AI agent 最稀缺的资源：agent 
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "What an enterprise LLM wiki has to do differently" 段 -- "It runs as a background loop, surfacing flagged content on a schedule the team can act on (weekly review rather than quarterly audit), with the LLM doing the same kind of inconsistency-checking Karpathy runs on his vault, just at a cadence that matches enterprise change rates."
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "What an enterprise LLM wiki has to do differently" 段 -- "the system needs to detect the contradiction, draft an update, and route it to the document owner for review... an enterprise wiki has to surface them to the right person, which means the system has to understand ownership and routing."
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Stay current: health checks need to run automatically" 段 -- "agents need just-in-time access to current, accurate context to perform reliably on real work. A knowledge graph that hasn't had a health check in a year is the worst possible input for an agent."
+[^card-1]: [数据目录作为企业级 Wiki 的结构等价物](data-catalog-as-enterprise-wiki.md) -- Atlan 将持续偏移检测映射为数据目录的"主动元数据传播"，两者是同一自动维护机制在不同领域的投射
+[^card-2]: [文档合并门禁机制](documentation-merge-gate.md) -- 合并门禁在变更创建时保障文档质量，与持续偏移检测的后续漂移发现形成文档生命周期的互补覆盖

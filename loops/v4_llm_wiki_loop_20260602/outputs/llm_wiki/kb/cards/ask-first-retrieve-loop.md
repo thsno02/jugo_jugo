@@ -28,6 +28,8 @@ Cognition 定义了一个四步 agent 工作循环，其核心原则是**检索�
 
 该循环的本质是将团队的重复问题解决模式从「每人独立猜测」转变为「先查已有方案，再补充新知」。材料用一个具体场景说明：Alice 解决了 Vercel 环境变量作用域问题，该技能被捕获并审批后，Bob 遇到同样问题时其 agent 直接加载 Alice 的修复方案[^src-7]。
 
+这一循环的价值在企业知识管理分析中得到独立印证：大多数企业工具只是检索工具，真正的差异化在于维护循环而非搜索层 [^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "For organizations" section -- "let every agent ask the brain before guessing"
@@ -37,3 +39,4 @@ Cognition 定义了一个四步 agent 工作循环，其核心原则是**检索�
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Save skills" step -- "Cognition drafts the SKILL.md and waits for a human yes before sharing it."
 [^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Retrieve later" step -- "Bob hits the same wall later. His agent loads Alice's fix before guessing."
 [^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Retrieve later" step -- "Bob hits the same wall later. His agent loads Alice's fix before guessing."
+[^card-1]: [检索与维护的区别](retrieval-vs-maintenance.md) -- Falconer 指出大多数企业工具只是检索工具，真正的差异化在于维护循环，"先查后做"正是维护优先理念的具体实践

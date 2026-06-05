@@ -21,7 +21,11 @@ related:
 
 该机制的核心价值在于**时间激励**——它促使开发者在功能"记忆犹新"（while they are fresh）时就撰写文档，而非事后补写[^src-1]。这一做法也是 Docs as Code 所声称的好处之一：开发者往往会主动写出文档初稿[^src-2]。
 
+Falconer 的企业 LLM Wiki 方案将这一"创建时保障质量"的思路与"创建后持续检测"的思路结合：合并门禁确保文档在变更时产生，而持续偏移检测在后续自动发现文档与代码之间的漂移[^card-1]。Falconer 提出的"知识作为工作副产品"原则更进一步，设想知识图谱从 PR 合并、Slack 讨论等工作流中自动增长，无需显式的文档撰写步骤[^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L30-31 -- "You can block merging of new features if they don't include documentation, which incentivizes developers to write about features while they are fresh"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L29 -- "Developers will often write a first draft of documentation"
+[^card-1]: [持续偏移检测](continuous-drift-detection.md) -- 合并门禁在创建时保障文档质量，持续偏移检测在后续自动发现文档与代码的漂移，两者形成文档生命周期的互补覆盖
+[^card-2]: [知识作为工作副产品](knowledge-as-work-byproduct.md) -- "知识作为副产品"原则将合并门禁的"写文档才能合并"进一步推向"工作本身就是文档"，设想知识图谱从工作流自动增长

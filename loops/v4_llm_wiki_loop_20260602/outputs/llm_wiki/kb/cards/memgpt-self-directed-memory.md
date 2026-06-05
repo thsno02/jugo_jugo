@@ -22,9 +22,11 @@ MemGPT 中的内存编辑和检索完全由 LLM 自主驱动（self-directed）�
 
 **指导机制**：通过在系统指令中提供两个主要组件来实现自主编辑和检索：(1) 内存层次结构及其各自用途的详细描述；(2) 函数 schema（附带自然语言描述），系统可调用这些函数来访问或修改内存 [^src-3]。
 
-**溢出保护**：内存检索机制设计为感知 token 限制，并实现分页（pagination）以防止检索调用溢出上下文窗口 [^src-4]。
+**溢出保护**：内存检索机制设计为感知 token 限制，并实现分页（pagination）以防止检索调用溢出上下文窗口 [^src-4]。LangChain 的工具中介记忆访问模式提供了一种对比方案——agent 通过显式声明的工具函数间接访问 store，而非完全自主驱动[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [工具中介的记忆访问模式](tool-mediated-memory-access.md) -- MemGPT 的自主编辑（LLM 完全自主决定何时读写内存）与 LangChain 的工具中介（agent 通过预定义工具函数间接操作）代表了 agent 记忆访问的两种架构极端
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "Memory edits and retrieval are entirely self-directed: MemGPT autonomously updates and searches through its own memory based on the current context."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "The results, including any runtime errors that occur (e.g. trying to add to main context when it is already at maximum capacity), are then fed back to the processor by MemGPT. This feedback loop enables the system to learn from its actions and adjust its behavior accordingly."

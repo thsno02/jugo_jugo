@@ -22,9 +22,11 @@ LongMemEval 对两个商业记忆增强聊天系统（ChatGPT 和 Coze）的人�
 
 **Coze：间接信息遗漏（从未记下）**——与 ChatGPT 相反，Coze 的大多数错误源于一开始就未能从某些会话中记录信息。系统特别容易遗漏以间接方式提供的用户信息——例如用户在讨论汽车保险时附带提及的购车事实 [^src-3]。
 
-**能力差异的影响**：在单会话信息提取（IE）任务上，两个系统都表现尚可。但在需要跨多个会话聚合的其他任务类型上（MR、KU、TR），两者均出现显著性能下降。Coze 的跨会话推理准确率低至 11.8%（GPT-3.5-turbo），ChatGPT 在时间推理上也仅达 43.5%（GPT-4o）[^src-4]。
+**能力差异的影响**：在单会话信息提取（IE）任务上，两个系统都表现尚可。但在需要跨多个会话聚合的其他任务类型上（MR、KU、TR），两者均出现显著性能下降。Coze 的跨会话推理准确率低至 11.8%（GPT-3.5-turbo），ChatGPT 在时间推理上也仅达 43.5%（GPT-4o）[^src-4]。Mem0 的提取-更新管线通过结构化的增量处理范式直接应对这两种失败模式——提取阶段避免遗漏，语义比对的更新阶段避免覆写[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [记忆提取-更新双阶段管线](memory-extraction-update-pipeline.md) -- LongMemEval 诊断了覆写和遗漏两种失败模式，Mem0 的提取-更新管线在架构层面回应了这些问题：提取阶段结合对话摘要和近期消息防止遗漏，更新阶段通过语义比对和 CRUD 操作防止覆写
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/3_benchmark.tex` -- Section 3.3 -- "We found ChatGPT tended to overwrite crucial information as the chat continues, while Coze often failed to record indirectly provided user information"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/appendix.tex` -- Section Appendix manual analysis -- "ChatGPT generally records the evidence statements immediately after it has been presented in the evidence session. However, as the interaction proceeds, ChatGPT often modify this information when it compresses the history, resulting in information loss"

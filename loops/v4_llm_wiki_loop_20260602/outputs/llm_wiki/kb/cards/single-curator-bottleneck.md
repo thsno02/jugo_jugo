@@ -28,6 +28,8 @@ related:
 
 因此，企业版本必须将策展和维护从**个人责任**转变为**系统自动化**：摄入来自工作实际发生的工具，健康检查作为后台循环自动运行[^src-5]。
 
+Write the Docs 社区提倡的文档共同所有权文化提供了一种文化层面的应对路径：通过 docs-as-code 工作流让写作者与开发者共同拥有文档，从而将策展责任从单一个体分散到整个团队[^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Capture: the source folder doesn't exist at company scale" 段 -- "That curation is a feature of the personal pattern — it works because one person controls what goes in."
@@ -35,3 +37,4 @@ related:
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Capture: the source folder doesn't exist at company scale" 段 -- "that's not a failure of discipline — it's a structural difference."
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Stay current: health checks need to run automatically" 段 -- "The engineer who wrote the runbook six months ago is on a different project; the senior engineer who knew the context has moved on; the system the doc described has been rewritten twice."
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "What an enterprise LLM wiki has to do differently" 段 -- "the maintenance has to be automatic and the ingestion has to come from the tools where work actually happens."
+[^card-1]: [文档共同所有权文化](documentation-shared-ownership.md) -- Docs-as-code 的共同所有权文化是对单一策展人瓶颈的文化层面回应：将文档责任从个体分散到写作者与开发者共同体

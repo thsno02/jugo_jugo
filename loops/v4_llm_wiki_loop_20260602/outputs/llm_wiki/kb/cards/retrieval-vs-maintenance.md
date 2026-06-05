@@ -29,9 +29,13 @@ related:
 
 在企业层面，同样的逻辑成立，但维护问题更难——因为没有人像 Karpathy 维护自己的 vault 那样拥有对整体策展的所有权[^src-4]。
 
+Cognition 的"先查后做"工作循环从实践层面印证了这一区分：agent 在执行任务前先检索团队已有技能，本质上是一种将维护循环嵌入工作流程的机制 [^card-1]。RAGChecker 的实验更从定量层面证实了这一点——更好的检索器在提升忠实度的同时也增加了噪声敏感度，检索改善无法替代内容治理 [^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Why retrieval tools don't solve this" 段 -- "Most enterprise knowledge tools on the market are retrieval tools. They make it easier to find what's been captured. Glean, Notion AI, and Confluence search all work this way."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Why retrieval tools don't solve this" 段 -- "Better retrieval over bad context delivers wrong answers more quickly than slow retrieval over bad context."
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Why retrieval tools don't solve this" 段 -- "What makes Karpathy's LLM Wiki interesting is the maintenance loop, not the search layer. The graph stays accurate because the LLM is doing the linting, drafting, and reconciliation work continuously."
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Why retrieval tools don't solve this" 段 -- "the maintenance problem is harder because nobody owns the curation the way Karpathy owns his vault."
+[^card-1]: [先查后做的 Agent 工作循环](ask-first-retrieve-loop.md) -- Cognition 的四步循环（先查-捕获-保存-检索）是将维护循环嵌入 agent 工作流的实践范式
+[^card-2]: [检索改善引发的忠实度与噪声敏感度权衡](retrieval-improvement-faithfulness-noise-tradeoff.md) -- RAGChecker 实验量化证实了"更好的检索器也带来更多噪声"，从实证角度支持维护优先于检索的论点

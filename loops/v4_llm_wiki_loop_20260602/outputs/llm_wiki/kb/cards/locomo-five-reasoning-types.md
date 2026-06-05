@@ -30,6 +30,8 @@ LoCoMo 评测基准将对话记忆的问答任务分为五个互补的推理类�
 
 这种多维度分类比单一准确率指标更能揭示模型记忆能力的真实轮廓。
 
+Mem0 论文在评测中采用了前四类（排除 adversarial），因对抗性问题缺少标准答案，展示了该分类体系在不同评测场景中的裁剪使用 [^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 4.1" -- "we introduce a question-answering task divided into five distinct reasoning categories"
@@ -38,3 +40,4 @@ LoCoMo 评测基准将对话记忆的问答任务分为五个互补的推理类�
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 1 + Table 2" -- "temporal reasoning (by 73%); Human=92.6"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 6.1" -- "LLMs struggle with open-domain knowledge and degrade in the RAG setting... introducing improper context from inaccurate retrieval can lead to a decline"
 [^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table 2" -- "Adversarial: GPT-3.5-turbo-16K 16K=2.1; GPT-4-turbo=70.2"
+[^card-1]: [LOCOMO 长期对话记忆基准测试设计](locomo-benchmark-design.md) -- Mem0 论文采用 LoCoMo 的四分类（排除 adversarial），因对抗性问题缺少标准答案

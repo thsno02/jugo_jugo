@@ -24,6 +24,10 @@ ARES 将 RAG 系统的评估沿三个维度展开，每个维度对应 RAG 流�
 
 这三个维度与 ALCE 的"流畅度-正确性-引用质量"三维框架形成互补：ALCE 侧重输出文本的表面质量与引用可追溯性，而 ARES 侧重 RAG 组件级的功能正确性。两者共同覆盖 RAG 系统评估的不同切面。
 
+RAGAS 独立提出了高度平行的三维分解（检索质量、忠实性、生成质量），但两者的侧重点存在微妙差异：RAGAS 更强调检索的"聚焦性"，而 ARES 更强调回答对查询的直接相关性[^card-1]。
+
 ## Footnotes
+
+[^card-1]: [RAG 评估三维度分解](rag-evaluation-tri-dimension.md) -- RAGAS 从不同来源独立提出了平行的三维分解（检索质量、忠实性、生成质量），两个框架的维度高度重叠但侧重点有微妙差异
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "evaluating RAG systems along the dimensions of context relevance, answer faithfulness, and answer relevance"

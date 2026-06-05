@@ -24,6 +24,8 @@ LoCoMo 基准测试中，时序推理（temporal reasoning）被确认为 LLM �
 
 论文指出，LLM 在理解对话中的时间概念方面面临根本性挑战，这与专门针对 LLM 时序推理能力的 TRAM 基准的发现一致[^src-5]。这意味着对话中的时间推理不仅涉及事实检索，还要求模型理解事件之间的先后顺序、持续时间和时间间隔。
 
+Mem0 的图记忆实验为缓解这一困难提供了正面证据：图结构记忆在时序推理任务上显著优于扁平记忆（Judge 58.13 vs 55.51），显式的关系上下文增强了时序一致性[^card-1]。LongMemEval 提出的时间感知查询扩展则从检索端提供了另一条解决路径：在索引阶段提取事件日期、在检索阶段推断时间范围以过滤无关值[^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 1" -- "still significantly lag behind human levels (by 56%), especially in temporal reasoning, (by 73%)"
@@ -31,3 +33,5 @@ LoCoMo 基准测试中，时序推理（temporal reasoning）被确认为 LLM �
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table 2" -- "GPT-3.5-turbo-16K 12K Temporal=25.0; GPT-3.5-turbo Temporal=17.5"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table 3" -- "Observation top-5 Temporal=41.9 vs Dialog top-5 Temporal=21.3"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 6.1" -- "LLMs face challenges in understanding time concepts within dialogues, which is consistent with findings from other single-turn-based benchmarks focused on temporal reasoning capabilities for LLMs (TRAM)"
+[^card-1]: [图记忆在时序推理中的优势](graph-memory-temporal-advantage.md) -- Mem0 实验证明图结构记忆在时序推理上显著优于扁平记忆，为缓解 LoCoMo 所揭示的时序推理困难提供了正面证据
+[^card-2]: [时间感知的查询扩展策略](time-aware-query-expansion.md) -- LongMemEval 通过索引阶段提取事件日期和检索阶段推断时间范围来提升时序查询召回率，是应对时序推理困难的检索端解决方案

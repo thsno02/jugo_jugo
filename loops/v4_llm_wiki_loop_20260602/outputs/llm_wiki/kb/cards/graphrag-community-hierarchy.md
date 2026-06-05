@@ -27,6 +27,8 @@ GraphRAG 的核心机制是对 LLM 构建的知识图谱进行层级社区检测
 
 这些社区摘要本身就有独立价值——用户可以扫描某一层级的社区摘要寻找感兴趣的主题，然后阅读更低层级的链接报告获取子主题的详细信息 [^src-5]。
 
+**替代方案**：Graphiti（Zep）选择标签传播算法替代 Leiden，以支持新实体加入时的单步动态社区分配，用全局最优性换取增量更新的低延迟[^card-dynamic-community-detection]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 1.1.4 (graph_rag.tex) -- "we use Leiden community detection in a hierarchical manner, recursively detecting sub-communities within each detected community until reaching leaf communities that can no longer be partitioned"
@@ -34,3 +36,4 @@ GraphRAG 的核心机制是对 LLM 构建的知识图谱进行层级社区检测
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 1.1.5 (graph_rag.tex) -- "for each community edge in decreasing order of combined source and target node degree (i.e., overall prominence), add descriptions of the source node, target node, the edge itself, and related claims"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 1.1.5 (graph_rag.tex) -- "rank sub-communities in decreasing order of element summary tokens and iteratively substitute sub-community summaries (shorter) for their associated element summaries (longer) until they fit within the context window"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 1.1.5 (graph_rag.tex) -- "a user may scan through community summaries at one level looking for general themes of interest, then read linked reports at a lower level that provide additional details for each subtopic"
+[^card-dynamic-community-detection]: [标签传播动态社区检测](dynamic-community-detection.md) -- Graphiti 用标签传播替代 Leiden 以支持动态增量更新，代表了与 GraphRAG 层级检测互补的另一种社区检测范式

@@ -25,9 +25,11 @@ related: [llm-wiki-pattern]
 
 这一观察来自作者同时运用两种方式的实践经验。作者在已有的 Mem0 + pgvector 向量检索基础上叠加了 wiki 编译层，实际运行后发现两者自然形成了互补分工[^src-3]。
 
-Karpathy 原文的表述偏向「本以为需要 RAG，但 wiki 已经够用」，语气上更倾向于 wiki 可替代 RAG[^src-4]。本文作者则明确指出这不是二择一，两者在不同使用场景下各有优势。不过这一互补判断有前提条件：Karpathy 指出其 wiki 规模约为 100 篇文章、约 40 万词，在更大规模下 wiki 单独运作的局限性可能更突出[^src-5]。
+Karpathy 原文的表述偏向「本以为需要 RAG，但 wiki 已经够用」，语气上更倾向于 wiki 可替代 RAG[^src-4]。本文作者则明确指出这不是二择一，两者在不同使用场景下各有优势。不过这一互补判断有前提条件：Karpathy 指出其 wiki 规模约为 100 篇文章、约 40 万词，在更大规模下 wiki 单独运作的局限性可能更突出[^src-5]。Atlan 的分析将这种互补推进为具体的混合架构设计模式[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [Wiki-RAG 混合架构模式](wiki-rag-hybrid-pattern.md) -- 日本社区从实践经验观察到 wiki 与 RAG 的互补关系，Atlan 将这一观察系统化为三种混合架构模式（wiki 作为策展上下文层、两层分离、受治理的元数据层）
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/developersio-jp-pattern/text.txt` -- L82-83 -- "個人的には、「RAG か wiki か」は二択ではないと思っています"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/developersio-jp-pattern/text.txt` -- L83 -- "アドホックな質問には RAG 的な検索が便利で、全体像の把握やプロジェクト横断の理解には wiki が便利"

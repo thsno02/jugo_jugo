@@ -24,7 +24,10 @@ NIST AI 风险管理框架（AI RMF 1.0）于 2023 年 1 月发布，其设计�
 
 值得注意的是，虽然框架本身是自愿性的，但行政令 EO 14110 将其作为生成式 AI 概况文件的基础框架予以引用 [^src-2]，这在事实上提升了框架的权威性和实践影响力。自愿性框架通过行政指令间接获得准规范地位，是治理工具演进中的常见模式。
 
+在操作化层面，确定性策略执行机制为框架中的可信赖性目标提供了可审计、可重现的技术保证 [^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/nist-gai-profile/text.txt` -- Abstract L219 -- "The AI RMF was released in January 2023, and is intended for voluntary use and to improve the ability of organizations to incorporate trustworthiness considerations into the design, development, use, and evaluation of AI products, services, and systems."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/nist-gai-profile/text.txt` -- Abstract L219 -- "pursuant to President Biden's Executive Order (EO) 14110 on Safe, Secure, and Trustworthy Artificial Intelligence"
+[^card-1]: [确定性策略执行](deterministic-policy-enforcement.md) -- Microsoft 工具包通过确定性规则引擎而非概率性 LLM 判断来执行治理策略，为自愿性框架的落地提供可重现的技术基础

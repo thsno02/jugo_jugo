@@ -30,9 +30,11 @@ related: [triage-shallow-filter, minority-pressure-promotion, companion-knowledg
 3. 分类和路由——使用梯形隶属函数的模糊一致性梯度
 4. 少数派压力提升——互相支持的矛盾条目作为候选更新而非隔离
 
-**实现约束**：两调度器架构是合规级别的承诺——热路径调度器处理 TRIAGE 和检索读取（在对话延迟预算内），睡眠周期调度器处理 DECAY、CONSOLIDATE、AUDIT 作为后台任务[^src-7]。
+**实现约束**：两调度器架构是合规级别的承诺——热路径调度器处理 TRIAGE 和检索读取（在对话延迟预算内），睡眠周期调度器处理 DECAY、CONSOLIDATE、AUDIT 作为后台任务[^src-7]。LightMem 独立提出了类似的离线巩固机制（sleep-time update），但侧重工程效率（token 降低 106x）而非治理语义[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [睡眠期离线记忆巩固机制](sleep-time-memory-consolidation.md) -- 两个不同来源独立收敛于"离线批量整合"架构：伴侣记忆框架出于反自密封的治理理由，LightMem 出于推理效率的工程理由
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.1" -- "The framework splits ingestion from integration. A raw buffer accepts entries as they arrive; the active wiki is modified only during scheduled consolidation cycles."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.1" -- "Deep coherence work --- classification, contradiction resolution, integration with the active wiki, promotion of minority positions, flagging of gravity conflicts --- runs during a batched CONSOLIDATE operation on a scheduled rhythm"

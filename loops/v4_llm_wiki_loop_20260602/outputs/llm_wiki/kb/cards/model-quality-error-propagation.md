@@ -9,10 +9,10 @@ edited_time: 2026-06-05T10:00:00+08:00
 edited_entity: llm
 source_ids: [anthemcreation-fr-guide]
 justification: ../justification/model-quality-error-propagation.md
-canonical_concept: source-faithfulness-risk
+canonical_concept: model-error-propagation
 aliases: [模型错误传播, error propagation, 弱模型风险]
 summary: >-
-  source-faithfulness-risk（模型错误传播 / error propagation / 弱模型风险）指 LLM Wiki 完全依赖
+  model-error-propagation（模型错误传播 / error propagation / 弱模型风险）指 LLM Wiki 完全依赖
   模型质量管理来源间矛盾，能力不足的模型会静默传播错误；agents.md 质量和定期人工审查是关键缓解措施
 related: [source-faithfulness-risk, schema-as-configuration, review-involvement-spectrum]
 ---

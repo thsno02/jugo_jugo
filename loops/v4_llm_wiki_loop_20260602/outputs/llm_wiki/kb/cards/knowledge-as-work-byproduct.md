@@ -29,6 +29,8 @@ related:
 
 文章引用的统计数据支持这一原则的必要性：Stack Overflow 2024 年对 65,000 名专业开发者的调查发现，超过 60% 的人每天花 30 分钟以上搜索解决方案，68% 每周至少遇到一次知识孤岛[^src-5]。每篇新文档只是加入堆积，而非加入图谱——因为没有什么在做整合的工作[^src-6]。
 
+Write the Docs 社区的文档合并门禁机制是"知识作为工作副产品"原则在代码级工作流中的一个具体实现：通过阻止无文档的功能合并，迫使文档在功能记忆犹新时产生，而非作为额外工作[^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Step 4: Ship normally" 段 -- "The team doesn't change how it works."
@@ -37,3 +39,4 @@ related:
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "What an enterprise LLM wiki has to do differently" 段 -- "There's no raw/ folder for someone to populate; the tools themselves are the raw layer, and the ingestion runs continuously"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Compound: stale context doesn't compound, it rots" 段 -- "more than 60 percent spend 30 minutes or more a day searching for solutions, and 68 percent encounter a knowledge silo at least once a week."
 [^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Compound: stale context doesn't compound, it rots" 段 -- "Each new doc adds to the pile rather than to the graph, because nothing is doing the work of integration."
+[^card-1]: [文档合并门禁机制](documentation-merge-gate.md) -- Docs-as-code 的合并门禁是"知识作为副产品"原则在代码工作流中的具体实现：阻止无文档的功能合并，使文档在功能记忆犹新时自然产生

@@ -26,6 +26,8 @@ related: [fact-augmented-key-expansion, longmemeval-five-memory-abilities]
 
 **关键限制——模型能力依赖**：时间范围推断高度依赖 LLM 的能力。GPT-4o 能在查询缺乏时间引用时正确拒绝生成时间范围；而 Llama 3.1 8B 即使提供了大量上下文示例，也经常在无时间引用的查询中错误地"幻觉"出一个时间范围，导致搜索空间被错误裁剪、召回率下降 [^src-5]。
 
+Graphiti 的双时间线事实建模从存储端解决了类似问题：为每条事实维护事件时间线和事务时间线各两个时间戳，使时间信息在索引时即被结构化编码[^card-1]。LoCoMo 基准则量化了时间感知检索的必要性——时序推理是 LLM 与人类差距最大的能力维度（73%），凸显了时间过滤机制的重要性[^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/4_methodology.tex` -- Section 4.2 CP3 -- "when queries involve temporal references... naive similarity search proves insufficient. We address this with a time-aware indexing and query expansion strategy"
@@ -33,3 +35,5 @@ related: [fact-augmented-key-expansion, longmemeval-five-memory-abilities]
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.4 -- "an LLM extracts a time range for time-sensitive queries, which is used to filter out a large number of irrelevant values"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.4 -- "this simple design improves recall by an average of 11.3% when using rounds as the value and by 6.8% when using sessions as the value"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/appendix.tex` -- Appendix temp expansion analysis -- "the model often mistakenly extracts a time range, which erroneously prunes out the search space, leading to a low memory recall. By contrast, GPT-4o is able to refuse to generate a time range when the question does not have a time reference"
+[^card-1]: [双时间线事实建模](bi-temporal-fact-model.md) -- Graphiti 从存储端为每条事实维护四个时间戳（事件时间线+事务时间线），与 LongMemEval 的查询端时间过滤形成互补的时间感知方案
+[^card-2]: [时序推理是 LLM 对话记忆中最困难的能力维度](temporal-reasoning-difficulty.md) -- LoCoMo 量化了时序推理与人类的 73% 差距，凸显了时间感知查询扩展等机制的必要性

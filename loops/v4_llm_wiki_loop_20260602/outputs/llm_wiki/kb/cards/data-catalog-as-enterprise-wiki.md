@@ -35,8 +35,12 @@ Atlan 文章提出一个结构映射：**受治理的数据目录在结构上就
 
 这一映射的实际含义是：当企业高管读到 Karpathy 的帖子并要求数据团队"为公司构建 LLM wiki"时，数据团队面临的直接问题是——企业数据不是整洁的 markdown 文章集合，而是分布在数十个系统中、由数百人维护、默认未受治理的[^src-3]。
 
+Falconer 的企业 wiki 指南独立提出了两个与数据目录映射高度一致的机制：持续偏移检测对应于目录的"主动元数据传播"[^card-1]，跨工具实体解析对应于目录的"血缘+业务术语表"[^card-2]。两个来源从不同视角趋同于同一架构。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L394 -- "Atlan's data catalog is structurally the enterprise version of what Karpathy built for himself."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L396 -- "The enterprise LLM knowledge base the organization needs already exists in most cases. The connection is the missing piece, not the construction."
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L390-391 -- "enterprise data is not a tidy collection of markdown articles. It is distributed across dozens of systems, maintained by hundreds of people, ungoverned by default"
+[^card-1]: [持续偏移检测](continuous-drift-detection.md) -- Falconer 的持续偏移检测对应于数据目录的"主动元数据传播"，两个来源从不同视角趋同于同一自动维护机制
+[^card-2]: [跨工具实体解析](cross-tool-entity-resolution.md) -- Falconer 的跨工具语义实体解析对应于数据目录的"血缘+业务术语表"，两个来源独立地指向跨系统知识链接的必要性

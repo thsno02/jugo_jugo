@@ -24,7 +24,12 @@ RAGAS（Retrieval Augmented Generation Assessment）是一个专门用于自动�
 
 RAGAS 论文论证了无参考评估方法的实际价值：这种框架"能够关键性地促进 RAG 架构的更快评估周期，这在 LLM 快速普及的背景下尤为重要" [^src-4]。换言之，消除人工标注瓶颈后，开发者可以在 RAG 系统的设计迭代过程中持续、自动地获得质量反馈，而无需等待标注工作完成。
 
+ARES 采用了一种互补的设计：通过合成数据微调 LM 评审 + PPI 校准来实现自动评估，虽然仍需少量人工标注，但获得了跨领域迁移的鲁棒性[^card-1]。Mem0 的实验则从另一角度佐证了无参考评估的必要性——词汇匹配指标（F1/BLEU）与语义评估之间存在系统性鸿沟[^card-2]。
+
 ## Footnotes
+
+[^card-1]: [ARES 自动化 RAG 评估框架](ares-rag-evaluation-framework.md) -- ARES 通过合成数据+PPI 仅需少量标注实现自动评估，与 RAGAS 的完全无参考路线形成互补的设计取舍
+[^card-2]: [词汇匹配指标 vs 语义评估的鸿沟](lexical-vs-semantic-eval-gap.md) -- Mem0 实验揭示 F1/BLEU 无法捕获事实性错误，从实证层面印证了 RAGAS 绕过词汇指标、追求语义评估的设计动机
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "a suite of metrics which can be used to evaluate these different dimensions without having to rely on ground truth human annotations"

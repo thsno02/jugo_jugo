@@ -24,9 +24,11 @@ LLM wiki 和 RAG 管线并非互斥。在混合架构中，wiki 提供策展过�
 
 **模式二：两层分离——策展层与检索层。** Wiki 处理"我们确定知道的"层——经过认证的概念、稳定定义、变化缓慢的内部框架。RAG 处理"语料库中当前有的"层——实时文档搜索、证据检索、大规模动态数据集的广覆盖。这种分离避免了策展知识层被广泛检索的噪声和方差污染[^src-3]。
 
-**模式三：Wiki 层即受治理的元数据层。** 最强大的混合形式出现在"wiki"不是 markdown 文件夹而是**受治理的数据目录**时——策展的、认证的、有访问控制的元数据。目录回答"我们对数据了解什么"；RAG 从数据本身检索。一个在查询数据集之前就了解其结构、认证状态和血缘关系的 LLM agent 是一个根本性更可靠的 agent[^src-4]。
+**模式三：Wiki 层即受治理的元数据层。** 最强大的混合形式出现在"wiki"不是 markdown 文件夹而是**受治理的数据目录**时——策展的、认证的、有访问控制的元数据。目录回答"我们对数据了解什么"；RAG 从数据本身检索。一个在查询数据集之前就了解其结构、认证状态和血缘关系的 LLM agent 是一个根本性更可靠的 agent[^src-4]。日本社区的实践经验从个人规模验证了这种互补关系——wiki 适合全局理解，RAG 适合临时查询[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [RAG 与 Wiki 的互补关系](rag-wiki-complementarity.md) -- Atlan 从企业架构层面设计了三种混合模式，日本社区从个人实践（Mem0+pgvector+wiki）验证了 wiki 与 RAG 的自然互补分工
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L363 -- "In hybrid architectures, the wiki provides curated, high-confidence context that anchors RAG retrieval - reducing noise, improving grounding, and making LLM responses more consistent across queries."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L367-368 -- "Combined outcome: higher response consistency and fewer hallucinations than RAG alone, because the LLM is grounding against curated knowledge before it reaches into dynamic retrieval."

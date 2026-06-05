@@ -22,9 +22,11 @@ related: [chunk-size-tradeoff, full-context-anti-rag, context-window-degradation
 
 RAG 的 chunk size 选择呈现出非单调效应：chunk size=256, k=2 时表现最佳（Judge=60.97%），但随着 chunk size 增大，性能先下降再部分回升（chunk size=8192, k=2 时 Judge=60.53%）。同时，更大的 chunk 导致延迟指数增长（k=2, 8192 时 p95 总延迟达 9.942s）[^src-3]。
 
-对比来看，Mem0 每次对话平均仅消耗约 1764 个 token 的记忆上下文，远少于 RAG 需要的文本块，同时保持了更低的搜索延迟（p50=0.148s vs RAG 的 0.24-0.29s）[^src-4]。
+对比来看，Mem0 每次对话平均仅消耗约 1764 个 token 的记忆上下文，远少于 RAG 需要的文本块，同时保持了更低的搜索延迟（p50=0.148s vs RAG 的 0.24-0.29s）[^src-4]。Zep 论文从另一个角度强化了这一论点——当前 RAG 聚焦于静态语料库，根本无法满足企业 agent 对动态记忆的需求[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [静态 RAG 与动态 agent 记忆的鸿沟](static-rag-dynamic-memory-gap.md) -- Mem0 从实验数据证明记忆系统在显著性上优于 RAG，Zep 从架构层面论证 RAG 的静态语料假设与动态 agent 记忆需求之间的根本鸿沟
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/result.tex -- "Even the strongest RAG approach peaks at around 61% in the Judge metric, whereas Mem0 reaches 67%—about a 10% relative improvement—and Mem0^g reaches over 68%, achieving around a 12% relative gain."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/result.tex -- "By converting the conversation history into concise, structured representations, Mem0 and Mem0^g mitigate noise and surface more precise cues to the LLM, leading to better answers"

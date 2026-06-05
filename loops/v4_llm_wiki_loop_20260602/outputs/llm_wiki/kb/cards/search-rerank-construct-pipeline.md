@@ -28,6 +28,8 @@ Zep 将记忆检索形式化为一个三步组合函数 f: S -> S，接受文本
 
 最终检索函数表示为组合：f(alpha) = chi(rho(phi(alpha))) = beta [^src-5]。
 
+Mem0^g 的知识图谱检索采用了类似的多路策略（实体锚定 + 语义三元组双路检索），从不同系统设计角度印证了多路检索在知识图谱场景中的必要性 [^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 (Memory Retrieval) -- "the Zep graph search API implements a function f: S->S that accepts a text-string query alpha as input and returns a text-string context beta as output"
@@ -35,3 +37,4 @@ Zep 将记忆检索形式化为一个三步组合函数 f: S -> S，接受文本
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.2 (Reranker) -- "Zep supports existing reranking approaches such as Reciprocal Rank Fusion (RRF) and Maximal Marginal Relevance (MMR). Additionally, Zep implements a graph-based episode-mentions reranker..."
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 -- "For each e_i in E_s, chi returns the fact and t_valid, t_invalid fields; for each n_i in N_s, the name and summary fields; and for each n_i in N_c, the summary field."
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 -- "we can express f as a composition of these three components: f(alpha)=chi(rho(phi(alpha)))=beta"
+[^card-1]: [双路检索策略（实体锚定 + 语义三元组）](dual-retrieval-entity-semantic.md) -- Mem0^g 的双路知识图谱检索展示了另一种多路策略设计，与 Zep 的三步管线形成跨系统比较

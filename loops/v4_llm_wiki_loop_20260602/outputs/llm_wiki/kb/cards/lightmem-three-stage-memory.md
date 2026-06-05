@@ -26,8 +26,11 @@ LightMem 是一种面向大语言模型的记忆增强生成系统，其核心�
 
 该三阶段架构的设计目标是在记忆系统的性能（QA 准确率）与效率（token 消耗和 API 调用次数）之间取得平衡。在 LongMemEval 和 LoCoMo 基准上，使用 GPT 和 Qwen 作为骨干模型，LightMem 在 QA 准确率上最高提升 7.7%/29.3%，同时将总 token 使用量最多降低 38x/20.9x，API 调用次数最多降低 30x/55.5x [^src-5]。
 
+MemGPT 从操作系统的主内存/磁盘类比出发也提出了分层记忆架构，侧重 LLM 的自主内存管理能力而非效率优化[^card-1]。
+
 ## Footnotes
 
+[^card-1]: [MemGPT 两级内存层次结构](memgpt-memory-hierarchy.md) -- MemGPT 的 OS 类比（主上下文=RAM vs 外部上下文=磁盘）与 LightMem 的认知模型形成互补的分层记忆设计路径
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "Inspired by the Atkinson-Shiffrin model of human memory, LightMem organizes memory into three complementary stages."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "cognition-inspired sensory memory rapidly filters irrelevant information through lightweight compression and groups information according to their topics"
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "topic-aware short-term memory consolidates these topic-based groups, organizing and summarizing content for more structured access"

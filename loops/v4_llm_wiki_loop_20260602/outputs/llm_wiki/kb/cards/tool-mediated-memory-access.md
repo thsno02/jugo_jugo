@@ -24,9 +24,11 @@ related: [namespace-key-memory-model, cross-session-continuity]
 2. **可观察性**——记忆操作作为工具调用出现在对话流中，可被追踪和审计
 3. **上下文注入**——通过 `context_schema`（如含 `user_id` 的 dataclass），调用方在 agent 启动时注入运行时上下文，工具通过 `runtime.context` 获取，从而知道为哪个用户读写记忆[^src-4]
 
-该文档未讨论 agent 如何决定**何时**调用记忆工具（是否有自动触发机制，还是完全依赖 LLM 的自主判断），也未讨论当 agent 未调用记忆工具时信息丢失的风险。
+该文档未讨论 agent 如何决定**何时**调用记忆工具（是否有自动触发机制，还是完全依赖 LLM 的自主判断），也未讨论当 agent 未调用记忆工具时信息丢失的风险。MemGPT 的自主内存编辑机制代表了更激进的自主性设计——LLM 完全自主决定何时在内存层级间移动数据[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [MemGPT 自主内存编辑与检索](memgpt-self-directed-memory.md) -- LangChain 的工具中介模式（显式工具调用）与 MemGPT 的自主编辑模式（LLM 完全自主驱动）代表 agent 记忆访问自主性的两端
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Usage" 段 -- "Tools can then read from and write to the store using the runtime.store parameter."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Read long-term memory in tools" 代码示例 -- "user_info = runtime.store.get((\"users\",), user_id)"

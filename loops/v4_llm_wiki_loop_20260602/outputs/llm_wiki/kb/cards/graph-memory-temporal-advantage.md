@@ -28,6 +28,8 @@ Mem0^g 将记忆表示为有向标记图 $G = (V, E, L)$，其中节点 $V$ 表�
 
 论文总结：稠密的自然语言记忆对简单查询效率高，而显式关系建模对需要精细时序和上下文整合的任务不可或缺。这种互补性暗示最优记忆架构应根据查询类型自适应选择检索策略 [^src-6]。
 
+Graphiti 的双时间线事实建模（事件时间线 T + 事务时间线 T'）为这一时序优势提供了具体的实现机制——四个时间戳精确追踪事实的有效期，正是 Mem0^g 所依赖的"显式关系上下文"的一种实现形式[^card-1]。LoCoMo 基准则从评估角度量化了这一困难：时序推理是 LLM 对话记忆中与人类差距最大的维度（73%），进一步凸显了图结构时序优势的重要性[^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "memories are stored as directed labeled graphs with entities as nodes and relationships as edges"
@@ -36,3 +38,5 @@ Mem0^g 将记忆表示为有向标记图 $G = (V, E, L)$，其中节点 $V$ 表�
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/result.tex -- "potential inefficiencies or redundancies in structured graph representations for complex integrative tasks compared to dense natural language memory alone"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/result.tex -- Table 1 open-domain scores
 [^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/result.tex -- "dense, natural-language-based memory offers significant efficiency for simpler queries, while explicit relational modeling becomes essential for tasks demanding nuanced temporal and contextual integration"
+[^card-1]: [双时间线事实建模](bi-temporal-fact-model.md) -- Graphiti 的双时间线（事件时间线 T + 事务时间线 T'）和四个时间戳是 Mem0^g "显式关系上下文增强时序一致性"的一种具体实现机制
+[^card-2]: [时序推理是 LLM 对话记忆中最困难的能力维度](temporal-reasoning-difficulty.md) -- LoCoMo 量化了时序推理与人类的 73% 差距，从评估角度凸显了图结构记忆在时序推理上的优势价值

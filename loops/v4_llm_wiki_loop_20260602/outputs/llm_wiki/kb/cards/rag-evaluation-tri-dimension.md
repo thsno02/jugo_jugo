@@ -30,7 +30,12 @@ RAGAS 框架将 RAG 管道的评估挑战分解为三个独立维度，论文指
 
 三维分解的价值在于：它揭示了 RAG 管道的故障可能独立发生在不同组件上——检索可能召回了正确内容但 LLM 未能忠实使用，或 LLM 忠实使用了检索内容但检索本身返回了不相关的段落。单一维度的评估无法区分这些不同的失败模式。
 
+ARES 独立提出了高度平行的三维组件评估框架（上下文相关性、回答忠实性、回答相关性），为这一分解的普遍性提供了跨研究验证[^card-1]。RAGChecker 则进一步将三维度扩展为三层级（整体/检索器/生成器），在生成器层引入 6 个细粒度诊断指标，将维度分析推向更深层次[^card-2]。
+
 ## Footnotes
+
+[^card-1]: [RAG 组件评估三维度](rag-component-evaluation-tri-dimension.md) -- ARES 从不同来源独立提出了平行的三维组件评估（上下文相关性、回答忠实性、回答相关性），与 RAGAS 的三维度高度重叠
+[^card-2]: [RAGChecker 三层诊断指标体系](ragchecker-three-tier-metrics.md) -- RAGChecker 将三维度扩展为三层级诊断体系，在生成器层引入 6 个细粒度指标，深化了维度分析的粒度
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "Evaluating RAG architectures is, however, challenging because there are several dimensions to consider"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "the ability of the retrieval system to identify relevant and focused context passages"

@@ -26,6 +26,8 @@ Mem0 论文批判了对话 AI 研究中普遍使用的词汇相似度指标（F1
 
 实验结果显示 F1/BLEU 与 Judge 之间的排名有时不一致——例如 A-Mem 在 F1 上表现不错但在 Judge 上大幅落后，而 OpenAI 在 F1 上中等但在 Judge 上较强——这进一步证实了两类指标衡量的是不同维度 [^src-5]。
 
+RAGAS 的无参考评估框架从设计层面回应了这一鸿沟——完全绕过词汇匹配指标，转而通过语义层面的上下文相关性和忠实性来评估 RAG 系统[^card-1]。RAGChecker 的元评估则从量化角度印证了这一发现：当系统性地比较各评估指标与人类偏好的 Pearson 相关性时，语义指标显著优于词汇指标[^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "these metrics exhibit significant limitations when evaluating factual accuracy in conversational contexts"
@@ -33,3 +35,5 @@ Mem0 论文批判了对话 AI 研究中普遍使用的词汇相似度指标（F1
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "This approach leverages a separate, more capable LLM to assess response quality across multiple dimensions, including factual accuracy, relevance, completeness, and contextual appropriateness"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "we conducted 10 independent runs for each method on the entire dataset and report the mean scores along with ±1 standard deviation"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/result.tex -- Table 1 showing ranking differences between F1/BLEU and Judge metrics
+[^card-1]: [RAGAS 无参考评估框架](ragas-reference-free-rag-evaluation.md) -- RAGAS 完全绕过词汇匹配指标，从设计层面回应了词汇 vs 语义评估鸿沟
+[^card-2]: [RAG 评估框架的元评估方法论](rag-evaluation-meta-evaluation.md) -- RAGChecker 的元评估量化了评估指标与人类偏好的相关性，从数据层面印证词汇指标系统性弱于语义指标

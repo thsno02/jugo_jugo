@@ -24,10 +24,11 @@ MemGPT 论文提出了直接扩展 LLM 上下文窗口面临的多重困境，�
 
 **实际文档长度远超上限**：许多真实文档分析任务涉及的文档长度远超当前最大上下文窗口。例如法律或财务文档如年报（SEC Form 10-K）可轻松超过百万 token。许多任务还需要跨多个此类长文档建立联系 [^src-3]。
 
-这三重困境共同论证了：盲目扩展上下文并非解决固定上下文问题的可行方案，需要更灵活的内存架构如 MemGPT [^src-3]。
+这三重困境共同论证了：盲目扩展上下文并非解决固定上下文问题的可行方案，需要更灵活的内存架构如 MemGPT [^src-3]。GraphRAG 的实证评估独立验证了这一论点——8k 上下文窗口在全面性上普遍优于 16k/32k/64k，小窗口配合 map-reduce 分治优于大窗口单次处理[^card-graphrag-small-context-window-advantage]。
 
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/intro.tex -- "Directly extending the context length of transformers incurs a quadratic increase in computational time and memory cost due to the transformer architecture's self-attention mechanism"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/intro.tex -- "even if we could overcome the computational challenges of context scaling, recent research shows that long-context models struggle to utilize additional context effectively"
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "many documents easily surpass these lengths; for example, legal or financial documents such as Annual Reports (SEC Form 10-K) can easily pass the million token mark...it becomes difficult to envision blindly scaling up context as a solution...more flexible memory architectures like MemGPT are needed."
+[^card-graphrag-small-context-window-advantage]: [GraphRAG 中小上下文窗口反而更优的发现](graphrag-small-context-window-advantage.md) -- GraphRAG 评估中 8k 上下文在全面性上普遍优于更大窗口（平均胜率 58.1%），为上下文扩展递减收益提供了来自不同系统的实证佐证

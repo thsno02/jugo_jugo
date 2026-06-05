@@ -32,9 +32,13 @@ LOCOMO 是由 Maharana et al. 设计的长期对话记忆评测基准，被 Mem0
 
 原始数据集还包含对抗性问题类别（旨在测试系统识别不可回答问题的能力），但因缺少标准答案而在 Mem0 论文的评估中被排除 [^src-4]。
 
+LoCoMo 原始论文提供了该基准的更完整描述：50 段对话（各约 300 轮、9K tokens），并包含第五类对抗性问题（1,871 题），人类 QA F1=87.9 远超最佳模型 41.4 [^card-1]。LoCoMo 的五类推理维度中，adversarial 类别因缺少标准答案而在 Mem0 评测中被排除，但该维度揭示了长上下文模型的最大脆弱性（仅 2.1%）[^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "The LOCOMO dataset is designed to evaluate long-term conversational memory in dialogue systems."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "It comprises 10 extended conversations, each containing approximately 600 dialogues and 26000 tokens on average, distributed across multiple sessions."
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "These questions are categorized into multiple types: single-hop, multi-hop, temporal, and open-domain."
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "The dataset originally included an adversarial question category...However, this category was excluded from our evaluation because ground truth answers were unavailable"
+[^card-1]: [LoCoMo 超长期对话记忆评测基准](locomo-benchmark.md) -- LoCoMo 原始论文描述了完整的 50 段对话数据集和三项评测任务，人类 QA F1=87.9 远超最佳模型
+[^card-2]: [LoCoMo 对话记忆 QA 的五类推理维度](locomo-five-reasoning-types.md) -- 原始 LoCoMo 定义了五类推理维度（含 adversarial），揭示了时序推理差距最大（73%）和对抗性问题的模型脆弱性

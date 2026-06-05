@@ -26,9 +26,11 @@ Cognition 将 agent 记忆系统区分为四个阶段，而非简单的存储-�
 
 **Teaching（教学）**：下一个 agent 不是收到一堆笔记，而是获得一条**路由**——指明使用哪个技能、依据谁的判断、以及如何应用[^src-6]。
 
-该四阶段模型的核心主张是：agent 记忆不应是静态的上下文存储，而应是将工作视为学习信号的动态系统[^src-7]。
+该四阶段模型的核心主张是：agent 记忆不应是静态的上下文存储，而应是将工作视为学习信号的动态系统[^src-7]。Mem0 的 CRUD 操作分类法在更细粒度上实现了类似的生命周期管理，将每次记忆更新分解为 ADD/UPDATE/DELETE/NOOP 四种操作[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [记忆 CRUD 操作分类法](memory-crud-operation-taxonomy.md) -- Cognition 的四阶段生命周期（Evidence-Consolidation-Decay-Teaching）是宏观模型，Mem0 的 CRUD 分类法（ADD/UPDATE/DELETE/NOOP）是微观操作层面的实现，两者互为补充
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "why this is not another company brain" section -- "Memory that decays, consolidates, and teaches back."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Evidence" section -- "Prompts, files, tool calls, decisions, and outcomes become typed learning events."

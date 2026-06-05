@@ -33,9 +33,11 @@ related:
 5. **Regenerate index** -- 重建 wiki/index.md
 6. **Suggest schema updates** -- LLM 分析 Wiki 并提出 schema 改进建议
 
-插件支持 10+ LLM 供应商（Anthropic、Gemini、OpenAI、DeepSeek、Kimi、GLM、Ollama、OpenRouter 等），支持 8 种语言的 UI 和 Wiki 输出，Wiki 输出语言可独立于 UI 语言设置[^src-6]。代码库由 13 个模块组成，包含 wiki 引擎、查询引擎、源分析器、页面工厂、巡检控制器等[^src-7]。
+插件支持 10+ LLM 供应商（Anthropic、Gemini、OpenAI、DeepSeek、Kimi、GLM、Ollama、OpenRouter 等），支持 8 种语言的 UI 和 Wiki 输出，Wiki 输出语言可独立于 UI 语言设置[^src-6]。代码库由 13 个模块组成，包含 wiki 引擎、查询引擎、源分析器、页面工厂、巡检控制器等[^src-7]。my-llm-wiki 以 CLI+pip 路线提供了互补的实现方式，强调代码仓库级知识图谱构建和 19 语言代码支持[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [my-llm-wiki PyPI 实现](my-llm-wiki-implementation.md) -- 两个独立的 LLM Wiki 三层架构实现：本插件走 Obsidian GUI 路线（6 大命令、10+ LLM 供应商），my-llm-wiki 走 CLI+pip 路线（Tree-sitter 代码提取、SHA256 增量缓存、CLI 回写），体现同一模式在不同工具生态中的具体化
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "What is LLM-Wiki?" L96 -- "AI-powered structured knowledge base that ingests your notes and generates a connected Wiki — based on Andrej Karpathy's LLM Wiki concept"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "Overview" L82-98 -- "Greener-Dalii 781 downloads" "Obsidian official score 94/100" "27 releases"

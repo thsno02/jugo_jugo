@@ -42,9 +42,11 @@ related:
 
 **开发节奏**：从 v0.1.0（2026-04-07）到 v0.9.0（2026-04-28），21 天内发布 15 个版本，状态为 Beta[^src-7]。
 
-与同类实现相比，该工具走 CLI + pip 路线（区别于 Obsidian 插件内运行的 obsidian-karpathy-wiki-plugin，以及 Claude Code 自定义命令形式的 kb-compile），强调代码仓库级别的知识图谱构建能力。
+与同类实现相比，该工具走 CLI + pip 路线（区别于 Obsidian 插件内运行的 obsidian-karpathy-wiki-plugin，以及 Claude Code 自定义命令形式的 kb-compile），强调代码仓库级别的知识图谱构建能力。Obsidian 社区插件走 GUI 路线提供了互补的交互方式，4 周内发布 27 版达 94/100 评分[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [Obsidian 社区插件 Karpathy LLM Wiki](obsidian-karpathy-wiki-plugin.md) -- my-llm-wiki 走 CLI+pip 路线强调代码仓库级知识图谱，Obsidian 插件走 GUI 路线强调笔记本级交互体验，两者是同一三层架构模式在不同工具生态中的独立实现
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-my-llm-wiki/text.txt` -- L100 -- "Andrej Karpathy shared a concept he called LLM Wiki — a personal knowledge system with three layers: raw files (never modified), a compiled wiki with cross-references, and a schema that tells the LLM how to maintain it"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-my-llm-wiki/text.txt` -- L103-104 -- "pip install my-llm-wiki cd your-project && llm-wiki ."

@@ -27,8 +27,11 @@ related: [llm-wiki-mainstream-prerequisites]
 2. **层次化索引（hierarchical indexing）**——保留文档的层级结构信息
 3. **混合搜索（hybrid search）**——将向量相似度与 BM25 关键词匹配相结合[^src-3]
 
+RAGChecker 的实验为这一权衡提供了量化证据：生成器对相关块中的噪声（NS-I）远比无关块噪声（NS-II）敏感，说明分块质量比分块数量更关键 [^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L72 -- "Chunk size matters more than most tutorials admit — too small and you lose context, too large and your retrieval gets noisy."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L125 -- "Naive fixed-size chunking throws away document structure."
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L125-126 -- "Semantic chunking, hierarchical indexing, and hybrid search (combining vector similarity with BM25 keyword matching) need to become standard. Right now they're research-project territory for most setups."
+[^card-1]: [相关噪声与无关噪声敏感度的区分](relevant-vs-irrelevant-noise-sensitivity.md) -- RAGChecker 量化了生成器的块级信任模式，相关块噪声远大于无关块噪声，为分块质量优先于分块数量提供实证

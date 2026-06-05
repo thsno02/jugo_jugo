@@ -28,6 +28,8 @@ Zep 的核心组件 Graphiti 将知识图谱 G=(N, E, phi) 组织为三层层次
 
 这种从 episode 到 fact 到 entity 到 community 的层次化组织，扩展了已有的分层 RAG 策略 [^src-5]。
 
+LoCoMo 的时序事件图是一种更轻量的对应物：它以事件节点和因果连接构建对话锚定图，功能上对应于 Graphiti 的 semantic entity 子图层，但不具备 episode 溯源和 community 聚类能力[^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 (Knowledge Graph Construction) -- "memory is powered by a temporally-aware dynamic knowledge graph G=(N, E, phi)... This graph comprises three hierarchical tiers of subgraphs: an episode subgraph, a semantic entity subgraph, and a community subgraph."
@@ -35,3 +37,4 @@ Zep 的核心组件 Graphiti 将知识图谱 G=(N, E, phi) 组织为三层层次
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "Entity nodes... represent entities extracted from episodes and resolved with existing graph entities. Entity edges... represent relationships between entities extracted from episodes."
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "Community nodes... represent clusters of strongly connected entities. Communities contain high-level summarizations of these clusters"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "The resulting hierarchical organization—from episodes to facts to entities to communities—extends existing hierarchical RAG strategies"
+[^card-1]: [时序事件图作为对话锚定机制](temporal-event-graph-grounding.md) -- LoCoMo 的时序事件图是三层架构中 semantic entity 子图的轻量对应物，以事件节点和因果连接构建对话锚定

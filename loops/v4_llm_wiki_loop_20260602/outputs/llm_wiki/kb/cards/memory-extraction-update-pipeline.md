@@ -22,9 +22,11 @@ Mem0 的核心架构遵循增量处理范式（incremental processing paradigm�
 
 **更新阶段（Update Phase）**：对每个候选事实 $\omega_i$，系统通过向量嵌入从数据库检索前 $s$ 条语义相似的已有记忆，然后将候选事实与检索到的记忆一起呈现给 LLM。LLM 通过函数调用（tool call）接口自行决定执行四种操作之一：ADD（新增）、UPDATE（更新）、DELETE（删除）或 NOOP（无操作）。关键设计：不使用单独的分类器，而是利用 LLM 自身的推理能力来选择合适的操作 [^src-3]。
 
-实验配置中，系统使用 $m=10$ 条历史消息作为上下文参考，$s=10$ 条相似记忆用于比较分析，所有语言模型操作使用 GPT-4o-mini [^src-4]。
+实验配置中，系统使用 $m=10$ 条历史消息作为上下文参考，$s=10$ 条相似记忆用于比较分析，所有语言模型操作使用 GPT-4o-mini [^src-4]。LongMemEval 对商业系统的评估揭示了该管线要解决的两个核心失败模式——压缩覆写和间接信息遗漏[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [记忆覆写与遗漏两种失败模式](memory-overwrite-vs-omission-failure.md) -- LongMemEval 诊断的覆写（ChatGPT 压缩时丢失已记录信息）和遗漏（Coze 未记录间接信息）正是 Mem0 提取-更新管线要在架构层面解决的问题
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "Our architecture follows an incremental processing paradigm, enabling it to operate seamlessly within ongoing conversations."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "The function φ(P) then extracts a set of salient memories Ω = {ω1, ω2, ..., ωn} specifically from the new exchange while maintaining awareness of the conversation's broader context"

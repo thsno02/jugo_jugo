@@ -1,7 +1,7 @@
 ---
 loop_id: v4_llm_wiki_loop_20260602
 created: 2026-06-02
-status: active
+status: phase4_complete
 note: v4 任务清单。实验迭代式推进：build --> test on gist --> refine --> expand。
 ---
 
@@ -40,19 +40,19 @@ note: v4 任务清单。实验迭代式推进：build --> test on gist --> refin
 
 ## Phase 3 -- Expand to Small Batch（小批量扩展）
 
-- [ ] 处理 3-5 份额外材料（混合 paper / blog / repo 类型）
-- [ ] 审查卡片 -- 特别关注 inline fusion check（grep KB 查重叠）
-- [ ] 迭代 skills + reframing 逻辑
-- [ ] 测试 justification journal (jj) 创建流程是否完整
+- [x] 处理 3-5 份额外材料（混合 paper / blog / repo 类型） -- 已被 Phase 4 全量处理取代
+- [x] 审查卡片 -- 特别关注 inline fusion check（grep KB 查重叠） -- 已被 Phase 4 全量处理取代
+- [x] 迭代 skills + reframing 逻辑 -- 已被 Phase 4 全量处理取代
+- [x] 测试 justification journal (jj) 创建流程是否完整 -- 已被 Phase 4 全量处理取代
 
 ---
 
 ## Phase 4 -- Full Init KB（完整初始 KB 构建）
 
-- [ ] 处理剩余材料（parallel, wave-based 分批）
-- [ ] 运行 governance pass（dedup + canonical 归一化 + distinction linking）
-- [ ] 人工抽检 5-10 张卡（源忠实性 + 原子性 + metadata 质量）
-- [ ] 构建 KB index（`kb/indexes/cards.md`，active-only view）
+- [x] 处理剩余材料（parallel, wave-based 分批） -- 43 材料全量处理，259 张卡
+- [x] 运行 governance pass（dedup + canonical 归一化 + distinction linking） -- canonical 归一化 1 处 + cross-link + 质量抽检 pass
+- [x] 人工抽检 5-10 张卡（源忠实性 + 原子性 + metadata 质量） -- 8 张卡源忠实抽检
+- [x] 构建 KB index（`kb/indexes/cards.md`，active-only view） -- 259 张 active 卡索引已构建
 
 ---
 

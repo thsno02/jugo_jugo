@@ -21,9 +21,11 @@ LLM Wiki 的适用场景被明确定位为**个人规模的知识管理**，典�
 
 超出这一边界后，管理页面间互链（interlinks）在 token 消耗上变得昂贵，此时**语义搜索**（vector search）在数千个 chunk 上的检索能力更为适合[^src-3][^src-4]。
 
-RAG 在大规模语料库和对非结构化数据的一次性查询场景中仍然具有优势[^src-5]。两种方法并非互斥——该来源预测未来演化方向之一是针对团队或企业部署的 RAG-vector 混合方案[^src-6]。
+RAG 在大规模语料库和对非结构化数据的一次性查询场景中仍然具有优势[^src-5]。两种方法并非互斥——该来源预测未来演化方向之一是针对团队或企业部署的 RAG-vector 混合方案[^src-6]。Atlan 的分析将这一规模边界具体化为三个企业级失效模式：索引溢出、无访问控制、并发写入冲突[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [Wiki 企业级三大失效模式](wiki-enterprise-failure-modes.md) -- 本卡描述 wiki 在数百篇文档后的理论规模边界，Atlan 将这一边界具体化为三个企业级失效模式（50K-100K token 索引溢出、无 RBAC、并发冲突）
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/anthemcreation-fr-guide/text.txt` -- L154 -- "la connaissance personnelle a echelle individuelle, de 10 a quelques centaines de documents"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/anthemcreation-fr-guide/text.txt` -- L29 -- "des wikis de plus de 100 articles et 400 000 mots"

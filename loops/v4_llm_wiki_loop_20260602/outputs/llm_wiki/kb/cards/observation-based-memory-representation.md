@@ -20,9 +20,11 @@ LoCoMo 论文中提出的"观察"（observation）是一种将对话轮次转化
 
 在 RAG 实验中，以观察作为检索单元的效果显著优于原始对话和会话摘要。观察 top-5 的整体 QA F1=41.4，而原始对话 top-5 仅 31.7，不使用检索的基线为 22.4[^src-3]。观察在时序推理类问题上的优势尤为突出（41.9 vs. 对话 21.3 vs. 摘要 26.9）[^src-4]。
 
-会话摘要虽然检索召回率最高（top-10 达 90.7%），但 QA 性能最低（32.5），说明摘要过程中的信息损失反而降低了答题精度[^src-5]。这表明记忆表示的语义密度和检索精度比检索召回更重要。
+会话摘要虽然检索召回率最高（top-10 达 90.7%），但 QA 性能最低（32.5），说明摘要过程中的信息损失反而降低了答题精度[^src-5]。这表明记忆表示的语义密度和检索精度比检索召回更重要。Zep 的情景-语义双存储设计从理论层面解释了为何这种提取有效——它对应人类记忆中从情景记忆到语义记忆的自然转化[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [情景记忆与语义记忆的双存储设计](episodic-semantic-memory-duality.md) -- LoCoMo 的 observation 提取实证验证了 Zep 双存储设计的理论预期：从原始事件（情景记忆）提取断言式陈述（语义记忆）能显著提升检索效果
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3" -- "a single turn of the conversation h_{k_j} is transformed into an observation o_{k_j} and then stored in the long-term memory"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table dataset_statistics" -- "Avg. # tokens. observation o_{k_j} of turn j in session k: 18.2"

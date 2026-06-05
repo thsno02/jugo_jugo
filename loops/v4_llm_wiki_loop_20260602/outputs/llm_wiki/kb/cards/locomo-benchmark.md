@@ -22,6 +22,8 @@ LoCoMo（Long-term Conversational Memory）是首个针对"超长期"（very lon
 
 实验核心发现：人类在 QA 任务上达到 F1=87.9，最佳基座模型（GPT-4-turbo）仅 32.1，最佳 RAG（observation top-5）为 41.4，差距仍达 56%[^src-5]。
 
+Mem0 论文将 LoCoMo（以 LOCOMO 命名）用作主要评估平台，但使用了 10 段更长对话（各约 600 轮、26K token），并将问题分为四类（排除了对抗性类别），展示了该基准在不同系统评测中的复用方式 [^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 0_abstract" -- "we collect LoCoMo, a dataset of very long-term conversations, each encompassing 300 turns and 9K tokens on avg., over up to 35 sessions"
@@ -29,3 +31,4 @@ LoCoMo（Long-term Conversational Memory）是首个针对"超长期"（very lon
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table 1 caption" -- "The average length of a conversation in LoCoMo is 9x that of MSC, distributed over 6x more turns and 4x more sessions"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 4" -- "we introduce an evaluation benchmark composed of three tasks to assess the accuracy of long-term memory"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 1_introduction" -- "still significantly lag behind human levels (by 56%), especially in temporal reasoning, (by 73%)"
+[^card-1]: [LOCOMO 长期对话记忆基准测试设计](locomo-benchmark-design.md) -- Mem0 论文使用 LoCoMo 的变体版本（10 段 x ~600 轮 x 26K token）作为评估平台，排除了对抗性问题类别

@@ -24,9 +24,13 @@ Mem0^g 的记忆检索实现了双路策略，以应对不同类型查询的需�
 
 这种双路机制的设计意图是：实体锚定法擅长处理"针对性的实体聚焦问题"，而语义三元组法能有效处理"更宽泛的概念性查询" [^src-4]。两种路径互补而非替代，使系统能够同时处理精确检索和模糊检索的需求。
 
+Zep 的知识图谱检索采用了类似的多路互补策略（余弦语义相似度 + BM25 全文搜索 + 广度优先图搜索），从不同维度捕获相关性 [^card-1]。在完整的检索管线中，Zep 进一步将多路搜索形式化为搜索-重排-构造的三步组合函数 [^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "The memory retrieval functionality in Mem0^g implements a dual-approach strategy for optimal information access."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "The entity-centric method first identifies key entities within a query, then leverages semantic similarity to locate corresponding nodes in the knowledge graph. It systematically explores both incoming and outgoing relationships from these anchor nodes"
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "the semantic triplet approach takes a more holistic view by encoding the entire query as a dense embedding vector. This query representation is then matched against textual encodings of each relationship triplet in the knowledge graph."
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "This dual retrieval mechanism enables Mem0^g to handle both targeted entity-focused questions and broader conceptual queries with equal effectiveness."
+[^card-1]: [三种互补搜索方法的混合检索](hybrid-triple-search-complementarity.md) -- Zep 从余弦/BM25/BFS 三个维度实现多路检索，与 Mem0^g 的实体-语义双路策略形成互补参照
+[^card-2]: [搜索-重排-构造三步检索管线](search-rerank-construct-pipeline.md) -- Zep 将多路搜索形式化为 phi-rho-chi 三步管线，展示了从搜索到上下文构造的完整架构

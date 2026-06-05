@@ -29,9 +29,11 @@ related:
 
 **弱点**：single-session-assistant 类问题上 Zep 表现下降（gpt-4o 下降 17.7%，gpt-4o-mini 下降 9.06%），论文承认需要进一步的研究和工程工作 [^src-4]。
 
-论文指出更强的模型与 Zep 配合效果更好，gpt-4o 在 knowledge-update 类别上也获得提升，而 gpt-4o-mini 在该类别上未能改善，"可能需要额外开发以改进较弱模型对 Zep 时间数据的理解"[^src-5]。
+论文指出更强的模型与 Zep 配合效果更好，gpt-4o 在 knowledge-update 类别上也获得提升，而 gpt-4o-mini 在该类别上未能改善，"可能需要额外开发以改进较弱模型对 Zep 时间数据的理解"[^src-5]。LightMem 论文从另一个角度量化了记忆系统开销问题的严重程度——此前的基线系统在 token 消耗上存在一到两个数量级的冗余[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [LLM 记忆系统的开销问题](memory-augmentation-overhead.md) -- Zep 展示了压缩后的性能提升（115k 至 1.6k token），LightMem 从反面量化了开销问题的严重程度（基线系统 token 冗余高达 38x），两者共同论证了记忆效率优化的必要性
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 4.3 (LongMemEval) -- "The LongMemEval_s dataset presents significant challenges... with conversations averaging approximately 115,000 tokens in length."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Table 2 (LongMemEval_s) -- "Full-context gpt-4o-mini 55.4% 31.3s 115k; Zep gpt-4o-mini 63.8% 3.20s 1.6k; Full-context gpt-4o 60.2% 28.9s 115k; Zep gpt-4o 71.2% 2.58s 1.6k"

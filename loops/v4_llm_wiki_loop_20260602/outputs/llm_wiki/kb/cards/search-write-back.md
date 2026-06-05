@@ -31,7 +31,7 @@ related:
 
 **实现要求**：搜索回写的 CEO 端通过断路器规则（circuit-breaker rules）实现。先让 wiki 专家检查，只有当 wiki 专家明确报告"不在 wiki 中"时才允许创建搜索专家；搜索补充后，必须调用 wiki 专家将新发现追加到相应页面[^src-5]。
 
-在 GitHub 所有 LLM Wiki 实现的横向比较中，搜索回写能力仅 Qing Claw 支持[^src-6]。
+在 GitHub 所有 LLM Wiki 实现的横向比较中，搜索回写能力仅 Qing Claw 支持[^src-6]。llm-wiki.net 的产出复利循环实现了一种互补的回写路径——产出制品（报告/幻灯片）写回 wiki 索引，与搜索回写共同构成 wiki 的多源双向呼吸[^card-output-compounding-loop]。
 
 ## Footnotes
 
@@ -41,3 +41,4 @@ related:
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 6.3 P26 -- "the wiki is bidirectional and respiring: absorbing raw materials, external search results, and Q&A synthesis alike. All three sources of information flow into the same wiki, causing its 'temperature' (probability of high-frequency access) to rise continuously"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Appendix B P32 -- "Search must be written back to wiki after supplementing it... issue a follow-up call to call_agent_wiki_expert_expert, requesting that the new findings be appended to the corresponding entity/concept page"
 [^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Table 3 P22 -- "Search write-back to wiki... the most critical capability—search write-back to wiki, the soul of the compounding loop—is supported only by Qing Claw"
+[^card-output-compounding-loop]: [产出复利循环](output-compounding-loop.md) -- llm-wiki.net 的产出回写（产出制品写回 wiki 索引）与搜索回写（外部搜索结果写回实体页面）是两种互补的 wiki 双向呼吸路径，共同驱动知识复利

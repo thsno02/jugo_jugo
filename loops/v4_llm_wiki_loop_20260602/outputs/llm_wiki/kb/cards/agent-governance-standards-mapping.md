@@ -27,9 +27,13 @@ Microsoft Agent Governance Toolkit 将其治理控制显式映射到四个主流
 
 这一映射机制的意义在于：组织不必从零构建合规论证，而是通过工具包内置的映射关系，将技术治理控制自动关联到监管要求。ADR-0022 记录了"Compliance Auto-Mapping"的架构决策 [^src-3]，表明合规映射被视为一等架构关注点而非事后文档工作。配合 Agent Compliance 包的 OWASP 验证、策略 lint 和完整性检查能力 [^src-4]，形成从控制实施到合规证明的闭环。
 
+值得注意的是，OWASP Agentic Top 10 本身是由 100+ 专家同行评审的全球性框架 [^card-1]，而被映射的 NIST AI RMF 1.0 已通过 AI 600-1 具体化为生成式 AI 的跨行业概况文件 [^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L427-428 -- "Standards Compliance"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L429-438 -- "OWASP Agentic AI Top 10 All 10 risks covered with deterministic controls ... SOC 2 Control mapping with audit trail export"
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L308 -- "ADR-0022: Compliance Auto-Mapping"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L365 -- "Agent Compliance OWASP verification, policy linting, integrity checks"
+[^card-1]: [OWASP Agentic Top 10 框架](owasp-agentic-top10-framework.md) -- 被映射的 OWASP Agentic Top 10 风险框架由 100+ 专家同行评审，定义了 agentic AI 系统的十大安全风险
+[^card-2]: [NIST AI 600-1 生成式 AI 风险管理框架概况](nist-ai-600-1-gai-profile.md) -- NIST AI RMF 1.0 在生成式 AI 领域的具体化概况文件，提供跨行业风险管理指南

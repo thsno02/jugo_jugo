@@ -22,9 +22,11 @@ Zep 论文提出了一个关于当前 RAG 方法的根本性批评：现有 RAG 
 
 然而企业级 agent 面临完全不同的需求：它们需要访问来自用户交互、相关业务数据和世界数据的持续演变的大规模数据语料。论文将赋予 agent 这种广泛而动态的"记忆"视为实现 agent 愿景的"关键构建模块"，并明确主张"当前 RAG 方法不适合这个未来"[^src-2]。
 
-这一差距具体表现在：完整的对话历史、业务数据集和其他领域特定内容无法有效放入 LLM 上下文窗口 [^src-3]。因此需要新的方法来处理 agent 记忆——Zep 选择的方案是时序感知的知识图谱引擎，能够动态综合非结构化对话数据和结构化业务数据，同时维护历史关系 [^src-4]。
+这一差距具体表现在：完整的对话历史、业务数据集和其他领域特定内容无法有效放入 LLM 上下文窗口 [^src-3]。因此需要新的方法来处理 agent 记忆——Zep 选择的方案是时序感知的知识图谱引擎，能够动态综合非结构化对话数据和结构化业务数据，同时维护历史关系 [^src-4]。Mem0 的实验数据从量化角度印证了这一论点：提取显著事实的记忆系统一致优于所有 RAG 配置[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [记忆系统 vs RAG 的显著性优势](memory-vs-rag-salience.md) -- Zep 从架构层面论证 RAG 的静态语料局限，Mem0 从 LOCOMO 基准实验数据量化证明结构化记忆（Judge 67-68%）优于 RAG（最高 61%）
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 1 (Introduction) -- "Current approaches using RAG have focused on broad domain knowledge and largely static corpora—that is, document contents added to a corpus seldom change."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 1 -- "We view empowering agents with this broad and dynamic 'memory' as a crucial building block to actualize this vision, and we argue that current RAG approaches are unsuitable for this future."

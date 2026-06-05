@@ -30,6 +30,8 @@ Zep 实现了三种搜索函数，各自捕获不同维度的相似性 [^src-1]�
 
 论文作者总结："全文搜索识别词汇相似性，余弦相似度捕获语义相似性，广度优先搜索揭示上下文相似性"[^src-6]。
 
+Mem0^g 的知识图谱检索采用了类似的双路互补设计（实体锚定 + 语义三元组），从不同角度印证了多路检索的互补价值 [^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 (Search) -- "Zep implements three search functions: cosine semantic similarity search, Okapi BM25 full-text search, and breadth-first search."
@@ -38,3 +40,4 @@ Zep 实现了三种搜索函数，各自捕获不同维度的相似性 [^src-1]�
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "breadth-first search over knowledge graphs has received limited attention in the RAG domain... phi_bfs can accept nodes as parameters for the search... This functionality proves particularly valuable when using recent episodes as seeds for the breadth-first search"
 [^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "The search field varies across the three object types: for E_s, we search the fact field; for N_s, the entity name; and for N_c, the community name"
 [^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "full-text search identifies word similarities, cosine similarity captures semantic similarities, and breadth-first search reveals contextual similarities"
+[^card-1]: [双路检索策略（实体锚定 + 语义三元组）](dual-retrieval-entity-semantic.md) -- Mem0^g 从实体锚定和语义三元组两个路径实现知识图谱检索，与 Zep 的三路方法互为补充

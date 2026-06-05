@@ -28,9 +28,12 @@ related:
 
 Confluence 和 Notion 中的连接完全依赖人工手动创建，而人类没有时间和记忆力以公司产出内容的速率来创建这些连接[^src-4]。
 
+Atlan 提出的"数据目录即企业 wiki"映射为跨工具实体解析提供了一种已有的实现路径：数据目录的血缘（lineage）功能本质上就是跨系统的实体关系追踪，而业务术语表则是跨工具语义对齐的载体[^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Link: bidirectional connections need cross-tool semantics" 段 -- "When the agent compiles a new wiki page, it creates backlinks to every related concept. The graph thickens."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Link: bidirectional connections need cross-tool semantics" 段 -- "A decision made in Slack needs to link to the PR that implemented it, the Linear ticket that tracked it, the Granola transcript where it was first discussed, and the Notion doc that documents the resulting system."
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "What an enterprise LLM wiki has to do differently" 段 -- "The graph has to understand that 'the payments service' in a design doc is the same entity as 'payments-service' in a GitHub repo and '@payments-team' in a Slack channel."
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt` -- "Link: bidirectional connections need cross-tool semantics" 段 -- "The connections that exist are the ones humans manually create, and humans don't have the time or memory to create them at the rate the company generates content."
+[^card-1]: [数据目录作为企业级 Wiki 的结构等价物](data-catalog-as-enterprise-wiki.md) -- 数据目录的血缘功能和业务术语表是跨工具实体解析的一种已有实现路径，将反向链接从文件级升级为跨系统语义级

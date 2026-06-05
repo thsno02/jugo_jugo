@@ -22,7 +22,7 @@ GraphRAG 的核心思路是用 LLM 分两阶段构建图索引：首先从源文
 
 GraphRAG 与此前基于图的 RAG 方法的关键区别在于：它聚焦于图固有的模块性（modularity）以及将图分割为嵌套模块化社区的能力 [^src-3]。该方法递归地利用 LLM 创建跨越社区层级的越来越全局的摘要。
 
-在百万 token 规模的数据集上，GraphRAG 在回答全局意义建构（sensemaking）问题时，在全面性和多样性两个维度上均大幅优于传统 RAG 基线 [^src-4]。
+在百万 token 规模的数据集上，GraphRAG 在回答全局意义建构（sensemaking）问题时，在全面性和多样性两个维度上均大幅优于传统 RAG 基线 [^src-4]。然而，该管道对实体提取阶段的投毒攻击高度敏感——仅需修改源文本中极少量词语即可显著扭曲知识图谱并误导下游推理[^card-graphrag-knowledge-poisoning-attack]。
 
 ## Footnotes
 
@@ -30,3 +30,4 @@ GraphRAG 与此前基于图的 RAG 方法的关键区别在于：它聚焦于图
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Abstract (graph_rag.tex) -- "Our approach uses an LLM to build a graph index in two stages: first, to derive an entity knowledge graph from the source documents, then to pregenerate community summaries for all groups of closely related entities."
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 2.2 (graph_rag.tex) -- "GraphRAG contrasts with these approaches by focusing on a previously unexplored quality of graphs in this context: their inherent modularity and the ability to partition graphs into nested modular communities of closely related nodes"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Abstract (graph_rag.tex) -- "we show that GraphRAG leads to substantial improvements over a conventional RAG baseline for both the comprehensiveness and diversity of generated answers"
+[^card-graphrag-knowledge-poisoning-attack]: [GraphRAG 知识投毒攻击](graphrag-knowledge-poisoning-attack.md) -- 知识投毒攻击（KPA）以极低修改量操纵 GraphRAG 的实体提取过程，揭示全局 sensemaking 管道在安全性上的已知空白

@@ -24,9 +24,12 @@ Microsoft Agent Governance Toolkit 将治理设计为一个与具体 agent 框�
 
 具体集成示例展示了这种模式的实际运作 [^src-4]：对 OpenAI Agents SDK 实施策略门禁式工具调用（policy-gated tool calls with trust tiers）、对 CrewAI 实施基于角色的多 agent 治理策略、对 HuggingFace smolagents 实施轻量治理、对 MCP 实施信任验证服务器。这意味着组织可以更换底层 agent 框架而无需重写治理规则。
 
+这种框架无关的治理设计呼应了企业知识管理中的核心洞见：治理决定结果，而非检索架构 [^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L383 -- "Works with any agent framework: LangChain, CrewAI, AutoGen, Google ADK, OpenAI Agents, LlamaIndex, Haystack, Mastra, MCP, A2A, and more."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L259 -- "Framework Adapter Contract"
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L419 -- "Framework Adapter Contract 152"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L387-398 -- "openai-agents-governed ... mcp-trust-verified-server MCP Trust-verified MCP server implementation"
+[^card-1]: [治理优先于检索架构](governance-over-retrieval.md) -- Atlan 论证数据治理是知识系统成败的决定因素，框架无关的治理层使这一原则可在任何 agent 框架上落地

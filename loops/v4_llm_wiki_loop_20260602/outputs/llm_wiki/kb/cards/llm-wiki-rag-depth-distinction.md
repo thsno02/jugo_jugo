@@ -21,9 +21,11 @@ LLM Wiki 与 RAG 的根本区别**不在于速度，而在于推理深度**[^src
 
 这一差异使得**多跳推理**（multi-hop reasoning）在 wiki 中变得自然：将三个不同概念关联起来回答一个复杂问题，对 wiki 而言是直接可行的，因为这些关联在摄入阶段就已经被 LLM 建立和维护[^src-3]。纯 RAG 在大规模语料上对片段执行的检索-生成流程难以实现同等深度。
 
-Karpathy 将 LLM Wiki 明确定位为 vector search 在个人知识管理场景下的替代方案：对于 100 篇文章规模的 wiki，结构化 markdown 已经完全足够[^src-4]。
+Karpathy 将 LLM Wiki 明确定位为 vector search 在个人知识管理场景下的替代方案：对于 100 篇文章规模的 wiki，结构化 markdown 已经完全足够[^src-4]。HN 社区的辩论从另一个角度支持了这一区分——写入循环和巡检操作构成知识综合而非检索[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [RAG 与 Wiki 知识综合的区分](rag-wiki-synthesis-distinction.md) -- 本卡从推理深度角度区分 wiki 与 RAG，HN 社区辩论则从写入循环（write loop）角度论证 wiki 超越 RAG 的本质在于知识综合而非检索
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/anthemcreation-fr-guide/text.txt` -- L156 -- "La difference fondamentale n'est pas la vitesse, c'est la profondeur du raisonnement."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/anthemcreation-fr-guide/text.txt` -- L156 -- "Une LLM wiki repond depuis une connaissance deja synthetisee, avec des liens entre concepts, des contradictions resolues, et des syntheses pre-construites."

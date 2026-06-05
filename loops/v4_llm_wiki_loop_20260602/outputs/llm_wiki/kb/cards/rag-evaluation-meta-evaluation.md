@@ -24,9 +24,13 @@ RAGChecker 提出了一种系统化的元评估（meta evaluation）方法来验
 
 **关键结果**：RAGChecker 在三个维度的 Pearson 相关性分别为 49.66（correctness）、60.67（completeness）、61.93（overall），均超过最强基线 RAGAS Answer Similarity 的 41.07、53.16、48.31[^src-4]。但与人类标注者间的上界（63.67、71.91、70.09）相比仍有差距，说明自动评估指标与人类判断的对齐仍是开放问题。
 
+ARES 作为元评估中的比较对象之一，其通过 PPI 校准提升评估准确性的思路与 RAGChecker 的元评估构成互补验证[^card-1]。而 Mem0 论文揭示的词汇匹配 vs 语义评估鸿沟，从实证角度解释了为何元评估中词汇指标（如 F1）与人类偏好的相关性系统性低于语义指标[^card-2]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Meta Evaluation" -- "we argue that a good metric should reflect the relative human preference over different RAG systems"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Meta Evaluation Dataset" -- "we end up with 280 instances for pairwise human preference labeling"
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Meta Evaluation Process and Results" -- "human agreement rate as the proportion of instances satisfying abs(h_i - h_i') <= 1, and the result is 90.95%"
 [^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "tables/human_eval_selected.tex" -- "RAGChecker: Correctness Pearson=49.66, Completeness=60.67, Overall=61.93; RAGAS Answer Similarity: 41.07, 53.16, 48.31"
+[^card-1]: [ARES 自动化 RAG 评估框架](ares-rag-evaluation-framework.md) -- ARES 是元评估中的比较基线之一，其 PPI 校准机制与 RAGChecker 的声明蕴含方法代表了两种提升评估与人类对齐度的路线
+[^card-2]: [词汇匹配指标 vs 语义评估的鸿沟](lexical-vs-semantic-eval-gap.md) -- Mem0 论文揭示 F1/BLEU 无法捕获事实性错误，为元评估中词汇指标与人类偏好相关性系统性偏低提供了实证解释

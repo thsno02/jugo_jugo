@@ -22,9 +22,11 @@ HN 社区围绕 LLM Wiki 是否"只是 RAG"展开了显著的辩论。一方认�
 
 此外，巡检操作（lint pass）做的事情也根本不同于 RAG——它审计不一致性、推测缺失数据、建议连接。这更接近一个助手在维护 zettelkasten，而非搜索引擎返回 top-k 片段[^src-3]。
 
-辩论双方最终部分达成共识：检索层面的问题确实是 RAG 范畴，但写入循环和巡检使整个系统在功能上超越了 RAG 的定义[^src-4]。
+辩论双方最终部分达成共识：检索层面的问题确实是 RAG 范畴，但写入循环和巡检使整个系统在功能上超越了 RAG 的定义[^src-4]。法语社区的分析从推理深度角度提供了互补论证——wiki 的多跳推理能力来自预先综合的知识结构[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [LLM Wiki 与 RAG 的核心差异在于推理深度](llm-wiki-rag-depth-distinction.md) -- HN 社区从写入循环角度论证 wiki 超越 RAG，法语社区从推理深度角度论证 wiki 的多跳推理优势，两者从不同维度共同确立了 wiki 与 RAG 的本质区别
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- kenforthewin 评论 -- "What I'm pushing back on specifically is the insistence that the core loop - retrieving the most relevant pieces of knowledge for wiki synthesis - is not RAG. In order for the LLM to do a good job at this, it needs some way to retrieve the most relevant info."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- darkhanakh 评论 -- "the interesting bit here is the write loop - the LLM is authoring and maintaining the wiki itself, building backlinks, filing its own outputs back in. thats not retrieval thats knowledge synthesis. in vanilla RAG your corpus is static, here it isnt"

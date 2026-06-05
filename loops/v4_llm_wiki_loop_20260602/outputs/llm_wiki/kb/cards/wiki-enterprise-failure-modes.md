@@ -26,9 +26,11 @@ LLM wiki 在企业规模下面临**三个核心限制**，它们不是 bug，而
 
 **3. 并发写入冲突（Concurrency）**——多个同时操作的 agent 或用户更新同一个 markdown wiki 会产生竞态条件、写入冲突，甚至数据损坏，因为没有事务型数据库支持[^src-5]。Karpathy 本人明确将其方法定位于个人研究者——"bypasses RAG"的媒体框架误读了他的声明意图[^src-6]。
 
-一个具体场景说明了三者如何同时发作：一位金融科技数据工程师有约 80 份监管笔记，wiki 方式可以运作良好；但当同一公司需要 200 名分析师跨 5 个系统查询 50,000 份文档并需要角色权限时，wiki 立即在索引溢出、访问控制和并发写入三个维度上崩溃[^src-7]。
+一个具体场景说明了三者如何同时发作：一位金融科技数据工程师有约 80 份监管笔记，wiki 方式可以运作良好；但当同一公司需要 200 名分析师跨 5 个系统查询 50,000 份文档并需要角色权限时，wiki 立即在索引溢出、访问控制和并发写入三个维度上崩溃[^src-7]。法语社区的分析从理论角度界定了这一边界的起点——个人规模（10 至数百篇）是 wiki 的甜蜜区[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [LLM Wiki 的适用规模边界](llm-wiki-scale-boundary.md) -- 法语社区从理论角度界定 wiki 的个人规模甜蜜区（10 至数百篇文档），Atlan 从企业实践角度量化了超出该边界后的具体失效阈值（50K-100K token）
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L436-437 -- "Three core limitations constrain the approach at enterprise scale... the limitations are not bugs, they are consequences of the design assumptions."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L281 -- "The 50,000-100,000 token threshold is where the wiki approach stops working reliably: beyond that, the index cannot fit in context"

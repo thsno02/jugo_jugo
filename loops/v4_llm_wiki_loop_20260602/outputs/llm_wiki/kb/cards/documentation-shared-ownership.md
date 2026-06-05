@@ -22,8 +22,11 @@ Docs as Code 理念所带来的核心文化转变是**文档共同所有权**：
 
 这种共同所有权的具体表现包括：写作者能更好地融入开发团队[^src-2]，而开发者也会主动编写文档初稿[^src-3]。这种双向参与打破了"文档是写作者专属职责"的传统分工，形成了跨角色的协作文化。
 
+Falconer 的企业 LLM Wiki 分析从反面印证了这一文化的必要性：个人 LLM Wiki 依赖单一策展人，而在企业规模下这种模式会重新制造它试图解决的 wiki 问题[^card-1]。
+
 ## Footnotes
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "culture" L23 -- "It enables a culture where writers and developers both feel ownership of documentation, and work together to make it as good as possible."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L27 -- "Writers integrate better with development teams"
 [^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L29 -- "Developers will often write a first draft of documentation"
+[^card-1]: [单一策展人瓶颈](single-curator-bottleneck.md) -- 企业 LLM Wiki 中单一策展人模式的结构性失效，从反面印证了文档共同所有权文化的必要性

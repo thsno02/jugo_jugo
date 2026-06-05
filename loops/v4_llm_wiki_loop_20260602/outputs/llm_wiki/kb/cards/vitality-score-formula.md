@@ -38,9 +38,11 @@ vitality(entry) =
 
 **优雅降级**：低于活力阈值的条目被压缩为摘要形式而非删除——信息优雅降级。但活力驱动的压缩不覆盖引力保护下限：基础引力 G_i^base 保持在下限之上的条目即使活力评分降低也受保护[^src-4]。
 
-**三力架构分离**：引力保护结构承重条目，效用通过活力驱动衰减，AUDIT 剥离被证明不再承重的高引力条目的保护。三力保持独立；将效用折叠进引力会坍缩两个不同机制[^src-5]。
+**三力架构分离**：引力保护结构承重条目，效用通过活力驱动衰减，AUDIT 剥离被证明不再承重的高引力条目的保护。三力保持独立；将效用折叠进引力会坍缩两个不同机制[^src-5]。LLM Wiki 实践中，Rohit v2 的生命周期元数据（last_verified/confidence/superseded_by）是活力评分中 recency 和效用信号的轻量级 wiki 实现[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [记忆生命周期元数据](memory-lifecycle-metadata.md) -- 活力评分公式是理论框架层面的多信号保留度量，Rohit v2 的 frontmatter 元数据（last_verified/confidence/superseded_by）是 LLM Wiki 实践中的轻量级对应物
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.3" -- "DECAY runs continuously over the active wiki. Every entry carries a vitality score"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.3" -- vitality formula

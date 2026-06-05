@@ -24,9 +24,11 @@ MemGPT 的 OS 类比式多层内存架构将存储分为两个主要层级 [^src
 - **recall storage**（回忆存储）：消息数据库，存储所有历史消息记录
 - **archival storage**（档案存储）：读写数据库，存储任意长度的文本对象
 
-外部上下文中的数据被视为"out-of-context"，必须通过函数调用显式移入主上下文才能在推理中被访问 [^src-3]。MemGPT 通过提供函数调用接口让 LLM 处理器在不需要用户干预的情况下自主管理自己的内存 [^src-4]。
+外部上下文中的数据被视为"out-of-context"，必须通过函数调用显式移入主上下文才能在推理中被访问 [^src-3]。MemGPT 通过提供函数调用接口让 LLM 处理器在不需要用户干预的情况下自主管理自己的内存 [^src-4]。LightMem 从认知心理学的 Atkinson-Shiffrin 模型出发提出了类似的分层设计，将层级细分为感觉/短期/长期三阶段，侧重效率优化而非自主管理[^card-1]。
 
 ## Footnotes
+
+[^card-1]: [LightMem 三阶段记忆架构](lightmem-three-stage-memory.md) -- MemGPT 从 OS 类比（主内存 vs 磁盘）出发，LightMem 从 Atkinson-Shiffrin 认知模型（感觉/短期/长期）出发，构成分层记忆架构的互补设计路径
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "MemGPT's OS-inspired multi-level memory architecture delineates between two primary memory types: main context (analogous to main memory/physical memory/RAM) and external context (analogous to disk memory/disk storage)."
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "Main context consists of the LLM prompt tokens---anything in main context is considered in-context and can be accessed by the LLM processor during inference."

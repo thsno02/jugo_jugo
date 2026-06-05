@@ -22,7 +22,12 @@ LoCoMo 的对话生成管线为每个虚拟代理构建一个时序事件图（t
 
 在对话生成时，代理的回复会额外以两次会话之间发生的事件子集为条件：$\{e \in \mathcal{G} \mid t_k^s < t_i^e < t_{k+1}^s\}$，从而在对话中注入长期时序叙事[^src-4]。例如，某角色 Jack 热爱游戏 -> 被知名游戏公司邀请，或立志做酒店经理 -> 报名酒店管理课程 -> 三个月后在社交媒体分享心得[^src-5]。
 
+Zep/Graphiti 的三层子图架构（episode/semantic entity/community）提供了一种更正式化的时序知识组织方案，其 semantic entity 子图的实体-关系结构与 LoCoMo 的事件-因果连接图在功能上高度对应，但 Graphiti 额外引入了社区聚类层和双时间线建模[^card-1]。Graphiti 的边失效机制则解决了时序事件图未覆盖的问题：当新事件与旧事件矛盾时，如何以非破坏性方式更新知识[^card-2]。
+
 ## Footnotes
+
+[^card-1]: [时序知识图谱的三层子图架构](temporal-knowledge-graph-three-tier.md) -- Graphiti 的三层架构（episode/semantic/community）是对 LoCoMo 时序事件图的正式化扩展，增加了社区聚类层和双时间线维度
+[^card-2]: [边失效与动态知识更新机制](edge-invalidation-mechanism.md) -- Graphiti 的边失效机制解决了时序事件图未覆盖的矛盾解决问题：当新信息与旧事实冲突时如何非破坏性更新
 
 [^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.2" -- "we construct a temporal event graph, labeled as G, for each agent"
 [^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.2" -- "G includes causal connections l = (e_i, e_j) that illustrate the causal relationships among events"
