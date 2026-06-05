@@ -15,7 +15,7 @@ summary: >-
   workflow-taxonomy（工作流分类 / workflow categories / 操作分类 / maintainer playbooks）
   将 LLM Wiki 工作流组织为 create（ingest/batch-ingest/synthesize）、enrich（enrich/expand）、
   audit（gap-analysis/verification/lint/plugin-audit/schema-self-audit）、query、meta 五大类
-related: []
+related: [ingest-operation, lint-operation, llm-as-maintenance-engine]
 ---
 
 LLM Wiki 的操作不只是散落的单项动作，可以组织为**五大类工作流**[^src-1]：
@@ -26,11 +26,12 @@ LLM Wiki 的操作不只是散落的单项动作，可以组织为**五大类工
 4. **Query（查询）**——利用 wiki 回答问题。
 5. **Meta（元操作）**——关于 wiki 自身的操作（如决策树文档化）。
 
-该分类法通过维护者手册（maintainer playbooks）落地，入口为 `workflows/README.md` 的决策树[^src-2]。相比逐个定义操作（如摄入[^card-1]、巡检[^card-2]），这一分类法提供了一个完整的操作组织框架。
+该分类法通过维护者手册（maintainer playbooks）落地，入口为 `workflows/README.md` 的决策树[^src-2]。相比逐个定义操作（如摄入[^card-1]、巡检[^card-2]），这一分类法提供了一个完整的操作组织框架。其中 Audit 类工作流（lint、verification 等）集中体现了 LLM 作为维护引擎的角色定位[^card-3]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/complete-tech-live-frontier/text.txt` -- "How Karpathy's pattern shows up in the build" -- "workflows/ — maintainer playbooks: create (ingest, batch-ingest, synthesize), enrich (enrich, expand), audit (gap-analysis, verification, lint, plugin-audit, schema-self-audit), query , meta ."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/complete-tech-live-frontier/text.txt` -- "How Karpathy's pattern shows up in the build" -- "Decision tree at workflows/README.md ."
+[^src-1]: `data/raw/webpage/complete-tech-live-frontier/text.txt` -- "How Karpathy's pattern shows up in the build" -- "workflows/ — maintainer playbooks: create (ingest, batch-ingest, synthesize), enrich (enrich, expand), audit (gap-analysis, verification, lint, plugin-audit, schema-self-audit), query , meta ."
+[^src-2]: `data/raw/webpage/complete-tech-live-frontier/text.txt` -- "How Karpathy's pattern shows up in the build" -- "Decision tree at workflows/README.md ."
 [^card-1]: [摄入操作](ingest-operation.md) -- create 类的核心操作
 [^card-2]: [巡检操作](lint-operation.md) -- audit 类的子操作之一
+[^card-3]: [LLM 作为维护引擎的角色重构](llm-as-maintenance-engine.md) -- 本卡提供操作组织框架，该卡从概念层定义 Audit 类工作流所体现的维护引擎角色

@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt`
+来源：`data/raw/webpage/wikibase-data-model/text.txt`
 源证据：
 - opening section, lines 244-254 — "This is a living document, describing the conceptual data model... not a specification of any concrete binding, implementation, mapping, or serialization"
 - "Goals and requirements" section, lines 274-303 — 概念清晰性 vs 技术文档的双目标，以及三条不负责的边界

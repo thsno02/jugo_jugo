@@ -24,9 +24,13 @@ Cognition 采用**确认优先**（confirm-first）模式处理团队技能共�
 
 材料未讨论批准的粒度（是逐条技能还是批量审批）、拒绝后的处理流程、以及随着技能数量增长审批负担是否会成为瓶颈。
 
+在人机协作的更大图景中，确认优先规则是人机角色分工的一种具体门控实现[^card-1]。同时，它也代表了人类参与程度谱系上的一个特定位置——高审批端[^card-2]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Confirm-first capture" section -- "Cognition drafts skills and waits for explicit approval before saving anything to the group."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Capture work" step -- "Commands, file edits, stuck points, and outcomes become evidence for a reusable workflow."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Save skills" step -- "Cognition drafts the SKILL.md and waits for a human yes before sharing it."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "For organizations" section -- "Teams approve the workflows worth reusing, keep author attribution, and let every agent ask the brain before guessing."
+[^src-1]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Confirm-first capture" section -- "Cognition drafts skills and waits for explicit approval before saving anything to the group."
+[^src-2]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Capture work" step -- "Commands, file edits, stuck points, and outcomes become evidence for a reusable workflow."
+[^src-3]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Save skills" step -- "Cognition drafts the SKILL.md and waits for a human yes before sharing it."
+[^src-4]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "For organizations" section -- "Teams approve the workflows worth reusing, keep author attribution, and let every agent ask the brain before guessing."
+[^card-1]: [人机角色分工](human-llm-role-division.md) -- 本卡提供角色边界的具体门控机制，该卡定义人机角色分工的宏观原则
+[^card-2]: [人类参与程度谱系](review-involvement-spectrum.md) -- 本卡代表参与程度谱系上的高审批端，该卡描述从深度参与到低监督的完整谱系

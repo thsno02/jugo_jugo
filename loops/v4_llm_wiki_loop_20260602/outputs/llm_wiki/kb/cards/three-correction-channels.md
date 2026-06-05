@@ -13,7 +13,7 @@ canonical_concept: three-correction-channels
 aliases: [三纠正通道, three correction channels, 三时间尺度安全, three-timescale safety, 三层安全故事]
 summary: >-
   three-correction-channels（三纠正通道 / three-timescale safety）伴侣记忆框架的安全故事：三个不同时间尺度的纠正通道——代理内整合周期（小时到天）、跨代理联邦（周到年）、基模型演进（月到年）；没有单一通道充分，组合构成非平凡但明确部分的安全叙事
-related: [companion-knowledge-system, sleep-consolidation-architecture, architectural-separability-as-safety]
+related: [architectural-separability-as-safety, companion-knowledge-system, sleep-consolidation-architecture]
 ---
 
 伴侣记忆框架的安全故事由三个在不同时间尺度上运作的纠正通道组成[^src-1]。
@@ -37,9 +37,9 @@ related: [companion-knowledge-system, sleep-consolidation-architecture, architec
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 10" -- "We name three correction channels operating on different timescales."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 10.1" -- "The single-agent consolidation mechanism described in Section 5.5 is the fastest correction channel --- it runs on a schedule measured in hours or days."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 10.2" -- "The relevant units are not 'multiple companion systems' in the abstract. They are specific, structurally different organizational forms, each with its own update dynamics."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 10.3" -- "The slowest correction channel operates on the timescale of base model generations --- months to years. It is not implemented by the framework; it is preserved by the framework's architectural commitment to separability."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 10" -- "These three channels operate on different timescales... address different failure modes, and compose without conflicting. No single channel is sufficient."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 11" -- "The framework does not self-correct on epistemic grounds at the single-agent level."
+[^src-1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 10" -- "We name three correction channels operating on different timescales."
+[^src-2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 10.1" -- "The single-agent consolidation mechanism described in Section 5.5 is the fastest correction channel --- it runs on a schedule measured in hours or days."
+[^src-3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 10.2" -- "The relevant units are not 'multiple companion systems' in the abstract. They are specific, structurally different organizational forms, each with its own update dynamics."
+[^src-4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 10.3" -- "The slowest correction channel operates on the timescale of base model generations --- months to years. It is not implemented by the framework; it is preserved by the framework's architectural commitment to separability."
+[^src-5]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 10" -- "These three channels operate on different timescales... address different failure modes, and compose without conflicting. No single channel is sufficient."
+[^src-6]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 11" -- "The framework does not self-correct on epistemic grounds at the single-agent level."

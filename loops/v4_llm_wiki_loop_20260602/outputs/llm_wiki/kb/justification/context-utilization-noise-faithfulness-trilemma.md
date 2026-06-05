@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt`
 源证据：
 - sections/experiments.tex, Diagnosis -- "the trilemma of context utilization, noise sensitivity, and faithfulness"
 - sections/appendix_diagnosis.tex -- 优化提示的具体效果数据和分析

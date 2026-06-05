@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/nist-gai-profile/text.txt`
+来源：`data/raw/webpage/nist-gai-profile/text.txt`
 源证据：
 - Abstract L219 — "This document is a cross-sectoral profile of and companion resource for the AI Risk Management Framework (AI RMF 1.0) for Generative AI, pursuant to President Biden's Executive Order (EO) 14110 on Safe, Secure, and Trustworthy Artificial Intelligence."
 - Abstract L219 — "The AI RMF was released in January 2023, and is intended for voluntary use and to improve the ability of organizations to incorporate trustworthiness considerations into the design, development, use, and evaluation of AI products, services, and systems."

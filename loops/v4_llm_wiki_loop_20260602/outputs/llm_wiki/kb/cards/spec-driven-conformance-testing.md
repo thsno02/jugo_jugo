@@ -15,7 +15,7 @@ summary: >-
   spec-driven-conformance-testing（规范驱动合规 / spec-driven governance / RFC 2119 合规测试）
   Microsoft Agent Governance Toolkit 为每个主要组件编写 RFC 2119 形式规范，并配以合规测试（共 13,000+ 测试、
   10 份形式规范），用可执行测试取代自然语言约束来定义治理行为的正确性
-related: []
+related: [companion-conformance-invariants]
 ---
 
 Microsoft Agent Governance Toolkit 的一个显著特征是"规范先行"（spec-first）：每个主要组件都有一份 RFC 2119 形式规范（formal specification），并配以可执行的合规测试（conformance tests）[^src-1]。
@@ -33,9 +33,12 @@ Microsoft Agent Governance Toolkit 的一个显著特征是"规范先行"（spec
 
 此外，25 份架构决策记录（Architecture Decision Records, ADR）文档化了关键设计选择的推理过程 [^src-4]。这种规范驱动的方法意味着治理行为的正确性由可执行测试而非自然语言文档定义，任何实现都可以通过跑通合规测试来验证其符合规范。
 
+值得注意的是，「规范先行、可执行验证」并非 Microsoft 独有的方法论。学术界的伴侣记忆框架也独立采用了类似思路——为每个操作定义合规不变量，将说服性框架转化为构建者可测试的规范[^card-1]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L401 -- "Every major component has a formal RFC 2119 specification with conformance tests."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L355-358 -- "13,000+ Tests, 10 Formal Specs, 5 Languages, 20+ Integrations"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L403-424 -- "Agent OS Policy Engine 68 ... Audit and Compliance 157"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L425 -- "25 Architecture Decision Records document the reasoning behind key design choices."
+[^src-1]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L401 -- "Every major component has a formal RFC 2119 specification with conformance tests."
+[^src-2]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L355-358 -- "13,000+ Tests, 10 Formal Specs, 5 Languages, 20+ Integrations"
+[^src-3]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L403-424 -- "Agent OS Policy Engine 68 ... Audit and Compliance 157"
+[^src-4]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L425 -- "25 Architecture Decision Records document the reasoning behind key design choices."
+[^card-1]: [伴侣系统合规不变量](companion-conformance-invariants.md) -- 本卡聚焦工业级治理工具包的 RFC 2119 规范与 13,000+ 合规测试，该卡聚焦学术伴侣记忆框架中的操作级合规不变量；两者共享「规范先行、可执行验证」方法论但应用于截然不同的领域

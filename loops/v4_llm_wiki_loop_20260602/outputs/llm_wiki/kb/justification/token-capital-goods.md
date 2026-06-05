@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
+来源：`data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
 源证据：
 - Section 3.4 P9 — "a subset of LLM tokens should be reclassified from consumables to capital goods"
 - Section 3.4 P9 — "raw token accounting is the wrong unit of analysis for systems that produce persistent knowledge artifacts"

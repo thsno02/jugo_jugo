@@ -32,11 +32,11 @@ LLM Wiki 的研究命令启动 **5-10 个并行智能体**同时搜索，每个�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Research" section L20-22 -- "5-10 parallel agents search academic, technical, applied, news, and contrarian angles."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Stage 2" L285 -- "5 agents (8 with --deep, 10 with --retardmax) search simultaneously from different angles"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Quick Start" L250 -- "Five parallel agents search the web from different angles (academic, technical, applied, news, contrarian)"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Stage 2" L286 -- "2-3 web searches each, full-content fetch, quality scoring (1-5)"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Stage 2-3" L286-290 -- "A credibility pass deduplicates before ingestion... synthesizes them into wiki articles under wiki/concepts/, wiki/topics/, and wiki/references/"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Stage 4" L293-295 -- "After each round, you see what's covered, what's still missing, and suggested follow-ups."
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Multi-round" L296 -- "Add --min-time 2h to keep researching in rounds, each drilling into gaps the previous round found."
-[^src-8]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Deep research with --plan" L351-356 -- "decomposes your research into independent paths and runs them all in parallel"
+[^src-1]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Research" section L20-22 -- "5-10 parallel agents search academic, technical, applied, news, and contrarian angles."
+[^src-2]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Stage 2" L285 -- "5 agents (8 with --deep, 10 with --retardmax) search simultaneously from different angles"
+[^src-3]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Quick Start" L250 -- "Five parallel agents search the web from different angles (academic, technical, applied, news, contrarian)"
+[^src-4]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Stage 2" L286 -- "2-3 web searches each, full-content fetch, quality scoring (1-5)"
+[^src-5]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Stage 2-3" L286-290 -- "A credibility pass deduplicates before ingestion... synthesizes them into wiki articles under wiki/concepts/, wiki/topics/, and wiki/references/"
+[^src-6]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Stage 4" L293-295 -- "After each round, you see what's covered, what's still missing, and suggested follow-ups."
+[^src-7]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Multi-round" L296 -- "Add --min-time 2h to keep researching in rounds, each drilling into gaps the previous round found."
+[^src-8]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Deep research with --plan" L351-356 -- "decomposes your research into independent paths and runs them all in parallel"

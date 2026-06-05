@@ -13,7 +13,7 @@ canonical_concept: locomo-human-machine-pipeline
 aliases: [LoCoMo 数据管线, human-machine dialogue generation pipeline]
 summary: >-
   locomo-human-machine-pipeline（LoCoMo 数据管线, human-machine dialogue generation pipeline）用 GPT-3.5-turbo 双代理对话生成+人工标注者编辑 15% 轮次、替换 19% 图片以确保长程一致性，生成 50 段超长期多模态对话，是 LLM 合成+人工质控的混合数据构建范式
-related: [locomo-benchmark, temporal-event-graph-grounding, locomo-reflect-respond-architecture]
+related: [locomo-benchmark, locomo-reflect-respond-architecture, temporal-event-graph-grounding]
 ---
 
 LoCoMo 的数据构建采用"机器生成 + 人工编辑"的混合管线，平衡了大规模生成效率与数据质量[^src-1]。
@@ -26,8 +26,8 @@ LoCoMo 的数据构建采用"机器生成 + 人工编辑"的混合管线，平�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 1" -- "a human-machine pipeline to generate high-quality, very long-term dialogues by leveraging LLM-based agent architectures"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3" -- "We create two virtual agents, named L_1 and L_2, each initialized with a LLM M (i.e., gpt-3.5-turbo)"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3" -- "image sharing function... (1) Generate a caption (2) Convert caption into keywords (3) Use keywords to find an image through web search (4) Share the chosen image"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.4" -- "annotators edited nearly 15% of the dialog turns and removed or substituted approx. 19% images"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 8 Limitations" -- "We pursued this method... to avoid the logistical and legal complexities of collecting very long-term real-world conversations at scale"
+[^src-1]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 1" -- "a human-machine pipeline to generate high-quality, very long-term dialogues by leveraging LLM-based agent architectures"
+[^src-2]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3" -- "We create two virtual agents, named L_1 and L_2, each initialized with a LLM M (i.e., gpt-3.5-turbo)"
+[^src-3]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3" -- "image sharing function... (1) Generate a caption (2) Convert caption into keywords (3) Use keywords to find an image through web search (4) Share the chosen image"
+[^src-4]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.4" -- "annotators edited nearly 15% of the dialog turns and removed or substituted approx. 19% images"
+[^src-5]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 8 Limitations" -- "We pursued this method... to avoid the logistical and legal complexities of collecting very long-term real-world conversations at scale"

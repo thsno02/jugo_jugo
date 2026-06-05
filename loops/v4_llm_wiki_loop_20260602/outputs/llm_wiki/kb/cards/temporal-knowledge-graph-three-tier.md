@@ -13,7 +13,7 @@ canonical_concept: temporal-knowledge-graph-three-tier
 aliases: [三层知识图谱, three-tier KG, Graphiti三层架构, episode-semantic-community hierarchy]
 summary: >-
   temporal-knowledge-graph-three-tier（三层知识图谱, three-tier KG）Zep/Graphiti 将 agent 记忆组织为 episode 子图（原始数据）、semantic entity 子图（提取的实体与关系）、community 子图（聚类摘要）三层递进结构
-related:
+related: [bi-temporal-fact-model, dynamic-community-detection, episodic-semantic-memory-duality, temporal-event-graph-grounding]
   - episodic-semantic-memory-duality
   - dynamic-community-detection
 ---
@@ -28,13 +28,16 @@ Zep 的核心组件 Graphiti 将知识图谱 G=(N, E, phi) 组织为三层层次
 
 这种从 episode 到 fact 到 entity 到 community 的层次化组织，扩展了已有的分层 RAG 策略 [^src-5]。
 
-LoCoMo 的时序事件图是一种更轻量的对应物：它以事件节点和因果连接构建对话锚定图，功能上对应于 Graphiti 的 semantic entity 子图层，但不具备 episode 溯源和 community 聚类能力[^card-1]。
+LoCoMo 的时序事件图是一种更轻量的对应物：它以事件节点和因果连接构建对话锚定图，功能上对应于 Graphiti 的 semantic entity 子图层，但不具备 episode 溯源和 community 聚类能力[^card-1]。三层架构中 episode-semantic 两层的认知心理学理论基础——即情景记忆与语义记忆的区分——见双存储设计卡[^card-2]。三层架构中语义边所承载的时间建模细节——即双时间线的四个时间戳（t_valid/t_invalid/t'_created/t'_expired）——详见双时间线事实建模卡[^card-3]。三层架构中 community 子图层所使用的标签传播动态社区检测算法详见动态社区检测卡[^card-4]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 (Knowledge Graph Construction) -- "memory is powered by a temporally-aware dynamic knowledge graph G=(N, E, phi)... This graph comprises three hierarchical tiers of subgraphs: an episode subgraph, a semantic entity subgraph, and a community subgraph."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.1 (Episodes) -- "semantic artifacts can be traced to their sources for citation or quotation, while episodes can quickly retrieve their relevant entities and facts"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "Entity nodes... represent entities extracted from episodes and resolved with existing graph entities. Entity edges... represent relationships between entities extracted from episodes."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "Community nodes... represent clusters of strongly connected entities. Communities contain high-level summarizations of these clusters"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "The resulting hierarchical organization—from episodes to facts to entities to communities—extends existing hierarchical RAG strategies"
+[^src-1]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 (Knowledge Graph Construction) -- "memory is powered by a temporally-aware dynamic knowledge graph G=(N, E, phi)... This graph comprises three hierarchical tiers of subgraphs: an episode subgraph, a semantic entity subgraph, and a community subgraph."
+[^src-2]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.1 (Episodes) -- "semantic artifacts can be traced to their sources for citation or quotation, while episodes can quickly retrieve their relevant entities and facts"
+[^src-3]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "Entity nodes... represent entities extracted from episodes and resolved with existing graph entities. Entity edges... represent relationships between entities extracted from episodes."
+[^src-4]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "Community nodes... represent clusters of strongly connected entities. Communities contain high-level summarizations of these clusters"
+[^src-5]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2 -- "The resulting hierarchical organization—from episodes to facts to entities to communities—extends existing hierarchical RAG strategies"
 [^card-1]: [时序事件图作为对话锚定机制](temporal-event-graph-grounding.md) -- LoCoMo 的时序事件图是三层架构中 semantic entity 子图的轻量对应物，以事件节点和因果连接构建对话锚定
+[^card-2]: [情景记忆与语义记忆的双存储设计](episodic-semantic-memory-duality.md) -- 本卡是完整的三层工程架构，该卡聚焦其中 episode-semantic 两层背后的认知心理学理论基础
+[^card-3]: [双时间线事实建模](bi-temporal-fact-model.md) -- 本卡聚焦三层子图的空间组织架构，该卡聚焦图中语义边上的双时间线时序建模机制，两者共同构成 Graphiti 的完整知识图谱设计
+[^card-4]: [标签传播动态社区检测](dynamic-community-detection.md) -- 本卡聚焦三层子图的整体架构设计，该卡详述其中 community 子图层所使用的标签传播动态社区检测算法

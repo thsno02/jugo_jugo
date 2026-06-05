@@ -13,7 +13,7 @@ canonical_concept: dual-retrieval-entity-semantic
 aliases: [双路检索, dual retrieval strategy, entity-centric + semantic triplet retrieval]
 summary: >-
   dual-retrieval-entity-semantic（双路检索 / entity-centric + semantic triplet retrieval）Mem0^g 实现两种互补检索路径：实体锚定法先识别查询中的实体再探索其关系子图；语义三元组法将整个查询编码为向量与所有关系三元组做细粒度相似度匹配，前者适合定向实体查询后者适合宽泛概念查询
-related: [graph-memory-temporal-advantage, index-based-navigation, cross-tool-entity-resolution]
+related: [cross-tool-entity-resolution, graph-memory-temporal-advantage, hybrid-triple-search-complementarity, index-based-navigation, search-rerank-construct-pipeline]
 ---
 
 Mem0^g 的记忆检索实现了双路策略，以应对不同类型查询的需求 [^src-1]：
@@ -28,9 +28,9 @@ Zep 的知识图谱检索采用了类似的多路互补策略（余弦语义相�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "The memory retrieval functionality in Mem0^g implements a dual-approach strategy for optimal information access."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "The entity-centric method first identifies key entities within a query, then leverages semantic similarity to locate corresponding nodes in the knowledge graph. It systematically explores both incoming and outgoing relationships from these anchor nodes"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "the semantic triplet approach takes a more holistic view by encoding the entire query as a dense embedding vector. This query representation is then matched against textual encodings of each relationship triplet in the knowledge graph."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "This dual retrieval mechanism enables Mem0^g to handle both targeted entity-focused questions and broader conceptual queries with equal effectiveness."
+[^src-1]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "The memory retrieval functionality in Mem0^g implements a dual-approach strategy for optimal information access."
+[^src-2]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "The entity-centric method first identifies key entities within a query, then leverages semantic similarity to locate corresponding nodes in the knowledge graph. It systematically explores both incoming and outgoing relationships from these anchor nodes"
+[^src-3]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "the semantic triplet approach takes a more holistic view by encoding the entire query as a dense embedding vector. This query representation is then matched against textual encodings of each relationship triplet in the knowledge graph."
+[^src-4]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "This dual retrieval mechanism enables Mem0^g to handle both targeted entity-focused questions and broader conceptual queries with equal effectiveness."
 [^card-1]: [三种互补搜索方法的混合检索](hybrid-triple-search-complementarity.md) -- Zep 从余弦/BM25/BFS 三个维度实现多路检索，与 Mem0^g 的实体-语义双路策略形成互补参照
 [^card-2]: [搜索-重排-构造三步检索管线](search-rerank-construct-pipeline.md) -- Zep 将多路搜索形式化为 phi-rho-chi 三步管线，展示了从搜索到上下文构造的完整架构

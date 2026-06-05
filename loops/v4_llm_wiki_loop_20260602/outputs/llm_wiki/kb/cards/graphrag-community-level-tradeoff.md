@@ -13,7 +13,7 @@ canonical_concept: graphrag-community-level-tradeoff
 aliases: [C0 vs C3 tradeoff, 社区层级选择权衡, root vs leaf community tradeoff]
 summary: >-
   graphrag-community-level-tradeoff（C0 vs C3 tradeoff / 社区层级选择权衡）根层级社区摘要 C0 仅需最大 token 量的 2.3-2.6%，但仍保持对向量 RAG 72% 全面性和 62% 多样性的胜率；低层级 C3 更详细但需 67-74% token
-related: [graphrag-community-hierarchy, graphrag-map-reduce-query, graphrag-comprehensiveness-diversity-result]
+related: [graphrag-community-hierarchy, graphrag-comprehensiveness-diversity-result, graphrag-map-reduce-query]
 ---
 
 GraphRAG 的层级社区结构带来一个重要的实践权衡：不同层级的社区摘要在 token 消耗与回答质量之间提供不同的平衡点。
@@ -28,9 +28,9 @@ GraphRAG 的层级社区结构带来一个重要的实践权衡：不同层级�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- community_table.tex -- C0: Podcast 34 units/26657 tokens/2.6%, News 55 units/39770 tokens/2.3%
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Results Section (graph_rag.tex) -- "root-level GraphRAG offers a highly efficient method for the iterative question answering that characterizes sensemaking activity, while retaining advantages in comprehensiveness (72% win rate) and diversity (62% win rate) over vector RAG"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- community_table.tex -- C3: Podcast 1310 units/746100 tokens/73.5%, News 2142 units/1140266 tokens/66.8%
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Results Section (graph_rag.tex) -- "for low-level community summaries (C3), GraphRAG required 26-33% fewer context tokens, while for root-level community summaries (C0), it required over 97% fewer tokens"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Conclusion (graph_rag.tex) -- "For situations requiring many global queries over the same dataset, summaries of root-level communities in the entity-based graph index provide a data index that is both superior to vector RAG and achieves competitive performance to other global methods at a fraction of the token cost."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Results Section (graph_rag.tex) -- "Intermediate-level summaries in the Podcast dataset and low-level community summaries in the News dataset achieved comprehensiveness win rates of 57% (p<.001) and 64% (p<.001), respectively."
+[^src-1]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- community_table.tex -- C0: Podcast 34 units/26657 tokens/2.6%, News 55 units/39770 tokens/2.3%
+[^src-2]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Results Section (graph_rag.tex) -- "root-level GraphRAG offers a highly efficient method for the iterative question answering that characterizes sensemaking activity, while retaining advantages in comprehensiveness (72% win rate) and diversity (62% win rate) over vector RAG"
+[^src-3]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- community_table.tex -- C3: Podcast 1310 units/746100 tokens/73.5%, News 2142 units/1140266 tokens/66.8%
+[^src-4]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Results Section (graph_rag.tex) -- "for low-level community summaries (C3), GraphRAG required 26-33% fewer context tokens, while for root-level community summaries (C0), it required over 97% fewer tokens"
+[^src-5]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Conclusion (graph_rag.tex) -- "For situations requiring many global queries over the same dataset, summaries of root-level communities in the entity-based graph index provide a data index that is both superior to vector RAG and achieves competitive performance to other global methods at a fraction of the token cost."
+[^src-6]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Results Section (graph_rag.tex) -- "Intermediate-level summaries in the Podcast dataset and low-level community summaries in the News dataset achieved comprehensiveness win rates of 57% (p<.001) and 64% (p<.001), respectively."

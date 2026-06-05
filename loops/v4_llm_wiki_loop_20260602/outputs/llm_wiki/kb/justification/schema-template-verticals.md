@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/aillm-wiki-directory/text.txt`
+来源：`data/raw/webpage/aillm-wiki-directory/text.txt`
 源证据：
 - L47,61,85 — "5 battle-tested schema.md templates (general, research, engineering, product, SEO)"
 - L47 — "Each template ships with the exact schema.md and CLAUDE.md combo that gets an LLM to produce clean entity pages on the first try"

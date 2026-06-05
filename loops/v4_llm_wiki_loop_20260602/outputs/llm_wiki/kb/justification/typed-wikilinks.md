@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/openaitoolshub-six-months/text.txt`
+来源：`data/raw/webpage/openaitoolshub-six-months/text.txt`
 源证据：
 - L56 — "instead of plain [[obsidian]], I write [[obsidian]] (uses) or [[gbrain]] (alternative-to). Six relationship types total."
 - L56 — "by month two it lets Claude give much sharper answers because the graph isn't just 'X is connected to Y' but 'X uses Y' or 'X contradicts Y'."

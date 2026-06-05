@@ -13,7 +13,7 @@ canonical_concept: search-rerank-construct-pipeline
 aliases: [三步检索管线, search-rerank-construct, phi-rho-chi pipeline]
 summary: >-
   search-rerank-construct-pipeline（三步检索管线, search-rerank-construct）Zep 的记忆检索形式化为 f(alpha)=chi(rho(phi(alpha)))=beta，即搜索（召回候选边/节点）、重排（提升精度）、构造（转为文本上下文）三步组合
-related:
+related: [dual-retrieval-entity-semantic]
   - hybrid-triple-search-complementarity
   - temporal-knowledge-graph-three-tier
 ---
@@ -32,9 +32,9 @@ Mem0^g 的知识图谱检索采用了类似的多路策略（实体锚定 + 语�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 (Memory Retrieval) -- "the Zep graph search API implements a function f: S->S that accepts a text-string query alpha as input and returns a text-string context beta as output"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 -- "The process begins by identifying candidate nodes and edges potentially containing relevant information."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.2 (Reranker) -- "Zep supports existing reranking approaches such as Reciprocal Rank Fusion (RRF) and Maximal Marginal Relevance (MMR). Additionally, Zep implements a graph-based episode-mentions reranker..."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 -- "For each e_i in E_s, chi returns the fact and t_valid, t_invalid fields; for each n_i in N_s, the name and summary fields; and for each n_i in N_c, the summary field."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 -- "we can express f as a composition of these three components: f(alpha)=chi(rho(phi(alpha)))=beta"
+[^src-1]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 (Memory Retrieval) -- "the Zep graph search API implements a function f: S->S that accepts a text-string query alpha as input and returns a text-string context beta as output"
+[^src-2]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 -- "The process begins by identifying candidate nodes and edges potentially containing relevant information."
+[^src-3]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.2 (Reranker) -- "Zep supports existing reranking approaches such as Reciprocal Rank Fusion (RRF) and Maximal Marginal Relevance (MMR). Additionally, Zep implements a graph-based episode-mentions reranker..."
+[^src-4]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 -- "For each e_i in E_s, chi returns the fact and t_valid, t_invalid fields; for each n_i in N_s, the name and summary fields; and for each n_i in N_c, the summary field."
+[^src-5]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3 -- "we can express f as a composition of these three components: f(alpha)=chi(rho(phi(alpha)))=beta"
 [^card-1]: [双路检索策略（实体锚定 + 语义三元组）](dual-retrieval-entity-semantic.md) -- Mem0^g 的双路知识图谱检索展示了另一种多路策略设计，与 Zep 的三步管线形成跨系统比较

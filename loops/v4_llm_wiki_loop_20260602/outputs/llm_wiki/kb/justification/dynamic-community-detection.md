@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
 源证据：
 - Section 2.3 — "we employ a label propagation algorithm rather than the Leiden algorithm. This choice was influenced by label propagation's straightforward dynamic extension"
 - Section 2.3 — "this dynamic updating strategy provides a practical heuristic that significantly reduces latency and LLM inference costs"

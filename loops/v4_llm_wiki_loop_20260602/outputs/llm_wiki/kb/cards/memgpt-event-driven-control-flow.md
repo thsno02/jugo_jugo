@@ -28,7 +28,10 @@ MemGPT 采用事件驱动的控制流，类比操作系统中的中断机制来�
 
 定时事件的存在使 MemGPT 能够在对话间隙执行内存整理、信息反思等后台任务，这是传统单轮 LLM 交互所不具备的能力。
 
+事件驱动控制流与虚拟上下文管理构成 MemGPT 对 OS 概念的两大互补借鉴：前者类比中断机制，后者类比虚拟内存分页[^card-1]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "In MemGPT, events trigger LLM inference: events are generalized inputs to MemGPT and can consist of user messages (in chat applications), system messages (e.g. main context capacity warnings), user interactions (e.g. an alert that a user just logged in, or an alert that they finished uploading a document), and timed events that are run on a regular schedule (allowing MemGPT to run 'unprompted' without user intervention)."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "MemGPT processes events with a parser to convert them into plain text messages that can be appended to main context and eventually be fed as input into the LLM processor."
+[^src-1]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "In MemGPT, events trigger LLM inference: events are generalized inputs to MemGPT and can consist of user messages (in chat applications), system messages (e.g. main context capacity warnings), user interactions (e.g. an alert that a user just logged in, or an alert that they finished uploading a document), and timed events that are run on a regular schedule (allowing MemGPT to run 'unprompted' without user intervention)."
+[^src-2]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "MemGPT processes events with a parser to convert them into plain text messages that can be appended to main context and eventually be fed as input into the LLM processor."
+[^card-1]: [虚拟上下文管理](virtual-context-management.md) -- 本卡聚焦 OS 中断类比（事件驱动控制流），该卡聚焦 OS 虚拟内存类比（分页式上下文管理），两者是 MemGPT 对 OS 概念的互补借鉴

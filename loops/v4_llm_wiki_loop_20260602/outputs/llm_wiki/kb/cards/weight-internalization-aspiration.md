@@ -13,7 +13,7 @@ canonical_concept: weight-internalization-aspiration
 aliases: [权重内化, knowledge internalization, weight-based knowledge, 合成数据微调]
 summary: >-
   weight-internalization-aspiration（权重内化 / knowledge internalization / 合成数据微调）随 wiki 规模增长，自然产生通过合成数据+微调让 LLM 将知识内化到权重而非仅依赖上下文窗口的愿望
-related:
+related: []
   - llm-wiki-pattern
   - llm-wiki-scale-boundary
   - index-based-navigation
@@ -27,4 +27,4 @@ Karpathy 在描述 LLM Wiki 的未来探索方向时提出：随着知识库规�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/karpathy-x-launch-post/text.txt` -- Tweet 2 (quoted), "Further explorations" section -- "As the repo grows, the natural desire is to also think about synthetic data generation + finetuning to have your LLM 'know' the data in its weights instead of just context windows."
+[^src-1]: `data/raw/webpage/karpathy-x-launch-post/text.txt` -- Tweet 2 (quoted), "Further explorations" section -- "As the repo grows, the natural desire is to also think about synthetic data generation + finetuning to have your LLM 'know' the data in its weights instead of just context windows."

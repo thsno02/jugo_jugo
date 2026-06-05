@@ -13,7 +13,7 @@ canonical_concept: llm-wiki-mainstream-prerequisites
 aliases: [主流化条件, mainstream prerequisites, 四个前提, 采纳路线图]
 summary: >-
   llm-wiki-mainstream-prerequisites（主流化条件 / mainstream prerequisites / 四个前提）是本地 LLM wiki 走向主流的四项必要条件：更小更好的模型、更智能的分块与检索（语义分块+混合搜索）、真正的 UI、增量索引；作者以"第一部电话"类比当前阶段，预测 2027 年前出现成熟产品
-related: [llm-wiki-pattern, full-stack-locality, chunk-size-tradeoff]
+related: [chunk-size-tradeoff, full-stack-locality, llm-wiki-ecosystem-velocity, llm-wiki-pattern]
 ---
 
 作者基于 14 年软件开发经验，认为个人可查询本地知识库"是事物实际前进的方向"，但当前实现"还太早"。主流化需要四项条件[^src-1]：
@@ -32,10 +32,10 @@ related: [llm-wiki-pattern, full-stack-locality, chunk-size-tradeoff]
 
 [^card-1]: [LLM Wiki 生态形成速度](llm-wiki-ecosystem-velocity.md) -- 主流化四条件描述了产品成熟需要的时间（预测 2027 年前），生态形成速度记录了模式传播的极快节奏（一周内），两者的张力定义了 LLM Wiki 当前所处的"概念验证已完成、产品化未完成"阶段
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L119-120 -- "I think the core idea here — a personal, queryable, local knowledge base — is where things are actually headed. The current implementation is just too early."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L123 -- "The quality gap between a 7B parameter local model and GPT-4 is still enormous for synthesis tasks. Models like Gemma and Qwen are closing it fast though."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L125-126 -- "Naive fixed-size chunking throws away document structure. Semantic chunking, hierarchical indexing, and hybrid search... need to become standard. Right now they're research-project territory."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L127 -- "Most developers will never use a tool that requires compiling C code and working in a raw terminal. Someone will build the 'VS Code of local knowledge bases'"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L129 -- "Adding a new note currently means re-indexing everything. For a system you're supposed to use daily, that's a dealbreaker. Hot-reload indexing is a must."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L131 -- "We're just in the 'first telephone' phase. The call quality is terrible, but the concept of talking across distances is obviously correct."
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L141 -- "My bet: we see it before the end of 2027."
+[^src-1]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L119-120 -- "I think the core idea here — a personal, queryable, local knowledge base — is where things are actually headed. The current implementation is just too early."
+[^src-2]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L123 -- "The quality gap between a 7B parameter local model and GPT-4 is still enormous for synthesis tasks. Models like Gemma and Qwen are closing it fast though."
+[^src-3]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L125-126 -- "Naive fixed-size chunking throws away document structure. Semantic chunking, hierarchical indexing, and hybrid search... need to become standard. Right now they're research-project territory."
+[^src-4]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L127 -- "Most developers will never use a tool that requires compiling C code and working in a raw terminal. Someone will build the 'VS Code of local knowledge bases'"
+[^src-5]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L129 -- "Adding a new note currently means re-indexing everything. For a system you're supposed to use daily, that's a dealbreaker. Hot-reload indexing is a must."
+[^src-6]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L131 -- "We're just in the 'first telephone' phase. The call quality is terrible, but the concept of talking across distances is obviously correct."
+[^src-7]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L141 -- "My bet: we see it before the end of 2027."

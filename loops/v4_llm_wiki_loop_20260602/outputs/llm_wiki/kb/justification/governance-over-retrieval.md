@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt`
+来源：`data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt`
 源证据：
 - L220 — "Access control, freshness, and concurrency are governance problems, not retrieval architecture problems."
 - L217 — "The real enterprise question is not wiki vs RAG: it is whether source data is trustworthy enough for either."

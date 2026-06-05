@@ -13,7 +13,7 @@ canonical_concept: companion-object-model
 aliases: [伴侣系统对象模型, companion object model, 伴侣实体模型, companion entity model, 系统模型]
 summary: >-
   companion-object-model（伴侣系统对象模型 / companion entity model）伴侣记忆框架定义的五种核心实体及其生命周期状态：原始缓冲区条目（pending→consolidated/rejected/expired）、活跃 wiki 条目（active→decaying→archived，带 gravity-protected/quarantined 正交标志）、冷存储对象、审计记录、少数派分支；所有操作读写这些实体，合规测试依赖这些对象边界
-related: [companion-knowledge-system, companion-conformance-invariants, memory-lifecycle-metadata]
+related: [companion-conformance-invariants, companion-knowledge-system, memory-lifecycle-metadata]
 ---
 
 伴侣记忆框架在 Section 4 定义了操作所作用的对象模型——所有操作读取和写入这些实体，合规测试依赖这些对象边界[^src-1]。
@@ -47,6 +47,6 @@ related: [companion-knowledge-system, companion-conformance-invariants, memory-l
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 4" -- "Before specifying operations, the framework names the objects those operations act on... Naming them explicitly is what allows conformance to be tested"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 4" -- Core entities table
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 4" -- "gravity-protected and quarantined are status flags, not lifecycle stages. An entry can be active and gravity-protected simultaneously."
+[^src-1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 4" -- "Before specifying operations, the framework names the objects those operations act on... Naming them explicitly is what allows conformance to be tested"
+[^src-2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 4" -- Core entities table
+[^src-3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 4" -- "gravity-protected and quarantined are status flags, not lifecycle stages. An entry can be active and gravity-protected simultaneously."

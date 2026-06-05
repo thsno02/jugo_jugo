@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt`
+来源：`data/raw/webpage/llm-wiki-net/text.txt`
 源证据：
 - L166-168 — "Runs entirely on the host agent's built-in tools. Plugin is Markdown + commands. No servers, no services, no telemetry."
 - L490-492 — "LLM Wiki uses only the built-in tools of the host agent (file read/write, web fetch, web search). The plugin itself is Markdown: command definitions, skills, and reference docs."

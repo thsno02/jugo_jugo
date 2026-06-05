@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt`
 源证据：
 - Appendix: Long Context Recall -- "To diagnose whether a model's immunity to prompt injection stems from inability to recall... versus refusal to follow it (safety alignment)"
 - Appendix: Interpretation -- "GPT-OSS-120B (6.7% recall): The extremely low recall rate indicates a severe needle-in-haystack failure."

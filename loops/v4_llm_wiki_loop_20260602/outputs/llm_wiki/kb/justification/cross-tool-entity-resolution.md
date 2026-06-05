@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt`
+来源：`data/raw/webpage/falconer-enterprise-guide/text.txt`
 源证据：
 - "Link: bidirectional connections need cross-tool semantics" 段 — "A decision made in Slack needs to link to the PR that implemented it, the Linear ticket that tracked it..."
 - "What an enterprise LLM wiki has to do differently" 段 — "The graph has to understand that 'the payments service' in a design doc is the same entity as 'payments-service' in a GitHub repo"

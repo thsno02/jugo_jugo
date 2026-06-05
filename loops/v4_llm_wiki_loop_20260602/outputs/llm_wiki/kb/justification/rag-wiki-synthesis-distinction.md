@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt`
+来源：`data/raw/hacker_news/hacker-news-original-thread/text.txt`
 源证据：
 - kenforthewin 评论 — "This is just RAG. Yes, it's not using a vector database - but it's building an index file of semantic connections... this is RAG."
 - darkhanakh 评论 — "the interesting bit here is the write loop - the LLM is authoring and maintaining the wiki itself, building backlinks, filing its own outputs back in. thats not retrieval thats knowledge synthesis."

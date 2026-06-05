@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt`
+来源：`data/raw/hacker_news/hacker-news-original-thread/text.txt`
 源证据：
 - kubb 评论 — "there's a critical point beyond which things collapse: the agent can't keep the wiki up to date anymore, the developer can't grok it anymore."
 - kaashif 评论 — "If a human can understand 10 units of complexity and their LLM can do 20, then they might just build a system that's 30 complex and not understand the failure modes until it's too late."

@@ -13,7 +13,7 @@ canonical_concept: structured-queryability-gap
 aliases: [结构化可查询性, queryability gap, markdown查询局限]
 summary: >-
   structured-queryability-gap（结构化可查询性 / queryability gap / markdown查询局限）指纯 markdown wiki 在混入结构化数据（工作项、ADR）后暴露的查询局限：agent 无法回答"显示阻塞此 epic 的未完成任务"而不扫描散文或维护并行索引；AGENTS.md 教 LLM 文件夹约定只在数据简单时有效；需要同时提供人类可读文件和 agent 可查询的结构化接口
-related: [schema-as-configuration, index-based-navigation, wiki-as-git-repo]
+related: [index-based-navigation, schema-as-configuration, wiki-as-git-repo]
 ---
 
 一位评论者指出了 LLM Wiki 模式在实践中遇到的一个具体摩擦点：当 wiki 中混入结构化数据（如工作项或架构决策记录 ADR）时，**纯 markdown 的查询能力不足**[^src-1]。
@@ -26,6 +26,6 @@ related: [schema-as-configuration, index-based-navigation, wiki-as-git-repo]
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- mpazik 评论 -- "The friction shows up once you mix docs with structured things like work items or ADRs. Flat markdown doesn't query well and gets inconsistent."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- mpazik 评论 -- "The AGENTS.md approach papers over this by teaching the LLM the folder conventions. Works until the data gets complex but gets worse after many iterations."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- mpazik 评论 -- "Both are needed: files that open in any editor, and a structured interface the agent can actually query... Data lives in a structured DB but renders to plain markdown with bi-directional sync. LSP gives editors autocomplete and validation. Agents and scripts get the same data through CLI or MCP."
+[^src-1]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- mpazik 评论 -- "The friction shows up once you mix docs with structured things like work items or ADRs. Flat markdown doesn't query well and gets inconsistent."
+[^src-2]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- mpazik 评论 -- "The AGENTS.md approach papers over this by teaching the LLM the folder conventions. Works until the data gets complex but gets worse after many iterations."
+[^src-3]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- mpazik 评论 -- "Both are needed: files that open in any editor, and a structured interface the agent can actually query... Data lives in a structured DB but renders to plain markdown with bi-directional sync. LSP gives editors autocomplete and validation. Agents and scripts get the same data through CLI or MCP."

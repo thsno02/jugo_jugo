@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt`
 源证据：
 - sections/method_rewrite.tex — "The prompt tokens in MemGPT are split into three contiguous sections: the system instructions, working context, and FIFO Queue."
 - sections/method_rewrite.tex — "The first index in the FIFO queue stores a system message containing a recursive summary of messages that have been evicted from the queue."

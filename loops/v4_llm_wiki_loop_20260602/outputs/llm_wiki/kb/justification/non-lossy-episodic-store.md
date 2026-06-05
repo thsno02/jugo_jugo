@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
 源证据：
 - Section 2 — "Episodes serve as a non-lossy data store from which semantic entities and relations are extracted."
 - Section 2.1 — "semantic artifacts can be traced to their sources for citation or quotation, while episodes can quickly retrieve their relevant entities and facts."

@@ -15,7 +15,7 @@ summary: >-
   invest-harvest-cycle（投资收获循环 / invest-harvest cycle / 振荡凹曲线）是 Compounding
   方案独有的成本轨迹模式：Q1 冷启动 12K→Q2 缓存命中 3K→Q3 搜索回写投资 28K→Q4 复用收获 4K，
   呈现尖峰=资本形成、波谷=资本收获的振荡凹曲线，是三种方案中唯一的历史依赖型轨迹
-related:
+related: [knowledge-compounding, search-write-back]
   - knowledge-compounding
   - dynamic-agentic-roi
   - compounding-cost-honesty
@@ -35,11 +35,15 @@ Wen & Ku (2026) 通过四查询实验发现，Compounding 方案的累积 token 
 
 **唯一的历史依赖型轨迹**：Compounding 是三种方案中唯一具有历史依赖性的方案——查询 N 的成本取决于查询 1 到 N-1 的结果；另外两种方案中每次查询的成本与历史查询完全独立[^src-6]。
 
+振荡凹曲线是 Wen & Ku (2026) 知识复利理论在成本侧的直接印证——理论预测的 H(t) 凹饱和曲线在累积成本图中表现为投资-收获交替[^card-1]。其中 Q3 投资尖峰（28K）的主要成分是搜索回写操作——CEO 编排器触发外部搜索并将结果合并回写到实体页面，这一成本高但一次性的操作使 Q4 得以 4K 低成本复用[^card-2]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P17 -- "Plotting the cumulative token consumption of the four queries as a time series (Figure 2b) reveals three qualitatively different growth patterns, one per regime"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P18 -- "Long-Context: cumulative cost grows linearly with a steep slope (each step +70K or +95K)"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P18 -- "Chunk-RAG: cumulative cost grows linearly with a shallow slope... It is also entirely amnesiac: the marginal cost of the 1000th query equals the marginal cost of the first"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P18 -- "Compounding: cumulative cost displays a concave-with-spike pattern—Q1 is moderately high (12K)... Q2 is extremely low (3K)... Q3 introduces an investment spike (28K)... Q4 falls again (4K)"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P18 -- "the spikes correspond to capital formation events and the troughs correspond to capital harvest events... This 'invest → harvest → reinvest → reharvest' oscillating concave curve is the direct cost-side manifestation of the H(t) evolution trajectory"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P18 -- "it is the only one of the three regimes whose trajectory is history-dependent: in the other two regimes, the cost of query N is independent of queries 1 through N−1"
+[^src-1]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P17 -- "Plotting the cumulative token consumption of the four queries as a time series (Figure 2b) reveals three qualitatively different growth patterns, one per regime"
+[^src-2]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P18 -- "Long-Context: cumulative cost grows linearly with a steep slope (each step +70K or +95K)"
+[^src-3]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P18 -- "Chunk-RAG: cumulative cost grows linearly with a shallow slope... It is also entirely amnesiac: the marginal cost of the 1000th query equals the marginal cost of the first"
+[^src-4]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P18 -- "Compounding: cumulative cost displays a concave-with-spike pattern—Q1 is moderately high (12K)... Q2 is extremely low (3K)... Q3 introduces an investment spike (28K)... Q4 falls again (4K)"
+[^src-5]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P18 -- "the spikes correspond to capital formation events and the troughs correspond to capital harvest events... This 'invest → harvest → reinvest → reharvest' oscillating concave curve is the direct cost-side manifestation of the H(t) evolution trajectory"
+[^src-6]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.2 P18 -- "it is the only one of the three regimes whose trajectory is history-dependent: in the other two regimes, the cost of query N is independent of queries 1 through N−1"
+[^card-1]: [知识复利效应](knowledge-compounding.md) -- 本卡展示成本侧的振荡凹曲线实证，该卡提供 H(t) 凹饱和曲线的理论框架，投资-收获模式是理论预测在经验数据中的直接体现
+[^card-2]: [搜索回写机制](search-write-back.md) -- 本卡中 Q3 投资尖峰（28K）的核心成分是搜索回写操作，该卡详述搜索回写的完整机制流程（CEO 触发搜索→结果合并→实体页面覆盖写入）

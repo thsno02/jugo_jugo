@@ -35,8 +35,8 @@ related: []
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Thesis mode" L24-26 -- "Start from a claim. Agents split across supporting, opposing, mechanistic, meta, and adjacent angles. Output is a verdict — not a summary."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: thesis" L473-474 -- "Agents are split across supporting, opposing, mechanistic, meta/review, and adjacent — balanced by design."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: thesis" L476 -- "Sources that don't relate to the claim's variables are skipped, which keeps the wiki tight."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: thesis" L476 -- "Output is a verdict: supported, partially supported, contradicted, insufficient evidence, or mixed."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: thesis" L478 -- "With --min-time, round two focuses harder on the weaker side of the evidence — counter-weight against confirmation bias."
+[^src-1]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Thesis mode" L24-26 -- "Start from a claim. Agents split across supporting, opposing, mechanistic, meta, and adjacent angles. Output is a verdict — not a summary."
+[^src-2]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: thesis" L473-474 -- "Agents are split across supporting, opposing, mechanistic, meta/review, and adjacent — balanced by design."
+[^src-3]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: thesis" L476 -- "Sources that don't relate to the claim's variables are skipped, which keeps the wiki tight."
+[^src-4]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: thesis" L476 -- "Output is a verdict: supported, partially supported, contradicted, insufficient evidence, or mixed."
+[^src-5]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: thesis" L478 -- "With --min-time, round two focuses harder on the weaker side of the evidence — counter-weight against confirmation bias."

@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt`
 源证据：
 - sections/framework.tex, Generator Metrics -- "A correct claim not entailed by any chunk can only be based on generator's self-knowledge"
 - tables/ragchecker_results_avg.tex -- GPT-4 vs Llama3-70B 的 self-knowledge 数值

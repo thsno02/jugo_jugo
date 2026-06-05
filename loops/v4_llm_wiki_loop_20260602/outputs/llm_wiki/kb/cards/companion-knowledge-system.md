@@ -13,7 +13,7 @@ canonical_concept: companion-knowledge-system
 aliases: [伴侣知识系统, companion system, companion knowledge system, companion memory, 伴侣记忆系统, 单用户伴侣 wiki]
 summary: >-
   companion-knowledge-system（伴侣知识系统 / companion system / companion memory）是一种服务于单一用户的持久化 LLM 记忆系统设计类别，其规范性治理义务是：在操作维度上镜像用户（词汇、结构、上下文连续性），在认知失败维度上补偿用户（固化、证据压制、库恩式僵化）
-related: [llm-wiki-pattern, three-layer-architecture, mirror-vs-compensate-principle]
+related: [llm-wiki-pattern, mirror-vs-compensate-principle, three-layer-architecture]
 ---
 
 伴侣知识系统（companion knowledge system）是 Miteski 提出的一个规范性定义的系统设计类别，指服务于单一用户长期使用的 LLM 记忆系统[^src-1]。其核心设计目标不是追踪客观真理，而是在操作维度上镜像用户、在认知失败维度上补偿用户[^src-2]。
@@ -28,8 +28,8 @@ related: [llm-wiki-pattern, three-layer-architecture, mirror-vs-compensate-princ
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Abstract" -- "Personal memory is a companion system --- its job is to serve one user over the long haul, not to track objective truth."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Abstract" -- "the system should mirror its user on operational dimensions (working vocabulary, load-bearing structure, continuity of context) and compensate on epistemic failure modes (entrenchment, suppression of contradicting evidence, the Kuhnian ossification described above)"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 1.1" -- "Much of the difficulty in current LLM memory literature comes from conflating three distinct claims. We separate them."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 1.1" -- "MemoryBank (arXiv:2305.10250) already uses 'long-term AI Companion scenario' as a primary capability descriptor."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 1.1" -- "What is missing is not the word companion but a normative specification of what retention-governance obligations follow from treating a system as one"
+[^src-1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Abstract" -- "Personal memory is a companion system --- its job is to serve one user over the long haul, not to track objective truth."
+[^src-2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Abstract" -- "the system should mirror its user on operational dimensions (working vocabulary, load-bearing structure, continuity of context) and compensate on epistemic failure modes (entrenchment, suppression of contradicting evidence, the Kuhnian ossification described above)"
+[^src-3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 1.1" -- "Much of the difficulty in current LLM memory literature comes from conflating three distinct claims. We separate them."
+[^src-4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 1.1" -- "MemoryBank (arXiv:2305.10250) already uses 'long-term AI Companion scenario' as a primary capability descriptor."
+[^src-5]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 1.1" -- "What is missing is not the word companion but a normative specification of what retention-governance obligations follow from treating a system as one"

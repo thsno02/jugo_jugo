@@ -16,10 +16,12 @@ summary: >-
 related: [graphrag-knowledge-poisoning-attack, targeted-kpa, text-perturbation-amplification]
 ---
 
-通用知识投毒攻击（Universal Knowledge Poisoning Attack, UKPA）是 KPA 的第二种变体，其目标不是精确控制特定问答，而是大规模破坏 GraphRAG 系统的整体问答能力 [^src-1]。UKPA 利用语言学线索（linguistic cues）——特别是代词（pronouns）和依存关系（dependency relations）——来识别并篡改具有全局影响力的词汇，从而破坏生成图谱的结构完整性 [^src-2]。该攻击展现了极端的效率：仅修改全文不到 0.05% 的内容，就能将问答准确率从 95% 急剧下降到 50% [^src-3]。
+通用知识投毒攻击（Universal Knowledge Poisoning Attack, UKPA）是 KPA 的第二种变体，其目标不是精确控制特定问答，而是大规模破坏 GraphRAG 系统的整体问答能力 [^src-1]。UKPA 利用语言学线索（linguistic cues）——特别是代词（pronouns）和依存关系（dependency relations）——来识别并篡改具有全局影响力的词汇，从而破坏生成图谱的结构完整性 [^src-2]。该攻击展现了极端的效率：仅修改全文不到 0.05% 的内容，就能将问答准确率从 95% 急剧下降到 50% [^src-3]。与 UKPA 的全局破坏策略形成对比，TKPA 则追求对特定问答结果的精确控制[^dist-1]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "The second attack, named Universal KPA (UKPA), exploits linguistic cues such as pronouns and dependency relations to disrupt the structural integrity of the generated graph"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "exploits linguistic cues such as pronouns and dependency relations to disrupt the structural integrity of the generated graph by altering globally influential words"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "With fewer than 0.05% of full text modified, the QA accuracy collapses from 95% to 50%"
+[^dist-1]: [定向知识投毒攻击（TKPA）](targeted-kpa.md) -- 本卡主张通过语言学线索大规模破坏整体问答能力（通用投毒，<0.05% 修改量使准确率从 95% 降至 50%），该卡主张通过图论分析精确控制特定问答结果（定向投毒，93.1% 成功率），区分点在于攻击目标粒度：全局破坏 vs 精确操控
+
+[^src-1]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "The second attack, named Universal KPA (UKPA), exploits linguistic cues such as pronouns and dependency relations to disrupt the structural integrity of the generated graph"
+[^src-2]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "exploits linguistic cues such as pronouns and dependency relations to disrupt the structural integrity of the generated graph by altering globally influential words"
+[^src-3]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "With fewer than 0.05% of full text modified, the QA accuracy collapses from 95% to 50%"

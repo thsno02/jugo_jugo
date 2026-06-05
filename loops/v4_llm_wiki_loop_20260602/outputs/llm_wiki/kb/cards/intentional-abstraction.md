@@ -14,7 +14,7 @@ aliases: [刻意抽象, intentional abstraction, 模块化设计, modularity]
 summary: >-
   intentional-abstraction（刻意抽象 / intentional abstraction / 模块化设计 / modularity）
   是 LLM Wiki gist 的设计哲学：描述模式而非实现，所有组件可选且模块化，与 LLM 协作实例化
-related: []
+related: [schema-as-configuration]
 ---
 
 LLM Wiki gist 采用**刻意抽象**的设计哲学——文档描述的是模式（pattern）而非具体实现。目录结构、schema 约定、页面格式、工具选择都取决于用户的领域、偏好和所选 LLM[^src-1]。

@@ -30,10 +30,10 @@ Wikibase 数据模型文档在开篇即做出了一个核心定位声明：这�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- opening section, lines 247-248 -- "This document describes a conceptual model ('Which information do we have to support?') and does not specify how this data should be represented technically ('Which data structures should the software use?') or syntactically ('How should the data be expressed in a file?')"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 297-299 -- "this does not mean that it mandates the actual class structures to be used in implementation... data can be stored in a more optimized way"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- opening section, line 248 -- "Separate documents describe the serialization of the Wikibase data model in JSON and in RDF"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Wikidata Object Notation" section, line 366 -- "The WON is not intended to be used in implementations, but it is useful to give examples"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 302-303 -- "Formal semantics... this will be given in a separate document"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 278-279 -- "it is only important that each representation has a unique and unambiguous reading in terms of the data model"
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- opening section, lines 252-254 -- "This document is extended by other documents... WikibaseLexeme - Lexeme Data Model"
+[^src-1]: `data/raw/webpage/wikibase-data-model/text.txt` -- opening section, lines 247-248 -- "This document describes a conceptual model ('Which information do we have to support?') and does not specify how this data should be represented technically ('Which data structures should the software use?') or syntactically ('How should the data be expressed in a file?')"
+[^src-2]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 297-299 -- "this does not mean that it mandates the actual class structures to be used in implementation... data can be stored in a more optimized way"
+[^src-3]: `data/raw/webpage/wikibase-data-model/text.txt` -- opening section, line 248 -- "Separate documents describe the serialization of the Wikibase data model in JSON and in RDF"
+[^src-4]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Wikidata Object Notation" section, line 366 -- "The WON is not intended to be used in implementations, but it is useful to give examples"
+[^src-5]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 302-303 -- "Formal semantics... this will be given in a separate document"
+[^src-6]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 278-279 -- "it is only important that each representation has a unique and unambiguous reading in terms of the data model"
+[^src-7]: `data/raw/webpage/wikibase-data-model/text.txt` -- opening section, lines 252-254 -- "This document is extended by other documents... WikibaseLexeme - Lexeme Data Model"

@@ -13,7 +13,7 @@ canonical_concept: idea-file-paradigm
 aliases: [idea file, 想法文件, idea sharing paradigm, 想法分发范式]
 summary: >-
   idea-file-paradigm（idea file / 想法文件 / 想法分发范式）LLM agent 时代的分发单元从代码/应用转向抽象想法文件，接收者的 agent 负责定制化构建实现
-related:
+related: []
   - intentional-abstraction
   - llm-wiki-pattern
   - human-llm-role-division
@@ -29,7 +29,7 @@ Karpathy 在 LLM Wiki 推文的后续帖子中提出了 **idea file**（想法�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/karpathy-x-launch-post/text.txt` -- Tweet 1 text -- "in this era of LLM agents, there is less of a point/need of sharing the specific code/app, you just share the idea, then the other person's agent customizes & builds it for your specific needs"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/karpathy-x-launch-post/text.txt` -- Tweet 1 text -- "So here's the idea in a gist format... You can give this to your agent and it can build you your own LLM wiki and guide you on how to use it etc."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/karpathy-x-launch-post/text.txt` -- Tweet 1 text -- "It's intentionally kept a little bit abstract/vague because there are so many directions to take this in."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/karpathy-x-launch-post/text.txt` -- Tweet 1 text -- "And ofc, people can adjust the idea or contribute their own in the Discussion which is cool."
+[^src-1]: `data/raw/webpage/karpathy-x-launch-post/text.txt` -- Tweet 1 text -- "in this era of LLM agents, there is less of a point/need of sharing the specific code/app, you just share the idea, then the other person's agent customizes & builds it for your specific needs"
+[^src-2]: `data/raw/webpage/karpathy-x-launch-post/text.txt` -- Tweet 1 text -- "So here's the idea in a gist format... You can give this to your agent and it can build you your own LLM wiki and guide you on how to use it etc."
+[^src-3]: `data/raw/webpage/karpathy-x-launch-post/text.txt` -- Tweet 1 text -- "It's intentionally kept a little bit abstract/vague because there are so many directions to take this in."
+[^src-4]: `data/raw/webpage/karpathy-x-launch-post/text.txt` -- Tweet 1 text -- "And ofc, people can adjust the idea or contribute their own in the Discussion which is cool."

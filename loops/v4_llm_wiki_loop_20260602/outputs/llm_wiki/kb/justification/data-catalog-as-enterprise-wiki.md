@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt`
+来源：`data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt`
 源证据：
 - L394 — "Atlan's data catalog is structurally the enterprise version of what Karpathy built for himself."
 - L396 — "The enterprise LLM knowledge base the organization needs already exists in most cases. The connection is the missing piece, not the construction."

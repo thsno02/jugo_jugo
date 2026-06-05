@@ -13,7 +13,7 @@ canonical_concept: rag-knowledge-database-attack-surface
 aliases: [RAG知识库攻击面, knowledge database attack surface, RAG外部知识攻击向量]
 summary: >-
   rag-knowledge-database-attack-surface（RAG知识库攻击面 / knowledge database attack surface）RAG 系统的知识库引入了一个新的、实用的攻击面：攻击者可通过向知识库注入少量恶意文本来操纵 LLM 生成攻击者指定的错误答案。
-related:
+related: []
   - rag-retrieval-generation-dual-condition
   - rag-knowledge-corruption-attack
 ---
@@ -26,8 +26,8 @@ RAG 系统由知识库、检索器和 LLM 三个组件构成。其中知识库�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "background.tex" -- "The database contains a set of texts collected from various sources such as Wikipedia, news articles, and financial documents."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "introduction.tex" -- "we find that knowledge databases of RAG systems introduce a new and practical attack surface"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "introduction.tex" -- "an attacker could inject malicious texts by maliciously editing Wikipedia pages; an attacker could also post fake news or host malicious websites to inject malicious texts when the knowledge databases are collected from the Internet; an insider can inject malicious texts into an enterprise private knowledge database."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "preliminary.tex" -- "We consider that an attacker cannot access texts in a knowledge database, and cannot access the parameters nor query the LLM."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "background.tex" -- "our attacks do not poison the training dataset of a LLM or a retriever. Instead, our attacks exploit the new and practical attack surface introduced by knowledge databases of RAG systems."
+[^src-1]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "background.tex" -- "The database contains a set of texts collected from various sources such as Wikipedia, news articles, and financial documents."
+[^src-2]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "introduction.tex" -- "we find that knowledge databases of RAG systems introduce a new and practical attack surface"
+[^src-3]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "introduction.tex" -- "an attacker could inject malicious texts by maliciously editing Wikipedia pages; an attacker could also post fake news or host malicious websites to inject malicious texts when the knowledge databases are collected from the Internet; an insider can inject malicious texts into an enterprise private knowledge database."
+[^src-4]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "preliminary.tex" -- "We consider that an attacker cannot access texts in a knowledge database, and cannot access the parameters nor query the LLM."
+[^src-5]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "background.tex" -- "our attacks do not poison the training dataset of a LLM or a retriever. Instead, our attacks exploit the new and practical attack surface introduced by knowledge databases of RAG systems."

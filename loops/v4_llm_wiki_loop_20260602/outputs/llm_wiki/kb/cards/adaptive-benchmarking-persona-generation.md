@@ -13,7 +13,7 @@ canonical_concept: adaptive-benchmarking-persona-generation
 aliases: [adaptive benchmarking, 自适应基准测试, persona-based question generation, 人设驱动问题生成]
 summary: >-
   adaptive-benchmarking-persona-generation（adaptive benchmarking / 自适应基准测试）用 LLM 从语料库描述推断潜在用户人设、任务和全局理解问题（K*N*M 组合），为缺乏标准答案的 sensemaking 查询生成领域特定评估基准
-related: [sensemaking-vs-retrieval-query, graphrag-comprehensiveness-diversity-result]
+related: [graphrag-comprehensiveness-diversity-result, sensemaking-vs-retrieval-query]
 ---
 
 GraphRAG 论文提出了一种自适应基准测试方法，用于为全局 sensemaking 任务生成语料库特定的评估问题。该方法的核心思想是：由于全局 sensemaking 问题没有标准答案，需要根据语料库的实际内容和用途动态生成评估基准 [^src-1]。
@@ -32,7 +32,7 @@ GraphRAG 论文提出了一种自适应基准测试方法，用于为全局 sens
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 1.2 (graph_rag.tex) -- "Adaptive benchmarking refers to the process of dynamically generating evaluation benchmarks tailored to specific domains or use cases."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Algorithm 1 (graph_rag.tex) -- "1. Describe personas of K potential users of the dataset. 2. For each user, identify N tasks relevant to the user. 3. Specific to each user & task pair, generate M high-level questions"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Algorithm 1 (graph_rag.tex) -- "generate M high-level questions that: Require understanding of the entire corpus. Do not require retrieval of specific low-level facts."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 2.3 (graph_rag.tex) -- "in order to produce a fair evaluation, our method avoids generating the questions directly from the corpus itself"
+[^src-1]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 1.2 (graph_rag.tex) -- "Adaptive benchmarking refers to the process of dynamically generating evaluation benchmarks tailored to specific domains or use cases."
+[^src-2]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Algorithm 1 (graph_rag.tex) -- "1. Describe personas of K potential users of the dataset. 2. For each user, identify N tasks relevant to the user. 3. Specific to each user & task pair, generate M high-level questions"
+[^src-3]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Algorithm 1 (graph_rag.tex) -- "generate M high-level questions that: Require understanding of the entire corpus. Do not require retrieval of specific low-level facts."
+[^src-4]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 2.3 (graph_rag.tex) -- "in order to produce a fair evaluation, our method avoids generating the questions directly from the corpus itself"

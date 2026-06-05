@@ -16,7 +16,7 @@ summary: >-
   Microsoft Agent Governance Toolkit 将 agent 治理分解为八个独立包——Agent OS（策略引擎）、Mesh（发现与信任）、
   Runtime（沙箱）、SRE（可靠性）、Compliance（合规）、Marketplace（插件治理）、Lightning（训练治理）、
   Hypervisor（执行审计），各包职责正交、独立可选
-related: []
+related: [agent-governance-standards-mapping]
 ---
 
 Microsoft Agent Governance Toolkit 将 agent 治理关注点分解为八个独立的包（package），各有明确职责边界 [^src-1]：
@@ -30,11 +30,12 @@ Microsoft Agent Governance Toolkit 将 agent 治理关注点分解为八个独�
 7. **Agent Lightning** — RL 训练治理，包含违规惩罚机制 [^src-2]。
 8. **Agent Hypervisor** — 执行审计、delta 引擎、承诺锚定（commitment anchoring）[^src-2]。
 
-这种分包模式使各治理能力可独立采纳、独立演进，组织可根据自身成熟度逐步引入（参见 Progressive Governance 教程 [^src-4]）。
+这种分包模式使各治理能力可独立采纳、独立演进，组织可根据自身成熟度逐步引入（参见 Progressive Governance 教程 [^src-4]）。各模块产出的治理控制已被显式映射到 OWASP、NIST AI RMF、EU AI Act、SOC 2 等主流合规标准，实现从控制实施到合规证明的自动化闭环 [^card-1]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L363 -- "Packages"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L365-366 -- "Agent OS Policy engine, agent lifecycle, governance gate ... Agent Hypervisor Execution audit, delta engine, commitment anchoring"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L268 -- "ADR-0002: Four Execution Rings"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L92 -- "Progressive Governance"
+[^src-1]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L363 -- "Packages"
+[^src-2]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L365-366 -- "Agent OS Policy engine, agent lifecycle, governance gate ... Agent Hypervisor Execution audit, delta engine, commitment anchoring"
+[^src-3]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L268 -- "ADR-0002: Four Execution Rings"
+[^src-4]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L92 -- "Progressive Governance"
+[^card-1]: [Agent 治理标准合规映射](agent-governance-standards-mapping.md) -- 本卡聚焦治理架构的八个独立模块分包及其职责边界，该卡聚焦各模块控制如何映射到 OWASP/NIST/EU AI Act/SOC 2 合规标准

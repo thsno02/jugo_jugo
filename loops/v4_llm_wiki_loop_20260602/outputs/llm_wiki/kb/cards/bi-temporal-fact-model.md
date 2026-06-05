@@ -13,7 +13,7 @@ canonical_concept: bi-temporal-fact-model
 aliases: [双时间线模型, bi-temporal model, 事件时间线与摄入时间线]
 summary: >-
   bi-temporal-fact-model（双时间线模型, bi-temporal model）Graphiti 对每条 edge/fact 维护两条时间线：事件时间线 T（事实何时为真）和事务时间线 T'（数据何时被摄入系统），通过四个时间戳实现动态对话数据的时序建模
-related:
+related: [edge-invalidation-mechanism, graph-memory-temporal-advantage, memory-lifecycle-metadata, temporal-knowledge-graph-three-tier, time-aware-query-expansion]
   - temporal-knowledge-graph-three-tier
   - edge-invalidation-mechanism
 ---
@@ -30,14 +30,17 @@ Graphiti 引入了一种双时间线（bi-temporal）建模方法，这在基于
 
 这种双时间线设计使知识图谱能够表达一个复杂、不断演变的世界 [^src-5]，同时为后续的 edge invalidation 机制提供了基础。
 
-Mem0 的实验从另一视角验证了这种时序建模的价值：图结构记忆在时序推理任务上显著优于扁平记忆，正是因为显式的关系上下文增强了时序一致性[^card-1]。LongMemEval 提出的时间感知查询扩展则从检索端入手，在索引阶段提取事件日期，是对双时间线建模在查询侧的补充实现[^card-2]。
+Mem0 的实验从另一视角验证了这种时序建模的价值：图结构记忆在时序推理任务上显著优于扁平记忆，正是因为显式的关系上下文增强了时序一致性[^card-1]。LongMemEval 提出的时间感知查询扩展则从检索端入手，在索引阶段提取事件日期，是对双时间线建模在查询侧的补充实现[^card-2]。双时间线的四个时间戳嵌入在 Graphiti 三层子图架构的语义边（entity edge）层中，为整个知识图谱提供了时间维度[^card-3]。边失效机制（edge invalidation）则是直接操作这些时间戳的具体流程：当矛盾被检测到时，通过设置 t_invalid 完成非破坏性更新[^card-4]。在更轻量的 wiki 场景中，LLM Wiki 的记忆生命周期元数据以 last_verified / superseded_by 等字段承担了类似的知识时效性管理功能，但不具备双时间线的精确度[^card-5]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.1 (Episodes) -- "This bi-temporal approach represents a novel advancement in LLM-based knowledge graph construction and underlies much of Zep's unique capabilities compared to previous graph-based RAG proposals."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.1 -- "This temporal information enables Zep to accurately identify and extract relative or partial dates mentioned in the message content (e.g., 'next Thursday,' 'in two weeks,' or 'last summer')."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.1 -- "timeline T' represents the transactional order of Zep's data ingestion"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.2.3 (Temporal Extraction and Edge Invalidation) -- "the system tracks four timestamps: t'_created and t'_expired in T' monitor when facts are created or invalidated in the system, while t_valid and t_invalid in T track the temporal range during which facts held true"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 1 (Introduction) -- "The Graphiti KG engine dynamically updates the knowledge graph with new information in a non-lossy manner, maintaining a timeline of facts and relationships, including their periods of validity."
+[^src-1]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.1 (Episodes) -- "This bi-temporal approach represents a novel advancement in LLM-based knowledge graph construction and underlies much of Zep's unique capabilities compared to previous graph-based RAG proposals."
+[^src-2]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.1 -- "This temporal information enables Zep to accurately identify and extract relative or partial dates mentioned in the message content (e.g., 'next Thursday,' 'in two weeks,' or 'last summer')."
+[^src-3]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.1 -- "timeline T' represents the transactional order of Zep's data ingestion"
+[^src-4]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 2.2.3 (Temporal Extraction and Edge Invalidation) -- "the system tracks four timestamps: t'_created and t'_expired in T' monitor when facts are created or invalidated in the system, while t_valid and t_invalid in T track the temporal range during which facts held true"
+[^src-5]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 1 (Introduction) -- "The Graphiti KG engine dynamically updates the knowledge graph with new information in a non-lossy manner, maintaining a timeline of facts and relationships, including their periods of validity."
 [^card-1]: [图记忆在时序推理中的优势](graph-memory-temporal-advantage.md) -- Mem0 实验表明图结构记忆在时序推理任务上显著优于扁平记忆（Judge 58.13 vs 55.51），从实证角度验证了 Graphiti 双时间线建模的价值
 [^card-2]: [时间感知的查询扩展策略](time-aware-query-expansion.md) -- LongMemEval 在索引阶段提取事件日期、在检索阶段推断时间范围进行过滤，是对双时间线建模在查询侧的互补实现
+[^card-3]: [时序知识图谱的三层子图架构](temporal-knowledge-graph-three-tier.md) -- 本卡聚焦语义边上的双时间线时序建模，该卡聚焦承载这些语义边的三层子图架构全貌
+[^card-4]: [边失效与动态知识更新机制](edge-invalidation-mechanism.md) -- 本卡定义了四个时间戳的数据模型，该卡描述了基于这些时间戳的矛盾检测与边失效处理流程
+[^card-5]: [记忆生命周期元数据](memory-lifecycle-metadata.md) -- 本卡是知识图谱层面的四时间戳精确时序建模，该卡是 wiki frontmatter 层面的轻量生命周期字段（last_verified/superseded_by），两者在不同场景下管理知识的时效性

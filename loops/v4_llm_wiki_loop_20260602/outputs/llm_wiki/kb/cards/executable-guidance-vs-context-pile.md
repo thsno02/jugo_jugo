@@ -26,9 +26,9 @@ Cognition 明确将自身与「通用公司知识库」（generic company brain�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- product description -- "Generic company brains store context. Cognition treats work as learning signal: sessions become approved skills, skills get freshness and outcome history, and agents retrieve executable guidance instead of a pile of notes."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Consolidation" section -- "Raw traces compress into human-approved skills with steps, checks, and failure modes."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- product description -- "skills get freshness and outcome history"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Teaching" section -- "The next agent receives a route: which skill, whose judgment, and how to apply it."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Person-specific retrieval" section -- "Skills keep who taught them and why their judgment worked, so agents can follow the right taste."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "For organizations" section -- "let every agent ask the brain before guessing"
+[^src-1]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- product description -- "Generic company brains store context. Cognition treats work as learning signal: sessions become approved skills, skills get freshness and outcome history, and agents retrieve executable guidance instead of a pile of notes."
+[^src-2]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Consolidation" section -- "Raw traces compress into human-approved skills with steps, checks, and failure modes."
+[^src-3]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- product description -- "skills get freshness and outcome history"
+[^src-4]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Teaching" section -- "The next agent receives a route: which skill, whose judgment, and how to apply it."
+[^src-5]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Person-specific retrieval" section -- "Skills keep who taught them and why their judgment worked, so agents can follow the right taste."
+[^src-6]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "For organizations" section -- "let every agent ask the brain before guessing"

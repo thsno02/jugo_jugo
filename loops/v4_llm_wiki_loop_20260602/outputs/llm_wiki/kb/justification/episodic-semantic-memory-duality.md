@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
 源证据：
 - Section 2 — "The dual storage of both raw episodic data and derived semantic entity information mirrors psychological models of human memory."
 - Section 2 — "These models distinguish between episodic memory, which represents distinct events, and semantic memory, which captures associations between concepts and their meanings"

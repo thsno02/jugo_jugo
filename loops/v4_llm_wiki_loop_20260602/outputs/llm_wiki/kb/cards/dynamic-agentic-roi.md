@@ -15,7 +15,7 @@ summary: >-
   dynamic-agentic-roi（动态Agentic ROI / 时变成本模型 / H(t)覆盖率模型）将 Agentic ROI 的成本项
   从静态常量推广为 Ci = (1-Hi)*C_generate + Hi*C_retrieve + C_writeback，其中知识库覆盖率 H(t)
   遵循凹饱和递推方程 H(i+1) = Hi + alpha*(1-Hi)*pi
-related:
+related: []
   - knowledge-compounding
   - cost-independence-assumption
 ---
@@ -48,9 +48,9 @@ Hi 具有**马尔可夫性质**：其当前值取决于历史任务对知识库�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.2 P8 -- "Cᵢ = (1 − Hᵢ) · C_generate,ᵢ + Hᵢ · C_retrieve,ᵢ + C_writeback,ᵢ"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.2 P8 -- "When Hᵢ grows monotonically with i, the per-query expenditure Cᵢ decreases monotonically with i toward the floor C_retrieve—this is the mathematical essence of the knowledge compounding effect on the operating-cost margin"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.3 P8 -- "Hᵢ₊₁ = Hᵢ + α · (1 − Hᵢ) · pᵢ"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.3 P9 -- "H(t) takes a concave saturation curve: rapid early growth, slow late growth, asymptotically approaching the steady-state coverage of the topic distribution"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.3 P18 -- "H(t) evolves according to the equation in Section 3.3 with H₀ = 0.05 and α = 0.18"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.2 P8 -- "Hᵢ is a time-varying random variable possessing a Markov property: its current value depends on the contributions of historical tasks to the knowledge base"
+[^src-1]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.2 P8 -- "Cᵢ = (1 − Hᵢ) · C_generate,ᵢ + Hᵢ · C_retrieve,ᵢ + C_writeback,ᵢ"
+[^src-2]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.2 P8 -- "When Hᵢ grows monotonically with i, the per-query expenditure Cᵢ decreases monotonically with i toward the floor C_retrieve—this is the mathematical essence of the knowledge compounding effect on the operating-cost margin"
+[^src-3]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.3 P8 -- "Hᵢ₊₁ = Hᵢ + α · (1 − Hᵢ) · pᵢ"
+[^src-4]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.3 P9 -- "H(t) takes a concave saturation curve: rapid early growth, slow late growth, asymptotically approaching the steady-state coverage of the topic distribution"
+[^src-5]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.3 P18 -- "H(t) evolves according to the equation in Section 3.3 with H₀ = 0.05 and α = 0.18"
+[^src-6]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.2 P8 -- "Hᵢ is a time-varying random variable possessing a Markov property: its current value depends on the contributions of historical tasks to the knowledge base"

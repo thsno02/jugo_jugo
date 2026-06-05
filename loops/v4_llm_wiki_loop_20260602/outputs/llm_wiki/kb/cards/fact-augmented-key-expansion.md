@@ -13,7 +13,7 @@ canonical_concept: fact-augmented-key-expansion
 aliases: [事实增强键扩展, fact-augmented key, 多路径检索, multi-key indexing, key expansion]
 summary: >-
   fact-augmented-key-expansion（事实增强键扩展 / multi-key indexing / key expansion）将从记忆值中提取的用户事实拼接到原始值上作为索引键，实现多路径检索；相比仅用值本身作键，平均提升 recall@k 9.4%、下游 QA 准确率 5.4%；单独使用压缩形式作键反而不如原始值
-related: [memory-value-granularity-tradeoff, memory-extraction-update-pipeline]
+related: [memory-extraction-update-pipeline, memory-value-granularity-tradeoff]
 ---
 
 在长期记忆系统的索引阶段，键（key）的设计决定了检索的有效性。LongMemEval 提出了一种基于文档扩展（document expansion）的键扩展方法 [^src-1]：
@@ -28,8 +28,8 @@ related: [memory-value-granularity-tradeoff, memory-extraction-update-pipeline]
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.3 -- "we applied a simple document expansion technique, where the compressed information is concatenated with the original value to form the key during indexing"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/4_methodology.tex` -- Section 4.2 CP2 -- "summaries, keyphrases, user facts, and timestamped events are extracted from the values to augment the index. This optimization highlights the key information and enables effective retrieval with multiple pathways"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.3 -- "despite their more focused semantics, using these condensed forms alone does not enhance the memory recall performance. We hypothesize that this is due to the retriever's ability to already effectively handle long-text semantics"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.3 -- "This approach, particularly when using user facts, yielded an average improvement of 9.4% in recall@k and 5.4% in final accuracy across all models"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/appendix.tex` -- Section Appendix rank merging -- "rank merging has much lower performance than key merging. One potential reason is that rank merging increases the index size by m+1 times"
+[^src-1]: `data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.3 -- "we applied a simple document expansion technique, where the compressed information is concatenated with the original value to form the key during indexing"
+[^src-2]: `data/raw/arxiv/arxiv-longmemeval/source/text/4_methodology.tex` -- Section 4.2 CP2 -- "summaries, keyphrases, user facts, and timestamped events are extracted from the values to augment the index. This optimization highlights the key information and enables effective retrieval with multiple pathways"
+[^src-3]: `data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.3 -- "despite their more focused semantics, using these condensed forms alone does not enhance the memory recall performance. We hypothesize that this is due to the retriever's ability to already effectively handle long-text semantics"
+[^src-4]: `data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.3 -- "This approach, particularly when using user facts, yielded an average improvement of 9.4% in recall@k and 5.4% in final accuracy across all models"
+[^src-5]: `data/raw/arxiv/arxiv-longmemeval/source/text/appendix.tex` -- Section Appendix rank merging -- "rank merging has much lower performance than key merging. One potential reason is that rank merging increases the index size by m+1 times"

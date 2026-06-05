@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/marvin-hn-persistent-knowledge/text.txt`
+来源：`data/raw/webpage/marvin-hn-persistent-knowledge/text.txt`
 源证据：
 - L23 — "the Hacker News thread around the gist had 274 points and 89 comments"
 - L23 — "with readers treating it less as a note-taking trick and more as an architectural pattern for agent workflows"

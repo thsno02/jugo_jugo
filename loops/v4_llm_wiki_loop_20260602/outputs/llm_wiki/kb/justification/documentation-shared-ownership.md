@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt`
+来源：`data/raw/webpage/writethedocs-docs-as-code/text.txt`
 源证据：
 - L23 — "It enables a culture where writers and developers both feel ownership of documentation, and work together to make it as good as possible."
 - L27 — "Writers integrate better with development teams"

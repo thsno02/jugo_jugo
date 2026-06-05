@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt`
 源证据：
 - abstract.tex — "we propose PoisonedRAG, the first knowledge corruption attack to RAG"
 - evaluation.tex — "PoisonedRAG could achieve 97% (on NQ), 99% (on HotpotQA), and 91% (on MS-MARCO) ASRs"

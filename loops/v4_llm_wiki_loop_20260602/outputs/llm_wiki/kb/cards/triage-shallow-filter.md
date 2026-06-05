@@ -13,7 +13,7 @@ canonical_concept: triage-shallow-filter
 aliases: [TRIAGE 浅层过滤, triage shallow filter, 浅层摄取过滤, streaming shallow filter]
 summary: >-
   triage-shallow-filter（TRIAGE 浅层过滤 / streaming shallow filter）是伴侣记忆框架中摄取操作的合规级别约束：TRIAGE 只做垃圾拒绝、去重、结构验证、时间戳分配，禁止读取活跃 wiki 或执行语义矛盾解决；一旦 TRIAGE 开始做一致性工作，架构就退回流式模式、自密封问题回归
-related: [sleep-consolidation-architecture, ingest-operation, companion-knowledge-system]
+related: [companion-knowledge-system, ingest-operation, sleep-consolidation-architecture]
 ---
 
 TRIAGE 是伴侣记忆框架中在摄取阶段运行的浅层过滤操作，其职责被刻意限制[^src-1]：
@@ -35,8 +35,8 @@ TRIAGE 是伴侣记忆框架中在摄取阶段运行的浅层过滤操作，其�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.2" -- "TRIAGE runs at ingestion. Its job is deliberately limited: reject obvious garbage, deduplicate against the recent buffer, check structural validity, assign an ingestion timestamp. That is all."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.2" -- "TRIAGE does not classify entries into cohesion buckets, does not score them against the active wiki, and does not make retention decisions."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.2" -- "Keeping TRIAGE shallow is a design commitment. The moment TRIAGE starts doing coherence work, the architecture collapses back to streaming and the self-sealing problem returns."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 7.5" -- "TRIAGE - MUST NOT perform semantic contradiction resolution... MUST NOT read the active wiki during ingestion"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Trace 2" -- "If an implementation's TRIAGE operation ever reads the active wiki or scores entries against existing wiki content, it is non-conforming --- regardless of whether its outcomes look correct in a given test case."
+[^src-1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.2" -- "TRIAGE runs at ingestion. Its job is deliberately limited: reject obvious garbage, deduplicate against the recent buffer, check structural validity, assign an ingestion timestamp. That is all."
+[^src-2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.2" -- "TRIAGE does not classify entries into cohesion buckets, does not score them against the active wiki, and does not make retention decisions."
+[^src-3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.2" -- "Keeping TRIAGE shallow is a design commitment. The moment TRIAGE starts doing coherence work, the architecture collapses back to streaming and the self-sealing problem returns."
+[^src-4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 7.5" -- "TRIAGE - MUST NOT perform semantic contradiction resolution... MUST NOT read the active wiki during ingestion"
+[^src-5]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Trace 2" -- "If an implementation's TRIAGE operation ever reads the active wiki or scores entries against existing wiki content, it is non-conforming --- regardless of whether its outcomes look correct in a given test case."

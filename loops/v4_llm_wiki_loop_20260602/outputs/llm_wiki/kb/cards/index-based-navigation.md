@@ -15,7 +15,7 @@ summary: >-
   index-based-navigation（索引文件导航 / index.md / wiki 导航 / 索引机制）是 LLM Wiki
   的导航核心：index.md 按类别列出所有页面及摘要，中等规模（~100 资料）下运作良好避免 embedding RAG，
   超出规模后可用 qmd（BM25/向量混合搜索 + LLM 重排序）
-related: []
+related: [log-file]
 ---
 
 LLM Wiki 使用 **index.md** 作为内容导航的核心机制。index.md 是一份目录型文件——列出 wiki 中的每个页面，附带链接、一行摘要和可选元数据（如日期、资料计数），按类别组织（实体、概念、资料等）。LLM 在每次摄入时更新索引[^src-1]。

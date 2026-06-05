@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
 源证据：
 - Section 0_abstract — "we collect LoCoMo, a dataset of very long-term conversations, each encompassing 300 turns and 9K tokens on avg., over up to 35 sessions"
 - Table 1 — "304.9 avg turns, 19.3 avg sessions, 9,209.2 avg tokens... 9x that of MSC"

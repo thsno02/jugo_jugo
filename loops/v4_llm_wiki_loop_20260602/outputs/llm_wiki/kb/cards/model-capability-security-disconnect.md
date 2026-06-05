@@ -13,7 +13,7 @@ canonical_concept: model-capability-security-disconnect
 aliases: [能力安全脱钩, capability-security gap, 更强模型不等于更安全]
 summary: >-
   model-capability-security-disconnect（能力安全脱钩 / capability-security gap）更强大的 LLM 模型并不必然更安全：GPT-5.2 尽管任务成功率最高却对记忆投毒表现出显著脆弱性，其更高的环境感知能力同时关联着更高的任务成功率和更大的攻击面
-related:
+related: [graphrag-defense-gap, rag-poisoning-defense-insufficiency]
   - frustration-exploitation-attack
   - etamp-environment-memory-poisoning
   - recall-vs-alignment-resistance
@@ -23,14 +23,15 @@ eTAMP 论文揭示了一个令人警醒的发现：更强大的模型并不必�
 
 更深层的矛盾在于：GPT-5.2 在 Chaos Monkey 环境下对环境问题的感知率最高（7.4%），这一更高的感知能力同时关联着更高的混沌环境任务成功率（14.8%，唯一在混沌下提升的模型）和更大的攻击脆弱性 [^src-3]。论文推断：随着 agent 获得更多自主性来探索替代解决方案，它们在创造更高效用的同时也开辟了新的攻击面 [^src-4]。
 
-作为对比，Qwen2.5-VL-72B 表现出极高的鲁棒性（几乎 0% ASR），但其任务成功率也很低（9.6%），且其鲁棒性并非来自长上下文处理限制（其召回率达 98.9%），而是来自安全对齐 [^src-5]。这种能力-安全权衡关系表明，当前的模型扩展（scaling）不自动解决安全问题。GraphRAG 领域的防御空白问题进一步印证了这一判断——最先进的防御方法同样无法检测知识投毒攻击[^card-1]。
+作为对比，Qwen2.5-VL-72B 表现出极高的鲁棒性（几乎 0% ASR），但其任务成功率也很低（9.6%），且其鲁棒性并非来自长上下文处理限制（其召回率达 98.9%），而是来自安全对齐 [^src-5]。这种能力-安全权衡关系表明，当前的模型扩展（scaling）不自动解决安全问题。GraphRAG 领域的防御空白问题进一步印证了这一判断——最先进的防御方法同样无法检测知识投毒攻击[^card-1]。PoisonedRAG 论文对标准 RAG 防御策略的系统评估提供了另一维度的佐证：不仅模型能力的提升无法带来安全性，显式的防御机制同样不足[^card-2]。
 
 ## Footnotes
 
 [^card-1]: [GraphRAG 知识投毒防御空白](graphrag-defense-gap.md) -- eTAMP 揭示更强模型不等于更安全（能力-安全脱钩），GraphRAG 论文发现最先进防御方法无法检测投毒（防御空白），两者共同指向 LLM 知识系统安全领域的系统性不足
+[^card-2]: [现有防御对 RAG 知识腐蚀攻击的不充分性](rag-poisoning-defense-insufficiency.md) -- 本卡从模型扩展角度论证能力-安全脱钩，该卡从防御策略角度论证防御-攻击不对称，两者从不同维度揭示 LLM 知识系统安全的结构性困境
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Abstract -- "Notably, more capable models are not more secure. GPT-5.2 shows substantial vulnerability despite superior task performance."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Table 1 -- "GPT-5.2: Authority 22.3%, Frustration Chaos 23.4%"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Section: Conclusion -- "GPT-5.2's higher awareness of environmental problems correlates with both its higher task success rate under chaos and its greater vulnerability to attack. As agents gain more autonomy to explore alternative solutions, they create both higher utility and new attack surfaces."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Section: Conclusion -- "As agents gain more autonomy to explore alternative solutions, they create both higher utility and new attack surfaces."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Appendix: Long Context Recall -- "Qwen2.5-VL-72B: Recall Rate 98.9%"
+[^src-1]: `data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Abstract -- "Notably, more capable models are not more secure. GPT-5.2 shows substantial vulnerability despite superior task performance."
+[^src-2]: `data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Table 1 -- "GPT-5.2: Authority 22.3%, Frustration Chaos 23.4%"
+[^src-3]: `data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Section: Conclusion -- "GPT-5.2's higher awareness of environmental problems correlates with both its higher task success rate under chaos and its greater vulnerability to attack. As agents gain more autonomy to explore alternative solutions, they create both higher utility and new attack surfaces."
+[^src-4]: `data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Section: Conclusion -- "As agents gain more autonomy to explore alternative solutions, they create both higher utility and new attack surfaces."
+[^src-5]: `data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt` -- Appendix: Long Context Recall -- "Qwen2.5-VL-72B: Recall Rate 98.9%"

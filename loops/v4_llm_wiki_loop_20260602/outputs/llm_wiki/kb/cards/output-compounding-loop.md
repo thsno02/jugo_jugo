@@ -15,7 +15,7 @@ summary: >-
   output-compounding-loop（产出复利 / output compounding / 产出循环 / artifact compounding loop）
   是 LLM Wiki 的价值放大机制：产出（报告/幻灯片/计划等）回写进 wiki，
   使每个新产出建立在所有先前研究之上，研究越多产出越强
-related: []
+related: [knowledge-compounding, search-write-back, wiki-compounding-artifact]
 ---
 
 LLM Wiki 的产出层实现了一个**正反馈的复利循环**[^src-1]：
@@ -28,16 +28,17 @@ LLM Wiki 的产出层实现了一个**正反馈的复利循环**[^src-1]：
 
 跨 wiki 复利也有支持——`--with` 参数可从另一个 wiki 引入知识到当前产出中[^src-6]。项目（project）功能可将相关产出组织到带目标的文件夹中，通过 `WHY.md` 捕获项目目标[^src-7]。
 
-这一机制延伸了已有的 wiki 复利型制品概念——前者描述的是 wiki 层内部的知识积累（交叉引用、矛盾标记、综合叙述），本卡描述的是 wiki 层到产出层再回到 wiki 的闭环。Wen & Ku (2026) 的知识复利理论为这一实践模式提供了形式化经济学框架，将其数学化为知识库覆盖率 H(t) 的凹饱和递推方程[^card-knowledge-compounding]。此外，Qing Claw 实现的搜索回写机制与产出回写形成互补——前者将外部搜索结果写回实体页面，后者将产出制品写回 wiki 索引，共同构成 wiki 的双向呼吸[^card-search-write-back]。
+这一机制延伸了已有的 wiki 复利型制品概念[^card-wiki-compounding-artifact]——前者描述的是 wiki 层内部的知识积累（交叉引用、矛盾标记、综合叙述），本卡描述的是 wiki 层到产出层再回到 wiki 的闭环。Wen & Ku (2026) 的知识复利理论为这一实践模式提供了形式化经济学框架，将其数学化为知识库覆盖率 H(t) 的凹饱和递推方程[^card-knowledge-compounding]。此外，Qing Claw 实现的搜索回写机制与产出回写形成互补——前者将外部搜索结果写回实体页面，后者将产出制品写回 wiki 索引，共同构成 wiki 的双向呼吸[^card-search-write-back]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- Opening L14 -- "Every run compounds. Sources become cross-referenced articles. Articles become reports, slide decks, study guides, playbooks, and implementation plans. The more you research, the stronger every output gets."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Compile" L44-46 -- "Raw sources become synthesized articles with cross-references and confidence scores."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Using outputs" L372-387 -- "summary, report, study-guide, slides, timeline, glossary, comparison"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Using outputs" L387-388 -- "Outputs are saved to output/ inside the topic wiki and indexed automatically. Every output builds on all compiled articles, so the more you research, the stronger every output gets."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- Opening L14 -- "Every run compounds... The more you research, the stronger every output gets."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Cross-wiki context" L392-393 -- "Use --with to pull knowledge from another wiki into your output"
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Projects" L394-396 -- "Group related outputs into project folders with goals... WHY.md that captures the goal."
+[^src-1]: `data/raw/webpage/llm-wiki-net/text.txt` -- Opening L14 -- "Every run compounds. Sources become cross-referenced articles. Articles become reports, slide decks, study guides, playbooks, and implementation plans. The more you research, the stronger every output gets."
+[^src-2]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Compile" L44-46 -- "Raw sources become synthesized articles with cross-references and confidence scores."
+[^src-3]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Using outputs" L372-387 -- "summary, report, study-guide, slides, timeline, glossary, comparison"
+[^src-4]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Using outputs" L387-388 -- "Outputs are saved to output/ inside the topic wiki and indexed automatically. Every output builds on all compiled articles, so the more you research, the stronger every output gets."
+[^src-5]: `data/raw/webpage/llm-wiki-net/text.txt` -- Opening L14 -- "Every run compounds... The more you research, the stronger every output gets."
+[^src-6]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Cross-wiki context" L392-393 -- "Use --with to pull knowledge from another wiki into your output"
+[^src-7]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Projects" L394-396 -- "Group related outputs into project folders with goals... WHY.md that captures the goal."
 [^card-knowledge-compounding]: [知识复利效应](knowledge-compounding.md) -- Wen & Ku (2026) 将产出复利循环形式化为 H(t) 凹饱和曲线，证明持久化知识层使每任务成本成为时间递减函数，为产出回写的经济合理性提供了理论基础
 [^card-search-write-back]: [搜索回写机制](search-write-back.md) -- 搜索回写（外部搜索结果写回实体页面）与产出回写（产出制品写回 wiki 索引）是两种互补的 wiki 双向呼吸机制，共同驱动知识复利
+[^card-wiki-compounding-artifact]: [Wiki 作为复利型知识制品](wiki-compounding-artifact.md) -- 本卡描述 wiki→产出→wiki 的闭环复利循环，该卡枚举 wiki 内部持续积累的五类制品（交叉引用、矛盾标记、综合叙述等）

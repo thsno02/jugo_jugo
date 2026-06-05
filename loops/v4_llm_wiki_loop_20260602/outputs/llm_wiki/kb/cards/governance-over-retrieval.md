@@ -15,7 +15,7 @@ summary: >-
   governance-over-retrieval（治理优先于检索 / governance over retrieval / 治理决定结果）
   Atlan 文章的核心论点：企业知识库的真正问题不是检索架构（wiki vs RAG），而是上游数据治理——
   访问控制、新鲜度、并发都是治理问题；规模决定架构，治理决定结果
-related: []
+related: [deterministic-policy-enforcement, framework-agnostic-governance-layer]
 ---
 
 Atlan 文章提出一个核心论点：企业 LLM 知识库的真正问题**不是检索架构问题，而是数据治理问题**[^src-1]。
@@ -30,10 +30,10 @@ Epsilla 的分析被引述来支撑这一论点："从个人研究 wiki 到企�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L220 -- "Access control, freshness, and concurrency are governance problems, not retrieval architecture problems."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L217 -- "The real enterprise question is not wiki vs RAG: it is whether source data is trustworthy enough for either."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L314 -- "If the source documents are stale, contradictory, or ungoverned, RAG retrieves and amplifies those problems."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L415 -- "The bottom line: scale decides the architecture, governance decides the outcome"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L392-393 -- "Building a shadow wiki or a raw RAG pipeline on top of ungoverned data does not solve it. It reorganizes the problem into a new format."
+[^src-1]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L220 -- "Access control, freshness, and concurrency are governance problems, not retrieval architecture problems."
+[^src-2]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L217 -- "The real enterprise question is not wiki vs RAG: it is whether source data is trustworthy enough for either."
+[^src-3]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L314 -- "If the source documents are stale, contradictory, or ungoverned, RAG retrieves and amplifies those problems."
+[^src-4]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L415 -- "The bottom line: scale decides the architecture, governance decides the outcome"
+[^src-5]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L392-393 -- "Building a shadow wiki or a raw RAG pipeline on top of ungoverned data does not solve it. It reorganizes the problem into a new format."
 [^card-1]: [确定性策略执行](deterministic-policy-enforcement.md) -- Microsoft 工具包通过 OPA/Rego/Cedar 等策略引擎实现确定性治理，是治理优先原则的一种技术落地路径
 [^card-2]: [框架无关的治理层](framework-agnostic-governance-layer.md) -- Microsoft 将治理解耦为独立于 agent 框架的层，支持 20+ 框架的统一治理规则执行

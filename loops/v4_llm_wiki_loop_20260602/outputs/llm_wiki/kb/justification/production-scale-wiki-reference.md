@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/complete-tech-live-frontier/text.txt`
+来源：`data/raw/webpage/complete-tech-live-frontier/text.txt`
 源证据：
 - 开头摘要 — "A 120-page Obsidian research wiki on latent-space reasoning and inter-agent latent communication — built using Andrej Karpathy's LLM Wiki pattern."
 - "How Karpathy's pattern shows up in the build" 段 — "wiki/ — 120+ pages: source summaries, concept pages, entity profiles for 13 research groups, 9 Maps of Content..."

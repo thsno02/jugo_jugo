@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt`
+来源：`data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt`
 源证据：
 - "What 0.4.4 Implements" — "This release makes the runtime representation-first and explicitly multimodal"
 - "Multimodal Ingest Model" — "PDFs and images use a representation-first path: inspect the asset with kb_get_raw_asset ... compile the final source note only after the representation trail is present"

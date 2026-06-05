@@ -13,7 +13,7 @@ canonical_concept: documentation-shared-ownership
 aliases: [文档共同所有权, 写作者与开发者共有, shared doc ownership]
 summary: >-
   documentation-shared-ownership（文档共同所有权 / 写作者与开发者共有 / shared doc ownership）指 docs-as-code 理念所促成的文化转变：技术写作者与开发者双方均对文档拥有所有权感，并协同提升文档质量
-related:
+related: [schema-as-configuration, single-curator-bottleneck]
   - docs-as-code
   - documentation-merge-gate
 ---
@@ -24,9 +24,12 @@ Docs as Code 理念所带来的核心文化转变是**文档共同所有权**：
 
 Falconer 的企业 LLM Wiki 分析从反面印证了这一文化的必要性：个人 LLM Wiki 依赖单一策展人，而在企业规模下这种模式会重新制造它试图解决的 wiki 问题[^card-1]。
 
+Schema-as-configuration 模式中的人机共同演化呈现了一个有趣的平行：docs-as-code 强调写作者与开发者之间的人-人协作，而 LLM Wiki 的 schema 共同演化则是人-LLM 协作的实例，两者在不同协作边界上展示了同一种知识共有模式[^card-2]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "culture" L23 -- "It enables a culture where writers and developers both feel ownership of documentation, and work together to make it as good as possible."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L27 -- "Writers integrate better with development teams"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L29 -- "Developers will often write a first draft of documentation"
+[^src-1]: `data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "culture" L23 -- "It enables a culture where writers and developers both feel ownership of documentation, and work together to make it as good as possible."
+[^src-2]: `data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L27 -- "Writers integrate better with development teams"
+[^src-3]: `data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L29 -- "Developers will often write a first draft of documentation"
 [^card-1]: [单一策展人瓶颈](single-curator-bottleneck.md) -- 企业 LLM Wiki 中单一策展人模式的结构性失效，从反面印证了文档共同所有权文化的必要性
+[^card-2]: [Schema 文件的配置角色](schema-as-configuration.md) -- 本卡聚焦人-人（写作者与开发者）之间的文档共同所有权，该卡描述人-LLM 之间的 schema 共同演化，两者平行展示了不同协作边界上的知识共有模式

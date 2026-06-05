@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-lightmem/text.txt`
+来源：`data/raw/arxiv/arxiv-lightmem/text.txt`
 源证据：
 - Abstract -- "long-term memory with sleep-time update employs an offline procedure that decouples consolidation from online inference"
 - Abstract -- "purely online test-time costs are even lower, achieving up to 106x / 117x token reduction and 159x / 310x fewer API calls"

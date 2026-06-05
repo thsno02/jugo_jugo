@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-lightmem/text.txt`
+来源：`data/raw/arxiv/arxiv-lightmem/text.txt`
 源证据：
 - Abstract -- "Inspired by the Atkinson-Shiffrin model of human memory, LightMem organizes memory into three complementary stages."
 - Abstract -- "cognition-inspired sensory memory rapidly filters irrelevant information through lightweight compression and groups information according to their topics"

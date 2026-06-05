@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
 源证据：
 - Section 4.1 — "we introduce a question-answering task divided into five distinct reasoning categories: (1) Single-hop (2) Multi-hop (3) Temporal reasoning (4) Open-domain knowledge (5) Adversarial"
 - Table dataset_statistics — question counts and percentages

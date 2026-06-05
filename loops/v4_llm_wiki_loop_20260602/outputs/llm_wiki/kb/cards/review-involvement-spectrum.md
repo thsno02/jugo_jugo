@@ -14,7 +14,7 @@ aliases: [参与程度谱系, involvement spectrum, 监督程度, supervision le
 summary: >-
   review-involvement-spectrum（参与程度谱系 / involvement spectrum / 监督程度 / supervision level）
   指 LLM Wiki 中人类参与程度是可调谱系：从逐条深度审查到批量低监督处理
-related: []
+related: [cognitive-deskilling-risk, confirm-first-skill-capture, human-llm-role-division, ingest-operation]
 ---
 
 LLM Wiki 中人类的参与程度不是固定的，而是一个**可调节的谱系**：
@@ -23,7 +23,7 @@ LLM Wiki 中人类的参与程度不是固定的，而是一个**可调节的谱
 
 **低监督端**——材料明确指出也可以「在较少监督下批量摄入多份资料」[^src-2]。用户应根据自己的风格选择并记录在 schema 中。
 
-值得注意的是，材料的核心论点（维护成本归零）聚焦在 LLM 消除了维护瓶颈[^src-3]，但未讨论人类审查是否构成新的瓶颈——尤其是在批量摄入模式下如何保证质量。参与程度的选择本质上是**质量保证 vs 吞吐量**的权衡。这一谱系在摄入操作中最为具体[^card-1]，其前提是人机角色的明确分工[^card-2]。
+值得注意的是，材料的核心论点（维护成本归零）聚焦在 LLM 消除了维护瓶颈[^src-3]，但未讨论人类审查是否构成新的瓶颈——尤其是在批量摄入模式下如何保证质量。参与程度的选择本质上是**质量保证 vs 吞吐量**的权衡，但实践者报告表明低监督端还隐含认知去技能化的代价[^card-3]。这一谱系在摄入操作中最为具体[^card-1]，其前提是人机角色的明确分工[^card-2]。在谱系的高审批端，Cognition 的确认优先规则提供了一种具体的门控实现[^card-4]。
 
 ## Footnotes
 
@@ -32,3 +32,5 @@ LLM Wiki 中人类的参与程度不是固定的，而是一个**可调节的谱
 [^src-3]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Why this works" P1 -- "the cost of maintenance is near zero"
 [^card-1]: [摄入操作](ingest-operation.md) -- 参与程度谱系在摄入操作中最为具体
 [^card-2]: [人机角色分工](human-llm-role-division.md) -- 谱系的前提是人机角色的明确分工
+[^card-3]: [认知去技能化风险](cognitive-deskilling-risk.md) -- 本卡描述参与程度的可调谱系，该卡以实践经验揭示低监督端隐含认知去技能化的代价
+[^card-4]: [确认优先的技能捕获规则](confirm-first-skill-capture.md) -- 本卡描述参与程度的完整谱系，该卡代表谱系上高审批端的一种具体门控实现

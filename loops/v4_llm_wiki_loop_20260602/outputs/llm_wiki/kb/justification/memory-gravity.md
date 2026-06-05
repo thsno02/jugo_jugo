@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt`
 源证据：
 - Section 5.6 — "Memory gravity protects entries whose removal would cascade through the knowledge base."
 - Section 5.6 — "G_i^base = f(C(i), F(i))"

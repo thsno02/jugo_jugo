@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt`
 源证据：
 - sections/experiments.tex — "MemGPT is able to craft engaging openers that perform similarly to and occasionally exceed the hand-written human openers."
 - tables/conv_opener_table.tex — "GPT-4 & 0.868 & 0.843 & 0.773"

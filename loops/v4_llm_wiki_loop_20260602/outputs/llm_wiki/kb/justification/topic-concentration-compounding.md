@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
+来源：`data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
 源证据：
 - Section 7.1 P26-27 — "Coding and Research are high-ROI domains not only because of large T₀, but because their topic concentration is naturally high"
 - Section 7.1 P27 — "in these domains H(t) cannot grow large"

@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt`
 源证据：
 - Introduction (graph_rag.tex) — "vector RAG approaches do not support sensemaking queries, meaning queries that require global understanding of the entire dataset"
 - Introduction (graph_rag.tex) — "Sensemaking tasks require reasoning over 'connections...in order to anticipate their trajectories and act effectively'"

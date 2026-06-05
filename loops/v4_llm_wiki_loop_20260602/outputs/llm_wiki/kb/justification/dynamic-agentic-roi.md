@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
+来源：`data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
 源证据：
 - Section 3.2 P8 — "Cᵢ = (1 − Hᵢ) · C_generate,ᵢ + Hᵢ · C_retrieve,ᵢ + C_writeback,ᵢ"
 - Section 3.3 P8 — "Hᵢ₊₁ = Hᵢ + α · (1 − Hᵢ) · pᵢ"

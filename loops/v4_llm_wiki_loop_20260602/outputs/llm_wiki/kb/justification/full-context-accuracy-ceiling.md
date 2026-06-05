@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`
 源证据：
 - sections/result.tex — "a full-context method that ingests a chunk of roughly 26,000 tokens still achieves the highest Judge score (approximately 73%). However...it also incurs a very high total p95 latency—around 17 seconds"
 - sections/result.tex — Table 2 latency comparison data

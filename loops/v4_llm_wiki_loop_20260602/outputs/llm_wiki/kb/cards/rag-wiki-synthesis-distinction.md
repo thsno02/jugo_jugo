@@ -13,7 +13,7 @@ canonical_concept: rag-wiki-synthesis-distinction
 aliases: [RAG区分, wiki综合, write loop, 写入循环]
 summary: >-
   rag-wiki-synthesis-distinction（RAG区分 / wiki综合 / write loop / 写入循环）社区对 LLM Wiki 是否"只是 RAG"的辩论：检索循环是 RAG 形状的，但写入循环（LLM 自己编写维护 wiki、建反向链接、回填输出）构成知识综合而非检索；vanilla RAG 语料是静态的，wiki 语料是动态的；lint 操作更接近 zettelkasten 维护者而非 top-k 搜索引擎
-related: [wiki-compounding-artifact, lint-operation]
+related: [compile-time-vs-query-time, lint-operation, llm-wiki-rag-depth-distinction, wiki-compounding-artifact]
 ---
 
 HN 社区围绕 LLM Wiki 是否"只是 RAG"展开了显著的辩论。一方认为核心检索-生成循环本质上是 RAG——无论通过向量数据库还是结构化索引/文件系统，根本问题都是为 LLM 上下文检索最相关的信息，这是一个已经被研究和评估多年的问题[^src-1]。
@@ -22,13 +22,14 @@ HN 社区围绕 LLM Wiki 是否"只是 RAG"展开了显著的辩论。一方认�
 
 此外，巡检操作（lint pass）做的事情也根本不同于 RAG——它审计不一致性、推测缺失数据、建议连接。这更接近一个助手在维护 zettelkasten，而非搜索引擎返回 top-k 片段[^src-3]。
 
-辩论双方最终部分达成共识：检索层面的问题确实是 RAG 范畴，但写入循环和巡检使整个系统在功能上超越了 RAG 的定义[^src-4]。法语社区的分析从推理深度角度提供了互补论证——wiki 的多跳推理能力来自预先综合的知识结构[^card-1]。
+辩论双方最终部分达成共识：检索层面的问题确实是 RAG 范畴，但写入循环和巡检使整个系统在功能上超越了 RAG 的定义[^src-4]。法语社区的分析从推理深度角度提供了互补论证——wiki 的多跳推理能力来自预先综合的知识结构[^card-1]。Atlan 的分析则从架构层面将这一区别框定为编译时与查询时知识装配的差异[^card-2]。
 
 ## Footnotes
 
 [^card-1]: [LLM Wiki 与 RAG 的核心差异在于推理深度](llm-wiki-rag-depth-distinction.md) -- HN 社区从写入循环角度论证 wiki 超越 RAG，法语社区从推理深度角度论证 wiki 的多跳推理优势，两者从不同维度共同确立了 wiki 与 RAG 的本质区别
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- kenforthewin 评论 -- "What I'm pushing back on specifically is the insistence that the core loop - retrieving the most relevant pieces of knowledge for wiki synthesis - is not RAG. In order for the LLM to do a good job at this, it needs some way to retrieve the most relevant info."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- darkhanakh 评论 -- "the interesting bit here is the write loop - the LLM is authoring and maintaining the wiki itself, building backlinks, filing its own outputs back in. thats not retrieval thats knowledge synthesis. in vanilla RAG your corpus is static, here it isnt"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- darkhanakh 评论 -- "also the linting pass is doing something genuinely different - auditing inconsistencies, imputing missing data, suggesting connections. thats closer to assistant maintaining a zettelkasten than a search engine returning top-k chunks"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- kenforthewin 回复 -- "I agree with you, the linting pass seems valuable and it's something I'm thinking about adding - it's a great idea."
+[^src-1]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- kenforthewin 评论 -- "What I'm pushing back on specifically is the insistence that the core loop - retrieving the most relevant pieces of knowledge for wiki synthesis - is not RAG. In order for the LLM to do a good job at this, it needs some way to retrieve the most relevant info."
+[^src-2]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- darkhanakh 评论 -- "the interesting bit here is the write loop - the LLM is authoring and maintaining the wiki itself, building backlinks, filing its own outputs back in. thats not retrieval thats knowledge synthesis. in vanilla RAG your corpus is static, here it isnt"
+[^src-3]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- darkhanakh 评论 -- "also the linting pass is doing something genuinely different - auditing inconsistencies, imputing missing data, suggesting connections. thats closer to assistant maintaining a zettelkasten than a search engine returning top-k chunks"
+[^src-4]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- kenforthewin 回复 -- "I agree with you, the linting pass seems valuable and it's something I'm thinking about adding - it's a great idea."
+[^card-2]: [编译时与查询时知识装配](compile-time-vs-query-time.md) -- 本卡从写入循环和知识综合角度区分 wiki 与 RAG，该卡从知识装配时间轴（编译时 vs 查询时）提供另一种区分维度

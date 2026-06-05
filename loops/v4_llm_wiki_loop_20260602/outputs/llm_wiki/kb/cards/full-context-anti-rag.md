@@ -15,7 +15,7 @@ summary: >-
   full-context-anti-rag（反 RAG / anti-RAG / 全上下文策略 / full-context approach）
   是 Karpathy LLM Wiki 的核心架构选择：拒绝 RAG 分块检索，改为向 LLM 提供完整 Wiki 上下文，
   理由是 RAG 碎片化知识并破坏跨知识图谱推理能力，因此强烈推荐 1M+ token 长上下文模型
-related:
+related: [chunk-size-tradeoff, compile-time-vs-query-time, kv-cache-vs-rag-tradeoff, rag-wiki-complementarity, static-rag-dynamic-memory-gap, wiki-rag-hybrid-pattern]
   - llm-wiki-pattern
   - three-layer-architecture
   - rag-wiki-synthesis-distinction
@@ -28,13 +28,18 @@ Karpathy LLM Wiki 插件明确**拒绝 RAG（Retrieval-Augmented Generation）�
 
 **架构后果**：这一立场直接导致插件**强烈推荐长上下文模型**——Wiki 越大，LLM 需要的上下文越多[^src-4]。材料推荐的模型均具备 1M+ token 上下文窗口（DeepSeek V4-Flash、Gemini-3.5-Flash、Qwen3.6-Plus 等为「性价比之选」），并指出本地模型（Ollama）的上下文通常较小（8K-128K），建议将云端用于摄入、本地用于查询[^src-5]。
 
-**与 RAG 的关键区别**：RAG 方案通常将文档切块后存入向量数据库，查询时检索相关块；LLM Wiki 方案则将整个 Wiki（或大部分页面）作为上下文一次性提供给 LLM，依赖模型的长上下文推理而非检索管道[^src-1]。WiCER 论文的实证研究为这一哲学提供了有条件的支持：全上下文 KV cache 推理在策展过的小规模知识上确实优于 RAG（4.38 vs 4.08），但在知识规模扩大时因注意力稀释退化至低于 RAG[^card-kv-cache-vs-rag-tradeoff]。
+**与 RAG 的关键区别**：RAG 方案通常将文档切块后存入向量数据库，查询时检索相关块；LLM Wiki 方案则将整个 Wiki（或大部分页面）作为上下文一次性提供给 LLM，依赖模型的长上下文推理而非检索管道[^src-1]。WiCER 论文的实证研究为这一哲学提供了有条件的支持：全上下文 KV cache 推理在策展过的小规模知识上确实优于 RAG（4.38 vs 4.08），但在知识规模扩大时因注意力稀释退化至低于 RAG[^card-kv-cache-vs-rag-tradeoff]。这一强硬的反 RAG 立场在社区中并非共识——日本社区的实践发现 RAG 与 wiki 实际上功能互补[^dist-1]，Atlan 甚至提出了三种 wiki-RAG 混合架构模式[^dist-2]。Atlan 同源分析将这一架构选择概括为「编译时 vs 查询时」知识装配的差异[^card-1]。Zep 论文从另一个维度批评 RAG——其静态语料假设无法满足动态 agent 记忆需求[^card-2]。值得注意的是，RAG 阵营内部仍在积极优化分块策略以提升检索质量[^dist-3]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "Model Selection Guide" L343-344 -- "This plugin follows Karpathy's philosophy: feed the LLM full Wiki context, not chunked RAG retrieval. Long-context models are strongly recommended"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "Model Selection Guide" L347 -- "Why not RAG? Karpathy's original critique argues that RAG fragments knowledge and breaks the LLM's ability to reason across the full knowledge graph."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "What is LLM-Wiki?" L114 -- "ChatGPT knows the internet. LLM-Wiki knows you — or rather, what you've taught it. Every answer carries [[wiki-links]] back into your knowledge graph. Every response is a trailhead, not a dead end."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "Model Selection Guide" L343 -- "the larger your Wiki grows, the more context the LLM needs"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "Model Selection Guide" L370 -- "For local models (Ollama): context windows are typically smaller (8K-128K). Consider using a cloud provider for ingestion + local model for query."
+[^src-1]: `data/raw/webpage/obsidian-community-plugin/text.txt` -- "Model Selection Guide" L343-344 -- "This plugin follows Karpathy's philosophy: feed the LLM full Wiki context, not chunked RAG retrieval. Long-context models are strongly recommended"
+[^src-2]: `data/raw/webpage/obsidian-community-plugin/text.txt` -- "Model Selection Guide" L347 -- "Why not RAG? Karpathy's original critique argues that RAG fragments knowledge and breaks the LLM's ability to reason across the full knowledge graph."
+[^src-3]: `data/raw/webpage/obsidian-community-plugin/text.txt` -- "What is LLM-Wiki?" L114 -- "ChatGPT knows the internet. LLM-Wiki knows you — or rather, what you've taught it. Every answer carries [[wiki-links]] back into your knowledge graph. Every response is a trailhead, not a dead end."
+[^src-4]: `data/raw/webpage/obsidian-community-plugin/text.txt` -- "Model Selection Guide" L343 -- "the larger your Wiki grows, the more context the LLM needs"
+[^src-5]: `data/raw/webpage/obsidian-community-plugin/text.txt` -- "Model Selection Guide" L370 -- "For local models (Ollama): context windows are typically smaller (8K-128K). Consider using a cloud provider for ingestion + local model for query."
 [^card-kv-cache-vs-rag-tradeoff]: [KV cache 推理与 RAG 的性能权衡](kv-cache-vs-rag-tradeoff.md) -- WiCER 实证表明全上下文在策展知识上优于 RAG 但在规模化时退化，为 Karpathy 反 RAG 立场划定了有效边界：wiki 越紧凑策展越充分，全上下文优势越大
+[^dist-1]: [RAG 与 Wiki 的互补关系](rag-wiki-complementarity.md) -- 本卡主张完全拒绝 RAG 以保持跨知识图谱推理能力，该卡主张 RAG 与 wiki 功能互补可以并存，区分点在于是否承认 RAG 在临时性查询场景中仍有独立价值
+[^dist-2]: [Wiki-RAG 混合架构模式](wiki-rag-hybrid-pattern.md) -- 本卡主张完全拒绝 RAG，该卡主张 wiki 可作为策展层锚定 RAG 检索形成混合架构，区分点在于是否将 RAG 视为可被增强而非替代的组件
+[^card-1]: [编译时与查询时知识装配](compile-time-vs-query-time.md) -- 本卡从 Karpathy 哲学立场主张反 RAG，该卡从架构层面提供中立表述：wiki 是编译时装配、RAG 是查询时装配，差异源于规模假设而非智能高低
+[^card-2]: [静态 RAG 与动态 agent 记忆的鸿沟](static-rag-dynamic-memory-gap.md) -- 本卡从知识碎片化角度批评 RAG，该卡从动态性角度论证 RAG 的静态语料假设无法满足 agent 需求，两者共同构成 RAG 局限性的不同切面
+[^dist-3]: [分块大小权衡](chunk-size-tradeoff.md) -- 本卡主张完全拒绝 RAG 分块检索以保持跨知识图谱推理，该卡在 RAG 范式内部优化分块粒度以提升检索质量，区分点在于是否将分块本身视为根本缺陷还是可优化参数

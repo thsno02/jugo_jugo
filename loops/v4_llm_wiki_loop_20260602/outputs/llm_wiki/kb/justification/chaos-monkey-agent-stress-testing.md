@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt`
 源证据：
 - Section: Introduction -- "Inspired by chaos engineering principles... we introduce Chaos Monkey to study whether such stress creates a 'frustration window'"
 - Section: Chaos Monkey -- "Click Drop... Scroll Swap... Type Transform..."

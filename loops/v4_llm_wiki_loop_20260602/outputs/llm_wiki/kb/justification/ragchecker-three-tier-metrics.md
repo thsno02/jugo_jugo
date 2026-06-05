@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt`
 源证据：
 - sections/framework.tex, Design Principle -- "we observe there are two major personae using a RAG evaluation framework"
 - sections/framework.tex, Overall/Retriever/Generator Metrics -- 11 个指标的完整定义

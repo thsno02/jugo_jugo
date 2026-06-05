@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
+来源：`data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
 源证据：
 - Section 5.3 P20 — "This is the central honest finding of the paper"
 - Table 2 P16 — 四查询成本数据

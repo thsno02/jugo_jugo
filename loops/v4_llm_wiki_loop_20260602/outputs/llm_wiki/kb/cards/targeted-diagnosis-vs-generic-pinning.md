@@ -15,7 +15,7 @@ summary: >-
   targeted-diagnosis-vs-generic-pinning（定向诊断vs泛化固定 / targeted diagnosis vs generic
   pinning）是 WiCER 消融实验在 17 个主题上的关键发现：定向诊断（识别具体丢失事实）带来 +0.95 的
   质量提升，而泛化固定（不加区分地保留信息）仅贡献 +0.16
-related: [wicer-iterative-refinement, compilation-gap]
+related: [compilation-gap, wicer-iterative-refinement]
 ---
 
 WiCER 论文的消融实验（ablation）在全部 17 个主题上揭示了一个关键区分：**定向诊断（targeted diagnosis）** 是 WiCER 质量提升的主要驱动力，而非**泛化固定（generic pinning）**[^src-1]。
@@ -26,5 +26,5 @@ WiCER 论文的消融实验（ablation）在全部 17 个主题上揭示了一�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "An ablation across all 17 topics confirms that targeted diagnosis (+0.95), not generic pinning (+0.16), drives the gains."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "targeted diagnosis (+0.95), not generic pinning (+0.16)"
+[^src-1]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "An ablation across all 17 topics confirms that targeted diagnosis (+0.95), not generic pinning (+0.16), drives the gains."
+[^src-2]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "targeted diagnosis (+0.95), not generic pinning (+0.16)"

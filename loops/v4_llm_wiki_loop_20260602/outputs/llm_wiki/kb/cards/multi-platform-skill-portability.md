@@ -36,7 +36,7 @@ Pi 的特殊优势在于其 1K 系统提示留有足够空间在 32K 上下文�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: agents" L440 -- "Five install modes: Claude Code (native plugin via the llm-wiki marketplace), OpenAI Codex (marketplace plugin...), OpenCode (instruction file...), Pi (instruction file...), and any other LLM agent via the portable AGENTS.md file."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: agents" L442 -- "The behavioral logic lives in a single wiki-manager skill shared across runtimes — Codex, OpenCode, and Pi trees symlink into the Claude source of truth so there is no fork."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: agents" L442 -- "Drift is caught by self-healing sync tests."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Pi" L92-96 -- "Pi's 1K system prompt leaves room for the full wiki skill on 32K context local models."
+[^src-1]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: agents" L440 -- "Five install modes: Claude Code (native plugin via the llm-wiki marketplace), OpenAI Codex (marketplace plugin...), OpenCode (instruction file...), Pi (instruction file...), and any other LLM agent via the portable AGENTS.md file."
+[^src-2]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: agents" L442 -- "The behavioral logic lives in a single wiki-manager skill shared across runtimes — Codex, OpenCode, and Pi trees symlink into the Claude source of truth so there is no fork."
+[^src-3]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: agents" L442 -- "Drift is caught by self-healing sync tests."
+[^src-4]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Pi" L92-96 -- "Pi's 1K system prompt leaves room for the full wiki skill on 32K context local models."

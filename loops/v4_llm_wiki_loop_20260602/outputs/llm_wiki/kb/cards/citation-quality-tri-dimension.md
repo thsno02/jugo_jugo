@@ -33,8 +33,8 @@ ALCE 基准沿三个正交维度评估系统回答质量，三者共同构成抗
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Our benchmark measures the following three dimensions of system responses: Fluency...Correctness...Citation quality"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "We use MAUVE to evaluate the fluency of the output...we mainly employ it as a sanity check as long as the MAUVE scores are high enough."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Our objective is to measure the informativeness and utility of the generation to the question."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "We evaluate citation qualities using two metrics: (1) citation recall...and (2) citation precision"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Using the top-1 passages or first two sentences of the top-1 passages induces almost perfect citation quality, but fluency and correctness are dramatically lower."
+[^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Our benchmark measures the following three dimensions of system responses: Fluency...Correctness...Citation quality"
+[^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "We use MAUVE to evaluate the fluency of the output...we mainly employ it as a sanity check as long as the MAUVE scores are high enough."
+[^src-3]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Our objective is to measure the informativeness and utility of the generation to the question."
+[^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "We evaluate citation qualities using two metrics: (1) citation recall...and (2) citation precision"
+[^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Using the top-1 passages or first two sentences of the top-1 passages induces almost perfect citation quality, but fluency and correctness are dramatically lower."

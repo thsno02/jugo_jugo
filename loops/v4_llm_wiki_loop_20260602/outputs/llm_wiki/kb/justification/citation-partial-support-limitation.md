@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-alce/agent_source_bundle.txt`
 源证据：
 - sections/evaluation.tex -- "this algorithm overlooks the scenario when one citation partially supports the statement"
 - sections/appendix.tex -- "it is challenging to conduct such evaluation automatically...We also explore prompting ChatGPT to conduct such a task, which yields poor results."

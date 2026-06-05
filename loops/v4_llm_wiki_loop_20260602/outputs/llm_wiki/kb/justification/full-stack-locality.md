@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt`
+来源：`data/raw/webpage/kunal-local-knowledge-base/text.txt`
 源证据：
 - L105-116 "LLM Wiki vs. Notion AI vs. Obsidian + Plugins" — "Notion AI is polished and requires zero setup. But your data lives on Notion's servers... Obsidian + community plugins... Your notes stay local in markdown, but most plugins still call external APIs... A local LLM wiki gives you full-stack locality."
 - L102-103 — "your proprietary notes, your half-formed ideas, your sensitive architecture docs never touch someone else's server... I've watched data governance concerns kill adoption in enterprise teams more than once."

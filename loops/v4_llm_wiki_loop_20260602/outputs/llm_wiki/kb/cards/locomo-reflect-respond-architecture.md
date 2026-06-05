@@ -13,7 +13,7 @@ canonical_concept: locomo-reflect-respond-architecture
 aliases: [reflect and respond, 反思-回应架构, LoCoMo agent architecture]
 summary: >-
   locomo-reflect-respond-architecture（reflect and respond, 反思-回应架构）LoCoMo 代理采用双层记忆：短期记忆为逐会话递增摘要（avg 127.4 tokens），长期记忆为对话轮次的 observation 断言（avg 18.2 tokens），回复时综合最新摘要+检索的相关 observation+当前会话+人设+会话间事件
-related: [observation-based-memory-representation, temporal-event-graph-grounding, episodic-semantic-memory-duality, sleep-consolidation-architecture]
+related: [episodic-semantic-memory-duality, lightmem-three-stage-memory, observation-based-memory-representation, sleep-consolidation-architecture, temporal-event-graph-grounding]
 ---
 
 LoCoMo 论文中的虚拟代理采用源自 Park et al. (2023) 生成式代理架构的"反思与回应"（reflect & respond）机制，实现了短期-长期双层记忆系统[^src-1]。
@@ -22,11 +22,14 @@ LoCoMo 论文中的虚拟代理采用源自 Park et al. (2023) 生成式代理�
 
 **长期记忆** $\mathcal{H}_l$：每个对话轮次 $h_{k_j}$ 被转化为一个观察 $o_{k_j}$（平均 18.2 tokens），即关于说话者的断言式陈述，存入长期记忆[^src-3]。观察带有来源轮次 ID 标注，便于追踪证据链。
 
-**回复生成**：代理在会话 $k+1$ 中生成回复时，综合以下信息：最新摘要 $w_k$、从长期记忆中检索的相关 observation、当前会话历史 $h_{k+1}$、人设声明 $p$、以及两次会话间发生的事件子集[^src-4]。这种架构模拟了人类在对话中同时依赖近期对话的短期记忆和蒸馏过的长期经验记忆的方式。
+**回复生成**：代理在会话 $k+1$ 中生成回复时，综合以下信息：最新摘要 $w_k$、从长期记忆中检索的相关 observation、当前会话历史 $h_{k+1}$、人设声明 $p$、以及两次会话间发生的事件子集[^src-4]。这种架构模拟了人类在对话中同时依赖近期对话的短期记忆和蒸馏过的长期经验记忆的方式。LightMem 从 Atkinson-Shiffrin 认知模型出发提出了另一种多层记忆设计（感觉→短期→长期三阶段），与本卡的生成式代理反思-回应双层构成不同的认知隐喻路径[^card-1]。伴侣记忆框架的睡眠整合架构同样实现了离线记忆整合，但采用定期批量 CONSOLIDATE 而非会话边界驱动的递增处理，且动机侧重反自密封的治理设计[^card-2]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3" -- "Every agent L_i incorporates modules from generative agent architecture (Park et al. 2023)... reflect and respond"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3" -- "each agent is asked to produce a summary w_k... conditioned on both the most recent session conversation history h_k and the preceding summary w_{k-1}"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3 + Table dataset_statistics" -- "a single turn of the conversation h_{k_j} is transformed into an observation o_{k_j}... Avg tokens observation: 18.2"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3" -- "agent generates a response by basing it on the latest summary w_k, reflections based on the retrieved relevant observations, the ongoing conversation history, persona statement p"
+[^card-1]: [LightMem 三阶段记忆架构](lightmem-three-stage-memory.md) -- 两种认知隐喻驱动的多层记忆架构：本卡采用生成式代理的反思-回应（递增摘要+观察提取双层），该卡采用 Atkinson-Shiffrin 模型（感觉→短期→长期三阶段）
+[^card-2]: [睡眠整合架构](sleep-consolidation-architecture.md) -- 本卡的反思-回应在每个会话边界递增式处理记忆，该卡的 CONSOLIDATE 在定期梦周期中批量整合缓冲区；两者都实现离线记忆处理但粒度和治理动机不同
+
+[^src-1]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3" -- "Every agent L_i incorporates modules from generative agent architecture (Park et al. 2023)... reflect and respond"
+[^src-2]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3" -- "each agent is asked to produce a summary w_k... conditioned on both the most recent session conversation history h_k and the preceding summary w_{k-1}"
+[^src-3]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3 + Table dataset_statistics" -- "a single turn of the conversation h_{k_j} is transformed into an observation o_{k_j}... Avg tokens observation: 18.2"
+[^src-4]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 3.3" -- "agent generates a response by basing it on the latest summary w_k, reflections based on the retrieved relevant observations, the ongoing conversation history, persona statement p"

@@ -15,7 +15,7 @@ summary: >-
   token-capital-goods（Token资本品 / tokens as capital goods / SFAS 86 类比）是 Wen & Ku (2026)
   的核心理论贡献：产生持久化可查询制品的 LLM token 应从消耗品重分类为资本品，具备持久产品、
   复利回报、跨模型可继承、负折旧四个资本品属性，类比会计准则 SFAS 86 对软件开发成本的处理
-related:
+related: [capitalized-latency, supply-demand-token-dividend]
   - knowledge-compounding
   - capitalized-latency
 ---
@@ -35,10 +35,14 @@ Wen & Ku (2026) 的核心理论贡献是提出：在动态 Agentic ROI 框架下
 
 无状态 token（Chunk-RAG、Long-Context）不具备以上四个属性中的任何一个——其价值在生成时刻实现并立即被丢弃[^src-5]。
 
+供需双重红利理论将 token 资本品重分类置于更大的经济图景中——NVIDIA 供给侧降低 token 生产成本，需求侧资本化提升每个 token 的持久价值，两者结合产生双重红利[^card-1]。资本品重分类不仅适用于 token，也可推广到延迟维度——Compounding 的 81 秒中 15.3 秒属于资本化延迟而非用户等待时间[^card-2]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.4 P9 -- "under the dynamic Agentic ROI framework, a subset of LLM tokens should be reclassified from consumables to capital goods"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.4 P9 -- "raw token accounting is the wrong unit of analysis for systems that produce persistent knowledge artifacts, in the same way that gross monthly expenditure is the wrong unit of analysis for a household making mortgage payments rather than paying rent"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.4 P9-10 -- "capitalized tokens display the four defining properties of capital goods: (i) persistent product... (ii) compound returns... (iii) heritability across model generations... (iv) negative discounting"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.4 P10 -- "Prior to 1985, all U.S. software development costs were expensed in the period in which they were incurred. The Financial Accounting Standards Board's Statement 86 changed this"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.4 P10 -- "Stateless tokens (Chunk-RAG, Long-Context) display none of these properties; their value is realized at the moment of generation and discarded immediately afterward"
+[^src-1]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.4 P9 -- "under the dynamic Agentic ROI framework, a subset of LLM tokens should be reclassified from consumables to capital goods"
+[^src-2]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.4 P9 -- "raw token accounting is the wrong unit of analysis for systems that produce persistent knowledge artifacts, in the same way that gross monthly expenditure is the wrong unit of analysis for a household making mortgage payments rather than paying rent"
+[^src-3]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.4 P9-10 -- "capitalized tokens display the four defining properties of capital goods: (i) persistent product... (ii) compound returns... (iii) heritability across model generations... (iv) negative discounting"
+[^src-4]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.4 P10 -- "Prior to 1985, all U.S. software development costs were expensed in the period in which they were incurred. The Financial Accounting Standards Board's Statement 86 changed this"
+[^src-5]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.4 P10 -- "Stateless tokens (Chunk-RAG, Long-Context) display none of these properties; their value is realized at the moment of generation and discarded immediately afterward"
+[^card-1]: [Token 供需双重红利](supply-demand-token-dividend.md) -- 本卡建立 token 从消耗品到资本品的理论重分类，该卡将这一需求侧优化与 NVIDIA 供给侧优化组合为双重红利
+[^card-2]: [资本化延迟与瞬时延迟](capitalized-latency.md) -- 本卡在 token 维度建立资本品重分类，该卡将同一框架推广到延迟维度（81 秒中 15.3 秒为资本化延迟）

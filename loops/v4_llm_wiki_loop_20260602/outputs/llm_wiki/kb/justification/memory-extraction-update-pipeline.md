@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`
 源证据：
 - sections/proposed_work.tex — "Our architecture follows an incremental processing paradigm, enabling it to operate seamlessly within ongoing conversations. As illustrated in Figure 2, the complete pipeline architecture consists of two phases: extraction and update."
 - sections/proposed_work.tex — "Rather than using a separate classifier, we leverage the LLM's reasoning capabilities to directly select the appropriate operation"

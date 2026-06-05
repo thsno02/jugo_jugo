@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt`
+来源：`data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt`
 源证据：
 - L230 — "The key distinction is compile-time versus query-time knowledge assembly."
 - L275-276 — "The distinction is compile-time versus query-time knowledge assembly, not intelligence."

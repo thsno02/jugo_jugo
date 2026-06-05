@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt`
 源证据：
 - Section 1.2 — "A companion system should mirror its user on some dimensions and compensate for its user on others."
 - Section 1.2 — "mirror by default under time pressure, compensate during scheduled integration windows, and treat AUDIT as the tiebreaker"

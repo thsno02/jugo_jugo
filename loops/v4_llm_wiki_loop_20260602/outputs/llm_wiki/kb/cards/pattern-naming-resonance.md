@@ -15,7 +15,7 @@ summary: >-
   pattern-naming-resonance（模式命名共振 / 命名结晶效应）指 Karpathy 的 LLM Knowledge Base
   帖子引发强烈共鸣的原因：许多人已在用 CLAUDE.md、Agent 规则文件、Obsidian 等做类似实践，
   该帖子为这些散发性尝试赋予了名称和结构，产生了「原来我做的就是这个」的认知结晶
-related: [llm-wiki-pattern, intentional-abstraction]
+related: [intentional-abstraction, llm-wiki-pattern]
 ---
 
 Karpathy 的「LLM Knowledge Bases」帖子获得超过 1300 万次浏览，其引发强烈反响的根本原因在于：**许多人已经在独立地进行类似实践**，帖子为这些散发性尝试赋予了名称和结构[^src-1]。
@@ -28,8 +28,8 @@ Karpathy 的「LLM Knowledge Bases」帖子获得超过 1300 万次浏览，其�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/developersio-jp-pattern/text.txt` -- L27 -- "このポストに反応が大きかった理由は、多くの人がすでに似たようなことを試みていたからだと思います"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/developersio-jp-pattern/text.txt` -- L27 -- "Claude Code の CLAUDE.md、各 AI エージェント のルールファイル、あるいは Notion や Obsidian に自分なりのナレッジ構造を作っている人。X や Reddit、Hacker News でも「LLM にナレッジを整理させる」系の話題は以前から繰り返し盛り上がっていました"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/developersio-jp-pattern/text.txt` -- L27 -- "自分もそのひとりで、「ああ、自分がやっていたのはこういうことだったのか」と輪郭がはっきりした感覚がありました"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/developersio-jp-pattern/text.txt` -- L91-93 -- "セッション間の知識を永続化する仕組みは持っていました...ただ、それらはあくまで LLM が検索で参照するためのもので、人間が読める形で構造化されたドキュメント としては十分に整備できていませんでした"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/developersio-jp-pattern/text.txt` -- L27 -- "Karpathy 氏のポストは、そういった散発的な試みに名前と構造を与えてくれたように感じます"
+[^src-1]: `data/raw/webpage/developersio-jp-pattern/text.txt` -- L27 -- "このポストに反応が大きかった理由は、多くの人がすでに似たようなことを試みていたからだと思います"
+[^src-2]: `data/raw/webpage/developersio-jp-pattern/text.txt` -- L27 -- "Claude Code の CLAUDE.md、各 AI エージェント のルールファイル、あるいは Notion や Obsidian に自分なりのナレッジ構造を作っている人。X や Reddit、Hacker News でも「LLM にナレッジを整理させる」系の話題は以前から繰り返し盛り上がっていました"
+[^src-3]: `data/raw/webpage/developersio-jp-pattern/text.txt` -- L27 -- "自分もそのひとりで、「ああ、自分がやっていたのはこういうことだったのか」と輪郭がはっきりした感覚がありました"
+[^src-4]: `data/raw/webpage/developersio-jp-pattern/text.txt` -- L91-93 -- "セッション間の知識を永続化する仕組みは持っていました...ただ、それらはあくまで LLM が検索で参照するためのもので、人間が読める形で構造化されたドキュメント としては十分に整備できていませんでした"
+[^src-5]: `data/raw/webpage/developersio-jp-pattern/text.txt` -- L27 -- "Karpathy 氏のポストは、そういった散発的な試みに名前と構造を与えてくれたように感じます"

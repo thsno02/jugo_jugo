@@ -13,7 +13,7 @@ canonical_concept: memgpt-nested-kv-retrieval
 aliases: [嵌套键值检索, nested KV retrieval, 多跳查找]
 summary: >-
   memgpt-nested-kv-retrieval（嵌套键值检索, nested KV retrieval, 多跳查找）扩展了 KV 检索任务使 value 可能也是 key 需要多跳查找；MemGPT+GPT-4 在 0-4 层嵌套中性能稳定，而 GPT-4/GPT-4 Turbo 基线在 3 层嵌套时降至 0%，证明函数链支撑多步信息汇集能力
-related: [memgpt-function-chaining, memgpt-document-qa-scaling, memgpt-self-directed-memory]
+related: [llm-wiki-rag-depth-distinction, memgpt-document-qa-scaling, memgpt-function-chaining, memgpt-self-directed-memory]
 ---
 
 MemGPT 论文提出嵌套键值检索（nested KV retrieval）任务，扩展了原始 KV 检索任务 [^src-1]。在原始任务中，每个键和值都是 128 位 UUID，代理需要返回给定键的关联值。在嵌套变体中，值本身可能也是键，因此需要执行多跳查找 [^src-1]。
@@ -28,9 +28,12 @@ MemGPT 论文提出嵌套键值检索（nested KV retrieval）任务，扩展了
 
 值得注意的是 MemGPT + GPT-4 Turbo 反而比 MemGPT + GPT-4 表现更差，表明更长的上下文窗口并不总是带来更好的代理行为 [^src-4]。
 
+与 LLM Wiki 的预综合跨链接方式不同，MemGPT 在运行时通过动态函数链实现多跳推理，代表了一种"查询时解析依赖"的路径 [^dist-1]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "We create a version of the KV task, nested KV retrieval, where values themselves may be keys, thus requiring the agent to perform a multi-hop lookup."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "we fix the total number of UUIDs pairs to 140, corresponding to roughly 8k tokens...We vary the total number of nesting levels from 0...to 4"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "MemGPT with GPT-4 on the other hand is unaffected with the number of nesting levels...GPT-4 and GPT-4 Turbo are better than GPT-3.5, but also suffer from a similar dropoff, and hit 0 percent accuracy by 3 nesting levels."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- Figure 4 caption -- "While GPT-4 Turbo performs better as a baseline, MemGPT with GPT-4 Turbo performs worse than MemGPT with GPT-4."
+[^src-1]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "We create a version of the KV task, nested KV retrieval, where values themselves may be keys, thus requiring the agent to perform a multi-hop lookup."
+[^src-2]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "we fix the total number of UUIDs pairs to 140, corresponding to roughly 8k tokens...We vary the total number of nesting levels from 0...to 4"
+[^src-3]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "MemGPT with GPT-4 on the other hand is unaffected with the number of nesting levels...GPT-4 and GPT-4 Turbo are better than GPT-3.5, but also suffer from a similar dropoff, and hit 0 percent accuracy by 3 nesting levels."
+[^src-4]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- Figure 4 caption -- "While GPT-4 Turbo performs better as a baseline, MemGPT with GPT-4 Turbo performs worse than MemGPT with GPT-4."
+[^dist-1]: [LLM Wiki 与 RAG 的核心差异在于推理深度](llm-wiki-rag-depth-distinction.md) -- 本卡展示运行时代理函数链实现多跳查找，该卡主张编译时预综合跨链接使多跳自然可行，区分点在于多跳依赖的解析时机（查询时 vs 摄入时）

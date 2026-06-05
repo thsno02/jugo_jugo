@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt`
+来源：`data/raw/webpage/kunal-local-knowledge-base/text.txt`
 源证据：
 - L72 — "Chunk size matters more than most tutorials admit — too small and you lose context, too large and your retrieval gets noisy."
 - L125-126 — "Naive fixed-size chunking throws away document structure. Semantic chunking, hierarchical indexing, and hybrid search (combining vector similarity with BM25 keyword matching) need to become standard."

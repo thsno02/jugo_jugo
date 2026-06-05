@@ -13,7 +13,7 @@ canonical_concept: agent-memory-lifecycle-phases
 aliases: [agent记忆生命周期, memory lifecycle phases, 证据-整合-衰退-教学循环]
 summary: >-
   agent-memory-lifecycle-phases（agent记忆生命周期 / memory lifecycle phases / 证据-整合-衰退-教学循环）Cognition 产品提出 agent 记忆的四阶段模型：Evidence（会话痕迹成为类型化学习事件）→ Consolidation（原始痕迹压缩为人工审批的技能）→ Decay（召回率与新鲜度随时间建模）→ Teaching（下一个 agent 获得路由：哪个技能、谁的判断、如何应用）
-related: [sleep-consolidation-architecture, cross-session-continuity]
+related: [cross-session-continuity, memory-crud-operation-taxonomy, sleep-consolidation-architecture]
 ---
 
 Cognition 将 agent 记忆系统区分为四个阶段，而非简单的存储-检索模型[^src-1]。
@@ -32,10 +32,10 @@ Cognition 将 agent 记忆系统区分为四个阶段，而非简单的存储-�
 
 [^card-1]: [记忆 CRUD 操作分类法](memory-crud-operation-taxonomy.md) -- Cognition 的四阶段生命周期（Evidence-Consolidation-Decay-Teaching）是宏观模型，Mem0 的 CRUD 分类法（ADD/UPDATE/DELETE/NOOP）是微观操作层面的实现，两者互为补充
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "why this is not another company brain" section -- "Memory that decays, consolidates, and teaches back."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Evidence" section -- "Prompts, files, tool calls, decisions, and outcomes become typed learning events."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Consolidation" section -- "Raw traces compress into human-approved skills with steps, checks, and failure modes."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Save skills" step -- "Cognition drafts the SKILL.md and waits for a human yes before sharing it."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Decay" section -- "Recall and freshness are modeled over time, so stale guidance can ask first or refresh."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Teaching" section -- "The next agent receives a route: which skill, whose judgment, and how to apply it."
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- product description -- "Cognition treats work as learning signal: sessions become approved skills, skills get freshness and outcome history, and agents retrieve executable guidance instead of a pile of notes."
+[^src-1]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "why this is not another company brain" section -- "Memory that decays, consolidates, and teaches back."
+[^src-2]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Evidence" section -- "Prompts, files, tool calls, decisions, and outcomes become typed learning events."
+[^src-3]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Consolidation" section -- "Raw traces compress into human-approved skills with steps, checks, and failure modes."
+[^src-4]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Save skills" step -- "Cognition drafts the SKILL.md and waits for a human yes before sharing it."
+[^src-5]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Decay" section -- "Recall and freshness are modeled over time, so stale guidance can ask first or refresh."
+[^src-6]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Teaching" section -- "The next agent receives a route: which skill, whose judgment, and how to apply it."
+[^src-7]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- product description -- "Cognition treats work as learning signal: sessions become approved skills, skills get freshness and outcome history, and agents retrieve executable guidance instead of a pile of notes."

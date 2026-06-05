@@ -13,7 +13,7 @@ canonical_concept: nli-based-citation-verification
 aliases: [NLI引用验证, citation recall/precision via NLI, AIS自动评估]
 summary: >-
   nli-based-citation-verification（NLI引用验证, AIS自动评估）ALCE 使用 NLI 模型 TRUE（T5-11B）自动评估引用质量：citation recall 检查引用段落拼接后是否蕴含陈述，citation precision 检查去除某引用后支持是否不变；与人工评估 Cohen's kappa 达 0.698/0.525
-related: [citation-quality-tri-dimension, citation-partial-support-limitation]
+related: [citation-partial-support-limitation, citation-quality-tri-dimension, claim-level-entailment-evaluation]
 ---
 
 ALCE 使用自然语言推理（NLI）模型 TRUE 来自动化引用质量评估，该模型是基于 T5-11B 微调在多个 NLI 数据集上的蕴含判断模型 [^src-1]。其评估遵循 AIS（attributable to identified sources）框架 [^src-2]。
@@ -28,10 +28,10 @@ ALCE 使用自然语言推理（NLI）模型 TRUE 来自动化引用质量评估
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "We use the version of TRUE model from https://huggingface.co/google/t5_xxl_true_nli_mixture, which is trained on SNLI, MNLI, Fever, Scitail, PAWS, and VitaminC."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "The NLI evaluation is in accordance with the attributable to identified sources (AIS) framework"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "its citation recall is 1 if and only if there is at least one citation (C_i != empty) and phi(concat(C_i), s_i)=1"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "c_{i,j} is irrelevant if and only if (a) phi(c_{i,j},s_i)=0, AND (b) phi(concat(C_i \ {c_{i,j}}), s_i)=1"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/human_eval.tex -- "the Cohen's kappa coefficient between human and ALCE suggests substantial agreement for citation recall (0.698) and moderate agreement for citation precision (0.525)"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Note that this algorithm overlooks the scenario when one citation partially supports the statement."
+[^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "We use the version of TRUE model from https://huggingface.co/google/t5_xxl_true_nli_mixture, which is trained on SNLI, MNLI, Fever, Scitail, PAWS, and VitaminC."
+[^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "The NLI evaluation is in accordance with the attributable to identified sources (AIS) framework"
+[^src-3]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "its citation recall is 1 if and only if there is at least one citation (C_i != empty) and phi(concat(C_i), s_i)=1"
+[^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "c_{i,j} is irrelevant if and only if (a) phi(c_{i,j},s_i)=0, AND (b) phi(concat(C_i \ {c_{i,j}}), s_i)=1"
+[^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/human_eval.tex -- "the Cohen's kappa coefficient between human and ALCE suggests substantial agreement for citation recall (0.698) and moderate agreement for citation precision (0.525)"
+[^src-6]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Note that this algorithm overlooks the scenario when one citation partially supports the statement."
 [^card-claim-level-entailment-evaluation]: [声明级蕴含检验评估方法](claim-level-entailment-evaluation.md) -- RAGChecker 将文本分解为原子声明再逐一检查蕴含，相比 ALCE 的整体 NLI 判断提供了更细粒度的评估能力，可部分缓解二元蕴含判断的局限

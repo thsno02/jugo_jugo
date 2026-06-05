@@ -13,7 +13,7 @@ canonical_concept: graphrag-small-context-window-advantage
 aliases: [小上下文窗口优势, smaller context window advantage, 8k 上下文优于更大窗口]
 summary: >-
   graphrag-small-context-window-advantage（小上下文窗口优势 / smaller context window advantage）GraphRAG 评估中 8k 上下文窗口在全面性上普遍优于 16k/32k/64k（平均胜率 58.1%），呼应 lost-in-the-middle 现象，因此采用 8k 作为统一设置
-related: [context-window-degradation, graphrag-map-reduce-query]
+related: [context-scaling-diminishing-returns, context-window-degradation, graphrag-map-reduce-query, long-context-comprehension-illusion]
 ---
 
 GraphRAG 论文在选择上下文窗口大小时发现了一个反直觉的结果。尽管 gpt-4-turbo 支持 128k token 的大上下文窗口，但论文测试了 8k、16k、32k 和 64k 四种窗口大小后发现：最小的 8k 窗口在全面性上普遍优于所有更大的窗口（平均胜率 58.1%），同时在多样性（52.4%）和赋能性（51.3%）上与更大窗口表现相当 [^src-1]。
@@ -22,11 +22,12 @@ GraphRAG 论文在选择上下文窗口大小时发现了一个反直觉的结�
 
 基于这一发现，论文选择了固定的 8k token 上下文窗口用于生成社区摘要、社区回答和全局回答的所有最终评估 [^src-3]。
 
-这一发现对 RAG 系统设计有实际意义：更大的上下文窗口并非总是更好；当信息量大时，分而治之（如 map-reduce 式处理多个较小上下文）可能优于将所有信息塞入一个大上下文窗口。MemGPT 从理论层面独立支持了这一结论，指出长上下文模型面临二次方计算开销和"lost in the middle"信息利用不均等多重困境[^card-context-scaling-diminishing-returns]。
+这一发现对 RAG 系统设计有实际意义：更大的上下文窗口并非总是更好；当信息量大时，分而治之（如 map-reduce 式处理多个较小上下文）可能优于将所有信息塞入一个大上下文窗口。MemGPT 从理论层面独立支持了这一结论，指出长上下文模型面临二次方计算开销和"lost in the middle"信息利用不均等多重困境[^card-context-scaling-diminishing-returns]。LoCoMo 基准从另一维度提供了独立佐证——16K 上下文模型在事件摘要任务中的 F1 反而低于 4K 模型[^card-long-context-comprehension-illusion]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Appendix C (appendix.tex) -- "Surprisingly, the smallest context window size tested (8k) was universally better for all comparisons on comprehensiveness (average win rate of 58.1%), while performing comparably with larger context sizes on diversity (average win rate = 52.4%), and empowerment (average win rate = 51.3%)."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Appendix C (appendix.tex) -- "Given the potential for information to be 'lost in the middle' of longer contexts"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 2.1.3 (graph_rag.tex) -- "We used a fixed context window size of 8k tokens for generating community summaries, community answers, and global answers"
+[^src-1]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Appendix C (appendix.tex) -- "Surprisingly, the smallest context window size tested (8k) was universally better for all comparisons on comprehensiveness (average win rate of 58.1%), while performing comparably with larger context sizes on diversity (average win rate = 52.4%), and empowerment (average win rate = 51.3%)."
+[^src-2]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Appendix C (appendix.tex) -- "Given the potential for information to be 'lost in the middle' of longer contexts"
+[^src-3]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 2.1.3 (graph_rag.tex) -- "We used a fixed context window size of 8k tokens for generating community summaries, community answers, and global answers"
 [^card-context-scaling-diminishing-returns]: [上下文窗口扩展的递减收益问题](context-scaling-diminishing-returns.md) -- MemGPT 从二次方计算开销和 lost-in-the-middle 信息利用不均两个维度论证了上下文扩展的根本困境，与 GraphRAG 的 8k 优势实证相互印证
+[^card-long-context-comprehension-illusion]: [长上下文模型的理解假象](long-context-comprehension-illusion.md) -- 本卡聚焦 GraphRAG 评估中 8k 窗口优于更大窗口，该卡从 LoCoMo 基准独立发现 16K 模型在事件摘要上反而劣于 4K 模型，两者共同表明更大上下文并非更优表现

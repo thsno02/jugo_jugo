@@ -15,7 +15,7 @@ summary: >-
   obsidian-tooling（Obsidian 工具 / Obsidian ecosystem / Web Clipper / graph view / Marp / Dataview）
   是 LLM Wiki 实践中的 Obsidian 工具生态：Web Clipper 采集资料、graph view 可视化连接、
   Marp 生成幻灯片、Dataview 查询 frontmatter，Obsidian 作为「IDE」供用户浏览 wiki
-related: []
+related: [human-llm-role-division]
 ---
 
 在 LLM Wiki 的实践中，作者使用 **Obsidian** 作为 wiki 的浏览器和「IDE」[^card-1]。材料推荐的 Obsidian 工具链包括：

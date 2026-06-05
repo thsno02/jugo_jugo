@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt`
+来源：`data/raw/webpage/wikibase-data-model/text.txt`
 源证据：
 - "Ranks of Statements" section, lines 575-586 — 三级排名定义及 best rank 概念
 - lines 583-584 — "This model is intentionally left coarse and simple"

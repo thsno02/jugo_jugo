@@ -13,7 +13,7 @@ canonical_concept: retrieval-improvement-faithfulness-noise-tradeoff
 aliases: [检索改善忠实度噪声权衡, retrieval faithfulness noise tradeoff, 检索质量双刃效应]
 summary: >-
   retrieval-improvement-faithfulness-noise-tradeoff（检索改善忠实度噪声权衡 / retrieval faithfulness noise tradeoff / 检索质量双刃效应）RAGChecker 实验表明更好的检索器或更多上下文同时提升生成器忠实度（faithfulness 87.9->92.9）和噪声敏感度（NS-I 26.2->28.9），因为固定大小分块使相关块不可避免地携带噪声，生成器的块级信任无法区分有用与有害信息
-related: [retrieval-snr-tradeoff, relevant-vs-irrelevant-noise-sensitivity, chunk-size-tradeoff]
+related: [chunk-size-tradeoff, relevant-vs-irrelevant-noise-sensitivity, retrieval-snr-tradeoff, retrieval-vs-maintenance]
 ---
 
 RAGChecker 的 8 个 RAG 系统对比实验揭示了一个系统性的权衡：更高质量的检索在提升生成器忠实度的同时，也不可避免地增加了噪声敏感度。
@@ -28,8 +28,8 @@ LoCoMo 的 RAG 实验从长期对话记忆场景证实了相同的权衡：增�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Main Results" -- "As E5-Mistral achieves better claim recall, we observe generators paired to it achieves better faithfulness... Similarly, hallucination and self-knowledge are both reduced"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Diagnosis" -- "faithfulness 88.1->92.2 with k 5->20... noise sensitivity 34.0->35.4 with k 5->20"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Main Results" -- "Claim recall for a retriever characterizes the coverage of all information necessary... retrieved relevant chunks may inevitably also carry over noise as part of the context"
+[^src-1]: `data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Main Results" -- "As E5-Mistral achieves better claim recall, we observe generators paired to it achieves better faithfulness... Similarly, hallucination and self-knowledge are both reduced"
+[^src-2]: `data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Diagnosis" -- "faithfulness 88.1->92.2 with k 5->20... noise sensitivity 34.0->35.4 with k 5->20"
+[^src-3]: `data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Main Results" -- "Claim recall for a retriever characterizes the coverage of all information necessary... retrieved relevant chunks may inevitably also carry over noise as part of the context"
 [^card-1]: [检索量与信噪比的权衡效应](retrieval-snr-tradeoff.md) -- LoCoMo 实验从长期对话记忆场景独立证实了增加 top-k 导致的性能反转现象
 [^card-2]: [检索与维护的区别](retrieval-vs-maintenance.md) -- Falconer 指出"更好的检索叠加在糟糕的内容之上只是更快地产出错误答案"，从企业实践印证了忠实度-噪声权衡的后果

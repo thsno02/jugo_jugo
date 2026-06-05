@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt`
 源证据：
 - Abstract -- "Notably, more capable models are not more secure. GPT-5.2 shows substantial vulnerability despite superior task performance."
 - Section: Conclusion -- "GPT-5.2's higher awareness of environmental problems correlates with both its higher task success rate under chaos and its greater vulnerability to attack."

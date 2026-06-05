@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt`
+来源：`data/raw/webpage/obsidian-community-plugin/text.txt`
 源证据：
 - L262-263 — "Mandatory Page Aliases — Every generated page includes at least 1 alias (translation, acronym, alternate name), enabling cross-language duplicate detection"
 - L413-414 — "Two-tier semantic detection: Tier 1 (always LLM-verified) catches cross-language matches, abbreviations, high-similarity titles. Tier 2 fills remaining token budget with moderate-similarity candidates."

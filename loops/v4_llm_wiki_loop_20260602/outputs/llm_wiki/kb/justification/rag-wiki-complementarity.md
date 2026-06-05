@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/developersio-jp-pattern/text.txt`
+来源：`data/raw/webpage/developersio-jp-pattern/text.txt`
 源证据：
 - L82-83 — "個人的には、「RAG か wiki か」は二択ではないと思っています"
 - L83 — "アドホックな質問には RAG 的な検索が便利で、全体像の把握やプロジェクト横断の理解には wiki が便利"

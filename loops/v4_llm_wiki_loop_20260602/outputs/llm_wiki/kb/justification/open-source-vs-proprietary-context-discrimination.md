@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt`
 源证据：
 - sections/experiments.tex -- "Open-Source Models are Worse at Distinguishing Accurate Information from Noise"
 - sections/experiments.tex -- "superior faithfulness scores of Llama3-70b are primarily due to its higher noise sensitivity"

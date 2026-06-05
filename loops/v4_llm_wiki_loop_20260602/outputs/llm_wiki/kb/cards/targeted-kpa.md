@@ -16,10 +16,12 @@ summary: >-
 related: [graphrag-knowledge-poisoning-attack, universal-kpa]
 ---
 
-定向知识投毒攻击（Targeted Knowledge Poisoning Attack, TKPA）是 KPA 的第一种变体，其目标是精确控制 GraphRAG 系统对特定问题的回答结果 [^src-1]。TKPA 的机制分为两步：首先利用图论分析（graph-theoretic analysis）定位生成图谱中的脆弱节点（vulnerable nodes），然后使用 LLM 改写这些节点所对应的源文本叙述 [^src-2]。该攻击在实验中达到了 93.1% 的成功率，同时保持被投毒文本的流畅性和自然性，使其难以通过文本质量检测发现 [^src-3]。
+定向知识投毒攻击（Targeted Knowledge Poisoning Attack, TKPA）是 KPA 的第一种变体，其目标是精确控制 GraphRAG 系统对特定问题的回答结果 [^src-1]。TKPA 的机制分为两步：首先利用图论分析（graph-theoretic analysis）定位生成图谱中的脆弱节点（vulnerable nodes），然后使用 LLM 改写这些节点所对应的源文本叙述 [^src-2]。该攻击在实验中达到了 93.1% 的成功率，同时保持被投毒文本的流畅性和自然性，使其难以通过文本质量检测发现 [^src-3]。与 TKPA 的精确控制策略形成对比，UKPA 则选择大规模破坏整体问答能力而非针对单个问题[^dist-1]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "The first attack, named Targeted KPA (TKPA), utilizes graph-theoretic analysis to locate vulnerable nodes in the generated graphs"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "rewrites the corresponding narratives with LLMs, achieving precise control over specific question-answering (QA) outcomes"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "with a success rate of 93.1%, while keeping the poisoned text fluent and natural"
+[^dist-1]: [通用知识投毒攻击（UKPA）](universal-kpa.md) -- 本卡主张通过图论分析精确控制特定问答结果（定向投毒，93.1% 精确控制），该卡主张通过语言学线索大规模破坏整体问答能力（通用投毒，<0.05% 修改量使准确率从 95% 降至 50%），区分点在于攻击目标粒度：精确操控 vs 全局破坏
+
+[^src-1]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "The first attack, named Targeted KPA (TKPA), utilizes graph-theoretic analysis to locate vulnerable nodes in the generated graphs"
+[^src-2]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "rewrites the corresponding narratives with LLMs, achieving precise control over specific question-answering (QA) outcomes"
+[^src-3]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "with a success rate of 93.1%, while keeping the poisoned text fluent and natural"

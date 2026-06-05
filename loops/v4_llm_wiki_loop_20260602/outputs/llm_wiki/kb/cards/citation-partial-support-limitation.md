@@ -13,7 +13,7 @@ canonical_concept: citation-partial-support-limitation
 aliases: [部分支持检测缺失, partial support detection gap, 引用精度评估局限]
 summary: >-
   citation-partial-support-limitation（部分支持检测缺失, partial support detection gap）ALCE 的 NLI 引用精度评估无法区分"部分支持"与"不支持"：当引用 [2] 部分蕴含陈述 s3 且 [4][5] 完全覆盖时，[2] 被错误判为无关；尝试用 ChatGPT 做三级判断效果差，留为未来工作
-related: [nli-based-citation-verification, citation-quality-tri-dimension]
+related: [citation-quality-tri-dimension, nli-based-citation-verification]
 ---
 
 ALCE 的引用精度（citation precision）评估存在一个已知的结构性局限：NLI 模型只能做二元蕴含判断（支持/不支持），无法检测"部分支持"（partial support）的情况 [^src-1]。
@@ -28,8 +28,8 @@ ALCE 的引用精度（citation precision）评估存在一个已知的结构性
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Note that this algorithm overlooks the scenario when one citation partially supports the statement."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "if [2] entails partial information of s3 that [4][5] also entails, [2] will be counted as 'irrelevant' while it should not be penalized."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "For each citation, they ask annotators to judge whether the citation (1) fully support, (2) partially support, or (3) does not support s_i."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "it is challenging to conduct such evaluation automatically, as there is no existing model that can judge whether a citation 'partially' supports a claim. We also explore prompting ChatGPT to conduct such a task, which yields poor results."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "regarding detecting 'irrelevant' citations, ALCE has a recall of 75.6% and a precision of 66.1%---ALCE is effective in detecting 'irrelevant' citations, but due to the limitation of the NLI model (cannot detect 'partial support'), it has a relatively high false positive rate."
+[^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Note that this algorithm overlooks the scenario when one citation partially supports the statement."
+[^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "if [2] entails partial information of s3 that [4][5] also entails, [2] will be counted as 'irrelevant' while it should not be penalized."
+[^src-3]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "For each citation, they ask annotators to judge whether the citation (1) fully support, (2) partially support, or (3) does not support s_i."
+[^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "it is challenging to conduct such evaluation automatically, as there is no existing model that can judge whether a citation 'partially' supports a claim. We also explore prompting ChatGPT to conduct such a task, which yields poor results."
+[^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "regarding detecting 'irrelevant' citations, ALCE has a recall of 75.6% and a precision of 66.1%---ALCE is effective in detecting 'irrelevant' citations, but due to the limitation of the NLI model (cannot detect 'partial support'), it has a relatively high false positive rate."

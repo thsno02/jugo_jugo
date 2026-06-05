@@ -15,7 +15,7 @@ summary: >-
   use-case-domains（应用领域 / use cases / 使用场景 / application domains）列举 LLM Wiki
   的五类应用：个人成长、研究深耕、书籍阅读（类似 fan wiki）、团队/业务内部 wiki、
   以及竞争分析/尽职调查/旅行规划等知识积累场景，模式统一适用
-related: []
+related: [llm-wiki-pattern]
 ---
 
 LLM Wiki 模式适用于多种知识积累场景[^card-1]，材料列举了五类应用领域：

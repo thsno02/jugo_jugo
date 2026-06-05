@@ -15,7 +15,7 @@ summary: >-
   deterministic-policy-enforcement（确定性策略 / deterministic policy / 规则式治理）
   Microsoft Agent Governance Toolkit 的核心设计原则：agent 治理使用确定性策略执行而非概率性 LLM 判断，
   通过 OPA/Rego/Cedar 等引擎实现 Policy-as-Code，保证策略评估结果可重现、可审计
-related: []
+related: [ai-rmf-voluntary-trustworthiness, governance-over-retrieval]
 ---
 
 Microsoft Agent Governance Toolkit 将"确定性策略执行"（deterministic policy enforcement）列为 agent 运行时治理的四大支柱之一 [^src-1]。这意味着治理决策（如是否允许某次工具调用、是否放行某 agent 请求）由确定性规则引擎做出，而非依赖 LLM 的概率性输出。
@@ -28,10 +28,10 @@ Microsoft Agent Governance Toolkit 将"确定性策略执行"（deterministic po
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L351 -- "Runtime governance for AI agents: deterministic policy enforcement, zero-trust identity, execution sandboxing, and SRE for autonomous agents."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L134 -- "OPA / Rego / Cedar"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L272 -- "ADR-0004: Deterministic Policy"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L148-163 -- "Policy-as-Code Series: Your First Policy, Capability Scoping, Rate Limiting, Conditional Policies, Approval Workflows, Policy Testing, Policy Versioning, MCP Governance"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L290 -- "ADR-0013: Fail Closed on Errors"
+[^src-1]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L351 -- "Runtime governance for AI agents: deterministic policy enforcement, zero-trust identity, execution sandboxing, and SRE for autonomous agents."
+[^src-2]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L134 -- "OPA / Rego / Cedar"
+[^src-3]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L272 -- "ADR-0004: Deterministic Policy"
+[^src-4]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L148-163 -- "Policy-as-Code Series: Your First Policy, Capability Scoping, Rate Limiting, Conditional Policies, Approval Workflows, Policy Testing, Policy Versioning, MCP Governance"
+[^src-5]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L290 -- "ADR-0013: Fail Closed on Errors"
 [^card-1]: [治理优先于检索架构](governance-over-retrieval.md) -- Atlan 论证"规模决定架构，治理决定结果"，确定性策略执行是该治理原则的一种操作化机制
 [^card-2]: [AI RMF 的自愿性与可信赖性导向](ai-rmf-voluntary-trustworthiness.md) -- NIST AI RMF 的可信赖性目标为确定性策略执行提供了标准化方向

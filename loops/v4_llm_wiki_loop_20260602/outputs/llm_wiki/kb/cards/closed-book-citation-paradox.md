@@ -29,8 +29,8 @@ ALCE 实验揭示了一个反直觉的"闭卷-引用悖论"：不使用任何检
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "ClosedBook+PostCite delivers strong correctness but poor citation quality."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/eli5.tex -- "ClosedBook: Claim 18.6, Citation Rec. 15.5; Vanilla: Claim 12.0, Citation Rec. 51.1"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/asqa.tex -- "ClosedBook: EM 38.3, Citation Rec. 26.7; Vanilla: EM 40.4, Citation Rec. 73.6"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "(1) open-book models are easily distracted by irrelevant passages...a phenomenon also observed by Shi et al.; (2) ClosedBook often generates texts that are correct but not similar to any retrieved passages, making it difficult to match a citation post-hoc."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "citation recall of ClosedBook+PostCite is lower than Vanilla by 47% on ASQA."
+[^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "ClosedBook+PostCite delivers strong correctness but poor citation quality."
+[^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/eli5.tex -- "ClosedBook: Claim 18.6, Citation Rec. 15.5; Vanilla: Claim 12.0, Citation Rec. 51.1"
+[^src-3]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/asqa.tex -- "ClosedBook: EM 38.3, Citation Rec. 26.7; Vanilla: EM 40.4, Citation Rec. 73.6"
+[^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "(1) open-book models are easily distracted by irrelevant passages...a phenomenon also observed by Shi et al.; (2) ClosedBook often generates texts that are correct but not similar to any retrieved passages, making it difficult to match a citation post-hoc."
+[^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "citation recall of ClosedBook+PostCite is lower than Vanilla by 47% on ASQA."

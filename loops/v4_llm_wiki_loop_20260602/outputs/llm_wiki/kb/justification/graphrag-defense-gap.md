@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graph-poisoning/text.txt`
+来源：`data/raw/arxiv/arxiv-graph-poisoning/text.txt`
 源证据：
 - Abstract — "experiments show that state-of-the-art defense methods fail to detect these attacks"
 - Abstract — "highlighting that securing GraphRAG pipelines against knowledge poisoning remains largely unexplored"

@@ -29,10 +29,10 @@ ALCE 仅提供评估数据（每个数据集 1000 个样本来自开发集），
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/intro.tex -- "We present ALCE, the first reproducible benchmark for automatically evaluating LLMs' generations with citations."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- abstract -- "Existing work mainly relies on commercial search engines and human evaluation, making it challenging to reproduce and compare different modeling approaches."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/benchmark.tex -- "the system is required to return an output S, which consists of n statements s_1, ..., s_n, and each statement s_i cites a list of passages C_i"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/benchmark.tex -- "ASQA is a long-form factoid dataset...QAMPARI is a factoid QA dataset...ELI5 is a long-form QA dataset"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/benchmark.tex -- "We take 100-word passages because it is easier for humans to verify, and allows for more retrieved passages to fit in LLMs' limited context."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/intro.tex -- "We design automatic evaluation methods in three dimensions: fluency, correctness, and citation quality."
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/benchmark.tex -- "Our benchmark primarily assesses the citation capabilities of existing LLMs and does not provide training data"
+[^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/intro.tex -- "We present ALCE, the first reproducible benchmark for automatically evaluating LLMs' generations with citations."
+[^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- abstract -- "Existing work mainly relies on commercial search engines and human evaluation, making it challenging to reproduce and compare different modeling approaches."
+[^src-3]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/benchmark.tex -- "the system is required to return an output S, which consists of n statements s_1, ..., s_n, and each statement s_i cites a list of passages C_i"
+[^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/benchmark.tex -- "ASQA is a long-form factoid dataset...QAMPARI is a factoid QA dataset...ELI5 is a long-form QA dataset"
+[^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/benchmark.tex -- "We take 100-word passages because it is easier for humans to verify, and allows for more retrieved passages to fit in LLMs' limited context."
+[^src-6]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/intro.tex -- "We design automatic evaluation methods in three dimensions: fluency, correctness, and citation quality."
+[^src-7]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/benchmark.tex -- "Our benchmark primarily assesses the citation capabilities of existing LLMs and does not provide training data"

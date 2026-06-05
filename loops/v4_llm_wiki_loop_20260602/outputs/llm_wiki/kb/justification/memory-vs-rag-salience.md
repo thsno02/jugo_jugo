@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`
 源证据：
 - sections/result.tex — "Even the strongest RAG approach peaks at around 61% in the Judge metric, whereas Mem0 reaches 67%"
 - sections/result.tex — "By converting the conversation history into concise, structured representations, Mem0 and Mem0^g mitigate noise and surface more precise cues to the LLM"

@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt`
+来源：`data/raw/webpage/writethedocs-docs-as-code/text.txt`
 源证据：
 - L30-31 — "You can block merging of new features if they don't include documentation, which incentivizes developers to write about features while they are fresh"
 - L29 — "Developers will often write a first draft of documentation"

@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt`
+来源：`data/raw/webpage/llm-wiki-net/text.txt`
 源证据：
 - L142-144 — "Each research area is isolated. No cross-topic noise. Queries stay focused."
 - L302-303 — "Topic wikis (~/wiki/topics/<name>/) are isolated research areas. Each has its own sources, articles, outputs, and Obsidian vault config."

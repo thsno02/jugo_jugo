@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex`
+来源：`data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex`
 源证据：
 - Section 5.2 — "decomposing sessions into rounds significantly enhances reading performance"
 - Section 5.2 — "replacing sessions or rounds with extracted summaries or facts negatively impacts QA performance due to information loss"

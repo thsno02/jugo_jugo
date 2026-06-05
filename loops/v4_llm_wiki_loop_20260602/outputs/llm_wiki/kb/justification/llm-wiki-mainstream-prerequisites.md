@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt`
+来源：`data/raw/webpage/kunal-local-knowledge-base/text.txt`
 源证据：
 - L119-131 "Is the LLM Wiki the Future of Personal Knowledge Management?" — "Here's what needs to happen for this to go mainstream"
 - L123 — "The quality gap between a 7B parameter local model and GPT-4 is still enormous for synthesis tasks"

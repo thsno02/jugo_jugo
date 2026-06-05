@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt`
 源证据：
 - defense.tex — "PoisonedRAG could still achieve high ASRs and F1-Score, which means paraphrasing defense cannot effectively defend"
 - defense.tex — "the perplexity values of malicious texts are not statistically higher than those of clean texts"

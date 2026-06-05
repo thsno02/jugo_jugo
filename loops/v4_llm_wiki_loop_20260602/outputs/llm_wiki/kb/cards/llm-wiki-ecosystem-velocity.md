@@ -15,7 +15,7 @@ summary: >-
   llm-wiki-ecosystem-velocity（生态形成速度 / ecosystem velocity / 模式传播速度）
   指 Karpathy 于 2026 年 4 月提出 LLM Wiki 后，一周内即出现开源实现、YouTube 讲解、
   大量博客文章，随后出现 aillm.wiki 等商业目录站，体现模式的极快生态形成
-related:
+related: [llm-wiki-mainstream-prerequisites]
   - pattern-naming-resonance
   - llm-wiki-pattern
   - llm-wiki-setup-friction
@@ -33,7 +33,7 @@ Karpathy 于 2026 年 4 月提出 LLM Wiki 模式后，生态系统的形成速�
 
 [^card-1]: [LLM Wiki 主流化四条件](llm-wiki-mainstream-prerequisites.md) -- 生态形成速度描述了模式传播的"快"，主流化四条件描述了产品成熟的"慢"——一周内的爆发式传播与 2027 年前才可能出现的成熟产品之间存在显著的成熟度缺口
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/aillm-wiki-directory/text.txt` -- L23 -- "The idea caught on so fast that within a week there were already open-source implementations, YouTube explainers, and a dozen hot-take blog posts."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/aillm-wiki-directory/text.txt` -- L23 -- "What was missing was a single place that turns the spec into things you can actually download and apply without another weekend of trial and error."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/aillm-wiki-directory/text.txt` -- L23 -- "That is the gap this site fills."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/aillm-wiki-directory/text.txt` -- L43 -- "the rest of the internet explains the pattern, we show you how to run it on your own machine, your own vault, your own papers"
+[^src-1]: `data/raw/webpage/aillm-wiki-directory/text.txt` -- L23 -- "The idea caught on so fast that within a week there were already open-source implementations, YouTube explainers, and a dozen hot-take blog posts."
+[^src-2]: `data/raw/webpage/aillm-wiki-directory/text.txt` -- L23 -- "What was missing was a single place that turns the spec into things you can actually download and apply without another weekend of trial and error."
+[^src-3]: `data/raw/webpage/aillm-wiki-directory/text.txt` -- L23 -- "That is the gap this site fills."
+[^src-4]: `data/raw/webpage/aillm-wiki-directory/text.txt` -- L43 -- "the rest of the internet explains the pattern, we show you how to run it on your own machine, your own vault, your own papers"

@@ -14,7 +14,7 @@ aliases: [MOC, Map of Content, 主题地图, 引导阅读路径, guided reading 
 summary: >-
   map-of-content-pattern（MOC / Map of Content / 主题地图 / 引导阅读路径）是 LLM Wiki
   中按主题组织的引导阅读路径，区别于 index.md 的平面目录；摄入新论文时自动更新以避免孤立节点
-related: []
+related: [index-based-navigation]
 ---
 
 Map of Content（MOC）是 LLM Wiki 中的**主题性引导阅读路径**，区别于 index.md 的平面目录式导航[^card-1]。MOC 不是简单地列出所有页面，而是按特定主题或线索组织一组相关页面，提供有结构的阅读顺序。
@@ -27,7 +27,7 @@ MOC 与 index.md 互补：index.md 是按类别组织的完整目录，MOC 是�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/complete-tech-live-frontier/text.txt` -- "How Karpathy's pattern shows up in the build" -- "9 Maps of Content (guided reading paths)"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/complete-tech-live-frontier/text.txt` -- "How Karpathy's pattern shows up in the build" -- "Maps of Content get updated so the new piece sits in a guided reading path, not just an orphan node."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/complete-tech-live-frontier/text.txt` -- "If you only do one thing" -- "the two entry points to bookmark are wiki/mocs/communication-depth-spectrum.md (the 10-level walkthrough)"
+[^src-1]: `data/raw/webpage/complete-tech-live-frontier/text.txt` -- "How Karpathy's pattern shows up in the build" -- "9 Maps of Content (guided reading paths)"
+[^src-2]: `data/raw/webpage/complete-tech-live-frontier/text.txt` -- "How Karpathy's pattern shows up in the build" -- "Maps of Content get updated so the new piece sits in a guided reading path, not just an orphan node."
+[^src-3]: `data/raw/webpage/complete-tech-live-frontier/text.txt` -- "If you only do one thing" -- "the two entry points to bookmark are wiki/mocs/communication-depth-spectrum.md (the 10-level walkthrough)"
 [^card-1]: [索引文件导航机制](index-based-navigation.md) -- MOC 与 index.md 是互补的导航机制：index 是平面目录，MOC 是主题路径

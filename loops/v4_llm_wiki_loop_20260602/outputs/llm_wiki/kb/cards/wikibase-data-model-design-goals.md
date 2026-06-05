@@ -36,7 +36,7 @@ Wikibase 数据模型的首要目标是"澄清 Wikibase 中存储了什么信息
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 274-278 -- "Conceptual clarity: It should be clear what Wikibase can (and what it cannot) capture... Technical documentation: Almost every component of Wikibase has to work with the data"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 282-293 -- "Coverage... Simplicity... Extensibility... Flexibility... Exchange... Technical support"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 296-303 -- "Internal data structures... Export formats... Formal semantics"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 276-277 -- "It is not possible to capture all statements that one could make about the world... A balance must be found between expressive power and complexity/usability"
+[^src-1]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 274-278 -- "Conceptual clarity: It should be clear what Wikibase can (and what it cannot) capture... Technical documentation: Almost every component of Wikibase has to work with the data"
+[^src-2]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 282-293 -- "Coverage... Simplicity... Extensibility... Flexibility... Exchange... Technical support"
+[^src-3]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 296-303 -- "Internal data structures... Export formats... Formal semantics"
+[^src-4]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Goals and requirements" section, lines 276-277 -- "It is not possible to capture all statements that one could make about the world... A balance must be found between expressive power and complexity/usability"

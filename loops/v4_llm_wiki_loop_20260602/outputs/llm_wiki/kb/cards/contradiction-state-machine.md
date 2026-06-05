@@ -15,7 +15,7 @@ summary: >-
   contradiction-state-machine（矛盾状态机 / contradiction tracking / 矛盾检测与解决）
   是 LLM Wiki 插件中跟踪知识矛盾的状态机制：detected -> review_ok -> resolved（AI 修复）
   或 detected -> pending_fix（手动修复），矛盾在多源融合时带归因保留而非自动消除
-related:
+related: [contradiction-as-asset, edge-invalidation-mechanism]
   - lint-operation
   - source-faithfulness-risk
 ---
@@ -30,9 +30,13 @@ Karpathy LLM Wiki 插件实现了一套**矛盾状态机**（Contradiction State
 
 **矛盾检测**作为巡检（Lint）操作的一部分被执行，在健康扫描报告中与重复页、死链、空页、孤立页、缺失别名并列呈现[^src-3]。代码层面，矛盾检测有独立模块 `contradictions.ts` 负责[^src-4]。
 
+该状态机是对「矛盾即资产」原则的工程化实现——将「不覆盖，标记保留」的操作规则转化为可追踪的状态转换[^card-1]。与 Graphiti 的边失效机制形成对比：后者在检测到矛盾时优先采纳新信息并标记旧边失效，而非保留双方等待解决[^dist-1]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "Maintenance" L284 -- "Contradiction State Machine — detected → review_ok → resolved (AI fix) or detected → pending_fix (manual)"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "Knowledge Quality" L267 -- "Smart Knowledge Fusion — Multi-source updates merge new info without redundancy, contradictions preserved with attribution, reviewed: true pages protected from overwrite"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "Maintenance" L274 -- "Lint Health Scan — Detects duplicates, dead links, empty pages, orphans, missing aliases, and contradictions in one comprehensive report"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/obsidian-community-plugin/text.txt` -- "Codebase" L381 -- "contradictions.ts # Contradiction detection"
+[^src-1]: `data/raw/webpage/obsidian-community-plugin/text.txt` -- "Maintenance" L284 -- "Contradiction State Machine — detected → review_ok → resolved (AI fix) or detected → pending_fix (manual)"
+[^src-2]: `data/raw/webpage/obsidian-community-plugin/text.txt` -- "Knowledge Quality" L267 -- "Smart Knowledge Fusion — Multi-source updates merge new info without redundancy, contradictions preserved with attribution, reviewed: true pages protected from overwrite"
+[^src-3]: `data/raw/webpage/obsidian-community-plugin/text.txt` -- "Maintenance" L274 -- "Lint Health Scan — Detects duplicates, dead links, empty pages, orphans, missing aliases, and contradictions in one comprehensive report"
+[^src-4]: `data/raw/webpage/obsidian-community-plugin/text.txt` -- "Codebase" L381 -- "contradictions.ts # Contradiction detection"
+[^card-1]: [矛盾作为知识资产](contradiction-as-asset.md) -- 本卡实现矛盾跟踪的状态机机制，该卡提出矛盾保留的核心原则（矛盾是资产，不是错误）
+[^dist-1]: [边失效与动态知识更新机制](edge-invalidation-mechanism.md) -- 本卡保留矛盾双方并跟踪解决状态，该卡通过边失效直接解决矛盾（新信息优先），区分点在于是否保持矛盾的活跃状态

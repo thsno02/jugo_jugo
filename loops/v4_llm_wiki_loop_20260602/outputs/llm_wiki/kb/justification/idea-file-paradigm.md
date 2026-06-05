@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/karpathy-x-launch-post/text.txt`
+来源：`data/raw/webpage/karpathy-x-launch-post/text.txt`
 源证据：
 - Tweet 1 text — "in this era of LLM agents, there is less of a point/need of sharing the specific code/app, you just share the idea, then the other person's agent customizes & builds it for your specific needs"
 - Tweet 1 text — "So here's the idea in a gist format"

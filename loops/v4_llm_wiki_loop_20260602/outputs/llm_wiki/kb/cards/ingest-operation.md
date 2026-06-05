@@ -14,14 +14,14 @@ aliases: [摄入操作, ingest, 资料摄入, source ingestion]
 summary: >-
   ingest-operation（摄入操作 / ingest / 资料摄入 / source ingestion）是 LLM Wiki
   核心操作之一：LLM 读取新资料、更新索引和实体/概念页面，单次可触及 10-15 个 wiki 页面
-related: []
+related: [extraction-granularity-control, lint-operation, representation-first-ingest, review-involvement-spectrum]
 ---
 
 摄入（Ingest）是 LLM Wiki 的三大操作之一，负责将新资料整合进 wiki。标准流程为：LLM 阅读资料 → 与用户讨论关键要点 → 在 wiki 中写摘要页 → 更新索引 → 更新相关的实体和概念页面 → 在日志中追加条目。单次摄入可能触及 10-15 个 wiki 页面[^src-1]。
 
 **人类参与程度是一个谱系**：作者个人偏好逐条摄入并深度参与——阅读摘要、检查更新、引导 LLM 该强调什么。但也可以在较少监督下批量摄入多份资料[^src-2]。
 
-工作流程不是固定的——用户需要开发适合自己风格的流程并记录在 schema 中以供后续会话使用[^src-3]。摄入是三大操作之一，另两个是巡检[^card-1]和查询。人类参与程度的深入分析见参与谱系卡[^card-2]。
+工作流程不是固定的——用户需要开发适合自己风格的流程并记录在 schema 中以供后续会话使用[^src-3]。摄入是三大操作之一，另两个是巡检[^card-1]和查询。人类参与程度的深入分析见参与谱系卡[^card-2]。当源资料包含 PDF 或图片等非文本格式时，llm-wiki-karpathy 运行时采用表示先行的双路径摄入模型来处理[^card-3]。此外，Obsidian 插件提供了五级提取粒度配置，允许用户在分析深度与 API 成本之间灵活权衡[^card-4]。
 
 ## Footnotes
 
@@ -30,3 +30,5 @@ related: []
 [^src-3]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Operations > Ingest" P1 -- "It's up to you to develop the workflow that fits your style and document it in the schema for future sessions."
 [^card-1]: [巡检操作](lint-operation.md) -- 摄入和巡检是 LLM Wiki 的两个互补操作：摄入添加知识，巡检维护健康
 [^card-2]: [人类参与程度谱系](review-involvement-spectrum.md) -- 展开本卡提及的参与程度谱系
+[^card-3]: [表示先行摄入模型](representation-first-ingest.md) -- 本卡描述摄入操作的通用概念与流程，该卡展示 llm-wiki-karpathy v0.4.4 对文本与多模态资产的双路径摄入实现
+[^card-4]: [提取粒度控制](extraction-granularity-control.md) -- 本卡描述摄入操作的整体流程，该卡聚焦摄入过程中提取深度的五级可配置控制（Minimal 到 Fine）

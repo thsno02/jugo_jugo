@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt`
 源证据：
 - Abstract -- "We introduce Environment-injected Trajectory-based Agent Memory Poisoning (eTAMP), the first attack to achieve cross-session, cross-site compromise without requiring direct memory access."
 - Section: Threat Model -- "A malicious seller on an e-commerce platform embeds hidden instructions in their product page... the poisoned memory activates and causes the agent to post a promotional review"

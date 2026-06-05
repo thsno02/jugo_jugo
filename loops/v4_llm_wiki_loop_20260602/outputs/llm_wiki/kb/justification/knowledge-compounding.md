@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
+来源：`data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
 源证据：
 - Abstract P2 — "We extend the Agentic ROI framework... cost becomes a time-varying function Cost(t) governed by a coverage rate H(t) that follows a concave saturation curve."
 - Section 1.3 P4 — "we generalize the cost term from a static variable to a time-varying function Cost(t)"

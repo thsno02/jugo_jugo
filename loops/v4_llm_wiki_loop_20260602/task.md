@@ -1,7 +1,7 @@
 ---
 loop_id: v4_llm_wiki_loop_20260602
 created: 2026-06-02
-status: phase4_complete
+status: phase4b_complete
 note: v4 任务清单。实验迭代式推进：build --> test on gist --> refine --> expand。
 ---
 
@@ -53,6 +53,14 @@ note: v4 任务清单。实验迭代式推进：build --> test on gist --> refin
 - [x] 运行 governance pass（dedup + canonical 归一化 + distinction linking） -- canonical 归一化 1 处 + cross-link + 质量抽检 pass
 - [x] 人工抽检 5-10 张卡（源忠实性 + 原子性 + metadata 质量） -- 8 张卡源忠实抽检
 - [x] 构建 KB index（`kb/indexes/cards.md`，active-only view） -- 259 张 active 卡索引已构建
+
+---
+
+## Phase 4b -- Governance Remediation
+
+- [x] 从 footnotes 派生 related 字段 -- 扫描全部 280 张卡的 `[^card-*]` / `[^dist-*]` 脚注，提取链接目标 slug，union 合并至 related 字段；245 张卡被更新
+- [x] 重建 KB index (`kb/indexes/cards.md`) -- 280 张 active 卡，6 种 card_type（mechanism 108 / distinction 65 / source_claim 48 / concept 40 / operational_rule 11 / example_pattern 8）
+- [x] 链接统计 -- 861 条 related links，264/280 张卡有链接（94.3%），平均每卡 3.3 条链接
 
 ---
 

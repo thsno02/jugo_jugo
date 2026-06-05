@@ -13,7 +13,7 @@ canonical_concept: minority-pressure-promotion
 aliases: [少数派压力提升, minority pressure promotion, 少数假设保留, minority-hypothesis retention, 缓冲区压力积累, buffer pressure accumulation, 多周期压力]
 summary: >-
   minority-pressure-promotion（少数派压力提升 / minority-hypothesis retention / buffer pressure accumulation）是伴侣记忆框架中防止单一文化坍缩的补偿机制：少数派假设跨多个整合周期在缓冲区和隔离区保留，当积累的互相支持证据跨过提升阈值时可挑战引力保护的在位条目；这是论文最尖锐的可证伪预测（Prediction 4）
-related: [sleep-consolidation-architecture, contradiction-as-asset, memory-gravity, entrenchment-under-user-coupled-drift]
+related: [audit-stress-test, contradiction-as-asset, contradiction-state-machine, edge-invalidation-mechanism, entrenchment-under-user-coupled-drift, memory-gravity, sleep-consolidation-architecture]
 ---
 
 少数派压力提升是伴侣记忆框架中的核心补偿机制，解决的问题是：在流式一致性过滤下，少数派假设被存储但永远不被整合[^src-1]。
@@ -31,12 +31,20 @@ related: [sleep-consolidation-architecture, contradiction-as-asset, memory-gravi
 
 **已知风险**：批量整合也可能放大相关噪声而非真正的纠正——多个互相支持但错误的条目可能积累足够缓冲区压力来挑战正确的主导解释[^src-7]。
 
+作为加法策略，少数派压力提升与 AUDIT 压力测试形成互补的反固化双支柱——后者通过减法（悬挂高引力条目测试功能必要性）检测死权重和主动干扰，前者通过加法（跨周期积累异质证据）挑战在位者[^card-3]。
+
+本机制的矛盾保留哲学与 LLM Wiki 的「矛盾即资产」原则一致——两者都拒绝简单覆盖[^card-1]。矛盾状态机则提供了操作层面的互补：它跟踪单个矛盾的解决状态，而本机制聚焦于矛盾在多周期内的积累与提升[^card-2]。与此形成鲜明对比的是 Graphiti 的边失效机制，它在检测到矛盾时立即以新信息取代旧信息，没有多周期积累的设计[^dist-1]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.5" -- "Under streaming coherence filtering, a minority hypothesis is stored but never integrated."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.7" -- "Dormant alternatives are kept in the buffer and in quarantine at low storage cost. They are not stored for their own sake; they are stored so that the next consolidation cycle has something to score against incoming entries."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.7" -- "a minority position that started building buffer pressure three cycles ago can complete the accumulation in the current cycle"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.5" -- "Entries that contradict the active wiki individually but mutually support each other in the buffer are flagged as candidate updates to the dominant interpretation rather than quarantined."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 7" -- "The claim is not that minority hypotheses are stored, nor that they are surfaced, but that they measurably change downstream outputs at a non-trivial rate."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 7" -- "Prediction 4 targets something structurally different: belief revision through multi-cycle buffer pressure accumulation under a centrality-protected incumbent"
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.5" -- "Batched consolidation can also amplify correlated noise rather than genuine correction."
+[^src-1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.5" -- "Under streaming coherence filtering, a minority hypothesis is stored but never integrated."
+[^src-2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.7" -- "Dormant alternatives are kept in the buffer and in quarantine at low storage cost. They are not stored for their own sake; they are stored so that the next consolidation cycle has something to score against incoming entries."
+[^src-3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.7" -- "a minority position that started building buffer pressure three cycles ago can complete the accumulation in the current cycle"
+[^src-4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.5" -- "Entries that contradict the active wiki individually but mutually support each other in the buffer are flagged as candidate updates to the dominant interpretation rather than quarantined."
+[^src-5]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 7" -- "The claim is not that minority hypotheses are stored, nor that they are surfaced, but that they measurably change downstream outputs at a non-trivial rate."
+[^src-6]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 7" -- "Prediction 4 targets something structurally different: belief revision through multi-cycle buffer pressure accumulation under a centrality-protected incumbent"
+[^src-7]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.5" -- "Batched consolidation can also amplify correlated noise rather than genuine correction."
+[^card-1]: [矛盾作为知识资产](contradiction-as-asset.md) -- 本卡通过多周期压力积累保留少数派假设，该卡提出矛盾保留的核心原则：矛盾是资产，不应被覆盖
+[^card-2]: [矛盾状态机](contradiction-state-machine.md) -- 本卡聚焦跨周期的少数派假设积累与提升，该卡聚焦单个矛盾的状态跟踪与解决路径
+[^card-3]: [AUDIT 结构性压力测试](audit-stress-test.md) -- 本卡通过加法策略（积累异质证据挑战在位者），该卡通过减法策略（悬挂测试功能必要性），两者互补构成反固化双支柱
+[^dist-1]: [边失效与动态知识更新机制](edge-invalidation-mechanism.md) -- 本卡主张少数派假设通过多周期积累挑战主导解释，该卡主张新信息立即胜出（边失效），区分点在于矛盾解决的时间模型：渐进式证据积累 vs. 即时新优先

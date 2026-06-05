@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/openaitoolshub-six-months/text.txt`
+来源：`data/raw/webpage/openaitoolshub-six-months/text.txt`
 源证据：
 - L38 — "TL;DR enforcement saves your context window more than the index does"
 - L38 — "Every page in my wiki has a ≤50-character TL;DR at the top. When I ask Claude 'what did I decide about RAG vs LLM wiki?', it can scan 35 TL;DRs in a single read instead of trying to compress 35 full pages."

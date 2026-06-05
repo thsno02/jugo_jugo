@@ -13,7 +13,7 @@ canonical_concept: hybrid-triple-search-complementarity
 aliases: [三种搜索互补, triple search methods, cosine-BM25-BFS hybrid]
 summary: >-
   hybrid-triple-search-complementarity（三种搜索互补, cosine-BM25-BFS hybrid）Zep 组合三种搜索方法：余弦相似度（语义相似）、BM25 全文搜索（词汇相似）、广度优先图搜索（上下文相似），分别捕获不同维度的相关性
-related:
+related: [dual-retrieval-entity-semantic]
   - search-rerank-construct-pipeline
   - temporal-knowledge-graph-three-tier
 ---
@@ -34,10 +34,10 @@ Mem0^g 的知识图谱检索采用了类似的双路互补设计（实体锚定 
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 (Search) -- "Zep implements three search functions: cosine semantic similarity search, Okapi BM25 full-text search, and breadth-first search."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "cosine similarity captures semantic similarities"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "The first two functions utilize Neo4j's implementation of Lucene"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "breadth-first search over knowledge graphs has received limited attention in the RAG domain... phi_bfs can accept nodes as parameters for the search... This functionality proves particularly valuable when using recent episodes as seeds for the breadth-first search"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "The search field varies across the three object types: for E_s, we search the fact field; for N_s, the entity name; and for N_c, the community name"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "full-text search identifies word similarities, cosine similarity captures semantic similarities, and breadth-first search reveals contextual similarities"
+[^src-1]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 (Search) -- "Zep implements three search functions: cosine semantic similarity search, Okapi BM25 full-text search, and breadth-first search."
+[^src-2]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "cosine similarity captures semantic similarities"
+[^src-3]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "The first two functions utilize Neo4j's implementation of Lucene"
+[^src-4]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "breadth-first search over knowledge graphs has received limited attention in the RAG domain... phi_bfs can accept nodes as parameters for the search... This functionality proves particularly valuable when using recent episodes as seeds for the breadth-first search"
+[^src-5]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "The search field varies across the three object types: for E_s, we search the fact field; for N_s, the entity name; and for N_c, the community name"
+[^src-6]: `data/raw/arxiv/arxiv-zep/agent_source_bundle.txt` -- Section 3.1 -- "full-text search identifies word similarities, cosine similarity captures semantic similarities, and breadth-first search reveals contextual similarities"
 [^card-1]: [双路检索策略（实体锚定 + 语义三元组）](dual-retrieval-entity-semantic.md) -- Mem0^g 从实体锚定和语义三元组两个路径实现知识图谱检索，与 Zep 的三路方法互为补充

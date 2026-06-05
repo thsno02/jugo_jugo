@@ -13,7 +13,7 @@ canonical_concept: runtime-agent-boundary
 aliases: [运行时-代理边界, runtime-agent contract, 确定性运行时与智能代理分工]
 summary: >-
   runtime-agent-boundary（运行时-代理边界 / runtime-agent contract）llm-wiki-karpathy 的架构核心：确定性运行时拥有路径/ID/验证/写入/清单追踪/导航生成，代理拥有摘要/OCR/综合/笔记分类/持续改进
-related: [human-llm-role-division, three-layer-architecture, representation-first-ingest]
+related: [human-llm-role-division, representation-first-ingest, three-layer-architecture]
 ---
 
 llm-wiki-karpathy 运行时在「Runtime Philosophy」中明确划定了确定性运行时与 LLM 代理之间的职责边界[^src-1]。
@@ -37,7 +37,7 @@ llm-wiki-karpathy 运行时在「Runtime Philosophy」中明确划定了确定�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "The runtime owns: ... The agent owns: ..."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "The runtime owns: canonical paths, canonical IDs, validation, deterministic writes, manifest-backed representation tracking, generated wiki navigation"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "The agent owns: summarization, OCR, vision, or profiling work performed outside the runtime, synthesis, deciding whether a result belongs in output, concept, entity, or synthesis, improving the wiki over time instead of leaving value trapped in chat"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "kb_prepare_source_bundle is the bridge between those layers for non-text assets"
+[^src-1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "The runtime owns: ... The agent owns: ..."
+[^src-2]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "The runtime owns: canonical paths, canonical IDs, validation, deterministic writes, manifest-backed representation tracking, generated wiki navigation"
+[^src-3]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "The agent owns: summarization, OCR, vision, or profiling work performed outside the runtime, synthesis, deciding whether a result belongs in output, concept, entity, or synthesis, improving the wiki over time instead of leaving value trapped in chat"
+[^src-4]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "kb_prepare_source_bundle is the bridge between those layers for non-text assets"

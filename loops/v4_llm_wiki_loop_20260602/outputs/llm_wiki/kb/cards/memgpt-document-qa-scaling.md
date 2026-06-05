@@ -13,7 +13,7 @@ canonical_concept: memgpt-document-qa-scaling
 aliases: [文档问答扩展性, document QA scaling, 多文档问答]
 summary: >-
   memgpt-document-qa-scaling（文档问答扩展性, document QA scaling）在基于 NaturalQuestions-Open 的文档 QA 任务中，MemGPT 性能不受文档数量增加影响，而固定上下文基线受限于检索器性能和截断降质；MemGPT 通过多次查询 archival storage 并迭代分页突破单次检索限制，但有时会提前停止分页
-related: [virtual-context-management, memgpt-nested-kv-retrieval, memgpt-function-chaining]
+related: [memgpt-function-chaining, memgpt-nested-kv-retrieval, virtual-context-management]
 ---
 
 MemGPT 论文在文档问答任务上展示了虚拟上下文管理的扩展性优势 [^src-1]。
@@ -27,8 +27,8 @@ MemGPT 论文在文档问答任务上展示了虚拟上下文管理的扩展性�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- Figure 3 caption -- "MemGPT's performance is unaffected by increased context length."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "We use MemGPT's default storage settings which uses PostgreSQL for archival memory storage with vector search enabled via the pgvector extention."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "MemGPT actively retrieves documents from its archival storage (and can iteratively page through results), so the total number of documents available to MemGPT is no longer limited by the number of documents that fit within the LLM processor's context window."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "document truncation reduces accuracy as documents shrink as the chance of the relevant snippet (in the gold document) being omitted grows"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "we observe that MemGPT will often stop paging through retriever results before exhausting the retriever database."
+[^src-1]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- Figure 3 caption -- "MemGPT's performance is unaffected by increased context length."
+[^src-2]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "We use MemGPT's default storage settings which uses PostgreSQL for archival memory storage with vector search enabled via the pgvector extention."
+[^src-3]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "MemGPT actively retrieves documents from its archival storage (and can iteratively page through results), so the total number of documents available to MemGPT is no longer limited by the number of documents that fit within the LLM processor's context window."
+[^src-4]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "document truncation reduces accuracy as documents shrink as the chance of the relevant snippet (in the gold document) being omitted grows"
+[^src-5]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "we observe that MemGPT will often stop paging through retriever results before exhausting the retriever database."

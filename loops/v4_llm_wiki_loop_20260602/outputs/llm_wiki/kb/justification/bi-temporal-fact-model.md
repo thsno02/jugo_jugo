@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
 源证据：
 - Section 2.1 — "Zep implements a bi-temporal model, where timeline T represents the chronological ordering of events, and timeline T' represents the transactional order of Zep's data ingestion."
 - Section 2.2.3 — "the system tracks four timestamps: t'_created and t'_expired in T'... t_valid and t_invalid in T"

@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt`
+来源：`data/raw/webpage/langchain-long-term-memory-docs/text.txt`
 源证据：
 - "Long-term memory" 概述段 — "Long-term memory is built on LangGraph stores, which save data as JSON documents organized by namespace and key."
 - "Memory storage" 段 — "Each memory is organized under a custom namespace (similar to a folder) and a distinct key (like a file name)."

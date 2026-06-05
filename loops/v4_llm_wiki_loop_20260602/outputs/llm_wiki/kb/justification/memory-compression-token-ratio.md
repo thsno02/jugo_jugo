@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`
 源证据：
 - sections/result.tex — "Mem0 encodes complete dialogue turns in a natural language representation and therefore occupies only 7k tokens...Zep's memory graph consumes in excess of 600k tokens"
 - sections/result.tex — "The inflation arises from Zep's design choice to cache a full abstractive summary at every node"

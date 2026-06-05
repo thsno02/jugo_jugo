@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt`
+来源：`data/raw/arxiv/arxiv-ragas/text.txt`
 源证据：
 - Abstract L37 — "We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines."
 - Abstract L37 — "a suite of metrics which can be used to evaluate these different dimensions without having to rely on ground truth human annotations"

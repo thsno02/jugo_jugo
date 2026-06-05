@@ -13,7 +13,7 @@ canonical_concept: lexical-vs-semantic-eval-gap
 aliases: [词汇 vs 语义评估, F1/BLEU vs LLM-as-Judge, 评估指标鸿沟]
 summary: >-
   lexical-vs-semantic-eval-gap（词汇 vs 语义评估 / F1/BLEU vs LLM-as-Judge）Mem0 论文指出 F1 和 BLEU-1 等词汇匹配指标无法捕获事实性错误（如将 March 误为 July 仍得高分），提出 LLM-as-a-Judge 作为语义评估补充，同时引入 10 次独立运行取均值以应对其随机性
-related: [source-faithfulness-risk]
+related: [rag-evaluation-meta-evaluation, ragas-reference-free-rag-evaluation, source-faithfulness-risk]
 ---
 
 Mem0 论文批判了对话 AI 研究中普遍使用的词汇相似度指标（F1 和 BLEU-1），指出它们在评估事实准确性时存在根本性缺陷 [^src-1]。
@@ -30,10 +30,10 @@ RAGAS 的无参考评估框架从设计层面回应了这一鸿沟——完全�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "these metrics exhibit significant limitations when evaluating factual accuracy in conversational contexts"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "Despite containing a critical factual error regarding the birth month, traditional metrics would assign relatively high scores due to lexical overlap in the remaining tokens"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "This approach leverages a separate, more capable LLM to assess response quality across multiple dimensions, including factual accuracy, relevance, completeness, and contextual appropriateness"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "we conducted 10 independent runs for each method on the entire dataset and report the mean scores along with ±1 standard deviation"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/result.tex -- Table 1 showing ranking differences between F1/BLEU and Judge metrics
+[^src-1]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "these metrics exhibit significant limitations when evaluating factual accuracy in conversational contexts"
+[^src-2]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "Despite containing a critical factual error regarding the birth month, traditional metrics would assign relatively high scores due to lexical overlap in the remaining tokens"
+[^src-3]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "This approach leverages a separate, more capable LLM to assess response quality across multiple dimensions, including factual accuracy, relevance, completeness, and contextual appropriateness"
+[^src-4]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/experiment_setup.tex -- "we conducted 10 independent runs for each method on the entire dataset and report the mean scores along with ±1 standard deviation"
+[^src-5]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/result.tex -- Table 1 showing ranking differences between F1/BLEU and Judge metrics
 [^card-1]: [RAGAS 无参考评估框架](ragas-reference-free-rag-evaluation.md) -- RAGAS 完全绕过词汇匹配指标，从设计层面回应了词汇 vs 语义评估鸿沟
 [^card-2]: [RAG 评估框架的元评估方法论](rag-evaluation-meta-evaluation.md) -- RAGChecker 的元评估量化了评估指标与人类偏好的相关性，从数据层面印证词汇指标系统性弱于语义指标

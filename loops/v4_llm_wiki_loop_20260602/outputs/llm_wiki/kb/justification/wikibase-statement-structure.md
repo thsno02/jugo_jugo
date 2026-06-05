@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt`
+来源：`data/raw/webpage/wikibase-data-model/text.txt`
 源证据：
 - "Statements" section, lines 530-545 — Statement 的五个组件定义
 - "Statements" section, lines 548-570 — qualifier Snaks 使用示例

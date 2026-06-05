@@ -29,9 +29,9 @@ related: [alce-citation-benchmark, retrieval-as-citation-bottleneck]
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- abstract -- "on the ELI5 dataset, even the best models lack complete citation support 50% of the time."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/eli5.tex -- "Vanilla (5-psg): 51.1 citation recall; w/ Rerank: 69.3; GPT-4 (5-psg): 44.0"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/asqa.tex -- "Vanilla (5-psg): 73.6 citation recall"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/qampari.tex -- "Vanilla (5-psg): 20.5 citation recall"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/asqa.tex -- "LLaMA-13B (3-psg): citation Rec. 10.6"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/conclusion.tex -- "current systems have considerable room for improvement on ALCE"
+[^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- abstract -- "on the ELI5 dataset, even the best models lack complete citation support 50% of the time."
+[^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/eli5.tex -- "Vanilla (5-psg): 51.1 citation recall; w/ Rerank: 69.3; GPT-4 (5-psg): 44.0"
+[^src-3]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/asqa.tex -- "Vanilla (5-psg): 73.6 citation recall"
+[^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/qampari.tex -- "Vanilla (5-psg): 20.5 citation recall"
+[^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/asqa.tex -- "LLaMA-13B (3-psg): citation Rec. 10.6"
+[^src-6]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/conclusion.tex -- "current systems have considerable room for improvement on ALCE"

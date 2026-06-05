@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt`
+来源：`data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt`
 源证据：
 - L429-438 — "OWASP Agentic AI Top 10 All 10 risks covered with deterministic controls ... SOC 2 Control mapping with audit trail export"
 - L308 — "ADR-0022: Compliance Auto-Mapping"

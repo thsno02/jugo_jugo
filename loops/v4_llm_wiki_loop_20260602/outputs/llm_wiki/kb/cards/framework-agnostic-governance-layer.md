@@ -15,7 +15,7 @@ summary: >-
   framework-agnostic-governance-layer（框架无关治理 / framework-agnostic governance / 治理与框架解耦）
   Microsoft Agent Governance Toolkit 将治理设计为与 agent 框架解耦的独立层，通过 Framework Adapter Contract
   规范适配器接口，支持 LangChain/CrewAI/AutoGen/OpenAI Agents/MCP/A2A 等 20+ 框架，治理规则一次定义多处执行
-related: []
+related: [governance-over-retrieval]
 ---
 
 Microsoft Agent Governance Toolkit 将治理设计为一个与具体 agent 框架无关的独立层：同一套治理规则可跨框架执行，不需要为每个框架单独实现治理逻辑 [^src-1]。
@@ -28,8 +28,8 @@ Microsoft Agent Governance Toolkit 将治理设计为一个与具体 agent 框�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L383 -- "Works with any agent framework: LangChain, CrewAI, AutoGen, Google ADK, OpenAI Agents, LlamaIndex, Haystack, Mastra, MCP, A2A, and more."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L259 -- "Framework Adapter Contract"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L419 -- "Framework Adapter Contract 152"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L387-398 -- "openai-agents-governed ... mcp-trust-verified-server MCP Trust-verified MCP server implementation"
+[^src-1]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L383 -- "Works with any agent framework: LangChain, CrewAI, AutoGen, Google ADK, OpenAI Agents, LlamaIndex, Haystack, Mastra, MCP, A2A, and more."
+[^src-2]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L259 -- "Framework Adapter Contract"
+[^src-3]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L419 -- "Framework Adapter Contract 152"
+[^src-4]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L387-398 -- "openai-agents-governed ... mcp-trust-verified-server MCP Trust-verified MCP server implementation"
 [^card-1]: [治理优先于检索架构](governance-over-retrieval.md) -- Atlan 论证数据治理是知识系统成败的决定因素，框架无关的治理层使这一原则可在任何 agent 框架上落地

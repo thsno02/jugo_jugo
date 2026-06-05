@@ -13,7 +13,7 @@ canonical_concept: rerank-citation-boost
 aliases: [Rerank引用提升, citation reranking, 多采样引用择优]
 summary: >-
   rerank-citation-boost（Rerank引用提升, 多采样引用择优）对每个问题随机采样4次回答，按自动 citation recall 分数选最优，在 ASQA 上将 citation recall 从 73.6% 提升至 84.8%（+11.2pp），在 ELI5 上从 51.1% 提升至 69.3%（+18.2pp），经人工评估确认有效
-related: [nli-based-citation-verification, citation-support-gap]
+related: [citation-support-gap, nli-based-citation-verification]
 ---
 
 ALCE 提出的 Rerank 策略是一种简单但有效的后编辑方法，通过多次采样并按引用质量排序来提升最终输出的引用质量 [^src-1]。
@@ -31,7 +31,7 @@ ALCE 提出的 Rerank 策略是一种简单但有效的后编辑方法，通过�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/model.tex -- "We randomly sample n_sample=4 responses for each question, and select the best response using the automatic citation recall score."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/model.tex -- "we expect Rerank to improve the citation quality."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/asqa.tex, tables/eli5.tex -- Rerank numerical results
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/human_asqa_all.tex, tables/human_eli5_all.tex -- "ChatGPT Vanilla human Rec. 74.7 → w/ Rerank 79.3"
+[^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/model.tex -- "We randomly sample n_sample=4 responses for each question, and select the best response using the automatic citation recall score."
+[^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/model.tex -- "we expect Rerank to improve the citation quality."
+[^src-3]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/asqa.tex, tables/eli5.tex -- Rerank numerical results
+[^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/human_asqa_all.tex, tables/human_eli5_all.tex -- "ChatGPT Vanilla human Rec. 74.7 → w/ Rerank 79.3"

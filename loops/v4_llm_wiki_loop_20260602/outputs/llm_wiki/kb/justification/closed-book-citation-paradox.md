@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-alce/agent_source_bundle.txt`
 源证据：
 - sections/results.tex -- "ClosedBook+PostCite delivers strong correctness but poor citation quality."
 - sections/results.tex -- "(1) open-book models are easily distracted by irrelevant passages...a phenomenon also observed by Shi et al.; (2) ClosedBook often generates texts that are correct but not similar to any retrieved passages"

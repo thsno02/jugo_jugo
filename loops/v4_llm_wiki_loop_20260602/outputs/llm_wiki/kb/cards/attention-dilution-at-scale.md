@@ -15,18 +15,19 @@ summary: >-
   attention-dilution-at-scale（注意力稀释 / attention dilution / 全上下文退化）是全上下文
   KV cache 推理在知识规模扩大时性能退化的机制——注意力被大量无关内容稀释，导致其在规模化场景下
   表现劣于 RAG
-related: [kv-cache-vs-rag-tradeoff, compilation-gap, context-window-degradation]
+related: [compilation-gap, context-extension-insufficiency, context-window-degradation, kv-cache-vs-rag-tradeoff]
 ---
 
 **注意力稀释（attention dilution）** 是全上下文 KV cache 推理在知识规模扩大时性能退化的核心机制[^src-1]。
 
 在 WiCER 论文的实验中，全上下文 KV cache 推理在策展过的（curated）小规模知识上表现优于 RAG（4.38 vs. 4.08，满分 5）[^src-2]。然而当知识规模增大时，模型的注意力机制无法在大量上下文中有效聚焦于相关信息，导致性能下降至**低于 RAG**[^src-3]。
 
-这一发现揭示了全上下文方案的根本性限制：它不是简单地"上下文越大越好"。注意力稀释为 wiki 编译提供了动机——与其将全部原始文档塞入上下文，不如编译为更紧凑的 wiki 以减少注意力负担。但编译本身又引入了编译缺口的风险，形成一个需要平衡的张力。HN 社区的实践报告独立印证了这一机制——即使名义上下文窗口达 1M，LLM 在 200k-300k 处就开始"遗忘"[^card-context-window-degradation]。
+这一发现揭示了全上下文方案的根本性限制：它不是简单地"上下文越大越好"。注意力稀释为 wiki 编译提供了动机——与其将全部原始文档塞入上下文，不如编译为更紧凑的 wiki 以减少注意力负担。但编译本身又引入了编译缺口的风险，形成一个需要平衡的张力。HN 社区的实践报告独立印证了这一机制——即使名义上下文窗口达 1M，LLM 在 200k-300k 处就开始"遗忘"[^card-context-window-degradation]。Mem0 论文在论证上下文扩展不充分性时也援引了注意力机制在远距离 token 上退化的证据，进一步佐证了这一机制的普遍性[^card-context-extension-insufficiency]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "degrades below RAG at scale due to attention dilution"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "full context KV cache inference outperforms RAG on curated knowledge (4.38 vs. 4.08 out of 5, 7.3 faster TTFT)"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "but degrades below RAG at scale due to attention dilution"
+[^src-1]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "degrades below RAG at scale due to attention dilution"
+[^src-2]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "full context KV cache inference outperforms RAG on curated knowledge (4.38 vs. 4.08 out of 5, 7.3 faster TTFT)"
+[^src-3]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "but degrades below RAG at scale due to attention dilution"
 [^card-context-window-degradation]: [上下文窗口退化现象](context-window-degradation.md) -- HN 社区报告 LLM 在 200k-300k token 处开始遗忘，为注意力稀释机制提供了来自实践的独立佐证
+[^card-context-extension-insufficiency]: [上下文窗口扩展的不充分性](context-extension-insufficiency.md) -- 本卡聚焦注意力稀释的机制，该卡从 Mem0 论文论证上下文扩展在主题不连续场景下的根本不充分性，并援引注意力退化作为理论支撑

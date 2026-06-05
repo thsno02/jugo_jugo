@@ -13,7 +13,7 @@ canonical_concept: open-source-vs-proprietary-context-discrimination
 aliases: [开源闭源上下文辨别差距, open vs proprietary context discrimination, 盲信上下文, blind context trust]
 summary: >-
   open-source-vs-proprietary-context-discrimination（开源闭源上下文辨别差距 / blind context trust）RAGChecker 实验发现开源模型（Llama3/Mixtral）具有更高的 faithfulness 但这主要源于更高的 noise sensitivity——盲目信任上下文；GPT-4 的 context utilization 更高而 noise sensitivity 更低，能更好地区分上下文中的有效信息与噪声
-related: [relevant-vs-irrelevant-noise-sensitivity, context-utilization-as-performance-key, rag-generator-self-knowledge]
+related: [context-utilization-as-performance-key, rag-generator-self-knowledge, relevant-vs-irrelevant-noise-sensitivity]
 ---
 
 RAGChecker 对 8 个 RAG 系统的评估揭示了开源模型和闭源模型在处理检索上下文时的本质差异[^src-1]。
@@ -30,6 +30,6 @@ Llama3-70B 展现了最高的 faithfulness（BM25 配对时 93.2，E5-Mistral �
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Main Results" -- "Open-Source Models are Worse at Distinguishing Accurate Information from Noise. GPT-4 has both higher context utilization and lower noise sensitivity than the other three open source models. Open source models are faithful but tend to trust the context blindly"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Main Results" -- "Llama3-70b demonstrates the highest faithfulness scores... However, the superior faithfulness scores of Llama3-70b are primarily due to its higher noise sensitivity"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "tables/ragchecker_results_avg.tex" -- "GPT-4 CU=61.4/60.4, NS-I=26.2/28.9; Llama3-70b CU=56.2/57.6, NS-I=30.4/31.7"
+[^src-1]: `data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Main Results" -- "Open-Source Models are Worse at Distinguishing Accurate Information from Noise. GPT-4 has both higher context utilization and lower noise sensitivity than the other three open source models. Open source models are faithful but tend to trust the context blindly"
+[^src-2]: `data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/experiments.tex, Main Results" -- "Llama3-70b demonstrates the highest faithfulness scores... However, the superior faithfulness scores of Llama3-70b are primarily due to its higher noise sensitivity"
+[^src-3]: `data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "tables/ragchecker_results_avg.tex" -- "GPT-4 CU=61.4/60.4, NS-I=26.2/28.9; Llama3-70b CU=56.2/57.6, NS-I=30.4/31.7"

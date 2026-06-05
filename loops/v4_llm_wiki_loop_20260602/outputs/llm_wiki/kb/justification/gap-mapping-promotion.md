@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt`
+来源：`data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt`
 源证据：
 - "What 0.4.4 Implements" — "deterministic gap mapping and promotion through kb_map_gaps and kb_promote_gap"
 - "Runtime Philosophy" — "kb_map_gaps and kb_promote_gap still cover durable knowledge growth on top of that ingest layer."

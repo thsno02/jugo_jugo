@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graph-poisoning/text.txt`
+来源：`data/raw/arxiv/arxiv-graph-poisoning/text.txt`
 源证据：
 - Abstract — "The first attack, named Targeted KPA (TKPA), utilizes graph-theoretic analysis to locate vulnerable nodes in the generated graphs and rewrites the corresponding narratives with LLMs"
 - Abstract — "achieving precise control over specific question-answering (QA) outcomes with a success rate of 93.1%"

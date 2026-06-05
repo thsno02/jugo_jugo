@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/openaitoolshub-six-months/text.txt`
+来源：`data/raw/webpage/openaitoolshub-six-months/text.txt`
 源证据：
 - L58 — "when Claude finds a new claim that contradicts a wiki page, the rule is don't overwrite, mark. Add contradicts: field, keep both, surface during lint."
 - L96 — "contradictions are assets, not errors. I now explicitly run contradicts: and keep both versions. Rohit v2 is right about this and v1 is silent."

@@ -14,7 +14,7 @@ aliases: [跨会话连续性, session continuity, 会话持久化]
 summary: >-
   cross-session-continuity（跨会话连续性 / session continuity / 会话持久化）是 LLM Wiki
   通过三个持久化组件（raw sources、wiki、schema）加 log.md 实现跨会话连续性的机制
-related: []
+related: [schema-as-configuration]
 ---
 
 LLM 的每个会话从零开始，没有先前会话的记忆。LLM Wiki 通过**三个持久化到磁盘的组件**解决跨会话连续性：

@@ -13,7 +13,7 @@ canonical_concept: memory-gravity
 aliases: [记忆引力, memory gravity, 结构承重保护, load-bearing protection, 引力保护]
 summary: >-
   memory-gravity（记忆引力 / memory gravity / 结构承重保护）是伴侣记忆框架中保护结构承重条目免受朴素剪枝的机制；基于中心性 C(i) 和下游碎片化成本 F(i) 计算，必须满足四个属性：中心性单调、碎片化单调、亚线性增长（防止绝对在位者陷阱）、有界性；关键区别于 PageRank 在于引力是前瞻性的（移除后什么会坏）而非回顾性的
-related: [companion-knowledge-system, vitality-score-formula, audit-stress-test]
+related: [audit-stress-test, companion-knowledge-system, graph-modularity-for-summarization, vitality-score-formula]
 ---
 
 记忆引力（memory gravity）保护那些移除后会导致知识库级联碎片化的条目[^src-1]。保护的理由不是因为这些条目是"真的"，而是因为它们对 wiki 的连贯运作具有结构必要性。
@@ -32,11 +32,14 @@ related: [companion-knowledge-system, vitality-score-formula, audit-stress-test]
 
 **已知失败模式**：一个在被识别为错误之前就已成为承重节点的假条目会受到更多而非更少的保护。框架不消除这一问题，而是通过 AUDIT 的悬挂测试来应对[^src-6]。
 
+此外，记忆引力利用的是节点层的中心性属性，与 GraphRAG 利用的群组层模块性属性（社区可分性）形成对照——两者代表图结构服务知识管理的不同粒度[^dist-1]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "Memory gravity protects entries whose removal would cascade through the knowledge base. Not because those entries are true, but because they are structurally essential"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "G_i^base = f(C(i), F(i)) where C(i) is a centrality measure... F(i) is downstream fragmentation cost"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "G^base MUST satisfy four properties: Monotonicity in centrality... Monotonicity in fragmentation... Sub-linear growth under incumbency... Boundedness"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "gravity's structural component does not decay, only the access-modulated effective component does"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "Memory gravity differs on a prospective dimension that bibliometrics does not address: F(i) measures what would break if the entry were removed now, not what has historically referenced it."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "A false entry that became load-bearing before it was recognized as false is more protected, not less. The framework does not eliminate this."
+[^src-1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "Memory gravity protects entries whose removal would cascade through the knowledge base. Not because those entries are true, but because they are structurally essential"
+[^src-2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "G_i^base = f(C(i), F(i)) where C(i) is a centrality measure... F(i) is downstream fragmentation cost"
+[^src-3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "G^base MUST satisfy four properties: Monotonicity in centrality... Monotonicity in fragmentation... Sub-linear growth under incumbency... Boundedness"
+[^src-4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "gravity's structural component does not decay, only the access-modulated effective component does"
+[^src-5]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "Memory gravity differs on a prospective dimension that bibliometrics does not address: F(i) measures what would break if the entry were removed now, not what has historically referenced it."
+[^src-6]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.6" -- "A false entry that became load-bearing before it was recognized as false is more protected, not less. The framework does not eliminate this."
+[^dist-1]: [图模块性作为层级摘要的结构基础](graph-modularity-for-summarization.md) -- 本卡利用图的中心性与碎片化成本决定记忆保留，该卡利用图的模块性（社区可分性）驱动主题摘要；区分点在于同为图属性，中心性关注单节点的结构重要性（前瞻性影响），模块性关注节点群组的内聚结构（信息压缩）

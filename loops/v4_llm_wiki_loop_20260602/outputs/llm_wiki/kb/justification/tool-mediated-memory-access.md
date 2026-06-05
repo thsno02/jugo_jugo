@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt`
+来源：`data/raw/webpage/langchain-long-term-memory-docs/text.txt`
 源证据：
 - "Usage" 段 — "Tools can then read from and write to the store using the runtime.store parameter."
 - "Read long-term memory in tools" 代码示例 — `runtime.store.get(("users",), user_id)`

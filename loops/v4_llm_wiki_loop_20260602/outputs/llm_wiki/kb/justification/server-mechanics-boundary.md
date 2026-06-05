@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt`
+来源：`data/raw/pypi/pypi-llm-wiki-mcp/text.txt`
 源证据：
 - L177 — "The server enforces mechanics, not content shape"
 - L187 — "The server does not validate frontmatter shape, page categories, or link targets. That layer lives in your wiki/CLAUDE.md schema doc and grows with the LLM. Karpathy's gist is deliberately silent on content shape; baking a schema into the server would defeat the point."

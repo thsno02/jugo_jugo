@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt`
+来源：`data/raw/hacker_news/hacker-news-original-thread/text.txt`
 源证据：
 - lelanthran 评论 — "We've already got 1m context, 800k context, and they still start 'forgetting' things around the 200k - 300k mark."
 - Imanari 评论 — "I think next gen models with 10M context and/or 1000tps will make this obsolete."

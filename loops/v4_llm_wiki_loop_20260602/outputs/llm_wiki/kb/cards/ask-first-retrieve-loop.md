@@ -13,7 +13,7 @@ canonical_concept: ask-first-retrieve-loop
 aliases: [先查后做循环, ask-first loop, 技能查找-捕获-保存-检索循环, skill lookup retrieve loop]
 summary: >-
   ask-first-retrieve-loop（先查后做循环 / ask-first loop / 技能查找-捕获-保存-检索循环）Cognition 的四步 agent 工作循环：任务开始时先查询团队已有技能（Ask first）→ 捕获工作证据（Capture work）→ 起草并审批技能（Save skills）→ 未来 agent 加载已有技能后再行动（Retrieve later），核心原则是检索先于猜测
-related: [agent-memory-lifecycle-phases, confirm-first-skill-capture, executable-guidance-vs-context-pile]
+related: [agent-memory-lifecycle-phases, confirm-first-skill-capture, executable-guidance-vs-context-pile, retrieval-vs-maintenance]
 ---
 
 Cognition 定义了一个四步 agent 工作循环，其核心原则是**检索先于猜测**[^src-1]。
@@ -32,11 +32,11 @@ Cognition 定义了一个四步 agent 工作循环，其核心原则是**检索�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "For organizations" section -- "let every agent ask the brain before guessing"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Ask first" step -- "At task start, the agent checks what your team has already figured out."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "SKILL LOOKUP" section -- "vercel-env-scoping / auth-callback-race / stripe-webhook-retry"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Capture work" step -- "Commands, file edits, stuck points, and outcomes become evidence for a reusable workflow."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Save skills" step -- "Cognition drafts the SKILL.md and waits for a human yes before sharing it."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Retrieve later" step -- "Bob hits the same wall later. His agent loads Alice's fix before guessing."
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Retrieve later" step -- "Bob hits the same wall later. His agent loads Alice's fix before guessing."
+[^src-1]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "For organizations" section -- "let every agent ask the brain before guessing"
+[^src-2]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Ask first" step -- "At task start, the agent checks what your team has already figured out."
+[^src-3]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "SKILL LOOKUP" section -- "vercel-env-scoping / auth-callback-race / stripe-webhook-retry"
+[^src-4]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Capture work" step -- "Commands, file edits, stuck points, and outcomes become evidence for a reusable workflow."
+[^src-5]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Save skills" step -- "Cognition drafts the SKILL.md and waits for a human yes before sharing it."
+[^src-6]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Retrieve later" step -- "Bob hits the same wall later. His agent loads Alice's fix before guessing."
+[^src-7]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Retrieve later" step -- "Bob hits the same wall later. His agent loads Alice's fix before guessing."
 [^card-1]: [检索与维护的区别](retrieval-vs-maintenance.md) -- Falconer 指出大多数企业工具只是检索工具，真正的差异化在于维护循环，"先查后做"正是维护优先理念的具体实践

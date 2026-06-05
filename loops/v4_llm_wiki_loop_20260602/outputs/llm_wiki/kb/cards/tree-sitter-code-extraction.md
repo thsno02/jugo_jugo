@@ -15,7 +15,7 @@ summary: >-
   tree-sitter-code-extraction（Tree-sitter代码提取 / AST代码知识提取）是一种通过 Tree-sitter
   增量解析器对源代码进行 AST 级结构化知识提取的机制：从 19 种语言中提取类、函数、类型继承、
   函数签名、文档注释和调用图，无需 LLM 参与即可生成知识图谱的代码层节点
-related:
+related: []
   - my-llm-wiki-implementation
   - ingest-operation
   - three-layer-architecture
@@ -36,5 +36,5 @@ Tree-sitter AST 代码知识提取是一种将源代码转化为知识图谱节�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-my-llm-wiki/text.txt` -- L108 -- "Tree-sitter AST: classes, functions, typed extends / implements , function signatures, doc comments (Javadoc / JSDoc / GoDoc / /// ), call graph."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-my-llm-wiki/text.txt` -- L108 -- "Code (19 languages) — Python, TypeScript/JavaScript, Go, Rust, Java, C/C++, Ruby, C#, and more ( full list )."
+[^src-1]: `data/raw/pypi/pypi-my-llm-wiki/text.txt` -- L108 -- "Tree-sitter AST: classes, functions, typed extends / implements , function signatures, doc comments (Javadoc / JSDoc / GoDoc / /// ), call graph."
+[^src-2]: `data/raw/pypi/pypi-my-llm-wiki/text.txt` -- L108 -- "Code (19 languages) — Python, TypeScript/JavaScript, Go, Rust, Java, C/C++, Ruby, C#, and more ( full list )."

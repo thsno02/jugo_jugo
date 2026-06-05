@@ -26,7 +26,7 @@ related: [llm-wiki-pattern]
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L94 -- "In practice, I hit three walls that cost me an entire Saturday."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L97 -- "the default Clang compiler doesn't support OpenMP, which llm.c needs for parallelism. This is the single most common complaint in the Hacker News threads... The fix is installing GCC via Homebrew"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L99 -- "The wiki feature expects a single large text file. My notes lived in 400 markdown files across three tools... there's no built-in document loader, which means you build your own, which means another hour gone."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L101 -- "Running inference on CPU is possible but slow. I'm talking 30+ seconds per query on an M2 MacBook Pro... With a CUDA-capable GPU, queries drop to a few seconds."
+[^src-1]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L94 -- "In practice, I hit three walls that cost me an entire Saturday."
+[^src-2]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L97 -- "the default Clang compiler doesn't support OpenMP, which llm.c needs for parallelism. This is the single most common complaint in the Hacker News threads... The fix is installing GCC via Homebrew"
+[^src-3]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L99 -- "The wiki feature expects a single large text file. My notes lived in 400 markdown files across three tools... there's no built-in document loader, which means you build your own, which means another hour gone."
+[^src-4]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L101 -- "Running inference on CPU is possible but slow. I'm talking 30+ seconds per query on an M2 MacBook Pro... With a CUDA-capable GPU, queries drop to a few seconds."

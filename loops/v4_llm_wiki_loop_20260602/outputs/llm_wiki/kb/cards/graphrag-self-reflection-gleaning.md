@@ -13,7 +13,7 @@ canonical_concept: graphrag-self-reflection-gleaning
 aliases: [gleaning, 拾遗提取, self-reflection entity extraction, 自反射实体提取]
 summary: >-
   graphrag-self-reflection-gleaning（gleaning / 拾遗提取）通过将已提取实体回馈给 LLM 并用 logit bias 强制评估完整性，迭代"拾遗"遗漏实体，使大 chunk 下的实体提取量可接近小 chunk 水平（600 token chunk + 3 次迭代从约 9k 增至约 27k 实体引用）
-related: [graphrag-global-sensemaking, chunk-size-tradeoff]
+related: [chunk-size-tradeoff, graphrag-global-sensemaking]
 ---
 
 GraphRAG 在实体提取阶段采用自我反思（self-reflection）技术来弥补大 chunk 尺寸下 LLM 提取实体数量的下降。论文发现，使用 GPT-4 时，chunk 尺寸从 600 token 增加到 2400 token 时提取的实体引用数量几乎减半 [^src-1]。
@@ -26,7 +26,7 @@ GraphRAG 在实体提取阶段采用自我反思（self-reflection）技术来�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Appendix A.2 (appendix.tex) -- "GPT-4 extracted almost twice as many entity references when the chunk size was 600 tokens than when it was 2400"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Appendix A.2 (appendix.tex) -- "we first ask the LLM to assess whether all entities were extracted, using a logit bias of 100 to force a yes/no decision. If the LLM responds that entities were missed, then a continuation indicating that 'MANY entities were missed in the last extraction' encourages the LLM to detect these missing entities."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- self_reflection_figure.tex -- 600 chunk size coordinates: (0, 9348), (1, 15976), (2, 19491), (3, 27240)
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Appendix A.2 (appendix.tex) -- "This approach allows us to use larger chunk sizes without a drop in quality or the forced introduction of noise."
+[^src-1]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Appendix A.2 (appendix.tex) -- "GPT-4 extracted almost twice as many entity references when the chunk size was 600 tokens than when it was 2400"
+[^src-2]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Appendix A.2 (appendix.tex) -- "we first ask the LLM to assess whether all entities were extracted, using a logit bias of 100 to force a yes/no decision. If the LLM responds that entities were missed, then a continuation indicating that 'MANY entities were missed in the last extraction' encourages the LLM to detect these missing entities."
+[^src-3]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- self_reflection_figure.tex -- 600 chunk size coordinates: (0, 9348), (1, 15976), (2, 19491), (3, 27240)
+[^src-4]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Appendix A.2 (appendix.tex) -- "This approach allows us to use larger chunk sizes without a drop in quality or the forced introduction of noise."

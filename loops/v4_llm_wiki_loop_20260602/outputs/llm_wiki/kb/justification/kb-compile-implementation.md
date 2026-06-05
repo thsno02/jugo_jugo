@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/developersio-jp-pattern/text.txt`
+来源：`data/raw/webpage/developersio-jp-pattern/text.txt`
 源证据：
 - L93 — "既存のメモリ基盤の上に wiki 層を載せる形で /kb-compile というカスタムコマンドを作り"
 - L97 — "workspace/ ├── knowledge/ # Raw — 日報、リサーチ、セッションログ ├── wiki/ # Compiled Wiki"

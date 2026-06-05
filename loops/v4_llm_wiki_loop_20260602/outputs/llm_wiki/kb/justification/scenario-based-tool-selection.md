@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/robin-cartier-llm-knowledge-bases/text.txt`
+来源：`data/raw/webpage/robin-cartier-llm-knowledge-bases/text.txt`
 源证据：
 - L49-57 — "When to use it vs alternatives [src-002]: Personal second brain, research, learning → LLM wiki (this pattern); Operational automation, trend tracking, pipeline-fed knowledge → structured knowledge bases (relational); Enterprise scale, millions of documents → Retrieval-Augmented Generation (RAG) (or hybrid)"
 - L45 — "Temporal signal is weak: a single 'last updated' field loses the trend-tracking capability a relational store would give you (first_seen / last_seen)."

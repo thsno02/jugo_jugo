@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-my-llm-wiki/text.txt`
+来源：`data/raw/pypi/pypi-my-llm-wiki/text.txt`
 源证据：
 - L104 — "llm-wiki note \"<insight>\" writes back from your Claude Code sessions so the graph compounds over time."
 - L100 — "let the wiki grow with every session as a \"persistent, compounding artifact\""

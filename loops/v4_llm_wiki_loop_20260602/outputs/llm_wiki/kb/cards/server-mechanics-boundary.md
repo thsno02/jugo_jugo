@@ -15,7 +15,7 @@ summary: >-
   server-mechanics-boundary（力学边界 / mechanics boundary / 服务器不验证内容）
   是 llm-wiki-mcp 的设计边界原则：服务器只强制执行力学层（原子写入、乐观并发、路径限制、日志格式），
   刻意不验证内容形状（frontmatter/分类/链接目标）——"将 schema 烘焙进服务器会违背初衷"
-related: [three-layer-architecture, schema-as-configuration, optimistic-concurrency-etag]
+related: [optimistic-concurrency-etag, schema-as-configuration, three-layer-architecture]
 ---
 
 llm-wiki-mcp 的设计核心是一条明确的**力学-内容边界**：服务器强制执行力学（mechanics），而非内容形状（content shape）[^src-1]。
@@ -33,10 +33,10 @@ llm-wiki-mcp 的设计核心是一条明确的**力学-内容边界**：服务�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L177 -- "The server enforces mechanics, not content shape"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L179-186 -- "Atomic writes... Optimistic concurrency... Path containment... Format-locked log line"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L183-184 -- "Slugs are regex-validated. Resolved paths are checked against the realpath of the root, blocking the CVE-2025-53109 symlink-escape class."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L185-186 -- "Format-locked log line. ## [YYYY-MM-DD] operation | Title. Operation names are free strings; only characters that would break the line shape are rejected."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L187 -- "The server does not validate frontmatter shape, page categories, or link targets. That layer lives in your wiki/CLAUDE.md schema doc and grows with the LLM."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L187 -- "Karpathy's gist is deliberately silent on content shape; baking a schema into the server would defeat the point."
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L117 -- "The server handles the boring layer LLMs keep getting wrong: atomic writes, etag conflict checks, append-only log integrity, path containment."
+[^src-1]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L177 -- "The server enforces mechanics, not content shape"
+[^src-2]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L179-186 -- "Atomic writes... Optimistic concurrency... Path containment... Format-locked log line"
+[^src-3]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L183-184 -- "Slugs are regex-validated. Resolved paths are checked against the realpath of the root, blocking the CVE-2025-53109 symlink-escape class."
+[^src-4]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L185-186 -- "Format-locked log line. ## [YYYY-MM-DD] operation | Title. Operation names are free strings; only characters that would break the line shape are rejected."
+[^src-5]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L187 -- "The server does not validate frontmatter shape, page categories, or link targets. That layer lives in your wiki/CLAUDE.md schema doc and grows with the LLM."
+[^src-6]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L187 -- "Karpathy's gist is deliberately silent on content shape; baking a schema into the server would defeat the point."
+[^src-7]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L117 -- "The server handles the boring layer LLMs keep getting wrong: atomic writes, etag conflict checks, append-only log integrity, path containment."

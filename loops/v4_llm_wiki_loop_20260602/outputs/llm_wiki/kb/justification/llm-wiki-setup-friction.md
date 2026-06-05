@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt`
+来源：`data/raw/webpage/kunal-local-knowledge-base/text.txt`
 源证据：
 - L94-101 "Setting Up Your Own LLM Wiki: What Nobody Warns You About" — "I hit three walls that cost me an entire Saturday."
 - L97 — "the default Clang compiler doesn't support OpenMP... This is the single most common complaint in the Hacker News threads"

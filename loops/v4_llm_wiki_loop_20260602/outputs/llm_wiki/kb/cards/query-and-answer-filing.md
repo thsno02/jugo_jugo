@@ -14,7 +14,7 @@ aliases: [查询操作, query operation, 答案归档, answer filing]
 summary: >-
   query-and-answer-filing（查询操作 / query operation / 答案归档 / answer filing）是 LLM Wiki
   查询操作：LLM 搜索 wiki 页面综合带引用答案，好答案归档为新页面使探索产生复利效应
-related: []
+related: [wiki-compounding-artifact]
 ---
 
 查询（Query）是 LLM Wiki 的三大操作之一。LLM 搜索相关 wiki 页面、阅读它们、并综合出带引用的答案。答案形式多样——markdown 页面、比较表格、幻灯片（Marp）、图表（matplotlib）、画布[^src-1]。

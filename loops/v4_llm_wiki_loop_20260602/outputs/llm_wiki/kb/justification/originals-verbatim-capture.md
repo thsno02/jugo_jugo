@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/openaitoolshub-six-months/text.txt`
+来源：`data/raw/webpage/openaitoolshub-six-months/text.txt`
 源证据：
 - L86 — "Karpathy's v1 has a hole around capturing your own thoughts... v1 implicitly assumes you're ingesting external articles."
 - L86 — "the highest-value content I generate is my own takes"

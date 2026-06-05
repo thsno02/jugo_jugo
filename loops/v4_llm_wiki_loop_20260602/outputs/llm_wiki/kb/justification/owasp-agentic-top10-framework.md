@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/owasp-agentic-top10-2026/text.txt`
+来源：`data/raw/webpage/owasp-agentic-top10-2026/text.txt`
 源证据：
 - About 段落 L96 — "a globally peer-reviewed framework that identifies the most critical security risks facing autonomous and agentic AI systems"
 - About 段落 L96 — "Developed through extensive collaboration with more than 100 industry experts, researchers, and practitioners"

@@ -15,7 +15,7 @@ summary: >-
   topic-concentration-compounding（主题集中度 / topic concentration / 复利收益域依赖性）
   揭示高主题集中度领域（编程、研究）获得最大知识复利收益，低集中度领域（电商、个人助理）
   wiki 无法积累可复用结构，为 Liu et al. 的可用性鸿沟提供了全新解释维度
-related:
+related: []
   - knowledge-compounding
   - use-case-domains
 ---
@@ -37,9 +37,9 @@ Wen & Ku (2026) 发现知识复利的收益高度依赖于用户查询流的**�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.3 P8 -- "pᵢ ∈ [0, 1] is the indicator probability that the i-th task falls outside the historically covered region (depending on the topic concentration of the user's query stream)"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 7.1 P26-27 -- "Coding and Research are high-ROI domains not only because of large T₀, but because their topic concentration is naturally high, so the marginal returns from knowledge compounding are largest. A researcher's reading over the course of a month is likely focused on 5–10 core topics; a programmer's debugging over the course of a week is likely centered on the same codebase"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 7.1 P27 -- "the low-ROI domains identified by Liu et al. (e-commerce, personal assistance) are domains with extremely diffuse topic distributions... the marginal returns of knowledge compounding are inherently small, because the wiki can never accumulate reusable structure"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Table 4 P19 -- "Compounding p=0.30 (M)... Compounding p=0.60 (M)... Compounding p=0.90 (M)"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.3 P20 -- "At Day 1, Compounding (high concentration) costs roughly 6.3x more than Chunk-RAG; by Day 30, the ratio has fallen to 3.8x"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 7.1 P27 -- "the gap arises not only because T_Agent is too high, but because in these domains H(t) cannot grow large"
+[^src-1]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.3 P8 -- "pᵢ ∈ [0, 1] is the indicator probability that the i-th task falls outside the historically covered region (depending on the topic concentration of the user's query stream)"
+[^src-2]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 7.1 P26-27 -- "Coding and Research are high-ROI domains not only because of large T₀, but because their topic concentration is naturally high, so the marginal returns from knowledge compounding are largest. A researcher's reading over the course of a month is likely focused on 5–10 core topics; a programmer's debugging over the course of a week is likely centered on the same codebase"
+[^src-3]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 7.1 P27 -- "the low-ROI domains identified by Liu et al. (e-commerce, personal assistance) are domains with extremely diffuse topic distributions... the marginal returns of knowledge compounding are inherently small, because the wiki can never accumulate reusable structure"
+[^src-4]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Table 4 P19 -- "Compounding p=0.30 (M)... Compounding p=0.60 (M)... Compounding p=0.90 (M)"
+[^src-5]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 5.3 P20 -- "At Day 1, Compounding (high concentration) costs roughly 6.3x more than Chunk-RAG; by Day 30, the ratio has fallen to 3.8x"
+[^src-6]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 7.1 P27 -- "the gap arises not only because T_Agent is too high, but because in these domains H(t) cannot grow large"

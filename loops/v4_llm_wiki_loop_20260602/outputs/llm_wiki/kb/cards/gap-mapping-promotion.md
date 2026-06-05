@@ -13,7 +13,7 @@ canonical_concept: gap-mapping-promotion
 aliases: [缺口映射, gap mapping, 缺口晋升, gap promotion, kb_map_gaps, kb_promote_gap]
 summary: >-
   gap-mapping-promotion（缺口映射 / gap mapping / 缺口晋升 / kb_map_gaps / kb_promote_gap）llm-wiki-karpathy 运行时通过确定性缺口映射识别 wiki 覆盖空白，并将缺口晋升为一等笔记，实现持久知识增长
-related: [lint-operation, ingest-operation]
+related: [ingest-operation, lint-operation]
 ---
 
 llm-wiki-karpathy 运行时提供了一对确定性操作来驱动 wiki 的持久知识增长[^src-1]：
@@ -26,7 +26,7 @@ llm-wiki-karpathy 运行时提供了一对确定性操作来驱动 wiki 的持�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "What 0.4.4 Implements" -- "deterministic gap mapping and promotion through kb_map_gaps and kb_promote_gap"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "CLI Commands" -- "llm-wiki-karpathy kb_map_gaps --vault-root /vault --limit 10"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "CLI Commands" -- "llm-wiki-karpathy kb_promote_gap --vault-root /vault --note-id synthesis-retrieval-vs-memory"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "kb_map_gaps and kb_promote_gap still cover durable knowledge growth on top of that ingest layer."
+[^src-1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "What 0.4.4 Implements" -- "deterministic gap mapping and promotion through kb_map_gaps and kb_promote_gap"
+[^src-2]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "CLI Commands" -- "llm-wiki-karpathy kb_map_gaps --vault-root /vault --limit 10"
+[^src-3]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "CLI Commands" -- "llm-wiki-karpathy kb_promote_gap --vault-root /vault --note-id synthesis-retrieval-vs-memory"
+[^src-4]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "kb_map_gaps and kb_promote_gap still cover durable knowledge growth on top of that ingest layer."

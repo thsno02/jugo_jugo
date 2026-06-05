@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
 源证据：
 - Section 1 — "Current approaches using RAG have focused on broad domain knowledge and largely static corpora"
 - Section 1 — "we argue that current RAG approaches are unsuitable for this future"

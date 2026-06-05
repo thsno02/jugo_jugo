@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/anthemcreation-en-guide/text.txt`
+来源：`data/raw/webpage/anthemcreation-en-guide/text.txt`
 源证据：
 - L158-159 — "LLM Wiki v2, published on GitHub Gist by rohitg00, extends the concept with agentmemory patterns: a persistent memory engine designed for AI coding agents."
 - L159 — "This version incorporates lessons on scaling and long-term consistency, making the wiki more suitable for autonomous agents that continuously feed it."

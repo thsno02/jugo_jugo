@@ -15,7 +15,7 @@ summary: >-
   inventory-evidence-separation（清单证据分离 / inventory vs evidence / 操作状态与事实证据 / inventory separation）
   是 LLM Wiki 的设计区分：inventory/ 存放操作状态（物品/来源候选/语料/实体/待办），
   刻意不作为事实主张的证据，与 raw/+wiki/ 的证据链保持边界
-related: []
+related: [audit-provenance-tracing, three-layer-architecture]
 ---
 
 LLM Wiki 在 `inventory/` 和证据体系（`raw/` + `wiki/`）之间划定了**刻意的边界**[^src-1]。
@@ -26,9 +26,13 @@ LLM Wiki 在 `inventory/` 和证据体系（`raw/` + `wiki/`）之间划定了**
 
 同理，**dataset manifests** 也遵循类似的分离原则——它们索引大型外部数据而不将其复制进来源语料库，wiki 成为数据的接口而数据留在原处[^src-4]。
 
+这一分离的实际意义在于：审计溯源机制仅需沿证据链（raw->wiki->output）工作，inventory 的操作状态不会干扰溯源路径[^card-1]。从架构视角看，inventory 是三层架构之外的第四种关注——它与 raw/wiki/schema 的证据层级平行存在但刻意不交叉[^card-2]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Inventory is state" L154-156 -- "Parts, source queues, corpora, watch items, and next actions live under inventory/ so they can be listed and revisited without becoming evidence."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L316-317 -- "Inventory (inventory/) is for durable operational state: actual items, source candidates, corpora, entities, open questions, tasks, watch items, and next actions. It is intentionally not evidence for factual claims."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L317 -- "It is intentionally not evidence for factual claims."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Datasets stay external" L158-160 -- "datasets/ stores manifests, samples, profiles, and query recipes for large data. The wiki indexes data without copying it into the source corpus."
+[^src-1]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Inventory is state" L154-156 -- "Parts, source queues, corpora, watch items, and next actions live under inventory/ so they can be listed and revisited without becoming evidence."
+[^src-2]: `data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L316-317 -- "Inventory (inventory/) is for durable operational state: actual items, source candidates, corpora, entities, open questions, tasks, watch items, and next actions. It is intentionally not evidence for factual claims."
+[^src-3]: `data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L317 -- "It is intentionally not evidence for factual claims."
+[^src-4]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Datasets stay external" L158-160 -- "datasets/ stores manifests, samples, profiles, and query recipes for large data. The wiki indexes data without copying it into the source corpus."
+[^card-1]: [审计与溯源追踪](audit-provenance-tracing.md) -- 本卡解释 inventory 被排除在证据体系之外，该卡描述仅沿证据链（raw->wiki->output）工作的审计机制
+[^card-2]: [三层架构](three-layer-architecture.md) -- 本卡描述 inventory 作为操作状态的独立关注，该卡定义 raw/wiki/schema 三层证据架构，inventory 是三层之外的第四种关注

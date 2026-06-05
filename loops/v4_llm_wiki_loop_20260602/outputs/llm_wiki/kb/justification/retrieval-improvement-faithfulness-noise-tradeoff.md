@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt`
 源证据：
 - sections/experiments.tex, Main Results -- "As E5-Mistral achieves better claim recall, we observe generators paired to it achieves better faithfulness"
 - sections/experiments.tex, Diagnosis -- "faithfulness 88.1->92.2 with k 5->20... noise sensitivity 34.0->35.4"

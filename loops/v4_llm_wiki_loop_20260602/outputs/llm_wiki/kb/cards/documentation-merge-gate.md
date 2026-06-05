@@ -13,7 +13,7 @@ canonical_concept: documentation-merge-gate
 aliases: [文档合并门禁, 合并阻断文档要求, docs merge blocking]
 summary: >-
   documentation-merge-gate（文档合并门禁 / 合并阻断文档要求 / docs merge blocking）指在 docs-as-code 工作流中，若新功能未附带文档则阻止合并，从而激励开发者在功能记忆犹新时撰写文档
-related:
+related: [continuous-drift-detection, knowledge-as-work-byproduct]
   - docs-as-code
 ---
 
@@ -25,7 +25,7 @@ Falconer 的企业 LLM Wiki 方案将这一"创建时保障质量"的思路与"�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L30-31 -- "You can block merging of new features if they don't include documentation, which incentivizes developers to write about features while they are fresh"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L29 -- "Developers will often write a first draft of documentation"
+[^src-1]: `data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L30-31 -- "You can block merging of new features if they don't include documentation, which incentivizes developers to write about features while they are fresh"
+[^src-2]: `data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L29 -- "Developers will often write a first draft of documentation"
 [^card-1]: [持续偏移检测](continuous-drift-detection.md) -- 合并门禁在创建时保障文档质量，持续偏移检测在后续自动发现文档与代码的漂移，两者形成文档生命周期的互补覆盖
 [^card-2]: [知识作为工作副产品](knowledge-as-work-byproduct.md) -- "知识作为副产品"原则将合并门禁的"写文档才能合并"进一步推向"工作本身就是文档"，设想知识图谱从工作流自动增长

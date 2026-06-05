@@ -29,7 +29,7 @@ Wikibase 数据模型在 Property 的类型约束上做了一个重要的灵活�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "PropertyValueSnak" section, line 480 -- "it is not required that Value belongs to the Datatype that is currently given to the Property in the system"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "PropertyValueSnak" section, lines 480-482 -- "if the Datatype is changed, then it will not be possible to update all stored data immediately. Moreover, if the Datatype is changed back to its earlier value, it might be possible to continue using existing data"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "PropertyValueSnak" section, line 480 -- "the UI and API of Wikidata will only allow Values that match the given Datatype"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "PropertyValueSnak" section, lines 482-483 -- "the data model does not actually define a unique Datatype for each Property: it just specifies how Datatype assignments would be represented"
+[^src-1]: `data/raw/webpage/wikibase-data-model/text.txt` -- "PropertyValueSnak" section, line 480 -- "it is not required that Value belongs to the Datatype that is currently given to the Property in the system"
+[^src-2]: `data/raw/webpage/wikibase-data-model/text.txt` -- "PropertyValueSnak" section, lines 480-482 -- "if the Datatype is changed, then it will not be possible to update all stored data immediately. Moreover, if the Datatype is changed back to its earlier value, it might be possible to continue using existing data"
+[^src-3]: `data/raw/webpage/wikibase-data-model/text.txt` -- "PropertyValueSnak" section, line 480 -- "the UI and API of Wikidata will only allow Values that match the given Datatype"
+[^src-4]: `data/raw/webpage/wikibase-data-model/text.txt` -- "PropertyValueSnak" section, lines 482-483 -- "the data model does not actually define a unique Datatype for each Property: it just specifies how Datatype assignments would be represented"

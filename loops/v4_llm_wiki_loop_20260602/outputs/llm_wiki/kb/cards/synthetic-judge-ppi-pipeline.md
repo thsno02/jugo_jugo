@@ -26,7 +26,7 @@ ARES 的核心机制是一条两阶段评估流水线，将自动化与人工校
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges to assess the quality of individual RAG components."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "To mitigate potential prediction errors, ARES utilizes a small set of human-annotated datapoints for prediction-powered inference (PPI)."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "ARES accurately evaluates RAG systems while using only a few hundred human annotations during evaluation."
+[^src-1]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges to assess the quality of individual RAG components."
+[^src-2]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges"
+[^src-3]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "To mitigate potential prediction errors, ARES utilizes a small set of human-annotated datapoints for prediction-powered inference (PPI)."
+[^src-4]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "ARES accurately evaluates RAG systems while using only a few hundred human annotations during evaluation."

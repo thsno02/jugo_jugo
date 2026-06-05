@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt`
 源证据：
 - Results Section (graph_rag.tex) — "comprehensiveness win rates between 72-83% (p<.001)"
 - Results Section — "diversity win rates ranged from 75-82% (p<.001)"

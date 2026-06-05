@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/developersio-jp-pattern/text.txt`
+来源：`data/raw/webpage/developersio-jp-pattern/text.txt`
 源证据：
 - L27 — "このポストに反応が大きかった理由は、多くの人がすでに似たようなことを試みていたからだと思います"
 - L27 — "Karpathy 氏のポストは、そういった散発的な試みに名前と構造を与えてくれたように感じます"

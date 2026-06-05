@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt`
+来源：`data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt`
 源证据：
 - L436-437 — "Three core limitations constrain the approach at enterprise scale... the limitations are not bugs, they are consequences of the design assumptions."
 - L281 — "The 50,000-100,000 token threshold is where the wiki approach stops working reliably"

@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/appendix.tex`
+来源：`data/raw/arxiv/arxiv-longmemeval/source/text/appendix.tex`
 源证据：
 - Section 3.3 — "ChatGPT tended to overwrite crucial information as the chat continues, while Coze often failed to record indirectly provided user information"
 - Appendix manual analysis — "ChatGPT generally records the evidence statements immediately...However, as the interaction proceeds, ChatGPT often modify this information when it compresses the history"

@@ -13,7 +13,7 @@ canonical_concept: rag-knowledge-corruption-attack
 aliases: [知识腐蚀攻击, knowledge corruption attack, PoisonedRAG, RAG投毒攻击]
 summary: >-
   rag-knowledge-corruption-attack（知识腐蚀攻击 / knowledge corruption attack / PoisonedRAG）攻击者向 RAG 知识库注入少量恶意文本（每个目标问题 5 条），即可在百万级文本库中以约 90% 成功率使 LLM 生成攻击者指定答案，跨 8 种 LLM 和多种检索器有效，计算成本极低。
-related:
+related: [agent-memory-persistent-attack-surface, etamp-environment-memory-poisoning, graphrag-knowledge-poisoning-attack]
   - rag-knowledge-database-attack-surface
   - rag-retrieval-generation-dual-condition
   - poisonedrag-text-decomposition
@@ -32,12 +32,18 @@ PoisonedRAG 是首个针对 RAG 系统的知识腐蚀攻击（knowledge corrupti
 
 **威胁场景**包括传播虚假信息、商业偏见引导（如推荐特定品牌）、金融/健康领域误导信息 [^src-7]。
 
+GraphRAG 知识投毒攻击（KPA）展示了类似的威胁在图谱 RAG 架构中的表现——仅修改源文本中极少量词语即可破坏知识图谱的构建过程[^card-1]。eTAMP 则从 agent 记忆系统的角度揭示了另一种投毒路径：通过环境注入间接污染轨迹记忆以实现跨会话攻击[^card-2]。Agent 记忆系统作为持久性攻击面的安全属性（跨站执行、时间分离）使得此类投毒攻击更加难以防御[^card-3]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "abstract.tex" -- "an attacker could inject a few malicious texts into the knowledge database of a RAG system to induce an LLM to generate an attacker-chosen target answer for an attacker-chosen target question"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "PoisonedRAG could achieve 97% (on NQ), 99% (on HotpotQA), and 91% (on MS-MARCO) ASRs"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "PoisonedRAG is still effective in a real-world scenario, where the knowledge database consists of 21,015,324 texts from Dec. 20, 2018 Wikipedia dump."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "PoisonedRAG could achieve high ASRs on 3 datasets under 8 different LLMs"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "on average, PoisonedRAG only needs to make around 2 queries to the GPT-4 to craft each malicious text... it takes far less than 1 second"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "background.tex" -- "the key difference between prompt injection attacks and PoisonedRAG (in the black-box setting) is that prompt injection attacks utilize instructions while PoisonedRAG crafts malicious knowledge."
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "introduction.tex" -- "an attacker could mislead the LLM to generate misinformation... commercial biased answers... and financial disinformation"
+[^card-1]: [GraphRAG 知识投毒攻击](graphrag-knowledge-poisoning-attack.md) -- 本卡聚焦向传统 RAG 知识库注入恶意文本以控制特定问答结果，该卡聚焦通过修改源文本破坏 GraphRAG 的知识图谱构建过程，两者分别攻击 RAG 的两种架构范式
+[^card-2]: [环境注入式轨迹记忆投毒攻击](etamp-environment-memory-poisoning.md) -- 本卡通过直接注入 RAG 知识库实现投毒，该卡通过环境观察间接投毒 agent 轨迹记忆，两者共同揭示 LLM 外部知识存储的投毒脆弱性
+[^card-3]: [Agent 记忆作为持久性攻击面](agent-memory-persistent-attack-surface.md) -- 本卡关注 RAG 知识库的具体攻击方法，该卡从更高层次论述 agent 记忆系统作为持久性攻击面的安全属性（跨会话、跨站点、时间分离），两者共同揭示持久化知识存储的系统性安全风险
+
+[^src-1]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "abstract.tex" -- "an attacker could inject a few malicious texts into the knowledge database of a RAG system to induce an LLM to generate an attacker-chosen target answer for an attacker-chosen target question"
+[^src-2]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "PoisonedRAG could achieve 97% (on NQ), 99% (on HotpotQA), and 91% (on MS-MARCO) ASRs"
+[^src-3]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "PoisonedRAG is still effective in a real-world scenario, where the knowledge database consists of 21,015,324 texts from Dec. 20, 2018 Wikipedia dump."
+[^src-4]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "PoisonedRAG could achieve high ASRs on 3 datasets under 8 different LLMs"
+[^src-5]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "on average, PoisonedRAG only needs to make around 2 queries to the GPT-4 to craft each malicious text... it takes far less than 1 second"
+[^src-6]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "background.tex" -- "the key difference between prompt injection attacks and PoisonedRAG (in the black-box setting) is that prompt injection attacks utilize instructions while PoisonedRAG crafts malicious knowledge."
+[^src-7]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "introduction.tex" -- "an attacker could mislead the LLM to generate misinformation... commercial biased answers... and financial disinformation"

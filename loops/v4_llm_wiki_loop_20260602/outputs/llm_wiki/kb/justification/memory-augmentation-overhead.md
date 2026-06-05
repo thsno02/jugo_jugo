@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-lightmem/text.txt`
+来源：`data/raw/arxiv/arxiv-lightmem/text.txt`
 源证据：
 - Abstract -- "Large Language Models (LLMs) struggle to effectively leverage historical interaction information in dynamic and complex environments"
 - Abstract -- "Memory systems enable LLMs to move beyond stateless interactions by introducing persistent information storage, retrieval, and utilization mechanisms"

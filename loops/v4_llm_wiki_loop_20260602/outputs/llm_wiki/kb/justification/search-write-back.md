@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
+来源：`data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
 源证据：
 - Section 6.3 P25 — "This is the mechanism that distinguishes Qing Claw from all other LLM Wiki implementations"
 - Section 6.3 P25-26 — "the search results do not evaporate... the wiki is bidirectional and respiring"

@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt`
+来源：`data/raw/webpage/llm-wiki-net/text.txt`
 源证据：
 - L154-156 — "Parts, source queues, corpora, watch items, and next actions live under inventory/ so they can be listed and revisited without becoming evidence."
 - L316-317 — "Inventory (inventory/) is for durable operational state... It is intentionally not evidence for factual claims."

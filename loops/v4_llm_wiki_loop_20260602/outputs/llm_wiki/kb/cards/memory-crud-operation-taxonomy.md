@@ -13,7 +13,7 @@ canonical_concept: memory-crud-operation-taxonomy
 aliases: [记忆操作四分类, ADD/UPDATE/DELETE/NOOP, memory update operations]
 summary: >-
   memory-crud-operation-taxonomy（记忆操作四分类 / ADD/UPDATE/DELETE/NOOP）Mem0 将记忆更新分类为四种操作：ADD（无语义等价记忆时新增）、UPDATE（增强已有记忆的信息内容）、DELETE（删除被新事实矛盾的记忆）、NOOP（事实已存在或不相关），由 LLM 通过 tool call 自主判断而非使用独立分类器
-related: [memory-extraction-update-pipeline, ingest-operation, lint-operation, contradiction-state-machine]
+related: [agent-memory-lifecycle-phases, contradiction-state-machine, ingest-operation, lint-operation, memory-extraction-update-pipeline]
 ---
 
 Mem0 的记忆更新阶段将每个候选事实的处理归类为四种互斥操作，由 LLM 通过函数调用接口自主决定 [^src-1]：
@@ -26,15 +26,16 @@ Mem0 的记忆更新阶段将每个候选事实的处理归类为四种互斥操
 
 4. **NOOP**：当候选事实已经存在于记忆库中或与当前知识库不相关时，不执行任何操作 [^src-5]。
 
-该分类法的关键设计决策是：不使用独立的分类器模型，而是直接利用 LLM 的推理能力，通过函数调用（tool call）机制根据候选事实与已有记忆之间的语义关系来选择合适的操作。这种方式让操作分类具备了语义理解能力，而非仅依赖简单的相似度阈值 [^src-6]。Cognition 的 agent 记忆生命周期模型在更宏观层面描述了记忆从证据到教学的完整演化路径[^card-1]。
+该分类法的关键设计决策是：不使用独立的分类器模型，而是直接利用 LLM 的推理能力，通过函数调用（tool call）机制根据候选事实与已有记忆之间的语义关系来选择合适的操作。这种方式让操作分类具备了语义理解能力，而非仅依赖简单的相似度阈值 [^src-6]。Cognition 的 agent 记忆生命周期模型在更宏观层面描述了记忆从证据到教学的完整演化路径[^card-1]。这四种操作嵌入在 Mem0 提取-更新双阶段管线的更新阶段中，管线的完整架构见提取-更新管线卡[^card-2]。
 
 ## Footnotes
 
 [^card-1]: [Agent 记忆四阶段生命周期](agent-memory-lifecycle-phases.md) -- Mem0 的 CRUD 操作（ADD/UPDATE/DELETE/NOOP）对应 Cognition 四阶段模型中 Evidence 和 Consolidation 阶段的具体实现，后者还涵盖 Decay 和 Teaching 阶段
+[^card-2]: [记忆提取-更新双阶段管线](memory-extraction-update-pipeline.md) -- 本卡详述更新阶段的四种操作语义，该卡描述这些操作所嵌入的完整双阶段管线架构（提取阶段 + 更新阶段）
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "The LLM itself determines which of four distinct operations to execute"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/appendix.tex Algorithm 1 -- "ADD for creation of new memories when no semantically equivalent memory exists"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/appendix.tex Algorithm 1 -- "If InformationContent(f) > InformationContent(m_i) then M ← (M \ {m_i}) ∪ {(id_i, f, 'UPDATE')}"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/appendix.tex Algorithm 1 -- "DELETE for removal of memories contradicted by new information"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/appendix.tex Algorithm 1 -- "NOOP when the candidate fact requires no modification to the knowledge base"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "Rather than using a separate classifier, we leverage the LLM's reasoning capabilities to directly select the appropriate operation based on the semantic relationship between the candidate fact and existing memories."
+[^src-1]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "The LLM itself determines which of four distinct operations to execute"
+[^src-2]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/appendix.tex Algorithm 1 -- "ADD for creation of new memories when no semantically equivalent memory exists"
+[^src-3]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/appendix.tex Algorithm 1 -- "If InformationContent(f) > InformationContent(m_i) then M ← (M \ {m_i}) ∪ {(id_i, f, 'UPDATE')}"
+[^src-4]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/appendix.tex Algorithm 1 -- "DELETE for removal of memories contradicted by new information"
+[^src-5]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/appendix.tex Algorithm 1 -- "NOOP when the candidate fact requires no modification to the knowledge base"
+[^src-6]: `data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt` -- sections/proposed_work.tex -- "Rather than using a separate classifier, we leverage the LLM's reasoning capabilities to directly select the appropriate operation based on the semantic relationship between the candidate fact and existing memories."

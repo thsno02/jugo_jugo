@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt`
+来源：`data/raw/webpage/llm-wiki-net/text.txt`
 源证据：
 - L40-42 — "Move whole topic wikis to topics/.archive/. Preserved knowledge stays structurally maintainable but out of default ... context."
 - L162-164 — "Archived topics live under topics/.archive/. Most tools skip them by default"

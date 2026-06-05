@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
 源证据：
 - Table 4 — "GPT-3.5-turbo FactScore F1=45.9; GPT-3.5-turbo-16K F1=39.9"
 - Section 6.2 — "the long-context model does not surpass the base model"

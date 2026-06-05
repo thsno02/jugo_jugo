@@ -13,7 +13,7 @@ canonical_concept: locomo-five-reasoning-types
 aliases: [LoCoMo QA 五类推理, five reasoning types for conversational memory QA]
 summary: >-
   locomo-five-reasoning-types（LoCoMo QA 五类推理, five reasoning types for conversational memory QA）将对话记忆的 QA 评测分为 single-hop（36%）、multi-hop（14.6%）、temporal reasoning（20.6%）、open-domain knowledge（3.9%）、adversarial（24.9%）五类，共 7512 题，揭示了 LLM 在不同记忆维度上的差异化能力缺陷
-related: [locomo-benchmark, temporal-reasoning-difficulty, long-context-adversarial-vulnerability, longmemeval-five-memory-abilities]
+related: [locomo-benchmark, locomo-benchmark-design, long-context-adversarial-vulnerability, longmemeval-five-memory-abilities, temporal-reasoning-difficulty]
 ---
 
 LoCoMo 评测基准将对话记忆的问答任务分为五个互补的推理类别，共 7,512 道题目[^src-1]：
@@ -28,16 +28,18 @@ LoCoMo 评测基准将对话记忆的问答任务分为五个互补的推理类�
 
 5. **Adversarial**（24.9%，1,871 题）：设计为不可回答的陷阱题，期望模型正确识别并拒绝回答。长上下文模型在此维度最脆弱（2.1%），而 GPT-4-turbo 在 4K 窗口下达到 70.2%[^src-6]。
 
-这种多维度分类比单一准确率指标更能揭示模型记忆能力的真实轮廓。
+这种多维度分类比单一准确率指标更能揭示模型记忆能力的真实轮廓。这五类推理维度是 LoCoMo 评测基准三项任务中 QA 任务的核心设计 [^card-2]。LongMemEval 提出了一套平行的五项记忆能力框架（IE/MR/KU/TR/ABS），与本卡在 multi-hop↔MR、temporal↔TR、adversarial↔ABS 上高度对应，但新增了知识更新（KU）维度并指出 LoCoMo 未评估助手侧信息回忆 [^card-3]。
 
 Mem0 论文在评测中采用了前四类（排除 adversarial），因对抗性问题缺少标准答案，展示了该分类体系在不同评测场景中的裁剪使用 [^card-1]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 4.1" -- "we introduce a question-answering task divided into five distinct reasoning categories"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table dataset_statistics + Table 2" -- "# questions single-hop: 2,705 (36%); Human=95.1; GPT-3.5-turbo-16K 16K=56.4"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table dataset_statistics + Table 2" -- "# questions multi-hop: 1,104 (14.6%); Human=85.8; best=42.0"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 1 + Table 2" -- "temporal reasoning (by 73%); Human=92.6"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 6.1" -- "LLMs struggle with open-domain knowledge and degrade in the RAG setting... introducing improper context from inaccurate retrieval can lead to a decline"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table 2" -- "Adversarial: GPT-3.5-turbo-16K 16K=2.1; GPT-4-turbo=70.2"
+[^src-1]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 4.1" -- "we introduce a question-answering task divided into five distinct reasoning categories"
+[^src-2]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table dataset_statistics + Table 2" -- "# questions single-hop: 2,705 (36%); Human=95.1; GPT-3.5-turbo-16K 16K=56.4"
+[^src-3]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table dataset_statistics + Table 2" -- "# questions multi-hop: 1,104 (14.6%); Human=85.8; best=42.0"
+[^src-4]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 1 + Table 2" -- "temporal reasoning (by 73%); Human=92.6"
+[^src-5]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 6.1" -- "LLMs struggle with open-domain knowledge and degrade in the RAG setting... introducing improper context from inaccurate retrieval can lead to a decline"
+[^src-6]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table 2" -- "Adversarial: GPT-3.5-turbo-16K 16K=2.1; GPT-4-turbo=70.2"
 [^card-1]: [LOCOMO 长期对话记忆基准测试设计](locomo-benchmark-design.md) -- Mem0 论文采用 LoCoMo 的四分类（排除 adversarial），因对抗性问题缺少标准答案
+[^card-2]: [LoCoMo 超长期对话记忆评测基准](locomo-benchmark.md) -- 本卡深入分析 QA 五类推理维度，该卡提供 LoCoMo 基准的整体概述（含事件图摘要和对话生成两项非 QA 任务）
+[^card-3]: [LongMemEval 五项核心长期记忆能力](longmemeval-five-memory-abilities.md) -- 本卡聚焦 LoCoMo 的五类问题推理维度，该卡聚焦 LongMemEval 的五项系统记忆能力，两者在 MR/TR/ABS 维度高度对应但 LongMemEval 新增了知识更新 KU 维度

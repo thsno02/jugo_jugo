@@ -13,7 +13,7 @@ canonical_concept: context-scaling-diminishing-returns
 aliases: [上下文扩展递减收益, lost in the middle, 上下文窗口限制]
 summary: >-
   context-scaling-diminishing-returns（上下文扩展递减收益, lost in the middle）MemGPT 论文论证直接扩展 LLM 上下文窗口面临二次方计算开销、长上下文模型存在不均匀注意力分布（中间位置信息利用差）、以及实际文档长度可能远超可行上下文规模等三重困境，为虚拟上下文管理方案提供动机
-related: [virtual-context-management, memgpt-document-qa-scaling]
+related: [graphrag-small-context-window-advantage, memgpt-document-qa-scaling, virtual-context-management]
 ---
 
 MemGPT 论文提出了直接扩展 LLM 上下文窗口面临的多重困境，作为虚拟上下文管理方案的核心动机：
@@ -28,7 +28,7 @@ MemGPT 论文提出了直接扩展 LLM 上下文窗口面临的多重困境，�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/intro.tex -- "Directly extending the context length of transformers incurs a quadratic increase in computational time and memory cost due to the transformer architecture's self-attention mechanism"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/intro.tex -- "even if we could overcome the computational challenges of context scaling, recent research shows that long-context models struggle to utilize additional context effectively"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "many documents easily surpass these lengths; for example, legal or financial documents such as Annual Reports (SEC Form 10-K) can easily pass the million token mark...it becomes difficult to envision blindly scaling up context as a solution...more flexible memory architectures like MemGPT are needed."
+[^src-1]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/intro.tex -- "Directly extending the context length of transformers incurs a quadratic increase in computational time and memory cost due to the transformer architecture's self-attention mechanism"
+[^src-2]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/intro.tex -- "even if we could overcome the computational challenges of context scaling, recent research shows that long-context models struggle to utilize additional context effectively"
+[^src-3]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/experiments.tex -- "many documents easily surpass these lengths; for example, legal or financial documents such as Annual Reports (SEC Form 10-K) can easily pass the million token mark...it becomes difficult to envision blindly scaling up context as a solution...more flexible memory architectures like MemGPT are needed."
 [^card-graphrag-small-context-window-advantage]: [GraphRAG 中小上下文窗口反而更优的发现](graphrag-small-context-window-advantage.md) -- GraphRAG 评估中 8k 上下文在全面性上普遍优于更大窗口（平均胜率 58.1%），为上下文扩展递减收益提供了来自不同系统的实证佐证

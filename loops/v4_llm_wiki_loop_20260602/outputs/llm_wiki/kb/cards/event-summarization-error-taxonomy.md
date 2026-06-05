@@ -30,9 +30,9 @@ LoCoMo 论文通过对 LLM 生成的事件摘要进行手动分析，识别出�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 6.2" -- "we identify five broad categories of event summarization errors made by LLMs"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table summary_errors" -- "Missing information: Key details about event are omitted... 'Joanna submits her third screenplay on loss, identity, and connection' -> 'Joanna submits her recent screenplay'"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table summary_errors" -- "Hallucination: Non-existent details... 'gaming party was a great success' + 'made vegan ice cream' -> 'Nate's vegan ice cream is a huge success and people want to do it again'"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table summary_errors" -- "Misunderstanding of dialog cues: model confuses a light-hearted statement... 'Maybe I'll start to think of a drama myself' -> 'Nate considers writing his own drama screenplay'"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table summary_errors" -- "Speaker attribution: Event is attributed to the wrong speaker... 'Nate invites Joanna' -> 'Joanna invites Nate'"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table summary_errors" -- "Saliency: Unimportant interactions... 'Hey Joanna, what's been up' considered significant"
+[^src-1]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 6.2" -- "we identify five broad categories of event summarization errors made by LLMs"
+[^src-2]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table summary_errors" -- "Missing information: Key details about event are omitted... 'Joanna submits her third screenplay on loss, identity, and connection' -> 'Joanna submits her recent screenplay'"
+[^src-3]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table summary_errors" -- "Hallucination: Non-existent details... 'gaming party was a great success' + 'made vegan ice cream' -> 'Nate's vegan ice cream is a huge success and people want to do it again'"
+[^src-4]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table summary_errors" -- "Misunderstanding of dialog cues: model confuses a light-hearted statement... 'Maybe I'll start to think of a drama myself' -> 'Nate considers writing his own drama screenplay'"
+[^src-5]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table summary_errors" -- "Speaker attribution: Event is attributed to the wrong speaker... 'Nate invites Joanna' -> 'Joanna invites Nate'"
+[^src-6]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table summary_errors" -- "Saliency: Unimportant interactions... 'Hey Joanna, what's been up' considered significant"

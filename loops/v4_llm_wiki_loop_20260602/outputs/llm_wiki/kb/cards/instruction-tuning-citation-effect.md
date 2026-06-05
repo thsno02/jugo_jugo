@@ -13,7 +13,7 @@ canonical_concept: instruction-tuning-citation-effect
 aliases: [指令微调引用效应, instruction tuning for citation, 指令对齐与引用质量]
 summary: >-
   instruction-tuning-citation-effect（指令微调引用效应）指令微调显著提升 LLM 引用能力：ASQA 上 LLaMA-13B 的 citation recall 仅 10.6%，Vicuna-13B 达 51.1%（+40.5pp）；原始 LLaMA 能从上下文复制事实但无法准确标注引用源；更详细的引用指令也进一步提升引用质量
-related: [citation-support-gap, alce-citation-benchmark]
+related: [alce-citation-benchmark, citation-support-gap]
 ---
 
 ALCE 的 LLM 对比实验揭示了指令微调（instruction tuning）对引用能力的显著影响 [^src-1]。
@@ -28,10 +28,10 @@ ALCE 的 LLM 对比实验揭示了指令微调（instruction tuning）对引用�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "instruction-tuned models (Vicuna-13B and LLaMA-2-Chat) outperform the original LLaMA models in correctness and considerably enhance the citation quality."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/asqa.tex -- "LLaMA-13B (3-psg): citation Rec. 10.6; Vicuna-13B (3-psg): citation Rec. 51.1"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/eli5.tex -- "LLaMA-13B (3-psg): citation Rec. 3.1; Vicuna-13B (3-psg): citation Rec. 15.6"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "while the original LLaMA models are able to copy facts from the context, they struggle with accurately citing the sources or simply do not cite."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "the best open-source model, LLaMA-2-70B-Chat, achieves comparable correctness score as the OpenAI models, but still lags behind in citation quality."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/inst.tex -- "Short instruction: Rec. 69.6; Full instruction: Rec. 73.6"
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "using comprehensive instructions enhances the citation quality...including at least one demonstration improves the performance"
+[^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "instruction-tuned models (Vicuna-13B and LLaMA-2-Chat) outperform the original LLaMA models in correctness and considerably enhance the citation quality."
+[^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/asqa.tex -- "LLaMA-13B (3-psg): citation Rec. 10.6; Vicuna-13B (3-psg): citation Rec. 51.1"
+[^src-3]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/eli5.tex -- "LLaMA-13B (3-psg): citation Rec. 3.1; Vicuna-13B (3-psg): citation Rec. 15.6"
+[^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "while the original LLaMA models are able to copy facts from the context, they struggle with accurately citing the sources or simply do not cite."
+[^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "the best open-source model, LLaMA-2-70B-Chat, achieves comparable correctness score as the OpenAI models, but still lags behind in citation quality."
+[^src-6]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- tables/inst.tex -- "Short instruction: Rec. 69.6; Full instruction: Rec. 73.6"
+[^src-7]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "using comprehensive instructions enhances the citation quality...including at least one demonstration improves the performance"

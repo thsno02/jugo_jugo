@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt`
+来源：`data/raw/webpage/wikibase-data-model/text.txt`
 源证据：
 - "EntityDescriptions" section, lines 596-643 — EntityDescription 的定义、label/description/aliases 三种词汇信息、唯一键规则
 - "Planned Feature" sections, lines 623-643 — PropertyDescription 的计划扩展

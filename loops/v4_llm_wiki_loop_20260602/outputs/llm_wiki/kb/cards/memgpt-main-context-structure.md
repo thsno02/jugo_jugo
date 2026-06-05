@@ -28,6 +28,6 @@ MemGPT 将主上下文（prompt tokens）划分为三个连续段 [^src-1]：
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "The prompt tokens in MemGPT are split into three contiguous sections: the system instructions, working context, and FIFO Queue."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "The first index in the FIFO queue stores a system message containing a recursive summary of messages that have been evicted from the queue."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "During each inference cycle, LLM processor takes main context (concatenated into a single string) as input"
+[^src-1]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "The prompt tokens in MemGPT are split into three contiguous sections: the system instructions, working context, and FIFO Queue."
+[^src-2]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "The first index in the FIFO queue stores a system message containing a recursive summary of messages that have been evicted from the queue."
+[^src-3]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "During each inference cycle, LLM processor takes main context (concatenated into a single string) as input"

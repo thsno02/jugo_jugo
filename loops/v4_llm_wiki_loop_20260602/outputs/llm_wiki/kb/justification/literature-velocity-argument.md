@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/complete-tech-live-frontier/text.txt`
+来源：`data/raw/webpage/complete-tech-live-frontier/text.txt`
 源证据：
 - "Why we built it" 第一点 — "The literature is moving faster than human curation can keep up with."
 - "Why we built it" 第一点 — "A handcrafted bibliography goes stale before it ships. An LLM-maintained, deeply cross-referenced wiki absorbs new work without losing structure."

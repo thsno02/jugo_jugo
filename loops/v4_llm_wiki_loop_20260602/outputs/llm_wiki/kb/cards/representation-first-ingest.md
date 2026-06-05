@@ -28,13 +28,15 @@ llm-wiki-karpathy 运行时（v0.4.4）实现了双路径摄入模型，被称�
 
 关键设计决策：运行时**有意不执行** OCR 或视觉处理本身。它为代理（agent）提供中间产物的规范存储位置，然后验证最终 wiki 页面是否基于这些中间产物[^src-4]。
 
-编译就绪状态有三种：`ready`、`partial`、`needs_representation`[^src-5]。`kb_prepare_source_bundle` 作为运行时与代理之间的桥梁，返回原始元数据、已审查的资产引用、已存储的表示和就绪状态[^src-6]。
+编译就绪状态有三种：`ready`、`partial`、`needs_representation`[^src-5]。`kb_prepare_source_bundle` 作为运行时与代理之间的桥梁，返回原始元数据、已审查的资产引用、已存储的表示和就绪状态[^src-6]。本卡描述的双路径机制是 Karpathy LLM Wiki 摄入操作的具体实现之一[^card-1]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "What 0.4.4 Implements" -- "This release makes the runtime representation-first and explicitly multimodal"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Multimodal Ingest Model" -- "Text and structured data can still compile directly from raw/ with kb_prepare_source and kb_read_raw."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Multimodal Ingest Model" -- "PDFs and images use a representation-first path: inspect the asset with kb_get_raw_asset ... compile the final source note only after the representation trail is present"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Multimodal Ingest Model" -- "The runtime intentionally does not perform OCR or vision itself. Instead, it gives agents a canonical place to store those intermediate artifacts and then validates that the final wiki pages stay grounded in them."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "What 0.4.4 Implements" -- "compile-readiness tracking with ready, partial, and needs_representation"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "kb_prepare_source_bundle is the bridge between those layers for non-text assets: it returns the exact raw metadata, reviewed asset refs, stored representations, and readiness state the agent needs before compiling a source note."
+[^card-1]: [摄入操作](ingest-operation.md) -- 本卡描述双路径摄入的具体实现机制（文本直编译 vs. 多模态先存表示），该卡定义摄入操作的通用流程与人类参与谱系
+
+[^src-1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "What 0.4.4 Implements" -- "This release makes the runtime representation-first and explicitly multimodal"
+[^src-2]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Multimodal Ingest Model" -- "Text and structured data can still compile directly from raw/ with kb_prepare_source and kb_read_raw."
+[^src-3]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Multimodal Ingest Model" -- "PDFs and images use a representation-first path: inspect the asset with kb_get_raw_asset ... compile the final source note only after the representation trail is present"
+[^src-4]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Multimodal Ingest Model" -- "The runtime intentionally does not perform OCR or vision itself. Instead, it gives agents a canonical place to store those intermediate artifacts and then validates that the final wiki pages stay grounded in them."
+[^src-5]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "What 0.4.4 Implements" -- "compile-readiness tracking with ready, partial, and needs_representation"
+[^src-6]: `data/raw/webpage/clawhub-llm-wiki-karpathy/text.txt` -- "Runtime Philosophy" -- "kb_prepare_source_bundle is the bridge between those layers for non-text assets: it returns the exact raw metadata, reviewed asset refs, stored representations, and readiness state the agent needs before compiling a source note."

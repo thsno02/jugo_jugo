@@ -15,7 +15,7 @@ summary: >-
   log-file（活动日志 / log.md / append-only log / 时间线日志）是 LLM Wiki 的时间线记录：
   按时间顺序 append-only 记录摄入/查询/巡检事件，可用 grep 等 unix 工具解析，
   帮助 LLM 理解最近发生了什么
-related: []
+related: [cross-session-continuity, index-based-navigation]
 ---
 
 **log.md** 是 LLM Wiki 的时间线记录文件，与 index.md（内容目录）互补[^card-1]。它是一个 append-only 的按时间顺序记录——摄入、查询和巡检事件[^src-1]。

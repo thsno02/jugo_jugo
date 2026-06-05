@@ -18,7 +18,7 @@ summary: >-
 related: []
 ---
 
-LLM Wiki 的核心设计原则之一是**一个主题一个 wiki（one topic, one wiki）**[^src-1]。每个研究领域作为独立的 topic wiki 存在于 `~/wiki/topics/<name>/` 下，拥有自己独立的来源、文章、产出和 Obsidian vault 配置[^src-2]。
+LLM Wiki 的核心设计原则之一是**一个主题一个 wiki（one topic, one wiki）**[^src-1]。作为 LLM Wiki 模式的架构组成部分[^card-1]，主题隔离有效管理了个人规模下的内容复杂度。每个研究领域作为独立的 topic wiki 存在于 `~/wiki/topics/<name>/` 下，拥有自己独立的来源、文章、产出和 Obsidian vault 配置[^src-2]。
 
 隔离带来的直接好处是**无跨主题噪声**——研究量子计算不会污染营养学 wiki，查询保持聚焦[^src-3]。
 
@@ -30,9 +30,9 @@ Hub 层（`~/wiki/`）只是注册表——没有内容，只有 `wikis.json`、
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "One topic, one wiki" L142-144 -- "Each research area is isolated. No cross-topic noise. Queries stay focused. A multi-wiki peek finds overlap when relevant."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L302-303 -- "Topic wikis (~/wiki/topics/<name>/) are isolated research areas. Each has its own sources, articles, outputs, and Obsidian vault config."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L303 -- "Isolation means researching quantum computing can't pollute your nutrition wiki."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "One topic, one wiki" L144 -- "A multi-wiki peek finds overlap when relevant."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Commands" L172 -- "query, output, and plan also accept --with <wiki> for cross-wiki context."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L300 -- "The hub (~/wiki/) is just a registry. No content — only wikis.json, _index.md, and log.md."
+[^src-1]: `data/raw/webpage/llm-wiki-net/text.txt` -- "One topic, one wiki" L142-144 -- "Each research area is isolated. No cross-topic noise. Queries stay focused. A multi-wiki peek finds overlap when relevant."
+[^src-2]: `data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L302-303 -- "Topic wikis (~/wiki/topics/<name>/) are isolated research areas. Each has its own sources, articles, outputs, and Obsidian vault config."
+[^src-3]: `data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L303 -- "Isolation means researching quantum computing can't pollute your nutrition wiki."
+[^src-4]: `data/raw/webpage/llm-wiki-net/text.txt` -- "One topic, one wiki" L144 -- "A multi-wiki peek finds overlap when relevant."
+[^src-5]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Commands" L172 -- "query, output, and plan also accept --with <wiki> for cross-wiki context."
+[^src-6]: `data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L300 -- "The hub (~/wiki/) is just a registry. No content — only wikis.json, _index.md, and log.md."

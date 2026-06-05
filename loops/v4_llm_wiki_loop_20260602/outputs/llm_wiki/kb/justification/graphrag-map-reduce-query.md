@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt`
 源证据：
 - Section 1.1.6 (graph_rag.tex) — "Prepare community summaries...randomly shuffled and divided into chunks"
 - Section 1.1.6 — "Intermediate answers are generated in parallel...score between 0-100"

@@ -30,10 +30,10 @@ LLM Wiki 的一个核心架构约束是**零运行时依赖**[^src-1]。具体�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Zero dependencies" L166-168 -- "Runs entirely on the host agent's built-in tools. Plugin is Markdown + commands. No servers, no services, no telemetry."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: dependencies" L490-491 -- "LLM Wiki uses only the built-in tools of the host agent (file read/write, web fetch, web search)."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: dependencies" L491 -- "The plugin itself is Markdown: command definitions, skills, and reference docs."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "Zero dependencies" L168 -- "No servers, no services, no telemetry."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: agents" L440-442 -- "The behavioral logic lives in a single wiki-manager skill shared across runtimes"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: dependencies" L492 -- "Optional: ask-grok-mcp for best-in-class tweet ingestion, tobi/qmd for local search beyond ~100 articles."
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: offline" L486-487 -- "Compiling, querying, linting, and generating artifacts from an existing wiki work offline... Research and ingestion need internet"
+[^src-1]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Zero dependencies" L166-168 -- "Runs entirely on the host agent's built-in tools. Plugin is Markdown + commands. No servers, no services, no telemetry."
+[^src-2]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: dependencies" L490-491 -- "LLM Wiki uses only the built-in tools of the host agent (file read/write, web fetch, web search)."
+[^src-3]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: dependencies" L491 -- "The plugin itself is Markdown: command definitions, skills, and reference docs."
+[^src-4]: `data/raw/webpage/llm-wiki-net/text.txt` -- "Zero dependencies" L168 -- "No servers, no services, no telemetry."
+[^src-5]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: agents" L440-442 -- "The behavioral logic lives in a single wiki-manager skill shared across runtimes"
+[^src-6]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: dependencies" L492 -- "Optional: ask-grok-mcp for best-in-class tweet ingestion, tobi/qmd for local search beyond ~100 articles."
+[^src-7]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: offline" L486-487 -- "Compiling, querying, linting, and generating artifacts from an existing wiki work offline... Research and ingestion need internet"

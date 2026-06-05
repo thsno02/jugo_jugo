@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex`
+来源：`data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex`
 源证据：
 - Section 5.3 — "we applied a simple document expansion technique, where the compressed information is concatenated with the original value to form the key during indexing"
 - Section 5.3 — "yielded an average improvement of 9.4% in recall@k and 5.4% in final accuracy"

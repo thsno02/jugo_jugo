@@ -13,7 +13,7 @@ canonical_concept: wikibase-qualifier-mechanism
 aliases: [qualifier Snaks, 限定修饰, 声明限定词, qualifierSnaks]
 summary: >-
   wikibase-qualifier-mechanism（qualifier Snaks / 限定修饰 / 声明限定词）Wikibase 中 Statement 的 qualifierSnaks 是对 mainSnak 的上下文限定，用于附加"不直接指向主语"的信息如时间范围、角色、比例等，使单一 Property-Value 断言能表达复合事实
-related: [wikibase-statement-structure, wikibase-snak-triple-epistemology]
+related: [wikibase-snak-triple-epistemology, wikibase-statement-structure]
 ---
 
 Wikibase 的 Statement 支持在 mainSnak 之外添加零个或多个 qualifier Snaks（也简称"qualifiers"），用于补充"不直接指向主语"的附加上下文信息 [^src-1]。
@@ -30,7 +30,7 @@ qualifier 的一个重要特征是其可省略性：如果某信息未知（如�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 531-532 -- "there can be zero or more additional PropertySnaks that describe the Statement in more detail. These qualifier Snaks... store additional information that does not directly refer to the subject"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 548-569 -- 奥巴马参议员、哈利波特和奥地利民族的三个示例
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 570-571 -- "there are cases where a country is known to have inhabitants of some ethnic group, while the percentage of that group is not known; then the qualifier Snak could simply be omitted"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 569-570 -- "Like in Wikipedia, it is left to the community to agree on uniform ways of expressing such things"
+[^src-1]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 531-532 -- "there can be zero or more additional PropertySnaks that describe the Statement in more detail. These qualifier Snaks... store additional information that does not directly refer to the subject"
+[^src-2]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 548-569 -- 奥巴马参议员、哈利波特和奥地利民族的三个示例
+[^src-3]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 570-571 -- "there are cases where a country is known to have inhabitants of some ethnic group, while the percentage of that group is not known; then the qualifier Snak could simply be omitted"
+[^src-4]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 569-570 -- "Like in Wikipedia, it is left to the community to agree on uniform ways of expressing such things"

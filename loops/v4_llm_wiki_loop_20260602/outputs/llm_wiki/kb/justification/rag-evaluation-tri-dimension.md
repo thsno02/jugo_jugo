@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt`
+来源：`data/raw/arxiv/arxiv-ragas/text.txt`
 源证据：
 - Abstract L37 — "Evaluating RAG architectures is, however, challenging because there are several dimensions to consider"
 - Abstract L37 — "the ability of the retrieval system to identify relevant and focused context passages"

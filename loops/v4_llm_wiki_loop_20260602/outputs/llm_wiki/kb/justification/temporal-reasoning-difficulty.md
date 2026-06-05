@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
 源证据：
 - Section 1 — "still significantly lag behind human levels (by 56%), especially in temporal reasoning, (by 73%)"
 - Table 2, Table 3 — "Human Temporal=92.6; best model Temporal=42.1"

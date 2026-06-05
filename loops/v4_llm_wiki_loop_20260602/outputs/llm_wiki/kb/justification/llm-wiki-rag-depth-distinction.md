@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/anthemcreation-fr-guide/text.txt`
+来源：`data/raw/webpage/anthemcreation-fr-guide/text.txt`
 源证据：
 - L156 — "La difference fondamentale n'est pas la vitesse, c'est la profondeur du raisonnement."
 - L156 — "Une LLM wiki repond depuis une connaissance deja synthetisee, avec des liens entre concepts, des contradictions resolues, et des syntheses pre-construites. Le raisonnement multi-hop (relier trois concepts distincts pour repondre a une question complexe) devient naturel."

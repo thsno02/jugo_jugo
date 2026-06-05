@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
 源证据：
 - Section 3.3 — "a single turn of the conversation h_{k_j} is transformed into an observation o_{k_j} and then stored in the long-term memory"
 - Table 3 — "Observation top-5: Overall=41.4, Temporal=41.9 vs Dialog top-5: Overall=31.7, Temporal=21.3"

@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/3_benchmark.tex`
+来源：`data/raw/arxiv/arxiv-longmemeval/source/text/3_benchmark.tex`
 源证据：
 - Section 3.2 — "LongMemEval formulates five core long-term memory abilities"
 - Table 1 (benchmark_comparison.tex) — comparison showing prior benchmarks lack KU coverage

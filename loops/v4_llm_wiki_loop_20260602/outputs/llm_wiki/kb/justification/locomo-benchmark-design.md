@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt`
 源证据：
 - sections/experiment_setup.tex — "The LOCOMO dataset is designed to evaluate long-term conversational memory in dialogue systems. It comprises 10 extended conversations, each containing approximately 600 dialogues and 26000 tokens on average"
 - sections/experiment_setup.tex — "These questions are categorized into multiple types: single-hop, multi-hop, temporal, and open-domain."

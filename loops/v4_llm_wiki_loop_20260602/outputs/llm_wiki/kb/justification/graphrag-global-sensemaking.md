@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt`
 源证据：
 - Abstract (graph_rag.tex) — "RAG fails on global questions directed at an entire text corpus...this is inherently a query-focused summarization (QFS) task"
 - Abstract (graph_rag.tex) — "Our approach uses an LLM to build a graph index in two stages"

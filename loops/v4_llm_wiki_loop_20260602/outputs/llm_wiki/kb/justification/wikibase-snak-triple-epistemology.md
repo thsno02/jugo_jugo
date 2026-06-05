@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt`
+来源：`data/raw/webpage/wikibase-data-model/text.txt`
 源证据：
 - "Snaks" section, lines 464-475 — "Snaks are the basic information structures... PropertySnak := PropertyValueSnak | PropertySomeValueSnak | PropertyNoValueSnak"
 - "PropertyNoValueSnak" section, lines 507-513 — 明确无值与尚未录入的区分

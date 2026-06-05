@@ -13,7 +13,7 @@ canonical_concept: rag-evaluation-tri-dimension
 aliases: [RAG评估三维度, RAG evaluation dimensions, 检索-忠实性-生成质量三维度]
 summary: >-
   rag-evaluation-tri-dimension（RAG评估三维度 / RAG evaluation dimensions / 检索-忠实性-生成质量三维度）RAGAS 将 RAG 管道评估分解为三个独立维度：检索系统识别相关且聚焦的上下文段落的能力、LLM 忠实利用上下文的能力、生成输出本身的质量。
-related:
+related: [rag-component-evaluation-tri-dimension, ragas-reference-free-rag-evaluation, ragchecker-three-tier-metrics]
   - ragas-reference-free-rag-evaluation
   - citation-quality-tri-dimension
   - rag-retrieval-generation-dual-condition
@@ -28,7 +28,7 @@ RAGAS 框架将 RAG 管道的评估挑战分解为三个独立维度，论文指
 
 **维度三：生成质量（Answer Quality）**——"生成本身的质量" [^src-4]。这一维度关注最终回答的整体可用性，独立于检索和忠实性之外。
 
-三维分解的价值在于：它揭示了 RAG 管道的故障可能独立发生在不同组件上——检索可能召回了正确内容但 LLM 未能忠实使用，或 LLM 忠实使用了检索内容但检索本身返回了不相关的段落。单一维度的评估无法区分这些不同的失败模式。
+三维分解的价值在于：它揭示了 RAG 管道的故障可能独立发生在不同组件上——检索可能召回了正确内容但 LLM 未能忠实使用，或 LLM 忠实使用了检索内容但检索本身返回了不相关的段落。单一维度的评估无法区分这些不同的失败模式。值得强调的是，这三个维度均在 RAGAS 的无参考框架下实现，无需 ground truth 答案即可评估[^card-3]。
 
 ARES 独立提出了高度平行的三维组件评估框架（上下文相关性、回答忠实性、回答相关性），为这一分解的普遍性提供了跨研究验证[^card-1]。RAGChecker 则进一步将三维度扩展为三层级（整体/检索器/生成器），在生成器层引入 6 个细粒度诊断指标，将维度分析推向更深层次[^card-2]。
 
@@ -36,8 +36,9 @@ ARES 独立提出了高度平行的三维组件评估框架（上下文相关性
 
 [^card-1]: [RAG 组件评估三维度](rag-component-evaluation-tri-dimension.md) -- ARES 从不同来源独立提出了平行的三维组件评估（上下文相关性、回答忠实性、回答相关性），与 RAGAS 的三维度高度重叠
 [^card-2]: [RAGChecker 三层诊断指标体系](ragchecker-three-tier-metrics.md) -- RAGChecker 将三维度扩展为三层级诊断体系，在生成器层引入 6 个细粒度指标，深化了维度分析的粒度
+[^card-3]: [RAGAS 无参考评估框架](ragas-reference-free-rag-evaluation.md) -- 本卡描述三维度的内容（WHAT），该卡强调这些维度的评估无需依赖 ground truth（WHY/HOW）
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "Evaluating RAG architectures is, however, challenging because there are several dimensions to consider"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "the ability of the retrieval system to identify relevant and focused context passages"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "the ability of the LLM to exploit such passages in a faithful way"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "the quality of the generation itself"
+[^src-1]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "Evaluating RAG architectures is, however, challenging because there are several dimensions to consider"
+[^src-2]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "the ability of the retrieval system to identify relevant and focused context passages"
+[^src-3]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "the ability of the LLM to exploit such passages in a faithful way"
+[^src-4]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "the quality of the generation itself"

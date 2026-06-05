@@ -13,7 +13,7 @@ canonical_concept: architectural-separability-as-safety
 aliases: [架构可分离性安全, architectural separability as safety, 权重外部化安全承诺, wiki-weight separation, 基模型纠正通道]
 summary: >-
   architectural-separability-as-safety（架构可分离性安全 / wiki-weight separation / 基模型纠正通道）伴侣记忆框架的安全设计承诺：wiki 必须保持在基模型权重之外，因为可分离性在结构上必要——使基模型演进作为外部纠正通道对抗用户耦合认知固化；将 wiki 折叠进权重则永久关闭此通道
-related: [companion-knowledge-system, wiki-as-git-repo, weight-internalization-aspiration, three-correction-channels]
+related: [companion-knowledge-system, three-correction-channels, weight-internalization-aspiration, wiki-as-git-repo]
 ---
 
 架构可分离性是伴侣记忆框架的一项设计承诺而非实现细节：wiki 必须保持在基模型权重之外[^src-1]。
@@ -33,9 +33,9 @@ related: [companion-knowledge-system, wiki-as-git-repo, weight-internalization-a
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Abstract" -- "the wiki stays outside the base model weights. This is deliberate."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 8.3" -- "separability is not merely operationally convenient... but structurally necessary for base-model evolution to function as an external correction channel specifically against user-coupled epistemic entrenchment."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 8.3" -- "a user running a companion system for five years benefits from the model's improved factual priors and alignment training precisely because swapping the base model is a configuration change, not a wiki operation. Fold the wiki into weights and this channel closes permanently."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 8.3" -- "Three honest limits: the wiki still anchors interpretation... base model updates are not always corrections... the user does not control when updates happen."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 6" -- "Plain text as primary representation makes that survival auditable in a way embeddings-only storage does not"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 8.3" -- "That rationale is narrower than 'keep knowledge external.'"
+[^src-1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Abstract" -- "the wiki stays outside the base model weights. This is deliberate."
+[^src-2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 8.3" -- "separability is not merely operationally convenient... but structurally necessary for base-model evolution to function as an external correction channel specifically against user-coupled epistemic entrenchment."
+[^src-3]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 8.3" -- "a user running a companion system for five years benefits from the model's improved factual priors and alignment training precisely because swapping the base model is a configuration change, not a wiki operation. Fold the wiki into weights and this channel closes permanently."
+[^src-4]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 8.3" -- "Three honest limits: the wiki still anchors interpretation... base model updates are not always corrections... the user does not control when updates happen."
+[^src-5]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 6" -- "Plain text as primary representation makes that survival auditable in a way embeddings-only storage does not"
+[^src-6]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 8.3" -- "That rationale is narrower than 'keep knowledge external.'"

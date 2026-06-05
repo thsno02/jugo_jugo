@@ -26,5 +26,5 @@ RAGChecker 定义 self-knowledge（自有知识）为生成器回答中那些正
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/framework.tex, Generator Metrics" -- "A correct claim not entailed by any chunk can only be based on generator's self-knowledge... A lower self-knowledge score is better, when the generator is expected to fully depend on retrieved context only in a RAG system"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "tables/ragchecker_results_avg.tex" -- "BM25_GPT-4 SK=3.4, E5-Mistral_GPT-4 SK=1.4; BM25_Llama3-70b SK=1.7, E5-Mistral_Llama3-70b SK=0.8"
+[^src-1]: `data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "sections/framework.tex, Generator Metrics" -- "A correct claim not entailed by any chunk can only be based on generator's self-knowledge... A lower self-knowledge score is better, when the generator is expected to fully depend on retrieved context only in a RAG system"
+[^src-2]: `data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "tables/ragchecker_results_avg.tex" -- "BM25_GPT-4 SK=3.4, E5-Mistral_GPT-4 SK=1.4; BM25_Llama3-70b SK=1.7, E5-Mistral_Llama3-70b SK=0.8"

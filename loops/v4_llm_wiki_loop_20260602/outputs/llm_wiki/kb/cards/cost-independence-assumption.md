@@ -15,7 +15,7 @@ summary: >-
   cost-independence-assumption（成本独立性假设 / A1假设 / 时间无关假设）指 Liu et al. (2026)
   Agentic ROI 公式中隐含的三个未经检验的假设（成本/质量/时间独立性），
   在传统 RAG 范式下大体成立但引入持久化知识层后全部失效
-related:
+related: [compounding-cost-honesty, knowledge-compounding]
   - knowledge-compounding
   - dynamic-agentic-roi
 ---
@@ -34,10 +34,14 @@ Wen & Ku (2026) 指出 Liu et al. (2026) 的 Agentic ROI 公式 ROIi = (Delta-Qi
 
 这一批判的意义在于揭示了现有 LLM 经济学框架（包括 Liu et al. 的 Agentic ROI 和 NVIDIA 的 token 经济学叙事）的共同盲区：**两个框架都将成本视为独立的、非累积的边际费用**，在每次新交互中重复发生[^src-5]。
 
+假设失效后的替代理论——知识复利效应——在知识复利卡中有完整建构[^card-knowledge-compounding]。然而即使在修正后的框架中，Compounding 的原始 token 成本仍高于 Chunk-RAG，这一实证事实在成本诚实卡中有详细记录[^card-compounding-cost-honesty]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.1 P7 -- "This formulation contains three implicit assumptions that have not been examined"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.1 P7 -- "Assumption A1 (cost independence): Cᵢ is determined solely by the complexity of the current task i and is independent of the historical task set {1, 2, ..., i−1}"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.1 P7 -- "These assumptions broadly hold in the traditional RAG paradigm, where the system has no memory: each query re-retrieves raw documents, re-assembles context, and re-generates the answer from scratch"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.1 P7 -- "once a persistent structured knowledge layer is introduced, all three assumptions break down. The remainder of this section focuses on revising A1; A2 and A3 follow analogously and are left to future work"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 1.1 P3 -- "Both frameworks treat cost as an independent, non-cumulative marginal expense that recurs with each new interaction"
+[^src-1]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.1 P7 -- "This formulation contains three implicit assumptions that have not been examined"
+[^src-2]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.1 P7 -- "Assumption A1 (cost independence): Cᵢ is determined solely by the complexity of the current task i and is independent of the historical task set {1, 2, ..., i−1}"
+[^src-3]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.1 P7 -- "These assumptions broadly hold in the traditional RAG paradigm, where the system has no memory: each query re-retrieves raw documents, re-assembles context, and re-generates the answer from scratch"
+[^src-4]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 3.1 P7 -- "once a persistent structured knowledge layer is introduced, all three assumptions break down. The remainder of this section focuses on revising A1; A2 and A3 follow analogously and are left to future work"
+[^src-5]: `data/raw/arxiv/arxiv-knowledge-compounding/source.pdf` -- Section 1.1 P3 -- "Both frameworks treat cost as an independent, non-cumulative marginal expense that recurs with each new interaction"
+[^card-knowledge-compounding]: [知识复利效应](knowledge-compounding.md) -- 本卡批判原框架的成本独立性假设，该卡在此基础上构建了知识复利的完整经济学理论
+[^card-compounding-cost-honesty]: [复利方案在原始 token 成本上从不胜出](compounding-cost-honesty.md) -- 本卡指出成本独立性假设失效，该卡的实证数据表明即使在修正后的框架中 Compounding 的原始 token 成本仍高于 Chunk-RAG

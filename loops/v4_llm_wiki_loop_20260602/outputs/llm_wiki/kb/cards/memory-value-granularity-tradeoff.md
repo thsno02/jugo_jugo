@@ -13,7 +13,7 @@ canonical_concept: memory-value-granularity-tradeoff
 aliases: [存储粒度权衡, value granularity tradeoff, 会话分解, session decomposition, round-level decomposition]
 summary: >-
   memory-value-granularity-tradeoff（存储粒度权衡 / value granularity tradeoff / 会话分解 / round-level decomposition）在对话记忆系统中，将会话分解为轮次（round）级别是比整个会话（session）更优的存储粒度；进一步压缩为事实/摘要虽降低 token 消耗但因信息丢失损害总体 QA 性能，唯一例外是跨会话推理任务因事实格式的一致性而受益
-related: [chunk-size-tradeoff, lightmem-three-stage-memory, extraction-granularity-control]
+related: [chunk-size-tradeoff, extraction-granularity-control, lightmem-three-stage-memory, observation-based-memory-representation]
 ---
 
 在聊天助手的长期记忆系统中，"值"（value）的存储粒度是一个关键设计选择。LongMemEval 的实验在三个粒度级别上进行了系统比较 [^src-1]：
@@ -24,10 +24,14 @@ related: [chunk-size-tradeoff, lightmem-three-stage-memory, extraction-granulari
 
 **阅读器能力决定最优 token 预算**：较弱模型（Llama 8B）在检索 token 超过 3k 后性能急剧下降，而 GPT-4o 即使在 20k 以上仍持续改善 [^src-5]。
 
+值得注意的是，LoCoMo 的实验结果看似与"事实级压缩损害性能"的结论矛盾——将对话转为断言式观察反而显著提升了 QA[^card-1]。两者的区别在于：LongMemEval 的事实提取是有损压缩，而 LoCoMo 的观察提取是消除共指噪声的澄清性转化。RAG 管线中的分块大小权衡也反映了类似的检索单元粒度问题[^card-2]。
+
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/4_methodology.tex` -- Section 4.2 CP1 -- "we compare three value representation strategies: storing entire sessions, decomposing sessions into individual rounds, and further applying summary/fact extraction"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.2 -- "decomposing sessions into rounds significantly enhances reading performance with GPT-4o as the reader"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.2 -- "replacing sessions or rounds with extracted summaries or facts negatively impacts QA performance due to information loss"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.2 -- "fact decomposition extracts the same type of information across all sessions in a more uniform and simplified format, aiding retrieval and reading"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.2 -- "Llama 3.1 8B Instruct's performance drops sharply beyond 3k retrieved tokens, GPT-4o continues to improve even with over 20k retrieved tokens"
+[^src-1]: `data/raw/arxiv/arxiv-longmemeval/source/text/4_methodology.tex` -- Section 4.2 CP1 -- "we compare three value representation strategies: storing entire sessions, decomposing sessions into individual rounds, and further applying summary/fact extraction"
+[^src-2]: `data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.2 -- "decomposing sessions into rounds significantly enhances reading performance with GPT-4o as the reader"
+[^src-3]: `data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.2 -- "replacing sessions or rounds with extracted summaries or facts negatively impacts QA performance due to information loss"
+[^src-4]: `data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.2 -- "fact decomposition extracts the same type of information across all sessions in a more uniform and simplified format, aiding retrieval and reading"
+[^src-5]: `data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex` -- Section 5.2 -- "Llama 3.1 8B Instruct's performance drops sharply beyond 3k retrieved tokens, GPT-4o continues to improve even with over 20k retrieved tokens"
+[^card-1]: [观察断言式记忆表示优于原始对话检索](observation-based-memory-representation.md) -- 本卡发现事实级压缩因信息丢失通常损害 QA，该卡发现将对话转为断言式观察反而提升 QA（F1 41.4 vs 31.7），区别在于有损压缩与消除共指噪声的澄清性转化
+[^card-2]: [分块大小权衡](chunk-size-tradeoff.md) -- 本卡在对话记忆场景探讨存储粒度（会话/轮次/事实），该卡在 RAG 管线探讨分块大小（256-512 token），共同论证检索单元粒度对下游性能的关键影响

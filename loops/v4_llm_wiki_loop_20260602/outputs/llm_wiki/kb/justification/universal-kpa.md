@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graph-poisoning/text.txt`
+来源：`data/raw/arxiv/arxiv-graph-poisoning/text.txt`
 源证据：
 - Abstract — "The second attack, named Universal KPA (UKPA), exploits linguistic cues such as pronouns and dependency relations to disrupt the structural integrity of the generated graph by altering globally influential words"
 - Abstract — "With fewer than 0.05% of full text modified, the QA accuracy collapses from 95% to 50%"

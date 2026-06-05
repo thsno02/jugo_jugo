@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt`
 源证据：
 - Appendix C (appendix.tex) — "Surprisingly, the smallest context window size tested (8k) was universally better for all comparisons on comprehensiveness (average win rate of 58.1%)"
 - Appendix C — "Given the potential for information to be 'lost in the middle' of longer contexts"

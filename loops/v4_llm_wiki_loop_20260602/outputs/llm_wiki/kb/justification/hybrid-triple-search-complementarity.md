@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-zep/agent_source_bundle.txt`
 源证据：
 - Section 3.1 — "Zep implements three search functions: cosine semantic similarity search, Okapi BM25 full-text search, and breadth-first search."
 - Section 3.1 — "full-text search identifies word similarities, cosine similarity captures semantic similarities, and breadth-first search reveals contextual similarities"

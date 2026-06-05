@@ -28,9 +28,9 @@ ALCE 的检索分析揭示了检索质量在引用生成系统中的根本瓶颈
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "The retrieval results play a crucial role to the correctness and the citation quality."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "both models' correctness lags behind the corresponding retrieval recall"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "despite the presence of accurate answers in context, LLMs struggle to utilize them in their outputs."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "GTR outperforms DPR in both correctness and citation quality, emphasizing the importance of deploying better retrievers."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "GPT-4 exhibits an increasing trend with more passages, but the improvement is not proportional to the retrieval performance."
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "including more passages with ChatGPT-16K does not improve the results...suggesting that processing more passages is non-trivial and GPT-4 is better at synthesizing information from its long context than ChatGPT."
+[^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "The retrieval results play a crucial role to the correctness and the citation quality."
+[^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "both models' correctness lags behind the corresponding retrieval recall"
+[^src-3]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "despite the presence of accurate answers in context, LLMs struggle to utilize them in their outputs."
+[^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "GTR outperforms DPR in both correctness and citation quality, emphasizing the importance of deploying better retrievers."
+[^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "GPT-4 exhibits an increasing trend with more passages, but the improvement is not proportional to the retrieval performance."
+[^src-6]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "including more passages with ChatGPT-16K does not improve the results...suggesting that processing more passages is non-trivial and GPT-4 is better at synthesizing information from its long context than ChatGPT."

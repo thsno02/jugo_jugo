@@ -15,7 +15,7 @@ summary: >-
   wiki-storage-protocol（WikiStorage / 可插拔存储 / pluggable storage / LocalFilesystemStorage）
   是 llm-wiki-mcp 的存储抽象层：实现 WikiStorage Protocol 的 6 个方法即可替换后端（SQLite/Notion/GDrive/test fake），
   build_server 作为组合根接受存储实例
-related: [server-mechanics-boundary, optimistic-concurrency-etag]
+related: [optimistic-concurrency-etag, server-mechanics-boundary]
 ---
 
 llm-wiki-mcp 通过 Python 的 `Protocol` 类型定义了 **WikiStorage 接口**，将 MCP 服务器逻辑与具体存储后端解耦[^src-1]。
@@ -36,8 +36,8 @@ llm-wiki-mcp 通过 Python 的 `Protocol` 类型定义了 **WikiStorage 接口**
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L191 -- "implement the WikiStorage Protocol and pass an instance to build_server"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L192 -- "class MyStorage: async def read_page(self, slug: str) -> PageRead... async def write_page... async def list_pages... async def append_log... async def read_log... async def write_raw_file"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L193 -- "build_server is the composition root. The CLI main() is a thin caller that constructs LocalFilesystemStorage from --wiki-root and hands it in."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L191 -- "wrap the MCP server with your own storage backend (SQLite, Notion, GDrive, a test fake)"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L195 -- "The bundled Claude Code skills ship as package data under llm_wiki_mcp/skills/ and load via importlib.resources... Typed domain errors (WikiConflictError, WikiNotFoundError, WikiPermissionError, WikiPathError, WikiSchemaViolationError) are importable from the package root"
+[^src-1]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L191 -- "implement the WikiStorage Protocol and pass an instance to build_server"
+[^src-2]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L192 -- "class MyStorage: async def read_page(self, slug: str) -> PageRead... async def write_page... async def list_pages... async def append_log... async def read_log... async def write_raw_file"
+[^src-3]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L193 -- "build_server is the composition root. The CLI main() is a thin caller that constructs LocalFilesystemStorage from --wiki-root and hands it in."
+[^src-4]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L191 -- "wrap the MCP server with your own storage backend (SQLite, Notion, GDrive, a test fake)"
+[^src-5]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L195 -- "The bundled Claude Code skills ship as package data under llm_wiki_mcp/skills/ and load via importlib.resources... Typed domain errors (WikiConflictError, WikiNotFoundError, WikiPermissionError, WikiPathError, WikiSchemaViolationError) are importable from the package root"

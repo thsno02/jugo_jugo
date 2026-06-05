@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/llm-wiki-net/text.txt`
+来源：`data/raw/webpage/llm-wiki-net/text.txt`
 源证据：
 - L56-58 — "Answer the broader trust question. Reuse the librarian pass, trace outputs across raw/, wiki/, and output/, detect drift, inspect provenance, and do fresh research when local evidence is not enough."
 - L326-327 — "Audit walks that full artifact graph. It can trace an output back through the wiki state and raw sources it depended on, then escalate into fresh research when the stored evidence is stale or incomplete."

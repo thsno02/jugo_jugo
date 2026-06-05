@@ -13,7 +13,7 @@ canonical_concept: graphrag-global-sensemaking
 aliases: [Graph RAG, 图谱RAG, 全局意义建构RAG]
 summary: >-
   graphrag-global-sensemaking（Graph RAG / 图谱RAG）通过 LLM 构建实体知识图谱并预生成层级社区摘要，以 map-reduce 方式回答传统向量 RAG 无法处理的全局语义理解（sensemaking）查询
-related: [graphrag-community-hierarchy, graphrag-map-reduce-query, sensemaking-vs-retrieval-query]
+related: [graphrag-community-hierarchy, graphrag-knowledge-poisoning-attack, graphrag-map-reduce-query, sensemaking-vs-retrieval-query]
 ---
 
 GraphRAG 是一种基于图的 RAG 方法，用于解决传统向量 RAG 在全局问题上的根本失败。传统 RAG 通过向量相似性检索局部相关的文本片段，但面对"这个数据集的主要主题是什么？"之类需要理解整个语料库的查询时，本质上这是一个查询聚焦摘要（QFS）任务，而非显式检索任务 [^src-1]。
@@ -26,8 +26,8 @@ GraphRAG 与此前基于图的 RAG 方法的关键区别在于：它聚焦于图
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Abstract (graph_rag.tex) -- "RAG fails on global questions directed at an entire text corpus, such as 'What are the main themes in the dataset?', since this is inherently a query-focused summarization (QFS) task, rather than an explicit retrieval task."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Abstract (graph_rag.tex) -- "Our approach uses an LLM to build a graph index in two stages: first, to derive an entity knowledge graph from the source documents, then to pregenerate community summaries for all groups of closely related entities."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 2.2 (graph_rag.tex) -- "GraphRAG contrasts with these approaches by focusing on a previously unexplored quality of graphs in this context: their inherent modularity and the ability to partition graphs into nested modular communities of closely related nodes"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Abstract (graph_rag.tex) -- "we show that GraphRAG leads to substantial improvements over a conventional RAG baseline for both the comprehensiveness and diversity of generated answers"
+[^src-1]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Abstract (graph_rag.tex) -- "RAG fails on global questions directed at an entire text corpus, such as 'What are the main themes in the dataset?', since this is inherently a query-focused summarization (QFS) task, rather than an explicit retrieval task."
+[^src-2]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Abstract (graph_rag.tex) -- "Our approach uses an LLM to build a graph index in two stages: first, to derive an entity knowledge graph from the source documents, then to pregenerate community summaries for all groups of closely related entities."
+[^src-3]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Section 2.2 (graph_rag.tex) -- "GraphRAG contrasts with these approaches by focusing on a previously unexplored quality of graphs in this context: their inherent modularity and the ability to partition graphs into nested modular communities of closely related nodes"
+[^src-4]: `data/raw/arxiv/arxiv-graphrag/agent_source_bundle.txt` -- Abstract (graph_rag.tex) -- "we show that GraphRAG leads to substantial improvements over a conventional RAG baseline for both the comprehensiveness and diversity of generated answers"
 [^card-graphrag-knowledge-poisoning-attack]: [GraphRAG 知识投毒攻击](graphrag-knowledge-poisoning-attack.md) -- 知识投毒攻击（KPA）以极低修改量操纵 GraphRAG 的实体提取过程，揭示全局 sensemaking 管道在安全性上的已知空白

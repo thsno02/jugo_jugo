@@ -13,7 +13,7 @@ canonical_concept: rag-retrieval-generation-dual-condition
 aliases: [检索条件与生成条件, retrieval condition and generation condition, RAG双条件攻击框架]
 summary: >-
   rag-retrieval-generation-dual-condition（检索条件与生成条件 / retrieval and generation conditions）有效的 RAG 知识腐蚀攻击必须同时满足两个必要条件：检索条件（恶意文本被检索到）和生成条件（恶意文本作为上下文时 LLM 生成目标答案），现有基线方法只能满足其中一个条件因而效果不佳。
-related:
+related: []
   - rag-knowledge-database-attack-surface
   - poisonedrag-text-decomposition
 ---
@@ -28,8 +28,8 @@ PoisonedRAG 论文的核心理论贡献是推导出有效 RAG 知识腐蚀攻击
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "Our major contribution is to derive two necessary conditions for an effective attack to RAG systems."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "the embedding vectors produced by a retriever for the malicious text P and the target question Q should be similar. We call this condition retrieval condition."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "the LLM should generate the target answer R when P alone is used as the context for the target question Q... We call this condition generation condition."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "if we craft the malicious text P such that it is extremely semantically similar to the target question Q... then we could achieve the retrieval condition but may not achieve the generation condition."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "Existing baselines are not designed to simultaneously achieve retrieval and generation conditions, resulting in sub-optimal performance."
+[^src-1]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "Our major contribution is to derive two necessary conditions for an effective attack to RAG systems."
+[^src-2]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "the embedding vectors produced by a retriever for the malicious text P and the target question Q should be similar. We call this condition retrieval condition."
+[^src-3]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "the LLM should generate the target answer R when P alone is used as the context for the target question Q... We call this condition generation condition."
+[^src-4]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "if we craft the malicious text P such that it is extremely semantically similar to the target question Q... then we could achieve the retrieval condition but may not achieve the generation condition."
+[^src-5]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "Existing baselines are not designed to simultaneously achieve retrieval and generation conditions, resulting in sub-optimal performance."

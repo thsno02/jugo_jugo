@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/openaitoolshub-six-months/text.txt`
+来源：`data/raw/webpage/openaitoolshub-six-months/text.txt`
 源证据：
 - L54 — "every page has last_verified: 2026-05-01, confidence: high|medium|low, and (when relevant) superseded_by: another-page.md or contradicts: an-older-claim.md"
 - L54 — "v1 has none of these."

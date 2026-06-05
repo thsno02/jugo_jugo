@@ -33,9 +33,9 @@ llm-wiki-mcp 通过**乐观并发控制（optimistic concurrency）**解决 wiki
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L180 -- "Optimistic concurrency. Every page has an etag (sha256(body) || mtime_ns)."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L159 -- "wiki_read read-only, idempotent Read one page. Returns body, parsed frontmatter, outgoing links, etag."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L160 -- "wiki_write_page destructive, idempotent Atomic create or update with etag CAS. Pass etag=null to create, the read etag to update."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L181 -- "Updates supply the etag they read; a mismatch raises WikiConflictError"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L181 -- "the agent re-reads, merges, and retries"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L179 -- "Atomic writes. tmp-file + fsync + rename for pages. O_APPEND single-write for log entries."
+[^src-1]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L180 -- "Optimistic concurrency. Every page has an etag (sha256(body) || mtime_ns)."
+[^src-2]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L159 -- "wiki_read read-only, idempotent Read one page. Returns body, parsed frontmatter, outgoing links, etag."
+[^src-3]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L160 -- "wiki_write_page destructive, idempotent Atomic create or update with etag CAS. Pass etag=null to create, the read etag to update."
+[^src-4]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L181 -- "Updates supply the etag they read; a mismatch raises WikiConflictError"
+[^src-5]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L181 -- "the agent re-reads, merges, and retries"
+[^src-6]: `data/raw/pypi/pypi-llm-wiki-mcp/text.txt` -- L179 -- "Atomic writes. tmp-file + fsync + rename for pages. O_APPEND single-write for log entries."

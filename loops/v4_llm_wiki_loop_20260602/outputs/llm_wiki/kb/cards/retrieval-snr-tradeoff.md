@@ -13,7 +13,7 @@ canonical_concept: retrieval-snr-tradeoff
 aliases: [检索信噪比权衡, retrieval SNR tradeoff, 检索量-性能反转]
 summary: >-
   retrieval-snr-tradeoff（检索信噪比权衡, retrieval SNR tradeoff, 检索量-性能反转）LoCoMo 实验表明增加检索数量（top-k）可反而降低 QA 性能——observation 从 top-5 的 F1=41.4 降至 top-50 的 37.8，因为更多检索结果引入噪声干扰模型对正确上下文的识别
-related: [observation-based-memory-representation, locomo-benchmark, chunk-size-tradeoff]
+related: [chunk-size-tradeoff, context-utilization-as-performance-key, context-utilization-noise-faithfulness-trilemma, locomo-benchmark, observation-based-memory-representation, retrieval-improvement-faithfulness-noise-tradeoff]
 ---
 
 LoCoMo 的 RAG 实验揭示了一个检索量与信噪比（signal-to-noise ratio, SNR）之间的权衡现象：增加检索到的上下文数量（top-k）在提高召回率的同时，可能反而降低最终的问答性能[^src-1]。
@@ -22,12 +22,14 @@ LoCoMo 的 RAG 实验揭示了一个检索量与信噪比（signal-to-noise rati
 
 论文将此归因于模型难以在大量检索结果中准确定位正确上下文，强调"it is important to reduce the signal-to-noise (SNR) ratio in retrieved contexts for models to utilize the context accurately"[^src-4]。这与 Liu et al. (2024) 的"Lost in the Middle"发现一致：模型在中间位置的信息利用率最低。
 
-RAGChecker 的实验从另一个角度证实了相同现象：更好的检索器在提升忠实度的同时也不可避免地增加了噪声敏感度 [^card-1]。
+RAGChecker 的实验从另一个角度证实了相同现象：更好的检索器在提升忠实度的同时也不可避免地增加了噪声敏感度 [^card-1]。RAGChecker 还发现在生成器指标中 context utilization 与 F1 相关性最强[^card-2]，但生成器 prompt 调优层面同样面临 CU-NS-Faith 三难权衡，无法同时改善所有指标[^card-3]。
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 6.1" -- "This improvement falters with an increase in the number of retrieved observations, suggesting that it is important to reduce the signal-to-noise (SNR) ratio"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table 3" -- "Observation: top-5 Overall=41.4 Adversarial=44.7; top-50 Overall=37.8 Adversarial=27.7"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table 3" -- "Dialog: top-5 Overall=31.7 Recall=58.8; top-50 Overall=34.8 Recall=84.8"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 6.1" -- "it is important to reduce the signal-to-noise (SNR) ratio in retrieved contexts for models to utilize the context accurately"
+[^src-1]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 6.1" -- "This improvement falters with an increase in the number of retrieved observations, suggesting that it is important to reduce the signal-to-noise (SNR) ratio"
+[^src-2]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table 3" -- "Observation: top-5 Overall=41.4 Adversarial=44.7; top-50 Overall=37.8 Adversarial=27.7"
+[^src-3]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Table 3" -- "Dialog: top-5 Overall=31.7 Recall=58.8; top-50 Overall=34.8 Recall=84.8"
+[^src-4]: `data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt` -- "Section 6.1" -- "it is important to reduce the signal-to-noise (SNR) ratio in retrieved contexts for models to utilize the context accurately"
 [^card-1]: [检索改善引发的忠实度与噪声敏感度权衡](retrieval-improvement-faithfulness-noise-tradeoff.md) -- RAGChecker 实验从 retriever 升级和 top-k 增加两个维度证实了信噪比权衡的普遍性
+[^card-2]: [上下文利用率是 RAG 性能的关键生成器指标](context-utilization-as-performance-key.md) -- 本卡聚焦检索量增加带来的信噪比退化（LoCoMo），该卡聚焦生成器的上下文利用率作为与 F1 相关性最强的指标（RAGChecker），两者共同构成"检索-生成"链路中噪声问题的上下游视角
+[^card-3]: [上下文利用率-噪声敏感度-忠实度三难困境](context-utilization-noise-faithfulness-trilemma.md) -- 本卡聚焦检索量 top-k 增加时的信噪比权衡，该卡聚焦生成器 prompt 调优时 CU-NS-Faith 之间的三难困境，两者分别在检索层和生成层揭示噪声问题的不可回避性

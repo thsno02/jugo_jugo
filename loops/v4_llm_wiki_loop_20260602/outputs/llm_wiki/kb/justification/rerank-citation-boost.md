@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-alce/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-alce/agent_source_bundle.txt`
 源证据：
 - sections/model.tex -- "We randomly sample n_sample=4 responses for each question, and select the best response using the automatic citation recall score."
 - sections/results.tex -- "Rerank leads to consistent improvement in citation quality (on ASQA and ELI5)."

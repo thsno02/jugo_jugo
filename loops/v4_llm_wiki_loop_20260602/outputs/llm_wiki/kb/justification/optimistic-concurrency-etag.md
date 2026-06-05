@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-llm-wiki-mcp/text.txt`
+来源：`data/raw/pypi/pypi-llm-wiki-mcp/text.txt`
 源证据：
 - L180-181 — "Optimistic concurrency. Every page has an etag (sha256(body) || mtime_ns). Updates supply the etag they read; a mismatch raises WikiConflictError, and the agent re-reads, merges, and retries."
 - L179 — "Atomic writes. tmp-file + fsync + rename for pages. O_APPEND single-write for log entries."

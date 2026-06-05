@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt`
 源证据：
 - Section 6.1 — "it is important to reduce the signal-to-noise (SNR) ratio in retrieved contexts"
 - Table 3 — "Observation: top-5=41.4, top-50=37.8; Dialog: top-5=31.7, top-50=34.8"

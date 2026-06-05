@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/pypi/pypi-my-llm-wiki/text.txt`
+来源：`data/raw/pypi/pypi-my-llm-wiki/text.txt`
 源证据：
 - L108 — "Tree-sitter AST: classes, functions, typed extends / implements , function signatures, doc comments (Javadoc / JSDoc / GoDoc / /// ), call graph."
 - L108 — "Code (19 languages) — Python, TypeScript/JavaScript, Go, Rust, Java, C/C++, Ruby, C#, and more"

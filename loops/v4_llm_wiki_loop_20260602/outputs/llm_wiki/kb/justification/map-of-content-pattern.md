@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/complete-tech-live-frontier/text.txt`
+来源：`data/raw/webpage/complete-tech-live-frontier/text.txt`
 源证据：
 - "How Karpathy's pattern shows up in the build" 段 — "9 Maps of Content (guided reading paths)"
 - "How Karpathy's pattern shows up in the build" 段 — "Maps of Content get updated so the new piece sits in a guided reading path, not just an orphan node."

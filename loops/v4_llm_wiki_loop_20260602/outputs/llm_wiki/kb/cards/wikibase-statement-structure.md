@@ -13,7 +13,7 @@ canonical_concept: wikibase-statement-structure
 aliases: [Wikibase Statement 组合, 声明结构, 主Snak+限定+引用+排名]
 summary: >-
   wikibase-statement-structure（Wikibase Statement 组合 / 声明结构）一条 Statement 由 subject（主语实体）、mainSnak（核心断言）、qualifierSnaks（限定上下文如时间/角色）、referenceRecords（来源证据的 Snak 集合列表）和 rank（排名）五部分组成，实现了"断言+限定+溯源"的完整知识记录
-related: [wikibase-snak-triple-epistemology, wikibase-statement-ranking, wikibase-qualifier-mechanism]
+related: [wikibase-qualifier-mechanism, wikibase-snak-triple-epistemology, wikibase-statement-ranking]
 ---
 
 Wikibase 的 Statement 是表示事实性数据的核心结构，由五个组件组成 [^src-1]：
@@ -28,8 +28,8 @@ Wikibase 的 Statement 是表示事实性数据的核心结构，由五个组件
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 530-545 -- "subject: the Entity that the statement is about; mainSnak: the main Snak of the statement; rank: a StatementRank...; referenceRecords: the list of references; qualifierSnaks: optional list of additional PropertySnaks"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 548-570 -- examples of qualifier Snaks with Obama, Harry Potter, and Austria
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "ReferenceRecords" section, lines 590-592 -- "In the simplest case, the source can be represented by a single Snak, e.g. providing a URL. But SourceRecords can also be more complex"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Overview" section, lines 312-313 -- "the list of references is allowed to be empty (like in Wikipedia, editors can add Statements without a reference)"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "PropertyValueSnak" section, lines 497-498 -- "Snaks do not mention the subject to which they refer; this is given by the context in which a Snak is used"
+[^src-1]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 530-545 -- "subject: the Entity that the statement is about; mainSnak: the main Snak of the statement; rank: a StatementRank...; referenceRecords: the list of references; qualifierSnaks: optional list of additional PropertySnaks"
+[^src-2]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Statements" section, lines 548-570 -- examples of qualifier Snaks with Obama, Harry Potter, and Austria
+[^src-3]: `data/raw/webpage/wikibase-data-model/text.txt` -- "ReferenceRecords" section, lines 590-592 -- "In the simplest case, the source can be represented by a single Snak, e.g. providing a URL. But SourceRecords can also be more complex"
+[^src-4]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Overview" section, lines 312-313 -- "the list of references is allowed to be empty (like in Wikipedia, editors can add Statements without a reference)"
+[^src-5]: `data/raw/webpage/wikibase-data-model/text.txt` -- "PropertyValueSnak" section, lines 497-498 -- "Snaks do not mention the subject to which they refer; this is given by the context in which a Snak is used"

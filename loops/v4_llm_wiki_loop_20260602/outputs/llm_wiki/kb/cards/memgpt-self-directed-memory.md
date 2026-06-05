@@ -13,7 +13,7 @@ canonical_concept: memgpt-self-directed-memory
 aliases: [自主内存管理, self-directed memory editing, LLM自编辑内存]
 summary: >-
   memgpt-self-directed-memory（自主内存编辑, self-directed memory editing）LLM 处理器输出被解析为函数调用，自主决定何时在上下文层级间移动数据、更新 working context、搜索 archival/recall storage；函数执行结果（含运行时错误）反馈回 LLM 形成闭环，分页机制防止检索溢出
-related: [memgpt-memory-hierarchy, memgpt-function-chaining, memgpt-queue-eviction-policy]
+related: [memgpt-function-chaining, memgpt-memory-hierarchy, memgpt-queue-eviction-policy, tool-mediated-memory-access]
 ---
 
 MemGPT 中的内存编辑和检索完全由 LLM 自主驱动（self-directed）：MemGPT 基于当前上下文自主地更新和搜索自己的内存 [^src-1]。
@@ -28,7 +28,7 @@ MemGPT 中的内存编辑和检索完全由 LLM 自主驱动（self-directed）�
 
 [^card-1]: [工具中介的记忆访问模式](tool-mediated-memory-access.md) -- MemGPT 的自主编辑（LLM 完全自主决定何时读写内存）与 LangChain 的工具中介（agent 通过预定义工具函数间接操作）代表了 agent 记忆访问的两种架构极端
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "Memory edits and retrieval are entirely self-directed: MemGPT autonomously updates and searches through its own memory based on the current context."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "The results, including any runtime errors that occur (e.g. trying to add to main context when it is already at maximum capacity), are then fed back to the processor by MemGPT. This feedback loop enables the system to learn from its actions and adjust its behavior accordingly."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "We implement self-directed editing and retrieval by providing explicit instructions within the system instructions that guide the LLM on how to interact with the MemGPT memory systems."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "our memory retrieval mechanisms are designed to be cognizant of these token constraints and implement pagination to prevent retrieval calls from overflowing the context window."
+[^src-1]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "Memory edits and retrieval are entirely self-directed: MemGPT autonomously updates and searches through its own memory based on the current context."
+[^src-2]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "The results, including any runtime errors that occur (e.g. trying to add to main context when it is already at maximum capacity), are then fed back to the processor by MemGPT. This feedback loop enables the system to learn from its actions and adjust its behavior accordingly."
+[^src-3]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "We implement self-directed editing and retrieval by providing explicit instructions within the system instructions that guide the LLM on how to interact with the MemGPT memory systems."
+[^src-4]: `data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "our memory retrieval mechanisms are designed to be cognizant of these token constraints and implement pagination to prevent retrieval calls from overflowing the context window."

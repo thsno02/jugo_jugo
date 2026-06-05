@@ -35,8 +35,8 @@ label 和 description 使用 MultilingualTextValue 表示，aliases 使用 Multi
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "EntityDescriptions" section, lines 596-598 -- "EntityDescriptions are collections of information about an entity, and they mainly serve as data containers"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "EntityDescriptions" section, lines 599-600 -- "all Statements of an ItemDescription must use the expected Item as the subject of their main Snak"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "EntityDescriptions" section, lines 609-616 -- "label: the main label... description: a brief description to clarify the meaning of the label... alias: alternative labels in various languages"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "EntityDescriptions" section, lines 617-622 -- "For ItemDescriptions, the combination of label and description is a key... For PropertyDescriptions, the label is a key"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/text.txt` -- "Planned Feature" section, lines 629-643 -- 计划扩展的 PropertyDescription 功能列表
+[^src-1]: `data/raw/webpage/wikibase-data-model/text.txt` -- "EntityDescriptions" section, lines 596-598 -- "EntityDescriptions are collections of information about an entity, and they mainly serve as data containers"
+[^src-2]: `data/raw/webpage/wikibase-data-model/text.txt` -- "EntityDescriptions" section, lines 599-600 -- "all Statements of an ItemDescription must use the expected Item as the subject of their main Snak"
+[^src-3]: `data/raw/webpage/wikibase-data-model/text.txt` -- "EntityDescriptions" section, lines 609-616 -- "label: the main label... description: a brief description to clarify the meaning of the label... alias: alternative labels in various languages"
+[^src-4]: `data/raw/webpage/wikibase-data-model/text.txt` -- "EntityDescriptions" section, lines 617-622 -- "For ItemDescriptions, the combination of label and description is a key... For PropertyDescriptions, the label is a key"
+[^src-5]: `data/raw/webpage/wikibase-data-model/text.txt` -- "Planned Feature" section, lines 629-643 -- 计划扩展的 PropertyDescription 功能列表

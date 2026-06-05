@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt`
+来源：`data/raw/hacker_news/hacker-news-original-thread/text.txt`
 源证据：
 - vbarsoum 评论 — "The naive version (each book as 1 file) produced exactly the slop... But splitting into chapter-level files and recompiling changed the output categorically. Same model, same prompts — the only variable was source granularity."
 - vbarsoum 评论 — "173K words of output from 155K input. It's not compression — it's synthesis."

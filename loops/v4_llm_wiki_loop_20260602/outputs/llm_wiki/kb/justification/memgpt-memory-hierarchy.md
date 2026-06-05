@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt`
 源证据：
 - sections/method_rewrite.tex — "MemGPT's OS-inspired multi-level memory architecture delineates between two primary memory types: main context (analogous to main memory/physical memory/RAM) and external context (analogous to disk memory/disk storage)."
 - sections/method_rewrite.tex — "External context refers to any information that is held outside of the LLMs fixed context window."

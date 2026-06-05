@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt`
+来源：`data/raw/hacker_news/hacker-news-original-thread/text.txt`
 源证据：
 - qaadika 评论 — "it's while doing these things that new ideas pop in, or you decide on a particular or novel way to organize or frame information"
 - qaadika 评论 — "Karpathy mistakes the words to be the goal, rather than the thinking that caused the words."

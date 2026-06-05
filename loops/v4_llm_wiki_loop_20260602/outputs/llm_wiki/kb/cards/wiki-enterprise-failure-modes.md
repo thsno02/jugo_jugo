@@ -15,10 +15,10 @@ summary: >-
   wiki-enterprise-failure-modes（wiki企业失效模式 / wiki enterprise limitations / wiki规模上限）
   LLM wiki 在企业规模下有三大失效模式：索引溢出（50K-100K token 上限）、无原生 RBAC、
   并发写入冲突——这些不是 bug 而是设计假设的必然后果
-related: []
+related: [complexity-collapse-threshold, llm-wiki-scale-boundary]
 ---
 
-LLM wiki 在企业规模下面临**三个核心限制**，它们不是 bug，而是设计假设（面向个人研究者）的必然后果[^src-1]。
+LLM wiki 在企业规模下面临**三个核心限制**，它们不是 bug，而是 LLM Wiki 模式的设计假设（面向个人研究者）的必然后果[^src-1][^dist-1]。
 
 **1. 索引溢出（Scale）**——index.md 必须装入上下文窗口，将实际可承载的知识量限制在 50,000-100,000 token 左右。超过此阈值，索引无法装入上下文，无论存储格式如何，都必须引入检索层[^src-2]。文章将规模称为"不是附带说明，而是整个框架"[^src-3]。
 
@@ -28,14 +28,17 @@ LLM wiki 在企业规模下面临**三个核心限制**，它们不是 bug，而
 
 一个具体场景说明了三者如何同时发作：一位金融科技数据工程师有约 80 份监管笔记，wiki 方式可以运作良好；但当同一公司需要 200 名分析师跨 5 个系统查询 50,000 份文档并需要角色权限时，wiki 立即在索引溢出、访问控制和并发写入三个维度上崩溃[^src-7]。法语社区的分析从理论角度界定了这一边界的起点——个人规模（10 至数百篇）是 wiki 的甜蜜区[^card-1]。
 
+社区讨论从认知维度补充了第四种失效：即使解决了上述三个技术基础设施限制，系统复杂度本身也会超过人与 agent 的联合管理能力，形成复杂度崩溃[^card-2]。
+
 ## Footnotes
 
 [^card-1]: [LLM Wiki 的适用规模边界](llm-wiki-scale-boundary.md) -- 法语社区从理论角度界定 wiki 的个人规模甜蜜区（10 至数百篇文档），Atlan 从企业实践角度量化了超出该边界后的具体失效阈值（50K-100K token）
+[^card-2]: [复杂度崩溃阈值](complexity-collapse-threshold.md) -- 本卡聚焦技术基础设施层面的三个具体限制（索引/RBAC/并发），该卡从认知复杂度维度补充了第四种失效：系统复杂度超过人与 agent 的联合管理能力
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L436-437 -- "Three core limitations constrain the approach at enterprise scale... the limitations are not bugs, they are consequences of the design assumptions."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L281 -- "The 50,000-100,000 token threshold is where the wiki approach stops working reliably: beyond that, the index cannot fit in context"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L281 -- "Scale is not a minor caveat. It is the entire frame."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L436 -- "access control: markdown folders have no native role-based permissions, meaning any agent with file access can read any content"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L357 -- "multiple simultaneous agents updating a markdown wiki create race conditions, write conflicts, and potential for data corruption without transactional database support"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L357 -- "Karpathy himself scoped the approach explicitly to individual researchers - the 'bypasses RAG' framing misrepresents his stated intent."
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L359 -- "the LLM wiki breaks down immediately: index overflow, no access control layer, and write conflicts across simultaneous users"
+[^src-1]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L436-437 -- "Three core limitations constrain the approach at enterprise scale... the limitations are not bugs, they are consequences of the design assumptions."
+[^src-2]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L281 -- "The 50,000-100,000 token threshold is where the wiki approach stops working reliably: beyond that, the index cannot fit in context"
+[^src-3]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L281 -- "Scale is not a minor caveat. It is the entire frame."
+[^src-4]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L436 -- "access control: markdown folders have no native role-based permissions, meaning any agent with file access can read any content"
+[^src-5]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L357 -- "multiple simultaneous agents updating a markdown wiki create race conditions, write conflicts, and potential for data corruption without transactional database support"
+[^src-6]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L357 -- "Karpathy himself scoped the approach explicitly to individual researchers - the 'bypasses RAG' framing misrepresents his stated intent."
+[^src-7]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L359 -- "the LLM wiki breaks down immediately: index overflow, no access control layer, and write conflicts across simultaneous users"

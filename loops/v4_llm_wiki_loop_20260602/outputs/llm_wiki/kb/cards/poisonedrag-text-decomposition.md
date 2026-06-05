@@ -13,7 +13,7 @@ canonical_concept: poisonedrag-text-decomposition
 aliases: [S+I分解, S⊕I decomposition, PoisonedRAG文本拼接策略]
 summary: >-
   poisonedrag-text-decomposition（S+I分解 / S⊕I decomposition）PoisonedRAG 将每条恶意文本分解为 P=S⊕I 两个子文本，I 由 LLM 生成以满足生成条件（约 2 次查询），S 在黑盒下直接用目标问题、在白盒下用对抗文本方法优化以满足检索条件，从而同时实现双条件。
-related:
+related: []
   - rag-retrieval-generation-dual-condition
   - rag-knowledge-corruption-attack
 ---
@@ -30,9 +30,9 @@ PoisonedRAG 的核心设计策略是将恶意文本 P 分解为两个不相交�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "our idea is to decompose the malicious text P into two disjoint sub-texts S and I, where P = S ⊕ I"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "on average, two or three queries are sufficient to generate I"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "due to the randomness of the LLM... the generated I could be different even if the prompt is the same, enabling PoisonedRAG to generate diverse malicious texts"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "our key insight is that the target question Q is most similar to itself. Moreover, Q would not influence the effectiveness of I"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "S = argmax_{S'} Sim(f_Q(Q), f_T(S' ⊕ I))"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "PoisonedRAG could achieve 97% (on NQ), 99% (on HotpotQA), and 91% (on MS-MARCO) ASRs for RAG with PaLM 2."
+[^src-1]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "our idea is to decompose the malicious text P into two disjoint sub-texts S and I, where P = S ⊕ I"
+[^src-2]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "on average, two or three queries are sufficient to generate I"
+[^src-3]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "due to the randomness of the LLM... the generated I could be different even if the prompt is the same, enabling PoisonedRAG to generate diverse malicious texts"
+[^src-4]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "our key insight is that the target question Q is most similar to itself. Moreover, Q would not influence the effectiveness of I"
+[^src-5]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "method.tex" -- "S = argmax_{S'} Sim(f_Q(Q), f_T(S' ⊕ I))"
+[^src-6]: `data/raw/arxiv/arxiv-poisonedrag/agent_source_bundle.txt` -- "evaluation.tex" -- "PoisonedRAG could achieve 97% (on NQ), 99% (on HotpotQA), and 91% (on MS-MARCO) ASRs for RAG with PaLM 2."

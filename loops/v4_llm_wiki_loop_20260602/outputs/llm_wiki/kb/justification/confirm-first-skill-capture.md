@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/cognitionus-llm-wiki-guide/text.txt`
+来源：`data/raw/webpage/cognitionus-llm-wiki-guide/text.txt`
 源证据：
 - "Confirm-first capture" section — "Cognition drafts skills and waits for explicit approval before saving anything to the group."
 - "Save skills" step — "Cognition drafts the SKILL.md and waits for a human yes before sharing it."

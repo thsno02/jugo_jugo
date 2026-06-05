@@ -14,7 +14,7 @@ aliases: [复利型制品, compounding artifact, 知识积累机制]
 summary: >-
   wiki-compounding-artifact（复利型制品 / compounding artifact / 知识积累机制）指 LLM Wiki
   中持续积累的五类结构：交叉引用、已标记矛盾、综合叙述、实体/概念页面、归档的查询分析
-related: []
+related: [knowledge-compounding, llm-wiki-pattern, output-compounding-loop, wiki-write-back-mechanism]
 ---
 
 LLM Wiki 中的 wiki 是一个**持久化的复利型制品（compounding artifact）**[^src-1]。具体而言，以下结构在 wiki 中持续积累：
@@ -27,9 +27,14 @@ LLM Wiki 中的 wiki 是一个**持久化的复利型制品（compounding artifa
 
 每次添加新资料或提出新问题，wiki 都变得更丰富。这与 RAG 的根本区别在于：RAG 没有积累机制，每次查询都从原始片段重新开始。这一复利效应是 LLM Wiki 模式的核心定义性特征[^card-1]。
 
+Wen & Ku (2026) 从经济学视角将这些制品积累形式化为知识复利效应，证明其使每任务成本成为时间递减函数[^card-2]。llm-wiki.net 的产出复利循环展示了一种具体的积累路径——产出（报告/幻灯片）写回 wiki 索引，使 wiki 层到产出层再到 wiki 形成闭环[^card-3]。my-llm-wiki 的 `llm-wiki note` 命令提供了另一种回写入口——将 LLM 会话洞察写回知识图谱，使这些制品持续增长[^card-4]。
+
 ## Footnotes
 
 [^src-1]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "The core idea" P3 -- "the wiki is a persistent, compounding artifact"
 [^src-2]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Architecture > The wiki" P1 -- "Summaries, entity pages, concept pages, comparisons, an overview, a synthesis"
 [^src-3]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Operations > Query" P1 -- "good answers can be filed back into the wiki as new pages"
 [^card-1]: [LLM Wiki 模式](llm-wiki-pattern.md) -- 该卡定义整体模式，本卡具化积累的五类结构
+[^card-2]: [知识复利效应](knowledge-compounding.md) -- 本卡枚举 wiki 中复利积累的五类制品，该卡提供知识复利的经济学理论框架（H(t) 凹饱和曲线）
+[^card-3]: [产出复利循环](output-compounding-loop.md) -- 本卡列举 wiki 内部积累的制品类型，该卡描述 wiki→产出→wiki 闭环如何持续生成并积累这些制品
+[^card-4]: [Wiki 回写机制](wiki-write-back-mechanism.md) -- 本卡列举复利型制品种类，该卡提供 `llm-wiki note` CLI 命令使这些制品持续增长的具体机制

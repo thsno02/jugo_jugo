@@ -13,7 +13,7 @@ canonical_concept: tool-mediated-memory-access
 aliases: [工具中介记忆访问, tool-mediated memory, runtime.store 访问模式]
 summary: >-
   tool-mediated-memory-access（工具中介记忆访问 / tool-mediated memory / runtime.store 访问模式）是 LangChain agent 通过工具函数间接访问长期记忆的架构模式：agent 不直接读写 store，而是调用声明了 ToolRuntime 参数的工具函数，由工具代为执行 get/put/search 操作
-related: [namespace-key-memory-model, cross-session-continuity]
+related: [cross-session-continuity, memgpt-self-directed-memory, namespace-key-memory-model]
 ---
 
 在 LangChain 的长期记忆架构中，agent 本身**不直接读写**记忆存储。所有对 store 的访问都通过**工具函数**中介完成[^src-1]。工具函数声明 `runtime: ToolRuntime[Context]` 参数，在运行时获得对 store 的引用（`runtime.store`），从而执行 `.get()`、`.put()`、`.search()` 等操作[^src-2][^src-3]。
@@ -30,7 +30,7 @@ related: [namespace-key-memory-model, cross-session-continuity]
 
 [^card-1]: [MemGPT 自主内存编辑与检索](memgpt-self-directed-memory.md) -- LangChain 的工具中介模式（显式工具调用）与 MemGPT 的自主编辑模式（LLM 完全自主驱动）代表 agent 记忆访问自主性的两端
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Usage" 段 -- "Tools can then read from and write to the store using the runtime.store parameter."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Read long-term memory in tools" 代码示例 -- "user_info = runtime.store.get((\"users\",), user_id)"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Write long-term memory from tools" 代码示例 -- "store.put((\"users\",), user_id, dict(user_info))"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Read long-term memory in tools" 代码示例 -- "agent.invoke({...}, context=Context(user_id=\"user_123\"))"
+[^src-1]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Usage" 段 -- "Tools can then read from and write to the store using the runtime.store parameter."
+[^src-2]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Read long-term memory in tools" 代码示例 -- "user_info = runtime.store.get((\"users\",), user_id)"
+[^src-3]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Write long-term memory from tools" 代码示例 -- "store.put((\"users\",), user_id, dict(user_info))"
+[^src-4]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Read long-term memory in tools" 代码示例 -- "agent.invoke({...}, context=Context(user_id=\"user_123\"))"

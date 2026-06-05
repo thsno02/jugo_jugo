@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/falconer-enterprise-guide/text.txt`
+来源：`data/raw/webpage/falconer-enterprise-guide/text.txt`
 源证据：
 - "Stay current: health checks need to run automatically" 段 — "At the personal scale, that works well: one person sees the lint output and acts on it."
 - "What an enterprise LLM wiki has to do differently" 段 — "The health check changes from on-demand to continuous."

@@ -26,8 +26,8 @@ LangChain 的长期记忆基于 LangGraph store 构建，将记忆存储为 **JS
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Long-term memory" 概述段 -- "Long-term memory is built on LangGraph stores, which save data as JSON documents organized by namespace and key."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Memory storage" 段 -- "Each memory is organized under a custom namespace (similar to a folder) and a distinct key (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Memory storage" 代码示例 -- "store.search(namespace, filter={\"my-key\": \"my-value\"}, query=\"language preferences\")"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Memory storage" 段 -- "Cross-namespace searching is then supported through content filters."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Usage" 段代码示例 -- "InMemoryStore saves data to an in-memory dictionary. Use a DB-backed store in production use."
+[^src-1]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Long-term memory" 概述段 -- "Long-term memory is built on LangGraph stores, which save data as JSON documents organized by namespace and key."
+[^src-2]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Memory storage" 段 -- "Each memory is organized under a custom namespace (similar to a folder) and a distinct key (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information."
+[^src-3]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Memory storage" 代码示例 -- "store.search(namespace, filter={\"my-key\": \"my-value\"}, query=\"language preferences\")"
+[^src-4]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Memory storage" 段 -- "Cross-namespace searching is then supported through content filters."
+[^src-5]: `data/raw/webpage/langchain-long-term-memory-docs/text.txt` -- "Usage" 段代码示例 -- "InMemoryStore saves data to an in-memory dictionary. Use a DB-backed store in production use."

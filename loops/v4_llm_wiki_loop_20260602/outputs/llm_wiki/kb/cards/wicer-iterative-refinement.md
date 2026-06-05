@@ -15,7 +15,7 @@ summary: >-
   wicer-iterative-refinement（WiCER / Wiki-memory Compile Evaluate Refine / 迭代编译精炼）是一种受
   CEGAR 启发的迭代算法，通过诊断探针评估编译后 wiki、识别丢失事实并在后续编译中强制保留，1-2 次迭代可
   恢复 80% 的丢失质量，灾难性失败减少 55%
-related: [compilation-gap, targeted-diagnosis-vs-generic-pinning, compile-time-vs-query-time]
+related: [compilation-gap, compile-time-vs-query-time, targeted-diagnosis-vs-generic-pinning]
 ---
 
 **WiCER（Wiki-memory Compile, Evaluate, Refine）** 是一种迭代式知识编译算法，用于弥合 LLM Wiki 系统中的编译缺口[^src-1]。其设计灵感来自形式验证领域的 **CEGAR（counterexample-guided abstraction refinement，反例引导抽象精炼）** 方法[^src-2]。
@@ -30,8 +30,8 @@ WiCER 的工作机制分为三个阶段的迭代循环：
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "we propose WiCER (Wiki-memory Compile, Evaluate, Refine), an iterative algorithm inspired by counterexample-guided abstraction refinement (CEGAR) that closes this gap"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "inspired by counterexample-guided abstraction refinement (CEGAR)"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "WiCER evaluates compiled wikis against diagnostic probes, identifies dropped facts, and forces their preservation in subsequent compilations"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "One to two iterations recover 80% of lost quality (mean 3.24 vs. 3.47 for raw full-context across the 15 topics with baselines)"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "reducing catastrophic failures by 55% relative"
+[^src-1]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "we propose WiCER (Wiki-memory Compile, Evaluate, Refine), an iterative algorithm inspired by counterexample-guided abstraction refinement (CEGAR) that closes this gap"
+[^src-2]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "inspired by counterexample-guided abstraction refinement (CEGAR)"
+[^src-3]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "WiCER evaluates compiled wikis against diagnostic probes, identifies dropped facts, and forces their preservation in subsequent compilations"
+[^src-4]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "One to two iterations recover 80% of lost quality (mean 3.24 vs. 3.47 for raw full-context across the 15 topics with baselines)"
+[^src-5]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "reducing catastrophic failures by 55% relative"

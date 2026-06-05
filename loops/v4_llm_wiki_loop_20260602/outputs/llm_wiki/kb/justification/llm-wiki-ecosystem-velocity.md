@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/aillm-wiki-directory/text.txt`
+来源：`data/raw/webpage/aillm-wiki-directory/text.txt`
 源证据：
 - L23 — "The idea caught on so fast that within a week there were already open-source implementations, YouTube explainers, and a dozen hot-take blog posts."
 - L23 — "What was missing was a single place that turns the spec into things you can actually download and apply without another weekend of trial and error."

@@ -30,10 +30,10 @@ related: [llm-wiki-pattern, obsidian-tooling]
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L105-116 "LLM Wiki vs. Notion AI vs. Obsidian + Plugins" -- 三者对比的完整段落
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L109 -- "For personal grocery lists, fine. For engineering architecture decisions and proprietary system designs? Non-starter for a lot of teams I've worked with."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L111 -- "Your notes stay local in markdown, but most plugins still call external APIs for the LLM inference. Local on storage, cloud on compute."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L113 -- "Your data stays on your machine. Your model runs on your machine. The tradeoff is setup friction, lower answer quality compared to GPT-4 class models, and no slick UI."
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L102 -- "your proprietary notes, your half-formed ideas, your sensitive architecture docs never touch someone else's server"
-[^src-6]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L103 -- "I've watched data governance concerns kill adoption in enterprise teams more than once. A fully local system sidesteps that entire conversation."
-[^src-7]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L115 -- "For everything else, I'll be honest — Obsidian with a good plugin is more practical today."
+[^src-1]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L105-116 "LLM Wiki vs. Notion AI vs. Obsidian + Plugins" -- 三者对比的完整段落
+[^src-2]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L109 -- "For personal grocery lists, fine. For engineering architecture decisions and proprietary system designs? Non-starter for a lot of teams I've worked with."
+[^src-3]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L111 -- "Your notes stay local in markdown, but most plugins still call external APIs for the LLM inference. Local on storage, cloud on compute."
+[^src-4]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L113 -- "Your data stays on your machine. Your model runs on your machine. The tradeoff is setup friction, lower answer quality compared to GPT-4 class models, and no slick UI."
+[^src-5]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L102 -- "your proprietary notes, your half-formed ideas, your sensitive architecture docs never touch someone else's server"
+[^src-6]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L103 -- "I've watched data governance concerns kill adoption in enterprise teams more than once. A fully local system sidesteps that entire conversation."
+[^src-7]: `data/raw/webpage/kunal-local-knowledge-base/text.txt` -- L115 -- "For everything else, I'll be honest — Obsidian with a good plugin is more practical today."

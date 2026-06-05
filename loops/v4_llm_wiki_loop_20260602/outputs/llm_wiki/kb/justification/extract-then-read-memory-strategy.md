@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex`
+来源：`data/raw/arxiv/arxiv-longmemeval/source/text/5_experiment.tex`
 源证据：
 - Section 5.5 — "even with perfect retrieval, a suboptimal reading strategy results in up to a 10-point absolute performance drop"
 - Section 5.5 — "This effectively decomposes long-context reading into two simpler subtasks"

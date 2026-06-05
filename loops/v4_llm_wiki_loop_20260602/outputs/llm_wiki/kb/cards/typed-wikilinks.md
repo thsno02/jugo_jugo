@@ -15,7 +15,7 @@ summary: >-
   typed-wikilinks（类型化链接 / typed relationships / 有类型的 wikilink / 关系类型标注）指在
   wiki 链接后附加关系类型标注（共 6 种，如 uses / alternative-to / contradicts），使知识图从
   "X 连接 Y" 升级为 "X 以何种方式关联 Y"，显著提升 LLM 回答精度
-related: [wiki-compounding-artifact, schema-as-configuration]
+related: [schema-as-configuration, wiki-compounding-artifact]
 ---
 
 类型化 Wiki 链接是 Rohit v2 引入的机制：将普通的 `[[obsidian]]` 链接升级为带关系类型的 `[[obsidian]] (uses)` 或 `[[gbrain]] (alternative-to)` 形式[^src-1]。共定义**六种关系类型**，使页面间的知识图谱从「X 与 Y 相关」升级为「X 使用 Y」「X 与 Y 矛盾」等具体语义[^src-2]。
@@ -26,7 +26,7 @@ related: [wiki-compounding-artifact, schema-as-configuration]
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/openaitoolshub-six-months/text.txt` -- L56 -- "instead of plain [[obsidian]] , I write [[obsidian]] (uses) or [[gbrain]] (alternative-to)"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/openaitoolshub-six-months/text.txt` -- L56 -- "Six relationship types total."
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/openaitoolshub-six-months/text.txt` -- L56 -- "by month two it lets Claude give much sharper answers because the graph isn't just 'X is connected to Y' but 'X uses Y' or 'X contradicts Y'."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/openaitoolshub-six-months/text.txt` -- L56 -- "It feels fussy at first"
+[^src-1]: `data/raw/webpage/openaitoolshub-six-months/text.txt` -- L56 -- "instead of plain [[obsidian]] , I write [[obsidian]] (uses) or [[gbrain]] (alternative-to)"
+[^src-2]: `data/raw/webpage/openaitoolshub-six-months/text.txt` -- L56 -- "Six relationship types total."
+[^src-3]: `data/raw/webpage/openaitoolshub-six-months/text.txt` -- L56 -- "by month two it lets Claude give much sharper answers because the graph isn't just 'X is connected to Y' but 'X uses Y' or 'X contradicts Y'."
+[^src-4]: `data/raw/webpage/openaitoolshub-six-months/text.txt` -- L56 -- "It feels fussy at first"

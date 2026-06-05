@@ -13,7 +13,7 @@ canonical_concept: dual-audience-artifact
 aliases: [双受众制品, 双用途产物, same artifact two audiences]
 summary: >-
   dual-audience-artifact（双受众制品 / 双用途产物 / same artifact two audiences）指编译后的 wiki 同时是人类浏览界面（Obsidian 打开、跟踪链接、阅读概念页）和 AI 知识层（结构化、交叉引用的上下文）；与 RAG 向量数据库（.faiss 文件人类无法阅读）形成对比——同一制品服务两类受众
-related: [wiki-compounding-artifact, obsidian-tooling, rag-wiki-synthesis-distinction]
+related: [obsidian-tooling, rag-wiki-synthesis-distinction, wiki-compounding-artifact]
 ---
 
 一位实现了 LLM Wiki 编译器的评论者基于实际数据提出了一个关键洞察：编译后的 wiki 是同时服务于人类和 AI 的**双受众制品（dual-audience artifact）**[^src-1]。
@@ -26,7 +26,7 @@ related: [wiki-compounding-artifact, obsidian-tooling, rag-wiki-synthesis-distin
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- vbarsoum 评论 -- "The compiled wiki is the interface for humans AND the knowledge layer for AI. Same artifact, two audiences."
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- vbarsoum 评论 -- "The compiler produced 210 concept pages with 4,597 cross-references (19.2 avg links per page). 20+ concepts synthesized across all 3 books unprompted — one pulled from 11 source files and found a genuine contradiction between two books"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- vbarsoum 评论 -- "a vector database is only useful to machines. You can't open a .faiss file and browse it. A wiki is useful to both."
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/hacker_news/hacker-news-original-thread/text.txt` -- vbarsoum 评论 -- "The naive version (each book as 1 file) produced exactly the slop... But splitting into chapter-level files and recompiling changed the output categorically. Same model, same prompts — the only variable was source granularity."
+[^src-1]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- vbarsoum 评论 -- "The compiled wiki is the interface for humans AND the knowledge layer for AI. Same artifact, two audiences."
+[^src-2]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- vbarsoum 评论 -- "The compiler produced 210 concept pages with 4,597 cross-references (19.2 avg links per page). 20+ concepts synthesized across all 3 books unprompted — one pulled from 11 source files and found a genuine contradiction between two books"
+[^src-3]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- vbarsoum 评论 -- "a vector database is only useful to machines. You can't open a .faiss file and browse it. A wiki is useful to both."
+[^src-4]: `data/raw/hacker_news/hacker-news-original-thread/text.txt` -- vbarsoum 评论 -- "The naive version (each book as 1 file) produced exactly the slop... But splitting into chapter-level files and recompiling changed the output categorically. Same model, same prompts — the only variable was source granularity."

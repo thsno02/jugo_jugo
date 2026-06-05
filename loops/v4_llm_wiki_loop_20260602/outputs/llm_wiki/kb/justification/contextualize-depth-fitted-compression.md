@@ -7,7 +7,7 @@ created_time: 2026-06-05T10:00:00+08:00
 ## creation | 2026-06-05T10:00:00+08:00
 
 生成方式：Mode A questioning loop
-来源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt`
+来源：`data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt`
 源证据：
 - Section 5.4 — "CONTEXTUALIZE is the framework's response to a problem the other operations do not handle"
 - Section 5.4 — "Compress external sources to fit the user's current working-context depth"
