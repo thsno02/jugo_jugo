@@ -1,0 +1,34 @@
+---
+id: memgpt-memory-hierarchy
+title: MemGPT 两级内存层次结构
+status: accepted
+card_type: mechanism
+tags: [LLM, memory_hierarchy, main_context, external_context, MemGPT]
+created_time: 2026-06-05T10:00:00+08:00
+edited_time: 2026-06-05T10:00:00+08:00
+edited_entity: llm
+source_ids: [arxiv-memgpt]
+justification: ../justification/memgpt-memory-hierarchy.md
+canonical_concept: memgpt-memory-hierarchy
+aliases: [MemGPT内存层次, main context vs external context, 主上下文与外部上下文]
+summary: >-
+  memgpt-memory-hierarchy（MemGPT内存层次, main context vs external context）将 LLM 存储分为 main context（prompt tokens = RAM，LLM 可直接访问）和 external context（recall storage + archival storage = 磁盘，需通过函数调用显式移入），实现分层管理
+related: [virtual-context-management, memgpt-main-context-structure, memgpt-self-directed-memory]
+---
+
+MemGPT 的 OS 类比式多层内存架构将存储分为两个主要层级 [^src-1]：
+
+**主上下文（main context）**：对应操作系统中的主内存/物理内存/RAM。主上下文由 LLM 的 prompt tokens 构成，其中的所有信息被视为"in-context"，在 LLM 推理时可直接访问 [^src-2]。
+
+**外部上下文（external context）**：对应操作系统中的磁盘存储。包含两种存储：
+- **recall storage**（回忆存储）：消息数据库，存储所有历史消息记录
+- **archival storage**（档案存储）：读写数据库，存储任意长度的文本对象
+
+外部上下文中的数据被视为"out-of-context"，必须通过函数调用显式移入主上下文才能在推理中被访问 [^src-3]。MemGPT 通过提供函数调用接口让 LLM 处理器在不需要用户干预的情况下自主管理自己的内存 [^src-4]。
+
+## Footnotes
+
+[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "MemGPT's OS-inspired multi-level memory architecture delineates between two primary memory types: main context (analogous to main memory/physical memory/RAM) and external context (analogous to disk memory/disk storage)."
+[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "Main context consists of the LLM prompt tokens---anything in main context is considered in-context and can be accessed by the LLM processor during inference."
+[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "External context refers to any information that is held outside of the LLMs fixed context window. This out-of-context data must always be explicitly moved into main context in order for it to be passed to the LLM processor during inference."
+[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt` -- sections/method_rewrite.tex -- "MemGPT provides function calls that the LLM processor to manage its own memory without any user intervention."

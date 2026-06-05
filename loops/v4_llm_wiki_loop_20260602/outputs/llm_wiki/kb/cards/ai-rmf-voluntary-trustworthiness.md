@@ -1,0 +1,30 @@
+---
+id: ai-rmf-voluntary-trustworthiness
+title: AI RMF 的自愿性与可信赖性导向
+status: accepted
+card_type: concept
+tags: [ai-rmf, trustworthiness, voluntary-framework, governance, nist]
+created_time: 2026-06-05T10:00:00+08:00
+edited_time: 2026-06-05T10:00:00+08:00
+edited_entity: llm
+source_ids: [nist-gai-profile]
+justification: ../justification/ai-rmf-voluntary-trustworthiness.md
+canonical_concept: ai-rmf-voluntary-trustworthiness
+aliases: [AI RMF 自愿性框架, voluntary AI governance, AI 可信赖性框架]
+summary: >-
+  ai-rmf-voluntary-trustworthiness（AI RMF 自愿性框架 / voluntary AI governance / AI 可信赖性框架）
+  NIST AI RMF 1.0 定位为自愿性使用框架，不具备法律强制力，其核心目标是帮助组织在 AI 全生命周期
+  （设计、开发、使用、评估）中系统性融入可信赖性考量
+related: [nist-ai-600-1-gai-profile, agent-governance-standards-mapping]
+---
+
+NIST AI 风险管理框架（AI RMF 1.0）于 2023 年 1 月发布，其设计定位明确为"自愿性使用"（intended for voluntary use），不具备法律强制力 [^src-1]。这一设计选择意味着框架的采纳取决于组织自身意愿，而非监管合规义务。
+
+框架的核心目标是"提升组织将可信赖性考量纳入 AI 产品、服务和系统的设计、开发、使用和评估的能力" [^src-1]。可信赖性（trustworthiness）被置于框架的中心位置，覆盖 AI 生命周期的四个阶段：设计（design）、开发（development）、使用（use）和评估（evaluation）[^src-1]。
+
+值得注意的是，虽然框架本身是自愿性的，但行政令 EO 14110 将其作为生成式 AI 概况文件的基础框架予以引用 [^src-2]，这在事实上提升了框架的权威性和实践影响力。自愿性框架通过行政指令间接获得准规范地位，是治理工具演进中的常见模式。
+
+## Footnotes
+
+[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/nist-gai-profile/text.txt` -- Abstract L219 -- "The AI RMF was released in January 2023, and is intended for voluntary use and to improve the ability of organizations to incorporate trustworthiness considerations into the design, development, use, and evaluation of AI products, services, and systems."
+[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/nist-gai-profile/text.txt` -- Abstract L219 -- "pursuant to President Biden's Executive Order (EO) 14110 on Safe, Secure, and Trustworthy Artificial Intelligence"

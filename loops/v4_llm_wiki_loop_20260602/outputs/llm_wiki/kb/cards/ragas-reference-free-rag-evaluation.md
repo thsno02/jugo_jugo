@@ -1,0 +1,32 @@
+---
+id: ragas-reference-free-rag-evaluation
+title: RAGAS 无参考评估框架
+status: accepted
+card_type: mechanism
+tags: [rag, evaluation, reference-free, ground-truth-free, automated-evaluation]
+created_time: 2026-06-05T10:00:00+08:00
+edited_time: 2026-06-05T10:00:00+08:00
+edited_entity: llm
+source_ids: [arxiv-ragas]
+justification: ../justification/ragas-reference-free-rag-evaluation.md
+canonical_concept: ragas-reference-free-rag-evaluation
+aliases: [RAGAS, Retrieval Augmented Generation Assessment, 无参考RAG评估, reference-free RAG evaluation]
+summary: >-
+  ragas-reference-free-rag-evaluation（RAGAS / Retrieval Augmented Generation Assessment / 无参考RAG评估）RAGAS 是一个无需人工标注黄金答案即可评估 RAG 管道的自动化框架，通过消除对 ground truth 的依赖来加速 RAG 架构的评估迭代周期。
+related:
+  - rag-evaluation-tri-dimension
+  - citation-quality-tri-dimension
+---
+
+RAGAS（Retrieval Augmented Generation Assessment）是一个专门用于自动化评估 RAG 管道的框架，其核心设计原则是**无参考评估（reference-free evaluation）**——即评估过程无需依赖人工标注的 ground truth 答案 [^src-1]。
+
+传统 RAG 评估面临的关键瓶颈是需要人工标注黄金答案作为参照基准，这一步骤耗时且成本高昂。RAGAS 提出的指标套件完全绕过了这一依赖：评估指标的计算"不需要依赖 ground truth 人工标注" [^src-2]。论文的注释进一步明确了这一点："不与 ground truth 的可用性绑定" [^src-3]。
+
+RAGAS 论文论证了无参考评估方法的实际价值：这种框架"能够关键性地促进 RAG 架构的更快评估周期，这在 LLM 快速普及的背景下尤为重要" [^src-4]。换言之，消除人工标注瓶颈后，开发者可以在 RAG 系统的设计迭代过程中持续、自动地获得质量反馈，而无需等待标注工作完成。
+
+## Footnotes
+
+[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines."
+[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "a suite of metrics which can be used to evaluate these different dimensions without having to rely on ground truth human annotations"
+[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Comments L39 -- "Reference-free (not tied to having ground truth available) evaluation framework for retrieval augmented generation"
+[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "such a framework can crucially contribute to faster evaluation cycles of RAG architectures, which is especially important given the fast adoption of LLMs"

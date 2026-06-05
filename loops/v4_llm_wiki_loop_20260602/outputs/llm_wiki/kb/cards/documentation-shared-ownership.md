@@ -1,0 +1,29 @@
+---
+id: documentation-shared-ownership
+title: 文档共同所有权文化
+status: accepted
+card_type: concept
+tags: [documentation, culture, collaboration, writer-developer]
+created_time: 2026-06-05T10:00:00+08:00
+edited_time: 2026-06-05T10:00:00+08:00
+edited_entity: llm
+source_ids: [writethedocs-docs-as-code]
+justification: ../justification/documentation-shared-ownership.md
+canonical_concept: documentation-shared-ownership
+aliases: [文档共同所有权, 写作者与开发者共有, shared doc ownership]
+summary: >-
+  documentation-shared-ownership（文档共同所有权 / 写作者与开发者共有 / shared doc ownership）指 docs-as-code 理念所促成的文化转变：技术写作者与开发者双方均对文档拥有所有权感，并协同提升文档质量
+related:
+  - docs-as-code
+  - documentation-merge-gate
+---
+
+Docs as Code 理念所带来的核心文化转变是**文档共同所有权**：技术写作者（writer）与开发者（developer）双方均对文档产生所有权感，并共同努力将文档做到最好[^src-1]。
+
+这种共同所有权的具体表现包括：写作者能更好地融入开发团队[^src-2]，而开发者也会主动编写文档初稿[^src-3]。这种双向参与打破了"文档是写作者专属职责"的传统分工，形成了跨角色的协作文化。
+
+## Footnotes
+
+[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "culture" L23 -- "It enables a culture where writers and developers both feel ownership of documentation, and work together to make it as good as possible."
+[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L27 -- "Writers integrate better with development teams"
+[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/writethedocs-docs-as-code/text.txt` -- "benefits" L29 -- "Developers will often write a first draft of documentation"

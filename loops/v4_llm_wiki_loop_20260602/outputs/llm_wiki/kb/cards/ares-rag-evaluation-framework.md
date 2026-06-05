@@ -1,0 +1,28 @@
+---
+id: ares-rag-evaluation-framework
+title: ARES 自动化 RAG 评估框架
+status: accepted
+card_type: concept
+tags: [rag, evaluation, automation, llm-judge, naacl-2024]
+created_time: 2026-06-05T10:00:00+08:00
+edited_time: 2026-06-05T10:00:00+08:00
+edited_entity: llm
+source_ids: [arxiv-ares]
+justification: ../justification/ares-rag-evaluation-framework.md
+canonical_concept: ares-rag-evaluation-framework
+aliases: [ARES, Automated RAG Evaluation System, 自动化RAG评估系统]
+summary: >-
+  ares-rag-evaluation-framework（ARES, Automated RAG Evaluation System）ARES 通过合成数据微调轻量 LM 评审 + PPI 校准，仅需数百条人工标注即可自动评估 RAG 系统，且跨领域迁移鲁棒
+related: [rag-component-evaluation-tri-dimension, synthetic-judge-ppi-pipeline]
+---
+
+ARES（Automated RAG Evaluation System）是一个用于自动评估检索增强生成（RAG）系统的框架 [^src-1]。传统 RAG 评估依赖对输入查询、待检索段落和待生成回答的人工标注，成本高昂。ARES 通过两阶段方法大幅降低人工成本：首先自动生成合成训练数据并微调轻量级 LM 评审模型，然后利用预测驱动推断（prediction-powered inference, PPI）结合少量人工标注进行校准 [^src-2]。
+
+在 KILT、SuperGLUE 和 AIS 共八个知识密集型任务上的实验表明，ARES 仅需数百条人工标注即可准确评估 RAG 系统 [^src-3]。此外，ARES 的评审模型在领域迁移（domain shift）场景下仍保持有效性，即便评估对象的查询类型和/或文档类型发生变化也能维持准确性 [^src-4]。
+
+## Footnotes
+
+[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ares/text.txt` -- Title & Abstract -- "We introduce ARES, an Automated RAG Evaluation System, for evaluating RAG systems along the dimensions of context relevance, answer faithfulness, and answer relevance."
+[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges to assess the quality of individual RAG components. To mitigate potential prediction errors, ARES utilizes a small set of human-annotated datapoints for prediction-powered inference (PPI)."
+[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "Across eight different knowledge-intensive tasks in KILT, SuperGLUE, and AIS, ARES accurately evaluates RAG systems while using only a few hundred human annotations during evaluation."
+[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "ARES judges remain effective across domain shifts, proving accurate even after changing the type of queries and/or documents used in the evaluated RAG systems."
