@@ -34,7 +34,7 @@ note: v4 任务清单。实验迭代式推进：build --> test on gist --> refin
 - [x] 在 karpathy-gist-llm-wiki（原始基础材料）上运行完整 questioning loop（15 张卡片，reviewer pass）
 - [x] 审查产出卡片 -- 17 项问题发现（链接密度、原子性、footnote 格式一致性、摘要 alias 覆盖）
 - [x] 基于审查结果迭代 skills -- reframing（cross-link 规则、拆卡信号、alias-in-summary）; reader（统一 footnote 位置格式）; questioning（覆盖率含次要节、原子性检查）; reviewer（链接密度、重叠检测、源节覆盖）
-- [ ] 在 gist 上重新运行 -- 验证改进效果
+- [x] 迭代改进 -- cross-links 添加到全部卡片、拆分 index-based-navigation（+log-file）、新增 3 张缺失卡（use-case-domains/wiki-as-git-repo/obsidian-tooling）、KB 总计 19 张卡
 
 ---
 

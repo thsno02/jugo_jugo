@@ -12,9 +12,8 @@ justification: ../justification/lint-operation.md
 canonical_concept: lint-operation
 aliases: [巡检操作, lint, wiki 健康检查, health-check]
 summary: >-
-  lint-operation 是 LLM Wiki 的定期健康检查操作：LLM 检测页面间矛盾、
-  过时主张、孤立页面、缺失概念页、缺失交叉引用、数据缺口，
-  并建议新问题和新资料来源
+  lint-operation（巡检操作 / lint / wiki 健康检查 / health-check）是 LLM Wiki
+  定期健康检查操作：检测矛盾、过时主张、孤立页面、缺失概念页、缺失交叉引用、数据缺口
 related: []
 ---
 
@@ -27,9 +26,10 @@ related: []
 - 缺失的交叉引用
 - 可通过网络搜索填补的数据缺口
 
-LLM 还善于建议新的调查问题和新的资料来源[^src-2]。巡检保持 wiki 在增长过程中的健康状态。
+LLM 还善于建议新的调查问题和新的资料来源[^src-2]。巡检保持 wiki 在增长过程中的健康状态。值得注意的是，巡检检查的是时效性和结构健康，但不直接验证 wiki 内容是否忠于原始来源——这一缺口在源忠实性风险卡中分析[^card-1]。
 
 ## Footnotes
 
-[^src-1]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Operations > Lint" -- "Look for: contradictions between pages, stale claims that newer sources have superseded, orphan pages with no inbound links, important concepts mentioned but lacking their own page, missing cross-references, data gaps that could be filled with a web search."
-[^src-2]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Operations > Lint" -- "The LLM is good at suggesting new questions to investigate and new sources to look for."
+[^src-1]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Operations > Lint" P1 -- "Look for: contradictions between pages, stale claims that newer sources have superseded, orphan pages with no inbound links, important concepts mentioned but lacking their own page, missing cross-references, data gaps that could be filled with a web search."
+[^src-2]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Operations > Lint" P1 -- "The LLM is good at suggesting new questions to investigate and new sources to look for."
+[^card-1]: [源忠实性风险与不可变锚点](source-faithfulness-risk.md) -- 巡检不检查源忠实度，该卡分析这一缺口

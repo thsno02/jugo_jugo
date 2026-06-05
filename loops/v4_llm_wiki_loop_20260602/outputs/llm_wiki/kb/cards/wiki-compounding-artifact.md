@@ -12,8 +12,8 @@ justification: ../justification/wiki-compounding-artifact.md
 canonical_concept: wiki-compounding-artifact
 aliases: [复利型制品, compounding artifact, 知识积累机制]
 summary: >-
-  wiki-compounding-artifact 指 LLM Wiki 中持续积累的五类结构：交叉引用、已标记矛盾、
-  综合叙述、实体/概念页面、回查询归档的分析，每次新增资料或提问都使 wiki 更丰富
+  wiki-compounding-artifact（复利型制品 / compounding artifact / 知识积累机制）指 LLM Wiki
+  中持续积累的五类结构：交叉引用、已标记矛盾、综合叙述、实体/概念页面、归档的查询分析
 related: []
 ---
 
@@ -25,10 +25,11 @@ LLM Wiki 中的 wiki 是一个**持久化的复利型制品（compounding artifa
 4. **实体页面、概念页面、摘要、比较和概览**——LLM 生成的具体页面类型[^src-2]
 5. **归档的查询答案**——好的查询回答可以作为新页面归入 wiki，使探索像资料摄入一样产生复利效应[^src-3]
 
-每次添加新资料或提出新问题，wiki 都变得更丰富。这与 RAG 的根本区别在于：RAG 没有积累机制，每次查询都从原始片段重新开始。
+每次添加新资料或提出新问题，wiki 都变得更丰富。这与 RAG 的根本区别在于：RAG 没有积累机制，每次查询都从原始片段重新开始。这一复利效应是 LLM Wiki 模式的核心定义性特征[^card-1]。
 
 ## Footnotes
 
-[^src-1]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "The core idea" 第3段 -- "the wiki is a persistent, compounding artifact"
-[^src-2]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Architecture > The wiki" -- "Summaries, entity pages, concept pages, comparisons, an overview, a synthesis"
-[^src-3]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Operations > Query" -- "good answers can be filed back into the wiki as new pages"
+[^src-1]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "The core idea" P3 -- "the wiki is a persistent, compounding artifact"
+[^src-2]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Architecture > The wiki" P1 -- "Summaries, entity pages, concept pages, comparisons, an overview, a synthesis"
+[^src-3]: `data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt` -- "Operations > Query" P1 -- "good answers can be filed back into the wiki as new pages"
+[^card-1]: [LLM Wiki 模式](llm-wiki-pattern.md) -- 该卡定义整体模式，本卡具化积累的五类结构
