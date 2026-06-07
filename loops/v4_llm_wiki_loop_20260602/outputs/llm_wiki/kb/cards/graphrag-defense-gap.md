@@ -23,6 +23,6 @@ related: [graphrag-knowledge-poisoning-attack, model-capability-security-disconn
 [^card-1]: [模型能力与安全性的脱钩](model-capability-security-disconnect.md) -- GraphRAG 的防御空白（现有方法无法检测投毒）与 eTAMP 的能力-安全脱钩（更强模型不更安全）共同揭示 LLM 知识系统在安全防御方面的系统性不足
 [^card-2]: [现有防御对 RAG 知识腐蚀攻击的不充分性](rag-poisoning-defense-insufficiency.md) -- 本卡聚焦 GraphRAG 系统完全缺乏有效防御，该卡聚焦标准 RAG 的四种具体防御策略（释义、困惑度、去重、知识扩展）均告失败
 
-[^src-1]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "experiments show that state-of-the-art defense methods fail to detect these attacks"
-[^src-2]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "highlighting that securing GraphRAG pipelines against knowledge poisoning remains largely unexplored"
-[^src-3]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "while keeping the poisoned text fluent and natural"
+[^src-1]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "experiments show that state-of-the-art defense methods fail to detect these attacks"
+[^src-2]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "highlighting that securing GraphRAG pipelines against knowledge poisoning remains largely unexplored"
+[^src-3]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "while keeping the poisoned text fluent and natural"

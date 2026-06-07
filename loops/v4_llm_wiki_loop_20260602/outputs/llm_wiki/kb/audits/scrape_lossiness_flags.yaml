@@ -1,0 +1,83 @@
+# scrape_lossiness_flags.yaml
+# 抓取损耗审计：结构元素丢失情况
+# generated: 2026-06-08
+
+sources:
+  - source_id: llm-wiki-net
+    structural_elements: 256
+    cards_extracted:
+      - archive-lifecycle
+      - audit-provenance-tracing
+      - comparison-posthoc-vs-builtin-provenance
+      - comparison-runtime-paging-vs-lifecycle-archiving
+      - inventory-evidence-separation
+      - multi-platform-skill-portability
+      - output-compounding-loop
+      - parallel-multi-agent-research
+      - thesis-driven-research
+      - topic-isolation
+      - zero-runtime-dependency
+    cards_count: 11
+    structural_elements_lost: 245
+    compression_ratio: "4.30%"
+    recommended_action: re-extract with code preservation
+
+  - source_id: atlan-llm-wiki-vs-rag-dynamic-20260524
+    structural_elements: 163
+    cards_extracted:
+      - comparison-infrastructure-vs-cognitive-limits
+      - comparison-wiki-rag-positioning-spectrum
+      - compile-time-vs-query-time
+      - data-catalog-as-enterprise-wiki
+      - governance-over-retrieval
+      - wiki-enterprise-failure-modes
+      - wiki-rag-hybrid-pattern
+    cards_count: 7
+    structural_elements_lost: 156
+    compression_ratio: "4.29%"
+    recommended_action: verify alt-text
+
+  - source_id: clawhub-llm-wiki-karpathy
+    structural_elements: 108
+    cards_extracted:
+      - gap-mapping-promotion
+      - representation-first-ingest
+      - runtime-agent-boundary
+    cards_count: 3
+    structural_elements_lost: 105
+    compression_ratio: "2.78%"
+    recommended_action: re-extract code blocks
+
+  - source_id: obsidian-community-plugin
+    structural_elements: 96
+    cards_extracted:
+      - alias-cross-language-dedup
+      - contradiction-state-machine
+      - extraction-granularity-control
+      - full-context-anti-rag
+      - obsidian-karpathy-wiki-plugin
+    cards_count: 5
+    structural_elements_lost: 91
+    compression_ratio: "5.21%"
+    recommended_action: re-extract
+
+  - source_id: langchain-long-term-memory-docs
+    structural_elements: 79
+    cards_extracted:
+      - namespace-key-memory-model
+      - tool-mediated-memory-access
+    cards_count: 2
+    structural_elements_lost: 77
+    compression_ratio: "0.43%"
+    recommended_action: manual review
+
+failed_scrape:
+  - source_id: aicritique-enterprise-knowledge
+    status: failed
+    cards_extracted: []
+    notes: 抓取失败，无可用内容提取
+
+  - source_id: aicritique-enterprise-knowledge-dynamic
+    status: failed
+    cards_extracted: []
+    notes: 动态页面抓取失败，无可用内容提取

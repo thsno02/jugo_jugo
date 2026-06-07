@@ -34,8 +34,8 @@ MemGPT 从操作系统的主内存/磁盘类比出发也提出了分层记忆架
 [^card-2]: [睡眠期离线记忆巩固机制](sleep-time-memory-consolidation.md) -- 本卡描述 LightMem 的完整三阶段架构，该卡聚焦第三阶段 sleep-time update 机制的效率收益（在线 token 减少 106x/117x）
 [^card-3]: [LoCoMo 反思-回应双层记忆代理架构](locomo-reflect-respond-architecture.md) -- 两种认知隐喻驱动的多层记忆架构：本卡采用 Atkinson-Shiffrin 模型（感觉→短期→长期三阶段），该卡采用生成式代理的反思-回应（递增摘要+观察提取双层）
 
-[^src-1]: `data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "Inspired by the Atkinson-Shiffrin model of human memory, LightMem organizes memory into three complementary stages."
-[^src-2]: `data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "cognition-inspired sensory memory rapidly filters irrelevant information through lightweight compression and groups information according to their topics"
-[^src-3]: `data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "topic-aware short-term memory consolidates these topic-based groups, organizing and summarizing content for more structured access"
-[^src-4]: `data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "long-term memory with sleep-time update employs an offline procedure that decouples consolidation from online inference"
-[^src-5]: `data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "LightMem consistently surpasses strong baselines, improving QA accuracy by up to 7.7% / 29.3%, reducing total token usage by up to 38x / 20.9x and API calls by up to 30x / 55.5x"
+[^src-1]: `data/raw/arxiv/arxiv-lightmem/agent_source_bundle.txt` -- Abstract -- "Inspired by the Atkinson-Shiffrin model of human memory, LightMem organizes memory into three complementary stages."
+[^src-2]: `data/raw/arxiv/arxiv-lightmem/agent_source_bundle.txt` -- Abstract -- "cognition-inspired sensory memory rapidly filters irrelevant information through lightweight compression and groups information according to their topics"
+[^src-3]: `data/raw/arxiv/arxiv-lightmem/agent_source_bundle.txt` -- Abstract -- "topic-aware short-term memory consolidates these topic-based groups, organizing and summarizing content for more structured access"
+[^src-4]: `data/raw/arxiv/arxiv-lightmem/agent_source_bundle.txt` -- Abstract -- "long-term memory with sleep-time update employs an offline procedure that decouples consolidation from online inference"
+[^src-5]: `data/raw/arxiv/arxiv-lightmem/agent_source_bundle.txt` -- Abstract -- "LightMem consistently surpasses strong baselines, improving QA accuracy by up to 7.7% / 29.3%, reducing total token usage by up to 38x / 20.9x and API calls by up to 30x / 55.5x"

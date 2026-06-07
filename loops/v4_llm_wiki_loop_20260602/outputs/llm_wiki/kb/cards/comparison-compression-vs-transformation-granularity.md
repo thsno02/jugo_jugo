@@ -37,5 +37,5 @@ related: [memory-value-granularity-tradeoff, observation-based-memory-representa
 
 [^card-1]: [记忆存储粒度权衡](memory-value-granularity-tradeoff.md) -- 本卡的"有损压缩"一侧：事实级压缩因信息丢失损害 QA，轮次级为最优存储粒度
 [^card-2]: [观察断言式记忆表示优于原始对话检索](observation-based-memory-representation.md) -- 本卡的"澄清性转化"一侧：断言式观察消除共指噪声，以 F1=41.4 显著优于原始对话 31.7
-[^src-1]: data/raw/arxiv/arxiv-longmemeval/text.txt -- "session decomposition for value granularity, fact-augmented key expansion for indexing, and time-aware query expansion for refining the search scope"（LongMemEval 识别出存储粒度是记忆设计的关键阶段，事实级提取引入信息丢失）
+[^src-1]: data/raw/arxiv/arxiv-longmemeval/agent_source_bundle.txt -- "session decomposition for value granularity, fact-augmented key expansion for indexing, and time-aware query expansion for refining the search scope"（LongMemEval 识别出存储粒度是记忆设计的关键阶段，事实级提取引入信息丢失）
 [^src-2]: data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt -- "RAG is effective when conversations are stored as observations. There is a noticeable 5% improvement with gpt-3.5-turbo when the input is top 5 relevant observations instead of pure conversation logs."（LoCoMo 观察提取 top-5 F1=41.4 vs 原始对话 31.7）

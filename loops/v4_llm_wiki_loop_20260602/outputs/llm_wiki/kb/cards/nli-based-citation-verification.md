@@ -13,7 +13,7 @@ canonical_concept: nli-based-citation-verification
 aliases: [NLI引用验证, citation recall/precision via NLI, AIS自动评估]
 summary: >-
   nli-based-citation-verification（NLI引用验证, AIS自动评估）ALCE 使用 NLI 模型 TRUE（T5-11B）自动评估引用质量：citation recall 检查引用段落拼接后是否蕴含陈述，citation precision 检查去除某引用后支持是否不变；与人工评估 Cohen's kappa 达 0.698/0.525
-related: [citation-partial-support-limitation, citation-quality-tri-dimension, claim-level-entailment-evaluation]
+related: [citation-partial-support-limitation, citation-quality-tri-dimension, claim-level-entailment-evaluation, synthetic-judge-ppi-pipeline]
 ---
 
 ALCE 使用自然语言推理（NLI）模型 TRUE 来自动化引用质量评估，该模型是基于 T5-11B 微调在多个 NLI 数据集上的蕴含判断模型 [^src-1]。其评估遵循 AIS（attributable to identified sources）框架 [^src-2]。
@@ -35,3 +35,4 @@ ALCE 使用自然语言推理（NLI）模型 TRUE 来自动化引用质量评估
 [^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/human_eval.tex -- "the Cohen's kappa coefficient between human and ALCE suggests substantial agreement for citation recall (0.698) and moderate agreement for citation precision (0.525)"
 [^src-6]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Note that this algorithm overlooks the scenario when one citation partially supports the statement."
 [^card-claim-level-entailment-evaluation]: [声明级蕴含检验评估方法](claim-level-entailment-evaluation.md) -- RAGChecker 将文本分解为原子声明再逐一检查蕴含，相比 ALCE 的整体 NLI 判断提供了更细粒度的评估能力，可部分缓解二元蕴含判断的局限
+[^card-synthetic-judge]: [合成数据训练 LM 评审 + PPI 校准流水线](synthetic-judge-ppi-pipeline.md) -- ARES 合成数据微调定制评审模型，与本卡描述的 NLI 预训练模型复用路线互补；前者可针对特定维度定制，后者零训练成本但受限于蕴含关系

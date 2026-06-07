@@ -13,7 +13,7 @@ canonical_concept: citation-quality-tri-dimension
 aliases: [三维度引用评估, fluency-correctness-citation-quality, ALCE三维评估]
 summary: >-
   citation-quality-tri-dimension（三维度引用评估, fluency-correctness-citation-quality）ALCE 沿流畅度（MAUVE）、正确性（数据集特定指标）、引用质量（NLI 驱动的 recall/precision）三个维度评估，三者联合构成抗捷径的鲁棒评估
-related: [alce-citation-benchmark, nli-based-citation-verification]
+related: [alce-citation-benchmark, nli-based-citation-verification, rag-evaluation-tri-dimension, ragchecker-three-tier-metrics]
 ---
 
 ALCE 基准沿三个正交维度评估系统回答质量，三者共同构成抗捷径（shortcut-resistant）的鲁棒评估框架 [^src-1]：
@@ -31,7 +31,12 @@ ALCE 基准沿三个正交维度评估系统回答质量，三者共同构成抗
 
 三维度联合的关键价值在于防止系统走捷径：直接使用 top-1 检索段落作为回答可以获得近乎完美的引用质量分数，但流畅度和正确性会大幅下降 [^src-5]。
 
+RAGAS 提出的 RAG 评估三维度（检索质量、忠实性、生成质量）从管道组件角度分解评估[^card-1]，而 ALCE 的三维度（流畅度、正确性、引用质量）则从端到端输出质量角度分解。两者的"维度正交性"设计哲学一致，但切入视角互补：RAGAS 聚焦定位故障组件，ALCE 聚焦防止输出走捷径。
+
 ## Footnotes
+
+[^card-1]: [RAG 评估三维度分解](rag-evaluation-tri-dimension.md) -- RAGAS 从管道组件角度分解评估（检索/忠实性/生成），与 ALCE 从输出质量角度分解（流畅度/正确性/引用质量）形成互补视角；共享"正交维度防止单一指标走捷径"的设计哲学
+[^card-ragchecker-three-tier-metrics]: [RAGChecker 三层诊断指标体系](ragchecker-three-tier-metrics.md) -- ALCE 的三维度评估停留在系统输出层面（"引用质量好不好"），RAGChecker 的三层指标深入管道内部（"是检索不够还是生成器没用好上下文"）。RAGChecker 在 ALCE 的 citation recall/precision 之上增加了 6 个生成器诊断指标和 2 个检索器指标，提供从系统级到模块级的评估递进
 
 [^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "Our benchmark measures the following three dimensions of system responses: Fluency...Correctness...Citation quality"
 [^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/evaluation.tex -- "We use MAUVE to evaluate the fluency of the output...we mainly employ it as a sanity check as long as the MAUVE scores are high enough."

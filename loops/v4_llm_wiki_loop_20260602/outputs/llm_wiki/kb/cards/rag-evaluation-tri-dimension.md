@@ -33,8 +33,9 @@ ARES 独立提出了高度平行的三维组件评估框架（上下文相关性
 [^card-1]: [RAG 组件评估三维度](rag-component-evaluation-tri-dimension.md) -- ARES 从不同来源独立提出了平行的三维组件评估（上下文相关性、回答忠实性、回答相关性），与 RAGAS 的三维度高度重叠
 [^card-2]: [RAGChecker 三层诊断指标体系](ragchecker-three-tier-metrics.md) -- RAGChecker 将三维度扩展为三层级诊断体系，在生成器层引入 6 个细粒度指标，深化了维度分析的粒度
 [^card-3]: [RAGAS 无参考评估框架](ragas-reference-free-rag-evaluation.md) -- 本卡描述三维度的内容（WHAT），该卡强调这些维度的评估无需依赖 ground truth（WHY/HOW）
+[^card-4]: [引用评估三维度框架](citation-quality-tri-dimension.md) -- ALCE 从端到端输出质量角度分解为流畅度/正确性/引用质量三维度，与 RAGAS 的管道组件视角（检索/忠实性/生成）互补；共享"正交维度联合防止走捷径"的设计哲学
 
-[^src-1]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "Evaluating RAG architectures is, however, challenging because there are several dimensions to consider"
-[^src-2]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "the ability of the retrieval system to identify relevant and focused context passages"
-[^src-3]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "the ability of the LLM to exploit such passages in a faithful way"
-[^src-4]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "the quality of the generation itself"
+[^src-1]: `data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt` -- Abstract L37 -- "Evaluating RAG architectures is, however, challenging because there are several dimensions to consider"
+[^src-2]: `data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt` -- Abstract L37 -- "the ability of the retrieval system to identify relevant and focused context passages"
+[^src-3]: `data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt` -- Abstract L37 -- "the ability of the LLM to exploit such passages in a faithful way"
+[^src-4]: `data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt` -- Abstract L37 -- "the quality of the generation itself"

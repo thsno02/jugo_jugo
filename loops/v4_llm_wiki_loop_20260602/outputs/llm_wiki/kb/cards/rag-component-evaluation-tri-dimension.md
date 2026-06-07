@@ -31,4 +31,4 @@ RAGAS 独立提出了高度平行的三维分解（检索质量、忠实性、�
 [^card-1]: [RAG 评估三维度分解](rag-evaluation-tri-dimension.md) -- RAGAS 从不同来源独立提出了平行的三维分解（检索质量、忠实性、生成质量），两个框架的维度高度重叠但侧重点有微妙差异
 [^card-2]: [ARES 自动化 RAG 评估框架](ares-rag-evaluation-framework.md) -- 本卡聚焦 ARES 的三个评估维度，该卡描述支撑这些维度的自动化框架（合成数据微调+PPI 校准）
 
-[^src-1]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "evaluating RAG systems along the dimensions of context relevance, answer faithfulness, and answer relevance"
+[^src-1]: `data/raw/arxiv/arxiv-ares/agent_source_bundle.txt` -- Abstract -- "evaluating RAG systems along the dimensions of context relevance, answer faithfulness, and answer relevance"

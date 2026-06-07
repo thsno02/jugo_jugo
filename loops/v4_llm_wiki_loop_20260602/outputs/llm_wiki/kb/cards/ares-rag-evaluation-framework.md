@@ -13,7 +13,7 @@ canonical_concept: ares-rag-evaluation-framework
 aliases: [ARES, Automated RAG Evaluation System, 自动化RAG评估系统]
 summary: >-
   ares-rag-evaluation-framework（ARES, Automated RAG Evaluation System）ARES 通过合成数据微调轻量 LM 评审 + PPI 校准，仅需数百条人工标注即可自动评估 RAG 系统，且跨领域迁移鲁棒
-related: [rag-component-evaluation-tri-dimension, rag-evaluation-meta-evaluation, ragas-reference-free-rag-evaluation, synthetic-judge-ppi-pipeline]
+related: [rag-component-evaluation-tri-dimension, rag-evaluation-meta-evaluation, ragas-reference-free-rag-evaluation, synthetic-judge-ppi-pipeline, alce-citation-benchmark]
 ---
 
 ARES（Automated RAG Evaluation System）是一个用于自动评估检索增强生成（RAG）系统的框架 [^src-1]。传统 RAG 评估依赖对输入查询、待检索段落和待生成回答的人工标注，成本高昂。ARES 通过两阶段方法大幅降低人工成本：首先自动生成合成训练数据并微调轻量级 LM 评审模型，然后利用预测驱动推断（prediction-powered inference, PPI）结合少量人工标注进行校准 [^src-2]。
@@ -29,8 +29,9 @@ ARES 的评估沿上下文相关性、回答忠实性、回答相关性三个正
 [^card-1]: [RAGAS 无参考评估框架](ragas-reference-free-rag-evaluation.md) -- RAGAS 完全消除对 ground truth 的依赖，而 ARES 通过合成数据+PPI 仅需少量人工标注，两者分别代表 RAG 自动化评估的无参考与少参考路线
 [^card-2]: [RAG 评估框架的元评估方法论](rag-evaluation-meta-evaluation.md) -- RAGChecker 的元评估将 ARES 纳入基线比较，其 Pearson 相关性数据为 ARES 评审模型的可靠性提供了外部验证
 [^card-3]: [RAG 组件评估三维度](rag-component-evaluation-tri-dimension.md) -- 本卡描述 ARES 的整体框架（合成数据+PPI），该卡聚焦 ARES 定义的三个评估维度（上下文相关性、回答忠实性、回答相关性）
+[^card-4]: [ALCE 引用评估基准](alce-citation-benchmark.md) -- ARES 评估 RAG 系统的检索与生成质量，ALCE 评估 LLM 引用生成质量；两者分别代表 RAG 评估与引用评估两条自动化路线，共享"用自动指标替代人工标注"的核心设计目标
 
-[^src-1]: `data/raw/arxiv/arxiv-ares/text.txt` -- Title & Abstract -- "We introduce ARES, an Automated RAG Evaluation System, for evaluating RAG systems along the dimensions of context relevance, answer faithfulness, and answer relevance."
-[^src-2]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges to assess the quality of individual RAG components. To mitigate potential prediction errors, ARES utilizes a small set of human-annotated datapoints for prediction-powered inference (PPI)."
-[^src-3]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "Across eight different knowledge-intensive tasks in KILT, SuperGLUE, and AIS, ARES accurately evaluates RAG systems while using only a few hundred human annotations during evaluation."
-[^src-4]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "ARES judges remain effective across domain shifts, proving accurate even after changing the type of queries and/or documents used in the evaluated RAG systems."
+[^src-1]: `data/raw/arxiv/arxiv-ares/agent_source_bundle.txt` -- Title & Abstract -- "We introduce ARES, an Automated RAG Evaluation System, for evaluating RAG systems along the dimensions of context relevance, answer faithfulness, and answer relevance."
+[^src-2]: `data/raw/arxiv/arxiv-ares/agent_source_bundle.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges to assess the quality of individual RAG components. To mitigate potential prediction errors, ARES utilizes a small set of human-annotated datapoints for prediction-powered inference (PPI)."
+[^src-3]: `data/raw/arxiv/arxiv-ares/agent_source_bundle.txt` -- Abstract -- "Across eight different knowledge-intensive tasks in KILT, SuperGLUE, and AIS, ARES accurately evaluates RAG systems while using only a few hundred human annotations during evaluation."
+[^src-4]: `data/raw/arxiv/arxiv-ares/agent_source_bundle.txt` -- Abstract -- "ARES judges remain effective across domain shifts, proving accurate even after changing the type of queries and/or documents used in the evaluated RAG systems."

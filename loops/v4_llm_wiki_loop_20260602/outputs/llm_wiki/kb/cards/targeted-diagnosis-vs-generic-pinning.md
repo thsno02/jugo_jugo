@@ -26,5 +26,5 @@ WiCER 论文的消融实验（ablation）在全部 17 个主题上揭示了一�
 
 ## Footnotes
 
-[^src-1]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "An ablation across all 17 topics confirms that targeted diagnosis (+0.95), not generic pinning (+0.16), drives the gains."
-[^src-2]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "targeted diagnosis (+0.95), not generic pinning (+0.16)"
+[^src-1]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "An ablation across all 17 topics confirms that targeted diagnosis (+0.95), not generic pinning (+0.16), drives the gains."
+[^src-2]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "targeted diagnosis (+0.95), not generic pinning (+0.16)"

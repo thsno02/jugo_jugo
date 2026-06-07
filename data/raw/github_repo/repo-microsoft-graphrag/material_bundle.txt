@@ -1,0 +1,2299 @@
+--- FILE: README.md ---
+# GraphRAG
+
+👉 [Microsoft Research Blog Post](https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/)<br/>
+👉 [Read the docs](https://microsoft.github.io/graphrag)<br/>
+👉 [GraphRAG Arxiv](https://arxiv.org/pdf/2404.16130)
+
+<div align="left">
+  <a href="https://pypi.org/project/graphrag/">
+    <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/graphrag">
+  </a>
+  <a href="https://pypi.org/project/graphrag/">
+    <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/graphrag">
+  </a>
+  <a href="https://github.com/microsoft/graphrag/issues">
+    <img alt="GitHub Issues" src="https://img.shields.io/github/issues/microsoft/graphrag">
+  </a>
+  <a href="https://github.com/microsoft/graphrag/discussions">
+    <img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/microsoft/graphrag">
+  </a>
+</div>
+
+## Overview
+
+The GraphRAG project is a data pipeline and transformation suite that is designed to extract meaningful, structured data from unstructured text using the power of LLMs.
+
+To learn more about GraphRAG and how it can be used to enhance your LLM's ability to reason about your private data, please visit the <a href="https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/" target="_blank">Microsoft Research Blog Post.</a>
+
+## Quickstart
+
+To get started with the GraphRAG system we recommend trying the [command line quickstart](https://microsoft.github.io/graphrag/get_started/).
+
+## Repository Guidance
+
+This repository presents a methodology for using knowledge graph memory structures to enhance LLM outputs. Please note that the provided code serves as a demonstration and is not an officially supported Microsoft offering.
+
+⚠️ *Warning: GraphRAG indexing can be an expensive operation, please read all of the documentation to understand the process and costs involved, and start small.*
+
+## Diving Deeper
+
+- To learn about our contribution guidelines, see [CONTRIBUTING.md](./CONTRIBUTING.md)
+- To start developing _GraphRAG_, see [DEVELOPING.md](./DEVELOPING.md)
+- Join the conversation and provide feedback in the [GitHub Discussions tab!](https://github.com/microsoft/graphrag/discussions)
+
+## Prompt Tuning
+
+Using _GraphRAG_ with your data out of the box may not yield the best possible results.
+We strongly recommend to fine-tune your prompts following the [Prompt Tuning Guide](https://microsoft.github.io/graphrag/prompt_tuning/overview/) in our documentation.
+
+## Versioning
+
+Please see the [breaking changes](./breaking-changes.md) document for notes on our approach to versioning the project.
+
+*Always run `graphrag init --root [path] --force` between minor version bumps to ensure you have the latest config format. Run the provided migration notebook between major version bumps if you want to avoid re-indexing prior datasets. Note that this will overwrite your configuration and prompts, so backup if necessary.*
+
+## Responsible AI FAQ
+
+See [RAI_TRANSPARENCY.md](./RAI_TRANSPARENCY.md)
+
+- [What is GraphRAG?](./RAI_TRANSPARENCY.md#what-is-graphrag)
+- [What can GraphRAG do?](./RAI_TRANSPARENCY.md#what-can-graphrag-do)
+- [What are GraphRAG’s intended use(s)?](./RAI_TRANSPARENCY.md#what-are-graphrags-intended-uses)
+- [How was GraphRAG evaluated? What metrics are used to measure performance?](./RAI_TRANSPARENCY.md#how-was-graphrag-evaluated-what-metrics-are-used-to-measure-performance)
+- [What are the limitations of GraphRAG? How can users minimize the impact of GraphRAG’s limitations when using the system?](./RAI_TRANSPARENCY.md#what-are-the-limitations-of-graphrag-how-can-users-minimize-the-impact-of-graphrags-limitations-when-using-the-system)
+- [What operational factors and settings allow for effective and responsible use of GraphRAG?](./RAI_TRANSPARENCY.md#what-operational-factors-and-settings-allow-for-effective-and-responsible-use-of-graphrag)
+
+## Trademarks
+
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft
+trademarks or logos is subject to and must follow
+[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
+Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
+Any use of third-party trademarks or logos are subject to those third-party's policies.
+
+## Privacy
+
+[Microsoft Privacy Statement](https://privacy.microsoft.com/en-us/privacystatement)
+
+
+--- FILE: docs/index.md ---
+# Welcome to GraphRAG
+
+👉 [Microsoft Research Blog Post](https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/) <br/>
+👉 [GraphRAG Arxiv](https://arxiv.org/pdf/2404.16130)
+
+<p align="center">
+<img src="img/GraphRag-Figure1.jpg" alt="Figure 1: LLM-generated knowledge graph built from a private dataset using GPT-4 Turbo." width="450" align="center" />
+</p>
+<p align="center">
+Figure 1: An LLM-generated knowledge graph built using GPT-4 Turbo.
+</p>
+
+GraphRAG is a structured, hierarchical approach to Retrieval Augmented Generation (RAG), as opposed to naive semantic-search
+approaches using plain text snippets. The GraphRAG process involves extracting a knowledge graph out of raw text, building a community hierarchy, generating summaries for these communities, and then leveraging these structures when perform RAG-based tasks.
+
+To learn more about GraphRAG and how it can be used to enhance your language model's ability to reason about your private data, please visit the [Microsoft Research Blog Post](https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/).
+
+## Get Started with GraphRAG 🚀
+
+To start using GraphRAG, check out the [_Get Started_](get_started.md) guide.
+For a deeper dive into the main sub-systems, please visit the docpages for the [Indexer](index/overview.md) and [Query](query/overview.md) packages.
+
+## GraphRAG vs Baseline RAG 🔍
+
+Retrieval-Augmented Generation (RAG) is a technique to improve LLM outputs using real-world information. This technique is an important part of most LLM-based tools and the majority of RAG approaches use vector similarity as the search technique, which we call _Baseline RAG_. GraphRAG uses knowledge graphs to provide substantial improvements in question-and-answer performance when reasoning about complex information. RAG techniques have shown promise in helping LLMs to reason about _private datasets_ - data that the LLM is not trained on and has never seen before, such as an enterprise’s proprietary research, business documents, or communications. _Baseline RAG_ was created to help solve this problem, but we observe situations where baseline RAG performs very poorly. For example:
+
+- Baseline RAG struggles to connect the dots. This happens when answering a question requires traversing disparate pieces of information through their shared attributes in order to provide new synthesized insights.
+- Baseline RAG performs poorly when being asked to holistically understand summarized semantic concepts over large data collections or even singular large documents.
+
+To address this, the tech community is working to develop methods that extend and enhance RAG. Microsoft Research’s new approach, GraphRAG, creates a knowledge graph based on an input corpus. This graph, along with community summaries and graph machine learning outputs, are used to augment prompts at query time. GraphRAG shows substantial improvement in answering the two classes of questions described above, demonstrating intelligence or mastery that outperforms other approaches previously applied to private datasets.
+
+## The GraphRAG Process 🤖
+
+GraphRAG builds upon our prior [research](https://www.microsoft.com/en-us/worklab/patterns-hidden-inside-the-org-chart) and [tooling](https://github.com/graspologic-org/graspologic) using graph machine learning. The basic steps of the GraphRAG process are as follows:
+
+### Index
+
+- Slice up an input corpus into a series of TextUnits, which act as analyzable units for the rest of the process, and provide fine-grained references in our outputs.
+- Extract all entities, relationships, and key claims from the TextUnits.
+- Perform a hierarchical clustering of the graph using the [Leiden technique](https://arxiv.org/pdf/1810.08473.pdf). To see this visually, check out Figure 1 above. Each circle is an entity (e.g., a person, place, or organization), with the size representing the degree of the entity, and the color representing its community.
+- Generate summaries of each community and its constituents from the bottom-up. This aids in holistic understanding of the dataset.
+
+### Query
+
+At query time, these structures are used to provide materials for the LLM context window when answering a question. The primary query modes are:
+
+- [_Global Search_](query/global_search.md) for reasoning about holistic questions about the corpus by leveraging the community summaries.
+- [_Local Search_](query/local_search.md) for reasoning about specific entities by fanning-out to their neighbors and associated concepts.
+- [_DRIFT Search_](query/drift_search.md) for reasoning about specific entities by fanning-out to their neighbors and associated concepts, but with the added context of community information.
+- _Basic Search_ for those times when your query is best answered by baseline RAG (standard top _k_ vector search).
+
+### Prompt Tuning
+
+Using _GraphRAG_ with your data out of the box may not yield the best possible results.
+We strongly recommend to fine-tune your prompts following the [Prompt Tuning Guide](prompt_tuning/overview.md) in our documentation.
+
+
+## Versioning
+
+Please see the [breaking changes](https://github.com/microsoft/graphrag/blob/main/breaking-changes.md) document for notes on our approach to versioning the project.
+
+*Always run `graphrag init --root [path] --force` between minor version bumps to ensure you have the latest config format. Run the provided migration notebook between major version bumps if you want to avoid re-indexing prior datasets. Note that this will overwrite your configuration and prompts, so backup if necessary.*
+
+--- FILE: docs/get_started.md ---
+# Getting Started
+
+⚠️ GraphRAG can consume a lot of LLM resources! We strongly recommend starting with the tutorial dataset here until you understand how the system works, and consider experimenting with fast/inexpensive models first before committing to a big indexing job.
+
+## Requirements
+
+[Python 3.10-3.12](https://www.python.org/downloads/)
+
+The following is a simple end-to-end example for using GraphRAG on the command line after installing from [pypi](https://pypi.org/project/graphrag/).
+
+It shows how to use the system to index some text, and then use the indexed data to answer questions about the documents.
+
+## Install GraphRAG
+
+To get started, create a project space and python virtual environment to install `graphrag`.
+
+### Create Project Space
+
+```bash
+mkdir graphrag_quickstart
+cd graphrag_quickstart
+python -m venv .venv
+```
+### Activate Python Virtual Environment - Unix/MacOS
+
+```bash
+source .venv/bin/activate
+```
+
+### Activate Python Virtual Environment - Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+### Install GraphRAG
+
+```bash
+python -m pip install graphrag
+```
+
+### Initialize GraphRAG
+
+To initialize your workspace, first run the `graphrag init` command.
+
+```sh
+graphrag init
+```
+
+When prompted, specify the default chat and embedding models you would like to use in your config.
+
+This will create two files, `.env` and `settings.yaml`, and a directory `input`, in the current directory.
+
+- `input` Location of text files to process with `graphrag`.
+- `.env` contains the environment variables required to run the GraphRAG pipeline. If you inspect the file, you'll see a single environment variable defined,
+  `GRAPHRAG_API_KEY=<API_KEY>`. Replace `<API_KEY>` with your own OpenAI or Azure API key.
+- `settings.yaml` contains the settings for the pipeline. You can modify this file to change the settings for the pipeline.
+
+### Download Sample Text
+
+Get a copy of A Christmas Carol by Charles Dickens from a trusted source:
+
+```sh
+curl https://www.gutenberg.org/cache/epub/24022/pg24022.txt -o ./input/book.txt
+```
+
+## Set Up Workspace Variables
+
+### Using OpenAI
+
+If running in OpenAI mode, you only need to update the value of `GRAPHRAG_API_KEY` in the `.env` file with your OpenAI API key.
+
+### Using Azure OpenAI
+
+In addition to setting your API key, Azure OpenAI users should set the variables below in the settings.yaml file. To find the appropriate sections, just search for the `models:` root configuration; you should see two sections, one for the default chat endpoint and one for the default embeddings endpoint. Here is an example of what to add to the chat model config:
+
+```yaml
+type: chat
+model_provider: azure
+model: gpt-4.1
+deployment_name: <AZURE_DEPLOYMENT_NAME>
+api_base: https://<instance>.openai.azure.com
+api_version: 2024-02-15-preview # You can customize this for other versions
+```
+
+#### Using Managed Auth on Azure
+
+To use managed auth, edit the auth_type in your model config and *remove* the api_key line:
+
+```yaml
+auth_type: azure_managed_identity # Default auth_type is is api_key
+```
+
+You will also need to login with [az login](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli) and select the subscription with your endpoint.
+
+## Index
+
+Now we're ready to index!
+
+```sh
+graphrag index
+```
+
+![pipeline executing from the CLI](img/pipeline-running.png)
+
+This process will usually take a few minutes to run. Once the pipeline is complete, you should see a new folder called `./output` with a series of parquet files.
+
+# Query
+
+Now let's ask some questions using this dataset.
+
+Here is an example using Global search to ask a high-level question:
+
+```sh
+graphrag query "What are the top themes in this story?"
+```
+
+Here is an example using Local search to ask a more specific question about a particular character:
+
+```sh
+graphrag query \
+"Who is Scrooge and what are his main relationships?" \
+--method local
+```
+
+Please refer to [Query Engine](query/overview.md) docs for detailed information about how to leverage our Local and Global search mechanisms for extracting meaningful insights from data after the Indexer has wrapped up execution.
+
+# Going Deeper
+
+- For more details about configuring GraphRAG, see the [configuration documentation](config/overview.md).
+- To learn more about Initialization, refer to the [Initialization documentation](config/init.md).
+- For more details about using the CLI, refer to the [CLI documentation](cli.md).
+- Check out our [visualization guide](visualization_guide.md) for a more interactive experience in debugging and exploring the knowledge graph.
+
+
+--- FILE: docs/index/overview.md ---
+# GraphRAG Indexing 🤖
+
+The GraphRAG indexing package is a data pipeline and transformation suite that is designed to extract meaningful, structured data from unstructured text using LLMs.
+
+Indexing Pipelines are configurable. They are composed of workflows, standard and custom steps, prompt templates, and input/output adapters. Our standard pipeline is designed to:
+
+- extract entities, relationships and claims from raw text
+- perform community detection in entities
+- generate community summaries and reports at multiple levels of granularity
+- embed text into a vector space
+
+The outputs of the pipeline are stored as Parquet tables by default, and embeddings are written to your configured vector store.
+
+## Getting Started
+
+### Requirements
+
+See the [requirements](../developing.md#requirements) section in [Get Started](../get_started.md) for details on setting up a development environment.
+
+To configure GraphRAG, see the [configuration](../config/overview.md) documentation.
+After you have a config file you can run the pipeline using the CLI or the Python API.
+
+## Usage
+
+### CLI
+
+```bash
+uv run poe index --root <data_root> # default config mode
+```
+
+### Python API
+
+Please see the indexing API [python file](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/api/index.py) for the recommended method to call directly from Python code.
+
+## Further Reading
+
+- To start developing within the _GraphRAG_ project, see [getting started](../developing.md)
+- To understand the underlying concepts and execution model of the indexing library, see [the architecture documentation](../index/architecture.md)
+- To read more about configuring the indexing engine, see [the configuration documentation](../config/overview.md)
+
+
+--- FILE: docs/index/architecture.md ---
+# Indexing Architecture 
+
+## Key Concepts
+
+### Knowledge Model
+
+In order to support the GraphRAG system, the outputs of the indexing engine (in the Default Configuration Mode) are aligned to a knowledge model we call the _GraphRAG Knowledge Model_.
+This model is designed to be an abstraction over the underlying data storage technology, and to provide a common interface for the GraphRAG system to interact with.
+
+### Workflows
+
+Below is the core GraphRAG indexing pipeline. Individual workflows are described in detail in the [dataflow](./default_dataflow.md) page.
+
+```mermaid
+---
+title: Basic GraphRAG
+---
+stateDiagram-v2
+    [*] --> LoadDocuments
+    LoadDocuments --> ChunkDocuments
+    ChunkDocuments --> ExtractGraph
+    ChunkDocuments --> ExtractClaims
+    ChunkDocuments --> EmbedChunks
+    ExtractGraph --> DetectCommunities
+    ExtractGraph --> EmbedEntities
+    DetectCommunities --> GenerateReports
+    GenerateReports --> EmbedReports
+```
+
+### LLM Caching
+
+The GraphRAG library was designed with LLM interactions in mind, and a common setback when working with LLM APIs is various errors due to network latency, throttling, etc..
+Because of these potential error cases, we've added a cache layer around LLM interactions.
+When completion requests are made using the same input set (prompt and tuning parameters), we return a cached result if one exists.
+This allows our indexer to be more resilient to network issues, to act idempotently, and to provide a more efficient end-user experience.
+
+### Providers & Factories
+
+Several subsystems within GraphRAG use a factory pattern to register and retrieve provider implementations. This allows deep customization to support your own implementations of models, storage, and so on that we haven't built into the core library.
+
+The following subsystems use a factory pattern that allows you to register your own implementations:
+
+- [language model](https://github.com/microsoft/graphrag/blob/main/packages/graphrag-llm/graphrag_llm/completion/completion_factory.py) - implement your own `chat` and `embed` methods to use a model provider of choice beyond the built-in LiteLLM wrapper
+- [input reader](https://github.com/microsoft/graphrag/blob/main/packages/graphrag-input/graphrag_input/input_reader.py) - implement your own input document reader to support file types other than text, CSV, and JSON
+- [cache](https://github.com/microsoft/graphrag/blob/main/packages/graphrag-cache/graphrag_cache/cache_factory.py) - create your own cache storage location in addition to the file, blob, and CosmosDB ones we provide
+- [logger](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/logger/factory.py) - create your own log writing location in addition to the built-in file and blob storage
+- [storage](https://github.com/microsoft/graphrag/blob/main/packages/graphrag-storage/graphrag_storage/tables/table_provider_factory.py) - create your own storage provider (database, etc.) beyond the file, blob, and CosmosDB ones built in
+- [vector store](https://github.com/microsoft/graphrag/blob/main/packages/graphrag-vectors/graphrag_vectors/vector_store_factory.py) - implement your own vector store other than the built-in lancedb, Azure AI Search, and CosmosDB ones built in
+- [pipeline + workflows](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/index/workflows/factory.py) - implement your own workflow steps with a custom `run_workflow` function, or register an entire pipeline (list of named workflows)
+
+The links for each of these subsystems point to the source code of the factory, which includes registration of the default built-in implementations. In addition, we have a detailed discussion of [language models](../config/models.md), which includes and example of a custom provider, and a [sample notebook](../examples_notebooks/custom_vector_store.ipynb) that demonstrates a custom vector store.
+
+All of these factories allow you to register an impl using any string name you would like, even overriding built-in ones directly.
+
+--- FILE: docs/index/default_dataflow.md ---
+# Indexing Dataflow
+
+## The GraphRAG Knowledge Model
+
+The knowledge model is a specification for data outputs that conform to our data-model definition. You can find these definitions in the python/graphrag/graphrag/model folder within the GraphRAG repository. The following entity types are provided. The fields here represent the fields that are text-embedded by default.
+
+- `Document` - An input document into the system. These either represent individual rows in a CSV or individual .txt files.
+- `TextUnit` - A chunk of text to analyze. The size of these chunks, their overlap, and whether they adhere to any data boundaries may be configured below.
+- `Entity` - An entity extracted from a TextUnit. These represent people, places, events, or some other entity-model that you provide.
+- `Relationship` - A relationship between two entities.
+- `Covariate` - Extracted claim information, which contains statements about entities which may be time-bound.
+- `Community` - Once the graph of entities and relationships is built, we perform hierarchical community detection on them to create a clustering structure.
+- `Community Report` - The contents of each community are summarized into a generated report, useful for human reading and downstream search.
+
+## The Default Configuration Workflow
+
+Let's take a look at how the default-configuration workflow transforms text documents into the _GraphRAG Knowledge Model_. This page gives a general overview of the major steps in this process. To fully configure this workflow, check out the [configuration](../config/overview.md) documentation.
+
+```mermaid
+---
+title: Dataflow Overview
+---
+flowchart TB
+    subgraph phase1[Phase 1: Compose TextUnits]
+    documents[Documents] --> chunk[Chunk]
+    chunk --> textUnits[Text Units]
+    end
+    subgraph phase2[Phase 2: Document Processing]
+    documents --> link_to_text_units[Link to TextUnits]
+    textUnits --> link_to_text_units
+    link_to_text_units --> document_outputs[Documents Table]
+    end
+    subgraph phase3[Phase 3 Graph Extraction]
+    textUnits --> graph_extract[Entity & Relationship Extraction]
+    graph_extract --> graph_summarize[Entity & Relationship Summarization]
+    graph_summarize --> claim_extraction[Claim Extraction]
+    claim_extraction --> graph_outputs[Graph Tables]
+    end
+    subgraph phase4[Phase 4: Graph Augmentation]
+    graph_outputs --> community_detect[Community Detection]
+    community_detect --> community_outputs[Communities Table]
+    end
+    subgraph phase5[Phase 5: Community Summarization]
+    community_outputs --> summarized_communities[Community Summarization]
+    summarized_communities --> community_report_outputs[Community Reports Table]
+    end
+    subgraph phase6[Phase 6: Text Embeddings]
+    textUnits --> text_embed[Text Embedding]
+    graph_outputs --> description_embed[Description Embedding]
+    community_report_outputs --> content_embed[Content Embedding]
+    end
+```
+
+## Phase 1: Compose TextUnits
+
+The first phase of the default-configuration workflow is to transform input documents into _TextUnits_. A _TextUnit_ is a chunk of text that is used for our graph extraction techniques. They are also used as source-references by extracted knowledge items in order to empower breadcrumbs and provenance by concepts back to their original source text.
+
+The chunk size (counted in tokens), is user-configurable. By default this is set to 1200 tokens. Larger chunks result in lower-fidelity output and less meaningful reference texts; however, using larger chunks can result in much faster processing time.
+
+```mermaid
+---
+title: Documents into Text Chunks
+---
+flowchart LR
+    doc1[Document 1] --> tu1[TextUnit 1]
+    doc1 --> tu2[TextUnit 2]
+    doc2[Document 2] --> tu3[TextUnit 3]
+    doc2 --> tu4[TextUnit 4]
+
+```
+
+## Phase 2: Document Processing
+
+In this phase of the workflow, we create the _Documents_ table for the knowledge model. Final documents are not used directly in GraphRAG, but this step links them to their constituent text units for provenance in your own applications.
+
+```mermaid
+---
+title: Document Processing
+---
+flowchart LR
+    aug[Augment] --> dp[Link to TextUnits] --> dg[Documents Table]
+```
+
+### Link to TextUnits
+
+In this step, we link each document to the text-units that were created in the first phase. This allows us to understand which documents are related to which text-units and vice-versa.
+
+### Documents Table
+
+At this point, we can export the **Documents** table into the knowledge Model.
+
+## Phase 3: Graph Extraction
+
+In this phase, we analyze each text unit and extract our graph primitives: _Entities_, _Relationships_, and _Claims_.
+Entities and Relationships are extracted at once in our _extract_graph_ workflow, and claims are extracted in our _extract_claims_ workflow. Results are then combined and passed into following phases of the pipeline.
+
+```mermaid
+---
+title: Graph Extraction
+---
+flowchart LR
+    tu[TextUnit] --> ge[Graph Extraction] --> gs[Graph Summarization]
+    tu --> ce[Claim Extraction]
+```
+
+> Note: if you are using the [FastGraphRAG](https://microsoft.github.io/graphrag/index/methods/#fastgraphrag) option, entity and relationship extraction will be performed using NLP to conserve LLM resources, and claim extraction will always be skipped.
+
+### Entity & Relationship Extraction
+
+In this first step of graph extraction, we process each text-unit to extract entities and relationships out of the raw text using the LLM. The output of this step is a subgraph-per-TextUnit containing a list of **entities** with a _title_, _type_, and _description_, and a list of **relationships** with a _source_, _target_, and _description_.
+
+These subgraphs are merged together - any entities with the same _title_ and _type_ are merged by creating an array of their descriptions. Similarly, any relationships with the same _source_ and _target_ are merged by creating an array of their descriptions.
+
+### Entity & Relationship Summarization
+
+Now that we have a graph of entities and relationships, each with a list of descriptions, we can summarize these lists into a single description per entity and relationship. This is done by asking the LLM for a short summary that captures all of the distinct information from each description. This allows all of our entities and relationships to have a single concise description.
+
+### Claim Extraction (optional)
+
+Finally, as an independent workflow, we extract claims from the source TextUnits. These claims represent positive factual statements with an evaluated status and time-bounds. These get exported as a primary artifact called **Covariates**.
+
+Note: claim extraction is _optional_ and turned off by default. This is because claim extraction generally requires prompt tuning to be useful.
+
+## Phase 4: Graph Augmentation
+
+Now that we have a usable graph of entities and relationships, we want to understand their community structure. These give us explicit ways of understanding the organization of our graph.
+
+```mermaid
+---
+title: Graph Augmentation
+---
+flowchart LR
+    cd[Leiden Hierarchical Community Detection] --> ag[Graph Tables]
+```
+
+### Community Detection
+
+In this step, we generate a hierarchy of entity communities using the Hierarchical Leiden Algorithm. This method will apply a recursive community-clustering to our graph until we reach a community-size threshold. This will allow us to understand the community structure of our graph and provide a way to navigate and summarize the graph at different levels of granularity.
+
+### Graph Tables
+
+Once our graph augmentation steps are complete, the final **Entities**, **Relationships**, and **Communities** tables are exported.
+
+## Phase 5: Community Summarization
+
+```mermaid
+---
+title: Community Summarization
+---
+flowchart LR
+    sc[Generate Community Reports] --> ss[Summarize Community Reports] --> co[Community Reports Table]
+```
+
+At this point, we have a functional graph of entities and relationships and a hierarchy of communities for the entities.
+
+Now we want to build on the communities data and generate reports for each community. This gives us a high-level understanding of the graph at several points of graph granularity. For example, if community A is the top-level community, we'll get a report about the entire graph. If the community is lower-level, we'll get a report about a local cluster.
+
+### Generate Community Reports
+
+In this step, we generate a summary of each community using the LLM. This will allow us to understand the distinct information contained within each community and provide a scoped understanding of the graph, from either a high-level or a low-level perspective. These reports contain an executive overview and reference the key entities, relationships, and claims within the community sub-structure.
+
+### Summarize Community Reports
+
+In this step, each _community report_ is then summarized via the LLM for shorthand use.
+
+### Community Reports Table
+
+At this point, some bookkeeping work is performed and we export the **Community Reports** tables.
+
+## Phase 6: Text Embedding
+
+For all artifacts that require downstream vector search, we generate text embeddings as a final step. These embeddings are written directly to a configured vector store. By default we embed entity descriptions, text unit text, and community report text.
+
+```mermaid
+---
+title: Text Embedding Workflows
+---
+flowchart LR
+    textUnits[Text Units] --> text_embed[Text Embedding]
+    graph_outputs[Graph Tables] --> description_embed[Description Embedding]
+    community_report_outputs[Community Reports] --> content_embed[Content Embedding]
+```
+
+
+--- FILE: docs/index/methods.md ---
+# Indexing Methods
+
+GraphRAG is a platform for our research into RAG indexing methods that produce optimal context window content for language models. We have a standard indexing pipeline that uses a language model to extract the graph that our memory model is based upon. We may introduce additional indexing methods from time to time. This page documents those options.
+
+## Standard GraphRAG
+
+This is the method described in the original [blog post](https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/). Standard uses a language model for all reasoning tasks:
+
+- entity extraction: LLM is prompted to extract named entities and provide a description from each text unit.
+- relationship extraction: LLM is prompted to describe the relationship between each pair of entities in each text unit.
+- entity summarization: LLM is prompted to combine the descriptions for every instance of an entity found across the text units into a single summary.
+- relationship summarization: LLM is prompted to combine the descriptions for every instance of a relationship found across the text units into a single summary.
+- claim extraction (optional): LLM is prompted to extract and describe claims from each text unit.
+- community report generation: entity and relationship descriptions (and optionally claims) for each community are collected and used to prompt the LLM to generate a summary report.
+
+`graphrag index --method standard`. This is the default method, so the method param can be omitted on the command line.
+
+## FastGraphRAG
+
+FastGraphRAG is a method that substitutes some of the language model reasoning for traditional natural language processing (NLP) methods. This is a hybrid technique that we developed as a faster and cheaper indexing alternative:
+
+- entity extraction: entities are noun phrases extracted using NLP libraries such as NLTK and spaCy. There is no description; the source text unit is used for this.
+- relationship extraction: relationships are defined as text unit co-occurrence between entity pairs. There is no description.
+- entity summarization: not necessary.
+- relationship summarization: not necessary.
+- claim extraction: unused.
+- community report generation: The direct text unit content containing each entity noun phrase is collected and used to prompt the LLM to generate a summary report.
+
+`graphrag index --method fast`
+
+FastGraphRAG has a handful of NLP [options built in](https://microsoft.github.io/graphrag/config/yaml/#extract_graph_nlp). By default we use NLTK + regular expressions for the noun phrase extraction, which is very fast but primarily suitable for English. We have built in two additional methods using spaCy: semantic parsing and CFG. We use the `en_core_web_md` model by default for spaCy, but note that you can reference any [supported model](https://spacy.io/models/) that you have installed. 
+
+Note that we also generally configure the text chunking to produce much smaller chunks (50-100 tokens). This results in a better co-occurrence graph.
+
+⚠️ Note on SpaCy models:
+
+This package requires SpaCy models to function correctly. If the required model is not installed, the package will automatically download and install it the first time it is used.
+
+You can install it manually by running `python -m spacy download <model_name>`, for example `python -m spacy download en_core_web_md`.
+
+
+## Choosing a Method
+
+Standard GraphRAG provides a rich description of real-world entities and relationships, but is more expensive than FastGraphRAG. We estimate graph extraction to constitute roughly 75% of indexing cost. FastGraphRAG is therefore much cheaper, but the tradeoff is that the extracted graph is less directly relevant for use outside of GraphRAG, and the graph tends to be quite a bit noisier. If high fidelity entities and graph exploration are important to your use case, we recommend staying with traditional GraphRAG. If your use case is primarily aimed at summary questions using global search, FastGraphRAG provides high quality summarization with much lower language model cost.
+
+
+--- FILE: docs/index/inputs.md ---
+# Inputs
+
+GraphRAG supports several input formats to simplify ingesting your data. The mechanics and features available for input files and text chunking are discussed here.
+
+## Input Loading and Schema
+
+All input formats are loaded within GraphRAG and passed to the indexing pipeline as a `documents` DataFrame. This DataFrame has a row for each document using a shared column schema:
+
+| name          | type | description |
+| ------------- | ---- | ----------- |
+| id            | str  | ID of the document. This is generated using a hash of the text content to ensure stability across runs. |
+| text          | str  | The full text of the document. |
+| title         | str  | Name of the document. Some formats allow this to be configured. |
+| creation_date | str  | The creation date of the document, represented as an ISO8601 string. This is harvested from the source file system. |
+| metadata      | dict | Optional additional document metadata. More details below. |
+
+Also see the [outputs](outputs.md) documentation for the final documents table schema saved to parquet after pipeline completion.
+
+## Bring-your-own DataFrame
+
+GraphRAG's [indexing API method](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/api/index.py) allows you to pass in your own pandas DataFrame and bypass all of the input loading/parsing described in the next section. This is convenient if you have content in a format or storage location we don't support out-of-the-box. _You must ensure that your input DataFrame conforms to the schema described above._ All of the chunking behavior described later will proceed exactly the same.
+
+## Custom File Handling
+
+We use an injectable InputReader provider class. This means you can implement any input file handling you want in a class that extends InputReader and register it with the InputReaderFactory. See the [architecture page](https://microsoft.github.io/graphrag/index/architecture/) for more info on our standard provider pattern.
+
+## Formats
+
+We support three file formats out-of-the-box. This covers the overwhelming majority of use cases we have encountered. If you have a different format, we recommend either implementing your own InputReader or writing a script to convert to one of these, which are widely used and supported by many tools and libraries.
+
+### Plain Text
+
+Plain text files (typically ending in .txt file extension). With plain text files we import the entire file contents as the `text` field, and the `title` is always the filename.
+
+### Comma-delimited
+
+CSV files (typically ending in a .csv extension). These are loaded using pandas' [`read_csv` method](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html) with default options. Each row in a CSV file is treated as a single document. If you have multiple CSV files in your input folder, they will be concatenated into a single resulting `documents` DataFrame.
+
+With the CSV format you can configure the `text_column`, and `title_column` if your data has structured content you would prefer to use. If you do not configure these within the `input` block of your settings.yaml, the title will be the filename as described in the schema above. The `text_column` is assumed to be "text" in your file if not configured specifically. We will also look for and use an "id" column if present, otherwise the ID will be generated as described above.
+
+### JSON
+
+JSON files (typically ending in a .json extension) contain [structured objects](https://www.json.org/). These are loaded using python's [`json.loads` method](https://docs.python.org/3/library/json.html), so your files must be properly compliant. JSON files may contain a single object in the file *or* the file may contain an array of objects at the root. We will check for and handle either of these cases. As with CSV, multiple files will be concatenated into a final table, and the `text_column` and `title_column` config options will be applied to the properties of each loaded object. Note that the specialized jsonl format produced by some libraries (one full JSON object on each line, not in an array) is not currently supported.
+
+## Metadata
+
+With the structured file formats (CSV and JSON) you can configure any number of columns to be added to a persisted `metadata` field in the DataFrame. This is configured by supplying a list of column names to collect. If this is configured, the output `metadata` column will have a dict containing a key for each column, and the value of the column for that document. This metadata can optionally be used later in the GraphRAG pipeline.
+
+### Example
+
+software.csv
+
+```csv
+text,title,tag
+My first program,Hello World,tutorial
+An early space shooter game,Space Invaders,arcade
+```
+
+settings.yaml
+
+```yaml
+input:
+    metadata: [title,tag]
+```
+
+Documents DataFrame
+
+| id                    | title          | text                        | creation_date                 | metadata                                       |
+| --------------------- | -------------- | --------------------------- | ----------------------------- | ---------------------------------------------- |
+| (generated from text) | Hello World    | My first program            | (create date of software.csv) | { "title": "Hello World", "tag": "tutorial" }  |
+| (generated from text) | Space Invaders | An early space shooter game | (create date of software.csv) | { "title": "Space Invaders", "tag": "arcade" } |
+
+## Chunking and Metadata
+
+As described on the [default dataflow](default_dataflow.md#phase-1-compose-textunits) page, documents are *chunked* into smaller "text units" for processing. This is done because document content size often exceeds the available context window for a given language model. There are a handful of settings you can adjust for this chunking, the most relevant being the `chunk_size` and `overlap`. We also support a metadata processing scheme that can improve indexing results for some use cases. We will describe this feature in detail here.
+
+Imagine the following scenario: you are indexing a collection of news articles. Each article text starts with a headline and author, and then proceeds with the content. When documents are chunked, they are split evenly according to your configured chunk size. In other words, the first *n* tokens are read into a text unit, and then the next *n*, until the end of the content. This means that front matter at the beginning of the document (such as the headline and author in this example) *is not copied to each chunk*. It only exists in the first chunk. When we later retrieve those chunks for summarization, they may therefore be missing shared information about the source document that should always be provided to the model. We have configuration options to copy repeated content into each text unit to address this issue.
+
+### Input Config
+
+As described above, when documents are imported you can specify a list of `metadata` columns to include with each row. This must be configured for the per-chunk copying to work.
+
+### Chunking Config
+
+Next, the `chunks` block needs to instruct the chunker how to handle this metadata when creating text units. By default, it is ignored. We have the following setting to include it:
+
+- `prepend_metadata`. This instructs the importer to copy the contents of the `metadata` column for each row into the start of every single text chunk. This metadata is copied as key: value pairs on new lines.
+
+### Examples
+
+The following are several examples to help illustrate how chunking config and metadata prepending works for each file format. Note that we are using word count here as "tokens" for the illustration, but language model tokens are [not equivalent to words](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them).
+
+#### Text files
+
+This example uses two individual news article text files.
+
+--
+
+**File:** US to lift most federal COVID-19 vaccine mandates.txt
+
+**Content:**
+
+WASHINGTON (AP) The Biden administration will end most of the last remaining federal COVID-19 vaccine requirements next week when the national public health emergency for the coronavirus ends, the White House said Monday. Vaccine requirements for federal workers and federal contractors, as well as foreign air travelers to the U.S., will end May 11. The government is also beginning the process of lifting shot requirements for Head Start educators, healthcare workers, and noncitizens at U.S. land borders. The requirements are among the last vestiges of some of the more coercive measures taken by the federal government to promote vaccination as the deadly virus raged, and their end marks the latest display of how President Joe Biden's administration is moving to treat COVID-19 as a routine, endemic illness. "While I believe that these vaccine mandates had a tremendous beneficial impact, we are now at a point where we think that it makes a lot of sense to pull these requirements down," White House COVID-19 coordinator Dr. Ashish Jha told The Associated Press on Monday.
+
+--
+
+**File:** NY lawmakers begin debating budget 1 month after due date.txt
+
+**Content:**
+
+ALBANY, N.Y. (AP) New York lawmakers began voting Monday on a $229 billion state budget due a month ago that would raise the minimum wage, crack down on illicit pot shops and ban gas stoves and furnaces in new buildings. Negotiations among Gov. Kathy Hochul and her fellow Democrats in control of the Legislature dragged on past the April 1 budget deadline, largely because of disagreements over changes to the bail law and other policy proposals included in the spending plan. Floor debates on some budget bills began Monday. State Senate Majority Leader Andrea Stewart-Cousins said she expected voting to be wrapped up Tuesday for a budget she said contains "significant wins" for New Yorkers. "I would have liked to have done this sooner. I think we would all agree to that," Cousins told reporters before voting began. "This has been a very policy-laden budget and a lot of the policies had to parsed through." Hochul was able to push through a change to the bail law that will eliminate the standard that requires judges to prescribe the "least restrictive" means to ensure defendants return to court. Hochul said judges needed the extra discretion. Some liberal lawmakers argued that it would undercut the sweeping bail reforms approved in 2019 and result in more people with low incomes and people of color in pretrial detention. Here are some other policy provisions that will be included in the budget, according to state officials. The minimum wage would be raised to $17 in New York City and some of its suburbs and $16 in the rest of the state by 2026. That's up from $15 in the city and $14.20 upstate.
+
+--
+
+settings.yaml
+
+```yaml
+input:
+    type: text
+    metadata: [title]
+
+chunks:
+    size: 100
+    overlap: 0
+    prepend_metadata: true
+```
+
+Documents DataFrame
+
+| id                    | title                                                         | text                        | creation_date                     | metadata                                                                     |
+| --------------------- | ------------------------------------------------------------- | --------------------------- | --------------------------------- | ---------------------------------------------------------------------------- |
+| (generated from text) | US to lift most federal COVID-19 vaccine mandates.txt         | (full content of text file) | (create date of article txt file) | { "title": "US to lift most federal COVID-19 vaccine mandates.txt" }         |
+| (generated from text) | NY lawmakers begin debating budget 1 month after due date.txt | (full content of text file) | (create date of article txt file) | { "title": "NY lawmakers begin debating budget 1 month after due date.txt" } |
+
+Raw Text Chunks
+
+| content | length  |
+| ------- | ------: |
+| title: US to lift most federal COVID-19 vaccine mandates.txt<br>WASHINGTON (AP) The Biden administration will end most of the last remaining federal COVID-19 vaccine requirements next week when the national public health emergency for the coronavirus ends, the White House said Monday. Vaccine requirements for federal workers and federal contractors, as well as foreign air travelers to the U.S., will end May 11. The government is also beginning the process of lifting shot requirements for Head Start educators, healthcare workers, and noncitizens at U.S. land borders. The requirements are among the last vestiges of some of the more coercive measures taken by the federal government to promote vaccination as | 109 |
+| title: US to lift most federal COVID-19 vaccine mandates.txt<br>the deadly virus raged, and their end marks the latest display of how President Joe Biden's administration is moving to treat COVID-19 as a routine, endemic illness. "While I believe that these vaccine mandates had a tremendous beneficial impact, we are now at a point where we think that it makes a lot of sense to pull these requirements down," White House COVID-19 coordinator Dr. Ashish Jha told The Associated Press on Monday. | 82 |
+| title: NY lawmakers begin debating budget 1 month after due date.txt<br>ALBANY, N.Y. (AP) New York lawmakers began voting Monday on a $229 billion state budget due a month ago that would raise the minimum wage, crack down on illicit pot shops and ban gas stoves and furnaces in new buildings. Negotiations among Gov. Kathy Hochul and her fellow Democrats in control of the Legislature dragged on past the April 1 budget deadline, largely because of disagreements over changes to the bail law and other policy proposals included in the spending plan. Floor debates on some budget bills began Monday. State Senate Majority Leader Andrea Stewart-Cousins said she expected voting to | 111 |
+| title: NY lawmakers begin debating budget 1 month after due date.txt<br>be wrapped up Tuesday for a budget she said contains "significant wins" for New Yorkers. "I would have liked to have done this sooner. I think we would all agree to that," Cousins told reporters before voting began. "This has been a very policy-laden budget and a lot of the policies had to parsed through." Hochul was able to push through a change to the bail law that will eliminate the standard that requires judges to prescribe the "least restrictive" means to ensure defendants return to court. Hochul said judges needed the extra discretion. Some liberal lawmakers argued that it | 111 |
+| title: NY lawmakers begin debating budget 1 month after due date.txt<br>would undercut the sweeping bail reforms approved in 2019 and result in more people with low incomes and people of color in pretrial detention. Here are some other policy provisions that will be included in the budget, according to state officials. The minimum wage would be raised to $17 in New York City and some of its suburbs and $16 in the rest of the state by 2026. That's up from $15 in the city and $14.20 upstate. | 89 |
+
+In this example we can see that the two input documents were parsed into five output text chunks. The title (filename) of each document is prepended but not included in the computed chunk size. Also note that the final text chunk for each document is usually smaller than the chunk size because it contains the last tokens.
+
+#### CSV files
+
+This example uses a single CSV file with the same two articles as rows (note that the text content is not properly escaped for actual CSV use).
+
+--
+
+**File:** articles.csv
+
+**Content**
+
+headline,article
+
+US to lift most federal COVID-19 vaccine mandates,WASHINGTON (AP) The Biden administration will end most of the last remaining federal COVID-19 vaccine requirements next week when the national public health emergency for the coronavirus ends, the White House said Monday. Vaccine requirements for federal workers and federal contractors, as well as foreign air travelers to the U.S., will end May 11. The government is also beginning the process of lifting shot requirements for Head Start educators, healthcare workers, and noncitizens at U.S. land borders. The requirements are among the last vestiges of some of the more coercive measures taken by the federal government to promote vaccination as the deadly virus raged, and their end marks the latest display of how President Joe Biden's administration is moving to treat COVID-19 as a routine, endemic illness. "While I believe that these vaccine mandates had a tremendous beneficial impact, we are now at a point where we think that it makes a lot of sense to pull these requirements down," White House COVID-19 coordinator Dr. Ashish Jha told The Associated Press on Monday.
+
+NY lawmakers begin debating budget 1 month after due date,ALBANY, N.Y. (AP) New York lawmakers began voting Monday on a $229 billion state budget due a month ago that would raise the minimum wage, crack down on illicit pot shops and ban gas stoves and furnaces in new buildings. Negotiations among Gov. Kathy Hochul and her fellow Democrats in control of the Legislature dragged on past the April 1 budget deadline, largely because of disagreements over changes to the bail law and other policy proposals included in the spending plan. Floor debates on some budget bills began Monday. State Senate Majority Leader Andrea Stewart-Cousins said she expected voting to be wrapped up Tuesday for a budget she said contains "significant wins" for New Yorkers. "I would have liked to have done this sooner. I think we would all agree to that," Cousins told reporters before voting began. "This has been a very policy-laden budget and a lot of the policies had to parsed through." Hochul was able to push through a change to the bail law that will eliminate the standard that requires judges to prescribe the "least restrictive" means to ensure defendants return to court. Hochul said judges needed the extra discretion. Some liberal lawmakers argued that it would undercut the sweeping bail reforms approved in 2019 and result in more people with low incomes and people of color in pretrial detention. Here are some other policy provisions that will be included in the budget, according to state officials. The minimum wage would be raised to $17 in New York City and some of its suburbs and $16 in the rest of the state by 2026. That's up from $15 in the city and $14.20 upstate.
+
+#### JSON files
+
+This final example uses a JSON file for each of the same two articles. In this example we'll set the object fields to read, but we will not add metadata to the text chunks.
+
+--
+
+**File:** article1.json
+
+**Content**
+
+```json
+{
+    "headline": "US to lift most federal COVID-19 vaccine mandates",
+    "content": "WASHINGTON (AP) The Biden administration will end most of the last remaining federal COVID-19 vaccine requirements next week when the national public health emergency for the coronavirus ends, the White House said Monday. Vaccine requirements for federal workers and federal contractors, as well as foreign air travelers to the U.S., will end May 11. The government is also beginning the process of lifting shot requirements for Head Start educators, healthcare workers, and noncitizens at U.S. land borders. The requirements are among the last vestiges of some of the more coercive measures taken by the federal government to promote vaccination as the deadly virus raged, and their end marks the latest display of how President Joe Biden's administration is moving to treat COVID-19 as a routine, endemic illness. "While I believe that these vaccine mandates had a tremendous beneficial impact, we are now at a point where we think that it makes a lot of sense to pull these requirements down," White House COVID-19 coordinator Dr. Ashish Jha told The Associated Press on Monday."
+}
+```
+
+**File:** article2.json
+
+**Content**
+
+```json
+{
+    "headline": "NY lawmakers begin debating budget 1 month after due date",
+    "content": "ALBANY, N.Y. (AP) New York lawmakers began voting Monday on a $229 billion state budget due a month ago that would raise the minimum wage, crack down on illicit pot shops and ban gas stoves and furnaces in new buildings. Negotiations among Gov. Kathy Hochul and her fellow Democrats in control of the Legislature dragged on past the April 1 budget deadline, largely because of disagreements over changes to the bail law and other policy proposals included in the spending plan. Floor debates on some budget bills began Monday. State Senate Majority Leader Andrea Stewart-Cousins said she expected voting to be wrapped up Tuesday for a budget she said contains "significant wins" for New Yorkers. "I would have liked to have done this sooner. I think we would all agree to that," Cousins told reporters before voting began. "This has been a very policy-laden budget and a lot of the policies had to parsed through." Hochul was able to push through a change to the bail law that will eliminate the standard that requires judges to prescribe the "least restrictive" means to ensure defendants return to court. Hochul said judges needed the extra discretion. Some liberal lawmakers argued that it would undercut the sweeping bail reforms approved in 2019 and result in more people with low incomes and people of color in pretrial detention. Here are some other policy provisions that will be included in the budget, according to state officials. The minimum wage would be raised to $17 in New York City and some of its suburbs and $16 in the rest of the state by 2026. That's up from $15 in the city and $14.20 upstate."
+}
+```
+
+--
+
+settings.yaml
+
+```yaml
+input:
+    type: json
+    title_column: headline
+    text_column: content
+
+chunks:
+    size: 100
+    overlap: 10
+```
+
+Documents DataFrame
+
+| id                    | title                                                     | text                     | creation_date                  | metadata |
+| --------------------- | --------------------------------------------------------- | ------------------------ | ------------------------------ | -------- |
+| (generated from text) | US to lift most federal COVID-19 vaccine mandates         | (article column content) | (create date of article1.json) | { }      |
+| (generated from text) | NY lawmakers begin debating budget 1 month after due date | (article column content) | (create date of article2.json) | { }      |
+
+Raw Text Chunks
+
+| content | length  |
+| ------- | ------: |
+| WASHINGTON (AP) The Biden administration will end most of the last remaining federal COVID-19 vaccine requirements next week when the national public health emergency for the coronavirus ends, the White House said Monday. Vaccine requirements for federal workers and federal contractors, as well as foreign air travelers to the U.S., will end May 11. The government is also beginning the process of lifting shot requirements for Head Start educators, healthcare workers, and noncitizens at U.S. land borders. The requirements are among the last vestiges of some of the more coercive measures taken by the federal government to promote vaccination as | 100 |
+| measures taken by the federal government to promote vaccination as  the deadly virus raged, and their end marks the latest display of how President Joe Biden's administration is moving to treat COVID-19 as a routine, endemic illness. "While I believe that these vaccine mandates had a tremendous beneficial impact, we are now at a point where we think that it makes a lot of sense to pull these requirements down," White House COVID-19 coordinator Dr. Ashish Jha told The Associated Press on Monday. | 83 |
+| ALBANY, N.Y. (AP) New York lawmakers began voting Monday on a $229 billion state budget due a month ago that would raise the minimum wage, crack down on illicit pot shops and ban gas stoves and furnaces in new buildings. Negotiations among Gov. Kathy Hochul and her fellow Democrats in control of the Legislature dragged on past the April 1 budget deadline, largely because of disagreements over changes to the bail law and other policy proposals included in the spending plan. Floor debates on some budget bills began Monday. State Senate Majority Leader Andrea Stewart-Cousins said she expected voting to | 100 |
+| Senate Majority Leader Andrea Stewart-Cousins said she expected voting to be wrapped up Tuesday for a budget she said contains "significant wins" for New Yorkers. "I would have liked to have done this sooner. I think we would all agree to that," Cousins told reporters before voting began. "This has been a very policy-laden budget and a lot of the policies had to parsed through." Hochul was able to push through a change to the bail law that will eliminate the standard that requires judges to prescribe the "least restrictive" means to ensure defendants return to court. Hochul said judges | 100 |
+| means to ensure defendants return to court. Hochul said judges needed the extra discretion. Some liberal lawmakers argued that it would undercut the sweeping bail reforms approved in 2019 and result in more people with low incomes and people of color in pretrial detention. Here are some other policy provisions that will be included in the budget, according to state officials. The minimum wage would be raised to $17 in New York City and some of its suburbs and $16 in the rest of the state by 2026. That's up from $15 in the city and $14.20 upstate. | 98 |
+
+
+In this example the two input documents were parsed into five output text chunks. There is no metadata prepended, so each chunk matches the configured chunk size (except the last one for each document). We've also configured some overlap in these text chunks, so the last ten tokens are shared.
+
+
+
+
+
+--- FILE: docs/index/outputs.md ---
+# Outputs
+
+The default pipeline produces a series of output tables that align with the [conceptual knowledge model](../index/default_dataflow.md). This page describes the detailed output table schemas. By default we write these tables out as parquet files on disk.
+
+## Shared fields
+All tables have two identifier fields:
+
+| name              | type | description |
+| ----------------- | ---- | ----------- |
+| id                | str  | Generated UUID, assuring global uniqueness |
+| human_readable_id | int  | This is an incremented short ID created per-run. For example, we use this short ID with generated summaries that print citations so they are easy to cross-reference visually. |
+
+## communities
+This is a list of the final communities generated by Leiden. Communities are strictly hierarchical, subdividing into children as the cluster affinity is narrowed.
+
+| name               | type  | description |
+| ------------------ | ----- | ----------- |
+| community          | int   | Leiden-generated cluster ID for the community. Note that these increment with depth, so they are unique through all levels of the community hierarchy. For this table, human_readable_id is a copy of the community ID rather than a plain increment. |
+| parent             | int   | Parent community ID.|
+| children           | int[] | List of child community IDs.|
+| level              | int   | Depth of the community in the hierarchy. |
+| title              | str   | Friendly name of the community. |
+| entity_ids         | str[] | List of entities that are members of the community. |
+| relationship_ids   | str[] | List of relationships that are wholly within the community (source and target are both in the community). |
+| text_unit_ids      | str[] | List of text units represented within the community. |
+| period             | str   | Date of ingest, used for incremental update merges. ISO8601 |
+| size               | int   | Size of the community (entity count), used for incremental update merges. |
+
+## community_reports
+This is the list of summarized reports for each community.
+
+| name                 | type  | description |
+| -------------------- | ----- | ----------- |
+| community            | int   | Short ID of the community this report applies to. |
+| parent               | int   | Parent community ID. |
+| children             | int[] | List of child community IDs.|
+| level                | int   | Level of the community this report applies to. |
+| title                | str   | LM-generated title for the report. |
+| summary              | str   | LM-generated summary of the report. |
+| full_content         | str   | LM-generated full report. |
+| rank                 | float | LM-derived relevance ranking of the report based on member entity salience
+| rating_explanation   | str   | LM-derived explanation of the rank. |
+| findings             | dict  | LM-derived list of the top 5-10 insights from the community. Contains `summary` and `explanation` values. |
+| full_content_json    | json  | Full JSON output as returned by the LM. Most fields are extracted into columns, but this JSON is sent for query summarization so we leave it to allow for prompt tuning to add fields/content by end users. |
+| period               | str   | Date of ingest, used for incremental update merges. ISO8601 |
+| size                 | int   | Size of the community (entity count), used for incremental update merges. |
+
+## covariates
+(Optional) If claim extraction is turned on, this is a list of the extracted covariates. Note that claims are typically oriented around identifying malicious behavior such as fraud, so they are not useful for all datasets.
+
+| name           | type | description |
+| -------------- | ---- | ----------- |
+| covariate_type | str  | This is always "claim" with our default covariates. |
+| type           | str  | Nature of the claim type. |
+| description    | str  | LM-generated description of the behavior. |
+| subject_id     | str  | Name of the source entity (that is performing the claimed behavior). |
+| object_id      | str  | Name of the target entity (that the claimed behavior is performed on). |
+| status         | str  | LM-derived assessment of the correctness of the claim. One of [TRUE, FALSE, SUSPECTED] |
+| start_date     | str  | LM-derived start of the claimed activity. ISO8601 |
+| end_date       | str  | LM-derived end of the claimed activity. ISO8601 |
+| source_text    | str  | Short string of text containing the claimed behavior. |
+| text_unit_id   | str  | ID of the text unit the claim text was extracted from. |
+
+## documents
+List of document content after import.
+
+| name          | type  | description |
+| ------------- | ----- | ----------- |
+| title         | str   | Filename, unless otherwise configured during CSV import. |
+| text          | str   | Full text of the document. |
+| text_unit_ids | str[] | List of text units (chunks) that were parsed from the document. |
+| metadata      | dict  | If specified during CSV import, this is a dict of metadata for the document. |
+
+## entities
+List of all entities found in the data by the LM.
+
+| name          | type  | description |
+| ------------- | ----- | ----------- |
+| title         | str   | Name of the entity. |
+| type          | str   | Type of the entity. By default this will be "organization", "person", "geo", or "event" unless configured differently or auto-tuning is used. |
+| description   | str   | Textual description of the entity. Entities may be found in many text units, so this is an LM-derived summary of all descriptions. |
+| text_unit_ids | str[] | List of the text units containing the entity. |
+| frequency     | int   | Count of text units the entity was found within. |
+| degree        | int   | Node degree (connectedness) in the graph. |
+
+## relationships
+List of all entity-to-entity relationships found in the data by the LM. This is also the _edge list_ for the graph.
+
+| name            | type  | description |
+| --------------- | ----- | ----------- |
+| source          | str   | Name of the source entity. |
+| target          | str   | Name of the target entity. |
+| description     | str   | LM-derived description of the relationship. Also see note for entity descriptions. |
+| weight          | float | Weight of the edge in the graph. This is summed from an LM-derived "strength" measure for each relationship instance. |
+| combined_degree | int   | Sum of source and target node degrees. |
+| text_unit_ids   | str[] | List of text units the relationship was found within. |
+
+## text_units
+List of all text chunks parsed from the input documents.
+
+| name              | type  | description |
+| ----------------- | ----- | ----------- |
+| text              | str   | Raw full text of the chunk. |
+| n_tokens          | int   | Number of tokens in the chunk. This should normally match the `chunk_size` config parameter, except for the last chunk which is often shorter. |
+| document_id       | str   | ID of the document the chunk came from. |
+| entity_ids        | str[] | List of entities found in the text unit. |
+| relationships_ids | str[] | List of relationships found in the text unit. |
+| covariate_ids     | str[] | Optional list of covariates found in the text unit. |
+
+--- FILE: docs/index/byog.md ---
+# Bring Your Own Graph
+
+Several users have asked if they can bring their own existing graph and have it summarized for query with GraphRAG. There are many possible ways to do this, but here we'll describe a simple method that aligns with the existing GraphRAG workflows quite easily.
+
+To cover the basic use cases for GraphRAG query, you should have two or three tables derived from your data:
+
+- entities.parquet - this is the list of entities found in the dataset, which are the nodes of the graph.
+- relationships.parquet - this is the list of relationships found in the dataset, which are the edges of the graph.
+- text_units.parquet - this is the source text chunks the graph was extracted from. This is optional depending on the query method you intend to use (described later).
+
+The approach described here will be to run a custom GraphRAG workflow pipeline that assumes the text chunking, entity extraction, and relationship extraction has already occurred.
+
+## Tables
+
+### Entities
+
+See the full entities [table schema](./outputs.md#entities). For graph summarization purposes, you only need id, title, description, and the list of text_unit_ids.
+
+### Relationships
+
+See the full relationships [table schema](./outputs.md#relationships). For graph summarization purposes, you only need id, source, target, description, weight, and the list of text_unit_ids.
+
+> Note: the `weight` field is important because it is used to properly compute Leiden communities!
+
+## Workflow Configuration
+
+GraphRAG includes the ability to specify *only* the specific workflow steps that you need. For basic graph summarization and query, you need the following config in your settings.yaml:
+
+```yaml
+workflows: [create_communities, create_community_reports]
+```
+
+This will result in only the minimal workflows required for GraphRAG [Global Search](../query/global_search.md).
+
+## Optional Additional Config
+
+If you would like to run [Local](../query/local_search.md), [DRIFT](../query/drift_search.md), or [Basic](../query/overview.md#basic-search) Search, you will need to include text_units and some embeddings.
+
+### Text Units
+
+See the full text_units [table schema](./outputs.md#text_units). Text units are chunks of your documents that are sized to ensure they fit into the context window of your model. Some search methods use these, so you may want to include them if you have them.
+
+### Expanded Config
+
+To perform the other search types above, you need some of the content to be embedded. Simply add the embeddings workflow:
+
+```yaml
+workflows: [create_communities, create_community_reports, generate_text_embeddings]
+```
+
+### FastGraphRAG
+
+[FastGraphRAG](./methods.md#fastgraphrag) uses text_units for the community reports instead of the entity and relationship descriptions. If your graph is sourced in such a way that it does not have descriptions, this might be a useful alternative. In this case, you would update your workflows list to include the text variant of the community reports workflow:
+
+```yaml
+workflows: [create_communities, create_community_reports_text, generate_text_embeddings]
+```
+
+This method requires that your entities and relationships tables have valid links to a list of text_unit_ids. Also note that `generate_text_embeddings` is still only required if you are doing searches other than Global Search.
+
+
+## Setup
+
+Putting it all together:
+
+- `output`: Create an output folder and put your entities and relationships (and optionally text_units) parquet files in it.
+- Update your config as noted above to only run the workflows subset you need.
+- Run `graphrag index --root <your_project_root>`
+
+--- FILE: docs/query/overview.md ---
+# Query Engine 🔎
+
+The Query Engine is the retrieval module of the GraphRAG library, and operates over completed [indexes](../index/overview.md).
+It is responsible for the following tasks:
+
+- [Local Search](#local-search)
+- [Global Search](#global-search)
+- [DRIFT Search](#drift-search)
+- Basic Search
+- [Question Generation](#question-generation)
+
+## Local Search
+
+Local search generates answers by combining relevant data from the AI-extracted knowledge-graph with text chunks of the raw documents. This method is suitable for questions that require an understanding of specific entities mentioned in the documents (e.g. What are the healing properties of chamomile?).
+
+For more details about how Local Search works please refer to the [Local Search](local_search.md) page.
+
+## Global Search
+
+Global search generates answers by searching over all AI-generated community reports in a map-reduce fashion. This is a resource-intensive method, but often gives good responses for questions that require an understanding of the dataset as a whole (e.g. What are the most significant values of the herbs mentioned in this notebook?).
+
+More about this is provided on the [Global Search](global_search.md) page.
+
+## DRIFT Search
+
+DRIFT Search introduces a new approach to local search queries by including community information in the search process. This greatly expands the breadth of the query’s starting point and leads to retrieval and usage of a far higher variety of facts in the final answer. This expands the GraphRAG query engine by providing a more comprehensive option for local search, which uses community insights to refine a query into detailed follow-up questions.
+
+To learn more about DRIFT Search, please refer to the [DRIFT Search](drift_search.md) page.
+
+## Basic Search
+
+GraphRAG includes a rudimentary implementation of basic vector RAG to make it easy to compare different search results based on the type of question you are asking. You can specify the top `k` text unit chunks to include in the summarization context.
+
+## Question Generation
+
+This functionality takes a list of user queries and generates the next candidate questions. This is useful for generating follow-up questions in a conversation or for generating a list of questions for the investigator to dive deeper into the dataset.
+
+Information about how question generation works can be found at the [Question Generation](question_generation.md) documentation page.
+
+
+--- FILE: docs/query/global_search.md ---
+# Global Search 🔎
+
+## Whole Dataset Reasoning
+
+Baseline RAG struggles with queries that require aggregation of information across the dataset to compose an answer. Queries such as “What are the top 5 themes in the data?” perform terribly because baseline RAG relies on a vector search of semantically similar text content within the dataset. There is nothing in the query to direct it to the correct information.
+
+However, with GraphRAG we can answer such questions, because the structure of the LLM-generated knowledge graph tells us about the structure (and thus themes) of the dataset as a whole. This allows the private dataset to be organized into meaningful semantic clusters that are pre-summarized. Using our [global search](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/global_search/) method, the LLM uses these clusters to summarize these themes when responding to a user query.
+
+## Methodology
+
+```mermaid
+---
+title: Global Search Dataflow
+---
+%%{ init: { 'flowchart': { 'curve': 'step' } } }%%
+flowchart LR
+
+    uq[User Query] --- .1
+    ch1[Conversation History] --- .1
+
+    subgraph RIR
+        direction TB
+        ri1[Rated Intermediate<br/>Response 1]~~~ri2[Rated Intermediate<br/>Response 2] -."{1..N}".-rin[Rated Intermediate<br/>Response N]
+    end
+
+    .1--Shuffled Community<br/>Report Batch 1-->RIR
+    .1--Shuffled Community<br/>Report Batch 2-->RIR---.2
+    .1--Shuffled Community<br/>Report Batch N-->RIR
+
+    .2--Ranking +<br/>Filtering-->agr[Aggregated Intermediate<br/>Responses]-->res[Response]
+
+
+
+     classDef green fill:#26B653,stroke:#333,stroke-width:2px,color:#fff;
+     classDef turquoise fill:#19CCD3,stroke:#333,stroke-width:2px,color:#fff;
+     classDef rose fill:#DD8694,stroke:#333,stroke-width:2px,color:#fff;
+     classDef orange fill:#F19914,stroke:#333,stroke-width:2px,color:#fff;
+     classDef purple fill:#B356CD,stroke:#333,stroke-width:2px,color:#fff;
+     classDef invisible fill:#fff,stroke:#fff,stroke-width:0px,color:#fff, width:0px;
+     class uq,ch1 turquoise;
+     class ri1,ri2,rin rose;
+     class agr orange;
+     class res purple;
+     class .1,.2 invisible;
+
+```
+
+Given a user query and, optionally, the conversation history, the global search method uses a collection of LLM-generated community reports from a specified level of the graph's community hierarchy as context data to generate response in a map-reduce manner. At the `map` step, community reports are segmented into text chunks of pre-defined size. Each text chunk is then used to produce an intermediate response containing a list of point, each of which is accompanied by a numerical rating indicating the importance of the point. At the `reduce` step, a filtered set of the most important points from the intermediate responses are aggregated and used as the context to generate the final response. 
+
+The quality of the global search’s response can be heavily influenced by the level of the community hierarchy chosen for sourcing community reports. Lower hierarchy levels, with their detailed reports, tend to yield more thorough responses, but may also increase the time and LLM resources needed to generate the final response due to the volume of reports.
+
+
+## Configuration
+
+Below are the key parameters of the [GlobalSearch class](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/global_search/search.py):
+
+* `model`: Language model chat completion object to be used for response generation
+* `context_builder`: [context builder](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/global_search/community_context.py) object to be used for preparing context data from community reports
+* `map_system_prompt`: prompt template used in the `map` stage. Default template can be found at [map_system_prompt](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/query/global_search_map_system_prompt.py)
+* `reduce_system_prompt`: prompt template used in the `reduce` stage, default template can be found at [reduce_system_prompt](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/query/global_search_reduce_system_prompt.py)
+* `response_type`: free-form text describing the desired response type and format (e.g., `Multiple Paragraphs`, `Multi-Page Report`)
+* `allow_general_knowledge`: setting this to True will include additional instructions to the `reduce_system_prompt` to prompt the LLM to incorporate relevant real-world knowledge outside of the dataset. Note that this may increase hallucinations, but can be useful for certain scenarios. Default is False
+*`general_knowledge_inclusion_prompt`: instruction to add to the `reduce_system_prompt` if `allow_general_knowledge` is enabled. Default instruction can be found at [general_knowledge_instruction](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/query/global_search_knowledge_system_prompt.py)
+* `max_data_tokens`: token budget for the context data
+* `map_llm_params`: a dictionary of additional parameters (e.g., temperature, max_tokens) to be passed to the LLM call at the `map` stage
+* `reduce_llm_params`: a dictionary of additional parameters (e.g., temperature, max_tokens) to passed to the LLM call at the `reduce` stage
+* `context_builder_params`: a dictionary of additional parameters to be passed to the [`context_builder`](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/global_search/community_context.py) object when building context window for the `map` stage.
+* `concurrent_coroutines`: controls the degree of parallelism in the `map` stage.
+* `callbacks`: optional callback functions, can be used to provide custom event handlers for LLM's completion streaming events
+
+## How to Use
+
+An example of a global search scenario can be found in the following [notebook](../examples_notebooks/global_search.ipynb).
+
+--- FILE: docs/query/local_search.md ---
+# Local Search 🔎
+
+## Entity-based Reasoning
+
+The [local search](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/local_search/) method combines structured data from the knowledge graph with unstructured data from the input documents to augment the LLM context with relevant entity information at query time. It is well-suited for answering questions that require an understanding of specific entities mentioned in the input documents (e.g., “What are the healing properties of chamomile?”).
+
+## Methodology
+
+```mermaid
+---
+title: Local Search Dataflow
+---
+%%{ init: { 'flowchart': { 'curve': 'step' } } }%%
+flowchart LR
+
+    uq[User Query] ---.1
+    ch1[Conversation<br/>History]---.1
+
+    .1--Entity<br/>Description<br/>Embedding--> ee[Extracted Entities]
+
+    ee[Extracted Entities] ---.2--Entity-Text<br/>Unit Mapping--> ctu[Candidate<br/>Text Units]--Ranking + <br/>Filtering -->ptu[Prioritized<br/>Text Units]---.3
+    .2--Entity-Report<br/>Mapping--> ccr[Candidate<br/>Community Reports]--Ranking + <br/>Filtering -->pcr[Prioritized<br/>Community Reports]---.3
+    .2--Entity-Entity<br/>Relationships--> ce[Candidate<br/>Entities]--Ranking + <br/>Filtering -->pe[Prioritized<br/>Entities]---.3
+    .2--Entity-Entity<br/>Relationships--> cr[Candidate<br/>Relationships]--Ranking + <br/>Filtering -->pr[Prioritized<br/>Relationships]---.3
+    .2--Entity-Covariate<br/>Mappings--> cc[Candidate<br/>Covariates]--Ranking + <br/>Filtering -->pc[Prioritized<br/>Covariates]---.3
+    ch1 -->ch2[Conversation History]---.3
+    .3-->res[Response]
+
+     classDef green fill:#26B653,stroke:#333,stroke-width:2px,color:#fff;
+     classDef turquoise fill:#19CCD3,stroke:#333,stroke-width:2px,color:#fff;
+     classDef rose fill:#DD8694,stroke:#333,stroke-width:2px,color:#fff;
+     classDef orange fill:#F19914,stroke:#333,stroke-width:2px,color:#fff;
+     classDef purple fill:#B356CD,stroke:#333,stroke-width:2px,color:#fff;
+     classDef invisible fill:#fff,stroke:#fff,stroke-width:0px,color:#fff, width:0px;
+     class uq,ch1 turquoise
+     class ee green
+     class ctu,ccr,ce,cr,cc rose
+     class ptu,pcr,pe,pr,pc,ch2 orange
+     class res purple
+     class .1,.2,.3 invisible
+
+
+```
+
+Given a user query and, optionally, the conversation history, the local search method identifies a set of entities from the knowledge graph that are semantically-related to the user input. These entities serve as access points into the knowledge graph, enabling the extraction of further relevant details such as connected entities, relationships, entity covariates, and community reports. Additionally, it also extracts relevant text chunks from the raw input documents that are associated with the identified entities. These candidate data sources are then prioritized and filtered to fit within a single context window of pre-defined size, which is used to generate a response to the user query.
+
+## Configuration
+
+Below are the key parameters of the [LocalSearch class](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/local_search/search.py):
+
+* `model`: Language model chat completion object to be used for response generation
+* `context_builder`: [context builder](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/local_search/mixed_context.py) object to be used for preparing context data from collections of knowledge model objects
+* `system_prompt`: prompt template used to generate the search response. Default template can be found at [system_prompt](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/query/local_search_system_prompt.py)
+* `response_type`: free-form text describing the desired response type and format (e.g., `Multiple Paragraphs`, `Multi-Page Report`)
+* `llm_params`: a dictionary of additional parameters (e.g., temperature, max_tokens) to be passed to the LLM call
+* `context_builder_params`: a dictionary of additional parameters to be passed to the [`context_builder`](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/local_search/mixed_context.py) object when building context for the search prompt
+* `callbacks`: optional callback functions, can be used to provide custom event handlers for LLM's completion streaming events
+
+## How to Use
+
+An example of a local search scenario can be found in the following [notebook](../examples_notebooks/local_search.ipynb).
+
+
+
+--- FILE: docs/query/drift_search.md ---
+# DRIFT Search 🔎
+
+## Combining Local and Global Search
+
+GraphRAG is a technique that uses large language models (LLMs) to create knowledge graphs and summaries from unstructured text documents and leverages them to improve retrieval-augmented generation (RAG) operations on private datasets. It offers comprehensive global overviews of large, private troves of unstructured text documents while also enabling exploration of detailed, localized information. By using LLMs to create comprehensive knowledge graphs that connect and describe entities and relationships contained in those documents, GraphRAG leverages semantic structuring of the data to generate responses to a wide variety of complex user queries.
+
+DRIFT search (Dynamic Reasoning and Inference with Flexible Traversal) builds upon Microsoft’s GraphRAG technique, combining characteristics of both global and local search to generate detailed responses in a method that balances computational costs with quality outcomes using our [drift search](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/drift_search/) method.
+
+## Methodology
+
+<p align="center">
+<img src="../../img/drift-search-diagram.png" alt="Figure 1. An entire DRIFT search hierarchy highlighting the three core phases of the DRIFT search process." align="center" />
+</p>
+<p align="center"><i><small>
+Figure 1. An entire DRIFT search hierarchy highlighting the three core phases of the DRIFT search process. A (Primer): DRIFT compares the user’s query with the top K most semantically relevant community reports, generating a broad initial answer and follow-up questions to steer further exploration. B (Follow-Up): DRIFT uses local search to refine queries, producing additional intermediate answers and follow-up questions that enhance specificity, guiding the engine towards context-rich information. A glyph on each node in the diagram shows the confidence the algorithm has to continue the query expansion step.  C (Output Hierarchy): The final output is a hierarchical structure of questions and answers ranked by relevance, reflecting a balanced mix of global insights and local refinements, making the results adaptable and comprehensive.</small></i></p>
+
+
+DRIFT Search introduces a new approach to local search queries by including community information in the search process. This greatly expands the breadth of the query’s starting point and leads to retrieval and usage of a far higher variety of facts in the final answer. This addition expands the GraphRAG query engine by providing a more comprehensive option for local search, which uses community insights to refine a query into detailed follow-up questions.
+
+## Configuration
+
+Below are the key parameters of the [DRIFTSearch class](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/drift_search/search.py):
+
+* `model`: Language model chat completion object to be used for response generation
+- `context_builder`: [context builder](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/drift_search/drift_context.py) object to be used for preparing context data from community reports and query information
+- `config`: model to define the DRIFT Search hyperparameters. [DRIFT Config model](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/config/models/drift_search_config.py)
+- `tokenizer`: token encoder for tracking the budget for the algorithm.
+- `query_state`: a state object as defined in [Query State](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/drift_search/state.py) that allows to track execution of a DRIFT Search instance, alongside follow ups and [DRIFT actions](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/drift_search/action.py).
+
+## How to Use
+
+An example of a drift search scenario can be found in the following [notebook](../examples_notebooks/drift_search.ipynb).
+
+## Learn More
+
+For a more in-depth look at the DRIFT search method, please refer to our [DRIFT Search blog post](https://www.microsoft.com/en-us/research/blog/introducing-drift-search-combining-global-and-local-search-methods-to-improve-quality-and-efficiency/)
+
+
+--- FILE: docs/query/question_generation.md ---
+# Question Generation ❔
+
+## Entity-based Question Generation
+
+The [question generation](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/question_gen/) method combines structured data from the knowledge graph with unstructured data from the input documents to generate candidate questions related to specific entities.
+
+## Methodology
+Given a list of prior user questions, the question generation method uses the same context-building approach employed in [local search](local_search.md) to extract and prioritize relevant structured and unstructured data, including entities, relationships, covariates, community reports and raw text chunks. These data records are then fitted into a single LLM prompt to generate candidate follow-up questions that represent the most important or urgent information content or themes in the data.
+
+## Configuration
+
+Below are the key parameters of the [Question Generation class](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/question_gen/local_gen.py):
+
+* `model`: Language model chat completion object to be used for response generation
+* `context_builder`: [context builder](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/local_search/mixed_context.py) object to be used for preparing context data from collections of knowledge model objects, using the same context builder class as in local search
+* `system_prompt`: prompt template used to generate candidate questions. Default template can be found at [system_prompt](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/query/question_gen_system_prompt.py)
+* `llm_params`: a dictionary of additional parameters (e.g., temperature, max_tokens) to be passed to the LLM call
+* `context_builder_params`: a dictionary of additional parameters to be passed to the [`context_builder`](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/query/structured_search/local_search/mixed_context.py) object when building context for the question generation prompt
+* `callbacks`: optional callback functions, can be used to provide custom event handlers for LLM's completion streaming events
+
+## How to Use
+
+An example of the question generation function can be found in the following [notebook](../examples_notebooks/local_search.ipynb).
+
+
+--- FILE: docs/query/notebooks/overview.md ---
+# API Notebooks
+
+- [API Overview Notebook](../../examples_notebooks/api_overview.ipynb)
+- [Bring-Your-Own Vector Store](../../examples_notebooks/custom_vector_store.ipynb)
+
+# Query Engine Notebooks
+
+For examples about running Query please refer to the following notebooks:
+
+- [Global Search Notebook](../../examples_notebooks/global_search.ipynb)
+- [Local Search Notebook](../../examples_notebooks/local_search.ipynb)
+- [DRIFT Search Notebook](../../examples_notebooks/drift_search.ipynb)
+
+The test dataset for these notebooks can be found in [dataset.zip](../../data/operation_dulce/dataset.zip){:download}.
+
+
+--- FILE: docs/config/overview.md ---
+# Configuring GraphRAG Indexing
+
+The GraphRAG system is highly configurable. This page provides an overview of the configuration options available for the GraphRAG indexing engine.
+
+## Default Configuration Mode
+
+The default configuration mode is the simplest way to get started with the GraphRAG system. It is designed to work out-of-the-box with minimal configuration. The main ways to set up GraphRAG in Default Configuration mode are via:
+
+- [Init command](init.md) (recommended first step)
+- [Edit settings.yaml for deeper control](yaml.md)
+
+
+--- FILE: docs/config/init.md ---
+# Configuring GraphRAG Indexing
+
+To start using GraphRAG, you must generate a configuration file. The `init` command is the easiest way to get started. It will create a `.env` and `settings.yaml` files in the specified directory with the necessary configuration settings. It will also output the default LLM prompts used by GraphRAG.
+
+## Usage
+
+```sh
+graphrag init [--root PATH] [--force, --no-force]
+```
+
+## Options
+
+- `--root PATH` - The project root directory to initialize graphrag at. Default is the current directory.
+- `--force`, `--no-force` - Optional, default is --no-force. Overwrite existing configuration and prompt files if they exist.
+
+## Example
+
+```sh
+graphrag init --root ./ragtest
+```
+
+## Output
+
+The `init` command will create the following files in the specified directory:
+
+- `settings.yaml` - The configuration settings file. This file contains the configuration settings for GraphRAG.
+- `.env` - The environment variables file. These are referenced in the `settings.yaml` file.
+- `prompts/` - The LLM prompts folder. This contains the default prompts used by GraphRAG, you can modify them or run the [Auto Prompt Tuning](../prompt_tuning/auto_prompt_tuning.md) command to generate new prompts adapted to your data.
+
+## Next Steps
+
+After initializing your workspace, you can either run the [Prompt Tuning](../prompt_tuning/auto_prompt_tuning.md) command to adapt the prompts to your data or even start running the [Indexing Pipeline](../index/overview.md) to index your data. For more information on configuration options available, see the [YAML details page](yaml.md).
+
+
+--- FILE: docs/config/models.md ---
+# Language Model Selection and Overriding
+
+This page contains information on selecting a model to use and options to supply your own model for GraphRAG. Note that this is not a guide to finding the right model for your use case.
+
+## Default Model Support
+
+GraphRAG was built and tested using OpenAI models, so this is the default model set we support. This is not intended to be a limiter or statement of quality or fitness for your use case, only that it's the set we are most familiar with for prompting, tuning, and debugging.
+
+GraphRAG uses [LiteLLM](https://docs.litellm.ai/) for calling language models. LiteLLM provides support for 100+ models though it is important to note that when choosing a model it must support returning [structured outputs](https://openai.com/index/introducing-structured-outputs-in-the-api/) adhering to a [JSON schema](https://docs.litellm.ai/docs/completion/json_mode).
+
+Example using LiteLLM as the language model manager for GraphRAG:
+
+```yaml
+completion_models:
+  default_completion_model:
+    model_provider: gemini
+    model: gemini-2.5-flash-lite
+    auth_method: api_key
+    api_key: ${GEMINI_API_KEY}
+
+embedding_models:
+  default_embedding_model:
+    model_provider: gemini
+    model: gemini-embedding-001
+    auth_method: api_key
+    api_key: ${GEMINI_API_KEY}
+```
+
+See [Detailed Configuration](yaml.md) for more details on configuration. [View LiteLLM basic usage](https://docs.litellm.ai/docs/#basic-usage) for details on how models are called (The `model_provider` is the portion prior to `/` while the `model` is the portion following the `/`).
+
+## Model Selection Considerations
+
+GraphRAG has been most thoroughly tested with the gpt-4 series of models from OpenAI, including gpt-4 gpt-4-turbo, gpt-4o, and gpt-4o-mini. Our [arXiv paper](https://arxiv.org/abs/2404.16130), for example, performed quality evaluation using gpt-4-turbo. As stated above, non-OpenAI models are supported through the use of LiteLLM but the suite of gpt-4 series of models from OpenAI remain the most tested and supported suite of models for GraphRAG – in other words, these are the models we know best and can help resolve issues with.
+
+Versions of GraphRAG before 2.2.0 made extensive use of `max_tokens` and `logit_bias` to control generated response length or content. The introduction of the o-series of models added new, non-compatible parameters because these models include a reasoning component that has different consumption patterns and response generation attributes than non-reasoning models. GraphRAG 2.2.0 now supports these models, but there are important differences that need to be understood before you switch.
+
+- Previously, GraphRAG used `max_tokens` to limit responses in a few locations. This is done so that we can have predictable content sizes when building downstream context windows for summarization. We have now switched from using `max_tokens` to use a prompted approach, which is working well in our tests. We suggest using `max_tokens` in your language model config only for budgetary reasons if you want to limit consumption, and not for expected response length control. We now also support the o-series equivalent `max_completion_tokens`, but if you use this keep in mind that there may be some unknown fixed reasoning consumption amount in addition to the response tokens, so it is not a good technique for response control.
+- Previously, GraphRAG used a combination of `max_tokens` and `logit_bias` to strictly control a binary yes/no question during gleanings. This is not possible with reasoning models, so again we have switched to a prompted approach. Our tests with gpt-4o, gpt-4o-mini, and o1 show that this works consistently, but could have issues if you have an older or smaller model.
+- The o-series models are much slower and more expensive. It may be useful to use an asymmetric approach to model use in your config: you can define as many models as you like in the `models` block of your settings.yaml and reference them by key for every workflow that requires a language model. You could use gpt-4o for indexing and o1 for query, for example. Experiment to find the right balance of cost, speed, and quality for your use case.
+- The o-series models contain a form of native native chain-of-thought reasoning that is absent in the non-o-series models. GraphRAG's prompts sometimes contain CoT because it was an effective technique with the gpt-4\* series. It may be counterproductive with the o-series, so you may want to tune or even re-write large portions of the prompt templates (particularly for graph and claim extraction).
+
+Example config with asymmetric model use:
+
+```yaml
+completion_models:
+  extraction_completion_model:
+    model_provider: openai
+    model: gpt-4o
+    auth_method: api_key
+    api_key: ${GRAPHRAG_API_KEY}
+  query_completion_model:
+    model_provider: openai
+    model: o1
+    auth_method: api_key
+    api_key: ${GRAPHRAG_API_KEY}
+...
+extract_graph:
+  completion_model_id: extraction_completion_model
+  prompt: "prompts/extract_graph.txt"
+  entity_types: [organization, person, geo, event]
+  max_gleanings: 1
+...
+global_search:
+  completion_model_id: query_completion_model
+  map_prompt: "prompts/global_search_map_system_prompt.txt"
+  reduce_prompt: "prompts/global_search_reduce_system_prompt.txt"
+  knowledge_prompt: "prompts/global_search_knowledge_system_prompt.txt"
+```
+
+Another option would be to avoid using a language model at all for the graph extraction, instead using the `fast` [indexing method](../index/methods.md) that uses NLP for portions of the indexing phase in lieu of LLM APIs.
+
+## Using Custom Models
+
+LiteLLM supports hundreds of models, but cases may still exist in which some users wish to use models not supported by LiteLLM. There are two approaches one can use to connect to unsupported models:
+
+### Proxy APIs
+
+Many users have used platforms such as [ollama](https://ollama.com/) and [LiteLLM Proxy Server](https://docs.litellm.ai/docs/simple_proxy) to proxy the underlying model HTTP calls to a different model provider. This seems to work reasonably well, but we frequently see issues with malformed responses (especially JSON), so if you do this please understand that your model needs to reliably return the specific response formats that GraphRAG expects. If you're having trouble with a model, you may need to try prompting to coax the format, or intercepting the response within your proxy to try and handle malformed responses.
+
+### Model Protocol
+
+We support model injection through the use of a standard completion and embedding Protocol and accompanying factories that you can use to register your model implementation. This is not supported with the CLI, so you'll need to use GraphRAG as a library.
+
+- Our Protocol is [defined here](https://github.com/microsoft/graphrag/blob/main/packages/graphrag-llm/graphrag_llm/completion/completion.py)
+- We have a simple mock implementation in our tests that you can [reference here](https://github.com/microsoft/graphrag/blob/main/packages/graphrag-llm/graphrag_llm/completion/mock_llm_completion.py)
+
+Once you have a model implementation, you need to register it with our completion model factory or embedding model factory:
+
+```python
+from graphrag_llm.completion import LLMCompletion, register_completion
+
+class MyCustomCompletionModel(LLMCompletion):
+    ...
+    # implementation
+
+# elsewhere...
+register_completion("my-custom-completion-model", MyCustomCompletionModel)
+```
+
+Then in your config you can reference the type name you used:
+
+```yaml
+completion_models:
+  default_completion_model:
+    type: my-custom-completion-model
+    ...
+
+extract_graph:
+  completion_model_id: default_completion_model
+  prompt: "prompts/extract_graph.txt"
+  entity_types: [organization, person, geo, event]
+  max_gleanings: 1
+```
+
+Note that your custom model will be passed the same params for init and method calls that we use throughout GraphRAG. There is not currently any ability to define custom parameters, so you may need to use closure scope or a factory pattern within your implementation to get custom config values.
+
+
+--- FILE: docs/config/yaml.md ---
+# Default Configuration Mode (using YAML/JSON)
+
+The default configuration mode may be configured by using a `settings.yml` or `settings.json` file in the data project root. If a `.env` file is present along with this config file, then it will be loaded, and the environment variables defined therein will be available for token replacements in your configuration document using `${ENV_VAR}` syntax. We initialize with YML by default in `graphrag init` but you may use the equivalent JSON form if preferred.
+
+Many of these config values have defaults. Rather than replicate them here, please refer to the [constants in the code](https://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/config/defaults.py) directly.
+
+For example:
+
+```bash
+# .env
+GRAPHRAG_API_KEY=some_api_key
+
+# settings.yml
+default_chat_model:
+  api_key: ${GRAPHRAG_API_KEY}
+```
+
+# Config Sections
+
+## Language Model Setup
+
+### models
+
+This is a set of dicts, one for completion model configuration and one for embedding model configuration. The dict keys are used to reference the model configuration elsewhere when a model instance is desired. In this way, you can specify as many different models as you need, and reference them independently in the workflow steps.
+
+For example:
+
+```yml
+completion_models:
+  default_completion_model:
+    model_provider: openai
+    model: gpt-4.1
+    auth_method: api_key
+    api_key: ${GRAPHRAG_API_KEY}
+
+embedding_models:
+  default_embedding_model:
+    model_provider: openai
+    model: text-embedding-3-large
+    auth_method: api_key
+    api_key: ${GRAPHRAG_API_KEY}
+```
+
+#### Fields
+
+- `type` **litellm|mock** - The type of LLM provider to use. GraphRAG uses [LiteLLM](https://docs.litellm.ai/) for calling language models.
+- `model_provider` **str** - The model provider to use, e.g., openai, azure, anthropic, etc. [LiteLLM](https://docs.litellm.ai/) is used under the hood which has support for calling 100+ models. [View LiteLLm basic usage](https://docs.litellm.ai/docs/#basic-usage) for details on how models are called (The `model_provider` is the portion prior to `/` while the `model` is the portion following the `/`). [View Language Model Selection](models.md) for more details and examples on using LiteLLM.
+- `model` **str** - The model name.
+- `call_args`: **dict[str, Any]** - Default arguments to send with every model request. Example, `{"n": 5, "max_completion_tokens": 1000, "temperature": 1.5, "organization": "..." }`
+- `api_key` **str|None** - The OpenAI API key to use.
+- `api_base` **str|None** - The API base url to use.
+- `api_version` **str|None** - The API version.
+- `auth_method` **api_key|azure_managed_identity** - Indicate how you want to authenticate requests.
+- `azure_deployment_name` **str|None** - The deployment name to use if your model is hosted on Azure. Note that if your deployment name on Azure matches the model name, this is unnecessary.
+- retry **RetryConfig|None** - Retry settings. default=`None`, no retries.
+  - type **exponential_backoff|immediate** - Type of retry approach. default=`exponential_backoff`
+  - max_retries **int|None** - Max retries to take. default=`7`.
+  - base_delay **float|None** - Base delay when using `exponential_backoff`. default=`2.0`.
+  - jitter **bool|None** - Add jitter to retry delays when using `exponential_backoff`. default=`True`
+  - max_delay **float|None** - Maximum retry delay. default=`None`, no max.
+- rate_limit **RateLimitConfig|None** - Rate limit settings. default=`None`, no rate limiting.
+  - type **sliding_window** - Type of rate limit approach. default=`sliding_window`
+  - period_in_seconds **int|None** - Window size for `sliding_window` rate limiting. default=`60`, limit requests per minute.
+  - requests_per_period **int|None** - Maximum number of requests per period. default=`None`
+  - tokens_per_period **int|None** - Maximum number of tokens per period. default=`None`
+- metrics **MetricsConfig|None** - Metric settings. default=`MetricsConfig()`. View [metrics notebook](https://github.com/microsoft/graphrag/blob/main/packages/graphrag-llm/notebooks/04_metrics.ipynb) for more details on metrics.
+  - type **default** - The type of `MetricsProcessor` service to use for processing request metrics. default=`default`
+  - store **memory** - The type of `MetricsStore` service. default=`memory`.
+  - writer **log|file** - The type of `MetricsWriter` to use. Will write out metrics at the end of the process. default`log`, log metrics out using python standard logging at the end of the process.
+  - log_level **int|None** - The log level when using `log` writer. default=`20`, log `INFO` messages for metrics.
+  - base_dir **str|None** - The directory to write metrics to when using `file` writer. default=`Path.cwd()`.
+
+## Input Files and Chunking
+
+### input
+
+Our pipeline can ingest .csv, .txt, or .json data from an input location. See the [inputs page](../index/inputs.md) for more details and examples.
+
+#### Fields
+
+- `storage` **StorageConfig**
+  - `type` **file|memory|blob|cosmosdb** - The storage type to use. Default=`file`
+  - `encoding`**str** - The encoding to use for file storage.
+  - `base_dir` **str** - The base directory to write output artifacts to, relative to the root.
+  - `connection_string` **str** - (blob/cosmosdb only) The Azure Storage connection string.
+  - `container_name` **str** - (blob/cosmosdb only) The Azure Storage container name.
+  - `account_url` **str** - (blob only) The storage account blob URL to use.
+  - `database_name` **str** - (cosmosdb only) The database name to use.
+- `type` **text|csv|json** - The type of input data to load. Default is `text`
+- `encoding` **str** - The encoding of the input file. Default is `utf-8`
+- `file_pattern` **str** - A regex to match input files. Default is `.*\.csv$`, `.*\.txt$`, or `.*\.json$` depending on the specified `type`, but you can customize it if needed.
+- `id_column` **str** - The input ID column to use.
+- `title_column` **str** - The input title column to use.
+- `text_column` **str** - The input text column to use.
+
+### chunking
+
+These settings configure how we parse documents into text chunks. This is necessary because very large documents may not fit into a single context window, and graph extraction accuracy can be modulated. Also note the `metadata` setting in the input document config, which will replicate document metadata into each chunk.
+
+#### Fields
+
+- `type` **tokens|sentence** - The chunking type to use.
+- `encoding_model` **str** - The text encoding model to use for splitting on token boundaries.
+- `size` **int** - The max chunk size in tokens.
+- `overlap` **int** - The chunk overlap in tokens.
+- `prepend_metadata` **list[str]** - Metadata fields from the source document to prepend on each chunk.
+
+## Outputs and Storage
+
+### output
+
+This section controls the storage mechanism used by the pipeline used for exporting output tables.
+
+#### Fields
+
+- `type` **file|memory|blob|cosmosdb** - The storage type to use. Default=`file`
+- `encoding`**str** - The encoding to use for file storage.
+- `base_dir` **str** - The base directory to write output artifacts to, relative to the root.
+- `connection_string` **str** - (blob/cosmosdb only) The Azure Storage connection string.
+- `container_name` **str** - (blob/cosmosdb only) The Azure Storage container name.
+- `account_url` **str** - (blob only) The storage account blob URL to use.
+- `database_name` **str** - (cosmosdb only) The database name to use.
+- `type` **text|csv|json** - The type of input data to load. Default is `text`
+- `encoding` **str** - The encoding of the input file. Default is `utf-8`
+
+### update_output_storage
+
+The section defines a secondary storage location for running incremental indexing, to preserve your original outputs.
+
+#### Fields
+
+- `type` **file|memory|blob|cosmosdb** - The storage type to use. Default=`file`
+- `encoding`**str** - The encoding to use for file storage.
+- `base_dir` **str** - The base directory to write output artifacts to, relative to the root.
+- `connection_string` **str** - (blob/cosmosdb only) The Azure Storage connection string.
+- `container_name` **str** - (blob/cosmosdb only) The Azure Storage container name.
+- `account_url` **str** - (blob only) The storage account blob URL to use.
+- `database_name` **str** - (cosmosdb only) The database name to use.
+- `type` **text|csv|json** - The type of input data to load. Default is `text`
+- `encoding` **str** - The encoding of the input file. Default is `utf-8`
+
+### cache
+
+This section controls the cache mechanism used by the pipeline. This is used to cache LLM invocation results for faster performance when re-running the indexing process.
+
+#### Fields
+
+- `type` **json|memory|none** - The storage type to use. Default=`json`
+- `storage` **StorageConfig**
+  - `type` **file|memory|blob|cosmosdb** - The storage type to use. Default=`file`
+  - `encoding`**str** - The encoding to use for file storage.
+  - `base_dir` **str** - The base directory to write output artifacts to, relative to the root.
+  - `connection_string` **str** - (blob/cosmosdb only) The Azure Storage connection string.
+  - `container_name` **str** - (blob/cosmosdb only) The Azure Storage container name.
+  - `account_url` **str** - (blob only) The storage account blob URL to use.
+  - `database_name` **str** - (cosmosdb only) The database name to use.
+
+### reporting
+
+This section controls the reporting mechanism used by the pipeline, for common events and error messages. The default is to write reports to a file in the output directory. However, you can also choose to write reports to an Azure Blob Storage container.
+
+#### Fields
+
+- `type` **file|blob** - The reporting type to use. Default=`file`
+- `base_dir` **str** - The base directory to write reports to, relative to the root.
+- `connection_string` **str** - (blob only) The Azure Storage connection string.
+- `container_name` **str** - (blob only) The Azure Storage container name.
+- `account_url` **str** - The storage account blob URL to use.
+
+### vector_store
+
+Where to put all vectors for the system. Configured for lancedb by default. This is a dict, with the key used to identify individual store parameters (e.g., for text embedding).
+
+#### Fields
+
+- `type` **lancedb|azure_ai_search|cosmosdb** - Type of vector store. Default=`lancedb`
+- `db_uri` **str** (lancedb only) - The database uri. Default=`storage.base_dir/lancedb`
+- `url` **str** (blob/cosmosdb only) - Database / AI Search to be used.
+- `api_key` **str** (optional - AI Search only) - The AI Search api key to use.
+- `audience` **str** (AI Search only) - Audience for managed identity token if managed identity authentication is used.
+- `connection_string` **str** - (cosmosdb only) The Azure Storage connection string.
+- `database_name` **str** - (cosmosdb only) Name of the database.
+
+- `index_schema` **dict[str, dict[str, str]]** (optional) - Enables customization for each of your embeddings.
+  - `<supported_embedding>`:
+    - `index_name` **str**: (optional) - Name for the specific embedding index table.
+    - `id_field` **str**: (optional) - Field name to be used as id. Default=`id`
+    - `vector_field` **str**: (optional) - Field name to be used as vector. Default=`vector`
+    - `vector_size` **int**: (optional) - Vector size for the embeddings. Default=`3072`
+
+The supported embeddings are:
+
+- `text_unit_text`
+- `entity_description`
+- `community_full_content`
+
+For example:
+
+```yaml
+vector_store:
+  type: lancedb
+  db_uri: output/lancedb
+  index_schema:
+    text_unit_text:
+      index_name: "text-unit-embeddings"
+      id_field: "id_custom"
+      vector_field: "vector_custom"
+      vector_size: 3072
+    entity_description:
+      id_field: "id_custom"
+```
+
+## Workflow Configurations
+
+These settings control each individual workflow as they execute.
+
+### workflows
+
+**list[str]** - This is a list of workflow names to run, in order. GraphRAG has built-in pipelines to configure this, but you can run exactly and only what you want by specifying the list here. Useful if you have done part of the processing yourself.
+
+### embed_text
+
+By default, the GraphRAG indexer will only export embeddings required for our query methods. However, the model has embeddings defined for all plaintext fields, and these can be customized by setting the `target` and `names` fields.
+
+Supported embeddings names are:
+
+- `text_unit_text`
+- `entity_description`
+- `community_full_content`
+
+#### Fields
+
+- `embedding_model_id` **str** - Name of the model definition to use for text embedding.
+- `model_instance_name` **str** - Name of the model singleton instance. Default is "text_embedding". This primarily affects the cache storage partitioning.
+- `batch_size` **int** - The maximum batch size to use.
+- `batch_max_tokens` **int** - The maximum batch # of tokens.
+- `names` **list[str]** - List of the embeddings names to run (must be in supported list).
+
+### extract_graph
+
+Tune the language model-based graph extraction process.
+
+#### Fields
+
+- `completion_model_id` **str** - Name of the model definition to use for API calls.
+- `model_instance_name` **str** - Name of the model singleton instance. Default is "extract_graph". This primarily affects the cache storage partitioning.
+- `prompt` **str** - The prompt file to use.
+- `entity_types` **list[str]** - The entity types to identify.
+- `max_gleanings` **int** - The maximum number of gleaning cycles to use.
+
+### summarize_descriptions
+
+#### Fields
+
+- `completion_model_id` **str** - Name of the model definition to use for API calls.
+- `model_instance_name` **str** - Name of the model singleton instance. Default is "summarize_descriptions". This primarily affects the cache storage partitioning.
+- `prompt` **str** - The prompt file to use.
+- `max_length` **int** - The maximum number of output tokens per summarization.
+- `max_input_length` **int** - The maximum number of tokens to collect for summarization (this will limit how many descriptions you send to be summarized for a given entity or relationship).
+
+### extract_graph_nlp
+
+Defines settings for NLP-based graph extraction methods.
+
+#### Fields
+
+- `normalize_edge_weights` **bool** - Whether to normalize the edge weights during graph construction. Default=`True`.
+- `concurrent_requests` **int** - The number of threads to use for the extraction process.
+- `async_mode` **asyncio|threaded** - The async mode to use. Either `asyncio` or `threaded`.
+- `text_analyzer` **dict** - Parameters for the NLP model.
+  - `extractor_type` **regex_english|syntactic_parser|cfg** - Default=`regex_english`.
+  - `model_name` **str** - Name of NLP model (for SpaCy-based models)
+  - `max_word_length` **int** - Longest word to allow. Default=`15`.
+  - `word_delimiter` **str** - Delimiter to split words. Default ' '.
+  - `include_named_entities` **bool** - Whether to include named entities in noun phrases. Default=`True`.
+  - `exclude_nouns` **list[str] | None** - List of nouns to exclude. If `None`, we use an internal stopword list.
+  - `exclude_entity_tags` **list[str]** - List of entity tags to ignore.
+  - `exclude_pos_tags` **list[str]** - List of part-of-speech tags to ignore.
+  - `noun_phrase_tags` **list[str]** - List of noun phrase tags to ignore.
+  - `noun_phrase_grammars` **dict[str, str]** - Noun phrase grammars for the model (cfg-only).
+
+### prune_graph
+
+Parameters for manual graph pruning. This can be used to optimize the modularity of your graph clusters, by removing overly-connected or rare nodes.
+
+#### Fields
+
+- `min_node_freq` **int** - The minimum node frequency to allow.
+- `max_node_freq_std` **float | None** - The maximum standard deviation of node frequency to allow.
+- `min_node_degree` **int** - The minimum node degree to allow.
+- `max_node_degree_std` **float | None** - The maximum standard deviation of node degree to allow.
+- `min_edge_weight_pct` **float** - The minimum edge weight percentile to allow.
+- `remove_ego_nodes` **bool** - Remove ego nodes.
+- `lcc_only` **bool** - Only use largest connected component.
+
+### cluster_graph
+
+These are the settings used for Leiden hierarchical clustering of the graph to create communities.
+
+#### Fields
+
+- `max_cluster_size` **int** - The maximum cluster size to export.
+- `use_lcc` **bool** - Whether to only use the largest connected component.
+- `seed` **int** - A randomization seed to provide if consistent run-to-run results are desired. We do provide a default in order to guarantee clustering stability.
+
+### extract_claims
+
+#### Fields
+
+- `enabled` **bool** - Whether to enable claim extraction. Off by default, because claim prompts really need user tuning.
+- `completion_model_id` **str** - Name of the model definition to use for API calls.
+- `model_instance_name` **str** - Name of the model singleton instance. Default is "extract_claims". This primarily affects the cache storage partitioning.
+- `prompt` **str** - The prompt file to use.
+- `description` **str** - Describes the types of claims we want to extract.
+- `max_gleanings` **int** - The maximum number of gleaning cycles to use.
+
+### community_reports
+
+#### Fields
+
+- `completion_model_id` **str** - Name of the model definition to use for API calls.
+- `model_instance_name` **str** - Name of the model singleton instance. Default is "community_reporting". This primarily affects the cache storage partitioning.
+- `graph_prompt` **str | None** - The community report extraction prompt to use for graph-based summarization.
+- `text_prompt` **str | None** - The community report extraction prompt to use for text-based summarization.
+- `max_length` **int** - The maximum number of output tokens per report.
+- `max_input_length` **int** - The maximum number of input tokens to use when generating reports.
+
+### snapshots
+
+#### Fields
+
+- `embeddings` **bool** - Export embeddings snapshots to parquet.
+- `graphml` **bool** - Export graph snapshot to GraphML.
+- `raw_graph` **bool** - Export raw extracted graph before merging.
+
+## Query
+
+### local_search
+
+#### Fields
+
+- `prompt` **str** - The prompt file to use.
+- `completion_model_id` **str** - Name of the model definition to use for Chat Completion calls.
+- `embedding_model_id` **str** - Name of the model definition to use for Embedding calls.
+- `text_unit_prop` **float** - The text unit proportion.
+- `community_prop` **float** - The community proportion.
+- `conversation_history_max_turns` **int** - The conversation history maximum turns.
+- `top_k_entities` **int** - The top k mapped entities.
+- `top_k_relationships` **int** - The top k mapped relations.
+- `max_context_tokens` **int** - The maximum tokens to use building the request context.
+
+### global_search
+
+#### Fields
+
+- `map_prompt` **str** - The global search mapper prompt to use.
+- `reduce_prompt` **str** - The global search reducer to use.
+- `completion_model_id` **str** - Name of the model definition to use for Chat Completion calls.
+- `knowledge_prompt` **str** - The knowledge prompt file to use.
+- `data_max_tokens` **int** - The maximum tokens to use constructing the final response from the reduces responses.
+- `map_max_length` **int** - The maximum length to request for map responses, in words.
+- `reduce_max_length` **int** - The maximum length to request for reduce responses, in words.
+- `dynamic_search_threshold` **int** - Rating threshold in include a community report.
+- `dynamic_search_keep_parent` **bool** - Keep parent community if any of the child communities are relevant.
+- `dynamic_search_num_repeats` **int** - Number of times to rate the same community report.
+- `dynamic_search_use_summary` **bool** - Use community summary instead of full_context.
+- `dynamic_search_max_level` **int** - The maximum level of community hierarchy to consider if none of the processed communities are relevant.
+
+### drift_search
+
+#### Fields
+
+- `prompt` **str** - The prompt file to use.
+- `reduce_prompt` **str** - The reducer prompt file to use.
+- `completion_model_id` **str** - Name of the model definition to use for Chat Completion calls.
+- `embedding_model_id` **str** - Name of the model definition to use for Embedding calls.
+- `data_max_tokens` **int** - The data llm maximum tokens.
+- `reduce_max_tokens` **int** - The maximum tokens for the reduce phase. Only use if a non-o-series model.
+- `reduce_temperature` **float** - The temperature to use for token generation in reduce.
+- `reduce_max_completion_tokens` **int** - The maximum tokens for the reduce phase. Only use for o-series models.
+- `concurrency` **int** - The number of concurrent requests.
+- `drift_k_followups` **int** - The number of top global results to retrieve.
+- `primer_folds` **int** - The number of folds for search priming.
+- `primer_llm_max_tokens` **int** - The maximum number of tokens for the LLM in primer.
+- `n_depth` **int** - The number of drift search steps to take.
+- `local_search_text_unit_prop` **float** - The proportion of search dedicated to text units.
+- `local_search_community_prop` **float** - The proportion of search dedicated to community properties.
+- `local_search_top_k_mapped_entities` **int** - The number of top K entities to map during local search.
+- `local_search_top_k_relationships` **int** - The number of top K relationships to map during local search.
+- `local_search_max_data_tokens` **int** - The maximum context size in tokens for local search.
+- `local_search_temperature` **float** - The temperature to use for token generation in local search.
+- `local_search_top_p` **float** - The top-p value to use for token generation in local search.
+- `local_search_n` **int** - The number of completions to generate in local search.
+- `local_search_llm_max_gen_tokens` **int** - The maximum number of generated tokens for the LLM in local search. Only use if a non-o-series model.
+- `local_search_llm_max_gen_completion_tokens` **int** - The maximum number of generated tokens for the LLM in local search. Only use for o-series models.
+
+### basic_search
+
+#### Fields
+
+- `prompt` **str** - The prompt file to use.
+- `completion_model_id` **str** - Name of the model definition to use for Chat Completion calls.
+- `embedding_model_id` **str** - Name of the model definition to use for Embedding calls.
+- `k` **int** - Number of text units to retrieve from the vector store for context building.
+- `max_context_tokens` **int** - The maximum context size to create, in tokens.
+
+
+--- FILE: docs/prompt_tuning/overview.md ---
+# Prompt Tuning ⚙️
+
+This page provides an overview of the prompt tuning options available for the GraphRAG indexing engine.
+
+## Default Prompts
+
+The default prompts are the simplest way to get started with the GraphRAG system. It is designed to work out-of-the-box with minimal configuration. More details about each of the default prompts for indexing and query can be found on the [manual tuning](./manual_prompt_tuning.md) page.
+
+## Auto Tuning
+
+Auto Tuning leverages your input data and LLM interactions to create domain-adapted prompts for the generation of the knowledge graph. It is highly encouraged to run it as it will yield better results when executing an Index Run. For more details about how to use it, please refer to the [Auto Tuning](auto_prompt_tuning.md) page.
+
+## Manual Tuning
+
+Manual tuning is an advanced use-case. Most users will want to use the Auto Tuning feature instead. Details about how to use manual configuration are available in the [manual tuning](manual_prompt_tuning.md) page.
+
+
+--- FILE: docs/prompt_tuning/auto_prompt_tuning.md ---
+# Auto Prompt Tuning ⚙️
+
+GraphRAG provides the ability to create domain-adapted prompts for the generation of the knowledge graph. This step is optional, though it is highly encouraged to run it as it will yield better results when executing an Index Run.
+
+These are generated by loading the inputs, splitting them into chunks (text units) and then running a series of LLM invocations and template substitutions to generate the final prompts. We suggest using the default values provided by the script, but in this page you'll find the details of each in case you want to further explore and tweak the prompt tuning algorithm.
+
+<p align="center">
+<img src="../../img/auto-tune-diagram.png" alt="Figure 1: Auto Tuning Conceptual Diagram." width="850" align="center" />
+</p>
+<p align="center">
+Figure 1: Auto Tuning Conceptual Diagram.
+</p>
+
+## Prerequisites
+
+Before running auto tuning, ensure you have already initialized your workspace with the `graphrag init` command. This will create the necessary configuration files and the default prompts. Refer to the [Init Documentation](../config/init.md) for more information about the initialization process.
+
+## Usage
+
+You can run the main script from the command line with various options:
+
+```bash
+graphrag prompt-tune [--root ROOT] [--domain DOMAIN]  [--selection-method METHOD] [--limit LIMIT] [--language LANGUAGE] \
+[--max-tokens MAX_TOKENS] [--chunk-size CHUNK_SIZE] [--n-subset-max N_SUBSET_MAX] [--k K] \
+[--min-examples-required MIN_EXAMPLES_REQUIRED] [--discover-entity-types] [--output OUTPUT]
+```
+
+## Command-Line Options
+
+- `--root` (optional): Path to the project directory that contains the config file (settings.yaml). Defaults to the current directory.
+
+- `--domain` (optional): The domain related to your input data, such as 'space science', 'microbiology', or 'environmental news'. If left empty, the domain will be inferred from the input data.
+
+- `--selection-method` (optional): The method to select documents. Options are all, random, auto or top. Default is random.
+
+- `--limit` (optional): The limit of text units to load when using random or top selection. Default is 15.
+
+- `--language` (optional): The language to use for input processing. If it is different from the inputs' language, the LLM will translate. Default is "" meaning it will be automatically detected from the inputs.
+
+- `--max-tokens` (optional): Maximum token count for prompt generation. Default is 2000.
+
+- `--chunk-size` (optional): The size in tokens to use for generating text units from input documents. Default is 200.
+
+- `--n-subset-max` (optional): The number of text chunks to embed when using auto selection method. Default is 300.
+
+- `--k` (optional): The number of documents to select when using auto selection method. Default is 15.
+
+- `--min-examples-required` (optional): The minimum number of examples required for entity extraction prompts. Default is 2.
+
+- `--discover-entity-types` (optional): Allow the LLM to discover and extract entities automatically. We recommend using this when your data covers a lot of topics or it is highly randomized.
+
+- `--output` (optional): The folder to save the generated prompts. Default is "prompts".
+
+## Example Usage
+
+```bash
+python -m graphrag prompt-tune --root /path/to/project --domain "environmental news" \
+--selection-method random --limit 10 --language English --max-tokens 2048 --chunk-size 256 --min-examples-required 3 \
+--no-discover-entity-types --output /path/to/output
+```
+
+or, with minimal configuration (suggested):
+
+```bash
+python -m graphrag prompt-tune --root /path/to/project --no-discover-entity-types
+```
+
+## Document Selection Methods
+
+The auto tuning feature ingests the input data and then divides it into text units the size of the chunk size parameter.
+After that, it uses one of the following selection methods to pick a sample to work with for prompt generation:
+
+- `random`: Select text units randomly. This is the default and recommended option.
+- `top`: Select the head _n_ text units.
+- `all`: Use all text units for the generation. Use only with small datasets; this option is not usually recommended.
+- `auto`: Embed text units in a lower-dimensional space and select the _k_ nearest neighbors to the centroid. This is useful when you have a large dataset and want to select a representative sample.
+
+## Modify Config
+
+After running auto tuning, you should modify the following config variables to pick up the new prompts on your index run. Note: Please make sure to update the correct path to the generated prompts, in this example we are using the default "prompts" path.
+
+```yaml
+extract_graph:
+  prompt: "prompts/extract_graph.txt"
+
+summarize_descriptions:
+  prompt: "prompts/summarize_descriptions.txt"
+
+community_reports:
+  prompt: "prompts/community_report.txt"
+```
+
+
+--- FILE: docs/prompt_tuning/manual_prompt_tuning.md ---
+# Manual Prompt Tuning ⚙️
+
+The GraphRAG indexer, by default, will run with a handful of prompts that are designed to work well in the broad context of knowledge discovery.
+However, it is quite common to want to tune the prompts to better suit your specific use case.
+We provide a means for you to do this by allowing you to specify a custom prompt file, which will each use a series of token-replacements internally.
+
+Each of these prompts may be overridden by writing a custom prompt file in plaintext. We use token-replacements in the form of `{token_name}`, and the descriptions for the available tokens can be found below.
+
+## Indexing Prompts
+
+### Entity/Relationship Extraction
+
+[Prompt Source](http://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/index/extract_graph.py)
+
+#### Tokens
+
+- **{input_text}** - The input text to be processed.
+- **{entity_types}** - A list of entity types
+- **{tuple_delimiter}** - A delimiter for separating values within a tuple. A single tuple is used to represent an individual entity or relationship.
+- **{record_delimiter}** - A delimiter for separating tuple instances.
+- **{completion_delimiter}** - An indicator for when generation is complete.
+
+### Summarize Entity/Relationship Descriptions
+
+[Prompt Source](http://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/index/summarize_descriptions.py)
+
+#### Tokens
+
+- **{entity_name}** - The name of the entity or the source/target pair of the relationship.
+- **{description_list}** - A list of descriptions for the entity or relationship.
+
+### Claim Extraction
+
+[Prompt Source](http://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/index/extract_claims.py)
+
+#### Tokens
+
+- **{input_text}** - The input text to be processed.
+- **{tuple_delimiter}** - A delimiter for separating values within a tuple. A single tuple is used to represent an individual entity or relationship.
+- **{record_delimiter}** - A delimiter for separating tuple instances.
+- **{completion_delimiter}** - An indicator for when generation is complete.
+- **{entity_specs}** - A list of entity types.
+- **{claim_description}** - Description of what claims should look like. Default is: `"Any claims or facts that could be relevant to information discovery."`
+
+See the [configuration documentation](../config/overview.md) for details on how to change this.
+
+### Generate Community Reports
+
+[Prompt Source](http://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/index/community_report.py)
+
+#### Tokens
+
+- **{input_text}** - The input text to generate the report with. This will contain tables of entities and relationships.
+
+## Query Prompts
+
+### Local Search
+
+[Prompt Source](http://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/query/local_search_system_prompt.py)
+
+#### Tokens
+
+- **{response_type}** - Describe how the response should look. We default to "multiple paragraphs".
+- **{context_data}** - The data tables from GraphRAG's index.
+
+### Global Search
+
+[Mapper Prompt Source](http://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/query/global_search_map_system_prompt.py)
+
+[Reducer Prompt Source](http://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/query/global_search_reduce_system_prompt.py)
+
+[Knowledge Prompt Source](http://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/query/global_search_knowledge_system_prompt.py)
+
+Global search uses a map/reduce approach to summarization. You can tune these prompts independently. This search also includes the ability to adjust the use of general knowledge from the model's training.
+
+#### Tokens
+
+- **{response_type}** - Describe how the response should look (reducer only). We default to "multiple paragraphs".
+- **{context_data}** - The data tables from GraphRAG's index.
+
+### Drift Search
+
+[Prompt Source](http://github.com/microsoft/graphrag/blob/main/packages/graphrag/graphrag/prompts/query/drift_search_system_prompt.py)
+
+#### Tokens
+
+- **{response_type}** - Describe how the response should look. We default to "multiple paragraphs".
+- **{context_data}** - The data tables from GraphRAG's index.
+- **{community_reports}** - The most relevant community reports to include in the summarization.
+- **{query}** - The query text as injected into the context.
+
+--- FILE: docs/developing.md ---
+# Development Guide
+
+# Requirements
+
+| Name                | Installation                                                 | Purpose                                                                             |
+| ------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| Python 3.10-3.12    | [Download](https://www.python.org/downloads/)                | The library is Python-based.                                                        |
+| uv                  | [Instructions](https://docs.astral.sh/uv/)                   | uv is used for package management and virtualenv management in Python codebases     |
+
+# Getting Started
+
+## Install Dependencies
+
+```sh
+# install python dependencies
+uv sync --all-packages
+```
+
+## Execute the Indexing Engine
+
+```sh
+uv run poe index <...args>
+```
+
+## Executing Queries
+
+```sh
+uv run poe query <...args>
+```
+
+# Azurite
+
+Some unit and smoke tests use Azurite to emulate Azure resources. This can be started by running:
+
+```sh
+./scripts/start-azurite.sh
+```
+
+or by simply running `azurite` in the terminal if already installed globally. See the [Azurite documentation](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite) for more information about how to install and use Azurite.
+
+# Lifecycle Scripts
+
+Our Python package utilize uv to manage dependencies and [poethepoet](https://pypi.org/project/poethepoet/) to manage build scripts.
+
+Available scripts are:
+
+- `uv run poe index` - Run the Indexing CLI
+- `uv run poe query` - Run the Query CLI
+- `uv build` - This will build a wheel file and other distributable artifacts.
+- `uv run poe test` - This will execute all tests.
+- `uv run poe test_unit` - This will execute unit tests.
+- `uv run poe test_integration` - This will execute integration tests.
+- `uv run poe test_smoke` - This will execute smoke tests.
+- `uv run poe test_verbs` - This will execute tests of the basic workflows.
+- `uv run poe check` - This will perform a suite of static checks across the package, including:
+  - formatting
+  - documentation formatting
+  - linting
+  - security patterns
+  - type-checking
+- `uv run poe fix` - This will apply any available auto-fixes to the package. Usually this is just formatting fixes.
+- `uv run poe fix_unsafe` - This will apply any available auto-fixes to the package, including those that may be unsafe.
+- `uv run poe format` - Explicitly run the formatter across the package.
+
+## Troubleshooting
+
+### "RuntimeError: llvm-config failed executing, please point LLVM_CONFIG to the path for llvm-config" when running uv install
+
+Make sure llvm-9 and llvm-9-dev are installed:
+
+`sudo apt-get install llvm-9 llvm-9-dev`
+
+and then in your bashrc, add
+
+`export LLVM_CONFIG=/usr/bin/llvm-config-9`
+
+
+--- FILE: docs/visualization_guide.md ---
+# Visualizing and Debugging Your Knowledge Graph
+
+The following step-by-step guide walks through the process to visualize a knowledge graph after it's been constructed by graphrag. Note that some of the settings recommended below are based on our own experience of what works well. Feel free to change and explore other settings for a better visualization experience!
+
+## 1. Run the Pipeline
+Before building an index, please review your `settings.yaml` configuration file and ensure that graphml snapshots is enabled.
+```yaml
+snapshots:
+  graphml: true
+```
+After running the indexing pipeline over your data, there will be an output folder (defined by the `storage.base_dir` setting).
+
+- **Output Folder**: Contains artifacts from the LLM’s indexing pass.
+
+## 2. Locate the Knowledge Graph
+In the output folder, look for a file named `graph.graphml`. graphml is a standard [file format](http://graphml.graphdrawing.org) supported by many visualization tools. We recommend trying [Gephi](https://gephi.org).
+
+## 3. Open the Graph in Gephi
+1. Install and open Gephi
+2. Navigate to the `output` folder containing the various parquet files.
+3. Import the `graph.graphml` file into Gephi. This will result in a fairly plain view of the undirected graph nodes and edges.
+
+<p align="center">
+   <img src="../img/viz_guide/gephi-initial-graph-example.png" alt="A basic graph visualization by Gephi" width="300"/>
+</p>
+
+## 4. Install the Leiden Algorithm Plugin
+1. Go to `Tools` -> `Plugins`.
+2. Search for "Leiden Algorithm".
+3. Click `Install` and restart Gephi.
+
+## 5. Run Statistics
+1. In the `Statistics` tab on the right, click `Run` for `Average Degree` and `Leiden Algorithm`.
+
+<p align="center">
+   <img src="../img/viz_guide/gephi-network-overview-settings.png" alt="A view of Gephi's network overview settings" width="300"/>
+</p>
+
+2. For the Leiden Algorithm, adjust the settings:
+   - **Quality function**: Modularity
+   - **Resolution**: 1
+
+## 6. Color the Graph by Clusters
+1. Go to the `Appearance` pane in the upper left side of Gephi.
+
+<p align="center">
+   <img src="../img/viz_guide/gephi-appearance-pane.png" alt="A view of Gephi's appearance pane" width="500"/>
+</p>
+
+2. Select `Nodes`, then `Partition`, and click the color palette icon in the upper right.
+3. Choose `Cluster` from the dropdown.
+4. Click the `Palette...` hyperlink, then `Generate...`.
+5. Uncheck `Limit number of colors`, click `Generate`, and then `Ok`.
+6. Click `Apply` to color the graph. This will color the graph based on the partitions discovered by Leiden.
+
+## 7. Resize Nodes by Degree Centrality
+1. In the `Appearance` pane in the upper left, select `Nodes` -> `Ranking`
+2. Select the `Sizing` icon in the upper right.
+2. Choose `Degree` and set:
+   - **Min**: 10
+   - **Max**: 150
+3. Click `Apply`.
+
+## 8. Layout the Graph
+1. In the `Layout` tab in the lower left, select `OpenORD`.
+
+<p align="center">
+   <img src="../img/viz_guide/gephi-layout-pane.png" alt="A view of Gephi's layout pane" width="400"/>
+</p>
+
+2. Set `Liquid` and `Expansion` stages to 50, and everything else to 0.
+3. Click `Run` and monitor the progress.
+
+## 9. Run ForceAtlas2
+1. Select `Force Atlas 2` in the layout options.
+
+<p align="center">
+   <img src="../img/viz_guide/gephi-layout-forceatlas2-pane.png" alt="A view of Gephi's ForceAtlas2 layout pane" width="400"/>
+</p>
+
+2. Adjust the settings:
+   - **Scaling**: 15
+   - **Dissuade Hubs**: checked
+   - **LinLog mode**: uncheck
+   - **Prevent Overlap**: checked
+3. Click `Run` and wait.
+4. Press `Stop` when it looks like the graph nodes have settled and no longer change position significantly.
+
+## 10. Add Text Labels (Optional)
+1. Turn on text labels in the appropriate section.
+2. Configure and resize them as needed.
+
+Your final graph should now be visually organized and ready for analysis!
+
+
+--- FILE: docs/blog_posts.md ---
+
+<div class="grid cards" markdown>
+
+-   [:octicons-arrow-right-24: __GraphRAG: Unlocking LLM discovery on narrative private data__](https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/)
+
+    ---
+    <h6>Published February 13, 2024
+
+    By [Jonathan Larson](https://www.microsoft.com/en-us/research/people/jolarso/), Senior Principal Data Architect; [Steven Truitt](https://www.microsoft.com/en-us/research/people/steventruitt/), Principal Program Manager</h6>
+    
+
+-   [:octicons-arrow-right-24: __GraphRAG: New tool for complex data discovery now on GitHub__](https://www.microsoft.com/en-us/research/blog/graphrag-new-tool-for-complex-data-discovery-now-on-github/)
+
+    ---
+    <h6>Published July 2, 2024
+
+    By [Darren Edge](https://www.microsoft.com/en-us/research/people/daedge/), Senior Director; [Ha Trinh](https://www.microsoft.com/en-us/research/people/trinhha/), Senior Data Scientist; [Steven Truitt](https://www.microsoft.com/en-us/research/people/steventruitt/), Principal Program Manager; [Jonathan Larson](https://www.microsoft.com/en-us/research/people/jolarso/), Senior Principal Data Architect</h6>
+
+
+-   [:octicons-arrow-right-24: __GraphRAG auto-tuning provides rapid adaptation to new domains__](https://www.microsoft.com/en-us/research/blog/graphrag-auto-tuning-provides-rapid-adaptation-to-new-domains/)
+
+    ---
+    <h6>Published September 9, 2024
+
+    By [Alonso Guevara Fernández](https://www.microsoft.com/en-us/research/people/alonsog/), Sr. Software Engineer; Katy Smith, Data Scientist II; [Joshua Bradley](https://www.microsoft.com/en-us/research/people/joshbradley/), Senior Data Scientist; [Darren Edge](https://www.microsoft.com/en-us/research/people/daedge/), Senior Director; [Ha Trinh](https://www.microsoft.com/en-us/research/people/trinhha/), Senior Data Scientist; [Sarah Smith](https://www.microsoft.com/en-us/research/people/smithsarah/), Senior Program Manager; [Ben Cutler](https://www.microsoft.com/en-us/research/people/bcutler/), Senior Director; [Steven Truitt](https://www.microsoft.com/en-us/research/people/steventruitt/), Principal Program Manager; [Jonathan Larson](https://www.microsoft.com/en-us/research/people/jolarso/), Senior Principal Data Architect</h6>
+
+- [:octicons-arrow-right-24: __Introducing DRIFT Search: Combining global and local search methods to improve quality and efficiency__](https://www.microsoft.com/en-us/research/blog/introducing-drift-search-combining-global-and-local-search-methods-to-improve-quality-and-efficiency/)
+
+    ---
+    <h6>Published October 31, 2024
+
+    By Julian Whiting, Senior Machine Learning Engineer; Zachary Hills , Senior Software Engineer; [Alonso Guevara Fernández](https://www.microsoft.com/en-us/research/people/alonsog/), Sr. Software Engineer; [Ha Trinh](https://www.microsoft.com/en-us/research/people/trinhha/), Senior Data Scientist; Adam Bradley , Managing Partner, Strategic Research; [Jonathan Larson](https://www.microsoft.com/en-us/research/people/jolarso/), Senior Principal Data Architect</h6>
+
+- [:octicons-arrow-right-24: __GraphRAG: Improving global search via dynamic community selection__](https://www.microsoft.com/en-us/research/blog/graphrag-improving-global-search-via-dynamic-community-selection/)
+
+    ---
+    <h6>Published November 15, 2024
+
+    By Bryan Li, Research Intern; [Ha Trinh](https://www.microsoft.com/en-us/research/people/trinhha/), Senior Data Scientist; [Darren Edge](https://www.microsoft.com/en-us/research/people/daedge/), Senior Director; [Jonathan Larson](https://www.microsoft.com/en-us/research/people/jolarso/), Senior Principal Data Architect</h6>
+
+- [:octicons-arrow-right-24: __LazyGraphRAG: Setting a new standard for quality and cost__](https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/)
+
+    ---
+    <h6>Published November 25, 2024
+
+    By [Darren Edge](https://www.microsoft.com/en-us/research/people/daedge/), Senior Director; [Ha Trinh](https://www.microsoft.com/en-us/research/people/trinhha/), Senior Data Scientist;  [Jonathan Larson](https://www.microsoft.com/en-us/research/people/jolarso/), Senior Principal Data Architect</h6>
+
+- [:octicons-arrow-right-24: __Moving to GraphRAG 1.0 – Streamlining ergonomics for developers and users__](https://www.microsoft.com/en-us/research/blog/moving-to-graphrag-1-0-streamlining-ergonomics-for-developers-and-users)
+
+    ---
+    <h6>Published December 16, 2024
+
+    By [Nathan Evans](https://www.microsoft.com/en-us/research/people/naevans/), Principal Software Architect; [Alonso Guevara Fernández](https://www.microsoft.com/en-us/research/people/alonsog/), Senior Software Engineer; [Joshua Bradley](https://www.microsoft.com/en-us/research/people/joshbradley/), Senior Data Scientist</h6>
+</div>
+
+--- FILE: docs/cli.md ---
+# CLI Reference
+
+This page documents the command-line interface of the graphrag library.
+
+::: mkdocs-typer
+    :module: graphrag.cli.main
+    :prog_name: graphrag
+    :command: app
+    :depth: 0

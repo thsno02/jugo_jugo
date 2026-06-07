@@ -13,7 +13,7 @@ canonical_concept: claim-level-entailment-evaluation
 aliases: [声明级蕴含检验, claim-level entailment checking, 细粒度声明评估, claim decomposition evaluation]
 summary: >-
   claim-level-entailment-evaluation（声明级蕴含检验 / claim-level entailment checking / 细粒度声明评估）将文本分解为原子声明（claim），再逐一检查每个声明是否被参考文本蕴含；相比 response-level 评估（BLEU/ROUGE/BERTScore），该方法能捕捉长文本回答中正确与错误声明的混合分布，RAGChecker 在此基础上构建全部指标
-related: [nli-based-citation-verification, rag-evaluation-meta-evaluation, ragchecker-three-tier-metrics, retrieval-snr-tradeoff, source-faithfulness-risk]
+related: [nli-based-citation-verification, rag-evaluation-meta-evaluation, ragchecker-three-tier-metrics, retrieval-snr-tradeoff, source-faithfulness-risk, citation-partial-support-limitation]
 ---
 
 RAGChecker 提出的评估方法建立在两个核心组件之上：（1）文本到声明的提取器（text-to-claim extractor），将任意文本 T 分解为一组原子声明 {c_i}；（2）声明蕴含检查器（claim-entailment checker），判断给定声明 c 是否被参考文本 Ref 蕴含[^src-1]。
@@ -33,3 +33,4 @@ RAGChecker 在声明级蕴含检验之上构建了三层共 11 个诊断指标[^
 [^card-1]: [RAGChecker 三层诊断指标体系](ragchecker-three-tier-metrics.md) -- 本卡描述声明级蕴含检验的基础方法，该卡描述在此基础上构建的三层（整体/检索器/生成器）11 个诊断指标
 [^card-2]: [RAG 评估框架的元评估方法论](rag-evaluation-meta-evaluation.md) -- 本卡描述声明级蕴含检验方法，该卡通过元评估验证了基于此方法构建的 RAGChecker 指标与人类偏好的对齐度
 [^card-nli-based-citation-verification]: [基于 NLI 模型的引用验证机制](nli-based-citation-verification.md) -- ALCE 使用 NLI 模型 TRUE 做整体蕴含判断（citation recall/precision），RAGChecker 的声明级分解方法可视为其演进，在长文本混合正误场景下提供更强的区分力
+[^card-citation-partial-support-limitation]: [引用评估中"部分支持"检测的缺失问题](citation-partial-support-limitation.md) -- ALCE 的二元 NLI 无法区分"部分支持"与"不支持"，本卡的声明级分解方法提供了间接解法：将复合陈述拆为原子声明后，原先的"部分支持"变为"部分声明被完全蕴含"，无需训练三级判别器

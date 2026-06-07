@@ -13,7 +13,7 @@ canonical_concept: context-utilization-as-performance-key
 aliases: [上下文利用率关键指标, context utilization as key metric, CU与F1强相关]
 summary: >-
   context-utilization-as-performance-key（上下文利用率关键指标 / context utilization as key metric / CU与F1强相关）RAGChecker 实验发现在所有生成器指标中，上下文利用率（context utilization）与整体 F1 的相关性最强，且在不同检索器间相对稳定，意味着改善检索器可直接通过稳定的 CU 转化为整体 recall 提升
-related: [context-utilization-noise-faithfulness-trilemma, ragchecker-three-tier-metrics, retrieval-improvement-faithfulness-noise-tradeoff, retrieval-snr-tradeoff]
+related: [context-utilization-noise-faithfulness-trilemma, ragchecker-three-tier-metrics, retrieval-improvement-faithfulness-noise-tradeoff, retrieval-snr-tradeoff, retrieval-as-citation-bottleneck]
 ---
 
 RAGChecker 对 8 个 RAG 系统在 10 个领域的评估中发现：在全部 6 个生成器指标中，context utilization（上下文利用率）与整体 F1 分数的相关性最强，而其他生成器指标（faithfulness、noise sensitivity、hallucination 等）与 F1 的相关性相对较弱[^src-1]。
@@ -33,3 +33,4 @@ Context utilization 定义为：在被检索块覆盖的标准答案声明中，
 [^src-3]: `data/raw/arxiv/arxiv-ragchecker/agent_source_bundle.txt` -- "tables/ragchecker_results_avg.tex" -- "BM25_GPT-4 CU=61.4, E5-Mistral_GPT-4 CU=60.4; BM25_Llama3-70b CU=56.2, E5-Mistral_Llama3-70b CU=57.6"
 [^dist-1]: [上下文利用率-噪声敏感度-忠实度三难困境](context-utilization-noise-faithfulness-trilemma.md) -- 本卡主张 CU 是驱动整体 F1 的关键指标应优先提升，该卡主张提升 CU 将不可避免地增加噪声敏感度，区分点在于是否将 CU 视为可独立优化的目标
 [^card-1]: [检索量与信噪比的权衡效应](retrieval-snr-tradeoff.md) -- 本卡聚焦生成器侧的上下文利用率作为性能关键指标（RAGChecker），该卡聚焦检索侧的信噪比权衡——更多检索结果反而因噪声稀释有用信号（LoCoMo），两者分别从生成和检索两端揭示噪声约束
+[^card-retrieval-as-citation-bottleneck]: [检索质量是引用生成的根本瓶颈](retrieval-as-citation-bottleneck.md) -- ALCE 实验定性发现检索 recall 构成模型正确性的上界且即使 oracle 段落也存在利用差距，本卡的 CU 指标正是对该"利用差距"的精确量化。二者共同表明：改善检索是必要条件（ALCE），而生成器的稳定 CU 决定改善能否转化为整体性能提升（RAGChecker）

@@ -26,8 +26,8 @@ related: [compilation-gap, context-extension-insufficiency, context-window-degra
 
 ## Footnotes
 
-[^src-1]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "degrades below RAG at scale due to attention dilution"
-[^src-2]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "full context KV cache inference outperforms RAG on curated knowledge (4.38 vs. 4.08 out of 5, 7.3 faster TTFT)"
-[^src-3]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "but degrades below RAG at scale due to attention dilution"
+[^src-1]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "degrades below RAG at scale due to attention dilution"
+[^src-2]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "full context KV cache inference outperforms RAG on curated knowledge (4.38 vs. 4.08 out of 5, 7.3 faster TTFT)"
+[^src-3]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "but degrades below RAG at scale due to attention dilution"
 [^card-context-window-degradation]: [上下文窗口退化现象](context-window-degradation.md) -- HN 社区报告 LLM 在 200k-300k token 处开始遗忘，为注意力稀释机制提供了来自实践的独立佐证
 [^card-context-extension-insufficiency]: [上下文窗口扩展的不充分性](context-extension-insufficiency.md) -- 本卡聚焦注意力稀释的机制，该卡从 Mem0 论文论证上下文扩展在主题不连续场景下的根本不充分性，并援引注意力退化作为理论支撑

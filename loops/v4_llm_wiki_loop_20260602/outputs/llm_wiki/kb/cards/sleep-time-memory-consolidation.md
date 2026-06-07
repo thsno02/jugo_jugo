@@ -27,5 +27,5 @@ related: [lightmem-three-stage-memory, memory-augmentation-overhead, sleep-conso
 [^card-1]: [睡眠整合架构](sleep-consolidation-architecture.md) -- LightMem 的 sleep-time update 侧重效率（解耦推理与巩固），伴侣记忆框架的 CONSOLIDATE 侧重治理（防止流式一致性判断的自密封），两者独立收敛于离线批量整合模式
 [^card-2]: [LightMem 三阶段记忆架构](lightmem-three-stage-memory.md) -- 本卡聚焦第三阶段 sleep-time update 的具体机制和效率数据，该卡描述感觉记忆→短期记忆→长期记忆的完整三阶段架构
 
-[^src-1]: `data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "long-term memory with sleep-time update employs an offline procedure that decouples consolidation from online inference"
-[^src-2]: `data/raw/arxiv/arxiv-lightmem/text.txt` -- Abstract -- "purely online test-time costs are even lower, achieving up to 106x / 117x token reduction and 159x / 310x fewer API calls"
+[^src-1]: `data/raw/arxiv/arxiv-lightmem/agent_source_bundle.txt` -- Abstract -- "long-term memory with sleep-time update employs an offline procedure that decouples consolidation from online inference"
+[^src-2]: `data/raw/arxiv/arxiv-lightmem/agent_source_bundle.txt` -- Abstract -- "purely online test-time costs are even lower, achieving up to 106x / 117x token reduction and 159x / 310x fewer API calls"

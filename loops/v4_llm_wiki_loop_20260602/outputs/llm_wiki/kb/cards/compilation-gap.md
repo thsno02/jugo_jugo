@@ -28,9 +28,9 @@ related: [compile-time-vs-query-time, lossy-compression-citation-tradeoff, model
 
 ## Footnotes
 
-[^src-1]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "Realizing this requires solving the compilation gap: LLM compilation distilling raw documents into a wiki without catastrophically discarding critical facts."
-[^src-2]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "blind compilation fails entirely (2.14 to 2.32 vs. 3.46, 53 to 60% catastrophic failure rate)"
-[^src-3]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "53 to 60% catastrophic failure rate"
+[^src-1]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "Realizing this requires solving the compilation gap: LLM compilation distilling raw documents into a wiki without catastrophically discarding critical facts."
+[^src-2]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "blind compilation fails entirely (2.14 to 2.32 vs. 3.46, 53 to 60% catastrophic failure rate)"
+[^src-3]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "53 to 60% catastrophic failure rate"
 [^card-1]: [源忠实性风险与不可变锚点](source-faithfulness-risk.md) -- 本卡聚焦单次编译的急性事实丢失，该卡聚焦多轮变换后的渐进性知识漂移
 [^card-2]: [模型能力不足导致的错误传播风险](model-quality-error-propagation.md) -- 本卡量化编译丢失的程度，该卡分析模型能力不足作为错误传播的根因
 [^card-3]: [有损压缩的引用权衡](lossy-compression-citation-tradeoff.md) -- 本卡量化文档到wiki编译的灾难性事实丢失（53-60%），该卡量化段落到摘要压缩的引用质量下降（recall 降 4.7%），两者在不同粒度上揭示有损压缩的固有代价

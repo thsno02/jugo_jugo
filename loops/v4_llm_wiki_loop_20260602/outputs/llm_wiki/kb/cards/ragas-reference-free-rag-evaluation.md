@@ -33,7 +33,7 @@ ARES 采用了一种互补的设计：通过合成数据微调 LM 评审 + PPI �
 [^card-3]: [RAG 评估三维度分解](rag-evaluation-tri-dimension.md) -- 本卡聚焦 RAGAS 的无参考设计原则（WHY），该卡描述 RAGAS 评估的三个维度内容（WHAT：检索质量、忠实性、生成质量）
 [^dist-1]: [RAGChecker 三层诊断指标体系](ragchecker-three-tier-metrics.md) -- 本卡主张评估应无参考（不依赖 ground truth），该卡的三层指标（特别是 claim recall）本质上依赖 ground truth 答案，区分点在于：无参考方法可快速迭代但无法衡量完整性，有参考方法诊断更精准但需标注成本
 
-[^src-1]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines."
-[^src-2]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "a suite of metrics which can be used to evaluate these different dimensions without having to rely on ground truth human annotations"
-[^src-3]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Comments L39 -- "Reference-free (not tied to having ground truth available) evaluation framework for retrieval augmented generation"
-[^src-4]: `data/raw/arxiv/arxiv-ragas/text.txt` -- Abstract L37 -- "such a framework can crucially contribute to faster evaluation cycles of RAG architectures, which is especially important given the fast adoption of LLMs"
+[^src-1]: `data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt` -- Abstract L37 -- "We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines."
+[^src-2]: `data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt` -- Abstract L37 -- "a suite of metrics which can be used to evaluate these different dimensions without having to rely on ground truth human annotations"
+[^src-3]: `data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt` -- Comments L39 -- "Reference-free (not tied to having ground truth available) evaluation framework for retrieval augmented generation"
+[^src-4]: `data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt` -- Abstract L37 -- "such a framework can crucially contribute to faster evaluation cycles of RAG architectures, which is especially important given the fast adoption of LLMs"

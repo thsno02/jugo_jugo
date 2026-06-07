@@ -22,6 +22,6 @@ related: [graphrag-knowledge-poisoning-attack, universal-kpa]
 
 [^dist-1]: [通用知识投毒攻击（UKPA）](universal-kpa.md) -- 本卡主张通过图论分析精确控制特定问答结果（定向投毒，93.1% 精确控制），该卡主张通过语言学线索大规模破坏整体问答能力（通用投毒，<0.05% 修改量使准确率从 95% 降至 50%），区分点在于攻击目标粒度：精确操控 vs 全局破坏
 
-[^src-1]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "The first attack, named Targeted KPA (TKPA), utilizes graph-theoretic analysis to locate vulnerable nodes in the generated graphs"
-[^src-2]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "rewrites the corresponding narratives with LLMs, achieving precise control over specific question-answering (QA) outcomes"
-[^src-3]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "with a success rate of 93.1%, while keeping the poisoned text fluent and natural"
+[^src-1]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "The first attack, named Targeted KPA (TKPA), utilizes graph-theoretic analysis to locate vulnerable nodes in the generated graphs"
+[^src-2]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "rewrites the corresponding narratives with LLMs, achieving precise control over specific question-answering (QA) outcomes"
+[^src-3]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "with a success rate of 93.1%, while keeping the poisoned text fluent and natural"

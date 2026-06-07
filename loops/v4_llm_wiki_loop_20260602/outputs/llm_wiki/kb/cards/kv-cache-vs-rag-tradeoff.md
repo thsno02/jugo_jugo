@@ -28,8 +28,8 @@ WiCER 论文在 17 个 RepLiQA 领域（6,800 个问题）上对全上下文 KV 
 
 ## Footnotes
 
-[^src-1]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "we observe that full context KV cache inference outperforms RAG on curated knowledge (4.38 vs. 4.08 out of 5, 7.3 faster TTFT) but degrades below RAG at scale due to attention dilution"
-[^src-2]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "4.38 vs. 4.08 out of 5, 7.3 faster TTFT"
-[^src-3]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "degrades below RAG at scale due to attention dilution"
+[^src-1]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "we observe that full context KV cache inference outperforms RAG on curated knowledge (4.38 vs. 4.08 out of 5, 7.3 faster TTFT) but degrades below RAG at scale due to attention dilution"
+[^src-2]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "4.38 vs. 4.08 out of 5, 7.3 faster TTFT"
+[^src-3]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "degrades below RAG at scale due to attention dilution"
 [^card-full-context-anti-rag]: [全上下文反 RAG 架构选择](full-context-anti-rag.md) -- Karpathy LLM Wiki 拒绝 RAG 分块检索、向 LLM 提供完整 wiki 上下文的设计哲学，其有效性依赖于 wiki 保持策展紧凑——正好对应 WiCER 识别的全上下文优势区间
 [^card-1]: [记忆系统 vs RAG 的显著性优势](memory-vs-rag-salience.md) -- 本卡从 WiCER 实证表明全上下文 KV cache 在策展知识上优于 RAG，该卡从 Mem0 实验表明结构化记忆在显著性提取上优于 RAG，两项独立研究从不同机制印证 RAG 替代方案的优势

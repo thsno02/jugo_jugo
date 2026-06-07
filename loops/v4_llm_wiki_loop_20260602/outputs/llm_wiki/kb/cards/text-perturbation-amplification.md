@@ -20,6 +20,6 @@ GraphRAG 的图谱构建过程存在一种显著的微扰放大效应（perturba
 
 ## Footnotes
 
-[^src-1]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "modifying only a few words in the source text can significantly change the constructed graph, poison the GraphRAG, and severely mislead downstream reasoning"
-[^src-2]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "achieving precise control over specific question-answering (QA) outcomes with a success rate of 93.1%"
-[^src-3]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "With fewer than 0.05% of full text modified, the QA accuracy collapses from 95% to 50%"
+[^src-1]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "modifying only a few words in the source text can significantly change the constructed graph, poison the GraphRAG, and severely mislead downstream reasoning"
+[^src-2]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "achieving precise control over specific question-answering (QA) outcomes with a success rate of 93.1%"
+[^src-3]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "With fewer than 0.05% of full text modified, the QA accuracy collapses from 95% to 50%"

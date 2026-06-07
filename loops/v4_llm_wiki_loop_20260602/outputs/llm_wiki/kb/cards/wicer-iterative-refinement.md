@@ -30,8 +30,8 @@ WiCER 的工作机制分为三个阶段的迭代循环：
 
 ## Footnotes
 
-[^src-1]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "we propose WiCER (Wiki-memory Compile, Evaluate, Refine), an iterative algorithm inspired by counterexample-guided abstraction refinement (CEGAR) that closes this gap"
-[^src-2]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "inspired by counterexample-guided abstraction refinement (CEGAR)"
-[^src-3]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "WiCER evaluates compiled wikis against diagnostic probes, identifies dropped facts, and forces their preservation in subsequent compilations"
-[^src-4]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "One to two iterations recover 80% of lost quality (mean 3.24 vs. 3.47 for raw full-context across the 15 topics with baselines)"
-[^src-5]: `data/raw/arxiv/arxiv-wicer/text.txt` -- Abstract -- "reducing catastrophic failures by 55% relative"
+[^src-1]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "we propose WiCER (Wiki-memory Compile, Evaluate, Refine), an iterative algorithm inspired by counterexample-guided abstraction refinement (CEGAR) that closes this gap"
+[^src-2]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "inspired by counterexample-guided abstraction refinement (CEGAR)"
+[^src-3]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "WiCER evaluates compiled wikis against diagnostic probes, identifies dropped facts, and forces their preservation in subsequent compilations"
+[^src-4]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "One to two iterations recover 80% of lost quality (mean 3.24 vs. 3.47 for raw full-context across the 15 topics with baselines)"
+[^src-5]: `data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt` -- Abstract -- "reducing catastrophic failures by 55% relative"

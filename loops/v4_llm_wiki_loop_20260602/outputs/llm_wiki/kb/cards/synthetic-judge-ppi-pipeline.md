@@ -13,7 +13,7 @@ canonical_concept: synthetic-judge-ppi-pipeline
 aliases: [合成评审训练流水线, synthetic-data-LM-judge-PPI, 合成数据微调+PPI校准]
 summary: >-
   synthetic-judge-ppi-pipeline（合成评审训练流水线, synthetic-data-LM-judge-PPI）ARES 先自动生成合成数据微调轻量 LM 评审模型，再用少量（数百条）人工标注通过 PPI 校准预测误差，实现低成本高精度的自动评估
-related: [ares-rag-evaluation-framework, rag-component-evaluation-tri-dimension]
+related: [ares-rag-evaluation-framework, rag-component-evaluation-tri-dimension, nli-based-citation-verification]
 ---
 
 ARES 的核心机制是一条两阶段评估流水线，将自动化与人工校准结合以降低 RAG 评估的人工标注成本 [^src-1]：
@@ -24,9 +24,13 @@ ARES 的核心机制是一条两阶段评估流水线，将自动化与人工校
 
 这一流水线的关键洞察在于：合成数据解决了评审模型训练的数据瓶颈，而 PPI 以极低的人工成本弥补了合成数据可能引入的偏差，两者互补构成了成本-精度的最优平衡。
 
+与之形成对比的是 ALCE 采用的 NLI 验证范式：直接复用在多个 NLI 数据集上预训练的 T5-11B 模型（TRUE）进行蕴含判断，无需针对目标任务微调[^card-1]。合成评审流水线的优势在于可针对特定评估维度定制化训练，代价是需要合成数据生成和 PPI 校准两个额外步骤；NLI 验证范式则胜在零额外训练成本，但评估维度受限于蕴含关系。
+
 ## Footnotes
 
-[^src-1]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges to assess the quality of individual RAG components."
-[^src-2]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges"
-[^src-3]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "To mitigate potential prediction errors, ARES utilizes a small set of human-annotated datapoints for prediction-powered inference (PPI)."
-[^src-4]: `data/raw/arxiv/arxiv-ares/text.txt` -- Abstract -- "ARES accurately evaluates RAG systems while using only a few hundred human annotations during evaluation."
+[^card-1]: [基于 NLI 模型的引用验证机制](nli-based-citation-verification.md) -- ALCE 直接复用预训练 NLI 模型做蕴含判断，无需针对目标任务微调；与 ARES 的合成数据微调路线互补，代表"定制化评审 vs 通用蕴含模型"的设计取舍
+
+[^src-1]: `data/raw/arxiv/arxiv-ares/agent_source_bundle.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges to assess the quality of individual RAG components."
+[^src-2]: `data/raw/arxiv/arxiv-ares/agent_source_bundle.txt` -- Abstract -- "By creating its own synthetic training data, ARES finetunes lightweight LM judges"
+[^src-3]: `data/raw/arxiv/arxiv-ares/agent_source_bundle.txt` -- Abstract -- "To mitigate potential prediction errors, ARES utilizes a small set of human-annotated datapoints for prediction-powered inference (PPI)."
+[^src-4]: `data/raw/arxiv/arxiv-ares/agent_source_bundle.txt` -- Abstract -- "ARES accurately evaluates RAG systems while using only a few hundred human annotations during evaluation."

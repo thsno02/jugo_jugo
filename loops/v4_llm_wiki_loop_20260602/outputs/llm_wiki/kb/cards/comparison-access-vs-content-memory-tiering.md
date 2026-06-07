@@ -30,5 +30,5 @@ LLM agent 记忆系统中「分层」看似是共识，但不同系统的分层�
 
 [^card-1]: [MemGPT 两级内存层次结构](memgpt-memory-hierarchy.md) -- 访问距离维度的代表：按 in-context vs out-of-context 划分，类比 OS 的 RAM vs 磁盘
 [^card-2]: [情景记忆与语义记忆的双存储设计](episodic-semantic-memory-duality.md) -- 认知内容维度的代表：按 episodic vs semantic 划分，借鉴人类记忆心理学模型
-[^src-1]: data/raw/arxiv/arxiv-memgpt/text.txt -- "virtual context management, a technique drawing inspiration from hierarchical memory systems in traditional operating systems that provide the appearance of large memory resources through data movement between fast and slow memory"
+[^src-1]: data/raw/arxiv/arxiv-memgpt/agent_source_bundle.txt -- "virtual context management, a technique drawing inspiration from hierarchical memory systems in traditional operating systems that provide the appearance of large memory resources through data movement between fast and slow memory"
 [^src-2]: data/raw/arxiv/arxiv-zep/agent_source_bundle.txt -- "The dual storage of both raw episodic data and derived semantic entity information mirrors psychological models of human memory. These models distinguish between episodic memory, which represents distinct events, and semantic memory, which captures associations between concepts and their meanings"

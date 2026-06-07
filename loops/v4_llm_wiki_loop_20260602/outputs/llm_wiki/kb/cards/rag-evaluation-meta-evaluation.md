@@ -13,7 +13,7 @@ canonical_concept: rag-evaluation-meta-evaluation
 aliases: [RAG元评估, RAG evaluation meta-evaluation, RAG评估框架验证, 评估指标的人类对齐度]
 summary: >-
   rag-evaluation-meta-evaluation（RAG元评估 / RAG evaluation meta-evaluation / 评估指标的人类对齐度）RAGChecker 提出的元评估方法：构建 280 个成对人类偏好实例（10 领域 x 28 系统对），计算评估指标得分差与人类偏好标签的相关性；RAGChecker 在 correctness/completeness/overall 三维度的 Pearson/Spearman 相关性均显著优于 RAGAS/TruLens/ARES/CRUD-RAG，整体 Pearson=61.93 vs 最强基线 RAGAS Answer Similarity=48.31
-related: [ares-rag-evaluation-framework, claim-level-entailment-evaluation, lexical-vs-semantic-eval-gap, ragchecker-three-tier-metrics]
+related: [ares-rag-evaluation-framework, claim-level-entailment-evaluation, lexical-vs-semantic-eval-gap, ragchecker-three-tier-metrics, alce-citation-benchmark]
 ---
 
 RAGChecker 提出了一种系统化的元评估（meta evaluation）方法来验证 RAG 评估指标的可靠性。核心思路是：一个好的评估指标应该能反映人类对不同 RAG 系统的相对偏好[^src-1]。
@@ -36,3 +36,4 @@ ARES 作为元评估中的比较对象之一，其通过 PPI 校准提升评估�
 [^card-2]: [词汇匹配指标 vs 语义评估的鸿沟](lexical-vs-semantic-eval-gap.md) -- Mem0 论文揭示 F1/BLEU 无法捕获事实性错误，为元评估中词汇指标与人类偏好相关性系统性偏低提供了实证解释
 [^card-3]: [RAGChecker 三层诊断指标体系](ragchecker-three-tier-metrics.md) -- 本卡描述元评估方法论，该卡描述被元评估验证的三层诊断指标体系
 [^card-4]: [声明级蕴含检验评估方法](claim-level-entailment-evaluation.md) -- 本卡验证 RAGChecker 指标与人类偏好的对齐，该卡描述支撑全部 RAGChecker 指标的声明级蕴含基础方法
+[^card-5]: [ALCE 引用评估基准](alce-citation-benchmark.md) -- ALCE 提供首个可复现的引用评估基准及 NLI 自动指标，这些指标正是元评估可以验证的对象；元评估中 NLI 式语义指标与人类偏好的高相关性间接支持了 ALCE 设计的有效性

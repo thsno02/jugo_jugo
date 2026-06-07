@@ -13,7 +13,7 @@ canonical_concept: retrieval-as-citation-bottleneck
 aliases: [检索瓶颈, retrieval bottleneck for citation, 检索上界与模型利用差距]
 summary: >-
   retrieval-as-citation-bottleneck（检索瓶颈, retrieval bottleneck for citation）检索 recall 构成模型正确性的上界；即使使用 oracle 段落，模型正确性仍低于检索 recall，表明 LLM 难以充分利用上下文中的正确答案；GTR 优于 DPR，更多段落在 ChatGPT 上收益饱和但 GPT-4 能持续受益
-related: [citation-support-gap, context-window-degradation]
+related: [citation-support-gap, context-window-degradation, context-utilization-as-performance-key]
 ---
 
 ALCE 的检索分析揭示了检索质量在引用生成系统中的根本瓶颈作用，并发现即使检索完美也存在利用差距 [^src-1]。
@@ -34,3 +34,4 @@ ALCE 的检索分析揭示了检索质量在引用生成系统中的根本瓶颈
 [^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "GTR outperforms DPR in both correctness and citation quality, emphasizing the importance of deploying better retrievers."
 [^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "GPT-4 exhibits an increasing trend with more passages, but the improvement is not proportional to the retrieval performance."
 [^src-6]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/results.tex -- "including more passages with ChatGPT-16K does not improve the results...suggesting that processing more passages is non-trivial and GPT-4 is better at synthesizing information from its long context than ChatGPT."
+[^card-context-utilization-as-performance-key]: [上下文利用率是 RAG 性能的关键生成器指标](context-utilization-as-performance-key.md) -- RAGChecker 将本卡定性观察的"Oracle 差距"（模型无法充分利用上下文中的正确答案）量化为 context utilization 指标，并证明该指标在不同检索器间保持稳定（GPT-4 CU~60%），与本卡 GPT-4 能持续从更多段落中受益的发现相互印证

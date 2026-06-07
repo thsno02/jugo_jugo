@@ -23,7 +23,7 @@ related: [etamp-environment-memory-poisoning, graphrag-defense-gap, graphrag-glo
 [^card-1]: [环境注入式轨迹记忆投毒攻击](etamp-environment-memory-poisoning.md) -- KPA 投毒静态知识图谱构建过程（修改源文本），eTAMP 投毒动态 agent 轨迹记忆（环境注入），两者共同揭示 LLM 知识系统在不同存储范式下的投毒脆弱性
 [^card-2]: [RAG 知识腐蚀攻击](rag-knowledge-corruption-attack.md) -- 本卡聚焦 GraphRAG 图谱构建过程的投毒（修改源文本扭曲知识图谱），该卡聚焦传统向量检索 RAG 知识库的直接注入投毒（注入恶意文本控制问答结果），两者揭示 RAG 在不同架构下共享的知识投毒脆弱性
 
-[^src-1]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "we propose two knowledge poisoning attacks (KPAs) and demonstrate that modifying only a few words in the source text can significantly change the constructed graph"
-[^src-2]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "GraphRAG relies on LLMs to extract knowledge from raw text during graph construction, and this process can be maliciously manipulated to implant misleading information"
-[^src-3]: `data/raw/arxiv/arxiv-graph-poisoning/text.txt` -- Abstract -- "modifying only a few words in the source text can significantly change the constructed graph, poison the GraphRAG, and severely mislead downstream reasoning"
+[^src-1]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "we propose two knowledge poisoning attacks (KPAs) and demonstrate that modifying only a few words in the source text can significantly change the constructed graph"
+[^src-2]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "GraphRAG relies on LLMs to extract knowledge from raw text during graph construction, and this process can be maliciously manipulated to implant misleading information"
+[^src-3]: `data/raw/arxiv/arxiv-graph-poisoning/agent_source_bundle.txt` -- Abstract -- "modifying only a few words in the source text can significantly change the constructed graph, poison the GraphRAG, and severely mislead downstream reasoning"
 [^card-graphrag-global-sensemaking]: [GraphRAG 全局语义理解方法](graphrag-global-sensemaking.md) -- GraphRAG 的层级社区摘要+map-reduce 应答管道即为 KPA 的攻击目标，投毒的实体提取会污染社区摘要进而扭曲全局回答

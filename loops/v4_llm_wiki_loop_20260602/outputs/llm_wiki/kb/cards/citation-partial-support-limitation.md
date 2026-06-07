@@ -13,7 +13,7 @@ canonical_concept: citation-partial-support-limitation
 aliases: [部分支持检测缺失, partial support detection gap, 引用精度评估局限]
 summary: >-
   citation-partial-support-limitation（部分支持检测缺失, partial support detection gap）ALCE 的 NLI 引用精度评估无法区分"部分支持"与"不支持"：当引用 [2] 部分蕴含陈述 s3 且 [4][5] 完全覆盖时，[2] 被错误判为无关；尝试用 ChatGPT 做三级判断效果差，留为未来工作
-related: [citation-quality-tri-dimension, nli-based-citation-verification]
+related: [citation-quality-tri-dimension, nli-based-citation-verification, claim-level-entailment-evaluation]
 ---
 
 ALCE 的引用精度（citation precision）评估存在一个已知的结构性局限：NLI 模型只能做二元蕴含判断（支持/不支持），无法检测"部分支持"（partial support）的情况 [^src-1]。
@@ -33,3 +33,4 @@ ALCE 的引用精度（citation precision）评估存在一个已知的结构性
 [^src-3]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "For each citation, they ask annotators to judge whether the citation (1) fully support, (2) partially support, or (3) does not support s_i."
 [^src-4]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "it is challenging to conduct such evaluation automatically, as there is no existing model that can judge whether a citation 'partially' supports a claim. We also explore prompting ChatGPT to conduct such a task, which yields poor results."
 [^src-5]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/appendix.tex -- "regarding detecting 'irrelevant' citations, ALCE has a recall of 75.6% and a precision of 66.1%---ALCE is effective in detecting 'irrelevant' citations, but due to the limitation of the NLI model (cannot detect 'partial support'), it has a relatively high false positive rate."
+[^card-claim-level-entailment-evaluation]: [声明级蕴含检验评估方法](claim-level-entailment-evaluation.md) -- RAGChecker 的声明级分解方法为本卡所述"部分支持"问题提供了一种间接解决路径：将陈述拆解为原子声明后，每个声明可独立判断是否被蕴含，从而将"部分支持"还原为"子集声明被完全蕴含"，规避了三级判断的建模困难

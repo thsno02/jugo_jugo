@@ -13,7 +13,7 @@ canonical_concept: alce-citation-benchmark
 aliases: [ALCE, Automatic LLMs Citation Evaluation, LLM引用评估基准]
 summary: >-
   alce-citation-benchmark（ALCE, Automatic LLMs Citation Evaluation）是首个可复现的 LLM 引用生成自动评估基准，要求端到端系统从语料库检索证据并生成带引用的回答，解决了此前依赖商业搜索引擎和人工评估难以复现对比的问题
-related: [citation-quality-tri-dimension, nli-based-citation-verification]
+related: [citation-quality-tri-dimension, nli-based-citation-verification, ares-rag-evaluation-framework, rag-evaluation-meta-evaluation, ragchecker-three-tier-metrics]
 ---
 
 ALCE（Automatic LLMs' Citation Evaluation）是首个可复现的 LLM 引用生成自动评估基准，由 Princeton 大学的 Tianyu Gao 等人于 EMNLP 2023 提出 [^src-1]。
@@ -27,7 +27,13 @@ ALCE（Automatic LLMs' Citation Evaluation）是首个可复现的 LLM 引用生
 
 ALCE 仅提供评估数据（每个数据集 1000 个样本来自开发集），不提供训练数据，因为这些数据集中不存在引用标注的监督样本 [^src-7]。
 
+ARES 框架在 RAG 评估侧采用了互补的自动化策略——合成数据微调 LM 评审 + PPI 校准，而 ALCE 依赖预训练 NLI 模型进行引用验证；两者分别代表"训练定制评审"与"复用通用蕴含模型"两种自动化路线[^card-1]。RAGChecker 的元评估方法论则从更高层次验证了 ALCE 式 NLI 指标与人类偏好的对齐程度，为 ALCE 的自动指标提供了外部可靠性背书[^card-2]。
+
 ## Footnotes
+
+[^card-1]: [ARES 自动化 RAG 评估框架](ares-rag-evaluation-framework.md) -- ARES 用合成数据微调定制 LM 评审，ALCE 复用预训练 NLI 模型（TRUE）；两者分别代表 RAG/引用自动评估中"定制评审"与"通用蕴含模型"两种自动化路线
+[^card-2]: [RAG 评估框架的元评估方法论](rag-evaluation-meta-evaluation.md) -- RAGChecker 的元评估将多种自动指标（含 NLI 式引用指标）与人类偏好做相关性对比，为 ALCE 风格的 NLI 自动评估提供了外部可靠性验证
+[^card-ragchecker-three-tier-metrics]: [RAGChecker 三层诊断指标体系](ragchecker-three-tier-metrics.md) -- ALCE 聚焦引用生成的端到端基准（流畅度/正确性/引用质量三维度），RAGChecker 则聚焦 RAG 系统的诊断性评估（整体/检索器/生成器三层 11 指标）。二者互补：ALCE 定义了"带引用回答"的评估标准，RAGChecker 深入定位 RAG 管道中哪个模块导致引用质量下降
 
 [^src-1]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- sections/intro.tex -- "We present ALCE, the first reproducible benchmark for automatically evaluating LLMs' generations with citations."
 [^src-2]: `data/raw/arxiv/arxiv-alce/agent_source_bundle.txt` -- abstract -- "Existing work mainly relies on commercial search engines and human evaluation, making it challenging to reproduce and compare different modeling approaches."

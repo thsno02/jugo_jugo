@@ -13,7 +13,7 @@ canonical_concept: ragchecker-three-tier-metrics
 aliases: [RAGChecker三层指标, RAGChecker metric taxonomy, RAG三层诊断指标]
 summary: >-
   ragchecker-three-tier-metrics（RAGChecker三层指标 / RAGChecker metric taxonomy / RAG三层诊断指标）RAGChecker 面向用户和开发者两类角色设计三层指标：整体层（precision/recall/F1）、检索器层（claim recall / context precision）、生成器层（faithfulness / noise sensitivity / hallucination / self-knowledge / context utilization），共 11 个基于声明蕴含的指标
-related: [claim-level-entailment-evaluation, rag-evaluation-meta-evaluation, rag-evaluation-tri-dimension, ragas-reference-free-rag-evaluation]
+related: [claim-level-entailment-evaluation, rag-evaluation-meta-evaluation, rag-evaluation-tri-dimension, ragas-reference-free-rag-evaluation, alce-citation-benchmark, citation-quality-tri-dimension]
 ---
 
 RAGChecker 的设计原则基于对 RAG 评估框架两类使用者的观察[^src-1]：
@@ -43,3 +43,5 @@ RAGChecker 的全部指标均建立在声明级蕴含检验方法之上[^card-2]
 [^card-2]: [声明级蕴含检验评估方法](claim-level-entailment-evaluation.md) -- 本卡描述三层指标体系的结构与设计原则，该卡描述所有指标赖以建立的声明级蕴含检验方法
 [^card-3]: [RAG 评估框架的元评估方法论](rag-evaluation-meta-evaluation.md) -- 本卡描述 RAGChecker 的指标设计，该卡通过 280 个成对人类偏好实例验证了这些指标与人类判断的对齐程度
 [^dist-1]: [RAGAS 无参考评估框架](ragas-reference-free-rag-evaluation.md) -- 本卡的指标（如 claim recall）依赖 ground truth 答案，该卡主张完全无参考评估，区分点在于：有参考方法能衡量 recall/completeness 但需标注成本，无参考方法可快速部署但牺牲了完整性度量
+[^card-alce-citation-benchmark]: [ALCE：首个自动化 LLM 引用评估基准](alce-citation-benchmark.md) -- ALCE 定义了引用生成的端到端评估范式（流畅度/正确性/引用质量），本卡的三层诊断体系可视为 ALCE 评估视角的纵深扩展：ALCE 回答"引用质量如何"，RAGChecker 回答"引用质量不好是检索器还是生成器的问题"
+[^card-citation-quality-tri-dimension]: [引用评估三维度框架](citation-quality-tri-dimension.md) -- ALCE 的三维评估（流畅度/正确性/引用质量）与 RAGChecker 的三层指标（整体/检索器/生成器）形成评估粒度的递进关系：前者提供系统级判断，后者提供模块级归因
