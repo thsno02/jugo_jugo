@@ -201,7 +201,7 @@ link_stats:
 | mcp-tool-skill-layering | MCP 工具与技能的双层设计 | mcp-tool-skill-layering | [kb-compile-implementation, llm-wiki-v2-agentmemory, multi-platform-skill-portability, obsidian-karpathy-wiki-plugin, schema-as-configuration, three-layer-architecture] |
 | memgpt-event-driven-control-flow | MemGPT 事件驱动控制流 | memgpt-event-driven-control-flow | [memgpt-function-chaining, memgpt-queue-eviction-policy, virtual-context-management] |
 | memgpt-function-chaining | MemGPT 函数链与心跳机制 | memgpt-function-chaining | [memgpt-event-driven-control-flow, memgpt-nested-kv-retrieval, memgpt-self-directed-memory] |
-| memgpt-main-context-structure | MemGPT 主上下文三段式结构 | memgpt-main-context-structure | [memgpt-memory-hierarchy, memgpt-queue-manager] |
+| memgpt-main-context-structure | MemGPT 主上下文三段式结构 | memgpt-main-context-structure | [memgpt-memory-hierarchy, memgpt-queue-eviction-policy] |
 | memgpt-memory-hierarchy | MemGPT 两级内存层次结构 | memgpt-memory-hierarchy | [ai-memory-operating-system, episodic-semantic-memory-duality, lightmem-three-stage-memory, memgpt-main-context-structure, memgpt-self-directed-memory, virtual-context-management] |
 | memgpt-queue-eviction-policy | MemGPT 队列驱逐与内存压力机制 | memgpt-queue-eviction-policy | [archive-lifecycle, memgpt-main-context-structure, memgpt-memory-hierarchy, memgpt-self-directed-memory, virtual-context-management] |
 | memgpt-self-directed-memory | MemGPT 自主内存编辑与检索 | memgpt-self-directed-memory | [memgpt-function-chaining, memgpt-memory-hierarchy, memgpt-queue-eviction-policy, tool-mediated-memory-access] |
@@ -248,7 +248,7 @@ link_stats:
 | tree-sitter-code-extraction | Tree-sitter AST 代码知识提取 | tree-sitter-code-extraction | [] |
 | typed-wikilinks | 类型化 Wiki 链接 | typed-wikilinks | [schema-as-configuration, wiki-compounding-artifact] |
 | universal-kpa | 通用知识投毒攻击（UKPA） | universal-kpa | [graphrag-knowledge-poisoning-attack, targeted-kpa, text-perturbation-amplification] |
-| virtual-context-management | 虚拟上下文管理 | virtual-context-management | [ai-memory-operating-system, cross-session-continuity, memgpt-event-driven-control-flow, memgpt-memory-hierarchy, memgpt-queue-eviction-policy, memgpt-queue-manager] |
+| virtual-context-management | 虚拟上下文管理 | virtual-context-management | [ai-memory-operating-system, cross-session-continuity, memgpt-event-driven-control-flow, memgpt-memory-hierarchy, memgpt-queue-eviction-policy] |
 | vitality-score-formula | 活力评分公式 | vitality-score-formula | [companion-knowledge-system, memory-gravity, memory-lifecycle-metadata] |
 | wicer-iterative-refinement | WiCER 迭代精炼算法 | wicer-iterative-refinement | [compilation-gap, compile-time-vs-query-time, targeted-diagnosis-vs-generic-pinning] |
 | wiki-compounding-artifact | Wiki 作为复利型知识制品 | wiki-compounding-artifact | [knowledge-compounding, llm-wiki-pattern, output-compounding-loop, wiki-write-back-mechanism] |

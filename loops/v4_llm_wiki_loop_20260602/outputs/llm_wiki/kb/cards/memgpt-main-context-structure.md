@@ -13,7 +13,7 @@ canonical_concept: memgpt-main-context-structure
 aliases: [主上下文结构, prompt tokens三段, system instructions + working context + FIFO queue]
 summary: >-
   memgpt-main-context-structure（主上下文三段式结构）将 LLM prompt tokens 分为 system instructions（只读，控制流与函数说明）、working context（固定大小读写块，存储关键事实）、FIFO queue（滚动消息历史，首位存递归摘要），三者拼接为单一输入
-related: [memgpt-memory-hierarchy, memgpt-queue-manager]
+related: [memgpt-memory-hierarchy, memgpt-queue-eviction-policy]
 ---
 
 MemGPT 将主上下文（prompt tokens）划分为三个连续段 [^src-1]：

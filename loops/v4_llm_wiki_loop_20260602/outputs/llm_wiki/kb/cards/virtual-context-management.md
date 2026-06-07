@@ -13,7 +13,7 @@ canonical_concept: virtual-context-management
 aliases: [虚拟上下文, virtual context, 虚拟内存分页类比]
 summary: >-
   virtual-context-management（虚拟上下文管理, virtual context）借鉴操作系统虚拟内存分页机制，通过在 LLM 有限上下文窗口（类比 RAM）与外部存储（类比磁盘）之间移动数据，为 LLM 提供无限上下文的幻觉
-related: [ai-memory-operating-system, cross-session-continuity, memgpt-event-driven-control-flow, memgpt-memory-hierarchy, memgpt-queue-eviction-policy, memgpt-queue-manager]
+related: [ai-memory-operating-system, cross-session-continuity, memgpt-event-driven-control-flow, memgpt-memory-hierarchy, memgpt-queue-eviction-policy]
 ---
 
 虚拟上下文管理（virtual context management）是 MemGPT 提出的核心技术，灵感来源于传统操作系统中的虚拟内存分页机制。在操作系统中，虚拟内存通过在物理内存（RAM）和磁盘之间分页数据，向应用程序提供"有更多内存资源可用"的幻觉 [^src-1]。MemGPT 将这一思路迁移到 LLM 系统：将 LLM 的固定上下文窗口视为"主内存"，将外部数据库视为"磁盘"，利用 LLM 的函数调用能力（function calling）在两者之间移动数据，从而使 LLM 能够处理远超其上下文窗口限制的任务 [^src-2]。
