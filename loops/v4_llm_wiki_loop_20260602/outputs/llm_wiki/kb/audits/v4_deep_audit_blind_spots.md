@@ -149,3 +149,56 @@ agents_used: 10
 6. **Reddit 替代抓取方案**（消除价值：中）——使用 old.reddit.com + 适当 UA 或 Pushshift API 替代直接爬取，恢复社区反馈覆盖
 
 7. **非 comparison 零入度卡片 backlink pass**（消除价值：低-中）——19 张非 comparison sink 卡片需要从主题相关卡片添加入边（优先处理 topic-isolation、locomo-human-machine-pipeline 等出度>=3 的卡片）
+
+## 9. Pipeline 根因追踪与设计修正
+
+### 9.1 Data Collection 层：raw.html 从未被使用
+
+- **现状**：27 个 webpage 源全部有 `raw.html`（平均比 text.txt 大 7-35 倍），但 pipeline_spec.md 硬编码 `boundary-read: text.txt`
+- **`TextExtractor(HTMLParser)`** 在 `fetch_sources.py` 第 41-69 行，将 table 压成空格分隔文本、code/pre 丢失缩进、img/svg 完全丢弃
+- **arxiv 源**：`text.txt` 仅 5KB（arXiv 页面导航文字），`agent_source_bundle.txt` 为 TeX 解析结果 223KB——实际提取使用后者，text.txt 对 arxiv 无意义
+- **根因**：pipeline 设计假设 `text.txt` 是充分表示，但 collection 脚本的 text extraction 从未针对结构化内容优化
+- **修正方向**：boundary-read 改为优先级级联：agent_source_bundle.txt > raw.html（经 markdown converter 转换）> text.txt
+
+### 9.2 GitHub Repo 完全缺失：20 源零卡
+
+- **现状**：20 个 repo 已克隆到 `data/raw/github_repo/*/repo/`，全部有 README.md（5-36KB），部分有 docs/ 目录（如 microsoft-agent-governance-toolkit 有 729 个 .md 文件）
+- **根因**：`fetch_sources.py` 第 474-528 行执行 git clone + API 获取 README，但**从不生成 text.txt**。pipeline 的 boundary-read 找不到文件直接跳过
+- **影响**：KB 只有理论模型卡（arxiv 论文）+ 概念描述卡（blog/HN），缺少实践落地卡（实现细节、配置方式、CLI 用法）
+- **修正方向**：为 github_repo 类型生成 material_bundle.txt = README.md + docs/**/*.md 拼接（类似 arxiv 的 agent_source_bundle.txt 做法）
+- **优先级最高的 5 个 repo**：
+  - repo-nvk-llm-wiki（722 .md 文件，完整 wiki-manager 实现文档）
+  - repo-microsoft-agent-governance-toolkit（729 .md，治理框架文档 + 8 个 Python 包）
+  - repo-kytmanov-obsidian-local（81 .py，完整本地 pipeline 实现）
+  - repo-microsoft-graphrag（570 .py + docs/，补充 arxiv-graphrag 的实现细节）
+  - repo-vectifyai-openkb（65 .py，开源 KB 构建工具）
+
+### 9.3 Extraction 层：权威扁平化的 prompt 根因
+
+- **reader skill** 有不确定性标注指令（"材料未直接讨论此点"），但 **reframing skill** 的规则 1「对话体→知识陈述体」倾向于产出断言式语言，系统性地去除了 reader 回答中的 hedge markers
+- **schema 无 evidence_basis 字段**：card_type 区分"这张卡是什么"（mechanism/concept），但不区分"我们对它有多确信"
+- **修正方向**：
+  1. reframing skill 增加规则：保留 reader 的 hedge level，源是 blog/HN 的卡必须在正文中标注来源类型
+  2. 可选：frontmatter 增加 `evidence_basis: experimental | theoretical | practitioner_report | community_discussion`
+
+### 9.4 Backlink 不对称的正当性判断
+
+- **21 comparison 卡是设计性 sink**（正确）——comparison 引用 subject，subject 不需要反引所有关于自己的 comparison
+- **~200 条常规不对称边**：多数是批量处理导致——A 和 B 由不同 agent 独立处理，governance 发现 A→B 关系后只更新了 A 而未更新 B
+- **修正方向**：governance 的 derive-related 步骤改为双向：写入 A→B 时同步写入 B→A（除非关系类型是 support/evidence，这类天然单向）
+
+### 9.5 源巴尔干化的三种情况
+
+| 源 | 自引率 | 判定 | 原因 |
+|---|--------|------|------|
+| wikibase-data-model | 100% | **Genuinely unique** | KB 无其他知识图谱/数据建模源，隔离是 scope gap 不是 link failure |
+| arxiv-knowledge-compounding | 81.6% | **False alarm** | 实际有 11 条来自其他源的入站链接，内部密度高是多卡提取的自然结果 |
+| arxiv-alce | 79.2% | **Bridge-link failure** | citation evaluation 概念与 ragchecker/ares 重叠但未建桥，governance 遗漏 |
+
+### 9.6 遗留 TODO（需后续 workflow 执行）
+
+- [ ] 对 27 个 webpage 源的 raw.html 执行结构化内容量化（tables/code/images 计数）
+- [ ] 为 5 个优先 repo 生成 material_bundle.txt 并运行 extract pipeline
+- [ ] reframing skill 增加 hedge preservation 规则
+- [ ] ALCE ↔ RAGChecker ↔ ARES 补建 bridge links
+- [ ] governance derive-related 改为双向写入
