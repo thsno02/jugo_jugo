@@ -15,7 +15,7 @@ summary: >-
   topic-isolation（主题隔离 / topic isolation / one topic one wiki / 话题隔离）是 LLM Wiki
   的设计原则：每个研究领域是独立 wiki，拥有独立的来源/文章/产出/Obsidian 配置，
   避免跨主题噪声，需要时可通过 multi-wiki peek 发现交叉
-related: []
+related: [llm-wiki-pattern, three-layer-architecture, wiki-storage-protocol, schema-as-configuration]
 ---
 
 LLM Wiki 的核心设计原则之一是**一个主题一个 wiki（one topic, one wiki）**[^src-1]。作为 LLM Wiki 模式的架构组成部分[^card-1]，主题隔离有效管理了个人规模下的内容复杂度。每个研究领域作为独立的 topic wiki 存在于 `~/wiki/topics/<name>/` 下，拥有自己独立的来源、文章、产出和 Obsidian vault 配置[^src-2]。
@@ -28,8 +28,14 @@ LLM Wiki 的核心设计原则之一是**一个主题一个 wiki（one topic, on
 
 Hub 层（`~/wiki/`）只是注册表——没有内容，只有 `wikis.json`、`_index.md` 和 `log.md`。所有内容都在 topic 子 wiki 中[^src-6]。
 
+主题隔离在三层架构中具体化为每个 topic wiki 独立拥有完整的 raw-wiki-schema 三层结构[^card-2]。WikiStorage 协议通过 `--wiki-root` 参数将存储后端绑定到单个 topic wiki 目录，从协议层面强制了隔离边界[^card-3]。每个 topic wiki 可独立演化自己的 schema 配置，使不同领域的约定互不干扰[^card-4]。
+
 ## Footnotes
 
+[^card-1]: [LLM Wiki 模式](llm-wiki-pattern.md) -- 主题隔离是 LLM Wiki 模式的架构组成部分
+[^card-2]: [三层架构](three-layer-architecture.md) -- 每个 topic wiki 独立拥有完整的 raw-wiki-schema 三层结构
+[^card-3]: [WikiStorage 可插拔存储协议](wiki-storage-protocol.md) -- WikiStorage 通过 --wiki-root 参数将存储绑定到单个 topic wiki，从协议层面强制隔离
+[^card-4]: [Schema 文件的配置角色](schema-as-configuration.md) -- 每个 topic wiki 可独立演化 schema 配置，使不同领域约定互不干扰
 [^src-1]: `data/raw/webpage/llm-wiki-net/text.txt` -- "One topic, one wiki" L142-144 -- "Each research area is isolated. No cross-topic noise. Queries stay focused. A multi-wiki peek finds overlap when relevant."
 [^src-2]: `data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L302-303 -- "Topic wikis (~/wiki/topics/<name>/) are isolated research areas. Each has its own sources, articles, outputs, and Obsidian vault config."
 [^src-3]: `data/raw/webpage/llm-wiki-net/text.txt` -- "How the wiki works" L303 -- "Isolation means researching quantum computing can't pollute your nutrition wiki."

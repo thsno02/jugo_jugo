@@ -36,3 +36,5 @@ related: [ingest-operation, memory-crud-operation-taxonomy, memory-extraction-up
 
 [^card-1]: [记忆提取-更新双阶段管线](memory-extraction-update-pipeline.md) -- Mem0 的增量式全自治管线架构：提取阶段抽取候选事实，更新阶段由 LLM 自主执行 CRUD 操作
 [^card-2]: [摄入操作](ingest-operation.md) -- Karpathy LLM Wiki 的批次人机协作摄入流程：阅读资料、讨论要点、写摘要、更新索引，人类参与程度可调
+[^src-1]: data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt -- "We introduce Mem0, a scalable memory-centric architecture that addresses this issue by dynamically extracting, consolidating, and retrieving salient information from ongoing conversations."
+[^src-2]: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt -- "You drop a new source into the raw collection and tell the LLM to process it. An example flow: the LLM reads the source, discusses key takeaways with you, writes a summary page in the wiki, updates the index, updates relevant entity and concept pages across the wiki, and appends an entry to the log. A single source might touch 10-15 wiki pages."

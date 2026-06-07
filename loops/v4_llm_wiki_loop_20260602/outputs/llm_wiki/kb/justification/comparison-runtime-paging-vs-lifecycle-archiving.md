@@ -1,5 +1,11 @@
 # Justification: comparison-runtime-paging-vs-lifecycle-archiving
 
+## creation | 2026-06-05T15:00:00+08:00
+
+生成方式：governance comparison pipeline
+note: comparison/distinction 卡由 governance workflow 生成
+
+
 ## 为什么这张卡值得独立存在
 
 virtual-context-management 和 archive-lifecycle 都将 OS 分层存储隐喻应用于 AI 系统，但它们在粒度（消息 vs 主题）、触发方式（自动 vs 意图）、保真度（有损摘要 vs 无损保存）三个维度上的差异构成了一个独立的原子洞察：同一 OS 洞察在不同系统层面必然产生不同机制，因为运行时约束（token 压力、实时性）与生命周期约束（长期价值评估、完整性需求）根本不同。

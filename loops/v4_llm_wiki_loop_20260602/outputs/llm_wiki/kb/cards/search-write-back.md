@@ -15,10 +15,7 @@ summary: >-
   search-write-back（搜索回写 / search write-back / 搜索结果回写）是知识复利的第三微观机制：
   当 wiki 不足以回答查询时触发外部搜索，搜索结果不蒸发而是由 wiki 专家合并回写至实体页面，
   使 wiki 从单向（仅接受 INGEST）变为双向呼吸，是 Qing Claw 区别于所有其他 LLM Wiki 实现的关键能力
-related: [invest-harvest-cycle, knowledge-compounding, output-compounding-loop, wiki-write-back-mechanism]
-  - knowledge-compounding
-  - ingest-operation
-  - query-and-answer-filing
+related: [ingest-operation, invest-harvest-cycle, knowledge-compounding, output-compounding-loop, query-and-answer-filing, wiki-write-back-mechanism]
 ---
 
 搜索回写（Search Write-Back）是 Wen & Ku (2026) 识别的知识复利第三微观机制，也是**区分 Qing Claw 与所有其他 LLM Wiki 实现的关键能力**[^src-1]。

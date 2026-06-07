@@ -13,9 +13,7 @@ canonical_concept: longmemeval-context-compression
 aliases: [LongMemEval上下文压缩, LongMemEval accuracy improvement, 115k-to-1.6k token compression]
 summary: >-
   longmemeval-context-compression（LongMemEval上下文压缩, 115k-to-1.6k compression）Zep 在 LongMemEval 基准上将平均上下文从 115k 压缩至 1.6k tokens，同时提升准确率最高 18.5%、降低延迟 90%，但在 single-session-assistant 类问题上表现下降
-related: [memory-augmentation-overhead, memory-compression-token-ratio, tldr-context-optimization]
-  - dmr-benchmark-inadequacy
-  - search-rerank-construct-pipeline
+related: [dmr-benchmark-inadequacy, memory-augmentation-overhead, memory-compression-token-ratio, search-rerank-construct-pipeline, tldr-context-optimization]
 ---
 
 在 LongMemEval_s 基准测试（平均约 115,000 tokens 的对话上下文）上，Zep 展示了显著的上下文压缩效果和性能提升 [^src-1]：

@@ -13,9 +13,7 @@ canonical_concept: rag-retrieval-generation-dual-condition
 aliases: [检索条件与生成条件, retrieval condition and generation condition, RAG双条件攻击框架]
 summary: >-
   rag-retrieval-generation-dual-condition（检索条件与生成条件 / retrieval and generation conditions）有效的 RAG 知识腐蚀攻击必须同时满足两个必要条件：检索条件（恶意文本被检索到）和生成条件（恶意文本作为上下文时 LLM 生成目标答案），现有基线方法只能满足其中一个条件因而效果不佳。
-related: []
-  - rag-knowledge-database-attack-surface
-  - poisonedrag-text-decomposition
+related: [poisonedrag-text-decomposition, rag-knowledge-database-attack-surface]
 ---
 
 PoisonedRAG 论文的核心理论贡献是推导出有效 RAG 知识腐蚀攻击的两个**必要条件** [^src-1]：

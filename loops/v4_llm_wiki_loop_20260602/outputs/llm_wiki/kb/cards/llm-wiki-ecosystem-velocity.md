@@ -15,10 +15,7 @@ summary: >-
   llm-wiki-ecosystem-velocity（生态形成速度 / ecosystem velocity / 模式传播速度）
   指 Karpathy 于 2026 年 4 月提出 LLM Wiki 后，一周内即出现开源实现、YouTube 讲解、
   大量博客文章，随后出现 aillm.wiki 等商业目录站，体现模式的极快生态形成
-related: [llm-wiki-mainstream-prerequisites]
-  - pattern-naming-resonance
-  - llm-wiki-pattern
-  - llm-wiki-setup-friction
+related: [llm-wiki-mainstream-prerequisites, llm-wiki-pattern, llm-wiki-setup-friction, pattern-naming-resonance]
 ---
 
 Karpathy 于 2026 年 4 月提出 LLM Wiki 模式后，生态系统的形成速度极快：**不到一周内已出现开源实现、YouTube 讲解视频和大量博客文章**[^src-1]。该来源将这一现象描述为"the idea caught on so fast"。

@@ -15,9 +15,7 @@ summary: >-
   cross-tool-entity-resolution（跨工具实体解析 / cross-tool semantic resolution / 跨工具语义解析）
   是企业级知识链接从文件内双向链接升级为跨工具语义实体识别的机制；知识图谱需理解
   "payments service"在设计文档、GitHub 仓库和 Slack 频道中是同一实体
-related: [data-catalog-as-enterprise-wiki, entity-resolution-hybrid-search]
-  - llm-wiki-pattern
-  - ingest-operation
+related: [data-catalog-as-enterprise-wiki, entity-resolution-hybrid-search, ingest-operation, llm-wiki-pattern]
 ---
 
 个人 LLM Wiki 的链接依赖 Obsidian 的双向链接——在 vault 内部的文件之间建立 backlink，当 agent 编译新 wiki 页面时创建指向所有相关概念的反向链接，图谱逐渐变厚[^src-1]。

@@ -13,9 +13,7 @@ canonical_concept: ragas-reference-free-rag-evaluation
 aliases: [RAGAS, Retrieval Augmented Generation Assessment, 无参考RAG评估, reference-free RAG evaluation]
 summary: >-
   ragas-reference-free-rag-evaluation（RAGAS / Retrieval Augmented Generation Assessment / 无参考RAG评估）RAGAS 是一个无需人工标注黄金答案即可评估 RAG 管道的自动化框架，通过消除对 ground truth 的依赖来加速 RAG 架构的评估迭代周期。
-related: [ares-rag-evaluation-framework, lexical-vs-semantic-eval-gap, rag-evaluation-tri-dimension, ragchecker-three-tier-metrics]
-  - rag-evaluation-tri-dimension
-  - citation-quality-tri-dimension
+related: [ares-rag-evaluation-framework, citation-quality-tri-dimension, lexical-vs-semantic-eval-gap, rag-evaluation-tri-dimension, ragchecker-three-tier-metrics]
 ---
 
 RAGAS（Retrieval Augmented Generation Assessment）是一个专门用于自动化评估 RAG 管道的框架，其核心设计原则是**无参考评估（reference-free evaluation）**——即评估过程无需依赖人工标注的 ground truth 答案 [^src-1]。

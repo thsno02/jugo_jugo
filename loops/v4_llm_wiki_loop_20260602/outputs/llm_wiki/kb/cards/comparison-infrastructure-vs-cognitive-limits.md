@@ -17,8 +17,6 @@ summary: >-
   认知复杂度限制（人+agent 的联合管理能力上限）则是根本性的——前者导向「构建更好工具」，
   后者导向「主动管控复杂度」
 related: [complexity-collapse-threshold, wiki-enterprise-failure-modes]
-  - wiki-enterprise-failure-modes
-  - complexity-collapse-threshold
 ---
 
 企业 LLM Wiki 扩展失败可以从两个不同维度诊断，这两种诊断导向截然不同的应对策略。
@@ -33,3 +31,5 @@ related: [complexity-collapse-threshold, wiki-enterprise-failure-modes]
 
 [^card-1]: [Wiki 企业级三大失效模式](wiki-enterprise-failure-modes.md) -- 该卡从技术基础设施维度列出企业 wiki 的三个具体失效模式，代表「可通过更好架构解决」的诊断方向
 [^card-2]: [复杂度崩溃阈值](complexity-collapse-threshold.md) -- 该卡从认知复杂度维度识别系统崩溃的临界点，代表「复杂度管理是根本问题」的诊断方向
+[^src-1]: data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt -- "Three core limitations constrain the approach at enterprise scale. First, scale: the index must fit in context, capping practical knowledge at 50,000-100,000 tokens. Second, access control: markdown folders have no native role-based permissions ... Third, concurrency: multiple simultaneous users or agents create write conflicts without transactional database support."
+[^src-2]: data/raw/hacker_news/hacker-news-original-thread/text.txt -- (kaashif) "If a human can understand 10 units of complexity and their LLM can do 20, then they might just build a system that's 30 complex and not understand the failure modes until it's too late."

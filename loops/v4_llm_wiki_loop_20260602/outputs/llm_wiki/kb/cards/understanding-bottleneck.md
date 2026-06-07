@@ -14,10 +14,7 @@ aliases: [理解瓶颈, understanding bottleneck, 理解不可外包, cannot out
 summary: >-
   understanding-bottleneck（理解瓶颈 / understanding bottleneck / 理解不可外包）是 Karpathy
   在 Sequoia 访谈中提出的认知论点：即使 LLM 可以外包思维，人类无法外包理解；wiki 式投射帮助信息进入人类心智模型
-related: [cognitive-deskilling-risk, human-llm-role-division, writing-as-thinking]
-  - writing-as-thinking
-  - llm-wiki-pattern
-  - cognitive-deskilling-risk
+related: [cognitive-deskilling-risk, human-llm-role-division, llm-wiki-pattern, writing-as-thinking]
 ---
 
 Karpathy 在 Sequoia 访谈中提出了 LLM Wiki 模式成立的**认知层面理由**：即使 LLM 可以代替人类执行思维任务（outsource thinking），人类**无法外包理解（understanding）**[^src-1]。Wiki 式的知识投射（wiki-style projections）帮助信息进入人类自身的心智模型，而非仅仅存在于外部系统中。

@@ -2,6 +2,11 @@
 card_id: comparison-compression-vs-transformation-granularity
 ---
 
+## creation | 2026-06-05T15:00:00+08:00
+
+生成方式：governance comparison pipeline
+note: comparison/distinction 卡由 governance workflow 生成
+
 ## 为什么需要这张卡
 
 LongMemEval（memory-value-granularity-tradeoff）发现事实级压缩损害 QA 性能，LoCoMo（observation-based-memory-representation）发现观察式提取提升 QA 性能。两者表面矛盾，但根源在于"细化"有两条路径——有损压缩与澄清性转化。这一区分本身是一个值得独立捕捉的原子概念，对记忆系统设计有直接指导意义。

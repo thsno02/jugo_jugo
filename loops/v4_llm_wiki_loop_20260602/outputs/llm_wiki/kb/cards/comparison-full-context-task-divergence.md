@@ -30,3 +30,5 @@ related: [attention-dilution-at-scale, full-context-accuracy-ceiling, long-conte
 
 [^card-full-context-accuracy-ceiling]: [全上下文方法的准确率天花板效应](full-context-accuracy-ceiling.md) -- 量化了全上下文在 QA 任务中的准确率优势（Judge=72.90%）及其延迟代价（p95=17.1s）
 [^card-long-context-comprehension-illusion]: [长上下文模型的理解假象](long-context-comprehension-illusion.md) -- 展示了长上下文模型在事件摘要任务中反而低于短上下文模型的反直觉发现（F1: 39.9 vs 45.9）
+[^src-1]: data/raw/arxiv/arxiv-mem0/agent_source_bundle.txt -- "Empirical results demonstrate that our methods consistently outperform all existing memory systems across four question categories: single-hop, temporal, multi-hop, and open-domain."（Mem0 在 LOCOMO QA 上全上下文 Judge=72.90%，为所有方法最高）
+[^src-2]: data/raw/arxiv/arxiv-locomo/agent_source_bundle.txt -- "the long-context model does not surpass the base model ... gpt-3.5-turbo-16k exhibits a decline in both precision (by 3.0%) and recall (by 8.7%) compared to gpt-3.5-turbo which has a 4K context window. This suggests that long-context models may not be proficient at utilizing their context appropriately"

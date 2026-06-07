@@ -18,9 +18,9 @@ related: [audit-stress-test, chaos-monkey-agent-stress-testing]
 
 「压力测试」在两篇独立的 agent 研究中被赋予了截然不同的含义，揭示了该概念在 agent 系统中的两种正交范式。
 
-**内省式减法（AUDIT）**[^card-1]：伴侣记忆框架的 AUDIT 操作运行于慢周期（月度+），临时悬挂最高引力的知识条目，然后运行历史查询观察性能是否退化。压力来自内部移除——如果系统在缺少某条目时性能不变甚至改善，说明该条目是死权重或主动干扰。其理论基础是库恩范式理论：高引力条目可能因自我强化而僵化，需要经验性悬挂来打破。
+**内省式减法（AUDIT）**[^card-1][^src-1]：伴侣记忆框架的 AUDIT 操作运行于慢周期（月度+），临时悬挂最高引力的知识条目，然后运行历史查询观察性能是否退化。压力来自内部移除——如果系统在缺少某条目时性能不变甚至改善，说明该条目是死权重或主动干扰。其理论基础是库恩范式理论：高引力条目可能因自我强化而僵化，需要经验性悬挂来打破。
 
-**环境扰动注入（Chaos Monkey）**[^card-2]：eTAMP 论文借鉴 Netflix 混沌工程原理，在 agent 执行任务期间注入概率性扰动（点击丢弃、滚动反转、输入 Caesar 密码变换）。压力来自外部噪声——测试 agent 在环境不可靠时能否仍然完成任务并保持安全特性。
+**环境扰动注入（Chaos Monkey）**[^card-2][^src-2]：eTAMP 论文借鉴 Netflix 混沌工程原理，在 agent 执行任务期间注入概率性扰动（点击丢弃、滚动反转、输入 Caesar 密码变换）。压力来自外部噪声——测试 agent 在环境不可靠时能否仍然完成任务并保持安全特性。
 
 **核心区分维度**：
 
@@ -39,3 +39,5 @@ related: [audit-stress-test, chaos-monkey-agent-stress-testing]
 
 [^card-1]: [AUDIT 结构性压力测试](audit-stress-test.md) -- 内省式减法范式的代表：通过悬挂高引力条目测试知识功能必要性
 [^card-2]: [Chaos Monkey 式 Agent 压力测试](chaos-monkey-agent-stress-testing.md) -- 环境扰动范式的代表：通过注入操作噪声测试 agent 鲁棒性
+[^src-1]: arxiv-memory-as-metabolism (Miteski 2026, S5.8/Abstract) -- "We attack this with a periodic AUDIT operation that stress-tests the highest-gravity entries -- temporarily suspends them, reruns queries that used to access them, and measures whether query performance actually degrades."
+[^src-2]: arxiv-etamp-memory-poisoning (Zou et al. 2026, S2.3) -- "Chaos Monkey applies probabilistic transformations to agent actions... Click Drop: Click actions are randomly converted to no-ops with probability p_click... Scroll Swap: Scroll directions are inverted... Type Transform: Typed text is deterministically transformed using character substitution (Caesar cipher)."

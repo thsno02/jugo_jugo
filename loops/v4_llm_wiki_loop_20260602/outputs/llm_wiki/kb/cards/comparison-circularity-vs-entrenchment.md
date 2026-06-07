@@ -34,3 +34,5 @@ related: [audit-stress-test, circularity-as-thesis, entrenchment-under-user-coup
 
 [^card-1]: [循环性作为论题](circularity-as-thesis.md) -- 本卡分析循环性的两面性，该卡从哲学层面论证循环性是稳定自我的特征
 [^card-2]: [用户耦合漂移下的固化](entrenchment-under-user-coupled-drift.md) -- 本卡分析循环性的两面性，该卡描述同一动态退化为范式维护系统的失败模式
+[^src-1]: data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt -- "Over time the dominant interpretation gets more protected, newer contradicting evidence gets more easily dismissed, and what started as a living knowledge base turns into a paradigm maintenance system --- coherence preserved within the existing structure until anomalies accumulate enough to force a shift. Normal science, not revolution."
+[^src-2]: data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt -- "we attack this with a periodic AUDIT operation that stress-tests the highest-gravity entries --- temporarily suspends them, reruns queries that used to access them, and measures whether query performance actually degrades. If the entry turns out to be dead weight, its gravity decays."

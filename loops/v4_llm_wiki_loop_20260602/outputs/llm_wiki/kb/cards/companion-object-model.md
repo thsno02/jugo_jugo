@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [arxiv-memory-as-metabolism]
 justification: ../justification/companion-object-model.md
 canonical_concept: companion-object-model
-aliases: [伴侣系统对象模型, companion object model, 伴侣实体模型, companion entity model, 系统模型]
+aliases: [伴侣系统对象模型, companion object model, 伴侣实体模型, companion entity model, 伴侣对象系统模型]
 summary: >-
   companion-object-model（伴侣系统对象模型 / companion entity model）伴侣记忆框架定义的五种核心实体及其生命周期状态：原始缓冲区条目（pending→consolidated/rejected/expired）、活跃 wiki 条目（active→decaying→archived，带 gravity-protected/quarantined 正交标志）、冷存储对象、审计记录、少数派分支；所有操作读写这些实体，合规测试依赖这些对象边界
 related: [companion-conformance-invariants, companion-knowledge-system, memory-lifecycle-metadata]

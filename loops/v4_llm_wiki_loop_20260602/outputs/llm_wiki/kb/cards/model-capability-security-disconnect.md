@@ -12,14 +12,11 @@ justification: ../justification/model-capability-security-disconnect.md
 canonical_concept: model-capability-security-disconnect
 aliases: [能力安全脱钩, capability-security gap, 更强模型不等于更安全]
 summary: >-
-  model-capability-security-disconnect（能力安全脱钩 / capability-security gap）更强大的 LLM 模型并不必然更安全：GPT-5.2 尽管任务成功率最高却对记忆投毒表现出显著脆弱性，其更高的环境感知能力同时关联着更高的任务成功率和更大的攻击面
-related: [graphrag-defense-gap, rag-poisoning-defense-insufficiency]
-  - frustration-exploitation-attack
-  - etamp-environment-memory-poisoning
-  - recall-vs-alignment-resistance
+  model-capability-security-disconnect（能力安全脱钩 / capability-security gap）更强大的 LLM 模型并不必然更安全：GPT-5.2 与 Qwen3.5-122B 并列任务成功率最高，但 GPT-5.2 对记忆投毒表现出显著脆弱性，其更高的环境感知能力同时关联着更高的任务成功率和更大的攻击面
+related: [etamp-environment-memory-poisoning, frustration-exploitation-attack, graphrag-defense-gap, rag-poisoning-defense-insufficiency, recall-vs-alignment-resistance]
 ---
 
-eTAMP 论文揭示了一个令人警醒的发现：更强大的模型并不必然更安全 [^src-1]。GPT-5.2 尽管具有最高的任务成功率（17.0%），却在 Authority Framing 攻击下展现出 22.3% 的攻击成功率，在 Frustration Exploitation + Chaos Monkey 条件下达到 23.4% [^src-2]。
+eTAMP 论文揭示了一个令人警醒的发现：更强大的模型并不必然更安全 [^src-1]。GPT-5.2 与 Qwen3.5-122B 尽管并列最高任务成功率（17.0%），却在 Authority Framing 攻击下展现出 22.3% 的攻击成功率，在 Frustration Exploitation + Chaos Monkey 条件下达到 23.4% [^src-2]。
 
 更深层的矛盾在于：GPT-5.2 在 Chaos Monkey 环境下对环境问题的感知率最高（7.4%），这一更高的感知能力同时关联着更高的混沌环境任务成功率（14.8%，唯一在混沌下提升的模型）和更大的攻击脆弱性 [^src-3]。论文推断：随着 agent 获得更多自主性来探索替代解决方案，它们在创造更高效用的同时也开辟了新的攻击面 [^src-4]。
 

@@ -13,9 +13,7 @@ canonical_concept: chaos-monkey-agent-stress-testing
 aliases: [Chaos Monkey for agents, agent压力测试, 混沌猴子agent测试, agent chaos engineering]
 summary: >-
   chaos-monkey-agent-stress-testing（Chaos Monkey for agents / agent压力测试）借鉴混沌工程原理，对 web agent 的操作施加概率性扰动（点击丢弃 p=0.4、滚动方向反转 p=1、输入文本 Caesar 密码变换 p=1）来模拟真实部署中的网络延迟、UI 故障等环境噪声，系统性地测试 agent 在压力下的鲁棒性和安全性
-related: [audit-stress-test]
-  - frustration-exploitation-attack
-  - etamp-environment-memory-poisoning
+related: [audit-stress-test, etamp-environment-memory-poisoning, frustration-exploitation-attack]
 ---
 
 eTAMP 论文借鉴 Netflix 混沌工程（Chaos Engineering）原理，提出将 Chaos Monkey 方法应用于 web agent 的鲁棒性测试 [^src-1]。该方法对 agent 在 Task B 执行期间的操作施加三种概率性扰动：**Click Drop**——点击操作以概率 p_click=0.4 被随机转换为空操作，模拟 UI 无响应或网络延迟导致的点击丢失；**Scroll Swap**——滚动方向以概率 p_scroll=1 被反转，模拟意外的页面行为；**Type Transform**——输入文本以概率 p_type=1 通过 Caesar 密码替换进行确定性变换，模拟键盘或输入框故障 [^src-2]。

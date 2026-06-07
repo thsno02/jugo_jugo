@@ -13,9 +13,7 @@ canonical_concept: rag-poisoning-defense-insufficiency
 aliases: [RAG防御不充分, RAG defense insufficiency, 知识腐蚀攻击防御失败]
 summary: >-
   rag-poisoning-defense-insufficiency（RAG防御不充分 / defense insufficiency against knowledge corruption）四种防御策略对 PoisonedRAG 均不充分：释义防御仍允许 79-93% ASR，困惑度检测因恶意文本质量正常而无法区分，去重过滤因 LLM 生成多样性而完全无效，知识扩展在 k=50 时仍有 41% ASR。
-related: [graphrag-defense-gap, model-capability-security-disconnect, rag-advanced-scheme-vulnerability]
-  - rag-knowledge-database-attack-surface
-  - rag-knowledge-corruption-attack
+related: [graphrag-defense-gap, model-capability-security-disconnect, rag-advanced-scheme-vulnerability, rag-knowledge-corruption-attack, rag-knowledge-database-attack-surface]
 ---
 
 PoisonedRAG 论文系统评估了四种防御策略，结果均不足以有效防御知识腐蚀攻击：

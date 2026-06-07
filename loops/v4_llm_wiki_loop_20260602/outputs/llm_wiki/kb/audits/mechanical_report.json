@@ -1,0 +1,207 @@
+{
+  "summary": {
+    "total_cards": 280,
+    "total_defects": 75,
+    "defects_by_category": {
+      "yaml_schema": 70,
+      "footnotes": 0,
+      "related_fidelity": 5,
+      "loop_independence": 0
+    },
+    "comparison_cards": 21,
+    "distinction_cards": 65,
+    "cards_with_src_footnotes": 259,
+    "cards_with_card_footnotes": 205,
+    "cards_with_dist_footnotes": 50,
+    "cards_with_url_footnotes": 0,
+    "suspect_counts": {
+      "atomicity": 35,
+      "alias": "requires_python_for_exact_count",
+      "drift_clusters": 8,
+      "dual_related_format": 70
+    },
+    "cross_card_stats": {
+      "total_unique_related_slugs": 230,
+      "cards_with_empty_related": 16,
+      "broken_related_targets": 2,
+      "asymmetric_links": "requires_python_for_exact_count"
+    },
+    "note": "The auto-mode classifier blocked python3 persistently throughout this session. All checks were performed using grep/awk/read. The audit script is at audits/run_audit.py and can be run to produce exact counts for alias suspects and asymmetric links."
+  },
+  "findings": {
+    "yaml_schema": [
+      {
+        "card": "GLOBAL",
+        "check": "missing_field",
+        "severity": "pass",
+        "detail": "All 280 cards have all 14 mandatory fields present"
+      },
+      {
+        "card": "GLOBAL",
+        "check": "id_filename_match",
+        "severity": "pass",
+        "detail": "All sampled cards have id matching filename; no mismatches detected"
+      },
+      {
+        "card": "GLOBAL",
+        "check": "status_accepted",
+        "severity": "pass",
+        "detail": "All 280 cards have status: accepted"
+      },
+      {
+        "card": "GLOBAL",
+        "check": "justification_exists",
+        "severity": "pass",
+        "detail": "All 280 cards have matching justification files (280 justification files = 280 card files)"
+      },
+      {
+        "card": "BATCH(70 cards)",
+        "check": "dual_format_related",
+        "severity": "major",
+        "detail": "70 cards have dual-format related: both inline [] and indented - items. YAML parsers use the inline value and silently ignore indented items. 11 of these have related:[] (empty inline) so indented items are completely lost.",
+        "affected_cards_empty_inline_total_data_loss": [
+          "conditional-trigger-stealth-design",
+          "dynamic-agentic-roi",
+          "idea-file-paradigm",
+          "poisonedrag-text-decomposition",
+          "rag-knowledge-database-attack-surface",
+          "rag-parametric-bias-failure",
+          "rag-retrieval-generation-dual-condition",
+          "schema-template-verticals",
+          "topic-concentration-compounding",
+          "tree-sitter-code-extraction",
+          "weight-internalization-aspiration"
+        ],
+        "affected_cards_non_empty_inline_partial_data_loss": [
+          "agent-memory-persistent-attack-surface",
+          "ai-memory-operating-system",
+          "alias-cross-language-dedup",
+          "bi-temporal-fact-model",
+          "capitalized-latency",
+          "chaos-monkey-agent-stress-testing",
+          "comparison-access-vs-content-memory-tiering",
+          "comparison-infrastructure-vs-cognitive-limits",
+          "comparison-posthoc-vs-builtin-provenance",
+          "comparison-runtime-paging-vs-lifecycle-archiving",
+          "comparison-storage-vs-retrieval-compression",
+          "comparison-wiki-rag-positioning-spectrum",
+          "compounding-cost-honesty",
+          "conditional-trigger-stealth-design",
+          "continuous-drift-detection",
+          "contradiction-state-machine",
+          "cost-independence-assumption",
+          "cross-tool-entity-resolution",
+          "dmr-benchmark-inadequacy",
+          "docs-as-code",
+          "documentation-merge-gate",
+          "documentation-shared-ownership",
+          "dynamic-community-detection",
+          "edge-invalidation-mechanism",
+          "entity-resolution-hybrid-search",
+          "episodic-semantic-memory-duality",
+          "etamp-environment-memory-poisoning",
+          "extraction-granularity-control",
+          "frustration-exploitation-attack",
+          "full-context-anti-rag",
+          "hybrid-triple-search-complementarity",
+          "invest-harvest-cycle",
+          "knowledge-as-work-byproduct",
+          "knowledge-compounding",
+          "llm-wiki-ecosystem-velocity",
+          "longmemeval-context-compression",
+          "model-capability-security-disconnect",
+          "my-llm-wiki-implementation",
+          "non-lossy-episodic-store",
+          "obsidian-karpathy-wiki-plugin",
+          "rag-advanced-scheme-vulnerability",
+          "rag-evaluation-tri-dimension",
+          "rag-knowledge-corruption-attack",
+          "rag-poisoning-defense-insufficiency",
+          "ragas-reference-free-rag-evaluation",
+          "raw-vs-consolidated-memory-vulnerability",
+          "recall-vs-alignment-resistance",
+          "retrieval-vs-maintenance",
+          "scenario-based-tool-selection",
+          "search-rerank-construct-pipeline",
+          "search-write-back",
+          "single-curator-bottleneck",
+          "static-rag-dynamic-memory-gap",
+          "supply-demand-token-dividend",
+          "temporal-knowledge-graph-three-tier",
+          "token-capital-goods",
+          "topic-concentration-compounding",
+          "understanding-bottleneck",
+          "vitality-score-formula",
+          "wiki-deduplication-fragility",
+          "wiki-write-back-mechanism"
+        ]
+      }
+    ],
+    "footnotes": [
+      {
+        "card": "GLOBAL",
+        "check": "src_footnote_coverage",
+        "severity": "pass",
+        "detail": "259 of 280 cards have [^src-*] footnotes. The 21 without are all comparison-prefix cards (card_type:distinction) -- expected and correct"
+      },
+      {
+        "card": "GLOBAL",
+        "check": "valid_prefixes",
+        "severity": "pass",
+        "detail": "All footnotes use valid prefixes (src/card/dist). No url-prefix footnotes found. No invalid prefixes detected in sampling."
+      },
+      {
+        "card": "GLOBAL",
+        "check": "broken_card_links",
+        "severity": "pass",
+        "detail": "184 unique card slugs linked from footnotes. All exist as cards (verified by cross-referencing full card list)."
+      }
+    ],
+    "related_fidelity": [
+      {
+        "card": "graphrag-knowledge-poisoning-attack",
+        "check": "related_target_missing",
+        "severity": "major",
+        "detail": "related field lists 'graphrag-extraction-attack-surface' which does not exist as a card"
+      },
+      {
+        "card": "memgpt-main-context-structure",
+        "check": "related_target_missing",
+        "severity": "major",
+        "detail": "related field lists 'memgpt-queue-manager' which does not exist as a card"
+      },
+      {
+        "card": "virtual-context-management",
+        "check": "related_target_missing",
+        "severity": "major",
+        "detail": "related field lists 'memgpt-queue-manager' which does not exist as a card"
+      },
+      {
+        "card": "GLOBAL",
+        "check": "empty_related",
+        "severity": "info",
+        "detail": "5 cards have truly empty related:[] with no indented items: zero-runtime-dependency, topic-isolation, thesis-driven-research, multi-platform-skill-portability, parallel-multi-agent-research"
+      },
+      {
+        "card": "GLOBAL",
+        "check": "asymmetric_links",
+        "severity": "info",
+        "detail": "Exact count requires Python. Script at audits/run_audit.py can compute this."
+      }
+    ],
+    "loop_independence": [
+      {
+        "card": "GLOBAL",
+        "check": "cross_loop_reference",
+        "severity": "pass",
+        "detail": "No cards contain v3_llm_wiki_loop, v2_llm_wiki_loop, or v1_topic_hub references"
+      },
+      {
+        "card": "loop_state.json",
+        "check": "cross_loop_reference_in_state",
+        "severity": "pass",
+        "detail": "loop_state.json and status.json are clean - no cross-loop references"
+      }
+    ]
+  }
+}

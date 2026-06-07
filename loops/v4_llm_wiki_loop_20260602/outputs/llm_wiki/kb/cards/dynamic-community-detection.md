@@ -13,9 +13,7 @@ canonical_concept: dynamic-community-detection
 aliases: [动态社区检测, dynamic community extension, 标签传播社区更新]
 summary: >-
   dynamic-community-detection（动态社区检测, dynamic community extension）Graphiti 选择标签传播算法（而非 Leiden）进行社区检测，因其支持简单的动态扩展——新实体加入时仅需单步邻居投票即可分配社区，显著降低延迟和 LLM 推理成本
-related: [graph-modularity-for-summarization, graphrag-community-hierarchy, temporal-knowledge-graph-three-tier]
-  - temporal-knowledge-graph-three-tier
-  - episodic-semantic-memory-duality
+related: [episodic-semantic-memory-duality, graph-modularity-for-summarization, graphrag-community-hierarchy, temporal-knowledge-graph-three-tier]
 ---
 
 Graphiti 在构建社区子图时，选择标签传播算法（label propagation）而非 GraphRAG 使用的 Leiden 算法，关键考量是标签传播的动态扩展性 [^src-1]。

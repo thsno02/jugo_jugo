@@ -15,9 +15,7 @@ summary: >-
   cost-independence-assumption（成本独立性假设 / A1假设 / 时间无关假设）指 Liu et al. (2026)
   Agentic ROI 公式中隐含的三个未经检验的假设（成本/质量/时间独立性），
   在传统 RAG 范式下大体成立但引入持久化知识层后全部失效
-related: [compounding-cost-honesty, knowledge-compounding]
-  - knowledge-compounding
-  - dynamic-agentic-roi
+related: [compounding-cost-honesty, dynamic-agentic-roi, knowledge-compounding]
 ---
 
 Wen & Ku (2026) 指出 Liu et al. (2026) 的 Agentic ROI 公式 ROIi = (Delta-Qi x Delta-Ti) / Ci 中包含三个**隐含的未经检验的假设**[^src-1]：

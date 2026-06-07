@@ -15,11 +15,7 @@ summary: >-
   wiki-write-back-mechanism（Wiki回写 / write-back / llm-wiki note命令）是使 LLM Wiki
   从只读编译产物变为持续增长的复利制品的关键机制：通过 llm-wiki note "<insight>" 命令，
   LLM 会话中产生的洞察可反向写入知识图谱，实现双向流动
-related: [output-compounding-loop, search-write-back, wiki-compounding-artifact]
-  - wiki-compounding-artifact
-  - my-llm-wiki-implementation
-  - query-and-answer-filing
-  - output-compounding-loop
+related: [my-llm-wiki-implementation, output-compounding-loop, query-and-answer-filing, search-write-back, wiki-compounding-artifact]
 ---
 
 Wiki 回写机制是使知识图谱从单向编译产物升级为双向复利系统的关键能力。在 my-llm-wiki 中，这一机制通过 `llm-wiki note "<insight>"` CLI 命令实现：用户在 Claude Code 会话中产生的洞察可通过该命令写回知识图谱，使图谱随时间持续增长而非停留在初始编译状态[^src-1]。

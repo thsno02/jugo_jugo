@@ -15,11 +15,7 @@ summary: >-
   scenario-based-tool-selection（场景工具选择 / scenario-based selection / 知识管理方案比较）
   是三段式处方：个人第二大脑/研究/学习用 LLM wiki，运营自动化/趋势追踪用结构化知识库（关系型），
   企业级百万文档用 RAG 或混合方案
-related: [rag-wiki-complementarity]
-  - llm-wiki-pattern
-  - llm-wiki-scale-boundary
-  - use-case-domains
-  - llm-wiki-rag-depth-distinction
+related: [llm-wiki-pattern, llm-wiki-rag-depth-distinction, llm-wiki-scale-boundary, rag-wiki-complementarity, use-case-domains]
 ---
 
 Robin Cartier 材料提出了一个三段式的**知识管理工具选择框架**，根据使用场景推荐不同方案[^src-1]：

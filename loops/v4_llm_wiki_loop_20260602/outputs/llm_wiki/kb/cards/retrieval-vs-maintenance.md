@@ -15,10 +15,7 @@ summary: >-
   retrieval-vs-maintenance（检索与维护 / retrieval vs maintenance / 搜索层与维护循环）
   是企业知识系统的关键区分：大多数企业工具只是检索工具，而 LLM Wiki 的核心贡献是维护循环；
   在陈旧内容上做更好的检索只是更快地返回错误答案
-related: [ask-first-retrieve-loop, llm-as-maintenance-engine, maintenance-cost-zero, retrieval-improvement-faithfulness-noise-tradeoff]
-  - maintenance-cost-zero
-  - lint-operation
-  - llm-wiki-pattern
+related: [ask-first-retrieve-loop, lint-operation, llm-as-maintenance-engine, llm-wiki-pattern, maintenance-cost-zero, retrieval-improvement-faithfulness-noise-tradeoff]
 ---
 
 大多数企业知识工具（Glean、Notion AI、Confluence 搜索）本质上是**检索工具**——它们让已有内容更容易被找到，但不解决内容本身是否仍然正确的问题[^src-1]。

@@ -13,9 +13,7 @@ canonical_concept: rag-knowledge-database-attack-surface
 aliases: [RAG知识库攻击面, knowledge database attack surface, RAG外部知识攻击向量]
 summary: >-
   rag-knowledge-database-attack-surface（RAG知识库攻击面 / knowledge database attack surface）RAG 系统的知识库引入了一个新的、实用的攻击面：攻击者可通过向知识库注入少量恶意文本来操纵 LLM 生成攻击者指定的错误答案。
-related: []
-  - rag-retrieval-generation-dual-condition
-  - rag-knowledge-corruption-attack
+related: [rag-knowledge-corruption-attack, rag-retrieval-generation-dual-condition]
 ---
 
 RAG 系统由知识库、检索器和 LLM 三个组件构成。其中知识库从 Wikipedia、新闻文章、金融文档等多种来源收集文本 [^src-1]。PoisonedRAG 论文发现，这些知识库引入了一个**新的、实用的攻击面**（new and practical attack surface）：攻击者可以通过向知识库注入恶意文本来诱使 LLM 生成攻击者选择的目标答案 [^src-2]。

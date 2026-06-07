@@ -13,9 +13,7 @@ canonical_concept: edge-invalidation-mechanism
 aliases: [边失效机制, edge invalidation, 时序边失效, temporal edge invalidation]
 summary: >-
   edge-invalidation-mechanism（边失效机制, edge invalidation）Graphiti 通过 LLM 比较新边与已有语义相关边来检测矛盾，当发现时间重叠的矛盾时，将旧边的 t_invalid 设为新边的 t_valid，始终优先采纳新信息
-related: [bi-temporal-fact-model, contradiction-as-asset, minority-pressure-promotion, temporal-event-graph-grounding]
-  - bi-temporal-fact-model
-  - temporal-knowledge-graph-three-tier
+related: [bi-temporal-fact-model, contradiction-as-asset, minority-pressure-promotion, temporal-event-graph-grounding, temporal-knowledge-graph-three-tier]
 ---
 
 Graphiti 的一项关键区分特性是其通过时间提取与边失效过程管理动态信息更新的能力 [^src-1]。

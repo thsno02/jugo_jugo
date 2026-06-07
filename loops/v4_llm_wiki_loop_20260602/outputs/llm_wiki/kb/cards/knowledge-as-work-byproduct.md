@@ -15,10 +15,7 @@ summary: >-
   knowledge-as-work-byproduct（知识作为工作副产品 / knowledge as byproduct of work / 零额外工作知识积累）
   是企业 LLM Wiki 的设计原则：知识图谱应作为 PR 合并、Slack 讨论、决策落地等正常工作的
   副产品自动增长，而非作为额外的文档工作
-related: [data-catalog-as-enterprise-wiki, documentation-merge-gate, single-curator-bottleneck]
-  - maintenance-cost-zero
-  - ingest-operation
-  - single-curator-bottleneck
+related: [data-catalog-as-enterprise-wiki, documentation-merge-gate, ingest-operation, maintenance-cost-zero, single-curator-bottleneck]
 ---
 
 企业 LLM Wiki 区别于此前所有失败的文档制度的关键属性是：**团队不需要改变工作方式**[^src-1]。

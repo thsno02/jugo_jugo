@@ -13,9 +13,7 @@ canonical_concept: poisonedrag-text-decomposition
 aliases: [S+I分解, S⊕I decomposition, PoisonedRAG文本拼接策略]
 summary: >-
   poisonedrag-text-decomposition（S+I分解 / S⊕I decomposition）PoisonedRAG 将每条恶意文本分解为 P=S⊕I 两个子文本，I 由 LLM 生成以满足生成条件（约 2 次查询），S 在黑盒下直接用目标问题、在白盒下用对抗文本方法优化以满足检索条件，从而同时实现双条件。
-related: []
-  - rag-retrieval-generation-dual-condition
-  - rag-knowledge-corruption-attack
+related: [rag-knowledge-corruption-attack, rag-retrieval-generation-dual-condition]
 ---
 
 PoisonedRAG 的核心设计策略是将恶意文本 P 分解为两个不相交的子文本 S 和 I，即 P = S ⊕ I（⊕ 为文本拼接操作），分别负责满足检索条件和生成条件 [^src-1]。

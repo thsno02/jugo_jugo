@@ -13,9 +13,7 @@ canonical_concept: documentation-shared-ownership
 aliases: [文档共同所有权, 写作者与开发者共有, shared doc ownership]
 summary: >-
   documentation-shared-ownership（文档共同所有权 / 写作者与开发者共有 / shared doc ownership）指 docs-as-code 理念所促成的文化转变：技术写作者与开发者双方均对文档拥有所有权感，并协同提升文档质量
-related: [schema-as-configuration, single-curator-bottleneck]
-  - docs-as-code
-  - documentation-merge-gate
+related: [docs-as-code, documentation-merge-gate, schema-as-configuration, single-curator-bottleneck]
 ---
 
 Docs as Code 理念所带来的核心文化转变是**文档共同所有权**：技术写作者（writer）与开发者（developer）双方均对文档产生所有权感，并共同努力将文档做到最好[^src-1]。

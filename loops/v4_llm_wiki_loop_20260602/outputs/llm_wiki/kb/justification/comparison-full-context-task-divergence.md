@@ -1,5 +1,11 @@
 # Justification: comparison-full-context-task-divergence
 
+## creation | 2026-06-05T15:00:00+08:00
+
+生成方式：governance comparison pipeline
+note: comparison/distinction 卡由 governance workflow 生成
+
+
 ## 为什么需要这张卡
 
 full-context-accuracy-ceiling 和 long-context-comprehension-illusion 两张卡分别记录了全上下文方法在不同任务上的表现，但单独阅读任一张卡都可能得出片面结论：前者暗示全上下文是准确率金标准，后者暗示长上下文必然退化。两者的分歧本身构成了一个独立的原子洞察——全上下文方法的效果取决于任务类型，而非简单的"越多越好"或"越多越差"。

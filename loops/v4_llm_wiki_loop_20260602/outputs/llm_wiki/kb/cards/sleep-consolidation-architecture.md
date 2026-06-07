@@ -13,7 +13,7 @@ canonical_concept: sleep-consolidation-architecture
 aliases: [睡眠整合架构, sleep consolidation architecture, 原始缓冲区+批量整合, raw buffer consolidation, dream cycle, 梦周期]
 summary: >-
   sleep-consolidation-architecture（睡眠整合架构 / raw buffer consolidation / dream cycle）将摄取与整合分离：原始缓冲区接受浅层 TRIAGE 过滤的条目，活跃 wiki 仅在定期 CONSOLIDATE 周期中修改；核心理由是流式一致性判断是自密封的——单条矛盾条目会被立即隔离，使主导解释永远不更新
-related: [companion-knowledge-system, contextualize-depth-fitted-compression, locomo-reflect-respond-architecture, minority-pressure-promotion, sleep-time-memory-consolidation, triage-shallow-filter]
+related: [companion-knowledge-system, conditional-trigger-stealth-design, contextualize-depth-fitted-compression, locomo-reflect-respond-architecture, minority-pressure-promotion, sleep-time-memory-consolidation, triage-shallow-filter]
 ---
 
 睡眠整合架构是伴侣知识系统的核心结构设计，将摄取（ingestion）与整合（integration）分离为两个不同的时间路径[^src-1]。
@@ -30,13 +30,14 @@ related: [companion-knowledge-system, contextualize-depth-fitted-compression, lo
 3. 分类和路由——使用梯形隶属函数的模糊一致性梯度
 4. 少数派压力提升——互相支持的矛盾条目作为候选更新而非隔离
 
-**实现约束**：两调度器架构是合规级别的承诺——热路径调度器处理 TRIAGE 和检索读取（在对话延迟预算内），睡眠周期调度器处理 DECAY、CONSOLIDATE、AUDIT 作为后台任务[^src-7]。LightMem 独立提出了类似的离线巩固机制（sleep-time update），但侧重工程效率（token 降低 106x）而非治理语义[^card-1]。CONTEXTUALIZE 作为同一框架中的第五个操作，在梦周期内执行外部来源的深度适配压缩[^card-2]。LoCoMo 的反思-回应架构则以会话边界为单位进行递增式记忆整合，与本卡的批量整合构成不同粒度的离线处理策略[^card-3]。
+**实现约束**：两调度器架构是合规级别的承诺——热路径调度器处理 TRIAGE 和检索读取（在对话延迟预算内），睡眠周期调度器处理 DECAY、CONSOLIDATE、AUDIT 作为后台任务[^src-7]。LightMem 独立提出了类似的离线巩固机制（sleep-time update），但侧重工程效率（token 降低 106x）而非治理语义[^card-1]。CONTEXTUALIZE 作为同一框架中的第五个操作，在梦周期内执行外部来源的深度适配压缩[^card-2]。LoCoMo 的反思-回应架构则以会话边界为单位进行递增式记忆整合，与本卡的批量整合构成不同粒度的离线处理策略[^card-3]。从安全角度看，批量 CONSOLIDATE 的离线处理特性为条件触发器攻击创造了额外风险：TRIAGE 浅层过滤可能无法识别包含条件触发器的恶意载荷，而离线整合阶段缺乏实时用户监督，使休眠触发器可在无察觉的情况下被激活[^card-4]。
 
 ## Footnotes
 
 [^card-1]: [睡眠期离线记忆巩固机制](sleep-time-memory-consolidation.md) -- 两个不同来源独立收敛于"离线批量整合"架构：伴侣记忆框架出于反自密封的治理理由，LightMem 出于推理效率的工程理由
 [^card-2]: [CONTEXTUALIZE 深度适配压缩](contextualize-depth-fitted-compression.md) -- 本卡描述摄取-整合分离的整体架构，该卡描述梦周期内执行的第五个操作——将外部来源压缩到用户当前工作上下文深度
 [^card-3]: [LoCoMo 反思-回应双层记忆代理架构](locomo-reflect-respond-architecture.md) -- 本卡的批量 CONSOLIDATE 在定期梦周期中整合缓冲区，该卡的反思-回应在每个会话边界递增式生成摘要和观察；两者都实现离线记忆处理但粒度和动机不同
+[^card-4]: [条件触发器的隐蔽性设计](conditional-trigger-stealth-design.md) -- 本卡的批量离线 CONSOLIDATE 缺乏实时用户监督，该卡描述的条件触发器（ASR_A≈0%）可利用这一离线窗口——恶意载荷在 TRIAGE 浅层过滤中不触发异常，在整合阶段被无察觉激活
 
 [^src-1]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.1" -- "The framework splits ingestion from integration. A raw buffer accepts entries as they arrive; the active wiki is modified only during scheduled consolidation cycles."
 [^src-2]: `data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt` -- "Section 5.1" -- "Deep coherence work --- classification, contradiction resolution, integration with the active wiki, promotion of minority positions, flagging of gravity conflicts --- runs during a batched CONSOLIDATE operation on a scheduled rhythm"

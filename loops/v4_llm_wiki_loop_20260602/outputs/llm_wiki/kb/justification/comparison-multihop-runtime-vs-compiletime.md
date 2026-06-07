@@ -1,5 +1,11 @@
 # comparison-multihop-runtime-vs-compiletime justification
 
+## creation | 2026-06-05T15:00:00+08:00
+
+生成方式：governance comparison pipeline
+note: comparison/distinction 卡由 governance workflow 生成
+
+
 ## Why this card exists
 
 This distinction card captures an atomic architectural insight that emerges from comparing two source cards in the knowledge base: memgpt-nested-kv-retrieval and llm-wiki-rag-depth-distinction. Both address multi-hop reasoning but resolve hop dependencies at fundamentally different stages of the system lifecycle.

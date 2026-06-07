@@ -1,0 +1,69 @@
+{
+  "checks": {
+    "1_yaml_parse": {
+      "pass": true,
+      "total": 280,
+      "failures": 0,
+      "details": []
+    },
+    "2_no_broken_related_refs": {
+      "pass": false,
+      "total_links_checked": 1022,
+      "failures": 2,
+      "details": {
+        "memgpt-main-context-structure": [
+          "memgpt-queue-manager"
+        ],
+        "virtual-context-management": [
+          "memgpt-queue-manager"
+        ]
+      }
+    },
+    "3_no_orphan_cards": {
+      "pass": true,
+      "total": 280,
+      "orphans": 0,
+      "details": []
+    },
+    "4_footnote_integrity": {
+      "pass": false,
+      "cards_checked": 280,
+      "failures": 3,
+      "details": {
+        "llm-wiki-pattern": [
+          "card-3",
+          "dist-1",
+          "dist-2"
+        ],
+        "single-curator-bottleneck": [
+          "dist-1"
+        ],
+        "wiki-enterprise-failure-modes": [
+          "dist-1"
+        ]
+      }
+    },
+    "5_comparison_src_footnotes": {
+      "pass": false,
+      "comparison_cards_total": 21,
+      "with_src_footnote": 20,
+      "failures": 1,
+      "details": [
+        "comparison-replace-vs-optimize-rag"
+      ]
+    },
+    "6_jj_creation_header": {
+      "pass": true,
+      "jj_files_total": 280,
+      "failures": 0,
+      "details": []
+    }
+  },
+  "stats": {
+    "total_cards": 280,
+    "cards_with_nonempty_related": 280,
+    "total_related_links": 1022,
+    "avg_links_per_card": 3.65,
+    "comparison_cards_with_src": "20/21"
+  }
+}

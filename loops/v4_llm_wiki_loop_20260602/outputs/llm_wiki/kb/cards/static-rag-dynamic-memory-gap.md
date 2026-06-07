@@ -13,9 +13,7 @@ canonical_concept: static-rag-dynamic-memory-gap
 aliases: [静态RAG与动态记忆鸿沟, static RAG limitation, RAG静态语料局限]
 summary: >-
   static-rag-dynamic-memory-gap（静态RAG与动态记忆鸿沟, static RAG limitation）当前 RAG 方法聚焦于广泛领域知识和静态语料（文档内容很少变化），而企业 agent 需要从持续对话和业务数据中动态集成知识，这种根本差距需要知识图谱等新方法来弥合
-related: [full-context-anti-rag, memory-vs-rag-salience]
-  - temporal-knowledge-graph-three-tier
-  - bi-temporal-fact-model
+related: [bi-temporal-fact-model, full-context-anti-rag, memory-vs-rag-salience, temporal-knowledge-graph-three-tier]
 ---
 
 Zep 论文提出了一个关于当前 RAG 方法的根本性批评：现有 RAG 聚焦于广泛领域知识和基本静态的语料库——即加入语料库的文档内容很少发生变化 [^src-1]。

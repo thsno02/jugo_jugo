@@ -10,14 +10,12 @@ edited_entity: llm
 source_ids: [aillm-wiki-directory]
 justification: ../justification/schema-template-verticals.md
 canonical_concept: schema-template-verticals
-aliases: [Schema 模板垂直化, schema verticals, 领域模板, domain-specific templates]
+aliases: [Schema 模板垂直化, schema verticals, LLM Wiki 领域垂直模板, domain-specific templates]
 summary: >-
   schema-template-verticals（Schema 模板垂直化 / schema verticals / 领域模板）
   指 LLM Wiki 的 schema 层已被产品化为五个领域垂直模板（general / research / engineering /
   product / SEO），每个模板以 schema.md + CLAUDE.md 组合交付，体现模式从通用规范到领域配置的成熟
-related: []
-  - schema-as-configuration
-  - use-case-domains
+related: [schema-as-configuration, use-case-domains]
 ---
 
 LLM Wiki 的 schema 层已从通用规范演化为**领域垂直化的模板产品**。aillm.wiki 提供五套经过实战检验（"battle-tested"）的 schema.md 模板，覆盖以下领域[^src-1]：

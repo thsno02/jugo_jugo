@@ -15,15 +15,7 @@ summary: >-
   my-llm-wiki-implementation（my-llm-wiki / phuc-nt LLM Wiki）是 Karpathy LLM Wiki
   三层架构的 Python CLI 实现：pip 安装后 llm-wiki . 即可将任意文件夹编译为可查询的 Obsidian vault，
   支持 19 语言代码（Tree-sitter AST）、多格式文档（Docling）、SHA256 增量缓存和 CLI 回写
-related: [kb-compile-implementation, obsidian-karpathy-wiki-plugin]
-  - llm-wiki-pattern
-  - three-layer-architecture
-  - obsidian-tooling
-  - wiki-compounding-artifact
-  - obsidian-karpathy-wiki-plugin
-  - kb-compile-implementation
-  - tree-sitter-code-extraction
-  - wiki-write-back-mechanism
+related: [kb-compile-implementation, llm-wiki-pattern, obsidian-karpathy-wiki-plugin, obsidian-tooling, three-layer-architecture, tree-sitter-code-extraction, wiki-compounding-artifact, wiki-write-back-mechanism]
 ---
 
 `my-llm-wiki` 是由开发者 phuc-nt 发布的 Python 包（MIT 许可），实现了 Karpathy LLM Wiki 概念的全部三层架构[^src-1]。该工具以 CLI 形式运行：`pip install my-llm-wiki` 安装后，`llm-wiki .` 即可将当前文件夹编译为知识图谱[^src-2]。

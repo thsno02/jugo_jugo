@@ -14,9 +14,6 @@ aliases: [Documentation as Code, 文档即代码, docs like code]
 summary: >-
   docs-as-code（Documentation as Code / 文档即代码 / docs like code）指一种文档哲学：用与代码相同的五类工具（Issue Tracker、版本控制、纯文本标记、代码评审、自动化测试）和相同的开发工作流来编写文档
 related: [documentation-merge-gate, documentation-shared-ownership, wiki-as-git-repo]
-  - wiki-as-git-repo
-  - documentation-merge-gate
-  - documentation-shared-ownership
 ---
 
 Docs as Code（Documentation as Code）是一种文档哲学，其核心主张是：**文档应使用与代码相同的工具来编写**[^src-1]。

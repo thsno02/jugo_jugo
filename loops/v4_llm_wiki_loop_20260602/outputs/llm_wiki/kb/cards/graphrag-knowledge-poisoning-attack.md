@@ -13,7 +13,7 @@ canonical_concept: graphrag-knowledge-poisoning-attack
 aliases: [知识投毒攻击, KPA, knowledge poisoning attack, GraphRAG poisoning]
 summary: >-
   graphrag-knowledge-poisoning-attack（KPA, 知识投毒攻击, GraphRAG poisoning）GraphRAG 依赖 LLM 从原始文本提取知识构建图谱，攻击者仅需修改少量原文词语即可显著扭曲生成的知识图谱并误导下游推理
-related: [etamp-environment-memory-poisoning, graphrag-defense-gap, graphrag-extraction-attack-surface, graphrag-global-sensemaking, rag-knowledge-corruption-attack, targeted-kpa, universal-kpa]
+related: [etamp-environment-memory-poisoning, graphrag-defense-gap, graphrag-global-sensemaking, rag-knowledge-corruption-attack, targeted-kpa, universal-kpa]
 ---
 
 知识投毒攻击（Knowledge Poisoning Attack, KPA）是一种针对 Graph-based Retrieval-Augmented Generation（GraphRAG）系统的对抗攻击范式 [^src-1]。GraphRAG 通过将原始文本转换为结构化知识图谱来增强大语言模型的准确性和可解释性，但其图谱构建过程依赖 LLM 从原始文本中提取知识，这一环节可被恶意操纵以植入误导性信息 [^src-2]。KPA 的核心特征是攻击的高效性——仅需修改源文本中极少量的词语，就能显著改变所构建的图谱结构，进而严重误导下游问答推理 [^src-3]。GraphRAG 的全局 sensemaking 管道尤其脆弱，因其层级社区摘要依赖实体提取的正确性，投毒效应会沿社区层级向上传播[^card-graphrag-global-sensemaking]。eTAMP 从另一个攻击向量——环境注入式轨迹记忆投毒——展示了类似的 LLM 知识系统脆弱性[^card-1]。PoisonedRAG 则从传统向量检索 RAG 的角度揭示了相同的投毒威胁：向知识库注入少量恶意文本即可以约 90% 成功率控制 LLM 回答[^card-2]。

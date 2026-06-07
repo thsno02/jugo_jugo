@@ -15,9 +15,7 @@ summary: >-
   token-capital-goods（Token资本品 / tokens as capital goods / SFAS 86 类比）是 Wen & Ku (2026)
   的核心理论贡献：产生持久化可查询制品的 LLM token 应从消耗品重分类为资本品，具备持久产品、
   复利回报、跨模型可继承、负折旧四个资本品属性，类比会计准则 SFAS 86 对软件开发成本的处理
-related: [capitalized-latency, supply-demand-token-dividend]
-  - knowledge-compounding
-  - capitalized-latency
+related: [capitalized-latency, knowledge-compounding, supply-demand-token-dividend]
 ---
 
 Wen & Ku (2026) 的核心理论贡献是提出：在动态 Agentic ROI 框架下，一部分 LLM token 应从**消耗品（consumables）重分类为资本品（capital goods）**[^src-1]。

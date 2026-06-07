@@ -15,11 +15,7 @@ summary: >-
   full-context-anti-rag（反 RAG / anti-RAG / 全上下文策略 / full-context approach）
   是 Karpathy LLM Wiki 的核心架构选择：拒绝 RAG 分块检索，改为向 LLM 提供完整 Wiki 上下文，
   理由是 RAG 碎片化知识并破坏跨知识图谱推理能力，因此强烈推荐 1M+ token 长上下文模型
-related: [chunk-size-tradeoff, compile-time-vs-query-time, kv-cache-vs-rag-tradeoff, rag-wiki-complementarity, static-rag-dynamic-memory-gap, wiki-rag-hybrid-pattern]
-  - llm-wiki-pattern
-  - three-layer-architecture
-  - rag-wiki-synthesis-distinction
-  - llm-wiki-rag-depth-distinction
+related: [chunk-size-tradeoff, compile-time-vs-query-time, kv-cache-vs-rag-tradeoff, llm-wiki-pattern, llm-wiki-rag-depth-distinction, rag-wiki-complementarity, rag-wiki-synthesis-distinction, static-rag-dynamic-memory-gap, three-layer-architecture, wiki-rag-hybrid-pattern]
 ---
 
 Karpathy LLM Wiki 插件明确**拒绝 RAG（Retrieval-Augmented Generation）架构**，选择将完整 Wiki 上下文提供给 LLM[^src-1]。

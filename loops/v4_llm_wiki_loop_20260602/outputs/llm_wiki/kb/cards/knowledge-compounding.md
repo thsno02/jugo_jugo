@@ -15,10 +15,7 @@ summary: >-
   knowledge-compounding（知识复利 / knowledge compounding / 复利效应）是 Wen & Ku (2026)
   对 Agentic ROI 框架的扩展：当持久化知识层存在时，每任务成本不再独立，而是关于知识库覆盖率
   H(t) 的递减时间函数，表现为凹饱和曲线
-related: [capitalized-latency, compounding-cost-honesty, cost-independence-assumption, invest-harvest-cycle, output-compounding-loop, search-write-back, wiki-compounding-artifact]
-  - wiki-compounding-artifact
-  - dynamic-agentic-roi
-  - token-capital-goods
+related: [capitalized-latency, compounding-cost-honesty, cost-independence-assumption, dynamic-agentic-roi, invest-harvest-cycle, output-compounding-loop, search-write-back, token-capital-goods, wiki-compounding-artifact]
 ---
 
 知识复利（Knowledge Compounding）是 Wen & Ku (2026) 提出的经济学概念，用于描述以下现象：当 LLM 智能体系统引入持久化结构化知识层后，每任务的 token 成本不再是独立常量，而变为时间递减函数[^src-1]。

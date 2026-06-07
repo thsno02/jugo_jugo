@@ -15,7 +15,7 @@ summary: >-
   deterministic-policy-enforcement（确定性策略 / deterministic policy / 规则式治理）
   Microsoft Agent Governance Toolkit 的核心设计原则：agent 治理使用确定性策略执行而非概率性 LLM 判断，
   通过 OPA/Rego/Cedar 等引擎实现 Policy-as-Code，保证策略评估结果可重现、可审计
-related: [ai-rmf-voluntary-trustworthiness, governance-over-retrieval]
+related: [ai-rmf-voluntary-trustworthiness, audit-provenance-tracing, governance-over-retrieval]
 ---
 
 Microsoft Agent Governance Toolkit 将"确定性策略执行"（deterministic policy enforcement）列为 agent 运行时治理的四大支柱之一 [^src-1]。这意味着治理决策（如是否允许某次工具调用、是否放行某 agent 请求）由确定性规则引擎做出，而非依赖 LLM 的概率性输出。
@@ -24,7 +24,7 @@ Microsoft Agent Governance Toolkit 将"确定性策略执行"（deterministic po
 
 确定性策略的核心优势在于：每次评估结果一致、可重现、可审计，不受模型输出随机性的影响。这与 ADR-0013"Fail Closed on Errors"配合——当策略引擎出错时默认拒绝，而非交由 LLM 做兜底判断 [^src-5]。
 
-来自企业知识管理领域的分析同样支持治理优先于检索的原则 [^card-1]。从标准化角度看，NIST AI RMF 将可信赖性定位为 AI 全生命周期的核心目标，确定性策略执行为该目标提供了可验证的技术保障 [^card-2]。
+来自企业知识管理领域的分析同样支持治理优先于检索的原则 [^card-1]。从标准化角度看，NIST AI RMF 将可信赖性定位为 AI 全生命周期的核心目标，确定性策略执行为该目标提供了可验证的技术保障 [^card-2]。LLM Wiki 的审计溯源机制在知识管理领域实现了类似的运行时保障——沿制品图追踪漂移、验证产出与上游来源的一致性，确定性策略引擎可为此类审计提供可编程的触发规则[^card-3]。
 
 ## Footnotes
 
@@ -35,3 +35,4 @@ Microsoft Agent Governance Toolkit 将"确定性策略执行"（deterministic po
 [^src-5]: `data/raw/webpage/microsoft-agent-governance-toolkit-docs/text.txt` -- L290 -- "ADR-0013: Fail Closed on Errors"
 [^card-1]: [治理优先于检索架构](governance-over-retrieval.md) -- Atlan 论证"规模决定架构，治理决定结果"，确定性策略执行是该治理原则的一种操作化机制
 [^card-2]: [AI RMF 的自愿性与可信赖性导向](ai-rmf-voluntary-trustworthiness.md) -- NIST AI RMF 的可信赖性目标为确定性策略执行提供了标准化方向
+[^card-3]: [审计与溯源追踪](audit-provenance-tracing.md) -- 本卡描述 agent 运行时的确定性策略引擎，该卡描述 LLM Wiki 沿制品图的审计溯源机制；策略引擎可为知识管理审计提供确定性触发规则，两者从不同领域实现运行时保障

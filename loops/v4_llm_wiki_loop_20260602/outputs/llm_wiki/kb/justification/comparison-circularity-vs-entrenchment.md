@@ -1,5 +1,11 @@
 # Justification: comparison-circularity-vs-entrenchment
 
+## creation | 2026-06-05T15:00:00+08:00
+
+生成方式：governance comparison pipeline
+note: comparison/distinction 卡由 governance workflow 生成
+
+
 ## 为什么需要这张卡
 
 circularity-as-thesis 和 entrenchment-under-user-coupled-drift 描述的是同一机制（自密封一致性）的两个相反评价。这个张力不是两张卡各自论点的简单拼接，而是一个独立的原子洞察：**同一动态在不同条件下从特征变为病理**。边界条件（补偿侧机制的有效性）本身是一个值得独立追踪的概念。

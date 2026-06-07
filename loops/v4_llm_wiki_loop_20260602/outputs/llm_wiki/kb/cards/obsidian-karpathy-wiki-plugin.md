@@ -15,10 +15,7 @@ summary: >-
   obsidian-karpathy-wiki-plugin（Karpathy LLM Wiki Plugin / karpathywiki / Greener-Dalii 插件）
   是 Karpathy LLM Wiki 概念的 Obsidian 社区插件实现：v1.10.2，94/100 评分，
   实现三层架构 + 六大命令（摄入/查询/巡检/索引/Schema 建议），支持 10+ LLM 供应商
-related: [mcp-tool-skill-layering, my-llm-wiki-implementation]
-  - obsidian-tooling
-  - three-layer-architecture
-  - llm-wiki-pattern
+related: [llm-wiki-pattern, mcp-tool-skill-layering, my-llm-wiki-implementation, obsidian-tooling, three-layer-architecture]
 ---
 
 **Karpathy LLM Wiki** 是由开发者 Greener-Dalii 发布的 Obsidian 社区插件，实现了 Andrej Karpathy 提出的 LLM Wiki 概念[^src-1]。截至材料收录时，该插件版本为 v1.10.2，Obsidian 官方评分 94/100，累计 781 次下载，4 周内发布 27 个版本[^src-2]。

@@ -4,6 +4,11 @@ decision: accepted
 confidence: high
 ---
 
+## creation | 2026-06-05T15:00:00+08:00
+
+生成方式：governance comparison pipeline
+note: comparison/distinction 卡由 governance workflow 生成
+
 ## 出卡理由
 
 此对比卡捕捉持续偏移检测（continuous-drift-detection）与用户耦合漂移固化（entrenchment-under-user-coupled-drift）之间的结构性张力。这一张力本身是一个值得独立记录的原子概念：

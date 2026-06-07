@@ -15,9 +15,7 @@ summary: >-
   supply-demand-token-dividend（供需双重红利 / double dividend / token供需优化）指 NVIDIA
   的供给侧优化（token 生产成本指数下降）与知识复利的需求侧优化（每个 token 的持久价值提升）
   相互强化，使 token 同时变得更便宜且更有价值，构成 LLM 经济学中最美的双重红利
-related: [token-capital-goods]
-  - knowledge-compounding
-  - token-capital-goods
+related: [knowledge-compounding, token-capital-goods]
 ---
 
 Wen & Ku (2026) 指出 NVIDIA 的 token 经济学叙事与知识复利理论占据互补的优化路径，两者结合产生**双重红利（double dividend）**[^src-1]。

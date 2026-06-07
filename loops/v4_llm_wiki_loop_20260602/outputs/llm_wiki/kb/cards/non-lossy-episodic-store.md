@@ -13,9 +13,7 @@ canonical_concept: non-lossy-episodic-store
 aliases: [无损Episode存储, non-lossy data store, 双向索引溯源]
 summary: >-
   non-lossy-episodic-store（无损Episode存储, non-lossy data store）Graphiti 的 episode 子图作为无损数据存储保留所有原始输入，并通过双向索引支持正向/反向遍历：语义制品可追溯到源 episode 用于引用，episode 可快速检索其相关实体
-related: [audit-provenance-tracing, compilation-gap, lossy-compression-citation-tradeoff, memory-overwrite-vs-omission-failure]
-  - temporal-knowledge-graph-three-tier
-  - episodic-semantic-memory-duality
+related: [audit-provenance-tracing, compilation-gap, episodic-semantic-memory-duality, lossy-compression-citation-tradeoff, memory-overwrite-vs-omission-failure, temporal-knowledge-graph-three-tier]
 ---
 
 Graphiti 的 episode 子图被设计为一个无损数据存储（non-lossy data store），从中提取语义实体和关系，但原始数据始终保留 [^src-1]。

@@ -10,14 +10,12 @@ edited_entity: llm
 source_ids: [arxiv-knowledge-compounding]
 justification: ../justification/topic-concentration-compounding.md
 canonical_concept: topic-concentration-compounding
-aliases: [主题集中度, topic concentration, 复利收益域依赖性, 可用性鸿沟解释]
+aliases: [主题集中度, topic concentration, 复利收益域依赖性, 主题集中度复利与可用性鸿沟]
 summary: >-
   topic-concentration-compounding（主题集中度 / topic concentration / 复利收益域依赖性）
   揭示高主题集中度领域（编程、研究）获得最大知识复利收益，低集中度领域（电商、个人助理）
   wiki 无法积累可复用结构，为 Liu et al. 的可用性鸿沟提供了全新解释维度
-related: []
-  - knowledge-compounding
-  - use-case-domains
+related: [knowledge-compounding, use-case-domains]
 ---
 
 Wen & Ku (2026) 发现知识复利的收益高度依赖于用户查询流的**主题集中度（topic concentration）**[^src-1]。

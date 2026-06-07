@@ -13,20 +13,24 @@ canonical_concept: comparison-corrective-vs-servant-agency
 aliases: [纠偏vs仆人, corrective vs servant agency]
 summary: >-
   comparison-corrective-vs-servant-agency（纠偏vs仆人 / corrective vs servant agency）镜像-补偿原则赋予 LLM 在认知失败维度上纠偏用户的自主权，而人机角色分工将 LLM 定位为纯执行者；二者代表知识系统设计中 LLM 代理权的根本分歧
-related: [human-llm-role-division, mirror-vs-compensate-principle]
+related: [human-llm-role-division, mirror-vs-compensate-principle, confirm-first-skill-capture, review-involvement-spectrum]
 ---
 
 知识系统设计中关于 LLM 应拥有多少自主权，存在两种截然不同的立场。
 
-**纠偏代理立场**：镜像-补偿原则主张 LLM 在操作维度上镜像用户，但在认知失败维度上必须补偿用户——挑战固化信念、引入被压制的证据、抵抗单一文化收敛[^card-1]。这意味着 LLM 不仅是服务者，在特定情境下还必须是纠正者，拥有超越用户当下意图的代理权。
+**纠偏代理立场**：镜像-补偿原则主张 LLM 在操作维度上镜像用户，但在认知失败维度上必须补偿用户——挑战固化信念、引入被压制的证据、抵抗单一文化收敛[^card-1][^src-1]。这意味着 LLM 不仅是服务者，在特定情境下还必须是纠正者，拥有超越用户当下意图的代理权。
 
-**仆人执行立场**：人机角色分工将 LLM 明确定位为执行「苦差事」的角色——摘要、交叉引用、归档、簿记——而将策展、引导、提问、思考全部保留给人类[^card-2]。LLM 的价值在于消除维护成本，而非参与认知判断。
+**仆人执行立场**：人机角色分工将 LLM 明确定位为执行「苦差事」的角色——摘要、交叉引用、归档、簿记——而将策展、引导、提问、思考全部保留给人类[^card-2][^src-2]。LLM 的价值在于消除维护成本，而非参与认知判断。
 
 **分歧的根源**在于对「知识系统中什么构成价值」的不同假设。镜像-补偿原则源于对人类认知偏差的研究，认为未经纠偏的知识系统会继承并放大用户的盲点；角色分工源于对 LLM 当前能力的实用判断，认为 LLM 尚不具备可靠的独立认知判断能力，因此应限制在执行层。
 
-这一分歧在实践中通过门控机制得到部分调和：确认优先规则和参与程度谱系允许系统在不同场景下调节 LLM 的自主程度，但根本问题——LLM 是否应拥有纠偏权——仍是知识系统架构的核心设计决策。
+这一分歧在实践中通过门控机制得到部分调和：确认优先规则[^card-3]和参与程度谱系[^card-4]允许系统在不同场景下调节 LLM 的自主程度，但根本问题——LLM 是否应拥有纠偏权——仍是知识系统架构的核心设计决策。
 
 ## Footnotes
 
 [^card-1]: [镜像-补偿设计原则](mirror-vs-compensate-principle.md) -- 本卡分析 LLM 代理权的分歧，该卡定义纠偏代理立场的具体机制
 [^card-2]: [人机角色分工](human-llm-role-division.md) -- 本卡分析 LLM 代理权的分歧，该卡定义仆人执行立场的具体分工
+[^card-3]: [确认优先的技能捕获规则](confirm-first-skill-capture.md) -- 该卡提供门控机制（确认优先规则）来调和 LLM 自主程度
+[^card-4]: [人类参与程度谱系](review-involvement-spectrum.md) -- 从逐条深度审查到批量低监督处理的可调谱系，与确认优先规则共同调和 LLM 自主程度
+[^src-1]: arxiv-memory-as-metabolism (Miteski 2026, S1.2) -- "A companion system mirrors its user on operational dimensions... A companion system compensates for its user on epistemic failure dimensions: entrenchment of demonstrably false high-gravity entries, suppression of evidence contradicting settled beliefs, convergence toward monoculture under repeated use."
+[^src-2]: karpathy-gist-llm-wiki -- Karpathy 将 LLM 定位为执行编译、摘要、交叉引用等「苦差事」的角色，用户保留策展和思考的控制权：wiki schema "intentionally abstract, designed to be co-evolved between the user and the LLM for each domain."

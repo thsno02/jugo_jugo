@@ -14,8 +14,6 @@ aliases: [三层知识图谱, three-tier KG, Graphiti三层架构, episode-seman
 summary: >-
   temporal-knowledge-graph-three-tier（三层知识图谱, three-tier KG）Zep/Graphiti 将 agent 记忆组织为 episode 子图（原始数据）、semantic entity 子图（提取的实体与关系）、community 子图（聚类摘要）三层递进结构
 related: [bi-temporal-fact-model, dynamic-community-detection, episodic-semantic-memory-duality, temporal-event-graph-grounding]
-  - episodic-semantic-memory-duality
-  - dynamic-community-detection
 ---
 
 Zep 的核心组件 Graphiti 将知识图谱 G=(N, E, phi) 组织为三层层次化子图 [^src-1]：

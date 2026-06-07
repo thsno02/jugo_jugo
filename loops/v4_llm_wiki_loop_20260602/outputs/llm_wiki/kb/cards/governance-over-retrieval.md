@@ -15,7 +15,7 @@ summary: >-
   governance-over-retrieval（治理优先于检索 / governance over retrieval / 治理决定结果）
   Atlan 文章的核心论点：企业知识库的真正问题不是检索架构（wiki vs RAG），而是上游数据治理——
   访问控制、新鲜度、并发都是治理问题；规模决定架构，治理决定结果
-related: [deterministic-policy-enforcement, framework-agnostic-governance-layer]
+related: [deterministic-policy-enforcement, framework-agnostic-governance-layer, lint-operation]
 ---
 
 Atlan 文章提出一个核心论点：企业 LLM 知识库的真正问题**不是检索架构问题，而是数据治理问题**[^src-1]。
@@ -26,7 +26,7 @@ Atlan 文章提出一个核心论点：企业 LLM 知识库的真正问题**不�
 
 Epsilla 的分析被引述来支撑这一论点："从个人研究 wiki 到企业运营的跳跃才是真正残酷的地方。数千名员工、数百万条记录、跨团队自相矛盾的部落知识。"在未治理的数据之上构建影子 wiki 或原始 RAG 管线不会解决问题——它只是把问题重新组织成了新的格式[^src-5]。
 
-在 agent 治理领域，确定性策略引擎提供了一种将治理原则操作化的具体机制 [^card-1]。框架无关的治理层设计进一步使治理规则可跨 20+ agent 框架统一执行 [^card-2]。
+在 agent 治理领域，确定性策略引擎提供了一种将治理原则操作化的具体机制 [^card-1]。框架无关的治理层设计进一步使治理规则可跨 20+ agent 框架统一执行 [^card-2]。LLM Wiki 的巡检操作是"治理决定结果"原则在个人知识库中的具体实践——通过定期检测矛盾、过时主张和孤立页面来维护知识库健康，其价值不在于优化检索效率而在于保障数据可信度[^card-3]。
 
 ## Footnotes
 
@@ -37,3 +37,4 @@ Epsilla 的分析被引述来支撑这一论点："从个人研究 wiki 到企�
 [^src-5]: `data/raw/webpage/atlan-llm-wiki-vs-rag-dynamic-20260524/text.txt` -- L392-393 -- "Building a shadow wiki or a raw RAG pipeline on top of ungoverned data does not solve it. It reorganizes the problem into a new format."
 [^card-1]: [确定性策略执行](deterministic-policy-enforcement.md) -- Microsoft 工具包通过 OPA/Rego/Cedar 等策略引擎实现确定性治理，是治理优先原则的一种技术落地路径
 [^card-2]: [框架无关的治理层](framework-agnostic-governance-layer.md) -- Microsoft 将治理解耦为独立于 agent 框架的层，支持 20+ 框架的统一治理规则执行
+[^card-3]: [巡检操作](lint-operation.md) -- 本卡论证"治理决定结果"的宏观原则，巡检操作是该原则在个人 LLM Wiki 中的具体实践——检测矛盾、过时主张、孤立页面，本质上是数据治理而非检索优化

@@ -21,9 +21,9 @@ related: [contradiction-as-asset, contradiction-state-machine, edge-invalidation
 
 「检测到知识矛盾后应如何解决」是持久化知识系统的核心设计问题。Graphiti 和伴侣记忆框架给出了两种时间模型截然不同的机制方案，反映了对「什么构成充分证据」的根本性分歧。
 
-**Graphiti：即时新优先失效**[^card-1]——当新边（fact）与已有边产生矛盾时，系统沿事务时间线 T' 始终优先采纳新信息，将旧边的 t_invalid 设为新边的 t_valid。单条新信息即可触发失效。旧边不被删除但被标记为失效，实质上退出活跃知识集。隐含假设：**最新信息最可能正确**。
+**Graphiti：即时新优先失效**[^card-1][^src-1]——当新边（fact）与已有边产生矛盾时，系统沿事务时间线 T' 始终优先采纳新信息，将旧边的 t_invalid 设为新边的 t_valid。单条新信息即可触发失效。旧边不被删除但被标记为失效，实质上退出活跃知识集。隐含假设：**最新信息最可能正确**。
 
-**伴侣记忆框架：多周期压力积累提升**[^card-2]——单条与主导解释矛盾的条目被视为噪声而非信号，仅存储在缓冲区和隔离区。只有当多条互相支持的矛盾条目跨多个整合周期积累了足够的缓冲区压力后，才会被标记为主导解释的候选更新。隐含假设：**多来源汇聚的证据才构成信号**。
+**伴侣记忆框架：多周期压力积累提升**[^card-2][^src-2]——单条与主导解释矛盾的条目被视为噪声而非信号，仅存储在缓冲区和隔离区。只有当多条互相支持的矛盾条目跨多个整合周期积累了足够的缓冲区压力后，才会被标记为主导解释的候选更新。隐含假设：**多来源汇聚的证据才构成信号**。
 
 | 维度 | Graphiti 边失效 | 伴侣记忆压力提升 |
 |------|----------------|-----------------|
@@ -39,3 +39,5 @@ related: [contradiction-as-asset, contradiction-state-machine, edge-invalidation
 
 [^card-1]: [边失效与动态知识更新机制](edge-invalidation-mechanism.md) -- Graphiti 的即时新优先策略：通过 LLM 比较新边与已有边，发现矛盾时将旧边 t_invalid 设为新边 t_valid
 [^card-2]: [少数派压力提升机制](minority-pressure-promotion.md) -- 伴侣记忆框架的多周期积累策略：少数派假设在缓冲区跨周期积累互相支持的证据，达到阈值后挑战主导解释
+[^src-1]: arxiv-zep (Rasmussen et al. 2025) -- "Following the transactional timeline T', Graphiti consistently prioritizes new information when determining edge invalidation." 当系统识别到时间重叠的矛盾时，"it invalidates the affected edges by setting their t_invalid to the t_valid of the invalidating edge."
+[^src-2]: arxiv-memory-as-metabolism (Miteski 2026, S5.5) -- "Single contradictions are treated as noise; accumulated contradictions are treated as signal." 少数派假设通过 "multi-cycle buffer pressure accumulation" 挑战 centrality-protected 的主导解释。

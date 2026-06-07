@@ -13,9 +13,7 @@ canonical_concept: search-rerank-construct-pipeline
 aliases: [三步检索管线, search-rerank-construct, phi-rho-chi pipeline]
 summary: >-
   search-rerank-construct-pipeline（三步检索管线, search-rerank-construct）Zep 的记忆检索形式化为 f(alpha)=chi(rho(phi(alpha)))=beta，即搜索（召回候选边/节点）、重排（提升精度）、构造（转为文本上下文）三步组合
-related: [dual-retrieval-entity-semantic]
-  - hybrid-triple-search-complementarity
-  - temporal-knowledge-graph-three-tier
+related: [dual-retrieval-entity-semantic, hybrid-triple-search-complementarity, temporal-knowledge-graph-three-tier]
 ---
 
 Zep 将记忆检索形式化为一个三步组合函数 f: S -> S，接受文本查询 alpha 作为输入，返回文本上下文 beta 作为输出 [^src-1]：

@@ -15,9 +15,7 @@ summary: >-
   contradiction-state-machine（矛盾状态机 / contradiction tracking / 矛盾检测与解决）
   是 LLM Wiki 插件中跟踪知识矛盾的状态机制：detected -> review_ok -> resolved（AI 修复）
   或 detected -> pending_fix（手动修复），矛盾在多源融合时带归因保留而非自动消除
-related: [contradiction-as-asset, edge-invalidation-mechanism]
-  - lint-operation
-  - source-faithfulness-risk
+related: [contradiction-as-asset, edge-invalidation-mechanism, lint-operation, source-faithfulness-risk]
 ---
 
 Karpathy LLM Wiki 插件实现了一套**矛盾状态机**（Contradiction State Machine），用于系统性地跟踪和处理 Wiki 中的知识矛盾[^src-1]。

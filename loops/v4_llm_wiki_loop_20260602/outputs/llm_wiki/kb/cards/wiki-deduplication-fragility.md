@@ -14,10 +14,7 @@ aliases: [去重脆弱性, deduplication fragility, 近似重复页面, wiki ded
 summary: >-
   wiki-deduplication-fragility（去重脆弱性 / deduplication fragility / 近似重复页面）
   指 LLM Wiki 的去重完全依赖 LLM 判断、在规模增长时变得脆弱——缺乏确定性保护机制时 wiki 会逐渐积累近似重复页面
-related: [alias-cross-language-dedup, entity-resolution-hybrid-search]
-  - llm-wiki-scale-boundary
-  - lint-operation
-  - alias-cross-language-dedup
+related: [alias-cross-language-dedup, entity-resolution-hybrid-search, lint-operation, llm-wiki-scale-boundary]
 ---
 
 LLM Wiki 的一个已识别局限性是：**去重完全依赖 LLM 判断，在规模增长时变得脆弱**[^src-1]。

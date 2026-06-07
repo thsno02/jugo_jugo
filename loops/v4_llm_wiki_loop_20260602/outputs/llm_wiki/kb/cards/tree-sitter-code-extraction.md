@@ -15,10 +15,7 @@ summary: >-
   tree-sitter-code-extraction（Tree-sitter代码提取 / AST代码知识提取）是一种通过 Tree-sitter
   增量解析器对源代码进行 AST 级结构化知识提取的机制：从 19 种语言中提取类、函数、类型继承、
   函数签名、文档注释和调用图，无需 LLM 参与即可生成知识图谱的代码层节点
-related: []
-  - my-llm-wiki-implementation
-  - ingest-operation
-  - three-layer-architecture
+related: [ingest-operation, my-llm-wiki-implementation, three-layer-architecture]
 ---
 
 Tree-sitter AST 代码知识提取是一种将源代码转化为知识图谱节点的机制。my-llm-wiki 使用 Tree-sitter 增量解析器对 19 种编程语言进行 AST（抽象语法树）分析，提取六类结构化信息[^src-1]：
@@ -32,7 +29,7 @@ Tree-sitter AST 代码知识提取是一种将源代码转化为知识图谱节�
 
 覆盖的语言包括 Python、TypeScript/JavaScript、Go、Rust、Java、C/C++、Ruby、C# 等共 19 种[^src-2]。
 
-这一机制的意义在于：代码知识提取在 AST 层面完成，是确定性的结构分析而非 LLM 推理，因此提取结果可复现且不消耗 token。提取出的结构化节点（类、函数、继承关系、调用链）构成知识图谱中代码层的骨架，为后续的跨引用和 wiki 编译提供输入。
+[编者注]这一机制的意义在于：代码知识提取在 AST 层面完成，是确定性的结构分析而非 LLM 推理，因此提取结果可复现且不消耗 token。提取出的结构化节点（类、函数、继承关系、调用链）构成知识图谱中代码层的骨架，为后续的跨引用和 wiki 编译提供输入。
 
 ## Footnotes
 

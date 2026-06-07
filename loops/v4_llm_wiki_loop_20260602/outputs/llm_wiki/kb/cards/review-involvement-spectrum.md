@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [karpathy-gist-llm-wiki]
 justification: ../justification/review-involvement-spectrum.md
 canonical_concept: review-involvement-spectrum
-aliases: [参与程度谱系, involvement spectrum, 监督程度, supervision level]
+aliases: [参与程度谱系, involvement spectrum, 监督程度, 人类审批参与程度]
 summary: >-
   review-involvement-spectrum（参与程度谱系 / involvement spectrum / 监督程度 / supervision level）
   指 LLM Wiki 中人类参与程度是可调谱系：从逐条深度审查到批量低监督处理

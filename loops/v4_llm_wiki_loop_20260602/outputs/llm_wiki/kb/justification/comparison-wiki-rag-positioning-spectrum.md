@@ -13,3 +13,9 @@ evidence:
   - wiki-rag-hybrid-pattern: 混合架构来自 Atlan 企业分析
   - scenario-based-tool-selection: 场景选择框架来自 Robin Cartier 材料
 ---
+
+## creation | 2026-06-05T15:00:00+08:00
+
+生成方式：governance comparison pipeline
+note: comparison/distinction 卡由 governance workflow 生成
+

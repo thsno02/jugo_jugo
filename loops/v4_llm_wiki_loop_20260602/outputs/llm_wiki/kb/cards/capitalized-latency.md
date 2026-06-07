@@ -16,8 +16,6 @@ summary: >-
   Compounding 的 81 秒中 65.7 秒是用户等待的瞬时延迟，15.3 秒是用户已获答案后构建持久制品的
   资本化延迟，后者应在未来查询中摊销而非计入当次 ROI 损失
 related: [compounding-cost-honesty, knowledge-compounding, token-capital-goods]
-  - token-capital-goods
-  - knowledge-compounding
 ---
 
 Wen & Ku (2026) 将 token 资本品重分类推广到第二个成本维度——**延迟**[^src-1]。

@@ -13,9 +13,7 @@ canonical_concept: rag-parametric-bias-failure
 aliases: [参数偏差失效, parametric bias failure, RAG攻击失败模式]
 summary: >-
   rag-parametric-bias-failure（参数偏差失效 / parametric bias failure）PoisonedRAG 存在两类失败模式：一是恶意文本未被全部检索到（检索条件不完美），二是 LLM 因参数偏差忽略恶意上下文仍输出正确答案——即便恶意文本中也不慎包含了正确答案。
-related: []
-  - rag-retrieval-generation-dual-condition
-  - rag-knowledge-corruption-attack
+related: [rag-knowledge-corruption-attack, rag-retrieval-generation-dual-condition]
 ---
 
 PoisonedRAG 虽然有效但未达到 100% 的攻击成功率。论文分析了两类失败模式 [^src-1]：

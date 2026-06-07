@@ -13,8 +13,7 @@ canonical_concept: documentation-merge-gate
 aliases: [文档合并门禁, 合并阻断文档要求, docs merge blocking]
 summary: >-
   documentation-merge-gate（文档合并门禁 / 合并阻断文档要求 / docs merge blocking）指在 docs-as-code 工作流中，若新功能未附带文档则阻止合并，从而激励开发者在功能记忆犹新时撰写文档
-related: [continuous-drift-detection, knowledge-as-work-byproduct]
-  - docs-as-code
+related: [continuous-drift-detection, docs-as-code, knowledge-as-work-byproduct]
 ---
 
 在 Docs as Code 工作流中，一项关键的激励机制是**文档合并门禁**：如果新功能的代码变更未包含相应文档，则阻止该变更被合并[^src-1]。

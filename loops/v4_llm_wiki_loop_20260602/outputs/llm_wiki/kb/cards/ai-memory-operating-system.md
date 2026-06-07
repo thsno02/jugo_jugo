@@ -15,10 +15,7 @@ summary: >-
   ai-memory-operating-system（AI 记忆操作系统 / AI memory operating system / 记忆系统分类）
   是 Jack Roberts 提出的框架：将 AI 记忆视为操作系统级组件，Obsidian/markdown 是可读的长期记忆选项，
   Pinecone/vector 是可扩展的语义搜索选项
-related: [archive-lifecycle, memgpt-memory-hierarchy, three-layer-architecture, virtual-context-management]
-  - llm-wiki-pattern
-  - llm-wiki-scale-boundary
-  - episodic-semantic-memory-duality
+related: [archive-lifecycle, episodic-semantic-memory-duality, llm-wiki-pattern, llm-wiki-scale-boundary, memgpt-memory-hierarchy, three-layer-architecture, virtual-context-management]
 ---
 
 Jack Roberts 将 LLM Wiki 模式定位在一个更宏观的框架中：**AI 记忆操作系统（AI memory operating system）**[^src-1]。在这一框架下，AI agent 的持久记忆被视为操作系统层面的基础设施，有不同的实现选项：

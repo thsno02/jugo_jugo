@@ -13,7 +13,7 @@ canonical_concept: agent-memory-lifecycle-phases
 aliases: [agent记忆生命周期, memory lifecycle phases, 证据-整合-衰退-教学循环]
 summary: >-
   agent-memory-lifecycle-phases（agent记忆生命周期 / memory lifecycle phases / 证据-整合-衰退-教学循环）Cognition 产品提出 agent 记忆的四阶段模型：Evidence（会话痕迹成为类型化学习事件）→ Consolidation（原始痕迹压缩为人工审批的技能）→ Decay（召回率与新鲜度随时间建模）→ Teaching（下一个 agent 获得路由：哪个技能、谁的判断、如何应用）
-related: [cross-session-continuity, memory-crud-operation-taxonomy, sleep-consolidation-architecture]
+related: [cross-session-continuity, etamp-environment-memory-poisoning, memory-crud-operation-taxonomy, sleep-consolidation-architecture]
 ---
 
 Cognition 将 agent 记忆系统区分为四个阶段，而非简单的存储-检索模型[^src-1]。
@@ -26,11 +26,12 @@ Cognition 将 agent 记忆系统区分为四个阶段，而非简单的存储-�
 
 **Teaching（教学）**：下一个 agent 不是收到一堆笔记，而是获得一条**路由**——指明使用哪个技能、依据谁的判断、以及如何应用[^src-6]。
 
-该四阶段模型的核心主张是：agent 记忆不应是静态的上下文存储，而应是将工作视为学习信号的动态系统[^src-7]。Mem0 的 CRUD 操作分类法在更细粒度上实现了类似的生命周期管理，将每次记忆更新分解为 ADD/UPDATE/DELETE/NOOP 四种操作[^card-1]。
+该四阶段模型的核心主张是：agent 记忆不应是静态的上下文存储，而应是将工作视为学习信号的动态系统[^src-7]。Mem0 的 CRUD 操作分类法在更细粒度上实现了类似的生命周期管理，将每次记忆更新分解为 ADD/UPDATE/DELETE/NOOP 四种操作[^card-1]。eTAMP 攻击揭示了 Evidence 阶段的安全盲点——如果类型化学习事件中包含被环境注入的恶意指令，这些恶意内容会在 Consolidation 人工审批之前就进入语义检索路径，构成跨会话投毒的攻击窗口[^card-2]。
 
 ## Footnotes
 
 [^card-1]: [记忆 CRUD 操作分类法](memory-crud-operation-taxonomy.md) -- Cognition 的四阶段生命周期（Evidence-Consolidation-Decay-Teaching）是宏观模型，Mem0 的 CRUD 分类法（ADD/UPDATE/DELETE/NOOP）是微观操作层面的实现，两者互为补充
+[^card-2]: [环境注入式轨迹记忆投毒攻击](etamp-environment-memory-poisoning.md) -- eTAMP 攻击揭示四阶段生命周期中 Evidence 与 Consolidation 之间的安全窗口：恶意环境观察作为类型化学习事件被摄取后，在人工审批整合之前即可被语义检索激活
 
 [^src-1]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "why this is not another company brain" section -- "Memory that decays, consolidates, and teaches back."
 [^src-2]: `data/raw/webpage/cognitionus-llm-wiki-guide/text.txt` -- "Evidence" section -- "Prompts, files, tool calls, decisions, and outcomes become typed learning events."

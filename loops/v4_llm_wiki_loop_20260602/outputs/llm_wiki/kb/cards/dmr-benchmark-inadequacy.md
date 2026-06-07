@@ -13,8 +13,7 @@ canonical_concept: dmr-benchmark-inadequacy
 aliases: [DMR基准局限, Deep Memory Retrieval inadequacy, 记忆基准不足]
 summary: >-
   dmr-benchmark-inadequacy（DMR基准局限, Deep Memory Retrieval inadequacy）Zep 论文批评 MemGPT 的 DMR 基准测试：每段对话仅 60 条消息可放入上下文窗口、仅含单轮事实检索问题、未反映企业场景，简单全上下文方法即可达 94-98% 准确率
-related: [long-term-memory-accuracy-gap, longmemeval-five-memory-abilities]
-  - longmemeval-context-compression
+related: [long-term-memory-accuracy-gap, longmemeval-context-compression, longmemeval-five-memory-abilities]
 ---
 
 Zep 论文在 DMR 基准上取得 94.8%（vs MemGPT 93.4%）的结果后，对该基准本身提出了系统性批评 [^src-1]：

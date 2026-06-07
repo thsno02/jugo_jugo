@@ -13,11 +13,7 @@ canonical_concept: rag-knowledge-corruption-attack
 aliases: [知识腐蚀攻击, knowledge corruption attack, PoisonedRAG, RAG投毒攻击]
 summary: >-
   rag-knowledge-corruption-attack（知识腐蚀攻击 / knowledge corruption attack / PoisonedRAG）攻击者向 RAG 知识库注入少量恶意文本（每个目标问题 5 条），即可在百万级文本库中以约 90% 成功率使 LLM 生成攻击者指定答案，跨 8 种 LLM 和多种检索器有效，计算成本极低。
-related: [agent-memory-persistent-attack-surface, etamp-environment-memory-poisoning, graphrag-knowledge-poisoning-attack]
-  - rag-knowledge-database-attack-surface
-  - rag-retrieval-generation-dual-condition
-  - poisonedrag-text-decomposition
-  - rag-poisoning-defense-insufficiency
+related: [agent-memory-persistent-attack-surface, etamp-environment-memory-poisoning, graphrag-knowledge-poisoning-attack, poisonedrag-text-decomposition, rag-knowledge-database-attack-surface, rag-poisoning-defense-insufficiency, rag-retrieval-generation-dual-condition]
 ---
 
 PoisonedRAG 是首个针对 RAG 系统的知识腐蚀攻击（knowledge corruption attack）。攻击者选择任意目标问题 Q 和目标答案 R，通过向知识库注入少量恶意文本，使 RAG 系统中的 LLM 对 Q 生成 R 而非正确答案 [^src-1]。

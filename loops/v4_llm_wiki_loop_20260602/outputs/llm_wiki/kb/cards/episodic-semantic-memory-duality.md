@@ -13,9 +13,7 @@ canonical_concept: episodic-semantic-memory-duality
 aliases: [情景-语义双存储, episodic-semantic duality, 人类记忆心理学模型映射]
 summary: >-
   episodic-semantic-memory-duality（情景-语义双存储, episodic-semantic duality）Zep 同时存储原始事件数据（episodic）和提取的概念关联（semantic），镜像人类记忆心理学中情景记忆与语义记忆的区分，使 agent 形成更精细的记忆结构
-related: [memgpt-memory-hierarchy, observation-based-memory-representation, temporal-knowledge-graph-three-tier]
-  - temporal-knowledge-graph-three-tier
-  - lightmem-three-stage-memory
+related: [lightmem-three-stage-memory, memgpt-memory-hierarchy, observation-based-memory-representation, temporal-knowledge-graph-three-tier]
 ---
 
 Zep 的知识图谱同时维护原始事件数据（episode 子图）和从中提取的语义实体与关系（semantic entity 子图），这种双存储设计有意识地借鉴了人类记忆的心理学模型 [^src-1]。

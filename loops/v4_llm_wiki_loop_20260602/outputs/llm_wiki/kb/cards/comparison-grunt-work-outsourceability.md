@@ -35,3 +35,5 @@ LLM Wiki 讨论中最根本的分歧在于对「苦差事（grunt work）」认�
 [^card-4]: [理解瓶颈](understanding-bottleneck.md) -- Karpathy 的认知层面论证：wiki 阅读促进理解，部分回应过程派质疑
 [^card-5]: [维护成本归零论点](maintenance-cost-zero.md) -- 外包派的经济基础：LLM 使维护成本趋近于零，使分工模式在经济上可行
 [^card-6]: [原创思考的逐字保留](originals-verbatim-capture.md) -- 一种务实的中间路线：LLM 处理维护，但 originals/ 文件夹逐字保留人类原创思考，承认「语言即洞见」
+[^src-1]: data/raw/gist_raw/karpathy-gist-llm-wiki/text.txt -- "You never (or rarely) write the wiki yourself --- the LLM writes and maintains all of it. You're in charge of sourcing, exploration, and asking the right questions. The LLM does all the grunt work --- the summarizing, cross-referencing, filing, and bookkeeping that makes a knowledge base actually useful over time."
+[^src-2]: data/raw/hacker_news/hacker-news-original-thread/text.txt -- (qaadika) "If we optimized showers to be 20 seconds, we'd stop having shower thoughts. I like my shower thoughts. And so too my grunt-work thoughts." 以及 "Karpathy mistakes the words to be the goal, rather than the thinking that caused the words."

@@ -15,9 +15,7 @@ summary: >-
   single-curator-bottleneck（单一策展人瓶颈 / single curator bottleneck / 个人策展失效）
   是个人 LLM Wiki 向企业扩展时的核心结构性障碍：个人模式成功依赖一个有动力的人控制策展，
   企业依赖单一策展人则重新制造它试图解决的 wiki 问题
-related: [data-catalog-as-enterprise-wiki, documentation-shared-ownership, knowledge-as-work-byproduct]
-  - human-llm-role-division
-  - maintenance-cost-zero
+related: [data-catalog-as-enterprise-wiki, documentation-shared-ownership, human-llm-role-division, knowledge-as-work-byproduct, maintenance-cost-zero]
 ---
 
 个人 LLM Wiki 之所以有效，是因为**一个有动力的人策展它**——控制什么进入 raw/ 文件夹，引导分析方向，运行健康检查。这种策展本身就是个人模式的特性[^src-1]。LLM Wiki 模式将此视为核心设计优势，但正是这一优势在规模扩展时成为根本张力[^dist-1]。

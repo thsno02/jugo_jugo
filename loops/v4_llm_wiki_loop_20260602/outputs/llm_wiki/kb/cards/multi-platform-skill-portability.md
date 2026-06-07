@@ -15,7 +15,7 @@ summary: >-
   multi-platform-skill-portability（多平台可移植 / skill portability / 跨平台技能 / multi-platform plugin）
   是 LLM Wiki 的分发机制：单一 wiki-manager 技能为所有运行时的行为源（Claude Code/Codex/OpenCode/Pi/AGENTS.md），
   Codex/OpenCode/Pi 通过 symlink 链到 Claude 源，漂移由自愈测试捕获
-related: []
+related: [zero-runtime-dependency, mcp-tool-skill-layering, schema-as-configuration]
 ---
 
 LLM Wiki 支持**五种安装模式**，但行为逻辑来自单一来源[^src-1]：
@@ -34,7 +34,13 @@ LLM Wiki 支持**五种安装模式**，但行为逻辑来自单一来源[^src-1
 
 Pi 的特殊优势在于其 1K 系统提示留有足够空间在 32K 上下文的本地模型上加载完整的 wiki 技能[^src-4]。
 
+多平台可移植性的根本前提是零运行时依赖——因为插件本身是 Markdown 而非可执行代码，不依赖任何特定运行时的专有 API，跨平台共享才成为可能[^card-1]。在 llm-wiki-mcp 实现中，工具与技能的双层设计进一步强化了可移植性：四个 MCP 工具提供跨客户端原子原语，技能层在其上编排工作流[^card-2]。Schema 文件作为可移植配置制品，随技能一同迁移到不同平台，确保行为一致性[^card-3]。
+
 ## Footnotes
+
+[^card-1]: [零运行时依赖](zero-runtime-dependency.md) -- 零依赖是可移植性的根本前提：插件是 Markdown 而非可执行代码，不绑定特定运行时
+[^card-2]: [MCP 工具与技能的双层设计](mcp-tool-skill-layering.md) -- 工具/技能分层强化可移植性：MCP 工具跨客户端，技能编排工作流
+[^card-3]: [Schema 文件的配置角色](schema-as-configuration.md) -- Schema 作为可移植配置制品随技能迁移到不同平台
 
 [^src-1]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: agents" L440 -- "Five install modes: Claude Code (native plugin via the llm-wiki marketplace), OpenAI Codex (marketplace plugin...), OpenCode (instruction file...), Pi (instruction file...), and any other LLM agent via the portable AGENTS.md file."
 [^src-2]: `data/raw/webpage/llm-wiki-net/text.txt` -- "FAQ: agents" L442 -- "The behavioral logic lives in a single wiki-manager skill shared across runtimes — Codex, OpenCode, and Pi trees symlink into the Claude source of truth so there is no fork."

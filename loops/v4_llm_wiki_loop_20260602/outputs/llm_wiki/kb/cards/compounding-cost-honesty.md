@@ -16,9 +16,7 @@ summary: >-
   的核心诚实发现：Compounding 在任何场景、任何时间跨度下的原始 token 消耗均高于 Chunk-RAG
   （4查询 47K vs 13.6K, 30天高集中度 3.92M vs 1.02M），其经济论据不在于成本节省而在于
   额外 token 购买了持久化知识资产
-related: [capitalized-latency, cost-independence-assumption, knowledge-compounding]
-  - knowledge-compounding
-  - token-capital-goods
+related: [capitalized-latency, cost-independence-assumption, knowledge-compounding, token-capital-goods]
 ---
 
 Wen & Ku (2026) 将以下发现称为论文的**核心诚实发现（central honest finding）**：在原始 token 计量下，Compounding 方案**在任何场景、任何时间跨度下都不胜过 Chunk-RAG**[^src-1]。

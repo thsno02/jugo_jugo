@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [hacker-news-original-thread]
 justification: ../justification/rag-wiki-synthesis-distinction.md
 canonical_concept: rag-wiki-synthesis-distinction
-aliases: [RAG区分, wiki综合, write loop, 写入循环]
+aliases: [RAG 与 Wiki 合成路径区分, wiki综合, write loop, 写入循环]
 summary: >-
   rag-wiki-synthesis-distinction（RAG区分 / wiki综合 / write loop / 写入循环）社区对 LLM Wiki 是否"只是 RAG"的辩论：检索循环是 RAG 形状的，但写入循环（LLM 自己编写维护 wiki、建反向链接、回填输出）构成知识综合而非检索；vanilla RAG 语料是静态的，wiki 语料是动态的；lint 操作更接近 zettelkasten 维护者而非 top-k 搜索引擎
 related: [compile-time-vs-query-time, lint-operation, llm-wiki-rag-depth-distinction, wiki-compounding-artifact]

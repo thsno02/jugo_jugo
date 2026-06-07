@@ -15,8 +15,7 @@ summary: >-
   alias-cross-language-dedup（跨语言去重 / 别名去重 / alias dedup / 两层语义去重）
   是 LLM Wiki 插件的去重机制：每页强制至少 1 个别名（翻译/缩写/别称），
   通过两层语义检测（Tier 1 直接匹配始终 LLM 验证 + Tier 2 间接信号填充 token 预算）消除跨语言重复页
-related: [entity-resolution-hybrid-search, wiki-deduplication-fragility]
-  - lint-operation
+related: [entity-resolution-hybrid-search, lint-operation, wiki-deduplication-fragility]
 ---
 
 Karpathy LLM Wiki 插件采用**别名系统 + 两层语义检测**来解决跨语言重复页问题。

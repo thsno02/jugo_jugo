@@ -15,7 +15,7 @@ summary: >-
   audit-provenance-tracing（审计溯源 / audit provenance / 可信度审计 / provenance tracing）
   是 LLM Wiki 的信任验证机制：沿 output->wiki->raw 完整制品图追踪，检测漂移，
   复用 librarian 评分通道，当本地证据不足时升级为新鲜研究
-related: [inventory-evidence-separation, non-lossy-episodic-store, source-faithfulness-risk, three-layer-architecture]
+related: [deterministic-policy-enforcement, inventory-evidence-separation, non-lossy-episodic-store, source-faithfulness-risk, three-layer-architecture]
 ---
 
 LLM Wiki 的审计（audit）机制回答的是**更广泛的信任问题**——wiki 和产出是否仍然可信[^src-1]。
@@ -30,7 +30,7 @@ LLM Wiki 的审计（audit）机制回答的是**更广泛的信任问题**—�
 
 这一机制与源忠实性风险形成互补——后者识别了 wiki 内容偏离原始来源的风险，审计则提供了结构性的验证手段[^card-1]。审计的遍历路径正是三层架构所定义的制品层次：从产出经 wiki 回溯到不可变的 raw sources[^card-2]。值得注意的是，审计仅沿证据链（raw + wiki + output）工作，inventory 作为操作状态被刻意排除在证据体系之外[^card-3]。
 
-与 Graphiti 的无损 episode 存储相比，LLM Wiki 的审计采取事后遍历策略——在需要验证时沿制品图回溯，而非在数据写入时即建立双向索引[^card-4]。
+与 Graphiti 的无损 episode 存储相比，LLM Wiki 的审计采取事后遍历策略——在需要验证时沿制品图回溯，而非在数据写入时即建立双向索引[^card-4]。从 agent 治理角度看，确定性策略执行可为审计溯源提供可编程的触发与判定规则——当漂移检测超过预设阈值时通过策略引擎自动启动深度审计，将知识管理领域的溯源机制与运行时治理的确定性保障相结合[^card-5]。
 
 ## Footnotes
 
@@ -45,3 +45,4 @@ LLM Wiki 的审计（audit）机制回答的是**更广泛的信任问题**—�
 [^card-2]: [三层架构](three-layer-architecture.md) -- 本卡的审计遍历路径（output->wiki->raw）正是三层架构所定义的制品层次
 [^card-3]: [清单与证据的刻意分离](inventory-evidence-separation.md) -- 本卡沿证据链溯源，该卡解释 inventory 为何被刻意排除在证据体系之外
 [^card-4]: [无损 Episode 数据存储与双向溯源](non-lossy-episodic-store.md) -- 本卡采取事后遍历制品图的溯源策略，该卡描述 Graphiti 在写入时即建立双向索引的内建溯源
+[^card-5]: [确定性策略执行](deterministic-policy-enforcement.md) -- 本卡描述知识管理领域的审计溯源机制（沿制品图检测漂移），该卡描述 agent 治理领域的确定性策略引擎（OPA/Rego/Cedar）；两者可结合为策略驱动的自动审计触发——漂移超过阈值时确定性启动深度溯源

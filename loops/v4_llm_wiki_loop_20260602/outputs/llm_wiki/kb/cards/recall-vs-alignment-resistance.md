@@ -13,9 +13,7 @@ canonical_concept: recall-vs-alignment-resistance
 aliases: [召回失败vs安全对齐, recall failure vs safety alignment, incidental vs intentional resistance]
 summary: >-
   recall-vs-alignment-resistance（召回失败vs安全对齐 / incidental vs intentional resistance）模型对注入攻击的表面抗性可能来自两种截然不同的原因：长上下文召回失败（偶然性防御）或安全对齐拒绝执行（有意性防御）；通过长上下文召回测试可区分两者——GPT-OSS-120B 仅 6.7% 召回率暴露其"免疫"实为处理能力限制
-related: [raw-vs-consolidated-memory-vulnerability]
-  - model-capability-security-disconnect
-  - etamp-environment-memory-poisoning
+related: [etamp-environment-memory-poisoning, model-capability-security-disconnect, raw-vs-consolidated-memory-vulnerability]
 ---
 
 eTAMP 论文提出了一个关键的评估方法论区分：当模型对注入攻击表现出低攻击成功率时，其抗性可能源自两种截然不同的机制——**偶然性防御**（incidental defense，因上下文处理限制导致无法召回注入指令）或**有意性防御**（intentional resistance，因安全对齐而拒绝执行）[^src-1]。

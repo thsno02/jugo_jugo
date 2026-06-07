@@ -1,5 +1,11 @@
 # Justification: comparison-rag-eval-reference-dependency
 
+## creation | 2026-06-05T15:00:00+08:00
+
+生成方式：governance comparison pipeline
+note: comparison/distinction 卡由 governance workflow 生成
+
+
 ## Why this card exists
 
 三大 RAG 评估框架（RAGAS、ARES、RAGChecker）在对 ground truth 的依赖程度上形成了一条清晰的设计光谱。这一取舍不是表面的工程选择，而是反映了一个底层逻辑约束：completeness（完整性/recall）度量在语义上预设了参照物的存在。将这一区分提炼为独立卡片，有助于开发者在选择评估框架时理解不同方法论的能力边界。

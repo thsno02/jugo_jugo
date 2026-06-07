@@ -15,7 +15,7 @@ summary: >-
   detection-blind-spot-under-entrenchment（检测盲区 / 范式一致性伪装）描述持续偏移检测与
   用户耦合固化之间的结构性张力：不一致检测对事实层偏移有效，但当知识库在错误范式内达成
   虚假内部一致性时，检测机制恰恰因"一切一致"而失灵——最危险的漂移形式对最常用的检测手段不可见
-related: [continuous-drift-detection, entrenchment-under-user-coupled-drift]
+related: [continuous-drift-detection, entrenchment-under-user-coupled-drift, minority-pressure-promotion, audit-stress-test]
 ---
 
 持续偏移检测[^card-1]与用户耦合漂移下的固化[^card-2]之间存在一个重要的结构性张力，值得作为独立概念捕捉。
@@ -26,9 +26,13 @@ related: [continuous-drift-detection, entrenchment-under-user-coupled-drift]
 
 **盲区的结构**：这意味着最危险的漂移形式——范式层面的结构性偏差——恰恰对最常用的检测手段不可见。一致性检查在此场景下不仅无效，甚至可能产生**虚假安全感**：检测报告"无不一致发现"，运维团队据此认为知识库健康，而实际上系统已深度偏离真实。
 
-**设计含义**：弥合这一盲区可能需要超越一致性检查的机制——例如伴侣记忆框架提出的少数压力提升（minority pressure promotion）、审计压力测试（audit stress test）等主动对抗固化的治理机制，或定期的外部锚点回溯验证。
+**设计含义**：弥合这一盲区可能需要超越一致性检查的机制——例如伴侣记忆框架提出的少数压力提升（minority pressure promotion）[^card-3]、审计压力测试（audit stress test）[^card-4]等主动对抗固化的治理机制，或定期的外部锚点回溯验证。
 
 ## Footnotes
 
 [^card-1]: [持续偏移检测](continuous-drift-detection.md) -- 该卡描述企业级自动化不一致检测机制，本卡分析其在范式固化场景下的结构性盲区
 [^card-2]: [用户耦合漂移下的固化](entrenchment-under-user-coupled-drift.md) -- 该卡描述固化如何产生虚假内部一致性，本卡将此与检测机制的假设对照揭示盲区
+[^card-3]: [少数派压力提升机制](minority-pressure-promotion.md) -- 弥合盲区的候选机制：多周期缓冲区压力积累让少数派假设有结构路径挑战主导解释
+[^card-4]: [AUDIT 结构性压力测试](audit-stress-test.md) -- 弥合盲区的候选机制：临时悬挂高引力条目后观察查询退化，检测伪装一致性下的死权重
+[^src-1]: data/raw/webpage/falconer-enterprise-guide/text.txt -- "The health check changes from on-demand to continuous. Drift detection across thousands of documents and millions of code lines isn't something a person triggers by asking. It runs as a background loop, surfacing flagged content on a schedule the team can act on"
+[^src-2]: data/raw/arxiv/arxiv-memory-as-metabolism/agent_source_bundle.txt -- "Minority positions get a structural path to becoming majority positions when the evidence justifies it, instead of being silently routed to quarantine one by one."（框架承认仅靠一致性检查无法检测范式层固化，需要少数派压力提升等主动机制）

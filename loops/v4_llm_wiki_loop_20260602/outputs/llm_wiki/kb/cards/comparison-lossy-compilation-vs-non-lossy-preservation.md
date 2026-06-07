@@ -34,3 +34,5 @@ related: [compilation-gap, lossy-compression-citation-tradeoff, memory-overwrite
 
 [^card-1]: [编译缺口](compilation-gap.md) -- 本卡的"有损编译"一侧的核心证据来源，量化了文档到wiki编译中53-60%的灾难性事实丢失
 [^card-2]: [无损Episode数据存储与双向溯源](non-lossy-episodic-store.md) -- 本卡的"无损保留"一侧的核心证据来源，描述了Graphiti保留全部原始数据并通过双向索引支持溯源的架构设计
+[^src-1]: data/raw/arxiv/arxiv-wicer/agent_source_bundle.txt -- "blind compilation fails entirely (2.14--2.32 vs. 3.46, 53--60% catastrophic failure rate)"
+[^src-2]: data/raw/arxiv/arxiv-zep/agent_source_bundle.txt -- "Episodic nodes (episodes) contain raw input data in the form of messages, text, or JSON. Episodes serve as a non-lossy data store from which semantic entities and relations are extracted. Episodic edges connect episodes to their referenced semantic entities."

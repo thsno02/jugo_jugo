@@ -16,16 +16,14 @@ summary: >-
   存在两个独立维度：存储效率（内部表征占用多少 token）与检索效率（查询时注入 prompt 多少 token），
   两者可反向相关。Zep 是典型案例——存储侧 600K+ token（Mem0 论文），检索侧仅 1.6K token（Zep 论文）
 related: [longmemeval-context-compression, memory-compression-token-ratio]
-  - memory-compression-token-ratio
-  - longmemeval-context-compression
 ---
 
 记忆系统的 token 效率不是一个单一维度，而是至少包含两个可独立变化的维度：**存储效率**（内部表征占用多少 token）与**检索效率**（查询时注入 prompt 多少 token）。
 
 **Zep 案例揭示了这一区分的实践意义**：
 
-- **存储侧（Mem0 论文视角）**：Zep 的记忆图谱消耗超过 600K token 来存储对话记忆，而原始对话仅 26K token——图谱膨胀了约 23 倍。原因是 Zep 在每个节点缓存完整摘要且在边上存储事实，导致大量冗余[^card-1]。
-- **检索侧（Zep 论文视角）**：Zep 在 LongMemEval 基准上将 115K token 的对话上下文压缩至仅 1.6K token 注入 prompt，同时提升准确率最高 18.5%、降低延迟 90%[^card-2]。
+- **存储侧（Mem0 论文视角）**：Zep 的记忆图谱消耗超过 600K token 来存储对话记忆，而原始对话仅 26K token——图谱膨胀了约 23 倍。原因是 Zep 在每个节点缓存完整摘要且在边上存储事实，导致大量冗余[^card-1][^src-1]。
+- **检索侧（Zep 论文视角）**：Zep 在 LongMemEval 基准上将 115K token 的对话上下文压缩至仅 1.6K token 注入 prompt，同时提升准确率最高 18.5%、降低延迟 90%[^card-2][^src-2]。
 
 **这意味着同一系统在两个维度上可以呈现相反的表现**：存储侧极度膨胀（600K vs 原始 26K），检索侧高效压缩（115K -> 1.6K）。直觉上这并不矛盾——冗余的内部表征正是支持精确检索的基础设施，类似于数据库索引占用额外存储以加速查询。
 
@@ -35,3 +33,5 @@ related: [longmemeval-context-compression, memory-compression-token-ratio]
 
 [^card-1]: [记忆压缩的 token 效率差异](memory-compression-token-ratio.md) -- 本卡的存储侧数据来源，该卡详述 Mem0 论文对 Zep 存储膨胀（600K+ token）的批评
 [^card-2]: [LongMemEval 上下文压缩与准确率提升](longmemeval-context-compression.md) -- 本卡的检索侧数据来源，该卡详述 Zep 论文在 LongMemEval 基准上的 115K->1.6K 压缩结果
+[^src-1]: arxiv-mem0 (Chhikara et al. 2025) -- "Zep's memory graph consumes in excess of 600k tokens... The inflation arises from Zep's design choice to cache a full abstractive summary at every node while also storing facts on the connecting edges, leading to extensive redundancy across the graph."
+[^src-2]: arxiv-zep (Rasmussen et al. 2025, Table 3) -- LongMemEval 结果：Zep + gpt-4o 在 Avg Context Tokens 仅 1.6K 的条件下达到 71.2% 准确率，对比 Full-context 的 115K token / 60.2% 准确率，"reducing response latency by approximately 90%."

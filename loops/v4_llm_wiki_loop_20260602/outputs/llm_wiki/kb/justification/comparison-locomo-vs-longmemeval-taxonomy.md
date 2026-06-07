@@ -4,6 +4,11 @@ decision: accepted
 confidence: high
 ---
 
+## creation | 2026-06-05T15:00:00+08:00
+
+生成方式：governance comparison pipeline
+note: comparison/distinction 卡由 governance workflow 生成
+
 ## 为什么值得单独成卡
 
 LoCoMo 和 LongMemEval 各自定义了包含五个维度的记忆评测分类体系，表面上高度相似（同为五维、均含时序推理和拒答），但设计视角截然不同：LoCoMo 以问题复杂度为轴（"回答需要何种推理"），LongMemEval 以系统能力为轴（"系统需要何种功能"）。这一区分对于正确使用这两套评测框架至关重要——选用 LoCoMo 侧重诊断 QA 推理深度，选用 LongMemEval 侧重诊断系统能力完备性。

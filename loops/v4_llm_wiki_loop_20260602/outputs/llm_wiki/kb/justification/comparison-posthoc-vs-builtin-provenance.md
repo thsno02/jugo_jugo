@@ -2,6 +2,11 @@
 card_id: comparison-posthoc-vs-builtin-provenance
 ---
 
+## creation | 2026-06-05T15:00:00+08:00
+
+生成方式：governance comparison pipeline
+note: comparison/distinction 卡由 governance workflow 生成
+
 ## 为什么这张卡值得存在
 
 这张区分卡捕捉了知识系统溯源设计中的一个核心架构决策：溯源能力应在数据写入时内建，还是在需要验证时事后遍历？

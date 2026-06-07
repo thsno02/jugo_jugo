@@ -13,9 +13,7 @@ canonical_concept: hybrid-triple-search-complementarity
 aliases: [三种搜索互补, triple search methods, cosine-BM25-BFS hybrid]
 summary: >-
   hybrid-triple-search-complementarity（三种搜索互补, cosine-BM25-BFS hybrid）Zep 组合三种搜索方法：余弦相似度（语义相似）、BM25 全文搜索（词汇相似）、广度优先图搜索（上下文相似），分别捕获不同维度的相关性
-related: [dual-retrieval-entity-semantic]
-  - search-rerank-construct-pipeline
-  - temporal-knowledge-graph-three-tier
+related: [dual-retrieval-entity-semantic, search-rerank-construct-pipeline, temporal-knowledge-graph-three-tier]
 ---
 
 Zep 实现了三种搜索函数，各自捕获不同维度的相似性 [^src-1]：

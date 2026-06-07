@@ -13,9 +13,7 @@ canonical_concept: entity-resolution-hybrid-search
 aliases: [混合搜索实体消解, entity resolution via hybrid search, 实体去重管线]
 summary: >-
   entity-resolution-hybrid-search（混合搜索实体消解, entity resolution pipeline）Graphiti 的实体消解分三步：1024维向量嵌入余弦相似度搜索 + 全文搜索找候选、LLM 判定是否重复、预定义 Cypher 查询写入图（避免 LLM 生成查询的幻觉风险）
-related: [alias-cross-language-dedup, cross-tool-entity-resolution, wiki-deduplication-fragility]
-  - temporal-knowledge-graph-three-tier
-  - hybrid-triple-search-complementarity
+related: [alias-cross-language-dedup, cross-tool-entity-resolution, hybrid-triple-search-complementarity, temporal-knowledge-graph-three-tier, wiki-deduplication-fragility]
 ---
 
 Graphiti 对从 episode 中提取的实体进行多步消解以避免重复 [^src-1]：

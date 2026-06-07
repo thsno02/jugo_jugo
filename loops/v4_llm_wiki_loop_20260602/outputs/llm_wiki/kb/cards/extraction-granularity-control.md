@@ -16,7 +16,6 @@ summary: >-
   是 LLM Wiki 插件的可配置提取深度机制：五个预设级别（Minimal 5 / Coarse 10 / Standard 50 / Fine 100 / Custom 1-300），
   在分析深度与 API 成本之间取得平衡
 related: [ingest-operation, source-granularity-effect]
-  - ingest-operation
 ---
 
 Karpathy LLM Wiki 插件提供**五级可配置的提取粒度**（Extraction Granularity），控制 LLM 从源文档中提取实体和概念的深度[^src-1]：

@@ -10,7 +10,7 @@ edited_entity: llm
 source_ids: [karpathy-gist-llm-wiki]
 justification: ../justification/intentional-abstraction.md
 canonical_concept: intentional-abstraction
-aliases: [刻意抽象, intentional abstraction, 模块化设计, modularity]
+aliases: [刻意抽象, intentional abstraction, 模块化设计, 意向性抽象]
 summary: >-
   intentional-abstraction（刻意抽象 / intentional abstraction / 模块化设计 / modularity）
   是 LLM Wiki gist 的设计哲学：描述模式而非实现，所有组件可选且模块化，与 LLM 协作实例化

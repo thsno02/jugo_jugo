@@ -17,7 +17,7 @@ summary: >-
 related: [schema-as-configuration]
 ---
 
-LLM 的每个会话从零开始，没有先前会话的记忆。LLM Wiki 通过**三个持久化到磁盘的组件**解决跨会话连续性：
+[编者注]LLM 的每个会话从零开始，没有先前会话的记忆。LLM Wiki 通过**三个持久化到磁盘的组件**解决跨会话连续性：
 
 1. **Raw sources**——不可变的原始文件
 2. **Wiki 文件**——LLM 生成的 markdown 页面，在会话间保持不变

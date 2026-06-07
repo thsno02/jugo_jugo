@@ -13,11 +13,7 @@ canonical_concept: rag-evaluation-tri-dimension
 aliases: [RAG评估三维度, RAG evaluation dimensions, 检索-忠实性-生成质量三维度]
 summary: >-
   rag-evaluation-tri-dimension（RAG评估三维度 / RAG evaluation dimensions / 检索-忠实性-生成质量三维度）RAGAS 将 RAG 管道评估分解为三个独立维度：检索系统识别相关且聚焦的上下文段落的能力、LLM 忠实利用上下文的能力、生成输出本身的质量。
-related: [rag-component-evaluation-tri-dimension, ragas-reference-free-rag-evaluation, ragchecker-three-tier-metrics]
-  - ragas-reference-free-rag-evaluation
-  - citation-quality-tri-dimension
-  - rag-retrieval-generation-dual-condition
-  - retrieval-snr-tradeoff
+related: [citation-quality-tri-dimension, rag-component-evaluation-tri-dimension, rag-retrieval-generation-dual-condition, ragas-reference-free-rag-evaluation, ragchecker-three-tier-metrics, retrieval-snr-tradeoff]
 ---
 
 RAGAS 框架将 RAG 管道的评估挑战分解为三个独立维度，论文指出"评估 RAG 架构是具有挑战性的，因为有多个维度需要考虑" [^src-1]：

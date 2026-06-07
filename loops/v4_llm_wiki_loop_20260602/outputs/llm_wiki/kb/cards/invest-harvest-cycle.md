@@ -15,10 +15,7 @@ summary: >-
   invest-harvest-cycle（投资收获循环 / invest-harvest cycle / 振荡凹曲线）是 Compounding
   方案独有的成本轨迹模式：Q1 冷启动 12K→Q2 缓存命中 3K→Q3 搜索回写投资 28K→Q4 复用收获 4K，
   呈现尖峰=资本形成、波谷=资本收获的振荡凹曲线，是三种方案中唯一的历史依赖型轨迹
-related: [knowledge-compounding, search-write-back]
-  - knowledge-compounding
-  - dynamic-agentic-roi
-  - compounding-cost-honesty
+related: [compounding-cost-honesty, dynamic-agentic-roi, knowledge-compounding, search-write-back]
 ---
 
 Wen & Ku (2026) 通过四查询实验发现，Compounding 方案的累积 token 消耗呈现一种**独特的振荡凹曲线（concave-with-spike pattern）**，与两种无状态基线的线性轨迹形成鲜明对比[^src-1]。

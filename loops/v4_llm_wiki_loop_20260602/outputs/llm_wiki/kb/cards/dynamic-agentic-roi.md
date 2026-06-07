@@ -15,9 +15,7 @@ summary: >-
   dynamic-agentic-roi（动态Agentic ROI / 时变成本模型 / H(t)覆盖率模型）将 Agentic ROI 的成本项
   从静态常量推广为 Ci = (1-Hi)*C_generate + Hi*C_retrieve + C_writeback，其中知识库覆盖率 H(t)
   遵循凹饱和递推方程 H(i+1) = Hi + alpha*(1-Hi)*pi
-related: []
-  - knowledge-compounding
-  - cost-independence-assumption
+related: [cost-independence-assumption, knowledge-compounding]
 ---
 
 Wen & Ku (2026) 提出的动态 Agentic ROI 模型将原始 Agentic ROI 公式中的静态成本项推广为时变函数，由两个核心公式构成。
