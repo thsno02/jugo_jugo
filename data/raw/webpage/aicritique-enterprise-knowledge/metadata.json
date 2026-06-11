@@ -20,5 +20,8 @@
   },
   "text_sha256": "b16e30435b8cf0320fcadab886d85b4b08c335812974a35e7842376bae0c4ae3",
   "transport": "curl",
-  "transport_warning": "network_intercepted_by_office_sec"
+  "transport_warning": "network_intercepted_by_office_sec",
+  "status": "dead",
+  "exclude_from_pipeline": true,
+  "reason": "blocked or empty content"
 }

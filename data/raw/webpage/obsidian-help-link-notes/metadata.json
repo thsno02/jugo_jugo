@@ -23,5 +23,8 @@
   },
   "text_sha256": "d84bd2d7690a9a45beff12e8b84243138dab4b8950218d37f9318c5ac8c6dc90",
   "transport": "requests",
-  "transport_warning": null
+  "transport_warning": null,
+  "status": "dead",
+  "exclude_from_pipeline": true,
+  "reason": "blocked or empty content"
 }
