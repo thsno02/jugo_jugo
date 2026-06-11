@@ -1,0 +1,80 @@
+In April 2026, Andrej Karpathy published a GitHub Gist that quickly spread through AI communities: a blueprint for building an LLM wiki, a persistent knowledge base managed by a large language model. No vector database, no complex RAG. Just interconnected markdown files, an LLM like Claude, and a visualization tool like Obsidian. Karpathy himself uses this system for his personal AI research, with wikis of over 100 articles and 400,000 words. This guide explains how to replicate this workflow at home.
+Key takeaways:
+- LLM wiki replaces traditional RAG with a persistent markdown base that grows with each added document.
+- Karpathy personally manages wikis of over 100 articles without any vector database or heavy indexing.
+- Initial setup takes 5 minutes: copy the Gist into Claude or Codex, open Obsidian, start ingesting your sources.
+- The key difference with RAG: the wiki is a compiled artifact that compounds, not a re-derivation with each query.
+- The cost is almost zero for personal use, with open-source LLMs for no recurring cost.
+What Karpathy’s LLM wiki is
+Andrej Karpathy, co-founder of OpenAI and former AI director at Tesla, formalized the concept of LLM wiki in April 2026 via a GitHub Gist. The central idea is simple: instead of querying raw documents with each request, an LLM builds and maintains a structured wiki that serves as a permanent intermediary between your sources and your questions.
+A lire aussi : Claude Code ajoute les routines répétables : productivité dev multipliée
+A lire aussi : Comment j'ai automatisé mes revues de code quotidiennes avec les routines Claude Code
+He describes the following analogy: raw sources are like source code, and the LLM wiki is the compiled executable. You don’t recompile every time you run a program. The wiki remains canonical, alive, and improves with each new source ingested.
+The system relies on three distinct layers:
+- Immutable raw sources: scientific articles, papers, PDF files. These documents are never modified.
+- LLM-managed wiki: a collection of markdown files created and updated automatically by the model, with entity pages, topic summaries, comparisons, and syntheses.
+- Instruction file: a file like agents.mdthat defines the rules for structure, linking, and LLM behavior in the wiki.
+Unlike a standard RAG (Retrieval Augmented Generation) system that retrieves unstructured chunks with each request, the LLM wiki compiles knowledge in advance. The result: deeper answers, possible multi-hop reasoning, and a base that compounds with each addition. To understand how Karpathy extends this logic towards self-improving agents, read our analysis of Karpathy’s Autoresearch and its business applications.
+How the workflow operates in practice
+The workflow is divided into two main operations: ingestion and query.
+Ingestion phase
+When you add a new document, the LLM reads the source, extracts the key ideas, and then integrates them into the existing wiki. In practice, it can:
+- Create a new entity page for a concept that didn’t exist yet (e.g., a “Phi-2” page detailing its 2.7 billion parameters trained on 1.4 trillion tokens)
+- Update an existing page with new information
+- Identify and synthesize contradictions between sources
+- Create automatic backlinks between related pages
+The raw sources remain immutable. The LLM writes to the wiki, the user reads the wiki. The separation of roles is strict.
+Query phase
+Once the wiki is built, you query the canonical wiki directly instead of the raw sources. The model can reason on accumulated and structured knowledge, allowing for analyses that pure RAG on a massive corpus cannot achieve.
+Tip: Create an
+agents.mdfile from the start with precise rules: how to name pages, when to create a new entity vs. update an existing one, how to format contradictions. This instruction file is the main lever to keep a coherent wiki over time.
+Setting up your LLM wiki with Claude and Obsidian
+The initial setup takes about 5 minutes and requires no advanced development skills. Here’s how to proceed:
+- Copy the original Gist from Andrej Karpathy on GitHub and paste it into your LLM agent (Claude, OpenAI Codex, or Grok all work).
+- Create an empty directory on your machine. This folder will be your wiki.
+- Open this folder in Obsidian as a new vault. Obsidian natively handles wiki-style links between markdown files and displays the connection graph.
+- Add your first raw sources in a separate subfolder (e.g., /sources/). Don’t mix them with the wiki files.
+- Instruct the LLM to ingest the first source by creating the initial pages: a general index, entity pages for key concepts, interconnected summaries.
+Obsidian is not mandatory, but it is recommended by Karpathy for its graphical display of links. Viable alternatives exist: VS Code with a Markdown Preview Enhanced extension, or Logseq which also handles bidirectional backlinks. The essential thing is that your files are in flat markdown, compatible with any editor.
+Real costs of the system
+| Configuration | Setup cost | Maintenance cost | 
+|---|---|---|
+| Obsidian + open-source LLM (Llama 3) | Free | 0 €/month | 
+| Obsidian + Claude API | Free | ~0.01 to 0.10 € per ingested doc | 
+| Wiki of 100 documents (Claude) | Less than 10 € | Low (incremental ingestions) | 
+LLM wiki vs. RAG: what the numbers don’t say
+RAG remains relevant for massive corpora and ad-hoc queries on unstructured bases. The LLM wiki, however, excels in a different realm: personal knowledge at an individual scale, from 10 to a few hundred documents.
+The fundamental difference is not speed, it’s the depth of reasoning. A RAG system retrieves relevant passages and generates a response. An LLM wiki responds from already synthesized knowledge, with links between concepts, resolved contradictions, and pre-constructed syntheses. Multi-hop reasoning (linking three distinct concepts to answer a complex question) becomes natural.
+Karpathy explicitly positions the LLM wiki as a personal alternative to vector search. For wikis of 100 articles, structured markdown is more than sufficient. A vector database becomes useful only beyond a certain scale, where semantic search over thousands of chunks becomes necessary.
+This logic of compiling knowledge resonates with what Yann LeCun is doing in a different direction. Our article on AMI Labs and LeCun’s world models explores why some researchers think of going even further than LLMs.
+Warning: The LLM wiki relies entirely on the model’s quality to manage contradictions between sources. A weak model can propagate errors without flagging them. Plan for periodic human review of key pages, especially in the first weeks. The quality of your
+agents.mddirectly determines the base’s reliability.
+Extensions and evolutions of the concept
+Karpathy’s original Gist is designed as a collaborative blueprint, not a finished product. Since its publication in April 2026, the community has already produced notable extensions.
+LLM Wiki v2, published on GitHub Gist by rohitg00, extends the concept with agentmemory patterns: a persistent memory engine designed for AI coding agents. This version incorporates lessons on scaling and long-term consistency, making the wiki more suitable for autonomous agents that continuously feed it.
+On Karpathy’s side, the LLM wiki fits into a broader vision of AI as infrastructure. His Eureka Labs project, founded in July 2024, pushes AI education with the LLM101n course. The LLM wiki is the practical tool that complements this effort: learning about LLMs, then building your own knowledge base with them.
+The most likely evolution paths include:
+- RAG-vector hybridization for team or enterprise-scale deployments
+- Native integration into autonomous agents that maintain the wiki without human intervention
+- Optimized local LLMs (like Llama) making the system zero-cost and fully private
+Communities influencing LLM responses also play a role in spreading these ideas. Our article on Reddit as an AI SEO weapon sheds light on how technical ideas like the LLM wiki propagate into model training corpora.
+Conclusion
+Andrej Karpathy’s LLM wiki concept is one of the most practical ideas to come out of the AI community in 2026. It requires no advanced skills, no expensive infrastructure, and no lengthy setup. A Gist copied into Claude, a folder opened in Obsidian, and your first raw sources are enough to get started in minutes.
+What makes this system powerful is its composite nature: each added document enriches a base that grows with you. At 10 documents, it’s useful. At 100 documents, like in Karpathy’s personal wikis, it’s a true augmented memory that enables reasoning that neither raw RAG nor human memory alone can achieve.
+Start small. Choose a topic you are actively studying, add your first 5 sources, and let the LLM build the initial pages. The system’s value reveals itself in accumulation, not in the initial setup. To explore more of Karpathy’s tools, check out the official Autoresearch presentation on Anthem Creation.
+FAQ
+What exactly is an LLM wiki?
+An LLM wiki is a knowledge base composed of structured and interconnected markdown files, built and maintained by a large language model. Unlike RAG, which queries raw documents with each request, the LLM wiki pre-compiles sources into a persistent base with entity pages, summaries, and automatic backlinks. Andrej Karpathy formalized this concept in April 2026 in a GitHub Gist, based on his own research wikis exceeding 100 articles.
+Do you need development skills to create an LLM wiki?
+No. The basic setup only requires copying Karpathy’s Gist into an LLM agent like Claude, creating a local folder, and opening this folder in Obsidian. No code to write, no server configuration. Tutorials available since April 2026 show how to start a functional wiki in under 5 minutes. The only real effort is writing a good agents.md file to structure the LLM’s behavior.
+What is the difference between LLM wiki and RAG?
+RAG retrieves raw passages from documents with each request and generates a response in real-time. The LLM wiki first compiles sources into a structured base, then responds from this pre-built base. Reasoning becomes deeper because the knowledge is already synthesized, linked, and coherent. Karpathy uses the source code/executable analogy: RAG recompiles each time, the LLM wiki runs the executable directly.
+Is Obsidian essential for using an LLM wiki?
+No. Obsidian is recommended by Karpathy for its graphical visualization of links between markdown pages, but the core system works with any flat file editor. VS Code with a Markdown extension, Logseq, or even a simple text editor are sufficient. What matters is that your files remain in standard markdown so the LLM can read and update them freely.
+What are the limitations of the LLM wiki?
+The system excels on a personal scale, typically from 10 to a few hundred documents. Beyond that, managing interlinks can become costly in tokens, and a vector search becomes more suitable. The quality directly depends on the LLM used for ingestions: a weak model can propagate errors. Finally, no official code implementation was published by Karpathy at launch, requiring an initial manual setup based on the Gist.
+Related Articles
+ChatGPT breach: 7M users hacked – what the leak reveals about LLM safeguards
+Piratage ChatGPT Kaikatsu Club : 7,24M utilisateurs exfiltrés en janvier 2025, lecture juridique FR/EU et checklist CTO RSSI 2026.
+Europe just rewrote the AI Act at 4am: we read the 7 changes for you
+The Digital Omnibus of the AI Act has just rewritten the European AI timeline. In the early hours of May 7, 2026, around 4:30 am, the EU Council and the…
