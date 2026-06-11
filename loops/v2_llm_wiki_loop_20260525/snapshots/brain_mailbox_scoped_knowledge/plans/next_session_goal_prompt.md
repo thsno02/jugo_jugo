@@ -3,7 +3,7 @@
 下面这段 prompt 已通过本轮自审计。复制到新的 chat-session 后，新的 main-agent 应能直接开始执行 LLM Wiki loop。
 
 ```text
-请在 /Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo 中开启一个新的 goal，并进入 long-horizon autonomous loop。
+请在 . 中开启一个新的 goal，并进入 long-horizon autonomous loop。
 
 Goal：
 持续落实 LLM Wiki 的 bottom-up KB 生产循环：从 data/ 中已有本地来源自主探索事实候选，生产中文为主、可读、可审计、可追溯的 scoped knowledge cards；为每张卡写可读 provenance；通过 Jieba/Jaccard title similarity top3 写 comparison provenance；经过 publication audit 或 fusion audit 后采纳到 KB；同时根据失败证据持续演化 skills、brain prompts、task templates、tools、文件系统控制面和 loop 报告。整个过程需要在无人长期看管时保持自治、可恢复、可审计，并保留 out-of-loop 的组件反思能力。

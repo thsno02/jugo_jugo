@@ -1,4 +1,4 @@
-- path: /Users/lw/.codex/skills/agent-loop-runner/SKILL.md
+- path: ~/.codex/skills/agent-loop-runner/SKILL.md
   reason: 当前环境技能规则要求在循环任务中使用该技能。
   use: 仅用于执行流程约束，不作为审计证据。
 - path: llm_wiki/loop/iterations/iteration_20260525_0048_drafting_boundary_validation_evidence_audit/task.md

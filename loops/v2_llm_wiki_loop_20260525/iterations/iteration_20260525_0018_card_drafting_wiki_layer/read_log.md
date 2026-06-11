@@ -1,6 +1,6 @@
 # read_log
 
-- path: /Users/lw/.codex/skills/agent-loop-runner/SKILL.md
+- path: ~/.codex/skills/agent-loop-runner/SKILL.md
   reason: developer skill instructions require using this skill for loop-backed tasks.
   use: only operational workflow guidance; not used as fact evidence for the card.
 - path: llm_wiki/loop/iterations/iteration_20260525_0018_card_drafting_wiki_layer/task.md

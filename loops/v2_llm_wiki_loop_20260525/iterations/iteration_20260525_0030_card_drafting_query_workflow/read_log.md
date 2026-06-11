@@ -1,6 +1,6 @@
 # read_log
 
-- path: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- path: `~/.codex/skills/agent-loop-runner/SKILL.md`
   reason: 循环任务触发了可用技能说明读取要求。
   use: 只用于确认循环执行需把状态、交付和产物写回磁盘；没有作为事实来源。
 - path: `llm_wiki/loop/iterations/iteration_20260525_0030_card_drafting_query_workflow/task.md`

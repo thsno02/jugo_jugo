@@ -47,7 +47,7 @@ v3 的执行范式从聊天驱动转为文件系统驱动。loop 文件本身必
 
 **Raw Input**：
 
-> why you only output 4 cards, but there are many papers, blogs, and repos in /Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw, and you haven't used?
+> why you only output 4 cards, but there are many papers, blogs, and repos in data/raw, and you haven't used?
 
 > process the rest meterails.
 

@@ -7,8 +7,8 @@ status:: completed
 
 Default Python interpreters:
 
-- `python3` -> `/Users/lw/miniforge3/bin/python3`; `import yaml` failed with `ModuleNotFoundError`.
-- `python` -> `/Users/lw/miniforge3/bin/python`; `import yaml` failed with `ModuleNotFoundError`.
+- `python3` -> `~/miniforge3/bin/python3`; `import yaml` failed with `ModuleNotFoundError`.
+- `python` -> `~/miniforge3/bin/python`; `import yaml` failed with `ModuleNotFoundError`.
 
 Repository-local/system interpreters found that can import PyYAML:
 

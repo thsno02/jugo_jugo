@@ -28,8 +28,8 @@ Wikibase 的 Item 通过 Sitelink 机制连接到外部 wiki（如各语言维�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- "Sitelinks" section, line 89 -- "An Item can be linked to pages on other wikis via sitelinks"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- "Sitelinks" section, line 90 -- "while an Item can have multiple sitelinks to different wikis, it cannot have multiple sitelinks to the same wiki"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- "Sitelinks" section, line 90 -- "Sitelinks can additionally have a set of 'badges' associated with the page (such as 'featured article'). Badges are also represented as Items"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- "Overview" section, line 27 -- "The Wikidata Item for Berlin would represent the thing that the Wikipedia article is about, not the Wikipedia article itself"
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- "Items" section, line 88 -- "It is not intended that data about one subject is distributed across multiple Wikidata Items: each Item fully represents one thing"
+[^src-1]: `data/raw/webpage/wikibase-data-model/markdown.md` -- "Sitelinks" section, line 89 -- "An Item can be linked to pages on other wikis via sitelinks"
+[^src-2]: `data/raw/webpage/wikibase-data-model/markdown.md` -- "Sitelinks" section, line 90 -- "while an Item can have multiple sitelinks to different wikis, it cannot have multiple sitelinks to the same wiki"
+[^src-3]: `data/raw/webpage/wikibase-data-model/markdown.md` -- "Sitelinks" section, line 90 -- "Sitelinks can additionally have a set of 'badges' associated with the page (such as 'featured article'). Badges are also represented as Items"
+[^src-4]: `data/raw/webpage/wikibase-data-model/markdown.md` -- "Overview" section, line 27 -- "The Wikidata Item for Berlin would represent the thing that the Wikipedia article is about, not the Wikipedia article itself"
+[^src-5]: `data/raw/webpage/wikibase-data-model/markdown.md` -- "Items" section, line 88 -- "It is not intended that data about one subject is distributed across multiple Wikidata Items: each Item fully represents one thing"

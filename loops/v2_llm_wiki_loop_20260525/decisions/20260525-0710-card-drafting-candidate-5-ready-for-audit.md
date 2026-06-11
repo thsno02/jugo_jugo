@@ -18,7 +18,7 @@
 
 `read_log.md` 记录两类非阻塞读取：
 
-- 读取 `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`，仅用于运行环境要求的流程约束，不用于知识卡事实内容或来源支撑。
+- 读取 `~/.codex/skills/agent-loop-runner/SKILL.md`，仅用于运行环境要求的流程约束，不用于知识卡事实内容或来源支撑。
 - 用 `rg` 核对候选 5 时意外显示下一候选标题起始行，随后改用精确 `sed` 读取候选 5；相邻候选内容未用于卡片或 provenance。
 
 这些边界噪声已写入 `llm_wiki/loop/reflections/20260525-read-boundary-noise-reflection.md`。当前不阻塞 audit，因为草稿事实支撑仍限定在任务包指定来源行 `15-16,68-69`。

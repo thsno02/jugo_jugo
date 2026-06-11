@@ -51,7 +51,7 @@ Wikibase 的 TimeValue 是处理可能不精确的时间点的核心数据结构
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- "Dates and times" section, lines 212-218 -- TimeValue 的六个字段定义
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- lines 211 -- "The calendar model used for saving the data is always the proleptic Gregorian calendar... but the Calendar model used for displaying the data is given by the saved Calendar model"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- lines 214 -- "centuries and millennia do not strictly align with the most significant digits... the 18th century begins in the year 1701 and ends in the year 1800"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- "Examples" section, lines 223-225 -- "between 1846 and 1855" 示例
+[^src-1]: `data/raw/webpage/wikibase-data-model/markdown.md` -- "Dates and times" section, lines 212-218 -- TimeValue 的六个字段定义
+[^src-2]: `data/raw/webpage/wikibase-data-model/markdown.md` -- lines 211 -- "The calendar model used for saving the data is always the proleptic Gregorian calendar... but the Calendar model used for displaying the data is given by the saved Calendar model"
+[^src-3]: `data/raw/webpage/wikibase-data-model/markdown.md` -- lines 214 -- "centuries and millennia do not strictly align with the most significant digits... the 18th century begins in the year 1701 and ends in the year 1800"
+[^src-4]: `data/raw/webpage/wikibase-data-model/markdown.md` -- "Examples" section, lines 223-225 -- "between 1846 and 1855" 示例

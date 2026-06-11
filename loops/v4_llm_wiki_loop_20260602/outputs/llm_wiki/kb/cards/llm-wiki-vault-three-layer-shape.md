@@ -39,6 +39,6 @@ llm-wiki-karpathy 运行时定义了一个确定性的「Default Vault Shape」�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "Default Vault Shape" -- "<vault>/ raw/ wiki/ sources/ outputs/ concepts/ entities/ syntheses/ _indexes/ index.md log.md .llm-kb/ manifest.json runs.jsonl representations/"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "supported raw kinds for text (.md,.txt), PDFs, images (.png,.jpg,.jpeg,.webp,.gif,.svg), and structured data (.csv,.tsv,.json,.html)"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "a raw/wiki/schema operating model with runtime-owned structure and agent-owned synthesis"
+[^src-1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "Default Vault Shape" -- "<vault>/ raw/ wiki/ sources/ outputs/ concepts/ entities/ syntheses/ _indexes/ index.md log.md .llm-kb/ manifest.json runs.jsonl representations/"
+[^src-2]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "supported raw kinds for text (.md,.txt), PDFs, images (.png,.jpg,.jpeg,.webp,.gif,.svg), and structured data (.csv,.tsv,.json,.html)"
+[^src-3]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "a raw/wiki/schema operating model with runtime-owned structure and agent-owned synthesis"

@@ -2,7 +2,7 @@
   "sidecar": "user-insights",
   "status": "idle_after_record",
   "mode": "record_incremental",
-  "project": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
+  "project": ".",
   "project_slug": "jugo_jugo_llm_wiki",
   "main_language": "zh",
   "write_policy": "write_allowed",

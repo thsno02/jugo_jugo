@@ -30,7 +30,7 @@
 
 ### 额外读取及原因
 
-- `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`：系统技能触发要求读取，用于本次 loop 审计方法约束，不作为 LLM Wiki 事实证据。
+- `~/.codex/skills/agent-loop-runner/SKILL.md`：系统技能触发要求读取，用于本次 loop 审计方法约束，不作为 LLM Wiki 事实证据。
 - `git status --short`、`git diff --name-status`、`git log --oneline`：读取 git 元数据，用于区分已提交历史和当前未提交控制面草稿；未把未授权文件正文作为审计证据。
 - `llm_wiki/loop/audits/20260525-control-plane-subagent-task-audit/README.md`：读取本审计目录的分工说明，确认本 worker 只负责 `task_boundary_audit.md`。
 

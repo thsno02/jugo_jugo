@@ -2,7 +2,7 @@
 
 **Session ID**：session_20260525_llm_wiki_loop_bootstrap
 
-**Project**：/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo
+**Project**：.
 
 **Project Slug**：jugo_jugo_llm_wiki
 
@@ -14,9 +14,9 @@
 
 **Sensitivity**：normal
 
-**Canonical Target**：/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/user-insights
+**Canonical Target**：user-insights
 
-**Non-Canonical Note**：/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/llm_wiki/loop/user_insights 是 pre-skill fallback，不是 canonical user-insights target；本次未修改该目录。
+**Non-Canonical Note**：llm_wiki/loop/user_insights 是 pre-skill fallback，不是 canonical user-insights target；本次未修改该目录。
 
 ## E001: 启动 LLM Wiki KB 初始化任务
 
@@ -28,7 +28,7 @@
 
 **Raw Input**：
 
-> 全量阅读 /Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/loop_plan_init_kb.md 并准备开启 goal mode 执行任务。
+> 全量阅读 loop_plan_init_kb.md 并准备开启 goal mode 执行任务。
 
 **Context**：
 用户最初希望 agent 完整阅读既有初始化文档，并准备进入 goal mode 来执行任务。这里的隐含目标不是只输出一份计划，而是从已有文档启动一个可持续执行的 KB 生成流程。
@@ -149,7 +149,7 @@
 
 **Raw Input**：
 
-> 结合 /Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/KB_INIT_KNOWLEDGE_MINING_PROTOCOL.md 重新来做 plan，同时把这个过程中需要的 skills 先 init 一个初级版本来。因为需要 loop 来对 skills 这些进行反复迭代和进化的。
+> 结合 KB_INIT_KNOWLEDGE_MINING_PROTOCOL.md 重新来做 plan，同时把这个过程中需要的 skills 先 init 一个初级版本来。因为需要 loop 来对 skills 这些进行反复迭代和进化的。
 
 > 人类会离开电脑。期望整个 loop 是 codex 的 agent 自治的，最初的交付物是【一套 skills】【一个完整的知识库】。因此这个 loop 和过程希望是不断进行下去的。启动 loop 之前，需要先调用相关的 skills，完成规划。
 
@@ -422,9 +422,9 @@
 > user-insights 是已经有的，马上会加载。在 skill-manager 这个文件夹里面。
 
 > 任务要求：
-> 1. 读取 /Users/lw/Desktop/GitHub/agent_skills/skill-manager/skills/user-insights/agents/monitor-sidecar.md，以及 record/storage-and-sync/privacy-and-scope 这些当前 record_incremental 必需 reference。
+> 1. 读取 ~/Desktop/GitHub/agent_skills/skill-manager/skills/user-insights/agents/monitor-sidecar.md，以及 record/storage-and-sync/privacy-and-scope 这些当前 record_incremental 必需 reference。
 > 2. 使用 forked context 中可见的原始用户输入作为主要来源；如果 fork 里只有摘要或缺失原始 turn，请在输出和 metadata 中标记 coverage: partial/limited，不要伪装成完整 transcript。
-> 3. 在 /Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/user-insights/ 下创建或更新：sessions/<session-id>/session_log.md、sessions/<session-id>/metadata.json、session_registry.json、session/cursor.json、session/sidecar_state.json；如有余力，可以创建简短 index.md，但不要做 dream-mode aggregation。
+> 3. 在 user-insights/ 下创建或更新：sessions/<session-id>/session_log.md、sessions/<session-id>/metadata.json、session_registry.json、session/cursor.json、session/sidecar_state.json；如有余力，可以创建简短 index.md，但不要做 dream-mode aggregation。
 > 4. 文档主语言使用中文；Raw Input 保持原文，不强行翻译技术名词。
 > 5. 记录重点包括：用户的目标纠偏、atomic card/provenance 范式、bottom-up 原则、当前 loop focus、main-agent/sub-agent 分工、语言一致性、文件管理与 legacy、footnotes/reference 顺序、公司电脑网络限制、以及 user-insights 本次触发本身。
 > 6. 不要修改 llm_wiki/loop/user_insights/，只可在最终状态中说明那是 pre-skill fallback，不是 canonical target。

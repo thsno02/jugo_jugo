@@ -5,7 +5,7 @@ import os, re, json, glob, yaml
 from collections import defaultdict, Counter
 from pathlib import Path
 
-BASE = Path("/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/loops/v4_llm_wiki_loop_20260602")
+BASE = Path("loops/v4_llm_wiki_loop_20260602")
 CARDS_DIR = BASE / "outputs/llm_wiki/kb/cards"
 JUST_DIR = BASE / "outputs/llm_wiki/kb/justification"
 AUDIT_DIR = BASE / "outputs/llm_wiki/kb/audits"

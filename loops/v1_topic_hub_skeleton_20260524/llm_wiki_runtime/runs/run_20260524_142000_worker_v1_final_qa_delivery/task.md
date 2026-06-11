@@ -2,7 +2,7 @@
 
 Run: `run_20260524_142000_worker_v1_final_qa_delivery`
 Role: v1 final QA/delivery worker
-Workspace: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo`
+Workspace: `.`
 
 ## Mission
 

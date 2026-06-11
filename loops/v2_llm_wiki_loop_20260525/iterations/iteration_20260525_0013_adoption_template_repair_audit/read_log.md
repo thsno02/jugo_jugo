@@ -1,6 +1,6 @@
 ## 额外流程指令读取
 
-- 路径：`/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- 路径：`~/.codex/skills/agent-loop-runner/SKILL.md`
   - 原因：当前任务明确属于 loop 执行/审计工作流，外层工具规则要求使用该技能。
   - 用途：仅用于确认执行流程约束，不作为目标任务审计证据。
 

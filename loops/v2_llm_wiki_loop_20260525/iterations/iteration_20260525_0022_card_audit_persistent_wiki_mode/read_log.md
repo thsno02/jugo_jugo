@@ -1,4 +1,4 @@
-- path: /Users/lw/.codex/skills/agent-loop-runner/SKILL.md
+- path: ~/.codex/skills/agent-loop-runner/SKILL.md
   reason: 环境技能触发要求；确认循环执行产物写回约束。
   use: 仅用于执行流程约束，不作为知识卡审计事实来源。
 - path: llm_wiki/loop/iterations/iteration_20260525_0022_card_audit_persistent_wiki_mode/task.md

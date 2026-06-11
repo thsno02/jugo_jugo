@@ -32,7 +32,7 @@ llm-wiki-karpathy 运行时提供 `kb_repair_source_ids` 操作，用于确定�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "CLI Commands" -- "llm-wiki-karpathy kb_repair_source_ids --vault-root /vault" 和 "llm-wiki-karpathy kb_repair_source_ids --vault-root /vault --apply"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "source-id repair through kb_repair_source_ids, so stale source doc ids, source note paths, and raw hashes can be repaired without throwing away readable existing ids"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "stable non-ASCII source ids plus deterministic repair workflows, so legacy src-untitled-* records are migrated forward instead of being preserved by stale manifest state"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "CLI Commands" -- "llm-wiki-karpathy kb_repair_source_ids --vault-root /vault" 和 "llm-wiki-karpathy kb_repair_source_ids --vault-root /vault --apply"
+[^src-1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "CLI Commands" -- "llm-wiki-karpathy kb_repair_source_ids --vault-root /vault" 和 "llm-wiki-karpathy kb_repair_source_ids --vault-root /vault --apply"
+[^src-2]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "source-id repair through kb_repair_source_ids, so stale source doc ids, source note paths, and raw hashes can be repaired without throwing away readable existing ids"
+[^src-3]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "stable non-ASCII source ids plus deterministic repair workflows, so legacy src-untitled-* records are migrated forward instead of being preserved by stale manifest state"
+[^src-4]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "CLI Commands" -- "llm-wiki-karpathy kb_repair_source_ids --vault-root /vault" 和 "llm-wiki-karpathy kb_repair_source_ids --vault-root /vault --apply"

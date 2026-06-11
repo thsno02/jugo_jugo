@@ -1,6 +1,6 @@
 {
   "session_id": "session_20260527_claude_v3_execution",
-  "project": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
+  "project": ".",
   "project_slug": "jugo_jugo_llm_wiki",
   "main_language": "zh",
   "language_source": "user_explicit + project_docs",
@@ -29,7 +29,7 @@
   "last_event": "C007",
   "last_processed_event": "C007",
   "last_processed_source_marker": "claude_v3_adoption_complete_20260527",
-  "canonical_workspace_log": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/user-insights",
+  "canonical_workspace_log": "user-insights",
   "doc_folder": "docs/llm_wiki_practice_reframe",
   "doc_folder_sync": "manual_update_completed",
   "aggregation_status": "not_aggregated",

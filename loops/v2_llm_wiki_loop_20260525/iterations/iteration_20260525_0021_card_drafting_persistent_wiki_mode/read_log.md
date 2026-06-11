@@ -11,6 +11,6 @@
 
 ## 额外读取
 
-- `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- `~/.codex/skills/agent-loop-runner/SKILL.md`
   - 原因：当前执行环境要求在 loop/status/delivery 类任务中使用该 skill。
   - 用途：仅用于操作流程约束，不作为知识卡事实来源。

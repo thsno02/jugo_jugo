@@ -3,7 +3,7 @@
 - `llm_wiki/loop/iterations/iteration_20260525_0003_card_drafting_raw_sources_truth/task.md`
   - 原因：当前任务包，是本轮唯一任务来源。
   - 用途：确认候选、允许输入、允许写入和成功门禁。
-- `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- `~/.codex/skills/agent-loop-runner/SKILL.md`
   - 原因：系统可用技能要求在循环执行任务中使用该技能。
   - 用途：仅用于确认循环产物写回工作流，不作为知识卡事实来源。
 - `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/artifacts/fact_candidates.md`

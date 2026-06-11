@@ -2,7 +2,7 @@
 
 **Project**：jugo_jugo_llm_wiki
 
-**Canonical Workspace**：/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/user-insights
+**Canonical Workspace**：user-insights
 
 **Coverage**：mixed
 

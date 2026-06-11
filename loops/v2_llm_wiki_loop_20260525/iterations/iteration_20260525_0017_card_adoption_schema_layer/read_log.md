@@ -2,7 +2,7 @@
 
 ## 允许输入之外读取
 
-- path: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- path: `~/.codex/skills/agent-loop-runner/SKILL.md`
   reason: 开发者指令要求循环类任务使用对应技能。
   usage: 仅读取技能执行边界与交付要求，不作为知识卡事实来源。
 

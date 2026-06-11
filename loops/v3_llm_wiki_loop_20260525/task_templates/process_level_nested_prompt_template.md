@@ -16,7 +16,7 @@ You are an inner headless Claude worker for v3.
 
 Repo root:
 
-`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo`
+`.`
 
 Current loop:
 

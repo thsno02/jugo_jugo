@@ -5,7 +5,7 @@ import os
 import re
 from pathlib import Path
 
-CARDS_DIR = Path("/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards")
+CARDS_DIR = Path("loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards")
 
 MARKER_RE = re.compile(r'\[\^([a-zA-Z0-9_-]+)\](?!:)')
 DEF_RE = re.compile(r'^\[\^([a-zA-Z0-9_-]+)\]:\s*(.+)$', re.MULTILINE)

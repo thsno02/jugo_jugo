@@ -1,4 +1,4 @@
-- path: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- path: `~/.codex/skills/agent-loop-runner/SKILL.md`
   reason: `developer skill trigger for loop_status/loop_delivery task artifacts`
   use: `确认本地 loop 执行约束，避免越界`
 - path: `llm_wiki/loop/iterations/iteration_20260525_0016_card_audit_schema_layer/task.md`

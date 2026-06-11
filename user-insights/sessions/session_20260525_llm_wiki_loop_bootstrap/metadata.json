@@ -1,6 +1,6 @@
 {
   "session_id": "session_20260525_llm_wiki_loop_bootstrap",
-  "project": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
+  "project": ".",
   "project_slug": "jugo_jugo_llm_wiki",
   "main_language": "zh",
   "language_source": "user_explicit + chat_dominant",
@@ -18,8 +18,8 @@
   "event_count": 16,
   "last_processed_event": "E016",
   "last_processed_source_marker": "latest_visible_user_insights_wake_task",
-  "canonical_workspace_log": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/user-insights",
-  "noncanonical_fallback_note": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/llm_wiki/loop/user_insights is a pre-skill fallback and was not modified.",
+  "canonical_workspace_log": "user-insights",
+  "noncanonical_fallback_note": "llm_wiki/loop/user_insights is a pre-skill fallback and was not modified.",
   "doc_folder": "unknown",
   "doc_folder_sync": "skipped",
   "aggregation_status": "not_aggregated",

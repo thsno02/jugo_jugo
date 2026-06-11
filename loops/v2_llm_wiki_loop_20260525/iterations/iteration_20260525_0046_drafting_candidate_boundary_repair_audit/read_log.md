@@ -1,4 +1,4 @@
-- path: /Users/lw/.codex/skills/agent-loop-runner/SKILL.md
+- path: ~/.codex/skills/agent-loop-runner/SKILL.md
   reason: developer skill instructions require using the loop skill for loop/iteration tasks
   purpose: operational workflow guidance only, not audit evidence
 - path: llm_wiki/loop/iterations/iteration_20260525_0046_drafting_candidate_boundary_repair_audit/task.md

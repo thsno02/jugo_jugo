@@ -1,6 +1,6 @@
 # read_log
 
-- path: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- path: `~/.codex/skills/agent-loop-runner/SKILL.md`
   reason: 开发者环境要求在 loop / agent loop 任务中使用该技能。
   use: 只读取与磁盘状态、交付物和循环执行约束相关的最低限度说明；不作为事实来源。
 - path: `llm_wiki/loop/iterations/iteration_20260525_0033_card_drafting_persistent_composite_wiki/task.md`

@@ -34,7 +34,7 @@ status: complete
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/lw/.../v3_llm_wiki_loop_20260525/hooks/commit_card.sh",
+            "command": "bash ~/.../v3_llm_wiki_loop_20260525/hooks/commit_card.sh",
             "timeout": 30,
             "statusMessage": "Auto-committing v3 draft card"
           }

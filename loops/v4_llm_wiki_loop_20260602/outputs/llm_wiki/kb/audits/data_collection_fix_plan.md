@@ -57,9 +57,9 @@ v4 管线的 74 个原始源中，仅 44 个（59%）具有可靠的 agent 阅�
 | 所有 16 个 bundle | 含 .sty/.bst/.cls 噪声文件浪费 token | LOW |
 
 **路径**：
-- bundle 目录：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/<slug>/agent_source_bundle.txt`
-- 异常源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt`
-- PDF-only：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
+- bundle 目录：`data/raw/arxiv/<slug>/agent_source_bundle.txt`
+- 异常源：`data/raw/arxiv/arxiv-ragas/agent_source_bundle.txt`
+- PDF-only：`data/raw/arxiv/arxiv-knowledge-compounding/source.pdf`
 
 ---
 
@@ -87,8 +87,8 @@ v4 管线的 74 个原始源中，仅 44 个（59%）具有可靠的 agent 阅�
 | owasp-llm-top10-2025 | 同上 | ~12KB | MEDIUM |
 
 **路径**：
-- 有效源：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/<slug>/text.txt`
-- raw HTML：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/<slug>/raw.html`
+- 有效源：`data/raw/webpage/<slug>/text.txt`
+- raw HTML：`data/raw/webpage/<slug>/raw.html`
 
 ---
 
@@ -119,8 +119,8 @@ v4 管线的 74 个原始源中，仅 44 个（59%）具有可靠的 agent 阅�
 | T1-#8 | repo-atomicstrata-llm-wiki-compiler | TS/Node | multi-provider compilation | 无 bundle |
 
 **路径**：
-- 仓库根：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/github_repo/<slug>/repo/`
-- 现有 bundle：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/github_repo/repo-microsoft-graphrag/material_bundle.txt`
+- 仓库根：`data/raw/github_repo/<slug>/repo/`
+- 现有 bundle：`data/raw/github_repo/repo-microsoft-graphrag/material_bundle.txt`
 
 ---
 
@@ -133,7 +133,7 @@ v4 管线的 74 个原始源中，仅 44 个（59%）具有可靠的 agent 阅�
 优先级链：thread.json (结构化评论树) > text.txt (纯文本提取)
 ```
 
-**路径**：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/reddit/<slug>/`
+**路径**：`data/raw/reddit/<slug>/`
 
 ---
 
@@ -346,7 +346,7 @@ def fetch_reddit_json(url: str) -> dict:
 
 ### 5.1 agent_source_bundle 生成：过滤大文件
 
-**位置**：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/scripts/fetch_sources.py:180-195`
+**位置**：`scripts/fetch_sources.py:180-195`
 
 **改动**：
 
@@ -373,7 +373,7 @@ def write_agent_source_bundle(source_root: Path, bundle_path: Path) -> tuple[str
 
 ### 5.2 Reddit fetcher 修复
 
-**位置**：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/scripts/fetch_sources.py`（reddit handler）
+**位置**：`scripts/fetch_sources.py`（reddit handler）
 
 **改动**：增加 `old.reddit.com/.json` 路径作为首选，带学术 User-Agent。
 

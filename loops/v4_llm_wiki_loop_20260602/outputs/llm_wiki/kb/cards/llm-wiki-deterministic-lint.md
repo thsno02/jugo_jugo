@@ -31,7 +31,7 @@ llm-wiki-karpathy 运行时通过 `kb_lint` 命令提供确定性的 wiki 健康
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "CLI Commands" -- "llm-wiki-karpathy kb_lint --vault-root /vault"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "deterministic lint for schema and wiki health, including warnings for missing representation trails, stale representations, inconsistent asset_paths, isolated pages, stale source coverage, unsupported claims, contradiction candidates, and missing high-value pages"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "deterministic gap mapping and promotion through kb_map_gaps and kb_promote_gap"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "Runtime Philosophy" -- "kb_lint stays deterministic, but now also checks whether multimodal source notes have a believable review trail before the wiki starts depending on them."
+[^src-1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "CLI Commands" -- "llm-wiki-karpathy kb_lint --vault-root /vault"
+[^src-2]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "deterministic lint for schema and wiki health, including warnings for missing representation trails, stale representations, inconsistent asset_paths, isolated pages, stale source coverage, unsupported claims, contradiction candidates, and missing high-value pages"
+[^src-3]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "deterministic gap mapping and promotion through kb_map_gaps and kb_promote_gap"
+[^src-4]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "Runtime Philosophy" -- "kb_lint stays deterministic, but now also checks whether multimodal source notes have a believable review trail before the wiki starts depending on them."

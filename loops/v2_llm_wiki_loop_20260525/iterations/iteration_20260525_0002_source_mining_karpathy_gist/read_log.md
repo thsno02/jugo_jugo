@@ -3,7 +3,7 @@
 - path: `llm_wiki/loop/iterations/iteration_20260525_0002_source_mining_karpathy_gist/task.md`
   - reason: 当前任务包。
   - use: 确认角色、允许输入、允许写入、成功门禁和阻塞条件。
-- path: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- path: `~/.codex/skills/agent-loop-runner/SKILL.md`
   - reason: 开发者指令要求循环类任务使用 `agent-loop-runner` 技能。
   - use: 读取最小必要工作流约束，辅助按任务包写回状态与交付。
 - path: `data/raw/gist_raw/karpathy-gist-llm-wiki`

@@ -1,4 +1,4 @@
-- path: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- path: `~/.codex/skills/agent-loop-runner/SKILL.md`
   reason: 本地技能触发规则要求在循环类任务中读取对应技能说明。
   purpose: 仅用于确认执行流程约束；不作为知识卡审计证据。
 - path: `llm_wiki/loop/iterations/iteration_20260525_0031_card_audit_query_workflow/task.md`

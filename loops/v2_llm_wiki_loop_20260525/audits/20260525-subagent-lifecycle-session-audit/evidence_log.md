@@ -4,10 +4,10 @@
 
 ## 证据来源
 
-- 父会话 session: `/Users/lw/.codex/sessions/2026/05/24/rollout-2026-05-24T04-50-07-019e569a-36b9-7c22-9567-869dcbdbf87c.jsonl`
-- 当前审计 session: `/Users/lw/.codex/sessions/2026/05/25/rollout-2026-05-25T03-04-22-019e5b5f-befe-78e0-aa64-e388f5bcbba9.jsonl`
-- 新 main loop session: `/Users/lw/.codex/sessions/2026/05/25/rollout-2026-05-25T02-33-10-019e5b43-2e1d-7970-9247-a824c63e95fc.jsonl`
-- Zeno push session: `/Users/lw/.codex/sessions/2026/05/25/rollout-2026-05-25T02-37-47-019e5b47-6821-7341-bdd1-ebc53f7e0609.jsonl`
+- 父会话 session: `~/.codex/sessions/2026/05/24/rollout-2026-05-24T04-50-07-019e569a-36b9-7c22-9567-869dcbdbf87c.jsonl`
+- 当前审计 session: `~/.codex/sessions/2026/05/25/rollout-2026-05-25T03-04-22-019e5b5f-befe-78e0-aa64-e388f5bcbba9.jsonl`
+- 新 main loop session: `~/.codex/sessions/2026/05/25/rollout-2026-05-25T02-33-10-019e5b43-2e1d-7970-9247-a824c63e95fc.jsonl`
+- Zeno push session: `~/.codex/sessions/2026/05/25/rollout-2026-05-25T02-37-47-019e5b47-6821-7341-bdd1-ebc53f7e0609.jsonl`
 - 既有审计与控制面：`legacy/audits/*`、`llm_wiki/loop/*`、`user-insights/*`
 
 ## 2026-05-24 早期：从 demo 到 planner sub-agent

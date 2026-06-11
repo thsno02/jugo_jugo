@@ -16,7 +16,7 @@
 
 ## 边界记录
 
-`read_log.md` 记录读取 `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`，用途是确认循环状态和交付约束，且不作为知识卡事实证据。该记录与此前读取边界反思一致，暂不触发修复。
+`read_log.md` 记录读取 `~/.codex/skills/agent-loop-runner/SKILL.md`，用途是确认循环状态和交付约束，且不作为知识卡事实证据。该记录与此前读取边界反思一致，暂不触发修复。
 
 ## 判断
 

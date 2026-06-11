@@ -36,8 +36,8 @@ Wikibase 使用 QuantityValue 表示带有不确定性信息和物理单位的�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- "Quantities" section, lines 198-203 -- "amount: decimal the quantity's main value; lowerBound: decimal the quantity's lower bound (optional); upperBound: decimal the quantity's upper bound (optional); unit: IRI or '1'"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- lines 53 -- "technical formats such as float or double are not appropriate to represent user input accurately"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- lines 205 -- "The exact interpretation of the uncertainty interval provided with lowerBound and upperBound is unspecified. Depending on context, it may represent hard limits on the value, or the interval may just describe the 66 or 95 percentile interval of a normal distribution"
-[^src-4]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- lines 206-207 -- regex for parsing quantity input in UI
-[^src-5]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/wikibase-data-model/markdown.md` -- lines 208 -- "It is represented as a IRI rather than as a String, since a string like 'm' might represent different units in different contexts"
+[^src-1]: `data/raw/webpage/wikibase-data-model/markdown.md` -- "Quantities" section, lines 198-203 -- "amount: decimal the quantity's main value; lowerBound: decimal the quantity's lower bound (optional); upperBound: decimal the quantity's upper bound (optional); unit: IRI or '1'"
+[^src-2]: `data/raw/webpage/wikibase-data-model/markdown.md` -- lines 53 -- "technical formats such as float or double are not appropriate to represent user input accurately"
+[^src-3]: `data/raw/webpage/wikibase-data-model/markdown.md` -- lines 205 -- "The exact interpretation of the uncertainty interval provided with lowerBound and upperBound is unspecified. Depending on context, it may represent hard limits on the value, or the interval may just describe the 66 or 95 percentile interval of a normal distribution"
+[^src-4]: `data/raw/webpage/wikibase-data-model/markdown.md` -- lines 206-207 -- regex for parsing quantity input in UI
+[^src-5]: `data/raw/webpage/wikibase-data-model/markdown.md` -- lines 208 -- "It is represented as a IRI rather than as a String, since a string like 'm' might represent different units in different contexts"

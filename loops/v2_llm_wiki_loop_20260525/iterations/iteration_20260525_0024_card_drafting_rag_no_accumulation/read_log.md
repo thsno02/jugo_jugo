@@ -1,6 +1,6 @@
 # read_log
 
-- path: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- path: `~/.codex/skills/agent-loop-runner/SKILL.md`
   - reason: 系统技能指令要求在 loop 任务中读取对应技能说明。
   - usage: 仅用于执行流程约束，不作为知识卡事实来源。
 - path: `llm_wiki/loop/iterations/iteration_20260525_0024_card_drafting_rag_no_accumulation/task.md`

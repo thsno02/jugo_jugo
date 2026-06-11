@@ -1,4 +1,4 @@
-- path: /Users/lw/.codex/skills/agent-loop-runner/SKILL.md
+- path: ~/.codex/skills/agent-loop-runner/SKILL.md
   reason: 开发者指令要求在循环任务中使用相关 skill。
   usage: 读取最小工作约束，确认不创建额外 agent 且只写任务包允许产物。
 - path: llm_wiki/loop/iterations/iteration_20260525_0029_card_adoption_ingest_workflow/task.md

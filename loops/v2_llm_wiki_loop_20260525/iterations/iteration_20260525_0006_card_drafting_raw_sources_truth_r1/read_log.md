@@ -1,6 +1,6 @@
 ## 读取记录
 
-- `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- `~/.codex/skills/agent-loop-runner/SKILL.md`
   - 原因：当前任务属于 filesystem-backed agent loop 执行场景，开发者指令要求使用匹配技能。
   - 用途：仅用于执行流程约束，不作为知识卡事实来源。
 - `llm_wiki/loop/iterations/iteration_20260525_0006_card_drafting_raw_sources_truth_r1/task.md`

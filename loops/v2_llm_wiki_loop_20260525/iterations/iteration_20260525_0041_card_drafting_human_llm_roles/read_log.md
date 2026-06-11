@@ -2,7 +2,7 @@
 
 ## 额外流程说明读取
 
-- path: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- path: `~/.codex/skills/agent-loop-runner/SKILL.md`
 - reason: 开发者指令要求在 loop/agent loop 任务中使用对应 skill。
 - usage: 只用于执行流程约束，不用于知识卡事实内容或来源支撑。
 

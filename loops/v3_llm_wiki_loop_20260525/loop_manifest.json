@@ -118,7 +118,7 @@
     "process_level_nested_claude_permission_mode_min_version": "2.1.83",
     "process_level_nested_claude_permission_mode_note": "Auto mode avoids permission prompts while using an independent classifier before actions. Do not use bypassPermissions / dangerously-skip-permissions by default.",
     "process_level_nested_claude_marker": "NESTED_CLAUDE_OK_9X2Y4Z",
-    "process_level_nested_claude_cwd": "/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo",
+    "process_level_nested_claude_cwd": ".",
     "default_runtime_model": "single lead/main session with optional one-layer subagents spawned by the lead",
     "conceptual_layers": [
       "brain roles and mailboxes",

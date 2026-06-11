@@ -7,7 +7,7 @@
   - `llm_wiki/loop/iterations/iteration_20260525_0001_prelaunch_validation/artifacts/independent_audit.md`
 - read_outside_allowed_inputs:
   - `dispatch_request.json` was read because the user explicitly provided it as the dispatch payload.
-  - `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md` was read to satisfy the active Codex skill workflow and was not used as audit evidence.
+  - `~/.codex/skills/agent-loop-runner/SKILL.md` was read to satisfy the active Codex skill workflow and was not used as audit evidence.
 - writes:
   - `llm_wiki/loop/iterations/iteration_20260525_0001_prelaunch_validation/loop_status.md`
   - `llm_wiki/loop/iterations/iteration_20260525_0001_prelaunch_validation/loop_delivery.md`

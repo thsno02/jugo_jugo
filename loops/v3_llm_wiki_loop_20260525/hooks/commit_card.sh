@@ -13,7 +13,7 @@
 # parallel workers cannot race on .git/index.lock.
 set -uo pipefail
 
-REPO_ROOT="/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo"
+REPO_ROOT="."
 CARDS_FRAG="loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/drafts/cards"
 COMPARISON_FRAG="loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/drafts/comparison"
 KB_CARDS_FRAG="loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards"

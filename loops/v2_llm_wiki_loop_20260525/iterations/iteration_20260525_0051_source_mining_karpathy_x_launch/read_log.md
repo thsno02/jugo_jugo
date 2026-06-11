@@ -2,7 +2,7 @@
 
 | path | reason | use |
 | --- | --- | --- |
-| `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md` | 当前任务属于 filesystem-backed loop 执行，开发者指令要求使用匹配技能 | 仅用于执行流程约束；不作为事实来源 |
+| `~/.codex/skills/agent-loop-runner/SKILL.md` | 当前任务属于 filesystem-backed loop 执行，开发者指令要求使用匹配技能 | 仅用于执行流程约束；不作为事实来源 |
 | `llm_wiki/loop/iterations/iteration_20260525_0051_source_mining_karpathy_x_launch/task.md` | 当前任务包 | 确认允许输入、允许写入、输出要求和成功门禁 |
 | `data/manifests/sources.jsonl` | 任务包允许的 `source_manifest` | 确认 `karpathy-x-launch-post` 的本地目录、URL 和状态 |
 | `data/raw/webpage/karpathy-x-launch-post` | 任务包指定的 `source_path` | 列出本地来源文件并确认存在 |

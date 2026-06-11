@@ -2,7 +2,7 @@
 
 | path | reason | purpose |
 | --- | --- | --- |
-| /Users/lw/.codex/skills/agent-loop-runner/SKILL.md | 任务属于循环执行/审计工作，按运行环境技能规则读取 | 仅用于执行流程约束，不作为审计证据 |
+| ~/.codex/skills/agent-loop-runner/SKILL.md | 任务属于循环执行/审计工作，按运行环境技能规则读取 | 仅用于执行流程约束，不作为审计证据 |
 | llm_wiki/loop/iterations/iteration_20260525_0039_validate_scope_path_check_repair_audit/task.md | 当前任务包 | 确认审计目标、允许输入、禁止输入、允许写入和结论格式 |
 | llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair/task.md | 任务包允许输入 target_task_path | 还原被审计执行者任务边界 |
 | llm_wiki/loop/iterations/iteration_20260525_0038_validate_scope_path_check_repair/loop_status.md | 任务包允许输入 target_status_path | 核查被审计执行者状态与工作范围 |

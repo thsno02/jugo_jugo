@@ -16,7 +16,7 @@
 
 | 路径 | 原因 | 用途 |
 | --- | --- | --- |
-| `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md` | 系统级技能指令要求在循环任务中使用该技能 | 仅用于遵守循环文件纪律；未作为知识事实来源 |
+| `~/.codex/skills/agent-loop-runner/SKILL.md` | 系统级技能指令要求在循环任务中使用该技能 | 仅用于遵守循环文件纪律；未作为知识事实来源 |
 | `llm_wiki/loop/iterations/iteration_20260525_0020_card_adoption_wiki_layer/loop_status.md` | 启动时确认状态文件是否已存在 | 避免误用 `Add File` 覆盖既有输出 |
 | `llm_wiki/loop/iterations/iteration_20260525_0020_card_adoption_wiki_layer/read_log.md` | 启动时确认读取日志是否已存在 | 避免误用 `Add File` 覆盖既有输出 |
 

@@ -9,9 +9,9 @@ from pathlib import Path
 
 import yaml
 
-CARDS_DIR = Path("/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards")
-JJ_DIR = Path("/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/justification")
-AUDITS_DIR = Path("/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits")
+CARDS_DIR = Path("loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards")
+JJ_DIR = Path("loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/justification")
+AUDITS_DIR = Path("loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits")
 
 FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---\n?(.*)", re.DOTALL)
 FOOTNOTE_MARKER_RE = re.compile(r"\[\^([^\]]+)\](?!:)")   # [^xxx] not followed by :

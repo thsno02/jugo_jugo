@@ -15,7 +15,7 @@
 
 - `iteration_20260525_0027_card_drafting_ingest_workflow/read_log.md` 曾记录候选字段复核时相邻扫到候选 12 标题开头，但未用于卡片或 provenance。
 - `iteration_20260525_0033_card_drafting_persistent_composite_wiki/read_log.md` 曾记录关键词定位返回其它候选命中行和一次目录文件名检查，但未用于卡片或 provenance。
-- `iteration_20260525_0041_card_drafting_human_llm_roles/read_log.md` 记录 `rg` 带上下文输出时意外显示下一候选标题起始行，随后改用精确 `sed` 读取候选 5；同时记录 `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md` 只用于执行流程约束，不用于知识卡事实内容或来源支撑。
+- `iteration_20260525_0041_card_drafting_human_llm_roles/read_log.md` 记录 `rg` 带上下文输出时意外显示下一候选标题起始行，随后改用精确 `sed` 读取候选 5；同时记录 `~/.codex/skills/agent-loop-runner/SKILL.md` 只用于执行流程约束，不用于知识卡事实内容或来源支撑。
 - `iteration_20260525_0039_validate_scope_path_check_repair_audit/read_log.md` 也记录过 skill 文件读取，但明确不作为审计证据。
 
 ## 假设

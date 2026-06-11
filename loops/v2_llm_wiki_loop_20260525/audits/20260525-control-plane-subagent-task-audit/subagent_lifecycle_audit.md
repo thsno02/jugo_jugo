@@ -38,9 +38,9 @@
 
 必要的额外读取及 reason：
 
-- `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`：系统技能指令要求在 loop / audit / worker 生命周期任务中使用该 skill，用于确认 worker isolation、orchestration、registry、report 和 decision 的通用审计标准。
-- `/Users/lw/.codex/skills/agent-loop-runner/references/loop-lessons.md`：同一 skill 明确要求审计既有 loop 时读取，用于复核 report loop / prompt loop 中 worker 隔离、handoff 和 monitor 的可迁移经验。
-- `/Users/lw/.codex/skills/agent-loop-runner/references/long-horizon-loop-patterns.md`：同一 skill 明确要求长程 loop 控制面设计读取，用于复核 resident / short-lived / disposable worker 分层、main-agent elasticity 和 filesystem control plane。
+- `~/.codex/skills/agent-loop-runner/SKILL.md`：系统技能指令要求在 loop / audit / worker 生命周期任务中使用该 skill，用于确认 worker isolation、orchestration、registry、report 和 decision 的通用审计标准。
+- `~/.codex/skills/agent-loop-runner/references/loop-lessons.md`：同一 skill 明确要求审计既有 loop 时读取，用于复核 report loop / prompt loop 中 worker 隔离、handoff 和 monitor 的可迁移经验。
+- `~/.codex/skills/agent-loop-runner/references/long-horizon-loop-patterns.md`：同一 skill 明确要求长程 loop 控制面设计读取，用于复核 resident / short-lived / disposable worker 分层、main-agent elasticity 和 filesystem control plane。
 
 未读取内容但通过 `git status --short` 看到的其它未提交控制面路径：`DRAFT_FIRST_PIPELINE.md`、`README.md`、`RUNBOOK.md`、`draft_backlog.md`、部分 similarity/fusion prompts/templates，以及同级 `task_flow_audit.md`。这些仅作为工作树未冻结证据，不作为内容结论依据。
 

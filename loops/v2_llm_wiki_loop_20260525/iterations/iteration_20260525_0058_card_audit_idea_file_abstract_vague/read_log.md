@@ -1,4 +1,4 @@
-path: /Users/lw/.codex/skills/agent-loop-runner/SKILL.md
+path: ~/.codex/skills/agent-loop-runner/SKILL.md
 reason: 环境要求循环类任务使用该技能；仅读取流程约束，不作为事实证据。
 use: 确认循环产物写入与结束纪律。
 

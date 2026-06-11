@@ -141,7 +141,7 @@ v2_anchor:
 抽查路径解析：
 
 ```
-/Users/lw/.../loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/karpathy-llm-kb-three-layer-arch.md
+~/.../loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/karpathy-llm-kb-three-layer-arch.md
                                                                           ↑ 起点
 ../../../../../  → 5 层上溯：cards → kb → llm_wiki → outputs → v3_llm_wiki_loop_20260525
                   到达 loops/

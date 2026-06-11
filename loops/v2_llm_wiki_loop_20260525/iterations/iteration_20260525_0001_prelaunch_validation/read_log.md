@@ -30,8 +30,8 @@
 
 ## 调度层读取
 
-- `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/llm_wiki/loop/iterations/iteration_20260525_0001_prelaunch_validation/dispatch_request.json`：用户指定的 dispatch payload，用于启动任务。
-- `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`：当前 Codex 技能规则要求读取，用于遵循 loop worker 工作流；未作为审计结论的事实证据。
+- `llm_wiki/loop/iterations/iteration_20260525_0001_prelaunch_validation/dispatch_request.json`：用户指定的 dispatch payload，用于启动任务。
+- `~/.codex/skills/agent-loop-runner/SKILL.md`：当前 Codex 技能规则要求读取，用于遵循 loop worker 工作流；未作为审计结论的事实证据。
 
 ## 禁止输入
 

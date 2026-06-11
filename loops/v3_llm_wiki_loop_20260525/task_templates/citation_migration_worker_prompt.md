@@ -9,7 +9,7 @@
 
 ## 仓库与路径
 
-- 仓库根目录：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo`（先 `cd`）
+- 仓库根目录：`.`（先 `cd`）
 - 修改对象目录：`loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/<id>.md`（**仅 kb 卡片**，drafts 不动）
 - v3 KB 卡片总览索引：`loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md`（含全部 171 张卡的 id + title + source_id + v2_anchor）
 - v2 KB 卡片索引：`loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md`

@@ -275,11 +275,11 @@ v5 启动前需确认以下文件就位：
 
 | 文件 | 状态 | 用途 |
 |------|------|------|
-| `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/scripts/source_router.py` [待建] | 待编写 | 逐类型 boundary-read dispatch |
-| `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/scripts/repo2doc.py` [待建] | 待编写 | repo -> material_bundle.txt |
+| `scripts/source_router.py` [待建] | 待编写 | 逐类型 boundary-read dispatch |
+| `scripts/repo2doc.py` [待建] | 待编写 | repo -> material_bundle.txt |
 | `scripts/yaml_lint.py` | 待编写 | frontmatter 格式验证 |
-| `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/scripts/run_loop.py` (source_text_path 修复) | 待修改 | 逐类型 dispatch 替代扁平 fallback |
-| `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/scripts/fetch_sources.py` (bundle 过滤) | 待修改 | .bib 排除 + 大小上限 |
+| `scripts/run_loop.py` (source_text_path 修复) | 待修改 | 逐类型 dispatch 替代扁平 fallback |
+| `scripts/fetch_sources.py` (bundle 过滤) | 待修改 | .bib 排除 + 大小上限 |
 | `skills/reframing/PROMPT.md` (hedge 保留规则) | 待修改 | evidence_basis + hedge 保留 |
 | `skills/reframing/PROMPT.md` (comparison footnote discipline) | 待修改 | 裸名概念 = BUG |
 | `data/raw/github_repo/*/material_bundle.txt` x18 | 待生成 | repo2doc 产物 |

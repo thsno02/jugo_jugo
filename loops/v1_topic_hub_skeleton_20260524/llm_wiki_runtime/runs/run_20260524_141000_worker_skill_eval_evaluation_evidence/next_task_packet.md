@@ -1,6 +1,6 @@
 # Worker Task Packet: v1_final_qa_delivery_worker
 
-You are the LLM Wiki loop worker for final QA and v1 delivery. Work in `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo`. You are not the only agent in the repo; do not revert or overwrite unrelated changes. Do not spawn sub-agents.
+You are the LLM Wiki loop worker for final QA and v1 delivery. Work in `.`. You are not the only agent in the repo; do not revert or overwrite unrelated changes. Do not spawn sub-agents.
 
 ## Role
 

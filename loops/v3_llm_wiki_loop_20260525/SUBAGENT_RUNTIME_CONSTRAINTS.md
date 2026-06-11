@@ -30,7 +30,7 @@ Local feasibility result reported on 2026-05-25:
 - Claude CLI path: `/opt/homebrew/bin/claude`
 - Pattern: top-level Claude -> Agent tool subagent -> Bash command invoking `claude --permission-mode auto -p "..." --output-format text`
 - Result marker: `NESTED_CLAUDE_OK_9X2Y4Z`
-- Working directory inherited as `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo`
+- Working directory inherited as `.`
 - Exit code: 0
 
 This means v3 can use two runtime layers if the second layer is treated as an independent headless Claude process launched by Bash, not as a standard nested Claude Code subagent spawned by the Agent tool.

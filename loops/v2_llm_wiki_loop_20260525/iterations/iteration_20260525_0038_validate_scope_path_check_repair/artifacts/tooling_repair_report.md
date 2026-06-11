@@ -24,7 +24,7 @@ py_compile_ok
 
 $ python3 llm_wiki/loop/tools/validate_scope.py llm_wiki/loop/iterations/iteration_20260525_0037_card_audit_llm_wiki_pattern_file/task.md
 scope_validation: fail
-missing_input_path: fact_candidate_path: llm_wiki/loop/iterations/iteration_20260525_0001_source_mining_karpathy_gist/artifacts/fact_candidates.md -> /Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/llm_wiki/loop/iterations/iteration_20260525_0001_source_mining_karpathy_gist/artifacts/fact_candidates.md
+missing_input_path: fact_candidate_path: llm_wiki/loop/iterations/iteration_20260525_0001_source_mining_karpathy_gist/artifacts/fact_candidates.md -> llm_wiki/loop/iterations/iteration_20260525_0001_source_mining_karpathy_gist/artifacts/fact_candidates.md
 
 $ python3 llm_wiki/loop/tools/validate_scope.py llm_wiki/loop/iterations/iteration_20260525_0036_card_drafting_llm_wiki_pattern_file/task.md
 scope_validation: pass

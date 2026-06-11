@@ -14,7 +14,7 @@ import yaml
 from pathlib import Path
 from collections import defaultdict
 
-CARDS_DIR = Path("/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards")
+CARDS_DIR = Path("loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards")
 
 def parse_card(filepath):
     """Parse a card's YAML frontmatter and body."""

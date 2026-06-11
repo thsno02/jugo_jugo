@@ -2,7 +2,7 @@
 
 ## 启动记录
 
-- 路径: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo`
+- 路径: `.`
   - 原因: 确认当前工作目录与任务包路径一致。
   - 用途: 启动前定位允许写入目录。
 - 路径: `llm_wiki/loop/iterations/iteration_20260525_0057_card_drafting_idea_file_abstract_vague/loop_status.md`
@@ -17,7 +17,7 @@
 
 ## 额外流程说明读取
 
-- 路径: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- 路径: `~/.codex/skills/agent-loop-runner/SKILL.md`
   - 原因: 当前任务明确属于 loop 执行任务，运行环境要求使用匹配技能。
   - 用途: 仅用于流程约束，不作为事实来源或候选证据。
 

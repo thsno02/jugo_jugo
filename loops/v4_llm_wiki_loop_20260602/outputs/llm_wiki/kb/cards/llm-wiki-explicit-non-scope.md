@@ -32,5 +32,5 @@ llm-wiki-karpathy 运行时在文档中显式维护一份「Still Out of Scope�
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "Still Out of Scope" -- "This package still does not implement: embeddings or vector search, database-backed indexing, rename tracking, built-in OCR, vision, or PDF parsing inside the runtime itself, autonomous background agents inside the package"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "Runtime Philosophy" -- "The runtime intentionally does not perform OCR or vision itself."
+[^src-1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "Still Out of Scope" -- "This package still does not implement: embeddings or vector search, database-backed indexing, rename tracking, built-in OCR, vision, or PDF parsing inside the runtime itself, autonomous background agents inside the package"
+[^src-2]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "Runtime Philosophy" -- "The runtime intentionally does not perform OCR or vision itself."

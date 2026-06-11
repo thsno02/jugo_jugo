@@ -16,8 +16,8 @@ import os, re, sys, yaml, json
 from pathlib import Path
 from collections import defaultdict
 
-CARDS_DIR = Path("/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards")
-RAW_DIR = Path("/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw")
+CARDS_DIR = Path("loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards")
+RAW_DIR = Path("data/raw")
 
 # ── 1. Build source_id → type mapping from filesystem ──────────────────────
 SOURCE_TYPE_MAP = {}  # source_id → type label

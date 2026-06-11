@@ -9,8 +9,8 @@
 - `llm_wiki/loop/RUNBOOK.md`
 - `llm_wiki/loop/loop_state.json`
 - `llm_wiki/loop/reports/loop_report.md`
-- `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
-- `/Users/lw/.codex/skills/agent-loop-runner/references/long-horizon-loop-patterns.md`
+- `~/.codex/skills/agent-loop-runner/SKILL.md`
+- `~/.codex/skills/agent-loop-runner/references/long-horizon-loop-patterns.md`
 
 ## 审计问题
 

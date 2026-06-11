@@ -35,6 +35,6 @@ Schema v2 还支撑了「安全原始资产检查」——`kb_get_raw_asset` 返
 
 ## Footnotes
 
-[^src-1]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "manifest schema version 2, including raw_kind, mime_type, size_bytes, asset_refs, and stored representations"
-[^src-2]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "compile-readiness tracking with ready, partial, and needs_representation" 和 "source note validation that keeps raw_kind, mime_type, and asset_paths aligned with the actual reviewed assets"
-[^src-3]: `/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "safe raw-asset inspection through kb_get_raw_asset, including deterministic metadata plus a safe absolute path for local viewers"
+[^src-1]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "manifest schema version 2, including raw_kind, mime_type, size_bytes, asset_refs, and stored representations"
+[^src-2]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "compile-readiness tracking with ready, partial, and needs_representation" 和 "source note validation that keeps raw_kind, mime_type, and asset_paths aligned with the actual reviewed assets"
+[^src-3]: `data/raw/webpage/clawhub-llm-wiki-karpathy/markdown.md` -- "What 0.4.4 Implements" -- "safe raw-asset inspection through kb_get_raw_asset, including deterministic metadata plus a safe absolute path for local viewers"

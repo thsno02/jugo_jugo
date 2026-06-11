@@ -27,7 +27,7 @@
 - 修复未扩大 role、template、schema 或知识卡生产 scope。
 - 未发现枢纽页、聚类、主题覆盖或主控权限漂移。
 
-审计 worker 的 `read_log.md` 记录曾读取 `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`，用途为运行环境技能约束，且明确“不作为审计证据”。这是非阻塞边界记录，不影响接受修复。
+审计 worker 的 `read_log.md` 记录曾读取 `~/.codex/skills/agent-loop-runner/SKILL.md`，用途为运行环境技能约束，且明确“不作为审计证据”。这是非阻塞边界记录，不影响接受修复。
 
 ## 生命周期记录
 

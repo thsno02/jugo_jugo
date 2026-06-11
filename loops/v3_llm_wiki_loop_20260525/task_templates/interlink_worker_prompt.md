@@ -4,7 +4,7 @@
 
 ## 仓库与路径
 
-- 仓库根目录：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo`（先 `cd` 过去）
+- 仓库根目录：`.`（先 `cd` 过去）
 - v3 loop 目录：`loops/v3_llm_wiki_loop_20260525/`
 - 卡片：`loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/drafts/cards/<id>.md`
 - 全部卡片目录：`loops/v3_llm_wiki_loop_20260525/queues/_card_catalog.json`（含 171 张卡的 id / title / card_type / source_ids / tags / siblings / 现有 related）

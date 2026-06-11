@@ -4,7 +4,7 @@ You are the top-level runner for the v3 LLM Wiki loop.
 
 Repo root:
 
-`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo`
+`.`
 
 Current loop path:
 
@@ -29,7 +29,7 @@ Do not adopt cards into `outputs/llm_wiki/kb/cards/` in this pass unless a separ
 
 ## Required Startup
 
-1. `cd /Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo`
+1. `cd .`
 2. Read, in this order:
    - `loops/v3_llm_wiki_loop_20260525/CLAUDE_CODE_HANDOFF.md`
    - `loops/v3_llm_wiki_loop_20260525/CONTEXT_BOUNDARY.md`

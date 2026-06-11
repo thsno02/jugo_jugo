@@ -6,6 +6,10 @@
 
 所有 loop 实验都放在 `loops/`。一个 loop 是否 active、archived、abandoned 或 promoted，由 `loops/registry.json` 和对应 capsule 的 `status.json` 表达，不再通过移动到 `legacy/` 表达。
 
+## 路径规则（Path Rule）
+
+仓库内部路径必须写成相对于 repo 根目录的相对路径（repo-relative path），例如 `docs/audti/260611/README.md`、`loops/v4_llm_wiki_loop_20260602/...`，不要写本机绝对路径（local absolute path）。只有指向 repo 外部证据、系统目录或外部工具状态时，才保留必要的外部路径；可读性允许时优先写成 `~/.codex/...` 这类用户目录相对形式。
+
 ## 目录
 
 - `data/manifests/seed_sources.json`：人工整理过的来源队列。

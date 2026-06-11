@@ -2,7 +2,7 @@
 
 | path | reason | use |
 |---|---|---|
-| /Users/lw/.codex/skills/agent-loop-runner/SKILL.md | 会话开发者指令要求在 loop 审计任务中使用该 skill | 仅用于执行流程约束，不作为目标执行者审计证据 |
+| ~/.codex/skills/agent-loop-runner/SKILL.md | 会话开发者指令要求在 loop 审计任务中使用该 skill | 仅用于执行流程约束，不作为目标执行者审计证据 |
 | llm_wiki/loop/iterations/iteration_20260525_0005_prompt_repair_audit/task.md | 当前审计任务包 | 确认允许输入、允许写入、审计问题、结论格式和阻塞条件 |
 | llm_wiki/loop/iterations/iteration_20260525_0004_delivery_marker_prompt_repair/task.md | 目标任务包 | 确认目标执行者的任务目标、允许输入、禁止输入、允许写入和成功门禁 |
 | llm_wiki/loop/iterations/iteration_20260525_0004_delivery_marker_prompt_repair/loop_status.md | 目标状态文件 | 检查目标任务状态、结果 marker 和修复范围声明 |

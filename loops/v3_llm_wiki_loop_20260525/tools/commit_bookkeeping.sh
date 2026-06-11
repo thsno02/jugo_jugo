@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # One-shot helper to commit v3 adoption-stage bookkeeping after a session.
 set -uo pipefail
-cd /Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo
+cd .
 
 git add loops/v3_llm_wiki_loop_20260525/loop_state.json
 git add loops/v3_llm_wiki_loop_20260525/status.json

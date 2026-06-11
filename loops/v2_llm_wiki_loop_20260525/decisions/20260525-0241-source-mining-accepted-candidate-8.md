@@ -14,7 +14,7 @@
 
 ## 非阻塞观察
 
-执行者读取了 `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`，该路径不在任务包的常规允许输入中，但已在 `read_log.md` 记录路径、原因和用途。鉴于本轮开发者指令要求使用 `agent-loop-runner` skill，且该读取没有被用于补充事实内容，当前接受为非阻塞观察。后续任务包可考虑显式说明 worker 是否需要读取 skill，减少边界噪声。
+执行者读取了 `~/.codex/skills/agent-loop-runner/SKILL.md`，该路径不在任务包的常规允许输入中，但已在 `read_log.md` 记录路径、原因和用途。鉴于本轮开发者指令要求使用 `agent-loop-runner` skill，且该读取没有被用于补充事实内容，当前接受为非阻塞观察。后续任务包可考虑显式说明 worker 是否需要读取 skill，减少边界噪声。
 
 ## 候选选择
 

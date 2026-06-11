@@ -4,7 +4,7 @@
 
 ## 仓库与路径
 
-- 仓库根目录：`/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo`（先 `cd` 过去）
+- 仓库根目录：`.`（先 `cd` 过去）
 - v3 loop 目录：`loops/v3_llm_wiki_loop_20260525/`
 - Draft 路径：`outputs/llm_wiki/drafts/cards/<id>.md` + `drafts/provenance/<id>.md` + `drafts/similarity/<id>.json` + `drafts/comparison/<id>.md`
 - Adopted 路径：

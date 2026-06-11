@@ -1,6 +1,6 @@
 ## 任务外读取
 
-- `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- `~/.codex/skills/agent-loop-runner/SKILL.md`
   - 原因：本会话技能规则要求循环类任务使用 `agent-loop-runner` 技能。
   - 用途：仅确认执行流程约束；不作为知识卡审计事实证据。
 

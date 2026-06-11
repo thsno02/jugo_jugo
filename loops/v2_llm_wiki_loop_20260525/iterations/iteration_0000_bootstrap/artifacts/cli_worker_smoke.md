@@ -29,7 +29,7 @@ READY
 命令形态：
 
 ```text
-codex exec --ephemeral --sandbox read-only -C /Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo "只输出 READY，不要解释，不要读取文件，不要运行命令。"
+codex exec --ephemeral --sandbox read-only -C . "只输出 READY，不要解释，不要读取文件，不要运行命令。"
 ```
 
 结果要点：

@@ -6,7 +6,7 @@ import re
 import json
 from pathlib import Path
 
-CARDS_DIR = Path("/Users/lw/Desktop/GitHub/llm_wiki/jugo_jugo/loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards")
+CARDS_DIR = Path("loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards")
 
 # Regex patterns
 # Marker in body: [^xxx] but NOT [^xxx]: (which is a definition)

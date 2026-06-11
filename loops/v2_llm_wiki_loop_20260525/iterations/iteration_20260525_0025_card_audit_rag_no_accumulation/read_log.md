@@ -1,6 +1,6 @@
 # read_log
 
-- path: `/Users/lw/.codex/skills/agent-loop-runner/SKILL.md`
+- path: `~/.codex/skills/agent-loop-runner/SKILL.md`
   reason: 开发者指令要求 loop 类任务使用对应 skill。
   purpose: 读取执行 loop 产物写回和状态交付约束；不作为知识卡事实来源。
 - path: `llm_wiki/loop/iterations/iteration_20260525_0025_card_audit_rag_no_accumulation/task.md`

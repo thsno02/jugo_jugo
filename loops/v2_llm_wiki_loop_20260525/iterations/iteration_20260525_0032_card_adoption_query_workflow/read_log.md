@@ -1,4 +1,4 @@
-- path: /Users/lw/.codex/skills/agent-loop-runner/SKILL.md
+- path: ~/.codex/skills/agent-loop-runner/SKILL.md
   reason: 本轮任务命中 loop 执行类技能，需要确认本地技能的最小工作流要求。
   usage: 仅用于遵守执行流程，不用于补充知识卡事实。
 - path: llm_wiki/loop/iterations/iteration_20260525_0032_card_adoption_query_workflow/task.md
