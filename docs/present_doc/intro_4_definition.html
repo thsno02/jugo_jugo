@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intro 4 — LLM Wiki 的定义与核心属性</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Helvetica Neue', 'PingFang SC', sans-serif;
+    background: #FAFAF8;
+    color: #1A1A1A;
+    padding: 56px 48px;
+    line-height: 1.6;
+  }
+
+  .canvas {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 36px;
+  }
+
+  /* Definition quote */
+  .definition {
+    padding: 24px 32px;
+    border-left: 6px solid #1D4ED8;
+    background: #F0F4FF;
+    margin-bottom: 40px;
+    font-size: 15px;
+    color: #333;
+  }
+
+  .definition strong {
+    color: #1D4ED8;
+  }
+
+  .definition .hl {
+    background: #DBEAFE;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-weight: 600;
+    color: #1A1A1A;
+  }
+
+  /* Two-column mapping */
+  .mapping {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .col-header {
+    padding: 14px 24px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: #1A1A1A;
+    color: #FAFAF8;
+  }
+
+  /* Left: key points */
+  .point-group {
+    padding: 24px 24px;
+    border-bottom: 1px solid #E0E0E0;
+    border-right: 1px solid #E0E0E0;
+  }
+
+  .point-group:last-of-type {
+    border-bottom: none;
+  }
+
+  .point-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 10px;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+
+  .point-1 .point-num { background: #E63946; }
+  .point-2 .point-num { background: #F4B942; }
+  .point-3 .point-num { background: #1D4ED8; }
+
+  .point-title {
+    font-size: 15px;
+    font-weight: 700;
+    display: inline;
+    vertical-align: middle;
+  }
+
+  .point-desc {
+    font-size: 13px;
+    color: #666;
+    margin-top: 8px;
+    padding-left: 34px;
+  }
+
+  /* Right: attributes */
+  .attr-group {
+    padding: 24px 24px;
+    border-bottom: 1px solid #E0E0E0;
+    background: #FCFCFA;
+  }
+
+  .attr-group:last-of-type {
+    border-bottom: none;
+  }
+
+  .attr-item {
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    background: #fff;
+    border-left: 4px solid;
+  }
+
+  .attr-item:last-child { margin-bottom: 0; }
+
+  .point-1 + .attr-group .attr-item { border-left-color: #E63946; }
+  .point-2 + .attr-group .attr-item { border-left-color: #F4B942; }
+  .point-3 + .attr-group .attr-item { border-left-color: #1D4ED8; }
+
+  .attr-name {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .attr-desc {
+    font-size: 12px;
+    color: #666;
+  }
+
+  /* Bauhaus bar */
+  .bauhaus-bar {
+    display: flex;
+    height: 6px;
+    margin-top: 40px;
+  }
+
+  .bauhaus-bar span:nth-child(1) { flex: 3; background: #E63946; }
+  .bauhaus-bar span:nth-child(2) { flex: 2; background: #F4B942; }
+  .bauhaus-bar span:nth-child(3) { flex: 4; background: #1D4ED8; }
+  .bauhaus-bar span:nth-child(4) { flex: 1; background: #1A1A1A; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+<h1>LLM Wiki 的定义与核心属性</h1>
+
+<div class="definition">
+  <strong>LLM Wiki</strong> 是一个由大语言模型和智能体<span class="hl">持续维护</span>的<span class="hl">知识卡片系统</span>。每个知识卡片是<span class="hl">人类可读</span>、<span class="hl">智能体可操作</span>、<span class="hl">来源可追溯</span>的知识对象；卡片之间通过链接、引用、标签、实体关系、主题关系和时间关系形成<span class="hl">轻量知识图</span>；系统通过持续的提取、定界、去重、融合、链接、审核和提升，把原始文档逐步转化为<span class="hl">可复用的知识库</span>。
+</div>
+
+<div class="mapping">
+  <div class="col-header">设计重点</div>
+  <div class="col-header">核心属性</div>
+
+  <div class="point-group point-1">
+    <span class="point-num">1</span>
+    <span class="point-title">知识卡片是默认最小单元</span>
+    <p class="point-desc">"最小"是建模原则，不是强制切分。每张卡片应是可被人或智能体直接完整消费的信息簇：明确主题、清楚边界、可读正文、来源支撑、可维护状态。</p>
+  </div>
+  <div class="attr-group">
+    <div class="attr-item">
+      <div class="attr-name">来源锚定（source-grounded）</div>
+      <div class="attr-desc">每个知识可追溯到原始资料，关键判断有来源、证据和适用上下文，避免退化为不可验证的生成文本</div>
+    </div>
+    <div class="attr-item">
+      <div class="attr-name">结构约束（schema-constrained）</div>
+      <div class="attr-desc">知识对象遵守稳定结构；显性层是卡片供阅读，隐性层是来源证据、比较记录、版本记录和审核记录供治理</div>
+    </div>
+  </div>
+
+  <div class="point-group point-2">
+    <span class="point-num">2</span>
+    <span class="point-title">图结构是组织方式之一</span>
+    <p class="point-desc">卡片为节点，引用、主题、实体、相似、冲突、增量关系为边。图帮助导航、检索和分析，但知识的主要承载物仍然是可读、可引用、可追溯的卡片。</p>
+  </div>
+  <div class="attr-group">
+    <div class="attr-item">
+      <div class="attr-name">关系可链接（linkable / graphable）</div>
+      <div class="attr-desc">通过引用、主题、实体、相似、冲突、增量等关系形成网络；图提供组织和查询视图，卡片承载知识内容</div>
+    </div>
+  </div>
+
+  <div class="point-group point-3">
+    <span class="point-num">3</span>
+    <span class="point-title">核心能力是知识治理</span>
+    <p class="point-desc">管理知识从草稿（draft）→ 候选（candidate）→ 稳定（stable）的状态变化，也管理来源、边界、冲突、版本、审核和回流。</p>
+  </div>
+  <div class="attr-group">
+    <div class="attr-item">
+      <div class="attr-name">版本可审计（versionable / auditable）</div>
+      <div class="attr-desc">知识有草稿、候选、稳定、废弃等状态，记录变更、审核和提升过程，让知识演化可被检查</div>
+    </div>
+    <div class="attr-item">
+      <div class="attr-name">智能体可操作（agent-operable）</div>
+      <div class="attr-desc">智能体可创建、更新、拆分、合并、补充来源、标记冲突、执行检查，并把有价值回答写回知识库</div>
+    </div>
+  </div>
+</div>
+
+<div class="bauhaus-bar">
+  <span></span><span></span><span></span><span></span>
+</div>
+
+</div>
+</body>
+</html>

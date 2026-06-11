@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intro 5 — 从 DIKW 视角建模 LLM Wiki</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Helvetica Neue', 'PingFang SC', sans-serif;
+    background: #FAFAF8;
+    color: #1A1A1A;
+    padding: 56px 48px;
+    line-height: 1.6;
+  }
+
+  .canvas {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .intro {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 32px;
+    max-width: 860px;
+  }
+
+  .hl {
+    background: #DBEAFE;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-weight: 600;
+    color: #1A1A1A;
+  }
+
+  .verdict .hl {
+    background: #FFF0C0;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    padding: 13px 16px;
+    background: #1A1A1A;
+    color: #FAFAF8;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 16px 16px;
+    border-bottom: 1px solid #E0E0E0;
+    vertical-align: top;
+    color: #444;
+  }
+
+  /* First column: DIKW level */
+  tbody td:first-child {
+    font-weight: 700;
+    color: #1A1A1A;
+    white-space: nowrap;
+    width: 140px;
+  }
+
+  /* Color accents per row */
+  .row-data td:first-child { border-left: 5px solid #999; }
+  .row-info td:first-child { border-left: 5px solid #F4B942; }
+  .row-know td:first-child { border-left: 5px solid #1D4ED8; }
+  .row-wisd td:first-child { border-left: 5px solid #E63946; }
+
+  /* Status column tag style */
+  .status {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .row-data .status { background: #F0F0EE; color: #666; }
+  .row-info .status { background: #FFF3CD; color: #856404; }
+  .row-know .status { background: #DBEAFE; color: #1E40AF; }
+  .row-wisd .status { background: #FDECEA; color: #991B1B; }
+
+  /* Verdict */
+  .verdict {
+    margin-top: 28px;
+    padding: 18px 24px;
+    background: #FFF8E1;
+    border-left: 5px solid #F4B942;
+    font-size: 15px;
+    color: #444;
+  }
+
+  .verdict strong { color: #1A1A1A; }
+
+  /* Bauhaus bar */
+  .bauhaus-bar {
+    display: flex;
+    height: 6px;
+    margin-top: 36px;
+  }
+
+  .bauhaus-bar span:nth-child(1) { flex: 3; background: #E63946; }
+  .bauhaus-bar span:nth-child(2) { flex: 2; background: #F4B942; }
+  .bauhaus-bar span:nth-child(3) { flex: 4; background: #1D4ED8; }
+  .bauhaus-bar span:nth-child(4) { flex: 1; background: #1A1A1A; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+<h1>从 DIKW 视角建模 LLM Wiki</h1>
+
+<p class="intro">DIKW（数据-信息-知识-智慧）是经典的<span class="hl">知识层次模型</span>，描述了从原始数据到可行动理解的<span class="hl">逐级提炼</span>过程。<br>LLM Wiki 借用这个框架来定义<span class="hl">知识的成熟度</span>：不是所有输入都是知识，只有经过治理和接受的内容才进入知识层。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>层级</th>
+      <th>实例</th>
+      <th>状态</th>
+      <th>智能体的主要动作</th>
+      <th>人的主要动作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row-data">
+      <td>数据（Data）</td>
+      <td>论文、博客、代码仓库、讨论帖、网页、原始文件</td>
+      <td><span class="status">原始材料层</span></td>
+      <td>发现、保存、可读化提取、状态追踪</td>
+      <td>定义领域范围、优先级和初始问题</td>
+    </tr>
+    <tr class="row-info">
+      <td>信息（Information）</td>
+      <td>草稿卡片、草稿溯源、草稿对比、事实候选</td>
+      <td><span class="status">候选层，尚未被接受</span></td>
+      <td>提取、定界、起草、初步证据绑定</td>
+      <td>检查方向、指出遗漏或偏差</td>
+    </tr>
+    <tr class="row-know">
+      <td>知识（Knowledge）</td>
+      <td>已接受的卡片、已接受的溯源、比较记录、引用链接</td>
+      <td><span class="status">已接受的知识层</span></td>
+      <td>审核、比较、去重、融合、链接、采纳</td>
+      <td>轻量审核、消费、判断是否提升</td>
+    </tr>
+    <tr class="row-wisd">
+      <td>智慧（Wisdom）</td>
+      <td>枢纽节点、主题、模式、规则、判断框架</td>
+      <td><span class="status">可复用的结构性理解</span></td>
+      <td>知识自进化、规律自发现、规则自演化、跨卡片理解</td>
+      <td>使用、反馈、关键取舍和阶段性承诺</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="verdict">
+  <strong>流程方向：</strong>原始来源不会自动成为知识，摘要也不会自动成为可信知识。<span class="hl">草稿卡片仍在信息层</span>，<span class="hl">已接受的卡片才进入知识层</span>；智慧来自已接受知识的长期连接、复用、冲突和修订。
+</div>
+
+<div class="bauhaus-bar">
+  <span></span><span></span><span></span><span></span>
+</div>
+
+</div>
+</body>
+</html>

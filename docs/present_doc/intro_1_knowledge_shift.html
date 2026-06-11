@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intro 1 — 知识库的服务对象转变</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Helvetica Neue', 'PingFang SC', sans-serif;
+    background: #FAFAF8;
+    color: #1A1A1A;
+    padding: 56px 48px;
+    line-height: 1.6;
+  }
+
+  .canvas {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Two panels */
+  .panels {
+    display: grid;
+    grid-template-columns: 1fr 64px 1fr;
+    align-items: stretch;
+  }
+
+  .panel {
+    padding: 36px 32px;
+  }
+
+  .panel-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 12px;
+  }
+
+  .panel h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .panel h2 span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #888;
+    margin-left: 6px;
+  }
+
+  .panel .subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #EEE;
+  }
+
+  /* Left: Past */
+  .panel-past {
+    border-top: 5px solid #E63946;
+  }
+
+  /* Right: Now */
+  .panel-now {
+    border-top: 5px solid #1D4ED8;
+  }
+
+  /* Activity items */
+  .activity-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .activity-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid #EEEEEA;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .activity-list li:last-child {
+    border-bottom: none;
+  }
+
+  .icon-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 13px;
+  }
+
+  .panel-past .icon-circle {
+    background: #FDECEA;
+    color: #E63946;
+  }
+
+  .panel-now .icon-circle {
+    background: #E8F0FE;
+    color: #1D4ED8;
+  }
+
+  .activity-text strong {
+    color: #1A1A1A;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .activity-text span {
+    font-size: 12px;
+    color: #888;
+  }
+
+  /* Center arrow */
+  .shift-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .shift-arrow svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .shift-arrow .arrow-label {
+    writing-mode: vertical-rl;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #BBB;
+  }
+
+  /* Bottom rationale */
+  .rationale {
+    margin-top: 36px;
+    padding: 20px 28px;
+    background: #FFF8E1;
+    border-left: 5px solid #F4B942;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .rationale strong {
+    color: #1A1A1A;
+  }
+
+  /* Bauhaus bar */
+  .bauhaus-bar {
+    display: flex;
+    height: 6px;
+    margin-top: 36px;
+  }
+
+  .bauhaus-bar span:nth-child(1) { flex: 3; background: #E63946; }
+  .bauhaus-bar span:nth-child(2) { flex: 2; background: #F4B942; }
+  .bauhaus-bar span:nth-child(3) { flex: 4; background: #1D4ED8; }
+  .bauhaus-bar span:nth-child(4) { flex: 1; background: #1A1A1A; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+<h1 style="font-size:24px;font-weight:700;margin-bottom:36px;">知识范式的转变</h1>
+
+<div class="panels">
+
+  <!-- Past -->
+  <div class="panel panel-past">
+    <div class="panel-label">过去 Past</div>
+    <h2>知识服务人</h2>
+    <p class="subtitle">知识库围绕人的工作流设计</p>
+
+    <ul class="activity-list">
+      <li>
+        <div class="icon-circle">阅</div>
+        <div class="activity-text">
+          <strong>阅读文档</strong>
+          <span>人主动消化原始材料</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon-circle">搜</div>
+        <div class="activity-text">
+          <strong>搜索资料</strong>
+          <span>按需检索已有知识</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon-circle">记</div>
+        <div class="activity-text">
+          <strong>整理笔记</strong>
+          <span>人工提炼、归纳、标注</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon-circle">沉</div>
+        <div class="activity-text">
+          <strong>沉淀经验</strong>
+          <span>写回 wiki、文档、知识库</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Arrow -->
+  <div class="shift-arrow">
+    <svg viewBox="0 0 36 36" fill="none">
+      <path d="M8 18H28M28 18L21 11M28 18L21 25" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <!-- Now -->
+  <div class="panel panel-now">
+    <div class="panel-label">AI-Native</div>
+    <h2>知识也要服务 Agent</h2>
+    <p class="subtitle">智能体原生工作流的新需求</p>
+
+    <ul class="activity-list">
+      <li>
+        <div class="icon-circle">消</div>
+        <div class="activity-text">
+          <strong>持续消化</strong>
+          <span>自动处理新进文档和材料</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon-circle">检</div>
+        <div class="activity-text">
+          <strong>精准检索</strong>
+          <span>按语义和结构定位知识</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon-circle">合</div>
+        <div class="activity-text">
+          <strong>整合关联</strong>
+          <span>跨源跨时间连接知识片段</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon-circle">更</div>
+        <div class="activity-text">
+          <strong>更新回流</strong>
+          <span>把新理解写回知识库</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="rationale">
+  <strong>原因很直接：</strong>人的记忆和上下文窗口都有限。Agent 如果能持续消化、检索、整合和更新已有知识，就能更稳定地服务业务和人。
+</div>
+
+<div class="bauhaus-bar">
+  <span></span><span></span><span></span><span></span>
+</div>
+
+</div>
+</body>
+</html>

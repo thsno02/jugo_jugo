@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intro 3 — 内生知识与 RAG：机制、局限与前沿案例</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Helvetica Neue', 'PingFang SC', sans-serif;
+    background: #FAFAF8;
+    color: #1A1A1A;
+    padding: 56px 48px;
+    line-height: 1.6;
+  }
+
+  .canvas {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .canvas > h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 36px;
+  }
+
+  /* Grid table */
+  .grid {
+    display: grid;
+    grid-template-columns: 180px 1fr 280px;
+    gap: 0;
+  }
+
+  .grid-header {
+    display: contents;
+  }
+
+  .grid-header > div {
+    padding: 14px 24px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: #1A1A1A;
+    color: #FAFAF8;
+  }
+
+  .row {
+    display: contents;
+  }
+
+  .row > div {
+    padding: 28px 24px;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  /* Path column */
+  .path-cell {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .path-indicator {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .path-1 .path-indicator { background: #E63946; }
+  .path-2 .path-indicator { background: #1D4ED8; }
+
+  .path-info {
+    padding-top: 6px;
+  }
+
+  .path-info strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  .path-info span {
+    font-size: 12px;
+    color: #999;
+  }
+
+  /* Explanation column */
+  .explain-cell h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .attr-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .attr-list li {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #EEEEEA;
+    font-size: 13px;
+    color: #444;
+    align-items: baseline;
+  }
+
+  .attr-list li:last-child { border-bottom: none; }
+
+  .attr-key {
+    font-weight: 700;
+    font-size: 12px;
+    color: #1A1A1A;
+    min-width: 36px;
+    flex-shrink: 0;
+  }
+
+  .tags { margin-top: 14px; }
+
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-right: 5px;
+  }
+
+  .tag-pro { background: #D4EDDA; color: #155724; }
+  .tag-con { background: #F8D7DA; color: #721C24; }
+
+  /* Case column */
+  .case-cell {
+    background: #F5F5F0;
+  }
+
+  .case-empty {
+    font-size: 13px;
+    color: #BBB;
+    font-style: italic;
+  }
+
+  .case-card {
+    background: #fff;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    border-left: 4px solid #1D4ED8;
+  }
+
+  .case-card:last-child { margin-bottom: 0; }
+
+  .case-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .case-card p {
+    font-size: 12px;
+    color: #666;
+  }
+
+  /* Bauhaus bar */
+  .bauhaus-bar {
+    display: flex;
+    height: 6px;
+    margin-top: 40px;
+  }
+
+  .bauhaus-bar span:nth-child(1) { flex: 3; background: #E63946; }
+  .bauhaus-bar span:nth-child(2) { flex: 2; background: #F4B942; }
+  .bauhaus-bar span:nth-child(3) { flex: 4; background: #1D4ED8; }
+  .bauhaus-bar span:nth-child(4) { flex: 1; background: #1A1A1A; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+<h1>内生知识与 RAG：机制、局限与前沿案例</h1>
+
+<div class="grid">
+  <div class="grid-header">
+    <div>路径 Path</div>
+    <div>解释 Explanation</div>
+    <div>案例 Case</div>
+  </div>
+
+  <!-- Path 1 -->
+  <div class="row path-1">
+    <div class="path-cell">
+      <div class="path-indicator">1</div>
+      <div class="path-info">
+        <strong>模型内生知识</strong>
+        <span>Parametric Knowledge</span>
+      </div>
+    </div>
+
+    <div class="explain-cell">
+      <h3>依赖模型参数中编码的知识</h3>
+      <ul class="attr-list">
+        <li><span class="attr-key">机制</span>知识在预训练和微调阶段写入模型权重，推理时直接从参数中提取</li>
+        <li><span class="attr-key">优势</span>响应快，无需外部检索或额外基础设施</li>
+        <li><span class="attr-key">问题</span>知识不可控，容易受输入干扰产生幻觉，无法提供可追溯的答案</li>
+      </ul>
+      <div class="tags">
+        <span class="tag tag-pro">快速响应</span>
+        <span class="tag tag-con">不可控</span>
+        <span class="tag tag-con">不可追溯</span>
+        <span class="tag tag-con">易幻觉</span>
+      </div>
+    </div>
+
+    <div class="case-cell">
+      <p class="case-empty">大多数裸模型调用属于此类，无专用方案名称。</p>
+    </div>
+  </div>
+
+  <!-- Path 2 -->
+  <div class="row path-2">
+    <div class="path-cell">
+      <div class="path-indicator">2</div>
+      <div class="path-info">
+        <strong>检索增强生成</strong>
+        <span>RAG</span>
+      </div>
+    </div>
+
+    <div class="explain-cell">
+      <h3>通过外部语料库约束回答</h3>
+      <ul class="attr-list">
+        <li><span class="attr-key">机制</span>查询时从外部语料库检索相关片段，拼接进 prompt 生成回答</li>
+        <li><span class="attr-key">优势</span>可建立来源约束，适合接入企业文档、研究资料和业务数据</li>
+        <li><span class="attr-key">问题</span>只解决查询时召回，缺乏知识回流（write-back）和治理（governance）机制</li>
+        <li><span class="attr-key">局限</span>语料库往往静态，知识难以持续生长</li>
+      </ul>
+      <div class="tags">
+        <span class="tag tag-pro">可追溯</span>
+        <span class="tag tag-pro">来源约束</span>
+        <span class="tag tag-con">静态语料</span>
+        <span class="tag tag-con">无回流机制</span>
+      </div>
+    </div>
+
+    <div class="case-cell">
+      <div class="case-card">
+        <h4>Graphify / 图化</h4>
+        <p>将 code、docs、PDF、images、videos 等材料转为图文件，再基于图结构查询项目知识。增强材料的结构化程度与可检索性。</p>
+      </div>
+      <div class="case-card">
+        <h4>GraphRAG</h4>
+        <p>在索引阶段构建图谱和多层摘要，处理长文本、多跳关系和复杂语料理解。微软提出的增强 RAG 范式。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bauhaus-bar">
+  <span></span><span></span><span></span><span></span>
+</div>
+
+</div>
+</body>
+</html>
