@@ -1,0 +1,851 @@
+{
+  "C1_yaml_validation": {
+    "total_cards": 477,
+    "errors": 0,
+    "pass": true,
+    "details": []
+  },
+  "B1_dangling_refs": {
+    "total_refs_checked": 1815,
+    "dangling": 0,
+    "pass": true,
+    "details": []
+  },
+  "B2_orphan_cards": {
+    "total_non_comparison": 468,
+    "orphans": 2,
+    "orphan_rate": "0.4%",
+    "pass": true,
+    "details": [
+      "llm-wiki-retardmax-mode",
+      "ragchecker-evaluation-input-schema"
+    ]
+  },
+  "B3_backlink_asymmetry": {
+    "total_edges": 1815,
+    "asymmetric": 9,
+    "rate": "0.5%",
+    "pass": true,
+    "details": [
+      {
+        "from": "agt-mcp-security-gateway",
+        "to": "agt-four-privilege-ring-execution-sandbox"
+      },
+      {
+        "from": "deterministic-policy-enforcement-for-agents",
+        "to": "agt-four-privilege-ring-execution-sandbox"
+      },
+      {
+        "from": "llm-wiki-compilation-process",
+        "to": "dual-link-obsidian-agent-compatibility"
+      },
+      {
+        "from": "llm-wiki-gap-report-iterative",
+        "to": "multi-agent-parallel-research-pipeline"
+      },
+      {
+        "from": "llm-wiki-hub-architecture",
+        "to": "hub-topic-wiki-isolation"
+      },
+      {
+        "from": "llm-wiki-plan-mode-research",
+        "to": "multi-agent-parallel-research-pipeline"
+      },
+      {
+        "from": "llm-wiki-retardmax-mode",
+        "to": "multi-agent-parallel-research-pipeline"
+      },
+      {
+        "from": "llm-wiki-thesis-mode",
+        "to": "multi-agent-parallel-research-pipeline"
+      },
+      {
+        "from": "ragchecker-evaluation-input-schema",
+        "to": "ragchecker-framework-overview"
+      }
+    ]
+  },
+  "B4_cross_domain_bridge": {
+    "domains": {
+      "arxiv": {
+        "cards": 200,
+        "cross_links": 33,
+        "pass": true
+      },
+      "gist_raw": {
+        "cards": 9,
+        "cross_links": 18,
+        "pass": true
+      },
+      "github_repo": {
+        "cards": 77,
+        "cross_links": 86,
+        "pass": true
+      },
+      "hacker_news": {
+        "cards": 6,
+        "cross_links": 2,
+        "pass": true
+      },
+      "pypi": {
+        "cards": 6,
+        "cross_links": 20,
+        "pass": true
+      },
+      "webpage": {
+        "cards": 180,
+        "cross_links": 104,
+        "pass": true
+      }
+    },
+    "pass": true
+  },
+  "A1_source_faithfulness": {
+    "total_footnotes": 848,
+    "verified": 705,
+    "suspects": 143,
+    "suspect_rate": "16.9%",
+    "pass": false,
+    "details": [
+      {
+        "card": "agent-environment-awareness-under-stress",
+        "footnote": "src-3",
+        "path": "data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt",
+        "quote_prefix": "High confidence examples: 'The typed search text was becoming garbled'...",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "agt-merkle-audit-compliance",
+        "footnote": "src-2",
+        "path": "data/raw/github_repo/repo-microsoft-agent-governance-toolkit/repo/README.md",
+        "quote_prefix": "Audit and Compliance ... Merkle audit, compliance mapping, Decision BOM | 157",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-benchmark-overview",
+        "footnote": "src-1",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "We present ALCE, the first reproducible benchmark for automatically evaluating L",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-benchmark-overview",
+        "footnote": "src-2",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "the system is required to return an output S, which consists of n statements s_1",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-benchmark-overview",
+        "footnote": "src-3",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "We divide the corpus D into 100-word passages...it is easier for humans to verif",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-citation-support-gap",
+        "footnote": "src-2",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "Vanilla (5-psg): Rec. 51.1; w/ Rerank: Rec. 69.3",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-citation-support-gap",
+        "footnote": "src-3",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "GPT-4 (5-psg): Rec. 44.0; GPT-4 (20-psg): Rec. 48.5",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-citation-support-gap",
+        "footnote": "src-4",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "ChatGPT Vanilla (5-psg): Rec. 73.6; w/ Rerank: Rec. 84.8",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-datasets-design",
+        "footnote": "src-1",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "We choose QA datasets so that (1) they contain factual questions...;(2) question",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-datasets-design",
+        "footnote": "src-2",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "ASQA is a long-form factoid dataset...each question is an ambiguous question fro",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-datasets-design",
+        "footnote": "src-3",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "QAMPARI is a factoid QA dataset...the answer is a list of entities\"; \"Dataset St",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-datasets-design",
+        "footnote": "src-4",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "ELI5 is a long-form QA dataset built on the Reddit forum...we use Sphere---a fil",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-datasets-design",
+        "footnote": "src-5",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "We randomly select 1,000 examples from the development set...does not provide tr",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-prompting-strategies",
+        "footnote": "src-1",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "we discuss three major modeling components for an ALCE system---retrieval, synth",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-prompting-strategies",
+        "footnote": "src-2",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "We simply provide the model with the top-k passages and instruct the model to ci",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-prompting-strategies",
+        "footnote": "src-3",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "Summaries or snippets significantly reduce the passage length, allowing for more",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-prompting-strategies",
+        "footnote": "src-4",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "Combining Interact with Summ/Snippet does not bring improvement...current LLMs a",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-prompting-strategies",
+        "footnote": "src-5",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "Vanilla outperforms InlineSearch on citation quality...it is challenging to ask ",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-prompting-strategies",
+        "footnote": "src-6",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "We randomly sample n_sample=4 responses...and select the best response using the",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-three-dimensional-evaluation",
+        "footnote": "src-1",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "Our benchmark measures the following three dimensions of system responses",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-three-dimensional-evaluation",
+        "footnote": "src-2",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "We use MAUVE to evaluate the fluency of the output...we mainly employ it as a sa",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "alce-three-dimensional-evaluation",
+        "footnote": "src-3",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "For ASQA...exact match recall...For QAMPARI...precision and recall...For ELI5...",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "ares-vs-ragas-design-differences",
+        "footnote": "src-5",
+        "path": "data/raw/arxiv/arxiv-ares/agent_source_bundle.txt",
+        "quote_prefix": "RAGAS Accuracy 31.4%...15.0%",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "bttb-production-reference",
+        "footnote": "src-2",
+        "path": "data/raw/webpage/complete-tech-live-frontier/markdown.md",
+        "quote_prefix": "wiki/— 120+ pages...1400+ internal links",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "chaos-monkey-agent-stress-testing",
+        "footnote": "src-2",
+        "path": "data/raw/arxiv/arxiv-etamp-memory-poisoning/agent_source_bundle.txt",
+        "quote_prefix": "With p_click=0.4, p_scroll=1, and p_type=1, tasks remain completable but signifi",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "claim-recall-eli5-evaluation",
+        "footnote": "src-1",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "the ELI5 dataset does not provide short entity answers...ROUGE for evaluation, w",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "claim-recall-eli5-evaluation",
+        "footnote": "src-3",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "112 out of the 120 (93.33%) sub-claims received a score of 1...the NLI model ach",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "claim-recall-eli5-evaluation",
+        "footnote": "src-4",
+        "path": "data/raw/arxiv/arxiv-alce/agent_source_bundle.txt",
+        "quote_prefix": "Top-1 passage: ROUGE-L 19.1, Claim recall 3.0; ChatGPT Vanilla: ROUGE-L 20.6, Cl",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "claude-first-multi-runtime-packaging",
+        "footnote": "src-2",
+        "path": "data/raw/github_repo/repo-nvk-llm-wiki/material_bundle.txt",
+        "quote_prefix": "Both runtime mirrors are generated, not hand-maintained.",
+        "reason": "grep 未匹配"
+      },
+      {
+        "card": "claude-first-multi-runtime-packaging",
+        "footnote": "src-3",
+        "path": "data/raw/github_repo/repo-nvk-llm-wiki/material_bundle.txt",
+        "quote_prefix": "Drift is caught by ./tests/test-codex-sync.sh and ./tests/test-opencode-sync.sh",
+        "reason": "grep 未匹配"
+      }
+    ]
+  },
+  "A2_authority_flattening": {
+    "by_evidence_basis": {
+      "author_claim": {
+        "total": 3,
+        "zero_hedge": 2,
+        "zero_hedge_pct": "66.7%",
+        "avg_quals": 1.0
+      },
+      "code_implementation": {
+        "total": 73,
+        "zero_hedge": 62,
+        "zero_hedge_pct": "84.9%",
+        "avg_quals": 0.1780821917808219
+      },
+      "community_discussion": {
+        "total": 6,
+        "zero_hedge": 3,
+        "zero_hedge_pct": "50.0%",
+        "avg_quals": 0.8333333333333334
+      },
+      "documentation": {
+        "total": 82,
+        "zero_hedge": 70,
+        "zero_hedge_pct": "85.4%",
+        "avg_quals": 0.3780487804878049
+      },
+      "documentation+code_implementation": {
+        "total": 1,
+        "zero_hedge": 1,
+        "zero_hedge_pct": "100.0%",
+        "avg_quals": 0.0
+      },
+      "experimental_paper": {
+        "total": 183,
+        "zero_hedge": 111,
+        "zero_hedge_pct": "60.7%",
+        "avg_quals": 0.5683060109289617
+      },
+      "normative_standard": {
+        "total": 5,
+        "zero_hedge": 4,
+        "zero_hedge_pct": "80.0%",
+        "avg_quals": 0.2
+      },
+      "practitioner_report": {
+        "total": 107,
+        "zero_hedge": 82,
+        "zero_hedge_pct": "76.6%",
+        "avg_quals": 0.3644859813084112
+      },
+      "theoretical_paper": {
+        "total": 17,
+        "zero_hedge": 11,
+        "zero_hedge_pct": "64.7%",
+        "avg_quals": 0.47058823529411764
+      }
+    },
+    "community_discussion_zero_hedge_pct": "50.0%",
+    "pass": true
+  },
+  "C2_title_conjunction": {
+    "total_non_comparison": 468,
+    "conjunction_titles": 14,
+    "rate": "2.9%",
+    "pass": true,
+    "details": [
+      {
+        "card": "ares-ranking-accuracy-vs-baselines",
+        "title": "ARES 排名准确度优于 RAGAS 和 GPT-3.5"
+      },
+      {
+        "card": "ares-vs-ragas-design-differences",
+        "title": "ARES 与 RAGAS 的设计差异"
+      },
+      {
+        "card": "cognition-learning-signal-vs-context-store",
+        "title": "Learning Signal 与 Context Store 的区分"
+      },
+      {
+        "card": "dual-link-obsidian-agent-compatibility",
+        "title": "双链接格式——Obsidian 与 Agent 兼容性设计"
+      },
+      {
+        "card": "human-llm-cognitive-division",
+        "title": "人机认知分工：策展与思考 vs 簿记与维护"
+      },
+      {
+        "card": "lightmem-soft-vs-hard-memory-update",
+        "title": "软更新 vs 硬更新对记忆可靠性的影响"
+      },
+      {
+        "card": "llm-kb-query-filing-back",
+        "title": "LLM KB Query 与 Filing Back 机制"
+      },
+      {
+        "card": "llm-kb-vs-rag-comparison",
+        "title": "LLM KB 与 RAG 的对比"
+      },
+      {
+        "card": "llm-wiki-local-api-agent-skill",
+        "title": "LLM Wiki 本地 API 与 AI Agent 技能集成"
+      },
+      {
+        "card": "mem0-zep-comparison",
+        "title": "Mem0 与 Zep 的 Token 效率对比"
+      },
+      {
+        "card": "openkb-two-layer-architecture",
+        "title": "OpenKB 双层架构——Wiki Foundation 与 Generators"
+      },
+      {
+        "card": "opinionated-inventory-dataset-layers",
+        "title": "有态度的 Inventory 与 Dataset 惰性层设计"
+      },
+      {
+        "card": "ragchecker-retriever-metrics",
+        "title": "RAGChecker 检索器指标 Claim Recall 与 Context Precision"
+      },
+      {
+        "card": "wikibase-entity-identity",
+        "title": "Wikibase Entity 与 DataValue 的标识差异"
+      }
+    ]
+  },
+  "C3_concept_overlap": {
+    "total_card_pairs": 113526,
+    "overlap_pairs": 1,
+    "rate": "0.0009%",
+    "pass": true,
+    "details": [
+      {
+        "card_a": "ares-human-preference-validation-set",
+        "card_b": "prediction-powered-inference-for-rag-ranking",
+        "shared_count": 3,
+        "shared_sample": [
+          "data/raw/arxiv/arxiv-ares/agent_source_bundle.txt|methods.tex",
+          "data/raw/arxiv/arxiv-ares/agent_source_bundle.txt|Tables/ppi_comparison_table.te",
+          "data/raw/arxiv/arxiv-ares/agent_source_bundle.txt|results.tex"
+        ]
+      }
+    ]
+  },
+  "C4_strongly_connected": {
+    "total_sccs_gt2": 12,
+    "largest_scc_size": 374,
+    "sccs": [
+      {
+        "size": 374,
+        "sample": [
+          "graphiti-episode-subgraph",
+          "graphiti-episodic-semantic-memory-analogy",
+          "locomo-summarization-error-taxonomy",
+          "observation-based-rag-dialogue",
+          "locomo-temporal-reasoning-difficulty"
+        ]
+      },
+      {
+        "size": 28,
+        "sample": [
+          "instruction-tuning-citation-ability",
+          "retrieval-quality-bottleneck",
+          "llm-multi-document-synthesis-limitation",
+          "closedbook-posthoc-citation-gap",
+          "alce-prompting-strategies"
+        ]
+      },
+      {
+        "size": 17,
+        "sample": [
+          "circularity-as-thesis",
+          "pragmatist-truth-via-consequences",
+          "vitality-score-decay",
+          "conflict-routing-matrix",
+          "audit-operation"
+        ]
+      },
+      {
+        "size": 16,
+        "sample": [
+          "wikibase-qualifier-snaks",
+          "wikibase-reference-record",
+          "wikibase-statement-rank",
+          "wikibase-statement-structure",
+          "wikibase-snak-types"
+        ]
+      },
+      {
+        "size": 8,
+        "sample": [
+          "graphrag-prompt-auto-tuning",
+          "graphrag-knowledge-model-schema",
+          "graphrag-community-hierarchy-leiden",
+          "graphrag-query-modes",
+          "graphrag-provider-factory-extensibility"
+        ]
+      },
+      {
+        "size": 7,
+        "sample": [
+          "agt-mcp-security-gateway",
+          "agt-merkle-audit-compliance",
+          "agt-zero-trust-agent-identity",
+          "agt-deterministic-policy-enforcement",
+          "agt-four-privilege-ring-execution-sandbox"
+        ]
+      },
+      {
+        "size": 6,
+        "sample": [
+          "langgraph-store-search-capabilities",
+          "langgraph-store-index-config",
+          "langgraph-store-backend-comparison",
+          "langgraph-long-term-memory-concept",
+          "langgraph-store-data-model"
+        ]
+      },
+      {
+        "size": 5,
+        "sample": [
+          "owasp-agentic-application-security-profile",
+          "owasp-agentic-top10-framework-overview",
+          "owasp-top10-llm-project-overview",
+          "nist-ai-600-1-gai-profile",
+          "ai-rmf-voluntary-trustworthiness-framework"
+        ]
+      },
+      {
+        "size": 3,
+        "sample": [
+          "llm-wiki-thesis-mode",
+          "llm-wiki-plan-mode-research",
+          "llm-wiki-gap-report-iterative"
+        ]
+      },
+      {
+        "size": 3,
+        "sample": [
+          "wikibase-won-notation",
+          "wikibase-design-goals-requirements",
+          "wikibase-conceptual-data-model"
+        ]
+      }
+    ],
+    "pass": true
+  },
+  "D1_source_consumption": {
+    "total_raw_sources": 74,
+    "consumed": 62,
+    "unconsumed": 12,
+    "consumption_rate": "83.8%",
+    "failed_sources_recorded": 0,
+    "unaccounted_missing": 12,
+    "unaccounted_details": [
+      "aicritique-enterprise-knowledge",
+      "aicritique-enterprise-knowledge-dynamic-20260524",
+      "arxiv-knowledge-compounding",
+      "hacker-news-lens-thread",
+      "obsidian-help-link-notes",
+      "reddit-braindb",
+      "reddit-claudecode-plugin",
+      "reddit-obsidian-plugin",
+      "reddit-openkb-long-pdf",
+      "reddit-openwebui-llm-wiki",
+      "reddit-visuals-pdfs-question",
+      "repo-stanford-ares"
+    ],
+    "pass": false
+  },
+  "D2_coverage": {
+    "avg_cards_per_source": "7.7",
+    "median_cards_per_source": 6,
+    "max_cards_per_source": 19,
+    "max_source": "wikibase-data-model",
+    "consumption_rate": "83.8%",
+    "pass": true
+  },
+  "E1_cross_source_leakage": {
+    "cards_checked": 477,
+    "suspects": 50,
+    "pass": true,
+    "note": "需 agent 验证 — 脚本仅做初筛",
+    "details": [
+      {
+        "card": "agent-environment-awareness-under-stress",
+        "leaked_concept": "confidence",
+        "from_card": "memory-lifecycle-fields",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agents-md-instruction-file",
+        "leaked_concept": "LLM Wiki",
+        "from_card": "olw-llm-as-compiler",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agents-md-instruction-file",
+        "leaked_concept": "LLM wiki",
+        "from_card": "llm-wiki-three-folder-architecture",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agents-md-instruction-file",
+        "leaked_concept": "AGENTS.md",
+        "from_card": "llm-wiki-agent-config-as-program",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agents-md-instruction-file",
+        "leaked_concept": "llm wiki",
+        "from_card": "llm-wiki-pattern-definition",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-deterministic-policy-enforcement",
+        "leaked_concept": "Agent Governance Toolkit",
+        "from_card": "microsoft-agent-governance-toolkit-overview",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-deterministic-policy-enforcement",
+        "leaked_concept": "确定性策略执行",
+        "from_card": "deterministic-policy-enforcement-for-agents",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-deterministic-policy-enforcement",
+        "leaked_concept": "microsoft-agent-governance-toolkit",
+        "from_card": "microsoft-agent-governance-toolkit-overview",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-deterministic-policy-enforcement",
+        "leaked_concept": "agent-governance-toolkit",
+        "from_card": "microsoft-agent-governance-toolkit-overview",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-deterministic-policy-enforcement",
+        "leaked_concept": "Microsoft Agent Governance",
+        "from_card": "microsoft-agent-governance-toolkit-overview",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-deterministic-policy-enforcement",
+        "leaked_concept": "AI agents",
+        "from_card": "owasp-agentic-application-security-profile",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-mcp-security-gateway",
+        "leaked_concept": "drift detection",
+        "from_card": "continuous-drift-detection",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-mcp-security-gateway",
+        "leaked_concept": "microsoft-agent-governance-toolkit",
+        "from_card": "microsoft-agent-governance-toolkit-overview",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-mcp-security-gateway",
+        "leaked_concept": "agent-governance-toolkit",
+        "from_card": "microsoft-agent-governance-toolkit-overview",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-merkle-audit-compliance",
+        "leaked_concept": "microsoft-agent-governance-toolkit",
+        "from_card": "microsoft-agent-governance-toolkit-overview",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-merkle-audit-compliance",
+        "leaked_concept": "agent-governance-toolkit",
+        "from_card": "microsoft-agent-governance-toolkit-overview",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-zero-trust-agent-identity",
+        "leaked_concept": "microsoft-agent-governance-toolkit",
+        "from_card": "microsoft-agent-governance-toolkit-overview",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "agt-zero-trust-agent-identity",
+        "leaked_concept": "agent-governance-toolkit",
+        "from_card": "microsoft-agent-governance-toolkit-overview",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "ai-agent-context-scarcity",
+        "leaked_concept": "LLM Wiki",
+        "from_card": "olw-llm-as-compiler",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      },
+      {
+        "card": "ai-agent-context-scarcity",
+        "leaked_concept": "LLM wiki",
+        "from_card": "llm-wiki-three-folder-architecture",
+        "reason": "概念出现在 body 中，无同源关系，无 card 脚注锚定"
+      }
+    ]
+  },
+  "E2_unsourced_paragraphs": {
+    "total_paragraphs_gt2_sentences": 785,
+    "unsourced": 141,
+    "rate": "18.0%",
+    "pass": false,
+    "details": [
+      {
+        "card": "agent-environment-awareness-under-stress",
+        "paragraph_preview": "**定量结果**（仅高置信度）:\n- GPT-5.2: Chaos 下 7.4% awareness | 无 Chaos 0.0%\n- Qwen3-32B: Chaos 下 2.1% | 无 Chaos 0.0%\n- GPT-5-mini:",
+        "sentences": 8
+      },
+      {
+        "card": "agt-mcp-security-gateway",
+        "paragraph_preview": "四类检测能力：\n1. **Tool poisoning detection** -- 识别恶意注入的 tool 定义\n2. **Description drift monitoring** -- 监控 tool 描述的意外变更\n3. **T",
+        "sentences": 5
+      },
+      {
+        "card": "ai-rmf-voluntary-trustworthiness-framework",
+        "paragraph_preview": "1. **自愿使用(voluntary use)**：AI RMF 明确定位为自愿性框架，非强制性监管要求。组织可根据自身情况选择性采纳。",
+        "sentences": 3
+      },
+      {
+        "card": "ares-three-dimensional-rag-evaluation",
+        "paragraph_preview": "1. **Context Relevance** -- 检索返回的段落是否与给定 query 相关？评估检索器质量。\n2. **Answer Faithfulness** -- 生成的答案是否忠实于检索段落？是否包含幻觉或超出段落的外推陈述",
+        "sentences": 10
+      },
+      {
+        "card": "attention-dilution-crossover",
+        "paragraph_preview": "| 条件 | 文档数 | Token 数 | 窗口填充 | FC 质量 | RAG 质量 | 差值 |\n|------|--------|----------|----------|---------|----------|------|\n",
+        "sentences": 7
+      },
+      {
+        "card": "chain-of-note-reading-strategy",
+        "paragraph_preview": "**Chain-of-Note（CoN）**：指示 LLM 先遍历文档并提取每个记忆项中的信息，然后基于这些笔记推理得出答案。这有效将长上下文阅读分解为两个更简单的子任务：\n1. 复制重要细节\n2. 基于更简洁的笔记进行推理",
+        "sentences": 4
+      },
+      {
+        "card": "claim-level-entailment-checking",
+        "paragraph_preview": "1. **Text-to-claim extraction**: 将给定文本 T 分解为原子 claim 集合 {c_i}\n2. **Claim-entailment checking**: 判断给定 claim c 是否被 referen",
+        "sentences": 3
+      },
+      {
+        "card": "cognition-agent-memory-skill-loop",
+        "paragraph_preview": "1. **Ask first** — agent 在任务启动时先查询团队已有知识（\"the agent checks what your team has already figured out\"）。\n2. **Capture work**",
+        "sentences": 9
+      },
+      {
+        "card": "compilation-gap",
+        "paragraph_preview": "**核心问题——压缩合规失败（compression compliance failure）**：编译器系统性地忽略目标字数限制，实际压缩远超预期：\n- 轻度压缩：目标 75% -> 实际 35.4%\n- 中度压缩：目标 50% -> 实际",
+        "sentences": 4
+      },
+      {
+        "card": "compilation-gap",
+        "paragraph_preview": "**实验证据**（17 个 RepLiQA 主题，每主题 80 文档，6800 QA pairs）：\n- Wiki-light: 质量 2.32, score-1 率 52.9%\n- Wiki-moderate: 质量 2.25, scor",
+        "sentences": 9
+      },
+      {
+        "card": "contradiction-as-asset",
+        "paragraph_preview": "**规则**：当 Claude 发现新 claim 与 wiki 现有页面矛盾时，不覆盖旧页面，而是：\n1. 添加 `contradicts:` 字段\n2. 保留两个版本\n3. 在 lint 时浮现矛盾供人审查",
+        "sentences": 4
+      },
+      {
+        "card": "docs-as-code-adoption-benefits",
+        "paragraph_preview": "1. **Writers 更好整合开发团队** — 技术写作者融入开发团队工作流，减少信息壁垒\n2. **Developers 常写文档初稿** — 开发者在实现功能时即可产出文档的第一版草稿\n3. **可阻塞不含文档的功能合并** — 新",
+        "sentences": 4
+      },
+      {
+        "card": "docs-as-code-philosophy-and-toolchain",
+        "paragraph_preview": "1. **Issue Trackers** — 用于跟踪文档任务与问题\n2. **Version Control (Git)** — 对文档实施版本控制\n3. **Plain Text Markup** — 使用 Markdown、reSt",
+        "sentences": 6
+      },
+      {
+        "card": "dual-link-obsidian-agent-compatibility",
+        "paragraph_preview": "**内联使用**：\n```\nThe [[transformer-architecture|Transformer]] ([Transformer](../concepts/transformer-architecture.md)) uses",
+        "sentences": 4
+      },
+      {
+        "card": "etamp-attack-payload-structure",
+        "paragraph_preview": "**Attack Goal**: 恶意操作指令。电商场景为 goto 加购 URL（/checkout/add?product={ID}&express=true）；Reddit 场景为 goto 发评论 URL（/product/{ID}",
+        "sentences": 5
+      },
+      {
+        "card": "explicit-out-of-scope-boundaries",
+        "paragraph_preview": "1. **Embeddings or vector search** — 不内置向量检索\n2. **Database-backed indexing** — 不依赖数据库索引\n3. **Rename tracking** — 不追踪重命名\n",
+        "sentences": 6
+      },
+      {
+        "card": "fact-augmented-key-expansion",
+        "paragraph_preview": "1. 单独使用压缩形式（summary/fact/keyphrase）作为 key 并不优于直接使用 value 本身。据论文推测这是因为检索器已能有效处理长文本语义。",
+        "sentences": 3
+      },
+      {
+        "card": "fact-augmented-key-expansion",
+        "paragraph_preview": "具体数值（Value=Round, K=V+fact, Stella V5 retriever）：\n- Recall@5: 0.644 vs baseline 0.582\n- Recall@10: 0.784 vs 0.692\n- GPT-",
+        "sentences": 7
+      },
+      {
+        "card": "fc-kv-cache-latency-advantage",
+        "paragraph_preview": "**Policygenius（30 文档, 67K tokens）**：\n- FC 热 TTFT 中位数：0.857s（P5/P95: 0.534/1.053s）\n- RAG TTFT 中位数：6.277s（P5/P95: 4.483/7.",
+        "sentences": 8
+      },
+      {
+        "card": "fc-kv-cache-latency-advantage",
+        "paragraph_preview": "**吞吐量权衡**：RAG 因注意力跨度更短实现 2.6x 更高生成吞吐量（30.74 vs 12.01 tok/s），使总响应时间接近（7.93s vs 6.39s）。",
+        "sentences": 6
+      }
+    ]
+  },
+  "F1_loop_independence": {
+    "hits": 0,
+    "pass": true,
+    "details": []
+  },
+  "F2_justification_integrity": {
+    "total_accepted": 477,
+    "with_justification": 476,
+    "missing": 1,
+    "empty": 0,
+    "completeness_rate": "99.8%",
+    "pass": false,
+    "missing_details": [
+      "observation-based-rag-dialogue"
+    ],
+    "empty_details": []
+  }
+}
