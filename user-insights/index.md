@@ -6,7 +6,7 @@
 
 **Coverage**：mixed
 
-本文件是 session capture 的简短索引，不是 dream-mode aggregation。当前记录包含早期 LLM Wiki loop 0-1 设计会话，以及 Claude 中执行 v3 production/adoption 期间的用户纠偏、设计洞察和阶段结果。
+本文件是 session capture 的公开索引，不是 dream-mode aggregation。当前记录包含早期 LLM Wiki loop 0-1 设计会话，以及 Claude 中执行 v3 production/adoption 期间的用户纠偏、设计洞察和阶段结果。session log 已摘要化，不发布完整聊天记录。
 
 | Date | Session | Current Understanding | Status | Detail |
 | --- | --- | --- | --- | --- |
@@ -15,7 +15,7 @@
 
 ## Coverage And Scope
 
-- `coverage: mixed`：2026-05-25 记录基于可见原始用户输入与 compact handoff；2026-05-27 Claude v3 记录基于本地 Claude JSONL session files 和 memory files。
+- `coverage: mixed`：2026-05-25 记录基于可见上下文与 compact handoff；2026-05-27 Claude v3 记录基于本地 Claude session group 和 memory summaries。
 - `scope: project`：记录主要服务于当前 LLM Wiki KB loop 的设计、运行和后续审计。
-- `sensitivity: normal`：未记录凭证、客户数据或需要脱敏的私密内容。
+- `sensitivity: sanitized`：不记录凭证、客户数据、本机路径或完整聊天 transcript；公开文件仅保留摘要化过程洞察。
 - `doc_folder_sync: manual_update_completed`：相关洞察已同步到 `docs/llm_wiki_practice_reframe/` 的 notes、outline 和 final doc。
