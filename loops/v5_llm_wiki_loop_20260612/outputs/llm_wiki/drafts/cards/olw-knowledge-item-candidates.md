@@ -37,4 +37,3 @@ olw 在 concept 提取之外维护了一套独立的 knowledge item candidates �
 [^src-1]: `data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md` -- "Knowledge item candidates" P397-408 -- "During ingest, olw keeps a separate knowledge item ledger for ambiguous, low-evidence references found explicitly in notes"
 [^src-2]: `data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md` -- "Knowledge item candidates" P410 -- "a named reference should not become a concept article unless the source content supports it. The item ledger keeps the reference from disappearing while avoiding hallucinated articles."
 [^card-1]: 该机制是 olw 三阶段管线 (olw-three-stage-pipeline) 中 ingest 阶段的保守性设计体现，呼应 LLM-as-compiler (olw-llm-as-compiler) 的质量优先理念
-

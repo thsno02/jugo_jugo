@@ -51,4 +51,3 @@ obsidian-llm-wiki 的设计哲学源自 Andrej Karpathy 提出的 "LLM Wiki" 构
 [^src-2]: `data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md` -- "Why not just use a chatbot?" P801-802 -- "The LLM is a compiler, not a conversation partner. You give it raw material; it produces structured knowledge. The output is plain markdown files you own forever."
 [^src-3]: `data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md` -- "Why not just use a chatbot?" P799 -- "Chatbots forget. Every conversation starts fresh. This tool builds a persistent artifact"
 [^card-1]: 该理念通过 olw 三阶段管线 (olw-three-stage-pipeline) 落地实现
-

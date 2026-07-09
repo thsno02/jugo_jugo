@@ -39,4 +39,3 @@ LLM 据此针对性修正 draft 内容。
 [^src-1]: `data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md` -- "Rejection feedback loop" P416-435 -- "The feedback is stored in the state database. On the next compile of that concept, the prompt includes: PREVIOUS REJECTIONS"
 [^src-2]: `data/raw/github_repo/repo-kytmanov-obsidian-local/repo/README.md` -- "Rejection feedback loop" P431 -- "After 5 rejections of the same concept without an approval, the concept is auto-blocked"
 [^card-1]: 该机制是 olw 三阶段管线 (olw-three-stage-pipeline) 中 compile→review 之间的反馈回路
-
