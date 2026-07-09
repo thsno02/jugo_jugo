@@ -14,7 +14,7 @@
   "effective_source_access": "current_visible_context + compact_handoff",
   "source_pointer": "forked_context_requested_but_not_verified",
   "scope_hint": "project",
-  "sensitivity": "normal",
+  "sensitivity": "sanitized",
   "event_count": 16,
   "last_processed_event": "E016",
   "last_processed_source_marker": "latest_visible_user_insights_wake_task",
@@ -29,4 +29,3 @@
     "Dream-mode aggregation into topics/takeaways/dashboard was intentionally not performed."
   ]
 }
-
