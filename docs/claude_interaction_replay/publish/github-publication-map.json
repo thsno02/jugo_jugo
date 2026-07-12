@@ -1081,7 +1081,13 @@
       "parent_linked": true,
       "relations_written": true,
       "closed": true,
-      "state_rationale": "v4 的讨论、执行、审计、修复与独立总结已经固化为经审计的 learnings，并生成完整 v5 capsule、实验配置和最小启动 prompt；明确延期的 Reddit 与 repo 工作不阻断交接完成"
+      "state_rationale": "v4 的讨论、执行、审计、修复与独立总结已经固化为经审计的 learnings，并生成完整 v5 capsule、实验配置和最小启动 prompt；明确延期的 Reddit 与 repo 工作不阻断交接完成",
+      "resolution": {
+        "kind": "answer",
+        "title": "长对话应通过分角色审计的 capsule 固化为可执行交接",
+        "comment_id": 4949312469,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/55#issuecomment-4949312469"
+      }
     },
     "v4-assistant-persona-boundary": {
       "number": 56,
@@ -1095,7 +1101,13 @@
       "parent_linked": true,
       "relations_written": true,
       "closed": true,
-      "state_rationale": "助手已明确区分项目 persona、Anthropic Claude 的模型身份与不可确认的训练语料配比，并对未知部分保持未知；该问题已有边界清楚的当前答案"
+      "state_rationale": "助手已明确区分项目 persona、Anthropic Claude 的模型身份与不可确认的训练语料配比，并对未知部分保持未知；该问题已有边界清楚的当前答案",
+      "resolution": {
+        "kind": "answer",
+        "title": "项目 persona、模型身份与训练语料信息必须分层陈述",
+        "comment_id": 4949312799,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/56#issuecomment-4949312799"
+      }
     },
     "v5-source-router-and-graph-governance": {
       "number": 57,
@@ -1112,7 +1124,13 @@
       "relations_written": true,
       "closed": false,
       "state_rationale": "v5 独立 0→1 已产出可解析 KB 并执行路由、fusion 与图修复，但 10/11/12 个失败源、62/63 个已消费源、0/2 orphan 等口径冲突未闭环，逐卡治理和 mutation 后 gate 缺少轨迹，后续又证明审计未覆盖 extraction 深度",
-      "state_transition_comment_id": 4949160599
+      "state_transition_comment_id": 4949160599,
+      "resolution": {
+        "kind": "current_status",
+        "title": "已有终态产物，但全量闭环尚未证实",
+        "comment_id": 4949313121,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/57#issuecomment-4949313121"
+      }
     },
     "v5-fsjs-audit-coverage": {
       "number": 58,
@@ -1128,7 +1146,13 @@
       "relations_written": true,
       "closed": false,
       "state_rationale": "首轮审计被确认没有完整执行 SHARD/JUDGE；后补流程虽报告 6/6 与 26 子项全覆盖，但底层仍有 FAIL/conditional、语义明细不足，且后续信息密度事件证明 questioning 深度和概念解释充分性不在原合同内",
-      "state_transition_comment_id": 4949159728
+      "state_transition_comment_id": 4949159728,
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到：现有证据指向执行缺口与审计合同盲区",
+        "comment_id": 4949313424,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/58#issuecomment-4949313424"
+      }
     },
     "v5-information-density-regression": {
       "number": 59,
@@ -1142,7 +1166,13 @@
         "v4-source-routing-and-preprocessing"
       ],
       "parent_linked": true,
-      "relations_written": true
+      "relations_written": true,
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到：质量退化已确认，成因仍需受控验证",
+        "comment_id": 4949313707,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4949313707"
+      }
     },
     "v5-v4-ingest-reconstruction": {
       "number": 60,
