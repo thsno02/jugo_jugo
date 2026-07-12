@@ -893,7 +893,13 @@
       "parent_linked": true,
       "relations_written": true,
       "closed": true,
-      "state_rationale": "操作定义、三个重点、五项属性与 DIKW 成熟度已形成两张中文主表达的 slide，并经过内容边界、高亮、换行与字号修正"
+      "state_rationale": "操作定义、三个重点、五项属性与 DIKW 成熟度已形成两张中文主表达的 slide，并经过内容边界、高亮、换行与字号修正",
+      "resolution": {
+        "kind": "answer",
+        "title": "一页用定义统领重点与属性，另一页用 DIKW 表达成熟度",
+        "comment_id": 4949308980,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4949308980"
+      }
     },
     "v3-presentation-render": {
       "number": 47,
@@ -907,7 +913,13 @@
       "parent_linked": true,
       "relations_written": true,
       "closed": true,
-      "state_rationale": "HTML 转 PNG 工具已定位并用于批量渲染 5 个展示页面，输出完成存在性、尺寸与非空检查"
+      "state_rationale": "HTML 转 PNG 工具已定位并用于批量渲染 5 个展示页面，输出完成存在性、尺寸与非空检查",
+      "resolution": {
+        "kind": "answer",
+        "title": "从 `$html-to-png` 入口调用 Playwright，可批量把 HTML 渲染为同名 PNG",
+        "comment_id": 4949309411,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/47#issuecomment-4949309411"
+      }
     },
     "v4-agent-effort-default": {
       "number": 48,
@@ -920,7 +932,13 @@
       "relations_written": true,
       "closed": false,
       "state_rationale": "全局 max 与项目级 xhigh 回退的配置路径已经确定，session hook 也被排除，但档案没有启动新主会话核验实际档位，也没有记录一次真实 sub-agent 委派来验证继承行为",
-      "state_transition_comment_id": 4949150256
+      "state_transition_comment_id": 4949150256,
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前只能定位 max 与 xhigh 的候选配置层级，实际优先关系尚未验证",
+        "comment_id": 4949309866,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/48#issuecomment-4949309866"
+      }
     },
     "v4-full-material-orchestration": {
       "number": 49,
@@ -937,7 +955,13 @@
       "relations_written": true,
       "closed": false,
       "state_rationale": "43 份盘点材料的 extraction 与后置 governance 已完成，但 status.json 和 loop_state.json 仍停在 setup/initializing 与 0 计数，无法可靠恢复或证明控制面已记录全量执行，因此编排合同尚未闭环",
-      "state_transition_comment_id": 4949152016
+      "state_transition_comment_id": 4949152016,
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前只能确认 43 份材料已完成处理，尚不能确认编排可恢复",
+        "comment_id": 4949310273,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4949310273"
+      }
     },
     "v4-sequential-card-governance": {
       "number": 50,
@@ -952,7 +976,13 @@
       "parent_linked": true,
       "relations_written": true,
       "closed": false,
-      "state_rationale": "绝对路径和一次后置 cluster governance 已补救，但 v4 的正式 ingest 仍未证明会逐卡执行 fusion、typed footnote 与 related 派生；后续 cluster 审计又发现关系数据损伤，因此 one-by-one governance 尚未成为稳定生产合同"
+      "state_rationale": "绝对路径和一次后置 cluster governance 已补救，但 v4 的正式 ingest 仍未证明会逐卡执行 fusion、typed footnote 与 related 派生；后续 cluster 审计又发现关系数据损伤，因此 one-by-one governance 尚未成为稳定生产合同",
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前只能给出逐卡治理合同，尚未证明已进入正式 ingest gate",
+        "comment_id": 4949310688,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/50#issuecomment-4949310688"
+      }
     },
     "v4-cluster-exploration-damage": {
       "number": 51,
@@ -968,7 +998,13 @@
       "relations_written": true,
       "closed": false,
       "state_rationale": "固定 cluster 数量已被否定，专项审计和 22 项修复也已执行，但最终仍有 2 条断裂引用和 1 张 comparison 卡缺少源 footnote；更重要的是尚未用新一轮生产验证 cluster 只约束默认深读范围而不限制 exploration",
-      "state_transition_comment_id": 4949153847
+      "state_transition_comment_id": 4949153847,
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能确认固定 cluster 配额不合理且存在损伤，尚不能确定完整因果范围",
+        "comment_id": 4949311044,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/51#issuecomment-4949311044"
+      }
     },
     "v4-audit-workload-sharding": {
       "number": 52,
