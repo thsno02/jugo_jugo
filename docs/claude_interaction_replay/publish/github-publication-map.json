@@ -1019,7 +1019,13 @@
       "parent_linked": true,
       "relations_written": true,
       "closed": true,
-      "state_rationale": "单 agent 全量审计的失效原因已经通过多轮失败与工作量复核定位，并形成、执行和验证了 FSJS；后续对 false positive 的修正属于证据判断协议的演化，由相邻审计问题继续承载"
+      "state_rationale": "单 agent 全量审计的失效原因已经通过多轮失败与工作量复核定位，并形成、执行和验证了 FSJS；后续对 false positive 的修正属于证据判断协议的演化，由相邻审计问题继续承载",
+      "resolution": {
+        "kind": "answer",
+        "title": "全量机械筛选与分片语义判断应采用 FSJS",
+        "comment_id": 4949311424,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4949311424"
+      }
     },
     "v4-audit-evidence-blind-spots": {
       "number": 53,
@@ -1035,7 +1041,13 @@
       "parent_linked": true,
       "relations_written": true,
       "closed": true,
-      "state_rationale": "grep 假阳性的成因、全文复核协议和 pipeline-stage 根因审计已经形成并执行，确认缺口也完成一轮修复；未覆盖的 repo 与系统性 hedging 等残余项已明确记录并转入来源处理及后续版本问题"
+      "state_rationale": "grep 假阳性的成因、全文复核协议和 pipeline-stage 根因审计已经形成并执行，确认缺口也完成一轮修复；未覆盖的 repo 与系统性 hedging 等残余项已明确记录并转入来源处理及后续版本问题",
+      "resolution": {
+        "kind": "answer",
+        "title": "避免 grep 假阳性应先生成 suspect，再回原文并追到责任阶段",
+        "comment_id": 4949311771,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4949311771"
+      }
     },
     "v4-source-routing-and-preprocessing": {
       "number": 54,
@@ -1048,7 +1060,13 @@
         "v5-information-density-regression"
       ],
       "parent_linked": true,
-      "relations_written": true
+      "relations_written": true,
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到 TXT fallback 的失真原因与分流方案，repo2doc 尚未落地",
+        "comment_id": 4949312103,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4949312103"
+      }
     },
     "v4-learnings-and-v5-handoff": {
       "number": 55,
