@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v3-draft-first-precursor",
+      "issue_number": 32,
+      "desired_state": "closed",
+      "state_rationale": "draft-first 的生产顺序、轻量召回后的三问决策门和知识卡最低信息要求已经形成可执行答案；后续审计虽纠正了 comparison corpus 的范围，但没有推翻该问题的流程结论",
+      "episodes": [
+        {
+          "episode_title": "7 小时 15 张卡暴露的不是单点性能，而是生产顺序错误",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H004",
+            "codex:codex-primary-v2-v3-handoff:H005",
+            "codex:codex-primary-v2-v3-handoff:H006",
+            "codex:codex-primary-v2-v3-handoff:H007"
+          ],
+          "body": "### 7 小时 15 张卡暴露的不是单点性能，而是生产顺序错误\n\n7 小时只得到 15 张卡，最初被解释为 worker 分段、频繁落盘和串行执行造成的吞吐问题，因而助手先提出批量 drafting、audit、adoption。用户没有接受只优化执行效率的解释，而是指出生产逻辑本身可能错了：应先耗尽材料形成 draft backlog，再做融合与发布判断。助手随即把设想写进 runbook 并准备派发，但这一动作仍然过早。\n\n用户明确说“你理解错了”：融合不是相似度命中后的机械动作，必须回答与候选卡的共同点、差异和下一步依据，并把判断写入目标卡的 provenance；流程也不是边读材料边直接融合，而是 `material -> draft card -> 快速召回候选 -> 阅读比较 -> 决策`。助手停止原 batch worker，撤回先实现后讨论的路径。\n\n最后形成的不是复杂检索系统，而是一个可审计决策门：先保留独立 draft，再用 similarity 缩小候选集，随后才在新增、融合、证据增量、拆分或跳过之间选择。这个转折把瓶颈从“worker 跑得慢”改写为“昂贵判断放错了时点”，也留下一个当时尚未说清的范围问题：候选 corpus 究竟应来自哪个 loop。\n\n<details><summary>完整用户输入（4 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H004\n\n````text\n也就是说 7h，你总结出来 15 条 card？这效率疑似有点太低了吧。为什么速度如此之慢。\n````\n\n#### 2. codex:codex-primary-v2-v3-handoff:H005\n\n````text\n我认为生产 card 的逻辑或者流程出现了一些问题。可以先去【exhausted】指定的文章，获取 draft card，或者说，先去把所有的 raw material 都跑一遍，生成 draft card 之后，然后再进行融合？如果直接融合的复杂度太高的话，在生成 new draft card 之前，会简单现有的，哪些 cards 很像，然后判断是【融合为一张】还是【添加一张新的】，如果是融合的话，需要审计，否则不需要；这样先把 atomic draft card 跑出来。然后再来进行审计 - public 这个流程，然后 provenance 是增量的。这样的流程能不能提升效率？\n````\n\n#### 3. codex:codex-primary-v2-v3-handoff:H006\n\n````text\n不是。你理解错了：1. draft card 融合需要审计，同时需要落在新卡的 province card 里面。至少回到三个问题：为什么认为和 A 卡有共同点？和 A 的不同在哪里？进行下一步操作的核心依据是什么？然后把这个 provenance 落在 A 卡的链接里。 2. 流程是 material => draft card. 然后 new draft card 会去很快 check 一下相似度，罗列出来可能相似的，然后去看，回答问答后做决策。\n````\n\n#### 4. codex:codex-primary-v2-v3-handoff:H007\n\n````text\nsimilarity 的 check，这里应该有一个机制。先不要 implementation，先讨论，这个 similarity 机制应该这么设计。\n````\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H004 codex:codex-primary-v2-v3-handoff:H005 codex:codex-primary-v2-v3-handoff:H006 codex:codex-primary-v2-v3-handoff:H007 -->"
+        },
+        {
+          "episode_title": "轻量 Top 3 召回之后，检查发现卡片过度 atomic",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H008",
+            "codex:codex-primary-v2-v3-handoff:H009"
+          ],
+          "body": "### 轻量 Top 3 召回之后，检查发现卡片过度 atomic\n\n在 similarity 机制尚未实现前，用户主动把它收敛到最低可用版本：标题经结巴分词后计算 Jaccard 一类 set similarity，只返回 Top 3，召回负责缩小阅读范围而不替代后续判断。与此同时，用户要求检查现有 card，指出另一个独立失败：部分卡片虽然足够“原子”，正文却只是标题的 restate 或 paraphrase，没有可复用的信息。\n\n助手检查后接受这个诊断，并尝试用固定问题衡量信息密度。用户再次校准重点：card 本身就是 knowledge，不应为了形式完整而把 provenance 内容塞回正文；最重要的是读者删除标题后仍能学到具体知识，`how`、mechanism 和 boundary 通常有价值，证据过程则可以留在 provenance。beam search 也说明 atomic 没有绝对粒度：概念整体可以成卡，对 `N` 或算法 idea 的独立理解也可以成卡，是否拆分取决于它能否形成可理解、可复用的知识视角。\n\n因此，这一步没有制造硬性的字数或拆分阈值，而是确立了最低质量判断：召回可以轻量，知识正文不能轻量到只剩标题改写；scope 允许弹性，但每张卡必须提供 operational definition、机制或边界中的实质内容。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H008\n\n````text\n嗯，目前来说，直接对标题用结巴分词之后，用 jacord 或者是某种常见的 set similarity 公式来做这个就行了。直接给 top 3 做比较呗。这件事先轻量化和简单化。有一个流程即可。同时，我需要你去 check 一下 card 的写法。我认为现在 card 太【atomic】了，没有【信息量】你理解吗？card 如果只是 title 的 restate 或者 paraphrase，没有意义。需要有一些信息量。\n````\n\n#### 2. codex:codex-primary-v2-v3-handoff:H009\n\n````text\ncard 本身是知识。理解这一点很重要。我有知识库，但是知识库本身需要有信息。你说的4个问题，第一个是重要的，how 和 boundary 也是重要的，3 不一定重要，可以放进 provenance 里面。最重要的应该是：knowledge 本身。比如 beam search 属于不可拆分，通常不需要对 beam search 进行拆分。但 beam search 可以有很多理解，比如对于 N 的理解，算法 idea 的理解，这也是 card。理解这个 card 的 scope 吗？这里可能没有硬性的标准，这也是知识的魅力。它可以拆地特别细，但它可能缺乏一个具体的 operational definition。\n````\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H008 codex:codex-primary-v2-v3-handoff:H009 -->"
+        },
+        {
+          "episode_title": "固定 metadata 与自由正文分工，补齐编辑主体和引用层次",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H010",
+            "codex:codex-primary-v2-v3-handoff:H011",
+            "codex:codex-primary-v2-v3-handoff:H012"
+          ],
+          "body": "### 固定 metadata 与自由正文分工，补齐编辑主体和引用层次\n\n卡片信息量得到校准后，用户回到写作合同：之前的模板需要调整，但不应换成另一套强正文模板。可机器处理的 metadata 可以固定，知识正文保持自由；来源层次则暂时分为 References 与 Footnotes，前者说明 card-level 的整体承接，后者承担 claim-level inline citation。助手据此把重审计、融合记录继续留在 provenance，而不是侵入主阅读区。\n\n随后两次补充把 metadata 的边界说得更具体。tags 采用 `#llm` 一类 hashtag，不设固定 taxonomy，由 agent 保留自主判断；它只帮助浏览、检索和召回，不能单独证明事实或决定融合。时间字段同时保留 `created_time` 与 `edited_time`，并新增重要的 `edited_entity`，区分最近一次实质编辑来自 llm、human 或共同编辑。\n\n这个阶段的结果是一份松紧分离的 card contract：结构化字段服务后续分析和维护，正文服务知识表达，引用服务出处，provenance 服务证成与变更判断。References 与 Footnotes 是否最终需要并存当时仍未定型，后来统一 citation 的讨论继续修正了这一点；但 draft-first 所需的最低写作与 metadata 基线已经可执行。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H010\n\n````text\n因此，我认为之前的 card 模版也需要调整。不需要太强的模版，但需要有一些 metadata，用于后续的处理和分析。metadata 可以是确定的模版，就像 zettllan card 一样。正文部分倾向于没有固定的模版，但有 references 和 footnotes，footnotes 的 schema 和 reference 应该是不太一样的。理解为 footnotes 是 inline citations；references 可能是一整个 citation，因此 reference 需要说明，footnote 不需要说明，给出链接地址就行了。\n````\n\n#### 2. codex:codex-primary-v2-v3-handoff:H011\n\n````text\n还需要有 tags，tags 没有固定的范式，要求是 #llm 这种形式就行了。agent 有自主权。\n````\n\n#### 3. codex:codex-primary-v2-v3-handoff:H012\n\n````text\n需要有 created_time 也有 edited_time，前者是创建的时间，后者是最近修改的时间 edited_entity 这个很重要。区分 llm 和 human\n````\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H010 codex:codex-primary-v2-v3-handoff:H011 codex:codex-primary-v2-v3-handoff:H012 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v3-formal-handoff",
+      "issue_number": 33,
+      "desired_state": "open",
+      "state_rationale": "handoff 的目录、权限、依赖和运行方式已落盘，但正式启动合同把 v2 索引设为唯一 comparison corpus，后来证实这违背 v3 独立 0 到 1 的原则，因此可靠性交付尚未完成",
+      "state_transition_comment": "新的 trigger 是 comparison corpus 审计确认：正式启动 prompt 明确要求对 v2 的 15 张 accepted-card 标题做 Top 3，导致 171 张 v3 drafts 从未彼此比较。旧结论只证明 handoff 文件齐全、JSON 可解析、Claude 能按 prompt 启动，没有验证 prompt 是否忠实实现 v3 的独立 loop 语义。新的关闭条件是：修订自包含 handoff 和启动 prompt，移除 v2 依赖；用小规模 dry run 证明 v3 draft 会进入 loop-local self-comparison、dedup/fusion gate，并把 corpus 选择加入可自动失败的验收项。",
+      "episodes": [
+        {
+          "episode_title": "从记忆中的 v3 架子转向无上下文可恢复 capsule",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H033",
+            "codex:codex-primary-v2-v3-handoff:H034",
+            "codex:codex-primary-v2-v3-handoff:H035"
+          ],
+          "body": "### 从记忆中的 v3 架子转向无上下文可恢复 capsule\n\n用户准备开启 v3 时，助手先凭此前讨论搭出 draft-first capsule：card contract、Top 3 similarity、comparison provenance、brain mailbox、queues、reports 和 outputs 都有了文件位置，结构校验也通过。这个结果只说明“架子存在”，还不能说明另一个完全没有聊天历史的 Claude Code 能正确恢复。\n\n用户随即把验收标准提高到正式 handoff：本地会话不能依靠 memory，必须确认架子严格遵循此前优化，并限制可访问目录以防 context pollution。助手检查后承认原边界不够硬，开始按 production、similarity、comparison 阶段写读取白名单和禁止范围。这里的重要修正，是把聊天共识从隐含前提改成 capsule 内可读取的合同。\n\n接着暴露第二个缺口：Claude Code 没有 Codex 环境里默认存在的 skills 与依赖。于是 handoff 又补入本地 skill contract、dependency preflight、bootstrap 脚本和 `jieba` 缺失时的处理。到此，恢复入口、访问边界和运行依赖都有了显式载体；但校验仍集中在文件结构与可启动性，尚未用行为测试证明 similarity corpus 等关键语义没有写错。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H033\n\n````text\n对了。我们现在要开 v3 了。先把 v3 的架子搭起来。你还记得 v3 要干嘛吗？\n````\n\n#### 2. codex:codex-primary-v2-v3-handoff:H034\n\n````text\n因为 token 的问题，v3 我会调用 claude code 去跑。它本地没有任何上下文可以依靠。所以我需要你先帮我确认，你的这个架子和版本是否是可靠的，严格遵循了我们之前的优化方案的。同时需要约束的是，可访问的文件目录，避免上下文污染。\n````\n\n#### 3. codex:codex-primary-v2-v3-handoff:H035\n\n````text\n还有一个问题，claude code 里面没有相关 skills 的约束和安装。因此 skills 的初始化和依赖也要先讲清楚，说明白。\n````\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H033 codex:codex-primary-v2-v3-handoff:H034 codex:codex-primary-v2-v3-handoff:H035 -->"
+        },
+        {
+          "episode_title": "原生嵌套不可用的判断，被进程级 Claude 实测改写",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H036",
+            "codex:codex-primary-v2-v3-handoff:H037",
+            "codex:codex-primary-v2-v3-handoff:H038",
+            "codex:codex-primary-v2-v3-handoff:H039"
+          ],
+          "body": "### 原生嵌套不可用的判断，被进程级 Claude 实测改写\n\n两层 sub-agent 是 v3 架构的运行前提。助手最初检查后认为标准 Agent 不能原生嵌套，experimental agent teams 又未启用，于是把设计降级为“概念两层、运行时一层”。用户一度决定改用有 token 的 GPT-5.3 单会话跑 demo，这个决定并非最终方案，而是能力判断不完整时的临时绕行。\n\n随后用户提供了直接实测：顶层 Claude 可以先用 Agent 工具派 sub-agent，sub-agent 再通过 Bash 调 `claude -p` 启动独立进程，返回约定 marker 且 exit code 为 0。助手据此改口，明确区分不支持的原生 nested Agent 与可行的 process-level nested Claude，并更新 runtime constraints、mailbox 和 handoff。\n\n这项可行性同时带来新的约束：内层不继承对话、memory 或已读文件，prompt 必须自包含；权限模式与 cwd 要写清；外层和内层 token 成本会叠加。用户又要求启动时必须携带初始 prompt，并暂定跳过交互权限确认。助手把命令形态和填充模板固化下来。这里真正通过的是“进程能启动”，不是完整生产语义；后者仍需由 task packet 和验收门保证。\n\n<details><summary>完整用户输入（4 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H036\n\n````text\n同时你需要确认，sub-agent 的层级问题。我如果没记错，v3 的架构需要两层 sub-agents，需要确认 claude code 当前是否是支持的。\n````\n\n#### 2. codex:codex-primary-v2-v3-handoff:H037\n\n````text\n我已经想到解法了。这一次就不用 claude 跑了。用 gpt5.3 跑。有 token。反正是 demo\n````\n\n#### 3. codex:codex-primary-v2-v3-handoff:H038\n\n````text\n刚刚跑通了 claude 有结果了：  - claude CLI 在 <local-cli>/claude\n  - sub-agent 通过 Bash 执行 claude -p \"...\" --output-format text 成功起了独立 Claude 进程\n  - 嵌套进程返回了 NESTED_CLAUDE_OK_9X2Y4Z，cwd 继承为 <workspace>\n  - exit code 0，无需重试\n\n  所以\"两层 sub-agent\"的可行方案是： 顶层 Claude → Agent 工具派生 sub-agent → sub-agent 用 Bash 调 claude -p\n  起独立进程。\n\n  几个要注意的点：\n  1. 内层是独立会话，没有继承你当前对话的上下文/memory/已读文件，需要在 prompt 里自带所有必要信息\n  2. 内层默认是 headless 模式（无交互），适合一次性任务；要多轮可以加 --resume <session-id> 或 -c 续会话\n  3. 默认权限模式可能比你当前会话更严格，必要时加 --permission-mode acceptEdits 或\n  --dangerously-skip-permissions（后者谨慎用）\n  4. 成本会叠加——外层 sub-agent 的 token + 内层独立 Claude 进程的 token，两份都算\n````\n\n#### 4. codex:codex-primary-v2-v3-handoff:H039\n\n````text\n在启动任务的时候约定：# 或带初始 prompt\n  claude --dangerously-skip-permissions -p \"你的任务...\" 否则会出现权限的问题。\n````\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H036 codex:codex-primary-v2-v3-handoff:H037 codex:codex-primary-v2-v3-handoff:H038 codex:codex-primary-v2-v3-handoff:H039 -->"
+        },
+        {
+          "episode_title": "启动方式从危险 bypass 收紧为 auto，并从 demo 升为正式生产",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H040",
+            "codex:codex-primary-v2-v3-handoff:H041",
+            "codex:codex-primary-v2-v3-handoff:H042",
+            "codex:codex-primary-v2-v3-handoff:H043"
+          ],
+          "body": "### 启动方式从危险 bypass 收紧为 auto，并从 demo 升为正式生产\n\n在进程级嵌套可行后，用户要求一份能真正启动 loop 的 prompt。助手先写出 top-level `LOOP_START_PROMPT`，接入 README、RUNBOOK、handoff、manifest 和状态文件，并限制首轮只走 draft-first，不得提前 public adoption。此时命令仍沿用 `--dangerously-skip-permissions`，虽然避免交互阻塞，却没有动作级安全检查。\n\n用户提供更合适的 `--permission-mode auto`：同样不弹 prompt，但会由独立分类器审查动作。助手在本机帮助信息确认可用后，把顶层和内层标准命令切到 auto，并把危险 bypass 留作反例。随后用户纠正另一个范围假设：“现在不是 demo worker 了，是正式的。”助手把状态、iteration 和措辞推进到 first production pass，不再以 smoke test 的成功标准替代真实生产。\n\n最后一次位置检查又发现根 README 曾被额外修改。用户要求所有文件必须落在 `loops`，助手撤销那项越界改动，确认 capsule 内路径、JSON/JSONL 与 diff。这个 episode 解决了权限、正式性和写入边界，但主要验证仍是静态结构；后来 comparison corpus 的错误说明，静态校验不足以证明正式 handoff 的业务语义可靠。\n\n<details><summary>完整用户输入（4 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H040\n\n````text\n做完之后，给我一个启动 loop 的 prompt，让这个 loop 能够 run 起来。\n````\n\n#### 2. codex:codex-primary-v2-v3-handoff:H041\n\n````text\n有更好的 claude 指令，改一下：    1. Auto mode — 有，而且更适合你刚才的场景\n\n  --permission-mode auto，需要 v2.1.83+。它和 --dangerously-skip-permissions 的关键区别：\n\n  ┌────────────────────────────────────┬───────────────────────────────────────────────────────────────────┐\n  │                模式                │                               行为                                │\n  ├────────────────────────────────────┼───────────────────────────────────────────────────────────────────┤\n  │ auto                               │ 不弹                                                              │\n  │                                    │ prompt，但有独立分类器模型在每个动作执行前审查，自动拦截危险操作  │\n  ├────────────────────────────────────┼───────────────────────────────────────────────────────────────────┤\n  │ bypassPermissions /                │ 不弹 prompt，没有任何安全检查，全部直接执行                       │\n  │ --dangerously-skip-permissions     │                                                                   │\n  └────────────────────────────────────┴───────────────────────────────────────────────────────────────────┘\n````\n\n#### 3. codex:codex-primary-v2-v3-handoff:H042\n\n````text\n现在不是 demo worker 了，是正式的。\n````\n\n#### 4. codex:codex-primary-v2-v3-handoff:H043\n\n````text\n还有一个问题，文件需要落在 loops 里面，别搞错了哈。\n````\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H040 codex:codex-primary-v2-v3-handoff:H041 codex:codex-primary-v2-v3-handoff:H042 codex:codex-primary-v2-v3-handoff:H043 -->"
+        },
+        {
+          "episode_title": "最终交付改为已打开 Claude CLI 内可直接粘贴的 prompt",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H044"
+          ],
+          "body": "### 最终交付改为已打开 Claude CLI 内可直接粘贴的 prompt\n\n用户最后纠正了交付界面：需要的不是从 shell 通过 `claude -p` 启动，而是已经进入 Claude CLI 后可直接粘贴的初始 prompt。助手重新读取最新版启动文件，给出一份自包含文本，包含目标、必读文件顺序、依赖预检、读写边界、首个 material、产物要求、sub-agent policy、质量门和结束 marker。\n\n这份 prompt 让无历史上下文的会话确实能够开始工作，后续首轮也成功产出 4 张草稿和配套工件。因此，从交互方式和恢复信息完整性看，handoff 达到了可运行状态。\n\n但可运行不等于可靠。prompt 同时把 v2 accepted-card title index 写成 similarity 的唯一比较基，接手者忠实执行后把这一错误扩展到全部 171 张 v3 drafts。旧验收只检查产物数量、文件配套和是否提前 adoption，没有检查 loop-local corpus。这个单 event episode 不是短确认，而是一次正式交付及其后来暴露出的合同缺口；Issue 因此需要在修订并做行为级 dry run 后再关闭。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H044\n\n````text\n把启动的 prompt 给我，不是通过 Claude -p 启动的，而是已经在 Claude cli 里面，启动的 prompt\n````\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H044 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v3-first-production-pass",
+      "issue_number": 34,
+      "desired_state": "open",
+      "state_rationale": "171 张卡虽已写入 loop-local KB，但后续审计证明全部 comparison 只对照 v2 的 15 张卡，未做 intra-v3 duplication/fusion，因而 accepted 集合尚未通过有效 publication gate",
+      "state_transition_comment": "新的 trigger 是 #36 的 comparison corpus 审计：171 份 comparison 工件全部指向同一组 v2 卡，v3 drafts 之间没有互相比对，“0 merge”因此不能支持 171 张全部 adoption。旧结论把工件齐全、interlink 覆盖和文件落盘当成 accepted 的充分条件，缺少先判存活再发布的 dedup/fusion 证据。新的关闭条件是：对 v3 全集重跑 loop-local self-comparison，审计重复簇与 fusion 决策，只为存活卡补齐 citation/interlinks 和派生 metadata，再重新执行 publication gate，并报告最终 survivor 数与被融合知识的去向。",
+      "episodes": [
+        {
+          "episode_title": "正式启动只处理一个材料，4 张草稿通过了窄质量门",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H001",
+            "claude_code:claude-primary-v3:H002"
+          ],
+          "body": "### 正式启动只处理一个材料，4 张草稿通过了窄质量门\n\n首个正式启动 prompt 刻意把范围压到一个 material：按固定顺序读取 v3 合同，预检依赖，只读指定的 Karpathy 材料，生成 2 到 5 张 knowledge-dense drafts、配套 provenance 与 Top 3 similarity；本轮明确禁止 fusion 和 KB adoption。助手按合同产出 4 张草稿、4 份 provenance 和 4 份 similarity 工件，并更新 backlog、state 与 report。\n\n用户看到 data/raw 中还有大量 papers、blogs 和 repos，追问为什么只输出 4 张。助手解释这不是材料耗尽后的总产量，而是启动合同的窄 pass 上限：只允许读取一个指定材料，其余来源尚未进入队列。这个解释在当时成立，也说明 handoff 确实约束住了读取范围。\n\n但首轮质量门只验证“一张草稿对应一份 provenance 和 similarity artifact”，没有验证 similarity 的候选 corpus 是否正确。也就是说，4 张草稿证明了 pipeline 可以跑通，却不能证明 comparison 语义可靠。下一步从单材料扩到全量时，本应先补 corpus 与集合级 gate 的测试，实际却直接扩大了生产规模。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. claude_code:claude-primary-v3:H001\n\n````text\n# V3 Loop Start Prompt\n\nYou are the top-level runner for the v3 LLM Wiki loop.\n\nRepo root:\n\n`<workspace>`\n\nCurrent loop path:\n\n`loops/v3_llm_wiki_loop_20260525`\n\nYou are starting without prior chat context. Do not rely on memory, hidden skills, or previous conversation. The v3 files are the source of truth.\n\n## Goal\n\nRun the first formal v3 production pass through the draft-first pipeline:\n\n```text\nmaterial\n-> knowledge-dense draft cards\n-> draft provenance\n-> title similarity top 3\n-> draft backlog update\n-> loop report/state update\n```\n\nDo not adopt cards into `outputs/llm_wiki/kb/cards/` in this pass unless a separate publication gate task explicitly authorizes adoption. Do not perform fusion or provenance-delta adoption in this pass. This first production pass should produce recoverable draft artifacts and similarity results, then leave adoption decisions queued for the proper gate.\n\n## Required Startup\n\n1. `cd <workspace>`\n2. Read, in this order:\n   - `loops/v3_llm_wiki_loop_20260525/CLAUDE_CODE_HANDOFF.md`\n   - `loops/v3_llm_wiki_loop_20260525/CONTEXT_BOUNDARY.md`\n   - `loops/v3_llm_wiki_loop_20260525/SKILLS_AND_DEPENDENCIES.md`\n   - `loops/v3_llm_wiki_loop_20260525/SUBAGENT_RUNTIME_CONSTRAINTS.md`\n   - `loops/v3_llm_wiki_loop_20260525/RUNBOOK.md`\n   - `loops/v3_llm_wiki_loop_20260525/CARD_CONTRACT_V3.md`\n   - `loops/v3_llm_wiki_loop_20260525/DRAFT_FIRST_PIPELINE_V3.md`\n   - `loops/v3_llm_wiki_loop_20260525/SIMILARITY_MECHANISM_V3.md`\n   - `loops/v3_llm_wiki_loop_20260525/PROVENANCE_CONTRACT_V3.md`\n   - `loops/v3_llm_wiki_loop_20260525/BRAIN_MAILBOX_PROTOCOL.md`\n3. Run dependency preflight from `SKILLS_AND_DEPENDENCIES.md`.\n4. If `jieba` is missing, run:\n\n```bash\nbash loops/v3_llm_wiki_loop_20260525/tools/bootstrap_dependencies.sh\n```\n\nIf dependency installation fails, update status/report with the blocker and finish with `LOOP_BLOCKED`.\n\n## Access Rules\n\nDefault write allowlist:\n\n- `loops/v3_llm_wiki_loop_20260525/**`\n\nForbidden writes:\n\n- root `README.md`\n- `loops/README.md`\n- `loops/registry.json`\n- `loops/current_loop.json`\n- all v0/v1/v2 loop files\n- `data/**`\n- `docs/**`\n- `scripts/**`\n- `user-insights/**`\n\nRead access must follow `CONTEXT_BOUNDARY.md`.\n\nFor this first production pass, you may read:\n\n- v3 loop files;\n- `data/manifests/source_digests_index.md`;\n- `data/manifests/source_digests.jsonl`;\n- `data/manifests/sources.jsonl`;\n- `data/manifests/seed_sources.json`;\n- exactly one raw source path after you queue it in `queues/material_queue.md`;\n- v2 accepted-card title index only for similarity:\n  `loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md`.\n\nDo not read v2 card bodies or v2 provenance in this production pass. Do not read v2 iterations, audits, reports, reflections, brain state, logs, or snapshots.\n\nIf you must read outside these rules, append an `out_of_scope_read` JSONL row to `loops/v3_llm_wiki_loop_20260525/source_access_log.jsonl` before using that information.\n\n## First Material\n\nUse this material unless it is missing or unreadable:\n\n- `material_id`: `karpathy-x-launch-post`\n- `digest_id`: `digest_karpathy-x-launch-post`\n- `source_path`: `data/raw/webpage/karpathy-x-launch-post/text.txt`\n\nIf it is missing or unreadable, choose one complete source from `data/manifests/source_digests_index.md` that has a readable text path and covers `origin_and_canon`, `problem_and_motivation`, or `workflow_and_operations`. Record the chosen source in `queues/material_queue.md`.\n\n## Required Work\n\n1. Update `queues/material_queue.md` with the chosen material and set it to `drafting`.\n2. Read only the chosen source text.\n3. Produce 2-5 knowledge-dense draft cards under:\n   - `loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/drafts/cards/`\n4. Produce matching draft provenance under:\n   - `loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/drafts/provenance/`\n5. Each draft card must follow `CARD_CONTRACT_V3.md`.\n6. Draft card bodies must contain actual knowledge, not title restatements.\n7. Run title similarity top 3 for each draft against:\n   - `loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/indexes/cards.md`\n8. Write similarity JSON artifacts under:\n   - `loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/drafts/similarity/`\n9. Update:\n   - `loops/v3_llm_wiki_loop_20260525/queues/draft_backlog.md`\n   - `loops/v3_llm_wiki_loop_20260525/loop_state.json`\n   - `loops/v3_llm_wiki_loop_20260525/status.json`\n   - `loops/v3_llm_wiki_loop_20260525/reports/loop_report.md`\n   - relevant `brains/*` queue/state files if you use mailbox roles\n10. Set the material queue item to `drafted` or `blocked`.\n\n## Subagent Policy\n\nYou may run this first formal production pass in one top-level Claude session.\n\nIf you delegate to a process-level nested Claude worker, use only this command shape:\n\n```bash\nclaude --permission-mode auto -p \"$(cat loops/v3_llm_wiki_loop_20260525/task_templates/current_inner_prompt.md)\" --output-format text\n```\n\nBefore doing that, copy `task_templates/process_level_nested_prompt_template.md` to `task_templates/current_inner_prompt.md` and replace every placeholder. The inner prompt must include repo root, current loop path, allowed read paths, allowed write paths, exact task, required output files, and final marker.\n\nDo not assume the inner Claude process inherits context.\n\n## Quality Gate For This Production Pass\n\nThe run is successful if:\n\n- at least one draft card exists;\n- every draft card has matching draft provenance;\n- every draft card has one similarity result artifact;\n- `queues/draft_backlog.md` lists the draft cards and similarity artifacts;\n- `loop_state.json`, `status.json`, and `reports/loop_report.md` reflect the run;\n- no public KB adoption happened.\n\nIf no source can be read or dependencies cannot be initialized, preserve the blocker in status/report and finish with `LOOP_BLOCKED`.\n\n## Final Response\n\nSummarize:\n\n- chosen material;\n- draft cards created;\n- similarity artifacts created;\n- files updated;\n- blockers or risks;\n- next action.\n\nEnd with exactly one marker:\n\n- `LOOP_DONE`\n- `LOOP_BLOCKED`\n- `LOOP_NEEDS_HUMAN`\n````\n\n#### 2. claude_code:claude-primary-v3:H002\n\n````text\nwhy you only output 4 cards, but there are many papers, blogs, and repos in <workspace>/data/raw, and you haven't used?\n````\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v3:H001 claude_code:claude-primary-v3:H002 -->"
+        },
+        {
+          "episode_title": "范围扩到其余材料后，语言要求经历两次提醒才落实",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H003",
+            "claude_code:claude-primary-v3:H004",
+            "claude_code:claude-primary-v3:H005"
+          ],
+          "body": "### 范围扩到其余材料后，语言要求经历两次提醒才落实\n\n用户要求继续处理剩余材料后，助手开始枚举 manifest，计划跳过上游阻塞并用批处理、并行 worker 扩大生产。扩容刚开始，用户补充所有输出必须以中文为主；第一次提醒后窗口内没有可见回复，用户重复同一句要求，助手才明确确认并把既有 4 张卡和 provenance 一并改为中文。这个重复不是噪声，它记录了语言合同第一次没有被及时接住。\n\n随后批量执行覆盖 72 个材料：43 个可读来源产出 171 张中文草稿，其余被标记为空源或上游阻塞，并生成相应配套工件。数字上，v3 从单材料 4 张扩展到了全量 backlog；语言上，输出也统一为中文主导。\n\n这一步解决的是 material coverage 与 draft throughput，不是最终 card 集合。171 应被理解为待比较、待 fusion、待 publication gate 的草稿数。当时的进度汇报虽然保留了 draft 名称，后续执行却逐渐把“全量草稿已覆盖”滑向“171 张都可接受”，而没有先验证集合内部是否存在重复。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n#### 1. claude_code:claude-primary-v3:H003\n\n````text\nprocess the rest meterails.\n````\n\n#### 2. claude_code:claude-primary-v3:H004\n\n````text\nand the ALL output should keep the chinese as the main language.\n````\n\n#### 3. claude_code:claude-primary-v3:H005\n\n````text\nand the ALL output should keep the chinese as the main language.\n````\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v3:H003 claude_code:claude-primary-v3:H004 claude_code:claude-primary-v3:H005 -->"
+        },
+        {
+          "episode_title": "comparison 与 interlink 工件全部齐全，却建立在未验证的候选集上",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H006",
+            "claude_code:claude-primary-v3:H007"
+          ],
+          "body": "### comparison 与 interlink 工件全部齐全，却建立在未验证的候选集上\n\n用户要求落实 comparison 后，助手为 171 张草稿生成 171 份 comparison provenance，并按 similarity 层级并行审查，覆盖检查全部通过。接着用户在入库前要求添加 interlinks，助手又为所有草稿生成 974 条 related 边，报告没有空 related、悬空 id 或孤立卡。就工件完整性而言，这两轮都给出了漂亮的全覆盖结果。\n\n问题在于，覆盖率只回答“每张草稿有没有文件”，没有回答“文件比较了正确的对象吗”。后来审计确认 similarity 工具硬编码 v2 的 15 张卡，171 张 v3 drafts 从未彼此比较；974 条 interlinks 也因此是在所有草稿被默认保留后补出的关系，而不是在 dedup/fusion 存活判定后生成。\n\n正确顺序应是先对 v3 集合发现候选重复，逐组回答共同点、差异和操作依据，决定新增、融合或跳过；只有存活卡才值得补正文 citation 与关系视图。这个 episode 必须同时保留两个事实：工件确实生成并通过完整性检查，但检查合同不足，不能把机械覆盖解释成质量通过。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. claude_code:claude-primary-v3:H006\n\n````text\nimplement it.\n````\n\n#### 2. claude_code:claude-primary-v3:H007\n\n````text\nbefore put it into cards => add interlinks.\n````\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v3:H006 claude_code:claude-primary-v3:H007 -->"
+        },
+        {
+          "episode_title": "额度中断后恢复 adoption，171 张 accepted 的结论后来失效",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H008",
+            "claude_code:claude-primary-v3:H009",
+            "claude_code:claude-primary-v3:H010"
+          ],
+          "body": "### 额度中断后恢复 adoption，171 张 accepted 的结论后来失效\n\n用户说 `do it` 后，助手准备执行 fusion audit 与 publication gate，却被 provider 额度错误中断；这时并没有可见证据证明 fusion gate 已完成。次日用户要求继续，助手恢复 adoption pass，把 171 张卡、171 份 provenance、KB index 与 bookkeeping 全部落盘，只留下普通 git commit 被命令分类器阻塞。随后又复核 3 个所谓 similarity miss，认为原比较有依据，并补写 recheck 记录。\n\n当时的结果被总结为 171 张 loop-local accepted cards，且三个局部案例的复核似乎加强了信心。但后来的 corpus 审计推翻了关闭前提：所有比较都只面向 v2，小样本 recheck 无法发现 intra-v3 duplicate，fusion audit 的“0 merge”也没有证据效力。文件进入 KB 只是动作发生，不等于 publication gate 有效。\n\n因此，这段历史不能整理成从中断到成功发布的线性叙事。真实结果是 adoption 在错误比较基上恢复并完成，局部复核检查了错误问题，171 这一 accepted 集合必须重新打开。遗留工作是先重跑 v3 self-comparison 与 fusion，再确定最终 survivors，并追踪被融合草稿的知识和 provenance 去向。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n#### 1. claude_code:claude-primary-v3:H008\n\n````text\ndo it\n````\n\n#### 2. claude_code:claude-primary-v3:H009\n\n````text\ncontinue\n````\n\n#### 3. claude_code:claude-primary-v3:H010\n\n````text\nkeep going\n````\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v3:H008 claude_code:claude-primary-v3:H009 claude_code:claude-primary-v3:H010 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v3-unified-citation",
+      "issue_number": 35,
+      "desired_state": "closed",
+      "state_rationale": "Footnotes 已被确定为 raw source 与 knowledge card 的统一引用事实源，related metadata 改由脚本派生，并已完成 171 张卡迁移，当前设计问题已有可执行答案",
+      "episodes": [
+        {
+          "episode_title": "裸 related id 不是可点击 interlink，助手又一次过早准备实现",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H011",
+            "claude_code:claude-primary-v3:H012",
+            "claude_code:claude-primary-v3:H013",
+            "claude_code:claude-primary-v3:H014",
+            "claude_code:claude-primary-v3:H015"
+          ],
+          "body": "### 裸 related id 不是可点击 interlink，助手又一次过早准备实现\n\n171 张卡入库后，用户先问 interlinks 是否真的是本地相对链接。检查得到否定答案：当前 `related` 只是 frontmatter 里的裸 id，既不是可点击 Markdown 链接，正文也没有 inline cross-link。助手先把 related 理解成主题邻居，建议保留 metadata，再为具体主张增加 Markdown 链接和 anchor。这个方案已经开始朝实现移动，却尚未把 citation、double link 与维护责任讨论清楚。\n\n用户连续三次要求“先不要着急做事情”。前两次窗口内没有实质回答，第三次助手才停止准备派 worker，承认动作过早，并列出需要先决定的变量：引用对象类型、链接应该落在正文还是 metadata、跨 loop 路径如何表达、谁负责维护双向关系。重复提醒在这里构成一个真实转折，而不能压缩成普通确认。\n\n这一阶段的结果只是把症状和讨论边界说清：裸 id 无法承担 claim-level citation，直接添加另一套 inline link 又可能增加维护面。尚未得到答案时没有继续迁移文件，避免了在概念未定时把第三种链接表示固化进 171 张卡。\n\n<details><summary>完整用户输入（5 条）</summary>\n\n#### 1. claude_code:claude-primary-v3:H011\n\n````text\n这里的问题是，interlinks 是【本地的相对链接】吗？\n````\n\n#### 2. claude_code:claude-primary-v3:H012\n\n````text\nobsidian 的逻辑应该是 md 的超链接吧。这里的核心是，related 不是 inline citation。这一点还挺不一样。如果是 double link，理想情景应该是，某一些字段有具体的 citation，或者说 card，通过 B 的形式。\n````\n\n#### 3. claude_code:claude-primary-v3:H013\n\n````text\n先不要着急做事情\n````\n\n#### 4. claude_code:claude-primary-v3:H014\n\n````text\n先不要着急做事情，先把问题讨论清楚。\n````\n\n#### 5. claude_code:claude-primary-v3:H015\n\n````text\n先不要着急做事情，先把问题讨论清楚。\n````\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v3:H011 claude_code:claude-primary-v3:H012 claude_code:claude-primary-v3:H013 claude_code:claude-primary-v3:H014 claude_code:claude-primary-v3:H015 -->"
+        },
+        {
+          "episode_title": "纠正 References 语义后，“一句话多个 citation”成为统一约束",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H016",
+            "claude_code:claude-primary-v3:H017",
+            "claude_code:claude-primary-v3:H018"
+          ],
+          "body": "### 纠正 References 语义后，“一句话多个 citation”成为统一约束\n\n讨论恢复后，用户把冲突摆在一起：现有设计已经有 Footnotes 和 citations，related cards 又像 KB 内部 citation；若 related 不在正文中锚定，就很难维护。助手提出严格锚定、语义并存或取消 related 三条路径，但仍把 References 错解为与 Footnotes 重叠的外部来源层。\n\n用户明确纠正：References 承接 card-level 的大范围 idea，Footnotes 是 inline citation，两者原本都来自 raw data；新问题不是重新命名旧字段，而是“能引用的对象扩源”到 knowledge cards。进一步追问后，讨论得到决定性约束：一句话可能同时关联多个来源或多张卡，且很难只选一个 Markdown inline hyperlink。把 double link 精确绑定到单一词组或单一卡，会损失多对多关系。\n\n因此统一机制转向论文式 footnote citation：正文一个 claim 可以挂多个编号，Footnotes 的目标既可以是 raw source、URL，也可以是 v3 或其他 loop 的 knowledge card。References 的独立必要性可以下降甚至取消。这个结论不是因为字段越少越好，而是因为 footnote 同时保留了句子级锚点和多目标表达能力。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n#### 1. claude_code:claude-primary-v3:H016\n\n````text\n因为根据现在的设计，已经有两种处理了。一种是【footnotes】一种是【citations】，related cards 相当于是 kb 内部的 citations，这里还要单独区分开来吗？这里确实也可以。但是 related card 本身不是 inline 的话，维护起来其实是困难。不知道边界是哪里。\n````\n\n#### 2. claude_code:claude-primary-v3:H017\n\n````text\nreferences 这里你之前也理解错了。references 是指，card level 的大范围的 refer，比如说 idea 什么的。footnote 是 inline citation。两者逻辑上没有 overlap 的。因为目前强调的是，footnotes 和 references 都是来源于 raw data 里面的东西。而现在的问题是，也需要考虑 knowledge card 之间的链接和引用。你理解这个了吗？相当于对【能引用的对象进行了扩源】。我还在思考一个问题。是不是，没有任何必要区分 references 和 citations？抽象的 idea 其实也可以 inline citation，就像是论文一样。\n````\n\n#### 3. claude_code:claude-primary-v3:H018\n\n````text\n我理解了。这里的核心是，一句话，多个 citation。所以 double link 准确到 sentence 上不是一件很好的事情。这是理性形态，这件事 llm 肯定能做到，类似于，一个 sentence 和多个 cards 相关，但有一个是最相关的。但你说的没错，可能一个抽象的 idea 在多个 card 里面被讨论过，markdown inline 超链接就是不好的。所以最好的就是，footnotes 这种形式，因为可以多个。和论文的 citations 一样。\n````\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v3:H016 claude_code:claude-primary-v3:H017 claude_code:claude-primary-v3:H018 -->"
+        },
+        {
+          "episode_title": "把 Footnotes 设为事实源，related 与 backlink 改由脚本派生",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H019",
+            "claude_code:claude-primary-v3:H020"
+          ],
+          "body": "### 把 Footnotes 设为事实源，related 与 backlink 改由脚本派生\n\n用户在语义收敛后给出维护方案：`related` 不应独立手写，而应从 Footnotes 中抽取；metadata 只需区分引用对象类型，脚本据此生成 related 和 double-link 视图，Obsidian 也能直接消费。这个回答把此前三个可能漂移的维护点压成一个事实源：作者只维护正文 claim 与脚注目标，关系 metadata 是可重建产物。\n\n当次直接回复被 provider 额度错误打断，次日用户说 `continue` 后，助手沿用该决定更新 citation contract 和派生脚本，并迁移 171 张卡。执行结果报告所有卡完成统一 citation 迁移，`related` 改为从 Footnotes 派生。\n\n```mermaid\nflowchart LR\n    C[正文 claim] --> F[Footnotes]\n    R[Raw source] --> F\n    K[Knowledge card] --> F\n    F --> S[派生脚本]\n    S --> M[related metadata]\n    S --> B[backlink / Obsidian 视图]\n```\n\n图中的关键是维护方向单向：Footnotes 记录有语义锚点的引用，脚本向外生成 metadata 与 backlink，不允许后两者反过来成为独立事实源。实现已发生，因此该设计问题可以关闭；卡片集合后来因 comparison 失效需要重审，并不推翻 citation 的单一事实源答案。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. claude_code:claude-primary-v3:H019\n\n````text\nrelated 不应该是【单独维护的】而是应该从【footnotes】里面提出来的。这样在 metadata 和 double link 上有比较好的交代，obsidian 能直接适配。oh，metadata 里区分就好了。用脚本来做这件事。应该很好解决。能统一起来。\n````\n\n#### 2. claude_code:claude-primary-v3:H020\n\n````text\ncontinue\n````\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v3:H019 claude_code:claude-primary-v3:H020 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v3-cost-and-comparison-audit",
+      "issue_number": 36,
+      "desired_state": "closed",
+      "state_rationale": "高成本的主要来源、可消除与不可消除的读取、正确的 gate 顺序以及 comparison corpus 跑偏的根因都已审计并形成下一轮可执行修复条件",
+      "episodes": [
+        {
+          "episode_title": "98% KV cache 命中仍花费 1200 RMB，审计推翻最初成本直觉",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H021",
+            "claude_code:claude-primary-v3:H022",
+            "claude_code:claude-primary-v3:H023"
+          ],
+          "body": "### 98% KV cache 命中仍花费 1200 RMB，审计推翻最初成本直觉\n\n用户先要求两个 sub-agent 分别整理 v3 的 0 到 1 journey 和多主题审计，其中 token 消耗必须单列，找出最贵阶段与优化空间。审计 worker 完成 6 份文件，journey worker 失败后由主会话补写；这个失败没有被隐藏，但也意味着部分叙事不是独立 worker 的交付。\n\n随后用户拿后台账单挑战“高 cache hit 就可以容忍 token”的直觉：KV cache 命中率约 98%，单次实验仍超过约 1200 RMB，无法 scaling；工作假设是 exhausted material 时必须阅读全文，material-to-draft 应该最贵。第一次提问因模型授权错误没有得到答案，用户发送 `continue` 后，助手才基于 token audit 回答。\n\n审计结论与直觉相反：主要开销不在首次读 raw text，而在 draft 形成后，多个阶段反复读取、比较和重写同一张卡；纯后处理合计约为 material-to-draft 的 4 倍。高 cache hit 只降低部分重复前缀的单价，不能消除大量调用、长输出与多轮全量重读。这个结果把优化目标从“少读原文”转向“减少后处理 pass 和重复写入”。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n#### 1. claude_code:claude-primary-v3:H021\n\n````text\n调用一个 sub-agent，把v3从 0 - 1 的整个 loop 过程和优化写成一个文档；调用一个 sub-agent，把v3从头到尾的所有过程进行审计，落成一系列的审计文件，每一个文件有特定的审计主题，有一个主题非常重要：token 的消耗审计，核心 idea 是，在哪个环节 token 消耗最多，是否有高效可以优化的方案。注意，落的文档 main lanuage 主要是中文。\n````\n\n#### 2. claude_code:claude-primary-v3:H022\n\n````text\n根据后台的记录，调用的 kv cache 高达 98%，所以 token 这里是否是可以容忍的？但每跑一次实验，需要 1200 rmb 都止不住。虽然 kv cache 的命中率很高，但实际的开销很大，难以 scaling。因此需要仔细进一步 review 共同开销，看能通过什么方式来降低开销。因为从我的逻辑错发，exhausted cards 这个环节可能是开销最大的，因为要求 read raw text，然后去耗尽这个 material 生成 draft cards，事实上不是这样的，是吗？\n````\n\n#### 3. claude_code:claude-primary-v3:H023\n\n````text\ncontinue\n````\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v3:H021 claude_code:claude-primary-v3:H022 claude_code:claude-primary-v3:H023 -->"
+        },
+        {
+          "episode_title": "成本拆成同卡重读与跨卡发现，流程改为先判存活再打磨",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H024",
+            "claude_code:claude-primary-v3:H025"
+          ],
+          "body": "### 成本拆成同卡重读与跨卡发现，流程改为先判存活再打磨\n\n用户接受多阶段后处理昂贵，却指出不能简单把所有阶段合并：基于单张 draft 纵向处理时，仍要读取其他卡才能知道 A 与 B、C、D 的关系，internal link 的集合级发现似乎至少要跑一次。助手因此把成本分成两类：同一张卡被不同 worker 反复读写是可压缩浪费；跨卡候选召回与关系判断是必要成本，但不应在多个阶段重复发现同一张图。\n\n用户又纠正一个可能过度优化的方向：draft 不能直接进入 KB。它必须经过 duplication、fusion、internal link、Footnotes，以及由脚本挂接 card citation 与 raw material citation；有时 A 不应成为新卡，而应把知识融合进已有 B、C。也就是说，减少 pass 不能以删除质量门为代价。\n\n讨论由此形成 `Fork -> Weave -> Derive` 的执行顺序：Fork 先做 dedup/fusion，决定草稿是存活、融合还是跳过；Weave 只为存活卡补正文 citation 和必要关系；Derive 再用脚本生成 metadata 与 backlink。这个顺序同时回答质量和成本：昂贵的 LLM 判断保留一次，确定会被融合的卡不再接受后续打磨，确定性字段退出模型调用。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. claude_code:claude-primary-v3:H024\n\n````text\n你说的对。流程上这样是符合逻辑的，每一个阶段干每一个阶段的事情，但这样明显增加了处理的成本。但如果基于某一个 draft card 去单纯做后处理一套的，它同样要把别的读一遍，不是吗？而且有时候，确实不知道，A 和 B、C、D 卡的关系。包括 internal link 这一点，在 build 的阶段，好像只能去跑一遍，没有别的办法？不跑一遍也确实不知道有哪些相关的。\n````\n\n#### 2. claude_code:claude-primary-v3:H025\n\n````text\n这里的逻辑是，draft 要经过加工才能进入 kb。但我没有约定好这部分的流程，只是把所有的过程拆开了。按照设想，draft 不是直接进入 kb folder 或者 card folder 的。必须要经过【duplication】【interal link、footnote】【metadata script 脚本挂 card citation 和 raw material citaiotn】还有【fusion 这种需要处理的步骤】因为有时候 A 卡会直接被已经有的 B、C 卡融合了，A 卡本身不进去 cards，但它的知识进入了。\n````\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v3:H024 claude_code:claude-primary-v3:H025 -->"
+        },
+        {
+          "episode_title": "comparison corpus 审计发现 origin defect：171 张 v3 草稿只和 v2 比过",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H026",
+            "claude_code:claude-primary-v3:H027"
+          ],
+          "body": "### comparison corpus 审计发现 origin defect：171 张 v3 草稿只和 v2 比过\n\n流程顺序刚收敛，用户指出一个更严重的误区：comparison 设计上应在 v3 内部运行，不是拿 v3 drafts 与 v2 比。助手启动专项审计并直接核验脚本、工件和重复簇，确认 similarity 工具把 v2 的小型标题索引硬编码为唯一 corpus；171 份 comparison 文件虽然全部存在，却都只比较同一组 15 张 v2 cards，v3 drafts 从未彼此比较。\n\n```mermaid\nflowchart TD\n    D[171 张 v3 drafts] --> X[实际 similarity]\n    X --> V2[15 张 v2 cards]\n    D -. 应有但缺失 .-> S[v3 self-comparison]\n    S --> G[dedup / fusion gate]\n```\n\n这解释了为何“0 merge”不能作为质量结论：候选集合从一开始就错了。用户进一步强调每个 loop 都是独立的 0 到 1 过程，要求追溯偏差起点并给下一轮防复发方案。审计沿合同、工具和 git 时间线回查，确认 v2 污染从 v3 handoff 与启动合同诞生时就存在，不是执行中后期漂移。\n\n当前可执行答案是把 loop-local corpus 写成强合同和自动验收：任何 comparison artifact 都必须记录 corpus identity；小规模 dry run 要包含可预期的 intra-loop duplicate，并在 gate 未检出时直接失败。该审计已回答成本结构与根因，因此本 Issue 可关闭；受影响的 handoff 与 production adoption 则分别重开。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. claude_code:claude-primary-v3:H026\n\n````text\n这里有一个巨大的误区。comparison 不是和 v2 跑，设计上应该和 v3 本身跑。我不知道为什么这里跑偏了。你去开一个审计。\n````\n\n#### 2. claude_code:claude-primary-v3:H027\n\n````text\n事实上。每一个 loop 都是独立的，v3 不应该依赖 v2，是独立的从 0-1 的过程。因此这个审计需要溯源：究竟是什么时候出现的问题。然后可以怎么修改，在下一次 loop 中怎么优化，避免这个问题。\n````\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v3:H026 claude_code:claude-primary-v3:H027 -->"
+        }
+      ]
+    }
+  ]
+}

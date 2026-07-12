@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v3-draft-first-precursor",
+      "issue_number": 32,
+      "state": "closed",
+      "kind": "answer",
+      "title": "v3 应先形成 draft backlog，再用轻量召回触发审计决策",
+      "body": "### v3 应先形成 draft backlog，再用轻量召回触发审计决策\n\nv3 应按 `material -> draft backlog -> loop-local 候选召回 -> 阅读比较 -> 决策` 生产知识卡，而不是边读材料边执行昂贵融合。每份材料可一次消费并批量形成独立草稿；随后对标题分词，以 Jaccard 一类集合相似度召回 Top 3，只缩小阅读范围。进入决策门后，agent 必须回答草稿与候选卡的共同点、差异及下一步依据，再选择新增、融合、证据增量、拆分或跳过，并把判断写入目标卡的 provenance。\n\n这样成立，是因为瓶颈来自过早且反复的比较、重写，而非单纯读取原文；先形成 backlog 还能让集合级重复真正可见。卡片正文不设硬字数或拆分阈值，但删除标题后仍应提供可复用知识，至少包含操作定义、机制或边界之一；结构化 metadata 服务机器处理，不能替代正文。相似度只负责召回，不能代替融合判断，且 comparison corpus 必须属于当前 loop。\n\n<!-- issue-resolution: v3-draft-first-precursor -->"
+    },
+    {
+      "slug": "v3-formal-handoff",
+      "issue_number": 33,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：handoff 已可恢复运行，但尚不能证明 v3 语义可靠",
+      "body": "### 目前能回答到哪里：handoff 已可恢复运行，但尚不能证明 v3 语义可靠\n\n目前能回答到哪里：无历史上下文的 Claude Code 已能凭自包含 capsule 启动，目录白名单、依赖预检、skills 合同、初始 prompt、`--permission-mode auto` 以及进程级两层调用方式都有明确载体。内层 `claude -p` 是独立会话，因此 prompt 必须携带任务、cwd、权限和验收条件；这些内容足以证明“能恢复并产出工件”。\n\n仍不能回答的是 handoff 是否忠实实现 v3 的独立 0→1 语义。现有正式合同曾把 v2 的 15 张卡设为唯一 comparison corpus，导致后续 v3 草稿没有彼此比较；静态文件齐全、JSON 可解析和进程启动成功都发现不了这个错误。关闭条件是：修订 handoff 与启动 prompt，移除 v2 依赖并记录 corpus identity；用含预期重复项的小规模 dry run 证明 loop-local self-comparison 能触发 dedup/fusion gate，且 corpus 选错时验收自动失败。\n\n<!-- issue-resolution: v3-formal-handoff -->"
+    },
+    {
+      "slug": "v3-first-production-pass",
+      "issue_number": 34,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：v3 已扩展到 171 张 loop-local cards，但 accepted 集合仍无效",
+      "body": "### 目前能回答到哪里：v3 已扩展到 171 张 loop-local cards，但 accepted 集合仍无效\n\n目前能回答到哪里：从单材料 4 张草稿扩展到全量，是通过扩大 manifest 范围、并行批量消费材料并统一中文输出完成的；72 个材料中 43 个可读来源形成 171 张草稿，配套 comparison、provenance 与 974 条 interlink 工件也已生成并写入 loop-local KB。这证明 material coverage、draft throughput 和文件配套链路可以运行。\n\n但“171 张 accepted cards”目前不能作为最终答案：所有 comparison 实际只对照 v2 的 15 张卡，没有执行 v3 集合内部的 duplication/fusion，完整的工件覆盖率因此不等于有效 publication gate，局部 recheck 也无法修复候选集错误。关闭条件是对 171 张草稿重跑 loop-local self-comparison，逐组完成新增、融合或跳过判断，追踪被融合草稿的知识与 provenance 去向，再仅对 survivors 重建 citation、interlink 和索引，并报告可复核的最终卡数。\n\n<!-- issue-resolution: v3-first-production-pass -->"
+    },
+    {
+      "slug": "v3-unified-citation",
+      "issue_number": 35,
+      "state": "closed",
+      "kind": "answer",
+      "title": "Footnotes 应作为统一 citation 事实源，related 与 backlink 由脚本派生",
+      "body": "### Footnotes 应作为统一 citation 事实源，related 与 backlink 由脚本派生\n\n统一引用应只维护一条权威路径：正文 claim 挂一个或多个 Footnotes，脚注目标可指向 raw source、URL 或任一 loop 的 knowledge card；脚本再按目标类型生成 `related` metadata、双向链接与 Obsidian backlink 视图。作者不再独立手写 related，也不必为同一句话强选一个 Markdown hyperlink，因而既保留句子级锚点，也能表达多来源、多卡片关系。\n\n该方案成立，是因为裸 related id 没有 claim 语义，正文链接、related 和 backlink 若分别维护必然漂移；Footnotes 同时具备语义位置和可解析目标，适合作为单一事实源。References 只在确有 card-level 整体承接时保留，不再与 inline citation 重复。171 张卡已按该合同迁移，证明派生链路可执行；后续若卡片因 fusion 被重审，只需更新 Footnotes 并重新派生关系，不会推翻引用模型。\n\n<!-- issue-resolution: v3-unified-citation -->"
+    },
+    {
+      "slug": "v3-cost-and-comparison-audit",
+      "issue_number": 36,
+      "state": "closed",
+      "kind": "answer",
+      "title": "98% KV cache 命中仍昂贵，主因是多轮后处理而非首次读原文",
+      "body": "### 98% KV cache 命中仍昂贵，主因是多轮后处理而非首次读原文\n\n98% KV cache 命中只能降低部分重复前缀的单价，不能消除调用次数、长输出和同一卡片被多阶段反复读取与重写；本轮审计中，draft 之后的纯后处理总量约为 material-to-draft 的 4 倍，因此单轮成本仍可超过约 1200 RMB。可执行优化不是少读必须 exhaust 的原文，而是压缩同卡重复 pass，并避免对最终会被融合的草稿提前打磨。\n\n正确顺序是 `Fork -> Weave -> Derive`：先在 loop-local 集合中做 dedup/fusion，决定存活、融合或跳过；再只为 survivors 补正文 citation 与必要关系；最后用脚本派生 metadata 和 backlink。跨卡候选发现属于必要成本，但应只做一次且记录 corpus identity。约 4 倍与 1200 RMB 是该次运行的审计量级，会随模型定价和材料变化；可迁移结论是 cache hit 不是总成本指标，必须同时审计调用、输出和重复 pass。\n\n<!-- issue-resolution: v3-cost-and-comparison-audit -->"
+    },
+    {
+      "slug": "v3-repository-cleanup",
+      "issue_number": 37,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：cleanup 边界已明确，但 loop 提交与状态复核尚未完成",
+      "body": "### 目前能回答到哪里：cleanup 边界已明确，但 loop 提交与状态复核尚未完成\n\n目前能回答到哪里：本轮只应提交 `loops` 内已确认的 v3 变更；`.claude`、`.codex`、`.obsidian`、展示文件和 `docs` 均留在本轮之外，`.obsidian` 应由 `.gitignore` 排除，commit message 不添加 `Co-Authored-By: Claude Opus 4.7`。剩余工作区内容必须区分为批准范围内遗漏、明确保留的配置/文档，以及独立的 ignore 规则变更，不能用 catch-all 一次纳入。\n\n仍未完成的是实际 git 写入与提交后的状态证明。命令分类器持续阻塞 commit，已有结果只说明文件和命令边界准备好，不能声称仓库已清理。关闭条件是由可执行 git 写入的环境提交批准范围内的 loop 文件，随后复核 `git status`：确认 loop 内无预期遗漏、排除项仍未被纳入、`.obsidian` 不再出现，并检查最终 commit 不含额外署名 trailer；若仍有文件，需按上述三类逐项说明归属。\n\n<!-- issue-resolution: v3-repository-cleanup -->"
+    },
+    {
+      "slug": "v3-set-level-fusion-gate",
+      "issue_number": 38,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：fusion gate 的职责已定义，识别 survivors 的能力仍未验证",
+      "body": "### 目前能回答到哪里：fusion gate 的职责已定义，识别 survivors 的能力仍未验证\n\n目前能回答到哪里：fusion gate 是 draft 进入当前知识视图前的集合级准入门，负责在当前 loop 内比较草稿，并决定每张草稿应新增、融合进已有卡、作为有边界差异的独立卡保留，还是跳过；survivor 就是通过该门后仍应进入当前视图的卡片。当前未验证的核心能力，是这道门能否在真实卡片集合中发现内部重复、保留有意义的差异，并完整记录融合依据与被吸收知识的去向。\n\n候选发现可先采用 agent 自主的 grep-first 路径，以少量候选缩小判断空间，不承诺穷尽所有关系；title、aliases、tags、summary 等 metadata 只为检索服务，不能代替语义比较。citation、interlink 以及脚本派生的 related/backlink 应在 survivors 确定后处理。关闭条件是固定准入状态与决策记录，在含重复、近义、边界差异和无关项的样本集上实跑，并让漏掉预置重复项、错误融合或 comparison corpus 选错时自动失败。\n\n<!-- issue-resolution: v3-set-level-fusion-gate -->"
+    },
+    {
+      "slug": "v3-next-loop-pipeline",
+      "issue_number": 39,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：collect、extract、ingest、evolve 已有设计，尚无可复用实现",
+      "body": "### 目前能回答到哪里：collect、extract、ingest、evolve 已有设计，尚无可复用实现\n\n目前能回答到哪里：下一轮应采用 per-material 的 `collect -> extract -> ingest -> evolve` 生命周期；extract 不用卡片数或长度衡量，而由 agent 围绕“这份材料能回答哪些未来问题”持续追问，直到在当前边界内判断 exhaust。卡片是自包含、可独立消费且来源可追溯的 bounded idea，不预设 hub、split 或固定 taxonomy。长文档与代码仓库可由静态 orchestrator 协调 questioner、insider reader/answerer、fresh reviewer 和 fusion agent，以文件传递问题、原文块、答案与审计状态。\n\n仍未知的是 exhaust skill 能否收敛、角色 handoff 是否保留足够上下文、动态 workflow 如何恢复失败，以及不同材料类型能否共享同一合同；当前内容仍是设计文档。关闭条件是实现 skill、I/O schema、状态机和重试协议，并分别用 paper/blog、普通网页与 repo 做 clean run：证明问题覆盖可退出、reviewer 能发现遗漏、失败可从文件状态恢复、ingest 进入正确 gate，最后由 evolve 接收真实使用反馈而不是预设拆分任务。\n\n<!-- issue-resolution: v3-next-loop-pipeline -->"
+    },
+    {
+      "slug": "v3-reader-reviewer-architecture",
+      "issue_number": 40,
+      "state": "closed",
+      "kind": "answer",
+      "title": "reader 与 writer 应合并持有完整材料，reviewer 保持独立并按需取证",
+      "body": "### reader 与 writer 应合并持有完整材料，reviewer 保持独立并按需取证\n\n长材料抽取中，reader 应直接承担 drafting：理解与写卡共享同一份热上下文，另设 writer 要么只拿摘要而丢失信息，要么重新读取全文而重复成本。材料加载后，由知道材料 scope 的 forked questioner 主动追问，reader-drafter 依据原文回答并形成带引用的知识单元；questioner 的退出决定再交给 fresh reviewer 复核。对代码仓库，reader 不必装入全部代码，而应作为 insider answerer 按问题检索实现并返回“问题、原文块、答案”。\n\nreviewer 应 fresh but not blind：不继承 reader 的完整上下文，以减少共享偏差，但可按 rubric 检查可理解性、正确性、覆盖、密度与重叠，并用 grep 按需回查原材料或 KB。该分工不假设一次读全文就能完整理解，而用问题反馈暴露遗漏。适用边界是 building 阶段受单份材料约束；超出原材料、跨卡递归生长的问题属于后续 evolving 模式，不应混入当前抽取验收。\n\n<!-- issue-resolution: v3-reader-reviewer-architecture -->"
+    },
+    {
+      "slug": "v3-questioning-loop",
+      "issue_number": 41,
+      "state": "closed",
+      "kind": "answer",
+      "title": "单材料、忠实原文的抽取模式应以问题、证据化回答和退出复核形成闭环",
+      "body": "### 单材料、忠实原文的抽取模式应以问题、证据化回答和退出复核形成闭环\n\n单材料、忠实原文的抽取模式以一份边界明确的材料为输入，以带原文块和引用的问答、知识卡草稿及 provenance 为输出；退出条件是 questioner 判断材料内已无关键问题遗漏，并由独立 reviewer 复核正确性、覆盖度和早停风险后通过。它不把一次阅读全文等同于 exhaust，而用后续问题持续暴露初次阅读遗漏。\n\n执行时，静态 orchestrator 只维护文件状态；questioner 基于材料与既有问答写入新问题，answerer/insider reader 回查原文或代码并提交答案与 source blocks，fresh reviewer 按需 grep 取证，未通过就退回答复环。复核通过后才记录 justification，并交给独立 fusion agent 进入知识准入门。多份材料可以并行，但不依赖预设语义聚类；允许超出原材料、跨卡递归探索的任务属于后续知识演化，不在本模式的完成范围内。\n\n<!-- issue-resolution: v3-questioning-loop -->"
+    },
+    {
+      "slug": "v3-justification-journal",
+      "issue_number": 42,
+      "state": "closed",
+      "kind": "answer",
+      "title": "每张卡保留 append-only justification journal，comparison 只按真实决策触发",
+      "body": "### 每张卡保留 append-only justification journal，comparison 只按真实决策触发\n\n知识卡演化应以 per-card、append-only 的 Justification Journal 记录必要 WHY：creation、review、fusion、governance、evolution 与 deprecation；正文保持可消费，不承担全历史。comparison 不再每卡默认生成，只在 merge、drop、update、fusion 或用户查询确有比较需求时触发。合并时主要理由写入新卡 journal，旧卡只保留去向指针，历史对象不删除，只可退出 current view。\n\n卡片间的局部差异优先用双向 typed Footnotes 表达，如 `distinguishes_from`；只有差异本身成为独立、可复用知识时才提升为 comparison card。这样既能追踪 A→Z 的决策，又避免 O(N) 比较文件、connection card 膨胀和 journal 被过程噪声淹没。0→1 初始化与后续 ingestion 使用同一范式：初始卡达到 acceptable 即可，再由真实使用反馈演化。metadata、footnote 与 journal 合同已落盘；运行效果可在下一 loop 继续验证，不影响本设计答案成立。\n\n<!-- issue-resolution: v3-justification-journal -->"
+    },
+    {
+      "slug": "v3-query-probes",
+      "issue_number": 43,
+      "state": "closed",
+      "kind": "answer",
+      "title": "v3 KB 可回答架构、RAG/graph 比较和实体归属查询，但仅限仓库证据",
+      "body": "### v3 KB 可回答架构、RAG/graph 比较和实体归属查询，但仅限仓库证据\n\nv3 KB 当前可回答架构、RAG/graph 比较和实体归属三类查询，并给出文件与行号出处；可回答范围止于仓库证据，不代表相关外部事实已经全面核验。三类回答分别是：\n\n- 架构查询：说明 raw materials、互链 Markdown 知识对象、schema/governance，以及写入、查询和健康检查环节。\n- RAG/graph 比较：解释 LLM Wiki 如何把合成、链接、消歧、冲突处理和持续写回前置；当 graph 含义不明确时，先声明按 GraphRAG 或知识图谱理解，再比较知识承载、更新方式与失真位置。\n- 实体归属查询：区分 LLM Wiki 的形式化关联者、具体实现作者与通用 LLM 技术史，不能把含糊的“创始人”武断归给一人。\n\n证据不足或术语多义时，应明确假设、限定答案或请求澄清。首次提问曾出现无回复，说明查询入口仍需单独补强，但不改变现有卡片能够形成可追溯答案的结论。\n\n<!-- issue-resolution: v3-query-probes -->"
+    },
+    {
+      "slug": "v3-practice-reframe",
+      "issue_number": 44,
+      "state": "closed",
+      "kind": "answer",
+      "title": "技术复盘应围绕从原始材料构建可持续知识生态来重写 v0-v3",
+      "body": "### 技术复盘应围绕从原始材料构建可持续知识生态来重写 v0-v3\n\n面向无仓库上下文同事，开场必须先给出基础假设与迭代逻辑：本实践不是维护已有、已体现个人偏好的 wiki，而是让 agent 从 raw documents/data 构建人和 agent 都能消费的知识生态，并依据使用历史持续维护；人负责消费、检查与较弱审核。正文再用 v0-v3 说明路径如何从资料收集、top-down topic 转向 bottom-up、source-grounded、draft-first 的知识生产与治理，而不是按文件或故障重讲运行日志。\n\n概念层用 DIKW 锚定：Data 是原始材料，Information 是 draft 及其阶段工件，Knowledge 是经治理接受的卡片，Wisdom 是连接、使用和比较后生长的理解；known/accepted facts 是事实依据类型，draft/accepted 是流程状态，不能混用。卡片是默认最小但可完整消费的信息簇，不是强制原子 claim。执行数字须标注时点和候选状态，不能把 171 张曾被 adoption 的卡伪装为已稳定发布；报告应可单独转发，并以中文（English）锚定必要术语。\n\n<!-- issue-resolution: v3-practice-reframe -->"
+    },
+    {
+      "slug": "v3-introduction-slides",
+      "issue_number": 45,
+      "state": "closed",
+      "kind": "answer",
+      "title": "introduction 应用三张图分别讲知识范式、实施手段与过去未来",
+      "body": "### introduction 应用三张图分别讲知识范式、实施手段与过去未来\n\n三张图的稳定叙事是：第一张说明知识从只服务人转向同时服务 agent，建立知识范式变化；第二张说明实施手段从模型内生知识、RAG 的即时召回走向可持续知识生长；第三张展开传统两条路径与 LLM Wiki 的过去、缺口和未来。这样第二张负责全景框架，第三张负责细节与时间方向，既避免重复，又兼顾演讲逐步展开和文档离线阅读。\n\n每张 slide 必须有脱离文件名也能说明论证用途的 display title，不能拿 page name 代替标题；传统路径的“路径、解释、案例”适合用可扫描的三栏结构，视觉上保持浅色、克制的包豪斯配色并去除干扰层级的标题分割线。三页方案不应再压成单页流程图，因为单页只能快速概览，无法保留演讲所需细节；后续内容更新应维持三页角色分工，而不是在第二、三页重复列相同局限。\n\n<!-- issue-resolution: v3-introduction-slides -->"
+    },
+    {
+      "slug": "v3-operational-definition",
+      "issue_number": 46,
+      "state": "closed",
+      "kind": "answer",
+      "title": "一页用定义统领重点与属性，另一页用 DIKW 表达成熟度",
+      "body": "### 一页用定义统领重点与属性，另一页用 DIKW 表达成熟度\n\n操作定义页应采用“定义在上、映射在下”：顶部用引用式陈述说明 LLM Wiki 是由 LLM/agent 持续维护的知识卡片系统；下方左栏放三个建模重点，右栏放五项能力属性，并用语义颜色连接来源锚定、结构约束、关系可链接、版本可审计与智能体可操作。结构约束需显式区分人和 agent 消费的 card 层，以及 provenance、comparison、versioning、audit 等隐性治理层，正文统一使用中文（English）术语锚点。\n\n第二页以“从 DIKW 视角建模 LLM Wiki”为题：Data 对应原始材料，Information 对应 draft cards 及审核、溯源、对比工件，Knowledge 对应治理后被接受的 cards，Wisdom 对应知识自进化、规模自发现、规则自演化与跨卡理解。首尾需高亮“草稿仍属信息层，接受后才进入知识层”。边界是：卡片为默认最小消费单元而非强制切分；图结构只是组织方式之一，可读卡片仍是主要承载物。\n\n<!-- issue-resolution: v3-operational-definition -->"
+    },
+    {
+      "slug": "v3-presentation-render",
+      "issue_number": 47,
+      "state": "closed",
+      "kind": "answer",
+      "title": "从 `$html-to-png` 入口调用 Playwright，可批量把 HTML 渲染为同名 PNG",
+      "body": "### 从 `$html-to-png` 入口调用 Playwright，可批量把 HTML 渲染为同名 PNG\n\n从 `$html-to-png` skill 入口调用 Playwright，即可把 `docs/present_doc/*.html` 逐个输出为同目录、同 basename 的 PNG，并保留 HTML。在仓库根目录执行：\n\n```bash\nfor f in docs/present_doc/*.html; do npx playwright screenshot --full-page --viewport-size=1600,900 \"file://$PWD/$f\" \"${f%.html}.png\"; done\n```\n\n依赖是 Node.js、npm、`playwright` 包和 Chromium；首次使用先运行 `npx playwright install chromium`。输入是一组本地 HTML，输出是一对一 PNG；运行后应检查文件存在、大小、像素尺寸与非空画面。`--full-page` 会按内容延长图片，页面高度不同不是截断；若要求统一画布高度，应先在 HTML/CSS 中固定 viewport 或 slide 容器并取消 full-page，这是新的版式约束。\n\n<!-- issue-resolution: v3-presentation-render -->"
+    }
+  ]
+}

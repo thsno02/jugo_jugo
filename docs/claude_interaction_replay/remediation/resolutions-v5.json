@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v5-source-router-and-graph-governance",
+      "issue_number": 57,
+      "state": "open",
+      "kind": "current_status",
+      "title": "已有终态产物，但全量闭环尚未证实",
+      "body": "### 已有终态产物，但全量闭环尚未证实\n\n目前能回答到：v5 已跑通来源扫描、类型路由、并行抽取、fusion、ingest 和图修复，并产出 477 张可解析的 active cards；这证明系统能形成终态产物，但尚不能证明每个应处理对象都被正确处理、每次变更都通过检查。\n\n未闭环的首先是 denominator（统计分母）：source denominator 是应处理多少来源，card denominator 是草稿、融合后与 active 各有多少卡，graph denominator 是按多少节点和关系计算 orphan、backlink 等指标。现有记录中失败源有 10、11、12 三种数字，63 个可路由来源只见 62 个 source_id 被消费，orphan 也有 0 与 2 两种结果。ledger（治理台账）则应逐项记录每个来源或卡片被消费、合并、修改、失败或豁免的原因；当前缺少逐卡和 fusion 逐对轨迹。gates（门禁）是每次 mutation 后必须重跑且失败就阻止通过的检查，现有记录也不足以证明它们持续执行。\n\n关闭条件是统一三类分母，补齐可审计台账，并在一次可复现全量 run 中让来源覆盖、图约束、抽取深度和概念可理解性门禁全部通过。\n\n<!-- issue-resolution: v5-source-router-and-graph-governance -->"
+    },
+    {
+      "slug": "v5-fsjs-audit-coverage",
+      "issue_number": 58,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到：现有证据指向执行缺口与审计合同盲区",
+      "body": "### 目前能回答到：现有证据指向执行缺口与审计合同盲区\n\n目前能回答到：现有证据指向两类遗漏，一类是首轮语义审计没有完整执行，另一类是补跑所依据的检查合同本身没有覆盖提问深度和概念解释充分性；但各类缺陷分别由哪个机制造成，仍需扩展合同后重跑验证。\n\n已经确认的是：首轮未让全部 suspect（脚本筛出的待复核候选）完成 SHARD/JUDGE。SHARD 是按来源和上下文把候选分组交给审查者，JUDGE 是审查者回到原文逐项判定；缺一就不能把候选视为已关闭。后补报告虽宣称 26 子项通过，底层仍有 FAIL、conditional、marginal 和抽样判断。合同也未检查 runtime skill 注入，即完整方法是否真的进入执行 agent 的上下文，而不只是文件存在；也未检查 quit-audit，即 agent 停止前是否反证自己已无法继续提出有价值的问题。\n\n这些事实确认了审计遗漏，却只构成成因线索，尚未证明 skill 注入或退出机制能解释全部质量退化。关闭条件是把两项运行检查和独立可理解性设为 hard gate，为所有 suspect 保存分片、原文与 verdict，统一底层和汇总结论，并验证重跑能抓住已知空壳卡。\n\n<!-- issue-resolution: v5-fsjs-audit-coverage -->"
+    },
+    {
+      "slug": "v5-information-density-regression",
+      "issue_number": 59,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到：质量退化已确认，成因仍需受控验证",
+      "body": "### 目前能回答到：质量退化已确认，成因仍需受控验证\n\n目前能回答到：v5 确实存在“结构字段齐全、引用可追溯，但概念解释不足”的卡片；可以确认退化现象和若干管线差异，尚不能把其中任何一个差异断言为全库退化的主因。\n\n已观察事实包括：extraction agent 的运行 prompt 约 50 行，完整 questioning、reader、reframing、reviewer skills 未进入该上下文；原审计未检查提问深度；“四环层级”卡有来源脚注，却没有解释四层职责、权限边界和隔离机制；v4 对应内容没有被拆成证据不足的独立卡。当前最佳解释是，简化 prompt、较弱退出门槛、原子化建卡倾向及 schema/后处理共同把优化目标推向形式完整，而非解释完整。模型差异目前没有直接证据。\n\n待验证假设是：恢复完整深挖流程并收紧独立建卡条件，能在不牺牲 v5 治理的前提下改善质量。独立可读性验收定义为：读者不打开原文或相邻卡，也能从正文回答“它是什么、如何或为何成立、适用边界及与近邻概念的区别”，且关键陈述均有足够 citation 支撑。关闭条件是用同源同模型对照和盲评验证该标准，再完成高价值低密度卡的治理或重提取。\n\n<!-- issue-resolution: v5-information-density-regression -->"
+    },
+    {
+      "slug": "v5-v4-ingest-reconstruction",
+      "issue_number": 60,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到：候选最小方案是恢复抽取深度并保留 v5 治理",
+      "body": "### 目前能回答到：候选最小方案是恢复抽取深度并保留 v5 治理\n\n目前能回答到：候选最小方案是让 extraction worker 真正获得完整 questioning、reader、reframing、reviewer instructions，恢复逐轮追问、Phase 3-4 和停止前的 quit-audit，同时继续使用 v5 的 source routing、fusion、YAML、backlink 与 orphan governance；这个组合尚未被证明是最小或最优。\n\n已确认的必要项是可核验的 runtime delivery：skill 文件存在不等于 worker context 收到了内容，执行记录必须能证明 prompt、阶段与退出条件实际生效。只做图治理或 schema 修补也不能恢复从未抽取的论证。待验证的组合是“v4 式深抽取 + v5 式治理”：保留哪些 reviewer 步骤、由 main-loop 还是并行 workers 编排、fusion 与更深抽取是否相互影响，目前都缺少直接运行证据。其适用边界还要求原始来源本身信息充足。\n\n关闭条件是先用 dispatch、worker prompt、skill 传递和产物还原 v4 编排，再在同源同模型条件下比较原 v5、v4 与候选版；只有解释深度和独立可读性达标、治理指标无回退，且删减任一候选步骤会失败时，才能称为经过验证的最小修改。\n\n<!-- issue-resolution: v5-v4-ingest-reconstruction -->"
+    },
+    {
+      "slug": "v5-preservation-and-transition-out",
+      "issue_number": 61,
+      "state": "closed",
+      "kind": "answer",
+      "title": "用相对路径、分类提交与显式推送状态完成固化和 transition-out",
+      "body": "### 用相对路径、分类提交与显式推送状态完成固化和 transition-out\n\n规范做法是：仓库内引用统一使用 repo-relative path，仓库外证据只写不暴露设备身份的逻辑位置；按路径规则、审计档案、展示材料、loop capsule 或版本内容等职责拆分提交；每类变更先做对应格式与代码验证，再分别 commit，并明确记录是否 push、远端是否对齐。\n\n这套做法成立，因为路径规则已经写入 README，相关 JSON/JSONL 与 Python 变更经过验证，分类提交能够独立追溯；v5 的工具、skills、477 张卡、justification、审计档案和 learnings 也已形成独立提交，因此版本产物不会依赖未提交工作树。执行时应保持一个原则：固化（commit）与发布（push）是两个状态，报告必须分别陈述，不能用较早的远端对齐结论覆盖较晚的新提交。\n\n适用边界是仓库内容与 Git 发布管理；它证明路径、分类和版本保存可追溯，不证明 477 张卡的内容质量，也不把当时尚未 push 的特定提交描述为已发布。\n\n<!-- issue-resolution: v5-preservation-and-transition-out -->"
+    }
+  ]
+}

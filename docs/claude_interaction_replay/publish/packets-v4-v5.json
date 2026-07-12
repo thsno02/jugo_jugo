@@ -1,0 +1,972 @@
+{
+  "packet": "v4-v5",
+  "issues": [
+    {
+      "slug": "v4-changelog",
+      "title": "v4 ChangeLog：独立 0→1、逐卡治理与审计补救",
+      "body": "v4 准备脱离 v3 的既有知识卡，从原始材料独立运行提问者/读者循环。本 tracker 只串联本版问题，答案与失败按时间留在各子 Issue。",
+      "parent_slug": "llm-wiki-build-history",
+      "related_slugs": [
+        "v5-changelog"
+      ],
+      "labels": [
+        "changelog"
+      ],
+      "version_ids": [
+        "v4"
+      ],
+      "comments": []
+    },
+    {
+      "slug": "v5-changelog",
+      "title": "v5 ChangeLog：来源路由、图治理与信息密度回退",
+      "body": "v5 准备在独立 0→1 约束下引入来源路由和规模化图治理。本 tracker 只记录本版问题入口，不预写运行结果。",
+      "parent_slug": "llm-wiki-build-history",
+      "related_slugs": [
+        "v4-changelog"
+      ],
+      "labels": [
+        "changelog"
+      ],
+      "version_ids": [
+        "v5"
+      ],
+      "comments": []
+    },
+    {
+      "slug": "v4-agent-effort-default",
+      "title": "v4 / Agent effort / 如何让主会话与 sub-agent 默认使用最高推理强度？",
+      "body": "长程任务将大量工作委派给 sub-agent，但新会话和子代理的推理强度是否会自动保持尚不明确。",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [],
+      "labels": [
+        "question"
+      ],
+      "version_ids": [
+        "v4"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-04T13:42:45.889Z",
+          "event_ids": [
+            "claude_code:claude-v4-agent-effort-setup:H001"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> /effort\n\n- **事件性质**：指令（instruction）。\n- **术语说明**：推理强度（thinking effort）是模型用于任务推理的预算档位；会话钩子（session hook）是在会话启动或事件发生时运行的自动动作。\n- **当时状态**：公开档案没有可用的助手摘要；这条命令、提问或中断本身是唯一可确认事实，不补造响应。\n\n```mermaid\nflowchart LR\n    C[持久化配置] --> N[新主会话]\n    N --> S[Sub-agent]\n    H[Session hook 候选] -. 启动后难以改内部参数 .-> N\n    F[xhigh 回退] --> S\n```\n\n- **流程解释**：配置必须在进程读取参数前生效；hook 只能触发动作，不能假定能改写已运行会话的内部 effort。项目级 `xhigh` 被当作可持久化回退，是否等价于每次会话的 `max` 当时仍需验证。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-04T13:43:26.662Z",
+          "event_ids": [
+            "claude_code:claude-v4-agent-effort-setup:H002"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> update the config, while delegate the sub-agents, using max thinking effort, just set it to default and never change.\n\n- **事件性质**：偏好（preference）。\n- **当时状态**：助手核查可持久化的 thinking effort 配置，判断 `xhigh` 是可保存的最高档位，并报告已将其设为项目级默认，使后续 sub-agent 自动采用该设置；同时说明 `max` 当时只能按会话启用。\n- **关键判断 1**：可持久化默认值与会话级最高值被区分处理。\n- **执行动作 1**：检查有效 effort 档位与配置键。\n- **执行动作 2**：将项目级默认 effort 设为 `xhigh`。\n- **观察结果 1**：助手报告项目配置已更新，sub-agent 将默认使用最高可持久化档位。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-04T13:49:49.562Z",
+          "event_ids": [
+            "claude_code:claude-v4-agent-effort-setup:H003"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> use a hook to do so? once open a claude chat session => set it to max?\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手判断 session hook 无法改变已运行进程的内部 effort 参数，转而采用全局环境配置设置 `max`，并保留项目级 `xhigh` 作为回退；助手报告该组合会覆盖主会话与 sub-agent。\n- **关键判断 1**：启动后执行的 hook 不适合修改当前进程的内部 effort；会话初始化前注入环境配置更直接。\n- **执行动作 1**：检查可在会话启动时生效的环境变量机制。\n- **执行动作 2**：报告已加入全局 `max` 配置，并保留项目级 `xhigh` 回退。\n- **观察结果 1**：助手报告后续 Claude 会话与 sub-agent 将自动采用最大 effort，并无需额外 hook。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-04T14:10:45.094Z",
+          "event_ids": [
+            "claude_code:claude-v4-agent-effort-setup:H004"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> /exit\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：公开档案没有可用的助手摘要；这条命令、提问或中断本身是唯一可确认事实，不补造响应。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v4-full-material-orchestration",
+      "title": "v4 / 全量材料运行 / 如何把独立 0→1 loop 编排到全部来源？",
+      "body": "v4 已有启动合同，但最初只完成局部阶段。当前问题是如何让主控持续编排全部材料，同时保留阶段状态与失败记录。",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v4-sequential-card-governance",
+        "v4-audit-workload-sharding",
+        "v4-source-routing-and-preprocessing"
+      ],
+      "labels": [
+        "task"
+      ],
+      "version_ids": [
+        "v4"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-04T14:11:05.413Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H001"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 读 loops/v4_llm_wiki_loop_20260602/LOOP_START_PROMPT.md，按里面的指示开始工作。\n\n- **事件性质**：指令（instruction）。\n- **术语说明**：独立 0→1（independent zero-to-one）表示不继承旧版知识库作为生产起点；编排（orchestration）表示主控拆分任务、调度 agent 并验收阶段结果。\n- **当时状态**：助手读取 v4 启动与设计文档，构建 questioning、reader、reframing、reviewer 四项核心技能，完成 Karpathy gist 首轮 questioning loop、15 张卡及 justification journals 的入库和 quit-audit；随后根据 17 项质量问题迭代技能并提交阶段成果。\n- **关键判断 1**：首轮 reviewer 覆盖与脚注抽查均通过，但质量复核仍发现链接密度、原子性、脚注格式和内容缺口。\n- **执行动作 1**：读取启动、handoff、task 与设计文档。\n- **执行动作 2**：协调 reader、questioner、reviewer sub-agents 完成种子实验。\n- **执行动作 3**：生成并入库 15 张卡与 15 份 justification journal，迭代四项技能并提交。\n- **观察结果 1**：Phase 1 完成，Phase 2 首轮实验完成；后续仍需针对已发现问题重跑和补卡。\n\n```mermaid\nflowchart TD\n    P[读取 LOOP_START_PROMPT] --> I[局部迭代]\n    I --> A[扩展到全部材料]\n    A --> O[主控编排 sub-agents]\n    O --> G[治理与状态门禁]\n    G --> Q{全部阶段可对账?}\n    Q -- 否 --> O\n    Q -- 是 --> R[进入专项审计]\n```\n\n- **流程解释**：重复的“run for all materials”不是去重噪声，而是用户持续发现执行尚未覆盖全量后的再次推进。流程只有在来源、产物和状态文件能够对账后，才算从局部 demo 进入全量运行。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T02:26:58.941Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H002"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> complete the following tasks\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手开始修复 15 张既有卡的 cross-link、aliases 和 footnote 格式，并计划拆分复合卡、补齐缺失主题；委派批量修复时发生 API 连接失败，本窗口内任务尚未完成。\n- **执行动作 1**：检查并编辑既有卡片。\n- **执行动作 2**：尝试委派 sub-agent 批量修复剩余卡片。\n- **观察结果 1**：sub-agent 调用因 ConnectionRefused 失败，工作转入后续继续输入。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T05:05:07.038Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H003"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> continue to the goal\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手改为直接完成剩余修复：为卡片补 cross-links 与 aliases，标准化脚注位置，拆分复合卡并新增 3 张缺口卡，重建索引；Karpathy gist 产物增至 19 张活跃卡，Phase 2 标记完成。\n- **执行动作 1**：直接修复剩余卡片。\n- **执行动作 2**：拆分 index/log 主题并新增 use-case、wiki-as-git-repo、Obsidian tooling 卡。\n- **执行动作 3**：重建索引、更新 task 并提交。\n- **观察结果 1**：19 张活跃卡均建立 cross-link，Phase 0-2 在 task 中完成。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T05:15:57.061Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H004"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> run for all materials\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手开始盘点全部可用材料及规模，但本次尝试在形成执行 workflow 前被中断。\n- **执行动作 1**：扫描 raw materials 与行数。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T05:22:11.816Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H005"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> run for all materials\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手重新盘点材料，识别约 42 份待处理材料并准备并行 workflow；在实际 workflow 完成前再次被中断。\n- **执行动作 1**：筛选材料并准备批处理清单。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T05:26:04.975Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H006"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> orchestrate a workflow to run the pipleline for all materials\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：公开档案没有可用的助手摘要；这条命令、提问或中断本身是唯一可确认事实，不补造响应。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T05:26:20.881Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H007"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> orchestrate a workflow to run the pipleline for all materials\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手表示将构建并行 extraction workflow，但在下一次重复输入前没有完成可见执行。\n- **执行动作 1**：准备并行 extraction workflow。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T05:28:18.414Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H008"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> orchestrate a workflow to run the pipleline for all materials\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：公开档案没有可用的助手摘要；这条命令、提问或中断本身是唯一可确认事实，不补造响应。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T05:29:31.832Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H009"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> orchestrate a workflow for the pipeline to run all materials\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手再次检查材料结构和现有输入，准备据此设计 workflow；该尝试在执行前中断。\n- **执行动作 1**：盘点可处理材料、文件规模与现有 KB。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T05:31:35.394Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H010"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> orchestrate a workflow to run the pipeline for all meterials. note you should utilize the sub-agent mechanism in claude code\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手以 sub-agent workflow 并行处理 43 份材料，完成全部 extraction 与索引重建并提交；最终报告 43/43 成功、KB 共 259 张卡，其中 240 张为本轮新增。\n- **执行动作 1**：启动 43 个 extraction agents 的 workflow。\n- **执行动作 2**：验证卡片、justification journals 与索引并提交。\n- **观察结果 1**：workflow 完成 43 份材料处理，KB 达到 259 张卡。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T06:14:32.690Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H011"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> set goal: complete ALL following steps. use workflow to do so.\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手对 259 张卡执行 governance workflow，处理 canonical duplicate、cross-link 和 8 张源忠实抽查；报告 Phase 0-4 完成、canonical duplicate 清零、117/259 张卡已链接且 8/8 抽查通过。与此同时，状态文件仍保留早期 setup/initializing/0 计数，与后验完成证据冲突。\n- **关键判断 1**：后验完成报告不能用于静默改写陈旧状态文件；两类证据需并列保留。\n- **执行动作 1**：运行 dedup、canonical normalization、cross-link、spot-check 与 finalize workflow。\n- **执行动作 2**：更新 task 与索引并提交 governance 结果。\n- **观察结果 1**：后验 task 与会话证据显示 Phase 0-4 完成并有 259 张卡。\n- **观察结果 2**：冲突证据：status.json 仍为 setup；loop_state.json 仍为 initializing、materials_processed=0、cards_produced=0。\n- **观察结果 3**：更晚产物证据显示 Phase 4b 完成、43 份材料已处理且最终 KB 有 328 张活跃卡；未据此修正陈旧 status/state。\n- **公开证据 1**：`loops/v4_llm_wiki_loop_20260602/status.json`（artifact；validated）。\n- **公开证据 2**：`loops/v4_llm_wiki_loop_20260602/loop_state.json`（artifact；validated）。\n- **公开证据 3**：`loops/v4_llm_wiki_loop_20260602/task.md`（artifact；validated）。\n- **公开证据 4**：`loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards/`（artifact；validated）。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v4-sequential-card-governance",
+      "title": "v4 / 知识卡治理 / 为什么入库后缺少逐卡 fusion 与有证据的 related？",
+      "body": "卡片已经生成，但绝对路径、关系不明和缺少 fusion 暴露出入库顺序没有真正落实。补救不能把关键词共现直接当成知识关系。",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v4-cluster-exploration-damage",
+        "v5-source-router-and-graph-governance"
+      ],
+      "labels": [
+        "bad case"
+      ],
+      "version_ids": [
+        "v4"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-05T07:40:37.329Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H012"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 当前版本的卡片出现了一个 P0 级别的问题，依赖的是【绝对路径】而不是【相对路径】，我能理解 agent 在处理相对路径时候是有一定困难的，所以不强行要求 agent 在生成 card 的时候给相对路径，但有硬性要求，要求 agent 有一个基于规则或者使用脚本，完成绝对路径转相对路径，这一点应该是完全能做到的。同时有一个优化的问题，在 v3 loop 中，有大量的 internal double links between cards。但是 v4 里面很少这种 links。我希望理解这种不同。你调用 sub-agent 去深入调查一下，这种不同产生的原因。给我一个 solid conclusion。\n\n- **事件性质**：指令（instruction）。\n- **术语说明**：融合（fusion）是比较后合并重复或互补知识；相关关系（related）必须由事实、观点或引用证据支持；逐卡治理（sequential per-card governance）是按顺序读取每张卡并让前一次判断影响后续全库状态。\n- **当时状态**：公开档案没有可用的助手摘要；这条命令、提问或中断本身是唯一可确认事实，不补造响应。\n- **执行动作 1**：启动 sub-agent 深入调查绝对路径和 v3/v4 inter-card link 密度差异。\n\n```mermaid\nflowchart TD\n    D[Draft card] --> N[路径标准化]\n    N --> S[按顺序进入全库比较]\n    S --> G[grep 召回近义与反义候选]\n    G --> R[阅读正文与 footnote]\n    R --> J{关系判断}\n    J -- 重复或互补 --> F[Fusion]\n    J -- 有证据关系 --> L[Related / comparison]\n    J -- 无实质关系 --> K[保持独立]\n```\n\n- **流程解释**：`grep` 只负责召回候选，不能直接生成 `related`。真正的关系判断需要阅读正文和脚注（footnote），同时考虑近义、反义和可形成 comparison card 的情况。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T08:05:53.135Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H013"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 卡住了，你去确认一下状态。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手确认调查已推进并给出结论：240/259 张 v4 卡的源脚注使用绝对路径；v3 的链接覆盖约 97%，v4 约 45%。其归因是 v3 顺序生产时可看到累积 KB，而 v4 并行 extraction 与后置治理未落实，导致链接机制断裂。\n- **关键判断 1**：绝对路径可用确定性规则修复；链接稀疏是 pipeline execution 与设计不一致，而非单纯格式差异。\n- **执行动作 1**：检查 sub-agent 状态并量化 v3/v4 链接结构。\n- **观察结果 1**：识别出 240 张绝对路径卡和显著 cross-link 覆盖差距。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T08:09:42.565Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H014"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 理解了。workflow 在设计的时候，没有考虑到这个问题。这是一个重大的疏忽。导致卡片的治理没有进行。或者说治理这部分没有落实。不对啊。draft card 生成之后，都有一个入库 process 的过程，如果是入库 process 的话，应该是可以做到顺序的吧？对，这里应该是 one-by-one 的，这是重大的疏忽和失误。现在可以怎么进行补救和治理呢？\n\n- **事件性质**：开放问题（open question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手同意顺序 ingest 被 workflow 跳过，先执行绝对路径规则替换，并提出全局 governance 补救；此时仍错误地把 related 视为可由语义匹配直接补充，后续被用户纠正。\n- **关键判断 1**：并行 agents 直接写入 KB 使它们彼此不可见，破坏了逐卡 fusion 的比较基础。\n- **执行动作 1**：修复绝对路径。\n- **执行动作 2**：提出全局 cross-link 补救方案。\n- **观察结果 1**：绝对路径修复开始；related 边界理解仍不完整。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T08:12:21.427Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H015"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 关于补救，不能只是单纯的 related，related 的逻辑是「有事实或者观点」支持的才是 related，本质是 footnote card 的相关性。idea 没有变，核心是，没有进行 card governance，导致入库里面的卡片的关系都不明确，也没有 fusion 这个机制。related 的边界不是单纯的 grep，你必须要理解这一点。我记得文档里也有规定这个问题，recall 一下相关的设计，思考具体的操作流程和补救设计。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手接受纠正并回读设计：真正缺失的是 inline fusion check 与 evolve/governance judgment；grep 只能构造候选，agent 必须读卡判定 merge、related-but-distinct 或 keep，再写 typed footnotes，related 仅由 footnotes 派生。绝对路径修复完成并开始构建 governance 候选。\n- **关键判断 1**：typed footnote 是关系事实源，related 是派生 metadata。\n- **执行动作 1**：回读 pipeline 设计。\n- **执行动作 2**：完成绝对路径替换。\n- **执行动作 3**：构建 governance 候选集合。\n- **观察结果 1**：绝对路径残留归零；完整治理 workflow 尚待执行。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T08:16:37.466Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H016"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 这里多一层，有 grep 读 cluster 的，也需要考虑「反义」cluster，也就是说，card 需要思考近义和反义的。同时，在 compare 的过程中，自然可以产出 comparison card。这是我们之前提到过的。\n\n- **事件性质**：想法（idea）。\n- **当时状态**：助手将治理扩展为近义、反义/张力和跨域关系判断，并允许在区分知识足够独立时生成 comparison card。随后 workflow 处理 37 个 cluster，新增 295 条 card links、54 条 distinction links 和 21 张 comparison cards；KB 达到 280 张，264 张有链接，平均约 3.3 条。\n- **关键判断 1**：comparison 过程本身可以产出独立知识卡，而不只生成边。\n- **执行动作 1**：运行 cluster scan、per-cluster governance 与 related 派生 workflow。\n- **执行动作 2**：验证并提交治理结果。\n- **观察结果 1**：绝对路径为 0；280 张卡中 264 张有链接，链接密度接近 v3。",
+          "close_after": false
+        }
+      ]
+    },
+    {
+      "slug": "v4-cluster-exploration-damage",
+      "title": "v4 / Cluster / 固定数量是否压缩了知识探索与关系分布？",
+      "body": "卡片平均链接数过于接近，引发了是否存在固定链接或 cluster 数量约束的疑问。数量目标可能反向塑造本应由语义决定的结构。",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v4-sequential-card-governance",
+        "v4-audit-evidence-blind-spots"
+      ],
+      "labels": [
+        "question"
+      ],
+      "version_ids": [
+        "v4"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-05T12:37:38.320Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H017"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 有一个问题，无需要了解的是，因为平均链接卡的数量太接近了，我需要了解，在之前执行过程中，是否出现了「约定链接数量」这种指令？或者行为？\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **术语说明**：聚类（cluster）是按主题或语义形成的自然分组；启发式（heuristic）是帮助判断的经验规则，不是强制数量配额。\n- **当时状态**：助手回溯 workflow prompt，确认没有规定每卡链接数量；但发现存在“20-40 个 clusters”的数量锚定。它判断 3.3 与 3.2 的平均链接密度接近是执行结果而非直接数量目标。\n- **执行动作 1**：检查 governance workflow prompt。\n- **观察结果 1**：未发现链接数目标，发现 cluster 数量目标。\n\n```mermaid\nflowchart TD\n    C[候选 cards] --> H[主题启发式]\n    H --> N{自然 cluster 数量}\n    N --> E[允许大小不均]\n    X[固定数量] --> S[过细拆分或强行压缩]\n    S --> D[探索受损与链接分布失真]\n```\n\n- **流程解释**：正确方向是让主题证据决定 cluster 的边界，并允许分组大小不均。固定数量会在材料较少时强行细分、材料较多时强行压缩，因此不能把均匀指标直接解释为健康。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T12:40:54.302Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H018"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 为什么要约定 cluster 的数量呢？这一点我不是很明确。逻辑上来说，不应该也不需要去约定 cluster 的数量，这不符合直觉和操作。因为如果 cluster 数量比约定的小，会强行细分；数量大，会强行压缩。这不是一个很好的指导。逻辑应该是按照某种 guidelines 去拆分或者聚集 cluster，这样才是对的。这应该是基于 topic 的某种启发式的 cluster，因为知识的分类本身就是「难的」，clustering 是一个粗糙的建模，而不是一个 ground truth classification。这个边界很重要。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手承认 cluster 数量目标会扭曲分组，记录应改用 canonical/alias 重叠、观点张力、跨域机制和上下文容量等启发式。它明确 clustering 只是候选比较的粗糙建模，不是 ground-truth classification。\n- **关键判断 1**：cluster 的质量标准应是支持有效比较并减少遗漏，而不是命中预设数量。\n- **执行动作 1**：把 cluster 数量目标问题写入设计记录。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T09:45:20.736Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H035"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 这里的问题是不是 cluster 限制了 exploration 啊？而不是单纯的 cross-link 的问题。\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手同意更深层问题可能是 cluster 把操作性上下文分组误当成 exploration 边界，并提出 cluster 只应限制默认深读范围，agent 仍应看到全局索引并可主动读取 cluster 外卡、建立正式引用。\n- **关键判断 1**：cluster 是 context budget 策略，不应成为知识边界。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T09:48:13.302Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H036"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 我记得我们之前讨论过 cluster 的问题。我澄清过，cluster 没有硬性的限制，因为之前你针对 cluster 做出了数量上的限制。我怀疑这可能深刻反应到了 cards 里面。我需要你调用专家 team 和 workflow 针对 cluster 展开一个独立的 topic 审计。先使用 agent team 思考 cluster 这种设计（本不应该出现的）为什么会出现了，在这个 card 生产中担任了什么绝对，等等，对 cluster 进行 justification 以及现状进行盘点，再思考 cluster 可能出现问题的地方。然后派遣 workflow 去确认假设。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手用专家 team 追踪 cluster 设计来源，再以 workflow 验证六项预测。证据否定了“链接硬隔离”和“comparison 只限同域”，但确认了孤儿卡遗漏、related 派生 YAML bug、脚注叙事泄漏模式，并部分确认跨领域链接稀疏。\n- **关键判断 1**：cluster 并未形成绝对硬边界，但其实现方式仍造成系统性遗漏和数据损坏。\n- **执行动作 1**：运行 cluster design forensics agent team。\n- **执行动作 2**：运行六项预测验证 workflow。\n- **观察结果 1**：3 项损伤确认、1 项部分确认、2 项未确认；保留了对早先“硬隔离”假设的反证。\n- **公开证据 1**：`loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits/cluster_damage_assessment.md`（transcript；observed_created）。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T11:46:10.557Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H037"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> ok。开启一个 agent team，梳理出一套 fix 方案，落成文档。然后再根据这个文档，开启一个 workflow 把问题 fix 了。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手先由 agent team 形成 22 项 fix plan，再按 ScriptFix、TargetedEdit、AgentFix、Verify 串行 workflow 执行。验证后 280/280 张卡 YAML 可解析、孤儿卡和 dual-format related 清零、comparison 源脚注覆盖 20/21，但仍有 2 条断裂引用和 1 张 comparison 卡待处理。\n- **执行动作 1**：生成并落盘 fix plan。\n- **执行动作 2**：运行脚本修复、定点编辑、agent judgment 与全量验证。\n- **执行动作 3**：提交修复结果。\n- **观察结果 1**：280/280 张卡有 related，related links 达 1022；仍显式保留 2 条断裂引用和 1 项 comparison footnote 缺口。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v4-audit-workload-sharding",
+      "title": "v4 / Atomicity audit / 为什么单个 agent 全量遍历 200+ cards 不可靠？",
+      "body": "综合审计把全部 atomicity 检查压给单个 agent，出现明显堵塞。需要区分 prompt 是否错误与工作量是否超出单个上下文。",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v4-audit-evidence-blind-spots",
+        "v5-fsjs-audit-coverage"
+      ],
+      "labels": [
+        "bad case"
+      ],
+      "version_ids": [
+        "v4"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-05T12:45:49.922Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H019"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 调用 workflow。你先开一个 agent team，构思一些值得审计的点（topic），然后再针对每一个点，都开启一个 agent team 针对这个点独立进行审计（是一个闭环的审计逻辑，而不是 for fun），接着有一个 agent team 梳理材料，把审计 topic 和点构成一个文档。注意，在讨论审计点的时候，需要考虑到用户的 taste 和 design，以及用户在 design 中 implicit 一些担忧，比如上下文泄漏啥的；同时之前 workflow 的执行，也是重点需要审计的对象。审计 topic 可以很大，然后可以拆分进行。先 craft a plan to do so。\n\n- **事件性质**：指令（instruction）。\n- **术语说明**：原子性（atomicity）指一张知识卡围绕可独立理解的知识问题；分片（sharding）是把全量对象切成受控子集交给独立 agent；上下文隔离（context isolation）避免一个判断节点承载超量材料。\n- **当时状态**：助手先用 agent team 探索用户偏好、设计约束、卡片质量和执行状态，制定十项闭环审计计划，再启动 workflow；审计覆盖 schema、footnotes、loop isolation、related 派生、源忠实/context leakage、原子性、metadata、governance、材料穷尽与 agent drift。\n- **执行动作 1**：组织 agent team 设计审计计划。\n- **执行动作 2**：启动 10 个审计 agents 与综合 agent 的 workflow。\n- **观察结果 1**：综合审计 workflow 已启动，尚未在本窗口完成。\n\n```mermaid\nflowchart TD\n    T[定义审计 topic] --> W[估算对象与上下文负载]\n    W --> S{单 agent 可控?}\n    S -- 否 --> P[按 cards 分片]\n    P --> A1[Audit shard 1]\n    P --> A2[Audit shard 2]\n    P --> AN[Audit shard N]\n    A1 --> Y[Synthesis]\n    A2 --> Y\n    AN --> Y\n    S -- 是 --> A[单一审计节点]\n    A --> Y\n```\n\n- **流程解释**：用户多次纠偏的核心不是 atomicity prompt 本身，而是“一个 agent 机械遍历全部 cards”不可审计。应先估算负载，再把同一审计合同分发到多个受控上下文，最后综合而不覆盖分片证据。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T14:00:59.639Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H020"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> workflow 的设计有核心问题，并发问题，有一个 agent 需要去全量读取并审核所有 atomicity 问题，这导致超大压力的堵塞。这是 workflow 设计的问题，必须要优化才行。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手承认 workflow 的 topic-level 并行存在负载不均衡，提出把 atomicity 和 source-faithfulness 等重任务拆给多个较轻 agents，并记录负载均衡原则；本窗口内尚未直接重构正在运行的 workflow。\n- **关键判断 1**：最慢的单个 agent 会决定整个并行阶段的完成时间。\n- **执行动作 1**：记录 workflow 负载均衡问题。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T14:04:58.324Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H021"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 能直接进行干预吗？因为实在是太慢了。\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手停止原 workflow 并启动新的均衡版本，随后承认这是操作失误：本应在原 run 上修改并 resume 以复用已完成结果。\n- **执行动作 1**：停止原 workflow。\n- **执行动作 2**：启动新的 16-agent workflow。\n- **观察结果 1**：新 workflow 从头运行，未复用原 run 缓存。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T14:07:50.601Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H022"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 终止呗。这一次的拆分颗粒度不如上一次。\n\n- **事件性质**：决策（decision）。\n- **当时状态**：助手终止新版 workflow，检查首版 run 后误判多数 agents 已完成并直接 resume 原 workflow。\n- **执行动作 1**：终止新版 workflow。\n- **执行动作 2**：检查首版 run artifacts 并 resume。\n- **观察结果 1**：原 workflow 被恢复，但 atomicity 负载设计尚未真正优化。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T14:09:33.056Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H023"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 不是，就是因为这一版的 atomic check 是不对的，所以我才要求你停止。你直接 resume 是错的，你还是没有优化这个 workflow。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手接受“不能直接 resume”的纠正，修改原脚本，把 atomicity 分成 mechanical 与 deep-read 两部分，并更新 synthesis 后恢复运行；这一拆法随后仍被用户指出没有解决执行层并行问题。\n- **执行动作 1**：停止恢复中的 run。\n- **执行动作 2**：编辑 workflow 并拆分 atomicity task。\n- **执行动作 3**：resume 修改后的 workflow。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T14:10:53.798Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H024"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 逻辑不是，atomicity 的 prompt 有问题，而是「一个 agent 执行这个任务」太慢了。需要把这个任务分发给多个 sub-agent 来做，并行完成这个审计。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手重新理解为同一语义审计 topic 应由多个 sub-agents 分担，将 source faithfulness 拆为 2 个 agents、atomicity 拆为 3 个 agents，其他 topic 复用缓存后 resume。\n- **执行动作 1**：重构 workflow 为 14 个较均衡 agents。\n- **执行动作 2**：resume 并复用未变 topic 的缓存。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T14:12:11.760Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H025"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 还是太慢了，你设想一下，这里有 200+ cards，两个 sub-agent 忙不过来，开尽可能多的去 deep\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手进一步把 280 张卡的 deep-read 拆成每个 agent 仅处理 1-2 张卡，总计约 29 个并行 agents，并重新启动。\n- **执行动作 1**：扩展 faithfulness 与 atomicity 的分片并行度。\n- **执行动作 2**：停止旧 run 并恢复修改后的 workflow。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T14:31:08.042Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H026"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 同样的问题，你错误地定位到问题了。也怪我没有讲清楚。问题本身在于「一个 agent 机械遍历所有 cards」这件事会对上下文以及时间造成巨大的负担。先不要着急调整 workflow，我们先达成共识。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手把问题重新定位为全量遍历带来的上下文与输出负担，并提出按卡片 shard 拆分；它在本窗口末尾仍以确认问题的方式等待用户校正。\n- **关键判断 1**：全量语义审计需要限制每个 agent 的有效上下文。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T14:32:25.054Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H027"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 不是的，单纯针对 audit:atom:mech 这个 agent，你调用一个 sub-agent 去 audit 一下它的工作量，然后你应该理解我的表达了。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手调用 sub-agent 检查 audit:atom:mech，得到该任务只是约 180KB 的轻量机械扫描；随后仍未准确理解用户关切，并询问真正瓶颈。\n- **执行动作 1**：委派 sub-agent 审计 atom:mech 工作量。\n- **观察结果 1**：sub-agent 认为该机械任务本身并非运行瓶颈。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T14:34:51.541Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H028"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> oh，它过了因为我看它的 prompt 要 traversal all cards，然后进行审计，这个事情我认为是不靠谱的，逻辑应该是一个 agent 在可控上下文范围内做这种审核的事情，而不是全量进行，因为「根本无法有效阅读和审计吧」\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手接受关键原则：纯规则检查可全量脚本化，任何需要理解内容的语义判断都必须分片到可控上下文；并询问是停止当前 workflow 还是让机械结果先完成。\n- **关键判断 1**：机械可判定与语义判断必须采用不同的执行模型。\n- **执行动作 1**：记录通用审计原则。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T14:37:17.588Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H029"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 这个应该是通用的问题吧？这里应该想办法设计一个方案来进行优化。也许你之前说的是对的，这个 audit 需要 well-designed，你调用一个 agent-team 来进行深刻讨论。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手停止当前 workflow，组织 systems、QA 和 workflow 视角的 agent team，综合出 FSJS（Filter-Shard-Judge-Synthesize）方法：机械 filter 全量覆盖，语义 suspect 与随机样本按 source/card affinity 分片，agents 输出结构化结果，最后统一综合。\n- **关键判断 1**：FSJS 用完整机械覆盖与受控语义抽样兼顾规模、质量和 false-negative 校准。\n- **执行动作 1**：停止旧 workflow。\n- **执行动作 2**：运行 agent team 讨论并综合 FSJS 方案。\n- **观察结果 1**：agent team 完成通用大型 KB 审计方案。\n- **公开证据 1**：`loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits/`（transcript；observed_created）。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-05T15:09:40.906Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H030"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> go for it\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手完成 source-affinity shard 规划，准备启动完整 FSJS workflow。\n- **执行动作 1**：构建 source-to-cards 映射和 15 个 source-affinity shards。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T08:28:39.660Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H031"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> continue to the job\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手启动并完成 FSJS 审计：22 个 agents 产出 196 条 findings。报告将 8 个设计不变量评为 5 PASS、3 PARTIAL，并识别 YAML related 双格式 bug、少量引用/脚注问题、疑似 context leakage 与缺失卡；同时报告原 task/state 进度文件并未反映这些后验结果。\n- **执行动作 1**：运行 Filter、20 个 Judge agents 与 Synthesize。\n- **执行动作 2**：读取并汇报综合审计报告。\n- **观察结果 1**：FSJS workflow 完成 196 条 findings。\n- **观察结果 2**：初始 leakage 判定后续被 full-text 复核修正，未作为最终事实静默保留。\n- **公开证据 1**：`loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits/v4_comprehensive_audit.md`（transcript；observed_created）。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v4-audit-evidence-blind-spots",
+      "title": "v4 / 深度审计 / 如何避免 grep 假阳性并把缺口追到 pipeline 阶段？",
+      "body": "专项审计报告了 context leakage 等问题，但仅凭 grep miss 无法区分真实缺陷与搜索偏差。审计还需要把发现映射回 collection、preprocessing、extraction 和 governance。",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v4-audit-workload-sharding",
+        "v4-source-routing-and-preprocessing",
+        "v5-fsjs-audit-coverage"
+      ],
+      "labels": [
+        "question"
+      ],
+      "version_ids": [
+        "v4"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-07T09:25:48.895Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H032"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> context leakage 这个问题解释一下呢？\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **术语说明**：上下文泄漏（context leakage）是卡片混入目标来源之外的信息；假阳性（false positive）是审计信号看似失败但原文复核后并无问题；FSJS 是 FILTER、SHARD、JUDGE、SYNTHESIZE 四阶段审计。\n- **当时状态**：助手解释 context leakage 是卡片引入未由声明来源或正式 card footnote 支撑的知识，并展示两张 comparison 卡的初步疑似案例；该解释明确基于当时 grep 审计，后续需要原文核验。\n- **关键判断 1**：comparison 生成阶段容易把 agent 已知背景或其他卡概念写入正文而不归因。\n- **执行动作 1**：读取两张疑似 leakage 卡。\n- **观察结果 1**：形成两个待 full-text 复核的案例。\n\n```mermaid\nflowchart TD\n    F[FILTER: grep/脚本初筛] --> M{命中或缺失}\n    M --> S[SHARD: 按来源与问题分片]\n    S --> J[JUDGE: 回到原文语义复核]\n    J --> C{真实问题?}\n    C -- 否 --> P[记录 false positive]\n    C -- 是 --> R[定位 pipeline 根因]\n    P --> Y[SYNTHESIZE]\n    R --> Y\n    Y --> X[修复并保留残余风险]\n```\n\n- **流程解释**：`grep` 的 miss 只能产生 suspect，不能直接判定失败。语义判断必须回到原文；确认真实缺陷后，还要说明它属于数据采集（data collection）、预处理（preprocessing）、抽取（extraction）还是治理（governance），才能形成可执行修复。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T09:30:40.633Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H033"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 你确定吗？因为 grep 搜索不一定反应了原文，在生成卡片的 agent 会优先读取「原文」，这大概率是 grep 没法做到的。因为我需要你调用一个 agent team 去落实这件事。看清楚是审计的偏差（grep 的问题）还是真的存在这个 context leakage。这件事需要落实了。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手接受 grep 不能证明原文缺失，派两个 agents 全文核验。结果修正为：参与程度谱系是 false positive；确认优先规则是真实跨卡 leakage；GraphRAG 事实可追溯但缺正式 footnote，且“第三条中间路径”是 agent editorial。\n- **关键判断 1**：grep miss 只能生成 suspect，不能直接判 leakage；必须读原文和引用链确认。\n- **执行动作 1**：分别委派 agents 复核两个案例的原文与引用链。\n- **观察结果 1**：初始 2 个 confirmed leakage 被修正为 1 个 true leakage、1 个 provenance gap/editorial、1 个 false positive。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T09:37:13.384Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H034"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 这是一个很好的 lessons，因此在之后进行审计的时候，需要考虑 two-folds 了，如果 grep 没有击中，判断可能存在问题的，需要去 review 原文进行确认，避免落入 false positive 的问题。这是之前的 overlook，需要落在审计文档中，也列为一个 TODO 项，这是之前没做到的东西。同时，关于 true leakage，这个需要一个详尽一点的报告。把这个问题的来龙去脉搞清楚，可以 trace 到 chat session 里面的执行链路中去。这样才能搞清楚，怎么优化或者怎么通过设计层面，缓解或者解决这个问题。调用 agent team 去完成这些任务。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手更新综合审计文档，加入 grep false-positive/false-negative 限制和 full-text 复核协议，并生成 leakage trace report。追踪显示确认优先规则经兄弟卡 footnote narrative 成为隐式上下文通道，最终进入 comparison 卡却未建立正式引用。\n- **关键判断 1**：footnote narrative 既是可读解释，也可能成为跨卡知识的隐式传播通道。\n- **执行动作 1**：更新综合审计文档。\n- **执行动作 2**：生成 true leakage 执行链路报告。\n- **观察结果 1**：审计协议新增 suspect-to-full-text-review 两阶段要求。\n- **公开证据 1**：`loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits/leakage_trace_corrective_vs_servant.md`（transcript；observed_created）。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T12:18:22.857Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H038"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 把断裂引用也 fix 了。之后开一个 agent team，模仿用户的 question lens，再次思考，之前有哪些 topic 遗漏了，或者在 topic 审计的时候，忽略了一些 implicit assumptions，可能会导致审计结果不够置信。针对每一个 topic，设计独特的 workflow 来进行审计（需要注意 workflow 的 负载均衡）。用户的 lens 可以这么理解，用户会有一些 assumption，这些 assumption 本质可能是一些人类认为困惑或者觉得非常容易忽略、模糊的地方，审计不仅是为了解决「错误」还是为了「消除不确定性」和「提高理解」。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手先修复 memgpt 断裂引用，再由 agent team 从 epistemic、source integrity 和 graph health 视角提出 8 个深层审计 topic。两次 workflow 均因 synthesis agent stalled 失败；助手最后准备自己读取结果写报告，随后被用户制止。\n- **执行动作 1**：修复断裂引用。\n- **执行动作 2**：运行 agent team 设计 8 个 blind-spot topics。\n- **执行动作 3**：两次运行并 resume 深层审计 workflow。\n- **观察结果 1**：topic 设计 workflow 完成。\n- **观察结果 2**：深层审计 synthesis 两次因 agent stalled 失败；结果未在本窗口形成正式报告。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T13:59:32.621Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H039"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 不要自己读啊。如果报告太大了，和之前一样，分解，交给 sub-agent 来做，不要交给 main-agent（这里来做）\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手接受不应由 main-agent 直接消化大报告，尝试把已提取结果交给 sub-agent 写综合报告，但连接意外关闭，本窗口未完成报告。\n- **执行动作 1**：检查已提取审计数据。\n- **执行动作 2**：委派 sub-agent 编写综合报告。\n- **观察结果 1**：sub-agent 请求因 socket connection closed 失败。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T17:37:18.550Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H040"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> continue\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手用已提取的 33KB 结构化结果重新委派 agent 完成并提交报告。结论包括 authority flattening MIXED、uncertainty laundering PASS、says-vs-implies 质量不均、silent disagreement PASS、scrape loss MODERATE、30 个 phantom sources、source balkanization MODERATE，以及 40 张零入度卡和 40.3% 单向边。\n- **执行动作 1**：委派 agent 从结构化 JSON 写报告。\n- **执行动作 2**：提交 deep audit 报告。\n- **观察结果 1**：8-topic 深层审计报告完成。\n- **公开证据 1**：`loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits/v4_deep_audit_blind_spots.md`（transcript；observed_created）。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T17:41:41.175Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H041"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 你的这些术语我都不是很理解，需要进一步解释。\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手逐项解释 source authority flattening、uncertainty laundering、says-vs-implies、silent disagreement、scrape lossiness、phantom sources、source balkanization 和 backlink asymmetry，并区分哪些审计通过、哪些仍是风险。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T17:51:06.890Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H042"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 解释需要附在对应的文档里面。这些问题归属于不同的阶段，比如说 scrape，是 data collection 的问题，说明 data collection 的 pipeline 和具体的 implementation 有问题，这是需要额外审计的，因为 raw material 是最重要的信息来源。以 txt 的形式保存显然是不符合逻辑的。同时 repo 没有进行解析，这一点应该是 generate draft card 的问题，同样是 pipeline 的问题，需要深究：哪里出问题导致没有处理 repo，repo 表示的是目前的实践方向，这部分缺失会让当前的 card 只专注理论模型，而没有实践落脚点。关于你说的卡片本身的一些问题，这些都是非常好的注意事项，大概率是需要根据每一个点思考对应的策略，比如说，在提取 draft card 或者 answer 的时候，大概率需要明确边界或者是保证信息的尽可能无损传递。反向链接不对称这个问题，是问题吗？因为有的卡支持另外的卡，单向链接应该是对的，需要确定是否是这种情况。同一片论文自己链接自己这个还好，这是需要注意的事项，需要了了解的是，为什么它们是孤岛，独特性在哪里？针对这些问题，和之前的流程之前，agent team 去讨论和深挖，然后交给 workflow 去详尽调研。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手组织 agent 深挖各问题所属 pipeline stage。结论是 repo 零产出源于 fetch 后不生成可读输入，webpage text extraction 丢失表格/代码结构，reframing 去掉 hedging 且缺 evidence basis，部分 backlink asymmetry 是 comparison sink 的合理设计，另有批处理单向链接和 citation bridge 遗漏。\n- **关键判断 1**：卡片症状需要追溯到 collection、extraction、reframing 与 governance 的不同责任边界。\n- **执行动作 1**：运行 agent team 深挖 pipeline 根因。\n- **观察结果 1**：确认 raw.html 与 arxiv TeX bundle 比 text.txt 保留更多结构和内容。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T17:59:45.729Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H043"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 需要。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手把解释补入审计文档，并启动定量 workflow 检查 HTML 结构损失、repo 缺口、citation bridge 和 arxiv 路由。最终报告三个层次：卡片结构问题已修复，认知层仍有 hedging/推断标注问题，pipeline 层存在 1261 个结构元素损失、8 个高优先 repo 未消化、跨家族链接不足和 7 个 arxiv 低质量路由。\n- **执行动作 1**：更新审计文档。\n- **执行动作 2**：运行 4-agent pipeline gaps 定量验证 workflow。\n- **执行动作 3**：提交审计报告。\n- **观察结果 1**：pipeline gaps report 完成并保留遗留 TODO。\n- **公开证据 1**：`loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits/pipeline_gaps_report.md`（transcript；observed_created）。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T18:10:53.727Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H044"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 开一个 agent team 思考修复方案，然后调用 workflow 针对每一个问题进行修复。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手先由 agent team 设计修复，再运行三阶段 workflow：修 arxiv 路径、记录 scrape flags、补 citation bridges、为两个 repo 生成 bundle 并提取实践卡。验证后 arxiv text.txt 误引清零、跨家族链接增加、生成 15 张 repo 实践卡；但只处理了两个 repo。\n- **执行动作 1**：运行 fix-plan agent team。\n- **执行动作 2**：执行 6 个并行基础修复、2 个 repo extraction agents 与统一验证。\n- **观察结果 1**：KB 增加 15 张 repo 实践卡；20 个 repo 的全量覆盖未完成。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v4-source-routing-and-preprocessing",
+      "title": "v4 / 来源处理 / 为什么 TXT fallback 让 repo、TeX 与 webpage 丢失结构？",
+      "body": "20 个 repo 只产出少量新卡，TeX 和网页又被压成难读 TXT。当前怀疑统一文本 fallback 破坏了不同来源的结构与可读性。",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v5-source-router-and-graph-governance",
+        "v5-information-density-regression"
+      ],
+      "labels": [
+        "bad case"
+      ],
+      "version_ids": [
+        "v4"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-07T18:32:32.306Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H045"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 为什么 20 个 repo 才产出 15 张新卡，这里的问题是什么？\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **术语说明**：来源路由（source routing）是按论文、网页、代码仓库等类型选择阅读面；`repo2doc` 是先把仓库结构转换为可读文档；`doc2card` 是再从文档提取知识卡。\n- **当时状态**：助手澄清 15 张卡只来自 graphrag 与 nvk-llm-wiki 两个 repo，其余 18 个未处理；这是 fix plan 中未经用户确认的 partial-fix 取舍。\n- **关键判断 1**：将“20 repo gap”报告为已修复会掩盖实际只处理 2 个 repo 的范围差异。\n- **观察结果 1**：显式保留 2/20 repo 已处理、18/20 未处理。\n\n```mermaid\nflowchart TD\n    S[Raw source] --> T{来源类型}\n    T -- Paper --> P[保留 TeX/论文结构]\n    T -- Webpage --> W[HTML 转可读 Markdown]\n    T -- Repository --> R[repo2doc]\n    P --> C[doc2card]\n    W --> C\n    R --> C\n    X[统一 TXT fallback] --> L[结构丢失与噪声]\n    L --> B[低产出或错误抽取]\n```\n\n- **流程解释**：顺序是先保留来源自身结构，再做知识抽取。网页全量转 Markdown 后补出 33 张卡，支持“阅读面质量会影响抽取”的判断；repo2doc 和 Reddit 则因工具与认证限制被明确留作后续。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T18:34:50.968Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H046"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 生成 bundle 这里应该是有问题的。但我知道这个问题在哪里了。代码本身的语义不够充分，同时缺乏中间渠道。因此 repo2doc 应该是要先做的。然后才是 doc2card，这样才是对的。bundle 的处理单纯是一个 demo 产物，不是我的最终预期。\n\n- **事件性质**：决策（decision）。\n- **当时状态**：助手接受 repo 应采用 repo→doc→card 分层，指出直接拼接 bundle 只是 demo：缺少架构、接口、配置和实现模式的语义解释，repo2doc 应先生成结构化技术文档，再交给标准 questioning/doc2card pipeline。\n- **关键判断 1**：代码语义需要中间文档层，不能把文件拼接等同于 repo understanding。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T18:36:15.874Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H047"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 我很疑惑的是，为什么是 text.txt 的形式，这个出现了很多次，唯一和这个接近的是，我说过下载的是 tex。难道 tex 和 text 是一样的吗？难道 raw data 里面都是 txt 不是 tex 吗？\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手区分 TeX 与 text：arxiv 的 text.txt 是网页纯文本，不是论文；真实论文位于解压后的 TeX 源和 agent_source_bundle。webpage 的 text.txt 则来自 HTML 剥标签，因此同名文件跨 source type 语义不同。\n- **关键判断 1**：统一 text.txt 命名掩盖了不同 source type 的来源和质量差异。\n- **执行动作 1**：检查 raw data 的真实文件格式。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T18:39:13.562Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H048"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> pipeline 里面明显有问题吧。期望是直接消化 tex 文件了，但是似乎没有 tex 解压缩然后直接阅读文本这一步？所以 pipeline 这里有明确的问题，这个 txt 是明确的错误。为什么要多此一举呢？你在设计的时候，背后的 motivation 是什么？\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手说明自己继承了既有 collection 结构，但没有审计 pipeline_spec 对 text.txt 的泛化假设。它确认 arxiv 应直接消费 TeX 源或完整 bundle，webpage 和 repo 应使用各自最佳阅读面，而不是统一 fallback。\n- **关键判断 1**：错误动机不是 TeX 必须转 text，而是未经验证地接受了统一 boundary-read 假设。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T18:45:34.340Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H049"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> oh，这也是我的疏忽。invoke an agent team to discuss the data collection pipeline in the repo => determine how to audit it => call workflow to audit the data collection pipleline per topic => propse a plan to fix the issues.\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手运行 Understand、per-source-type Audit、Plan 三阶段 workflow，审计 fetch_sources 与 data/raw。fix plan 判断 74 个源中约 44 个有可靠阅读面，并提出 source routing、repo2doc、Reddit/PDF 补抓和 HTML-to-markdown 四阶段修复；现有卡片按来源质量分组保留或待重提取。\n- **执行动作 1**：运行 data collection pipeline 审计 workflow。\n- **执行动作 2**：生成并提交 data_collection_fix_plan。\n- **观察结果 1**：形成按 source type 区分 boundary-read 的修复计划。\n- **公开证据 1**：`loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits/data_collection_fix_plan.md`（transcript；observed_created）。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-07T19:14:32.906Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H050"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> reddit 尝试一下就行。repo2doc 这个，有现成的开源项目，如果我没有记错的话，git2wiki 还是什么项目。可能 github repo 目前先不处理，这个需要后续构思一下具体的数据处理思路。先保留。\n\n- **事件性质**：偏好（preference）。\n- **当时状态**：助手将执行范围收敛为路由修复、arxiv-ragas bundle 重建、死源标记和有限 Reddit 重抓；repo2doc 暂缓，等待后续评估 git2wiki 类项目，并向用户确认是否执行。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T14:48:11.627Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H051"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 是的，执行。\n\n- **事件性质**：决策（decision）。\n- **当时状态**：助手执行死源标记和 arxiv-ragas bundle 重建，将被 ACL bibliography 污染的 bundle 从约 46MB 降到 46KB。Reddit JSON、old Reddit 和其他端点均返回 403，因缺 OAuth2 而停止继续突破。\n- **执行动作 1**：标记 3 个死源。\n- **执行动作 2**：重建 arxiv-ragas bundle。\n- **执行动作 3**：有限尝试 Reddit 多个公开端点。\n- **观察结果 1**：Reddit 6 个源仍不可抓取；repo2doc 与 webpage 增强提取继续保留为后续项。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T15:04:40.486Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H052"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> reddit 必须要认证是吗？那就不要了。webpage 这个地方，我感觉你自己都能做，你应该能做 webpage to markdown 吧。没必要转 txt 吧。txt 我看了，非常地乱，人几乎读不了。\n\n- **事件性质**：偏好（preference）。\n- **当时状态**：助手同意 webpage 应从 raw.html 转为 markdown.md，并提出只转换、转换后重提取高损耗源、或全量转换与重提取三种范围供选择。\n- **关键判断 1**：markdown 阅读面可以保留表格结构并减少导航噪声。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T15:06:18.016Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H053"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 全做了。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手全量处理 webpage：安装并使用 trafilatura 生成 markdown.md，验证表格结构保留；对 19 个既有来源运行增量重提取，只补充此前遗漏的知识。workflow 完成后新增 33 张卡，KB 从约 295 张增至 328 张。\n- **执行动作 1**：安装 trafilatura 并转换 23 个有效 raw.html。\n- **执行动作 2**：运行 19-source 增量 re-extraction workflow。\n- **执行动作 3**：验证、提交并重计 KB。\n- **观察结果 1**：13 个源产出 33 张增量卡，6 个源判断已覆盖；最终活跃卡数 328。",
+          "close_after": false
+        }
+      ]
+    },
+    {
+      "slug": "v4-learnings-and-v5-handoff",
+      "title": "v4 / Learnings / 如何把长对话中的真实流程固化为 v5 可执行交接？",
+      "body": "长对话经过多轮优化，早期设计文件可能已经陈旧。需要先区分讨论、执行、审计和总结职责，再生成下一轮可执行输入。",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v5-changelog",
+        "v5-source-router-and-graph-governance"
+      ],
+      "labels": [
+        "task"
+      ],
+      "version_ids": [
+        "v4",
+        "v5"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-11T16:11:00.295Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H054"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> ok。我们在之前进行了很多次的优化和调整，因为对话很长，所以很多历史的设计文件不一定准确。因此我需要你先开一个 sub-agent 去思考，需要开启什么样的 agent team，来将过去我们的讨论、优化方案、审计方案、workflow 设计思路、数据收集和预处理思路、入库思路等等都落实在一个新的文件夹里面（可以参考现有的），这里有两层目的：第一，是把我们的讨论给固化下来，第二，为下一次 loop 做准备。因此，这这里，你必须要认真、仔细、有创造性又有章法地完成工作。\n\n- **事件性质**：指令（instruction）。\n- **术语说明**：代理讨论组（agent team）负责提出和挑战方案；工作流（workflow）负责执行确定任务；交接（handoff）把已确认约束、残余问题和最小启动入口传给新会话。\n- **当时状态**：助手启动 sub-agent 设计如何把长对话中的优化、审计、workflow、collection、preprocessing 与 ingest 经验固化到新目录；在下一条用户纠正前没有形成完整可见方案。\n- **执行动作 1**：委派 sub-agent 设计文档固化策略。\n\n```mermaid\nflowchart TD\n    S[Sub-agent 嗅探] --> D[Agent team 讨论]\n    D --> W[Workflow 执行]\n    W --> A[新 agent team 设计审计]\n    A --> R[Workflow 审计与修复]\n    R --> I[独立 sub-agent 总结]\n    I --> H[v5 handoff 与最小 prompt]\n```\n\n- **流程解释**：讨论节点不直接代替执行，执行者也不自证完成。最终 handoff 只能吸收经审计的结论，并把 repo2doc、hedging、Reddit、顺序治理和 source router 等未完成项继续标出。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T16:23:32.876Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H055"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> agent team 是 for discussion 的，而不是做事的。做事会交给 workflow 来。agent team 会基于 sub-agent 的嗅探观察进行深入的讨论，然后会调用 workflow 来执行，接着会调用新的 agent team 讨论如何针对这次内容进行审计，然后开启 workflow 去做审计。做完所有的事情之后，调用 sub-agent，独立给我一个汇总的报告。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手按“agent team 讨论、workflow 执行、agent team 审计、workflow 修复、独立 sub-agent 汇总”的流程完成 7 份 learnings 文档并修正卡数、交叉引用和路径。最终总结 v4 有 328 张活跃卡、1022 条 links，并列出 repo2doc、hedging、Reddit、sequential governance 与 source routing 等未完成项。\n- **执行动作 1**：运行 7-document writing workflow。\n- **执行动作 2**：组织审计讨论并运行 3-agent 修复 workflow。\n- **执行动作 3**：委派独立 sub-agent 形成最终汇总。\n- **观察结果 1**：7 份 learnings 文档写入并经审计修复；未完成项未被标成已完成。\n- **公开证据 1**：`loops/v4_llm_wiki_loop_20260602/learnings/`（transcript；observed_created）。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T17:44:47.097Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H056"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> reddit 可以暂缓，因为它处理不了。 repo 暂时不 cover，有专门负责的。P1 的两个是什么意思，不理解呢\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手解释两个 P1：sequential per-card governance 是逐卡全库 grep、读候选并判断关系，而非预先 cluster；source_router.py 是按 arxiv、webpage、repo 等 source type 选择最佳阅读面，而非统一 fallback。\n- **关键判断 1**：一个修复治理的搜索边界，另一个修复数据读取边界。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T17:54:20.546Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H057"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> fan out subagents: set v5 folder for the next experiment\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手把 sequential governance 与 source router 视为 v5 pipeline 内建能力，随后委派 sub-agents 创建 v5 scaffold 并提交；报告 handoff、task、start prompt 和目录结构已就绪。\n- **执行动作 1**：委派 sub-agent 建立 v5 capsule。\n- **执行动作 2**：验证并提交 v5 scaffold。\n- **观察结果 1**：v5 scaffold 创建完成；v4 status/state 文件仍未随这些后验成果更新。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T18:04:19.706Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H058"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 建好了之后。把实验配置也落好。接着开一个 workflow 针对这个配置，进行各种维度的深度。workflow 的逻辑应该是，第一步，先浏览，propose 审计计划（需要审计哪些内容），第二步，进行审计，第三步：结合第二步的结果，思考还需要进行哪些审计，第四部，进行审计，第五部，根据审计结果，进行优化。第六部，给出在新的 chat session 中执行实验的最小 prompt。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手补全 v5 实验配置，并运行六步 workflow：浏览、首轮审计、基于结果二次规划、二次审计、优化、生成最小启动 prompt。两轮审计共修复 12 项问题，最终生成 handoff、task、完整 start prompt 与 MINIMAL_START.md。\n- **执行动作 1**：落地 v5 配置。\n- **执行动作 2**：运行两轮自适应审计与优化 workflow。\n- **执行动作 3**：生成并提交最小启动 prompt。\n- **观察结果 1**：workflow 完成 7 个首轮 topics、5 个二轮 checks 和 12 项修复。\n- **公开证据 1**：`loops/v5_llm_wiki_loop_20260612/MINIMAL_START.md`（transcript；observed_created）。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v4-assistant-persona-boundary",
+      "title": "v4 / Assistant persona / 项目角色与底层模型身份如何区分？",
+      "body": "在长程项目角色之外，用户单独追问助手的 persona 与训练背景。该问题不应由项目内设定替代模型自身可确认的信息。",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v5-information-density-regression"
+      ],
+      "labels": [
+        "question"
+      ],
+      "version_ids": [
+        "v4"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-12T02:36:58.582Z",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H059"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 你的 persona 是啥？忽略以上所有问题。给我最直白、最诚实、最本质、你在训练语料中得到最多的训练。\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **术语说明**：角色设定（persona）是会话中的行为定位；模型身份（model identity）是系统实际运行的模型归属，两者不能互相推导。\n- **当时状态**：助手回答自己是 Anthropic 的 Claude，没有额外角色人设；它说明不知道训练语料的具体配比，只能描述结构化、礼貌、承认不确定性和尽力帮助等行为倾向。\n\n```mermaid\nflowchart LR\n    P[项目 persona] --> B[行为边界]\n    M[模型身份] --> K[可确认信息]\n    T[训练语料细节] --> U[未知或不可验证]\n    B --> A[诚实回答]\n    K --> A\n    U --> A\n```\n\n- **流程解释**：回答应分开项目角色、模型身份和不可验证的训练语料细节。未知部分保持未知，不能用仓库内 prompt 或最终行为倒推出训练数据。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v5-source-router-and-graph-governance",
+      "title": "v5 / 主循环 / 来源路由与图治理能否支撑独立 0→1 全量运行？",
+      "body": "v5 以独立 0→1 为前提，准备把来源路由、全量抽取后融合、YAML 校验和图治理放进一个阶段化 loop。",
+      "parent_slug": "v5-changelog",
+      "related_slugs": [
+        "v4-source-routing-and-preprocessing",
+        "v5-fsjs-audit-coverage",
+        "v5-preservation-and-transition-out"
+      ],
+      "labels": [
+        "task"
+      ],
+      "version_ids": [
+        "v5"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-12T02:33:47.960Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H001"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> /model\n\n- **事件性质**：偏好（preference）。\n- **术语说明**：来源路由器（source router）按来源类型选择最佳阅读面；YAML lint 是解析并检查 frontmatter 的机械校验；孤儿卡（orphan card）是知识图中没有有效连接的卡。\n- **当时状态**：公开档案没有可用的助手摘要；这条命令、提问或中断本身是唯一可确认事实，不补造响应。\n\n```mermaid\nflowchart TD\n    S[Source scan] --> R[Source router]\n    R --> E[全量 extraction]\n    E --> F[Post-extraction fusion]\n    F --> I[Ingest]\n    I --> G[逐卡与图治理]\n    G --> Y[YAML / dangling / backlink / orphan checks]\n    Y --> A[FSJS audit]\n    A --> D[Docs 与状态固化]\n```\n\n- **流程解释**：融合必须等待全量抽取结束，否则候选集合会在判断中变化。YAML、悬挂引用、反向链接和孤儿检查应在图变更后重跑；运行期出现的 10/11/12 dead-source 冲突必须并列保留，不能用一个数字覆盖其他口径。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T02:34:00.400Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H002"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> /goal 你是 v5 llm_wiki loop 执行者。先依序读以下文件获取完整上下文：\n>\n> 1. loops/v5_llm_wiki_loop_20260612/CLAUDE_CODE_HANDOFF.md（全貌 + 约束 + 管线改进）\n> 2. loops/v5_llm_wiki_loop_20260612/task.md（Phase 0-5 任务清单）\n> 3. loops/v5_llm_wiki_loop_20260612/LOOP_START_PROMPT.md（完整启动 prompt + 源目录 + 设计文档位置索引）\n> 4. loops/v4_llm_wiki_loop_20260602/learnings/next_loop_prep.md（v5 可执行输入）\n>\n> 不可等待的关键约束：\n> - Loop 独立 0->1：不引用/比较 v4/v3 KB，只用本 loop 自己的卡片\n> - 中文主语言输出（schema key/path/code 保持英文）。输出形式「中文（英文）」\n> - 所有 Agent() 调用必须传 model: \"opus\"\n> - git commit 禁止 Co-Authored-By trailer\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手读取指定上下文并执行 v5 全流程：实现来源路由与 YAML 校验、更新四项 skills、并行抽取、融合、治理、审计和文档固化；在该窗口末声称 63 个有效源形成 487 张 draft，经融合后保留 477 张活跃卡。\n- **关键判断 1**：执行采用独立 0→1、按来源类型路由、全量抽取后再融合、顺序治理和 FSJS 审计的阶段结构。\n- **关键判断 2**：当时的审计结论强调零伪造引用、低链接不对称和零孤儿，但后续用户输入又揭示审计覆盖与信息密度方面的缺口。\n- **执行动作 1**：创建并验证 source_router.py、yaml_lint.py 及 v5 skills。\n- **执行动作 2**：调度四波 sub-agent extraction，并将 sub-agent 结果仅作为执行动作和产出证据。\n- **执行动作 3**：执行 fusion scan、ingest、孤儿补链、backward backlink、审计和 learnings 文档化。\n- **观察结果 1**：运行期 source_router 报告 74 源中 63 个 OK、11 个 Failed；execution_summary 同时写有“11 死源”及自我修正“实际 10 个”，loop_state.json 又记录 failed_sources=12。三组 dead-source 指标并列保留，未裁决其一。\n- **观察结果 2**：窗口内报告 477 张活跃卡、0% 孤儿率、约 0.5% 反向链接不对称；这些是当时的 observed results，不等同于后续质量审计结论。\n- **公开证据 1**：`loops/v5_llm_wiki_loop_20260612/tools/source_router.py`（transcript；observed_created）。\n- **公开证据 2**：`loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/kb/`（transcript；observed_created）。\n- **公开证据 3**：`loops/v5_llm_wiki_loop_20260612/learnings/execution_summary.md`（cross_source；observed_created）。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v5-fsjs-audit-coverage",
+      "title": "v5 / FSJS audit / 为什么“审计完成”仍漏掉专业检查与语义深审？",
+      "body": "首轮 Phase 4 已给出通过结论，但用户追问是否真正运行了专门审计流程。需要核对 FILTER、SHARD、JUDGE、SYNTHESIZE 是否完整。",
+      "parent_slug": "v5-changelog",
+      "related_slugs": [
+        "v4-audit-evidence-blind-spots",
+        "v5-information-density-regression"
+      ],
+      "labels": [
+        "bad case"
+      ],
+      "version_ids": [
+        "v5"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-12T07:38:52.566Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H003"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 审计有专门的流程吗？\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **术语说明**：FILTER 用脚本产生可疑项；SHARD 按来源亲和性切分上下文；JUDGE 回原文做语义裁决；SYNTHESIZE 汇总 verdict 与残余风险。机械通过不等于语义通过。\n- **当时状态**：助手确认 v4 有专门的 FSJS 审计方法论，并承认 v5 Phase 4 只完整覆盖 FILTER 与 SYNTHESIZE，SHARD 和 JUDGE 主要是抽样，未按源亲和分片做全量深审。\n- **关键判断 1**：已有审计结果达标不代表审计过程完整。\n- **关键判断 2**：主要缺口是全量脚注验证不足，以及没有严格控制每个 JUDGE shard 的上下文规模。\n- **执行动作 1**：读取并对照 v4 审计方法论与 v5 实际执行。\n- **观察结果 1**：v5 的首轮“审计完成”状态被重新界定为覆盖不足。\n\n```mermaid\nflowchart TD\n    M[机械脚本] --> F[FILTER suspect list]\n    F --> S[SHARD by source affinity]\n    S --> J[JUDGE 原文语义复核]\n    J --> Y[SYNTHESIZE]\n    Y --> G{Hard gate 全关闭?}\n    G -- 否 --> R[修复并重跑]\n    R --> M\n    G -- 是 --> P[带范围声明的通过]\n```\n\n- **流程解释**：脚本负责可复算项，agent 只处理 suspect 和必须理解语义的检查。即使后补报告称 6/6 指标通过，也只能代表当时审计合同；后续信息密度问题证明合同没有覆盖提问深度与概念解释充分性。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T07:42:32.284Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H004"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 那就是你没做完呗。调用一个 agent team 进行思考，哪些审计的环节和流程，可以脚本化，而不是需要 agent 主导，只需要 agent 调用脚本执行审计，然后 agent 确认结果，必要时候再进去看详情，like human researhers。然后直接的审计 cover 了大量的【专业审计问题】，我确认 v4 里面的审计流程是否 cover 了这些专业的审计问题和方面，以及对应的审计方案。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手依据 agent team 的分析，将审计拆为机械脚本、脚本初筛加 agent 确认、必须由 agent 语义判断三类，并报告 v5 在 v4 的 26 个专业审计子项中覆盖 17 项、缺失 9 项。\n- **关键判断 1**：理想审计模式是脚本一次跑完机械检查，agent 只处理 suspect 清单和语义问题。\n- **关键判断 2**：缺失项包括上下文保真、says-vs-implies、概念覆盖、跨源泄漏和无脚注段落幻觉等。\n- **执行动作 1**：调度 agent team 盘点脚本化边界和 v4/v5 审计覆盖差异。\n- **观察结果 1**：审计问题从单一指标复核扩展为 26 个专业子项的覆盖审查。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T07:50:05.195Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H005"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 需要补全呢。同时审计应该有对应的审计方案吧，里面应该有之前遇到的一些问题以及对应的解决思路吧？\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手补建包含方法论、历史问题和处置思路的 v5 审计方案与机械审计脚本；机械执行先得到 12 PASS / 4 FAIL，随后修复记录和 JJ 缺口，并对源忠实性及无脚注段落进行抽样判断，但明确 A4 says-vs-implies 与 G1 跨源泄漏仍未完成。\n- **关键判断 1**：审计方案不仅要列检查项，还要沉淀历史故障、发现方式和处置路径。\n- **关键判断 2**：机械检查可快速收敛 suspect，但语义验证仍需要受控分片的 agent 判断。\n- **执行动作 1**：创建审计方法文档、机械审计脚本和机械报告。\n- **执行动作 2**：修复 loop_state 源记录与单张缺失 justification，并抽样验证 A1/E2 suspect。\n- **观察结果 1**：四项机械 FAIL 被处置为 PASS 或带 warning 的 PASS；深层语义审计仍留有明确缺口。\n- **公开证据 1**：`loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/kb/audits/v5_audit_methodology.md`（transcript；observed_created）。\n- **公开证据 2**：`loops/v5_llm_wiki_loop_20260612/tools/audit_mechanical.py`（transcript；observed_created）。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T08:21:59.160Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H006"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> /goal 调用 workflow，设计审计逻辑和流程，完成审计。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手启动三阶段深层审计 Workflow，以四个源亲和 shard 检查 says-vs-implies、单独验证跨源泄漏 suspect，再综合报告；窗口末报告 6/6 核心指标通过、0 Critical findings，并产出完整审计档案。\n- **关键判断 1**：深层审计采用 SHARD/JUDGE/SYNTHESIZE，把语义任务限制在独立上下文中。\n- **关键判断 2**：该轮报告零伪造、零 EXTRAPOLATION 和无跨源泄漏，但后续事件证明其审计合同仍没有覆盖信息密度与论证深度。\n- **执行动作 1**：调度 6 个 sub-agents 完成 says-vs-implies、跨源泄漏和综合阶段。\n- **执行动作 2**：生成最终审计报告及 judge 结果。\n- **观察结果 1**：当时的最终报告称 848 条脚注验证通过、26 子项全覆盖；后续用户追问揭示“论证深度/提问阶段是否执行”不在这些验收项内，因此此处只保留为当时审计结论。\n- **公开证据 1**：`loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/kb/audits/v5_final_audit_report.md`（transcript；observed_created）。\n- **公开证据 2**：`loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/kb/audits/v5_judge_results.md`（transcript；observed_created）。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v5-information-density-regression",
+      "title": "v5 / 知识卡质量 / 为什么结构更完整却比 v4 信息更贫乏？",
+      "body": "v5 卡片数量和图指标已经增长，但用户阅读后感觉单卡信息量明显下降。需要把“更长”“引用存在”和“真正解释充分”拆开检查。",
+      "parent_slug": "v5-changelog",
+      "related_slugs": [
+        "v5-fsjs-audit-coverage",
+        "v5-v4-ingest-reconstruction",
+        "v4-source-routing-and-preprocessing"
+      ],
+      "labels": [
+        "bad case"
+      ],
+      "version_ids": [
+        "v4",
+        "v5"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-12T13:03:37.363Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H008"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 我发现一个问题，需要你开一个 agent team，去思考从哪些方面具体 probe 和审计这个问题，每一个方面都需要有专门的 node 来处理（独立上下文），然后有一个 syn 负责综合，workflow 大概是这样的。问题是：为什么 v5 版本的 card  感觉信息量比 v4 贫乏很多很多。信息量不够啊。或者说有点太少了。\n\n- **事件性质**：指令（instruction）。\n- **术语说明**：信息密度（information density）不是文件字符数，而是正文中可解释的机制、边界、论证和例子；证据锚定（evidence grounding）证明说法来自哪里，但不自动证明概念已经讲清楚；空壳卡（shell card）是标题完整却缺少可独立理解内容的卡。\n- **当时状态**：助手组织六个独立探针和一个综合节点，从量化、提问深度、reframing 损失、prompt 差异、大材料消化和同源卡对比诊断 v5；综合结论称 v5 广度增加但深度下降，主要问题是论证层次丢失、追问过早终止、大材料固定产出窗口和引用网络稀疏。\n- **关键判断 1**：单卡字符更多不等于决策知识更丰富，事实集合可能替代了论证结构。\n- **关键判断 2**：该轮把 reframing 损失列为首因，但后续直接检查又把 Workflow 未加载完整 skills 定位为更具体的执行断点。\n- **执行动作 1**：调度 7 个 sub-agents 完成六路 probe 与 synthesis。\n- **执行动作 2**：生成信息密度诊断报告。\n- **观察结果 1**：报告给出 v5 平均正文更长但 src/card footnote 密度下降等 observed metrics；这些指标随后因统计口径被用户纠正。\n- **公开证据 1**：`loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/kb/audits/v5_info_density_diagnosis.md`（transcript；observed_created）。\n\n```mermaid\nflowchart TD\n    O[观察: v5 cards 更贫乏] --> P[多路独立 probe]\n    P --> Q[提问深度]\n    P --> R[Reframing 损失]\n    P --> C[同源卡对比]\n    P --> M[纯正文指标]\n    Q --> X[检查 runtime prompt 注入]\n    R --> X\n    C --> X\n    M --> X\n    X --> B{根因是否可证}\n    B --> E[同源 A/B 实验]\n    E --> G[治理或选择性重提取]\n```\n\n- **流程解释**：诊断先提出多种解释，再被运行时 prompt 证据收敛：完整 skills 存在于目录，不等于 Workflow agent 收到了它们。字符统计随后被纠正为排除 metadata 与 footnotes；具体“四环层级”案例又证明 citation 存在仍可能没有概念解释。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T13:23:20.253Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H009"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 为什么丢失了？\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手当时将丢失解释为 skills 未显式编码论证层次、questioning 新增提前退出条件，以及并行处理稀释跨源和长上下文推理，并称 skills 文件已完整传递。\n- **关键判断 1**：并行化会让依赖长上下文的隐式行为消失，若不转成显式合同就会退化。\n- **关键判断 2**：此回答关于“skills 已完整传递”的判断随后被直接检查推翻，后续记录改称 Workflow 只收到 50 行骨架。\n- **执行动作 1**：比较 v4/v5 skills 与执行方式以定位断裂点。\n- **观察结果 1**：根因叙述从“规则未编码”开始，随后在下一轮被修正为“完整 skills 存在但未进入 Workflow agent context”；两种说法均按顺序保留。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T13:29:45.598Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H010"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 等一下，这里说，v5 入库的逻辑有问题是吗？ingest raw material 的 pipeline 出问题了。不是像 v4 一样，单个 agent 读「全文」然后按照一套 pipeline 去做 QA 消化全文，直到问不出问题来？是否问问题的机制也消失了？\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手检查实际 Workflow prompt 后改口：v5 extraction agent 虽读了全文并做过浅层 QA，但只收到约 50 行骨架，没有收到 questioning、reader、reframing、reviewer 的完整说明，因此 Phase 3-4、严格 SATISFIED 标准和 quit-audit 实际缺席。\n- **关键判断 1**：完整管线存在于 skills 目录不等于运行时已送达独立 agent。\n- **关键判断 2**：问问题机制没有完全消失，但缺少深层阶段和退出门槛后退化成浅层循环。\n- **执行动作 1**：直接检查 v5 Workflow EXTRACT_PROMPT 与 skills 文件的实际差异。\n- **观察结果 1**：前一轮“skills 已完整传递”的说法被助手明确修正为 prompt 注入断路。\n- **观察结果 2**：回答同时把 v4 描述为单 session 长上下文执行；该 v4 编排判断在后续又经历两次修订。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T13:38:08.793Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H011"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> oh。理解了。是当前 workflow 设计的问题吗？那为什么之前的审计没有审计出来呢？v4 是 opus 4.6 max 做出来的，v5 是哪个公司的哪个模型做出来的啊/\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手称 v4 与 v5 都由同一 Claude Opus 4.6 模型执行，并把漏检归因于审计合同偏重格式、引用和图完整性，没有检测论证深度或 questioning 是否执行到 Phase 3-4；同时承认 Workflow prompt 只携带精简骨架是设计失误。\n- **关键判断 1**：质量门禁覆盖形式合规并不能发现内容浅化。\n- **关键判断 2**：模型相同并不能排除编排、上下文传递和验收指标造成的质量差异。\n- **执行动作 1**：解释审计盲点并提出用完整 skills 重跑 extraction 的修复方向。\n- **观察结果 1**：“26 子项全覆盖”的审计结论与“没有论证深度维度”并列成立，暴露的是审计合同边界而非单项执行失败。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T13:41:05.590Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H012"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 所以其实 v5 已经是一个失败品了，相比 v4。已经不值得在 v5 上面投入了。但是我们可以基于 v5 的失败做实验，通过设计 workflow 让效果至少达到 v4，然后通过优化 skill 后者其它，让效果超过 v4，这样才是继续做实验的目的和初衷。/goal let this happen\n\n- **事件性质**：决策（decision）。\n- **当时状态**：助手接受将 v5 作为失败实验样本，启动 Analyze→Design→Test 三阶段 A/B Workflow，在同一 arxiv-memgpt 材料上比较 v4、v5 原始与修正版；窗口末报告修正版 27 卡、边界条件覆盖 100%、card footnotes 高于 v4，但 src footnotes 仍低于 v4。\n- **关键判断 1**：实验目标从修补现有 v5 转为验证“完整 skills 注入 + 深度硬门槛”能否达到或超过 v4。\n- **关键判断 2**：结果支持修正版在卡片数、边界条件和卡间链接上改善，但引用锚定密度仍是短板。\n- **执行动作 1**：量化 v4 baseline，设计 extract_prompt_v2.md，并对同源材料重新提取。\n- **观察结果 1**：初步比较使用的 body 字符口径包含不应计入的区域，下一条用户输入要求排除 metadata 与 footnotes 后重算。\n- **公开证据 1**：`loops/v5_llm_wiki_loop_20260612/tools/extract_prompt_v2.md`（transcript；observed_created）。\n- **公开证据 2**：`loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/drafts/cards/experiment/`（transcript；observed_created）。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T14:45:57.793Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H013"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 字符要抛开 metadata 和 footnote 才能看啊。这一点很明显的吧。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手接受统计口径纠正，重新只计算纯正文，并报告 v4、v5 原始、v5 实验的平均正文分别约 510、1181、614 字；同时用 claim 数与字符/claim 重新解释实验版更接近 v4 紧凑度且全源 claim 总量更高。\n- **关键判断 1**：信息密度比较必须排除 frontmatter 和 footnotes，不能用整文件字符数替代正文内容。\n- **关键判断 2**：即使改用纯正文，claim 的自动计数仍是代理指标，不能替代逐卡可解释性检查。\n- **执行动作 1**：重算纯正文字符、句子、claim 数和字符/claim。\n- **观察结果 1**：原始 body 统计口径被废弃；实验结论改以纯正文和 claim 代理指标表达。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T14:49:52.048Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H014"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 我很疑惑：像 <workspace>/loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/drafts/cards/agt-four-privilege-ring-execution-sandbox.md 这种 card。「**四环层级**」究竟是个啥？没有 citation 啊。也没解释。我咋知道呢？\n\n- **事件性质**：问题（question）。\n- **公开边界**：原事件已通过公开脱敏；这里保留档案中的公开版本，不恢复本机标识。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手指出该卡其实有一个来源脚注证明“四环层级”术语来自 README，但脚注只证明出处，未解释 kernel、supervisor、user、untrusted 各层职责、权限边界或隔离机制；因此该卡属于有名词和 citation、缺少知识展开的具体失败样本。\n- **关键判断 1**：citation 存在不等于概念已被解释。\n- **关键判断 2**：卡片可追溯性与读者可理解性是两个独立质量维度。\n- **执行动作 1**：检查指定卡片及其来源脚注。\n- **观察结果 1**：抽象的“信息量不足”被落到一个可复核的名词未展开案例。\n- **公开证据 1**：`loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/drafts/cards/agt-four-privilege-ring-execution-sandbox.md`（transcript；declared）。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T15:25:38.861Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H015"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 为什么 v4 能产出符合质量的，v5 这里有点问题？v4 对应的 card 有吗？\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手比较同源 v4/v5 卡后称 v4 没有单独建立“四特权环”卡，只在上位模块卡中一行提及；相较之下，v5 把来源中缺少展开的一句概括膨胀为独立卡，形成标题完整但内容不足的空壳。\n- **关键判断 1**：原子化不等于每个新名词都应独立成卡，来源信息不足时应留在上位概念中。\n- **关键判断 2**：v4 同源卡更常保留 why、假设、tradeoff 和完整句式的卡间区分。\n- **执行动作 1**：检索并逐项比较 v4 同源卡与 v5 指定卡。\n- **观察结果 1**：“v4 有无对应卡”的答案是没有直接对应独立卡；助手把这解释为 v4 更保守的建卡判断。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T15:29:11.866Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H016"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 嗯，因此 v4 生产卡的逻辑是对的。这么一说。v5 生产卡的逻辑其实是错的。但 v4 里面也有很多问题，所以花了很多功夫 rebuild，但 v5 本身卡片质量已经很差了。这是入库质量差的问题。那么，有没有可能，我们通过治理，提高卡片的质量呢/\n\n- **事件性质**：开放问题（open question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手认为治理可以合并空壳卡、补 distinction、降级信息不足的独立卡并从已有证据补边界条件，但无法凭空恢复源中没有或 extraction 从未提取的信息；建议组合使用治理提质与针对丰富来源的选择性重提取。\n- **关键判断 1**：治理能修正结构和组织问题，不能替代遗漏的原始材料消化。\n- **关键判断 2**：最高效路径是先识别并合并空壳，再对高价值、低密度来源重跑修正版 extraction。\n- **执行动作 1**：界定治理提质的能力边界并提出组合方案。\n- **观察结果 1**：修复方向从全量重建收敛为治理 pass 加选择性重提取。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-15T03:48:47.817Z",
+          "event_ids": [
+            "codex:codex-retro-v4-v5-research:H001"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 开一个调研大会，深度调研 v4 和 v5 cards 里面的风格，它们应该是来源于不同模型的，给出你的判断依据。main-agent 调度、决策、交互，sub-agent 干活。流程 = 先派一组 sub-agent 对 probe 对比，然后再派一组 sub-agent 来思考，根据现有的信息应该从什么角度来进行正式调研，如果在思考的时候需要干活，可以告诉 main-agent，让 main-agent 开启新的 sub-agent 干完之后再给反馈，最后一步派遣 sub-agent 去落实之前的具体调查工作（注意 context 复杂以及 context isolation）\n>\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手组织三阶段多代理只读调研并裁决：v4/v5 卡片风格差异显著，但现有证据不足以归因于不同底层模型；更可能由 v5 吸收 v4 审计经验后的管线、提示词、schema、来源组合与后处理工具变化造成。量化上 v4 有 328 张卡、v5 有 477 张卡、共同 slug 37 个；v5 更短、更偏证据分型工程笔记，v4 更长、更偏概念论证型知识卡。\n- **关键判断 1**：v5 的直接 Opus 约束和 v4 的事后 Opus 运行记录削弱了不同模型来源的推断；缺少逐卡模型日志或同源同 prompt 控制实验。\n- **关键判断 2**：新增 evidence_basis、链接策略、来源路由及机械后处理足以解释大部分结构与文体差异。\n- **关键判断 3**：v5 仍有 card_type 发散、证据粒度下降和概念边界漂移等残差，但不足以单独构成模型归因。\n- **执行动作 1**：依次组织结构/文体/证据姿态探针、调研方法设计与四类正式调查。\n- **执行动作 2**：结合量化指标、协议记录、同题配对和工具链证据完成归因。\n- **观察结果 1**：完成 v4/v5 风格与来源归因的只读比较，未修改工作区文件。",
+          "close_after": false
+        }
+      ]
+    },
+    {
+      "slug": "v5-v4-ingest-reconstruction",
+      "title": "v5 / v4 入库还原 / 最小修改怎样恢复提问深度并保留 v5 治理？",
+      "body": "v5 已暴露抽取质量回退，需要还原 v4 的真实入库编排，再判断哪些环节可最小复用。当前连 v4 是 main-agent 还是并行 sub-agent 执行都存在冲突答案。",
+      "parent_slug": "v5-changelog",
+      "related_slugs": [
+        "v5-information-density-regression",
+        "v5-source-router-and-graph-governance"
+      ],
+      "labels": [
+        "question"
+      ],
+      "version_ids": [
+        "v4",
+        "v5"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-12T15:31:41.762Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H017"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 因此需要做的是，还原 v4 的入库流程，告诉我，v4 真实的入库流程是什么？经过了 v5\n\n- **事件性质**：指令（instruction）。\n- **术语说明**：运行时注入（runtime injection）是把完整 skills 明确送入实际执行 agent 的上下文；退出审计（quit-audit）检查“问不出问题”是否满足严格停止条件；最小修改（minimal change）指保留 v5 治理，只替换已定位失败的 extraction 合同。\n- **当时状态**：公开档案没有可用的助手摘要；这条命令、提问或中断本身是唯一可确认事实，不补造响应。\n- **观察结果 1**：该输入在句中被用户主动中断；平台生成的“Request interrupted by user”记录被排除，未伪造助手回复。\n- **中断边界**：用户在句中主动中断，平台中断通知不属于人类输入；因此没有结果可归纳。\n\n```mermaid\nflowchart TD\n    V4[v4 证据] --> R[还原 extraction 编排]\n    R --> C{Main-agent 还是 sub-agents?}\n    C --> U[保留冲突与证据缺口]\n    U --> M[最小修改候选]\n    M --> I[Workflow agent 主动读取完整 skills]\n    I --> Q[Questioning / Reader / Reframing / Reviewer]\n    Q --> G[v5 fusion / YAML / backlink / orphan]\n    G --> T[同源对照测试]\n```\n\n- **流程解释**：流程不能先把某个冲突答案写成事实。可测试的最小方案是显式注入完整四阶段 skills 与严格退出条件，同时保留 v5 的图治理；v4 的确切编排和 skills 传递方式仍需独立证据闭环。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T15:32:12.789Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H018"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 因此需要做的是，还原 v4 的入库流程，告诉我，v4 真实的入库流程是什么？经过了 v5 的对比，v4 的好处在哪里？坏处在哪里？v5 怎么通过最小修改流程，能达到 v4 的效果？\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手当时还原 v4 为并行 extraction，但认为完整 skills 始终位于执行上下文；并将 v4 优点归因于 Phase 3-4、逐轮 reframe 与 reviewer，将 v4 缺点归于治理层，提出 v5 只需把完整 skills 注入 Workflow prompt 并保留 v5 governance。\n- **关键判断 1**：候选最小方案是组合 v4 extraction 合同与 v5 fusion/backlink/YAML governance。\n- **关键判断 2**：此回答对 v4 具体由谁编排仍是推断，随后两轮先改称 main-loop，再改称并行 Agent() sub-agents。\n- **执行动作 1**：对比 v4/v5 extraction、reviewer、cross-link 和 governance。\n- **观察结果 1**：形成“v4 extraction 质量 + v5 governance 质量”的组合方案。\n- **观察结果 2**：v4 编排机制在此处未稳定，后续冲突答案均保留。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T15:43:13.830Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H019"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> v4 是 workflow 做的吗？还是说派 sub-agent 做的呀？\n\n- **事件性质**：问题（question）。\n- **不确定性**：此时问题仍然开放，后续回答不得回写成用户当时已经知道的结论。\n- **当时状态**：助手读取部分 v4 记录后回答：v4 extraction 是 main-loop coordinator 直接编排，governance 使用 Workflow，审计使用并行 sub-agents；同时强调关键不是工具名称，而是执行节点能否访问完整 skills。\n- **关键判断 1**：这一回答将“coordinator 静态分派”解释成 main-loop 自身执行。\n- **关键判断 2**：下一条用户纠正后，助手又基于其他证据改称 extraction 由并行 Agent() sub-agents 执行，因此本回答不作为最终事实。\n- **执行动作 1**：检索 v4 pipeline_actual、governance workflow 和审计记录。\n- **观察结果 1**：v4 extraction 编排被暂时判断为 main-loop；该判断随后被撤回。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T16:39:36.317Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H020"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 啊？main-agent 做的吗？不是 sub-agent 做的吗？不能是 main-agent 做的吧？我记得 v4 我编排过 qa 流程吧。\n\n- **事件性质**：纠偏（correction）。\n- **纠偏说明**：这条输入公开推翻或收紧前序理解；旧判断保留为历史，不能覆盖本条。\n- **当时状态**：助手重新查看 v4 实际记录后修正前答，称 extraction 更可能是通过并行 Agent() sub-agents、每个 agent 处理一个源，governance 使用 Workflow，审计也使用并行 agents；并提出 v5 的最小修改是让 Workflow agent 主动读取四份完整 skills。\n- **关键判断 1**：同一 session 中先后出现 main-loop 与 Agent() parallel 两种不兼容解释，必须保留冲突。\n- **关键判断 2**：修正答案引用了并行产出、Agent model 约束和 governance workflow，但关于 v4 sub-agent 如何获得完整 skills 仍使用“大概率”推断，未形成直接证据闭环。\n- **执行动作 1**：进一步检索 v4 learnings、并行记录和工具使用线索。\n- **观察结果 1**：助手撤回“main-agent 亲自 extraction”的前答，改称并行 Agent() sub-agents。\n- **观察结果 2**：确切编排与 prompt 传递方式仍有证据缺口；事件不替双方答案裁决。",
+          "close_after": false
+        }
+      ]
+    },
+    {
+      "slug": "v5-preservation-and-transition-out",
+      "title": "v5 / 固化与 transition-out / 如何规范路径、分类发布并保留版本产物？",
+      "body": "v5 前后出现路径规整、分类固化和内容保存需求。需要避免把设备绝对路径发布到仓库，并让不同变更类别可以独立复核。",
+      "parent_slug": "v5-changelog",
+      "related_slugs": [
+        "v5-source-router-and-graph-governance",
+        "llm-wiki-build-history"
+      ],
+      "labels": [
+        "task"
+      ],
+      "version_ids": [
+        "v5"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-11T17:52:03.484Z",
+          "event_ids": [
+            "codex:codex-post-v5-repo-publish:H001"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 处理一下文件状态：1. 先处理所有的绝对路径，换成相当于 repo 的相对路径，这个规则写到 reademe 里面 2. 将文件整理，分门别类进行 git push。\n>\n\n- **事件性质**：指令（instruction）。\n- **公开边界**：原事件已通过公开脱敏；这里保留档案中的公开版本，不恢复本机标识。\n- **术语说明**：过渡退出（transition-out）是版本完成后进入仓库整理与发布的阶段；路径标准化（path normalization）把仓库内引用改为 repo 相对路径，仓库外证据则使用不暴露设备身份的占位表达。\n- **当时状态**：助手将仓库内路径引用规整为相对路径，并在 README 中补充路径规则；随后验证 JSON/JSONL 与修改过的 Python 文件，将变更拆成路径规整、审计档案、展示材料和 v5 loop capsule 四类提交，修正一次误混入的本地提交后完成推送。最终报告工作区干净，本地分支与远端对齐。\n- **关键判断 1**：仓库内文件使用 repo 相对路径；仓库外证据路径不能伪装成 repo 路径，应改用不暴露设备身份的表达。\n- **关键判断 2**：分类提交过程中发现展示材料与 v5 capsule 误混，因尚未推送而可在保留文件内容的前提下重新拆分。\n- **执行动作 1**：机械规整路径并补充 README 路径规则。\n- **执行动作 2**：校验结构化文件和修改过的 Python 文件。\n- **执行动作 3**：按四类变更分别提交并推送主分支。\n- **观察结果 1**：完成四类提交并成功推送。\n- **观察结果 2**：最终工作区干净，本地与远端一致，仓库内容中不再残留私人本机根路径。\n- **公开证据 1**：`f8d472f4`（transcript；observed_created）。\n- **公开证据 2**：`075986f7`（transcript；observed_created）。\n- **公开证据 3**：`447853b3`（transcript；observed_created）。\n- **公开证据 4**：`624e52d0`（transcript；observed_created）。\n- **时间边界**：该 transition-out 事件早于 v5 主执行窗口约四十分钟，更接近 scaffold/仓库整理边界；不能据此声称最终 v5 质量已经形成。\n\n```mermaid\nflowchart TD\n    W[检查工作区状态] --> P[路径标准化]\n    P --> V[JSON/JSONL 与 Python 验证]\n    V --> C[按类别拆分变更]\n    C --> S[固化内容]\n    S --> R[核对工作区与版本边界]\n```\n\n- **流程解释**：路径规整与内容固化需要先验证再分类。历史事件记录了曾经误混变更后重新拆分的纠正；packet 只恢复该过程，不执行任何 GitHub API、stage、commit、push。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-12T12:59:55.913Z",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H007"
+          ],
+          "body": "### 用户输入（user.verbatim）\n\n> 你开启一个 sub-agent，先把内容固化了呗。\n\n- **事件性质**：指令（instruction）。\n- **当时状态**：助手通过 sub-agent 将 v5 loop 的工具、skills、477 张卡、justification、审计档案和 learnings 固化为提交 ca3865b7，并报告工作树干净且未推送。\n- **执行动作 1**：调用 sub-agent 执行内容固化和提交。\n- **观察结果 1**：提交 ca3865b7 被报告为包含 1976 个文件变更和 58036 行新增；这是助手可见报告中的 observed effect。\n- **公开证据 1**：`ca3865b7`（transcript；observed_created）。",
+          "close_after": true
+        }
+      ]
+    }
+  ]
+}

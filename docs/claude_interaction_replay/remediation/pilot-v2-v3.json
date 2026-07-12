@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v2-card-foundation",
+      "issue_number": 20,
+      "desired_state": "closed",
+      "state_rationale": "当前 card、provenance 与 audit 的事实接受范式已经形成",
+      "episodes": [
+        {
+          "episode_title": "先把 atomic card 重新放回强校验的事实层",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H020"
+          ],
+          "body": "### 先把 atomic card 重新放回强校验的事实层\n\n讨论先从一次明确纠偏开始：此前把 atomic card 理解成只需轻量检查的知识节点，偏离了它默认承载 facts 的目标。用户重新区分了 known fact 与 accepted fact：前者接近长期稳定的事实，后者是在当前实践中被公认、但仍有适用语境的事实；两者都需要经过强校验，差别在稳定性和证据形态，而不是一个校验、一个不校验。\n\n助手据此修正判断，把 atomic card 放回可靠事实基础的位置，也把 hub 放到下游：hub 不是本轮预先设计出来的容器，而是从经过验证的 cards、papers 和现实关注点逐步生长出来的聚合。这个转折先校准了“生产什么”，下一步才有条件讨论当前 loop 是否需要提前做 clustering。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H020\n\n```text\n你理解的有偏差。对 atomic card 确实是【强校验的】，因为默认是 facts。之前提到过，分为 known fact 和 accepted fact；前者是类似于牛顿第一定律这种，几乎不变的事实；后者是类似于【sop 流程】目前公认的事实。目的是，做实 atomic card 的可靠性。hub 是从 atomic card 以及 paper 或者现实中关注的点，逐步发展出来的。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H020 -->"
+        },
+        {
+          "episode_title": "暂停 cluster 和 schema 扩张，追查目标为何漂移",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H021",
+            "codex:codex-primary-v0-v2-boundary:H022",
+            "codex:codex-primary-v0-v2-boundary:H023"
+          ],
+          "body": "### 暂停 cluster 和 schema 扩张，追查目标为何漂移\n\n在事实层重新确定后，用户继续收紧本轮范围：clustering 对未来形成 hub 是必要 operation，但现阶段 loop 的目的只是生长 atomic card，先解决 solid foundation。卡片之间存在依赖并不妨碍这一点，hub、topic 和本轮聚合都不应抢占当前重点。\n\n助手接受了范围收缩，却随即提出了过多 metadata。用户再次指出“整体的设计是简单的”，要求回到最初版本。这一步没有一次解决问题：助手虽然停止继续发明复杂 schema，并回查到正文、References 与 Footnotes 为核心的原始设计，却仍给出了一组精简字段。真正重要的变化，是讨论从“还要加哪些字段”转向“为什么一开始会把这些东西塞进来”。\n\n对这个追问，助手把偏差归因于核心生产对象被悄悄替换了：atomic fact card 被当成 versioned topic node，source observations 因而沦为中间材料，多份 artifacts 被当作事实校验的替代品，topic coverage 又替代了 atomic foundation 成为衡量标准。这个诊断解释了复杂 metadata 为什么会不断回流，也把下一步问题推向 card 本身是否仍然可读。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H021\n\n```text\n需要 cluster 吗？嗯，需要的，没有 clustering 这个 operation，没有 hub 的存在。因为现阶段 loop 的目的是，生长 atomic card，和后续的一切都没有关系。肯定有 atomic card 是依赖于别的，那也没关系，核心是解决 solid foundation 的问题。hub 和 topic 以及本轮的这些聚合，都不是目前的重点。\n```\n\n#### 2. codex:codex-primary-v0-v2-boundary:H022\n\n```text\n不需要那么多 metadata，整体的设计是简单的。我记得我之前给过一个版本吧。最初的版本\n```\n\n#### 3. codex:codex-primary-v0-v2-boundary:H023\n\n```text\n是的。为什么一开始这样塞进去了。是从哪里开始，对整个系统的理解出问题了？\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H021 codex:codex-primary-v0-v2-boundary:H022 codex:codex-primary-v0-v2-boundary:H023 -->"
+        },
+        {
+          "episode_title": "把可读 card、出处与证成过程重新分开",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H024",
+            "codex:codex-primary-v0-v2-boundary:H025",
+            "codex:codex-primary-v0-v2-boundary:H026",
+            "codex:codex-primary-v0-v2-boundary:H027"
+          ],
+          "body": "### 把可读 card、出处与证成过程重新分开\n\n用户把问题进一步定性为核心目标和写作形态的双重错误：当时的 card “基本是不可读的”，不像一个 atomic card 或 zet card，更像混合了 topic synthesis、release note 与 audit 信息的中间状态。助手承认这一步此前理解错了，建议把现有产物视作 pipeline demo，并让工程审计与 provenance 退出 card 主阅读区，恢复可直接阅读和引用的知识正文。\n\n但“退出正文”不等于切断来源。用户强调 atomic 是相对概念，不代表卡片像定律一样坚不可摧；Footnotes 应支撑具体判断，References 应表明知识出处及与其他 cards 的联系。随后又把分工说得更清楚：zet card 来自 paper、blog 等被认为权威的内容，card 是结果，provenance 是“justify zet card 是 fact”的过程 artifact。\n\n在“recall 最原始的契约”后，助手把链路收回到最小闭环：从 source 提取有依据的 observation，写成可读 card；provenance 解释为什么可信，citation/reference 保留出处与连接，audit 决定接受或拒绝，adopted card 才进入知识库。这里不再预设严格 ontology 或复杂分类。至此，卡片可读性与强校验不再冲突，剩下的问题是这种生产方式是否足以构成一个更一般的 facts 范式。\n\n<details><summary>完整用户输入（4 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H024\n\n```text\n这是核心目标的错误。还有文档的状态基本是不可读的。 card 本身应该是可读的。现在 card 的形式不是【一个 atomic card】的风格，和 zet card 一样，现在的 card 就像是某种中间状态一样。在写作上也有很大的问题。\n```\n\n#### 2. codex:codex-primary-v0-v2-boundary:H025\n\n```text\n是的。但有一点也是规则和我需要权衡的地方，那就是 footnote 和 reference。因为我认为 atomic card 是相对形式的。但它们不是真的是「定律」那样坚不可摧，所以它们的来源也是有出处的。这是 knowledge 的出处。所以有 reference 和 footnote 是一种形式。表明 card 的出处，以及和其它 cards 的联系。不要被【atomic】骗了，这不是一个绝对概念，这是一个相对概念。\n```\n\n#### 3. codex:codex-primary-v0-v2-boundary:H026\n\n```text\n是的。这才是对的。因为 zet card 不是【无根浮萍】它是从 paper blog 等权威内容里面来的，所以会有 provenance，就是【justify zet card 是 fact 的一个过程】，或者说这是一个 artifacts，不过里面是讲【过程的】，card 是结果。\n```\n\n#### 4. codex:codex-primary-v0-v2-boundary:H027\n\n```text\nrecall 最原始的契约。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H024 codex:codex-primary-v0-v2-boundary:H025 codex:codex-primary-v0-v2-boundary:H026 codex:codex-primary-v0-v2-boundary:H027 -->"
+        },
+        {
+          "episode_title": "provenance 从事后日志变成 facts 生产的一部分",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H028"
+          ],
+          "body": "### provenance 从事后日志变成 facts 生产的一部分\n\n最后的转折来自对知识本身的重新观察。用户认为知识管理天然混沌，图谱或 double link 主要建模知识之间的关系，并不能替代对知识本身的定界；真正困难的是颗粒度。即使材料来自 paper、blog、X post 或 GitHub，也不能假设其内容 100% 正确，因此来源只能产生 fact candidate，不能直接生成已接受事实。\n\n讨论由此形成一条更准确的生产链：draft card 与 provenance justification 共同推进，经过检查后才成为 accepted zet card。助手认可这可以称为 provenance-backed zet fact production，并特别确认 provenance 不是事后 challenge，也不是未经整理的流程 log，而是把“为什么可以把这张 card 当作 fact”写成可读文档的组成部分。\n\n```mermaid\nflowchart LR\n    S[Source] --> C[Fact candidate]\n    C --> D[Draft card]\n    D --> P[Provenance justification]\n    P --> A{Audit}\n    A -- accept --> K[Accepted zet card]\n    A -- revise --> D\n```\n\n图中的关键不是多加一个产物，而是改变接受事实的时点：来源只触发候选，card 和 provenance 一起接受检查；未通过时回到草稿，只有通过后才进入知识层。这个 episode 给出了当前可用的范式判断，也保留了知识颗粒度仍需继续实践校准的不确定性。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H028\n\n```text\n这里这么设计的逻辑是，知识本身的管理是混沌的。尤其是知识的层次，图谱是很好的 mental model，但实际中，知识之间的关系比 double link 还要更复杂，double link 或者 link 是对知识关系的建模，但不是对知识本身的建模。因此，知识的颗粒度可能是这里最难的地方了。oh，这里有达成 zet card 的形式。因为知识是从权威或者认为正确的 paper 或者 blog 或者 x post 或者 github 中来的的，但不一定就是 100% 正确的。因此 zet card 本身需要用 provenance 去做实。这不是事后的 challenge，而是 fact => [loop] draft card - provenance => card 的一个过程。这样讲应该是合理的，最终 Provence 不是一个流程或者 log，而是一个整理后可读的文档。这是我生产 facts 的一个范式？你来justify 一下呢\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H028 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v3-practice-reframe",
+      "issue_number": 44,
+      "desired_state": "closed",
+      "state_rationale": "面向无仓库上下文读者的 introduction 已完成并得到当前可用定义",
+      "episodes": [
+        {
+          "episode_title": "第一版写出来了，但对象、文体和开场论点都没有立住",
+          "event_ids": [
+            "codex:codex-retro-v3-practice:H001",
+            "codex:codex-retro-v3-practice:H002",
+            "codex:codex-retro-v3-practice:H003",
+            "codex:codex-retro-v3-practice:H004",
+            "codex:codex-retro-v3-practice:H005",
+            "codex:codex-retro-v3-practice:H006",
+            "codex:codex-retro-v3-practice:H007"
+          ],
+          "body": "### 第一版写出来了，但对象、文体和开场论点都没有立住\n\n最初要写的不是 repo README，也不是运行记录，而是一份能独立转发给同事的实践复盘：依据真实 user input 和 key output，解释 LLM Wiki 的 idea 如何变化、阶段结果为什么调整。读者没有本地上下文，因此工作假设是减少底层实现，把 v0-v3 串成一条从资料收集、主题规划走向可审计知识生产的演变线。\n\n第一版虽然覆盖了阶段、指标和后续计划，却很快暴露出两个问题。首先，它不像企业内部技术汇报，信息齐全但没有让读者先看到判断。改成汇报结构后，第二个问题仍然存在：核心迭代逻辑和基础假设没有出现在开头，读者仍需穿过大量背景才能知道这项实践究竟在验证什么。\n\n所以这一轮不能写成“计划逐步完善并顺利落地”。更准确的情况是：初稿先满足了自包含和少技术细节，却没有选对叙事重心；补上摘要、指标和图也只是修正文体，尚未校准研究对象。真正决定全文方向的 scope 纠正在下一次输入才出现。\n\n<details><summary>完整用户输入（7 条）</summary>\n\n#### 1. codex:codex-retro-v3-practice:H001\n\n```text\n帮我根据当前项目中的进度，主要是依据 user input 和 key output，帮我 reframe 一份文档，用来讲当前这个 repo llm wiki 的实践 idea 以及演变过程，还有阶段性结果的调整。\n```\n\n#### 2. codex:codex-retro-v3-practice:H002\n\n```text\n帮我根据当前项目中的进度，主要是依据 user input 和 key output，帮我 reframe 一份文档，用来讲当前这个 repo llm wiki 的实践 idea 以及演变过程，还有阶段性结果的调整。plan mode on\n```\n\n#### 3. codex:codex-retro-v3-practice:H003\n\n```text\n帮我根据当前项目中的进度，主要是依据 user input 和 key output，帮我 reframe 一份文档，用来讲当前这个 repo llm wiki 的实践 idea 以及演变过程，还有阶段性结果的调整。plan mode on。文档写作的时候，不能依赖任何本地文件，因为这是给没有相关上下文的同事看的。\n```\n\n#### 4. codex:codex-retro-v3-practice:H004\n\n```text\n给你补充一些额外的信息作为本次写作的参考，这一次写作用一个 folder 进行。然后有一个 final doc。注意，不要陷入技术细节了。这是链接A：[私人 ChatGPT 分享链接 A]，这是链接 B：[私人 ChatGPT 分享链接 B]\n```\n\n#### 5. codex:codex-retro-v3-practice:H005\n\n```text\nPLEASE IMPLEMENT THIS PLAN:\n# LLM Wiki 实践复盘文档写作计划\n\n## Summary\n\n本次交付改为一个写作文件夹 + 一个 final doc，面向没有 repo 上下文的同事，重点讲清楚：这个 repo 如何从“资料收集/主题规划”演变为“用 agent loop 生产可审计 LLM Wiki 知识库”的实践，不陷入 runtime、hook、worker、文件路径等技术细节。\n\n参考材料包括当前 repo 进度、`user-insights` 中的用户输入脉络，以及两个外部对话链接：[链接 A]([私人 ChatGPT 分享链接 A])、[链接 B]([私人 ChatGPT 分享链接 B])。\n\n## Key Changes\n\n- 新建写作文件夹：`<workspace>/docs/llm_wiki_practice_reframe/`\n- 文件夹内包含：\n  - `final.md`：最终可读文档，唯一正式交付物。\n  - `notes.md`：写作取材备忘，只服务写作，不要求读者阅读。\n  - `outline.md`：章节结构与论点草稿，便于后续迭代。\n- `final.md` 不依赖本地文件理解，不要求读者打开 repo；只在必要处用“阶段产物”“候选知识库”“draft card”等概念解释当前进展。\n- 写作主语言为中文；保留少量必要英文术语，如 `LLM Wiki`、`zettelkasten card`、`provenance`、`draft-first`。\n\n## Final Doc Structure\n\n- **开场：这不是一个普通知识库 repo**\n  - 说明它是一个 LLM Wiki 实践工作区：既在生产知识，也在探索如何让 agent 生产知识。\n  - 明确当前没有 stable root product，只有 loop capsule 中的候选产物。\n\n- **起点：从“收集资料”到“让目标可执行”**\n  - 承接链接 A：早期目标是把静态 framework 变成 agent loop 的 objective。\n  - 强调核心转变：不是写好看的研究报告，而是让来源、证据、claim、coverage、audit 可以被持续推进。\n\n- **第一次关键转向：从 data 到 knowledge**\n  - 说明用户希望基于已有 data 建一个面向人和 agent 的 zettelkasten 风格 knowledge base。\n  - 简化呈现 DIKW 逻辑：raw data 是原料，card 是知识表面，provenance 是把知识做实的过程。\n\n- **第二次关键转向：从 top-down topic 到 bottom-up card**\n  - 解释 v0/v1 为什么被降级：方向上更像“主题骨架”或“生产机制说明”，不是可靠知识生长。\n  - 强调后续原则：topic/hub 可以存在，但应该从 card 生长出来，不能提前替代知识生产。\n\n- **第三次关键转向：从 truth warehouse 到 knowledge governance**\n  - 承接链接 B：LLM Wiki 不应承诺“这里都是真理”，而应承诺可追溯、可检查、可争议、可修订。\n  - 说明 card 不是单个 claim 的机械切片，而是可读的知识单元；claim/provenance/conflict 更像底层治理机制。\n  - 强调知识边界、冲突保留、适用范围和版本演化，比强行建一个完美知识图谱更现实。\n\n- **当前实践结果**\n  - 用非技术化方式呈现阶段性进展：\n    - v2 已验证小规模 accepted card 链路。\n    - v3 改成 draft-first，提高吞吐。\n    - 当前已完成 72 条来源队列的一轮处理。\n    - 已形成 171 张 draft cards、171 份 provenance、171 份 comparison provenance。\n    - comparison 后得到 163 张 new card 和 8 张 provenance delta。\n    - 已形成 974 条 related/interlink 边，但尚未进入最终 adoption。\n  - 解释这些数字代表的是“生产系统开始跑出规模”，不是“知识库已经稳定发布”。\n\n- **当前结论与下一步**\n  - 当前最重要的结论：LLM Wiki 的难点不只是写卡，而是设计一套可持续的知识治理 loop。\n  - 下一步是 publication gate、fusion audit、candidate KB adoption，以及 similarity / conflict / provenance 机制的继续演化。\n\n## Writing Constraints\n\n- 控制技术细节：不展开 hooks、CLI、worker 模板、具体 task 文件、JSON/XML schema。\n- 不把文档写成 repo README，也不写成实验日志；它应是一篇面向同事的实践复盘。\n- 保留演变过程中的错误与调整，但语气以“实践中逐步校准”呈现，不写成故障清单。\n- 所有关键判断都能追溯到当前 repo 进度或链接 A/B 的讨论，但 final doc 本身不依赖读者打开这些材料。\n\n## Acceptance Criteria\n\n- 读者无需本地上下文，也能理解这个 repo 在做什么、为什么这样做、当前做到哪一步。\n- 文档能讲清楚从 v0/v1/v2/v3 的演变逻辑，而不是只列阶段产物。\n- 文档明显避开过深技术实现，重点放在实践 idea、知识生产范式、治理问题和阶段性结果调整。\n- `final.md` 可以单独转发给同事阅读。\n```\n\n#### 6. codex:codex-retro-v3-practice:H006\n\n```text\n这个 final report 的写作风格有问题，你当成企业内部技术汇报的文档写。\n```\n\n#### 7. codex:codex-retro-v3-practice:H007\n\n```text\n核心没有在开头说出来，在开头先把迭代逻辑和基础假设讲清楚。如果能用图的方式讲清楚就更好了。同时重点的地方需要 bold。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-retro-v3-practice:H001 codex:codex-retro-v3-practice:H002 codex:codex-retro-v3-practice:H003 codex:codex-retro-v3-practice:H004 codex:codex-retro-v3-practice:H005 codex:codex-retro-v3-practice:H006 codex:codex-retro-v3-practice:H007 -->"
+        },
+        {
+          "episode_title": "核心 scope 纠正：不是维护既有 wiki，而是从原始材料构建知识生态",
+          "event_ids": [
+            "codex:codex-retro-v3-practice:H008"
+          ],
+          "body": "### 核心 scope 纠正：不是维护既有 wiki，而是从原始材料构建知识生态\n\n此前的开场把两类问题混在了一起：一类是在已经存在、已经体现用户偏好的 knowledge database 上做检索和维护；另一类则是面对原始文档与数据，从零开始 construct knowledge database。用户指出当前实践属于后者，这不是补充一个限定词，而是推翻了初稿对研究对象的概括。\n\n在新的 scope 下，LLM Wiki 要形成的是人和 agent 都能消费的知识生态。agent 负责从材料中构建知识，并持续迭代、升级、维护，再根据使用历史更新；人主要负责消费、检查与较弱审核。这里的“较弱”不是取消治理，而是说明人不承担每一步生产，系统必须让 agent 的处理结果可追溯、可检查。\n\n```mermaid\nflowchart LR\n    R[Raw documents and data] --> B[Agent builds knowledge cards]\n    B --> C[Humans and agents consume]\n    C --> U[Usage history and new questions]\n    U --> M[Agent maintains and updates]\n    M --> C\n    H[Human inspection and review] --> M\n```\n\n这张图的重点是构建与回流，而不是给既有个人 wiki 增加一个查询入口。scope 被纠正后，之前围绕“已有知识库”的部分就不能保留为基础假设；接下来必须回到 v3 的真实执行现场，确认系统实际上生产了什么、哪些结果还只是候选。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-retro-v3-practice:H008\n\n```text\nscope 你忘记区别了。在 gist 里面，wiki 是【已有 knowledge database】而现在是【从原始文档中 construct knowledge database】这两者有区别。前者是，已经有一个 user- friendly personal  preferences了；后者是更现实的，有文档和有数据，需要建立 agent 和人都可以消费的由agent负责迭代、升级、维护、基于使用历史更新；人负责检查、消费、审核（很弱）的一个知识生态系统。（你可以 paraphrase 一下）\n```\n\n</details>\n\n<!-- archive-events: codex:codex-retro-v3-practice:H008 -->"
+        },
+        {
+          "episode_title": "执行事实更新：计划期数字失效，证据必须回到真实交互",
+          "event_ids": [
+            "codex:codex-retro-v3-practice:H009",
+            "codex:codex-retro-v3-practice:H010",
+            "codex:codex-retro-v3-practice:H011",
+            "codex:codex-retro-v3-practice:H012",
+            "codex:codex-retro-v3-practice:H013"
+          ],
+          "body": "### 执行事实更新：计划期数字失效，证据必须回到真实交互\n\nscope 刚稳定，v3 的执行状态就发生了变化。此前文档使用的是计划期快照，其中 171 张 draft cards 尚未进入最终 adoption；用户随后说明 v3 已完成合并，而且真正的执行发生在 Claude 中，要求从 Claude 侧 user input 重新提取 insights。也就是说，旧数字不能继续充当“当前结果”，但也不能被后来的状态悄悄覆盖：前者记录计划时点，后者记录执行推进后的新事实。\n\n当时同步到的结果可以用更直白的方式理解：\n\n- **171 张卡片完成 adoption**：这些卡片已被纳入当时的候选知识集合，不再只是孤立草稿；这仍不等于对外稳定发布。\n- **163 项通过 publication gate**：163 项通过了发布前检查，可按新知识候选继续推进。\n- **8 项进入 fusion audit**：这 8 项不能直接当作全新卡片，需要进一步审查它们与既有知识是补充、冲突还是应当融合。\n- **974 条关联边**：系统建立了卡片之间的 related/interlink 关系；这是关系数量，不是新增了 974 条知识。\n- **candidate_ready**：候选集合已具备进入下一阶段审核或提升的条件，但尚未成为根目录中的稳定知识产品。\n\n这次更新还暴露了写作证据的问题。只读 final、outline 或模块产出不够，因为关键背景分散在用户与不同 agent 的交互里；用户因此要求重构前先取回那些对话中的用户输入，再读最新文档。具体如何拆文件、如何组织 agent 只是编辑手段，保留在下方原始输入中；主线变化是事实源从“已有文档”扩大为“执行记录 + 用户在各处的判断 + 最新产物”。\n\n因此，这一轮也不是一次顺滑的材料合并。它先推翻了过期的阶段描述，又纠正了取材方式；更新后的报告更接近真实执行，但 DIKW、事实类型和知识卡片的定义仍未稳定。\n\n<details><summary>完整用户输入（5 条）</summary>\n\n#### 1. codex:codex-retro-v3-practice:H009\n\n```text\n当前更新了 v3。现在是合并的版本了。因为具体的执行是在 claude 中完成的，所以我需要你去获取 claude 中的 user input，然后提取出相关的 insights。同时同步一下最新的进展到文档里。\n```\n\n#### 2. codex:codex-retro-v3-practice:H010\n\n```text\n开三个 sub-agent，分别和我协作修改 final.md，因为直接修改 final.md 会很麻烦。因为 sub-agent 会把结果落在子文件里面，在用户要求的时候，再拼接。sub-agent 可以读 final.md，但原则上不负责修改，只能负责自己的模块。\n```\n\n#### 3. codex:codex-retro-v3-practice:H011\n\n```text\n它们是可交互的。用户直接负责交互，你不用管，包括负责的 scope，你也不管。\n```\n\n#### 4. codex:codex-retro-v3-practice:H012\n\n```text\n现在整体的素材更新了。你根据 outline.md 以及用户和各个 sub\n```\n\n#### 5. codex:codex-retro-v3-practice:H013\n\n```text\n现在整体的素材更新了。你根据 outline.md 以及用户和各个 sub-agent 的讨论，以及用户在 sub-agent 中更新的一些背景。重构 final.md。注意，必须要先去获取 sub-agent 中 用户的输入。以及读取最新的文档。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-retro-v3-practice:H009 codex:codex-retro-v3-practice:H010 codex:codex-retro-v3-practice:H011 codex:codex-retro-v3-practice:H012 codex:codex-retro-v3-practice:H013 -->"
+        },
+        {
+          "episode_title": "最终概念收敛：DIKW、事实类型与卡片粒度经历了来回纠正",
+          "event_ids": [
+            "codex:codex-retro-v3-practice:H014",
+            "codex:codex-retro-v3-practice:H015",
+            "codex:codex-retro-v3-practice:H016",
+            "codex:codex-retro-v3-practice:H017",
+            "codex:codex-retro-v3-practice:H018",
+            "codex:codex-retro-v3-practice:H019",
+            "codex:codex-retro-v3-practice:H020",
+            "codex:codex-retro-v3-practice:H021",
+            "codex:codex-retro-v3-practice:H022",
+            "codex:codex-retro-v3-practice:H023"
+          ],
+          "body": "### 最终概念收敛：DIKW、事实类型与卡片粒度经历了来回纠正\n\n执行结果更新后，文档仍缺少一套能解释“材料怎样变成知识”的概念框架。用户先给出 DIKW 映射，助手据此区分了两个容易混淆的维度：known fact 与 accepted fact 是事实类型，draft 与 accepted 是知识卡片在生产流程中的状态。\n\n| 层次 | 在本实践中的含义 |\n|---|---|\n| 数据（Data） | 尚未加工的 papers、blogs 等原始材料 |\n| 信息（Information） | 从材料中形成、但尚不能完全接受的 draft |\n| 知识（Knowledge） | 经来源证成和治理后被接受的内容 |\n| 智慧（Wisdom） | 在知识被连接、使用和比较后生长出的新理解 |\n\nknown fact 偏向外部稳定、来源明确的事实；accepted fact 则是在当前知识治理语境中被接受的事实。这个区分没有把 accepted fact 降为“弱事实”，也没有把 known fact 等同于流程终态：一张卡可以仍在 draft 状态，不论它试图承载哪一类事实。\n\n但 DIKW 表并没有直接带来最终答案。后续 introduction 框架把 LLM Wiki 定位为解决知识回流和知识治理的知识卡片系统，这一主轴成立；同时，助手指出其中对 RAG 可信度、自动写回、弱人工审核和竞品边界的表述可能过度。更重要的是，助手随后又误读了“最小知识单元”，倾向把 card 收窄为原子 claim，用户再次纠正：知识卡片是知识库中的默认最小单元，但这是一项 principle，不是强制硬切分；card 本身应是一个可以被完整消费的信息簇。以后若继续拆分，原卡也可以转成 hub 或上层卡片。\n\n最终版本因此不是六轮编辑自然累积出的完成品，而是在三次关键校准后暂时收敛：DIKW 说明材料到知识的状态变化，known/accepted facts 说明事实被接受的依据类型，card 则保持相对粒度和完整可消费性。最后形成的 introduction 覆盖 LLM Wiki 与模型内生知识、RAG 的关系，知识卡片与轻量图结构，以及来源锚定、治理、链接、审计和 agent 可操作性；它是当前可用的解释，不是对知识本体和颗粒度问题的最终封闭定义。\n\n<details><summary>完整用户输入（10 条）</summary>\n\n#### 1. codex:codex-retro-v3-practice:H014\n\n```text\n在整体设计的时候，需要结合 DIKW 讲设计哲学和流程。data = raw papers/blogs；information = draft，尚未能完全接受的知识；knowledge = 被接受的知识；wisdom = 生长出来的知识。同时还有 facts 的设计，我记得有 known facts 和 accepted facts 的区别。你知道这两个的区别吗？\n```\n\n#### 2. codex:codex-retro-v3-practice:H015\n\n```text\nDIKW 用一个表格来讲吧。给我一个版本看一下\n```\n\n#### 3. codex:codex-retro-v3-practice:H016\n\n```text\n现在整体重构了一下。你去获取最新信息，重写一遍。\n```\n\n#### 4. codex:codex-retro-v3-practice:H017\n\n```text\n先把现在的 sub-agent 关了。把final拆成三个子文档。part 1、part 2 和 part 3 分别用 sub-agent 进行交互。\n```\n\n#### 5. codex:codex-retro-v3-practice:H018\n\n```text\n现在综合一下。把当前三个文档整合。尽量使用中文，表达使用【中文（英文）】来锚定专业术语。图里面可以用英文\n```\n\n#### 6. codex:codex-retro-v3-practice:H019\n\n```text\n根据现有的信息，思考这个框架的 pros and cons：llm wiki introduction\n\n1. background\n\n- 知识是给人服务的（previous）=> ai-native，知识既需要给人服务也需要给 agent 服务\n- why 知识要给 agent 服务？人的 memory 和 context 有限 => agent 能通过消化、检索、整合现有的知识，更好地服务业务和人\n- 现有的痛点是什么？传统的 agent 在处理知识，要么依赖内生训练所带的知识 => 容易产生幻觉，受到 input 干扰 => 难提供高可信；要么基于 rag 召回外部知识 => 外部知识大多经过来源、内容的筛选，可信度高，不容易产生幻觉。\n- 那为什么要有 llm wiki 呢？因为传统 rag 有问题。user 和 rag 系统交互产生的 qa pair 或者说对话记录，没有合适的回流机制。rag corpus 是死的。同时，rag 不存在知识治理的过程，直接基于 raw doc 对 chunk 进行召回。前沿的方案基本都聚焦于探索 rag 的「召回」上：\n\n  - graphify， https://github.com/safishamsi/graphify = 让 agent 理解一个项目：输入可以是 code、docs、PDF、images、videos，输出是 图文件，让模型查询图谱而不是重新 grep 文件。\n  - GraphRAG：在 indexing 阶段做图谱，生成多层 summary，解决长文本和复杂知识库的多跳文本\n  - llm wiki：解决的是知识回流和知识治理的问题。\n\n- llm wiki 究竟是什么呢？\n\n  - 操作定义：LLM Wiki 是一个由 LLM / agent 持续维护的【知识卡片系统（knowledge card system）】。每个【知识卡片（knowledge card）】是人类可读、agent 可操作、来源可追溯的知识对象；卡片之间通过链接、引用、标签、实体关系、主题关系和时间关系形成轻量知识图；系统通过持续的提取、定界、去重、融合、链接、审核和提升，把原始文档逐步转化为可复用的知识库。\n\n  - 三个重点：\n\n    - 知识卡片是知识库中经过定界的最小知识单元。长文档适合保存原始语境，但过长、过粗，难以局部更新，也难以被 agent 稳定复用。LLM Wiki 需要把文档中的知识拆解、重组和提升为更小、更清晰、更可操作的卡片。\n    - 图结构是目前的组织方式之一。卡片可核心属性\n\n- 五个核心：\n\n  - 来源锚定（source-grounded）：每个知识都应能追溯到原始资料，关键判断需要有来源、证据和适用上下文，避免知识库退化为不可验证的生成文本。\n  - 结构约束（schema-constrained）：知识应遵守稳定的文件结构，例如一个知识节点由知识卡片、治理文件、比较文件构成。知识卡片供人和 agent 都能稳定消费，是知识库的显性表现；治理文件和比较文件供 agent 使用，提供可信度、版本管理、冲突解决等治理层面的支持，是知识库的隐性表现。\n  - 关系可链接（linkable / graphable）：知识之间通过引用、主题、实体、相似、冲突、增量等关系形成网络；图结构提供组织和查询视图，文档卡片承载知识。\n  - 版本可审计（versionable / auditable）：知识有不同的状态，比如草稿（draft）、候选（candidate）、稳定（stable）、废弃（deprecated）等，知识库会记录变更和审核过程。\n  - 智能体可操作（agent-operable）：Agent 可以高效地创建、更新、拆分、合并、补充来源、建立链接、标记冲突、执行检查，并把有价值回答写回知识库。\n\n\n```\n\n#### 7. codex:codex-retro-v3-practice:H020\n\n```text\n不是。知识卡片在知识库里面，就是最小单元。这是一个 principal 但不是强制的。理解为一种默认的约定。但肯定可以把一个知识卡片，拆成很多个知识卡片，但这个卡片本身就作为 hub 或者上层卡片存在了，也不错。但知识卡片本身 = 一个可以直接被完整消费的信息簇（知识的定义本来就很模糊，后面也会讲的）\n```\n\n#### 8. codex:codex-retro-v3-practice:H021\n\n```text\n你不需要回血，你只需要给我你认为对的「修订版本」，我自己会修改。\n```\n\n#### 9. codex:codex-retro-v3-practice:H022\n\n```text\n你不需要回血，你只需要给我你认为对的「修订版本」，我自己会修改。同时，表达必须是「中文（英文）」尽量保持全中文。\n```\n\n#### 10. codex:codex-retro-v3-practice:H023\n\n```text\n给我一份你认为 ok 的 introduction 版本。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-retro-v3-practice:H014 codex:codex-retro-v3-practice:H015 codex:codex-retro-v3-practice:H016 codex:codex-retro-v3-practice:H017 codex:codex-retro-v3-practice:H018 codex:codex-retro-v3-practice:H019 codex:codex-retro-v3-practice:H020 codex:codex-retro-v3-practice:H021 codex:codex-retro-v3-practice:H022 codex:codex-retro-v3-practice:H023 -->"
+        }
+      ]
+    }
+  ]
+}

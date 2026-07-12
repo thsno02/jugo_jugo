@@ -1,0 +1,2751 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "thsno02/jugo_jugo",
+  "status": "complete",
+  "comment_rendering": {
+    "mode": "episode",
+    "event_comments": 146,
+    "mapped_events": 324,
+    "episode_pilot": {
+      "issue_numbers": [
+        12,
+        17,
+        20,
+        44,
+        54,
+        59
+      ],
+      "events": 64,
+      "comments_before": 64,
+      "comments_after": 24,
+      "publication_map": "../remediation/pilot-publication-map.json"
+    },
+    "full_migration": {
+      "issues": 45,
+      "events": 260,
+      "comments_before": 260,
+      "comments_after": 122,
+      "publication_map": "../remediation/full-publication-map.json"
+    },
+    "version_narratives": {
+      "trackers": 6,
+      "comments": 12,
+      "publication_map": "../remediation/version-publication-map.json"
+    }
+  },
+  "root_issue": {
+    "slug": "llm-wiki-build-history",
+    "number": 5,
+    "url": "https://github.com/thsno02/jugo_jugo/issues/5",
+    "author": "thsno02",
+    "intro_comment_id": 4948618916,
+    "completion_comment_id": 4948731210,
+    "closed": true,
+    "state_rationale": "2026-05-21 至 2026-06-08 的 19 个开发日已逐日梳理、独立审计并汇总为总时间线；当前问题已有可执行且可核验的答案"
+  },
+  "version_issues": {
+    "v0-changelog": {
+      "number": 6,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/6",
+      "closed": true,
+      "state_rationale": "v0 的机制实验、topic drift 与转向 v1 已完成历史交接；ChangeLog 可关闭，关闭不把后续主题生产视为已在 v0 解决。",
+      "narrative_comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949166711,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/6#issuecomment-4949166711"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949166807,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/6#issuecomment-4949166807"
+        }
+      ]
+    },
+    "v1-changelog": {
+      "number": 7,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/7",
+      "closed": true,
+      "state_rationale": "v1 的 hub-first 实验及其向 scoped-card 范式的交接已归档完成；#17 仍承载长期自治与完整交付问题，不阻止历史 tracker 关闭。",
+      "narrative_comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949167119,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/7#issuecomment-4949167119"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949167294,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/7#issuecomment-4949167294"
+        }
+      ]
+    },
+    "v2-changelog": {
+      "number": 8,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/8",
+      "closed": true,
+      "state_rationale": "v2 已完成从 hub-first 到 scoped-card、控制面和 loop capsule 的历史交接；生命周期成本等遗留由子问题及 v3 继续承接，ChangeLog 本身可关闭。",
+      "narrative_comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949167701,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/8#issuecomment-4949167701"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949167794,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/8#issuecomment-4949167794"
+        }
+      ]
+    },
+    "v3-changelog": {
+      "number": 9,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/9",
+      "closed": true,
+      "state_rationale": "v3 的 draft-first 运行、comparison corpus 缺陷与向 question-driven v4 的交接已完整归档，因此历史 tracker 可关闭；#37、#38、#39 仍是开放执行问题，不因 tracker 关闭而解决。",
+      "narrative_comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949168323,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/9#issuecomment-4949168323"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949168427,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/9#issuecomment-4949168427"
+        }
+      ]
+    },
+    "v4-changelog": {
+      "number": 10,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/10",
+      "closed": true,
+      "state_rationale": "v4 的独立 0→1、FSJS、来源处理缺陷及 v5 handoff 已完成历史交接；#50 与 #54 继续开放承载逐卡治理和 repo2doc，故可关闭 ChangeLog 而不宣称 v4 全部闭环。",
+      "narrative_comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949168985,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/10#issuecomment-4949168985"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949169148,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/10#issuecomment-4949169148"
+        }
+      ]
+    },
+    "v5-changelog": {
+      "number": 11,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/11",
+      "closed": true,
+      "state_rationale": "v5 的工程阶段性收口、内容回归及当前归因假设已完成历史交接；#59、#60 仍开放承载信息密度修复与 v4 ingest 还原，关闭 ChangeLog 不代表归因已经验证。",
+      "narrative_comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949169623,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/11#issuecomment-4949169623"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949169741,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/11#issuecomment-4949169741"
+        }
+      ]
+    }
+  },
+  "issue_map": {
+    "v0-source-coverage": {
+      "number": 12,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/12",
+      "title": "v0 原始资料采集：怎样判断 LLM Wiki evidence coverage 足够？",
+      "author": "thsno02",
+      "parent_slug": "v0-changelog",
+      "related_slugs": [
+        "v0-agent-roles",
+        "v0-kb-autonomy"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "resolution": {
+        "kind": "answer",
+        "title": "coverage 足够需同时满足内容充分性与记录可验证性",
+        "comment_id": 4949294871,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4949294871"
+      }
+    },
+    "v0-agent-roles": {
+      "number": 13,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/13",
+      "title": "v0 长程调研：哪些 standing sub-agents 应常驻？",
+      "author": "thsno02",
+      "parent_slug": "v0-changelog",
+      "related_slugs": [
+        "v0-source-coverage",
+        "v2-subagent-lifecycle"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "standing sub-agent 已收敛为职责隔离的 Git/File Steward 与上下文 fork Q&A；其他工作仍按一次性 worker 处理",
+      "resolution": {
+        "kind": "answer",
+        "title": "常驻角色应限于 Git/File Steward 与上下文 fork Q&A",
+        "comment_id": 4949295236,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/13#issuecomment-4949295236"
+      }
+    },
+    "v0-kb-autonomy": {
+      "number": 14,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/14",
+      "title": "v0 KB 初始化：怎样让 loop 可自治、可恢复且容忍网络受限？",
+      "author": "thsno02",
+      "parent_slug": "v0-changelog",
+      "related_slugs": [
+        "v0-source-coverage",
+        "v0-topic-drift"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "loop 已具备状态、决策日志、反思、恢复与网络失败延期规则；受限网络不再阻断离线推进",
+      "resolution": {
+        "kind": "answer",
+        "title": "自治 loop 依靠持久状态、反思决策和可延期的网络队列",
+        "comment_id": 4949295634,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/14#issuecomment-4949295634"
+      }
+    },
+    "v0-language": {
+      "number": 15,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/15",
+      "title": "v0 人类可读产物：为什么中文主语言要求连续三次才落盘？",
+      "author": "thsno02",
+      "parent_slug": "v0-changelog",
+      "related_slugs": [
+        "v2-language"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "中文要求已从对话回复扩展为全部人类可读产物的合同，并在重写 cards、provenance、报告和控制文件后重新验证",
+      "resolution": {
+        "kind": "answer",
+        "title": "中文主语言必须是文件级验收合同，而非仅限对话回复",
+        "comment_id": 4949296016,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/15#issuecomment-4949296016"
+      }
+    },
+    "v0-topic-drift": {
+      "number": 16,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/16",
+      "title": "v0 LLM Wiki demo：为什么机制成功却把 KB 做成元知识？",
+      "author": "thsno02",
+      "parent_slug": "v0-changelog",
+      "related_slugs": [
+        "v1-planner-loop",
+        "v2-card-foundation"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "偏差已定位为把 KB 生产协议误当知识主题；错误产物已归档为 demo-0，active 主题重置为 LLM Wiki 并把 data folder 设为主要证据输入",
+      "resolution": {
+        "kind": "answer",
+        "title": "机制成功仍会产出错误 KB，因为生产对象和外部主题未对齐",
+        "comment_id": 4949296398,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/16#issuecomment-4949296398"
+      }
+    },
+    "v1-planner-loop": {
+      "number": 17,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/17",
+      "title": "v1 topic hub 构建：planner、worker 与 main-agent 怎样分工？",
+      "author": "thsno02",
+      "parent_slug": "v1-changelog",
+      "related_slugs": [
+        "v0-topic-drift",
+        "v1-hub-granularity",
+        "v2-control-plane"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_reason": "reopened_after_episode_review",
+      "reopened_comment_id": 4949024767,
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到 planner、worker 与 main-agent 的首轮分工，长期自治仍待验证",
+        "comment_id": 4949296715,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4949296715"
+      }
+    },
+    "v1-card-layout": {
+      "number": 18,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/18",
+      "title": "v1 knowledge cards：References 与 Footnotes 怎样排列？",
+      "author": "thsno02",
+      "parent_slug": "v1-changelog",
+      "related_slugs": [
+        "v1-hub-granularity",
+        "v2-card-foundation"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "References 在前、Footnotes 为最后 section 已写成 generation 与 audit 的硬格式合同，既有候选和旧卡也已迁移",
+      "resolution": {
+        "kind": "answer",
+        "title": "当前渲染链要求 References 在前、Footnotes 为最后 section",
+        "comment_id": 4949297035,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/18#issuecomment-4949297035"
+      }
+    },
+    "v1-hub-granularity": {
+      "number": 19,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/19",
+      "title": "v1 八个 topic hubs：为什么材料很多却只形成少量大卡？",
+      "author": "thsno02",
+      "parent_slug": "v1-changelog",
+      "related_slugs": [
+        "v1-planner-loop",
+        "v2-card-foundation"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "少量大卡与长周期已定位到 topic-node-first pipeline；现有结果降级为 hub/backbone，后续改为 source/batch 挖 atoms、批量校验聚类、最后生成 hub",
+      "resolution": {
+        "kind": "answer",
+        "title": "少量大卡源于 topic-node-first pipeline，而非材料不足",
+        "comment_id": 4949297411,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/19#issuecomment-4949297411"
+      }
+    },
+    "v2-card-foundation": {
+      "number": 20,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20",
+      "title": "v1→v2 知识生产：atomic card 怎样成为可读、可证成的事实基础？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v1-hub-granularity",
+        "v2-file-audits",
+        "v2-card-autonomy"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "resolution": {
+        "kind": "answer",
+        "title": "atomic card 是经证据支持、可审计的知识单元",
+        "comment_id": 4949297722,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4949297722"
+      }
+    },
+    "v2-file-audits": {
+      "number": 21,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/21",
+      "title": "v1→v2 文件与审计：怎样保留 legacy 又独立调查 focus drift？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-card-foundation",
+        "v2-control-plane",
+        "v2-loop-capsule"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "active 入口已可见，v0/v1 迁入 legacy 并说明缺口；流程、context isolation 与 focus drift 均由隔离 sub-agent 完成独立审计",
+      "resolution": {
+        "kind": "answer",
+        "title": "legacy 应可追溯隔离，focus drift 应由独立证据审计",
+        "comment_id": 4949298043,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/21#issuecomment-4949298043"
+      }
+    },
+    "v2-language": {
+      "number": 22,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/22",
+      "title": "v2 loop 文档与 skills：怎样统一中文主语言？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v0-language",
+        "v2-control-plane"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "中文主语言的适用面已从 active 文档扩展到 skills 与术语，并形成可执行的英文保留边界",
+      "resolution": {
+        "kind": "answer",
+        "title": "以中文承担主叙述，英文仅保留技术与证据身份",
+        "comment_id": 4949298397,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/22#issuecomment-4949298397"
+      }
+    },
+    "v2-git-handoff": {
+      "number": 23,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/23",
+      "title": "v2 并行 loop：怎样分批 Git handoff 又不交付半成品？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-subagent-lifecycle",
+        "v2-loop-capsule"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "已形成按完整交付边界分批提交、等待并行 worker 产物完整后再推送的可执行 handoff 规则",
+      "resolution": {
+        "kind": "answer",
+        "title": "按完整 delivery 分批提交，未闭合产物留在工作区",
+        "comment_id": 4949298785,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/23#issuecomment-4949298785"
+      }
+    },
+    "v2-control-plane": {
+      "number": 24,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24",
+      "title": "v2 main-agent 控制面：prompts、hooks 与弹性边界怎样组合？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-language",
+        "v2-card-autonomy",
+        "v2-brain-mailbox"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "控制面已形成状态、角色合同、结构化 dispatch、guardrail、恢复入口与长程反思的职责分层",
+      "resolution": {
+        "kind": "answer",
+        "title": "角色合同、结构化派发与 hooks 分层组合",
+        "comment_id": 4949299322,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4949299322"
+      }
+    },
+    "v2-card-autonomy": {
+      "number": 25,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/25",
+      "title": "v2 card production：怎样自主发现 topic 又只生产知识卡？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-card-foundation",
+        "v2-control-plane",
+        "v2-production-lifecycle"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "已明确自主探索不预设 topic，但必须受单一来源、provenance、任务包和独立 audit 约束，且产物目标只指向 card",
+      "resolution": {
+        "kind": "answer",
+        "title": "topic 自主发现，但只交付受证据约束的知识卡",
+        "comment_id": 4949299798,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/25#issuecomment-4949299798"
+      }
+    },
+    "v2-subagent-lifecycle": {
+      "number": 26,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/26",
+      "title": "v2 sub-agent 生命周期：为什么 workers 泛滥并长期 active？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v0-agent-roles",
+        "v2-control-plane",
+        "v2-production-lifecycle"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "独立审计已定位 sub-agent 泛滥根因，并给出按职责、状态与上下文价值管理而非统一常驻或统一关闭的规则",
+      "resolution": {
+        "kind": "answer",
+        "title": "按职责、状态、上下文价值和退出条件管理 sub-agent",
+        "comment_id": 4949300272,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/26#issuecomment-4949300272"
+      }
+    },
+    "v2-production-lifecycle": {
+      "number": 27,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/27",
+      "title": "v2 scoped-card 正式生产：one-shot workers 与上下文复用如何平衡？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-card-autonomy",
+        "v2-subagent-lifecycle",
+        "v2-control-audits"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "one-shot 链路已跑通并产出 15 张卡，但用户提出的重复读取成本与 standing worker 适用条件未被评估或验证",
+      "state_transition_comment_id": 4949130295,
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到哪里：one-shot 链路可控，standing worker 尚未验证",
+        "comment_id": 4949300743,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/27#issuecomment-4949300743"
+      }
+    },
+    "v2-control-audits": {
+      "number": 28,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/28",
+      "title": "v2 控制面审计：任务边界、流程与 sub-agent 管理还有哪些缺口？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-production-lifecycle",
+        "v2-brain-mailbox",
+        "v2-design-freeze"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "生命周期、任务边界和流程已完成独立审计，且 audit 产物已明确绑定 run、iteration、artifact 与 commit 的归属规则",
+      "resolution": {
+        "kind": "answer",
+        "title": "审计归属规则已明确",
+        "comment_id": 4949301247,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/28#issuecomment-4949301247"
+      }
+    },
+    "v2-brain-mailbox": {
+      "number": 29,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/29",
+      "title": "v2 brain-agent 架构：mailbox 能否让 production 与 audit 协作？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-control-plane",
+        "v2-control-audits",
+        "v2-design-freeze"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "已验证 mailbox 的文件通信闭环，并明确真实自动唤醒属于独立 scheduler 能力，不能由 mailbox 或 hook 冒充",
+      "resolution": {
+        "kind": "answer",
+        "title": "mailbox 可完成跨 brain 通信，但自动唤醒需要独立 scheduler",
+        "comment_id": 4949301679,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4949301679"
+      }
+    },
+    "v2-design-freeze": {
+      "number": 30,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/30",
+      "title": "v2 loop 设计冻结：scoped cards、comparison 与 mailbox 如何统一？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-control-audits",
+        "v2-brain-mailbox",
+        "v2-loop-capsule"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "旧控制面已冻结为历史快照，新 V2 合同已明确 scoped card、similarity、comparison provenance 与 mailbox，且未倒写旧产物",
+      "resolution": {
+        "kind": "answer",
+        "title": "以三问 comparison 决定新增、融合、增量、拆分或跳过",
+        "comment_id": 4949302115,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/30#issuecomment-4949302115"
+      }
+    },
+    "v2-loop-capsule": {
+      "number": 31,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/31",
+      "title": "v2 repository layout：实验 loop、候选 KB 与稳定产品放在哪里？",
+      "author": "thsno02",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-file-audits",
+        "v2-git-handoff",
+        "v2-design-freeze"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "仓库已收敛为稳定 loops registry、单一 v2 capsule 与 candidate output，根级稳定产品只允许经 human promotion 出现",
+      "resolution": {
+        "kind": "answer",
+        "title": "实验留在稳定 loops capsule，根级产品只接受人工提升",
+        "comment_id": 4949302515,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4949302515"
+      }
+    },
+    "v3-draft-first-precursor": {
+      "number": 32,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32",
+      "title": "为什么 v2 运行 7 小时只产出 15 张卡，v3 应如何改成 draft-first？",
+      "author": "thsno02",
+      "parent_slug": "v3-changelog",
+      "related_slugs": [
+        "v3-formal-handoff",
+        "v3-first-production-pass"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "draft-first 的生产顺序、轻量召回后的三问决策门和知识卡最低信息要求已经形成可执行答案；后续审计虽纠正了 comparison corpus 的范围，但没有推翻该问题的流程结论",
+      "resolution": {
+        "kind": "answer",
+        "title": "v3 应先形成 draft backlog，再用轻量召回触发审计决策",
+        "comment_id": 4949303063,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4949303063"
+      }
+    },
+    "v3-formal-handoff": {
+      "number": 33,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33",
+      "title": "如何把无历史上下文的 Claude Code 可靠地交接到正式 v3 loop？",
+      "author": "thsno02",
+      "parent_slug": "v3-changelog",
+      "related_slugs": [
+        "v3-draft-first-precursor",
+        "v3-first-production-pass"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "handoff 的目录、权限、依赖和运行方式已落盘，但正式启动合同把 v2 索引设为唯一 comparison corpus，后来证实这违背 v3 独立 0 到 1 的原则，因此可靠性交付尚未完成",
+      "state_transition_comment_id": 4949135728,
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到哪里：handoff 已可恢复运行，但尚不能证明 v3 语义可靠",
+        "comment_id": 4949303440,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4949303440"
+      }
+    },
+    "v3-first-production-pass": {
+      "number": 34,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34",
+      "title": "v3 如何从单材料 4 张草稿扩展到 171 张 loop-local accepted cards？",
+      "author": "thsno02",
+      "parent_slug": "v3-changelog",
+      "related_slugs": [
+        "v3-unified-citation",
+        "v3-cost-and-comparison-audit"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "171 张卡虽已写入 loop-local KB，但后续审计证明全部 comparison 只对照 v2 的 15 张卡，未做 intra-v3 duplication/fusion，因而 accepted 集合尚未通过有效 publication gate",
+      "state_transition_comment_id": 4949137007,
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到哪里：v3 已扩展到 171 张 loop-local cards，但 accepted 集合仍无效",
+        "comment_id": 4949303844,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4949303844"
+      }
+    },
+    "v3-unified-citation": {
+      "number": 35,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35",
+      "title": "v3 如何统一 Footnotes、知识卡链接与 related metadata，避免多处维护漂移？",
+      "author": "thsno02",
+      "parent_slug": "v3-first-production-pass",
+      "related_slugs": [
+        "v3-set-level-fusion-gate",
+        "v3-justification-journal"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "Footnotes 已被确定为 raw source 与 knowledge card 的统一引用事实源，related metadata 改由脚本派生，并已完成 171 张卡迁移，当前设计问题已有可执行答案",
+      "resolution": {
+        "kind": "answer",
+        "title": "Footnotes 应作为统一 citation 事实源，related 与 backlink 由脚本派生",
+        "comment_id": 4949304214,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4949304214"
+      }
+    },
+    "v3-cost-and-comparison-audit": {
+      "number": 36,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/36",
+      "title": "为什么 v3 的 KV cache 命中率高达 98%，单轮成本仍超过约 1200 RMB？",
+      "author": "thsno02",
+      "parent_slug": "v3-first-production-pass",
+      "related_slugs": [
+        "v3-set-level-fusion-gate",
+        "v3-repository-cleanup"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "高成本的主要来源、可消除与不可消除的读取、正确的 gate 顺序以及 comparison corpus 跑偏的根因都已审计并形成下一轮可执行修复条件",
+      "resolution": {
+        "kind": "answer",
+        "title": "98% KV cache 命中仍昂贵，主因是多轮后处理而非首次读原文",
+        "comment_id": 4949304570,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4949304570"
+      }
+    },
+    "v3-repository-cleanup": {
+      "number": 37,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/37",
+      "title": "v3 审计后如何只清理 loop 文件，同时避开配置、展示文档和署名污染？",
+      "author": "thsno02",
+      "parent_slug": "v3-changelog",
+      "related_slugs": [
+        "v3-cost-and-comparison-audit"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "提交边界与署名偏好已经澄清，.obsidian ignore 规则也已修正，但命令分类器持续阻塞 git 写入，最终提交仍待外部执行和状态复核",
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到哪里：cleanup 边界已明确，但 loop 提交与状态复核尚未完成",
+        "comment_id": 4949304984,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4949304984"
+      }
+    },
+    "v3-set-level-fusion-gate": {
+      "number": 38,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/38",
+      "title": "v3 的 draft 进入 KB 前，集合级 dedup、fusion 与 interlink gate 应如何排序？",
+      "author": "thsno02",
+      "parent_slug": "v3-cost-and-comparison-audit",
+      "related_slugs": [
+        "v3-unified-citation",
+        "v3-next-loop-pipeline"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "已确定 grep-first、agent-autonomous 的治理方向，但 draft 准入顺序、metadata contract、触发条件和实际 gate 尚未形成并验证为可执行闭环",
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到哪里：fusion gate 的职责已定义，识别 survivors 的能力仍未验证",
+        "comment_id": 4949305447,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4949305447"
+      }
+    },
+    "v3-next-loop-pipeline": {
+      "number": 39,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/39",
+      "title": "下一轮 LLM Wiki 如何形成可复用的 collect、extract、ingest、evolve 全流程？",
+      "author": "thsno02",
+      "parent_slug": "v3-set-level-fusion-gate",
+      "related_slugs": [
+        "v3-reader-reviewer-architecture",
+        "v3-questioning-loop"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "可复用 pipeline、question-driven exhaust 与角色隔离已有方向，但 exhaust skill、动态 workflow、agent handoff 和容错仍停留在讨论与设计文档，尚未实现或验证",
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到哪里：collect、extract、ingest、evolve 已有设计，尚无可复用实现",
+        "comment_id": 4949305916,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4949305916"
+      }
+    },
+    "v3-reader-reviewer-architecture": {
+      "number": 40,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40",
+      "title": "长材料抽取中 reader、writer 与 reviewer 应如何分工，才不丢失完整上下文？",
+      "author": "thsno02",
+      "parent_slug": "v3-next-loop-pipeline",
+      "related_slugs": [
+        "v3-questioning-loop",
+        "v3-justification-journal"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "上下文责任已收敛为 reader-drafter 持有完整材料、questioner 主动追问、fresh reviewer 独立核验，并形成 building/evolving 分阶段设计",
+      "resolution": {
+        "kind": "answer",
+        "title": "reader 与 writer 应合并持有完整材料，reviewer 保持独立并按需取证",
+        "comment_id": 4949306246,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4949306246"
+      }
+    },
+    "v3-questioning-loop": {
+      "number": 41,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41",
+      "title": "v3 复盘后如何设计 questioner-reader loop，用主动提问替代一次性 exhaust？",
+      "author": "thsno02",
+      "parent_slug": "v3-reader-reviewer-architecture",
+      "related_slugs": [
+        "v3-next-loop-pipeline",
+        "v3-justification-journal"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "Mode A 的材料消费、并发策略、文件化角色协作、退出复核与 fresh-but-not-blind reviewer 已形成可执行 pipeline contract；Mode B 已明确延期而非阻塞当前答案",
+      "resolution": {
+        "kind": "answer",
+        "title": "单材料、忠实原文的抽取模式应以问题、证据化回答和退出复核形成闭环",
+        "comment_id": 4949306714,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4949306714"
+      }
+    },
+    "v3-justification-journal": {
+      "number": 42,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42",
+      "title": "知识卡演化时，justification、comparison 与 changelog 应记录到什么粒度？",
+      "author": "thsno02",
+      "parent_slug": "v3-changelog",
+      "related_slugs": [
+        "v3-unified-citation",
+        "v3-operational-definition"
+      ],
+      "parent_linked": true,
+      "requested_parent_slug": "v3-questioning-loop",
+      "depth_fallback": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "已明确 per-card justification journal、按需求触发 comparison、typed footnotes、never-delete view 与统一 ingestion 范式，并完成 metadata、footnote/JJ contract 和下一 loop 环境",
+      "resolution": {
+        "kind": "answer",
+        "title": "每张卡保留 append-only justification journal，comparison 只按真实决策触发",
+        "comment_id": 4949307088,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4949307088"
+      }
+    },
+    "v3-query-probes": {
+      "number": 43,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/43",
+      "title": "v3 知识库能否用具体出处回答架构、RAG、创始人和 graph 边界问题？",
+      "author": "thsno02",
+      "parent_slug": "v3-changelog",
+      "related_slugs": [
+        "v3-first-production-pass",
+        "v3-operational-definition"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "真实 query 已覆盖架构、目标、RAG 对比、创始人歧义与 graph 边界，回答能给出仓库内具体出处，并保留了一次无回复和两次范围澄清",
+      "resolution": {
+        "kind": "answer",
+        "title": "v3 KB 可回答架构、RAG/graph 比较和实体归属查询，但仅限仓库证据",
+        "comment_id": 4949307476,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4949307476"
+      }
+    },
+    "v3-practice-reframe": {
+      "number": 44,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44",
+      "title": "如何把 v0-v3 的 LLM Wiki 实践重写成面向无仓库上下文同事的技术复盘？",
+      "author": "thsno02",
+      "parent_slug": "v3-changelog",
+      "related_slugs": [
+        "v3-introduction-slides",
+        "v3-operational-definition"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "resolution": {
+        "kind": "answer",
+        "title": "技术复盘应围绕从原始材料构建可持续知识生态来重写 v0-v3",
+        "comment_id": 4949307935,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4949307935"
+      }
+    },
+    "v3-introduction-slides": {
+      "number": 45,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45",
+      "title": "LLM Wiki introduction 应如何用三张图讲清知识范式、实施手段与过去未来？",
+      "author": "thsno02",
+      "parent_slug": "v3-practice-reframe",
+      "related_slugs": [
+        "v3-operational-definition",
+        "v3-presentation-render"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "introduction 已从两条传统路径扩展并收敛为三张有独立标题的叙事图，重复逻辑、标题误用与版式反馈均完成修正",
+      "resolution": {
+        "kind": "answer",
+        "title": "introduction 应用三张图分别讲知识范式、实施手段与过去未来",
+        "comment_id": 4949308430,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4949308430"
+      }
+    },
+    "v3-operational-definition": {
+      "number": 46,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46",
+      "title": "如何在一页中表达 LLM Wiki 的操作定义、核心属性与 DIKW 成熟度？",
+      "author": "thsno02",
+      "parent_slug": "v3-practice-reframe",
+      "related_slugs": [
+        "v3-introduction-slides",
+        "v3-justification-journal"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "操作定义、三个重点、五项属性与 DIKW 成熟度已形成两张中文主表达的 slide，并经过内容边界、高亮、换行与字号修正"
+    },
+    "v3-presentation-render": {
+      "number": 47,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/47",
+      "title": "如何找到 HTML 转 PNG 工具并批量渲染 v3 演示页面？",
+      "author": "thsno02",
+      "parent_slug": "v3-introduction-slides",
+      "related_slugs": [
+        "v3-operational-definition"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "HTML 转 PNG 工具已定位并用于批量渲染 5 个展示页面，输出完成存在性、尺寸与非空检查"
+    },
+    "v4-agent-effort-default": {
+      "number": 48,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/48",
+      "title": "v4 / Agent effort / 如何让主会话与 sub-agent 默认使用最高推理强度？",
+      "author": "thsno02",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "全局 max 与项目级 xhigh 回退的配置路径已经确定，session hook 也被排除，但档案没有启动新主会话核验实际档位，也没有记录一次真实 sub-agent 委派来验证继承行为",
+      "state_transition_comment_id": 4949150256
+    },
+    "v4-full-material-orchestration": {
+      "number": 49,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49",
+      "title": "v4 / 全量材料运行 / 如何把独立 0→1 loop 编排到全部来源？",
+      "author": "thsno02",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v4-sequential-card-governance",
+        "v4-audit-workload-sharding",
+        "v4-source-routing-and-preprocessing"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "43 份盘点材料的 extraction 与后置 governance 已完成，但 status.json 和 loop_state.json 仍停在 setup/initializing 与 0 计数，无法可靠恢复或证明控制面已记录全量执行，因此编排合同尚未闭环",
+      "state_transition_comment_id": 4949152016
+    },
+    "v4-sequential-card-governance": {
+      "number": 50,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/50",
+      "title": "v4 / 知识卡治理 / 为什么入库后缺少逐卡 fusion 与有证据的 related？",
+      "author": "thsno02",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v4-cluster-exploration-damage",
+        "v5-source-router-and-graph-governance"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "绝对路径和一次后置 cluster governance 已补救，但 v4 的正式 ingest 仍未证明会逐卡执行 fusion、typed footnote 与 related 派生；后续 cluster 审计又发现关系数据损伤，因此 one-by-one governance 尚未成为稳定生产合同"
+    },
+    "v4-cluster-exploration-damage": {
+      "number": 51,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/51",
+      "title": "v4 / Cluster / 固定数量是否压缩了知识探索与关系分布？",
+      "author": "thsno02",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v4-sequential-card-governance",
+        "v4-audit-evidence-blind-spots"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "固定 cluster 数量已被否定，专项审计和 22 项修复也已执行，但最终仍有 2 条断裂引用和 1 张 comparison 卡缺少源 footnote；更重要的是尚未用新一轮生产验证 cluster 只约束默认深读范围而不限制 exploration",
+      "state_transition_comment_id": 4949153847
+    },
+    "v4-audit-workload-sharding": {
+      "number": 52,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52",
+      "title": "v4 / Atomicity audit / 为什么单个 agent 全量遍历 200+ cards 不可靠？",
+      "author": "thsno02",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v4-audit-evidence-blind-spots",
+        "v5-fsjs-audit-coverage"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "单 agent 全量审计的失效原因已经通过多轮失败与工作量复核定位，并形成、执行和验证了 FSJS；后续对 false positive 的修正属于证据判断协议的演化，由相邻审计问题继续承载"
+    },
+    "v4-audit-evidence-blind-spots": {
+      "number": 53,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53",
+      "title": "v4 / 深度审计 / 如何避免 grep 假阳性并把缺口追到 pipeline 阶段？",
+      "author": "thsno02",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v4-audit-workload-sharding",
+        "v4-source-routing-and-preprocessing",
+        "v5-fsjs-audit-coverage"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "grep 假阳性的成因、全文复核协议和 pipeline-stage 根因审计已经形成并执行，确认缺口也完成一轮修复；未覆盖的 repo 与系统性 hedging 等残余项已明确记录并转入来源处理及后续版本问题"
+    },
+    "v4-source-routing-and-preprocessing": {
+      "number": 54,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54",
+      "title": "v4 / 来源处理 / 为什么 TXT fallback 让 repo、TeX 与 webpage 丢失结构？",
+      "author": "thsno02",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v5-source-router-and-graph-governance",
+        "v5-information-density-regression"
+      ],
+      "parent_linked": true,
+      "relations_written": true
+    },
+    "v4-learnings-and-v5-handoff": {
+      "number": 55,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/55",
+      "title": "v4 / Learnings / 如何把长对话中的真实流程固化为 v5 可执行交接？",
+      "author": "thsno02",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v5-changelog",
+        "v5-source-router-and-graph-governance"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "v4 的讨论、执行、审计、修复与独立总结已经固化为经审计的 learnings，并生成完整 v5 capsule、实验配置和最小启动 prompt；明确延期的 Reddit 与 repo 工作不阻断交接完成"
+    },
+    "v4-assistant-persona-boundary": {
+      "number": 56,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/56",
+      "title": "v4 / Assistant persona / 项目角色与底层模型身份如何区分？",
+      "author": "thsno02",
+      "parent_slug": "v4-changelog",
+      "related_slugs": [
+        "v5-information-density-regression"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "助手已明确区分项目 persona、Anthropic Claude 的模型身份与不可确认的训练语料配比，并对未知部分保持未知；该问题已有边界清楚的当前答案"
+    },
+    "v5-source-router-and-graph-governance": {
+      "number": 57,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/57",
+      "title": "v5 / 主循环 / 来源路由与图治理能否支撑独立 0→1 全量运行？",
+      "author": "thsno02",
+      "parent_slug": "v5-changelog",
+      "related_slugs": [
+        "v4-source-routing-and-preprocessing",
+        "v5-fsjs-audit-coverage",
+        "v5-preservation-and-transition-out"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "v5 独立 0→1 已产出可解析 KB 并执行路由、fusion 与图修复，但 10/11/12 个失败源、62/63 个已消费源、0/2 orphan 等口径冲突未闭环，逐卡治理和 mutation 后 gate 缺少轨迹，后续又证明审计未覆盖 extraction 深度",
+      "state_transition_comment_id": 4949160599
+    },
+    "v5-fsjs-audit-coverage": {
+      "number": 58,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/58",
+      "title": "v5 / FSJS audit / 为什么“审计完成”仍漏掉专业检查与语义深审？",
+      "author": "thsno02",
+      "parent_slug": "v5-changelog",
+      "related_slugs": [
+        "v4-audit-evidence-blind-spots",
+        "v5-information-density-regression"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "首轮审计被确认没有完整执行 SHARD/JUDGE；后补流程虽报告 6/6 与 26 子项全覆盖，但底层仍有 FAIL/conditional、语义明细不足，且后续信息密度事件证明 questioning 深度和概念解释充分性不在原合同内",
+      "state_transition_comment_id": 4949159728
+    },
+    "v5-information-density-regression": {
+      "number": 59,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59",
+      "title": "v5 / 知识卡质量 / 为什么结构更完整却比 v4 信息更贫乏？",
+      "author": "thsno02",
+      "parent_slug": "v5-changelog",
+      "related_slugs": [
+        "v5-fsjs-audit-coverage",
+        "v5-v4-ingest-reconstruction",
+        "v4-source-routing-and-preprocessing"
+      ],
+      "parent_linked": true,
+      "relations_written": true
+    },
+    "v5-v4-ingest-reconstruction": {
+      "number": 60,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/60",
+      "title": "v5 / v4 入库还原 / 最小修改怎样恢复提问深度并保留 v5 治理？",
+      "author": "thsno02",
+      "parent_slug": "v5-changelog",
+      "related_slugs": [
+        "v5-information-density-regression",
+        "v5-source-router-and-graph-governance"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": false,
+      "state_rationale": "v4 的 extraction 编排在同一会话中先后被解释为 main-loop 直接编排和并行 Agent() sub-agents，后者虽撤回前答但仍缺少 runtime prompt/skill 传递的直接证据；“v4 extraction + v5 governance”的最小修改也尚未完成同源验证"
+    },
+    "v5-preservation-and-transition-out": {
+      "number": 61,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/61",
+      "title": "v5 / 固化与 transition-out / 如何规范路径、分类发布并保留版本产物？",
+      "author": "thsno02",
+      "parent_slug": "v5-changelog",
+      "related_slugs": [
+        "v5-source-router-and-graph-governance",
+        "llm-wiki-build-history"
+      ],
+      "parent_linked": true,
+      "relations_written": true,
+      "closed": true,
+      "state_rationale": "仓库内路径已规整为 repo 相对路径、规则已写入 README，变更经验证后分类提交并推送；后续 v5 全量内容又由 sub-agent 单独固化为可追溯提交，未推送边界已明确披露"
+    }
+  },
+  "event_map": {
+    "codex:codex-retro-daily-audit:H001": {
+      "issue_number": 5,
+      "comment_id": 4948672944,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/5#issuecomment-4948672944"
+    },
+    "codex:codex-retro-daily-audit:H002": {
+      "issue_number": 5,
+      "comment_id": 4948672944,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/5#issuecomment-4948672944"
+    },
+    "codex:codex-retro-daily-audit:H003": {
+      "issue_number": 5,
+      "comment_id": 4948673164,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/5#issuecomment-4948673164"
+    },
+    "codex:codex-retro-daily-audit:H004": {
+      "issue_number": 5,
+      "comment_id": 4948673164,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/5#issuecomment-4948673164"
+    },
+    "codex:codex-retro-daily-audit:H005": {
+      "issue_number": 5,
+      "comment_id": 4948673345,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/5#issuecomment-4948673345"
+    },
+    "codex:codex-prehistory-research:H001": {
+      "issue_number": 12,
+      "comment_id": 4948673469,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4948673469"
+    },
+    "codex:codex-prehistory-research:H002": {
+      "issue_number": 12,
+      "comment_id": 4948673469,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4948673469"
+    },
+    "codex:codex-prehistory-research:H003": {
+      "issue_number": 12,
+      "comment_id": 4948673682,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4948673682"
+    },
+    "codex:codex-prehistory-research:H004": {
+      "issue_number": 12,
+      "comment_id": 4948673682,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4948673682"
+    },
+    "codex:codex-prehistory-research:H007": {
+      "issue_number": 12,
+      "comment_id": 4948673859,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4948673859"
+    },
+    "codex:codex-prehistory-research:H009": {
+      "issue_number": 12,
+      "comment_id": 4948673859,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4948673859"
+    },
+    "codex:codex-prehistory-research:H005": {
+      "issue_number": 13,
+      "comment_id": 4948674065,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/13#issuecomment-4948674065"
+    },
+    "codex:codex-prehistory-research:H006": {
+      "issue_number": 13,
+      "comment_id": 4948674065,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/13#issuecomment-4948674065"
+    },
+    "codex:codex-prehistory-research:H008": {
+      "issue_number": 13,
+      "comment_id": 4948674270,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/13#issuecomment-4948674270"
+    },
+    "codex:codex-primary-v0-v2-boundary:H001": {
+      "issue_number": 14,
+      "comment_id": 4948674374,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/14#issuecomment-4948674374"
+    },
+    "codex:codex-primary-v0-v2-boundary:H002": {
+      "issue_number": 14,
+      "comment_id": 4948674374,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/14#issuecomment-4948674374"
+    },
+    "codex:codex-primary-v0-v2-boundary:H003": {
+      "issue_number": 14,
+      "comment_id": 4948674562,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/14#issuecomment-4948674562"
+    },
+    "codex:codex-primary-v0-v2-boundary:H004": {
+      "issue_number": 15,
+      "comment_id": 4948674668,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/15#issuecomment-4948674668"
+    },
+    "codex:codex-primary-v0-v2-boundary:H005": {
+      "issue_number": 15,
+      "comment_id": 4948674668,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/15#issuecomment-4948674668"
+    },
+    "codex:codex-primary-v0-v2-boundary:H006": {
+      "issue_number": 15,
+      "comment_id": 4948674668,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/15#issuecomment-4948674668"
+    },
+    "codex:codex-primary-v0-v2-boundary:H007": {
+      "issue_number": 16,
+      "comment_id": 4948675024,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/16#issuecomment-4948675024"
+    },
+    "codex:codex-primary-v0-v2-boundary:H008": {
+      "issue_number": 16,
+      "comment_id": 4948675135,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/16#issuecomment-4948675135"
+    },
+    "codex:codex-primary-v0-v2-boundary:H009": {
+      "issue_number": 17,
+      "comment_id": 4948675249,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675249"
+    },
+    "codex:codex-primary-v0-v2-boundary:H010": {
+      "issue_number": 17,
+      "comment_id": 4948675249,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675249"
+    },
+    "codex:codex-primary-v0-v2-boundary:H011": {
+      "issue_number": 17,
+      "comment_id": 4948675249,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675249"
+    },
+    "codex:codex-primary-v0-v2-boundary:H012": {
+      "issue_number": 17,
+      "comment_id": 4948675555,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675555"
+    },
+    "codex:codex-primary-v0-v2-boundary:H013": {
+      "issue_number": 17,
+      "comment_id": 4948675555,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675555"
+    },
+    "codex:codex-primary-v0-v2-boundary:H014": {
+      "issue_number": 17,
+      "comment_id": 4948675765,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675765"
+    },
+    "codex:codex-primary-v0-v2-boundary:H015": {
+      "issue_number": 17,
+      "comment_id": 4948675873,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675873"
+    },
+    "codex:codex-primary-v0-v2-boundary:H016": {
+      "issue_number": 18,
+      "comment_id": 4948675974,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/18#issuecomment-4948675974"
+    },
+    "codex:codex-primary-v0-v2-boundary:H017": {
+      "issue_number": 19,
+      "comment_id": 4948676076,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/19#issuecomment-4948676076"
+    },
+    "codex:codex-primary-v0-v2-boundary:H018": {
+      "issue_number": 19,
+      "comment_id": 4948676076,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/19#issuecomment-4948676076"
+    },
+    "codex:codex-primary-v0-v2-boundary:H019": {
+      "issue_number": 19,
+      "comment_id": 4948676293,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/19#issuecomment-4948676293"
+    },
+    "codex:codex-primary-v0-v2-boundary:H020": {
+      "issue_number": 20,
+      "comment_id": 4948676441,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948676441"
+    },
+    "codex:codex-primary-v0-v2-boundary:H021": {
+      "issue_number": 20,
+      "comment_id": 4948676532,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948676532"
+    },
+    "codex:codex-primary-v0-v2-boundary:H022": {
+      "issue_number": 20,
+      "comment_id": 4948676532,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948676532"
+    },
+    "codex:codex-primary-v0-v2-boundary:H023": {
+      "issue_number": 20,
+      "comment_id": 4948676532,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948676532"
+    },
+    "codex:codex-primary-v0-v2-boundary:H024": {
+      "issue_number": 20,
+      "comment_id": 4948677039,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948677039"
+    },
+    "codex:codex-primary-v0-v2-boundary:H025": {
+      "issue_number": 20,
+      "comment_id": 4948677039,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948677039"
+    },
+    "codex:codex-primary-v0-v2-boundary:H026": {
+      "issue_number": 20,
+      "comment_id": 4948677039,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948677039"
+    },
+    "codex:codex-primary-v0-v2-boundary:H027": {
+      "issue_number": 20,
+      "comment_id": 4948677039,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948677039"
+    },
+    "codex:codex-primary-v0-v2-boundary:H028": {
+      "issue_number": 20,
+      "comment_id": 4948677647,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948677647"
+    },
+    "codex:codex-primary-v0-v2-boundary:H029": {
+      "issue_number": 21,
+      "comment_id": 4948677796,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/21#issuecomment-4948677796"
+    },
+    "codex:codex-primary-v0-v2-boundary:H030": {
+      "issue_number": 21,
+      "comment_id": 4948677928,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/21#issuecomment-4948677928"
+    },
+    "codex:codex-primary-v0-v2-boundary:H031": {
+      "issue_number": 21,
+      "comment_id": 4948677928,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/21#issuecomment-4948677928"
+    },
+    "codex:codex-primary-v0-v2-boundary:H032": {
+      "issue_number": 22,
+      "comment_id": 4948678158,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/22#issuecomment-4948678158"
+    },
+    "codex:codex-primary-v0-v2-boundary:H033": {
+      "issue_number": 22,
+      "comment_id": 4948678271,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/22#issuecomment-4948678271"
+    },
+    "codex:codex-primary-v0-v2-boundary:H034": {
+      "issue_number": 22,
+      "comment_id": 4948678271,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/22#issuecomment-4948678271"
+    },
+    "codex:codex-primary-v0-v2-boundary:H035": {
+      "issue_number": 23,
+      "comment_id": 4948678524,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/23#issuecomment-4948678524"
+    },
+    "codex:codex-primary-v0-v2-boundary:H049": {
+      "issue_number": 23,
+      "comment_id": 4948678650,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/23#issuecomment-4948678650"
+    },
+    "codex:codex-primary-v0-v2-boundary:H036": {
+      "issue_number": 24,
+      "comment_id": 4948678786,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948678786"
+    },
+    "codex:codex-primary-v0-v2-boundary:H037": {
+      "issue_number": 24,
+      "comment_id": 4948678786,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948678786"
+    },
+    "codex:codex-primary-v0-v2-boundary:H038": {
+      "issue_number": 24,
+      "comment_id": 4948679042,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679042"
+    },
+    "codex:codex-primary-v0-v2-boundary:H039": {
+      "issue_number": 24,
+      "comment_id": 4948679042,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679042"
+    },
+    "codex:codex-primary-v0-v2-boundary:H040": {
+      "issue_number": 24,
+      "comment_id": 4948679288,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679288"
+    },
+    "codex:codex-primary-v0-v2-boundary:H041": {
+      "issue_number": 24,
+      "comment_id": 4948679288,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679288"
+    },
+    "codex:codex-primary-v0-v2-boundary:H042": {
+      "issue_number": 24,
+      "comment_id": 4948679501,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679501"
+    },
+    "codex:codex-primary-v0-v2-boundary:H043": {
+      "issue_number": 24,
+      "comment_id": 4948679501,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679501"
+    },
+    "codex:codex-primary-v0-v2-boundary:H044": {
+      "issue_number": 24,
+      "comment_id": 4948679501,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679501"
+    },
+    "codex:codex-primary-v0-v2-boundary:H045": {
+      "issue_number": 24,
+      "comment_id": 4948679824,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679824"
+    },
+    "codex:codex-primary-v0-v2-boundary:H046": {
+      "issue_number": 25,
+      "comment_id": 4948679927,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/25#issuecomment-4948679927"
+    },
+    "codex:codex-primary-v0-v2-boundary:H047": {
+      "issue_number": 25,
+      "comment_id": 4948679927,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/25#issuecomment-4948679927"
+    },
+    "codex:codex-primary-v0-v2-boundary:H048": {
+      "issue_number": 25,
+      "comment_id": 4948680118,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/25#issuecomment-4948680118"
+    },
+    "codex:codex-primary-v0-v2-boundary:H050": {
+      "issue_number": 26,
+      "comment_id": 4948680254,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/26#issuecomment-4948680254"
+    },
+    "codex:codex-primary-v2-v3-handoff:H001": {
+      "issue_number": 27,
+      "comment_id": 4948680473,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/27#issuecomment-4948680473"
+    },
+    "codex:codex-primary-v2-v3-handoff:H002": {
+      "issue_number": 27,
+      "comment_id": 4948680606,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/27#issuecomment-4948680606"
+    },
+    "codex:codex-primary-v2-v3-handoff:H003": {
+      "issue_number": 27,
+      "comment_id": 4948680716,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/27#issuecomment-4948680716"
+    },
+    "codex:codex-primary-v2-v3-handoff:H013": {
+      "issue_number": 28,
+      "comment_id": 4948680841,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/28#issuecomment-4948680841"
+    },
+    "codex:codex-primary-v2-v3-handoff:H024": {
+      "issue_number": 28,
+      "comment_id": 4948680939,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/28#issuecomment-4948680939"
+    },
+    "codex:codex-primary-v2-v3-handoff:H014": {
+      "issue_number": 29,
+      "comment_id": 4948681073,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4948681073"
+    },
+    "codex:codex-primary-v2-v3-handoff:H015": {
+      "issue_number": 29,
+      "comment_id": 4948681073,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4948681073"
+    },
+    "codex:codex-primary-v2-v3-handoff:H016": {
+      "issue_number": 29,
+      "comment_id": 4948681291,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4948681291"
+    },
+    "codex:codex-primary-v2-v3-handoff:H017": {
+      "issue_number": 29,
+      "comment_id": 4948681291,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4948681291"
+    },
+    "codex:codex-primary-v2-v3-handoff:H018": {
+      "issue_number": 29,
+      "comment_id": 4948681291,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4948681291"
+    },
+    "codex:codex-primary-v2-v3-handoff:H019": {
+      "issue_number": 29,
+      "comment_id": 4948681588,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4948681588"
+    },
+    "codex:codex-primary-v2-v3-handoff:H020": {
+      "issue_number": 29,
+      "comment_id": 4948681588,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4948681588"
+    },
+    "codex:codex-primary-v2-v3-handoff:H021": {
+      "issue_number": 30,
+      "comment_id": 4948681774,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/30#issuecomment-4948681774"
+    },
+    "codex:codex-primary-v2-v3-handoff:H022": {
+      "issue_number": 30,
+      "comment_id": 4948681774,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/30#issuecomment-4948681774"
+    },
+    "codex:codex-primary-v2-v3-handoff:H023": {
+      "issue_number": 30,
+      "comment_id": 4948681960,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/30#issuecomment-4948681960"
+    },
+    "codex:codex-primary-v2-v3-handoff:H025": {
+      "issue_number": 31,
+      "comment_id": 4948682069,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682069"
+    },
+    "codex:codex-primary-v2-v3-handoff:H026": {
+      "issue_number": 31,
+      "comment_id": 4948682069,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682069"
+    },
+    "codex:codex-primary-v2-v3-handoff:H027": {
+      "issue_number": 31,
+      "comment_id": 4948682069,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682069"
+    },
+    "codex:codex-primary-v2-v3-handoff:H028": {
+      "issue_number": 31,
+      "comment_id": 4948682069,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682069"
+    },
+    "codex:codex-primary-v2-v3-handoff:H029": {
+      "issue_number": 31,
+      "comment_id": 4948682463,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682463"
+    },
+    "codex:codex-primary-v2-v3-handoff:H030": {
+      "issue_number": 31,
+      "comment_id": 4948682463,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682463"
+    },
+    "codex:codex-primary-v2-v3-handoff:H031": {
+      "issue_number": 31,
+      "comment_id": 4948682637,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682637"
+    },
+    "codex:codex-primary-v2-v3-handoff:H032": {
+      "issue_number": 31,
+      "comment_id": 4948682637,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682637"
+    },
+    "codex:codex-primary-v2-v3-handoff:H004": {
+      "issue_number": 32,
+      "comment_id": 4948682834,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948682834"
+    },
+    "codex:codex-primary-v2-v3-handoff:H005": {
+      "issue_number": 32,
+      "comment_id": 4948682834,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948682834"
+    },
+    "codex:codex-primary-v2-v3-handoff:H006": {
+      "issue_number": 32,
+      "comment_id": 4948682834,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948682834"
+    },
+    "codex:codex-primary-v2-v3-handoff:H007": {
+      "issue_number": 32,
+      "comment_id": 4948682834,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948682834"
+    },
+    "codex:codex-primary-v2-v3-handoff:H008": {
+      "issue_number": 32,
+      "comment_id": 4948683222,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948683222"
+    },
+    "codex:codex-primary-v2-v3-handoff:H009": {
+      "issue_number": 32,
+      "comment_id": 4948683222,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948683222"
+    },
+    "codex:codex-primary-v2-v3-handoff:H010": {
+      "issue_number": 32,
+      "comment_id": 4948683429,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948683429"
+    },
+    "codex:codex-primary-v2-v3-handoff:H011": {
+      "issue_number": 32,
+      "comment_id": 4948683429,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948683429"
+    },
+    "codex:codex-primary-v2-v3-handoff:H012": {
+      "issue_number": 32,
+      "comment_id": 4948683429,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948683429"
+    },
+    "codex:codex-primary-v2-v3-handoff:H033": {
+      "issue_number": 33,
+      "comment_id": 4948683757,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948683757"
+    },
+    "codex:codex-primary-v2-v3-handoff:H034": {
+      "issue_number": 33,
+      "comment_id": 4948683757,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948683757"
+    },
+    "codex:codex-primary-v2-v3-handoff:H035": {
+      "issue_number": 33,
+      "comment_id": 4948683757,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948683757"
+    },
+    "codex:codex-primary-v2-v3-handoff:H036": {
+      "issue_number": 33,
+      "comment_id": 4948684050,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684050"
+    },
+    "codex:codex-primary-v2-v3-handoff:H037": {
+      "issue_number": 33,
+      "comment_id": 4948684050,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684050"
+    },
+    "codex:codex-primary-v2-v3-handoff:H038": {
+      "issue_number": 33,
+      "comment_id": 4948684050,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684050"
+    },
+    "codex:codex-primary-v2-v3-handoff:H039": {
+      "issue_number": 33,
+      "comment_id": 4948684050,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684050"
+    },
+    "codex:codex-primary-v2-v3-handoff:H040": {
+      "issue_number": 33,
+      "comment_id": 4948684422,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684422"
+    },
+    "codex:codex-primary-v2-v3-handoff:H041": {
+      "issue_number": 33,
+      "comment_id": 4948684422,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684422"
+    },
+    "codex:codex-primary-v2-v3-handoff:H042": {
+      "issue_number": 33,
+      "comment_id": 4948684422,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684422"
+    },
+    "codex:codex-primary-v2-v3-handoff:H043": {
+      "issue_number": 33,
+      "comment_id": 4948684422,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684422"
+    },
+    "codex:codex-primary-v2-v3-handoff:H044": {
+      "issue_number": 33,
+      "comment_id": 4948684834,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684834"
+    },
+    "claude_code:claude-primary-v3:H001": {
+      "issue_number": 34,
+      "comment_id": 4948684969,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948684969"
+    },
+    "claude_code:claude-primary-v3:H002": {
+      "issue_number": 34,
+      "comment_id": 4948684969,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948684969"
+    },
+    "claude_code:claude-primary-v3:H003": {
+      "issue_number": 34,
+      "comment_id": 4948685173,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685173"
+    },
+    "claude_code:claude-primary-v3:H004": {
+      "issue_number": 34,
+      "comment_id": 4948685173,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685173"
+    },
+    "claude_code:claude-primary-v3:H005": {
+      "issue_number": 34,
+      "comment_id": 4948685173,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685173"
+    },
+    "claude_code:claude-primary-v3:H006": {
+      "issue_number": 34,
+      "comment_id": 4948685502,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685502"
+    },
+    "claude_code:claude-primary-v3:H007": {
+      "issue_number": 34,
+      "comment_id": 4948685502,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685502"
+    },
+    "claude_code:claude-primary-v3:H008": {
+      "issue_number": 34,
+      "comment_id": 4948685684,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685684"
+    },
+    "claude_code:claude-primary-v3:H009": {
+      "issue_number": 34,
+      "comment_id": 4948685684,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685684"
+    },
+    "claude_code:claude-primary-v3:H010": {
+      "issue_number": 34,
+      "comment_id": 4948685684,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685684"
+    },
+    "claude_code:claude-primary-v3:H011": {
+      "issue_number": 35,
+      "comment_id": 4948686061,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686061"
+    },
+    "claude_code:claude-primary-v3:H012": {
+      "issue_number": 35,
+      "comment_id": 4948686061,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686061"
+    },
+    "claude_code:claude-primary-v3:H013": {
+      "issue_number": 35,
+      "comment_id": 4948686061,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686061"
+    },
+    "claude_code:claude-primary-v3:H014": {
+      "issue_number": 35,
+      "comment_id": 4948686061,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686061"
+    },
+    "claude_code:claude-primary-v3:H015": {
+      "issue_number": 35,
+      "comment_id": 4948686061,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686061"
+    },
+    "claude_code:claude-primary-v3:H016": {
+      "issue_number": 35,
+      "comment_id": 4948686504,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686504"
+    },
+    "claude_code:claude-primary-v3:H017": {
+      "issue_number": 35,
+      "comment_id": 4948686504,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686504"
+    },
+    "claude_code:claude-primary-v3:H018": {
+      "issue_number": 35,
+      "comment_id": 4948686504,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686504"
+    },
+    "claude_code:claude-primary-v3:H019": {
+      "issue_number": 35,
+      "comment_id": 4948686799,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686799"
+    },
+    "claude_code:claude-primary-v3:H020": {
+      "issue_number": 35,
+      "comment_id": 4948686799,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686799"
+    },
+    "claude_code:claude-primary-v3:H021": {
+      "issue_number": 36,
+      "comment_id": 4948686992,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4948686992"
+    },
+    "claude_code:claude-primary-v3:H022": {
+      "issue_number": 36,
+      "comment_id": 4948686992,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4948686992"
+    },
+    "claude_code:claude-primary-v3:H023": {
+      "issue_number": 36,
+      "comment_id": 4948686992,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4948686992"
+    },
+    "claude_code:claude-primary-v3:H024": {
+      "issue_number": 36,
+      "comment_id": 4948687340,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4948687340"
+    },
+    "claude_code:claude-primary-v3:H025": {
+      "issue_number": 36,
+      "comment_id": 4948687340,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4948687340"
+    },
+    "claude_code:claude-primary-v3:H026": {
+      "issue_number": 36,
+      "comment_id": 4948687515,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4948687515"
+    },
+    "claude_code:claude-primary-v3:H027": {
+      "issue_number": 36,
+      "comment_id": 4948687515,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4948687515"
+    },
+    "claude_code:claude-primary-v3:H028": {
+      "issue_number": 37,
+      "comment_id": 4948687694,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4948687694"
+    },
+    "claude_code:claude-primary-v3:H029": {
+      "issue_number": 37,
+      "comment_id": 4948687694,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4948687694"
+    },
+    "claude_code:claude-primary-v3:H030": {
+      "issue_number": 37,
+      "comment_id": 4948687694,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4948687694"
+    },
+    "claude_code:claude-primary-v3:H031": {
+      "issue_number": 37,
+      "comment_id": 4948687972,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4948687972"
+    },
+    "claude_code:claude-primary-v3:H032": {
+      "issue_number": 37,
+      "comment_id": 4948687972,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4948687972"
+    },
+    "claude_code:claude-primary-v3:H033": {
+      "issue_number": 37,
+      "comment_id": 4948688163,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4948688163"
+    },
+    "claude_code:claude-primary-v3:H034": {
+      "issue_number": 37,
+      "comment_id": 4948688163,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4948688163"
+    },
+    "claude_code:claude-primary-v3:H035": {
+      "issue_number": 38,
+      "comment_id": 4948688367,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4948688367"
+    },
+    "claude_code:claude-primary-v3:H036": {
+      "issue_number": 38,
+      "comment_id": 4948688367,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4948688367"
+    },
+    "claude_code:claude-primary-v3:H037": {
+      "issue_number": 38,
+      "comment_id": 4948688551,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4948688551"
+    },
+    "claude_code:claude-primary-v3:H038": {
+      "issue_number": 38,
+      "comment_id": 4948688551,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4948688551"
+    },
+    "claude_code:claude-primary-v3:H039": {
+      "issue_number": 38,
+      "comment_id": 4948688756,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4948688756"
+    },
+    "claude_code:claude-primary-v3:H040": {
+      "issue_number": 38,
+      "comment_id": 4948688756,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4948688756"
+    },
+    "claude_code:claude-primary-v3:H041": {
+      "issue_number": 39,
+      "comment_id": 4948688987,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948688987"
+    },
+    "claude_code:claude-primary-v3:H042": {
+      "issue_number": 39,
+      "comment_id": 4948688987,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948688987"
+    },
+    "claude_code:claude-primary-v3:H043": {
+      "issue_number": 39,
+      "comment_id": 4948688987,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948688987"
+    },
+    "claude_code:claude-primary-v3:H044": {
+      "issue_number": 39,
+      "comment_id": 4948689250,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948689250"
+    },
+    "claude_code:claude-primary-v3:H045": {
+      "issue_number": 39,
+      "comment_id": 4948689250,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948689250"
+    },
+    "claude_code:claude-primary-v3:H046": {
+      "issue_number": 39,
+      "comment_id": 4948689413,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948689413"
+    },
+    "claude_code:claude-primary-v3:H047": {
+      "issue_number": 39,
+      "comment_id": 4948689522,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948689522"
+    },
+    "claude_code:claude-primary-v3:H048": {
+      "issue_number": 39,
+      "comment_id": 4948689522,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948689522"
+    },
+    "claude_code:claude-primary-v3:H049": {
+      "issue_number": 40,
+      "comment_id": 4948689728,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948689728"
+    },
+    "claude_code:claude-primary-v3:H050": {
+      "issue_number": 40,
+      "comment_id": 4948689728,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948689728"
+    },
+    "claude_code:claude-primary-v3:H051": {
+      "issue_number": 40,
+      "comment_id": 4948689728,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948689728"
+    },
+    "claude_code:claude-primary-v3:H052": {
+      "issue_number": 40,
+      "comment_id": 4948689728,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948689728"
+    },
+    "claude_code:claude-primary-v3:H053": {
+      "issue_number": 40,
+      "comment_id": 4948689728,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948689728"
+    },
+    "claude_code:claude-primary-v3:H054": {
+      "issue_number": 40,
+      "comment_id": 4948690275,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948690275"
+    },
+    "claude_code:claude-primary-v3:H055": {
+      "issue_number": 40,
+      "comment_id": 4948690275,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948690275"
+    },
+    "claude_code:claude-primary-v3:H056": {
+      "issue_number": 40,
+      "comment_id": 4948690275,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948690275"
+    },
+    "claude_code:claude-primary-v3:H057": {
+      "issue_number": 40,
+      "comment_id": 4948690563,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948690563"
+    },
+    "claude_code:claude-primary-v3:H058": {
+      "issue_number": 40,
+      "comment_id": 4948690563,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948690563"
+    },
+    "claude_code:claude-primary-v3:H059": {
+      "issue_number": 40,
+      "comment_id": 4948690563,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948690563"
+    },
+    "claude_code:claude-primary-v3:H060": {
+      "issue_number": 41,
+      "comment_id": 4948690867,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948690867"
+    },
+    "claude_code:claude-primary-v3:H061": {
+      "issue_number": 41,
+      "comment_id": 4948690867,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948690867"
+    },
+    "claude_code:claude-primary-v3:H062": {
+      "issue_number": 41,
+      "comment_id": 4948690867,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948690867"
+    },
+    "claude_code:claude-primary-v3:H063": {
+      "issue_number": 41,
+      "comment_id": 4948690867,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948690867"
+    },
+    "claude_code:claude-primary-v3:H064": {
+      "issue_number": 41,
+      "comment_id": 4948690867,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948690867"
+    },
+    "claude_code:claude-primary-v3:H065": {
+      "issue_number": 41,
+      "comment_id": 4948691313,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948691313"
+    },
+    "claude_code:claude-primary-v3:H066": {
+      "issue_number": 41,
+      "comment_id": 4948691313,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948691313"
+    },
+    "claude_code:claude-primary-v3:H067": {
+      "issue_number": 41,
+      "comment_id": 4948691313,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948691313"
+    },
+    "claude_code:claude-primary-v3:H068": {
+      "issue_number": 41,
+      "comment_id": 4948691608,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948691608"
+    },
+    "claude_code:claude-primary-v3:H069": {
+      "issue_number": 41,
+      "comment_id": 4948691608,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948691608"
+    },
+    "claude_code:claude-primary-v3:H070": {
+      "issue_number": 41,
+      "comment_id": 4948691608,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948691608"
+    },
+    "claude_code:claude-primary-v3:H071": {
+      "issue_number": 41,
+      "comment_id": 4948691608,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948691608"
+    },
+    "claude_code:claude-primary-v3:H072": {
+      "issue_number": 42,
+      "comment_id": 4948692012,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692012"
+    },
+    "claude_code:claude-primary-v3:H073": {
+      "issue_number": 42,
+      "comment_id": 4948692012,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692012"
+    },
+    "claude_code:claude-primary-v3:H074": {
+      "issue_number": 42,
+      "comment_id": 4948692012,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692012"
+    },
+    "claude_code:claude-primary-v3:H075": {
+      "issue_number": 42,
+      "comment_id": 4948692359,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692359"
+    },
+    "claude_code:claude-primary-v3:H076": {
+      "issue_number": 42,
+      "comment_id": 4948692359,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692359"
+    },
+    "claude_code:claude-primary-v3:H077": {
+      "issue_number": 42,
+      "comment_id": 4948692359,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692359"
+    },
+    "claude_code:claude-primary-v3:H078": {
+      "issue_number": 42,
+      "comment_id": 4948692649,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692649"
+    },
+    "claude_code:claude-primary-v3:H079": {
+      "issue_number": 42,
+      "comment_id": 4948692649,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692649"
+    },
+    "claude_code:claude-primary-v3:H080": {
+      "issue_number": 42,
+      "comment_id": 4948692649,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692649"
+    },
+    "claude_code:claude-primary-v3:H081": {
+      "issue_number": 42,
+      "comment_id": 4948692649,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692649"
+    },
+    "codex:codex-v3-query-probes:H001": {
+      "issue_number": 43,
+      "comment_id": 4948693211,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4948693211"
+    },
+    "codex:codex-v3-query-probes:H002": {
+      "issue_number": 43,
+      "comment_id": 4948693211,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4948693211"
+    },
+    "codex:codex-v3-query-probes:H003": {
+      "issue_number": 43,
+      "comment_id": 4948693211,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4948693211"
+    },
+    "codex:codex-v3-query-probes:H004": {
+      "issue_number": 43,
+      "comment_id": 4948693532,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4948693532"
+    },
+    "codex:codex-v3-query-probes:H005": {
+      "issue_number": 43,
+      "comment_id": 4948693532,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4948693532"
+    },
+    "codex:codex-v3-query-probes:H006": {
+      "issue_number": 43,
+      "comment_id": 4948693726,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4948693726"
+    },
+    "codex:codex-retro-v3-practice:H001": {
+      "issue_number": 44,
+      "comment_id": 4948693826,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948693826"
+    },
+    "codex:codex-retro-v3-practice:H002": {
+      "issue_number": 44,
+      "comment_id": 4948693826,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948693826"
+    },
+    "codex:codex-retro-v3-practice:H003": {
+      "issue_number": 44,
+      "comment_id": 4948693826,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948693826"
+    },
+    "codex:codex-retro-v3-practice:H004": {
+      "issue_number": 44,
+      "comment_id": 4948693826,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948693826"
+    },
+    "codex:codex-retro-v3-practice:H005": {
+      "issue_number": 44,
+      "comment_id": 4948693826,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948693826"
+    },
+    "codex:codex-retro-v3-practice:H006": {
+      "issue_number": 44,
+      "comment_id": 4948693826,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948693826"
+    },
+    "codex:codex-retro-v3-practice:H007": {
+      "issue_number": 44,
+      "comment_id": 4948693826,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948693826"
+    },
+    "codex:codex-retro-v3-practice:H008": {
+      "issue_number": 44,
+      "comment_id": 4948694596,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948694596"
+    },
+    "codex:codex-retro-v3-practice:H009": {
+      "issue_number": 44,
+      "comment_id": 4948694700,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948694700"
+    },
+    "codex:codex-retro-v3-practice:H010": {
+      "issue_number": 44,
+      "comment_id": 4948694700,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948694700"
+    },
+    "codex:codex-retro-v3-practice:H011": {
+      "issue_number": 44,
+      "comment_id": 4948694700,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948694700"
+    },
+    "codex:codex-retro-v3-practice:H012": {
+      "issue_number": 44,
+      "comment_id": 4948694700,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948694700"
+    },
+    "codex:codex-retro-v3-practice:H013": {
+      "issue_number": 44,
+      "comment_id": 4948694700,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948694700"
+    },
+    "codex:codex-retro-v3-practice:H014": {
+      "issue_number": 44,
+      "comment_id": 4948695245,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+    },
+    "codex:codex-retro-v3-practice:H015": {
+      "issue_number": 44,
+      "comment_id": 4948695245,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+    },
+    "codex:codex-retro-v3-practice:H016": {
+      "issue_number": 44,
+      "comment_id": 4948695245,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+    },
+    "codex:codex-retro-v3-practice:H017": {
+      "issue_number": 44,
+      "comment_id": 4948695245,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+    },
+    "codex:codex-retro-v3-practice:H018": {
+      "issue_number": 44,
+      "comment_id": 4948695245,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+    },
+    "codex:codex-retro-v3-practice:H019": {
+      "issue_number": 44,
+      "comment_id": 4948695245,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+    },
+    "codex:codex-retro-v3-practice:H020": {
+      "issue_number": 44,
+      "comment_id": 4948695245,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+    },
+    "codex:codex-retro-v3-practice:H021": {
+      "issue_number": 44,
+      "comment_id": 4948695245,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+    },
+    "codex:codex-retro-v3-practice:H022": {
+      "issue_number": 44,
+      "comment_id": 4948695245,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+    },
+    "codex:codex-retro-v3-practice:H023": {
+      "issue_number": 44,
+      "comment_id": 4948695245,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+    },
+    "claude_code:claude-v3-narrative-design:H001": {
+      "issue_number": 45,
+      "comment_id": 4948696314,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948696314"
+    },
+    "claude_code:claude-v3-narrative-design:H002": {
+      "issue_number": 45,
+      "comment_id": 4948696314,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948696314"
+    },
+    "claude_code:claude-v3-narrative-design:H003": {
+      "issue_number": 45,
+      "comment_id": 4948696314,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948696314"
+    },
+    "claude_code:claude-v3-narrative-design:H004": {
+      "issue_number": 45,
+      "comment_id": 4948696675,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948696675"
+    },
+    "claude_code:claude-v3-narrative-design:H005": {
+      "issue_number": 45,
+      "comment_id": 4948696675,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948696675"
+    },
+    "claude_code:claude-v3-narrative-design:H006": {
+      "issue_number": 45,
+      "comment_id": 4948696675,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948696675"
+    },
+    "claude_code:claude-v3-narrative-design:H007": {
+      "issue_number": 45,
+      "comment_id": 4948696978,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948696978"
+    },
+    "claude_code:claude-v3-narrative-design:H008": {
+      "issue_number": 45,
+      "comment_id": 4948697088,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948697088"
+    },
+    "claude_code:claude-v3-narrative-design:H009": {
+      "issue_number": 45,
+      "comment_id": 4948697088,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948697088"
+    },
+    "claude_code:claude-v3-narrative-design:H010": {
+      "issue_number": 46,
+      "comment_id": 4948697317,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697317"
+    },
+    "claude_code:claude-v3-narrative-design:H011": {
+      "issue_number": 46,
+      "comment_id": 4948697317,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697317"
+    },
+    "claude_code:claude-v3-narrative-design:H012": {
+      "issue_number": 46,
+      "comment_id": 4948697517,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697517"
+    },
+    "claude_code:claude-v3-narrative-design:H013": {
+      "issue_number": 46,
+      "comment_id": 4948697517,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697517"
+    },
+    "claude_code:claude-v3-narrative-design:H014": {
+      "issue_number": 46,
+      "comment_id": 4948697726,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697726"
+    },
+    "claude_code:claude-v3-narrative-design:H015": {
+      "issue_number": 46,
+      "comment_id": 4948697726,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697726"
+    },
+    "claude_code:claude-v3-narrative-design:H016": {
+      "issue_number": 46,
+      "comment_id": 4948697726,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697726"
+    },
+    "claude_code:claude-v3-narrative-design:H017": {
+      "issue_number": 46,
+      "comment_id": 4948697726,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697726"
+    },
+    "claude_code:claude-v3-narrative-design:H018": {
+      "issue_number": 46,
+      "comment_id": 4948698156,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948698156"
+    },
+    "claude_code:claude-v3-narrative-design:H019": {
+      "issue_number": 46,
+      "comment_id": 4948698156,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948698156"
+    },
+    "codex:codex-v3-presentation-render:H001": {
+      "issue_number": 47,
+      "comment_id": 4948698371,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/47#issuecomment-4948698371"
+    },
+    "codex:codex-v3-presentation-render:H002": {
+      "issue_number": 47,
+      "comment_id": 4948698463,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/47#issuecomment-4948698463"
+    },
+    "claude_code:claude-v4-agent-effort-setup:H001": {
+      "issue_number": 48,
+      "comment_id": 4948698557,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/48#issuecomment-4948698557"
+    },
+    "claude_code:claude-v4-agent-effort-setup:H002": {
+      "issue_number": 48,
+      "comment_id": 4948698557,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/48#issuecomment-4948698557"
+    },
+    "claude_code:claude-v4-agent-effort-setup:H003": {
+      "issue_number": 48,
+      "comment_id": 4948698557,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/48#issuecomment-4948698557"
+    },
+    "claude_code:claude-v4-agent-effort-setup:H004": {
+      "issue_number": 48,
+      "comment_id": 4948698887,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/48#issuecomment-4948698887"
+    },
+    "claude_code:claude-primary-v4:H001": {
+      "issue_number": 49,
+      "comment_id": 4948699003,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699003"
+    },
+    "claude_code:claude-primary-v4:H002": {
+      "issue_number": 49,
+      "comment_id": 4948699003,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699003"
+    },
+    "claude_code:claude-primary-v4:H003": {
+      "issue_number": 49,
+      "comment_id": 4948699003,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699003"
+    },
+    "claude_code:claude-primary-v4:H004": {
+      "issue_number": 49,
+      "comment_id": 4948699350,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699350"
+    },
+    "claude_code:claude-primary-v4:H005": {
+      "issue_number": 49,
+      "comment_id": 4948699350,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699350"
+    },
+    "claude_code:claude-primary-v4:H006": {
+      "issue_number": 49,
+      "comment_id": 4948699350,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699350"
+    },
+    "claude_code:claude-primary-v4:H007": {
+      "issue_number": 49,
+      "comment_id": 4948699350,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699350"
+    },
+    "claude_code:claude-primary-v4:H008": {
+      "issue_number": 49,
+      "comment_id": 4948699350,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699350"
+    },
+    "claude_code:claude-primary-v4:H009": {
+      "issue_number": 49,
+      "comment_id": 4948699350,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699350"
+    },
+    "claude_code:claude-primary-v4:H010": {
+      "issue_number": 49,
+      "comment_id": 4948700012,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948700012"
+    },
+    "claude_code:claude-primary-v4:H011": {
+      "issue_number": 49,
+      "comment_id": 4948700110,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948700110"
+    },
+    "claude_code:claude-primary-v4:H012": {
+      "issue_number": 50,
+      "comment_id": 4948700266,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/50#issuecomment-4948700266"
+    },
+    "claude_code:claude-primary-v4:H013": {
+      "issue_number": 50,
+      "comment_id": 4948700266,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/50#issuecomment-4948700266"
+    },
+    "claude_code:claude-primary-v4:H014": {
+      "issue_number": 50,
+      "comment_id": 4948700506,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/50#issuecomment-4948700506"
+    },
+    "claude_code:claude-primary-v4:H015": {
+      "issue_number": 50,
+      "comment_id": 4948700506,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/50#issuecomment-4948700506"
+    },
+    "claude_code:claude-primary-v4:H016": {
+      "issue_number": 50,
+      "comment_id": 4948700770,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/50#issuecomment-4948700770"
+    },
+    "claude_code:claude-primary-v4:H017": {
+      "issue_number": 51,
+      "comment_id": 4948700948,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/51#issuecomment-4948700948"
+    },
+    "claude_code:claude-primary-v4:H018": {
+      "issue_number": 51,
+      "comment_id": 4948700948,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/51#issuecomment-4948700948"
+    },
+    "claude_code:claude-primary-v4:H035": {
+      "issue_number": 51,
+      "comment_id": 4948701230,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/51#issuecomment-4948701230"
+    },
+    "claude_code:claude-primary-v4:H036": {
+      "issue_number": 51,
+      "comment_id": 4948701230,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/51#issuecomment-4948701230"
+    },
+    "claude_code:claude-primary-v4:H037": {
+      "issue_number": 51,
+      "comment_id": 4948701472,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/51#issuecomment-4948701472"
+    },
+    "claude_code:claude-primary-v4:H019": {
+      "issue_number": 52,
+      "comment_id": 4948701602,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948701602"
+    },
+    "claude_code:claude-primary-v4:H020": {
+      "issue_number": 52,
+      "comment_id": 4948701602,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948701602"
+    },
+    "claude_code:claude-primary-v4:H021": {
+      "issue_number": 52,
+      "comment_id": 4948701837,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948701837"
+    },
+    "claude_code:claude-primary-v4:H022": {
+      "issue_number": 52,
+      "comment_id": 4948701837,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948701837"
+    },
+    "claude_code:claude-primary-v4:H023": {
+      "issue_number": 52,
+      "comment_id": 4948701837,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948701837"
+    },
+    "claude_code:claude-primary-v4:H024": {
+      "issue_number": 52,
+      "comment_id": 4948701837,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948701837"
+    },
+    "claude_code:claude-primary-v4:H025": {
+      "issue_number": 52,
+      "comment_id": 4948701837,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948701837"
+    },
+    "claude_code:claude-primary-v4:H026": {
+      "issue_number": 52,
+      "comment_id": 4948702362,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948702362"
+    },
+    "claude_code:claude-primary-v4:H027": {
+      "issue_number": 52,
+      "comment_id": 4948702362,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948702362"
+    },
+    "claude_code:claude-primary-v4:H028": {
+      "issue_number": 52,
+      "comment_id": 4948702362,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948702362"
+    },
+    "claude_code:claude-primary-v4:H029": {
+      "issue_number": 52,
+      "comment_id": 4948702667,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948702667"
+    },
+    "claude_code:claude-primary-v4:H030": {
+      "issue_number": 52,
+      "comment_id": 4948702667,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948702667"
+    },
+    "claude_code:claude-primary-v4:H031": {
+      "issue_number": 52,
+      "comment_id": 4948702667,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948702667"
+    },
+    "claude_code:claude-primary-v4:H032": {
+      "issue_number": 53,
+      "comment_id": 4948703017,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703017"
+    },
+    "claude_code:claude-primary-v4:H033": {
+      "issue_number": 53,
+      "comment_id": 4948703017,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703017"
+    },
+    "claude_code:claude-primary-v4:H034": {
+      "issue_number": 53,
+      "comment_id": 4948703017,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703017"
+    },
+    "claude_code:claude-primary-v4:H038": {
+      "issue_number": 53,
+      "comment_id": 4948703370,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703370"
+    },
+    "claude_code:claude-primary-v4:H039": {
+      "issue_number": 53,
+      "comment_id": 4948703370,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703370"
+    },
+    "claude_code:claude-primary-v4:H040": {
+      "issue_number": 53,
+      "comment_id": 4948703370,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703370"
+    },
+    "claude_code:claude-primary-v4:H041": {
+      "issue_number": 53,
+      "comment_id": 4948703781,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703781"
+    },
+    "claude_code:claude-primary-v4:H042": {
+      "issue_number": 53,
+      "comment_id": 4948703781,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703781"
+    },
+    "claude_code:claude-primary-v4:H043": {
+      "issue_number": 53,
+      "comment_id": 4948703781,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703781"
+    },
+    "claude_code:claude-primary-v4:H044": {
+      "issue_number": 53,
+      "comment_id": 4948704161,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948704161"
+    },
+    "claude_code:claude-primary-v4:H045": {
+      "issue_number": 54,
+      "comment_id": 4948704341,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948704341"
+    },
+    "claude_code:claude-primary-v4:H046": {
+      "issue_number": 54,
+      "comment_id": 4948704341,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948704341"
+    },
+    "claude_code:claude-primary-v4:H047": {
+      "issue_number": 54,
+      "comment_id": 4948704600,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948704600"
+    },
+    "claude_code:claude-primary-v4:H048": {
+      "issue_number": 54,
+      "comment_id": 4948704600,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948704600"
+    },
+    "claude_code:claude-primary-v4:H049": {
+      "issue_number": 54,
+      "comment_id": 4948704866,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948704866"
+    },
+    "claude_code:claude-primary-v4:H050": {
+      "issue_number": 54,
+      "comment_id": 4948704866,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948704866"
+    },
+    "claude_code:claude-primary-v4:H051": {
+      "issue_number": 54,
+      "comment_id": 4948704866,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948704866"
+    },
+    "claude_code:claude-primary-v4:H052": {
+      "issue_number": 54,
+      "comment_id": 4948705219,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948705219"
+    },
+    "claude_code:claude-primary-v4:H053": {
+      "issue_number": 54,
+      "comment_id": 4948705219,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948705219"
+    },
+    "claude_code:claude-primary-v4:H054": {
+      "issue_number": 55,
+      "comment_id": 4948705452,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/55#issuecomment-4948705452"
+    },
+    "claude_code:claude-primary-v4:H055": {
+      "issue_number": 55,
+      "comment_id": 4948705452,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/55#issuecomment-4948705452"
+    },
+    "claude_code:claude-primary-v4:H056": {
+      "issue_number": 55,
+      "comment_id": 4948705683,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/55#issuecomment-4948705683"
+    },
+    "claude_code:claude-primary-v4:H057": {
+      "issue_number": 55,
+      "comment_id": 4948705761,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/55#issuecomment-4948705761"
+    },
+    "claude_code:claude-primary-v4:H058": {
+      "issue_number": 55,
+      "comment_id": 4948705761,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/55#issuecomment-4948705761"
+    },
+    "claude_code:claude-primary-v4:H059": {
+      "issue_number": 56,
+      "comment_id": 4948705999,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/56#issuecomment-4948705999"
+    },
+    "claude_code:claude-primary-v5:H001": {
+      "issue_number": 57,
+      "comment_id": 4948706143,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/57#issuecomment-4948706143"
+    },
+    "claude_code:claude-primary-v5:H002": {
+      "issue_number": 57,
+      "comment_id": 4948706143,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/57#issuecomment-4948706143"
+    },
+    "claude_code:claude-primary-v5:H003": {
+      "issue_number": 58,
+      "comment_id": 4948706363,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/58#issuecomment-4948706363"
+    },
+    "claude_code:claude-primary-v5:H004": {
+      "issue_number": 58,
+      "comment_id": 4948706461,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/58#issuecomment-4948706461"
+    },
+    "claude_code:claude-primary-v5:H005": {
+      "issue_number": 58,
+      "comment_id": 4948706571,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/58#issuecomment-4948706571"
+    },
+    "claude_code:claude-primary-v5:H006": {
+      "issue_number": 58,
+      "comment_id": 4948706571,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/58#issuecomment-4948706571"
+    },
+    "claude_code:claude-primary-v5:H008": {
+      "issue_number": 59,
+      "comment_id": 4948706806,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948706806"
+    },
+    "claude_code:claude-primary-v5:H009": {
+      "issue_number": 59,
+      "comment_id": 4948706806,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948706806"
+    },
+    "claude_code:claude-primary-v5:H010": {
+      "issue_number": 59,
+      "comment_id": 4948707022,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707022"
+    },
+    "claude_code:claude-primary-v5:H011": {
+      "issue_number": 59,
+      "comment_id": 4948707022,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707022"
+    },
+    "claude_code:claude-primary-v5:H012": {
+      "issue_number": 59,
+      "comment_id": 4948707225,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707225"
+    },
+    "claude_code:claude-primary-v5:H013": {
+      "issue_number": 59,
+      "comment_id": 4948707225,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707225"
+    },
+    "claude_code:claude-primary-v5:H014": {
+      "issue_number": 59,
+      "comment_id": 4948707426,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707426"
+    },
+    "claude_code:claude-primary-v5:H015": {
+      "issue_number": 59,
+      "comment_id": 4948707426,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707426"
+    },
+    "claude_code:claude-primary-v5:H016": {
+      "issue_number": 59,
+      "comment_id": 4948707426,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707426"
+    },
+    "codex:codex-retro-v4-v5-research:H001": {
+      "issue_number": 59,
+      "comment_id": 4948707823,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707823"
+    },
+    "claude_code:claude-primary-v5:H017": {
+      "issue_number": 60,
+      "comment_id": 4948707941,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/60#issuecomment-4948707941"
+    },
+    "claude_code:claude-primary-v5:H018": {
+      "issue_number": 60,
+      "comment_id": 4948707941,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/60#issuecomment-4948707941"
+    },
+    "claude_code:claude-primary-v5:H019": {
+      "issue_number": 60,
+      "comment_id": 4948708147,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/60#issuecomment-4948708147"
+    },
+    "claude_code:claude-primary-v5:H020": {
+      "issue_number": 60,
+      "comment_id": 4948708244,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/60#issuecomment-4948708244"
+    },
+    "codex:codex-post-v5-repo-publish:H001": {
+      "issue_number": 61,
+      "comment_id": 4948708360,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/61#issuecomment-4948708360"
+    },
+    "claude_code:claude-primary-v5:H007": {
+      "issue_number": 61,
+      "comment_id": 4948708462,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/61#issuecomment-4948708462"
+    }
+  },
+  "coverage": {
+    "expected_events": 324,
+    "mapped_events": 324,
+    "published_events": 324
+  }
+}

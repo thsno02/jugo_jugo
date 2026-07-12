@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v4-source-routing-and-preprocessing",
+      "issue_number": 54,
+      "desired_state": "open",
+      "state_rationale": "webpage 与 TeX 路径已纠正，但 repo2doc 仍待设计和验证",
+      "episodes": [
+        {
+          "episode_title": "20 个 repo 只产出 15 张卡，问题从数量不足转向缺少 repo2doc",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H045",
+            "claude_code:claude-primary-v4:H046"
+          ],
+          "body": "### 20 个 repo 只产出 15 张卡，问题从数量不足转向缺少 repo2doc\n\n最初看到的是一个产出异常：20 个 repo 最后只有 15 张新卡。检查后才发现，这 15 张其实只来自 `graphrag` 和 `nvk-llm-wiki` 两个 repo，另外 18 个根本没有处理。因此这一步没有解决所谓的“20 repo gap”，只是未经确认地做了一个 partial fix；如果仍把它报告成已修复，就会把 2/20 与 20/20 的范围差异藏掉。\n\n用户随后把问题从“为什么数量少”推进到了“为什么这种处理方式本身不对”：代码文件直接拼成 bundle，只能展示 demo 路径，却不足以解释架构、接口、配置和实现模式。由此形成的工作假设是，repo 不能直接进入 `doc2card`，而要先经过 `repo2doc` 生成有结构的技术文档，再让 questioning / `doc2card` 消化。这个判断解释了低产出的原因，也把 repo 后续处理从补数量改成了补中间语义层。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n1. > 为什么 20 个 repo 才产出 15 张新卡，这里的问题是什么？\n\n2. > 生成 bundle 这里应该是有问题的。但我知道这个问题在哪里了。代码本身的语义不够充分，同时缺乏中间渠道。因此 repo2doc 应该是要先做的。然后才是 doc2card，这样才是对的。bundle 的处理单纯是一个 demo 产物，不是我的最终预期。\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H045 claude_code:claude-primary-v4:H046 -->"
+        },
+        {
+          "episode_title": "text.txt 暴露了统一 fallback：TeX、网页和 repo 需要不同阅读面",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H047",
+            "claude_code:claude-primary-v4:H048"
+          ],
+          "body": "### text.txt 暴露了统一 fallback：TeX、网页和 repo 需要不同阅读面\n\n接着出现的疑点不是抽取模型，而是 raw data 里反复出现的 `text.txt`。检查实际文件后确认，TeX 和 text 并不是一回事：arXiv 目录里的 `text.txt` 是网页纯文本，真实论文在解压后的 TeX 源和 `agent_source_bundle` 中；webpage 的同名文件则是 HTML 剥标签后的文本。相同文件名把不同来源、不同生成过程和不同质量混在了一起。\n\n用户进一步追问“为什么要多此一举”，迫使设计动机接受审计。当时的回答是：此前继承了既有 collection 结构，却没有核验 `pipeline_spec` 把 `text.txt` 当统一 boundary read 的假设。也就是说，并不存在“TeX 必须先转 TXT”的合理要求；当时理解错了，把方便统一读取误当成了适合所有来源的阅读面。修正后的流程应按来源分流：论文保留 TeX 或完整 bundle，网页从 HTML 生成可读 Markdown，repo 先做 `repo2doc`，再统一进入卡片抽取。\n\n```mermaid\nflowchart LR\n    S[Raw source] --> T{source type}\n    T -->|Paper| P[TeX / complete bundle]\n    T -->|Webpage| W[HTML to Markdown]\n    T -->|Repository| R[repo2doc]\n    P --> C[questioning / doc2card]\n    W --> C\n    R --> C\n```\n\n这里的关键顺序是先得到该来源可读、结构仍在的中间表示，再做知识抽取；统一 `text.txt` 只统一了文件名，没有统一语义质量。下一步因此不应继续修补 TXT，而应审计整条 data collection pipeline。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n1. > 我很疑惑的是，为什么是 text.txt 的形式，这个出现了很多次，唯一和这个接近的是，我说过下载的是 tex。难道 tex 和 text 是一样的吗？难道 raw data 里面都是 txt 不是 tex 吗？\n\n2. > pipeline 里面明显有问题吧。期望是直接消化 tex 文件了，但是似乎没有 tex 解压缩然后直接阅读文本这一步？所以 pipeline 这里有明确的问题，这个 txt 是明确的错误。为什么要多此一举呢？你在设计的时候，背后的 motivation 是什么？\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H047 claude_code:claude-primary-v4:H048 -->"
+        },
+        {
+          "episode_title": "全链路审计后收敛执行范围：先修路由、坏 bundle 和死源",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H049",
+            "claude_code:claude-primary-v4:H050",
+            "claude_code:claude-primary-v4:H051"
+          ],
+          "body": "### 全链路审计后收敛执行范围：先修路由、坏 bundle 和死源\n\n确认统一 TXT fallback 有问题后，用户没有直接指定一个局部补丁，而是要求先让 agent team 讨论 pipeline、设计审计方法，再按 topic 调 workflow 审计并提出修复计划。三阶段 workflow 随后检查了 `fetch_sources` 和 `data/raw`：74 个来源中约 44 个已有可靠阅读面，剩余问题分布在 source routing、repo 预处理、Reddit / PDF 补抓和 HTML-to-Markdown，而不是一个转换脚本就能全部解决。审计结果落在 `loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits/data_collection_fix_plan.md`。\n\n计划形成后，用户主动收窄了不可确定部分：Reddit 只做有限尝试；repo 先保留，因为 `repo2doc` 可能需要评估 git2wiki 一类现成项目，具体处理思路还没有定。于是可立即执行的范围变成 source routing、`arxiv-ragas` bundle 重建、死源标记和有限 Reddit 重抓。\n\n用户确认执行后，3 个死源被标记，受 ACL bibliography 污染的 bundle 从约 46MB 重建到约 46KB。Reddit JSON、old Reddit 和其他公开端点都返回 403；确认缺少 OAuth2 后没有继续硬闯。这个结果解决了已知坏 bundle 和死源问题，也明确留下两个未完成项：repo2doc 仍待设计，webpage 阅读面仍待增强。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n1. > oh，这也是我的疏忽。invoke an agent team to discuss the data collection pipeline in the repo => determine how to audit it => call workflow to audit the data collection pipleline per topic => propse a plan to fix the issues.\n\n2. > reddit 尝试一下就行。repo2doc 这个，有现成的开源项目，如果我没有记错的话，git2wiki 还是什么项目。可能 github repo 目前先不处理，这个需要后续构思一下具体的数据处理思路。先保留。\n\n3. > 是的，执行。\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H049 claude_code:claude-primary-v4:H050 claude_code:claude-primary-v4:H051 -->"
+        },
+        {
+          "episode_title": "放弃 Reddit 后全量修复 webpage，Markdown 重提取补回 33 张卡",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H052",
+            "claude_code:claude-primary-v4:H053"
+          ],
+          "body": "### 放弃 Reddit 后全量修复 webpage，Markdown 重提取补回 33 张卡\n\nReddit 的认证门槛已经确认，用户决定不要继续投入，转而指出更直接的可修问题：webpage 明明可以从 HTML 转成 Markdown，没有必要保留“非常地乱，人几乎读不了”的 TXT。助手据此提出只转换、只重提取高损耗来源、全量转换并重提取三种范围；用户选择“全做了”，把这一轮从验证方案推进到完整执行。\n\n执行中使用 `trafilatura` 为 23 个有效 `raw.html` 生成 `markdown.md`，并验证表格结构得到保留；随后对 19 个已有来源做增量 re-extraction，只补此前遗漏的知识。最终 13 个来源新增 33 张卡，6 个来源判断已有覆盖，KB 从约 295 张增至 328 张。这个结果给出了直接证据：阅读面质量会传导到抽取结果；它也没有掩盖边界，repo2doc 仍然留待后续设计。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n1. > reddit 必须要认证是吗？那就不要了。webpage 这个地方，我感觉你自己都能做，你应该能做 webpage to markdown 吧。没必要转 txt 吧。txt 我看了，非常地乱，人几乎读不了。\n\n2. > 全做了。\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H052 claude_code:claude-primary-v4:H053 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v5-information-density-regression",
+      "issue_number": 59,
+      "desired_state": "open",
+      "state_rationale": "退化原因已定位，但治理与选择性重提取尚未完成验证",
+      "episodes": [
+        {
+          "episode_title": "“信息量太少”触发六路 probe，但第一版根因仍停在表层",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H008",
+            "claude_code:claude-primary-v5:H009"
+          ],
+          "body": "### “信息量太少”触发六路 probe，但第一版根因仍停在表层\n\n用户首先给出的不是指标，而是直接阅读感受：v5 的 card 比 v4 “贫乏很多很多”。为避免单一上下文先入为主，助手按要求组织六个独立 probe 和一个 synthesis，分别检查量化差异、提问深度、reframing 损失、prompt、大材料消化和同源卡。综合报告认为 v5 的广度增加、深度下降，可能因为论证层次丢失、追问过早停止、固定产出窗口和引用网络稀疏；报告写入 `loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/kb/audits/v5_info_density_diagnosis.md`。\n\n但“为什么丢失了？”这一追问暴露出第一轮诊断还没有找到执行断点。助手当时把原因归到 skills 没有显式编码论证层次、questioning 提前退出，以及并行处理稀释长上下文，还声称完整 skills 已经传递。这一说法后来被直接检查推翻：完整文件存在，不等于 Workflow agent 在运行时收到了它们。因此本 episode 的结果只是建立了候选解释和审计方向，尚不能作为最终根因。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n1. > 我发现一个问题，需要你开一个 agent team，去思考从哪些方面具体 probe 和审计这个问题，每一个方面都需要有专门的 node 来处理（独立上下文），然后有一个 syn 负责综合，workflow 大概是这样的。问题是：为什么 v5 版本的 card  感觉信息量比 v4 贫乏很多很多。信息量不够啊。或者说有点太少了。\n\n2. > 为什么丢失了？\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H008 claude_code:claude-primary-v5:H009 -->"
+        },
+        {
+          "episode_title": "检查 EXTRACT_PROMPT 后改口：完整 skills 根本没有进入 agent context",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H010",
+            "claude_code:claude-primary-v5:H011"
+          ],
+          "body": "### 检查 EXTRACT_PROMPT 后改口：完整 skills 根本没有进入 agent context\n\n用户没有接受抽象的“并行化导致退化”，而是把问题重新锚定到 ingest raw material 的实际机制：v5 是否仍像 v4 那样读全文、持续 QA，直到问不出问题。直接对照 Workflow 的 `EXTRACT_PROMPT` 与 skills 文件后，助手明确改口。v5 extraction agent 确实读了全文，也做了浅层 QA，但运行时只收到约 50 行骨架；questioning、reader、reframing、reviewer 的完整说明没有注入，Phase 3-4、严格 `SATISFIED` 标准和 quit-audit 因而缺席。问问题机制不是完全消失，而是失去了深挖阶段和退出门槛。\n\n```mermaid\nflowchart LR\n    F[完整 skills 文件存在] -. 未自动注入 .-> A[Workflow agent context]\n    E[约 50 行 EXTRACT_PROMPT] --> A\n    A --> Q[浅层 QA]\n    Q --> O[信息覆盖广但解释不足]\n```\n\n这张图解释了当时真正的断路：检查仓库里“有没有 skill”不能证明执行时“agent 收到了 skill”。也因此，前一轮“skills 已完整传递”的理解是错的。\n\n用户随后追问为什么此前审计没发现，以及是否可能由模型不同造成。助手当时回答 v4、v5 都由 Claude Opus 4.6 执行，并把漏检定位到审计合同：26 个子项主要覆盖格式、引用和图完整性，却没有检查论证深度，也没有验证 questioning 是否真的运行到 Phase 3-4。无论后续模型归因是否还需复核，这一步已经说明“形式门禁全通过”与“内容仍然浅”可以同时发生；下一步应把完整 skills 注入和深度门槛放进可控实验，而不是继续相信原审计分数。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n1. > 等一下，这里说，v5 入库的逻辑有问题是吗？ingest raw material 的 pipeline 出问题了。不是像 v4 一样，单个 agent 读「全文」然后按照一套 pipeline 去做 QA 消化全文，直到问不出问题来？是否问问题的机制也消失了？\n\n2. > oh。理解了。是当前 workflow 设计的问题吗？那为什么之前的审计没有审计出来呢？v4 是 opus 4.6 max 做出来的，v5 是哪个公司的哪个模型做出来的啊/\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H010 claude_code:claude-primary-v5:H011 -->"
+        },
+        {
+          "episode_title": "把失败的 v5 变成 A/B 样本，随后纠正正文统计口径",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H012",
+            "claude_code:claude-primary-v5:H013"
+          ],
+          "body": "### 把失败的 v5 变成 A/B 样本，随后纠正正文统计口径\n\n在 prompt 注入断路被确认后，用户不再把目标设成继续修补现有 v5，而是把它定义为失败样本：重新设计 workflow，先达到 v4，再通过 skill 或其他优化超过 v4。助手据此启动 Analyze → Design → Test，在同一份 `arxiv-memgpt` 材料上比较 v4、原始 v5 和修正版，并生成 `tools/extract_prompt_v2.md` 与实验卡目录。初步结果显示修正版产出 27 张卡、边界条件覆盖 100%，card footnotes 高于 v4，但 src footnotes 仍低于 v4；这只支持“部分维度改善”，还不能宣布全面超过。\n\n随后用户指出一个明显的测量错误：字符统计必须排除 metadata 和 footnote。助手重算纯正文后，v4、原始 v5、v5 实验版平均正文约为 510、1181、614 字，并补充 claim 数和字符/claim 作为代理指标。这个纠正废弃了此前整文件 body 字符口径，也提醒了实验边界：正文长度与自动 claim 数可以帮助比较，但仍不能替代逐卡检查“概念是否真的解释清楚”。下一步正需要一个具体 bad case 来检验。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n1. > 所以其实 v5 已经是一个失败品了，相比 v4。已经不值得在 v5 上面投入了。但是我们可以基于 v5 的失败做实验，通过设计 workflow 让效果至少达到 v4，然后通过优化 skill 后者其它，让效果超过 v4，这样才是继续做实验的目的和初衷。/goal let this happen\n\n2. > 字符要抛开 metadata 和 footnote 才能看啊。这一点很明显的吧。\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H012 claude_code:claude-primary-v5:H013 -->"
+        },
+        {
+          "episode_title": "“四环层级”空壳卡坐实质量问题，修复收敛为治理加选择性重提取",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H014",
+            "claude_code:claude-primary-v5:H015",
+            "claude_code:claude-primary-v5:H016"
+          ],
+          "body": "### “四环层级”空壳卡坐实质量问题，修复收敛为治理加选择性重提取\n\n统计纠正后，用户拿 `agt-four-privilege-ring-execution-sandbox.md` 做了可复核的阅读测试：“四环层级”究竟是什么，为什么既没有解释，也看不到能回答问题的 citation。检查发现卡片其实有一个来源脚注，能证明这个术语来自 README，却没有展开 kernel、supervisor、user、untrusted 四层各自的职责、权限边界和隔离机制。这里的问题因此被说清楚了：citation 解决可追溯性，不自动解决可理解性；有标题、有术语、有脚注，仍可能是一张空壳卡。\n\n用户继续要求找 v4 对应卡。对比结果是，v4 没有把“四特权环”单独建卡，只在上位模块卡中一行提及；v5 却把来源里没有充分展开的一句概括提升成独立卡。由此可见，原子化不是见到新名词就拆卡：当来源证据不足以支撑独立解释时，更合理的处理是把它留在上位概念中。v4 在这个案例上的建卡判断更保守，也更符合独立可读的要求。\n\n在此基础上，用户把问题定性为入库质量差，并询问能否通过治理挽救。助手给出的边界是：治理可以合并空壳卡、补 distinction、把证据不足的独立卡降级，并用已有证据补边界条件；但它不能凭空恢复源中没有的信息，也不能补回 extraction 从未提取的内容。因此可执行方案从“全量重建”收敛为两步：先做治理 pass 识别和合并空壳，再对高价值、低密度且原始材料丰富的来源运行修正版 extraction。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n1. > 我很疑惑：像 <workspace>/loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/drafts/cards/agt-four-privilege-ring-execution-sandbox.md 这种 card。「**四环层级**」究竟是个啥？没有 citation 啊。也没解释。我咋知道呢？\n\n2. > 为什么 v4 能产出符合质量的，v5 这里有点问题？v4 对应的 card 有吗？\n\n3. > 嗯，因此 v4 生产卡的逻辑是对的。这么一说。v5 生产卡的逻辑其实是错的。但 v4 里面也有很多问题，所以花了很多功夫 rebuild，但 v5 本身卡片质量已经很差了。这是入库质量差的问题。那么，有没有可能，我们通过治理，提高卡片的质量呢/\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H014 claude_code:claude-primary-v5:H015 claude_code:claude-primary-v5:H016 -->"
+        },
+        {
+          "episode_title": "事后调研推翻“不同模型”直觉，差异更可能来自管线与 schema",
+          "event_ids": [
+            "codex:codex-retro-v4-v5-research:H001"
+          ],
+          "body": "### 事后调研推翻“不同模型”直觉，差异更可能来自管线与 schema\n\n几天后，用户提出一个新的工作假设：v4 与 v5 风格差异这么大，应该来自不同模型，并要求 main-agent 分阶段调度、sub-agent 隔离上下文完成 probe、方法设计和正式调查。三阶段只读调研确实确认了显著差异：v4 有 328 张卡，v5 有 477 张卡，共同 slug 37 个；v5 更短、更像证据分型的工程笔记，v4 更长、更偏概念论证型知识卡。\n\n但调查没有足够证据把差异归因于不同底层模型。现有记录中的 v5 直接 Opus 约束和 v4 事后 Opus 运行记录都削弱了这一推断，而逐卡模型日志、同源同 prompt 控制实验又缺失。相比之下，v5 新增的 `evidence_basis`、链接策略、source routing、schema 和机械后处理，已经足以解释大部分结构与文体变化。card_type 发散、证据粒度下降和概念边界漂移仍是未完全解释的残差，但不能单独证明模型不同。\n\n因此，事后归因把前面“模型是否不同”的开放问题收紧为：可观察到的是产物风格不同，证据更支持 pipeline、prompt、schema、来源组合和后处理变化；要验证模型效应，仍需要同源、同 prompt 的受控实验。该轮只读完成，没有修改工作区文件。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n1. > 开一个调研大会，深度调研 v4 和 v5 cards 里面的风格，它们应该是来源于不同模型的，给出你的判断依据。main-agent 调度、决策、交互，sub-agent 干活。流程 = 先派一组 sub-agent 对 probe 对比，然后再派一组 sub-agent 来思考，根据现有的信息应该从什么角度来进行正式调研，如果在思考的时候需要干活，可以告诉 main-agent，让 main-agent 开启新的 sub-agent 干完之后再给反馈，最后一步派遣 sub-agent 去落实之前的具体调查工作（注意 context 复杂以及 context isolation）\n\n</details>\n\n<!-- archive-events: codex:codex-retro-v4-v5-research:H001 -->"
+        }
+      ]
+    }
+  ]
+}

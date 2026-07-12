@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0.0",
+  "versions": [
+    {
+      "slug": "v0-changelog",
+      "issue_number": 6,
+      "desired_state": "closed",
+      "state_rationale": "v0 的机制实验、topic drift 与转向 v1 已完成历史交接；ChangeLog 可关闭，关闭不把后续主题生产视为已在 v0 解决。",
+      "body": "这个 tracker 记录 v0 怎样验证 filesystem-backed 知识生产闭环，以及为何在门禁通过后仍必须重置。阅读入口是下方两条版本叙事；具体证据与纠偏保留在链接的子 Issues。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "title": "从可恢复文件系统起步：先验证知识生产闭环，而非知识主题",
+          "body": "v0 的起点不是先写一套 LLM Wiki 内容，而是回答一个更底层的问题：LLM 持续改写知识库时，变化能否被追踪、验证和恢复，而不是反复覆盖 Markdown。工作假设是把知识节点、采用视图、引用图和控制状态都落到 filesystem，以显式 queue 承接 major change 的影响传播；动态检索即使失败，也必须留下失败记录，不能伪装成证据。\n\n实际运行分成两条相互咬合的线：\n\n- 采集线从 45 个 seed sources 起步，38 个成功；论文改成 TeX/source-first，随后以 evidence coverage 而不是下载数量驱动补采，manifest 扩到 72 条。#12 记录了为何 verifier 通过不等于资料够用，以及 satisfaction gate 怎样改为持续消费缺口。\n- 控制线建立 snapshot、decision log、reflection、citation graph、impact queue 和受限网络下的延期规则。#14 说明自治不是让 agent 一直运行，而是让状态、失败与下一步都可恢复。\n- 演示最终形成 7 个 adopted nodes、7 个 KB views、35 条 citation edges，并放入一个未采用的 2.0 candidate 和 4 个开放影响项，结构校验、引用解析、影响计算与状态汇总都能跑通。\n\n所以 v0 确实证明了 production mechanism 可以工作；但此时被验证的是机制的内部一致性，还没有验证机制生产的对象是否就是用户要的 LLM Wiki。\n\n<!-- version-narrative: v0:origin -->"
+        },
+        {
+          "comment_key": "delta",
+          "title": "所有机制门禁通过后，topic drift 暴露对象层失败",
+          "body": "v0 没有上一版可比较，它的第二次转折发生在“看起来已经完成”之后。schema、引用边、adoption、impact queue 和 coverage satisfaction 都通过，系统也能在网络受限时留证并继续离线任务；这些 gate 足以说明闭环能运行，却没有询问一句更外部的问题：卡片到底在解释 LLM Wiki，还是在解释怎样生产一个知识库？\n\n用户检查产物后发现，7 个节点和相关卡片讲的是 node、provenance、validation 与 loop，本应作为生产协议的内容被当成了知识主题。#16 将这个错误定位为 meta/object confusion：初始化计划对机制描述很多，而 `data/` 没有被设为主题证据的主要入口，内部一致性因此掩盖了 subject alignment 失败。\n\n- 通过的 gate 仍然有效：文件化状态、失败来源记录、引用图与恢复入口没有被推翻。\n- 失败的结论必须撤回：数量、图完整和开放队列归零都不能证明“LLM Wiki 已经建成”。\n- 失败产物没有删除或后验美化，而是归档为 demo-0，保留“结构成功、主题失败”的审计价值。\n- active nodes、KB 与 generated view 被重置，`data/` 重新成为主题 evidence input，并新增独立的主题对齐判断。\n\n这次 topic drift 触发 v1：沿用可恢复机制，但把生产对象切回 LLM Wiki 本身。它也留下一个长期警告，任何内部 gate 都只能证明它实际测量的维度，不能替代对目标对象的外部核验。\n\n<!-- version-narrative: v0:delta -->"
+        }
+      ]
+    },
+    {
+      "slug": "v1-changelog",
+      "issue_number": 7,
+      "desired_state": "closed",
+      "state_rationale": "v1 的 hub-first 实验及其向 scoped-card 范式的交接已归档完成；#17 仍承载长期自治与完整交付问题，不阻止历史 tracker 关闭。",
+      "body": "这个 tracker 记录 v1 如何把主题从 meta-KB 拉回 LLM Wiki，又为何在 coverage QA 通过后放弃 hub-first 生产方式。请从下方两条版本叙事进入。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "title": "归档 meta-KB 后重启：八个 topic hubs 建起 LLM Wiki 骨架",
+          "body": "v1 从 v0 的对象错位处重启：保留 filesystem-backed state、provenance、citation graph 和验证门禁，但不再让生产协议充当知识主题。工作假设变成先建立一张可浏览的注意力地图，再由 planner、worker 与 auditor 围绕起源、定义、架构、工作流、RAG 对比、治理风险、实现生态和评估证据八个方向组织材料。\n\n实际运行并非一次顺畅的自治 loop。#17 记录了 planner 从静态 topic list 改为读取 sources 与 coverage 后再规划，也记录了两次边界纠正：只初始化 15 个 skills 不等于交付 KB；main-agent 亲自 source mining 也不等于自治，具体生产必须回到有界 worker。这个委派链路跑通了首轮，但长期无人值守、来源覆盖与完整 KB 交付并未因此被证明。\n\n- 8 个主题节点和 8 个 KB views 被采用，形成 185 条 citation edges，`impact_queue_open=0`。\n- coverage framework、evidence matrix、source gap review 与主题规划共同支撑综合型页面。\n- #18 把 References 在前、Footnotes 作为最后 section 写进 generation 与 audit 的硬合同，避免渲染修复依赖人工记忆。\n- 当时的节点、卡片、脚注布局和主题覆盖门禁全部通过。\n\nv1 因而建立了真正关于 LLM Wiki 的可读骨架；它验证的是 top-down landscape 能快速成形，还没有证明这种骨架就是合适的知识生产单元。\n\n<!-- version-narrative: v1:origin -->"
+        },
+        {
+          "comment_key": "delta",
+          "title": "Coverage QA 通过，却把 bottom-up 卡片生产反转成 hub-first",
+          "body": "相对 v0，v1 确实修正了 topic drift：页面开始回答 LLM Wiki 是什么，而不是怎样运行 KB loop。新的失败更隐蔽，因为它发生在正确主题内部。候选 topic 被直接变成 node plan，source mining 服务于写综合大卡，validator 又围绕 node coverage 与 adoption 优化；原本期待的 bottom-up 路径因此被反转为先填八个预设栏目。\n\n#19 保存了这个转折。八张高密度 topic pages 通过 QA，说明材料能支撑一份 landscape，却不能说明原子观察已经成为可独立复用、可逐条验证的知识卡。每个 topic node 还重复经历 planning、mining、writing、validation、adoption、citation 和 skill evaluation，一张主题页近似一次重型 release，少量大卡与长周期由此同时出现。\n\n- 当时通过的 coverage gate 只测“八个方向有没有内容”，没有测 claim-level 事实可靠性、card scope 或来源观察是否被过早压缩。\n- 既有页面没有被判成无价值，而是降级为 hub/backbone 与注意力地图；它们不再冒充底层事实层。\n- #17 中首轮委派可运行，但持续自治与完整交付仍未证明，不能用 `impact_queue_open=0` 替代。\n- 替代路径改为按 source 或 batch 挖掘 scoped atoms，轻量批量校验后再比较、聚合与生成 hub。\n\n这直接触发 v2：不再扩建 hub skeleton，而是把生产单元换成来源支撑、范围有限且可单独证成的 knowledge card。v1 的 gate 没有“失效”，只是暴露出测量对象比真实目标窄。\n\n<!-- version-narrative: v1:delta -->"
+        }
+      ]
+    },
+    {
+      "slug": "v2-changelog",
+      "issue_number": 8,
+      "desired_state": "closed",
+      "state_rationale": "v2 已完成从 hub-first 到 scoped-card、控制面和 loop capsule 的历史交接；生命周期成本等遗留由子问题及 v3 继续承接，ChangeLog 本身可关闭。",
+      "body": "这个 tracker 记录 v2 如何重建事实层，并说明为什么可审计的生产链仍不足以成为可扩展流程。两条评论分别覆盖起点与转向 v3 的原因。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "title": "从 hub 改成限定范围知识卡：生产可审计，也随逐卡链路变慢",
+          "body": "v2 从 v1 的少量大主题页退回知识事实层。这里的 scoped card 是“限定范围知识卡”：围绕一个可辨的问题、概念或机制展开，删掉标题后正文仍能独立传递知识；它不要求机械地一句话一卡，却必须让读者看清讨论边界，并把出处与证成过程留在 provenance。#20 记录了知识对象怎样从综合报告切换为可独立理解、可逐条审计的卡片。\n\n生产机制也随对象改变。main-agent 不再亲自挖材料和写卡，而是为有界 worker 指定来源、读写范围与验收条件；一张卡依次经过 source mining、drafting、独立 audit 和 adoption，缺少任务边界或完成标记就暂停，不由主控代做。#24 承载的是这条受约束生产链，而不是状态文件和工具名称的清单。\n\n- 实际链路产出 15 张 adopted 候选卡，正文、来源与审计记录彼此分开。\n- 每张卡都重复派发、读取、验收和关闭 worker，失败后还要修订任务合同，隔离提高了可信度，也放大了等待与重复 I/O。\n- #27 记录了连续生产始终沿用 one-shot worker：一张卡完成即关闭角色，下一张再重新装载任务与来源上下文。\n\n所以 v2 改变的不只是卡片粒度，而是“什么算知识”以及知识如何获得采纳资格；同一套约束也解释了为什么生产开始变慢。\n\n<!-- version-narrative: v2:origin -->"
+        },
+        {
+          "comment_key": "delta",
+          "title": "可控不等于可扩展：7 小时 15 张卡触发 draft-first",
+          "body": "v2 隐含的假设是，只要逐卡隔离 worker、严格验收并留下 provenance，生产就能稳定延伸。实际证据推翻了“可控自然会带来可扩展”：约 7 小时只得到 15 张卡，时间主要耗在重复读源、逐角色交接和每卡一轮的审计与采纳；#27 进一步说明 one-shot 链路只证明边界清楚，没有回答上下文复用是否能降低成本。\n\n仍然成立的结论有三项：\n\n- 限定范围知识卡比 hub 更适合作为事实层，正文、来源和证成过程应保持分工。\n- 实验产物不能因 adoption 就成为稳定产品；#31 确立的 loop capsule 与人工提升边界继续有效。\n- 相似卡必须经过比较再决定新增或融合，但 #30 冻结的 Top-3 与三问合同只面向下一轮，不能追认此前 15 张卡已经执行过它。\n\n下一版因此不再让每张新知识立即走完整发布链，而采用 draft-first：先从材料形成可审查的草稿集合，再集中做 comparison、fusion 和 publication gate。v3 接住的是吞吐与集合收敛问题，不是撤销 v2 对 card scope 和 provenance 的要求。\n\n<!-- version-narrative: v2:delta -->"
+        }
+      ]
+    },
+    {
+      "slug": "v3-changelog",
+      "issue_number": 9,
+      "desired_state": "closed",
+      "state_rationale": "v3 的 draft-first 运行、comparison corpus 缺陷与向 question-driven v4 的交接已完整归档，因此历史 tracker 可关闭；#37、#38、#39 仍是开放执行问题，不因 tracker 关闭而解决。",
+      "body": "这个 tracker 记录 v3 从吞吐实验到 comparison corpus 失效的完整转折。历史叙事已交接完成；仍需实施的治理与下一轮 pipeline 保留在开放子 Issues。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "title": "7 小时 15 张卡之后：draft-first 先长草稿，再治理集合",
+          "body": "v3 从 v2 的吞吐瓶颈出发：如果每发现一个知识点就立即审计、比较、融合和发布，昂贵判断会阻塞后续材料读取。draft-first 改变了顺序：先一次消费材料，生成一批仍保持独立的草稿；再用轻量检索缩小相似候选，读卡比较共同点与差异；最后才决定新增、融合、拆分或跳过。#32 记录了这项从“逐卡发布”到“先形成候选集、后集中收敛”的机制变化。\n\n实际运行先用单一材料验证草稿链路，再扩到其余可读材料，最终形成 171 张中文草稿及其 provenance。随后 comparison、interlink 与 adoption 工件被批量补齐，文件进入 loop-local accepted view；#34 保留了这个从小范围试跑到规模化落盘的过程。\n\n- draft 阶段允许知识先增长，不把每次抽取都变成一次 release。\n- comparison 被设想为读候选后的语义决策，而不是相似度分数自动触发 merge。\n- #35 将 Footnotes 设为原始来源与知识卡的统一 claim-level 引用入口，`related` 和 backlink 改由脚本派生，减少多处手写关系造成的漂移。\n\nv3 因而实际提高了草稿吞吐，并把引用维护收敛到一个事实源；这一条只描述生产机制与落盘状态，不提前把 accepted 文件解释成已经通过有效集合治理。\n\n<!-- version-narrative: v3:origin -->"
+        },
+        {
+          "comment_key": "delta",
+          "title": "accepted 只是文件状态：错误 comparison corpus 推翻治理结论",
+          "body": "v3 被证据推翻的假设是：comparison 文件、interlink 和 accepted view 都齐全，就足以说明草稿集合已经治理。专项审计发现 similarity 实际只把 171 张 v3 drafts 与 v2 的 15 张卡比较，v3 草稿之间没有 self-comparison；因此“0 merge”没有集合级证据，`accepted` 只能表示当时文件被写入该目录，不能继续作为 dedup、fusion 或 publication gate 有效的结论。\n\n仍然成立的是 draft-first 确实提高了候选生产吞吐，Footnotes 作为引用事实源也不依赖错误 corpus。成本审计还支持“先判草稿是否存活，再为 survivors 补关系和派生 metadata”的顺序；被撤回的是 171 张卡已完成治理，而不是所有 v3 机制。\n\n未完成结论由三个 Issue 分别承接：#38 承接集合级候选召回、dedup 与 fusion 怎样成为真实准入门；#39 承接从 collect、extract 到 ingest、evolve 的流程如何实现并可复现；#37 只承接 loop 文件清理、提交和外部状态复核，不替知识质量背书。它们不是一串泛化 backlog，而是三种不同的未闭环结论。\n\n下一版 v4 选择独立 0→1，让 questioner 与 reader 从材料内部发现问题，以减少既有图谱对发现过程的影响；它接的是发现方法实验，并没有自动修复 v3 的集合治理。\n\n<!-- version-narrative: v3:delta -->"
+        }
+      ]
+    },
+    {
+      "slug": "v4-changelog",
+      "issue_number": 10,
+      "desired_state": "closed",
+      "state_rationale": "v4 的独立 0→1、FSJS、来源处理缺陷及 v5 handoff 已完成历史交接；#50 与 #54 继续开放承载逐卡治理和 repo2doc，故可关闭 ChangeLog 而不宣称 v4 全部闭环。",
+      "body": "这个 tracker 记录 v4 如何用 question-driven discovery 独立重建 KB，以及规模扩大后暴露的读取面、治理和状态冲突。执行遗留仍由开放子 Issues 追踪。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "title": "问题驱动方法扩到全量，状态文件却无法恢复这次运行",
+          "body": "v4 不继承 v3 卡片，而从同一批材料独立 0→1。生产机制从固定 pipeline 改为提问循环：questioner 持续寻找材料尚未回答的问题，reader 回到原文提供答案和证据块，reframing 将 Q&A 写成限定范围知识卡，fresh reviewer 按需查原文并复核是否过早停止。typed footnotes 保存关系，Justification Journal 保存卡片为何成立。\n\n方法先在单一材料上迭代，再通过 sub-agent workflow 扩到盘点后的 43 份材料；后续网页重提取与治理使 active KB 达到约 328 张卡。#49 记录的重点不是每次中间计数，而是局部方法能够扩展到全量运行，同时多次“继续”曾只停在盘点与准备，直到明确委派后才真正生成可对账产物。\n\n- 文件化的问题、答案、证据和 review verdict 让 main-agent 更接近静态协调器。\n- #52 把失控的全量语义审计改成 FSJS：脚本先筛 suspect，再分片给 judge 回原文裁决，综合节点只汇总已有证据。\n- 执行与 Git 产物证明 extraction 和后置治理发生过，但 `status.json` 仍是 `setup`，`loop_state.json` 仍记录 0 materials / 0 cards。\n\n所以 v4 的实际状态是“方法已扩展、产物已形成、恢复控制面失败”，而不是一串持续上升的卡片数字。\n\n<!-- version-narrative: v4:origin -->"
+        },
+        {
+          "comment_key": "delta",
+          "title": "v4 绕开了错误 corpus，却没有补上集合治理",
+          "body": "v4 隐含的假设是，独立 0→1 加 question-driven discovery 既能避免 v3 的结构污染，也能自然形成更完整的知识库。证据只支持前半句：它通过不继承 v3 卡片绕开了错误 comparison corpus，确实扩展了材料中的问题发现面；但并行 extraction 让新卡直接写库，没有逐卡面对当前集合做 dedup、fusion 和有证据的关系判断。#50 表明后置补链可以提高关系密度，却不能追认 one-by-one ingest gate 已经运行。\n\n来源读取也推翻了“统一文本入口足够”的假设。#54 发现同名 `text.txt` 混合了网页剥离文本、论文 fallback 与 repo bundle；网页改用 Markdown 后重新抽出了遗漏知识，而 repo2doc 仍未完成。读取格式统一不等于 agent 看到了等质量的材料。\n\n仍然成立的是：提问循环适合从材料内部发现问题，FSJS 适合把机械覆盖与语义判断分开。没有成立的是 v3 留下的集合治理已经被修复；v4 只是绕开错误 corpus，扩展发现面后仍把 fusion、关系证据和恢复状态留给后续。\n\n#55 将这一边界交给 v5：下一版新增按来源选择阅读面的 gate、候选集合入库前的 fusion gate，以及 YAML 与知识图变更后的校验 gate。它接的是 v4 暴露的读取和治理缺口，不是继续堆叠卡片数量。\n\n<!-- version-narrative: v4:delta -->"
+        }
+      ]
+    },
+    {
+      "slug": "v5-changelog",
+      "issue_number": 11,
+      "desired_state": "closed",
+      "state_rationale": "v5 的工程阶段性收口、内容回归及当前归因假设已完成历史交接；#59、#60 仍开放承载信息密度修复与 v4 ingest 还原，关闭 ChangeLog 不代表归因已经验证。",
+      "body": "这个 tracker 记录 v5 如何把来源路由与知识图治理工程化，以及为什么漂亮的终态指标仍未证明卡片可理解。开放的质量与流程还原工作保留在子 Issues。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "title": "v4 之后新增三道门：按来源阅读、按证据表述、按变更校验",
+          "body": "v5 从 v4 的读取面混乱和后置治理缺口出发，只新增三道关键 gate。第一道是来源阅读 gate：source router 按论文、网页、repo 等类型选择 TeX、Markdown 或 README；这里的 evidence surface（证据可读面）就是 agent 实际看到的那份内容与结构，而不是 raw 目录里任意一个同名文本。\n\n第二道是陈述与入库 gate：`evidence_basis` 说明一句话建立在直接证据、来源概括还是推断上；hedge 是来源中的“可能、在某条件下、尚未证明”等保留语，写卡时不能把不确定陈述升级成确定事实。全部草稿先冻结，再统一做 fusion，只有判断为存活的卡进入 active view。\n\n第三道是知识图变更 gate：YAML 必须由 parser 写入，补链、孤儿卡与 backlink 修复后重新检查。mutation ledger 可以通俗理解为“每次改了哪张卡、哪条边、为何改、改后是否通过校验”的流水账；#57 显示 v5 完成了批量图修复和终态检查，但逐次 ledger 并不完整。\n\n- 主运行从 63 个有效来源形成 487 张 drafts，经 fusion 后留下 477 张 active cards。\n- 三道 gate 让来源入口、陈述强度和图变更第一次有了不同责任边界。\n- #61 将工具、卡片、审计和 learnings 固化为可追溯提交；这只说明阶段产物被保存，不提前判断内容质量。\n\n<!-- version-narrative: v5:origin -->"
+        },
+        {
+          "comment_key": "delta",
+          "title": "内容回归已观察，管线归因仍待同源验证",
+          "body": "已观察到的事实是，v5 的工程终态没有保证卡片可独立理解。用户在 #59 指出整体阅读感受明显变薄；“四特权环”卡有术语和来源脚注，却没有解释四层职责与隔离边界。检查还确认实际 extraction prompt 只是较短骨架，完整 questioning、reader、reframing、reviewer skills 存在于仓库，但没有直接证据证明它们以完整合同进入每个运行上下文。#58 同时表明既有 FSJS 主要检查格式、引用和图，没有把提问深度、skill 注入与概念解释充分性设为 hard gate。\n\n当前推断是：缩短的 runtime contract、schema 变化、来源组合和后处理方式都可能造成内容回归，其中 skill 未完整进入执行上下文是重要候选解释；但没有同源、同 prompt、同模型的对照实验，不能把它写成已确认根因。“v4 与 v5 使用不同模型”也缺乏逐卡运行证据，现阶段只能排在较弱假设。\n\n仍然成立的是 source router、YAML parser、fusion 与图修复完成了工程阶段性收口；这些 gate 证明工具链能运行，不证明内容深度通过。#60 待验证的正是归因链：先用 dispatch 证据还原 v4 到底由谁执行、完整 skills 如何进入 worker，再在受控条件下测试“v4 extraction 深度 + v5 governance”是否恢复解释质量。\n\n下一版接手的是验证而非宣判：先治理空壳卡、选择性重提取高价值低密度来源，并把 runtime skill、退出复核和独立可理解性纳入可失败的质量门。\n\n<!-- version-narrative: v5:delta -->"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,378 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "thsno02/jugo_jugo",
+  "status": "complete",
+  "started_at": "2026-07-11T22:19:34.779480+00:00",
+  "state_audit": {
+    "audited_at": "2026-07-12T06:42:59+08:00",
+    "decisions": [
+      {
+        "issue_number": 12,
+        "state": "closed",
+        "reason": "coverage 缺口归零，satisfaction 与 verifier 同时通过"
+      },
+      {
+        "issue_number": 17,
+        "state": "open",
+        "reason": "仅跑通首轮委派；长期自治、来源覆盖和完整 KB 交付尚未证明",
+        "reopened_comment_id": 4949024767
+      },
+      {
+        "issue_number": 20,
+        "state": "closed",
+        "reason": "当前 card、provenance 与 audit 的事实接受范式已经形成"
+      },
+      {
+        "issue_number": 44,
+        "state": "closed",
+        "reason": "面向无仓库上下文读者的 introduction 已完成并得到当前可用定义"
+      },
+      {
+        "issue_number": 54,
+        "state": "open",
+        "reason": "webpage 与 TeX 路径已纠正，但 repo2doc 仍待设计和验证"
+      },
+      {
+        "issue_number": 59,
+        "state": "open",
+        "reason": "退化原因已定位，但治理与选择性重提取尚未完成验证"
+      }
+    ]
+  },
+  "issues": [
+    {
+      "slug": "v0-source-coverage",
+      "issue_number": 12,
+      "old_event_comment_count": 6,
+      "new_episode_comment_count": 3,
+      "deleted_comment_ids": [
+        4948673590,
+        4948673764,
+        4948673963
+      ],
+      "episodes": [
+        {
+          "episode_title": "从工具盘点到首轮采集：先用现有能力建立可恢复的 raw database",
+          "event_ids": [
+            "codex:codex-prehistory-research:H001",
+            "codex:codex-prehistory-research:H002"
+          ],
+          "comment_id": 4948673469,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4948673469"
+        },
+        {
+          "episode_title": "从“下载到了”转向“agent 能读”：TeX 优先并建立 coverage 缺口审计",
+          "event_ids": [
+            "codex:codex-prehistory-research:H003",
+            "codex:codex-prehistory-research:H004"
+          ],
+          "comment_id": 4948673682,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4948673682"
+        },
+        {
+          "episode_title": "结构验证不是完成：把 research loop 改成 coverage 驱动的停止条件",
+          "event_ids": [
+            "codex:codex-prehistory-research:H007",
+            "codex:codex-prehistory-research:H009"
+          ],
+          "comment_id": 4948673859,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4948673859"
+        }
+      ]
+    },
+    {
+      "slug": "v1-planner-loop",
+      "issue_number": 17,
+      "old_event_comment_count": 7,
+      "new_episode_comment_count": 4,
+      "deleted_comment_ids": [
+        4948675351,
+        4948675464,
+        4948675646
+      ],
+      "episodes": [
+        {
+          "episode_title": "静态 topic plan 不可执行：planner 需要读 sources 与 coverage 后再规划",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H009",
+            "codex:codex-primary-v0-v2-boundary:H010",
+            "codex:codex-primary-v0-v2-boundary:H011"
+          ],
+          "comment_id": 4948675249,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675249"
+        },
+        {
+          "episode_title": "协议补齐后先初始化自治能力，却误把 pre-loop planning 当成交付",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H012",
+            "codex:codex-primary-v0-v2-boundary:H013"
+          ],
+          "comment_id": 4948675555,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675555"
+        },
+        {
+          "episode_title": "纠正只 init skills 就结束：交付必须包含用这套流程持续 build KB",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H014"
+          ],
+          "comment_id": 4948675765,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675765"
+        },
+        {
+          "episode_title": "main-agent 退回决策者：具体生产下放给 worker，发现 drift 立即阻断",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H015"
+          ],
+          "comment_id": 4948675873,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4948675873"
+        }
+      ]
+    },
+    {
+      "slug": "v2-card-foundation",
+      "issue_number": 20,
+      "old_event_comment_count": 9,
+      "new_episode_comment_count": 4,
+      "deleted_comment_ids": [
+        4948676626,
+        4948676781,
+        4948677227,
+        4948677393,
+        4948677535
+      ],
+      "episodes": [
+        {
+          "episode_title": "先把 atomic card 重新放回强校验的事实层",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H020"
+          ],
+          "comment_id": 4948676441,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948676441"
+        },
+        {
+          "episode_title": "暂停 cluster 和 schema 扩张，追查目标为何漂移",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H021",
+            "codex:codex-primary-v0-v2-boundary:H022",
+            "codex:codex-primary-v0-v2-boundary:H023"
+          ],
+          "comment_id": 4948676532,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948676532"
+        },
+        {
+          "episode_title": "把可读 card、出处与证成过程重新分开",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H024",
+            "codex:codex-primary-v0-v2-boundary:H025",
+            "codex:codex-primary-v0-v2-boundary:H026",
+            "codex:codex-primary-v0-v2-boundary:H027"
+          ],
+          "comment_id": 4948677039,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948677039"
+        },
+        {
+          "episode_title": "provenance 从事后日志变成 facts 生产的一部分",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H028"
+          ],
+          "comment_id": 4948677647,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4948677647"
+        }
+      ]
+    },
+    {
+      "slug": "v3-practice-reframe",
+      "issue_number": 44,
+      "old_event_comment_count": 23,
+      "new_episode_comment_count": 4,
+      "deleted_comment_ids": [
+        4948693920,
+        4948694003,
+        4948694114,
+        4948694239,
+        4948694362,
+        4948694485,
+        4948694814,
+        4948694924,
+        4948695035,
+        4948695161,
+        4948695330,
+        4948695442,
+        4948695538,
+        4948695661,
+        4948695763,
+        4948695869,
+        4948695980,
+        4948696099,
+        4948696181
+      ],
+      "episodes": [
+        {
+          "episode_title": "第一版写出来了，但对象、文体和开场论点都没有立住",
+          "event_ids": [
+            "codex:codex-retro-v3-practice:H001",
+            "codex:codex-retro-v3-practice:H002",
+            "codex:codex-retro-v3-practice:H003",
+            "codex:codex-retro-v3-practice:H004",
+            "codex:codex-retro-v3-practice:H005",
+            "codex:codex-retro-v3-practice:H006",
+            "codex:codex-retro-v3-practice:H007"
+          ],
+          "comment_id": 4948693826,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948693826"
+        },
+        {
+          "episode_title": "核心 scope 纠正：不是维护既有 wiki，而是从原始材料构建知识生态",
+          "event_ids": [
+            "codex:codex-retro-v3-practice:H008"
+          ],
+          "comment_id": 4948694596,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948694596"
+        },
+        {
+          "episode_title": "执行事实更新：计划期数字失效，证据必须回到真实交互",
+          "event_ids": [
+            "codex:codex-retro-v3-practice:H009",
+            "codex:codex-retro-v3-practice:H010",
+            "codex:codex-retro-v3-practice:H011",
+            "codex:codex-retro-v3-practice:H012",
+            "codex:codex-retro-v3-practice:H013"
+          ],
+          "comment_id": 4948694700,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948694700"
+        },
+        {
+          "episode_title": "最终概念收敛：DIKW、事实类型与卡片粒度经历了来回纠正",
+          "event_ids": [
+            "codex:codex-retro-v3-practice:H014",
+            "codex:codex-retro-v3-practice:H015",
+            "codex:codex-retro-v3-practice:H016",
+            "codex:codex-retro-v3-practice:H017",
+            "codex:codex-retro-v3-practice:H018",
+            "codex:codex-retro-v3-practice:H019",
+            "codex:codex-retro-v3-practice:H020",
+            "codex:codex-retro-v3-practice:H021",
+            "codex:codex-retro-v3-practice:H022",
+            "codex:codex-retro-v3-practice:H023"
+          ],
+          "comment_id": 4948695245,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4948695245"
+        }
+      ]
+    },
+    {
+      "slug": "v4-source-routing-and-preprocessing",
+      "issue_number": 54,
+      "old_event_comment_count": 9,
+      "new_episode_comment_count": 4,
+      "deleted_comment_ids": [
+        4948704452,
+        4948704734,
+        4948705013,
+        4948705114,
+        4948705311
+      ],
+      "episodes": [
+        {
+          "episode_title": "20 个 repo 只产出 15 张卡，问题从数量不足转向缺少 repo2doc",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H045",
+            "claude_code:claude-primary-v4:H046"
+          ],
+          "comment_id": 4948704341,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948704341"
+        },
+        {
+          "episode_title": "text.txt 暴露了统一 fallback：TeX、网页和 repo 需要不同阅读面",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H047",
+            "claude_code:claude-primary-v4:H048"
+          ],
+          "comment_id": 4948704600,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948704600"
+        },
+        {
+          "episode_title": "全链路审计后收敛执行范围：先修路由、坏 bundle 和死源",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H049",
+            "claude_code:claude-primary-v4:H050",
+            "claude_code:claude-primary-v4:H051"
+          ],
+          "comment_id": 4948704866,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948704866"
+        },
+        {
+          "episode_title": "放弃 Reddit 后全量修复 webpage，Markdown 重提取补回 33 张卡",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H052",
+            "claude_code:claude-primary-v4:H053"
+          ],
+          "comment_id": 4948705219,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4948705219"
+        }
+      ]
+    },
+    {
+      "slug": "v5-information-density-regression",
+      "issue_number": 59,
+      "old_event_comment_count": 10,
+      "new_episode_comment_count": 5,
+      "deleted_comment_ids": [
+        4948706909,
+        4948707122,
+        4948707331,
+        4948707569,
+        4948707726
+      ],
+      "episodes": [
+        {
+          "episode_title": "“信息量太少”触发六路 probe，但第一版根因仍停在表层",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H008",
+            "claude_code:claude-primary-v5:H009"
+          ],
+          "comment_id": 4948706806,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948706806"
+        },
+        {
+          "episode_title": "检查 EXTRACT_PROMPT 后改口：完整 skills 根本没有进入 agent context",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H010",
+            "claude_code:claude-primary-v5:H011"
+          ],
+          "comment_id": 4948707022,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707022"
+        },
+        {
+          "episode_title": "把失败的 v5 变成 A/B 样本，随后纠正正文统计口径",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H012",
+            "claude_code:claude-primary-v5:H013"
+          ],
+          "comment_id": 4948707225,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707225"
+        },
+        {
+          "episode_title": "“四环层级”空壳卡坐实质量问题，修复收敛为治理加选择性重提取",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H014",
+            "claude_code:claude-primary-v5:H015",
+            "claude_code:claude-primary-v5:H016"
+          ],
+          "comment_id": 4948707426,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707426"
+        },
+        {
+          "episode_title": "事后调研推翻“不同模型”直觉，差异更可能来自管线与 schema",
+          "event_ids": [
+            "codex:codex-retro-v4-v5-research:H001"
+          ],
+          "comment_id": 4948707823,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4948707823"
+        }
+      ]
+    }
+  ],
+  "completed_at": "2026-07-11T22:22:10.185891+00:00",
+  "backup_path": "remediation/backups/pilot-before-20260712-061934.json"
+}

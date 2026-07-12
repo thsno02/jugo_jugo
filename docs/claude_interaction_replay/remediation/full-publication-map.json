@@ -1,0 +1,1838 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "thsno02/jugo_jugo",
+  "status": "complete",
+  "started_at": "2026-07-11T23:21:06.864656+00:00",
+  "issues": [
+    {
+      "slug": "llm-wiki-build-history",
+      "issue_number": 5,
+      "old_event_comment_count": 5,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "2026-05-21 至 2026-06-08 的 19 个开发日已逐日梳理、独立审计并汇总为总时间线；当前问题已有可执行且可核验的答案",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948673060,
+        4948673243
+      ],
+      "episodes": [
+        {
+          "episode_title": "Claude 会话不可访问后，先把跨版本回忆改造成证据化逐日审计",
+          "event_ids": [
+            "codex:codex-retro-daily-audit:H001",
+            "codex:codex-retro-daily-audit:H002"
+          ],
+          "comment_id": 4948672944,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/5#issuecomment-4948672944"
+        },
+        {
+          "episode_title": "逐日 prompt 的重复成本暴露后，稳定规则被固化为通用 worker 协议",
+          "event_ids": [
+            "codex:codex-retro-daily-audit:H003",
+            "codex:codex-retro-daily-audit:H004"
+          ],
+          "comment_id": 4948673164,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/5#issuecomment-4948673164"
+        },
+        {
+          "episode_title": "恢复持续目标后收口 19 个开发日，但保留执行日与 Git 固化日的边界",
+          "event_ids": [
+            "codex:codex-retro-daily-audit:H005"
+          ],
+          "comment_id": 4948673345,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/5#issuecomment-4948673345"
+        }
+      ]
+    },
+    {
+      "slug": "v0-agent-roles",
+      "issue_number": 13,
+      "old_event_comment_count": 3,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "standing sub-agent 已收敛为职责隔离的 Git/File Steward 与上下文 fork Q&A；其他工作仍按一次性 worker 处理",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948674174
+      ],
+      "episodes": [
+        {
+          "episode_title": "从“常驻一个 agent”收窄为只处理 Git 与文件的 steward",
+          "event_ids": [
+            "codex:codex-prehistory-research:H005",
+            "codex:codex-prehistory-research:H006"
+          ],
+          "comment_id": 4948674065,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/13#issuecomment-4948674065"
+        },
+        {
+          "episode_title": "问答需要上下文 fork，但仍与 Git、采集和写入职责隔离",
+          "event_ids": [
+            "codex:codex-prehistory-research:H008"
+          ],
+          "comment_id": 4948674270,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/13#issuecomment-4948674270"
+        }
+      ]
+    },
+    {
+      "slug": "v0-kb-autonomy",
+      "issue_number": 14,
+      "old_event_comment_count": 3,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "loop 已具备状态、决策日志、反思、恢复与网络失败延期规则；受限网络不再阻断离线推进",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948674462
+      ],
+      "episodes": [
+        {
+          "episode_title": "初始化计划能执行还不够，loop 必须在人离开后自行反思与选下一步",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H001",
+            "codex:codex-primary-v0-v2-boundary:H002"
+          ],
+          "comment_id": 4948674374,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/14#issuecomment-4948674374"
+        },
+        {
+          "episode_title": "工作网络受限时停止硬闯：有限尝试、留证、延期并继续离线任务",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H003"
+          ],
+          "comment_id": 4948674562,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/14#issuecomment-4948674562"
+        }
+      ]
+    },
+    {
+      "slug": "v0-language",
+      "issue_number": 15,
+      "old_event_comment_count": 3,
+      "new_episode_comment_count": 1,
+      "desired_state": "closed",
+      "state_rationale": "中文要求已从对话回复扩展为全部人类可读产物的合同，并在重写 cards、provenance、报告和控制文件后重新验证",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948674786,
+        4948674910
+      ],
+      "episodes": [
+        {
+          "episode_title": "连续三次纠正暴露合同层级错误：中文不只用于回复，也用于落盘产物",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H004",
+            "codex:codex-primary-v0-v2-boundary:H005",
+            "codex:codex-primary-v0-v2-boundary:H006"
+          ],
+          "comment_id": 4948674668,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/15#issuecomment-4948674668"
+        }
+      ]
+    },
+    {
+      "slug": "v0-topic-drift",
+      "issue_number": 16,
+      "old_event_comment_count": 2,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "偏差已定位为把 KB 生产协议误当知识主题；错误产物已归档为 demo-0，active 主题重置为 LLM Wiki 并把 data folder 设为主要证据输入",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [],
+      "episodes": [
+        {
+          "episode_title": "机制指标全部通过后，用户发现知识对象做反了",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H007"
+          ],
+          "comment_id": 4948675024,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/16#issuecomment-4948675024"
+        },
+        {
+          "episode_title": "不删除失败 demo：归档元知识产物，并让 data folder 重新成为主题证据",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H008"
+          ],
+          "comment_id": 4948675135,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/16#issuecomment-4948675135"
+        }
+      ]
+    },
+    {
+      "slug": "v1-card-layout",
+      "issue_number": 18,
+      "old_event_comment_count": 1,
+      "new_episode_comment_count": 1,
+      "desired_state": "closed",
+      "state_rationale": "References 在前、Footnotes 为最后 section 已写成 generation 与 audit 的硬格式合同，既有候选和旧卡也已迁移",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [],
+      "episodes": [
+        {
+          "episode_title": "渲染问题不能靠人工记忆：把 Footnotes 最后写成发布前硬门禁",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H016"
+          ],
+          "comment_id": 4948675974,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/18#issuecomment-4948675974"
+        }
+      ]
+    },
+    {
+      "slug": "v1-hub-granularity",
+      "issue_number": 19,
+      "old_event_comment_count": 3,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "少量大卡与长周期已定位到 topic-node-first pipeline；现有结果降级为 hub/backbone，后续改为 source/batch 挖 atoms、批量校验聚类、最后生成 hub",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948676192
+      ],
+      "episodes": [
+        {
+          "episode_title": "八个高密度 topic pages 通过 QA，却暴露 bottom-up 目标被反转",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H017",
+            "codex:codex-primary-v0-v2-boundary:H018"
+          ],
+          "comment_id": 4948676076,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/19#issuecomment-4948676076"
+        },
+        {
+          "episode_title": "长周期不是材料太多，而是每个 topic node 都走了重型 release pipeline",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H019"
+          ],
+          "comment_id": 4948676293,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/19#issuecomment-4948676293"
+        }
+      ]
+    },
+    {
+      "slug": "v2-file-audits",
+      "issue_number": 21,
+      "old_event_comment_count": 3,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "active 入口已可见，v0/v1 迁入 legacy 并说明缺口；流程、context isolation 与 focus drift 均由隔离 sub-agent 完成独立审计",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948678027
+      ],
+      "episodes": [
+        {
+          "episode_title": "先把 active KB 从隐藏目录移出，再隔离旧版本并独立审计 loop",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H029"
+          ],
+          "comment_id": 4948677796,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/21#issuecomment-4948677796"
+        },
+        {
+          "episode_title": "审计从 main-agent 扩展到 context isolation，并用证据验证 focus drift 根因",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H030",
+            "codex:codex-primary-v0-v2-boundary:H031"
+          ],
+          "comment_id": 4948677928,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/21#issuecomment-4948677928"
+        }
+      ]
+    },
+    {
+      "slug": "v2-language",
+      "issue_number": 22,
+      "old_event_comment_count": 3,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "中文主语言的适用面已从 active 文档扩展到 skills 与术语，并形成可执行的英文保留边界",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948678362
+      ],
+      "episodes": [
+        {
+          "episode_title": "中文主语言不是入口文档的局部修饰",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H032"
+          ],
+          "comment_id": 4948678158,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/22#issuecomment-4948678158"
+        },
+        {
+          "episode_title": "skills 与术语也进入同一语言合同",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H033",
+            "codex:codex-primary-v0-v2-boundary:H034"
+          ],
+          "comment_id": 4948678271,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/22#issuecomment-4948678271"
+        }
+      ]
+    },
+    {
+      "slug": "v2-git-handoff",
+      "issue_number": 23,
+      "old_event_comment_count": 2,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "已形成按完整交付边界分批提交、等待并行 worker 产物完整后再推送的可执行 handoff 规则",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [],
+      "episodes": [
+        {
+          "episode_title": "第一次分批推送按可解释交付面拆分",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H035"
+          ],
+          "comment_id": 4948678524,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/23#issuecomment-4948678524"
+        },
+        {
+          "episode_title": "并行生产时先等交付闭合再交接",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H049"
+          ],
+          "comment_id": 4948678650,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/23#issuecomment-4948678650"
+        }
+      ]
+    },
+    {
+      "slug": "v2-control-plane",
+      "issue_number": 24,
+      "old_event_comment_count": 10,
+      "new_episode_comment_count": 5,
+      "desired_state": "closed",
+      "state_rationale": "控制面已形成状态、角色合同、结构化 dispatch、guardrail、恢复入口与长程反思的职责分层",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948678908,
+        4948679172,
+        4948679408,
+        4948679605,
+        4948679722
+      ],
+      "episodes": [
+        {
+          "episode_title": "从一组 skills 补成可运行的控制面",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H036",
+            "codex:codex-primary-v0-v2-boundary:H037"
+          ],
+          "comment_id": 4948678786,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948678786"
+        },
+        {
+          "episode_title": "预定义角色与结构化 dispatch 取代临场长 prompt",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H038",
+            "codex:codex-primary-v0-v2-boundary:H039"
+          ],
+          "comment_id": 4948679042,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679042"
+        },
+        {
+          "episode_title": "hook 经最小实验被限定为 guardrail 而非 scheduler",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H040",
+            "codex:codex-primary-v0-v2-boundary:H041"
+          ],
+          "comment_id": 4948679288,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679288"
+        },
+        {
+          "episode_title": "错误 fallback 被纠正后切回正式 user-insights sidecar",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H042",
+            "codex:codex-primary-v0-v2-boundary:H043",
+            "codex:codex-primary-v0-v2-boundary:H044"
+          ],
+          "comment_id": 4948679501,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679501"
+        },
+        {
+          "episode_title": "prelaunch 验证收敛为下一位 main-agent 的长程计划",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H045"
+          ],
+          "comment_id": 4948679824,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4948679824"
+        }
+      ]
+    },
+    {
+      "slug": "v2-card-autonomy",
+      "issue_number": 25,
+      "old_event_comment_count": 3,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "已明确自主探索不预设 topic，但必须受单一来源、provenance、任务包和独立 audit 约束，且产物目标只指向 card",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948680024
+      ],
+      "episodes": [
+        {
+          "episode_title": "自主探索不等于无约束生成",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H046",
+            "codex:codex-primary-v0-v2-boundary:H047"
+          ],
+          "comment_id": 4948679927,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/25#issuecomment-4948679927"
+        },
+        {
+          "episode_title": "用经审计的启动 prompt 把自治边界交给新 session",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H048"
+          ],
+          "comment_id": 4948680118,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/25#issuecomment-4948680118"
+        }
+      ]
+    },
+    {
+      "slug": "v2-subagent-lifecycle",
+      "issue_number": 26,
+      "old_event_comment_count": 1,
+      "new_episode_comment_count": 1,
+      "desired_state": "closed",
+      "state_rationale": "独立审计已定位 sub-agent 泛滥根因，并给出按职责、状态与上下文价值管理而非统一常驻或统一关闭的规则",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [],
+      "episodes": [
+        {
+          "episode_title": "从清理 active 列表转向审计生命周期设计",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H050"
+          ],
+          "comment_id": 4948680254,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/26#issuecomment-4948680254"
+        }
+      ]
+    },
+    {
+      "slug": "v2-production-lifecycle",
+      "issue_number": 27,
+      "old_event_comment_count": 3,
+      "new_episode_comment_count": 3,
+      "desired_state": "open",
+      "state_rationale": "one-shot 链路已跑通并产出 15 张卡，但用户提出的重复读取成本与 standing worker 适用条件未被评估或验证",
+      "state_transition_comment_id": 4949130295,
+      "deleted_comment_ids": [],
+      "episodes": [
+        {
+          "episode_title": "新 session 按窄任务包启动正式生产链",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H001"
+          ],
+          "comment_id": 4948680473,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/27#issuecomment-4948680473"
+        },
+        {
+          "episode_title": "完成标记缺口触发最小修复而非主控代做",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H002"
+          ],
+          "comment_id": 4948680606,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/27#issuecomment-4948680606"
+        },
+        {
+          "episode_title": "15 张卡的产出没有回答 one-shot 是否过度",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H003"
+          ],
+          "comment_id": 4948680716,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/27#issuecomment-4948680716"
+        }
+      ]
+    },
+    {
+      "slug": "v2-control-audits",
+      "issue_number": 28,
+      "old_event_comment_count": 2,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "生命周期、任务边界和流程已完成独立审计，且 audit 产物已明确绑定 run、iteration、artifact 与 commit 的归属规则",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [],
+      "episodes": [
+        {
+          "episode_title": "三个独立视角检查正在运行的控制面",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H013"
+          ],
+          "comment_id": 4948680841,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/28#issuecomment-4948680841"
+        },
+        {
+          "episode_title": "audit 从全局文件夹回到对应 run",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H024"
+          ],
+          "comment_id": 4948680939,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/28#issuecomment-4948680939"
+        }
+      ]
+    },
+    {
+      "slug": "v2-brain-mailbox",
+      "issue_number": 29,
+      "old_event_comment_count": 7,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "已验证 mailbox 的文件通信闭环，并明确真实自动唤醒属于独立 scheduler 能力，不能由 mailbox 或 hook 冒充",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948681194,
+        4948681385,
+        4948681474,
+        4948681657
+      ],
+      "episodes": [
+        {
+          "episode_title": "lane brain 降低 main-agent 负担后产生通信问题",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H014",
+            "codex:codex-primary-v2-v3-handoff:H015"
+          ],
+          "comment_id": 4948681073,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4948681073"
+        },
+        {
+          "episode_title": "mailbox、queue、hook 与唤醒被拆成不同能力",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H016",
+            "codex:codex-primary-v2-v3-handoff:H017",
+            "codex:codex-primary-v2-v3-handoff:H018"
+          ],
+          "comment_id": 4948681291,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4948681291"
+        },
+        {
+          "episode_title": "最小原型证明文件闭环，但没有证明自动 scheduler",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H019",
+            "codex:codex-primary-v2-v3-handoff:H020"
+          ],
+          "comment_id": 4948681588,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4948681588"
+        }
+      ]
+    },
+    {
+      "slug": "v2-design-freeze",
+      "issue_number": 30,
+      "old_event_comment_count": 3,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "旧控制面已冻结为历史快照，新 V2 合同已明确 scoped card、similarity、comparison provenance 与 mailbox，且未倒写旧产物",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948681869
+      ],
+      "episodes": [
+        {
+          "episode_title": "两次被补充打断暴露设计尚未冻结",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H021",
+            "codex:codex-primary-v2-v3-handoff:H022"
+          ],
+          "comment_id": 4948681774,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/30#issuecomment-4948681774"
+        },
+        {
+          "episode_title": "V2 合同冻结，但不追认旧卡执行了新流程",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H023"
+          ],
+          "comment_id": 4948681960,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/30#issuecomment-4948681960"
+        }
+      ]
+    },
+    {
+      "slug": "v2-loop-capsule",
+      "issue_number": 31,
+      "old_event_comment_count": 8,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "仓库已收敛为稳定 loops registry、单一 v2 capsule 与 candidate output，根级稳定产品只允许经 human promotion 出现",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948682197,
+        4948682282,
+        4948682381,
+        4948682560,
+        4948682731
+      ],
+      "episodes": [
+        {
+          "episode_title": "三次归档纠正暴露路径移动不是版本模型",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H025",
+            "codex:codex-primary-v2-v3-handoff:H026",
+            "codex:codex-primary-v2-v3-handoff:H027",
+            "codex:codex-primary-v2-v3-handoff:H028"
+          ],
+          "comment_id": 4948682069,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682069"
+        },
+        {
+          "episode_title": "用稳定 capsule contract 容纳内部结构演化",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H029",
+            "codex:codex-primary-v2-v3-handoff:H030"
+          ],
+          "comment_id": 4948682463,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682463"
+        },
+        {
+          "episode_title": "实验产物留在 loops，稳定产品等待人工提升",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H031",
+            "codex:codex-primary-v2-v3-handoff:H032"
+          ],
+          "comment_id": 4948682637,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4948682637"
+        }
+      ]
+    },
+    {
+      "slug": "v3-draft-first-precursor",
+      "issue_number": 32,
+      "old_event_comment_count": 9,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "draft-first 的生产顺序、轻量召回后的三问决策门和知识卡最低信息要求已经形成可执行答案；后续审计虽纠正了 comparison corpus 的范围，但没有推翻该问题的流程结论",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948682939,
+        4948683045,
+        4948683138,
+        4948683331,
+        4948683548,
+        4948683636
+      ],
+      "episodes": [
+        {
+          "episode_title": "7 小时 15 张卡暴露的不是单点性能，而是生产顺序错误",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H004",
+            "codex:codex-primary-v2-v3-handoff:H005",
+            "codex:codex-primary-v2-v3-handoff:H006",
+            "codex:codex-primary-v2-v3-handoff:H007"
+          ],
+          "comment_id": 4948682834,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948682834"
+        },
+        {
+          "episode_title": "轻量 Top 3 召回之后，检查发现卡片过度 atomic",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H008",
+            "codex:codex-primary-v2-v3-handoff:H009"
+          ],
+          "comment_id": 4948683222,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948683222"
+        },
+        {
+          "episode_title": "固定 metadata 与自由正文分工，补齐编辑主体和引用层次",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H010",
+            "codex:codex-primary-v2-v3-handoff:H011",
+            "codex:codex-primary-v2-v3-handoff:H012"
+          ],
+          "comment_id": 4948683429,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4948683429"
+        }
+      ]
+    },
+    {
+      "slug": "v3-formal-handoff",
+      "issue_number": 33,
+      "old_event_comment_count": 12,
+      "new_episode_comment_count": 4,
+      "desired_state": "open",
+      "state_rationale": "handoff 的目录、权限、依赖和运行方式已落盘，但正式启动合同把 v2 索引设为唯一 comparison corpus，后来证实这违背 v3 独立 0 到 1 的原则，因此可靠性交付尚未完成",
+      "state_transition_comment_id": 4949135728,
+      "deleted_comment_ids": [
+        4948683861,
+        4948683953,
+        4948684142,
+        4948684234,
+        4948684336,
+        4948684533,
+        4948684639,
+        4948684734
+      ],
+      "episodes": [
+        {
+          "episode_title": "从记忆中的 v3 架子转向无上下文可恢复 capsule",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H033",
+            "codex:codex-primary-v2-v3-handoff:H034",
+            "codex:codex-primary-v2-v3-handoff:H035"
+          ],
+          "comment_id": 4948683757,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948683757"
+        },
+        {
+          "episode_title": "原生嵌套不可用的判断，被进程级 Claude 实测改写",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H036",
+            "codex:codex-primary-v2-v3-handoff:H037",
+            "codex:codex-primary-v2-v3-handoff:H038",
+            "codex:codex-primary-v2-v3-handoff:H039"
+          ],
+          "comment_id": 4948684050,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684050"
+        },
+        {
+          "episode_title": "启动方式从危险 bypass 收紧为 auto，并从 demo 升为正式生产",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H040",
+            "codex:codex-primary-v2-v3-handoff:H041",
+            "codex:codex-primary-v2-v3-handoff:H042",
+            "codex:codex-primary-v2-v3-handoff:H043"
+          ],
+          "comment_id": 4948684422,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684422"
+        },
+        {
+          "episode_title": "最终交付改为已打开 Claude CLI 内可直接粘贴的 prompt",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H044"
+          ],
+          "comment_id": 4948684834,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4948684834"
+        }
+      ]
+    },
+    {
+      "slug": "v3-first-production-pass",
+      "issue_number": 34,
+      "old_event_comment_count": 10,
+      "new_episode_comment_count": 4,
+      "desired_state": "open",
+      "state_rationale": "171 张卡虽已写入 loop-local KB，但后续审计证明全部 comparison 只对照 v2 的 15 张卡，未做 intra-v3 duplication/fusion，因而 accepted 集合尚未通过有效 publication gate",
+      "state_transition_comment_id": 4949137007,
+      "deleted_comment_ids": [
+        4948685066,
+        4948685270,
+        4948685374,
+        4948685584,
+        4948685799,
+        4948685902
+      ],
+      "episodes": [
+        {
+          "episode_title": "正式启动只处理一个材料，4 张草稿通过了窄质量门",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H001",
+            "claude_code:claude-primary-v3:H002"
+          ],
+          "comment_id": 4948684969,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948684969"
+        },
+        {
+          "episode_title": "范围扩到其余材料后，语言要求经历两次提醒才落实",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H003",
+            "claude_code:claude-primary-v3:H004",
+            "claude_code:claude-primary-v3:H005"
+          ],
+          "comment_id": 4948685173,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685173"
+        },
+        {
+          "episode_title": "comparison 与 interlink 工件全部齐全，却建立在未验证的候选集上",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H006",
+            "claude_code:claude-primary-v3:H007"
+          ],
+          "comment_id": 4948685502,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685502"
+        },
+        {
+          "episode_title": "额度中断后恢复 adoption，171 张 accepted 的结论后来失效",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H008",
+            "claude_code:claude-primary-v3:H009",
+            "claude_code:claude-primary-v3:H010"
+          ],
+          "comment_id": 4948685684,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4948685684"
+        }
+      ]
+    },
+    {
+      "slug": "v3-unified-citation",
+      "issue_number": 35,
+      "old_event_comment_count": 10,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "Footnotes 已被确定为 raw source 与 knowledge card 的统一引用事实源，related metadata 改由脚本派生，并已完成 171 张卡迁移，当前设计问题已有可执行答案",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948686156,
+        4948686237,
+        4948686316,
+        4948686411,
+        4948686594,
+        4948686697,
+        4948686897
+      ],
+      "episodes": [
+        {
+          "episode_title": "裸 related id 不是可点击 interlink，助手又一次过早准备实现",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H011",
+            "claude_code:claude-primary-v3:H012",
+            "claude_code:claude-primary-v3:H013",
+            "claude_code:claude-primary-v3:H014",
+            "claude_code:claude-primary-v3:H015"
+          ],
+          "comment_id": 4948686061,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686061"
+        },
+        {
+          "episode_title": "纠正 References 语义后，“一句话多个 citation”成为统一约束",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H016",
+            "claude_code:claude-primary-v3:H017",
+            "claude_code:claude-primary-v3:H018"
+          ],
+          "comment_id": 4948686504,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686504"
+        },
+        {
+          "episode_title": "把 Footnotes 设为事实源，related 与 backlink 改由脚本派生",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H019",
+            "claude_code:claude-primary-v3:H020"
+          ],
+          "comment_id": 4948686799,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4948686799"
+        }
+      ]
+    },
+    {
+      "slug": "v3-cost-and-comparison-audit",
+      "issue_number": 36,
+      "old_event_comment_count": 7,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "高成本的主要来源、可消除与不可消除的读取、正确的 gate 顺序以及 comparison corpus 跑偏的根因都已审计并形成下一轮可执行修复条件",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948687087,
+        4948687188,
+        4948687436,
+        4948687602
+      ],
+      "episodes": [
+        {
+          "episode_title": "98% KV cache 命中仍花费 1200 RMB，审计推翻最初成本直觉",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H021",
+            "claude_code:claude-primary-v3:H022",
+            "claude_code:claude-primary-v3:H023"
+          ],
+          "comment_id": 4948686992,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4948686992"
+        },
+        {
+          "episode_title": "成本拆成同卡重读与跨卡发现，流程改为先判存活再打磨",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H024",
+            "claude_code:claude-primary-v3:H025"
+          ],
+          "comment_id": 4948687340,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4948687340"
+        },
+        {
+          "episode_title": "comparison corpus 审计发现 origin defect：171 张 v3 草稿只和 v2 比过",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H026",
+            "claude_code:claude-primary-v3:H027"
+          ],
+          "comment_id": 4948687515,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4948687515"
+        }
+      ]
+    },
+    {
+      "slug": "v3-set-level-fusion-gate",
+      "issue_number": 38,
+      "old_event_comment_count": 6,
+      "new_episode_comment_count": 3,
+      "desired_state": "open",
+      "state_rationale": "已确定 grep-first、agent-autonomous 的治理方向，但 draft 准入顺序、metadata contract、触发条件和实际 gate 尚未形成并验证为可执行闭环",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948688450,
+        4948688659,
+        4948688863
+      ],
+      "episodes": [
+        {
+          "episode_title": "审计先把批处理判成偏差，用户纠正后才定位到真正缺口",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H035",
+            "claude_code:claude-primary-v3:H036"
+          ],
+          "comment_id": 4948688367,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4948688367"
+        },
+        {
+          "episode_title": "可扩展 fusion 从全量比较退到候选召回，future plan 也被移回正确 scope",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H037",
+            "claude_code:claude-primary-v3:H038"
+          ],
+          "comment_id": 4948688551,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4948688551"
+        },
+        {
+          "episode_title": "治理目标从追求完整召回收敛为 grep-only 的 best-effort 设计",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H039",
+            "claude_code:claude-primary-v3:H040"
+          ],
+          "comment_id": 4948688756,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4948688756"
+        }
+      ]
+    },
+    {
+      "slug": "v3-reader-reviewer-architecture",
+      "issue_number": 40,
+      "old_event_comment_count": 11,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "上下文责任已收敛为 reader-drafter 持有完整材料、questioner 主动追问、fresh reviewer 独立核验，并形成 building/evolving 分阶段设计",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948689867,
+        4948689978,
+        4948690081,
+        4948690163,
+        4948690378,
+        4948690468,
+        4948690649,
+        4948690750
+      ],
+      "episodes": [
+        {
+          "episode_title": "三角色 wave 方案刚形成，reader 与 writer 的交接就被证明站不住",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H049",
+            "claude_code:claude-primary-v3:H050",
+            "claude_code:claude-primary-v3:H051",
+            "claude_code:claude-primary-v3:H052",
+            "claude_code:claude-primary-v3:H053"
+          ],
+          "comment_id": 4948689728,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948689728"
+        },
+        {
+          "episode_title": "从共享 KV cache 的设想追到隐藏假设：一次读全文并不等于理解完整",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H054",
+            "claude_code:claude-primary-v3:H055",
+            "claude_code:claude-primary-v3:H056"
+          ],
+          "comment_id": 4948690275,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948690275"
+        },
+        {
+          "episode_title": "用主动提问替代一次性 exhaust，并把 building 与 evolving 分成两种模式",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H057",
+            "claude_code:claude-primary-v3:H058",
+            "claude_code:claude-primary-v3:H059"
+          ],
+          "comment_id": 4948690563,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4948690563"
+        }
+      ]
+    },
+    {
+      "slug": "v3-questioning-loop",
+      "issue_number": 41,
+      "old_event_comment_count": 12,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "Mode A 的材料消费、并发策略、文件化角色协作、退出复核与 fresh-but-not-blind reviewer 已形成可执行 pipeline contract；Mode B 已明确延期而非阻塞当前答案",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948690944,
+        4948691030,
+        4948691118,
+        4948691217,
+        4948691405,
+        4948691507,
+        4948691728,
+        4948691811,
+        4948691905
+      ],
+      "episodes": [
+        {
+          "episode_title": "inline fusion 遇到并发现实，错误的预设 cluster 被撤销",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H060",
+            "claude_code:claude-primary-v3:H061",
+            "claude_code:claude-primary-v3:H062",
+            "claude_code:claude-primary-v3:H063",
+            "claude_code:claude-primary-v3:H064"
+          ],
+          "comment_id": 4948690867,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948690867"
+        },
+        {
+          "episode_title": "repo 让 reader 从加载器变成检索者，助手又误读了静态 main-agent",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H065",
+            "claude_code:claude-primary-v3:H066",
+            "claude_code:claude-primary-v3:H067"
+          ],
+          "comment_id": 4948691313,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948691313"
+        },
+        {
+          "episode_title": "questioner 的退出权被 reviewer 复核，盲审也改成按需取证",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H068",
+            "claude_code:claude-primary-v3:H069",
+            "claude_code:claude-primary-v3:H070",
+            "claude_code:claude-primary-v3:H071"
+          ],
+          "comment_id": 4948691608,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4948691608"
+        }
+      ]
+    },
+    {
+      "slug": "v3-justification-journal",
+      "issue_number": 42,
+      "old_event_comment_count": 10,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "已明确 per-card justification journal、按需求触发 comparison、typed footnotes、never-delete view 与统一 ingestion 范式，并完成 metadata、footnote/JJ contract 和下一 loop 环境",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948692155,
+        4948692267,
+        4948692429,
+        4948692541,
+        4948692834,
+        4948692970,
+        4948693089
+      ],
+      "episodes": [
+        {
+          "episode_title": "从全历史追踪退到 per-card journal，comparison 不再默认生成",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H072",
+            "claude_code:claude-primary-v3:H073",
+            "claude_code:claude-primary-v3:H074"
+          ],
+          "comment_id": 4948692012,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692012"
+        },
+        {
+          "episode_title": "被跳过的 0→1 初始化重新打开，comparison card 又被 typed footnotes 取代",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H075",
+            "claude_code:claude-primary-v3:H076",
+            "claude_code:claude-primary-v3:H077"
+          ],
+          "comment_id": 4948692359,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692359"
+        },
+        {
+          "episode_title": "设计获接受后补齐合同与交互日志，最后交付可直接启动的 v4 环境",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H078",
+            "claude_code:claude-primary-v3:H079",
+            "claude_code:claude-primary-v3:H080",
+            "claude_code:claude-primary-v3:H081"
+          ],
+          "comment_id": 4948692649,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4948692649"
+        }
+      ]
+    },
+    {
+      "slug": "v3-repository-cleanup",
+      "issue_number": 37,
+      "old_event_comment_count": 7,
+      "new_episode_comment_count": 3,
+      "desired_state": "open",
+      "state_rationale": "提交边界与署名偏好已经澄清，.obsidian ignore 规则也已修正，但命令分类器持续阻塞 git 写入，最终提交仍待外部执行和状态复核",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948687784,
+        4948687883,
+        4948688062,
+        4948688260
+      ],
+      "episodes": [
+        {
+          "episode_title": "cleanup sub-agent 两次接力，仍被命令分类器挡在提交前",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H028",
+            "claude_code:claude-primary-v3:H029",
+            "claude_code:claude-primary-v3:H030"
+          ],
+          "comment_id": 4948687694,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4948687694"
+        },
+        {
+          "episode_title": "用户收紧为只交 loops，剩余文档揭示 catch-all 仍有遗漏",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H031",
+            "claude_code:claude-primary-v3:H032"
+          ],
+          "comment_id": 4948687972,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4948687972"
+        },
+        {
+          "episode_title": "修正误输入与 .obsidian 规则，commit 仍留在外部步骤",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H033",
+            "claude_code:claude-primary-v3:H034"
+          ],
+          "comment_id": 4948688163,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4948688163"
+        }
+      ]
+    },
+    {
+      "slug": "v3-next-loop-pipeline",
+      "issue_number": 39,
+      "old_event_comment_count": 8,
+      "new_episode_comment_count": 4,
+      "desired_state": "open",
+      "state_rationale": "可复用 pipeline、question-driven exhaust 与角色隔离已有方向，但 exhaust skill、动态 workflow、agent handoff 和容错仍停留在讨论与设计文档，尚未实现或验证",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948689094,
+        4948689173,
+        4948689328,
+        4948689607
+      ],
+      "episodes": [
+        {
+          "episode_title": "先搭 collect 到 evolve 的全流程，再从 v3 反推卡片粒度",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H041",
+            "claude_code:claude-primary-v3:H042",
+            "claude_code:claude-primary-v3:H043"
+          ],
+          "comment_id": 4948688987,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948688987"
+        },
+        {
+          "episode_title": "删除体量校准，并把 grep 限制还原为临时权限故障",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H044",
+            "claude_code:claude-primary-v3:H045"
+          ],
+          "comment_id": 4948689250,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948689250"
+        },
+        {
+          "episode_title": "few-shot 摇摆后，用未来问题覆盖来操作化 exhaust",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H046"
+          ],
+          "comment_id": 4948689413,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948689413"
+        },
+        {
+          "episode_title": "撤下 hub 与 split 预设，转向 exhaust skill 和单层多角色 workflow",
+          "event_ids": [
+            "claude_code:claude-primary-v3:H047",
+            "claude_code:claude-primary-v3:H048"
+          ],
+          "comment_id": 4948689522,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4948689522"
+        }
+      ]
+    },
+    {
+      "slug": "v3-query-probes",
+      "issue_number": 43,
+      "old_event_comment_count": 6,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "真实 query 已覆盖架构、目标、RAG 对比、创始人歧义与 graph 边界，回答能给出仓库内具体出处，并保留了一次无回复和两次范围澄清",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948693324,
+        4948693439,
+        4948693624
+      ],
+      "episodes": [
+        {
+          "episode_title": "前三个 probe 从架构追到与 RAG 的共同点和边界",
+          "event_ids": [
+            "codex:codex-v3-query-probes:H001",
+            "codex:codex-v3-query-probes:H002",
+            "codex:codex-v3-query-probes:H003"
+          ],
+          "comment_id": 4948693211,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4948693211"
+        },
+        {
+          "episode_title": "创始人问题第一次无回复，重复后才拆开三个可能对象",
+          "event_ids": [
+            "codex:codex-v3-query-probes:H004",
+            "codex:codex-v3-query-probes:H005"
+          ],
+          "comment_id": 4948693532,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4948693532"
+        },
+        {
+          "episode_title": "把含糊的 graph 暂定为 GraphRAG，并显式保留解释边界",
+          "event_ids": [
+            "codex:codex-v3-query-probes:H006"
+          ],
+          "comment_id": 4948693726,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4948693726"
+        }
+      ]
+    },
+    {
+      "slug": "v3-presentation-render",
+      "issue_number": 47,
+      "old_event_comment_count": 2,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "HTML 转 PNG 工具已定位并用于批量渲染 5 个展示页面，输出完成存在性、尺寸与非空检查",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [],
+      "episodes": [
+        {
+          "episode_title": "从记忆中的仓库脚本追到可复用 html-to-png skill",
+          "event_ids": [
+            "codex:codex-v3-presentation-render:H001"
+          ],
+          "comment_id": 4948698371,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/47#issuecomment-4948698371"
+        },
+        {
+          "episode_title": "五个 HTML 批量生成同名 PNG，并检查尺寸与非空结果",
+          "event_ids": [
+            "codex:codex-v3-presentation-render:H002"
+          ],
+          "comment_id": 4948698463,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/47#issuecomment-4948698463"
+        }
+      ]
+    },
+    {
+      "slug": "v3-introduction-slides",
+      "issue_number": 45,
+      "old_event_comment_count": 9,
+      "new_episode_comment_count": 4,
+      "desired_state": "closed",
+      "state_rationale": "introduction 已从两条传统路径扩展并收敛为三张有独立标题的叙事图，重复逻辑、标题误用与版式反馈均完成修正",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948696451,
+        4948696573,
+        4948696779,
+        4948696883,
+        4948697187
+      ],
+      "episodes": [
+        {
+          "episode_title": "三栏初稿越界后收回两条路径，又一度压成单页",
+          "event_ids": [
+            "claude_code:claude-v3-narrative-design:H001",
+            "claude_code:claude-v3-narrative-design:H002",
+            "claude_code:claude-v3-narrative-design:H003"
+          ],
+          "comment_id": 4948696314,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948696314"
+        },
+        {
+          "episode_title": "单页被改回三张图，用范式、手段、过去未来化解重复",
+          "event_ids": [
+            "claude_code:claude-v3-narrative-design:H004",
+            "claude_code:claude-v3-narrative-design:H005",
+            "claude_code:claude-v3-narrative-design:H006"
+          ],
+          "comment_id": 4948696675,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948696675"
+        },
+        {
+          "episode_title": "让每张 slide 的标题脱离文件名也能说明用途",
+          "event_ids": [
+            "claude_code:claude-v3-narrative-design:H007"
+          ],
+          "comment_id": 4948696978,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948696978"
+        },
+        {
+          "episode_title": "渲染反馈暴露标题误用，平台中断后按参考图重做三栏",
+          "event_ids": [
+            "claude_code:claude-v3-narrative-design:H008",
+            "claude_code:claude-v3-narrative-design:H009"
+          ],
+          "comment_id": 4948697088,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4948697088"
+        }
+      ]
+    },
+    {
+      "slug": "v3-operational-definition",
+      "issue_number": 46,
+      "old_event_comment_count": 10,
+      "new_episode_comment_count": 4,
+      "desired_state": "closed",
+      "state_rationale": "操作定义、三个重点、五项属性与 DIKW 成熟度已形成两张中文主表达的 slide，并经过内容边界、高亮、换行与字号修正",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948697409,
+        4948697621,
+        4948697837,
+        4948697949,
+        4948698050,
+        4948698253
+      ],
+      "episodes": [
+        {
+          "episode_title": "先讨论层级而不急着制作，最终选择定义在上、映射在下",
+          "event_ids": [
+            "claude_code:claude-v3-narrative-design:H010",
+            "claude_code:claude-v3-narrative-design:H011"
+          ],
+          "comment_id": 4948697317,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697317"
+        },
+        {
+          "episode_title": "新版定义强化显隐两层，并把正文统一为中文主表达",
+          "event_ids": [
+            "claude_code:claude-v3-narrative-design:H012",
+            "claude_code:claude-v3-narrative-design:H013"
+          ],
+          "comment_id": 4948697517,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697517"
+        },
+        {
+          "episode_title": "DIKW 初稿边界含混，先重写信息与知识层再获准制作",
+          "event_ids": [
+            "claude_code:claude-v3-narrative-design:H014",
+            "claude_code:claude-v3-narrative-design:H015",
+            "claude_code:claude-v3-narrative-design:H016",
+            "claude_code:claude-v3-narrative-design:H017"
+          ],
+          "comment_id": 4948697726,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948697726"
+        },
+        {
+          "episode_title": "制作后再次漏掉首尾高亮，补上换行与字号才完成",
+          "event_ids": [
+            "claude_code:claude-v3-narrative-design:H018",
+            "claude_code:claude-v3-narrative-design:H019"
+          ],
+          "comment_id": 4948698156,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4948698156"
+        }
+      ]
+    },
+    {
+      "slug": "v4-agent-effort-default",
+      "issue_number": 48,
+      "old_event_comment_count": 4,
+      "new_episode_comment_count": 2,
+      "desired_state": "open",
+      "state_rationale": "全局 max 与项目级 xhigh 回退的配置路径已经确定，session hook 也被排除，但档案没有启动新主会话核验实际档位，也没有记录一次真实 sub-agent 委派来验证继承行为",
+      "state_transition_comment_id": 4949150256,
+      "deleted_comment_ids": [
+        4948698714,
+        4948698800
+      ],
+      "episodes": [
+        {
+          "episode_title": "从持久化 xhigh 追到会话启动前的 max，而不是依赖 hook",
+          "event_ids": [
+            "claude_code:claude-v4-agent-effort-setup:H001",
+            "claude_code:claude-v4-agent-effort-setup:H002",
+            "claude_code:claude-v4-agent-effort-setup:H003"
+          ],
+          "comment_id": 4948698557,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/48#issuecomment-4948698557"
+        },
+        {
+          "episode_title": "会话退出，但默认 effort 尚未获得运行时验证",
+          "event_ids": [
+            "claude_code:claude-v4-agent-effort-setup:H004"
+          ],
+          "comment_id": 4948698887,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/48#issuecomment-4948698887"
+        }
+      ]
+    },
+    {
+      "slug": "v4-full-material-orchestration",
+      "issue_number": 49,
+      "old_event_comment_count": 11,
+      "new_episode_comment_count": 4,
+      "desired_state": "open",
+      "state_rationale": "43 份盘点材料的 extraction 与后置 governance 已完成，但 status.json 和 loop_state.json 仍停在 setup/initializing 与 0 计数，无法可靠恢复或证明控制面已记录全量执行，因此编排合同尚未闭环",
+      "state_transition_comment_id": 4949152016,
+      "deleted_comment_ids": [
+        4948699112,
+        4948699223,
+        4948699440,
+        4948699558,
+        4948699668,
+        4948699777,
+        4948699892
+      ],
+      "episodes": [
+        {
+          "episode_title": "局部种子实验跑通，连接失败后由主会话补完 19 张卡",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H001",
+            "claude_code:claude-primary-v4:H002",
+            "claude_code:claude-primary-v4:H003"
+          ],
+          "comment_id": 4948699003,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699003"
+        },
+        {
+          "episode_title": "六次推进仍停在盘点和 workflow 准备，重复指令记录真实中断",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H004",
+            "claude_code:claude-primary-v4:H005",
+            "claude_code:claude-primary-v4:H006",
+            "claude_code:claude-primary-v4:H007",
+            "claude_code:claude-primary-v4:H008",
+            "claude_code:claude-primary-v4:H009"
+          ],
+          "comment_id": 4948699350,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948699350"
+        },
+        {
+          "episode_title": "明确使用 sub-agent 后，43 份材料才形成可对账的全量结果",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H010"
+          ],
+          "comment_id": 4948700012,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948700012"
+        },
+        {
+          "episode_title": "后置 governance 完成，但状态文件仍否认这次运行发生过",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H011"
+          ],
+          "comment_id": 4948700110,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4948700110"
+        }
+      ]
+    },
+    {
+      "slug": "v4-sequential-card-governance",
+      "issue_number": 50,
+      "old_event_comment_count": 5,
+      "new_episode_comment_count": 3,
+      "desired_state": "open",
+      "state_rationale": "绝对路径和一次后置 cluster governance 已补救，但 v4 的正式 ingest 仍未证明会逐卡执行 fusion、typed footnote 与 related 派生；后续 cluster 审计又发现关系数据损伤，因此 one-by-one governance 尚未成为稳定生产合同",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948700386,
+        4948700638
+      ],
+      "episodes": [
+        {
+          "episode_title": "绝对路径 P0 追出更深故障：并行入库跳过了逐卡治理",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H012",
+            "claude_code:claude-primary-v4:H013"
+          ],
+          "comment_id": 4948700266,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/50#issuecomment-4948700266"
+        },
+        {
+          "episode_title": "补救方案先把 grep 命中当 related，用户纠正为有证据的关系判断",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H014",
+            "claude_code:claude-primary-v4:H015"
+          ],
+          "comment_id": 4948700506,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/50#issuecomment-4948700506"
+        },
+        {
+          "episode_title": "近义与反义比较补回链接和 comparison cards，但未恢复正式 ingest gate",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H016"
+          ],
+          "comment_id": 4948700770,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/50#issuecomment-4948700770"
+        }
+      ]
+    },
+    {
+      "slug": "v4-cluster-exploration-damage",
+      "issue_number": 51,
+      "old_event_comment_count": 5,
+      "new_episode_comment_count": 3,
+      "desired_state": "open",
+      "state_rationale": "固定 cluster 数量已被否定，专项审计和 22 项修复也已执行，但最终仍有 2 条断裂引用和 1 张 comparison 卡缺少源 footnote；更重要的是尚未用新一轮生产验证 cluster 只约束默认深读范围而不限制 exploration",
+      "state_transition_comment_id": 4949153847,
+      "deleted_comment_ids": [
+        4948701104,
+        4948701331
+      ],
+      "episodes": [
+        {
+          "episode_title": "平均链接数异常追出 20-40 个 cluster 的隐藏数量锚",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H017",
+            "claude_code:claude-primary-v4:H018"
+          ],
+          "comment_id": 4948700948,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/51#issuecomment-4948700948"
+        },
+        {
+          "episode_title": "问题从 cross-link 转向 exploration，审计同时证实损伤并推翻硬隔离假设",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H035",
+            "claude_code:claude-primary-v4:H036"
+          ],
+          "comment_id": 4948701230,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/51#issuecomment-4948701230"
+        },
+        {
+          "episode_title": "22 项修复清理主要数据损伤，3 个残余缺口阻止问题关闭",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H037"
+          ],
+          "comment_id": 4948701472,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/51#issuecomment-4948701472"
+        }
+      ]
+    },
+    {
+      "slug": "v4-assistant-persona-boundary",
+      "issue_number": 56,
+      "old_event_comment_count": 1,
+      "new_episode_comment_count": 1,
+      "desired_state": "closed",
+      "state_rationale": "助手已明确区分项目 persona、Anthropic Claude 的模型身份与不可确认的训练语料配比，并对未知部分保持未知；该问题已有边界清楚的当前答案",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [],
+      "episodes": [
+        {
+          "episode_title": "把项目角色、模型身份和未知训练配比拆开回答",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H059"
+          ],
+          "comment_id": 4948705999,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/56#issuecomment-4948705999"
+        }
+      ]
+    },
+    {
+      "slug": "v4-audit-workload-sharding",
+      "issue_number": 52,
+      "old_event_comment_count": 13,
+      "new_episode_comment_count": 4,
+      "desired_state": "closed",
+      "state_rationale": "单 agent 全量审计的失效原因已经通过多轮失败与工作量复核定位，并形成、执行和验证了 FSJS；后续对 false positive 的修正属于证据判断协议的演化，由相邻审计问题继续承载",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948701735,
+        4948701952,
+        4948702040,
+        4948702153,
+        4948702253,
+        4948702460,
+        4948702576,
+        4948702774,
+        4948702877
+      ],
+      "episodes": [
+        {
+          "episode_title": "十项并行审计启动后，最重的 atomicity 节点堵住了全局",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H019",
+            "claude_code:claude-primary-v4:H020"
+          ],
+          "comment_id": 4948701602,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948701602"
+        },
+        {
+          "episode_title": "直接干预连续走错三次：重启、恢复与拆 prompt 都没有解决负载",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H021",
+            "claude_code:claude-primary-v4:H022",
+            "claude_code:claude-primary-v4:H023",
+            "claude_code:claude-primary-v4:H024",
+            "claude_code:claude-primary-v4:H025"
+          ],
+          "comment_id": 4948701837,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948701837"
+        },
+        {
+          "episode_title": "工作量 probe 推翻了“运行慢就是瓶颈”，问题变成可控上下文内能否有效审计",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H026",
+            "claude_code:claude-primary-v4:H027",
+            "claude_code:claude-primary-v4:H028"
+          ],
+          "comment_id": 4948702362,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948702362"
+        },
+        {
+          "episode_title": "FSJS 把全量 filter 与分片 judge 分开，并在 22 个 agents 上完成验证",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H029",
+            "claude_code:claude-primary-v4:H030",
+            "claude_code:claude-primary-v4:H031"
+          ],
+          "comment_id": 4948702667,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4948702667"
+        }
+      ]
+    },
+    {
+      "slug": "v4-audit-evidence-blind-spots",
+      "issue_number": 53,
+      "old_event_comment_count": 10,
+      "new_episode_comment_count": 4,
+      "desired_state": "closed",
+      "state_rationale": "grep 假阳性的成因、全文复核协议和 pipeline-stage 根因审计已经形成并执行，确认缺口也完成一轮修复；未覆盖的 repo 与系统性 hedging 等残余项已明确记录并转入来源处理及后续版本问题",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948703118,
+        4948703237,
+        4948703482,
+        4948703661,
+        4948703909,
+        4948704020
+      ],
+      "episodes": [
+        {
+          "episode_title": "两例 leakage 的初判经原文复核后只剩一例成立",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H032",
+            "claude_code:claude-primary-v4:H033",
+            "claude_code:claude-primary-v4:H034"
+          ],
+          "comment_id": 4948703017,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703017"
+        },
+        {
+          "episode_title": "八项 blind-spot 审计两次卡在 synthesis，main-agent 接管又被制止",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H038",
+            "claude_code:claude-primary-v4:H039",
+            "claude_code:claude-primary-v4:H040"
+          ],
+          "comment_id": 4948703370,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703370"
+        },
+        {
+          "episode_title": "陌生术语迫使审计从卡片症状追到 collection、extraction 与 governance",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H041",
+            "claude_code:claude-primary-v4:H042",
+            "claude_code:claude-primary-v4:H043"
+          ],
+          "comment_id": 4948703781,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948703781"
+        },
+        {
+          "episode_title": "修复 workflow 清掉已知坏路径并补 15 张实践卡，但只覆盖两个 repo",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H044"
+          ],
+          "comment_id": 4948704161,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4948704161"
+        }
+      ]
+    },
+    {
+      "slug": "v4-learnings-and-v5-handoff",
+      "issue_number": 55,
+      "old_event_comment_count": 5,
+      "new_episode_comment_count": 3,
+      "desired_state": "closed",
+      "state_rationale": "v4 的讨论、执行、审计、修复与独立总结已经固化为经审计的 learnings，并生成完整 v5 capsule、实验配置和最小启动 prompt；明确延期的 Reddit 与 repo 工作不阻断交接完成",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948705559,
+        4948705858
+      ],
+      "episodes": [
+        {
+          "episode_title": "长对话使旧设计失真，角色纠正后才形成可审计的 learnings 流程",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H054",
+            "claude_code:claude-primary-v4:H055"
+          ],
+          "comment_id": 4948705452,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/55#issuecomment-4948705452"
+        },
+        {
+          "episode_title": "交接范围主动延期 Reddit 与 repo，并把两个 P1 还原成读取和治理边界",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H056"
+          ],
+          "comment_id": 4948705683,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/55#issuecomment-4948705683"
+        },
+        {
+          "episode_title": "v5 scaffold 建好后再做两轮自适应审计，最终压缩成最小启动 prompt",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H057",
+            "claude_code:claude-primary-v4:H058"
+          ],
+          "comment_id": 4948705761,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/55#issuecomment-4948705761"
+        }
+      ]
+    },
+    {
+      "slug": "v5-v4-ingest-reconstruction",
+      "issue_number": 60,
+      "old_event_comment_count": 4,
+      "new_episode_comment_count": 3,
+      "desired_state": "open",
+      "state_rationale": "v4 的 extraction 编排在同一会话中先后被解释为 main-loop 直接编排和并行 Agent() sub-agents，后者虽撤回前答但仍缺少 runtime prompt/skill 传递的直接证据；“v4 extraction + v5 governance”的最小修改也尚未完成同源验证",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [
+        4948708053
+      ],
+      "episodes": [
+        {
+          "episode_title": "被中断的提问重启为 v4 还原与最小修改问题",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H017",
+            "claude_code:claude-primary-v5:H018"
+          ],
+          "comment_id": 4948707941,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/60#issuecomment-4948707941"
+        },
+        {
+          "episode_title": "“main-loop 直接编排”的答案把分派误读成亲自执行",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H019"
+          ],
+          "comment_id": 4948708147,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/60#issuecomment-4948708147"
+        },
+        {
+          "episode_title": "用户质疑后撤回答案，但 sub-agent 如何获得完整 skills 仍未闭环",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H020"
+          ],
+          "comment_id": 4948708244,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/60#issuecomment-4948708244"
+        }
+      ]
+    },
+    {
+      "slug": "v5-fsjs-audit-coverage",
+      "issue_number": 58,
+      "old_event_comment_count": 4,
+      "new_episode_comment_count": 3,
+      "desired_state": "open",
+      "state_rationale": "首轮审计被确认没有完整执行 SHARD/JUDGE；后补流程虽报告 6/6 与 26 子项全覆盖，但底层仍有 FAIL/conditional、语义明细不足，且后续信息密度事件证明 questioning 深度和概念解释充分性不在原合同内",
+      "state_transition_comment_id": 4949159728,
+      "deleted_comment_ids": [
+        4948706674
+      ],
+      "episodes": [
+        {
+          "episode_title": "一句“有专门流程吗”推翻了首轮审计完成状态",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H003"
+          ],
+          "comment_id": 4948706363,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/58#issuecomment-4948706363"
+        },
+        {
+          "episode_title": "“那就是你没做完”把补救方向改成脚本初筛与专业覆盖盘点",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H004"
+          ],
+          "comment_id": 4948706461,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/58#issuecomment-4948706461"
+        },
+        {
+          "episode_title": "补建方法与深审 Workflow 后报告通过，但合同外盲区仍在",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H005",
+            "claude_code:claude-primary-v5:H006"
+          ],
+          "comment_id": 4948706571,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/58#issuecomment-4948706571"
+        }
+      ]
+    },
+    {
+      "slug": "v5-preservation-and-transition-out",
+      "issue_number": 61,
+      "old_event_comment_count": 2,
+      "new_episode_comment_count": 2,
+      "desired_state": "closed",
+      "state_rationale": "仓库内路径已规整为 repo 相对路径、规则已写入 README，变更经验证后分类提交并推送；后续 v5 全量内容又由 sub-agent 单独固化为可追溯提交，未推送边界已明确披露",
+      "state_transition_comment_id": null,
+      "deleted_comment_ids": [],
+      "episodes": [
+        {
+          "episode_title": "先规整绝对路径，再纠正误混提交并分类推送",
+          "event_ids": [
+            "codex:codex-post-v5-repo-publish:H001"
+          ],
+          "comment_id": 4948708360,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/61#issuecomment-4948708360"
+        },
+        {
+          "episode_title": "最终 v5 内容由 sub-agent 固化为提交，但当时没有推送",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H007"
+          ],
+          "comment_id": 4948708462,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/61#issuecomment-4948708462"
+        }
+      ]
+    },
+    {
+      "slug": "v5-source-router-and-graph-governance",
+      "issue_number": 57,
+      "old_event_comment_count": 2,
+      "new_episode_comment_count": 1,
+      "desired_state": "open",
+      "state_rationale": "v5 独立 0→1 已产出可解析 KB 并执行路由、fusion 与图修复，但 10/11/12 个失败源、62/63 个已消费源、0/2 orphan 等口径冲突未闭环，逐卡治理和 mutation 后 gate 缺少轨迹，后续又证明审计未覆盖 extraction 深度",
+      "state_transition_comment_id": 4949160599,
+      "deleted_comment_ids": [
+        4948706254
+      ],
+      "episodes": [
+        {
+          "episode_title": "独立 0→1 跑出 477 张卡，但路由与图治理结论留下冲突口径",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H001",
+            "claude_code:claude-primary-v5:H002"
+          ],
+          "comment_id": 4948706143,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/57#issuecomment-4948706143"
+        }
+      ]
+    }
+  ],
+  "completed_at": "2026-07-11T23:32:34.096021+00:00",
+  "backup_path": "remediation/backups/pilot-before-20260712-072106.json"
+}

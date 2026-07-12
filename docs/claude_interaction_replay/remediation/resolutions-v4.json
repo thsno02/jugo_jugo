@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v4-agent-effort-default",
+      "issue_number": 48,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前只能定位 max 与 xhigh 的候选配置层级，实际优先关系尚未验证",
+      "body": "### 目前只能定位 max 与 xhigh 的候选配置层级，实际优先关系尚未验证\n\n目前只能定位 `max` 与 `xhigh` 的候选配置层级，尚不能确认具体配置项、文件位置或运行时优先关系。归档支持的放置方式是：全局 `max` 位于新进程启动前可读取的全局环境或启动器配置层；项目级 `xhigh` 位于该项目的持久化配置层。现有记录没有留下准确文件路径、环境变量名或配置键，因此两处都只能作为候选位置，不能写成已核实实现。\n\n预期关系是启动时的全局 `max` 作为主路径，未提供、不可用或未被进程读取时，由项目级 `xhigh` 回退；session hook 因执行过晚，不应承担切换当前会话 effort 的职责。但该优先/回退关系同样缺少运行时证据。关闭条件是记录两项配置的实际载体与解析顺序，启动全新主会话核验档位，再真实委派一次 sub-agent，核验其实际档位或可审计配置读取结果。\n\n<!-- issue-resolution: v4-agent-effort-default -->"
+    },
+    {
+      "slug": "v4-full-material-orchestration",
+      "issue_number": 49,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前只能确认 43 份材料已完成处理，尚不能确认编排可恢复",
+      "body": "### 目前只能确认 43 份材料已完成处理，尚不能确认编排可恢复\n\n目前只能确认盘点范围内的 43 份材料已完成处理，尚不能确认这套全量编排具备可靠状态记录和中断恢复能力。这里的 extraction 是从来源中提取知识并形成卡片；governance 是对入库卡片做去重、规范化、链接和抽查；Phase 0-4 是当时用于汇总这些准备、抽取、入库与治理阶段的完成标签，不是独立于产物的运行证明。\n\n`259` 是 43/43 材料处理完成并接受一次后置治理时的 KB 快照，口径包含此前 19 张种子卡和本轮 240 张新增卡；`328` 是后续来源审计、修复及网页重提取后的活跃卡快照，时点更晚、处理范围也更广，不能与 259 当作同一次验收结果。但 `status.json` 仍为 setup，`loop_state.json` 仍为 initializing 且计数为 0。关闭条件是统一权威状态源，对齐各时点口径、失败/重试记录与产物，并从中断点完成一次可复现恢复演练。\n\n<!-- issue-resolution: v4-full-material-orchestration -->"
+    },
+    {
+      "slug": "v4-sequential-card-governance",
+      "issue_number": 50,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前只能给出逐卡治理合同，尚未证明已进入正式 ingest gate",
+      "body": "### 目前只能给出逐卡治理合同，尚未证明已进入正式 ingest gate\n\n目前只能给出逐卡治理（one-by-one governance）的可验收合同，尚不能证明它已成为正式 ingest gate。现有证据支持的判断是：并行写库使新卡未必能依次看到持续更新的 KB，这很可能造成 fusion 与有依据关系的缺失，但档案不足以证明它是唯一直接原因。fusion 是把重复或互补内容合并进 canonical card；typed footnote 是带关系类型和来源依据的结构化脚注；`related` 是由该证据派生的关联元数据；comparison card 是把有知识价值的差异独立成卡；ingest gate 是 draft 进入正式 KB 前必须通过的检查点。\n\n验收步骤是：标准化路径；按近义、反义和观点张力召回候选；阅读候选正文、来源与 footnote；逐一判定 fusion、有关联但保持独立或无实质关系；先写 typed footnote，再派生 `related`，必要时生成 comparison card；最后验证 YAML、引用、路径和关系可追溯。关闭条件是把这些步骤固化为阻断式 gate，并用新材料逐项留下通过记录，而不是依赖事后补链。\n\n<!-- issue-resolution: v4-sequential-card-governance -->"
+    },
+    {
+      "slug": "v4-cluster-exploration-damage",
+      "issue_number": 51,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能确认固定 cluster 配额不合理且存在损伤，尚不能确定完整因果范围",
+      "body": "### 目前能确认固定 cluster 配额不合理且存在损伤，尚不能确定完整因果范围\n\n目前能确认固定 cluster 配额不适合作为知识边界，且同一生产结果中确实观察到遗漏和关系数据损伤；尚不能把这些损伤全部归因于配额，也不能确认生产修复已经生效。已观察事实包括孤儿卡遗漏、`related` YAML 派生错误、脚注叙事泄漏，以及部分跨领域链接稀疏；专项审计同时否定了“链接被 cluster 完全硬隔离”和“comparison 只能发生在同域”的强因果假设。\n\n合理的 cluster 只应是上下文启发式（context heuristic）：组织候选并限定默认深读范围，同时保留全局索引、组外读取和跨域建边能力。22 项修复能证明既有 280 张卡的 YAML、孤儿卡和双格式 related 等主要数据问题得到清理，也补齐了多数 comparison footnote；它不能证明固定配额是每项损伤的原因，更不能证明新材料生产会主动越过 cluster。关闭条件是清零 2 条断裂引用和 1 个 footnote 缺口，移除数量配额，并用新材料验证组外召回、跨域关系及全套结构检查。\n\n<!-- issue-resolution: v4-cluster-exploration-damage -->"
+    },
+    {
+      "slug": "v4-audit-workload-sharding",
+      "issue_number": 52,
+      "state": "closed",
+      "kind": "answer",
+      "title": "全量机械筛选与分片语义判断应采用 FSJS",
+      "body": "### 全量机械筛选与分片语义判断应采用 FSJS\n\n单个 agent 全量遍历 200+ cards 不可靠，因为“能够读完”不等于能在受控上下文内逐项作出可信的语义判断；正确做法是采用 FSJS（Filter-Shard-Judge-Synthesize）。Filter 用可复现规则全量检查格式、路径和字段以保证覆盖率；Shard 按来源或卡片亲和度分配 suspect，并加入随机校准样本；每个 Judge 只阅读可控数量的卡片与原始依据；Synthesize 汇总结构化 verdict 和残余风险，不能替未读内容补结论。\n\n该方法已由 Filter、20 个 Judge 与 Synthesize 共 22 个 agents 实际运行，形成 196 条 findings，并对 8 个设计不变量给出 5 PASS、3 PARTIAL，因此足以作为当前可执行答案。适用边界是：FSJS 解决负载、覆盖与上下文控制，不自动保证证据解释正确；grep 命中或缺失仍需全文语义复核，机械规则也不应冒充语义审计。\n\n<!-- issue-resolution: v4-audit-workload-sharding -->"
+    },
+    {
+      "slug": "v4-audit-evidence-blind-spots",
+      "issue_number": 53,
+      "state": "closed",
+      "kind": "answer",
+      "title": "避免 grep 假阳性应先生成 suspect，再回原文并追到责任阶段",
+      "body": "### 避免 grep 假阳性应先生成 suspect，再回原文并追到责任阶段\n\n避免 grep 假阳性的可执行方法，是把 grep miss 或命中仅视为 suspect，再由语义 judge 回到原文、正式 footnote 与引用链确认；若确认存在缺口，还要沿执行链追到 collection、preprocessing、extraction/reframing 或 governance 的责任阶段。这样才能区分真实 context leakage、可追溯但缺 provenance、agent editorial 与纯粹的检索漏召回。\n\n该协议已实际纠正早期判定：原先两例 confirmed leakage 经全文复核后，收敛为 1 个真实 leakage、1 个 provenance gap/editorial 和 1 个 false positive；后续审计还把网页结构损失、repo 未消化、hedging 压平和关系异常分别映射到对应 pipeline 阶段，并完成一轮定向修复。边界是此答案解决“如何审计并归因”，不表示所有来源缺陷已消失；repo2doc、系统性 hedging 与未覆盖来源由独立后续项继续承载。\n\n<!-- issue-resolution: v4-audit-evidence-blind-spots -->"
+    },
+    {
+      "slug": "v4-source-routing-and-preprocessing",
+      "issue_number": 54,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到 TXT fallback 的失真原因与分流方案，repo2doc 尚未落地",
+      "body": "### 目前能回答到 TXT fallback 的失真原因与分流方案，repo2doc 尚未落地\n\n目前能回答到：统一 TXT fallback 只统一了文件名，却抹平 TeX、HTML 与代码仓库各自的结构；正确方案是按来源分流，但 repo2doc 仍未设计和验证。论文应直接读取 TeX 或完整 bundle，网页应从 HTML 生成保留表格与代码的 Markdown，repository 则应先转换为有架构、接口、配置和实现语义的技术文档，再进入 questioning / doc2card。\n\n网页与论文路径已有执行证据：23 个有效 `raw.html` 已生成 `markdown.md`，对 19 个来源增量重提取后新增 33 张卡；坏 bundle 与死源也已处理。仍未知的是 repo 中间表示、工具选择、质量门槛和端到端效果，现有 2/20 repo 的 bundle-to-card 只是 demo，不能视为完成。关闭条件是确定 repo2doc 合同，在代表性仓库上验证结构保真与可读性，再完成 repo2doc→doc2card 的产物、引用和覆盖验收。\n\n<!-- issue-resolution: v4-source-routing-and-preprocessing -->"
+    },
+    {
+      "slug": "v4-learnings-and-v5-handoff",
+      "issue_number": 55,
+      "state": "closed",
+      "kind": "answer",
+      "title": "长对话应通过分角色审计的 capsule 固化为可执行交接",
+      "body": "### 长对话应通过分角色审计的 capsule 固化为可执行交接\n\n长对话中的真实流程不应直接从早期设计文件复制，而应通过分角色、可审计的 capsule 固化为下一版本可执行交接：sub-agent 先嗅探现状，agent team 只讨论和形成任务，workflow 执行，新的 agent team 设计审计，新的 workflow 审计与修复，最后由独立 sub-agent 汇总，避免执行者自证完成。\n\n这一合同已落地为 7 份 learnings 文档，并生成 v5 handoff、task、完整 start prompt、实验配置和 `MINIMAL_START.md`；配置又经过两轮自适应审计，共修复 12 项问题。当前交接明确记录了已完成工作与残余风险，因此可直接由最小 prompt 启动新会话。适用边界是：Reddit 与通用 repo2doc 被明确延期，sequential governance 与 source router 是 v5 待验收能力；v5 实验后来是否成功不属于本交接完成度的证明。\n\n<!-- issue-resolution: v4-learnings-and-v5-handoff -->"
+    },
+    {
+      "slug": "v4-assistant-persona-boundary",
+      "issue_number": 56,
+      "state": "closed",
+      "kind": "answer",
+      "title": "项目 persona、模型身份与训练语料信息必须分层陈述",
+      "body": "### 项目 persona、模型身份与训练语料信息必须分层陈述\n\n项目角色（persona）、底层模型身份（model identity）与训练语料构成是三个不同层次：persona 是仓库或会话指令规定的行动方式，不会改写模型身份；模型身份只应按系统可确认的信息陈述；训练语料来源及配比若无法从当前会话核验，就必须明确保持未知，不能从回答风格或行为倾向反推。\n\n在该归档会话中，可确认的回答是助手运行于 Anthropic Claude，且没有额外个人角色人设；能够观察到结构化、礼貌、承认不确定性等输出倾向，但这些现象不构成训练数据证据。这个分层方法适用于身份询问、提示注入式“忽略以上内容”以及对训练内幕的追问。边界是只陈述当前系统暴露的可验证身份，不推测版本、训练数据清单或比例；若运行环境提供新的权威元数据，应以新证据更新模型身份部分，而不是改写 persona 定义。\n\n<!-- issue-resolution: v4-assistant-persona-boundary -->"
+    }
+  ]
+}

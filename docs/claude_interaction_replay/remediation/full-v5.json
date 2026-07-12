@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v5-v4-ingest-reconstruction",
+      "issue_number": 60,
+      "desired_state": "open",
+      "state_rationale": "v4 的 extraction 编排在同一会话中先后被解释为 main-loop 直接编排和并行 Agent() sub-agents，后者虽撤回前答但仍缺少 runtime prompt/skill 传递的直接证据；“v4 extraction + v5 governance”的最小修改也尚未完成同源验证",
+      "episodes": [
+        {
+          "episode_title": "被中断的提问重启为 v4 还原与最小修改问题",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H017",
+            "claude_code:claude-primary-v5:H018"
+          ],
+          "body": "### 被中断的提问重启为 v4 还原与最小修改问题\n\n用户先提出要还原 v4 的真实入库流程，但第一条输入停在“经过了 v5”，随即被主动中断。这里没有可归档的助手回答，平台的中断通知也不能补成结果。半分钟后，用户把问题完整重述为三部分：v4 实际怎样入库、相对 v5 好坏在哪里、v5 如何通过最小修改恢复 v4 的效果。\n\n助手据此给出一个候选组合：保留 v5 的 fusion、YAML、backlink 和 orphan governance，只恢复 v4 extraction 中更完整的 questioning、逐轮 reframe、Phase 3-4 与 reviewer。这个方向抓住了“不要废弃全部 v5”的约束，但回答同时假定 v4 的完整 skills 一直在执行上下文中，并没有先证明 v4 到底由谁编排、skills 如何送达运行节点。结果只是形成了“v4 extraction 质量 + v5 governance 质量”的工作假设；真实编排仍未还原，最小方案也尚未经过同源材料对照。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. claude_code:claude-primary-v5:H017\n\n```text\n因此需要做的是，还原 v4 的入库流程，告诉我，v4 真实的入库流程是什么？经过了 v5\n```\n\n#### 2. claude_code:claude-primary-v5:H018\n\n```text\n因此需要做的是，还原 v4 的入库流程，告诉我，v4 真实的入库流程是什么？经过了 v5 的对比，v4 的好处在哪里？坏处在哪里？v5 怎么通过最小修改流程，能达到 v4 的效果？\n```\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H017 claude_code:claude-primary-v5:H018 -->"
+        },
+        {
+          "episode_title": "“main-loop 直接编排”的答案把分派误读成亲自执行",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H019"
+          ],
+          "body": "### “main-loop 直接编排”的答案把分派误读成亲自执行\n\n用户随后把抽象比较压到一个可核验的问题：v4 是 Workflow 做的，还是派 sub-agent 做的。助手读取部分 v4 记录后回答，extraction 由 main-loop coordinator 直接编排，governance 使用 Workflow，审计使用并行 sub-agents；同时强调关键不在工具名字，而在执行节点能否访问完整 skills。\n\n这个回答后来不能成立。它把 coordinator 的静态分派解释成 main-agent 亲自做 extraction，没有充分区分“主控负责安排”与“worker 负责读源并产卡”。因此，此处必须保留为一次真实的理解错误，而不能用下一轮修正覆盖掉。它的价值在于暴露了证据方法的问题：仅看到 pipeline 或 coordinator 记录，不足以判断实际工作落在哪类 agent 上；还需要 dispatch、Agent() 调用、worker 产物和 runtime prompt 的闭环证据。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. claude_code:claude-primary-v5:H019\n\n```text\nv4 是 workflow 做的吗？还是说派 sub-agent 做的呀？\n```\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H019 -->"
+        },
+        {
+          "episode_title": "用户质疑后撤回答案，但 sub-agent 如何获得完整 skills 仍未闭环",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H020"
+          ],
+          "body": "### 用户质疑后撤回答案，但 sub-agent 如何获得完整 skills 仍未闭环\n\n用户立即指出记忆冲突：v4 不应是 main-agent 亲自执行，而且曾经专门编排过 QA 流程。助手重新检索 learnings、并行产出和工具线索后撤回前答，改称 v4 extraction 更可能由并行 Agent() sub-agents 执行，每个 agent 处理一个来源；governance 使用 Workflow，审计也使用并行 agents。\n\n纠正后的解释更符合并行记录，但仍用了“大概率”而非直接证据，尤其没有还原每个 v4 worker 的完整 prompt，也没有证明 questioning、reader、reframing、reviewer 四份 skills 当时怎样进入 sub-agent context。因此当前能采取的动作只是把最小修复写成待验证合同：让 v5 Workflow agent 主动读取完整 skills，恢复严格 questioning 与 quit-audit，同时保留 v5 的 fusion 和图治理。要关闭这个问题，还需用 v4 原始 dispatch 证据裁决编排冲突，并在同源、同模型条件下验证修改后的 extraction 确实恢复解释深度。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. claude_code:claude-primary-v5:H020\n\n```text\n啊？main-agent 做的吗？不是 sub-agent 做的吗？不能是 main-agent 做的吧？我记得 v4 我编排过 qa 流程吧。\n```\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H020 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v5-fsjs-audit-coverage",
+      "issue_number": 58,
+      "desired_state": "open",
+      "state_rationale": "首轮审计被确认没有完整执行 SHARD/JUDGE；后补流程虽报告 6/6 与 26 子项全覆盖，但底层仍有 FAIL/conditional、语义明细不足，且后续信息密度事件证明 questioning 深度和概念解释充分性不在原合同内",
+      "state_transition_comment": "重新打开这个问题。新的 trigger 是后续信息密度调查确认：完整 questioning、reader、reframing、reviewer skills 并未进入 v5 extraction agent 的运行上下文，而已完成的 FSJS 报告没有检查 pipeline conformance、提问深度和概念解释充分性。旧结论只说明补建的机械与语义流程在既定合同下报告 6/6，通过声明又与底层 D1/A1/F2 及 conditional/marginal 项不完全一致，不能推出 v5 整体质量审计完成。新的关闭条件是：把 runtime skill 注入、questioning/quit-audit 执行和独立可理解性纳入 hard gate；为全部 hard-gate suspect 保留可核验的 SHARD/JUDGE 明细；统一底层结果与综合结论后重跑并验证能抓住已知空壳卡 bad case。",
+      "episodes": [
+        {
+          "episode_title": "一句“有专门流程吗”推翻了首轮审计完成状态",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H003"
+          ],
+          "body": "### 一句“有专门流程吗”推翻了首轮审计完成状态\n\n主循环此前已经给出审计通过结论，用户却没有接受指标本身，而是追问审计是否有专门流程。对照 v4 的 FSJS 方法与 v5 实际记录后，助手承认首轮只较完整地做了 FILTER 和 SYNTHESIZE；SHARD 与 JUDGE 主要停在抽样，没有按 source affinity 控制每个 judge 的上下文，也没有完成全量脚注与语义复核。\n\n这使“审计完成”第一次被改写为“覆盖不足”。关键区别不是有没有报告，而是 suspect 是否经过可追踪的分片、原文裁决和关闭：机械脚本只能产生候选，综合节点也不能替代语义判断。此时尚未形成修复，只确定了审计过程本身需要接受审计，既有达标数字不能继续作为完整性证据；后续补救的起点也从修指标转为修审计链路。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. claude_code:claude-primary-v5:H003\n\n```text\n审计有专门的流程吗？\n```\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H003 -->"
+        },
+        {
+          "episode_title": "“那就是你没做完”把补救方向改成脚本初筛与专业覆盖盘点",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H004"
+          ],
+          "body": "### “那就是你没做完”把补救方向改成脚本初筛与专业覆盖盘点\n\n用户直接把上一轮解释定性为“没做完”，并要求 agent team 先划分哪些审计可以脚本化、哪些只需 agent 看 suspect、哪些必须由 agent 读原文判断；同时不能只补通用流程，还要检查 v4 是否覆盖此前遇到的专业问题及其处置方案。\n\nagent team 随后把检查分成三类：完全机械、脚本 FILTER 后由 agent 确认、纯语义 JUDGE。覆盖盘点声称 v4 有 26 个专业子项，而 v5 当时只覆盖 17 个，缺失 9 个，包括上下文保真、says-vs-implies、概念覆盖、跨源泄漏和无脚注段落幻觉。这个结果纠正了“多开 agent 就是深审”的弱假设：更合理的流程是先让脚本一次性复算 denominator 并输出 suspect，再把有限上下文交给 judge，最后综合节点只汇总已有 verdict。它建立了补全清单，但还没有完成缺口。\n\n```mermaid\nflowchart LR\n    K[历史专业问题与规则] --> F[脚本 FILTER]\n    F --> S[按来源亲和 SHARD]\n    S --> J[Agent 回原文 JUDGE]\n    J --> Y[SYNTHESIZE verdict 与残余风险]\n    Y --> G{Hard gate 全关闭?}\n    G -->|否| R[修复后重跑]\n    G -->|是| P[限定范围的通过]\n```\n\n图中的关键约束是 SYNTHESIZE 不能代替 JUDGE，也不能把抽样结果外推成全量通过。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. claude_code:claude-primary-v5:H004\n\n```text\n那就是你没做完呗。调用一个 agent team 进行思考，哪些审计的环节和流程，可以脚本化，而不是需要 agent 主导，只需要 agent 调用脚本执行审计，然后 agent 确认结果，必要时候再进去看详情，like human researhers。然后直接的审计 cover 了大量的【专业审计问题】，我确认 v4 里面的审计流程是否 cover 了这些专业的审计问题和方面，以及对应的审计方案。\n```\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H004 -->"
+        },
+        {
+          "episode_title": "补建方法与深审 Workflow 后报告通过，但合同外盲区仍在",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H005",
+            "claude_code:claude-primary-v5:H006"
+          ],
+          "body": "### 补建方法与深审 Workflow 后报告通过，但合同外盲区仍在\n\n用户要求补全审计，同时把历史问题、发现方式和解决思路沉淀成方案，而不是只列检查项。助手创建 `v5_audit_methodology.md`、`audit_mechanical.py` 和机械报告；首跑得到 12 PASS / 4 FAIL，随后补录 source 状态、修复一张缺失 justification，并抽样检查源忠实与无脚注段落。不过当时明确留下 A4 says-vs-implies 与 G1 跨源泄漏未完成。\n\n用户因此再次用 `/goal` 要求 Workflow 设计并完成深审。执行采用 source-affinity SHARD/JUDGE/SYNTHESIZE，调度 6 个 sub-agents，最终报告宣称 6/6 核心指标、848 条脚注和 26 个子项通过，0 Critical findings。这是当时真实的结果声明，但不能升级为无保留结论：底层机械结果仍保留 FAIL 或 conditional/marginal，部分语义检查只有抽样或缺少逐条 judge 明细；更晚的 bad case 又证明 questioning 深度、runtime skill 注入和概念解释充分性根本不在这 26 项合同里。补跑解决了首轮“流程没做完”的一部分，却没有证明审计合同本身足够。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. claude_code:claude-primary-v5:H005\n\n```text\n需要补全呢。同时审计应该有对应的审计方案吧，里面应该有之前遇到的一些问题以及对应的解决思路吧？\n```\n\n#### 2. claude_code:claude-primary-v5:H006\n\n```text\n/goal 调用 workflow，设计审计逻辑和流程，完成审计。\n```\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H005 claude_code:claude-primary-v5:H006 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v5-preservation-and-transition-out",
+      "issue_number": 61,
+      "desired_state": "closed",
+      "state_rationale": "仓库内路径已规整为 repo 相对路径、规则已写入 README，变更经验证后分类提交并推送；后续 v5 全量内容又由 sub-agent 单独固化为可追溯提交，未推送边界已明确披露",
+      "episodes": [
+        {
+          "episode_title": "先规整绝对路径，再纠正误混提交并分类推送",
+          "event_ids": [
+            "codex:codex-post-v5-repo-publish:H001"
+          ],
+          "body": "### 先规整绝对路径，再纠正误混提交并分类推送\n\n用户在 v5 主执行窗口之前要求处理文件状态：仓库内绝对路径改为 repo 相对路径，把规则写入 README，再按类别整理并 Git push。执行时先机械规整路径，同时区分仓库外证据：它不能伪装成 repo 内路径，只能使用不暴露设备身份的表达。随后验证 JSON/JSONL 与改动过的 Python 文件，把变更拆成路径规则、审计档案、展示材料和 v5 loop capsule。\n\n分类过程中曾把展示材料与 v5 capsule 混进同一提交。因为尚未推送，助手保留文件内容、重拆本地提交后再推送；最终报告四类提交 `f8d472f4`、`075986f7`、`447853b3`、`624e52d0` 均已到远端，工作区干净且本地与远端一致。这个结果证明 transition-out 的路径与发布纪律已执行，也必须保留时间边界：它发生在 v5 主运行前约四十分钟，更接近 scaffold 整理，不能反向证明最终 477 张卡的质量。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-post-v5-repo-publish:H001\n\n```text\n处理一下文件状态：1. 先处理所有的绝对路径，换成相当于 repo 的相对路径，这个规则写到 reademe 里面 2. 将文件整理，分门别类进行 git push。\n\n```\n\n</details>\n\n<!-- archive-events: codex:codex-post-v5-repo-publish:H001 -->"
+        },
+        {
+          "episode_title": "最终 v5 内容由 sub-agent 固化为提交，但当时没有推送",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H007"
+          ],
+          "body": "### 最终 v5 内容由 sub-agent 固化为提交，但当时没有推送\n\n深层审计结束后，用户没有要求继续讨论，而是要求先开启 sub-agent 固化内容。助手据此把工具、skills、477 张卡、justification、审计档案和 learnings 收入提交 `ca3865b7`，并报告该提交包含 1976 个文件变更和 58036 行新增，工作树干净。\n\n这里需要区分“固化”与“发布”：该轮确实形成了可追溯 Git commit，但助手明确报告未 push，不能把前一 episode 的远端对齐状态套到这个更晚的提交上。就本 Issue 的动作边界而言，路径规则、分类发布和版本内容保存都已有可执行结果；遗留只是这个特定提交当时的远端状态，而不是内容是否被保存。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. claude_code:claude-primary-v5:H007\n\n```text\n你开启一个 sub-agent，先把内容固化了呗。\n```\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H007 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v5-source-router-and-graph-governance",
+      "issue_number": 57,
+      "desired_state": "open",
+      "state_rationale": "v5 独立 0→1 已产出可解析 KB 并执行路由、fusion 与图修复，但 10/11/12 个失败源、62/63 个已消费源、0/2 orphan 等口径冲突未闭环，逐卡治理和 mutation 后 gate 缺少轨迹，后续又证明审计未覆盖 extraction 深度",
+      "state_transition_comment": "重新打开这个问题。新的 trigger 是后验审计发现：原运行虽然报告 477 张活跃卡、0% orphan 和约 0.5% backlink 不对称，但失败源同时存在 10/11/12 三种口径，实际消费只覆盖 62 个 source_id，逐卡顺序治理、fusion 逐对裁决和每次 mutation 后 gate 也缺少可核验轨迹；后续信息密度事件进一步证明技术终态健康不能代表独立 0→1 的内容质量成立。旧结论只证明 source router、全量产物和 bulk graph repair 能运行。新的关闭条件是：统一 source/card/graph denominator 与权威状态，补齐 fusion 和治理 ledger，证明所有可路由来源均被消费或显式豁免，并让包含 extraction 深度与概念解释的审计 gate 在一次可复现全量 run 中通过。",
+      "episodes": [
+        {
+          "episode_title": "独立 0→1 跑出 477 张卡，但路由与图治理结论留下冲突口径",
+          "event_ids": [
+            "claude_code:claude-primary-v5:H001",
+            "claude_code:claude-primary-v5:H002"
+          ],
+          "body": "### 独立 0→1 跑出 477 张卡，但路由与图治理结论留下冲突口径\n\n会话先收到一条 `/model` 控制输入；公开档案没有对应助手内容，不能据此推断模型选择。紧接着用户用 `/goal` 明确 v5 的执行合同：依序读取 handoff、task、启动 prompt 与 v4 learnings，整个 loop 必须独立 0→1，不比较旧 KB。\n\n助手随后实现 source router 与 YAML lint，更新四项 skills，分四波并行 extraction，再按“全量抽取完成后 fusion → ingest → 图治理 → FSJS audit → 固化”推进。窗口末报告 63 个有效源形成 487 张 drafts，融合后保留 477 张 active cards，并声称 0% orphan、约 0.5% backlink 不对称。\n\n```mermaid\nflowchart LR\n    S[扫描来源] --> R[按 source type 路由阅读面]\n    R --> E[并行全量 extraction]\n    E --> F[冻结候选后 fusion]\n    F --> I[ingest]\n    I --> G[link / orphan / backlink 治理]\n    G --> A[FSJS audit]\n    A --> D[文档与状态固化]\n```\n\n这个顺序解释了 fusion 为什么不能与 extraction 同时进行，也解释了图变更后必须重跑 YAML 与关系检查。但结果并非闭环成功：运行记录同时留下 10、11、12 个 dead-source 口径，后验复算又显示 63 个可路由源中只有 62 个 source_id 被消费；0 orphan 与 2 orphan 也分别出现在不同终态报告。现有证据可确认工具和 KB 终态存在，却不足以证明规定的逐卡顺序治理、每次 mutation 后 gate 和完整内容质量已经执行。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. claude_code:claude-primary-v5:H001\n\n```text\n/model\n```\n\n#### 2. claude_code:claude-primary-v5:H002\n\n```text\n/goal 你是 v5 llm_wiki loop 执行者。先依序读以下文件获取完整上下文：\n\n1. loops/v5_llm_wiki_loop_20260612/CLAUDE_CODE_HANDOFF.md（全貌 + 约束 + 管线改进）\n2. loops/v5_llm_wiki_loop_20260612/task.md（Phase 0-5 任务清单）\n3. loops/v5_llm_wiki_loop_20260612/LOOP_START_PROMPT.md（完整启动 prompt + 源目录 + 设计文档位置索引）\n4. loops/v4_llm_wiki_loop_20260602/learnings/next_loop_prep.md（v5 可执行输入）\n\n不可等待的关键约束：\n- Loop 独立 0->1：不引用/比较 v4/v3 KB，只用本 loop 自己的卡片\n- 中文主语言输出（schema key/path/code 保持英文）。输出形式「中文（英文）」\n- 所有 Agent() 调用必须传 model: \"opus\"\n- git commit 禁止 Co-Authored-By trailer\n```\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v5:H001 claude_code:claude-primary-v5:H002 -->"
+        }
+      ]
+    }
+  ]
+}

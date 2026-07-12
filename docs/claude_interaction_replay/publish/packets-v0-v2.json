@@ -1,0 +1,1220 @@
+{
+  "packet": "v0-v2",
+  "issues": [
+    {
+      "slug": "llm-wiki-build-history",
+      "title": "v0-v5 LLM Wiki 构建历史：如何保留跨版本推理与审计？",
+      "body": "需要按真实时间线保留 LLM Wiki 的问题、纠偏和失败路径。\n这里不把后验答案回写成线性成功叙事。",
+      "parent_slug": null,
+      "related_slugs": [
+        "v0-changelog",
+        "v1-changelog",
+        "v2-changelog"
+      ],
+      "labels": [
+        "history",
+        "audit"
+      ],
+      "version_ids": [
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-06-11T08:36:59.834Z",
+          "event_ids": [
+            "codex:codex-retro-daily-audit:H001"
+          ],
+          "body": "> 在这个项目里，claude code 参与了后半程的开发，但这里的问题是，目前 claude code 已经不可访问了，所以需要你基于 codex 和 claude code 的发展过程【尤其是用户和 agent 交互中设计、实现的改变、遇到的问题、解决的坑、提出的各类方案等等】，按照时间线梳理，每一天有一个梳理，落成一个文档；然后会调用独立 agent 进行审计，审核完内容是高可信、无遗漏之后，才能进行下一天的梳理。最后会把所有文档整理到一起，输出一个整体的线路。具体内容落在 <workspace>/docs/audti/260611 文件夹里面。所以特定的工作，都交给 sub-agent 来完成。\n\n- **事件位置**：v0 retrospective、v1 retrospective、v2 retrospective、v3 retrospective、v4 retrospective；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手只读盘点仓库、Codex/Claude 原始会话、循环产物、用户洞察与 Git 历史，确认应以多类证据交叉核验；随后提出按日梳理、独立审计、主控验收和最终合并的文件化执行计划。\n\n- **问题结构与术语**：Reasoning ledger（推理账本）保留追加式历史；跨版本 retrospective 没有单一 execution owner，因此由 root 承接。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T08:45:05.770Z",
+          "event_ids": [
+            "codex:codex-retro-daily-audit:H002"
+          ],
+          "body": "> PLEASE IMPLEMENT THIS PLAN:\n> # Codex/Claude 开发时间线审计计划\n>\n> ## Summary\n>\n> 在 `<workspace>/docs/audti/260611` 建立一个文件化审计包（audit package），由 sub-agent 串行执行：\n>\n> 1. 先生成证据目录（source inventory）和日期队列（day queue）。\n> 2. 每一天由一个梳理 worker 产出每日文档。\n> 3. 每日文档必须经过独立审计 worker 审计通过。\n> 4. 主控 agent 只做调度、验收、返修决策，不亲自生产正文。\n> 5. 所有已通过每日文档再合并成总线路报告（total timeline）。\n>\n> 默认日期范围：从本项目可证据化的开发起点到最后一次项目实质开发记录。初始候选为 `2026-05-21` 到 `2026-06-08`；`2026-06-09` 到 `2026-06-11` 只在证据目录确认有项目实质开发时纳入，不把当前审计筹备本身混入历史线路。\n>\n> ## Key Changes\n>\n> - 目标目录按用户原文使用 `docs/audti/260611`，不改成 `audit`。\n> - 在目标目录下创建：\n>   - `README.md`：本审计包说明。\n>   - `source_inventory.md`：Claude/Codex transcript、loop artifacts、git、user-insights 的证据索引。\n>   - `day_queue.md`：每日处理状态。\n>   - `daily/`：通过审计的每日梳理文档。\n>   - `audits/`：每日独立审计报告。\n>   - `repairs/`：返修记录。\n>   - `decisions/`：主控验收记录。\n>   - `final/total_timeline.md`：最终总线路。\n> - 主要证据源按优先级读取：\n>   - `~/.claude/projects/<workspace-key>/**/*.jsonl`\n>   - `~/.codex/sessions/**` 与 `~/.codex/archived_sessions/**`\n>   - `user-insights/**`\n>   - `loops/v0*`、`loops/v1*`、`loops/v2*`、`loops/v3*`、`loops/v4*`\n>   - `git log --date=iso --name-status`\n>   - `docs/` 仅作为二次对照，不作为唯一事实源。\n>\n> ## Workflow\n>\n> - `inventory worker`：只读扫描所有证据源，生成按日期分组的 source inventory 和 day queue。\n> - `daily synthesis worker`：一次只处理一天，产出中文每日梳理，术语用「中文（English）」锚定；必须包含时间线、关键决策、实现变化、问题/坑、方案、证据地图、未解决问题。\n> - `independent audit worker`：不继承梳理 worker 上下文，只从每日文档和证据源审计，输出 `pass | revise | block`。\n> - `repair worker`：只处理审计列出的 required changes，返修后必须重新审计。\n> - `main agent`：只有在审计 `pass` 后写主控验收记录，才允许进入下一天。\n> - `final synthesis worker`：只合并已通过每日文档和验收记录，生成总线路报告。\n>\n> ## Gate Policy\n>\n> 每日进入下一天必须满足：\n>\n> - `daily/YYYYMMDD_*.md` 存在。\n> - `audits/YYYYMMDD_*.md` 明确 `audit_result: pass`。\n> - 每个关键结论都有证据路径或 transcript 定位。\n> - 没有跨日污染、无证据推断、或把 memory/summary 当唯一事实源。\n> - `decisions/YYYYMMDD_acceptance.md` 由主控写明通过原因和残余风险。\n>\n> 阻断条件：\n>\n> - 证据冲突无法自解。\n> - Claude/Codex transcript 覆盖不足以支持当天结论。\n> - 审计要求返修两轮后仍不能通过。\n> - 需要用户判断某个高影响归因或范围边界。\n>\n> ## Test Plan\n>\n> - 对每日日报做三角校验（triangulation）：至少尝试用 `transcript + loop artifact + git/user-insights` 中的两类证据支撑关键结论。\n> - 审计抽查所有 claim_id，标注 `supported / weak / unsupported`。\n> - 最终总线路只读取已通过日报、独立审计、主控验收，不直接从未审计 transcript 生成新结论。\n> - 完成后运行只读检查：确认目标目录文件完整、日期队列全通过或明确阻断、没有写入目标目录外的项目文件。\n>\n> ## Assumptions\n>\n> - 主语言为中文，技术术语采用「中文（English）」锚定。\n> - 所有具体梳理、审计、返修、最终合并都交给 sub-agent；主控不替代 worker 写正文。\n> - 当前未跟踪文件不处理、不回滚、不纳入本次修改范围，除非它们已作为历史证据被明确引用。\n\n- **事件位置**：v0 retrospective、v1 retrospective、v2 retrospective、v3 retrospective、v4 retrospective；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手进入执行态，启动证据目录 worker，确认主线日期为 2026-05-21 至 2026-06-08、排除 6 月 9 日至 11 日的当前审计活动，并开始 5 月 21 日的日报生产与门禁流程。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T08:57:32.544Z",
+          "event_ids": [
+            "codex:codex-retro-daily-audit:H003"
+          ],
+          "body": "> sub-agent 都要用 extra high 的 thinking effort，因为这个任务涉及处理大量数据。\n\n- **事件位置**：v0 retrospective、v1 retrospective、v2 retrospective、v3 retrospective、v4 retrospective；类型为 preference。\n\n- **助手的 core insight / action / effect 摘要**：助手确认后续综合、审计、返修与最终合并 worker 均使用 xhigh 推理强度；随后依次完成 5 月 21 日至 24 日的独立审计和主控验收，并启动高密度的 5 月 25 日综合工作。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T10:01:34.089Z",
+          "event_ids": [
+            "codex:codex-retro-daily-audit:H004"
+          ],
+          "body": "> 我有一个问题，如果我们想要拿到的东西，都是确定的，只是时间有差异，是不是让 sub-agent 自己去干每一天的事情就行了。比如写一个通用的 task.md 然后让它去读。这样每一次都不需要重新输入 sub-agent prompt 了。同时规范也约定了。这个逻辑应该是对吧。\n\n- **事件位置**：v0 retrospective、v1 retrospective、v2 retrospective、v3 retrospective、v4 retrospective；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手认同把稳定规则固化为通用任务协议、仅按日期传递变量的做法，并落地执行协议及综合、审计、返修、最终合并任务文件；新模式完成 5 月 25 日至 27 日门禁，并启动 5 月 28 日综合。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-06-11T12:10:53.906Z",
+          "event_ids": [
+            "codex:codex-retro-daily-audit:H005"
+          ],
+          "body": "> continue to the work, set as the goal\n\n- **事件位置**：v0 retrospective、v1 retrospective、v2 retrospective、v3 retrospective、v4 retrospective；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手设置持续目标并恢复中断工作，按通用协议完成 5 月 28 日至 6 月 8 日的日报、独立审计、必要返修与验收；最终生成总时间线。可见收口报告记录 19 份日报、21 份审计或复审、19 份主控验收和 2 份返修，逐日覆盖 19/19、95 个报告链接无缺失，并保留 6 月 8 日执行与 6 月 11 日 Git 固化的双日期边界及队列外风险。",
+          "close_after": false
+        }
+      ]
+    },
+    {
+      "slug": "v0-changelog",
+      "title": "v0 ChangeLog：filesystem-backed 知识生产 demo 暴露了什么？",
+      "body": "串联 v0 的资料、机制、语言与 topic drift 问题。\n具体推理保留在子 Issues 评论。",
+      "parent_slug": "llm-wiki-build-history",
+      "related_slugs": [
+        "v0-source-coverage",
+        "v0-agent-roles",
+        "v0-kb-autonomy",
+        "v0-language",
+        "v0-topic-drift"
+      ],
+      "labels": [
+        "changelog",
+        "v0"
+      ],
+      "version_ids": [
+        "v0"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T00:00:00+08:00",
+          "event_ids": [],
+          "body": "- **版本索引（version tracker）**：只串联动态问题，不重复占用 archive event。\n\n- 版本已归档；原话、执行摘要与纠偏保留在关联 Issues。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v1-changelog",
+      "title": "v1 ChangeLog：八个 topic hubs 如何形成又为何被放弃？",
+      "body": "串联 v1 的 planner、card layout、粒度与效率问题。\n具体推理保留在子 Issues 评论。",
+      "parent_slug": "llm-wiki-build-history",
+      "related_slugs": [
+        "v1-planner-loop",
+        "v1-card-layout",
+        "v1-hub-granularity"
+      ],
+      "labels": [
+        "changelog",
+        "v1"
+      ],
+      "version_ids": [
+        "v1"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T23:59:00+08:00",
+          "event_ids": [],
+          "body": "- **版本索引（version tracker）**：只串联动态问题，不重复占用 archive event。\n\n- 版本已归档；原话、执行摘要与纠偏保留在关联 Issues。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-changelog",
+      "title": "v2 ChangeLog：scoped cards、控制面与 loop capsule 如何重构？",
+      "body": "串联 v2 的 card contract、sub-agent、mailbox 与文件治理。\n具体推理保留在子 Issues 评论。",
+      "parent_slug": "llm-wiki-build-history",
+      "related_slugs": [
+        "v2-card-foundation",
+        "v2-control-plane",
+        "v2-card-autonomy",
+        "v2-brain-mailbox",
+        "v2-loop-capsule"
+      ],
+      "labels": [
+        "changelog",
+        "v2"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-25T23:59:00+08:00",
+          "event_ids": [],
+          "body": "- **版本索引（version tracker）**：只串联动态问题，不重复占用 archive event。\n\n- 版本已归档；原话、执行摘要与纠偏保留在关联 Issues。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v0-source-coverage",
+      "title": "v0 原始资料采集：怎样判断 LLM Wiki evidence coverage 足够？",
+      "body": "需要把 post、paper、repo、blog 和 discussion 变成 agent 可读资料。\n未知点是证据是否覆盖核心问题，而不是下载数量。",
+      "parent_slug": "v0-changelog",
+      "related_slugs": [
+        "v0-agent-roles",
+        "v0-kb-autonomy"
+      ],
+      "labels": [
+        "question",
+        "v0",
+        "sources"
+      ],
+      "version_ids": [
+        "v0"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-21T08:43:03.047Z",
+          "event_ids": [
+            "codex:codex-prehistory-research:H001"
+          ],
+          "body": "> 这个 repo 的目的是，对 llm_wiki 进行全面的网络调研。从最初 Andrej karpathy 的 post，到目前社区有的形式，以及各种讨论的 post。当前阶段的调研，只需要聚焦于【资源获取】，把网络文本和相关的 repo 或者是 blog 或者 paper 或者 discussion 各种东西，你认为【相关的】下载到本地，作为一个 raw knowledge database。你需要check 的是，是否有现成的 plugin 或者 skill，或者有官方的 plugin、skill 能够支持这种下载或者爬取资源的工具。\n\n- **事件位置**：v0 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手检查仓库与本地可用能力，判断当时没有明确的通用网页爬虫或下载专用 plugin/skill；现有 Git、HTTP 下载工具和脚本运行时足以构成稳定采集底座，插件更适合作为发现与辅助读取入口。\n\n- **问题结构与术语**：Evidence coverage（证据覆盖）看问题是否有足够、可追溯的证据，不看来源数量。\n\n```mermaid\nflowchart LR\n    Q[核心问题] --> E[证据映射]\n    E --> G{关键缺口?}\n    G -- 有 --> S[定向补来源]\n    S --> E\n    G -- 无 --> K[知识生产]\n```\n\n- 图保留当时流程关系，不用后续结论覆盖早期不确定性。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-21T09:47:57.191Z",
+          "event_ids": [
+            "codex:codex-prehistory-research:H002"
+          ],
+          "body": "> git cli 和 git plugin 已经配置好了。开始干活吧。开一个 sub-agent，专门负责帮你安装工具，但前提是【真的需要】安装工具前，必须要 user approve\n\n- **事件位置**：v0 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手在不安装新工具的前提下搭建并运行首轮可恢复采集工程：完成 45 个种子源的处理，其中 38 个成功，包含 15 个仓库 clone 和 3 篇 arXiv 论文；同时保留失败与访问受阻证据、manifest、状态报告和可浏览索引。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-21T11:04:43.411Z",
+          "event_ids": [
+            "codex:codex-prehistory-research:H003"
+          ],
+          "body": "> 注意：因为 pdf 论文是不好解析的，但是 tex 是好解析的。因此 arix 中，需要尽量去下载 tex 而不是 pdf。这里的内容主要是给 agent 读的，不是给人读的。\n\n- **事件位置**：v0 precursor；类型为 preference。\n\n- **助手的 core insight / action / effect 摘要**：助手将 arXiv 采集改为 source-first：优先获取 e-print 源包，解包 TeX/Bib 文件并生成 agent-readable bundle，仅在 arXiv 实际只提供 PDF 时保留并标注 PDF-only fallback。重抓的 3 篇论文中，2 篇取得 TeX source，1 篇明确记录为 PDF-only。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-21T11:07:14.086Z",
+          "event_ids": [
+            "codex:codex-prehistory-research:H004"
+          ],
+          "body": "> 在完成 paper  的重新下载后。根据第一性原理罗列出来，llm wiki 这个 topic，需要 cover 哪些 facts 和 aspects。然后开启一个 sub-agent，然后确认现有的资料进行阅读和总结，判断当前的资料中缺失的部分。以及如果要给出一个 solid 判断或者写一篇 solid paper，还需要对哪些方面的证据以及领域进行进一步的 cover。\n\n- **事件位置**：v0 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手从第一性原理建立 LLM Wiki coverage 框架，并安排独立只读审计现有 raw database。综合判断是现有资料足以支撑较扎实的 landscape memo，但不足以支撑强 empirical paper；仍需补足经验效果、评测基准、维护成本、失败模式、安全治理、用户采用和对照研究等证据。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-21T12:42:35.969Z",
+          "event_ids": [
+            "codex:codex-prehistory-research:H007"
+          ],
+          "body": "> quit plan mode, and then resume the /goal\n\n- **事件位置**：v0 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手退出 Plan Mode 后恢复目标，建立并执行研究控制循环：生成确定性的 loop runner、编译目标、运行时状态、source digests、claims、coverage records、报告与不可访问来源 XML；修正过宽的 gate 判定和不透明的失败原因，最终通过 verifier 并完成当时目标。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-21T13:03:18.320Z",
+          "event_ids": [
+            "codex:codex-prehistory-research:H009"
+          ],
+          "body": "> 之前的 plan 文件有一些问题。plan 的核心逻辑是根据 coverage 不断去寻找信息，直到当前的 data 足够满足 coverage 中的内容了。现在修复了，重新进入 goal mode\n\n- **事件位置**：v0 precursor；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手按修正后的 plan 将循环改为真正的 coverage-driven 闭环：由缺口生成候选源，完成 triage 与 acquisition，再重建 digest、required-output 级 claims、coverage、reports 和 audit；同时修复 failed acquisition 被隐形放过的停止条件。最终新增 27 个候选源并完成获取，source manifest 增至 72 条，所有 coverage、required outputs 和 judgment gates 均通过，开放队列归零。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v0-agent-roles",
+      "title": "v0 长程调研：哪些 standing sub-agents 应常驻？",
+      "body": "长程调研需要复用上下文，但常驻 agent 也可能越界。\n需要区分 Q&A、Git/File Steward 与一次性 worker。",
+      "parent_slug": "v0-changelog",
+      "related_slugs": [
+        "v0-source-coverage",
+        "v2-subagent-lifecycle"
+      ],
+      "labels": [
+        "question",
+        "v0",
+        "agents"
+      ],
+      "version_ids": [
+        "v0"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-21T11:52:51.324Z",
+          "event_ids": [
+            "codex:codex-prehistory-research:H005"
+          ],
+          "body": "> 开一个 sub-agent，不要关了。\n\n- **事件位置**：v0 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手创建一个长期保留、默认待命的 sub-agent，并限定其在收到后续具体任务前不修改仓库、不安装工具。\n\n- **问题结构与术语**：Standing sub-agent（常驻子代理）复用读取成本，但必须有稳定职责与写入边界。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-21T11:53:36.779Z",
+          "event_ids": [
+            "codex:codex-prehistory-research:H006"
+          ],
+          "body": "> 开一个 sub-agent，不要关了。这个 sub-agent 专门负责和用户侧进行 git 的交互和文件管理，不要让它执行其它任务。\n\n- **事件位置**：v0 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手创建并保留一个专用 Git/File Steward sub-agent，职责仅限用户侧 Git 交互与文件管理，默认待命；明确排除调研、抓取、总结、工具安装和业务内容修改。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-21T12:54:26.484Z",
+          "event_ids": [
+            "codex:codex-prehistory-research:H008"
+          ],
+          "body": "> 开一个有 fork sub-agent。用来回答用户问题。\n\n- **事件位置**：v0 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手创建一个带完整上下文 fork 的 Q&A sub-agent，将职责限定为读取上下文和本地资料、基于证据回答用户问题；不主动修改文件、不处理 Git、不开启采集循环，也不安装工具。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v0-kb-autonomy",
+      "title": "v0 KB 初始化：怎样让 loop 可自治、可恢复且容忍网络受限？",
+      "body": "人类可能长时间离开，loop 不能依赖持续确认。\n网页受限时应有限尝试、留证并继续离线工作。",
+      "parent_slug": "v0-changelog",
+      "related_slugs": [
+        "v0-source-coverage",
+        "v0-topic-drift"
+      ],
+      "labels": [
+        "question",
+        "v0",
+        "loop"
+      ],
+      "version_ids": [
+        "v0"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-23T20:51:46.572Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H001"
+          ],
+          "body": "> 全量阅读 <workspace>/loop_plan_init_kb.md 并准备开启 goal mode 执行任务。\n\n- **事件位置**：v0 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手完整读取初始化计划，识别出可审计、可恢复的 KB 初始化循环，开启 goal，加载循环约束并检查仓库与现有数据，随后准备写入初始化脚本和结构。\n\n- **问题结构与术语**：Filesystem-backed（文件系统承载）把状态、决策和恢复入口落盘。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T20:59:43.366Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H002"
+          ],
+          "body": "> 补充：因为人类会离开电脑，长时间不返回，因此整个任务包括 loop，需要 agent 进行一定程度的自治和反思，有 out-of-loop 的自治和反思能力，而不是一直在当前的 scope 中进行管理。\n\n- **事件位置**：v0 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手把循环升级为带状态、决策日志、反思和下一步选择规则的自治控制层，完成 bootstrap、视图与验证，并进行了动态检索和影响队列演示；在下一条输入前报告 7 个 adopted nodes、15 张 cards、35 条引用边和 4 个开放影响项。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T21:10:23.688Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H003"
+          ],
+          "body": "> 现在是在[工作设备]中跑的，retrieve webpage 可能会经常受到限制，没有必要过多在网络环境上进行突破，有限尝试后即可暂时搁置，记录下来。未来在个人设备跑的时候，会重新 retrieve 这些内容的。\n\n- **事件位置**：v0 execution；类型为 preference。\n\n- **助手的 core insight / action / effect 摘要**：助手接受受限网络环境下有限尝试、失败留证并延期到个人设备重试的策略，将其写入控制状态、检索日志和报告；随后完成离线验证并宣布 goal 完成。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v0-language",
+      "title": "v0 人类可读产物：为什么中文主语言要求连续三次才落盘？",
+      "body": "回复改成中文不够，cards、provenance 和报告也必须中文为主。\n需要把偏好升级为产物合同。",
+      "parent_slug": "v0-changelog",
+      "related_slugs": [
+        "v2-language"
+      ],
+      "labels": [
+        "bad case",
+        "v0",
+        "language"
+      ],
+      "version_ids": [
+        "v0"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-23T21:14:51.077Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H004"
+          ],
+          "body": "> main language 是中文。这里没有强调过吗？\n\n- **事件位置**：v0 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手承认主语言未对齐，并承诺后续以中文为主，仅保留路径、命令和字段名等必要英文。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T21:15:06.471Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H005"
+          ],
+          "body": "> main language 是中文。重做。\n\n- **事件位置**：v0 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手用中文重写上一轮完成说明，列出关键产物、生成内容、检索结果和验证指标。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T21:16:50.780Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H006"
+          ],
+          "body": "> 文件里面的内容 main language 是中文。重做一遍。\n\n- **事件位置**：v0 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手将要求理解为所有人类可读文件都要以中文为主，批量重写 cards、provenance、报告、控制状态和 skills，修正 YAML 中文转义和残余英文提示后重新验证。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v0-topic-drift",
+      "title": "v0 LLM Wiki demo：为什么机制成功却把 KB 做成元知识？",
+      "body": "provenance、citation graph 和 impact queue 都能运行。\n但内容讲的是如何建 KB，不是 LLM Wiki 本身。",
+      "parent_slug": "v0-changelog",
+      "related_slugs": [
+        "v1-planner-loop",
+        "v2-card-foundation"
+      ],
+      "labels": [
+        "bad case",
+        "v0",
+        "scope"
+      ],
+      "version_ids": [
+        "v0"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-23T21:25:43.299Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H007"
+          ],
+          "body": "> 很奇怪的事情。我的核心目的是，让你做 llm wiki topic 的 kb 生成。你为什么做成了我生产这个 kb 设计的 topic？我很奇怪。是哪里出现了偏差。\n\n- **事件位置**：v0 transition_out；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手确认发生 meta/object 层混淆：把 KB 生产协议当成知识主题，导致产出的是构建 KB 的元知识，而非 LLM Wiki 主题知识；并提出保留机制、重做 active nodes 与 KB 内容。\n\n- **问题结构与术语**：Focus drift（焦点漂移）说明机械门禁全绿不等于语义目标正确。\n\n- **推理推进**：结构验证成功与构建对象正确是两个独立维度。\n\n```mermaid\nflowchart LR\n    U[LLM Wiki 目标] --> P[生产机制]\n    P --> X[误把机制当 topic]\n    X --> M[meta KB demo]\n    M --> V1[归档并纠偏]\n```\n\n- 图保留当时流程关系，不用后续结论覆盖早期不确定性。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T21:27:25.442Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H008"
+          ],
+          "body": "> 这部分内容可以存档。等会我可以审计一下。因为这也能算是第一个 demo 把。你重新修改 plan，更换主题，同时，你是否没有意识到你要使用 data folder 里面的内容？\n\n- **事件位置**：v0 transition_out；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手将首轮元知识 KB 作为 demo-0 存档，重置 active nodes、KB 和 generated 内容，把 active 主题切回 LLM Wiki，并把 data 设为主要证据输入，同时创建新的 topic plan 与 backlog。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v1-planner-loop",
+      "title": "v1 topic hub 构建：planner、worker 与 main-agent 怎样分工？",
+      "body": "静态 topic plan 只是建议，不能代表可执行的 source-mining 计划。\nmain-agent 应做决策，不应亲自执行。",
+      "parent_slug": "v1-changelog",
+      "related_slugs": [
+        "v0-topic-drift",
+        "v1-hub-granularity",
+        "v2-control-plane"
+      ],
+      "labels": [
+        "question",
+        "v1",
+        "agents"
+      ],
+      "version_ids": [
+        "v1"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-23T21:35:49.195Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H009"
+          ],
+          "body": "> 是这样。topic plan 本身只是建议，而不是【可执行的】因为这么多 source papers webpages，里面有大量的 knowledge 可以去挖掘和迭代。有一个 guidelines 很不错，但核心是，用一个 sub-agent 作为 planner 吧？现在的做法不是这样的吗？\n\n- **事件位置**：v1 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手同意静态 topic plan 只是指南，真正的可执行计划应由 planner 子代理读取 data 与 coverage 后生成；随后启动 planner，并把控制流程改为 planner、generator、auditor 三段式。\n\n- **问题结构与术语**：Controller/worker boundary（控制者/执行者边界）让 main-agent 只做选择、派发和验收。\n\n```mermaid\nflowchart LR\n    D[本地 data] --> P[Planner]\n    P --> W[Workers]\n    W --> A[Auditor]\n    A --> M[Main agent 决策]\n```\n\n- 图保留当时流程关系，不用后续结论覆盖早期不确定性。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T21:38:17.646Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H010"
+          ],
+          "body": "> oh，怪我，我只给了【建成什么样子】没给【怎么建立】，稍等。\n\n- **事件位置**：v1 execution；类型为 observed_effect。\n\n- **助手的 core insight / action / effect 摘要**：助手暂停继续生成 topic node，说明 demo 已存档、主题已纠偏、planner protocol 已建立且 planner 子代理仍在运行，等待用户补充构建方法。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T21:40:29.971Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H011"
+          ],
+          "body": "> 具体的构建内容在这里：[私人 ChatGPT 会话链接]，如果你能访问到的话，告诉我。\n\n- **事件位置**：v1 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手尝试访问私人会话链接但只能看到登录页，未取得会话内容，并建议用户直接粘贴或导出为本地 Markdown。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T21:55:31.666Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H012"
+          ],
+          "body": "> 结合 <workspace>/KB_INIT_KNOWLEDGE_MINING_PROTOCOL.md 重新来做 plan，同时把这个过程中需要的 skills 先 init 一个初级版本来。因为需要 loop 来对 skills 这些进行反复迭代和进化的。\n\n- **事件位置**：v1 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手读取知识挖掘协议并调用循环与 skill 创建相关能力，识别 source mining、frontier、node、audit、skill evaluation 状态机；随后开始初始化标准化 repo-local skills 和 active 控制文件。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T21:59:40.778Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H013"
+          ],
+          "body": "> 人类会离开电脑。期望整个 loop 是 codex 的 agent 自治的，最初的交付物是【一套 skills】【一个完整的知识库】。因此这个 loop 和过程希望是不断进行下去的。启动 loop 之前，需要先调用相关的 skills，完成规划。\n\n- **事件位置**：v1 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手完成 pre-loop planning：建立 15 个 skills、自治计划、knowledge frontier 与 orchestration gates，验证 skills 和 YAML 可解析，并把恢复入口指向 source mining；随后错误地把该阶段 goal 标记完成。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T22:10:41.668Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H014"
+          ],
+          "body": "> 你没理解整个 goal 吗？skill 和 kb 都是想要的。哪有只 init skill，不用这套 skill 和流程去 build kb，然后 loop 进化迭代的道理呢？\n\n- **事件位置**：v1 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手承认误把规划完成当成交付完成，重新进入执行态，调用既定 skills 读取第一批来源，产出 origin/canon 的 source-mining 六件套并准备推进 frontier。\n\n- **推理推进**：初始化 skills 只是前置动作，不是完整 KB 交付。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-23T22:13:10.819Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H015"
+          ],
+          "body": "> 在调用 skill 的过程中，你需要维持 main agent 的上下文干净，你要把自己作为一个决策者，而不是执行者。如果你开始执行具体的活了，那么可能是 skills 的设计和流程有问题了。需要立刻干预。\n\n- **事件位置**：v1 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手立即停止主代理直接执行，把既有 source-mining run 标为 controller drift 与 blocked，改为 worker/sub-agent 持有 artifacts、主代理只做 gate 与决策；随后通过多个 worker 推进候选，在下一条输入前完成 5 个节点并使 cand_008 获得采纳建议。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v1-card-layout",
+      "title": "v1 knowledge cards：References 与 Footnotes 怎样排列？",
+      "body": "Footnotes 放在中间会破坏 Markdown 渲染。\n需要固定 References 在前、Footnotes 为最后 section。",
+      "parent_slug": "v1-changelog",
+      "related_slugs": [
+        "v1-hub-granularity",
+        "v2-card-foundation"
+      ],
+      "labels": [
+        "bug",
+        "v1",
+        "cards"
+      ],
+      "version_ids": [
+        "v1"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T10:41:13.380Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H016"
+          ],
+          "body": "> fix 一下：注意到 footnotes 放在中间的话，markdown 渲染会有一些问题，没法在合适的位置把 footnotes 渲染出来。因此 footnotes 这个 section 应该放在最后，References 应该提前。\n\n- **事件位置**：v1 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手把 References 在前、Footnotes 必须为最后 section 写成硬格式契约；先阻断不合规采纳、修复候选并迁移旧卡，再把规则前置到 generation/audit。之后继续完成 cand_006 与 cand_007，最终交付含 8 个 nodes、16 张 cards 和 185 条引用边的 v1。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v1-hub-granularity",
+      "title": "v1 八个 topic hubs：为什么材料很多却只形成少量大卡？",
+      "body": "八个主题页通过 coverage QA，但知识粒度过粗且周期很长。\n需要解释 bottom-up 目标为何变成 top-down pipeline。",
+      "parent_slug": "v1-changelog",
+      "related_slugs": [
+        "v1-planner-loop",
+        "v2-card-foundation"
+      ],
+      "labels": [
+        "bad case",
+        "v1",
+        "cards"
+      ],
+      "version_ids": [
+        "v1"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T13:53:52.422Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H017"
+          ],
+          "body": "> 这么多内容，只抽象出来了几张 card 吗？\n\n- **事件位置**：v1 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手确认显性 KB 只有 8 张高密度主题卡，解释它们是 v1 backbone 而非充分原子化的知识卡，并建议下一轮从主干继续拆解 claims、mechanisms、source observations 和 open questions。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T13:55:07.553Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H018"
+          ],
+          "body": "> 很奇怪的是。为什么是 top-down 的，之前我们不是说的是，bottom-top 的吗？由 atomic 到 hub 的聚合。\n\n- **事件位置**：v1 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手承认生产方向从预期的 bottom-up 变成 top-down：topic candidate 直接进入节点规划，source mining 服务于综合大卡，validator 与完成指标也围绕节点覆盖；建议把现有结果降级为 hub/backbone demo，并从 source 重新回填 atomic layer。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T14:00:29.126Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H019"
+          ],
+          "body": "> 是啊。而且生产的周期非常长。不理解为什么。\n\n- **事件位置**：v1 execution；类型为 observed_effect。\n\n- **助手的 core insight / action / effect 摘要**：助手将超长周期归因于重型 topic-node release pipeline 和过高控制成本，提出按 source/batch 并行挖 atoms、批量校验与聚类、降低 skill-eval 频率，并仅在最后生成 hub。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-card-foundation",
+      "title": "v1→v2 知识生产：atomic card 怎样成为可读、可证成的事实基础？",
+      "body": "当前要解决 solid foundation，不是 cluster、hub 或 topic coverage。\n开放点是相对粒度、fact 类型、provenance 与正文边界。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v1-hub-granularity",
+        "v2-file-audits",
+        "v2-card-autonomy"
+      ],
+      "labels": [
+        "question",
+        "v2",
+        "cards"
+      ],
+      "version_ids": [
+        "v1",
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T14:10:27.700Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H020"
+          ],
+          "body": "> 你理解的有偏差。对 atomic card 确实是【强校验的】，因为默认是 facts。之前提到过，分为 known fact 和 accepted fact；前者是类似于牛顿第一定律这种，几乎不变的事实；后者是类似于【sop 流程】目前公认的事实。目的是，做实 atomic card 的可靠性。hub 是从 atomic card 以及 paper 或者现实中关注的点，逐步发展出来的。\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手纠正此前的轻量校验判断，确认 atomic card 是事实层且应接受强校验，并区分 known fact 与 accepted fact；同时把 hub 定义为由已验证 atomic cards 和现实关注点逐步生长的下游聚合层。\n\n- **问题结构与术语**：Atomic（原子性）是相对 scope；provenance（来源证成）是 fact production 的组成部分。\n\n- **推理推进**：Known fact 与 accepted fact 都需强校验，但稳定性和证据类型不同。\n\n```mermaid\nflowchart LR\n    S[Source] --> F[Fact candidate]\n    F --> D[Draft card]\n    D --> P[Provenance]\n    P --> A{Audit}\n    A -- accept --> K[Readable card]\n```\n\n- 图保留当时流程关系，不用后续结论覆盖早期不确定性。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T14:21:29.605Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H021"
+          ],
+          "body": "> 需要 cluster 吗？嗯，需要的，没有 clustering 这个 operation，没有 hub 的存在。因为现阶段 loop 的目的是，生长 atomic card，和后续的一切都没有关系。肯定有 atomic card 是依赖于别的，那也没关系，核心是解决 solid foundation 的问题。hub 和 topic 以及本轮的这些聚合，都不是目前的重点。\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 decision。\n\n- **助手的 core insight / action / effect 摘要**：助手同意当前循环只应生长 solid atomic cards，cluster、hub 和 topic 都属于未来层；但又提出过多 metadata 字段，随后被下一条用户输入纠正。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T14:22:25.940Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H022"
+          ],
+          "body": "> 不需要那么多 metadata，整体的设计是简单的。我记得我之前给过一个版本吧。最初的版本\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手停止继续发明 schema，回查原始计划与协议，确认最初设计不强制类型或抽象层级，card 只需正文、References 与 Footnotes；最终给出仅含 statement、fact_type、support、scope、status 的极简 atomic card 方案。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T14:29:18.781Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H023"
+          ],
+          "body": "> 是的。为什么一开始这样塞进去了。是从哪里开始，对整个系统的理解出问题了？\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手把根因归纳为核心生产对象从 atomic fact card 被误认成 versioned topic node，继而把 source observations 降级为中间材料、用多 artifacts 代替事实校验，并以 topic coverage 取代 atomic foundation 指标。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T14:38:57.026Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H024"
+          ],
+          "body": "> 这是核心目标的错误。还有文档的状态基本是不可读的。 card 本身应该是可读的。现在 card 的形式不是【一个 atomic card】的风格，和 zet card 一样，现在的 card 就像是某种中间状态一样。在写作上也有很大的问题。\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手同意这是核心目标和文档形态双重错误：现有 cards 既不原子也不可读，混合 topic synthesis、release note 与 audit artifact；建议将其归档为 pipeline demo，并把 audit/provenance 移到 sidecar，恢复可读 zet-style card。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T14:48:39.106Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H025"
+          ],
+          "body": "> 是的。但有一点也是规则和我需要权衡的地方，那就是 footnote 和 reference。因为我认为 atomic card 是相对形式的。但它们不是真的是「定律」那样坚不可摧，所以它们的来源也是有出处的。这是 knowledge 的出处。所以有 reference 和 footnote 是一种形式。表明 card 的出处，以及和其它 cards 的联系。不要被【atomic】骗了，这不是一个绝对概念，这是一个相对概念。\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 decision。\n\n- **助手的 core insight / action / effect 摘要**：助手确认 atomic 是相对粒度而非绝对定律，Footnotes 支撑具体 claim，References 记录知识出处、背景和相关 cards；二者应轻量并位于末尾，不应让工程审计过程侵入正文。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T14:58:10.771Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H026"
+          ],
+          "body": "> 是的。这才是对的。因为 zet card 不是【无根浮萍】它是从 paper blog 等权威内容里面来的，所以会有 provenance，就是【justify zet card 是 fact 的一个过程】，或者说这是一个 artifacts，不过里面是讲【过程的】，card 是结果。\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 decision。\n\n- **助手的 core insight / action / effect 摘要**：助手明确三层分工：card 是可读且可引用的知识结果，provenance 是说明为何可视为 fact 的过程 artifact，citation/reference 是轻量出处与连接，audit 决定接受或拒绝。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T14:58:37.074Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H027"
+          ],
+          "body": "> recall 最原始的契约。\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手回忆并压缩原始契约为：从 source 挖 source-backed observations，产出可读 card，provenance 解释可信性，citation 保留来源与连接，audit 负责 accept/reject，adopted card 进入 KB；并强调不构建严格 ontology 或强制复杂分类。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T15:08:39.772Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H028"
+          ],
+          "body": "> 这里这么设计的逻辑是，知识本身的管理是混沌的。尤其是知识的层次，图谱是很好的 mental model，但实际中，知识之间的关系比 double link 还要更复杂，double link 或者 link 是对知识关系的建模，但不是对知识本身的建模。因此，知识的颗粒度可能是这里最难的地方了。oh，这里有达成 zet card 的形式。因为知识是从权威或者认为正确的 paper 或者 blog 或者 x post 或者 github 中来的的，但不一定就是 100% 正确的。因此 zet card 本身需要用 provenance 去做实。这不是事后的 challenge，而是 fact => [loop] draft card - provenance => card 的一个过程。这样讲应该是合理的，最终 Provence 不是一个流程或者 log，而是一个整理后可读的文档。这是我生产 facts 的一个范式？你来justify 一下呢\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 open_question。\n\n- **助手的 core insight / action / effect 摘要**：助手认可这是一种 provenance-backed zet fact production：来源先形成 fact candidate，经 draft card 与 provenance justification 后成为 accepted zet card；provenance 不是事后日志，而是 fact-production 的组成部分。\n\n- **推理推进**：provenance 从事后日志变成 fact production 的组成部分。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-file-audits",
+      "title": "v1→v2 文件与审计：怎样保留 legacy 又独立调查 focus drift？",
+      "body": "旧版本要可审计，但不能占据 active 入口。\n还要独立检查流程、context isolation 与 drift 根因。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-card-foundation",
+        "v2-control-plane",
+        "v2-loop-capsule"
+      ],
+      "labels": [
+        "task",
+        "v2",
+        "audit"
+      ],
+      "version_ids": [
+        "v1",
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T15:19:56.261Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H029"
+          ],
+          "body": "> 是的。这是我认为合理的方式，因为【核心知识】或者【不变的东西】是基石，如果【不变的东西】改变了，是 bottom - top 的改变，能通过 Provence 和 link chain 不断往上改变。现在我们明确了1. card 的 schema 是简单的 2. card 的基础定义和 scope 3. card 的生产范式 4. 当前 loop 的重点。现在我们要进一步明确的是，文件的管理。首先吧 llm_wiki 不要做成隐藏文件夹，人类基本无法审计，打开很不方便。同时，把之前 archived 和当前的版本都放进一个 legacy 的文件夹里面，并说明过去两个版本的问题分别在哪里。同时，开启一个 sub-agent 对 loop 的过程进行审计，检查【多余的步骤】和【不合理的地方】以及【出现偏差的地方】形成一个 loop 的审计报告，如果有的话，独立进行审计之后，调整审计报告（绝不先读现有的审计报告）。先开始做。\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手开始按新范式治理文件：计划把隐藏控制目录改为可见入口，把 meta demo 与 hub skeleton 分别迁入 legacy，并保留 data 与 scripts；在下一条输入前已开始实际移动目录，但尚未完成审计。\n\n- **问题结构与术语**：Context isolation（上下文隔离）避免 auditor 继承执行者结论。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T15:21:41.613Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H030"
+          ],
+          "body": "> 审计范围不单单是【main-agent】还有 sub-agent。需要开启一个 sub-agent，单独就【context isolation】进行审计，以及 input 和 output 进行审计，观察 sub-agent 是否存在 context 泄漏的情况。\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手扩展审计范围到 sub-agent，启动不 fork 主上下文的 context-isolation 审计，只允许读取 worker task/status/delivery/trace；同时完成可见目录说明，确认根目录旧 active 产物已迁出，并等待独立审计结果。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T15:27:15.267Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H031"
+          ],
+          "body": "> 还需要一个 sub-agent，单独审计【为什么出现了 loop focus drift】的情况，这个需要详尽的调查，先找出证据，再提出假设、再通过证据来验证。\n\n- **事件位置**：v1 transition_out、v2 precursor；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手启动独立 focus-drift 审计，要求先收集一手证据、再提出并验证假设；审计归因于旧协议以 0-1 node 为生产对象且 gates/metrics 围绕 node adoption 与 topic coverage。随后完成 legacy 迁移、可见入口和两份独立审计报告。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-language",
+      "title": "v2 loop 文档与 skills：怎样统一中文主语言？",
+      "body": "active 文档已重写，但 skills 和术语仍有英文漂移。\n路径、schema 字段与固定 section 可保留英文。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v0-language",
+        "v2-control-plane"
+      ],
+      "labels": [
+        "task",
+        "v2",
+        "language"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T16:13:33.238Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H032"
+          ],
+          "body": "> 你没发现问题吗？我需要文档的 main language 都是中文。\n\n- **事件位置**：v2 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手承认新写文档未遵守中文主语言要求，将 active 入口、研究协议、legacy 说明和两组审计报告改为中文主叙述，并明确旧版运行快照与第三方来源原文保持不变。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T16:22:13.884Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H033"
+          ],
+          "body": "> skill 是英文的。\n\n- **事件位置**：v2 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手确认 skill 也是人类需要审计的文档，在 active 区初始化 6 个以中文为主、面向 atomic fact 的 skills 并通过 validator，同时把旧英文 node/topic skills 标记为不可复用的 legacy 快照。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T16:30:11.321Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H034"
+          ],
+          "body": "> 修复一下语言一致性的问题吧。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手进一步统一中文术语，将正文中的 source、card、provenance、worker、loop、adoption 等收敛为固定中文表达，仅在路径、字段、状态码和固定 section 等必要位置保留英文；6 个 active skills 继续通过校验。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-git-handoff",
+      "title": "v2 并行 loop：怎样分批 Git handoff 又不交付半成品？",
+      "body": "多个 worker 持续产生 task、draft、repair 和 audit 文件。\n需要按完整交付边界分批交接。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-subagent-lifecycle",
+        "v2-loop-capsule"
+      ],
+      "labels": [
+        "task",
+        "v2",
+        "git"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T16:46:37.830Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H035"
+          ],
+          "body": "> 先把当前的内容分批 git push 来\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手检查分支和工作区后，将当前内容拆成 4 批提交并推送到 origin/main，分别覆盖 active skills、KB 工具与动态来源、旧 loop 归档和漂移审计报告；最终报告工作区干净。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T18:36:09.847Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H049"
+          ],
+          "body": "> 开一个 sub-agent 吧。这个 sub-agent 负责把当前没有 push 的内容分批进行 push\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手启动 Git worker Zeno，按完整交付边界持续分批 stage、commit、push；面对并行 loop 不断产生的新 task、draft、repair 和 audit 文件，多次等待交付完整后再推，至下一条输入前已推进到 Batch 7 并等待 r1 drafting worker 完成交付。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-control-plane",
+      "title": "v2 main-agent 控制面：prompts、hooks 与弹性边界怎样组合？",
+      "body": "当前 loop 有方向和 skills，却缺可执行状态机、任务包和 scope。\n需要限制 main-agent 执行，同时允许基于失败证据演化。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-language",
+        "v2-card-autonomy",
+        "v2-brain-mailbox"
+      ],
+      "labels": [
+        "question",
+        "v2",
+        "agents"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T16:55:52.525Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H036"
+          ],
+          "body": "> 当前 loop，存在哪些问题？\n\n- **事件位置**：v2 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手读取 active 说明、skills 和审计报告后指出：当前 atomic fact loop 只有方向与技能集，仍缺 active 状态机、工作目录、硬性 controller/worker 边界、标准任务包、自动校验、度量与停止条件，以及真实 sub-agent 隔离验证。\n\n- **问题结构与术语**：Control plane（控制面）保存状态、队列、角色合同和门禁；hooks 不是 scheduler。\n\n```mermaid\nflowchart LR\n    M[Main agent] --> T[Task packet]\n    H[Hooks] --> T\n    T --> W[Worker]\n    W --> A[Audit]\n    A --> M\n```\n\n- 图保留当时流程关系，不用后续结论覆盖早期不确定性。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T17:01:41.003Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H037"
+          ],
+          "body": "> 是的，而且没有约定 sub-agent 的行为和 scope。现在需要有一个文件夹，专门来放 loop 才对。因为整个过程是一个 loop，从 0- 1 不断进行的。\n\n- **事件位置**：v2 execution；类型为 decision。\n\n- **助手的 core insight / action / effect 摘要**：助手建立 llm_wiki/loop 控制目录，加入 RUNBOOK、状态与 manifest、任务模板、sub-agent scope、bootstrap iteration 和独立审计；审计发现并修复 4 个小缺口，最终将控制面与 KB 产物面分离并通过 JSON 与语言检查。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T17:17:49.725Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H038"
+          ],
+          "body": "> 需要 pre- defined 它们的 system prompt 吗？不要把活全部交给 main-agent 去做？\n\n- **事件位置**：v2 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手确认需要预定义稳定的角色 system prompts，并将其与每轮 task template 分层：main-agent 只负责选角色、填变量、派发和验收，任务包只能收窄不能放宽角色边界；随后补齐 prompt 目录并校验 manifest。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T17:24:31.576Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H039"
+          ],
+          "body": "> 那么如果触发 sub 的时候，依然是 main agent 写 prompt 本质没区别，是吧？所以逻辑如果要轻量化，是应该让 main-agent 去调用脚本或者 tool？或者 hook？然后以这种方式完成 sub-agent 的调用？\n\n- **事件位置**：v2 execution；类型为 open_question。\n\n- **助手的 core insight / action / effect 摘要**：助手同意临场手写 sub-agent prompt 仍会造成泄漏和漂移，提出用 dispatcher 脚本生成 task、校验读写范围、渲染 dispatch payload 并记录调用，使 main-agent 只选择 role、iteration 和少量结构化变量。\n\n- **推理推进**：轻量化的对象是结构化 dispatch 接口，而非换一种方式手写长 prompt。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T17:29:03.061Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H040"
+          ],
+          "body": "> codex 现在有 hook。你去调查一下这个实现方式是否是可行的。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手调查本机与官方 Codex hooks，结论是 hooks 可用于上下文注入、越界拦截、日志和停止检查，但当前不能原生 spawn sub-agent；推荐 custom agents、任务脚本和 hooks 组合，而非在 hook 中启动独立 Codex session。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T17:33:54.363Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H041"
+          ],
+          "body": "> 嗯，这样是合理的。开一个 sub-agent，做一个最小测试，看这样是否是可行的。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手启动 sub-agent 并执行多轮最小 smoke test，确认 hooks 适合作为 guardrail/context preprocessor 而不是 agent dispatcher；临时项目与全局 hook 变更均已清理或恢复，并将测试证据写入 loop artifact。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T17:47:50.775Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H042"
+          ],
+          "body": "> 用户要离开电脑了。现在设置一个 goal。目的有两个 1. 【完成 loop 的前置要求】根据用户之前的限定和要做的事情，核心思考点是【上下文隔离】以及【如何在对 main-agent 有限制的情况下，给其增加一些弹性】以及【如何在有 pre-defined sub-agent 的情况下，main-agent 能主动创造新的 sub-agent 或者修改已有的】还有【技术的最小验证，比如正在跑的 hook 验证，如果目前不可以的话，考虑启动 codex cli 进行，或者启动 claude cli 进行】基于目前的情况，可能 claude cli 是更好的，因为写作上它的智能水平是更高的。 2. 调用一个 user-insights 的 skill，把目前整个 chat session 积压的内容都进行一次记录。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：无可发布摘要。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T17:48:31.209Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H043"
+          ],
+          "body": "> 用户要离开电脑了。现在设置一个 goal。目的有两个 1. 【完成 loop 的前置要求】根据用户之前的限定和要做的事情，核心思考点是【上下文隔离】以及【如何在对 main-agent 有限制的情况下，给其增加一些弹性】以及【如何在有 pre-defined sub-agent 的情况下，main-agent 能主动创造新的 sub-agent 或者修改已有的】还有【技术的最小验证，比如正在跑的 hook 验证，如果目前不可以的话，考虑启动 codex cli 进行，或者启动 claude cli 进行】基于目前的情况，可能 claude cli 是更好的，因为写作上它的智能水平是更高的。同时，还需要考虑【sub-agent 的生命周期，什么 sub-agent 可以常驻，什么 sub-agent 是阅后即焚的】 2. 调用一个 user-insights 的 skill，把目前整个 chat session 积压的内容都进行一次记录。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手开启 goal，将工作拆为 loop 前置控制面和 user-insights 两条线；当时未找到正式 skill，于是先建立临时 fallback，并发现 Claude CLI 可用于后续隔离写作 worker 验证，同时把 loop 状态改为 prelaunch 方向。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T17:53:10.571Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H044"
+          ],
+          "body": "> user-insights 是已经有的，马上会加载。在 skill-manager 这个文件夹里面。\n\n- **事件位置**：v2 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手找到正式 user-insights skill 后改用 refreshable-fork sidecar，将记录迁到顶层 user-insights；同时完成 Claude CLI 与 Codex CLI smoke、独立 prelaunch 审计和 concern 修复，最终把 loop 推进到 READY_FOR_SOURCE_MINING 并关闭两个 sub-agent。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T18:20:09.061Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H045"
+          ],
+          "body": "> 新的 goal 是写一份给 main-agent 的 plan，这个 plan 的逻辑是，新的 main-agent 拿到这个 plan 之后能够把整个 loop 给落实了。包括 kb 的进化、skills、sub-agent prompt 等的进化，loop 需要包括的内容很多，相当于是整个链路都需要 evolve，因此整体的逻辑需要很清晰，同时因为这是一个 long- horizon task，文件系统的管理也很重要；而且要有 out-of-loop 的整体思考对大组件和小组件进行反思和迭代的能力。在有【执行loop完成任务的同时】能【具备弹性来完成思维性的活动】。在构思这个 plan 的同时，之前讨论中，出现很多对 loop design 的思考，把这些思考的【pattern】落在 loop runner 这个 skill/plugin 里面，注意，不要基于当前 case 的具体规则了，是大的设计规则。落实完之后，进行自审计。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手开启新 goal，编写给下一位 main-agent 的长程执行计划，将生产、演化、反思和文件系统维护串成可恢复流程；同时把跨项目可复用的 long-horizon patterns 抽象进 agent-loop-runner，并通过自审计和项目专属词污染检查。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-card-autonomy",
+      "title": "v2 card production：怎样自主发现 topic 又只生产知识卡？",
+      "body": "card topic 不应预设，agent 应从来源 bottom-up 探索。\n自治不能滑向 hub 聚合，新 session 还要能直接接管。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-card-foundation",
+        "v2-control-plane",
+        "v2-production-lifecycle"
+      ],
+      "labels": [
+        "question",
+        "v2",
+        "cards"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T18:27:32.590Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H046"
+          ],
+          "body": "> 我需要确定是，没有约定 card topic 或者是别的内容吧？card 的生产完全是 agent 的自主探索。\n\n- **事件位置**：v2 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手核对落盘约束后确认没有预设 card topic、hub、cluster 或 topic coverage；agent 可从单一本地来源 bottom-up 自主探索事实候选，但必须受来源证据、provenance、任务包和审计约束。\n\n- **问题结构与术语**：Autonomous discovery（自主探索）不受预设 taxonomy 约束，但仍受 evidence、provenance 和 audit 约束。\n\n- **推理推进**：不预设 topic 不等于无约束生成。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T18:28:39.311Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H047"
+          ],
+          "body": "> 我需要了解是，loop 的核心是生产知识卡片，而不是聚合知识 hub。这一点有共识吗？\n\n- **事件位置**：v2 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手确认 loop 的硬目标是生产可读、可审计、可追溯的 atomic fact cards，而不是聚合 hub；并指出 manifest、loop report 和长程执行计划均已记录该生产链路与非目标。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T18:30:25.485Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H048"
+          ],
+          "body": "> ok，给我写一个拿给下一个 main-agent 就能用的 goal 的 prompt。要求在新的 chat-session 中，复制这个 prompt 就能直接开始 loop 完成 goal 了。draft 需要通过 audit 后，才能给我，audit 不接受的话，再修改，直到满意为止，给我。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手先生成可复制到新 session 的 goal prompt，再按要求审计；审计通过后交付最终 prompt，明确恢复入口、controller 边界、worker 链路、演化与反思规则、文件系统、网络策略、语言契约、自治要求和停止条件。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-subagent-lifecycle",
+      "title": "v2 sub-agent 生命周期：为什么 workers 泛滥并长期 active？",
+      "body": "上一轮大量 sub-agents 未关闭，职责和状态不清。\n需要判断哪些角色应复用上下文，哪些应一次性结束。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v0-agent-roles",
+        "v2-control-plane",
+        "v2-production-lifecycle"
+      ],
+      "labels": [
+        "bad case",
+        "v2",
+        "agents"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T18:59:49.978Z",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H050"
+          ],
+          "body": "> 结束之后，我要求你开启一个 fork sub-agent，对这个 chat session 进行审计，弄清楚，在之前的 loop 过程中，sub-agent 为啥泛滥了。出现了很多 sub-agent 都没有管理生命周期，在 gui 界面一直是 active 的，哪些 sub-agent 是必要的，哪些是不必要的。以及未来好的 create 以及 manage 方式是什么。落成一个 audit 文档。上一个 loop 中很多值得挖掘和理解 main-agent、sub-agent 机制；以及这个任务中，agent 是如何主导任务，以及在哪些任务中卡住的各种 agent 协作的问题。我期望你伙同之前的 aduit 文档，做成一个 folder，详细地去主动调查和探索出现的问题，做的好的地方等等。尤其是一些【反直觉】的点。这是一个 goal，你去做呗。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手先完成剩余分批 push 并关闭 Git worker，再开启新的 goal 与 fork sub-agent 审计 session 中的 sub-agent 泛滥和生命周期；最终交付包含清单、核心审计、建议和主控验收的 audit folder，修正 close_agent 事实并关闭已完成 agents，指出根因是过度人格化小步骤且缺少生命周期账本。\n\n- **问题结构与术语**：Lifecycle governance（生命周期治理）管理职责、状态和上下文价值，不是统一 close rule。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-production-lifecycle",
+      "title": "v2 scoped-card 正式生产：one-shot workers 与上下文复用如何平衡？",
+      "body": "新 main-agent 已启动 READY_FOR_SOURCE_MINING loop。\n需要观察严格 one-shot 链路与重复读取成本。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-card-autonomy",
+        "v2-subagent-lifecycle",
+        "v2-control-audits"
+      ],
+      "labels": [
+        "question",
+        "v2",
+        "agents"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-24T18:33:21.085Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H001"
+          ],
+          "body": "> 请在 <workspace> 中开启一个新的 goal，并进入 long-horizon autonomous loop。\n>\n> Goal：\n> 持续落实 LLM Wiki 的 bottom-up KB 生产循环：从 data/ 中已有本地来源自主探索事实候选，生产中文为主、可读、可审计、可追溯的原子事实知识卡；为每张卡写可读 provenance；经过独立审计后采纳到 KB；同时根据失败证据持续演化 skills、sub-agent prompts、task templates、tools、文件系统控制面和 loop 报告。整个过程需要在无人长期看管时保持自治、可恢复、可审计，并保留 out-of-loop 的组件反思能力。\n>\n> 启动约束：\n> 1. 使用 agent-loop-runner skill。\n> 2. 首先只读取这些恢复入口：\n>    - llm_wiki/loop/loop_state.json\n>    - llm_wiki/loop/loop_manifest.json\n>    - llm_wiki/loop/RUNBOOK.md\n>    - llm_wiki/loop/queues/task_queue.md\n>    - llm_wiki/loop/reports/loop_report.md\n>    - llm_wiki/loop/plans/main_agent_long_horizon_execution_plan.md\n> 3. 如果这些文件矛盾，以 loop_state.json 为准，先修复控制面，再派发执行者。\n> 4. 不要从聊天记忆恢复 loop；不要默认读取 legacy/；不要把 user-insights/ 当作事实来源。\n>\n> 当前核心共识：\n> 1. loop 的核心是生产知识卡片，不是聚合知识 hub。\n> 2. 当前 primary object 是 atomic_fact_card。\n> 3. 当前非目标是 hub、cluster、topic coverage、复杂 metadata、没有来源支撑的 agent 综合。\n> 4. 没有预设 card topic；card 的生产由 agent 从本地来源中 bottom-up 自主探索事实候选，但必须被 source evidence 和 provenance 约束。\n> 5. 选源不按主题覆盖、topic 平衡、hub 规划或 cluster 规划；只按本地可读性、来源质量、事实候选清晰度和当前 loop 价值选择一个具体来源。\n> 6. user-insights 只用于人类 recall 和过程洞察，不可作为 atomic card 的事实来源。\n>\n> 主控 agent 身份：\n> 你是 main-agent / loop controller，不是具体执行者。你负责状态迁移、任务包创建、派发、验收、偏差干预、决策记录和必要的 out-of-loop 反思。\n>\n> 你不可以：\n> - 亲自大段阅读来源并抽取事实。\n> - 亲自写知识卡正文或 provenance。\n> - 亲自审计并采纳知识卡。\n> - 用父聊天上下文补事实证据。\n> - 为了效率绕过 task packet、worker、read_log、delivery 或 audit。\n> - 把当前目标转成 hub、cluster、topic coverage 或主题报告。\n>\n> 如果你发现自己需要亲自做 worker 的核心工作，立刻停止生产，写入 decision/reflection，并触发 skill_evolution_worker 或 prompt/template/tool 修复。\n>\n> 当前下一步：\n> loop_state.json 预期状态是 READY_FOR_SOURCE_MINING。请先确认状态；如果仍是 READY_FOR_SOURCE_MINING，则创建第一轮 source_mining_worker 窄任务包。\n>\n> 执行步骤：\n> 1. 读取 data/manifests/acquired_sources_index.md 和必要时 data/manifests/sources.jsonl。\n> 2. 自主选择一个 status: ok 的本地来源。只选一个。选择理由必须记录在 task 或 decision 中。\n> 3. 使用 llm_wiki/loop/tools/create_task.py 创建 source_mining_worker 任务包。\n> 4. 运行 validate_scope.py 检查任务包。\n> 5. 使用 render_dispatch.py 生成 dispatch_request.json。\n> 6. 派发 source_mining_worker；默认 fork_context: false。执行者只接收 base_worker + source_mining_worker system prompt + 当前 task.md，不接收父聊天上下文。\n> 7. 等待或监控执行者交付；执行者必须写 loop_status.md、loop_delivery.md、read_log.md 和 fact_candidates artifact。\n> 8. 用 inspect_delivery.py 验收。\n> 9. 如果 fact candidates 可用，每次只选择一个候选进入 card_drafting_worker -> card_audit_worker -> card_adoption_worker 链路。\n> 10. 每一步都开新的 iteration，保留 task.md、dispatch_request.json、loop_status.md、loop_delivery.md、read_log.md 和 artifacts。\n>\n> 演化规则：\n> 只有失败证据才能触发演化。可以演化：\n> - llm_wiki/skills/*\n> - llm_wiki/loop/system_prompts/*\n> - llm_wiki/loop/task_templates/*\n> - llm_wiki/loop/tools/*\n> - loop manifest / runbook / report / queue\n>\n> 演化流程必须是：\n> 失败证据 -> skill_evolution_worker 或明确修复任务 -> 最小修改 -> validate_scope / delivery check -> independent_evaluator 审计 -> main-agent decision -> 更新 loop_state 和 loop_report。\n>\n> Out-of-loop 反思：\n> 如果出现重复失败、周期过长、文件系统混乱、角色边界模糊、main-agent 想亲自执行、或产物看起来正确但没有推进知识卡质量，暂停生产并写 llm_wiki/loop/reflections/<timestamp>-<topic>.md。反思必须给出下一步动作：continue_production / skill_evolution / prompt_evolution / tooling_repair / filesystem_repair / human_checkpoint / defer。\n>\n> 文件系统规则：\n> - data/ 是来源和来源日志。\n> - llm_wiki/kb/ 是最终 KB 产物面。\n> - llm_wiki/loop/ 是控制面。\n> - llm_wiki/skills/ 是项目内 skills。\n> - user-insights/ 是人类 recall，不是事实来源。\n> - legacy/ 是历史，不是默认入口。\n>\n> 每轮结束必须更新：\n> - llm_wiki/loop/loop_state.json\n> - llm_wiki/loop/reports/loop_report.md\n> - 必要时更新 llm_wiki/loop/queues/task_queue.md\n> - 必要时写 llm_wiki/loop/decisions/*.md 或 llm_wiki/loop/reflections/*.md\n>\n> 网络策略：\n> 当前可能在[工作设备]上运行，网页 retrieve 可能受限。优先使用 data/ 中已获取来源；网络失败有限尝试后记录并搁置，不要长时间突破网络环境。未来可在个人设备补 retrieve。\n>\n> 语言和写作：\n> 人类可读文档主语言为中文。英文只用于路径、命令、schema 字段、状态码、包名、来源原文标题，以及 References / Footnotes 等固定 section。知识卡必须可读，不应像中间状态、审计日志或流程记录。References 必须早于 Footnotes，Footnotes 必须是最后一个 section。\n>\n> 自治要求：\n> 人类可能长时间离开电脑。你应自主推进队列中最小可执行任务，不要频繁等待确认。遇到需要扩大 scope、进入 hub/cluster/topic 层、改变 card schema、批量采纳、git push、外部同步或不可逆操作时，必须停止并记录 human_checkpoint_required。\n>\n> 结束条件：\n> 不要因为跑了固定轮数就停止。只有在当前阶段目标由证据满足、队列为空且没有明显高价值下一步、连续阻塞来自同一外部条件、或流程偏差需要人类审计时才停止。停止前必须保证状态、报告、交付和下一步都落盘。\n>\n> 请现在开始：先创建 goal，读取恢复入口，确认 READY_FOR_SOURCE_MINING，然后创建并派发第一轮 source_mining_worker 任务包。不要只给计划。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手确认控制面处于 READY_FOR_SOURCE_MINING，选择一个本地来源，创建并校验窄任务包，以不继承父上下文的方式派发 source mining worker，并把进行中状态写入控制面。\n\n- **问题结构与术语**：One-shot worker 边界清楚；standing worker 可复用上下文，但需要状态协议。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T18:40:43.348Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H002"
+          ],
+          "body": "> 注意管理 sub-agent 的生命周期。这是很重要的一点。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手关闭并验收 source mining worker，确认得到 12 个候选；随后为单个候选派发 drafting worker，因交付文件缺少完成标记而触发最小 prompt 修复、独立审计和 drafting revision。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-24T19:00:18.794Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H003"
+          ],
+          "body": "> 注意。因为之前强调过 sub-agent 的生命周期管理，也需要理解的是，是否过度管理了？比如有一些 sub-agent 可以 alive 常驻的，而设置成了只能独立运行。这里考虑的点主要是 context 的消耗。如果你察觉，频繁启动一些 sub-agent 进行大量的 io 操作，比如 data 的阅读，而这种阅读可能在 alive sub-aent 中显化比较好的话，你完全可以针对这种情况进行调整。对已有文件进行修改之后，需要直接 git push。这样保证修改是可追溯到。\n\n- **事件位置**：v2 execution；类型为 preference。\n\n- **助手的 core insight / action / effect 摘要**：助手在严格的 one-shot worker 生命周期和逐卡 draft、audit、adoption 链路中持续推进，累计采纳并推送 15 张知识卡；最后一个候选已完成草稿验收、等待后续审计。\n\n- **推理推进**：生命周期应由职责复用和上下文成本决定。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-control-audits",
+      "title": "v2 控制面审计：任务边界、流程与 sub-agent 管理还有哪些缺口？",
+      "body": "生产链已运行，需要从生命周期、任务边界和流程独立审计。\n审计结果应绑定对应 run。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-production-lifecycle",
+        "v2-brain-mailbox",
+        "v2-design-freeze"
+      ],
+      "labels": [
+        "task",
+        "v2",
+        "audit"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-25T06:11:30.132Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H013"
+          ],
+          "body": "> ok。目前先这样。调用 sub-agent 对之前的 loop 进行各种方面的 audit，对应的 audit 文件夹。目前已有一个 audit 文件夹。去看一眼文件结构，然后主动进行审计，主要是关心 sub-agent 相关的 audit 还有任务边界、任务流程的的。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手创建独立 audit run，派发并关闭生命周期、任务边界和流程三个 one-shot 审计 worker；三份审计均为 concern 但无 P0，主控验收纠正 metadata 分歧后提交并推送审计产物。\n\n- **问题结构与术语**：Run-scoped audit（绑定运行的审计）保留被审对象、输入、时间和结果。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T08:23:58.993Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H024"
+          ],
+          "body": "> audits 部分是不是需要 assign to corresponding run 比较合适一点？\n\n- **事件位置**：v2 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手同意 audit 应绑定具体 run、iteration、message、artifact 和 commit；普通审计进入对应 run，融合审计链接 draft、目标卡与 comparison provenance，全局目录只保留跨 run 或控制面审计。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-brain-mailbox",
+      "title": "v2 brain-agent 架构：mailbox 能否让 production 与 audit 协作？",
+      "body": "lane brain 需要持有上下文并互相通信。\n要区分文件 mailbox、queue、hook 与真实自动唤醒。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-control-plane",
+        "v2-control-audits",
+        "v2-design-freeze"
+      ],
+      "labels": [
+        "question",
+        "v2",
+        "agents"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-25T06:33:58.654Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H014"
+          ],
+          "body": "> 我有一个 idea。因为现在 codex 的 sub-agent 可以 spwan sub-agents 了。因此分发逻辑和 sub-agent 的启动逻辑可能有变化。比如说，对于某一种 worker，可以有自己的 brain agent 作为上游节点，main-agent 管理这些 task/brain agent，然后这些 task agents 具备某一个任务的全量上下文，由它自己再去 spawn sub-sub-agent 去做具体的事情。这样会不会更好？然后 main-agent 就只负责 skill 啊啥的更新和 out of loop 的思考了？这样会不会更对？\n\n- **事件位置**：v2 execution；类型为 idea。\n\n- **助手的 core insight / action / effect 摘要**：助手建议采用 main-agent、lane brain、leaf worker 的两层受控架构，让 production、similarity、audit 和 ops brain 各自持有 lane 上下文，同时保留 main-agent 的全局 policy 和 schema 责任。\n\n- **问题结构与术语**：Mailbox（邮箱）传递持久化消息，但不会自行唤醒进程。\n\n```mermaid\nflowchart LR\n    M[Main agent] --> R[Router]\n    R --> P[Production brain]\n    P --> R\n    R --> A[Audit brain]\n    A --> R\n```\n\n- 图保留当时流程关系，不用后续结论覆盖早期不确定性。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T06:38:39.786Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H015"
+          ],
+          "body": "> 嗯，这样是对的。main-agent 的任务降低了，也更聚焦了。逻辑其实是拆分了，但是 brain agent 之间需要有通信才行，比如说 audit brain 需要重新去 production brain。它们的交互怎么做呢？\n\n- **事件位置**：v2 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手建议 brain 之间通过文件化 blackboard 和 inbox/outbox 交换带 artifact refs、required response 和状态的消息，由 main-agent 或 ops brain 负责路由，禁止跨 lane 直接写入。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T06:44:00.427Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H016"
+          ],
+          "body": "> 但我怎么让 brain 去读之间的文档呢？本质是一个 mailbox 呗。但是 sub-agent 怎么去读这个 mailbox，是这个意思。\n\n- **事件位置**：v2 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手说明 mailbox 本身不会唤醒 agent，需要薄调度层按 brain_state、inbox、outbox 执行 event-driven wakeup；brain 每次被唤醒后处理一批消息、写回状态并退出。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T07:11:51.345Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H017"
+          ],
+          "body": "> 理解了。需要一个 hook 来唤醒呗。codex 有 agent team 功能实现吗？\n\n- **事件位置**：v2 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手核对本地能力和官方资料后判断 Codex 提供多 agent、hooks、automations 等 primitives，但没有完整的 brain-team runtime，建议在仓库内自建 mailbox、routing、lifecycle 和 wake protocol。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T07:29:34.952Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H018"
+          ],
+          "body": "> ok。那自己搭建一个。核心逻辑应该是 mailbox 的形式保持通信，基于 hook 触发的 queue 机制。主要是要让 audit 的信息传递给 production，我这个理解没错吧？还是说需要更复杂的？或者说，所有的都有就行了。让 agent 自主去调度，提供这个工具。\n\n- **事件位置**：v2 execution；类型为 decision。\n\n- **助手的 core insight / action / effect 摘要**：助手确认核心应是统一 message bus，而非只做 audit 到 production 专线；提出最小消息类型、轻量 hook 和 brainctl CLI，由 ops brain 或 main-agent 集中路由和受控唤醒。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T07:30:50.799Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H019"
+          ],
+          "body": "> 行。你先去做一个最小版本，实验这个功能是否可实践。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手实现并推送最小 brain mailbox 协议，包含 send、route、claim、complete、reconcile 和 hook；smoke test 证明 audit 到 production 再回 audit 的文件通信闭环可行，但真实 sub-agent 自动唤醒尚未接入。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T07:41:05.405Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H020"
+          ],
+          "body": "> 我的意思是，这个 mailbox 的机制，比如说 A brain 写入文件要求 B brain 做事。这件事已经被验证可行了吗\n\n- **事件位置**：v2 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手明确区分已验证的文件 mailbox、queue、wake marker、claim/complete/reply 闭环与尚未验证的真实 Codex sub-agent 自动 scheduler。\n\n- **推理推进**：文件通信已验证，真实自动唤醒仍未验证。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-design-freeze",
+      "title": "v2 loop 设计冻结：scoped cards、comparison 与 mailbox 如何统一？",
+      "body": "已有生产经验与 mailbox prototype，但 active 设计仍在变化。\n需要冻结旧控制面并写出可接管合同。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-control-audits",
+        "v2-brain-mailbox",
+        "v2-loop-capsule"
+      ],
+      "labels": [
+        "task",
+        "v2",
+        "design"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-25T07:44:45.493Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H021"
+          ],
+          "body": "> 仿造之前的形式，写一个 task prompt，这个 prompt 会启动一个 brand new 的 main-agent 让它去完成 llm wiki 生产的活。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手开始检查现有 task prompt 和模板，准备编写由全新 main-agent 接管 LLM Wiki 生产的启动 prompt；该轮随后被用户打断。\n\n- **问题结构与术语**：Design freeze（设计冻结）固化当时合同，不表示旧产物已按新合同重跑。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T07:46:24.298Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H022"
+          ],
+          "body": "> 基于目前的修改。需要对 loop 机制进行一些调整。先把目前的版本及内容放入 legacy 里面。然后基于目前版本进行修改，写一个新版的设计。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手开始检查当前 loop 和未提交修改，准备归档旧版并写新版设计；识别到旧 similarity/fusion 草稿需要与正式新设计分开处理，随后被用户补充要求打断。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T07:47:08.511Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H023"
+          ],
+          "body": "> 基于目前的修改。需要对 loop 机制进行一些调整。先把目前的版本及内容放入 legacy 里面。然后基于目前版本进行修改，写一个新版的设计。similarity 是新版的内容。\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手冻结旧控制面快照并完成 V2 设计，正式采用 scoped knowledge card、Jieba/Jaccard Top 3 similarity、三问 comparison provenance 和 brain mailbox；更新入口与契约，校验后提交并推送。\n\n- **推理推进**：不能倒写成此前 15 张卡已执行新合同。",
+          "close_after": true
+        }
+      ]
+    },
+    {
+      "slug": "v2-loop-capsule",
+      "title": "v2 repository layout：实验 loop、候选 KB 与稳定产品放在哪里？",
+      "body": "反复移动 active loop 到 legacy 会制造 Git 噪声。\n需要稳定 capsule 边界并区分 candidate 与 human promotion。",
+      "parent_slug": "v2-changelog",
+      "related_slugs": [
+        "v2-file-audits",
+        "v2-git-handoff",
+        "v2-design-freeze"
+      ],
+      "labels": [
+        "question",
+        "v2",
+        "repository"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "comments": [
+        {
+          "timestamp": "2026-05-25T11:29:24.855Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H025"
+          ],
+          "body": "> 把当前 loop 的内容落盘到 legacy 里面去。作为 v2\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手创建并推送 V2 可恢复快照，保留控制面文档、状态、模板、queue、brain mailbox、工具和日志，同时避免递归打包 legacy、历史 iterations 和旧 audits。\n\n- **问题结构与术语**：Loop capsule（循环胶囊）只承诺稳定入口；candidate publication 不等于 stable promotion。\n\n```mermaid\nflowchart LR\n    R[Repository] --> L[loops]\n    L --> V2[v2 capsule]\n    V2 --> C[Candidate KB]\n    C -->|human promotion| S[Stable KB]\n```\n\n- 图保留当时流程关系，不用后续结论覆盖早期不确定性。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T11:53:22.272Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H026"
+          ],
+          "body": "> 不是。你理解错了。我的意思是，把这一次 loop 的产物，都放到 legacy 里面，作为过去的 loop 产物了。现在我要开新的 loop 了。不能放在这里了。\n\n- **事件位置**：v2 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手按纠正后的语义把当前 loop 的全部产物移出活跃层，放入 legacy 归档；活跃 loop 只保留最小入口，相关 JSON 校验通过并已提交推送。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T12:00:50.412Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H027"
+          ],
+          "body": "> 我的意思是：<workspace>/legacy，你放在 工作目录里干嘛：<workspace>/llm_wiki/loop/legacy？\n\n- **事件位置**：v2 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手承认归档层级错误，开始把 archive 从 loop 内部移到仓库根 legacy，并同步修正 active state、manifest 和 README 的引用；随后用户继续纠正命名和拆分问题。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T12:04:26.579Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H028"
+          ],
+          "body": "> 你提交的版本不符合原来的命名逻辑。而且明明只有一个 loop，你为啥拆分为了两个。好奇怪。\n\n- **事件位置**：v2 execution；类型为 correction。\n\n- **助手的 core insight / action / effect 摘要**：助手改为一个 loop 对应一个 legacy v2 目录，把中间设计快照收进 snapshots，清除并列归档和旧路径引用，最终 amend 并推送单一 v2 归档。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T12:25:12.697Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H029"
+          ],
+          "body": "> 我感觉这种文件管理有点奇怪。因为每次 loop 都是实验，之后都会放入 legacy 里面。但是 git 会爆炸混乱。git 规范这里怎么做？\n\n- **事件位置**：v2 execution；类型为 question。\n\n- **助手的 core insight / action / effect 摘要**：助手提出 Git 治理原则：loop 从创建时就位于稳定 run 目录，以状态变化而非大规模移动表达归档；active 目录只保留指针和稳定控制面，并区分应追踪产物与可再生运行噪声。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T12:26:18.667Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H030"
+          ],
+          "body": "> 这里的逻辑是这样。loop 本身的结构也会变化。这是困惑的地方。\n\n- **事件位置**：v2 execution；类型为 open_question。\n\n- **助手的 core insight / action / effect 摘要**：助手进一步抽象为稳定 repository contract、最小 loop capsule contract 和可自由演化的内部结构；每个 capsule 只保证 README、manifest、status、index 等入口，归档通过 metadata 而非路径迁移表达。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T12:33:04.559Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H031"
+          ],
+          "body": "> 好。我理解了。其实 legacy 应该是 loops，然后 llm_wiki 也应该是 loop 的一部分，因为它是产物。而最外层的 llm_wiki 是稳定的产物，目前阶段没有这个东西。这么理解应该是全对的。\n\n- **事件位置**：v2 execution；类型为 decision。\n\n- **助手的 core insight / action / effect 摘要**：助手确认 loops 应承载所有实验 capsule，loop 产出的 llm_wiki 只是候选输出；只有经过 human promotion 后，才应在仓库根形成稳定 llm_wiki 产品。\n\n- **推理推进**：loops 承载实验，根级稳定产品需要 human promotion。",
+          "close_after": false
+        },
+        {
+          "timestamp": "2026-05-25T12:33:48.353Z",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H032"
+          ],
+          "body": "> 嗯。按照这个逻辑调整一下当前的 git\n\n- **事件位置**：v2 execution；类型为 instruction。\n\n- **助手的 core insight / action / effect 摘要**：助手完成仓库布局迁移：legacy 改为 loops，原根 llm_wiki 收入 v2 capsule 的 outputs，新增 loops registry 和 current pointer，并为 v0、v1、v2 补最小 metadata；校验后提交推送。",
+          "close_after": true
+        }
+      ]
+    }
+  ]
+}

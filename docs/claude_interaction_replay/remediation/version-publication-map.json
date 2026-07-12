@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "thsno02/jugo_jugo",
+  "status": "complete",
+  "started_at": "2026-07-11T23:34:07.875741+00:00",
+  "versions": [
+    {
+      "slug": "v0-changelog",
+      "issue_number": 6,
+      "desired_state": "closed",
+      "state_rationale": "v0 的机制实验、topic drift 与转向 v1 已完成历史交接；ChangeLog 可关闭，关闭不把后续主题生产视为已在 v0 解决。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949166711,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/6#issuecomment-4949166711"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949166807,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/6#issuecomment-4949166807"
+        }
+      ],
+      "state_transition_comment_id": null
+    },
+    {
+      "slug": "v1-changelog",
+      "issue_number": 7,
+      "desired_state": "closed",
+      "state_rationale": "v1 的 hub-first 实验及其向 scoped-card 范式的交接已归档完成；#17 仍承载长期自治与完整交付问题，不阻止历史 tracker 关闭。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949167119,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/7#issuecomment-4949167119"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949167294,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/7#issuecomment-4949167294"
+        }
+      ],
+      "state_transition_comment_id": null
+    },
+    {
+      "slug": "v2-changelog",
+      "issue_number": 8,
+      "desired_state": "closed",
+      "state_rationale": "v2 已完成从 hub-first 到 scoped-card、控制面和 loop capsule 的历史交接；生命周期成本等遗留由子问题及 v3 继续承接，ChangeLog 本身可关闭。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949167701,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/8#issuecomment-4949167701"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949167794,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/8#issuecomment-4949167794"
+        }
+      ],
+      "state_transition_comment_id": null
+    },
+    {
+      "slug": "v3-changelog",
+      "issue_number": 9,
+      "desired_state": "closed",
+      "state_rationale": "v3 的 draft-first 运行、comparison corpus 缺陷与向 question-driven v4 的交接已完整归档，因此历史 tracker 可关闭；#37、#38、#39 仍是开放执行问题，不因 tracker 关闭而解决。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949168323,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/9#issuecomment-4949168323"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949168427,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/9#issuecomment-4949168427"
+        }
+      ],
+      "state_transition_comment_id": null
+    },
+    {
+      "slug": "v4-changelog",
+      "issue_number": 10,
+      "desired_state": "closed",
+      "state_rationale": "v4 的独立 0→1、FSJS、来源处理缺陷及 v5 handoff 已完成历史交接；#50 与 #54 继续开放承载逐卡治理和 repo2doc，故可关闭 ChangeLog 而不宣称 v4 全部闭环。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949168985,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/10#issuecomment-4949168985"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949169148,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/10#issuecomment-4949169148"
+        }
+      ],
+      "state_transition_comment_id": null
+    },
+    {
+      "slug": "v5-changelog",
+      "issue_number": 11,
+      "desired_state": "closed",
+      "state_rationale": "v5 的工程阶段性收口、内容回归及当前归因假设已完成历史交接；#59、#60 仍开放承载信息密度修复与 v4 ingest 还原，关闭 ChangeLog 不代表归因已经验证。",
+      "comments": [
+        {
+          "comment_key": "origin",
+          "comment_id": 4949169623,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/11#issuecomment-4949169623"
+        },
+        {
+          "comment_key": "delta",
+          "comment_id": 4949169741,
+          "url": "https://github.com/thsno02/jugo_jugo/issues/11#issuecomment-4949169741"
+        }
+      ],
+      "state_transition_comment_id": null
+    }
+  ],
+  "completed_at": "2026-07-11T23:35:07.161178+00:00",
+  "backup_path": "remediation/backups/versions-before-20260712-073407.json"
+}

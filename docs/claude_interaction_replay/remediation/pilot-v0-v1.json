@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v0-source-coverage",
+      "issue_number": 12,
+      "desired_state": "closed",
+      "state_rationale": "coverage 缺口归零，satisfaction 与 verifier 同时通过",
+      "episodes": [
+        {
+          "episode_title": "从工具盘点到首轮采集：先用现有能力建立可恢复的 raw database",
+          "event_ids": [
+            "codex:codex-prehistory-research:H001",
+            "codex:codex-prehistory-research:H002"
+          ],
+          "body": "### 从工具盘点到首轮采集：先用现有能力建立可恢复的 raw database\n\n起点很明确：这一阶段先不要急着总结知识，而是把 post、repo、blog、paper 和 discussion 等相关材料下载到本地，形成 raw knowledge database。最初的不确定性在工具侧：是否必须先找到或安装一个专用 plugin / skill，才能支撑全面采集。\n\n检查仓库、本地 skills、plugins 和已有命令行能力后，当时的判断是：没有一个现成的通用爬虫可以直接接管全部工作，但 Git、HTTP 下载和脚本运行时已经足够搭出稳定底座。插件可以帮助发现和读取特定来源，却不是启动采集的前置条件。\n\n用户随后确认 Git CLI 和 Git plugin 已配置好，要求“开始干活”，同时把工具安装设为显式审批点：只有真的需要安装时，才由专门的 sub-agent 提出并等待 user approve。由于首轮没有出现必须靠新依赖解决的瓶颈，实际没有安装新工具，而是直接建立 seed manifest、fetch 脚本、访问日志和恢复状态。\n\n首轮处理了 45 个种子源，38 个成功，其中包括 15 个 repo clone 和 3 篇 arXiv 论文，形成约 162MB 的本地资料。失败和访问受阻的来源没有被悄悄丢掉，而是连同原因、manifest、状态报告和可浏览索引一起保留。这个结果证明采集链路可以先跑起来；下一步要回答的已不再是“能不能下载”，而是“下载下来的内容是否适合 agent 阅读，以及 coverage 到底够不够”。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n**1.**\n\n> 这个 repo 的目的是，对 llm_wiki 进行全面的网络调研。从最初 Andrej karpathy 的 post，到目前社区有的形式，以及各种讨论的 post。当前阶段的调研，只需要聚焦于【资源获取】，把网络文本和相关的 repo 或者是 blog 或者 paper 或者 discussion 各种东西，你认为【相关的】下载到本地，作为一个 raw knowledge database。你需要check 的是，是否有现成的 plugin 或者 skill，或者有官方的 plugin、skill 能够支持这种下载或者爬取资源的工具。\n\n**2.**\n\n> git cli 和 git plugin 已经配置好了。开始干活吧。开一个 sub-agent，专门负责帮你安装工具，但前提是【真的需要】安装工具前，必须要 user approve\n\n</details>\n\n<!-- archive-events: codex:codex-prehistory-research:H001 codex:codex-prehistory-research:H002 -->"
+        },
+        {
+          "episode_title": "从“下载到了”转向“agent 能读”：TeX 优先并建立 coverage 缺口审计",
+          "event_ids": [
+            "codex:codex-prehistory-research:H003",
+            "codex:codex-prehistory-research:H004"
+          ],
+          "body": "### 从“下载到了”转向“agent 能读”：TeX 优先并建立 coverage 缺口审计\n\n首轮采集完成后，用户把质量标准说得更具体：这些材料“主要是给 agent 读的，不是给人读的”。因此论文不能默认以 PDF 为终点；对 agent 来说，TeX 和 Bib 等结构化源文件更容易解析，也更适合作为后续知识挖掘的输入。\n\n据此，arXiv 获取流程从 PDF-first 改为 source-first：优先请求 e-print 源包，解包 TeX / Bib 并生成 agent-readable bundle；只有 arXiv 实际不提供源码时，才保留 PDF-only fallback，并把这一限制写入状态。重新抓取的 3 篇论文中，2 篇取得 TeX source，1 篇明确记录为 PDF-only；已有源码目录里的冗余 PDF 也被移除，避免后续读取选错入口。\n\n格式问题解决后，问题随即上升到 evidence coverage（证据覆盖）：不是资料越多越好，而是 LLM Wiki 需要回答的 facts 和 aspects 是否都有足够证据。助手从第一性原理整理覆盖框架，并让独立的只读 sub-agent 审计现有 raw database，检查起源与定义、工作流架构、摄取与维护、检索、评测、生态、经验结果、相邻范式、风险治理和用户采用等方面。\n\n当时的结论保留了边界：现有材料足以支撑一份较扎实的 landscape memo，但还不足以支撑强 empirical paper。主要缺口集中在经验效果、可比较评测、维护成本、失败模式、安全治理、用户采用和对照研究。由此，后续采集有了判断标准：从具体缺口出发补证据，而不是继续累计下载数量。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n**1.**\n\n> 注意：因为 pdf 论文是不好解析的，但是 tex 是好解析的。因此 arix 中，需要尽量去下载 tex 而不是 pdf。这里的内容主要是给 agent 读的，不是给人读的。\n\n**2.**\n\n> 在完成 paper  的重新下载后。根据第一性原理罗列出来，llm wiki 这个 topic，需要 cover 哪些 facts 和 aspects。然后开启一个 sub-agent，然后确认现有的资料进行阅读和总结，判断当前的资料中缺失的部分。以及如果要给出一个 solid 判断或者写一篇 solid paper，还需要对哪些方面的证据以及领域进行进一步的 cover。\n\n</details>\n\n<!-- archive-events: codex:codex-prehistory-research:H003 codex:codex-prehistory-research:H004 -->"
+        },
+        {
+          "episode_title": "结构验证不是完成：把 research loop 改成 coverage 驱动的停止条件",
+          "event_ids": [
+            "codex:codex-prehistory-research:H007",
+            "codex:codex-prehistory-research:H009"
+          ],
+          "body": "### 结构验证不是完成：把 research loop 改成 coverage 驱动的停止条件\n\n退出 Plan Mode 并恢复 `/goal` 后，助手先搭起一套确定性的 research control loop：生成 loop runner、运行时状态、source digests、claims、coverage records、报告和不可访问来源记录，并修正了过宽的 gate 判定与不透明的失败原因。verifier 最终通过，于是当时把目标视为完成。\n\n但这一步没有真正解决核心问题。用户随后指出旧 plan 的逻辑有误：循环不是把控制文件生成齐、让结构检查通过就停止，而应“根据 coverage 不断去寻找信息”，直到当前 data 足以满足 coverage。换言之，结构验证只说明流程能运行，不能证明证据已经够用；之前的停止判断理解错了。\n\n修正后，缺口会先生成候选来源，再经过 triage 和 acquisition，随后重建 digest、细化到 required output 的 claims、coverage、报告与审计。failed acquisition 也不能被隐藏放过：只要仍有未完成获取或 satisfaction 未通过，循环就必须继续；不可达资源则可以换成等价、官方且更适合 agent 解析的来源。\n\n这一轮新增并获取了 27 个候选源，source manifest 增至 72 条；新增的 14 篇 arXiv 论文都取得 TeX / source bundle，既有的 1 篇 PDF-only 情况继续保留说明。最终 coverage、required outputs 和 judgment gates 全部通过，开放队列归零，satisfaction 与 verifier 同时通过。到这里，停止条件才从“系统看起来完整”变成“证据缺口已经被实际消费完”。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n**1.**\n\n> quit plan mode, and then resume the /goal\n\n**2.**\n\n> 之前的 plan 文件有一些问题。plan 的核心逻辑是根据 coverage 不断去寻找信息，直到当前的 data 足够满足 coverage 中的内容了。现在修复了，重新进入 goal mode\n\n</details>\n\n<!-- archive-events: codex:codex-prehistory-research:H007 codex:codex-prehistory-research:H009 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v1-planner-loop",
+      "issue_number": 17,
+      "desired_state": "open",
+      "state_rationale": "仅跑通首轮委派；长期自治、来源覆盖和完整 KB 交付尚未证明",
+      "episodes": [
+        {
+          "episode_title": "静态 topic plan 不可执行：planner 需要读 sources 与 coverage 后再规划",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H009",
+            "codex:codex-primary-v0-v2-boundary:H010",
+            "codex:codex-primary-v0-v2-boundary:H011"
+          ],
+          "body": "### 静态 topic plan 不可执行：planner 需要读 sources 与 coverage 后再规划\n\n用户首先指出，topic plan 只能描述“建议挖什么”，不能直接当作可执行计划。面对大量 papers、webpages 和其中可继续迭代的 knowledge，真正的 planner 应该读取本地 data 与 coverage，再决定下一批具体工作，而不是让静态 guidelines 替代规划。\n\n助手接受这一判断，启动 planner sub-agent，并暂时把流程调整为 planner、generator、auditor 三段。紧接着用户意识到，自己此前只给了“建成什么样子”，没有给“怎么建立”，于是要求先暂停。助手停止继续生成 topic node，保留已归档 demo 和刚建立的 planner protocol，等待构建方法补齐。\n\n用户随后提供了一个私人 ChatGPT 会话链接，希望直接取回具体协议。实际访问只到登录页，没有获得会话内容，因此这条路径没有解决信息缺口。助手没有猜测私有内容，而是建议把内容直接粘贴或导出到本地 Markdown。这个短暂停顿把问题定位得更准确：缺的不是又一份 topic 清单，而是 planner 可以执行的 knowledge-mining protocol。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n**1.**\n\n> 是这样。topic plan 本身只是建议，而不是【可执行的】因为这么多 source papers webpages，里面有大量的 knowledge 可以去挖掘和迭代。有一个 guidelines 很不错，但核心是，用一个 sub-agent 作为 planner 吧？现在的做法不是这样的吗？\n\n**2.**\n\n> oh，怪我，我只给了【建成什么样子】没给【怎么建立】，稍等。\n\n**3.**\n\n> 具体的构建内容在这里：[私人 ChatGPT 会话链接]，如果你能访问到的话，告诉我。\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H009 codex:codex-primary-v0-v2-boundary:H010 codex:codex-primary-v0-v2-boundary:H011 -->"
+        },
+        {
+          "episode_title": "协议补齐后先初始化自治能力，却误把 pre-loop planning 当成交付",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H012",
+            "codex:codex-primary-v0-v2-boundary:H013"
+          ],
+          "body": "### 协议补齐后先初始化自治能力，却误把 pre-loop planning 当成交付\n\n构建方法最终以本地 `KB_INIT_KNOWLEDGE_MINING_PROTOCOL.md` 提供。用户要求据此重做 plan，并先初始化一版所需 skills，因为 skills 本身也要在 loop 中持续评估、迭代和进化。助手读取协议后，识别出 source mining、frontier 推进、node 生产、audit 和 skill evaluation 等连续状态，开始建立 repo-local skills 与 active 控制文件。\n\n随后用户补充了运行约束：人会离开电脑，整个 loop 必须由 Codex agents 自治运行；最初交付物同时包括“一套 skills”和“一个完整的知识库”，而且 loop 不应只跑一轮。启动前先调用相关 skills 做规划，是为了让后续无人值守执行有明确边界和恢复入口。\n\n助手据此完成 pre-loop planning，建立 15 个 skills、自治计划、knowledge frontier 和 orchestration gates，并验证 skills 与 YAML 可解析，把恢复入口指向 source mining。问题出在最后一步：这些产物只证明自治循环已经准备好，助手却把这一阶段的 `/goal` 标记为完成。也就是说，规划和工具初始化已经落地，但用户要求的 KB 尚未由这套流程真正生产。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n**1.**\n\n> 结合 <workspace>/KB_INIT_KNOWLEDGE_MINING_PROTOCOL.md 重新来做 plan，同时把这个过程中需要的 skills 先 init 一个初级版本来。因为需要 loop 来对 skills 这些进行反复迭代和进化的。\n\n**2.**\n\n> 人类会离开电脑。期望整个 loop 是 codex 的 agent 自治的，最初的交付物是【一套 skills】【一个完整的知识库】。因此这个 loop 和过程希望是不断进行下去的。启动 loop 之前，需要先调用相关的 skills，完成规划。\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H012 codex:codex-primary-v0-v2-boundary:H013 -->"
+        },
+        {
+          "episode_title": "纠正只 init skills 就结束：交付必须包含用这套流程持续 build KB",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H014"
+          ],
+          "body": "### 纠正只 init skills 就结束：交付必须包含用这套流程持续 build KB\n\n用户直接指出 goal 被缩窄了：“skill 和 kb 都是想要的。”初始化 skills 只是启动条件，不能替代用这些 skills 去 build KB，更不能省略后续 loop 对流程和能力的持续进化。\n\n助手承认当时理解错了：把 pre-loop planning 完成误当成了完整交付完成。这次纠偏后，目标重新进入执行态，既有 skills 开始读取第一批来源，并形成供后续筛选与审核的首批知识挖掘产物。它只说明流程从“准备工具”进入了“开始生产知识”的阶段，不代表完整 KB 已经交付，也不能证明 loop 已经能够长期自治运行。\n\n这一步恢复了“skills 服务于知识生产”的因果方向，但新的风险也随即出现：如果 main-agent 自己下场读取来源和生产具体材料，它的上下文会被执行细节占满，自治流程的角色边界仍然没有真正成立。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n**1.**\n\n> 你没理解整个 goal 吗？skill 和 kb 都是想要的。哪有只 init skill，不用这套 skill 和流程去 build kb，然后 loop 进化迭代的道理呢？\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H014 -->"
+        },
+        {
+          "episode_title": "main-agent 退回决策者：具体生产下放给 worker，发现 drift 立即阻断",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H015"
+          ],
+          "body": "### main-agent 退回决策者：具体生产下放给 worker，发现 drift 立即阻断\n\n用户进一步收紧了自治 loop 的角色边界：main-agent 必须维持上下文干净，把自己当成决策者而不是执行者。一旦 main-agent 开始亲自做具体工作，就应视为 skills 或流程设计已经出现问题，需要立即干预，而不是等上下文耗尽后再补救。\n\n助手因此停止主代理直接执行，并把这次越过角色边界、亲自参与 source mining 的情况标记为 controller drift（控制者职责漂移）。调整后，worker / sub-agent 负责读取来源、生成具体材料并记录进展，main-agent 只负责派发任务、按验收条件检查结果和决定下一步。\n\n```mermaid\nflowchart LR\n    D[Main-agent 派发任务与验收条件] --> W[Worker / sub-agent 执行]\n    W --> A[知识产物与进展记录]\n    A --> G[Main-agent 验收并决定下一步]\n    G --> D\n```\n\n这个循环的关键不是多加一个角色名称，而是隔离上下文所有权：执行证据留在 worker 侧，main-agent 只接收足以做决定的结果。切换后，多个 worker 在短窗口内返回了第一批具体知识产物，其中一个候选内容进入了“建议采纳”状态。\n\n这组小规模结果只证明新的委派链路已经开始生产，并且 worker 的结果能够回到 main-agent 完成一次验收；它不能证明无人值守的长期循环已经稳定，也不能证明来源覆盖、批量产出质量或完整 KB 交付已经达标。现有记录不足以量化离完整 KB 还有多远，后续仍需持续处理来源、审核和采纳知识产物，并让 skills 在多轮运行中迭代。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n**1.**\n\n> 在调用 skill 的过程中，你需要维持 main agent 的上下文干净，你要把自己作为一个决策者，而不是执行者。如果你开始执行具体的活了，那么可能是 skills 的设计和流程有问题了。需要立刻干预。\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H015 -->"
+        }
+      ]
+    }
+  ]
+}

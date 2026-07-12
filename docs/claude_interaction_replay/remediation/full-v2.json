@@ -1,0 +1,278 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v2-language",
+      "issue_number": 22,
+      "desired_state": "closed",
+      "state_rationale": "中文主语言的适用面已从 active 文档扩展到 skills 与术语，并形成可执行的英文保留边界",
+      "episodes": [
+        {
+          "episode_title": "中文主语言不是入口文档的局部修饰",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H032"
+          ],
+          "body": "### 中文主语言不是入口文档的局部修饰\n\n语言问题由一次直接纠错暴露：新写的 active 入口、研究协议和审计材料仍以英文叙述为主，助手此前把语言偏好理解成了内容准确之后再做的表面整理，没有把它当作人类阅读与审计合同。用户指出问题后，检查范围才从单一文档扩到 active 入口、协议、legacy 说明和审计报告。\n\n纠正动作是把这些人类可读材料改回中文主叙述，同时保留旧版运行快照和第三方来源原文，避免为了统一语言而改写历史证据。这个边界很重要：语言一致性针对当前维护面，不代表所有归档和引用都要翻译；运行快照承担复现实验的职责，来源原文承担证据职责，强行翻译反而会降低可核对性。结果解决了最显眼的文档漂移，却还没有回答 skills 是否也属于同一合同；下一次追问很快证明，最初修复范围仍然偏窄。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H032\n\n```text\n你没发现问题吗？我需要文档的 main language 都是中文。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H032 -->"
+        },
+        {
+          "episode_title": "skills 与术语也进入同一语言合同",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H033",
+            "codex:codex-primary-v0-v2-boundary:H034"
+          ],
+          "body": "### skills 与术语也进入同一语言合同\n\n第一轮修复后，用户立即指出 skill 仍是英文。这纠正了助手的第二个假设：skill 并非只供机器消费的内部配置，它同样需要被人检查、维护和复用，因此不能排除在中文主语言之外。助手据此初始化了六个中文主叙述、面向 atomic fact 的 active skills，并把旧英文 node/topic skills 明确留在 legacy，避免把旧目标伪装成已迁移的新规范。\n\n随后“修复语言一致性”把问题从文件语言推进到术语治理。正文中的 source、card、provenance、worker、loop、adoption 等不再随意中英切换，而是收敛为稳定中文表达；路径、命令、schema 字段、状态码、包名、来源标题和 References / Footnotes 等固定 section 继续保留英文。六个 skills 通过 validator，说明修复没有破坏结构。当前可执行答案因此不是“全部翻译”，而是中文负责逻辑叙述，英文只保留在具有技术身份或证据身份的位置。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H033\n\n```text\nskill 是英文的。\n```\n\n#### 2. codex:codex-primary-v0-v2-boundary:H034\n\n```text\n修复一下语言一致性的问题吧。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H033 codex:codex-primary-v0-v2-boundary:H034 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v2-git-handoff",
+      "issue_number": 23,
+      "desired_state": "closed",
+      "state_rationale": "已形成按完整交付边界分批提交、等待并行 worker 产物完整后再推送的可执行 handoff 规则",
+      "episodes": [
+        {
+          "episode_title": "第一次分批推送按可解释交付面拆分",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H035"
+          ],
+          "body": "### 第一次分批推送按可解释交付面拆分\n\n语言与 active skills 修复完成后，用户要求先把现有内容分批推送。这里的风险不是 Git 命令本身，而是工作区同时包含 active skills、KB 工具、动态来源、旧 loop 归档和漂移审计；若按文件数量随意切分，远端会出现无法单独理解或恢复的半成品。\n\n助手先检查分支和工作区，再按四个完整交付面提交：active skills、KB 工具与动态来源、旧 loop 归档、漂移审计报告。每批都能独立说明改了什么，最终推送到 origin/main 并确认工作区干净。这次操作给出了初步 handoff 原则：批次边界应对应可解释的成果，而不是对应某个 worker 或任意时间片。不过当生产 loop 后来持续写入 task、draft、repair 和 audit 文件时，这个静态拆分方法还需要在并发环境中接受检验。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H035\n\n```text\n先把当前的内容分批 git push 来\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H035 -->"
+        },
+        {
+          "episode_title": "并行生产时先等交付闭合再交接",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H049"
+          ],
+          "body": "### 并行生产时先等交付闭合再交接\n\n新 loop 启动后，用户把未推送内容交给独立 Git worker。此时工作区不再是一次性快照：多个 workers 会连续产生 task、draft、repair、audit 和控制面更新，某个文件出现并不代表对应 iteration 已经完成。助手采用的处理不是见到变更就提交，而是让 Git worker 持续观察交付边界，只有一组任务文件、状态、delivery 和产物能够共同解释时才 stage、commit、push。\n\n这一策略在可见窗口内推进到 Batch 7，并在 drafting worker 尚未完成 r1 交付时选择等待，明确避免把半张卡或缺少验收记录的 iteration 交给下一位 agent。该 episode 没有制造“所有并发内容已经完成”的结论；当时仍有进行中的生产任务。它给出的可执行规则是：Git handoff 可以并行常驻，但提交必须绑定完整 delivery，未闭合的 worker 输出留在工作区等待，不能用频繁 push 替代任务完成判定。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H049\n\n```text\n开一个 sub-agent 吧。这个 sub-agent 负责把当前没有 push 的内容分批进行 push\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H049 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v2-control-plane",
+      "issue_number": 24,
+      "desired_state": "closed",
+      "state_rationale": "控制面已形成状态、角色合同、结构化 dispatch、guardrail、恢复入口与长程反思的职责分层",
+      "episodes": [
+        {
+          "episode_title": "从一组 skills 补成可运行的控制面",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H036",
+            "codex:codex-primary-v0-v2-boundary:H037"
+          ],
+          "body": "### 从一组 skills 补成可运行的控制面\n\n用户先问当前 loop 还有什么问题。检查显示，已有内容只表达了 atomic fact 的方向和若干 skills，却没有 active 状态机、稳定工作目录、controller/worker 硬边界、标准任务包、自动校验、度量、停止条件，也没有证明 sub-agent 真能在隔离上下文中工作。此前把“有方向和角色说明”当成“loop 已可执行”，是对控制面的核心误解。\n\n用户随后补充，sub-agent 行为与 scope 也没有约定，而且 0 到 1 的全过程应有专门 loop 文件夹。助手据此建立 `llm_wiki/loop`，加入 RUNBOOK、state、manifest、任务模板、scope、bootstrap iteration 和独立审计，并将控制面与 KB 产物面分离。审计发现四个小缺口后进行了修复，JSON 与语言检查通过。到这里，loop 才第一次有了可恢复入口和状态迁移依据；但 main-agent 如何在不重写每个任务的前提下派发 worker，仍未解决。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H036\n\n```text\n当前 loop，存在哪些问题？\n```\n\n#### 2. codex:codex-primary-v0-v2-boundary:H037\n\n```text\n是的，而且没有约定 sub-agent 的行为和 scope。现在需要有一个文件夹，专门来放 loop 才对。因为整个过程是一个 loop，从 0- 1 不断进行的。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H036 codex:codex-primary-v0-v2-boundary:H037 -->"
+        },
+        {
+          "episode_title": "预定义角色与结构化 dispatch 取代临场长 prompt",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H038",
+            "codex:codex-primary-v0-v2-boundary:H039"
+          ],
+          "body": "### 预定义角色与结构化 dispatch 取代临场长 prompt\n\n控制目录落地后，用户质疑是否需要预定义 system prompt，避免 main-agent 包办全部工作。助手把稳定角色合同与每轮 task 分开：system prompt 固定职责、禁区和交付要求，task template 只填本轮输入、读写范围和验收条件，而且任务包只能收窄、不能放宽角色边界。main-agent 因而只负责选角色、填变量、派发和验收。\n\n用户进一步指出，如果每次启动 sub-agent 仍由 main-agent 临场写 prompt，本质上没有变化。这个追问纠正了“有模板就足够轻量”的假设。新的方案是 dispatcher 脚本或 tool 生成 task、校验 scope、渲染 dispatch payload 并记录调用，让 main-agent 只提供 role、iteration 和少量结构化变量。轻量化的对象因此不是文字长度，而是把权限与上下文装配变成可验证接口。此时 hooks 被列为候选，但它能否直接负责启动 agent 还没有证据。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H038\n\n```text\n需要 pre- defined 它们的 system prompt 吗？不要把活全部交给 main-agent 去做？\n```\n\n#### 2. codex:codex-primary-v0-v2-boundary:H039\n\n```text\n那么如果触发 sub 的时候，依然是 main agent 写 prompt 本质没区别，是吧？所以逻辑如果要轻量化，是应该让 main-agent 去调用脚本或者 tool？或者 hook？然后以这种方式完成 sub-agent 的调用？\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H038 codex:codex-primary-v0-v2-boundary:H039 -->"
+        },
+        {
+          "episode_title": "hook 经最小实验被限定为 guardrail 而非 scheduler",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H040",
+            "codex:codex-primary-v0-v2-boundary:H041"
+          ],
+          "body": "### hook 经最小实验被限定为 guardrail 而非 scheduler\n\n用户要求调查 Codex hook，并用 sub-agent 做最小验证。检查本机能力和官方实现后，助手没有把 hook 直接等同于 agent dispatcher：它适合注入上下文、拦截越界、记录日志和执行停止检查，但当时不能原生 spawn 一个独立 sub-agent。建议因此变成 custom agents、任务脚本与 hooks 的组合，而不是在 hook 内启动新的 Codex session。\n\n随后 smoke test 验证了这一边界。多轮最小实验确认 hook 可以作为 guardrail 和 context preprocessor，临时项目与全局 hook 修改也在测试后清理或恢复，证据写入 loop artifact。这个结果否定了“用 hook 就能自动完成派发”的捷径，却保留了它在控制面中的真实价值：task/dispatcher 决定启动谁和给什么输入，hook 检查输入与行为是否越界。未验证部分是独立 agent 的自动调度，而不是 hook 的基本拦截能力。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H040\n\n```text\ncodex 现在有 hook。你去调查一下这个实现方式是否是可行的。\n```\n\n#### 2. codex:codex-primary-v0-v2-boundary:H041\n\n```text\n嗯，这样是合理的。开一个 sub-agent，做一个最小测试，看这样是否是可行的。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H040 codex:codex-primary-v0-v2-boundary:H041 -->"
+        },
+        {
+          "episode_title": "错误 fallback 被纠正后切回正式 user-insights sidecar",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H042",
+            "codex:codex-primary-v0-v2-boundary:H043",
+            "codex:codex-primary-v0-v2-boundary:H044"
+          ],
+          "body": "### 错误 fallback 被纠正后切回正式 user-insights sidecar\n\n用户准备离开电脑时，把无人值守阶段分成两条线：一条继续验证 loop 的上下文隔离、受限 main-agent 的弹性和 sub-agent 生命周期，另一条用既有 user-insights skill 消化当前 session 的积压内容。第一条输入随即被补充版本替代，新增了常驻与一次性 sub-agent 的区分；两条输入之间没有可发布的助手动作。\n\n助手启动 goal 后没有先找到正式 skill，便建立了临时 fallback。这个处理错误地把“当前未定位到能力”当成“能力不存在”，也绕开了 user-insights 原有的 sidecar、增量读取和顶层记录约定。用户明确指出 skill 已存在于 skill-manager 后，助手才停止临时路径，找到正式实现并切回 refreshable-fork sidecar，把记录迁到顶层 `user-insights`。这次纠正解决的是记录链的身份与归属：积压洞察继续由既有 sidecar 维护，而不是由主控临时发明一套替代流程。loop 的 prelaunch 是否足以交给下一位 main-agent，则留到下一次目标中判断。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H042\n\n```text\n用户要离开电脑了。现在设置一个 goal。目的有两个 1. 【完成 loop 的前置要求】根据用户之前的限定和要做的事情，核心思考点是【上下文隔离】以及【如何在对 main-agent 有限制的情况下，给其增加一些弹性】以及【如何在有 pre-defined sub-agent 的情况下，main-agent 能主动创造新的 sub-agent 或者修改已有的】还有【技术的最小验证，比如正在跑的 hook 验证，如果目前不可以的话，考虑启动 codex cli 进行，或者启动 claude cli 进行】基于目前的情况，可能 claude cli 是更好的，因为写作上它的智能水平是更高的。 2. 调用一个 user-insights 的 skill，把目前整个 chat session 积压的内容都进行一次记录。\n```\n\n#### 2. codex:codex-primary-v0-v2-boundary:H043\n\n```text\n用户要离开电脑了。现在设置一个 goal。目的有两个 1. 【完成 loop 的前置要求】根据用户之前的限定和要做的事情，核心思考点是【上下文隔离】以及【如何在对 main-agent 有限制的情况下，给其增加一些弹性】以及【如何在有 pre-defined sub-agent 的情况下，main-agent 能主动创造新的 sub-agent 或者修改已有的】还有【技术的最小验证，比如正在跑的 hook 验证，如果目前不可以的话，考虑启动 codex cli 进行，或者启动 claude cli 进行】基于目前的情况，可能 claude cli 是更好的，因为写作上它的智能水平是更高的。同时，还需要考虑【sub-agent 的生命周期，什么 sub-agent 可以常驻，什么 sub-agent 是阅后即焚的】 2. 调用一个 user-insights 的 skill，把目前整个 chat session 积压的内容都进行一次记录。\n```\n\n#### 3. codex:codex-primary-v0-v2-boundary:H044\n\n```text\nuser-insights 是已经有的，马上会加载。在 skill-manager 这个文件夹里面。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H042 codex:codex-primary-v0-v2-boundary:H043 codex:codex-primary-v0-v2-boundary:H044 -->"
+        },
+        {
+          "episode_title": "prelaunch 验证收敛为下一位 main-agent 的长程计划",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H045"
+          ],
+          "body": "### prelaunch 验证收敛为下一位 main-agent 的长程计划\n\n正式 sidecar 恢复后，前置工作也已把隔离执行、独立审计和 concern 修复推进到可开始 source mining 的 checkpoint。这个结果只能说明组件在当前 session 中通过了 prelaunch 验证，不能保证下一位 main-agent 脱离聊天记忆后仍知道如何恢复状态、推进生产、处理失败或维护不断变化的文件系统。验证可行与长期可接管之间，仍缺一份把边界和演化逻辑连起来的执行合同。\n\n用户因此另开 goal，要求写给下一位 main-agent 的 plan：它不仅要落实 KB 生产，还要让 skills、sub-agent prompts 和整条 loop 在失败证据下持续 evolve；同时必须允许 main-agent 在执行任务之外反思大小组件，而不是被固定流程锁死。助手据此把当前项目的恢复与生产链写成长程计划，并把此前讨论中可跨项目复用的设计模式抽象进 loop runner，再以自审计检查计划是否可执行、runner 是否混入当前 case 的专属规则。这里的收敛点不是又完成一批机械检查，而是把 prelaunch 证据转成下一位 main-agent 可恢复、受约束且保留反思弹性的控制合同。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H045\n\n```text\n新的 goal 是写一份给 main-agent 的 plan，这个 plan 的逻辑是，新的 main-agent 拿到这个 plan 之后能够把整个 loop 给落实了。包括 kb 的进化、skills、sub-agent prompt 等的进化，loop 需要包括的内容很多，相当于是整个链路都需要 evolve，因此整体的逻辑需要很清晰，同时因为这是一个 long- horizon task，文件系统的管理也很重要；而且要有 out-of-loop 的整体思考对大组件和小组件进行反思和迭代的能力。在有【执行loop完成任务的同时】能【具备弹性来完成思维性的活动】。在构思这个 plan 的同时，之前讨论中，出现很多对 loop design 的思考，把这些思考的【pattern】落在 loop runner 这个 skill/plugin 里面，注意，不要基于当前 case 的具体规则了，是大的设计规则。落实完之后，进行自审计。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H045 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v2-card-autonomy",
+      "issue_number": 25,
+      "desired_state": "closed",
+      "state_rationale": "已明确自主探索不预设 topic，但必须受单一来源、provenance、任务包和独立 audit 约束，且产物目标只指向 card",
+      "episodes": [
+        {
+          "episode_title": "自主探索不等于无约束生成",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H046",
+            "codex:codex-primary-v0-v2-boundary:H047"
+          ],
+          "body": "### 自主探索不等于无约束生成\n\n长程计划完成前，用户连续核对两个容易再次漂移的前提：是否暗中预设了 card topic，以及 loop 是否仍以知识卡片而非 hub 为核心。助手回查已落盘合同，确认没有 topic、hub、cluster 或 topic coverage 规划；agent 从一个本地来源 bottom-up 发现事实候选，选源依据是可读性、来源质量、候选清晰度和当轮价值，而不是补齐主题版图。\n\n“完全由 agent 自主探索”在这里不是任意生成。候选必须能回到 source evidence，并经过 provenance、窄任务包和独立审计；primary object 是可读、可审计、可追溯的 atomic fact card。manifest、loop report 和执行计划也把 hub 聚合列为非目标。这次确认把自治拆成两层：topic 发现权交给 agent，事实接受权仍受来源和治理约束。它解决了方向问题，但要让新 session 不依赖当前对话记忆，还需要把这些边界写成可直接启动的 prompt。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H046\n\n```text\n我需要确定是，没有约定 card topic 或者是别的内容吧？card 的生产完全是 agent 的自主探索。\n```\n\n#### 2. codex:codex-primary-v0-v2-boundary:H047\n\n```text\n我需要了解是，loop 的核心是生产知识卡片，而不是聚合知识 hub。这一点有共识吗？\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H046 codex:codex-primary-v0-v2-boundary:H047 -->"
+        },
+        {
+          "episode_title": "用经审计的启动 prompt 把自治边界交给新 session",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H048"
+          ],
+          "body": "### 用经审计的启动 prompt 把自治边界交给新 session\n\n用户要求生成一段可以复制到全新 chat session 后直接开始 loop 的 goal prompt，并明确 draft 必须先经过 audit，不通过就继续修改。这个要求测试的不只是文案，而是此前共识能否脱离当前聊天被完整恢复：若新 main-agent 仍要猜 topic、职责或停止条件，所谓自治只是依赖隐性上下文。\n\n助手先生成 draft，再执行审计，通过后才交付最终版本。prompt 固定了恢复入口、controller 边界、source mining 到 drafting/audit/adoption 的 worker 链、失败证据驱动的演化、out-of-loop 反思、文件系统与网络策略、中文写作合同、需要 human checkpoint 的不可逆边界和停止条件。结果给出了可执行 handoff：新 session 可以自主选源和发现 card topic，但不能进入 hub/cluster、改变 schema、批量采纳或绕过 evidence。这里的“可直接开始”来自显式合同和审计，不是把旧聊天上下文复制给新 agent。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H048\n\n```text\nok，给我写一个拿给下一个 main-agent 就能用的 goal 的 prompt。要求在新的 chat-session 中，复制这个 prompt 就能直接开始 loop 完成 goal 了。draft 需要通过 audit 后，才能给我，audit 不接受的话，再修改，直到满意为止，给我。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H048 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v2-subagent-lifecycle",
+      "issue_number": 26,
+      "desired_state": "closed",
+      "state_rationale": "独立审计已定位 sub-agent 泛滥根因，并给出按职责、状态与上下文价值管理而非统一常驻或统一关闭的规则",
+      "episodes": [
+        {
+          "episode_title": "从清理 active 列表转向审计生命周期设计",
+          "event_ids": [
+            "codex:codex-primary-v0-v2-boundary:H050"
+          ],
+          "body": "### 从清理 active 列表转向审计生命周期设计\n\nGit worker 完成后，用户没有只要求关闭界面里残留的 agents，而是把问题提升为一次 fork audit：为什么上一轮 sub-agent 泛滥，哪些角色必要，哪些只是把小步骤过度人格化，未来应如何 create 与 manage；还要结合旧审计研究 agent 如何主导、在哪里卡住，以及那些反直觉的协作现象。\n\n助手先完成剩余 push 并关闭 Git worker，再启动新的 goal 与 fork sub-agent。最终 audit folder 包含 agent 清单、核心审计、建议和主控验收；审计过程中还修正了对 `close_agent` 行为的事实描述，并关闭已完成 agents。结论没有落到“一律 one-shot”或“一律常驻”：泛滥的主要原因是把每个微小步骤都变成独立角色，却没有生命周期账本记录 owner、职责、状态、上下文价值和退出条件。可复用上下文且持续拥有 lane 的角色才值得保留，窄交付 worker 完成并验收后应关闭；管理对象是职责与状态，不是 GUI 中 agent 数量本身。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v0-v2-boundary:H050\n\n```text\n结束之后，我要求你开启一个 fork sub-agent，对这个 chat session 进行审计，弄清楚，在之前的 loop 过程中，sub-agent 为啥泛滥了。出现了很多 sub-agent 都没有管理生命周期，在 gui 界面一直是 active 的，哪些 sub-agent 是必要的，哪些是不必要的。以及未来好的 create 以及 manage 方式是什么。落成一个 audit 文档。上一个 loop 中很多值得挖掘和理解 main-agent、sub-agent 机制；以及这个任务中，agent 是如何主导任务，以及在哪些任务中卡住的各种 agent 协作的问题。我期望你伙同之前的 aduit 文档，做成一个 folder，详细地去主动调查和探索出现的问题，做的好的地方等等。尤其是一些【反直觉】的点。这是一个 goal，你去做呗。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v0-v2-boundary:H050 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v2-production-lifecycle",
+      "issue_number": 27,
+      "desired_state": "open",
+      "state_rationale": "one-shot 链路已跑通并产出 15 张卡，但用户提出的重复读取成本与 standing worker 适用条件未被评估或验证",
+      "state_transition_comment": "重新打开这个问题。新的 trigger 是连续逐卡生产虽然把 15 张卡推进到 adoption，却始终采用严格 one-shot worker；用户已明确追问这是否属于过度生命周期管理，并提出 data 阅读等高 I/O 工作可能更适合保留上下文。旧结论只证明 one-shot 链路可运行，没有给出何时常驻、如何限制常驻角色、上下文节省是否抵消状态污染的可执行判断。新的关闭条件是：定义 one-shot 与 standing worker 的选择标准和生命周期协议，并用至少一轮可对照的生产 run 验证读取成本、交付质量、状态恢复与关闭行为。",
+      "episodes": [
+        {
+          "episode_title": "新 session 按窄任务包启动正式生产链",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H001"
+          ],
+          "body": "### 新 session 按窄任务包启动正式生产链\n\n用户把前一阶段形成的长程 prompt 交给全新 main-agent，要求不要只给计划，而是从落盘控制面恢复并立即开始生产。prompt 明确禁止从聊天记忆、legacy 或 user-insights 恢复事实，要求以 `loop_state.json` 为准，main-agent 只做状态迁移、任务包、派发、验收和反思，具体 source mining、写卡、审计与采纳必须交给隔离 worker。\n\n助手确认状态为 READY_FOR_SOURCE_MINING，从本地 manifest 选择单一来源，创建并校验窄任务包，以 `fork_context: false` 派发 source mining worker，再把进行中状态写回控制面。这是第一轮真实执行，不只是架构说明。生产链被固定为 source mining 后每次选择一个候选，依次进入 drafting、audit、adoption；每步保留 task、dispatch、status、delivery、read log 和 artifacts。结果证明新 session 可以从文件恢复并启动，但尚未证明这种严格 one-shot 生命周期在连续生产中成本合理。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H001\n\n```text\n请在 <workspace> 中开启一个新的 goal，并进入 long-horizon autonomous loop。\n\nGoal：\n持续落实 LLM Wiki 的 bottom-up KB 生产循环：从 data/ 中已有本地来源自主探索事实候选，生产中文为主、可读、可审计、可追溯的原子事实知识卡；为每张卡写可读 provenance；经过独立审计后采纳到 KB；同时根据失败证据持续演化 skills、sub-agent prompts、task templates、tools、文件系统控制面和 loop 报告。整个过程需要在无人长期看管时保持自治、可恢复、可审计，并保留 out-of-loop 的组件反思能力。\n\n启动约束：\n1. 使用 agent-loop-runner skill。\n2. 首先只读取这些恢复入口：\n   - llm_wiki/loop/loop_state.json\n   - llm_wiki/loop/loop_manifest.json\n   - llm_wiki/loop/RUNBOOK.md\n   - llm_wiki/loop/queues/task_queue.md\n   - llm_wiki/loop/reports/loop_report.md\n   - llm_wiki/loop/plans/main_agent_long_horizon_execution_plan.md\n3. 如果这些文件矛盾，以 loop_state.json 为准，先修复控制面，再派发执行者。\n4. 不要从聊天记忆恢复 loop；不要默认读取 legacy/；不要把 user-insights/ 当作事实来源。\n\n当前核心共识：\n1. loop 的核心是生产知识卡片，不是聚合知识 hub。\n2. 当前 primary object 是 atomic_fact_card。\n3. 当前非目标是 hub、cluster、topic coverage、复杂 metadata、没有来源支撑的 agent 综合。\n4. 没有预设 card topic；card 的生产由 agent 从本地来源中 bottom-up 自主探索事实候选，但必须被 source evidence 和 provenance 约束。\n5. 选源不按主题覆盖、topic 平衡、hub 规划或 cluster 规划；只按本地可读性、来源质量、事实候选清晰度和当前 loop 价值选择一个具体来源。\n6. user-insights 只用于人类 recall 和过程洞察，不可作为 atomic card 的事实来源。\n\n主控 agent 身份：\n你是 main-agent / loop controller，不是具体执行者。你负责状态迁移、任务包创建、派发、验收、偏差干预、决策记录和必要的 out-of-loop 反思。\n\n你不可以：\n- 亲自大段阅读来源并抽取事实。\n- 亲自写知识卡正文或 provenance。\n- 亲自审计并采纳知识卡。\n- 用父聊天上下文补事实证据。\n- 为了效率绕过 task packet、worker、read_log、delivery 或 audit。\n- 把当前目标转成 hub、cluster、topic coverage 或主题报告。\n\n如果你发现自己需要亲自做 worker 的核心工作，立刻停止生产，写入 decision/reflection，并触发 skill_evolution_worker 或 prompt/template/tool 修复。\n\n当前下一步：\nloop_state.json 预期状态是 READY_FOR_SOURCE_MINING。请先确认状态；如果仍是 READY_FOR_SOURCE_MINING，则创建第一轮 source_mining_worker 窄任务包。\n\n执行步骤：\n1. 读取 data/manifests/acquired_sources_index.md 和必要时 data/manifests/sources.jsonl。\n2. 自主选择一个 status: ok 的本地来源。只选一个。选择理由必须记录在 task 或 decision 中。\n3. 使用 llm_wiki/loop/tools/create_task.py 创建 source_mining_worker 任务包。\n4. 运行 validate_scope.py 检查任务包。\n5. 使用 render_dispatch.py 生成 dispatch_request.json。\n6. 派发 source_mining_worker；默认 fork_context: false。执行者只接收 base_worker + source_mining_worker system prompt + 当前 task.md，不接收父聊天上下文。\n7. 等待或监控执行者交付；执行者必须写 loop_status.md、loop_delivery.md、read_log.md 和 fact_candidates artifact。\n8. 用 inspect_delivery.py 验收。\n9. 如果 fact candidates 可用，每次只选择一个候选进入 card_drafting_worker -> card_audit_worker -> card_adoption_worker 链路。\n10. 每一步都开新的 iteration，保留 task.md、dispatch_request.json、loop_status.md、loop_delivery.md、read_log.md 和 artifacts。\n\n演化规则：\n只有失败证据才能触发演化。可以演化：\n- llm_wiki/skills/*\n- llm_wiki/loop/system_prompts/*\n- llm_wiki/loop/task_templates/*\n- llm_wiki/loop/tools/*\n- loop manifest / runbook / report / queue\n\n演化流程必须是：\n失败证据 -> skill_evolution_worker 或明确修复任务 -> 最小修改 -> validate_scope / delivery check -> independent_evaluator 审计 -> main-agent decision -> 更新 loop_state 和 loop_report。\n\nOut-of-loop 反思：\n如果出现重复失败、周期过长、文件系统混乱、角色边界模糊、main-agent 想亲自执行、或产物看起来正确但没有推进知识卡质量，暂停生产并写 llm_wiki/loop/reflections/<timestamp>-<topic>.md。反思必须给出下一步动作：continue_production / skill_evolution / prompt_evolution / tooling_repair / filesystem_repair / human_checkpoint / defer。\n\n文件系统规则：\n- data/ 是来源和来源日志。\n- llm_wiki/kb/ 是最终 KB 产物面。\n- llm_wiki/loop/ 是控制面。\n- llm_wiki/skills/ 是项目内 skills。\n- user-insights/ 是人类 recall，不是事实来源。\n- legacy/ 是历史，不是默认入口。\n\n每轮结束必须更新：\n- llm_wiki/loop/loop_state.json\n- llm_wiki/loop/reports/loop_report.md\n- 必要时更新 llm_wiki/loop/queues/task_queue.md\n- 必要时写 llm_wiki/loop/decisions/*.md 或 llm_wiki/loop/reflections/*.md\n\n网络策略：\n当前可能在[工作设备]上运行，网页 retrieve 可能受限。优先使用 data/ 中已获取来源；网络失败有限尝试后记录并搁置，不要长时间突破网络环境。未来可在个人设备补 retrieve。\n\n语言和写作：\n人类可读文档主语言为中文。英文只用于路径、命令、schema 字段、状态码、包名、来源原文标题，以及 References / Footnotes 等固定 section。知识卡必须可读，不应像中间状态、审计日志或流程记录。References 必须早于 Footnotes，Footnotes 必须是最后一个 section。\n\n自治要求：\n人类可能长时间离开电脑。你应自主推进队列中最小可执行任务，不要频繁等待确认。遇到需要扩大 scope、进入 hub/cluster/topic 层、改变 card schema、批量采纳、git push、外部同步或不可逆操作时，必须停止并记录 human_checkpoint_required。\n\n结束条件：\n不要因为跑了固定轮数就停止。只有在当前阶段目标由证据满足、队列为空且没有明显高价值下一步、连续阻塞来自同一外部条件、或流程偏差需要人类审计时才停止。停止前必须保证状态、报告、交付和下一步都落盘。\n\n请现在开始：先创建 goal，读取恢复入口，确认 READY_FOR_SOURCE_MINING，然后创建并派发第一轮 source_mining_worker 任务包。不要只给计划。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H001 -->"
+        },
+        {
+          "episode_title": "完成标记缺口触发最小修复而非主控代做",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H002"
+          ],
+          "body": "### 完成标记缺口触发最小修复而非主控代做\n\n用户提醒必须管理 sub-agent 生命周期。助手随后关闭并验收 source mining worker，得到 12 个 fact candidates，再只选择一个候选派发 drafting worker。这条链路第一次把“完成”与“还活着”区分开：worker 结束计算并不自动代表交付可验收，控制面需要检查 artifact 与 delivery 合同。\n\n检查发现 drafting worker 的交付文件缺少完成标记。助手没有直接替 worker 补写卡片或忽略缺口，而是把它当作 prompt contract 的失败证据，启动最小 prompt 修复、独立审计和 drafting revision。结果是缺口得到修正，生产继续推进，也证明生命周期管理必须包含 dispatch、交付检查、关闭和失败后的修复链，而不只是 create/close 调用。这个 episode 支持 one-shot worker 的清晰边界，却没有比较复用同一 drafting 上下文是否能减少重复读取，因此只能证明可控，不能证明最优。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H002\n\n```text\n注意管理 sub-agent 的生命周期。这是很重要的一点。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H002 -->"
+        },
+        {
+          "episode_title": "15 张卡的产出没有回答 one-shot 是否过度",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H003"
+          ],
+          "body": "### 15 张卡的产出没有回答 one-shot 是否过度\n\n用户进一步修正“生命周期管理越严格越好”的倾向：有些 sub-agent 可能适合 alive 常驻，尤其当任务反复进行大量 data I/O、上下文复用能显著降低成本时；同时要求每次文件修改后直接 Git push 以保留追踪。这个问题要求的是选择标准，而不是简单继续关闭所有 worker。\n\n可见执行却仍沿用严格 one-shot：逐卡启动 drafting、audit、adoption worker，完成后关闭并推送，累计采纳 15 张卡，另一个候选在窗口结束时完成草稿验收、等待审计。产出证明链路能跑，也证明交付可追溯，但助手没有评估 standing worker 的上下文收益、状态污染、lane ownership 或退出协议，更没有做对照实验。若把“15 张卡已产出”写成生命周期问题已经解决，会制造线性成功叙事。真正遗留的是：哪些高重复职责值得常驻、常驻 agent 如何恢复和关闭、何时 one-shot 的隔离收益更高。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H003\n\n```text\n注意。因为之前强调过 sub-agent 的生命周期管理，也需要理解的是，是否过度管理了？比如有一些 sub-agent 可以 alive 常驻的，而设置成了只能独立运行。这里考虑的点主要是 context 的消耗。如果你察觉，频繁启动一些 sub-agent 进行大量的 io 操作，比如 data 的阅读，而这种阅读可能在 alive sub-aent 中显化比较好的话，你完全可以针对这种情况进行调整。对已有文件进行修改之后，需要直接 git push。这样保证修改是可追溯到。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H003 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v2-control-audits",
+      "issue_number": 28,
+      "desired_state": "closed",
+      "state_rationale": "生命周期、任务边界和流程已完成独立审计，且 audit 产物已明确绑定 run、iteration、artifact 与 commit 的归属规则",
+      "episodes": [
+        {
+          "episode_title": "三个独立视角检查正在运行的控制面",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H013"
+          ],
+          "body": "### 三个独立视角检查正在运行的控制面\n\n连续生产暂告一段落后，用户要求进入已有 audit 目录，主动检查 sub-agent、任务边界和任务流程，而不是由执行同一链路的 main-agent 自我确认。助手为此创建独立 audit run，并分别派发生命周期、任务边界和流程三个 one-shot 审计 worker；每个 worker 完成交付后关闭，避免审计角色继续混入生产。\n\n三份审计结果都是 concern，但没有 P0。主控验收时还纠正了 metadata 分歧，再提交并推送审计产物。这个结果不能改写成“控制面完全通过”：concern 表示仍有需要处理或持续观察的缺口，只是没有立即阻断生产的最高等级问题。审计的价值在于把同一 run 的三个风险面分开检查并留下证据，而不是生成一份笼统健康报告。随后出现的新问题是，这些 audit 放在全局目录里会失去被审对象，必须把归属关系写进文件结构。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H013\n\n```text\nok。目前先这样。调用 sub-agent 对之前的 loop 进行各种方面的 audit，对应的 audit 文件夹。目前已有一个 audit 文件夹。去看一眼文件结构，然后主动进行审计，主要是关心 sub-agent 相关的 audit 还有任务边界、任务流程的的。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H013 -->"
+        },
+        {
+          "episode_title": "audit 从全局文件夹回到对应 run",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H024"
+          ],
+          "body": "### audit 从全局文件夹回到对应 run\n\n用户追问 audits 是否应 assign 到对应 run。这指出了上一轮审计组织方式的缺口：即使正文写得正确，只要离开具体 iteration、message、artifact 和 commit，后续就难以判断 concern 针对哪次执行，也无法证明修复后是否重新审过同一对象。\n\n助手接受这一判断，把普通审计归入对应 run，并要求绑定 iteration、message、artifact 和 commit；涉及 fusion 的审计还要同时链接 draft、目标卡和 comparison provenance。全局 audit 目录只保留跨 run 的控制面或治理审计，不再堆放每轮结果。这个规则提供了可执行的证据归属模型：局部失败在局部 run 内闭环，跨 run 模式才提升为全局审计。它没有消除前一轮 concern，但解决了以后如何定位、复审和验收这些 concern 的基础问题。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H024\n\n```text\naudits 部分是不是需要 assign to corresponding run 比较合适一点？\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H024 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v2-brain-mailbox",
+      "issue_number": 29,
+      "desired_state": "closed",
+      "state_rationale": "已验证 mailbox 的文件通信闭环，并明确真实自动唤醒属于独立 scheduler 能力，不能由 mailbox 或 hook 冒充",
+      "episodes": [
+        {
+          "episode_title": "lane brain 降低 main-agent 负担后产生通信问题",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H014",
+            "codex:codex-primary-v2-v3-handoff:H015"
+          ],
+          "body": "### lane brain 降低 main-agent 负担后产生通信问题\n\n用户观察到 sub-agent 已能 spawn sub-agents，提出把 main-agent、持有某一任务全量上下文的 brain agent、具体 leaf worker 分层：main-agent 专注 skills 更新和 out-of-loop 思考，production、similarity、audit、ops 等 lane 由各自 brain 管理。助手认可两层受控架构，但保留 main-agent 对全局 policy 与 schema 的责任，避免把全局一致性也分散掉。\n\n拆分马上带来新的真实问题：audit brain 如何把返修信息送回 production brain。助手提出文件化 blackboard 与 inbox/outbox，消息必须包含 artifact refs、required response 和状态，由 main-agent 或 ops brain 路由，并禁止 brain 跨 lane 直接写对方产物。\n\n```mermaid\nflowchart LR\n    M[Main agent] --> R[Router]\n    R --> P[Production brain]\n    P --> R\n    R --> A[Audit brain]\n    A --> R\n```\n\n图表示持久化消息与职责边界，不表示 agent 已会自动醒来。此时只形成了通信合同，调度机制仍是空白。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H014\n\n```text\n我有一个 idea。因为现在 codex 的 sub-agent 可以 spwan sub-agents 了。因此分发逻辑和 sub-agent 的启动逻辑可能有变化。比如说，对于某一种 worker，可以有自己的 brain agent 作为上游节点，main-agent 管理这些 task/brain agent，然后这些 task agents 具备某一个任务的全量上下文，由它自己再去 spawn sub-sub-agent 去做具体的事情。这样会不会更好？然后 main-agent 就只负责 skill 啊啥的更新和 out of loop 的思考了？这样会不会更对？\n```\n\n#### 2. codex:codex-primary-v2-v3-handoff:H015\n\n```text\n嗯，这样是对的。main-agent 的任务降低了，也更聚焦了。逻辑其实是拆分了，但是 brain agent 之间需要有通信才行，比如说 audit brain 需要重新去 production brain。它们的交互怎么做呢？\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H014 codex:codex-primary-v2-v3-handoff:H015 -->"
+        },
+        {
+          "episode_title": "mailbox、queue、hook 与唤醒被拆成不同能力",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H016",
+            "codex:codex-primary-v2-v3-handoff:H017",
+            "codex:codex-primary-v2-v3-handoff:H018"
+          ],
+          "body": "### mailbox、queue、hook 与唤醒被拆成不同能力\n\n用户继续追问 sub-agent 到底如何读取 mailbox，并自然推导出需要 hook 唤醒、Codex 是否已有 agent team runtime。助手纠正了一个容易混淆的等式：mailbox 只保存消息，不会让一个已退出或休眠的进程自行运行；还需要薄调度层读取 brain state、inbox 和 outbox，决定何时 wake。brain 被唤醒后处理一批消息、更新状态再退出，才形成 event-driven loop。\n\n对本地能力和官方资料的检查表明，Codex 当时提供 multi-agent、hooks、automations 等 primitives，但没有完整 brain-team runtime。用户因此决定自建，并询问是否只做 audit 到 production。助手把设计扩为统一 message bus，而不是一条专线：最小消息类型、轻量 hook、`brainctl` CLI 和集中 router 共同提供受控调度。这里保留了关键边界：hook 可以生成或检查 wake signal，真正创建/恢复 agent 的 scheduler 仍是另一个组件，不能因为有 queue 文件就宣称自动协作已实现。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H016\n\n```text\n但我怎么让 brain 去读之间的文档呢？本质是一个 mailbox 呗。但是 sub-agent 怎么去读这个 mailbox，是这个意思。\n```\n\n#### 2. codex:codex-primary-v2-v3-handoff:H017\n\n```text\n理解了。需要一个 hook 来唤醒呗。codex 有 agent team 功能实现吗？\n```\n\n#### 3. codex:codex-primary-v2-v3-handoff:H018\n\n```text\nok。那自己搭建一个。核心逻辑应该是 mailbox 的形式保持通信，基于 hook 触发的 queue 机制。主要是要让 audit 的信息传递给 production，我这个理解没错吧？还是说需要更复杂的？或者说，所有的都有就行了。让 agent 自主去调度，提供这个工具。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H016 codex:codex-primary-v2-v3-handoff:H017 codex:codex-primary-v2-v3-handoff:H018 -->"
+        },
+        {
+          "episode_title": "最小原型证明文件闭环，但没有证明自动 scheduler",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H019",
+            "codex:codex-primary-v2-v3-handoff:H020"
+          ],
+          "body": "### 最小原型证明文件闭环，但没有证明自动 scheduler\n\n用户要求先做最小版本，再直接确认“A brain 写文件要求 B brain 做事”是否已经验证。助手实现并推送 mailbox 协议，覆盖 send、route、claim、complete、reconcile 和 hook；smoke test 走通 audit 发消息、production claim 与处理、再回复 audit 的文件闭环。消息状态、wake marker 和返回路径因而不是只停留在设计稿。\n\n但用户的确认迫使助手收紧结论：已验证的是持久化 mailbox、queue、wake marker、claim/complete/reply 这些文件与命令层行为；未验证的是真实 Codex sub-agent scheduler 能否看到 marker 后自动启动 B、维持身份并完成工作。这个失败边界必须保留，否则会把协议测试写成运行时测试。当前可执行答案是 mailbox 可以承载 production 与 audit 的协作证据和请求，router/CLI 可以驱动闭环；若需要无人值守自动唤醒，必须另接并验证 scheduler，不能把 hook 或 mailbox 本身当作 agent team。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H019\n\n```text\n行。你先去做一个最小版本，实验这个功能是否可实践。\n```\n\n#### 2. codex:codex-primary-v2-v3-handoff:H020\n\n```text\n我的意思是，这个 mailbox 的机制，比如说 A brain 写入文件要求 B brain 做事。这件事已经被验证可行了吗\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H019 codex:codex-primary-v2-v3-handoff:H020 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v2-design-freeze",
+      "issue_number": 30,
+      "desired_state": "closed",
+      "state_rationale": "旧控制面已冻结为历史快照，新 V2 合同已明确 scoped card、similarity、comparison provenance 与 mailbox，且未倒写旧产物",
+      "episodes": [
+        {
+          "episode_title": "两次被补充打断暴露设计尚未冻结",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H021",
+            "codex:codex-primary-v2-v3-handoff:H022"
+          ],
+          "body": "### 两次被补充打断暴露设计尚未冻结\n\nmailbox 原型之后，用户先要求仿照旧形式写 task prompt，让 brand new main-agent 接管生产。助手开始检查现有 prompt 和模板，但还未形成结果，用户就改变顺序：应先把当前版本放入 legacy，再基于现状写新版 loop 设计。第二次检查又发现旧 similarity/fusion 草稿与正式设计的边界不清，随后用户继续补充 similarity 属于新版。\n\n这两次打断不是可以省略的准备过程，它们说明当时不存在一个可安全交接的冻结合同。若先交付启动 prompt，新 main-agent 会继承正在变化的旧控制面；若归档时把 similarity 草稿混进旧版，又会错误记录功能出现的时间。助手在两个事件中都只完成检查和识别，没有宣称 prompt 或新版设计已经完成。真正的关闭条件因此变成：先冻结旧版事实，再明确哪些组件属于新设计，最后更新恢复入口和接管合同。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H021\n\n```text\n仿造之前的形式，写一个 task prompt，这个 prompt 会启动一个 brand new 的 main-agent 让它去完成 llm wiki 生产的活。\n```\n\n#### 2. codex:codex-primary-v2-v3-handoff:H022\n\n```text\n基于目前的修改。需要对 loop 机制进行一些调整。先把目前的版本及内容放入 legacy 里面。然后基于目前版本进行修改，写一个新版的设计。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H021 codex:codex-primary-v2-v3-handoff:H022 -->"
+        },
+        {
+          "episode_title": "V2 合同冻结，但不追认旧卡执行了新流程",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H023"
+          ],
+          "body": "### V2 合同冻结，但不追认旧卡执行了新流程\n\n用户明确 similarity 是新版内容后，助手才冻结旧控制面快照并完成 V2 设计。新合同把生产对象从含混的 atomic fact 收敛为 scoped knowledge card，引入 Jieba/Jaccard Top 3 similarity，以三问 comparison provenance 判断新卡与已有卡的关系，并把刚验证的 brain mailbox 纳入控制面；入口、契约和恢复说明同步更新，经过校验后提交推送。\n\n这个结果统一了 card scope、comparison 与 mailbox，但没有把后来的设计倒写到此前 15 张卡上。旧卡是在旧链路下完成 adoption，不能因为 V2 已冻结就声称它们执行过 Top 3 similarity 或三问 comparison。设计冻结在这里表示“下一位 agent 从哪个合同继续”，不是“历史产物自动符合新合同”。遗留工作是由新 run 按 V2 真正执行和验证；不过接管所需的当前答案已经明确，因此该 Issue 可以关闭。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H023\n\n```text\n基于目前的修改。需要对 loop 机制进行一些调整。先把目前的版本及内容放入 legacy 里面。然后基于目前版本进行修改，写一个新版的设计。similarity 是新版的内容。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H023 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v2-loop-capsule",
+      "issue_number": 31,
+      "desired_state": "closed",
+      "state_rationale": "仓库已收敛为稳定 loops registry、单一 v2 capsule 与 candidate output，根级稳定产品只允许经 human promotion 出现",
+      "episodes": [
+        {
+          "episode_title": "三次归档纠正暴露路径移动不是版本模型",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H025",
+            "codex:codex-primary-v2-v3-handoff:H026",
+            "codex:codex-primary-v2-v3-handoff:H027",
+            "codex:codex-primary-v2-v3-handoff:H028"
+          ],
+          "body": "### 三次归档纠正暴露路径移动不是版本模型\n\n用户最初要求把当前 loop 落盘到 legacy 作为 v2，助手把它理解为创建一份可恢复快照，保留控制面、模板、queue、mailbox、工具和日志。用户随即纠正：不是复制快照，而是把这次 loop 的全部产物移出 active，因为新的 loop 即将开始。助手照做后又把归档放进 `llm_wiki/loop/legacy`，再次被指出 legacy 应在仓库根。\n\n路径修正仍未结束。用户发现命名不符合原逻辑，而且一个 loop 被拆成两个并列归档。助手最后才改为一个 loop 对应一个 legacy v2 目录，中间设计只作为 snapshots，清除旧路径并 amend/push。连续三次纠偏说明早期方案缺少稳定对象模型：快照、归档、active pointer 和候选产物被混为一谈，只能靠移动目录表达状态。虽然最终得到单一 v2 归档，这种每轮大搬迁仍会制造 Git 噪声，尚不足以支持持续实验。\n\n<details><summary>完整用户输入（4 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H025\n\n```text\n把当前 loop 的内容落盘到 legacy 里面去。作为 v2\n```\n\n#### 2. codex:codex-primary-v2-v3-handoff:H026\n\n```text\n不是。你理解错了。我的意思是，把这一次 loop 的产物，都放到 legacy 里面，作为过去的 loop 产物了。现在我要开新的 loop 了。不能放在这里了。\n```\n\n#### 3. codex:codex-primary-v2-v3-handoff:H027\n\n```text\n我的意思是：<workspace>/legacy，你放在 工作目录里干嘛：<workspace>/llm_wiki/loop/legacy？\n```\n\n#### 4. codex:codex-primary-v2-v3-handoff:H028\n\n```text\n你提交的版本不符合原来的命名逻辑。而且明明只有一个 loop，你为啥拆分为了两个。好奇怪。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H025 codex:codex-primary-v2-v3-handoff:H026 codex:codex-primary-v2-v3-handoff:H027 codex:codex-primary-v2-v3-handoff:H028 -->"
+        },
+        {
+          "episode_title": "用稳定 capsule contract 容纳内部结构演化",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H029",
+            "codex:codex-primary-v2-v3-handoff:H030"
+          ],
+          "body": "### 用稳定 capsule contract 容纳内部结构演化\n\n用户进一步追问 Git 规范：每次 loop 都是实验，结束后都归入 legacy，频繁移动会让历史爆炸；更难的是 loop 本身的目录结构也会变化。助手先提出 run 从创建时就位于稳定目录，归档只更新 status/metadata，不再整体搬家；active 层只保留指针和稳定控制面，并区分需要追踪的交付与可再生运行噪声。\n\n当用户指出内部结构会演化时，方案被抽象成三层合同：repository contract 稳定注册所有 runs；loop capsule contract 只保证 README、manifest、status、index 等最小入口；capsule 内部的 queue、tasks、artifacts、tools 和 outputs 可以随实验变化。这样 Git 记录的是同一路径下的真实演化，状态由 metadata 表达，而不是结束时批量 rename。这个模型接受不同版本结构不一致，只要求下一位 agent 能从固定入口判断版本、状态、输出和恢复方式。它解决了文件管理原则，仍需确认候选 `llm_wiki` 究竟属于 capsule 还是仓库根产品。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H029\n\n```text\n我感觉这种文件管理有点奇怪。因为每次 loop 都是实验，之后都会放入 legacy 里面。但是 git 会爆炸混乱。git 规范这里怎么做？\n```\n\n#### 2. codex:codex-primary-v2-v3-handoff:H030\n\n```text\n这里的逻辑是这样。loop 本身的结构也会变化。这是困惑的地方。\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H029 codex:codex-primary-v2-v3-handoff:H030 -->"
+        },
+        {
+          "episode_title": "实验产物留在 loops，稳定产品等待人工提升",
+          "event_ids": [
+            "codex:codex-primary-v2-v3-handoff:H031",
+            "codex:codex-primary-v2-v3-handoff:H032"
+          ],
+          "body": "### 实验产物留在 loops，稳定产品等待人工提升\n\n用户最后给出关键判断：原来的 legacy 应改名为 loops，`llm_wiki` 本身也是某次 loop 的产物；仓库根只有真正稳定的产品才配使用这个名字，而当前阶段尚不存在。助手确认这个模型，区分 candidate publication 与 stable promotion：每个实验 capsule 可以包含自己的候选 KB，只有经过 human promotion 的成果才进入根级稳定产品。\n\n```mermaid\nflowchart LR\n    R[Repository] --> L[loops registry]\n    L --> V2[v2 capsule]\n    V2 --> C[Candidate llm_wiki output]\n    C -->|human promotion| S[Stable root product]\n```\n\n随后仓库布局按此迁移：legacy 改为 loops，原根 `llm_wiki` 收入 v2 capsule 的 outputs，新增 registry 与 current pointer，并为 v0、v1、v2 补最小 metadata；校验后提交推送。图中的 promotion 是明确门禁，不表示 v2 候选已经稳定。至此，实验结构可以继续演化，Git 不必在每轮结束时搬迁整个目录，根级产品也不会因出现过产物而被提前宣告完成。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n#### 1. codex:codex-primary-v2-v3-handoff:H031\n\n```text\n好。我理解了。其实 legacy 应该是 loops，然后 llm_wiki 也应该是 loop 的一部分，因为它是产物。而最外层的 llm_wiki 是稳定的产物，目前阶段没有这个东西。这么理解应该是全对的。\n```\n\n#### 2. codex:codex-primary-v2-v3-handoff:H032\n\n```text\n嗯。按照这个逻辑调整一下当前的 git\n```\n\n</details>\n\n<!-- archive-events: codex:codex-primary-v2-v3-handoff:H031 codex:codex-primary-v2-v3-handoff:H032 -->"
+        }
+      ]
+    }
+  ]
+}

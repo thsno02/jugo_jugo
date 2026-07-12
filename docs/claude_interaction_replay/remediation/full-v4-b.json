@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v4-audit-workload-sharding",
+      "issue_number": 52,
+      "desired_state": "closed",
+      "state_rationale": "单 agent 全量审计的失效原因已经通过多轮失败与工作量复核定位，并形成、执行和验证了 FSJS；后续对 false positive 的修正属于证据判断协议的演化，由相邻审计问题继续承载",
+      "episodes": [
+        {
+          "episode_title": "十项并行审计启动后，最重的 atomicity 节点堵住了全局",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H019",
+            "claude_code:claude-primary-v4:H020"
+          ],
+          "body": "### 十项并行审计启动后，最重的 atomicity 节点堵住了全局\n\n用户最初要求的不是一次随意检查，而是先由 agent team 结合用户 taste、隐含担忧和既有 workflow 提出审计 topic，再为每个 topic 运行独立闭环，最后综合成文档。助手据此启动十个审计节点，覆盖 schema、footnotes、loop isolation、related、source faithfulness、context leakage、atomicity、metadata、governance 和材料穷尽。\n\n问题很快从审计内容转向调度结构：topic 层面看似并发，atomicity 节点却要独自读取并检查全部 cards，最慢节点因此决定整个 workflow 的完成时间。用户明确把它定性为 workflow 的并发设计错误，而不是普通的运行变慢。助手此时只提出把重任务拆开并记录负载均衡原则，还没有修改正在运行的 workflow；真正的工作量边界、拆分单位和缓存复用方式都尚未厘清。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n**1.**\n\n> 调用 workflow。你先开一个 agent team，构思一些值得审计的点（topic），然后再针对每一个点，都开启一个 agent team 针对这个点独立进行审计（是一个闭环的审计逻辑，而不是 for fun），接着有一个 agent team 梳理材料，把审计 topic 和点构成一个文档。注意，在讨论审计点的时候，需要考虑到用户的 taste 和 design，以及用户在 design 中 implicit 一些担忧，比如上下文泄漏啥的；同时之前 workflow 的执行，也是重点需要审计的对象。审计 topic 可以很大，然后可以拆分进行。先 craft a plan to do so。\n\n**2.**\n\n> workflow 的设计有核心问题，并发问题，有一个 agent 需要去全量读取并审核所有 atomicity 问题，这导致超大压力的堵塞。这是 workflow 设计的问题，必须要优化才行。\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H019 claude_code:claude-primary-v4:H020 -->"
+        },
+        {
+          "episode_title": "直接干预连续走错三次：重启、恢复与拆 prompt 都没有解决负载",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H021",
+            "claude_code:claude-primary-v4:H022",
+            "claude_code:claude-primary-v4:H023",
+            "claude_code:claude-primary-v4:H024",
+            "claude_code:claude-primary-v4:H025"
+          ],
+          "body": "### 直接干预连续走错三次：重启、恢复与拆 prompt 都没有解决负载\n\n用户问能否直接干预后，助手先停止原 run，另起一个 16-agent workflow。这个动作没有复用已完成结果，而且新拆分粒度更差，用户随即要求终止。助手检查首版 artifacts 后又犯了第二个错误：误以为恢复旧 run 就能保留进度，却没有处理导致停止的 atomic check，因而被用户明确指出“你还是没有优化这个 workflow”。\n\n第三次修正仍然偏题。助手把 atomicity 拆成 mechanical 与 deep-read，并更新 synthesis；用户再次纠正，问题不是 atomicity prompt 的语义，而是同一任务由一个 agent 执行太慢。随后助手将 source faithfulness 分给 2 个 agents、atomicity 分给 3 个 agents，并尝试复用其他 topic 的缓存，但面对 200+ cards 仍然不够。用户要求“开尽可能多的去 deep”，助手把 280 张卡的 deep-read 扩到约 29 个并行 agents。\n\n这一串动作保留了关键失败：每次都急于改 workflow，却没有先确认“全量遍历”到底包含机械扫描、语义阅读还是两者混合。并发数增加了，任务模型仍未被准确理解。\n\n<details><summary>完整用户输入（5 条）</summary>\n\n**1.**\n\n> 能直接进行干预吗？因为实在是太慢了。\n\n**2.**\n\n> 终止呗。这一次的拆分颗粒度不如上一次。\n\n**3.**\n\n> 不是，就是因为这一版的 atomic check 是不对的，所以我才要求你停止。你直接 resume 是错的，你还是没有优化这个 workflow。\n\n**4.**\n\n> 逻辑不是，atomicity 的 prompt 有问题，而是「一个 agent 执行这个任务」太慢了。需要把这个任务分发给多个 sub-agent 来做，并行完成这个审计。\n\n**5.**\n\n> 还是太慢了，你设想一下，这里有 200+ cards，两个 sub-agent 忙不过来，开尽可能多的去 deep\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H021 claude_code:claude-primary-v4:H022 claude_code:claude-primary-v4:H023 claude_code:claude-primary-v4:H024 claude_code:claude-primary-v4:H025 -->"
+        },
+        {
+          "episode_title": "工作量 probe 推翻了“运行慢就是瓶颈”，问题变成可控上下文内能否有效审计",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H026",
+            "claude_code:claude-primary-v4:H027",
+            "claude_code:claude-primary-v4:H028"
+          ],
+          "body": "### 工作量 probe 推翻了“运行慢就是瓶颈”，问题变成可控上下文内能否有效审计\n\n看到 29-agent 方案后，用户暂停继续改脚本，要求先达成共识：真正担忧的是一个 agent 机械遍历所有 cards 会占满上下文和时间。助手仍把它泛化为全量语义审计，于是用户指定只针对 `audit:atom:mech` 调一个 sub-agent 审计工作量。probe 得到约 180KB 的轻量扫描规模，并判断该节点已经通过、不是实际运行瓶颈；助手一度因此更加困惑。\n\n用户随后说明，关注点不是“它是否跑完”，而是 prompt 要求 traversal all cards 后还能否有效阅读和审计。一个节点能在资源上完成，不代表它在认识论上可靠。这个纠正终于拆开两种任务：格式、路径、字段等纯机械规则可以脚本全量覆盖；需要理解卡片内容、来源语义或原子性的判断，则必须把 suspect 与样本分片到可控上下文。\n\n因此前面的理解错误没有被洗掉：助手先用 wall-clock 和输入体积回答了用户关于审计有效性的问题。新的判断标准从“agent 是否过了”改为“证据量是否允许它逐项做可信语义判断”，这才成为通用审计设计的起点。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n**1.**\n\n> 同样的问题，你错误地定位到问题了。也怪我没有讲清楚。问题本身在于「一个 agent 机械遍历所有 cards」这件事会对上下文以及时间造成巨大的负担。先不要着急调整 workflow，我们先达成共识。\n\n**2.**\n\n> 不是的，单纯针对 audit:atom:mech 这个 agent，你调用一个 sub-agent 去 audit 一下它的工作量，然后你应该理解我的表达了。\n\n**3.**\n\n> oh，它过了因为我看它的 prompt 要 traversal all cards，然后进行审计，这个事情我认为是不靠谱的，逻辑应该是一个 agent 在可控上下文范围内做这种审核的事情，而不是全量进行，因为「根本无法有效阅读和审计吧」\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H026 claude_code:claude-primary-v4:H027 claude_code:claude-primary-v4:H028 -->"
+        },
+        {
+          "episode_title": "FSJS 把全量 filter 与分片 judge 分开，并在 22 个 agents 上完成验证",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H029",
+            "claude_code:claude-primary-v4:H030",
+            "claude_code:claude-primary-v4:H031"
+          ],
+          "body": "### FSJS 把全量 filter 与分片 judge 分开，并在 22 个 agents 上完成验证\n\n用户把这个 bad case 提升为通用问题，要求 agent team 深入讨论。systems、QA 与 workflow 三个视角最终形成 FSJS（Filter-Shard-Judge-Synthesize）：先用可复现规则全量筛出 suspect，再按 source/card affinity 把 suspect 与随机校准样本分片，让每个 judge 只读可控数量的 cards，最后综合结构化 verdict。\n\n```mermaid\nflowchart LR\n    F[Filter: 全量机械检查] --> S[Shard: suspect 与校准样本分片]\n    S --> J1[Judge: 可控上下文]\n    S --> J2[Judge: 可控上下文]\n    S --> JN[Judge: 可控上下文]\n    J1 --> Y[Synthesize: 汇总证据与残余风险]\n    J2 --> Y\n    JN --> Y\n```\n\n图中的关键不是简单 fan-out：Filter 负责覆盖率，Judge 负责语义可信度，Synthesize 只能汇总分片证据，不能把未读内容补成结论。用户批准后，助手先构建 source-to-cards 映射和 15 个 source-affinity shards；跨会话继续时，完整 workflow 由 Filter、20 个 Judge 与 Synthesize 共 22 个 agents 完成，产出 196 条 findings，8 个设计不变量得到 5 PASS、3 PARTIAL。它发现 YAML `related` 双格式、引用与脚注问题、疑似 leakage 和缺失卡，也暴露 task/state 文件陈旧。\n\nFSJS 至此有了真实运行证据，Issue 可以关闭；但初始 leakage verdict 后来仍被全文复核翻转，说明分片解决了负载，不自动保证证据解释正确。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n**1.**\n\n> 这个应该是通用的问题吧？这里应该想办法设计一个方案来进行优化。也许你之前说的是对的，这个 audit 需要 well-designed，你调用一个 agent-team 来进行深刻讨论。\n\n**2.**\n\n> go for it\n\n**3.**\n\n> continue to the job\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H029 claude_code:claude-primary-v4:H030 claude_code:claude-primary-v4:H031 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v4-audit-evidence-blind-spots",
+      "issue_number": 53,
+      "desired_state": "closed",
+      "state_rationale": "grep 假阳性的成因、全文复核协议和 pipeline-stage 根因审计已经形成并执行，确认缺口也完成一轮修复；未覆盖的 repo 与系统性 hedging 等残余项已明确记录并转入来源处理及后续版本问题",
+      "episodes": [
+        {
+          "episode_title": "两例 leakage 的初判经原文复核后只剩一例成立",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H032",
+            "claude_code:claude-primary-v4:H033",
+            "claude_code:claude-primary-v4:H034"
+          ],
+          "body": "### 两例 leakage 的初判经原文复核后只剩一例成立\n\n用户询问 context leakage 时，助手依据 FSJS 的 grep 结果解释为：卡片写入了声明来源或正式 card footnote 无法支撑的知识，并把两张 comparison 卡当作疑似案例。这个解释把“没有 grep 命中”过早提升成“来源不存在”，虽然当时保留了待核验语气，仍给出了偏强的 leakage 印象。\n\n用户直接挑战证据方法：生成卡片的 agent 会读原文，grep 无法覆盖意译和语义对应，必须由 agent team 回到全文与引用链，区分审计偏差和真实泄漏。复核推翻了初判：参与程度谱系是 false positive；确认优先规则是真实的跨卡 leakage；GraphRAG 的事实可追溯但缺正式 footnote，其中“第三条中间路径”属于 agent editorial。原先两个 confirmed leakage 因而修正为 1 个 true leakage、1 个 provenance gap/editorial、1 个 false positive。\n\n用户把这次失败固化成 two-folds 协议：grep miss 只生成 suspect，语义 judge 必须 review 原文；对 true leakage 还要沿 chat session 追执行链。后续报告确认，兄弟卡的 footnote narrative 成了隐式上下文通道，概念进入 comparison 卡时没有建立正式引用。审计文档据此新增全文复核 TODO 和 leakage trace，而不是删除最初的误判。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n**1.**\n\n> context leakage 这个问题解释一下呢？\n\n**2.**\n\n> 你确定吗？因为 grep 搜索不一定反应了原文，在生成卡片的 agent 会优先读取「原文」，这大概率是 grep 没法做到的。因为我需要你调用一个 agent team 去落实这件事。看清楚是审计的偏差（grep 的问题）还是真的存在这个 context leakage。这件事需要落实了。\n\n**3.**\n\n> 这是一个很好的 lessons，因此在之后进行审计的时候，需要考虑 two-folds 了，如果 grep 没有击中，判断可能存在问题的，需要去 review 原文进行确认，避免落入 false positive 的问题。这是之前的 overlook，需要落在审计文档中，也列为一个 TODO 项，这是之前没做到的东西。同时，关于 true leakage，这个需要一个详尽一点的报告。把这个问题的来龙去脉搞清楚，可以 trace 到 chat session 里面的执行链路中去。这样才能搞清楚，怎么优化或者怎么通过设计层面，缓解或者解决这个问题。调用 agent team 去完成这些任务。\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H032 claude_code:claude-primary-v4:H033 claude_code:claude-primary-v4:H034 -->"
+        },
+        {
+          "episode_title": "八项 blind-spot 审计两次卡在 synthesis，main-agent 接管又被制止",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H038",
+            "claude_code:claude-primary-v4:H039",
+            "claude_code:claude-primary-v4:H040"
+          ],
+          "body": "### 八项 blind-spot 审计两次卡在 synthesis，main-agent 接管又被制止\n\n修复断裂引用后，用户要求模仿自己的 question lens 重新寻找遗漏 topic。目标不只查错，还要暴露 implicit assumptions、消除不确定性并提高理解，而且每个 topic 都要有独特、负载均衡的 workflow。agent team 从 epistemic、source integrity 与 graph health 提出八项深审，包括 authority flattening、uncertainty laundering、says-vs-implies、silent disagreement、scrape loss、phantom sources、source balkanization 和 backlink asymmetry。\n\n执行并不顺利。深审 workflow 的 synthesis agent 两次 stalled，正式报告没有生成；助手准备自己读取大结果并写报告，又被用户制止。这里延续了上一 Issue 的边界：main-agent 不应因综合节点失败就把大上下文重新吞回当前会话，报告过大时也要分解给 sub-agent。第一次重新委派又因 socket connection closed 失败。\n\n用户稍后要求继续，助手没有重跑所有 extraction，而是把已提取的 33KB 结构化结果交给新的 sub-agent，终于完成 `v4_deep_audit_blind_spots.md`。报告给出 8-topic verdict，并量化 30 个 phantom sources、40 张零入度卡和 40.3% 单向边。结果得以保留，但两次 stalled、一次越权接管倾向和一次连接失败都是真实执行成本，不能写成一次完成的顺畅流程。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n**1.**\n\n> 把断裂引用也 fix 了。之后开一个 agent team，模仿用户的 question lens，再次思考，之前有哪些 topic 遗漏了，或者在 topic 审计的时候，忽略了一些 implicit assumptions，可能会导致审计结果不够置信。针对每一个 topic，设计独特的 workflow 来进行审计（需要注意 workflow 的 负载均衡）。用户的 lens 可以这么理解，用户会有一些 assumption，这些 assumption 本质可能是一些人类认为困惑或者觉得非常容易忽略、模糊的地方，审计不仅是为了解决「错误」还是为了「消除不确定性」和「提高理解」。\n\n**2.**\n\n> 不要自己读啊。如果报告太大了，和之前一样，分解，交给 sub-agent 来做，不要交给 main-agent（这里来做）\n\n**3.**\n\n> continue\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H038 claude_code:claude-primary-v4:H039 claude_code:claude-primary-v4:H040 -->"
+        },
+        {
+          "episode_title": "陌生术语迫使审计从卡片症状追到 collection、extraction 与 governance",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H041",
+            "claude_code:claude-primary-v4:H042",
+            "claude_code:claude-primary-v4:H043"
+          ],
+          "body": "### 陌生术语迫使审计从卡片症状追到 collection、extraction 与 governance\n\n深审报告完成后，用户指出术语本身难以理解。助手逐项口头解释 authority flattening、uncertainty laundering、says-vs-implies、silent disagreement、scrape lossiness、phantom sources、source balkanization 和 backlink asymmetry；用户没有接受解释只留在对话中，而是要求写回对应文档，并进一步纠正问题归属。\n\n这次纠正建立了 pipeline-stage 视角：scrape loss 是 data collection 与 implementation 的问题，raw material 以 TXT 保存会损失结构；repo 未解析属于 draft generation 前的读取链缺口，会让 cards 只有理论、没有实践落点；hedging 和推断边界属于 extraction/reframing；反向链接不对称则不能先验判错，因为 comparison sink 或支持关系本来就可能单向，必须判断孤岛为何形成、独特性何在。\n\nagent team 深挖后确认，repo fetch 后没有可读输入，webpage text extraction 丢表格与代码，reframing 会压平 hedge，部分单向链接合理，另一些来自批处理互不可见和 citation bridge 缺失。用户确认继续后，解释被补入文档，4-agent workflow 又量化出 1,261 个 HTML 结构元素损失、8 个高优先 repo 未消化、跨家族链接不足和 7 个 arXiv 低质量路由。报告同时保留认知层 hedging 与推断标注未解决，避免把结构修复等同于 pipeline 已健康。\n\n<details><summary>完整用户输入（3 条）</summary>\n\n**1.**\n\n> 你的这些术语我都不是很理解，需要进一步解释。\n\n**2.**\n\n> 解释需要附在对应的文档里面。这些问题归属于不同的阶段，比如说 scrape，是 data collection 的问题，说明 data collection 的 pipeline 和具体的 implementation 有问题，这是需要额外审计的，因为 raw material 是最重要的信息来源。以 txt 的形式保存显然是不符合逻辑的。同时 repo 没有进行解析，这一点应该是 generate draft card 的问题，同样是 pipeline 的问题，需要深究：哪里出问题导致没有处理 repo，repo 表示的是目前的实践方向，这部分缺失会让当前的 card 只专注理论模型，而没有实践落脚点。关于你说的卡片本身的一些问题，这些都是非常好的注意事项，大概率是需要根据每一个点思考对应的策略，比如说，在提取 draft card 或者 answer 的时候，大概率需要明确边界或者是保证信息的尽可能无损传递。反向链接不对称这个问题，是问题吗？因为有的卡支持另外的卡，单向链接应该是对的，需要确定是否是这种情况。同一片论文自己链接自己这个还好，这是需要注意的事项，需要了了解的是，为什么它们是孤岛，独特性在哪里？针对这些问题，和之前的流程之前，agent team 去讨论和深挖，然后交给 workflow 去详尽调研。\n\n**3.**\n\n> 需要。\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H041 claude_code:claude-primary-v4:H042 claude_code:claude-primary-v4:H043 -->"
+        },
+        {
+          "episode_title": "修复 workflow 清掉已知坏路径并补 15 张实践卡，但只覆盖两个 repo",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H044"
+          ],
+          "body": "### 修复 workflow 清掉已知坏路径并补 15 张实践卡，但只覆盖两个 repo\n\n定量报告把问题落到可执行对象后，用户要求先由 agent team 讨论修复方案，再由 workflow 分问题执行。助手按三阶段推进：基础修复并行处理 arXiv 路径、scrape flags 与 citation bridges；两个 repo extraction agents 为 `graphrag` 和 `nvk-llm-wiki` 生成 bundle 并提取实践卡；最后统一验证结果。\n\n运行后，arXiv `text.txt` 误引清零，跨家族链接增加，KB 新增 15 张 repo 实践卡。这些结果证明前面的 pipeline-stage 归因能够驱动具体修复，而不是停在审计术语层。与此同时，修复范围并不完整：20 个 repo 只处理了 2 个，直接 bundle-to-card 后来也被认定只是 demo 路径；系统性 hedging、真正的 source router 和其余来源覆盖也没有在这一轮闭合。\n\n因此本 Issue 的关闭含义是审计方法已有答案：grep suspect 必须回原文、发现必须映射到责任阶段、修复后还要保留量化残余。它不表示所有被发现的 data pipeline 缺陷已经消失；repo2doc 与来源路由由后续独立问题继续追踪。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n> 开一个 agent team 思考修复方案，然后调用 workflow 针对每一个问题进行修复。\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H044 -->"
+        }
+      ]
+    },
+    {
+      "slug": "v4-learnings-and-v5-handoff",
+      "issue_number": 55,
+      "desired_state": "closed",
+      "state_rationale": "v4 的讨论、执行、审计、修复与独立总结已经固化为经审计的 learnings，并生成完整 v5 capsule、实验配置和最小启动 prompt；明确延期的 Reddit 与 repo 工作不阻断交接完成",
+      "episodes": [
+        {
+          "episode_title": "长对话使旧设计失真，角色纠正后才形成可审计的 learnings 流程",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H054",
+            "claude_code:claude-primary-v4:H055"
+          ],
+          "body": "### 长对话使旧设计失真，角色纠正后才形成可审计的 learnings 流程\n\n多轮优化后，用户认为早期设计文件已经不能可靠代表真实执行，要求把讨论、优化、审计、workflow、collection、preprocessing 和 ingest 经验固化到新目录，同时服务历史留存与下一次 loop。助手先委派一个 sub-agent 思考需要什么 agent team，但初始安排没有清楚区分讨论者和执行者。\n\n用户随即给出角色合同：sub-agent 先嗅探；agent team 基于观察深入讨论，但不直接做事；workflow 执行确定任务；新的 agent team 讨论如何审计本轮产物；新的 workflow 完成审计与修复；最后由独立 sub-agent 汇总，避免执行者自证完成。\n\n```mermaid\nflowchart LR\n    P[Sub-agent 嗅探] --> D[Agent team 讨论]\n    D --> W[Workflow 执行]\n    W --> A[新 agent team 设计审计]\n    A --> R[Workflow 审计与修复]\n    R --> I[独立 sub-agent 汇总]\n```\n\n这不是抽象角色图，而是随后实际采用的交接流程。workflow 写出 7 份 learnings 文档，审计阶段修正卡数、交叉引用和路径，独立总结确认 v4 有 328 张活跃卡、1,022 条 links，并把 repo2doc、hedging、Reddit、sequential governance 与 source routing 留作未完成项。结果是“实际做过什么”和“下一轮仍要做什么”被分开，旧设计没有被当成现状直接复制。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n**1.**\n\n> ok。我们在之前进行了很多次的优化和调整，因为对话很长，所以很多历史的设计文件不一定准确。因此我需要你先开一个 sub-agent 去思考，需要开启什么样的 agent team，来将过去我们的讨论、优化方案、审计方案、workflow 设计思路、数据收集和预处理思路、入库思路等等都落实在一个新的文件夹里面（可以参考现有的），这里有两层目的：第一，是把我们的讨论给固化下来，第二，为下一次 loop 做准备。因此，这这里，你必须要认真、仔细、有创造性又有章法地完成工作。\n\n**2.**\n\n> agent team 是 for discussion 的，而不是做事的。做事会交给 workflow 来。agent team 会基于 sub-agent 的嗅探观察进行深入的讨论，然后会调用 workflow 来执行，接着会调用新的 agent team 讨论如何针对这次内容进行审计，然后开启 workflow 去做审计。做完所有的事情之后，调用 sub-agent，独立给我一个汇总的报告。\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H054 claude_code:claude-primary-v4:H055 -->"
+        },
+        {
+          "episode_title": "交接范围主动延期 Reddit 与 repo，并把两个 P1 还原成读取和治理边界",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H056"
+          ],
+          "body": "### 交接范围主动延期 Reddit 与 repo，并把两个 P1 还原成读取和治理边界\n\n独立总结列出下一轮优先级后，用户先收窄范围：Reddit 因认证和抓取限制可以暂缓，repo 也暂不覆盖，因为有专门方向处理。这个决定避免 v5 启动被当前不可解或职责已分离的问题阻塞，也要求 handoff 明确写“延期”，不能把未做事项包装成完成。\n\n用户同时表示不理解两个 P1。助手把术语还原为具体 pipeline 责任：sequential per-card governance 是每张新 card 依次对当前全库做多轮 grep、打开候选并判断 merge、distinction 或 keep，而不是先设 cluster 数量再把 cluster 当探索边界；`source_router.py` 则按 arXiv、webpage、repo 等 source type 选择保留结构的最佳阅读面，而不是让所有来源落到同一个 `text.txt` fallback。\n\n两者分别修复“新知识如何看见已有知识”和“抽取节点实际读到什么”。它们被列为 v5 的 pipeline 内建能力，不代表 v4 已经完成实现。遗留边界也因此清楚：Reddit 与通用 repo2doc 延期，sequential governance 与 source router 进入下一轮实验配置和验收。\n\n<details><summary>完整用户输入（1 条）</summary>\n\n> reddit 可以暂缓，因为它处理不了。 repo 暂时不 cover，有专门负责的。P1 的两个是什么意思，不理解呢\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H056 -->"
+        },
+        {
+          "episode_title": "v5 scaffold 建好后再做两轮自适应审计，最终压缩成最小启动 prompt",
+          "event_ids": [
+            "claude_code:claude-primary-v4:H057",
+            "claude_code:claude-primary-v4:H058"
+          ],
+          "body": "### v5 scaffold 建好后再做两轮自适应审计，最终压缩成最小启动 prompt\n\n用户先要求 fan out subagents 建立下一次实验的 v5 folder。助手把 sequential governance 和 source router 写入 v5 capsule，委派 sub-agents 创建 handoff、task、start prompt 与目录结构并提交。这个动作完成了 scaffold，却还不能证明实验配置自洽；而且 v4 根目录陈旧的 status/state 文件没有随着后验成果更新，交接必须依赖 learnings、Git 与 artifacts 的交叉证据。\n\n随后用户指定一个六步自适应 workflow：先浏览并提出审计计划，执行首轮审计；再根据首轮结果决定还需查什么，执行二轮审计；根据结果优化；最后给出新 chat session 可执行的最小 prompt。助手补齐配置后实际运行该流程，首轮覆盖 7 个 topics，二轮增加 5 个 checks，共修复 12 项问题，最终生成 handoff、task、完整 start prompt 和 `MINIMAL_START.md`。\n\n这里的关键转折是，handoff 不再只是把长对话总结成文档，而是把配置当待审产物，让第二轮问题由第一轮证据动态产生。最小 prompt 位于流程末端，只引用已经过两轮检查的 capsule。v5 后来是否成功属于新实验的问题；就本 Issue 而言，可执行交接、残余风险和启动入口都已落地，因此保持 closed。\n\n<details><summary>完整用户输入（2 条）</summary>\n\n**1.**\n\n> fan out subagents: set v5 folder for the next experiment\n\n**2.**\n\n> 建好了之后。把实验配置也落好。接着开一个 workflow 针对这个配置，进行各种维度的深度。workflow 的逻辑应该是，第一步，先浏览，propose 审计计划（需要审计哪些内容），第二步，进行审计，第三步：结合第二步的结果，思考还需要进行哪些审计，第四部，进行审计，第五部，根据审计结果，进行优化。第六部，给出在新的 chat session 中执行实验的最小 prompt。\n\n</details>\n\n<!-- archive-events: claude_code:claude-primary-v4:H057 claude_code:claude-primary-v4:H058 -->"
+        }
+      ]
+    }
+  ]
+}

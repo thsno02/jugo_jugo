@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v2-language",
+      "issue_number": 22,
+      "state": "closed",
+      "kind": "answer",
+      "title": "以中文承担主叙述，英文仅保留技术与证据身份",
+      "body": "### 以中文承担主叙述，英文仅保留技术与证据身份\n\nv2 loop 的文档与 skills 应以中文承担逻辑叙述，英文只保留在具有技术身份或证据身份的内容中。这个合同覆盖 active 入口、研究协议、审计材料、skills 及正文术语，不把 skill 视为无需人类维护的机器内部配置；source、card、provenance、worker、loop 等普通叙述应采用稳定中文表达，必要时用中文（English）首次锚定。\n\n可原样保留英文的范围包括路径、命令、schema 字段、状态码、包名、来源标题、第三方原文，以及 References / Footnotes 等固定 section。旧版运行快照和历史证据也不应为了表面一致而翻译或改写，因为它们承担复现与核对职责。该规则要求的是当前维护面的语言一致性，不是“所有字符都中文化”；技术标识、原始证据和历史快照构成明确边界。\n\n<!-- issue-resolution: v2-language -->"
+    },
+    {
+      "slug": "v2-git-handoff",
+      "issue_number": 23,
+      "state": "closed",
+      "kind": "answer",
+      "title": "按完整 delivery 分批提交，未闭合产物留在工作区",
+      "body": "### 按完整 delivery 分批提交，未闭合产物留在工作区\n\nv2 并行 loop 的 Git handoff 应以可独立解释和恢复的完整 delivery 为批次，而不是按文件数量、worker 身份或任意时间片拆分。一次可提交交付至少要让任务文件、状态、产物、验收记录及必要的控制面更新彼此一致；只有这组内容共同说明“做了什么、是否完成、下一位 agent 如何继续”时，才应 stage、commit、push。\n\n并行 worker 写出某个文件不等于 iteration 已完成。draft 尚未审计、卡片缺少 adoption、状态与 delivery 不一致，或验收记录未落盘时，都应继续留在工作区等待闭合，不能用频繁 push 替代完成判定。不同完整交付面可以分批推送，常驻 Git worker 也可以观察和执行 handoff，但不得自行放宽交付门槛。该规则保证远端每批都可理解、可追溯、可恢复；它不要求等整个长期 loop 结束后才提交。\n\n<!-- issue-resolution: v2-git-handoff -->"
+    },
+    {
+      "slug": "v2-control-plane",
+      "issue_number": 24,
+      "state": "closed",
+      "kind": "answer",
+      "title": "角色合同、结构化派发与 hooks 分层组合",
+      "body": "### 角色合同、结构化派发与 hooks 分层组合\n\nv2 main-agent 控制面应把稳定角色合同、逐轮任务、派发工具和 hooks 分成四层：system prompt 固定职责、禁区与交付要求；task packet 只提供本轮输入、读写范围和验收条件；dispatcher 根据 role、iteration 和少量结构化变量生成并校验 payload；hook 负责上下文注入、越界拦截、日志与停止检查。main-agent 只做状态迁移、选角、派发、验收和必要反思，不临场重写完整 worker prompt。\n\n这样组合成立，是因为状态、manifest、RUNBOOK、角色合同和恢复入口共同提供了脱离聊天记忆的执行依据，最小实验也验证了 hook 的 guardrail 能力。边界同样明确：hook 不是 scheduler，不能据此宣称能自动创建或唤醒独立 agent；真实调度必须由 dispatcher、CLI 或外部 scheduler 承担并另行验证。任务包只能收窄角色权限，扩大 scope、改变 schema 或不可逆操作仍需 human checkpoint。\n\n<!-- issue-resolution: v2-control-plane -->"
+    },
+    {
+      "slug": "v2-card-autonomy",
+      "issue_number": 25,
+      "state": "closed",
+      "kind": "answer",
+      "title": "topic 自主发现，但只交付受证据约束的知识卡",
+      "body": "### topic 自主发现，但只交付受证据约束的知识卡\n\nv2 card production 应让 agent 从单一可读本地来源中 bottom-up 自主发现事实候选，不预设 card topic，也不按 topic coverage、hub 或 cluster 规划选材；正式产物只指向可读、可审计、可追溯的 scoped knowledge card。选源依据是来源质量、候选清晰度、可读性和当轮价值，而不是补齐主题版图。\n\n自主探索只授予 topic 发现权，不授予无证据生成或任意采纳权。每个候选必须回到 source evidence，经过 provenance、窄任务包、独立 audit 和 adoption 门禁；新 session 也应从落盘的恢复入口与经审计的启动合同取得这些约束，而非依赖旧聊天记忆。hub 聚合、cluster、复杂 metadata、改变 card schema、批量采纳和没有来源支撑的综合均不在当前自治范围内；需要进入这些层级时，应暂停并请求 human checkpoint。\n\n<!-- issue-resolution: v2-card-autonomy -->"
+    },
+    {
+      "slug": "v2-subagent-lifecycle",
+      "issue_number": 26,
+      "state": "closed",
+      "kind": "answer",
+      "title": "按职责、状态、上下文价值和退出条件管理 sub-agent",
+      "body": "### 按职责、状态、上下文价值和退出条件管理 sub-agent\n\nv2 sub-agent 不应按界面中的 active 数量管理，而应按 owner、职责、状态、上下文价值和退出条件管理。拥有持续 lane、会反复复用高成本上下文且责任边界稳定的角色，可以作为 standing agent 候选；只负责一次窄交付的 worker，应在 delivery 验收完成后关闭。每个 agent 都需要生命周期账本，至少记录谁负责、当前状态、保留理由、下一次唤醒条件和明确的终止条件。\n\nworkers 泛滥的根因是把微小步骤逐一人格化，却没有稳定职责与关闭协议；因此治理目标不是“一律 one-shot”或“一律常驻”，而是让角色数量服从真实 ownership。完成计算也不等于完成交付，关闭前仍要检查 artifact、status 与 delivery 合同。这个答案解决的是生命周期治理规则；standing worker 是否确实降低 data I/O 和上下文成本、是否引入状态污染，仍属于 #27 的对照验证范围，不能由本规则预先宣称。\n\n<!-- issue-resolution: v2-subagent-lifecycle -->"
+    },
+    {
+      "slug": "v2-production-lifecycle",
+      "issue_number": 27,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：one-shot 链路可控，standing worker 尚未验证",
+      "body": "### 目前能回答到哪里：one-shot 链路可控，standing worker 尚未验证\n\n目前能回答到的是：严格 one-shot 的 scoped-card 生产链已经可运行、可验收并产出 15 张卡，但它是否比 standing worker 更合适仍无法回答。已知链路能够从文件状态恢复，以窄任务包依次完成 source mining、drafting、audit 和 adoption，并保留 status、delivery、read log 与产物；完成标记缺失时也能触发最小 prompt 修复，而不是由 main-agent 代做。\n\n仍未知的是，重复启动 worker 带来的 data I/O、上下文重建和调度成本有多大；哪些高重复职责值得常驻；常驻上下文能否提高质量或吞吐；以及状态污染、lane ownership、恢复和退出应如何约束。现有 15 张卡只能证明 one-shot 可控，不能证明其最优。\n\n关闭本 Issue 需要先定义 one-shot 与 standing 的选择标准和生命周期协议，再用至少一轮可对照的 production run 比较读取成本、交付质量、状态恢复与关闭行为，并据结果把默认策略和例外条件写入控制合同。\n\n<!-- issue-resolution: v2-production-lifecycle -->"
+    },
+    {
+      "slug": "v2-control-audits",
+      "issue_number": 28,
+      "state": "closed",
+      "kind": "answer",
+      "title": "审计归属规则已明确",
+      "body": "### 审计归属规则已明确\n\nv2 控制面审计已经明确归属规则：普通 audit 跟随被审 run 闭环，只有跨 run 的重复模式或治理问题进入全局 audit。生命周期、任务边界和流程三个独立 audit 的现有 verdict 均为 concern、无 P0；这只说明发现了需要处理或观察的风险，不足以把各项缺陷写成已修复，也不能解释为控制面完全通过。\n\n每份 run-local audit 必须绑定 iteration、message、artifact 和 commit，使后续人员能定位同一被审对象、落实修复并复审；涉及 fusion 时，还要链接 draft、目标卡和 comparison provenance。对应 run 的 owner 负责处置 concern、补交修复证据并请求复审，main-agent 负责验收、裁决 metadata 分歧及决定是否升级；独立 audit worker 只提交判断，交付后退出，不回到生产角色自证。\n\n本 Issue 的关闭边界仅是审计范围、证据归属、处置责任和升级路径已可执行，不表示 lifecycle、task boundary 或 process concern 已自然消失。具体 concern 只有在所属 run 留下修复与复审结果后，才可各自关闭。\n\n<!-- issue-resolution: v2-control-audits -->"
+    },
+    {
+      "slug": "v2-brain-mailbox",
+      "issue_number": 29,
+      "state": "closed",
+      "kind": "answer",
+      "title": "mailbox 可完成跨 brain 通信，但自动唤醒需要独立 scheduler",
+      "body": "### mailbox 可完成跨 brain 通信，但自动唤醒需要独立 scheduler\n\nv2 brain-agent 架构可以用持久化 mailbox 让 production 与 audit 交换请求、证据和回复，但 mailbox 本身不会让已退出或休眠的 brain 自动运行。可执行闭环由统一 message bus、inbox/outbox、消息状态、artifact refs、required response、router/CLI 和 wake marker 组成；最小原型已验证 audit 发信、production route/claim/complete、再回复 audit 的文件与命令层行为。\n\n各 brain 只拥有自己的 lane，不能跨 lane 直接改写对方产物；main-agent 保留全局 policy 与 schema 责任，router 负责受控转发。hook 可以检查消息、生成 wake signal 或执行 guardrail，却不是 agent scheduler。真实无人值守能力还需要独立组件读取 brain state 与 queue，创建或恢复正确身份的 agent，并验证其处理后能更新状态再退出。因此“mailbox 协作可行”只指持久化通信协议已跑通，不包含 Codex 自动唤醒或完整 agent-team runtime 已实现。\n\n<!-- issue-resolution: v2-brain-mailbox -->"
+    },
+    {
+      "slug": "v2-design-freeze",
+      "issue_number": 30,
+      "state": "closed",
+      "kind": "answer",
+      "title": "以三问 comparison 决定新增、融合、增量、拆分或跳过",
+      "body": "### 以三问 comparison 决定新增、融合、增量、拆分或跳过\n\nv2 loop 的冻结合同是：每张 scoped draft 先用标题的 Jieba 分词与 Jaccard set similarity 召回 Top 3 候选，再逐一阅读候选并回答三问：为什么认为两卡有共同点；它们在 scope、主张、机制、边界或证据上有何差异；据此采取下一步操作的核心依据是什么。similarity 只缩小阅读范围，分数不能直接决定关系。\n\n三问完成后，必须在五类关系与动作中选择：`new` 表示独立新增；`fusion` 表示把互补内容融合到目标卡并进入独立 audit；`evidence_increment` 表示不新增卡，只补强既有卡的内容或 provenance；`split` 表示当前 draft 混合多个 scope，拆分后重新比较；`skip` 表示重复或没有足够增量，记录目标与理由后停止采纳。\n\ncomparison provenance 必须输出 draft ID、comparison corpus identity、Top 3 候选 ID 与分数、对每个候选的三问回答、最终关系类型、目标卡、证据引用、所需 audit 和结果状态，并从受影响的卡链接该记录。production 与 audit 通过 mailbox 传递这些对象。冻结只约束后续 run；此前 15 张卡未执行该门禁，不能追认为已验证。\n\n<!-- issue-resolution: v2-design-freeze -->"
+    },
+    {
+      "slug": "v2-loop-capsule",
+      "issue_number": 31,
+      "state": "closed",
+      "kind": "answer",
+      "title": "实验留在稳定 loops capsule，根级产品只接受人工提升",
+      "body": "### 实验留在稳定 loops capsule，根级产品只接受人工提升\n\nv2 repository layout 应把每次实验从创建起就放在稳定的 `loops` registry 下，每个 loop 使用单一 capsule，并把候选 `llm_wiki` 收在该 capsule 的 outputs 中；仓库根只放经过 human promotion 的稳定产品，当前没有稳定产品就不应提前创建同名根级产物。active/current 只作为轻量指针，状态由 manifest、status 和 index 表达，不靠结束时整体搬迁目录。\n\nrepository contract 只稳定注册 runs；capsule contract 只保证 README、manifest、status、index 等最小恢复入口；capsule 内部的 queue、tasks、artifacts、tools 与 outputs 可以随实验演化。这样不同版本无需拥有相同内部结构，Git 也记录同一路径下的真实演进，避免每轮归档产生批量 rename 和历史噪声。promotion 是明确的人类门禁，不因候选产物已经生成而自动发生；旧 loop 作为 capsule 保留，新 loop 另建稳定路径。\n\n<!-- issue-resolution: v2-loop-capsule -->"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "issues": [
+    {
+      "slug": "v0-source-coverage",
+      "issue_number": 12,
+      "state": "closed",
+      "kind": "answer",
+      "title": "coverage 足够需同时满足内容充分性与记录可验证性",
+      "body": "### coverage 足够需同时满足内容充分性与记录可验证性\n\nLLM Wiki 的证据覆盖（evidence coverage）足够，是指 satisfaction 确认研究范围内的问题已有充分证据回答，同时 verifier 确认该判断可由完整、一致、可追溯的记录复核。satisfaction 逐项检查预定 facts、aspects 与 required outputs 是否有足量且相关的 claims 和 sources 支撑；全部必需项均为 supported、没有阻断性缺口时通过，任一必需项仍 unsupported/weak，或输出强于现有证据时失败。verifier 不重复判断观点是否正确，而是检查 source manifest、acquisition、claims 与 coverage records 是否齐全可解析，引用能否指向已获取来源，状态是否彼此一致，失败获取与开放队列是否被如实处理；所需记录完整、交叉引用一致且无未处置 blocker 时通过，缺文件、悬空引用、状态冲突或隐藏失败时失败。两者必须同时通过；下载数量或目录完整不构成充分条件。范围、required outputs 或关键反证变化时，既有通过状态应重新评估。\n\n<!-- issue-resolution: v0-source-coverage -->"
+    },
+    {
+      "slug": "v0-agent-roles",
+      "issue_number": 13,
+      "state": "closed",
+      "kind": "answer",
+      "title": "常驻角色应限于 Git/File Steward 与上下文 fork Q&A",
+      "body": "### 常驻角色应限于 Git/File Steward 与上下文 fork Q&A\n\nv0 长程调研中应常驻的只有两类角色：负责用户侧 Git 与文件状态连续性的 Git/File Steward，以及继承主线程背景、专门回答问题的上下文分叉问答（context-fork Q&A）。前者默认待命，只在明确指令下处理 Git 和文件，不参与调研、采集、总结、安装或业务内容修改；后者可以读取继承背景与本地证据，但不写文件、不处理 Git，也不启动采集 loop。生产、审计、抓取等有明确完成条件的任务继续使用一次性 worker，结束后释放上下文。这样成立的原因是，常驻价值来自职责所需的跨轮连续性，而不是 agent 能力更通用；边界越窄，越容易审计权限与输出。本答案是 v0 场景下的角色配置，不是所有项目的固定分类；新增常驻角色前仍须证明其确有长期状态需求，并定义输入、写权限和禁止事项。\n\n<!-- issue-resolution: v0-agent-roles -->"
+    },
+    {
+      "slug": "v0-kb-autonomy",
+      "issue_number": 14,
+      "state": "closed",
+      "kind": "answer",
+      "title": "自治 loop 依靠持久状态、反思决策和可延期的网络队列",
+      "body": "### 自治 loop 依靠持久状态、反思决策和可延期的网络队列\n\n可自治、可恢复且容忍网络受限的 KB loop，应把运行进度、决策日志、反思结果、影响队列和下一恢复入口持久化，而不是依赖 agent 会话一直存活。每轮依据当前状态选择下一项工作，记录为什么推进、延期或改变方向，并定期用 reflection 检查结果是否仍服务目标；恢复时从这些记录继续。网页获取只做有限次数尝试，失败来源连同原因写入 retrieval queue，留待网络条件合适时重试，同时继续所有可由本地 data 支撑的构建、验证和审计。这样，单个 blocked source 既不会拖死整个 goal，也不会被误记为已覆盖。适用边界是：这些机制保证控制过程能续跑，不保证知识主题或内容本身正确；主题对齐、coverage 与事实质量仍需独立门禁，不能用“自治运行成功”替代。\n\n<!-- issue-resolution: v0-kb-autonomy -->"
+    },
+    {
+      "slug": "v0-language",
+      "issue_number": 15,
+      "state": "closed",
+      "kind": "answer",
+      "title": "中文主语言必须是文件级验收合同，而非仅限对话回复",
+      "body": "### 中文主语言必须是文件级验收合同，而非仅限对话回复\n\n中文要求连续三次才真正落盘，是因为它先后被错误缩减为聊天回复偏好和终端完成说明格式，没有进入 cards、provenance、报告、控制状态与 skills 的生成及验收合同。当前可执行规则是：所有面向人的叙事内容以中文为主，生成器从源头按此写作，审计器同时检查已有与新增文件；发现残余英文叙事、不自然转义或中英文规则漂移时，产物不得通过。必要的 schema key、命令、路径和不可替代的专业名词可以保留英文，重要术语采用「中文（English）」锚定，以免牺牲机器兼容性和技术精度。该规则约束人类可读产物，不要求翻译程序接口或外部固定标识。只有把语言作为文件级验收标准，而不是事后翻译 response，才能避免同类返工。\n\n<!-- issue-resolution: v0-language -->"
+    },
+    {
+      "slug": "v0-topic-drift",
+      "issue_number": 16,
+      "state": "closed",
+      "kind": "answer",
+      "title": "机制成功仍会产出错误 KB，因为生产对象和外部主题未对齐",
+      "body": "### 机制成功仍会产出错误 KB，因为生产对象和外部主题未对齐\n\nv0 的机制指标全部通过却把 KB 做成元知识，是因为执行器把描述 node、provenance、validation 和 loop 的生产协议误当成知识主题，同时没有把 `data/` 中的 LLM Wiki 调研材料设为主要证据输入。原有门禁只验证 schema、引用边和 adoption 等内部一致性，因此能证明 pipeline 运转，却不能证明 cards 回答了 LLM Wiki。当前修复方式是把跑偏产物完整归档为 demo-0，保留其审计与基础设施价值；将 active topic 重置为 LLM Wiki，以 `data/` 为主要 evidence input，并增加主题对齐（subject alignment）检查，确认每项产物直接服务外部研究对象。这个答案适用于生产协议与知识对象混淆造成的 drift；后续仍可能发生粒度或 top-down 偏差，需要各自门禁，不能把本次修复视为所有 drift 的永久解决。\n\n<!-- issue-resolution: v0-topic-drift -->"
+    },
+    {
+      "slug": "v1-planner-loop",
+      "issue_number": 17,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到 planner、worker 与 main-agent 的首轮分工，长期自治仍待验证",
+      "body": "### 目前能回答到 planner、worker 与 main-agent 的首轮分工，长期自治仍待验证\n\n目前能回答到的范围是：planner 读取本地 sources、coverage 与 mining protocol 后决定下一批具体任务；worker 负责 source mining、产物生成和进展记录；main-agent 只设定验收条件、派发任务、接收最小充分结果并决定下一步，一旦亲自执行具体生产就应判为 controller drift。现有记录已证明这条委派链路能完成一轮生产与验收，也已初始化相关 skills 和恢复入口。仍未知的是：无人值守多轮运行是否稳定、来源覆盖是否足够、批量产出质量是否持续达标、skills 是否能随反馈迭代，以及距离“完整 KB”还有多远。关闭条件是用该分工连续完成多个可恢复批次，coverage 与质量门禁通过，开放来源和审核队列按规则收敛，并交付可审计的完整 KB 与多轮 skill evolution 记录；在这些结果出现前，本 Issue 不能作为最终架构答案关闭。\n\n<!-- issue-resolution: v1-planner-loop -->"
+    },
+    {
+      "slug": "v1-card-layout",
+      "issue_number": 18,
+      "state": "closed",
+      "kind": "answer",
+      "title": "当前渲染链要求 References 在前、Footnotes 为最后 section",
+      "body": "### 当前渲染链要求 References 在前、Footnotes 为最后 section\n\n当前 Markdown 渲染链的兼容合同是 References section 在前，Footnotes section 位于最后，且其后不再出现普通正文或其他 section。这不是所有 Markdown 渲染器的普遍要求，而是现有 card 发布链中已验证可稳定呈现脚注的排列。这里要区分两个对象：Footnotes section 是用于组织内容的 `## Footnotes` 章节；脚注定义是 `[^id]: ...` 形式的 Markdown 语法块。当前合同要求定义集中放在 Footnotes section 内并处于文档物理末尾，不能只移动章节标题却把定义留在中间。generation prompt 负责生成该结构，audit 分别检查 section 顺序、定义位置以及末尾是否还有内容；不合规候选不得 adoption，既有候选与旧卡也已迁移。若以后更换渲染器或发布管线，应先用回归样例验证，再决定是否放宽这一兼容合同。\n\n<!-- issue-resolution: v1-card-layout -->"
+    },
+    {
+      "slug": "v1-hub-granularity",
+      "issue_number": 19,
+      "state": "closed",
+      "kind": "answer",
+      "title": "少量大卡源于 topic-node-first pipeline，而非材料不足",
+      "body": "### 少量大卡源于 topic-node-first pipeline，而非材料不足\n\nv1 材料很多却只形成少量大卡，是因为 pipeline 先把 topic candidates 变成 node plan，再让 source mining 为预设主题页提供综合材料，完成指标也围绕 node coverage 与 adoption，结果自然优化成八个高密度 hub/backbone，而不是 bottom-up atomic cards。周期长则来自每个 topic node 都重复经历 planning、挖掘、写作、验证、adoption、引用处理和多轮 skill evaluation，相当于把单页当作一次串行 release。当前可执行替代是按 source 或 batch 并行提取 atoms，批量做轻量校验、去重、聚类和链接，只在批次或关键变更时评估 skills，最后从已验证 cards 聚合 hub；局部失败只重试对应批次。现有八页应保留为导航骨架而非 atomic 成功基线。该设计尚需后续规模运行验证吞吐，但已足以解释 v1 为何少且慢并指明修正方向。\n\n<!-- issue-resolution: v1-hub-granularity -->"
+    },
+    {
+      "slug": "v2-card-foundation",
+      "issue_number": 20,
+      "state": "closed",
+      "kind": "answer",
+      "title": "atomic card 是经证据支持、可审计的知识单元",
+      "body": "### atomic card 是经证据支持、可审计的知识单元\n\natomic card 应被定义为经证据支持、可审计的知识单元，而不是经过流程验收便已成立的客观事实。source 只能提出 candidate；可读 card 聚焦一个判断并写明适用范围，provenance 则整理来源、推理依据、限制与可能反证，References 和 Footnotes 保留可追溯连接。audit 检查证据质量、论断与来源是否匹配、边界是否充分披露；通过只表示它在当前准入标准下获得足够支持，可以作为带语境的知识单元进入 KB，不消除未来修订或推翻的可能。known fact 指证据长期稳定、跨语境重复成立且共识较强的判断；accepted fact 指在明确时间、领域或实践条件下，依据当前共识或有效经验被接受的判断，因此必须保留语境与不确定性。两类都需要强校验，差别是稳定程度和适用边界，不是一个“真”、一个“不真”。atomic 也只是相对粒度；hub 与 clustering 属于后续组织层，不能反向替代 card 的证据责任。\n\n<!-- issue-resolution: v2-card-foundation -->"
+    },
+    {
+      "slug": "v2-file-audits",
+      "issue_number": 21,
+      "state": "closed",
+      "kind": "answer",
+      "title": "legacy 应可追溯隔离，focus drift 应由独立证据审计",
+      "body": "### legacy 应可追溯隔离，focus drift 应由独立证据审计\n\n保留 legacy 又独立调查 focus drift 的做法是：为当前 `llm_wiki` 提供非隐藏、可直接浏览的 active 入口，把 v0 meta demo 与 v1 hub skeleton 迁入统一 `legacy/`，分别说明其主题错位和粒度反转，不删除也不让它们继续冒充当前 KB。审计必须与被审计流程隔离：不分叉主上下文的 sub-agent 只读取 worker task、status、delivery 和 trace，分别检查 main-agent 流程、sub-agent 输入输出边界及 context leakage；另一审计线先收集证据，再提出并验证 focus-drift 假设。现有证据将根因指向旧协议把 0-1 node 设为基本生产单位，并用 node adoption 与 topic coverage 奖励 top-down 页面。该结果覆盖当时的文件和 trace，不保证未来 worker 永不泄漏；新增流程仍应按同一隔离方法复审。\n\n<!-- issue-resolution: v2-file-audits -->"
+    }
+  ]
+}
