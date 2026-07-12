@@ -1,0 +1,1347 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Code 交互回放</title>
+  <style>
+    :root {
+      --canvas: #edf0ed;
+      --surface: #ffffff;
+      --surface-soft: #f6f7f4;
+      --ink: #171a18;
+      --muted: #66706b;
+      --line: #d7dcd8;
+      --line-strong: #aeb7b1;
+      --coral: #e05c47;
+      --teal: #147c74;
+      --blue: #3d63b8;
+      --yellow: #e9bd42;
+      --plum: #76527e;
+      --header-height: 68px;
+      --left-width: 252px;
+      --right-width: 304px;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height) + 20px);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", sans-serif;
+      letter-spacing: 0;
+    }
+
+    button, input, code { font: inherit; letter-spacing: 0; }
+    button { color: inherit; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .app-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      display: flex;
+      min-height: var(--header-height);
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 22px;
+      border-bottom: 1px solid var(--ink);
+      background: var(--surface);
+    }
+
+    .brand {
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      place-items: center;
+      border-radius: 3px;
+      color: #fff;
+      background: var(--ink);
+      font-family: "DIN Condensed", "Avenir Next Condensed", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .brand-copy { min-width: 0; }
+
+    .product-name {
+      margin: 0 0 2px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .project-path {
+      max-width: 620px;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .header-tools {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .coverage-pill {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      gap: 7px;
+      padding: 0 10px;
+      border: 1px solid var(--line-strong);
+      border-radius: 4px;
+      color: #3f4944;
+      background: var(--surface-soft);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .coverage-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .mode-switch {
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 2px;
+      border: 1px solid var(--line-strong);
+      border-radius: 5px;
+      background: var(--surface-soft);
+    }
+
+    .mode-button {
+      min-height: 28px;
+      padding: 0 10px;
+      border: 0;
+      border-radius: 3px;
+      color: var(--muted);
+      background: transparent;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .mode-button.active {
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .app-shell {
+      display: grid;
+      min-height: calc(100vh - var(--header-height));
+      grid-template-columns: var(--left-width) minmax(480px, 1fr) var(--right-width);
+      grid-template-areas: "left main right";
+      gap: 0;
+      max-width: 1600px;
+      margin: 0 auto;
+      background: var(--surface);
+    }
+
+    .left-rail {
+      grid-area: left;
+      border-right: 1px solid var(--line);
+      background: var(--surface-soft);
+    }
+
+    .left-sticky,
+    .inspector-sticky {
+      position: sticky;
+      top: var(--header-height);
+      max-height: calc(100vh - var(--header-height));
+      overflow: auto;
+    }
+
+    .left-sticky { padding: 20px 16px 28px; }
+
+    .rail-section + .rail-section {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-family: "DIN Condensed", "Avenir Next Condensed", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .section-count {
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .session-name {
+      margin: 0 0 7px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .session-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .search-wrap { position: relative; }
+
+    .search-input {
+      width: 100%;
+      min-height: 38px;
+      padding: 0 36px 0 11px;
+      border: 1px solid var(--line-strong);
+      border-radius: 4px;
+      outline: none;
+      color: var(--ink);
+      background: var(--surface);
+      font-size: 12px;
+    }
+
+    .search-input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px rgba(61, 99, 184, 0.14);
+    }
+
+    .clear-search {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: none;
+      width: 28px;
+      height: 28px;
+      border: 0;
+      border-radius: 3px;
+      color: var(--muted);
+      background: transparent;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .clear-search.visible { display: block; }
+    .clear-search:hover { color: var(--ink); background: var(--canvas); }
+
+    .filter-list {
+      display: grid;
+      gap: 4px;
+    }
+
+    .filter-button {
+      display: flex;
+      width: 100%;
+      min-height: 34px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0 9px;
+      border: 0;
+      border-radius: 4px;
+      color: #4e5953;
+      background: transparent;
+      font-size: 12px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .filter-button:hover { background: #e8ebe8; }
+
+    .filter-button.active {
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .filter-number {
+      min-width: 20px;
+      color: inherit;
+      font-size: 10px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .turn-nav {
+      display: grid;
+      gap: 3px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .turn-link {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+      padding: 7px 8px;
+      border-left: 3px solid transparent;
+      border-radius: 0 3px 3px 0;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .turn-link:hover { background: #e8ebe8; }
+
+    .turn-link.active {
+      border-left-color: var(--coral);
+      background: #fff;
+    }
+
+    .turn-index {
+      color: var(--muted);
+      font-family: "DIN Condensed", "Avenir Next Condensed", sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .turn-link.active .turn-index { color: var(--coral); }
+
+    .turn-snippet {
+      overflow: hidden;
+      font-size: 11px;
+      line-height: 1.35;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .workspace {
+      min-width: 0;
+      grid-area: main;
+      padding: 28px 34px 72px;
+      background: var(--surface);
+    }
+
+    .thread-header {
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .thread-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-family: "DIN Condensed", "Avenir Next Condensed", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .status-tag {
+      padding: 2px 7px;
+      border: 1px solid var(--teal);
+      border-radius: 3px;
+      color: var(--teal);
+      background: #edf8f5;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0 0 12px;
+      font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1.18;
+    }
+
+    .thread-description {
+      max-width: 780px;
+      margin: 0;
+      color: #525c57;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 20px;
+      border-block: 1px solid var(--line);
+    }
+
+    .summary-item {
+      min-width: 0;
+      padding: 12px 14px;
+      border-right: 1px solid var(--line);
+    }
+
+    .summary-item:last-child { border-right: 0; }
+
+    .summary-value {
+      display: block;
+      margin-bottom: 2px;
+      font-family: "DIN Condensed", "Avenir Next Condensed", sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .summary-label {
+      display: block;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .results-line {
+      display: flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .result-count { font-variant-numeric: tabular-nums; }
+
+    .conversation {
+      display: grid;
+      gap: 18px;
+    }
+
+    .turn {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 1px 0 rgba(23, 26, 24, 0.04);
+    }
+
+    .turn[hidden] { display: none; }
+
+    .turn::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+      background: var(--yellow);
+      content: "";
+    }
+
+    .turn[data-type="correction"]::before { background: var(--coral); }
+    .turn[data-type="idea"]::before { background: var(--plum); }
+    .turn[data-type="decision"]::before { background: var(--teal); }
+
+    .turn-header {
+      display: flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 16px 10px 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface-soft);
+    }
+
+    .turn-identity {
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .turn-number {
+      color: var(--ink);
+      font-family: "DIN Condensed", "Avenir Next Condensed", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .turn-type {
+      padding: 2px 7px;
+      border: 1px solid var(--line-strong);
+      border-radius: 3px;
+      color: #4e5953;
+      background: var(--surface);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .turn-time {
+      color: var(--muted);
+      font-size: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .integrity {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .integrity::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      content: "";
+    }
+
+    .recall-scene {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 12px;
+      padding: 13px 20px;
+      border-bottom: 1px solid var(--line);
+      color: #525c57;
+      background: #fbfcfa;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .recall-label {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .recall-scene p { margin: 0; }
+
+    .message {
+      padding: 20px 20px 22px;
+    }
+
+    .speaker {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 11px;
+    }
+
+    .speaker-mark {
+      display: grid;
+      width: 27px;
+      height: 27px;
+      place-items: center;
+      border-radius: 3px;
+      color: #fff;
+      background: var(--ink);
+      font-family: "DIN Condensed", "Avenir Next Condensed", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .assistant-message .speaker-mark { background: var(--blue); }
+
+    .speaker-name {
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .speaker-note {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .user-raw {
+      margin: 0;
+      color: #222724;
+      font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+      font-size: 20px;
+      line-height: 1.75;
+      white-space: pre-wrap;
+    }
+
+    .assistant-message {
+      border-top: 1px solid var(--line);
+      background: #f6f8fc;
+    }
+
+    .assistant-message.missing { background: #fff9e9; }
+
+    .assistant-summary {
+      margin: 0 0 13px;
+      color: #343c38;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .insights {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .insights li {
+      position: relative;
+      padding-left: 17px;
+      color: #4d5852;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .insights li::before {
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      content: "↳";
+    }
+
+    .change-log {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 12px;
+      padding: 13px 20px;
+      border-top: 1px solid #cddfd8;
+      color: #305047;
+      background: #edf7f3;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .change-label {
+      color: var(--teal);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .change-items { display: grid; gap: 4px; }
+
+    .trace {
+      margin: 0;
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .trace > summary {
+      padding: 12px 20px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      list-style-position: inside;
+    }
+
+    .trace[open] > summary { color: var(--ink); }
+
+    .trace-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 24px;
+      padding: 4px 20px 20px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .trace-grid strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--ink);
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    code {
+      overflow-wrap: anywhere;
+      font-family: "SFMono-Regular", Menlo, monospace;
+      font-size: 10px;
+    }
+
+    .empty-state {
+      display: none;
+      padding: 54px 20px;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .empty-state.visible { display: block; }
+
+    .inspector {
+      grid-area: right;
+      border-left: 1px solid var(--line);
+      background: var(--surface-soft);
+    }
+
+    .inspector-sticky { padding: 20px 18px 30px; }
+
+    .inspector-section + .inspector-section {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .decision-box {
+      padding: 14px;
+      border: 1px solid #b9d6cc;
+      border-left: 4px solid var(--teal);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      background: #f1faf7;
+    }
+
+    .decision-box p {
+      margin: 0;
+      color: #28473e;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.65;
+    }
+
+    .understanding {
+      margin: 0;
+      color: #4d5852;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .open-question {
+      margin: 0;
+      padding-left: 17px;
+      color: #4d5852;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .artifact-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .artifact-list li {
+      padding: 8px 9px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--surface);
+      line-height: 1.4;
+    }
+
+    .integrity-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .integrity-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .integrity-value {
+      color: var(--ink);
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .error-state {
+      max-width: 680px;
+      margin: 60px auto;
+      padding: 24px;
+      border: 1px solid var(--coral);
+      border-radius: var(--radius);
+      color: #8b3125;
+      background: #fff5f2;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    body.user-only .recall-scene,
+    body.user-only .assistant-message,
+    body.user-only .change-log,
+    body.user-only .trace {
+      display: none;
+    }
+
+    body.user-only .user-message { padding-bottom: 24px; }
+
+    @media (max-width: 1180px) {
+      .app-shell {
+        grid-template-columns: var(--left-width) minmax(460px, 1fr);
+        grid-template-areas:
+          "left main"
+          "left right";
+      }
+
+      .inspector {
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .inspector-sticky {
+        position: static;
+        display: grid;
+        max-height: none;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 28px;
+      }
+
+      .inspector-section + .inspector-section {
+        margin: 0;
+        padding: 0;
+        border-top: 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root { --header-height: 60px; }
+
+      .app-header { padding: 0 12px; gap: 10px; }
+      .brand-mark { width: 30px; height: 30px; flex-basis: 30px; }
+      .product-name { font-size: 12px; }
+      .project-path { max-width: 150px; }
+      .coverage-pill { display: none; }
+      .mode-button { padding: 0 8px; }
+
+      .app-shell {
+        display: grid;
+        min-height: auto;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+          "left"
+          "main"
+          "right";
+      }
+
+      .left-rail {
+        min-width: 0;
+        overflow: hidden;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .left-sticky {
+        position: static;
+        display: grid;
+        width: 100%;
+        min-width: 0;
+        max-height: none;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        overflow: hidden;
+        padding: 14px 12px;
+      }
+
+      .left-sticky > .rail-section:first-child { display: none; }
+
+      .rail-section + .rail-section {
+        margin: 0;
+        padding: 0;
+        border-top: 0;
+      }
+
+      .rail-section,
+      .filter-list,
+      .turn-nav {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      .section-label { margin-bottom: 7px; }
+      .filter-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+      .filter-button {
+        min-width: 0;
+        justify-content: center;
+        padding: 0 4px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        text-align: center;
+      }
+
+      .filter-number { display: none; }
+
+      .turn-nav {
+        grid-auto-columns: minmax(118px, 1fr);
+        grid-auto-flow: column;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .turn-link {
+        border: 1px solid var(--line);
+        border-left-width: 3px;
+        background: var(--surface);
+      }
+
+      .workspace { padding: 22px 12px 48px; }
+      h1 { font-size: 28px; }
+      .thread-description { font-size: 13px; }
+      .summary-strip { grid-template-columns: repeat(2, 1fr); }
+      .summary-item:nth-child(2) { border-right: 0; }
+      .summary-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .conversation { gap: 12px; }
+      .turn-header { align-items: flex-start; }
+      .integrity { padding-top: 5px; }
+      .recall-scene { grid-template-columns: 1fr; gap: 4px; }
+      .message { padding: 17px 16px 19px; }
+      .user-raw { font-size: 18px; }
+      .change-log { grid-template-columns: 1fr; gap: 5px; padding-inline: 16px; }
+      .trace > summary { padding-inline: 16px; }
+      .trace-grid { grid-template-columns: 1fr; padding-inline: 16px; }
+
+      .inspector-sticky {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 22px 12px 34px;
+      }
+
+      .inspector-section + .inspector-section {
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">CC</div>
+      <div class="brand-copy">
+        <p class="product-name">Interaction Replay</p>
+        <div class="project-path" id="project-path">LLM Wiki / 正在读取档案</div>
+      </div>
+    </div>
+
+    <div class="header-tools">
+      <div class="coverage-pill" id="coverage-pill">
+        <span class="coverage-dot" aria-hidden="true"></span>
+        <span>覆盖校验中</span>
+      </div>
+      <div class="mode-switch" aria-label="阅读模式">
+        <button class="mode-button active" type="button" data-mode="context">完整脉络</button>
+        <button class="mode-button" type="button" data-mode="user">只看用户</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-shell" id="app-shell">
+    <aside class="left-rail" aria-label="回放导航">
+      <div class="left-sticky">
+        <section class="rail-section">
+          <p class="section-label">Session</p>
+          <p class="session-name" id="session-name"></p>
+          <p class="session-meta" id="session-meta"></p>
+        </section>
+
+        <section class="rail-section">
+          <p class="section-label">Search</p>
+          <div class="search-wrap">
+            <label class="sr-only" for="search-input">搜索原话、摘要和场景</label>
+            <input class="search-input" id="search-input" type="search" placeholder="搜索原话、摘要、场景">
+            <button class="clear-search" id="clear-search" type="button" aria-label="清空搜索" title="清空搜索">×</button>
+          </div>
+        </section>
+
+        <section class="rail-section">
+          <p class="section-label">Event Type <span class="section-count" id="visible-count"></span></p>
+          <div class="filter-list" id="filter-list"></div>
+        </section>
+
+        <section class="rail-section">
+          <p class="section-label">Turns</p>
+          <ol class="turn-nav" id="turn-nav"></ol>
+        </section>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <section class="thread-header">
+        <div class="thread-kicker">
+          <span>Decision Thread 01</span>
+          <span class="status-tag" id="thread-status">loading</span>
+        </div>
+        <h1 id="title">正在读取交互档案…</h1>
+        <p class="thread-description" id="description"></p>
+        <div class="summary-strip" id="summary-strip" aria-label="回放概况"></div>
+      </section>
+
+      <div class="results-line">
+        <span class="result-count" id="result-count"></span>
+        <span id="active-mode-label">完整脉络</span>
+      </div>
+
+      <section class="conversation" id="conversation" aria-label="交互回放"></section>
+      <div class="empty-state" id="empty-state">没有符合当前条件的 turn</div>
+    </main>
+
+    <aside class="inspector" aria-label="决策检查器">
+      <div class="inspector-sticky">
+        <section class="inspector-section">
+          <p class="section-label">Current Decision</p>
+          <div class="decision-box"><p id="decision"></p></div>
+        </section>
+
+        <section class="inspector-section">
+          <p class="section-label">Current Understanding</p>
+          <p class="understanding" id="understanding"></p>
+        </section>
+
+        <section class="inspector-section">
+          <p class="section-label">Open Question</p>
+          <ul class="open-question" id="open-questions"></ul>
+        </section>
+
+        <section class="inspector-section">
+          <p class="section-label">Artifacts</p>
+          <ul class="artifact-list" id="artifact-list"></ul>
+        </section>
+
+        <section class="inspector-section">
+          <p class="section-label">Archive Integrity</p>
+          <ul class="integrity-list" id="integrity-list"></ul>
+        </section>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const manifestUrl = "./archive.demo.json";
+    const state = { filter: "all", query: "", mode: "context" };
+    let manifest = null;
+    let records = [];
+
+    const escapeHtml = (value = "") => String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+    const typeLabels = {
+      all: "全部",
+      question: "问题",
+      correction: "纠偏",
+      idea: "洞察",
+      decision: "决定",
+      instruction: "指令",
+      preference: "偏好",
+      open_question: "开放问题",
+      observed_effect: "效果"
+    };
+
+    function formatTime(timestamp) {
+      return new Intl.DateTimeFormat("zh-CN", {
+        timeZone: "Asia/Shanghai",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      }).format(new Date(timestamp));
+    }
+
+    function list(items) {
+      if (!items || !items.length) return "";
+      return `<ul class="insights">${items.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+    }
+
+    function renderArtifacts(items) {
+      if (!items.length) return "无关联 artifact";
+      return items.map(item => `<code>${escapeHtml(item.ref)}</code> · ${escapeHtml(item.relation)}`).join("<br>");
+    }
+
+    function searchText(record) {
+      return [
+        record.user.verbatim,
+        record.assistant.summary || "",
+        ...(record.assistant.core_insights || []),
+        ...(record.assistant.actions || []),
+        ...(record.assistant.observed_effects || []),
+        record.context.recall_scene,
+        record.context.before,
+        record.context.after,
+        typeLabels[record.event_type] || record.event_type
+      ].join(" ").toLocaleLowerCase("zh-CN");
+    }
+
+    function renderTurn(record) {
+      const missing = record.assistant.status === "missing";
+      const summary = missing
+        ? "本轮没有生成 Claude 回复；保留缺口，不用后验推断伪造回答。"
+        : record.assistant.summary;
+      const effects = record.assistant.observed_effects || [];
+
+      return `<article class="turn" id="turn-${record.sequence}" data-event-id="${escapeHtml(record.event_id)}" data-type="${escapeHtml(record.event_type)}">
+        <header class="turn-header">
+          <div class="turn-identity">
+            <span class="turn-number">${String(record.sequence).padStart(2, "0")}</span>
+            <span class="turn-type">${escapeHtml(typeLabels[record.event_type] || record.event_type)}</span>
+            <span class="turn-time">${formatTime(record.occurred_at)}</span>
+          </div>
+          <span class="integrity">原话已校验</span>
+        </header>
+
+        <div class="recall-scene">
+          <span class="recall-label">Recall Scene</span>
+          <p>${escapeHtml(record.context.recall_scene)}</p>
+        </div>
+
+        <section class="message user-message">
+          <div class="speaker">
+            <span class="speaker-mark" aria-hidden="true">YOU</span>
+            <span class="speaker-name">用户输入</span>
+            <span class="speaker-note">verbatim · 未改写</span>
+          </div>
+          <blockquote class="user-raw">${escapeHtml(record.user.verbatim)}</blockquote>
+        </section>
+
+        <section class="message assistant-message${missing ? " missing" : ""}">
+          <div class="speaker">
+            <span class="speaker-mark" aria-hidden="true">CC</span>
+            <span class="speaker-name">Claude 核心摘要</span>
+            <span class="speaker-note">${missing ? "response missing" : "summary r" + record.assistant.summary_provenance.summary_revision}</span>
+          </div>
+          <p class="assistant-summary">${escapeHtml(summary)}</p>
+          ${list(record.assistant.core_insights)}
+        </section>
+
+        ${effects.length ? `<section class="change-log">
+          <span class="change-label">Action / Effect</span>
+          <div class="change-items">${effects.map(item => `<span>→ ${escapeHtml(item)}</span>`).join("")}</div>
+        </section>` : ""}
+
+        <details class="trace">
+          <summary>证据、前后状态与生成信息</summary>
+          <div class="trace-grid">
+            <div><strong>Before</strong>${escapeHtml(record.context.before)}</div>
+            <div><strong>After</strong>${escapeHtml(record.context.after)}</div>
+            <div><strong>Source Message</strong><code>${escapeHtml(record.provenance.user_message_id)}</code><br>${escapeHtml(record.provenance.coverage)} coverage</div>
+            <div><strong>Artifacts</strong>${renderArtifacts(record.artifacts)}</div>
+            <div><strong>Privacy</strong>${escapeHtml(record.privacy.publication)} · ${escapeHtml(record.privacy.review_status)}</div>
+            <div><strong>Summary Build</strong>${escapeHtml(record.generation.summary_prompt_version)} · ${escapeHtml(record.generation.summary_model)}</div>
+          </div>
+        </details>
+      </article>`;
+    }
+
+    function renderFilters() {
+      const counts = records.reduce((result, record) => {
+        result[record.event_type] = (result[record.event_type] || 0) + 1;
+        return result;
+      }, { all: records.length });
+      const keys = ["all", ...Object.keys(counts).filter(key => key !== "all")];
+
+      document.querySelector("#filter-list").innerHTML = keys.map(key => `
+        <button class="filter-button${state.filter === key ? " active" : ""}" type="button" data-filter="${escapeHtml(key)}">
+          <span>${escapeHtml(typeLabels[key] || key)}</span>
+          <span class="filter-number">${counts[key]}</span>
+        </button>`).join("");
+
+      document.querySelectorAll(".filter-button").forEach(button => {
+        button.addEventListener("click", () => {
+          state.filter = button.dataset.filter;
+          renderFilters();
+          applyFilters();
+        });
+      });
+    }
+
+    function renderTurnNav() {
+      document.querySelector("#turn-nav").innerHTML = records.map(record => `
+        <li>
+          <a class="turn-link" href="#turn-${record.sequence}" data-event-id="${escapeHtml(record.event_id)}">
+            <span class="turn-index">${String(record.sequence).padStart(2, "0")}</span>
+            <span class="turn-snippet">${escapeHtml(record.user.verbatim)}</span>
+          </a>
+        </li>`).join("");
+    }
+
+    function applyFilters() {
+      const query = state.query.trim().toLocaleLowerCase("zh-CN");
+      let visible = 0;
+
+      records.forEach(record => {
+        const typeMatch = state.filter === "all" || record.event_type === state.filter;
+        const queryMatch = !query || searchText(record).includes(query);
+        const show = typeMatch && queryMatch;
+        const turn = document.querySelector(`[data-event-id="${CSS.escape(record.event_id)}"].turn`);
+        const nav = document.querySelector(`[data-event-id="${CSS.escape(record.event_id)}"].turn-link`);
+        if (turn) turn.hidden = !show;
+        if (nav) nav.parentElement.hidden = !show;
+        if (show) visible += 1;
+      });
+
+      document.querySelector("#visible-count").textContent = `${visible}/${records.length}`;
+      document.querySelector("#result-count").textContent = `显示 ${visible} / ${records.length} 个 turn`;
+      document.querySelector("#empty-state").classList.toggle("visible", visible === 0);
+      document.querySelector("#clear-search").classList.toggle("visible", Boolean(state.query));
+    }
+
+    function renderInspector(thread) {
+      document.querySelector("#decision").textContent = thread.decision;
+      document.querySelector("#understanding").textContent = thread.current_understanding;
+      document.querySelector("#open-questions").innerHTML = thread.open_questions.map(item => `<li>${escapeHtml(item)}</li>`).join("");
+      document.querySelector("#artifact-list").innerHTML = thread.related_artifacts.map(path => `<li><code>${escapeHtml(path)}</code></li>`).join("");
+
+      const coverageMatches = manifest.coverage.human_user_inputs_expected === records.length;
+      const integrityRows = [
+        ["用户输入", `${records.length}/${manifest.coverage.human_user_inputs_expected}`],
+        ["窗口覆盖", manifest.coverage.complete_within_window ? "完整" : "有缺口"],
+        ["Schema", manifest.schema_version],
+        ["Raw transcript", manifest.preservation_policy.raw_transcript]
+      ];
+      document.querySelector("#integrity-list").innerHTML = integrityRows.map(([label, value]) => `
+        <li class="integrity-row"><span>${escapeHtml(label)}</span><span class="integrity-value">${escapeHtml(value)}</span></li>`).join("");
+
+      const coveragePill = document.querySelector("#coverage-pill");
+      coveragePill.querySelector("span:last-child").textContent = coverageMatches ? `${records.length}/${records.length} 用户输入` : "覆盖异常";
+      coveragePill.querySelector(".coverage-dot").style.background = coverageMatches ? "var(--teal)" : "var(--coral)";
+    }
+
+    function renderApp() {
+      const thread = manifest.decision_threads[0];
+      const session = manifest.source_sessions[0];
+      const summarized = records.filter(record => record.assistant.status === "summarized").length;
+      const corrections = records.filter(record => record.event_type === "correction").length;
+
+      document.title = `${manifest.title} · Interaction Replay`;
+      document.querySelector("#project-path").textContent = `${manifest.project.slug} / ${thread.title}`;
+      document.querySelector("#session-name").textContent = thread.title;
+      document.querySelector("#session-meta").innerHTML = `${escapeHtml(session.provider)}<br>${escapeHtml(formatTime(manifest.coverage.window_start))}<br>archive r${manifest.archive_revision}`;
+      document.querySelector("#thread-status").textContent = thread.status;
+      document.querySelector("#title").textContent = manifest.title;
+      document.querySelector("#description").textContent = manifest.description;
+      document.querySelector("#summary-strip").innerHTML = [
+        [records.length, "user inputs"],
+        [summarized, "Claude summaries"],
+        [corrections, "corrections"],
+        [manifest.coverage.complete_within_window ? "完整" : "缺口", "window coverage"]
+      ].map(([value, label]) => `<div class="summary-item"><span class="summary-value">${escapeHtml(value)}</span><span class="summary-label">${escapeHtml(label)}</span></div>`).join("");
+      document.querySelector("#conversation").innerHTML = records.map(renderTurn).join("");
+
+      renderFilters();
+      renderTurnNav();
+      renderInspector(thread);
+      applyFilters();
+      setupActiveTurnObserver();
+    }
+
+    function setupActiveTurnObserver() {
+      if (!("IntersectionObserver" in window)) return;
+      const observer = new IntersectionObserver(entries => {
+        const active = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!active) return;
+        document.querySelectorAll(".turn-link").forEach(link => {
+          link.classList.toggle("active", link.dataset.eventId === active.target.dataset.eventId);
+        });
+      }, { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.25, 0.5] });
+      document.querySelectorAll(".turn").forEach(turn => observer.observe(turn));
+    }
+
+    function parseJsonl(text) {
+      return text.split(/\r?\n/).filter(line => line.trim()).map((line, index) => {
+        try { return JSON.parse(line); }
+        catch (error) { throw new Error(`events JSONL 第 ${index + 1} 行无效：${error.message}`); }
+      });
+    }
+
+    document.querySelector("#search-input").addEventListener("input", event => {
+      state.query = event.target.value;
+      applyFilters();
+    });
+
+    document.querySelector("#clear-search").addEventListener("click", () => {
+      state.query = "";
+      document.querySelector("#search-input").value = "";
+      applyFilters();
+      document.querySelector("#search-input").focus();
+    });
+
+    document.querySelectorAll(".mode-button").forEach(button => {
+      button.addEventListener("click", () => {
+        state.mode = button.dataset.mode;
+        document.body.classList.toggle("user-only", state.mode === "user");
+        document.querySelectorAll(".mode-button").forEach(item => item.classList.toggle("active", item === button));
+        document.querySelector("#active-mode-label").textContent = state.mode === "user" ? "只看用户" : "完整脉络";
+      });
+    });
+
+    fetch(manifestUrl)
+      .then(response => {
+        if (!response.ok) throw new Error(`manifest HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        manifest = data;
+        return fetch(`./${manifest.events_file}`);
+      })
+      .then(response => {
+        if (!response.ok) throw new Error(`events HTTP ${response.status}`);
+        return response.text();
+      })
+      .then(text => {
+        records = parseJsonl(text);
+        renderApp();
+      })
+      .catch(error => {
+        document.querySelector("#app-shell").innerHTML = `<div class="error-state">无法读取 demo：${escapeHtml(error.message)}</div>`;
+      });
+  </script>
+</body>
+</html>

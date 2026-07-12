@@ -1,0 +1,78 @@
+{
+  "$schema": "../schema/archive-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "archive_id": "jugo-jugo.claude-citation-design.demo",
+  "archive_revision": 1,
+  "title": "从 related 到统一 citation：一次设计收敛",
+  "description": "Claude Code session 的短回放 demo。窗口内所有人类用户输入逐条保留，Claude 输出仅保留核心洞察摘要。",
+  "events_file": "events.v1.demo.jsonl",
+  "project": {
+    "slug": "jugo_jugo_llm_wiki",
+    "repository": "thsno02/jugo_jugo",
+    "main_language": "zh"
+  },
+  "preservation_policy": {
+    "user_input": "verbatim_all_human_authored",
+    "assistant_output": "core_insight_summary",
+    "non_human_user_records": "classify_never_as_human_input",
+    "raw_transcript": "local_only"
+  },
+  "coverage": {
+    "status": "demo_excerpt",
+    "window_start": "2026-05-27T06:18:35.741Z",
+    "window_end": "2026-05-27T06:42:19.120Z",
+    "human_user_inputs_expected": 4,
+    "human_user_inputs_archived": 4,
+    "complete_within_window": true,
+    "known_gaps": [
+      "这是单个决策片段，不代表该 Claude session 的完整覆盖。",
+      "最后一条用户输入后的 Claude 回复因平台额度错误未生成；后续效果来自 artifact 和恢复摘要。"
+    ],
+    "excluded_record_classes": [
+      "tool_result",
+      "system_prompt",
+      "compaction_summary_as_user_input",
+      "sidechain"
+    ]
+  },
+  "source_sessions": [
+    {
+      "session_id": "claude-citation-demo",
+      "provider": "claude_code",
+      "source_kind": "local_jsonl",
+      "source_locator": "local-source-map:claude-primary-v3",
+      "timezone": "Asia/Shanghai",
+      "privacy": "local_only"
+    }
+  ],
+  "decision_threads": [
+    {
+      "thread_id": "thread-unified-citation",
+      "title": "如何统一 raw source 与 knowledge card 的引用机制",
+      "status": "settled",
+      "event_ids": [
+        "claude_code:claude-citation-demo:H001",
+        "claude_code:claude-citation-demo:H002",
+        "claude_code:claude-citation-demo:H003",
+        "claude_code:claude-citation-demo:H004"
+      ],
+      "current_understanding": "citation 的核心不是链接样式，而是一个句子可能同时由多个 raw source 或 knowledge card 支撑。Footnote-style citation 统一承载这些 target；related 是从 citation graph 派生出的 metadata，而不是独立维护的真相源。",
+      "decision": "正文 Footnotes 是引用事实源；脚本从 footnotes 派生 related metadata，不再单独维护 related。",
+      "open_questions": [
+        "全量历史中，哪些早期 related 边没有 citation 证据，需要标为 legacy inference？"
+      ],
+      "related_artifacts": [
+        "loops/v3_llm_wiki_loop_20260525/CARD_CONTRACT_V3.md",
+        "loops/v3_llm_wiki_loop_20260525/tools/derive_metadata_from_footnotes.py"
+      ]
+    }
+  ],
+  "migration_history": [
+    {
+      "from": null,
+      "to": "1.0.0",
+      "migrated_at": "2026-07-11T00:00:00+08:00",
+      "description": "建立 manifest + user-anchored JSONL 初始契约和 citation 设计讨论 demo。"
+    }
+  ]
+}
