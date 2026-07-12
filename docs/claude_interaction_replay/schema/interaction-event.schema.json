@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jugo-jugo.example/schemas/interaction-event.schema.json",
+  "title": "Provider-neutral User-Anchored Interaction Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_type",
+    "event_id",
+    "record_revision",
+    "provider",
+    "version_ids",
+    "version_relations",
+    "session",
+    "sequence",
+    "classification",
+    "event_type",
+    "thread_ids",
+    "user",
+    "assistant",
+    "times",
+    "artifacts",
+    "provenance",
+    "privacy",
+    "generation",
+    "supersedes"
+  ],
+  "properties": {
+    "schema_version": { "const": "2.0.0" },
+    "record_type": { "const": "user_anchored_interaction" },
+    "event_id": { "type": "string", "pattern": "^(codex|claude_code|other):[^:]+:[^:]+$" },
+    "record_revision": { "type": "integer", "minimum": 1 },
+    "provider": { "enum": ["codex", "claude_code", "other"] },
+    "version_ids": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true },
+    "version_relations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["version_id", "relation"],
+        "properties": {
+          "version_id": { "type": "string" },
+          "relation": { "enum": ["precursor", "handoff", "execution", "transition_out", "retrospective", "operational_context"] }
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["session_id", "role", "parent_session_id", "depth", "agent_role"],
+      "properties": {
+        "session_id": { "type": "string" },
+        "role": { "enum": ["primary", "subagent", "retrospective"] },
+        "parent_session_id": { "type": ["string", "null"] },
+        "depth": { "type": "integer", "minimum": 0 },
+        "agent_role": { "type": ["string", "null"] }
+      }
+    },
+    "sequence": { "type": "integer", "minimum": 1 },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_record_class", "authorship", "human_input_eligible"],
+      "properties": {
+        "source_record_class": { "enum": ["human_user_message", "agent_task_packet", "tool_result", "system_context", "compaction_summary", "platform_event", "other"] },
+        "authorship": { "enum": ["human", "assistant", "system", "tool", "unknown"] },
+        "human_input_eligible": { "type": "boolean" },
+        "classification_notes": { "type": "string" }
+      }
+    },
+    "event_type": { "enum": ["idea", "question", "correction", "decision", "instruction", "preference", "open_question", "observed_effect"] },
+    "thread_ids": { "type": "array", "items": { "type": "string" } },
+    "user": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verbatim", "format", "sha256", "source_message_ordinal"],
+      "properties": {
+        "verbatim": { "type": "string" },
+        "format": { "enum": ["plain_text", "markdown"] },
+        "sha256": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "source_message_ordinal": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "assistant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "summary", "summary_mode", "core_insights", "actions", "observed_effects", "source_message_ids", "summary_provenance"],
+      "properties": {
+        "status": { "enum": ["summarized", "missing", "not_applicable"] },
+        "summary": { "type": ["string", "null"] },
+        "summary_mode": { "const": "not_verbatim" },
+        "core_insights": { "type": "array", "items": { "type": "string" } },
+        "actions": { "type": "array", "items": { "type": "string" } },
+        "observed_effects": { "type": "array", "items": { "type": "string" } },
+        "source_message_ids": { "type": "array", "items": { "type": "string" } },
+        "summary_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "review_status", "summary_revision"],
+          "properties": {
+            "method": { "enum": ["human_curated", "model_generated", "model_generated_human_reviewed"] },
+            "review_status": { "enum": ["unreviewed", "reviewed", "needs_review"] },
+            "summary_revision": { "type": "integer", "minimum": 1 },
+            "notes": { "type": "string" }
+          }
+        }
+      }
+    },
+    "times": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_recorded_at", "file_declared_at", "file_mtime_observed_at", "git_author_at", "git_commit_at", "ingested_at"],
+      "properties": {
+        "source_recorded_at": { "type": ["string", "null"], "format": "date-time" },
+        "file_declared_at": { "type": ["string", "null"], "format": "date-time" },
+        "file_mtime_observed_at": { "type": ["string", "null"], "format": "date-time" },
+        "git_author_at": { "type": ["string", "null"], "format": "date-time" },
+        "git_commit_at": { "type": ["string", "null"], "format": "date-time" },
+        "ingested_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact_id", "type", "ref", "relation", "evidence_basis"],
+        "properties": {
+          "artifact_id": { "type": "string" },
+          "type": { "enum": ["file", "commit", "report", "card", "dataset", "other"] },
+          "ref": { "type": "string" },
+          "relation": { "enum": ["declared", "observed_created", "observed_modified", "validated", "git_verified"] },
+          "evidence_basis": { "enum": ["transcript", "artifact", "git", "cross_source"] }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "source_message_id", "source_record_sha256", "assistant_window_end", "coverage"],
+      "properties": {
+        "source_id": { "type": "string" },
+        "source_message_id": { "type": "string" },
+        "source_record_sha256": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "assistant_window_end": { "type": ["string", "null"], "format": "date-time" },
+        "coverage": { "enum": ["full", "partial", "recovered"] }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sensitivity", "retention", "publication", "review_status", "reviewed_at", "reviewed_by", "redactions"],
+      "properties": {
+        "sensitivity": { "enum": ["normal", "private", "sensitive"] },
+        "retention": { "enum": ["local_complete", "local_redacted", "withheld"] },
+        "publication": { "enum": ["publishable", "redacted", "withheld"] },
+        "review_status": { "enum": ["unreviewed", "reviewed", "needs_review"] },
+        "reviewed_at": { "type": ["string", "null"], "format": "date-time" },
+        "reviewed_by": { "type": ["string", "null"] },
+        "redactions": { "type": "array", "items": { "type": "object", "required": ["category", "replacement", "reason"], "properties": { "category": { "type": "string" }, "replacement": { "type": "string" }, "reason": { "type": "string" } }, "additionalProperties": false } }
+      }
+    },
+    "generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["extractor_version", "summary_prompt_version", "summary_model", "generated_at"],
+      "properties": {
+        "extractor_version": { "type": "string" },
+        "summary_prompt_version": { "type": "string" },
+        "summary_model": { "type": "string" },
+        "generated_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "supersedes": { "type": ["string", "null"] }
+  }
+}

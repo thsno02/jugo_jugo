@@ -1,0 +1,1186 @@
+{
+  "$schema": "../schema/module-recall.schema.json",
+  "schema_version": "1.1.0",
+  "module_id": "ingestion",
+  "title": "LLM Wiki 入库机制",
+  "kind": "production",
+  "status": "complete",
+  "scope": "从本地 raw material 进入生产队列，到形成可发布 knowledge cards 和知识图的完整转换链；覆盖 V0-V5 的设计、执行、失败、纠偏和替换关系。",
+  "summary": "V0-V5 的演化不是线性升级：生产对象从 meta node、topic hub 转向 scoped atomic card，执行从逐卡重型 gate 转向 batch draft-first，再引入 questioning、fusion、graph governance 和 source router。每一版都解决了上一版的问题，也制造了新的盲区；V5 最终证明结构完整和审计通过仍不能替代知识展开。",
+  "design_context": {
+    "problem": "原始材料不能靠一次读取或直接复制自动长成可复用知识；来源选择、理解深度、知识对象、入库、融合、关系治理和发布任一环节失真，最终文件仍可能结构完整但内容空洞。",
+    "justification": "V0-V5 的连续失败证明入库不是单个写卡动作，而是一条可观测、可回退的转换链。把阶段拆开，是为了定位知识在哪一步丢失，并防止下游格式与治理成功掩盖上游理解失败。",
+    "observations": [
+      {
+        "claim": "V0 完成节点、引用和视图后，用户仍发现生产对象是“如何构建 KB”而不是 LLM Wiki 知识。",
+        "event_ids": ["codex:codex-primary-v0-v2-boundary:H007"]
+      },
+      {
+        "claim": "V2 的逐卡重型 gate 用约 7 小时只采纳 15 张卡，说明正确但不可扩展的生产顺序同样会让系统失败。",
+        "event_ids": ["codex:codex-primary-v2-v3-handoff:H004"]
+      },
+      {
+        "claim": "V3 的 comparison 工具使用了错误语料边界，171 张新卡没有彼此比较。",
+        "event_ids": ["claude_code:claude-primary-v3:H026"]
+      },
+      {
+        "claim": "V5 的卡片可以有引用、结构和关系，却没有展开概念职责与边界。",
+        "event_ids": ["claude_code:claude-primary-v5:H014"]
+      }
+    ],
+    "assumptions": [
+      {
+        "claim": "来源已有可读文本，就意味着 agent 读到了正确且充分的材料。",
+        "status": "broken",
+        "event_ids": ["claude_code:claude-primary-v4:H042", "claude_code:claude-primary-v5:H010"]
+      },
+      {
+        "claim": "先批量生成草稿、再统一比较和治理，可以降低重复读取与逐卡重启成本。",
+        "status": "validated",
+        "event_ids": ["codex:codex-primary-v2-v3-handoff:H004", "claude_code:claude-primary-v3:H005"]
+      },
+      {
+        "claim": "结构、引用和知识图健康，可以作为知识质量的充分代理。",
+        "status": "broken",
+        "event_ids": ["claude_code:claude-primary-v5:H006", "claude_code:claude-primary-v5:H014"]
+      },
+      {
+        "claim": "下游 fusion 或 graph governance 能补回上游从未提取的知识。",
+        "status": "broken",
+        "event_ids": ["claude_code:claude-primary-v5:H016"]
+      }
+    ],
+    "success_definition": "每个来源经过可核验阅读与充分提取，形成可独立理解的知识对象；每次 promotion、融合、连边与发布都有显式 gate 和证据，读者无需回到原文也能理解核心机制与边界。"
+  },
+  "version_ids": ["v0", "v1", "v2", "v3", "v4", "v5"],
+  "primary_demo_version": "v5",
+  "evidence_policy": {
+    "event_text": "reference_existing_event_by_id",
+    "assistant_text": "reuse_existing_not_verbatim_summary",
+    "repository_artifacts": "repo_relative_path_only",
+    "fact_status": "specified_executed_failure_retrospective_must_be_distinct"
+  },
+  "stages": [
+    {
+      "stage_id": "source-route",
+      "sequence": 1,
+      "label": "来源进入与阅读面",
+      "stage_kind": "intake",
+      "summary": "把外部资料变成 agent 可读取、可定位、可追踪的本地材料；不同版本从人工采集与统一目录逐步演化到 source-type router 和质量门。",
+      "rationale": {
+        "why": "先控制 agent 实际读到什么。错误的 fallback、空文件或不适配的阅读面会在最上游永久删掉知识，后续写卡和审计无法恢复。",
+        "observations": [
+          {
+            "claim": "V4 的 scrape loss、repo 无中间层和 arXiv 阅读面错误直到发布后才被定位。",
+            "event_ids": ["claude_code:claude-primary-v4:H042"]
+          },
+          {
+            "claim": "V5 开始按来源类型路由，并把有效源与失败源分开记录。",
+            "event_ids": ["claude_code:claude-primary-v5:H002"]
+          }
+        ],
+        "assumptions": [
+          {
+            "claim": "来源类型足以决定更可靠的默认阅读路径。",
+            "status": "validated",
+            "event_ids": ["claude_code:claude-primary-v4:H042", "claude_code:claude-primary-v5:H002"]
+          },
+          {
+            "claim": "路径可读就等于内容已被充分理解。",
+            "status": "broken",
+            "event_ids": ["claude_code:claude-primary-v5:H010"]
+          }
+        ]
+      },
+      "inputs": ["论文、网页、仓库、讨论等外部来源", "来源 metadata 与抓取状态"],
+      "actions": ["采集并保存原始材料", "选择 agent 实际阅读面", "记录 failed/blocked source"],
+      "outputs": ["repo-relative material path", "source inventory 与失败清单", "待处理材料队列"],
+      "entry_gate": "来源与项目主题相关，并能合法获取或明确记录访问失败。",
+      "exit_gate": "每个材料都有可复核阅读面或明确失败状态，不允许静默使用错误 fallback。",
+      "outcome": "mixed",
+      "audit_control_ids": ["source-eligibility", "state-consistency"],
+      "artifact_refs": [
+        "loops/v5_llm_wiki_loop_20260612/tools/source_router.py",
+        "loops/v5_llm_wiki_loop_20260612/queue.jsonl",
+        "loops/v5_llm_wiki_loop_20260612/loop_state.json"
+      ],
+      "evidence": [
+        {
+          "event_id": "codex:codex-prehistory-research:H009",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "前史采集已形成 coverage-driven acquisition 闭环，成功、失败和受阻来源都进入可恢复的本地证据层；这属于 V0 的上游素材底座，不等于 V0 节点已入库。",
+          "artifact_refs": ["data/"]
+        },
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H009",
+          "role": "decision",
+          "fact_status": "specified",
+          "claim": "V1 将静态 topic plan 降为建议，并要求 planner 从 data 与 coverage 中生成可执行的 source-mining 计划。",
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/README.md"]
+        },
+        {
+          "event_id": "codex:codex-primary-v2-v3-handoff:H001",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V2 从 data 中选择单个本地来源，生成窄任务包并派发 source-mining worker；没有独立 source-type router。",
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/README.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v3:H005",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V3 盘点 72 个材料并批量形成 171 张草稿；材料状态中同时保留可读、空内容和受阻项，但入口仍是统一 raw-material queue。",
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/loop_state.json"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v4:H042",
+          "role": "correction",
+          "fact_status": "observed_failure",
+          "claim": "V4 后验审计把 scrape loss、repo 无可读中间层和 arXiv 错误阅读面定位到 data collection pipeline，而不是 card writer。",
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/learnings/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H002",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "助手报告实现 source router 并将 74 个源路由为 63 个有效源和失败源集合。",
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/tools/source_router.py"]
+        }
+      ],
+      "evolution": [
+        {
+          "version_id": "v0",
+          "status": "introduced",
+          "summary": "前史采集建立 raw database；V0 本体主要消费已有本地证据，只做一次受控动态检索，没有按来源类型分发的 router。",
+          "event_ids": ["codex:codex-prehistory-research:H009", "codex:codex-primary-v0-v2-boundary:H003"],
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/README.md"]
+        },
+        {
+          "version_id": "v1",
+          "status": "modified",
+          "summary": "入口改为围绕 data 与 coverage 的 per-topic source mining，由 worker 产出 inventory、notes 和 frontier；仍没有统一 source router。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H009", "codex:codex-primary-v0-v2-boundary:H015"],
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/llm_wiki_runtime/skills/llmwiki-source-mining/SKILL.md"]
+        },
+        {
+          "version_id": "v2",
+          "status": "modified",
+          "summary": "以本地来源、manifest 和窄任务包驱动 source mining；网络获取不在生产链中，也没有按 arXiv、repo、webpage 区分阅读面。",
+          "event_ids": ["codex:codex-primary-v2-v3-handoff:H001"],
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/manifest.json"]
+        },
+        {
+          "version_id": "v3",
+          "status": "modified",
+          "summary": "形成 72 项材料队列并为每项保留处理状态，实际有 43 个可读来源进入 171-card production；仍依赖既有统一文本面。",
+          "event_ids": ["claude_code:claude-primary-v3:H002", "claude_code:claude-primary-v3:H005"],
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/manifest.json"]
+        },
+        {
+          "version_id": "v4",
+          "status": "failed",
+          "summary": "全量入口实际是 flat text.txt > 2KB filter；repo、arXiv 和 webpage 的阅读面缺陷在发布后才被发现并部分补救，通用 repo2doc/router 未落地。",
+          "event_ids": ["claude_code:claude-primary-v4:H010", "claude_code:claude-primary-v4:H042", "claude_code:claude-primary-v4:H046"],
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/learnings/pipeline_actual.md"]
+        },
+        {
+          "version_id": "v5",
+          "status": "introduced",
+          "summary": "用 source-type dispatch 取代扁平 fallback，并把实际阅读路径直接传入 footnote。",
+          "event_ids": ["claude_code:claude-primary-v5:H002"],
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/CLAUDE_CODE_HANDOFF.md"]
+        }
+      ],
+      "known_gaps": [
+        "V0 的前史采集与 V0 节点生产在时间上相连、在机制上分层；界面必须避免把 acquisition 直接画成 adoption。",
+        "执行总结中的死源数量存在 10/11/12 冲突，必须与状态文件并列展示。",
+        "Phase 0 规定的 repo2doc.py 没有落地；多数 GitHub repo 实际只读取 README，不能称为完整 repository corpus 消化。"
+      ]
+    },
+    {
+      "stage_id": "questioning-extraction",
+      "sequence": 2,
+      "label": "材料读取与知识提取",
+      "stage_kind": "transform",
+      "summary": "从阅读全文和直接事实抽取，逐步演化为 questioner/reader 驱动的耗尽式消化；这一阶段决定下游是否真的拥有足够知识。",
+      "rationale": {
+        "why": "把“文件被读过”升级为“问题空间被充分追问”。该阶段承担知识召回率，必须显式记录提问、回答、未解项和停止理由。",
+        "observations": [
+          {
+            "claim": "V3 全量生产仍是直接抽取；questioner-reader 是完成后才提出的下一版设计。",
+            "event_ids": ["claude_code:claude-primary-v3:H057"]
+          },
+          {
+            "claim": "V5 的完整 questioning skills 没有进入执行节点，严格 SATISFIED 标准因此缺席。",
+            "event_ids": ["claude_code:claude-primary-v5:H010"]
+          }
+        ],
+        "assumptions": [
+          {
+            "claim": "独立 questioner、reader 与 reviewer 能比一次性摘要暴露更多遗漏。",
+            "status": "working",
+            "event_ids": ["claude_code:claude-primary-v3:H057", "claude_code:claude-primary-v5:H002"]
+          },
+          {
+            "claim": "skill 文件存在于仓库，就会自动进入 agent 的实际上下文。",
+            "status": "broken",
+            "event_ids": ["claude_code:claude-primary-v5:H010"]
+          }
+        ]
+      },
+      "inputs": ["可读取 raw material", "当前版本的 extraction contract 与 skills"],
+      "actions": ["阅读全文或读取可解释 bundle", "识别事实、机制、边界和反例", "在支持的版本中持续问答到 exit gate"],
+      "outputs": ["事实候选、Q&A 或 extraction notes", "出处与未解决问题", "可重构知识候选"],
+      "entry_gate": "执行节点必须能够读取完整材料与当前版本规定的 extraction contract。",
+      "exit_gate": "达到当前版本的停止条件，并保存足以解释“为什么停止”的证据；有 reviewer 的版本必须记录 reviewer verdict。",
+      "outcome": "mixed",
+      "audit_control_ids": ["pipeline-conformance", "knowledge-depth", "source-faithfulness"],
+      "artifact_refs": [
+        "loops/v5_llm_wiki_loop_20260612/skills/questioning/SKILL.md",
+        "loops/v5_llm_wiki_loop_20260612/skills/reader/PROMPT.md",
+        "loops/v5_llm_wiki_loop_20260612/skills/reviewer/PROMPT.md"
+      ],
+      "evidence": [
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H002",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V0 由主循环直接把本地证据压缩为节点，没有可重放的 questioner-reader 对话或独立退出判定。",
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/kb_initialization_demo_report.md"]
+        },
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H015",
+          "role": "correction",
+          "fact_status": "executed",
+          "claim": "V1 把 source mining 和具体执行交给隔离 worker，主代理只做 gate；这改善 context isolation，但仍不是 questioning extraction。",
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/audits/context_isolation_audit_20260524/"]
+        },
+        {
+          "event_id": "codex:codex-primary-v2-v3-handoff:H002",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V2 source-mining worker 产出 12 个候选后转入 drafting；抽取是候选清单，不包含面向材料耗尽的多轮追问。",
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/iterations/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v3:H057",
+          "role": "retrospective",
+          "fact_status": "retrospective",
+          "claim": "questioner-reader 主动问答是在 V3 全量生产完成后才被提出，属于 V4 设计输入，不能回写成 171 张 V3 卡的实际 extraction。",
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/plans/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v4:H010",
+          "role": "failure",
+          "fact_status": "contradicted",
+          "claim": "V4 全量 43-source workflow 把 questioner 与 reader 合并为单个 agent，并缺少独立 reviewer、严格 SATISFIED 和可重放的逐源 run ledger。",
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/learnings/pipeline_actual.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H002",
+          "role": "decision",
+          "fact_status": "specified",
+          "claim": "启动合同要求完整 questioning loop、全文读取和 reviewer quit-audit。",
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/LOOP_START_PROMPT.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H010",
+          "role": "correction",
+          "fact_status": "observed_failure",
+          "claim": "后续核查确认执行 agent 没有收到四份完整 skills，Phase 3-4 与严格 SATISFIED 标准实际缺席。",
+          "artifact_refs": []
+        }
+      ],
+      "evolution": [
+        {
+          "version_id": "v0",
+          "status": "absent",
+          "summary": "直接阅读证据并生产 meta nodes；没有 questioner、reader、reviewer 角色分离，也没有 exhaust exit gate。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H002"],
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/kb_initialization_demo_report.md"]
+        },
+        {
+          "version_id": "v1",
+          "status": "absent",
+          "summary": "source-mining worker 提取 observations、gaps 和 frontier，并用 controller gate 隔离上下文；未形成多轮提问与独立 reviewer。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H014", "codex:codex-primary-v0-v2-boundary:H015"],
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/llm_wiki_runtime/skills/llmwiki-source-mining/SKILL.md"]
+        },
+        {
+          "version_id": "v2",
+          "status": "absent",
+          "summary": "worker 先做 source mining，再为单个候选 drafting；执行链没有 questioner-reader 回路，材料耗尽也没有操作化。",
+          "event_ids": ["codex:codex-primary-v2-v3-handoff:H001", "codex:codex-primary-v2-v3-handoff:H002"],
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/README.md"]
+        },
+        {
+          "version_id": "v3",
+          "status": "retrospective",
+          "summary": "171-card production 仍是直接材料抽取；questioner-reader、fresh reviewer 与 material exhaust 是 V3 后期反思形成的下一版设计。",
+          "event_ids": ["claude_code:claude-primary-v3:H056", "claude_code:claude-primary-v3:H057"],
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/plans/"]
+        },
+        {
+          "version_id": "v4",
+          "status": "failed",
+          "summary": "seed 实验真实分离 reader/questioner/reviewer；全量批次却折叠角色、压缩 skill、直接写卡，设计合同没有规模化复现。",
+          "event_ids": ["claude_code:claude-primary-v4:H001", "claude_code:claude-primary-v4:H010"],
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/skills/"]
+        },
+        {
+          "version_id": "v5",
+          "status": "failed",
+          "summary": "设计合同保留了完整 questioning loop，但 Workflow prompt 没有把合同传入实际执行节点。",
+          "event_ids": ["claude_code:claude-primary-v5:H010", "claude_code:claude-primary-v5:H011"],
+          "artifact_refs": []
+        }
+      ],
+      "known_gaps": [
+        "V3 后期设计与 V3 原始 production 位于同一 capsule，若只读最终文档会误把 future design 当作 executed pipeline。",
+        "V4-V5 现有 run artifacts 未稳定保存每个材料实际完成到 questioning 哪个 phase，因此事后无法机械验证 exhausted。"
+      ]
+    },
+    {
+      "stage_id": "reframe-drafts",
+      "sequence": 3,
+      "label": "知识对象生产",
+      "stage_kind": "transform",
+      "summary": "把材料理解转成可读知识对象；生产单元经历 adopted node、topic hub、scoped card、draft-first card 和 Q&A reframing 的变化。",
+      "rationale": {
+        "why": "将提取结果重构为边界明确、可独立阅读的知识对象。对象选择错误时，事实可以真实、引用可以正确，产品仍然会偏离目标。",
+        "observations": [
+          {
+            "claim": "V0 写成了 KB 构建方法，V1 又把 atomic observations 压进预设 topic hubs。",
+            "event_ids": ["codex:codex-primary-v0-v2-boundary:H007", "codex:codex-primary-v0-v2-boundary:H018"]
+          },
+          {
+            "claim": "V5 的具体卡片有 source footnote，却没有解释四层职责、权限边界和隔离机制。",
+            "event_ids": ["claude_code:claude-primary-v5:H014"]
+          }
+        ],
+        "assumptions": [
+          {
+            "claim": "Q&A 可以在不丢失论证链的前提下重构成 scoped card。",
+            "status": "revised",
+            "event_ids": ["claude_code:claude-primary-v4:H010", "claude_code:claude-primary-v5:H014"]
+          },
+          {
+            "claim": "引用能替代正文对机制、边界和因果的展开。",
+            "status": "broken",
+            "event_ids": ["claude_code:claude-primary-v5:H014"]
+          }
+        ]
+      },
+      "inputs": ["事实候选、extraction notes 或 Q&A", "当前 card/node contract"],
+      "actions": ["确定知识边界与粒度", "生成可直接消费的正文", "附加 provenance、citation 与版本要求的 metadata"],
+      "outputs": ["candidate/draft knowledge objects", "生产或 justification 记录"],
+      "entry_gate": "上游理解应包含足够的事实、机制和边界；采用 Q&A 的版本还应包含必要反例与开放问题。",
+      "exit_gate": "卡片正文必须解释 knowledge 本身，citation 只能证明来源，不能替代解释。",
+      "outcome": "mixed",
+      "audit_control_ids": ["knowledge-depth", "source-faithfulness", "schema-validity"],
+      "artifact_refs": [
+        "loops/v5_llm_wiki_loop_20260612/skills/reframing/PROMPT.md",
+        "loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/drafts/cards/"
+      ],
+      "evidence": [
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H007",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "用户发现 V0 生产的是“如何构建 KB”的 meta knowledge，而不是 LLM Wiki topic knowledge；对象错误发生在知识生产单元。",
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/README.md"]
+        },
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H018",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "用户指出 V1 仍以 top-down topic node 组织 source observations，违背 atomic-to-hub 的 bottom-up 方向。",
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/audits/focus_drift_audit_20260524/"]
+        },
+        {
+          "event_id": "codex:codex-primary-v2-v3-handoff:H009",
+          "role": "decision",
+          "fact_status": "specified",
+          "claim": "V2 明确 card 本身必须承载可独立理解的 knowledge、mechanism 和 boundary，而不是标题复述或中间状态。",
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/README.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v3:H005",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V3 用 draft-first 批次生成 171 张中文 scoped cards，并保留 provenance 和后续比较工件。",
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/drafts/cards/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v4:H010",
+          "role": "failure",
+          "fact_status": "contradicted",
+          "claim": "V4 seed 保留 drafts，但全量 extraction agent 直接写 accepted KB；同一版本存在两套知识对象生产形态。",
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H008",
+          "role": "challenge",
+          "fact_status": "retrospective",
+          "claim": "多探针诊断认为 V5 广度增加但论证层次、追问深度和引用网络下降。",
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/kb/audits/v5_info_density_diagnosis.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H014",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "“四环层级”卡有 source footnote，但没有解释四层职责、权限边界和隔离机制。",
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/drafts/cards/agt-four-privilege-ring-execution-sandbox.md"]
+        }
+      ],
+      "evolution": [
+        {
+          "version_id": "v0",
+          "status": "introduced",
+          "summary": "生产单元是 versioned adopted meta node，机制、版本、provenance 和视图完整，但知识对象选错了主题。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H002", "codex:codex-primary-v0-v2-boundary:H007"],
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/nodes/"]
+        },
+        {
+          "version_id": "v1",
+          "status": "modified",
+          "summary": "对象改成 8 个 LLM Wiki topic hubs，内容真实且有来源，但仍把 atomic observations 压缩进预设主干。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H016", "codex:codex-primary-v0-v2-boundary:H018"],
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/kb/"]
+        },
+        {
+          "version_id": "v2",
+          "status": "modified",
+          "summary": "先产出 15 张旧格式 accepted cards，随后才把 scoped knowledge card、自由正文和轻 metadata 固化为新合同；产物与最终设计存在时间差。",
+          "event_ids": ["codex:codex-primary-v2-v3-handoff:H003", "codex:codex-primary-v2-v3-handoff:H008", "codex:codex-primary-v2-v3-handoff:H010"],
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/cards/"]
+        },
+        {
+          "version_id": "v3",
+          "status": "modified",
+          "summary": "正式执行 draft-first，生成 171 张 scoped cards；draft schema 与后来迁移后的 final KB schema 属于不同代，不能只看终态推断原始生产。",
+          "event_ids": ["claude_code:claude-primary-v3:H005", "claude_code:claude-primary-v3:H020"],
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/drafts/cards/"]
+        },
+        {
+          "version_id": "v4",
+          "status": "failed",
+          "summary": "seed 使用 Q&A 后写 drafts；全量把 digest、自问自答、reframe 和 direct accepted publish 合并给同一 agent，且后验发现 hedge flattening。",
+          "event_ids": ["claude_code:claude-primary-v4:H001", "claude_code:claude-primary-v4:H010", "claude_code:claude-primary-v4:H040"],
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/cards/"]
+        },
+        {
+          "version_id": "v5",
+          "status": "failed",
+          "summary": "结构字段和卡片数量达成，但部分知识卡被证明为空壳，说明重构不能弥补浅层 extraction。",
+          "event_ids": ["claude_code:claude-primary-v5:H008", "claude_code:claude-primary-v5:H014"],
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/kb/audits/v5_info_density_diagnosis.md"]
+        }
+      ],
+      "known_gaps": ["信息密度报告中的部分指标后来被用户要求排除 metadata 与 footnote 后重算，不能直接使用旧字符数作为质量结论。"]
+    },
+    {
+      "stage_id": "scripted-ingest",
+      "sequence": 4,
+      "label": "入库与 Promotion Gate",
+      "stage_kind": "gate",
+      "summary": "决定候选知识何时从中间状态进入 adopted/accepted KB；不同版本使用人工/agent gate、审计 gate 或脚本化 status promotion。",
+      "rationale": {
+        "why": "把生成与进入 canonical KB 分开，使状态迁移可重放、可拒绝、可审计，并防止并行 writer 绕过统一质量门。",
+        "observations": [
+          {
+            "claim": "V2 逐卡 drafting→audit→adoption 可追踪，但 gate 粒度导致极低吞吐。",
+            "event_ids": ["codex:codex-primary-v2-v3-handoff:H003"]
+          },
+          {
+            "claim": "V4 全量 workflow 绕过顺序 ingest，大部分卡由 extraction agent 直接发布。",
+            "event_ids": ["claude_code:claude-primary-v4:H014"]
+          }
+        ],
+        "assumptions": [
+          {
+            "claim": "状态迁移、schema 与索引重建可以由确定性工具可靠承担。",
+            "status": "validated",
+            "event_ids": ["claude_code:claude-primary-v5:H002"]
+          },
+          {
+            "claim": "通过 scripted ingest 就代表卡片知识质量合格。",
+            "status": "broken",
+            "event_ids": ["claude_code:claude-primary-v5:H014"]
+          }
+        ]
+      },
+      "inputs": ["candidate/draft knowledge objects", "provenance、audit 与 justification evidence"],
+      "actions": ["验证当前版本的 promotion 条件", "变更 adopted/accepted status", "复制或登记到 canonical KB"],
+      "outputs": ["adopted/accepted knowledge objects", "对应 justification 与 index entry"],
+      "entry_gate": "候选对象满足当前版本的 schema、provenance 和最低审计条件。",
+      "exit_gate": "canonical KB 状态、正文、justification 与 index 能够对账；脚本化版本不得隐式改写正文。",
+      "outcome": "mixed",
+      "audit_control_ids": ["schema-validity", "state-consistency"],
+      "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/tools/ingest.py"],
+      "evidence": [
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H002",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V0 的 generation、audit、adoption 和 view build 在同一自治循环内连续发生，能证明终态，但缺少独立 promotion ledger。",
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/generated/status.yaml"]
+        },
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H016",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V1 在修复 footnote layout 后继续由 adoption/view worker 采纳节点并构建 8 个视图，gate 比 V0 更可见但仍由 agent 驱动。",
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/llm_wiki_runtime/runs/"]
+        },
+        {
+          "event_id": "codex:codex-primary-v2-v3-handoff:H003",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V2 采用逐卡 drafting、audit、adoption worker 链，累计采纳 15 张卡；每卡重启和多 gate 导致极低吞吐。",
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/iterations/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v3:H009",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V3 adoption pass 将 171 张草稿和 provenance 批量写入 loop-local KB；它是 agent 执行，不是确定性的 ingest tool。",
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v4:H014",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "用户追问后确认 V4 全量 workflow 跳过了顺序 ingest；除 seed shell promotion 外，大多数卡由 extraction agent 直接发布。",
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/learnings/operational_lessons.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H002",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "全流程执行窗口报告 ingest 工具和 KB 目录已生成。",
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/tools/ingest.py"]
+        }
+      ],
+      "evolution": [
+        {
+          "version_id": "v0",
+          "status": "introduced",
+          "summary": "节点通过内建 audit 后直接 adopted 并生成 KB view；promotion 与生产、审计耦合，缺少独立、可重放的 gate ledger。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H002"],
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/generated/status.yaml"]
+        },
+        {
+          "version_id": "v1",
+          "status": "modified",
+          "summary": "candidate bundle 经 audit/repair 后由 adoption/view worker 采纳，边界更清楚；仍是 agent workflow，不是确定性脚本。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H014", "codex:codex-primary-v0-v2-boundary:H016"],
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/llm_wiki_runtime/runs/"]
+        },
+        {
+          "version_id": "v2",
+          "status": "modified",
+          "summary": "逐卡 drafting→audit→adoption 链真实执行并采纳 15 张卡，但 7 小时吞吐证明 gate 粒度和 worker 生命周期不可扩展。",
+          "event_ids": ["codex:codex-primary-v2-v3-handoff:H003", "codex:codex-primary-v2-v3-handoff:H004"],
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/iterations/"]
+        },
+        {
+          "version_id": "v3",
+          "status": "modified",
+          "summary": "批量 adoption 将 171 drafts 发布到 loop-local KB；它修复 throughput，却没有形成正文不可改写、状态幂等的 scripted ingest。",
+          "event_ids": ["claude_code:claude-primary-v3:H008", "claude_code:claude-primary-v3:H009"],
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/"]
+        },
+        {
+          "version_id": "v4",
+          "status": "failed",
+          "summary": "seed 15 张用 shell copy/status flip promotion；全量 240 张直接写 accepted KB，Ingest 只重建 index，设计 gate 被跳过。",
+          "event_ids": ["claude_code:claude-primary-v4:H001", "claude_code:claude-primary-v4:H010", "claude_code:claude-primary-v4:H014"],
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/learnings/pipeline_actual.md"]
+        },
+        {
+          "version_id": "v5",
+          "status": "retained",
+          "summary": "脚本化 ingest 保护结构一致性，但不会评估卡片是否真正包含足够知识。",
+          "event_ids": ["claude_code:claude-primary-v5:H002"],
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/tools/ingest.py"]
+        }
+      ],
+      "known_gaps": [
+        "该 gate 能证明文件结构被正确搬运，不能证明上游 Q&A 和正文质量。",
+        "ingest.py 不调用 yaml_lint、不验证 citation/JJ/body，并把所有非 superseded cards 直接改为 accepted。"
+      ]
+    },
+    {
+      "stage_id": "fusion-decision",
+      "sequence": 5,
+      "label": "比较、Fusion 与边界判断",
+      "stage_kind": "decision",
+      "summary": "比较新旧知识对象，判断重复、融合、区分或建立关系；从 V3 的 Top-3 comparison 逐步演化到 grep/alias recall 与 anti-merge。",
+      "rationale": {
+        "why": "在知识对象进入稳定集合前判断它与现有卡片的关系，避免重复、错误合并和边界漂移，并留下每个 pair 的决策依据。",
+        "observations": [
+          {
+            "claim": "V3 的 Top-3 comparison 硬编码 V2 corpus，171 张 V3 草稿没有彼此比较。",
+            "event_ids": ["claude_code:claude-primary-v3:H026"]
+          },
+          {
+            "claim": "V4 并行生产跳过 inline fusion，发布后才用 cluster workflow 补 comparison 与 link。",
+            "event_ids": ["claude_code:claude-primary-v4:H015"]
+          }
+        ],
+        "assumptions": [
+          {
+            "claim": "仅靠标题相似度 Top-K 就能给 semantic merge 提供充分候选。",
+            "status": "broken",
+            "event_ids": ["claude_code:claude-primary-v3:H026"]
+          },
+          {
+            "claim": "不确定时优先保留并建立关系，比激进 merge 更能保护原子知识边界。",
+            "status": "working",
+            "event_ids": ["claude_code:claude-primary-v5:H002"]
+          }
+        ]
+      },
+      "inputs": ["candidate cards 与当前 KB", "可重放的 recall candidates"],
+      "actions": ["召回相似或相反知识", "阅读全文后判断 duplicate/merge/link/unrelated", "保存判定依据"],
+      "outputs": ["保留、融合或 superseded 结果", "card links 与 comparison/fusion provenance"],
+      "entry_gate": "需要比较的候选集合已经稳定；采用 batch-first 的版本必须等全部 extraction 完成。",
+      "exit_gate": "每个候选必须保留判定依据；不确定时优先 distinct_link。",
+      "outcome": "partial",
+      "audit_control_ids": ["fusion-boundary", "source-faithfulness"],
+      "artifact_refs": [
+        "loops/v5_llm_wiki_loop_20260612/tools/fusion_candidates.py",
+        "loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/drafts/cards/"
+      ],
+      "evidence": [
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H007",
+          "role": "retrospective",
+          "fact_status": "retrospective",
+          "claim": "V0 没有跨知识对象的 similarity/fusion gate；对象级错误只能由用户在整库层面发现。",
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/README.md"]
+        },
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H018",
+          "role": "retrospective",
+          "fact_status": "retrospective",
+          "claim": "V1 没有 atomic candidate comparison 或 fusion；topic-node 规划在生产前已经固定了边界。",
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/audits/focus_drift_audit_20260524/"]
+        },
+        {
+          "event_id": "codex:codex-primary-v2-v3-handoff:H008",
+          "role": "decision",
+          "fact_status": "specified",
+          "claim": "V2 设计了标题分词、Jaccard Top-3 和三问 comparison 的轻量 similarity gate，但它形成在 15 张卡之后，未完成全量闭环。",
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/README.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v3:H026",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "用户审计确认 V3 的 Top-3 工具硬编码 V2 的 15 张卡，171 张 V3 drafts 从未彼此比较，因而没有有效 intra-V3 fusion。",
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/tools/similarity_top3.py"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v4:H015",
+          "role": "correction",
+          "fact_status": "observed_failure",
+          "claim": "V4 并行 production 跳过 inline fusion；用户把 post-hoc related 修复纠正为必须读卡判断 merge、distinct-link 或 keep 的语义治理。",
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/learnings/operational_lessons.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H002",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "执行总结记录 163 个候选对经判定后留下 477 张 active cards；仓库缺少逐对裁决账本。",
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/learnings/execution_summary.md"]
+        }
+      ],
+      "evolution": [
+        {
+          "version_id": "v0",
+          "status": "absent",
+          "summary": "没有 candidate recall、pair comparison 或 merge decision；版本影响与 citation graph 不等于知识对象 fusion。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H007"],
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/README.md"]
+        },
+        {
+          "version_id": "v1",
+          "status": "absent",
+          "summary": "topic planning 先决定节点边界，再在节点内聚合来源；没有面向 atomic candidates 的相似召回和融合账本。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H018"],
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/README.md"]
+        },
+        {
+          "version_id": "v2",
+          "status": "introduced",
+          "summary": "规定 draft 后做 Jieba/Jaccard Top-3、回答共同点/差异/行动依据并保存 provenance；设计已落盘，但未对全部 15 张既有卡重跑。",
+          "event_ids": ["codex:codex-primary-v2-v3-handoff:H006", "codex:codex-primary-v2-v3-handoff:H008", "codex:codex-primary-v2-v3-handoff:H023"],
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/README.md"]
+        },
+        {
+          "version_id": "v3",
+          "status": "failed",
+          "summary": "171 份 comparison 只对 V2 的 15 张卡做 Top-3，得到 163 new_card、8 provenance_delta、0 merge；没有 V3 self-dedup 或真实 merge。",
+          "event_ids": ["claude_code:claude-primary-v3:H006", "claude_code:claude-primary-v3:H026"],
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/tools/similarity_top3.py"]
+        },
+        {
+          "version_id": "v4",
+          "status": "failed",
+          "summary": "初始全量并行导致新卡彼此不可见；随后以 37-cluster post-publication workflow 补 comparison/link，但没有恢复 pre-promotion fusion ledger。",
+          "event_ids": ["claude_code:claude-primary-v4:H013", "claude_code:claude-primary-v4:H015", "claude_code:claude-primary-v4:H016"],
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/learnings/operational_lessons.md"]
+        },
+        {
+          "version_id": "v5",
+          "status": "modified",
+          "summary": "以 anti-merge bias 保留原子性，绝大多数相近卡选择 link 而非 merge。",
+          "event_ids": ["claude_code:claude-primary-v5:H002"],
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/CLAUDE_CODE_HANDOFF.md"]
+        }
+      ],
+      "known_gaps": [
+        "现有审计主要验证最终重叠比例，尚未逐项公开 163 个候选的完整判定证据。",
+        "fusion_candidates.py 只发现共享 canonical/alias term，不负责 duplicate/merge/link 的语义裁决。"
+      ]
+    },
+    {
+      "stage_id": "graph-governance",
+      "sequence": 6,
+      "label": "关系治理与图修复",
+      "stage_kind": "transform",
+      "summary": "维护 citation、related、backlink、orphan 和 impact 关系；治理从版本影响传播与 citation graph 演化到 card-level grep 和批量图修复。",
+      "rationale": {
+        "why": "让卡片不只独立正确，还能被导航、追溯和更新；同时把来源引用、语义关系与版本影响分开，避免一种边承担所有含义。",
+        "observations": [
+          {
+            "claim": "V3 将 Footnotes 设为引用事实源，并把 related 调整为可再生 metadata。",
+            "event_ids": ["claude_code:claude-primary-v3:H020"]
+          },
+          {
+            "claim": "V4 的后验图修复产生 YAML 双格式、断链、孤岛和非对称问题。",
+            "event_ids": ["claude_code:claude-primary-v4:H031"]
+          }
+        ],
+        "assumptions": [
+          {
+            "claim": "语义关系应从正文与引用证据派生，而不是由批量脚本凭标题猜测。",
+            "status": "validated",
+            "event_ids": ["claude_code:claude-primary-v3:H020", "claude_code:claude-primary-v4:H031"]
+          },
+          {
+            "claim": "拓扑指标变好，就代表知识内容和生产合同也变好。",
+            "status": "broken",
+            "event_ids": ["claude_code:claude-primary-v5:H006", "claude_code:claude-primary-v5:H016"]
+          }
+        ]
+      },
+      "inputs": ["accepted cards 与关系证据", "comparison/fusion/link decisions"],
+      "actions": ["建立或派生关系", "检查 dangling/orphan/backlink", "记录影响传播和必要修复"],
+      "outputs": ["可导航知识图", "graph health 与 repair evidence"],
+      "entry_gate": "卡片集合稳定，fusion 已结束。",
+      "exit_gate": "零 dangling reference、YAML 可解析、orphan 与 asymmetry 低于阈值。",
+      "outcome": "mixed",
+      "audit_control_ids": ["graph-integrity", "schema-validity"],
+      "artifact_refs": [
+        "loops/v5_llm_wiki_loop_20260612/tools/batch_link.py",
+        "loops/v5_llm_wiki_loop_20260612/tools/backward_backlink.py",
+        "loops/v5_llm_wiki_loop_20260612/tools/yaml_lint.py"
+      ],
+      "evidence": [
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H002",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V0 建立 35 条 citation edges 和 4 个开放 impact entries，把关系治理建模为来源引用与版本影响传播。",
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/kb_initialization_demo_report.md"]
+        },
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H016",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V1 的 8 个 topic nodes 最终形成 185 条 citation edges，并修复 References/Footnotes section 顺序；图仍围绕 hub bundle。",
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/generated/status.yaml"]
+        },
+        {
+          "event_id": "codex:codex-primary-v2-v3-handoff:H010",
+          "role": "decision",
+          "fact_status": "specified",
+          "claim": "V2 为 scoped card 规定 References、claim-level Footnotes 和 sidecar provenance，但没有形成强 card-to-card graph。",
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/README.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v3:H020",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V3 在先手工补 974 条 related edges 后，将 Footnotes 设为引用事实源，并从 Footnotes 派生 related metadata。",
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v4:H031",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "V4 FSJS 全库审计发现 YAML related 双格式、断裂引用、孤岛和非对称问题，证明 post-hoc 图修复本身也需要结构化写入与语义复核。",
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H006",
+          "role": "validation",
+          "fact_status": "executed",
+          "claim": "最终审计验证 0 dangling、0.4% orphan、0.5% asymmetry 和 0 YAML errors。",
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/kb/audits/v5_final_audit_report.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H016",
+          "role": "correction",
+          "fact_status": "retrospective",
+          "claim": "用户追问后确认治理能合并、降级和补链，但无法恢复上游从未提取的知识。",
+          "artifact_refs": []
+        }
+      ],
+      "evolution": [
+        {
+          "version_id": "v0",
+          "status": "introduced",
+          "summary": "以 citation graph 和 impact queue 表达来源依赖与版本影响；7 nodes 形成 35 edges，但尚无 atomic card navigation。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H002"],
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/kb_initialization_demo_report.md"]
+        },
+        {
+          "version_id": "v1",
+          "status": "modified",
+          "summary": "8 个 topic nodes 形成 185 citation edges，格式 gate 修复 Footnotes 位置；高密度图来自 hub-level aggregation，不代表 atomic relationships。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H016", "codex:codex-primary-v0-v2-boundary:H018"],
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/generated/status.yaml"]
+        },
+        {
+          "version_id": "v2",
+          "status": "introduced",
+          "summary": "把 source References、inline Footnotes 和 fusion provenance 分层写入合同；15-card 终态只有弱关系层，尚未形成可扩展 graph governance。",
+          "event_ids": ["codex:codex-primary-v2-v3-handoff:H010", "codex:codex-primary-v2-v3-handoff:H012"],
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/"]
+        },
+        {
+          "version_id": "v3",
+          "status": "modified",
+          "summary": "先批量生成 974 条 related edges，后经用户讨论统一为 sentence-level Footnotes，并把 related 改为可再生 metadata。",
+          "event_ids": ["claude_code:claude-primary-v3:H007", "claude_code:claude-primary-v3:H019", "claude_code:claude-primary-v3:H020"],
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/"]
+        },
+        {
+          "version_id": "v4",
+          "status": "failed",
+          "summary": "初始 link coverage 低，后用 cluster governance 和 FSJS 补图；过程中产生 YAML 双格式、孤岛和 footnote narrative leakage，终态是修复快照而非原始 pipeline。",
+          "event_ids": ["claude_code:claude-primary-v4:H015", "claude_code:claude-primary-v4:H031", "claude_code:claude-primary-v4:H036"],
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/audits/"]
+        },
+        {
+          "version_id": "v5",
+          "status": "modified",
+          "summary": "知识图机械拓扑显著改善，但不能证明指定的 sequential per-card governance 已执行，也不能替代知识正文质量。",
+          "event_ids": ["claude_code:claude-primary-v5:H006", "claude_code:claude-primary-v5:H016"],
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/learnings/execution_summary.md"]
+        }
+      ],
+      "known_gaps": [
+        "结构审计曾把图健康作为生产可用的重要依据，却没有同时验证卡片的解释充分性。",
+        "没有按 (source_id, created_time) 的逐卡 query/hit/judge/mutation ledger。",
+        "backward_backlink.py 将所有 related 边强制对称，未实现文档中对方向性关系的例外判断。"
+      ]
+    },
+    {
+      "stage_id": "publish-kb",
+      "sequence": 7,
+      "label": "验收、固化与发布",
+      "stage_kind": "publication",
+      "summary": "通过审计的 cards、justification、indexes、tools 和 learnings 被固化进入 Git；随后质量反证要求保留当时通过结论与失败结论两套事实。",
+      "rationale": {
+        "why": "把一次运行冻结为可追溯快照，同时明确实验 capsule、稳定产品与失败样本的边界，避免“文件已提交”被误读成“产品已成功”。",
+        "observations": [
+          {
+            "claim": "V0 和 V1 都完成了结构化交付，却因对象或产品形态错误被降级为 archive。",
+            "event_ids": ["codex:codex-primary-v0-v2-boundary:H007", "codex:codex-primary-v0-v2-boundary:H024"]
+          },
+          {
+            "claim": "V5 的 tools、cards 与 audit 已进入 Git，但用户仍把它定义为相对 V4 的失败品。",
+            "event_ids": ["claude_code:claude-primary-v5:H007", "claude_code:claude-primary-v5:H012"]
+          }
+        ],
+        "assumptions": [
+          {
+            "claim": "不可变 Git 快照足以保存某次运行的文件事实与后续纠错链。",
+            "status": "validated",
+            "event_ids": ["claude_code:claude-primary-v5:H007"]
+          },
+          {
+            "claim": "commit、索引与验收报告存在，就等于版本可以成为稳定产品。",
+            "status": "broken",
+            "event_ids": ["codex:codex-primary-v0-v2-boundary:H024", "claude_code:claude-primary-v5:H012"]
+          }
+        ]
+      },
+      "inputs": ["477 张 active cards", "audit reports", "learnings capsule"],
+      "actions": ["生成 indexes", "提交 loop artifacts", "记录审计与遗留问题"],
+      "outputs": ["Git commit ca3865b7 及后续修订", "可复核 V5 快照"],
+      "entry_gate": "指定 audit gates 已运行，冲突和未完成项已披露。",
+      "exit_gate": "产物进入 Git，提交边界能解释决策、动作和结果。",
+      "outcome": "mixed",
+      "audit_control_ids": ["state-consistency", "pipeline-conformance", "knowledge-depth"],
+      "artifact_refs": ["git:ca3865b7", "loops/v5_llm_wiki_loop_20260612/learnings/"],
+      "evidence": [
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H008",
+          "role": "correction",
+          "fact_status": "executed",
+          "claim": "V0 的 7-node KB 在发现对象错误后被保留为 demo 并归档，而不是继续充当 active LLM Wiki。",
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/README.md"]
+        },
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H024",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "V1 虽完成 8 个可索引 topic views，却被用户判定为不可读的中间态，不应 promotion 为稳定产品。",
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/README.md"]
+        },
+        {
+          "event_id": "codex:codex-primary-v2-v3-handoff:H031",
+          "role": "decision",
+          "fact_status": "executed",
+          "claim": "V2 确立 loop-local KB 与根稳定产品的边界：实验产物留在 capsule，只有 human promotion 才能进入根产品。",
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/manifest.json"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v3:H009",
+          "role": "execution",
+          "fact_status": "executed",
+          "claim": "V3 将 171 张卡发布进 loop-local KB、索引和 bookkeeping；没有证据表明它被 promotion 到根稳定 llm_wiki。",
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v4:H053",
+          "role": "execution",
+          "fact_status": "git_verified",
+          "claim": "V4 经多轮 post-publication 修复从 259 增至 328 张卡；最终快照包含后补 webpage cards，不能当作原始 pipeline 的一次性执行结果。",
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H007",
+          "role": "execution",
+          "fact_status": "git_verified",
+          "claim": "工具、skills、477 张 cards、justification、audit 和 learnings 被固化为 Git commit ca3865b7。",
+          "artifact_refs": ["git:ca3865b7"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H012",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "用户把 V5 定义为相对 V4 的失败品，并将其转作流程实验样本。",
+          "artifact_refs": []
+        }
+      ],
+      "evolution": [
+        {
+          "version_id": "v0",
+          "status": "failed",
+          "summary": "7 adopted nodes、7 views 和报告均被固化，但因 topic/object 错误转为 archive demo；结构成功不等于产品成功。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H002", "codex:codex-primary-v0-v2-boundary:H008"],
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/README.md"]
+        },
+        {
+          "version_id": "v1",
+          "status": "failed",
+          "summary": "8 topic views、185 edges 和 final QA 均完成，但用户拒绝 top-down hub 作为目标；版本作为 skeleton 归档而未进入稳定产品。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H016", "codex:codex-primary-v0-v2-boundary:H024"],
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/README.md"]
+        },
+        {
+          "version_id": "v2",
+          "status": "modified",
+          "summary": "15 张 accepted cards 进入 V2 loop-local KB；随后仓库合同明确实验 KB 留在 capsule，根产品需要单独 human promotion。",
+          "event_ids": ["codex:codex-primary-v2-v3-handoff:H003", "codex:codex-primary-v2-v3-handoff:H031"],
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/outputs/llm_wiki/kb/"]
+        },
+        {
+          "version_id": "v3",
+          "status": "modified",
+          "summary": "171 张卡、provenance 和 index 发布到 V3 capsule；Git bookkeeping 曾受 CLI classifier 阻塞，且没有根稳定产品 promotion。",
+          "event_ids": ["claude_code:claude-primary-v3:H009", "claude_code:claude-primary-v3:H031"],
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/outputs/llm_wiki/kb/"]
+        },
+        {
+          "version_id": "v4",
+          "status": "failed",
+          "summary": "全量 extraction 直接发布 accepted cards，随后 259→280→295→328 多次修复；最终 328-card 快照不能证明原始 questioning/promotion/fusion 合同。",
+          "event_ids": ["claude_code:claude-primary-v4:H010", "claude_code:claude-primary-v4:H053"],
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/outputs/llm_wiki/kb/"]
+        },
+        {
+          "version_id": "v5",
+          "status": "failed",
+          "summary": "文件与结构验收完成，但知识质量未达到用户标准；发布快照应作为失败实验保留，而非成功模板。",
+          "event_ids": ["claude_code:claude-primary-v5:H007", "claude_code:claude-primary-v5:H012"],
+          "artifact_refs": ["git:ca3865b7"]
+        }
+      ],
+      "known_gaps": ["后续实验产物尚未形成一个被用户明确验收的 V5 replacement KB。"]
+    },
+    {
+      "stage_id": "failure-feedback",
+      "sequence": 8,
+      "label": "失败反馈与重提取实验",
+      "stage_kind": "feedback",
+      "summary": "把吞吐、知识质量、成本、遗漏或用户阅读失败转成下一轮 pipeline 设计输入，并保留失败样本而非覆盖历史。",
+      "rationale": {
+        "why": "把真实使用中的失败提升为机制输入：先冻结反例，再定位失效阶段，最后用下一轮实验验证修订，而不是只修饰当前终态。",
+        "observations": [
+          {
+            "claim": "从 V0 对象错误到 V2 吞吐失败，用户反馈直接改写了下一版的知识对象和生产顺序。",
+            "event_ids": ["codex:codex-primary-v0-v2-boundary:H007", "codex:codex-primary-v2-v3-handoff:H004"]
+          },
+          {
+            "claim": "V5 被明确保留为失败实验，并要求新 workflow 至少恢复 V4 的质量。",
+            "event_ids": ["claude_code:claude-primary-v5:H012"]
+          }
+        ],
+        "assumptions": [
+          {
+            "claim": "具体失败样本比抽象复盘更容易定位生产链中的失效边界。",
+            "status": "validated",
+            "event_ids": ["claude_code:claude-primary-v3:H026", "claude_code:claude-primary-v5:H014"]
+          },
+          {
+            "claim": "修复后的最终快照可以反向证明原始 pipeline 当时正确执行。",
+            "status": "broken",
+            "event_ids": ["claude_code:claude-primary-v4:H055"]
+          }
+        ]
+      },
+      "inputs": ["失败 cards、审计 findings 与用户纠偏", "前后版本对照"],
+      "actions": ["定位失败发生的 stage", "区分治理可修复与必须重提取", "设计下一版本或局部实验"],
+      "outputs": ["pipeline diagnosis", "下一版本约束、实验或 rework queue"],
+      "entry_gate": "必须保留失败样本、原始指标和当时结论，不能事后覆盖。",
+      "exit_gate": "修复或下一版本需要以同源/同问题对照和用户可解释的质量标准重新验证。",
+      "outcome": "mixed",
+      "audit_control_ids": ["knowledge-depth", "pipeline-conformance"],
+      "artifact_refs": [
+        "loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/kb/audits/v5_info_density_diagnosis.md",
+        "loops/v5_llm_wiki_loop_20260612/tools/extract_prompt_v2.md",
+        "loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/drafts/cards/experiment/"
+      ],
+      "evidence": [
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H007",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "V0 用户反馈把 failure 定位为 meta/object confusion，触发保留 demo、切换主题和重新读取 data 的第一次重构。",
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/README.md"]
+        },
+        {
+          "event_id": "codex:codex-primary-v0-v2-boundary:H024",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "V1 用户反馈同时指出核心对象、bottom-up 方向和可读性失败，促使 V2 把 atomic card 与 sidecar provenance 分开。",
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/audits/focus_drift_audit_20260524/"]
+        },
+        {
+          "event_id": "codex:codex-primary-v2-v3-handoff:H004",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "V2 的 7 小时/15 卡吞吐触发 draft-first 与 batch processing 反思；失败指标直接改写了 V3 的生产顺序。",
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/README.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v3:H026",
+          "role": "failure",
+          "fact_status": "observed_failure",
+          "claim": "V3 用户发现 comparison corpus 漂移到 V2；随后又把高成本、错误阶段顺序和 questioner-reader 设计转为下一版输入。",
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/audits/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v4:H055",
+          "role": "retrospective",
+          "fact_status": "retrospective",
+          "claim": "V4 把用户触发的多轮 pipeline、graph、source 和 audit 修复固化成 learnings capsule，但后验文档不能补证原始执行。",
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/learnings/"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H012",
+          "role": "decision",
+          "fact_status": "executed",
+          "claim": "用户要求把 V5 失败变成达到并超过 V4 的流程实验。",
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/tools/extract_prompt_v2.md"]
+        },
+        {
+          "event_id": "claude_code:claude-primary-v5:H020",
+          "role": "correction",
+          "fact_status": "retrospective",
+          "claim": "对 V4 编排方式的回答再次被修正，证明机制 recall 必须保留纠错链而非只保存最终说法。",
+          "artifact_refs": []
+        }
+      ],
+      "evolution": [
+        {
+          "version_id": "v0",
+          "status": "introduced",
+          "summary": "用户阅读发现 topic/object 错位，触发 archive demo 与 active reset；这是最早的“终态指标通过、产品对象失败”案例。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H007", "codex:codex-primary-v0-v2-boundary:H008"],
+          "artifact_refs": ["loops/v0_meta_kb_initialization_demo_20260524/README.md"]
+        },
+        {
+          "version_id": "v1",
+          "status": "modified",
+          "summary": "反馈从对象错误扩展到 top-down、周期过长和不可读；版本被降级为 hub skeleton，并为 V2 明确 atomic card。",
+          "event_ids": ["codex:codex-primary-v0-v2-boundary:H017", "codex:codex-primary-v0-v2-boundary:H018", "codex:codex-primary-v0-v2-boundary:H024"],
+          "artifact_refs": ["loops/v1_topic_hub_skeleton_20260524/audits/focus_drift_audit_20260524/"]
+        },
+        {
+          "version_id": "v2",
+          "status": "modified",
+          "summary": "7 小时只产 15 卡把 throughput 与 worker lifecycle 变成显性失败信号，推动 batch draft-first、后置 comparison 和新 schema。",
+          "event_ids": ["codex:codex-primary-v2-v3-handoff:H004", "codex:codex-primary-v2-v3-handoff:H005"],
+          "artifact_refs": ["loops/v2_llm_wiki_loop_20260525/README.md"]
+        },
+        {
+          "version_id": "v3",
+          "status": "modified",
+          "summary": "比较语料漂移、重复后处理成本和阶段顺序错误被逐项发现；V3 后期把这些失败转成 grep-first fusion 与 questioner-reader future plan。",
+          "event_ids": ["claude_code:claude-primary-v3:H022", "claude_code:claude-primary-v3:H025", "claude_code:claude-primary-v3:H026", "claude_code:claude-primary-v3:H057"],
+          "artifact_refs": ["loops/v3_llm_wiki_loop_20260525/audits/"]
+        },
+        {
+          "version_id": "v4",
+          "status": "modified",
+          "summary": "失败反馈成为独立生产面：用户纠偏→agent team 讨论→workflow 执行→FSJS 审计→修复→learnings；它改善终态，但不覆盖历史。",
+          "event_ids": ["claude_code:claude-primary-v4:H012", "claude_code:claude-primary-v4:H031", "claude_code:claude-primary-v4:H055"],
+          "artifact_refs": ["loops/v4_llm_wiki_loop_20260602/learnings/"]
+        },
+        {
+          "version_id": "v5",
+          "status": "retrospective",
+          "summary": "失败后建立了修正版 prompt 和对照实验，但尚未替代整套 V5 KB。",
+          "event_ids": ["claude_code:claude-primary-v5:H012", "claude_code:claude-primary-v5:H020"],
+          "artifact_refs": ["loops/v5_llm_wiki_loop_20260612/outputs/llm_wiki/drafts/cards/experiment/"]
+        }
+      ],
+      "known_gaps": ["实验报告中的优势指标仍需与用户定义的“知识是否被解释清楚”进行人工验收。"]
+    }
+  ],
+  "edges": [
+    {"from":"source-route","to":"questioning-extraction","type":"gate","label":"有效材料才能进入消化"},
+    {"from":"questioning-extraction","to":"reframe-drafts","type":"flow","label":"Q&A 转为知识候选"},
+    {"from":"reframe-drafts","to":"scripted-ingest","type":"gate","label":"结构与证据合格后入库"},
+    {"from":"scripted-ingest","to":"fusion-decision","type":"flow","label":"稳定卡集进入比较"},
+    {"from":"fusion-decision","to":"graph-governance","type":"flow","label":"保留、融合或建立关系"},
+    {"from":"graph-governance","to":"publish-kb","type":"gate","label":"结构审计后固化"},
+    {"from":"publish-kb","to":"failure-feedback","type":"feedback","label":"用户阅读反证成功声明"},
+    {"from":"failure-feedback","to":"questioning-extraction","type":"rework","label":"完整合同注入与选择性重提取"}
+  ],
+  "controls": [],
+  "known_gaps": [
+    "V0-V5 的完整演化已覆盖到稳定 stage，但每版内部仍可能存在 seed、full batch、repair 等多种 runtime shape；界面以 evolution 摘要保留差异，不声称是逐工具调用日志。",
+    "V5 的 477 张卡被完整保留，但本模块不把“审计通过”自动解释为“入库质量通过”。"
+  ]
+}

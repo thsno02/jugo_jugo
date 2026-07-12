@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jugo-jugo.example/schemas/source-registry.schema.json",
+  "title": "Interaction Source Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "sources"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "2.0.0" },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "provider", "source_kind", "session_id", "session_role", "parent_session_id", "version_ids", "local_locator", "public_locator", "privacy", "coverage"],
+        "properties": {
+          "source_id": { "type": "string" },
+          "provider": { "enum": ["codex", "claude_code", "repository", "git", "other"] },
+          "source_kind": { "enum": ["session_jsonl", "subagent_jsonl", "workflow_journal", "repository_file", "git_history", "audit_summary"] },
+          "session_id": { "type": ["string", "null"] },
+          "session_role": { "enum": ["primary", "subagent", "retrospective", "not_applicable"] },
+          "parent_session_id": { "type": ["string", "null"] },
+          "version_ids": { "type": "array", "items": { "type": "string" } },
+          "local_locator": { "type": "string" },
+          "public_locator": { "type": ["string", "null"] },
+          "privacy": { "enum": ["local_only", "publishable_reference", "private"] },
+          "coverage": { "enum": ["primary", "secondary", "retrospective", "supporting"] },
+          "notes": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jugo-jugo.example/schemas/archive-manifest.schema.json",
+  "title": "LLM Wiki Interaction Archive Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "archive_id",
+    "archive_revision",
+    "title",
+    "description",
+    "project",
+    "canonical_content_roots",
+    "versions_file",
+    "source_registry_file",
+    "source_map_file",
+    "session_audit_file",
+    "module_registry_file",
+    "query_timeline_file",
+    "event_shards",
+    "preservation_policy",
+    "coverage",
+    "privacy_gate",
+    "generated_views",
+    "migration_history"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "2.0.0" },
+    "archive_id": { "type": "string", "minLength": 1 },
+    "archive_revision": { "type": "integer", "minimum": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "repository", "main_language", "timezone"],
+      "properties": {
+        "slug": { "type": "string" },
+        "repository": { "type": "string" },
+        "main_language": { "type": "string" },
+        "timezone": { "type": "string" }
+      }
+    },
+    "canonical_content_roots": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "versions_file": { "type": "string" },
+    "source_registry_file": { "type": "string" },
+    "source_map_file": { "type": "string" },
+    "session_audit_file": { "type": "string" },
+    "module_registry_file": { "type": "string" },
+    "query_timeline_file": { "type": "string" },
+    "event_shards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["shard_id", "file", "provider", "session_ids", "version_ids", "record_count", "privacy_status"],
+        "properties": {
+          "shard_id": { "type": "string" },
+          "file": { "type": "string" },
+          "provider": { "enum": ["codex", "claude_code", "other"] },
+          "session_ids": { "type": "array", "items": { "type": "string" } },
+          "version_ids": { "type": "array", "items": { "type": "string" } },
+          "record_count": { "type": "integer", "minimum": 0 },
+          "privacy_status": { "enum": ["unreviewed", "reviewed", "withheld"] },
+          "sha256": { "type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$" }
+        }
+      }
+    },
+    "preservation_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["user_input", "assistant_output", "subagent_records", "non_human_user_records", "raw_transcript", "public_build"],
+      "properties": {
+        "user_input": { "const": "verbatim_all_human_authored" },
+        "assistant_output": { "const": "core_insight_summary_not_verbatim" },
+        "subagent_records": { "const": "action_and_effect_evidence_only" },
+        "non_human_user_records": { "const": "classify_never_as_human_input" },
+        "raw_transcript": { "const": "local_only" },
+        "public_build": { "const": "reviewed_records_only" }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "version_ids", "denominator_status", "human_user_inputs_expected", "human_user_inputs_archived", "complete", "by_version", "by_session", "by_provider", "complete_windows", "known_gaps", "excluded_record_classes"],
+      "properties": {
+        "status": { "enum": ["vertical_slice", "in_progress", "complete"] },
+        "version_ids": { "type": "array", "items": { "type": "string" } },
+        "denominator_status": { "enum": ["unknown", "partial", "complete"] },
+        "human_user_inputs_expected": { "type": ["integer", "null"], "minimum": 0 },
+        "human_user_inputs_archived": { "type": "integer", "minimum": 0 },
+        "complete": { "type": "boolean" },
+        "by_version": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["version_id", "expected", "archived", "complete"],
+            "properties": {
+              "version_id": { "type": "string" },
+              "expected": { "type": ["integer", "null"], "minimum": 0 },
+              "archived": { "type": "integer", "minimum": 0 },
+              "complete": { "type": "boolean" }
+            }
+          }
+        },
+        "by_session": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source_id", "observed_human_inputs", "archived", "complete"],
+            "properties": {
+              "source_id": { "type": "string" },
+              "observed_human_inputs": { "type": ["integer", "null"], "minimum": 0 },
+              "archived": { "type": "integer", "minimum": 0 },
+              "complete": { "type": "boolean" }
+            }
+          }
+        },
+        "by_provider": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["provider", "archived"],
+            "properties": {
+              "provider": { "enum": ["codex", "claude_code", "other"] },
+              "archived": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "complete_windows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["window_id", "source_id", "scope", "expected", "archived", "complete"],
+            "properties": {
+              "window_id": { "type": "string" },
+              "source_id": { "type": "string" },
+              "scope": { "type": "string" },
+              "expected": { "type": "integer", "minimum": 0 },
+              "archived": { "type": "integer", "minimum": 0 },
+              "complete": { "type": "boolean" }
+            }
+          }
+        },
+        "known_gaps": { "type": "array", "items": { "type": "string" } },
+        "excluded_record_classes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "privacy_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["machine_scan", "human_review", "public_html_policy"],
+      "properties": {
+        "machine_scan": { "enum": ["not_run", "passed", "failed"] },
+        "human_review": { "enum": ["not_started", "in_progress", "passed", "failed"] },
+        "public_html_policy": { "const": "exclude_unreviewed_and_withheld" },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "generated_views": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["view_id", "file", "kind", "source_of_truth"],
+        "properties": {
+          "view_id": { "type": "string" },
+          "file": { "type": "string" },
+          "kind": { "enum": ["html", "json_cache", "markdown_review"] },
+          "source_of_truth": { "type": "boolean" }
+        }
+      }
+    },
+    "migration_history": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from", "to", "migrated_at", "description"],
+        "properties": {
+          "from": { "type": ["string", "null"] },
+          "to": { "type": "string" },
+          "migrated_at": { "type": "string", "format": "date-time" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,559 @@
+{
+  "$schema": "schema/archive-manifest.schema.json",
+  "schema_version": "2.0.0",
+  "archive_id": "jugo-jugo.llm-wiki-evolution",
+  "archive_revision": 6,
+  "title": "LLM Wiki 构建回忆档案",
+  "description": "从 v0 到 v5 还原用户如何通过 Codex 与 Claude Code 逐步构建 LLM Wiki。",
+  "project": {
+    "slug": "jugo_jugo_llm_wiki",
+    "repository": "thsno02/jugo_jugo",
+    "main_language": "zh",
+    "timezone": "Asia/Shanghai"
+  },
+  "canonical_content_roots": [
+    "content/"
+  ],
+  "versions_file": "registry/version-registry.json",
+  "source_registry_file": "registry/source-registry.json",
+  "source_map_file": "registry/source-map.json",
+  "session_audit_file": "registry/session-audit.json",
+  "module_registry_file": "registry/module-registry.json",
+  "query_timeline_file": "registry/query-timeline.json",
+  "event_shards": [
+    {
+      "shard_id": "codex-prehistory-research",
+      "file": "events/events.codex.prehistory-research.v2.jsonl",
+      "provider": "codex",
+      "session_ids": ["codex-prehistory-research"],
+      "version_ids": ["v0"],
+      "record_count": 9,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:c5bbf9ebf1d3d0f8e3affe76da01cd2bee3e0f9ecc356b41e828f16cd92e3866"
+    },
+    {
+      "shard_id": "codex-primary-v0-v1",
+      "file": "events/events.codex.primary-v0-v1.v2.jsonl",
+      "provider": "codex",
+      "session_ids": [
+        "codex-primary-v0-v2-boundary"
+      ],
+      "version_ids": [
+        "v0",
+        "v1",
+        "v2"
+      ],
+      "record_count": 31,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:987072fdf9eb9f4a719a041b9743e276dfb29b388484365fd59b39add41b4476"
+    },
+    {
+      "shard_id": "codex-primary-v2-boundary",
+      "file": "events/events.codex.primary-v2-boundary.v2.jsonl",
+      "provider": "codex",
+      "session_ids": [
+        "codex-primary-v0-v2-boundary"
+      ],
+      "version_ids": [
+        "v2"
+      ],
+      "record_count": 19,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:1a77a0a54028fe7f70a48a0a3bda686f4a73ef056503e8932b0dec120cfe8eab"
+    },
+    {
+      "shard_id": "codex-primary-v2-v3-handoff",
+      "file": "events/events.codex.primary-v2-v3.v2.jsonl",
+      "provider": "codex",
+      "session_ids": [
+        "codex-primary-v2-v3-handoff"
+      ],
+      "version_ids": [
+        "v2",
+        "v3"
+      ],
+      "record_count": 44,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:40799c41952450e3178d06c7a77fcc0f77d8e0d5f7c124ed0ee59e699c14d12e"
+    },
+    {
+      "shard_id": "codex-retro-v3-practice",
+      "file": "events/events.codex.retro-v3-practice.v2.jsonl",
+      "provider": "codex",
+      "session_ids": [
+        "codex-retro-v3-practice"
+      ],
+      "version_ids": [
+        "v3"
+      ],
+      "record_count": 23,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:f4738dd9034e49d4494cbb3ec93e77fdc58ed4108e09cf92604f15d8b5e1b788"
+    },
+    {
+      "shard_id": "codex-v3-query-probes",
+      "file": "events/events.codex.v3-query-probes.v2.jsonl",
+      "provider": "codex",
+      "session_ids": ["codex-v3-query-probes"],
+      "version_ids": ["v3"],
+      "record_count": 6,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:6cff5df93f4e2c2668d9f6379bbc68da7541dafae6380dbf201acab54f4d2767"
+    },
+    {
+      "shard_id": "codex-v3-presentation-render",
+      "file": "events/events.codex.v3-presentation-render.v2.jsonl",
+      "provider": "codex",
+      "session_ids": ["codex-v3-presentation-render"],
+      "version_ids": ["v3"],
+      "record_count": 2,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:697be145b953196f1642d6cf2b5f74f5262d2c9c133f914d306661a84cc0d9d1"
+    },
+    {
+      "shard_id": "codex-post-v5-repo-publish",
+      "file": "events/events.codex.post-v5-repo-publish.v2.jsonl",
+      "provider": "codex",
+      "session_ids": ["codex-post-v5-repo-publish"],
+      "version_ids": ["v5"],
+      "record_count": 1,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:15a5e96861cedef5fa26ad2ea4237577e59aac3458285c9c77852199211d3da8"
+    },
+    {
+      "shard_id": "codex-retro-daily-audit",
+      "file": "events/events.codex.retro-daily-audit.v2.jsonl",
+      "provider": "codex",
+      "session_ids": [
+        "codex-retro-daily-audit"
+      ],
+      "version_ids": [
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "record_count": 5,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:fdec86f777f1a86a3f2b41825fab4f876597604109701128d177a7b5d48ccc67"
+    },
+    {
+      "shard_id": "codex-retro-v4-v5-research",
+      "file": "events/events.codex.retro-v4-v5-research.v2.jsonl",
+      "provider": "codex",
+      "session_ids": [
+        "codex-retro-v4-v5-research"
+      ],
+      "version_ids": [
+        "v4",
+        "v5"
+      ],
+      "record_count": 1,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:19c303ee2695a963a94e5624f60addc7a6bf29ba77c1919e19c34601922779cb"
+    },
+    {
+      "shard_id": "claude-primary-v3",
+      "file": "events/events.claude.primary-v3.v2.jsonl",
+      "provider": "claude_code",
+      "session_ids": [
+        "claude-primary-v3"
+      ],
+      "version_ids": [
+        "v3"
+      ],
+      "record_count": 81,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:359abf25d9ea259a8ad5670850fcbac21786edb7f25e4b07c3739763011dd6a5"
+    },
+    {
+      "shard_id": "claude-v3-narrative-design",
+      "file": "events/events.claude.v3-narrative-design.v2.jsonl",
+      "provider": "claude_code",
+      "session_ids": ["claude-v3-narrative-design"],
+      "version_ids": ["v3"],
+      "record_count": 19,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:197a7f1d5db8c6b038afef594e998b089a77ac3c00223fc574e47cbc873b7f66"
+    },
+    {
+      "shard_id": "claude-v4-agent-effort-setup",
+      "file": "events/events.claude.v4-agent-effort-setup.v2.jsonl",
+      "provider": "claude_code",
+      "session_ids": ["claude-v4-agent-effort-setup"],
+      "version_ids": ["v4"],
+      "record_count": 4,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:b5df90beeb2b0a65b5d995d7967935a0d7677121cbae6d03b85a3998cf998c84"
+    },
+    {
+      "shard_id": "claude-primary-v4",
+      "file": "events/events.claude.primary-v4.v2.jsonl",
+      "provider": "claude_code",
+      "session_ids": [
+        "claude-primary-v4"
+      ],
+      "version_ids": [
+        "v4"
+      ],
+      "record_count": 59,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:8767b9c84a677e74260d9e2523c465c438cd19897621fae0a7d54a5ad8e14bec"
+    },
+    {
+      "shard_id": "claude-primary-v5",
+      "file": "events/events.claude.primary-v5.v2.jsonl",
+      "provider": "claude_code",
+      "session_ids": [
+        "claude-primary-v5"
+      ],
+      "version_ids": [
+        "v5"
+      ],
+      "record_count": 20,
+      "privacy_status": "reviewed",
+      "sha256": "sha256:47ced67f13cc3b8de2d52dc401a5c22ecdce8b5b0d6f08ade3b4c4486c3aab4b"
+    }
+  ],
+  "preservation_policy": {
+    "user_input": "verbatim_all_human_authored",
+    "assistant_output": "core_insight_summary_not_verbatim",
+    "subagent_records": "action_and_effect_evidence_only",
+    "non_human_user_records": "classify_never_as_human_input",
+    "raw_transcript": "local_only",
+    "public_build": "reviewed_records_only"
+  },
+  "coverage": {
+    "status": "complete",
+    "version_ids": [
+      "v0",
+      "v1",
+      "v2",
+      "v3",
+      "v4",
+      "v5"
+    ],
+    "denominator_status": "complete",
+    "human_user_inputs_expected": 324,
+    "human_user_inputs_archived": 324,
+    "complete": true,
+    "by_version": [
+      {
+        "version_id": "v0",
+        "expected": 22,
+        "archived": 22,
+        "complete": true
+      },
+      {
+        "version_id": "v1",
+        "expected": 28,
+        "archived": 28,
+        "complete": true
+      },
+      {
+        "version_id": "v2",
+        "expected": 80,
+        "archived": 80,
+        "complete": true
+      },
+      {
+        "version_id": "v3",
+        "expected": 157,
+        "archived": 157,
+        "complete": true
+      },
+      {
+        "version_id": "v4",
+        "expected": 69,
+        "archived": 69,
+        "complete": true
+      },
+      {
+        "version_id": "v5",
+        "expected": 22,
+        "archived": 22,
+        "complete": true
+      }
+    ],
+    "by_session": [
+      {
+        "source_id": "codex-prehistory-research",
+        "observed_human_inputs": 9,
+        "archived": 9,
+        "complete": true
+      },
+      {
+        "source_id": "codex-primary-v0-v2-boundary",
+        "observed_human_inputs": 50,
+        "archived": 50,
+        "complete": true
+      },
+      {
+        "source_id": "codex-primary-v2-v3-handoff",
+        "observed_human_inputs": 44,
+        "archived": 44,
+        "complete": true
+      },
+      {
+        "source_id": "claude-primary-v3",
+        "observed_human_inputs": 81,
+        "archived": 81,
+        "complete": true
+      },
+      {
+        "source_id": "claude-primary-v4",
+        "observed_human_inputs": 59,
+        "archived": 59,
+        "complete": true
+      },
+      {
+        "source_id": "claude-primary-v5",
+        "observed_human_inputs": 20,
+        "archived": 20,
+        "complete": true
+      },
+      {
+        "source_id": "codex-retro-v3-practice",
+        "observed_human_inputs": 23,
+        "archived": 23,
+        "complete": true
+      },
+      {
+        "source_id": "codex-retro-daily-audit",
+        "observed_human_inputs": 5,
+        "archived": 5,
+        "complete": true
+      },
+      {
+        "source_id": "codex-retro-v4-v5-research",
+        "observed_human_inputs": 1,
+        "archived": 1,
+        "complete": true
+      },
+      {
+        "source_id": "codex-v3-query-probes",
+        "observed_human_inputs": 6,
+        "archived": 6,
+        "complete": true
+      },
+      {
+        "source_id": "codex-v3-presentation-render",
+        "observed_human_inputs": 2,
+        "archived": 2,
+        "complete": true
+      },
+      {
+        "source_id": "codex-post-v5-repo-publish",
+        "observed_human_inputs": 1,
+        "archived": 1,
+        "complete": true
+      },
+      {
+        "source_id": "claude-v3-narrative-design",
+        "observed_human_inputs": 19,
+        "archived": 19,
+        "complete": true
+      },
+      {
+        "source_id": "claude-v4-agent-effort-setup",
+        "observed_human_inputs": 4,
+        "archived": 4,
+        "complete": true
+      }
+    ],
+    "by_provider": [
+      {
+        "provider": "codex",
+        "archived": 141
+      },
+      {
+        "provider": "claude_code",
+        "archived": 183
+      }
+    ],
+    "complete_windows": [
+      {
+        "window_id": "codex-prehistory-research-full-session",
+        "source_id": "codex-prehistory-research",
+        "scope": "full top-level session; repository purpose and v0 precursor research",
+        "expected": 9,
+        "archived": 9,
+        "complete": true
+      },
+      {
+        "window_id": "codex-primary-v0-v1-lines-7-3101",
+        "source_id": "codex-primary-v0-v2-boundary",
+        "scope": "JSONL lines 7-3101; v0/v1 and v2 contract boundary",
+        "expected": 31,
+        "archived": 31,
+        "complete": true
+      },
+      {
+        "window_id": "codex-primary-v2-boundary-lines-3163-5296",
+        "source_id": "codex-primary-v0-v2-boundary",
+        "scope": "JSONL lines 3163-5296; v2 language, agent mechanism and handoff boundary",
+        "expected": 19,
+        "archived": 19,
+        "complete": true
+      },
+      {
+        "window_id": "codex-primary-v2-v3-full-session",
+        "source_id": "codex-primary-v2-v3-handoff",
+        "scope": "full top-level session; v2 execution and v3 handoff",
+        "expected": 44,
+        "archived": 44,
+        "complete": true
+      },
+      {
+        "window_id": "codex-retro-v3-practice",
+        "source_id": "codex-retro-v3-practice",
+        "scope": "full top-level retrospective session; v3 practice reframe",
+        "expected": 23,
+        "archived": 23,
+        "complete": true
+      },
+      {
+        "window_id": "codex-retro-daily-audit",
+        "source_id": "codex-retro-daily-audit",
+        "scope": "full top-level retrospective session; daily audit package",
+        "expected": 5,
+        "archived": 5,
+        "complete": true
+      },
+      {
+        "window_id": "codex-retro-v4-v5-research",
+        "source_id": "codex-retro-v4-v5-research",
+        "scope": "full top-level retrospective session; v4/v5 style research",
+        "expected": 1,
+        "archived": 1,
+        "complete": true
+      },
+      {
+        "window_id": "claude-primary-v3-human-authored",
+        "source_id": "claude-primary-v3",
+        "scope": "full session after authorship classification; v3 execution",
+        "expected": 81,
+        "archived": 81,
+        "complete": true
+      },
+      {
+        "window_id": "claude-primary-v4-human-authored",
+        "source_id": "claude-primary-v4",
+        "scope": "full session after authorship classification; v4 execution",
+        "expected": 59,
+        "archived": 59,
+        "complete": true
+      },
+      {
+        "window_id": "claude-primary-v5-human-authored",
+        "source_id": "claude-primary-v5",
+        "scope": "full session after authorship classification; v5 execution",
+        "expected": 20,
+        "archived": 20,
+        "complete": true
+      },
+      {
+        "window_id": "codex-v3-query-probes-full-session",
+        "source_id": "codex-v3-query-probes",
+        "scope": "full top-level session; v3 query probes",
+        "expected": 6,
+        "archived": 6,
+        "complete": true
+      },
+      {
+        "window_id": "codex-v3-presentation-render-full-session",
+        "source_id": "codex-v3-presentation-render",
+        "scope": "full top-level session; v3 presentation rendering",
+        "expected": 2,
+        "archived": 2,
+        "complete": true
+      },
+      {
+        "window_id": "codex-post-v5-repo-publish-full-session",
+        "source_id": "codex-post-v5-repo-publish",
+        "scope": "full top-level session; post-v5 publication transition",
+        "expected": 1,
+        "archived": 1,
+        "complete": true
+      },
+      {
+        "window_id": "claude-v3-narrative-design-human-authored",
+        "source_id": "claude-v3-narrative-design",
+        "scope": "full session after authorship classification; v3 narrative design",
+        "expected": 19,
+        "archived": 19,
+        "complete": true
+      },
+      {
+        "window_id": "claude-v4-agent-effort-setup-human-actions",
+        "source_id": "claude-v4-agent-effort-setup",
+        "scope": "full session after authorship classification; 2 semantic inputs and 2 direct command actions",
+        "expected": 4,
+        "archived": 4,
+        "complete": true
+      }
+    ],
+    "known_gaps": [
+      "sub-agent 不产生人类输入；其动作已进入助手摘要和 observed effects，但尚未建立逐个 sub-agent 的独立公开索引。"
+    ],
+    "excluded_record_classes": [
+      "tool_result",
+      "system_context",
+      "compaction_summary",
+      "agent_task_packet",
+      "platform_event"
+    ]
+  },
+  "privacy_gate": {
+    "machine_scan": "passed",
+    "human_review": "passed",
+    "public_html_policy": "exclude_unreviewed_and_withheld",
+    "notes": [
+      "324 条归档事件均已逐条审阅；敏感字面量采用明确占位符脱敏。",
+      "10 个 Codex 与 9 个 Claude Code 顶层会话均已在 session-audit.json 中作出纳入或排除决定。",
+      "公开事件使用语义化 session alias；原始 locator 只保存在 gitignored local map。",
+      "原始 JSONL、工具输出、平台上下文、隐藏推理和 sub-agent task packet 不发布。"
+    ]
+  },
+  "generated_views": [
+    {
+      "view_id": "dashboard",
+      "file": "index.html",
+      "kind": "html",
+      "source_of_truth": false
+    }
+  ],
+  "migration_history": [
+    {
+      "from": "1.0.0",
+      "to": "2.0.0",
+      "migrated_at": "2026-07-12T00:00:00+08:00",
+      "description": "从 Claude 单 session demo 升级为 provider-neutral、version-first 的 LLM Wiki 演化档案。"
+    },
+    {
+      "from": "2.0.0",
+      "to": "2.0.0",
+      "migrated_at": "2026-07-12T01:40:00+08:00",
+      "description": "完成 v0-v5 主执行与 retrospective 导入，并将公开 session/message UUID 迁移为语义 alias；原始 locator 转入 gitignored local map。"
+    },
+    {
+      "from": "2.0.0-r3",
+      "to": "2.0.0-r4",
+      "migrated_at": "2026-07-12T03:00:00+08:00",
+      "description": "补审 10 个 Codex 与 9 个 Claude Code 顶层会话，纳入 41 条遗漏事件，并按 precursor、handoff、execution、retrospective 修复 V3 回放顺序。"
+    },
+    {
+      "from": "2.0.0-r4",
+      "to": "2.0.0-r5",
+      "migrated_at": "2026-07-12T04:20:00+08:00",
+      "description": "建立 module-level recall 与 query timeline 数据合同，并加入 V5 入库/审计双 demo。"
+    },
+    {
+      "from": "2.0.0-r5",
+      "to": "2.0.0-r6",
+      "migrated_at": "2026-07-12T06:00:00+08:00",
+      "description": "完成 V0-V5 入库与审计机制 evolution、control-level history 和六版 query timeline，并通过逐版本浏览器与引用校验。"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "../schema/source-map.schema.json",
+  "schema_version": "2.0.0",
+  "mappings": [
+    {
+      "mapping_id": "v0-topic-misalignment",
+      "version_id": "v0",
+      "claim_kind": "risk",
+      "claim": "v0 验证了机制，但把生产机制误当成 topic KB 内容。",
+      "evidence_refs": ["loops/v0_meta_kb_initialization_demo_20260524/README.md", "loops/v0_meta_kb_initialization_demo_20260524/status.json"],
+      "confidence": "high",
+      "notes": []
+    },
+    {
+      "mapping_id": "v1-top-down-unit",
+      "version_id": "v1",
+      "claim_kind": "transition",
+      "claim": "v1 的候选主题被当成生产单元，最终触发 v2 转向原子知识卡。",
+      "evidence_refs": ["loops/v1_topic_hub_skeleton_20260524/README.md", "loops/v1_topic_hub_skeleton_20260524/audits/focus_drift_audit_20260524/root_cause_analysis.md"],
+      "confidence": "high",
+      "notes": []
+    },
+    {
+      "mapping_id": "v0-v1-git-capsule",
+      "version_id": "v1",
+      "claim_kind": "artifact",
+      "claim": "v0/v1 首次进入当前 capsule 路径的提交是迁移提交，不是设计出生时间。",
+      "evidence_refs": ["git:396eca131ab4097b6cf4854f9575846e94268773"],
+      "confidence": "high",
+      "notes": ["必须和 session time、file declared time 分开显示。"]
+    },
+    {
+      "mapping_id": "v2-capsule-time-not-birth",
+      "version_id": "v2",
+      "claim_kind": "artifact",
+      "claim": "v2 在当前路径的首次提交同样来自 capsule layout 迁移，不能作为设计出生时间。",
+      "evidence_refs": ["git:396eca131ab4097b6cf4854f9575846e94268773", "loops/v2_llm_wiki_loop_20260525/decisions/"],
+      "confidence": "high",
+      "notes": ["决策文件内的声明时间和 Codex session time 更接近实际生产过程。"]
+    },
+    {
+      "mapping_id": "v3-first-tracked-artifact",
+      "version_id": "v3",
+      "claim_kind": "artifact",
+      "claim": "v3 当前路径最早可见提交是一张 draft card，证明该时点产物已进入 Git，不证明整个设计刚刚诞生。",
+      "evidence_refs": ["git:2a44b0e46b8e23f5773c872b713b60b0fab39532", "loops/v3_llm_wiki_loop_20260525/reports/loop_report.md"],
+      "confidence": "high",
+      "notes": []
+    },
+    {
+      "mapping_id": "v4-state-conflict",
+      "version_id": "v4",
+      "claim_kind": "risk",
+      "claim": "v4 的 setup 状态文件与后续执行、学习和 Git 证据冲突，完成性需要跨来源判断。",
+      "evidence_refs": ["loops/v4_llm_wiki_loop_20260602/status.json", "loops/v4_llm_wiki_loop_20260602/loop_state.json", "loops/v4_llm_wiki_loop_20260602/task.md", "loops/v4_llm_wiki_loop_20260602/learnings/next_loop_prep.md", "git:bc81cafa6440c1b435fc84f56cea702a4d67c6a6"],
+      "confidence": "conflicting",
+      "notes": ["HTML 应显式显示冲突，不能选一个状态覆盖其他证据。"]
+    },
+    {
+      "mapping_id": "v5-scale-and-residual-risk",
+      "version_id": "v5",
+      "claim_kind": "risk",
+      "claim": "v5 完成规模化治理，但 dead-source 计数和后续信息密度审计仍有分歧。",
+      "evidence_refs": ["loops/v5_llm_wiki_loop_20260612/learnings/execution_summary.md", "loops/v5_llm_wiki_loop_20260612/learnings/next_loop_prep.md", "git:624e52d0b6ab2ba6f054e4ca117cd9feec26fd84"],
+      "confidence": "conflicting",
+      "notes": ["保留不同报告中的数字及其来源。"]
+    }
+  ]
+}

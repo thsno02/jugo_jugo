@@ -1,0 +1,172 @@
+{
+  "$schema": "../schema/session-audit.schema.json",
+  "schema_version": "1.0.0",
+  "audited_at": "2026-07-12T03:00:00+08:00",
+  "scope": "与仓库根目录或其子目录关联的 Codex 顶层 session，以及 Claude Code 项目目录中的全部顶层 JSONL；sub-agent 单独计数但不视为人类会话。",
+  "discovery": {
+    "codex": {
+      "rule": "session_meta.cwd 位于仓库根目录或其子目录，且 source 不是 subagent",
+      "top_level_count": 10,
+      "subagent_count": 216
+    },
+    "claude_code": {
+      "rule": "Claude 项目目录下的顶层 *.jsonl；session 子目录中的 agent/workflow 文件不计为顶层会话",
+      "top_level_count": 9,
+      "subagent_count": null
+    }
+  },
+  "sessions": [
+    {
+      "session_alias": "codex-prehistory-research", "provider": "codex",
+      "first_observed_at": "2026-05-21T08:43:03.047Z", "last_observed_at": "2026-05-21T13:03:18.320Z",
+      "semantic_input_count": 9, "command_action_count": 0, "archived_event_count": 9,
+      "inclusion_status": "included", "relevance": "precursor", "version_ids": ["v0"],
+      "decision_reason": "保存 LLM Wiki 最初的仓库目标、原始知识库设想、来源覆盖和 agent/Git 工作方式，是 v0 之前的必要前史。",
+      "privacy_risk": "medium", "event_shard": "events/events.codex.prehistory-research.v2.jsonl"
+    },
+    {
+      "session_alias": "codex-primary-v0-v2-boundary", "provider": "codex",
+      "first_observed_at": "2026-05-23T20:51:46.572Z", "last_observed_at": "2026-05-24T18:59:49.978Z",
+      "semantic_input_count": 50, "command_action_count": 0, "archived_event_count": 50,
+      "inclusion_status": "included", "relevance": "primary", "version_ids": ["v0", "v1", "v2"],
+      "decision_reason": "包含 v0 机制验证、v1 topic hub 和 v2 合同边界的主执行链。",
+      "privacy_risk": "medium", "event_shard": "events/events.codex.primary-v0-v1.v2.jsonl + events/events.codex.primary-v2-boundary.v2.jsonl"
+    },
+    {
+      "session_alias": "codex-primary-v2-v3-handoff", "provider": "codex",
+      "first_observed_at": "2026-05-24T18:33:21.085Z", "last_observed_at": "2026-05-25T13:32:43.407Z",
+      "semantic_input_count": 44, "command_action_count": 0, "archived_event_count": 44,
+      "inclusion_status": "included", "relevance": "handoff", "version_ids": ["v2", "v3"],
+      "decision_reason": "记录 v2 性能问题如何形成 v3 的 draft-first 决策，并生成交给 Claude Code 的 V3 Loop Start Prompt。",
+      "privacy_risk": "medium", "event_shard": "events/events.codex.primary-v2-v3.v2.jsonl"
+    },
+    {
+      "session_alias": "codex-retro-v3-practice", "provider": "codex",
+      "first_observed_at": "2026-05-26T09:40:20.679Z", "last_observed_at": "2026-05-28T03:25:44.352Z",
+      "semantic_input_count": 23, "command_action_count": 0, "archived_event_count": 23,
+      "inclusion_status": "included", "relevance": "retrospective", "version_ids": ["v3"],
+      "decision_reason": "后验重构 v3 实践与 user-insights；用于复盘，不作为执行起点。",
+      "privacy_risk": "medium", "event_shard": "events/events.codex.retro-v3-practice.v2.jsonl"
+    },
+    {
+      "session_alias": "codex-v3-query-probes", "provider": "codex",
+      "first_observed_at": "2026-05-27T09:22:18.031Z", "last_observed_at": "2026-06-11T03:46:26.571Z",
+      "semantic_input_count": 6, "command_action_count": 0, "archived_event_count": 6,
+      "inclusion_status": "included", "relevance": "retrospective", "version_ids": ["v3"],
+      "decision_reason": "直接记录用户如何用 architecture、problem、RAG 和 graph 查询探测 v3 知识卡质量；重复失败查询也保留。",
+      "privacy_risk": "low", "event_shard": "events/events.codex.v3-query-probes.v2.jsonl"
+    },
+    {
+      "session_alias": "codex-v3-presentation-render", "provider": "codex",
+      "first_observed_at": "2026-06-02T04:37:56.002Z", "last_observed_at": "2026-06-02T06:12:00.543Z",
+      "semantic_input_count": 2, "command_action_count": 0, "archived_event_count": 2,
+      "inclusion_status": "included", "relevance": "retrospective", "version_ids": ["v3"],
+      "decision_reason": "把 v3 的构建叙事渲染为可传播的 HTML/PNG，是对该版本意义的后验表达。",
+      "privacy_risk": "low", "event_shard": "events/events.codex.v3-presentation-render.v2.jsonl"
+    },
+    {
+      "session_alias": "codex-retro-daily-audit", "provider": "codex",
+      "first_observed_at": "2026-06-11T08:36:59.834Z", "last_observed_at": "2026-06-11T12:10:53.906Z",
+      "semantic_input_count": 5, "command_action_count": 0, "archived_event_count": 5,
+      "inclusion_status": "included", "relevance": "retrospective", "version_ids": ["v0", "v1", "v2", "v3", "v4"],
+      "decision_reason": "生成日度时间线和审计 package，为跨版本事实提供后验证据。",
+      "privacy_risk": "medium", "event_shard": "events/events.codex.retro-daily-audit.v2.jsonl"
+    },
+    {
+      "session_alias": "codex-post-v5-repo-publish", "provider": "codex",
+      "first_observed_at": "2026-06-11T17:52:03.484Z", "last_observed_at": "2026-06-11T17:52:03.484Z",
+      "semantic_input_count": 1, "command_action_count": 0, "archived_event_count": 1,
+      "inclusion_status": "included", "relevance": "retrospective", "version_ids": ["v5"],
+      "decision_reason": "记录 v5 后清理绝对路径和批量 Git publish 的要求，属于版本产物进入公开仓库的转出动作。",
+      "privacy_risk": "medium", "event_shard": "events/events.codex.post-v5-repo-publish.v2.jsonl"
+    },
+    {
+      "session_alias": "codex-retro-v4-v5-research", "provider": "codex",
+      "first_observed_at": "2026-06-15T03:48:47.817Z", "last_observed_at": "2026-06-15T03:48:47.817Z",
+      "semantic_input_count": 1, "command_action_count": 0, "archived_event_count": 1,
+      "inclusion_status": "included", "relevance": "retrospective", "version_ids": ["v4", "v5"],
+      "decision_reason": "比较 v4/v5 风格与机制，是后验研究证据。",
+      "privacy_risk": "low", "event_shard": "events/events.codex.retro-v4-v5-research.v2.jsonl"
+    },
+    {
+      "session_alias": "codex-archive-construction", "provider": "codex",
+      "first_observed_at": "2026-07-09T13:44:25.665Z", "last_observed_at": null,
+      "semantic_input_count": null, "command_action_count": null, "archived_event_count": 0,
+      "inclusion_status": "meta_excluded", "relevance": "archive_construction", "version_ids": [],
+      "decision_reason": "当前会话用于构建这份回忆档案；纳入 v0-v5 会产生递归，故只登记存在与排除理由。",
+      "privacy_risk": "high", "event_shard": null
+    },
+    {
+      "session_alias": "claude-primary-v3", "provider": "claude_code",
+      "first_observed_at": "2026-05-25T13:34:03.001Z", "last_observed_at": "2026-06-04T14:09:13.194Z",
+      "semantic_input_count": 81, "command_action_count": 0, "archived_event_count": 81,
+      "inclusion_status": "included", "relevance": "primary", "version_ids": ["v3"],
+      "decision_reason": "V3 Loop Start Prompt 之后的主要执行会话。",
+      "privacy_risk": "medium", "event_shard": "events/events.claude.primary-v3.v2.jsonl"
+    },
+    {
+      "session_alias": "claude-v3-narrative-design", "provider": "claude_code",
+      "first_observed_at": "2026-05-28T03:38:50.048Z", "last_observed_at": "2026-06-02T05:28:09.795Z",
+      "semantic_input_count": 19, "command_action_count": 0, "archived_event_count": 19,
+      "inclusion_status": "included", "relevance": "retrospective", "version_ids": ["v3"],
+      "decision_reason": "包含用户对 LLM Wiki 定义、DIKW、Graphify/GraphRAG 和演示叙事的关键洞察，必须用于 recall v3 的意义。",
+      "privacy_risk": "medium", "event_shard": "events/events.claude.v3-narrative-design.v2.jsonl"
+    },
+    {
+      "session_alias": "claude-primary-v4", "provider": "claude_code",
+      "first_observed_at": "2026-06-04T14:11:05.413Z", "last_observed_at": "2026-06-12T02:36:58.582Z",
+      "semantic_input_count": 59, "command_action_count": 0, "archived_event_count": 59,
+      "inclusion_status": "included", "relevance": "primary", "version_ids": ["v4"],
+      "decision_reason": "v4 独立 0→1 questioner/reader 构建的主要执行会话。",
+      "privacy_risk": "medium", "event_shard": "events/events.claude.primary-v4.v2.jsonl"
+    },
+    {
+      "session_alias": "claude-v4-agent-effort-setup", "provider": "claude_code",
+      "first_observed_at": "2026-06-04T13:42:45.889Z", "last_observed_at": "2026-06-04T14:10:45.094Z",
+      "semantic_input_count": 2, "command_action_count": 2, "archived_event_count": 4,
+      "inclusion_status": "included", "relevance": "operational_context", "version_ids": ["v4"],
+      "decision_reason": "记录 v4 前对 sub-agent 最大 thinking effort 的工作方式设定；只保留人类输入和命令，所有工具输出都排除。",
+      "privacy_risk": "critical", "event_shard": "events/events.claude.v4-agent-effort-setup.v2.jsonl"
+    },
+    {
+      "session_alias": "claude-primary-v5", "provider": "claude_code",
+      "first_observed_at": "2026-06-12T02:33:47.960Z", "last_observed_at": "2026-06-12T16:39:36.317Z",
+      "semantic_input_count": 20, "command_action_count": 0, "archived_event_count": 20,
+      "inclusion_status": "included", "relevance": "primary", "version_ids": ["v5"],
+      "decision_reason": "v5 source router 与规模化知识图治理的主要执行会话。",
+      "privacy_risk": "medium", "event_shard": "events/events.claude.primary-v5.v2.jsonl"
+    },
+    {
+      "session_alias": "claude-model-command-only", "provider": "claude_code",
+      "first_observed_at": "2026-06-11T16:18:05.353Z", "last_observed_at": "2026-06-11T16:18:05.353Z",
+      "semantic_input_count": 0, "command_action_count": 1, "archived_event_count": 0,
+      "inclusion_status": "excluded", "relevance": "irrelevant", "version_ids": [],
+      "decision_reason": "只有模型切换命令，没有 LLM Wiki 语义输入。",
+      "privacy_risk": "high", "event_shard": null
+    },
+    {
+      "session_alias": "claude-smoke-hi", "provider": "claude_code",
+      "first_observed_at": "2026-06-11T10:14:17.573Z", "last_observed_at": "2026-06-11T10:14:26.330Z",
+      "semantic_input_count": 2, "command_action_count": 0, "archived_event_count": 0,
+      "inclusion_status": "excluded", "relevance": "irrelevant", "version_ids": [],
+      "decision_reason": "仅包含 hi 级 smoke test，与 LLM Wiki 版本演化无关。",
+      "privacy_risk": "low", "event_shard": null
+    },
+    {
+      "session_alias": "claude-general-chat", "provider": "claude_code",
+      "first_observed_at": "2026-06-11T10:20:55.904Z", "last_observed_at": "2026-06-11T19:03:17.786Z",
+      "semantic_input_count": 3, "command_action_count": 0, "archived_event_count": 0,
+      "inclusion_status": "excluded", "relevance": "irrelevant", "version_ids": [],
+      "decision_reason": "一般问候、名称和模型厂商问题，不影响 LLM Wiki 的过程决策或动作。",
+      "privacy_risk": "low", "event_shard": null
+    },
+    {
+      "session_alias": "claude-global-model-config", "provider": "claude_code",
+      "first_observed_at": "2026-06-12T13:12:55.722Z", "last_observed_at": "2026-06-12T13:13:59.361Z",
+      "semantic_input_count": 1, "command_action_count": 1, "archived_event_count": 0,
+      "inclusion_status": "excluded", "relevance": "irrelevant", "version_ids": [],
+      "decision_reason": "全局模型偏好与 LLM Wiki v0-v5 版本机制无直接关系，且公开会扩大个人配置暴露面。",
+      "privacy_risk": "high", "event_shard": null
+    }
+  ]
+}

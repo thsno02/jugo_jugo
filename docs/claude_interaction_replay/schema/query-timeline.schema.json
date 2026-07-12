@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jugo-jugo.example/schemas/query-timeline.schema.json",
+  "title": "Query-level Recall Timeline",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "selection_policy", "coverage", "timelines"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0.0" },
+    "status": { "enum": ["demo", "partial", "complete"] },
+    "selection_policy": { "type": "string", "minLength": 1 },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expected_versions", "annotated_versions", "complete"],
+      "properties": {
+        "expected_versions": { "type": "integer", "minimum": 1 },
+        "annotated_versions": { "type": "integer", "minimum": 0 },
+        "complete": { "type": "boolean" }
+      }
+    },
+    "timelines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["timeline_id", "version_id", "title", "scope", "default_density", "annotations", "causal_edges"],
+        "properties": {
+          "timeline_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "version_id": { "type": "string", "pattern": "^v[0-9]+$" },
+          "title": { "type": "string", "minLength": 1 },
+          "scope": { "type": "string", "minLength": 1 },
+          "default_density": { "enum": ["milestones", "all"] },
+          "annotations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["event_id", "label", "role", "why_it_matters", "module_ids", "artifact_refs"],
+              "properties": {
+                "event_id": { "type": "string", "minLength": 1 },
+                "label": { "type": "string", "minLength": 1 },
+                "role": { "enum": ["origin", "decision", "action", "challenge", "correction", "validation", "failure", "handoff", "retrospective"] },
+                "why_it_matters": { "type": "string", "minLength": 1 },
+                "module_ids": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+                "artifact_refs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+              }
+            }
+          },
+          "causal_edges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["from_event_id", "to_event_id", "relation", "label"],
+              "properties": {
+                "from_event_id": { "type": "string" },
+                "to_event_id": { "type": "string" },
+                "relation": { "enum": ["caused", "challenged", "corrected", "validated", "contradicted", "triggered_rework"] },
+                "label": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

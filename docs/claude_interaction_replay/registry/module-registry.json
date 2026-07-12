@@ -1,0 +1,24 @@
+{
+  "$schema": "../schema/module-registry.schema.json",
+  "schema_version": "1.0.0",
+  "modules": [
+    {
+      "module_id": "ingestion",
+      "title": "入库机制",
+      "kind": "production",
+      "status": "complete",
+      "data_file": "modules/ingestion.json",
+      "content_file": "content/modules/ingestion.md",
+      "primary_demo_version": "v5"
+    },
+    {
+      "module_id": "audit",
+      "title": "审计机制",
+      "kind": "control",
+      "status": "complete",
+      "data_file": "modules/audit.json",
+      "content_file": "content/modules/audit.md",
+      "primary_demo_version": "v5"
+    }
+  ]
+}

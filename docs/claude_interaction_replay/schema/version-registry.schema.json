@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jugo-jugo.example/schemas/version-registry.schema.json",
+  "title": "LLM Wiki Version Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "versions"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "2.0.0" },
+    "versions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["version_id", "label", "role", "status", "date", "title", "core", "delta_from", "changes", "content_ref", "source_ids", "recall_trail", "metrics", "known_gaps"],
+        "properties": {
+          "version_id": { "type": "string", "pattern": "^v[0-9]+$" },
+          "label": { "type": "string" },
+          "role": { "enum": ["prologue", "main_version"] },
+          "status": { "enum": ["archived", "active", "retrospective"] },
+          "date": { "type": "string", "format": "date" },
+          "title": { "type": "string" },
+          "core": { "type": "string" },
+          "delta_from": { "type": ["string", "null"] },
+          "changes": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["preserved", "added", "replaced", "removed"],
+            "properties": {
+              "preserved": { "type": "array", "items": { "type": "string" } },
+              "added": { "type": "array", "items": { "type": "string" } },
+              "replaced": { "type": "array", "items": { "type": "string" } },
+              "removed": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "content_ref": { "type": "string" },
+          "source_ids": { "type": "array", "items": { "type": "string" } },
+          "recall_trail": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["problem", "decision", "action", "artifact", "next_trigger"],
+            "properties": {
+              "problem": { "type": "string" },
+              "decision": { "type": "string" },
+              "action": { "type": "string" },
+              "artifact": { "type": "string" },
+              "next_trigger": { "type": "string" }
+            }
+          },
+          "metrics": { "type": "array", "items": { "type": "object", "required": ["label", "value", "evidence_ref"], "properties": { "label": { "type": "string" }, "value": { "type": ["string", "number"] }, "evidence_ref": { "type": "string" } }, "additionalProperties": false } },
+          "known_gaps": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

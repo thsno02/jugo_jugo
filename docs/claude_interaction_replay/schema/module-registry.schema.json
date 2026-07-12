@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jugo-jugo.example/schemas/module-registry.schema.json",
+  "title": "Module Recall Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "modules"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0.0" },
+    "modules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["module_id", "title", "kind", "status", "data_file", "content_file", "primary_demo_version"],
+        "properties": {
+          "module_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "title": { "type": "string", "minLength": 1 },
+          "kind": { "enum": ["production", "control"] },
+          "status": { "enum": ["demo", "partial", "complete"] },
+          "data_file": { "type": "string", "minLength": 1 },
+          "content_file": { "type": "string", "minLength": 1 },
+          "primary_demo_version": { "type": "string", "pattern": "^v[0-9]+$" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "$schema": "../schema/source-registry.schema.json",
+  "schema_version": "2.0.0",
+  "sources": [
+    {
+      "source_id": "codex-prehistory-research",
+      "provider": "codex",
+      "source_kind": "session_jsonl",
+      "session_id": "codex-prehistory-research",
+      "session_role": "primary",
+      "parent_session_id": null,
+      "version_ids": ["v0"],
+      "local_locator": "local-source-map:codex-prehistory-research",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "primary",
+      "notes": ["v0 之前的仓库目标、来源覆盖与 agent/Git 工作方式前史。"]
+    },
+    {
+      "source_id": "codex-primary-v0-v2-boundary",
+      "provider": "codex",
+      "source_kind": "session_jsonl",
+      "session_id": "codex-primary-v0-v2-boundary",
+      "session_role": "primary",
+      "parent_session_id": null,
+      "version_ids": [
+        "v0",
+        "v1",
+        "v2"
+      ],
+      "local_locator": "local-source-map:codex-primary-v0-v2-boundary",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "primary",
+      "notes": [
+        "人类输入以 event_msg.user_message 为候选。",
+        "关联 64 个 sub-agent；sub-agent task packet 不计为人类输入。"
+      ]
+    },
+    {
+      "source_id": "codex-primary-v2-v3-handoff",
+      "provider": "codex",
+      "source_kind": "session_jsonl",
+      "session_id": "codex-primary-v2-v3-handoff",
+      "session_role": "primary",
+      "parent_session_id": null,
+      "version_ids": [
+        "v2",
+        "v3"
+      ],
+      "local_locator": "local-source-map:codex-primary-v2-v3-handoff",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "primary",
+      "notes": [
+        "主要覆盖 v2，并包含进入 v3 的交接。"
+      ]
+    },
+    {
+      "source_id": "codex-subagents-v0-v2-boundary",
+      "provider": "codex",
+      "source_kind": "subagent_jsonl",
+      "session_id": null,
+      "session_role": "subagent",
+      "parent_session_id": "codex-primary-v0-v2-boundary",
+      "version_ids": [
+        "v0",
+        "v1",
+        "v2"
+      ],
+      "local_locator": "local-source-map:codex-subagents-v0-v2-boundary",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "supporting",
+      "notes": [
+        "64 个关联 sub-agent；通过 session_meta.payload.source.subagent.parent_thread_id 反查。",
+        "仅用于动作、交付和生命周期证据。"
+      ]
+    },
+    {
+      "source_id": "codex-subagents-v2-v3-handoff",
+      "provider": "codex",
+      "source_kind": "subagent_jsonl",
+      "session_id": null,
+      "session_role": "subagent",
+      "parent_session_id": "codex-primary-v2-v3-handoff",
+      "version_ids": [
+        "v2",
+        "v3"
+      ],
+      "local_locator": "local-source-map:codex-subagents-v2-v3-handoff",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "supporting",
+      "notes": [
+        "66 个关联 sub-agent；仅用于动作、交付和生命周期证据。"
+      ]
+    },
+    {
+      "source_id": "codex-retro-v3-practice",
+      "provider": "codex",
+      "source_kind": "session_jsonl",
+      "session_id": "codex-retro-v3-practice",
+      "session_role": "retrospective",
+      "parent_session_id": null,
+      "version_ids": [
+        "v3"
+      ],
+      "local_locator": "local-source-map:codex-retro-v3-practice",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "retrospective",
+      "notes": [
+        "v3 practice reframe 与 user-insights 后验记录；不作为 v3 执行起点。"
+      ]
+    },
+    {
+      "source_id": "codex-retro-daily-audit",
+      "provider": "codex",
+      "source_kind": "audit_summary",
+      "session_id": "codex-retro-daily-audit",
+      "session_role": "retrospective",
+      "parent_session_id": null,
+      "version_ids": [
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "local_locator": "local-source-map:codex-retro-daily-audit",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "retrospective",
+      "notes": [
+        "日度审计 package 与 total timeline 的生成会话；属于后验证据层。"
+      ]
+    },
+    {
+      "source_id": "codex-v3-query-probes",
+      "provider": "codex",
+      "source_kind": "session_jsonl",
+      "session_id": "codex-v3-query-probes",
+      "session_role": "retrospective",
+      "parent_session_id": null,
+      "version_ids": ["v3"],
+      "local_locator": "local-source-map:codex-v3-query-probes",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "retrospective",
+      "notes": ["以真实查询探测 v3 卡片质量；重复失败查询不去重。"]
+    },
+    {
+      "source_id": "codex-v3-presentation-render",
+      "provider": "codex",
+      "source_kind": "session_jsonl",
+      "session_id": "codex-v3-presentation-render",
+      "session_role": "retrospective",
+      "parent_session_id": null,
+      "version_ids": ["v3"],
+      "local_locator": "local-source-map:codex-v3-presentation-render",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "retrospective",
+      "notes": ["v3 构建叙事的 HTML/PNG 表达与复核。"]
+    },
+    {
+      "source_id": "codex-post-v5-repo-publish",
+      "provider": "codex",
+      "source_kind": "session_jsonl",
+      "session_id": "codex-post-v5-repo-publish",
+      "session_role": "retrospective",
+      "parent_session_id": null,
+      "version_ids": ["v5"],
+      "local_locator": "local-source-map:codex-post-v5-repo-publish",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "retrospective",
+      "notes": ["v5 后清理绝对路径和批量 publish 的转出动作。"]
+    },
+    {
+      "source_id": "codex-retro-v4-v5-research",
+      "provider": "codex",
+      "source_kind": "audit_summary",
+      "session_id": "codex-retro-v4-v5-research",
+      "session_role": "retrospective",
+      "parent_session_id": null,
+      "version_ids": [
+        "v4",
+        "v5"
+      ],
+      "local_locator": "local-source-map:codex-retro-v4-v5-research",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "retrospective",
+      "notes": [
+        "v4/v5 style research 与后验比较；不能覆盖原始执行顺序。"
+      ]
+    },
+    {
+      "source_id": "claude-primary-v3",
+      "provider": "claude_code",
+      "source_kind": "session_jsonl",
+      "session_id": "claude-primary-v3",
+      "session_role": "primary",
+      "parent_session_id": null,
+      "version_ids": [
+        "v3"
+      ],
+      "local_locator": "local-source-map:claude-primary-v3",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "primary",
+      "notes": [
+        "type=user 需排除 tool_result、命令信封和 compaction summary。"
+      ]
+    },
+    {
+      "source_id": "claude-primary-v4",
+      "provider": "claude_code",
+      "source_kind": "session_jsonl",
+      "session_id": "claude-primary-v4",
+      "session_role": "primary",
+      "parent_session_id": null,
+      "version_ids": [
+        "v4"
+      ],
+      "local_locator": "local-source-map:claude-primary-v4",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "primary",
+      "notes": [
+        "v4 独立 0→1 构建的主要执行记录。"
+      ]
+    },
+    {
+      "source_id": "claude-v3-narrative-design",
+      "provider": "claude_code",
+      "source_kind": "session_jsonl",
+      "session_id": "claude-v3-narrative-design",
+      "session_role": "retrospective",
+      "parent_session_id": null,
+      "version_ids": ["v3"],
+      "local_locator": "local-source-map:claude-v3-narrative-design",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "retrospective",
+      "notes": ["LLM Wiki 定义、DIKW、Graphify/GraphRAG 与演示叙事；属于 v3 后验意义层。"]
+    },
+    {
+      "source_id": "claude-v4-agent-effort-setup",
+      "provider": "claude_code",
+      "source_kind": "session_jsonl",
+      "session_id": "claude-v4-agent-effort-setup",
+      "session_role": "retrospective",
+      "parent_session_id": null,
+      "version_ids": ["v4"],
+      "local_locator": "local-source-map:claude-v4-agent-effort-setup",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "secondary",
+      "notes": ["仅保留 2 条语义输入和 2 个直接命令动作；含凭据的工具输出全部排除。"]
+    },
+    {
+      "source_id": "claude-primary-v5",
+      "provider": "claude_code",
+      "source_kind": "session_jsonl",
+      "session_id": "claude-primary-v5",
+      "session_role": "primary",
+      "parent_session_id": null,
+      "version_ids": [
+        "v5"
+      ],
+      "local_locator": "local-source-map:claude-primary-v5",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "primary",
+      "notes": [
+        "v5 主要执行记录。"
+      ]
+    },
+    {
+      "source_id": "claude-subagents-v3-v5",
+      "provider": "claude_code",
+      "source_kind": "subagent_jsonl",
+      "session_id": null,
+      "session_role": "subagent",
+      "parent_session_id": null,
+      "version_ids": [
+        "v3",
+        "v4",
+        "v5"
+      ],
+      "local_locator": "claude-project:<project-key>/<session-id>/subagents/",
+      "public_locator": null,
+      "privacy": "local_only",
+      "coverage": "supporting",
+      "notes": [
+        "包含 agent-*.jsonl、workflows/<workflow-id>/agent-*.jsonl 和 journal.jsonl。",
+        "只作为动作和效果证据，不能产生人类输入。"
+      ]
+    },
+    {
+      "source_id": "repo-loop-capsules",
+      "provider": "repository",
+      "source_kind": "repository_file",
+      "session_id": null,
+      "session_role": "not_applicable",
+      "parent_session_id": null,
+      "version_ids": [
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5"
+      ],
+      "local_locator": "repo:loops/",
+      "public_locator": "loops/",
+      "privacy": "publishable_reference",
+      "coverage": "supporting",
+      "notes": [
+        "用于验证动作、产物、指标和后验纠偏；不能替代原始交互顺序。"
+      ]
+    },
+    {
+      "source_id": "repo-git-history",
+      "provider": "git",
+      "source_kind": "git_history",
+      "session_id": null,
+      "session_role": "not_applicable",
+      "parent_session_id": null,
+      "version_ids": [
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5"
+      ],
+      "local_locator": "git:repository-history",
+      "public_locator": null,
+      "privacy": "publishable_reference",
+      "coverage": "supporting",
+      "notes": [
+        "Git 时间证明进入版本控制的时间，不自动等于决策或文件诞生时间。"
+      ]
+    }
+  ]
+}

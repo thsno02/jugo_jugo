@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jugo-jugo.example/schemas/session-audit.schema.json",
+  "title": "Top-level Interaction Session Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "audited_at", "scope", "discovery", "sessions"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0.0" },
+    "audited_at": { "type": "string", "format": "date-time" },
+    "scope": { "type": "string", "minLength": 1 },
+    "discovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["codex", "claude_code"],
+      "properties": {
+        "codex": { "$ref": "#/$defs/discoveryItem" },
+        "claude_code": { "$ref": "#/$defs/discoveryItem" }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/session" }
+    }
+  },
+  "$defs": {
+    "discoveryItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule", "top_level_count", "subagent_count"],
+      "properties": {
+        "rule": { "type": "string", "minLength": 1 },
+        "top_level_count": { "type": "integer", "minimum": 0 },
+        "subagent_count": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_alias", "provider", "first_observed_at", "last_observed_at",
+        "semantic_input_count", "command_action_count", "archived_event_count",
+        "inclusion_status", "relevance", "version_ids", "decision_reason",
+        "privacy_risk", "event_shard"
+      ],
+      "properties": {
+        "session_alias": { "type": "string", "minLength": 1 },
+        "provider": { "enum": ["codex", "claude_code"] },
+        "first_observed_at": { "type": ["string", "null"], "format": "date-time" },
+        "last_observed_at": { "type": ["string", "null"], "format": "date-time" },
+        "semantic_input_count": { "type": ["integer", "null"], "minimum": 0 },
+        "command_action_count": { "type": ["integer", "null"], "minimum": 0 },
+        "archived_event_count": { "type": "integer", "minimum": 0 },
+        "inclusion_status": { "enum": ["included", "excluded", "meta_excluded"] },
+        "relevance": {
+          "enum": ["precursor", "primary", "handoff", "retrospective", "operational_context", "irrelevant", "archive_construction"]
+        },
+        "version_ids": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "decision_reason": { "type": "string", "minLength": 1 },
+        "privacy_risk": { "enum": ["low", "medium", "high", "critical"] },
+        "event_shard": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

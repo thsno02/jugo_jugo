@@ -1,0 +1,342 @@
+{
+  "$schema": "../schema/version-registry.schema.json",
+  "schema_version": "2.0.0",
+  "versions": [
+    {
+      "version_id": "v0",
+      "label": "序章",
+      "role": "prologue",
+      "status": "archived",
+      "date": "2026-05-24",
+      "title": "先证明知识生产机制能够运转",
+      "core": "filesystem-backed 知识生产机制验证",
+      "delta_from": null,
+      "changes": {
+        "preserved": [],
+        "added": [
+          "版本包与 adopted view",
+          "provenance 与 citation graph",
+          "major-change impact queue",
+          "失败检索留痕"
+        ],
+        "replaced": [],
+        "removed": []
+      },
+      "content_ref": "content/versions/v0.md",
+      "source_ids": [
+        "codex-prehistory-research",
+        "codex-primary-v0-v2-boundary",
+        "codex-subagents-v0-v2-boundary",
+        "codex-retro-daily-audit",
+        "repo-loop-capsules",
+        "repo-git-history"
+      ],
+      "recall_trail": {
+        "problem": "持续更新的 LLM 知识库怎样可追踪、可验证、可恢复？",
+        "decision": "用版本包、provenance、citation graph 和 impact queue 构建文件系统闭环。",
+        "action": "运行 7 节点 demo，并模拟 major change 传播。",
+        "artifact": "7 个 adopted nodes、35 条 citation edges、4 个开放影响项。",
+        "next_trigger": "机制跑通，但知识库 topic 被做成了生产机制本身。"
+      },
+      "metrics": [
+        {
+          "label": "adopted nodes",
+          "value": 7,
+          "evidence_ref": "loops/v0_meta_kb_initialization_demo_20260524/kb_initialization_demo_report.md"
+        },
+        {
+          "label": "citation edges",
+          "value": 35,
+          "evidence_ref": "loops/v0_meta_kb_initialization_demo_20260524/kb_initialization_demo_report.md"
+        }
+      ],
+      "known_gaps": [
+        "22 条 precursor / primary / retrospective 用户输入已完整归档；sub-agent 动作尚未形成独立公开索引。"
+      ]
+    },
+    {
+      "version_id": "v1",
+      "label": "版本 1",
+      "role": "main_version",
+      "status": "archived",
+      "date": "2026-05-24",
+      "title": "把 LLM Wiki 做成八个主题枢纽",
+      "core": "自顶向下的 topic hub skeleton",
+      "delta_from": "v0",
+      "changes": {
+        "preserved": [
+          "文件系统知识库机制",
+          "provenance 与校验门禁"
+        ],
+        "added": [
+          "8 个 LLM Wiki 主题枢纽",
+          "coverage framework",
+          "evidence matrix"
+        ],
+        "replaced": [
+          "meta KB → LLM Wiki topic KB"
+        ],
+        "removed": [
+          "把生产机制本身作为知识主题"
+        ]
+      },
+      "content_ref": "content/versions/v1.md",
+      "source_ids": [
+        "codex-primary-v0-v2-boundary",
+        "codex-subagents-v0-v2-boundary",
+        "codex-retro-daily-audit",
+        "repo-loop-capsules",
+        "repo-git-history"
+      ],
+      "recall_trail": {
+        "problem": "v0 验证了机制，却没有真正建设 LLM Wiki topic KB。",
+        "decision": "以 8 个候选主题为生产单元，建立覆盖框架和 evidence matrix。",
+        "action": "生成并 QA 八个综合型主题节点。",
+        "artifact": "8 个 KB views、185 条 citation edges、impact queue 为 0。",
+        "next_trigger": "主题覆盖通过，但生产单元不是自底向上的原子事实。"
+      },
+      "metrics": [
+        {
+          "label": "topic hubs",
+          "value": 8,
+          "evidence_ref": "loops/v1_topic_hub_skeleton_20260524/README.md"
+        },
+        {
+          "label": "citation edges",
+          "value": 185,
+          "evidence_ref": "loops/v1_topic_hub_skeleton_20260524/README.md"
+        }
+      ],
+      "known_gaps": [
+        "28 条 primary / retrospective 用户输入已完整归档；部分执行效果仍依赖后验审计和 Git 证据。"
+      ]
+    },
+    {
+      "version_id": "v2",
+      "label": "版本 2",
+      "role": "main_version",
+      "status": "archived",
+      "date": "2026-05-25",
+      "title": "把生产单元改成限定范围知识卡",
+      "core": "bottom-up scoped knowledge cards",
+      "delta_from": "v1",
+      "changes": {
+        "preserved": [
+          "provenance 强校验",
+          "来源驱动"
+        ],
+        "added": [
+          "brain mailbox",
+          "主代理控制面",
+          "scoped card 合同"
+        ],
+        "replaced": [
+          "主题枢纽 → 自底向上知识卡"
+        ],
+        "removed": [
+          "预设 taxonomy 作为前置条件"
+        ]
+      },
+      "content_ref": "content/versions/v2.md",
+      "source_ids": [
+        "codex-primary-v0-v2-boundary",
+        "codex-subagents-v0-v2-boundary",
+        "codex-primary-v2-v3-handoff",
+        "codex-subagents-v2-v3-handoff",
+        "codex-retro-daily-audit",
+        "repo-loop-capsules",
+        "repo-git-history"
+      ],
+      "recall_trail": {
+        "problem": "hub page 不是可靠的原子知识基础。",
+        "decision": "不先建 taxonomy，从来源中生产 scoped cards。",
+        "action": "引入 brain mailbox、主代理控制面和 provenance gate。",
+        "artifact": "候选 KB 和 v2 合同；未 promoted。",
+        "next_trigger": "需要在保持质量的同时提升草稿吞吐和融合能力。"
+      },
+      "metrics": [],
+      "known_gaps": [
+        "80 条 primary / retrospective 用户输入已完整归档；sub-agent 动作尚未形成独立公开索引。"
+      ]
+    },
+    {
+      "version_id": "v3",
+      "label": "版本 3",
+      "role": "main_version",
+      "status": "archived",
+      "date": "2026-05-25",
+      "title": "让知识卡生产进入 draft-first 循环",
+      "core": "高吞吐草稿、相似度比较、融合门禁和统一引用",
+      "delta_from": "v2",
+      "changes": {
+        "preserved": [
+          "scoped card",
+          "provenance gate"
+        ],
+        "added": [
+          "draft-first",
+          "Top-3 相似卡比较",
+          "融合门禁",
+          "统一 footnote citation"
+        ],
+        "replaced": [
+          "重控制串行生产 → 可审查草稿流水线"
+        ],
+        "removed": [
+          "独立维护 related metadata"
+        ]
+      },
+      "content_ref": "content/versions/v3.md",
+      "source_ids": [
+        "codex-primary-v2-v3-handoff",
+        "codex-subagents-v2-v3-handoff",
+        "codex-retro-v3-practice",
+        "codex-v3-query-probes",
+        "codex-v3-presentation-render",
+        "codex-retro-daily-audit",
+        "claude-primary-v3",
+        "claude-v3-narrative-design",
+        "claude-subagents-v3-v5",
+        "repo-loop-capsules",
+        "repo-git-history"
+      ],
+      "recall_trail": {
+        "problem": "v2 控制严谨但吞吐和融合不足。",
+        "decision": "draft-first，并用 Top-3 相似卡和 citation 证据决定融合。",
+        "action": "建立 Jieba/Jaccard 比较、gate/fusion 和 footnote-derived related。",
+        "artifact": "171 张 accepted cards。",
+        "next_trigger": "需要用独立提问循环验证能否更充分穷尽材料。"
+      },
+      "metrics": [
+        {
+          "label": "accepted cards",
+          "value": 171,
+          "evidence_ref": "loops/v3_llm_wiki_loop_20260525/"
+        }
+      ],
+      "known_gaps": [
+        "157 条 precursor / handoff / execution / operational context / retrospective 用户输入已完整归档；sub-agent 动作尚未形成独立公开索引。"
+      ]
+    },
+    {
+      "version_id": "v4",
+      "label": "版本 4",
+      "role": "main_version",
+      "status": "archived",
+      "date": "2026-06-02",
+      "title": "用提问循环独立地从 0 到 1",
+      "core": "questioner/reader 穷尽材料与 FSJS 审计",
+      "delta_from": "v3",
+      "changes": {
+        "preserved": [
+          "来源驱动的知识卡",
+          "typed citation"
+        ],
+        "added": [
+          "questioner/reader",
+          "justification journal",
+          "grep-only governance",
+          "FSJS"
+        ],
+        "replaced": [
+          "继承式扩建 → 独立 0→1 提问循环"
+        ],
+        "removed": [
+          "依赖 v3 KB 作为生产起点"
+        ]
+      },
+      "content_ref": "content/versions/v4.md",
+      "source_ids": [
+        "claude-v4-agent-effort-setup",
+        "claude-primary-v4",
+        "claude-subagents-v3-v5",
+        "codex-retro-daily-audit",
+        "codex-retro-v4-v5-research",
+        "repo-loop-capsules",
+        "repo-git-history"
+      ],
+      "recall_trail": {
+        "problem": "如何减少预设结构对知识发现的限制？",
+        "decision": "从原始材料独立 0→1，由 questioner/reader 驱动。",
+        "action": "加入 typed footnotes、justification journal、grep-only governance 和 FSJS。",
+        "artifact": "约 328 张 active cards。",
+        "next_trigger": "规模增长后需要来源路由、顺序治理和图完整性修复。"
+      },
+      "metrics": [
+        {
+          "label": "active cards",
+          "value": "约 328",
+          "evidence_ref": "loops/v4_llm_wiki_loop_20260602/"
+        }
+      ],
+      "known_gaps": [
+        "69 条 operational context / primary / retrospective 用户动作已完整归档。",
+        "status.json 与 loop_state.json 的陈旧状态已与后验完成证据并列保留。"
+      ]
+    },
+    {
+      "version_id": "v5",
+      "label": "版本 5",
+      "role": "main_version",
+      "status": "retrospective",
+      "date": "2026-06-12",
+      "title": "按来源类型路由，并治理规模化知识图",
+      "core": "source router、evidence basis、顺序治理和 backlink/orphan 修复",
+      "delta_from": "v4",
+      "changes": {
+        "preserved": [
+          "提问式材料处理",
+          "FSJS 审计"
+        ],
+        "added": [
+          "source-type router",
+          "evidence basis 与 hedge preservation",
+          "YAML lint",
+          "backlink/orphan pass"
+        ],
+        "replaced": [
+          "统一处理流 → 按来源类型路由",
+          "末端治理 → 顺序治理"
+        ],
+        "removed": []
+      },
+      "content_ref": "content/versions/v5.md",
+      "source_ids": [
+        "claude-primary-v5",
+        "claude-subagents-v3-v5",
+        "codex-post-v5-repo-publish",
+        "codex-retro-v4-v5-research",
+        "repo-loop-capsules",
+        "repo-git-history"
+      ],
+      "recall_trail": {
+        "problem": "统一流程无法适配不同来源，规模增长带来 YAML 与知识图缺陷。",
+        "decision": "按 source type 路由，同时保留证据边界和 hedge。",
+        "action": "加入 fusion scan、YAML lint、backlink/orphan pass 和 FSJS。",
+        "artifact": "477 张 active cards、63 个有效来源、0% orphan。",
+        "next_trigger": "后续审计发现信息密度仍可能回退。"
+      },
+      "metrics": [
+        {
+          "label": "active cards",
+          "value": 477,
+          "evidence_ref": "loops/v5_llm_wiki_loop_20260612/"
+        },
+        {
+          "label": "effective sources",
+          "value": 63,
+          "evidence_ref": "loops/v5_llm_wiki_loop_20260612/"
+        },
+        {
+          "label": "orphan rate",
+          "value": "0%",
+          "evidence_ref": "loops/v5_llm_wiki_loop_20260612/"
+        }
+      ],
+      "known_gaps": [
+        "22 条 primary / transition-out 用户输入已完整归档。",
+        "dead-source 计数存在 10/11/12 冲突，档案已保留分歧，不能静默选一个数字。"
+      ]
+    }
+  ]
+}
