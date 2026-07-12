@@ -1187,7 +1187,13 @@
       "parent_linked": true,
       "relations_written": true,
       "closed": false,
-      "state_rationale": "v4 的 extraction 编排在同一会话中先后被解释为 main-loop 直接编排和并行 Agent() sub-agents，后者虽撤回前答但仍缺少 runtime prompt/skill 传递的直接证据；“v4 extraction + v5 governance”的最小修改也尚未完成同源验证"
+      "state_rationale": "v4 的 extraction 编排在同一会话中先后被解释为 main-loop 直接编排和并行 Agent() sub-agents，后者虽撤回前答但仍缺少 runtime prompt/skill 传递的直接证据；“v4 extraction + v5 governance”的最小修改也尚未完成同源验证",
+      "resolution": {
+        "kind": "current_status",
+        "title": "目前能回答到：候选最小方案是恢复抽取深度并保留 v5 治理",
+        "comment_id": 4949314024,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/60#issuecomment-4949314024"
+      }
     },
     "v5-preservation-and-transition-out": {
       "number": 61,
@@ -1202,7 +1208,13 @@
       "parent_linked": true,
       "relations_written": true,
       "closed": true,
-      "state_rationale": "仓库内路径已规整为 repo 相对路径、规则已写入 README，变更经验证后分类提交并推送；后续 v5 全量内容又由 sub-agent 单独固化为可追溯提交，未推送边界已明确披露"
+      "state_rationale": "仓库内路径已规整为 repo 相对路径、规则已写入 README，变更经验证后分类提交并推送；后续 v5 全量内容又由 sub-agent 单独固化为可追溯提交，未推送边界已明确披露",
+      "resolution": {
+        "kind": "answer",
+        "title": "用相对路径、分类提交与显式推送状态完成固化和 transition-out",
+        "comment_id": 4949314348,
+        "url": "https://github.com/thsno02/jugo_jugo/issues/61#issuecomment-4949314348"
+      }
     }
   },
   "event_map": {

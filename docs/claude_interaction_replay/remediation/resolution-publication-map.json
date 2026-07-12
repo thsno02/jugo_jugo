@@ -1,0 +1,460 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "thsno02/jugo_jugo",
+  "status": "complete",
+  "started_at": "2026-07-12T00:20:40.504003+00:00",
+  "issues": [
+    {
+      "slug": "v0-source-coverage",
+      "issue_number": 12,
+      "state": "closed",
+      "kind": "answer",
+      "title": "coverage 足够需同时满足内容充分性与记录可验证性",
+      "comment_id": 4949294871,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/12#issuecomment-4949294871"
+    },
+    {
+      "slug": "v0-agent-roles",
+      "issue_number": 13,
+      "state": "closed",
+      "kind": "answer",
+      "title": "常驻角色应限于 Git/File Steward 与上下文 fork Q&A",
+      "comment_id": 4949295236,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/13#issuecomment-4949295236"
+    },
+    {
+      "slug": "v0-kb-autonomy",
+      "issue_number": 14,
+      "state": "closed",
+      "kind": "answer",
+      "title": "自治 loop 依靠持久状态、反思决策和可延期的网络队列",
+      "comment_id": 4949295634,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/14#issuecomment-4949295634"
+    },
+    {
+      "slug": "v0-language",
+      "issue_number": 15,
+      "state": "closed",
+      "kind": "answer",
+      "title": "中文主语言必须是文件级验收合同，而非仅限对话回复",
+      "comment_id": 4949296016,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/15#issuecomment-4949296016"
+    },
+    {
+      "slug": "v0-topic-drift",
+      "issue_number": 16,
+      "state": "closed",
+      "kind": "answer",
+      "title": "机制成功仍会产出错误 KB，因为生产对象和外部主题未对齐",
+      "comment_id": 4949296398,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/16#issuecomment-4949296398"
+    },
+    {
+      "slug": "v1-planner-loop",
+      "issue_number": 17,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到 planner、worker 与 main-agent 的首轮分工，长期自治仍待验证",
+      "comment_id": 4949296715,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/17#issuecomment-4949296715"
+    },
+    {
+      "slug": "v1-card-layout",
+      "issue_number": 18,
+      "state": "closed",
+      "kind": "answer",
+      "title": "当前渲染链要求 References 在前、Footnotes 为最后 section",
+      "comment_id": 4949297035,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/18#issuecomment-4949297035"
+    },
+    {
+      "slug": "v1-hub-granularity",
+      "issue_number": 19,
+      "state": "closed",
+      "kind": "answer",
+      "title": "少量大卡源于 topic-node-first pipeline，而非材料不足",
+      "comment_id": 4949297411,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/19#issuecomment-4949297411"
+    },
+    {
+      "slug": "v2-card-foundation",
+      "issue_number": 20,
+      "state": "closed",
+      "kind": "answer",
+      "title": "atomic card 是经证据支持、可审计的知识单元",
+      "comment_id": 4949297722,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/20#issuecomment-4949297722"
+    },
+    {
+      "slug": "v2-file-audits",
+      "issue_number": 21,
+      "state": "closed",
+      "kind": "answer",
+      "title": "legacy 应可追溯隔离，focus drift 应由独立证据审计",
+      "comment_id": 4949298043,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/21#issuecomment-4949298043"
+    },
+    {
+      "slug": "v2-language",
+      "issue_number": 22,
+      "state": "closed",
+      "kind": "answer",
+      "title": "以中文承担主叙述，英文仅保留技术与证据身份",
+      "comment_id": 4949298397,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/22#issuecomment-4949298397"
+    },
+    {
+      "slug": "v2-git-handoff",
+      "issue_number": 23,
+      "state": "closed",
+      "kind": "answer",
+      "title": "按完整 delivery 分批提交，未闭合产物留在工作区",
+      "comment_id": 4949298785,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/23#issuecomment-4949298785"
+    },
+    {
+      "slug": "v2-control-plane",
+      "issue_number": 24,
+      "state": "closed",
+      "kind": "answer",
+      "title": "角色合同、结构化派发与 hooks 分层组合",
+      "comment_id": 4949299322,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/24#issuecomment-4949299322"
+    },
+    {
+      "slug": "v2-card-autonomy",
+      "issue_number": 25,
+      "state": "closed",
+      "kind": "answer",
+      "title": "topic 自主发现，但只交付受证据约束的知识卡",
+      "comment_id": 4949299798,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/25#issuecomment-4949299798"
+    },
+    {
+      "slug": "v2-subagent-lifecycle",
+      "issue_number": 26,
+      "state": "closed",
+      "kind": "answer",
+      "title": "按职责、状态、上下文价值和退出条件管理 sub-agent",
+      "comment_id": 4949300272,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/26#issuecomment-4949300272"
+    },
+    {
+      "slug": "v2-production-lifecycle",
+      "issue_number": 27,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：one-shot 链路可控，standing worker 尚未验证",
+      "comment_id": 4949300743,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/27#issuecomment-4949300743"
+    },
+    {
+      "slug": "v2-control-audits",
+      "issue_number": 28,
+      "state": "closed",
+      "kind": "answer",
+      "title": "审计归属规则已明确",
+      "comment_id": 4949301247,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/28#issuecomment-4949301247"
+    },
+    {
+      "slug": "v2-brain-mailbox",
+      "issue_number": 29,
+      "state": "closed",
+      "kind": "answer",
+      "title": "mailbox 可完成跨 brain 通信，但自动唤醒需要独立 scheduler",
+      "comment_id": 4949301679,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/29#issuecomment-4949301679"
+    },
+    {
+      "slug": "v2-design-freeze",
+      "issue_number": 30,
+      "state": "closed",
+      "kind": "answer",
+      "title": "以三问 comparison 决定新增、融合、增量、拆分或跳过",
+      "comment_id": 4949302115,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/30#issuecomment-4949302115"
+    },
+    {
+      "slug": "v2-loop-capsule",
+      "issue_number": 31,
+      "state": "closed",
+      "kind": "answer",
+      "title": "实验留在稳定 loops capsule，根级产品只接受人工提升",
+      "comment_id": 4949302515,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/31#issuecomment-4949302515"
+    },
+    {
+      "slug": "v3-draft-first-precursor",
+      "issue_number": 32,
+      "state": "closed",
+      "kind": "answer",
+      "title": "v3 应先形成 draft backlog，再用轻量召回触发审计决策",
+      "comment_id": 4949303063,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/32#issuecomment-4949303063"
+    },
+    {
+      "slug": "v3-formal-handoff",
+      "issue_number": 33,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：handoff 已可恢复运行，但尚不能证明 v3 语义可靠",
+      "comment_id": 4949303440,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/33#issuecomment-4949303440"
+    },
+    {
+      "slug": "v3-first-production-pass",
+      "issue_number": 34,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：v3 已扩展到 171 张 loop-local cards，但 accepted 集合仍无效",
+      "comment_id": 4949303844,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/34#issuecomment-4949303844"
+    },
+    {
+      "slug": "v3-unified-citation",
+      "issue_number": 35,
+      "state": "closed",
+      "kind": "answer",
+      "title": "Footnotes 应作为统一 citation 事实源，related 与 backlink 由脚本派生",
+      "comment_id": 4949304214,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/35#issuecomment-4949304214"
+    },
+    {
+      "slug": "v3-cost-and-comparison-audit",
+      "issue_number": 36,
+      "state": "closed",
+      "kind": "answer",
+      "title": "98% KV cache 命中仍昂贵，主因是多轮后处理而非首次读原文",
+      "comment_id": 4949304570,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/36#issuecomment-4949304570"
+    },
+    {
+      "slug": "v3-repository-cleanup",
+      "issue_number": 37,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：cleanup 边界已明确，但 loop 提交与状态复核尚未完成",
+      "comment_id": 4949304984,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/37#issuecomment-4949304984"
+    },
+    {
+      "slug": "v3-set-level-fusion-gate",
+      "issue_number": 38,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：fusion gate 的职责已定义，识别 survivors 的能力仍未验证",
+      "comment_id": 4949305447,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/38#issuecomment-4949305447"
+    },
+    {
+      "slug": "v3-next-loop-pipeline",
+      "issue_number": 39,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到哪里：collect、extract、ingest、evolve 已有设计，尚无可复用实现",
+      "comment_id": 4949305916,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/39#issuecomment-4949305916"
+    },
+    {
+      "slug": "v3-reader-reviewer-architecture",
+      "issue_number": 40,
+      "state": "closed",
+      "kind": "answer",
+      "title": "reader 与 writer 应合并持有完整材料，reviewer 保持独立并按需取证",
+      "comment_id": 4949306246,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/40#issuecomment-4949306246"
+    },
+    {
+      "slug": "v3-questioning-loop",
+      "issue_number": 41,
+      "state": "closed",
+      "kind": "answer",
+      "title": "单材料、忠实原文的抽取模式应以问题、证据化回答和退出复核形成闭环",
+      "comment_id": 4949306714,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/41#issuecomment-4949306714"
+    },
+    {
+      "slug": "v3-justification-journal",
+      "issue_number": 42,
+      "state": "closed",
+      "kind": "answer",
+      "title": "每张卡保留 append-only justification journal，comparison 只按真实决策触发",
+      "comment_id": 4949307088,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/42#issuecomment-4949307088"
+    },
+    {
+      "slug": "v3-query-probes",
+      "issue_number": 43,
+      "state": "closed",
+      "kind": "answer",
+      "title": "v3 KB 可回答架构、RAG/graph 比较和实体归属查询，但仅限仓库证据",
+      "comment_id": 4949307476,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/43#issuecomment-4949307476"
+    },
+    {
+      "slug": "v3-practice-reframe",
+      "issue_number": 44,
+      "state": "closed",
+      "kind": "answer",
+      "title": "技术复盘应围绕从原始材料构建可持续知识生态来重写 v0-v3",
+      "comment_id": 4949307935,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/44#issuecomment-4949307935"
+    },
+    {
+      "slug": "v3-introduction-slides",
+      "issue_number": 45,
+      "state": "closed",
+      "kind": "answer",
+      "title": "introduction 应用三张图分别讲知识范式、实施手段与过去未来",
+      "comment_id": 4949308430,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/45#issuecomment-4949308430"
+    },
+    {
+      "slug": "v3-operational-definition",
+      "issue_number": 46,
+      "state": "closed",
+      "kind": "answer",
+      "title": "一页用定义统领重点与属性，另一页用 DIKW 表达成熟度",
+      "comment_id": 4949308980,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/46#issuecomment-4949308980"
+    },
+    {
+      "slug": "v3-presentation-render",
+      "issue_number": 47,
+      "state": "closed",
+      "kind": "answer",
+      "title": "从 `$html-to-png` 入口调用 Playwright，可批量把 HTML 渲染为同名 PNG",
+      "comment_id": 4949309411,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/47#issuecomment-4949309411"
+    },
+    {
+      "slug": "v4-agent-effort-default",
+      "issue_number": 48,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前只能定位 max 与 xhigh 的候选配置层级，实际优先关系尚未验证",
+      "comment_id": 4949309866,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/48#issuecomment-4949309866"
+    },
+    {
+      "slug": "v4-full-material-orchestration",
+      "issue_number": 49,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前只能确认 43 份材料已完成处理，尚不能确认编排可恢复",
+      "comment_id": 4949310273,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/49#issuecomment-4949310273"
+    },
+    {
+      "slug": "v4-sequential-card-governance",
+      "issue_number": 50,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前只能给出逐卡治理合同，尚未证明已进入正式 ingest gate",
+      "comment_id": 4949310688,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/50#issuecomment-4949310688"
+    },
+    {
+      "slug": "v4-cluster-exploration-damage",
+      "issue_number": 51,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能确认固定 cluster 配额不合理且存在损伤，尚不能确定完整因果范围",
+      "comment_id": 4949311044,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/51#issuecomment-4949311044"
+    },
+    {
+      "slug": "v4-audit-workload-sharding",
+      "issue_number": 52,
+      "state": "closed",
+      "kind": "answer",
+      "title": "全量机械筛选与分片语义判断应采用 FSJS",
+      "comment_id": 4949311424,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/52#issuecomment-4949311424"
+    },
+    {
+      "slug": "v4-audit-evidence-blind-spots",
+      "issue_number": 53,
+      "state": "closed",
+      "kind": "answer",
+      "title": "避免 grep 假阳性应先生成 suspect，再回原文并追到责任阶段",
+      "comment_id": 4949311771,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/53#issuecomment-4949311771"
+    },
+    {
+      "slug": "v4-source-routing-and-preprocessing",
+      "issue_number": 54,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到 TXT fallback 的失真原因与分流方案，repo2doc 尚未落地",
+      "comment_id": 4949312103,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/54#issuecomment-4949312103"
+    },
+    {
+      "slug": "v4-learnings-and-v5-handoff",
+      "issue_number": 55,
+      "state": "closed",
+      "kind": "answer",
+      "title": "长对话应通过分角色审计的 capsule 固化为可执行交接",
+      "comment_id": 4949312469,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/55#issuecomment-4949312469"
+    },
+    {
+      "slug": "v4-assistant-persona-boundary",
+      "issue_number": 56,
+      "state": "closed",
+      "kind": "answer",
+      "title": "项目 persona、模型身份与训练语料信息必须分层陈述",
+      "comment_id": 4949312799,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/56#issuecomment-4949312799"
+    },
+    {
+      "slug": "v5-source-router-and-graph-governance",
+      "issue_number": 57,
+      "state": "open",
+      "kind": "current_status",
+      "title": "已有终态产物，但全量闭环尚未证实",
+      "comment_id": 4949313121,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/57#issuecomment-4949313121"
+    },
+    {
+      "slug": "v5-fsjs-audit-coverage",
+      "issue_number": 58,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到：现有证据指向执行缺口与审计合同盲区",
+      "comment_id": 4949313424,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/58#issuecomment-4949313424"
+    },
+    {
+      "slug": "v5-information-density-regression",
+      "issue_number": 59,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到：质量退化已确认，成因仍需受控验证",
+      "comment_id": 4949313707,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/59#issuecomment-4949313707"
+    },
+    {
+      "slug": "v5-v4-ingest-reconstruction",
+      "issue_number": 60,
+      "state": "open",
+      "kind": "current_status",
+      "title": "目前能回答到：候选最小方案是恢复抽取深度并保留 v5 治理",
+      "comment_id": 4949314024,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/60#issuecomment-4949314024"
+    },
+    {
+      "slug": "v5-preservation-and-transition-out",
+      "issue_number": 61,
+      "state": "closed",
+      "kind": "answer",
+      "title": "用相对路径、分类提交与显式推送状态完成固化和 transition-out",
+      "comment_id": 4949314348,
+      "url": "https://github.com/thsno02/jugo_jugo/issues/61#issuecomment-4949314348"
+    }
+  ],
+  "completed_at": "2026-07-12T00:27:45.454366+00:00",
+  "backup_path": "remediation/backups/resolutions-before-20260712-082040.json"
+}
